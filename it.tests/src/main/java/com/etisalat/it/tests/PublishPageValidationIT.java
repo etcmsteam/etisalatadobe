@@ -35,6 +35,7 @@ import org.junit.Test;
 import org.slf4j.LoggerFactory;
 
 import static java.util.concurrent.TimeUnit.MINUTES;
+import static org.apache.commons.io.IOUtils.close;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.apache.commons.io.IOUtils.closeQuietly;
@@ -79,7 +80,11 @@ public class PublishPageValidationIT {
 
     @AfterClass
     public static void afterClass() {
-        closeQuietly(adminPublish);
+        try {
+            close(adminPublish);
+        } catch(IOException e) {
+            LOG.info("An error has occurred during adminPublish closing: {}", e);
+        }
     }
 
 
@@ -89,7 +94,6 @@ public class PublishPageValidationIT {
         String path = HOMEPAGE;
         verifyPage(adminPublish, path);
         verifyLinkedResources(adminPublish,path);
-
     }
 
 
