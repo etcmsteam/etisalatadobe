@@ -44,50 +44,57 @@ module.exports = {
   libs: [
     {
       ...libsBaseConfig,
-      name: 'clientlib-dependencies',
-      categories: ['etisalat.dependencies'],
+      name: 'clientlib-hiuapp',
+      categories: ['etisalat.hiuapp'],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
         js: {
-          cwd: 'clientlib-dependencies',
+          cwd: 'clientlib-hiuapp',
           files: ['**/*.js'],
           flatten: false
         },
         css: {
-          cwd: 'clientlib-dependencies',
-          files: ['**/*.css'],
-          flatten: false
-        }
-      }
-    },
-    {
-      ...libsBaseConfig,
-      name: 'clientlib-site',
-      categories: ['etisalat.site'],
-      dependencies: ['etisalat.dependencies'],
-      assets: {
-        // Copy entrypoint scripts and stylesheets into the respective ClientLib
-        // directories
-        js: {
-          cwd: 'clientlib-site',
-          files: ['**/*.js'],
-          flatten: false
-        },
-        css: {
-          cwd: 'clientlib-site',
+          cwd: 'clientlib-hiuapp',
           files: ['**/*.css'],
           flatten: false
         },
 
         // Copy all other files into the `resources` ClientLib directory
         resources: {
-          cwd: 'clientlib-site',
+          cwd: 'clientlib-hiuapp',
           files: ['**/*.*'],
           flatten: false,
           ignore: ['**/*.js', '**/*.css']
         }
       }
-    }
+    },
+    {
+          ...libsBaseConfig,
+          name: 'clientlib-fivemobile',
+          categories: ['etisalat.fivemobile'],
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-fivemobile',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-fivemobile',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-fivemobile',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
+        }
   ]
 };
