@@ -83,7 +83,7 @@ public class PublishPageValidationIT {
         try {
             close(adminPublish);
         } catch(IOException e) {
-            LOG.info("An error has occurred during adminPublish closing: {}", e);
+            LOG.error("An error has occurred during adminPublish closing: {}", e);
         }
     }
 
