@@ -25,6 +25,15 @@ header.experiencefragment {
 
 .cmp-image__image {
 	max-width: 100%;
+	margin-bottom:-70px
+}
+
+.new {
+    margin: 0;
+	
+}
+.cq-placeholder, .new {
+    height: 0;
 }
 
 .cmp-experiencefragment--header {
@@ -33,6 +42,9 @@ header.experiencefragment {
 	width: 100%;
 	background: #fff;
 	z-index: 1;
+	min-height:60px;
+	-webkit-transition: height .35s ease-in-out;
+    transition: height .35s ease-in-out;
 }
 
 .image {
@@ -41,6 +53,7 @@ header.experiencefragment {
 
 .cmp-experiencefragment--header .cmp-image__image {
 	width: 100%;
+	height:100%;
 }
 
 .cmp-experiencefragment--header .cmp-navigation {
@@ -98,7 +111,6 @@ footer.experiencefragment {
 
 footer.experiencefragment {
 	border-top: none!important;
-	padding: 0!important;
 }
 
 // .cmp-container{  margin:0 auto;
@@ -189,4 +201,43 @@ header.experiencefragment a:hover {
 
 .grey {
 	background-color: #F3F3F3;
+}
+
+
+@keyframes top {
+  0% {
+       opacity: 1;
+  }
+
+  100% {
+    height: 140px;
+    opacity: 1;
+  }
+}
+
+
+.scroll_top{
+  transition: height 1s ease;
+  animation-name: top;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bottom {
+  0% {
+       opacity: 1;
+  }
+
+  100% {
+    height: 60px;
+    opacity: 1;
+  }
+}
+
+
+.scroll_bottom{
+  transition: height 1s ease;
+  animation-name: bottom;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
