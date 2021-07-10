@@ -13,12 +13,13 @@ $color-background:      #452769;
 $color-link:            #452769;
 $font-color:            #F3F3F3;
 
-$primary: #452769;
+//$purple: #452769;
+$dark-pink:#800080;
 $secondary:#F3F3F3;
 $success: #147d64;
 $danger: #ab091e;
 $warning: #cb6e17;
-
+$black:#000;
 
 // Dark mode
 $color-foreground-dark: invert($color-foreground);
@@ -26,5 +27,21 @@ $color-background-dark: invert($color-background);
 $color-link-dark:       invert($color-link);
 
 $none:none;
+
+
+///////bg 
+$box-style1: 5px, solid, red;
+$box-style2: (bStyle: dotted, bColor: blue, bWidth: medium);
+@mixin boxy($bWidth, $bStyle, $bColor) {
+  border-width: $bWidth;
+  border-style: $bStyle;
+  border-color: $bColor;
+}
+.first {
+  @include boxy($box-style1...);
+}
+.second {
+  @include boxy($box-style2...);
+}
 
 
