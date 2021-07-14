@@ -63,25 +63,25 @@ module.exports = {
       },
   {
         ...libsBaseConfig,
-        name: 'clientlib-site',
-        categories: ['etisalat.site'],
+        name: 'clientlib-base',
+        categories: ['etisalat.base'],
       dependencies: ['etisalat.dependencies'],
         assets: {
           // Copy entrypoint scripts and stylesheets into the respective ClientLib
           // directories
           js: {
-            cwd: 'clientlib-site',
+            cwd: 'clientlib-base',
             files: ['**/*.js'],
             flatten: false
           },
           css: {
-            cwd: 'clientlib-site',
+            cwd: 'clientlib-base',
             files: ['**/*.css'],
             flatten: false
           },
           // Copy all other files into the `resources` ClientLib directory
                     resources: {
-                      cwd: 'clientlib-site',
+                      cwd: 'clientlib-base',
                       files: ['**/*.*'],
                       flatten: false,
                       ignore: ['**/*.js', '**/*.css']
