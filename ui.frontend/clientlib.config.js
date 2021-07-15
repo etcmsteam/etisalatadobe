@@ -42,52 +42,107 @@ module.exports = {
   context: BUILD_DIR,
   clientLibRoot: CLIENTLIB_DIR,
   libs: [
-    {
-      ...libsBaseConfig,
-      name: 'clientlib-dependencies',
-      categories: ['etisalat.dependencies'],
-      assets: {
-        // Copy entrypoint scripts and stylesheets into the respective ClientLib
-        // directories
-        js: {
-          cwd: 'clientlib-dependencies',
-          files: ['**/*.js'],
-          flatten: false
-        },
-        css: {
-          cwd: 'clientlib-dependencies',
-          files: ['**/*.css'],
-          flatten: false
+  {
+        ...libsBaseConfig,
+        name: 'clientlib-dependencies',
+        categories: ['etisalat.dependencies'],
+        assets: {
+          // Copy entrypoint scripts and stylesheets into the respective ClientLib
+          // directories
+          js: {
+            cwd: 'clientlib-dependencies',
+            files: ['**/*.js'],
+            flatten: false
+          },
+          css: {
+            cwd: 'clientlib-dependencies',
+            files: ['**/*.css'],
+            flatten: false
+          }
         }
-      }
-    },
+      },
+  {
+        ...libsBaseConfig,
+        name: 'clientlib-site',
+        categories: ['etisalat.site'],
+      dependencies: ['etisalat.dependencies'],
+        assets: {
+          // Copy entrypoint scripts and stylesheets into the respective ClientLib
+          // directories
+          js: {
+            cwd: 'clientlib-site',
+            files: ['**/*.js'],
+            flatten: false
+          },
+          css: {
+            cwd: 'clientlib-site',
+            files: ['**/*.css'],
+            flatten: false
+          },
+          // Copy all other files into the `resources` ClientLib directory
+                    resources: {
+                      cwd: 'clientlib-site',
+                      files: ['**/*.*'],
+                      flatten: false,
+                      ignore: ['**/*.js', '**/*.css']
+                    }
+                  }
+                },
     {
       ...libsBaseConfig,
-      name: 'clientlib-site',
-      categories: ['etisalat.site'],
+      name: 'clientlib-hiuapp',
+      categories: ['etisalat.hiuapp'],
       dependencies: ['etisalat.dependencies'],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
         js: {
-          cwd: 'clientlib-site',
+          cwd: 'clientlib-hiuapp',
           files: ['**/*.js'],
           flatten: false
         },
         css: {
-          cwd: 'clientlib-site',
+          cwd: 'clientlib-hiuapp',
           files: ['**/*.css'],
           flatten: false
         },
 
         // Copy all other files into the `resources` ClientLib directory
         resources: {
-          cwd: 'clientlib-site',
+          cwd: 'clientlib-hiuapp',
           files: ['**/*.*'],
           flatten: false,
           ignore: ['**/*.js', '**/*.css']
         }
       }
-    }
+    },
+    {
+          ...libsBaseConfig,
+          name: 'clientlib-fivemobile',
+          categories: ['etisalat.fivemobile'],
+      dependencies: ['etisalat.dependencies'],
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-fivemobile',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-fivemobile',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-fivemobile',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
+        }
   ]
 };
