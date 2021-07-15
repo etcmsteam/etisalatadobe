@@ -10,23 +10,20 @@ const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 const SOURCE_ROOT = __dirname + '/src/main/webpack';
 
 const resolve = {
-    extensions: ['.js', '.ts'],
-    plugins: [new TSConfigPathsPlugin({
-        configFile: './tsconfig.json'
-    })]
+    extensions: ['.js']
 };
 
 module.exports = {
     resolve: resolve,
     entry: {
-        site: SOURCE_ROOT + '/site/main.ts'
+        site: SOURCE_ROOT + '/site/main.js' ,
+        fivemobile: SOURCE_ROOT + '/fivemobile/main.js' ,
+        hiuapp: SOURCE_ROOT + '/hiuapp/main.js'
     },
-    output: {
-        filename: (chunkData) => {
-            return chunkData.chunk.name === 'dependencies' ? 'clientlib-dependencies/[name].js' : 'clientlib-site/[name].js';
-        },
-        path: path.resolve(__dirname, 'dist')
-    },
+  output: {
+          filename: 'clientlib-[name]/[name].js',
+          path: path.resolve(__dirname, 'dist')
+      },
     module: {
         rules: [
             {
@@ -51,9 +48,20 @@ module.exports = {
                 ]
             },
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'eslint-loader',
+                            test: /\.js$/,
+                            exclude: /node_modules/,
+                            use: [
+                                'babel-loader',
+                                {
+                                    loader: 'eslint-loader'
+                                },
+                                {
+                                    loader: 'glob-import-loader',
+                                    options: {
+                                        resolve: resolve
+                                    }
+                                }
+                            ]
             },
             {
                 test: /\.scss$/,
@@ -98,7 +106,9 @@ module.exports = {
             filename: 'clientlib-[name]/[name].css'
         }),
         new CopyWebpackPlugin([
-            { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' }
+            { from: path.resolve(__dirname, SOURCE_ROOT + '/site/resources'), to: './clientlib-site/' },
+            { from: path.resolve(__dirname, SOURCE_ROOT + '/fivemobile/resources'), to: './clientlib-fivemobile/' },
+            { from: path.resolve(__dirname, SOURCE_ROOT + '/hiuapp/resources'), to: './clientlib-hiuapp/' }
         ])
     ],
     stats: {
