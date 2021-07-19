@@ -1,19 +1,11 @@
-<sly data-sly-use.naviObj = "${resource.path}" />
 <nav id="${properties.id}">
    <input class="menu__checkbox" type="checkbox" role="Menu" aria-label="Menu" aria-controls="navigation" aria-haspopup="true" id="menu">
    <label class="menu__icon" for="menu"><span class="hamburger"></span></label>
-
-    <sly data-sly-list.navChild="${naviObj.listChildren}">
-   <ul data-sly-test="${navChild.name == 'fixedItems'}" data-sly-list.navItem="${navChild.listChildren}" class="menu" role="menuitem">
+   <ul data-sly-use.navModel="com.etisalat.core.models.FixedNavigationModel"
+       data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+       data-sly-list.navItem="${navModel.fixedNav}" class="menu" role="menuitem">
       <li><a href="${navItem.navigationLink}">${navItem.navigationTitle}</a></li>
    </ul>
-</sly>
 </nav>
-
-<div data-sly-test="${wcmmode.edit && !naviObj.hasChildren}" class="cq-placeholder" data-emptytext="Fixed Navigation"/>
-
-
-
-
-
-
+ 
+<sly data-sly-call="${template.placeholder @ isEmpty=navModel.fixedNav.size == 0, classAppend='cmp-languagenavigation'}"></sly>
