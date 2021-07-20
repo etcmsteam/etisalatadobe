@@ -37,7 +37,6 @@ class FixedNavigationModelTest {
 
 	@BeforeEach
 	public void setup() throws Exception {
-
 		context.addModelsForClasses(FixedNavigationModel.class);
 		context.load().json("/com/etisalat/core/models/FixedNavigationTest.json", "/content");
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
@@ -45,35 +44,29 @@ class FixedNavigationModelTest {
 	}
 
 	@Test
-	void testNavigationLinks() {
+	public void testNavigationLinks() {
 		final int expectedSize = 2;
-
 		context.currentResource("/content/fixednavigation");
 		FixedNavigationModel fixedNav = context.request().adaptTo(FixedNavigationModel.class);
-
 		int actual = fixedNav.getFixedNav().size();
-
 		assertEquals(expectedSize, actual);
 		assertEquals("#personal", fixedNav.getFixedNav().get(1).getNavigationLink());
 		assertEquals("Personal", fixedNav.getFixedNav().get(1).getNavigationTitle());
 	}
 
 	@Test
-	void testEmptyLinks() {
+	public void testEmptyLinks() {
 		context.currentResource("/content/empty");
 		FixedNavigationModel fixedNav = context.request().adaptTo(FixedNavigationModel.class);
-
 		assertTrue(fixedNav.getFixedNav().isEmpty());
 	}
 
 	@Test
-	void testHtmlExtension() {
-		final String expected = "/content/etisalat/us/en.html";
+	public void testHtmlExtension() {
+		final String expected = "/content/etisalat/ae/en.html";
 		context.currentResource("/content/with-extension");
 		FixedNavigationModel fixedNav = context.request().adaptTo(FixedNavigationModel.class);
-
 		String actual = fixedNav.getFixedNav().get(1).getNavigationLink();
-
 		assertEquals(expected, actual);
 	}
 

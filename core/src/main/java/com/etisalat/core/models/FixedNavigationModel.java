@@ -34,29 +34,22 @@ public class FixedNavigationModel {
 	@Optional
 	protected Resource currentResource;
 
-	private List<FixedNavigtaionMultifieldModel> fixedNav; // multifield node with navigationTitle and navigationLink
+	private List<FixedNavigtaionMultifieldModel> fixedNav;
 
 	@PostConstruct
 	protected void init() {
-
 		fixedNav = new ArrayList<>();
-
 		if (null != currentResource) {
 			LOG.info("current resource is {}", currentResource.getPath());
-
 			if (currentResource.hasChildren()) {
 				Resource multifieldChild = currentResource.getChild(MULTIFIELD_NODE);
-
 				Iterator<Resource> multiItr = multifieldChild.listChildren();
-
 				while (multiItr.hasNext()) {
 					Resource res = multiItr.next();
-
 					FixedNavigtaionMultifieldModel modelObj = res.adaptTo(FixedNavigtaionMultifieldModel.class);
 					setExtensionToLink(modelObj);
 					fixedNav.add(modelObj);
 				}
-
 			}
 		}
 
