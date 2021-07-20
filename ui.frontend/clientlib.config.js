@@ -136,6 +136,34 @@ module.exports = {
               ignore: ['**/*.js', '**/*.css']
             }
           }
+        },
+    {
+          ...libsBaseConfig,
+          name: 'clientlib-ewallet',
+          categories: ['etisalat.ewallet'],
+          dependencies: ['etisalat.dependencies'],
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-ewallet',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-ewallet',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-ewallet',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
         }
   ]
 };
