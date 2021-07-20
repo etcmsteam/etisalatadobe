@@ -16,7 +16,7 @@ const resolve = {
 module.exports = {
     resolve: resolve,
     entry: {
-        site: SOURCE_ROOT + '/site/main.js' ,
+        base: SOURCE_ROOT + '/base/main.js' ,
         fivemobile: SOURCE_ROOT + '/fivemobile/main.js' ,
         hiuapp: SOURCE_ROOT + '/hiuapp/main.js'
     },
@@ -106,7 +106,7 @@ module.exports = {
             filename: 'clientlib-[name]/[name].css'
         }),
         new CopyWebpackPlugin([
-            { from: path.resolve(__dirname, SOURCE_ROOT + '/site/resources'), to: './clientlib-site/' },
+            { from: path.resolve(__dirname, SOURCE_ROOT + '/base/resources'), to: './clientlib-base/' },
             { from: path.resolve(__dirname, SOURCE_ROOT + '/fivemobile/resources'), to: './clientlib-fivemobile/' },
             { from: path.resolve(__dirname, SOURCE_ROOT + '/hiuapp/resources'), to: './clientlib-hiuapp/' }
         ])
