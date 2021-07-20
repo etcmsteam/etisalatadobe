@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,7 +10,6 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
@@ -17,8 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Model(adaptables = { Resource.class,
-		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-
+		SlingHttpServletRequest.class })
 public class FixedNavigationModel {
 
 	private static final Logger LOG = LoggerFactory.getLogger(FixedNavigationModel.class);
@@ -56,7 +55,7 @@ public class FixedNavigationModel {
 	}
 
 	public List<FixedNavigtaionMultifieldModel> getFixedNav() {
-		return fixedNav;
+		return Collections.unmodifiableList(fixedNav);
 	}
 
 	private void setExtensionToLink(FixedNavigtaionMultifieldModel modelObj) {
