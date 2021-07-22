@@ -42,7 +42,27 @@ module.exports = {
   context: BUILD_DIR,
   clientLibRoot: CLIENTLIB_DIR,
   libs: [
-  {
+    {
+      ...libsBaseConfig,
+      name: 'clientlib-base',
+      categories: ['etisalat.base'],
+      embed: ['core.wcm.components.accordion.v1,core.wcm.components.tabs.v1,core.wcm.components.carousel.v1,core.wcm.components.image.v2,core.wcm.components.breadcrumb.v2,core.wcm.components.search.v1,core.wcm.components.form.text.v2,core.wcm.components.pdfviewer.v1,core.wcm.components.commons.datalayer.v1,etisalat.grid,etisalat-text-rte-plugin-color-picker'],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: 'clientlib-base',
+          files: ['**/*.js'],
+          flatten: false
+        },
+        css: {
+          cwd: 'clientlib-base',
+          files: ['**/*.css'],
+          flatten: false
+        }
+      }
+    },
+    {
         ...libsBaseConfig,
         name: 'clientlib-dependencies',
         categories: ['etisalat.dependencies'],
@@ -61,33 +81,6 @@ module.exports = {
           }
         }
       },
-  {
-        ...libsBaseConfig,
-        name: 'clientlib-site',
-        categories: ['etisalat.site'],
-      dependencies: ['etisalat.dependencies'],
-        assets: {
-          // Copy entrypoint scripts and stylesheets into the respective ClientLib
-          // directories
-          js: {
-            cwd: 'clientlib-site',
-            files: ['**/*.js'],
-            flatten: false
-          },
-          css: {
-            cwd: 'clientlib-site',
-            files: ['**/*.css'],
-            flatten: false
-          },
-          // Copy all other files into the `resources` ClientLib directory
-                    resources: {
-                      cwd: 'clientlib-site',
-                      files: ['**/*.*'],
-                      flatten: false,
-                      ignore: ['**/*.js', '**/*.css']
-                    }
-                  }
-                },
     {
       ...libsBaseConfig,
       name: 'clientlib-hiuapp',

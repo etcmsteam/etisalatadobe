@@ -1,8 +1,5 @@
-//site root JS file to include all JS.
-//site root JS file to include all JS.
 $( () => {
 	//On Scroll Functionality
-
   $(window).scroll( () => {
   var windowTop = $(window).scrollTop();
   if(windowTop > 100) {
@@ -22,6 +19,4 @@ $( () => {
 });
 
 });
-
-
 
