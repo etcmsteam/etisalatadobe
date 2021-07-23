@@ -1,10 +1,10 @@
 <sly data-sly-test="${wcmmode.edit}">Edit Generic List Component</sly>
-<div data-sly-use.model = "com.etisalat.core.models.OfferListModel"></div>
+<div data-sly-use.model = "com.etisalat.core.models.GenericListModel"></div>
 <div>Title : ${properties.title} </div>
-<sly data-sly-test="${model.offerRootPath}">
+<sly data-sly-test="${model.rootPath}">
    <div>RootPath : ${model.rootPath}</div>
 </sly>
-<sly div data-sly-list.items="${model.OfferListObj}">
+<sly div data-sly-list.items="${model.GenericListObj}">
    <sly data-sly-test="${currentPage.path == items.path}">
       <div>
       <Strong><a href="${items.path @ extension='html'}">${items.title}</a></Strong>

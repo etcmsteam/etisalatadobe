@@ -18,9 +18,9 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class })
-public class OfferListModel {
+public class GenericListModel {
 
-	private static final Logger LOG = LoggerFactory.getLogger(OfferListModel.class);
+	private static final Logger LOG = LoggerFactory.getLogger(GenericListModel.class);
 
 	@ValueMapValue
 	private String rootPath;
@@ -28,15 +28,15 @@ public class OfferListModel {
 	@SlingObject
 	private SlingHttpServletRequest request;
 
-	private List<OfferListPageDetails> offerListObj;
+	private List<GenericListPageDetails> genericListObj;
 
 	String thumbnailPath;
 
 	@PostConstruct
 	protected void init() {
-		LOG.info("In OfferListModel Init method");
+		LOG.info("In GenericListModel Init method");
 		
-		offerListObj = new ArrayList<>();
+		genericListObj = new ArrayList<>();
 		Resource res = request.getResourceResolver().getResource(rootPath);
 		if (null != res && res.hasChildren()) {
 			res.listChildren().forEachRemaining((childResource) -> {
@@ -49,22 +49,23 @@ public class OfferListModel {
 
 					Page childPage = childResource.adaptTo(Page.class);
 
-					OfferListPageDetails detail = new OfferListPageDetails();
+					GenericListPageDetails detail = new GenericListPageDetails();
 					LOG.info("list of pages {}", childPage.getPageTitle());
 					detail.setTitle(StringUtils.isNotBlank(childPage.getPageTitle()) ? childPage.getPageTitle()
 							: childPage.getTitle());
 					detail.setDescription(childPage.getDescription());
 					detail.setOffTime(childPage.getOffTime());
+					detail.setPath(childPage.getPath());
 					detail.setThumbnail(imagePath);
 
-					offerListObj.add(detail);
+					genericListObj.add(detail);
 				}
 			});
 		}
 	}
 
-	public List<OfferListPageDetails> getOfferListObj() {
-		return Collections.unmodifiableList(offerListObj);
+	public List<GenericListPageDetails> getGenericListObj() {
+		return Collections.unmodifiableList(genericListObj);
 	}
 	
 }

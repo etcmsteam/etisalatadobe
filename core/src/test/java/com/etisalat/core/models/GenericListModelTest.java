@@ -32,79 +32,78 @@ import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
- * JUnit test verifying the OfferListModel
+ * JUnit test verifying the GenericListModel
  */
 @ExtendWith(AemContextExtension.class)
-class OfferListModelTest {
+class GenericListModelTest {
 
 	private final AemContext context = new AemContext();
 
 	private static final String CONTENT_ROOT = "/content";
-	private static final String CURRENT_PAGE = "/content/offer";
+	private static final String CURRENT_PAGE = "/content/genericlist";
 
 	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
-	protected static final String OFFER_1 = TEST_PAGE_CONTAINER_ROOT + "/singleofferlist";
-	protected static final String OFFER_2 = TEST_PAGE_CONTAINER_ROOT + "/multipleofferlist";
-	protected static final String OFFER_3 = TEST_PAGE_CONTAINER_ROOT + "/empty";
-	protected static final String OFFER_4 = TEST_PAGE_CONTAINER_ROOT + "/offerinvalidpage";
+	protected static final String GENERIC_LIST_1 = TEST_PAGE_CONTAINER_ROOT + "/singlegenericlist";
+	protected static final String GENERIC_LIST_2 = TEST_PAGE_CONTAINER_ROOT + "/multiplegenericlist";
+	protected static final String GENERIC_LIST_3 = TEST_PAGE_CONTAINER_ROOT + "/empty";
+	protected static final String GENERIC_LIST_4 = TEST_PAGE_CONTAINER_ROOT + "/invalidpage";
 
 	@BeforeEach
 	public void setup() throws Exception {
-		context.addModelsForClasses(OfferListModel.class);
-		context.load().json("/com/etisalat/core/models/OfferListModelTest.json", CONTENT_ROOT);
+		context.addModelsForClasses(GenericListModel.class);
+		context.load().json("/com/etisalat/core/models/GenericListModelTest.json", CONTENT_ROOT);
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
 	@Test
-	void testOfferListWithSingleChildPage() {
+	void testGenericListWithSingleChildPage() {
 		final int expectedSize = 1;
-		context.currentResource(OFFER_1);
+		context.currentResource(GENERIC_LIST_1);
 
-		OfferListModel offerListModel = context.request().adaptTo(OfferListModel.class);
-		int actual = offerListModel.getOfferListObj().size();
+		GenericListModel genericListModel = context.request().adaptTo(GenericListModel.class);
+		int actual = genericListModel.getGenericListObj().size();
 		assertEquals(expectedSize, actual);
 	}
 
 	@Test
-	void testOfferListWithMultipleChildPages() {
+	void testGenericListWithMultipleChildPages() {
 		final int expectedSize = 3;
-		context.currentResource(OFFER_2);
+		context.currentResource(GENERIC_LIST_2);
 
-		OfferListModel offerListModel = context.request().adaptTo(OfferListModel.class);
-		int actual = offerListModel.getOfferListObj().size();
+		GenericListModel genericListModel = context.request().adaptTo(GenericListModel.class);
+		int actual = genericListModel.getGenericListObj().size();
 		assertEquals(expectedSize, actual);
 	}
 
 	@Test
-	void testEmptyOffers() {
-		context.currentResource(OFFER_3);
-		OfferListModel offerListModel = context.request().adaptTo(OfferListModel.class);
-		assertNull(offerListModel);
+	void testEmptyGenericList() {
+		context.currentResource(GENERIC_LIST_3);
+		GenericListModel genericListModel = context.request().adaptTo(GenericListModel.class);
+		assertNull(genericListModel);
 	}
 	
 	@Test
-	void testInvalidOfferRootPath() {
-		context.currentResource(OFFER_4);
-		OfferListModel offerListModel = context.request().adaptTo(OfferListModel.class);
-		assertTrue(offerListModel.getOfferListObj().isEmpty());
+	void testInvalidRootPath() {
+		context.currentResource(GENERIC_LIST_4);
+		GenericListModel genericListModel = context.request().adaptTo(GenericListModel.class);
+		assertTrue(genericListModel.getGenericListObj().isEmpty());
 	}
 
 	@Test
-	void testOfferDetails() {
+	void testGenericList() {
 		final String imageExpected = "/content/dam/etisalat/sample.png";
 		final String offTimeExpected = "2021-07-22";
 		final String titleExpected = "Page 1_1";
 		final String descExpected = "Page 1_1 description";
-		context.currentResource(OFFER_1);
-
-		OfferListModel offerListModel = context.request().adaptTo(OfferListModel.class);
-		OfferListPageDetails offerPageDetails = offerListModel.getOfferListObj().get(0);
-		String actualImage = offerPageDetails.getThumbnail();
-		Calendar offDate = offerPageDetails.getOffTime();
+		context.currentResource(GENERIC_LIST_1);
+		GenericListModel genericListModel = context.request().adaptTo(GenericListModel.class);
+		GenericListPageDetails genericListPageDetails = genericListModel.getGenericListObj().get(0);
+		String actualImage = genericListPageDetails.getThumbnail();
+		Calendar offDate = genericListPageDetails.getOffTime();
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 		String actualOffDate = format1.format(offDate.getTime());
-		String actualTitle = offerPageDetails.getTitle();
-		String actualDescription = offerPageDetails.getDescription();
+		String actualTitle = genericListPageDetails.getTitle();
+		String actualDescription = genericListPageDetails.getDescription();
 
 		assertEquals(imageExpected, actualImage);
 		assertEquals(offTimeExpected, actualOffDate);

@@ -2,12 +2,13 @@ package com.etisalat.core.models;
 
 import java.util.Calendar;
 
-public class OfferListPageDetails{
+public class GenericListPageDetails{
 	private String title;
 	private String pageTitle;
 	private String description;
 	private String file;
 	private Calendar offTime;
+	private String path;
 
 	private String thumbnail;
 
@@ -57,6 +58,14 @@ public class OfferListPageDetails{
 
 	public void setPageTitle(String pageTitle) {
 		this.pageTitle = pageTitle;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }
