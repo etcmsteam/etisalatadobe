@@ -1,23 +1,19 @@
 <sly data-sly-test="${wcmmode.edit}">Edit Generic List Component</sly>
-
-<sly>
 <div data-sly-use.model = "com.etisalat.core.models.OfferListModel"></div>
 <div>Title : ${properties.title} </div>
-
 <sly data-sly-test="${model.offerRootPath}">
-<div>RootPath : ${model.rootPath}</div>
+   <div>RootPath : ${model.rootPath}</div>
 </sly>
-
- <sly div data-sly-list.items="${model.OfferListObj}">
-        <p> child page title : <b>${items.getTitle} </b></p>
-        <p> Offer Valid Until : <b>${'MMM dd,yyyy' @ format=items.offTime}</b></p>
-        <p> ChildPage ImagePath: <b>${items.thumbnail}</b></p>
-        <p><img src=${items.thumbnail}  width="500" height="600"></p>
-    </div>
-
-
+<sly div data-sly-list.items="${model.OfferListObj}">
+   <sly data-sly-test="${currentPage.path == items.path}">
+      <div>
+      <Strong><a href="${items.path @ extension='html'}">${items.title}</a></Strong>
+      <div>
+   </sly>
+   <div>
+      <p> Offer Valid Until : <b>${'MMM dd,yyyy' @ format=items.offTime}</b></p>
+      <p> ChildPage ImagePaths: <b>${items.thumbnail}</b></p>
+      <p><img src=${items.thumbnail}  width="100" height="100"></p>
+      <a href="${items.path @ extension='html'}">${items.title}</a>
+   </div>
 </sly>
-
-
-
-
