@@ -1,451 +1,396 @@
- 
 /* * Copyright 2019 Adobe * * Licensed under the Apache License, Version 2.0 (the "License");
  
  * you may not use this file except in compliance with the License. * You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by applicable law or agreed to in writing, software * distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the License for the specific language governing permissions and * limitations under the License. */
 
 //main st css
 *{margin:0; padding:0;}
-@font-face {
-    font-family: 'GothamRounded-Bold';
-    src: url('../resources/fonts/GothamRounded-Bold.eot');
-    src: url('../resources/fonts/GothamRounded-Bold.eot?#iefix') format('embedded-opentype'),
-    url('../resources/fonts/GothamRounded-Bold.woff') format('woff'),
-    url('../resources/fonts/GothamRounded-Bold.ttf') format('truetype'),
-    url('../resources/fonts/GothamRounded-Bold.svg#GothamRounded-Bold') format('svg');
-    font-weight: normal;
-    font-style: normal;
+
+.fa {
+	display: inline-block;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {
-    font-family: 'GothamRounded-Book';
-    src: url('../resources/fonts/GothamRounded-Book.eot');
-    src: url('../resources/fonts/GothamRounded-Book.eot?#iefix') format('embedded-opentype'),
-    url('../resources/fonts/GothamRounded-Book.woff') format('woff'),
-    url('../resources/fonts/GothamRounded-Book.ttf') format('truetype'),
-    url('fonts/GothamRounded-Book.svg#GothamRounded-Book') format('svg');
-    font-weight: normal;
-    font-style: normal;
+.fa-facebook:before {
+	content: "\f09a"
 }
 
-@font-face {
-    font-family: 'GothamRounded-Light';
-    src: url('../resources/fonts/GothamRounded-Light.eot');
-    src: url('../resources/fonts/GothamRounded-Light.eot?#iefix') format('embedded-opentype'),
-    url('../resources/fonts/GothamRounded-Light.woff') format('woff'),
-    url('../resources/fonts/GothamRounded-Light.ttf') format('truetype'),
-    url('../resources/fonts/GothamRounded-Light.svg#GothamRounded-Light') format('svg');
-    font-weight: normal;
-    font-style: normal;
+.fa-apple{color:#fff;}
+
+.fa-apple:before {
+	content: "\f179"
 }
 
 
-$font-family-regular:           'GothamRounded-Book';
-$font-family-Light:             'GothamRounded-Light';
-$font-family-bold:              'GothamRounded-Bold';
-
-$font-family-base:              $font-family-regular !default;
-
-/*FONT and COLOR*/
-html{scroll-behavior: smooth;}
-h1{padding-top: 2rem;font-family: 'GothamRounded-Book', "Helvetica Neue", sans-serif; font-size: 40px; color: #231F20;line-height: 1.33333;}
-h2{margin-bottom:14px; font-family: 'GothamRounded-Bold', "Helvetica Neue", sans-serif; font-size: 20px; color: #B9D532; line-height:25px}
-p{color: #8C9092; font-family: 'GothamRounded-Book', "Helvetica Neue"; font-size: 16px; line-height:22px; margin:10px 0;}
-p.lead{font-size: 20px}
-p.secondary-lead{font-size: 18px; margin-bottom:35px}
-th{font-family: 'GothamRounded-Bold', "Helvetica Neue", sans-serif;}
-td{font-family: 'GothamRounded-Book', "Helvetica Neue", sans-serif;}
-a{color: #9978B5; font-family: 'GothamRounded-Book', "Helvetica Neue", sans-serif; text-decoration: none;}
-a:hover{color:#ccc; text-decoration:none}
-a, a:hover, a:active, a:focus {outline:0}
-h3{ color:#000; font: bold 1em/1.5 sans-serif; margin:10px 0}
-
-body,
-html {
-	overflow-x: hidden;
+h2 {
+    margin: 0;
+    line-height: 54px;
 }
 
-body {
-	background: none;
-	padding-top:170px!important;
+h3{
+    font-size: 36px;
+    margin:30px 0;
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width:100%!important;
-    background:#fff;
+.container{
+    width:100%;
 }
 
-th, td {
-    padding: 12px!important;
-}
- ul li{
-    list-style: none;
-}
-//main css en
-
-//component st css
- .mainaccordion {
-     padding: 20px;
-     background-color: #fff;
-}
- .mainaccordion .cmp-accordion__button--expanded .cmp-accordion__title:before {
-     content: " - ";
-     border-radius: 50%;
-     font-size: 10px;
-     display: table-cell;
-     padding: 5px;
-     right: 9px;
-     position: relative;
-     width: 12px;
-     height: 10px;
-     vertical-align: top;
-     color: #ccc;
-     font-size: 21px;
-     text-align: center;
-     line-height: 12px;
-     font-weight: 100;
-}
- .mainaccordion .cmp-accordion__item {
-     position: relative;
-     border-bottom: 1px solid;
-     border-color: #ccc;
-}
- .mainaccordion .cmp-accordion__button {
-     position: relative;
-     border: 0;
-     padding: .5rem 0;
-     background: 0;
-     color: inherit;
-     font: inherit;
-     cursor: pointer;
-     outline: inherit;
-}
- .cmp-accordion__button {
-     display: block;
-     width: 100%;
-     text-align: left;
-}
- .mainaccordion p {
-     padding-left: 25px;
-     margin-top: 0px;
-     margin-bottom: 4px;
-     color: #8C9092;
-     font-family: 'GothamRounded-Book', "Helvetica Neue";
-     font-size: 16px;
-     line-height: 22px;
-}
- .mainaccordion .cmp-accordion {
-     display: block;
-     margin: 0;
-     padding: 0;
-}
- .mainaccordion .cmp-accordion__header {
-     margin: 0;
-     padding-top: 5px;
-}
- .mainaccordion .cmp-accordion__title {
-     min-height: 25px;
-     padding-top: 4px;
-     font-size: 18px;
-     line-height: 22px;
-     color: #9978b5;
-     font-family: 'GothamRounded-Book', "Helvetica Neue", sans-serif;
-}
- .mainaccordion .cmp-accordion__title:before {
-     content: " + ";
-     border-radius: 50%;
-     font-size: 10px;
-     display: table-cell;
-     background: #9978B5;
-     padding: 5px;
-     right: 9px;
-     position: relative;
-     width: 11px;
-     height: 10px;
-     vertical-align: top;
-     color: #fff;
-     font-size: 21px;
-     text-align: center;
-     line-height: 12px;
-     font-weight: 100;
-}
- .mainaccordion .cmp-accordion__title:hover {
-     color: #ccc;
-}
- .mainaccordion .cmp-accordion__button {
-     display: block;
-     width: 100%;
-     text-align: left;
-}
- .mainaccordion .cmp-accordion__panel {
-     &--hidden {
-         display: none;
-    }
-     &--expanded {
-         display: block;
-    }
-}
- .mainaccordion .cmp-accordion__title {
-     padding-left: 10px;
-     font-weight: 100;
-}
- .mainaccordion .cmp-accordion__item {
-     margin-bottom: 20px;
-}
- .mainaccordion .cmp-accordion__item:last-child {
-     border-bottom: 0;
-}
- .mainaccordion .cmp-accordion__title::before {
-     padding: 4px;
+.cmp-container{
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
 }
 
- .purple table thead th {
-     background-color:#EAEAEA;
-     color: #221F1F;
+header, .main-header{
+    position: absolute;
+    z-index: 3;
+    left:0;
+    right:0;
+    margin:0 auto;
 }
- .graybg table thead th {
-     background-color: #EAEAEA;
-     color: #221F1F;
-}
- .purple table td, .purple table th {
-     border: 1px solid #DDD;
-     border-top: none;
-}
-.purple table th span.header{
+
+.gutter_tp_btm{margin: 50px 0;}
+
+.text_white h2, .text_white p, .text_white a{
     color:#fff;
-    background-color:#452769;
+}
+
+.ewallet_order_list h2{
+    margin:60px 0 25px 40px;
+}
+
+.ewallet_order_list ol {
+    counter-reset: my-awesome-counter;
+    list-style: none;
+    padding-left: 40px;
+  }
+  .ewallet_order_list ol li { 
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500;
+    padding-bottom: 28px;
+    counter-increment: my-awesome-counter;
+  }
+  .ewallet_order_list ol li::before {
+    content: counter(my-awesome-counter);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    border: 1.5px solid #2a5082;
+    box-sizing: border-box;
+    width: 31px;
+    height: 31px;
+    border-radius: 100%;
+    display: inline-block;
+    text-align: center;
+    padding-top: 4px;
+    margin-right: 10px;
+  }
+
+  .ewallet_order_list{
+    .cmp-text{
+        font-family: Bariol,GE SS Two,Arial,sans-serif;
+    }
+  }
+
+.cmp-teaser__description h3{
+    h3{
+    line-height: 42px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size:36px;
+    }      
+}
+.cmp-carousel__indicator {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #e3e3ed;
+    opacity: 1;
+}
+
+.cmp-carousel__indicator--active{
+    box-sizing: border-box;
+    height: 18px;
+    width: 18px;
+    border: 2px solid #769a2f;
+    background-color: #fff;
+    margin-bottom: -2px;
+}
+
+.cmp-carousel__actions{ display:none;}
+
+.cmp_btn .cmp_store_btn a {
+	display: flex;
+}
+
+
+.ewallet_mobile_view_carousal .cmp-carousel__content{
+    background:url('../resources/images/mobile-frame.png') no-repeat top center;
+    text-align:center;
+    background-repeat: no-repeat;
+    width: 335px;
+    background-size:contain;
+    height:504px;
+    padding-top: 73px;
+    padding-left: 34px;
+    padding-right: 35px;
+    float: right;
+    margin-top: 20px;
+    position: relative;
+    top: -61px;
+    right: 40px;
+    .cmp-image__image{
+        max-width: 232px;
+        height: auto;
+        }
+    .cmp-carousel__indicators{
+        margin-top: 68px;
+        }
+}
+
+
+.cmp_btn .cmp_store_btn {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    align-items: center;
+    background-color: #000;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+    justify-content: center;
+    margin-right: 20px;
+    padding: 13px 35px 13px 34px;
+}
+.cmp_btn .cmp_store_btn, .cmp_btn .cmp_store_btn a {
+    color:#fff;
+}
+
+.cmp_btn .cmp_store_btn i {
+    color: #fff;
+    font-size: 30px;
+    margin-right: 15px;
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+}
+.cmp_btn .cmp_store_btn p{
+    font-size: 22px;
+    padding:0 10px;
+    line-height: 15px;
+    font-weight: 600;
+}
+.cmp_btn .cmp_store_btn p span {
     display: block;
-    padding: 10px;
+    font-size: 12px;
 }
 
- .pinkbg table td {
-     width: 50%;
+
+.body_bg p{
+    font-weight: 700;
+    color: #fff;
+    padding:50px 0;
 }
- .pinkbg table th {
-     width: 50%;
+
+.row{ display:flex;}
+
+
+.teaser_img_right {
+    padding:100px 10px 0 10px;
+    .cmp-teaser__pretitle{
+    border-radius: 3px;
+    background-color: rgba(78,87,166,0.6);
+    margin: 0px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    text-transform: uppercase;
+    padding:9px 13px;
+    margin:24px 0 0 0;
+    display: inline-block;
+    }
+   
+    .cmp-teaser__description{
+        h3{
+            margin:20px 0;
+        }
+        p{ font-weight:500;}
+    }
+   
 }
- .pinkbg table:nth-of-type(1) th {
-     background-color: #800080;
-     color: #fff;
+
+.teaser_left_align .cmp-carousel__indicators{
+    display: block;
+    justify-content: right;
+    float: left;
+    padding:20px 0;
 }
- .pinkbg table thead th {
-     background-color: #EAEAEA;
-     color: #221F1F;
+
+//button
+
+.cmp_store_btn:first-child{
+    cursor: pointer;
+    background: url('../resources/images/google-play.png') no-repeat;
+    width:150px;
+    height:45px;
+    display:inline-block;
+    text-indent: -9999px;
+    background-position: 0;
+    background-size: cover;
 }
- .pinkbg table td, .pinkbg table th {
-     border: 1px solid #DDD;
-     border-top: none;
+.cmp_btn .cmp_store_btn{
+    padding:7px 20px 0px 30px
 }
- .gray_table table td {
-     width: 25%;
+.cmp_btn .cmp_store_btn a{
+    text-decoration: none;
 }
- .gray_table table th {
-     width: 25%;
+
+.cmp_btn .cmp_store_btn:first-child p{
+    display:none;
 }
- .gray_table {
-     max-width: 1024px;
-     margin: 0 auto;
-     padding: 0 12px;
+
+.cmp_btn .cmp_store_btn p {
+    font-size: 22px;
+    line-height: 15px;
+    margin-left: 0;
+    font-weight: 600;
 }
- .gray_table table:nth-of-type(1) th {
-     background-color: #EAEAEA;
-     color: #221F1F;
+
+.hero_banner{    
+    z-index: 2;   
+    position: relative;
+    height:36em;
 }
- .gray_table table td, .section-subscription2 table th {
-     border: 1px solid #DDD;
-     border-top: none;
+
+.ewallet_cover:after {
+    background: url('../resources/images/business1.png') no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    content: "";
+    height: 100%;
+    z-index: 1;
+    min-width: 100%;
 }
- .gray_table table thead th {
-     background-color: #EAEAEA;
-     color: #221F1F;
+.banner_content{ 
+    position: relative;
+    z-index: 2;
+    position: relative;
+    padding-bottom: 20px;
+    top: 200px;
+    padding:0px 0 0 20px;
 }
- .graybg table thead th {
-     background-color: #EAEAEA;
-     color: #221F1F;
+
+.hero_banner .cmp-container {    
+    height: 34em;
+    position: relative;
 }
- .graybg table td, .graybg table th {
-     border: 1px solid #DDD;
-     border-top: none;
+
+.ewallet_cover .cmp-container{
+    height: 34em;
+    position: absolute;
 }
- .section-roaming {
-     max-width: 1024px;
-     margin: 0 auto;
-     padding: 0 12px;
+
+.banner_teaser{ float:left; width:52%;}
+
+.ewallet_mobile_view_carousal{
+    float:right;
+    width:40%;
+    padding-right: 3em;
 }
- .section-reservecredit {
-     max-width: 1024px;
-     margin: 0 auto;
-     padding: 0 12px;
-}
- .section-takaful{
-     max-width: 1024px;
-     margin: 0 auto;
-     padding: 0 12px;
-}
- .graybg table:nth-of-type(1) th {
-     background-color: #EAEAEA;
-     color: #221F1F;
-}
- .graybg table thead th {
-     background-color: #EAEAEA;
-     color: #221F1F;
-}
- .graybg table td, .section-subscription2 table th {
-     border: 1px solid #DDD;
-     .purple table:nth-of-type(1) th {
-         text-align: left;
+
+@media only screen and (min-width: 992px) {
+    .ewallet_cover:after{
+        background-position:top;
+        background-size:cover;
     }
 }
- .signifierPlusIcon .cmp-accordion{
-    padding:0 20px;
-}
- .signifierPlusIcon .cmp-accordion__title{
-    padding-left: 10px;
-     font-weight: 100;
-}
- .signifierPlusIcon .cmp-accordion__item{
-    margin-bottom: 20px;
-}
- .signifierPlusIcon .cmp-accordion__item:last-child{
-    border-bottom:0;
-}
- .signifierPlusIcon .cmp-accordion__title::before{
-     padding:4px;
-}
- .cmp_list_bdr ul{
-     li{
-         border-bottom: 1px solid #ccc;
-         padding-top: 6px;
-         padding-bottom: 5px;
-         margin-bottom:5px;
+
+@media only screen and (max-width: 767px) {
+    .ewallet_cover:after{
+        background-size: contain;
+        background-position: bottom;
+    }
+    .ewallet_mobile_view_carousal{
+        float:none;
+        width:100%;
     }
 }
- .cmp_center_block{
-     margin:0 auto;
-     max-width:1024px;
-     padding:40px 10px 10px 10px;
-}
- .cmp_bullet_list{
-     margin-bottom:20px;
-     li{
-        padding-bottom:10px;
+
+@media (min-width: 320px) and (max-width: 767px) {
+    
+    h2{
+        font-size:32px;
+    }
+    .cmp_btn .cmp_store_btn{
+        padding: 1px 8px 2px 5px;
+    }
+    .ewallet_cover .cmp-container{
+        height:27em;
+    }
+    .hero_banner .cmp-container{
+        height: 27em;
+    }
+    .banner_teaser{
+        width: 96%;
+    }
+    .banner_content{
+        top:0px;
+    }
+
+    .aem-Grid.aem-Grid--default--12>.aem-GridColumn.aem-GridColumn--default--12
+    {
+        float:none!important;
+
+    }
+    .remove_float{
+        float:none!important;
+    }
+    .ewallet_order_list{
+        width:100%!important;
+        margin-left: 0!important;
+    }   
+    .ewallet_order_list h2 {
+        margin: 60px 0 25px 40px;
+        font-size:32px;
+    }
+    h3{
+        font-size:28px;
+    }
+    .ewallet_mobile_view_carousal{
+        padding-right:0em;
+    }
+    .ewallet_mobile_view_carousal .cmp-carousel__content{
+        margin-bottom: 44px;
+        right:0;
+        margin-top:0;
+        top:-100;
     }
 }
- .cmp_circle_list li{
-     padding-bottom: 10px;
-     color: #8C9092;
-     list-style-position: inside;
-     list-style: unset;
-     margin-left: 20px;
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .teaser_img_right .cmp-teaser{
+        display:flex;
+        flex-direction: row-reverse;
+        
+        .cmp-teaser__description{
+            padding-right:190px;
+        }
+        .cmp-image{
+            padding-right: 16px;
+        }
+        .teaser_img_right{
+            margin: 50px 0;
+        }
+    }
 }
- .gutter{
-     margin-top:80px;
-}
-
-.purple table td, .purple table th {
-    border: 1px solid #DDD;
-    border-top: none;
-}
-
-.purple table td, .purple table th{
-    width:50%;
-}
-
- .purple table:nth-of-type(1) th {
-     background-color: #452769;
-     color: #fff;
-}
-
-.section-faq-accordion{ 
-    .cmp-container{clear:both!important;padding: 0 12px 40px}
-     margin:0 auto;
-     max-width:1024px;
-     padding:40px 0 10px 10px;
-     float:none!important;
-     clear:both!important;
-}
-
- .signifierPlusIcon .cmp-accordion{padding: 0 20px;}
-
-
-.grey h1{padding-top:0;}
-
-
-[rowspan] {
-    vertical-align: middle;
-}
-//component en
-
-
-.container_max {
-	max-width: 1024px;
-	margin: 0 auto;
-	padding-left: 12px;
-	padding-right: 12px;
-}
-
-.container_full {
-	width: 100%;
-}
-
-.text_pt16 {
-	font-size: 16px;
-}
-
-.text_pt20 {
-	font-size: 20px;
-}
-
-.line{ width:50%;}
-.line li{
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 5px;
-}
-.line li:last-child{
-	border-bottom:none!important;
-}
-
-
-/* 1st section class*/
-
-.section_overview {
-	padding-top: 38px;
-	padding-bottom: 20px;
-}
-
-.page_space {
-	padding-bottom: 6px;
-	padding-top: 6px;
-}
-
-.section_overview h1 {
-	padding-bottom: 6px;
-}
-
-.section_overview h2 {
-	margin-bottom: 14px;
-}
-
-.secondary_lead {
-	font-size: 18px;
-	margin-top: 16px;
-	margin-bottom: 35px
-}
-
-
-/*2nd section classes*/
-
-.section_charges {
-	padding-top: 38px;
-}
-
-.grey {
-	background-color: #F3F3F3;
-}
-
-
-.cmp_banner_hgt .cmp-container{height:400px;}
-
-//////////////
 
