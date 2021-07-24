@@ -5,12 +5,26 @@
 //main st css
 *{margin:0; padding:0;}
 
+.row > *{
+	width: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%!important;
+    margin: 0!important;
+    padding:0!important;
+}   
+
 .fa {
 	display: inline-block;
+	font-family: 'FontAwesome';
+	font: normal normal normal 14px/1 FontAwesome;
 	font-size: inherit;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale;
+    color:#fff;
 }
 
 .fa-facebook:before {
@@ -25,17 +39,13 @@
 
 
 h2 {
-    margin: 0;
+    margin: 0 0 20px 0;
     line-height: 54px;
 }
 
 h3{
     font-size: 36px;
-    margin:30px 0;
-}
-
-.container{
-    width:100%;
+    margin:20px 0;
 }
 
 .cmp-container{
@@ -44,13 +54,10 @@ h3{
     margin: 0 auto;
 }
 
-header, .main-header{
-    position: absolute;
-    z-index: 3;
-    left:0;
-    right:0;
-    margin:0 auto;
+.buttonstore{
+    margin-top:40px;
 }
+
 
 .gutter_tp_btm{margin: 50px 0;}
 
@@ -145,7 +152,7 @@ header, .main-header{
     top: -61px;
     right: 40px;
     .cmp-image__image{
-        max-width: 232px;
+        max-width: 200px;
         height: auto;
         }
     .cmp-carousel__indicators{
@@ -167,7 +174,7 @@ header, .main-header{
     box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
     justify-content: center;
     margin-right: 20px;
-    padding: 13px 35px 13px 34px;
+    padding:5px 9px 2px 9px;
 }
 .cmp_btn .cmp_store_btn, .cmp_btn .cmp_store_btn a {
     color:#fff;
@@ -182,7 +189,6 @@ header, .main-header{
 }
 .cmp_btn .cmp_store_btn p{
     font-size: 22px;
-    padding:0 10px;
     line-height: 15px;
     font-weight: 600;
 }
@@ -218,9 +224,6 @@ header, .main-header{
     }
    
     .cmp-teaser__description{
-        h3{
-            margin:20px 0;
-        }
         p{ font-weight:500;}
     }
    
@@ -230,7 +233,7 @@ header, .main-header{
     display: block;
     justify-content: right;
     float: left;
-    padding:20px 0;
+    padding:20px 0 20px 8px;
 }
 
 //button
@@ -245,9 +248,8 @@ header, .main-header{
     background-position: 0;
     background-size: cover;
 }
-.cmp_btn .cmp_store_btn{
-    padding:7px 20px 0px 30px
-}
+
+
 .cmp_btn .cmp_store_btn a{
     text-decoration: none;
 }
@@ -286,7 +288,7 @@ header, .main-header{
     position: relative;
     padding-bottom: 20px;
     top: 200px;
-    padding:0px 0 0 20px;
+    padding:0px 0 0 20px!important;
 }
 
 .hero_banner .cmp-container {    
@@ -297,6 +299,16 @@ header, .main-header{
 .ewallet_cover .cmp-container{
     height: 34em;
     position: absolute;
+}
+
+.banner_teaser p {
+    font-weight: 700;
+    color: #fff;
+    font-family: Bariol,GE SS Two,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    padding-left: 2;
+    padding-right: 20px;
 }
 
 .banner_teaser{ float:left; width:52%;}
@@ -326,24 +338,25 @@ header, .main-header{
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    .buttonstore{
+        margin-top:40px!important;
+    }
     
     h2{
         font-size:32px;
     }
-    .cmp_btn .cmp_store_btn{
-        padding: 1px 8px 2px 5px;
-    }
+   
     .ewallet_cover .cmp-container{
-        height:27em;
+        height:22em;
     }
     .hero_banner .cmp-container{
-        height: 27em;
+        height: 22em;
     }
     .banner_teaser{
         width: 96%;
     }
     .banner_content{
-        top:0px;
+        top:100px;
     }
 
     .aem-Grid.aem-Grid--default--12>.aem-GridColumn.aem-GridColumn--default--12
@@ -364,15 +377,33 @@ header, .main-header{
     }
     h3{
         font-size:28px;
+        line-height: 35px;
     }
     .ewallet_mobile_view_carousal{
         padding-right:0em;
     }
     .ewallet_mobile_view_carousal .cmp-carousel__content{
         margin-bottom: 44px;
-        right:0;
+        right:24px;
         margin-top:0;
-        top:-100;
+        top:-113px;
+    }
+}
+
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .banner_content {
+        top: 158px!important;
+    }
+    .ewallet_mobile_view_carousal{
+        padding-right:0!important;
+    }
+    .ewallet_mobile_view_carousal .cmp-carousel__content{
+        right:0!important;
+    }
+    .teaser_left_align .cmp-carousel__indicators{
+        padding:20px 0 20px 0px;
     }
 }
 
