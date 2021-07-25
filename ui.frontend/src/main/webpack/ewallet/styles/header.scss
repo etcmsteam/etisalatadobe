@@ -1,3 +1,5 @@
+.fixednavigation{ position:relative;}
+
 header{
     position: absolute;
     z-index: 3;
@@ -11,7 +13,7 @@ header.experiencefragment {
 	}
 }
 header.experiencefragment {
-	padding: 0!important;
+	padding:20px 0 0 0!important;
 	border-bottom: 0!important;
 }
 .cmp-image__image {
@@ -63,11 +65,6 @@ header.experiencefragment .cmp-image {
 	transition: width .35s ease-in-out;
 }
 
-header.experiencefragment a:focus,
-header.experiencefragment a:hover {
-	text-decoration: none!important;
-	color: #ccc!important;
-}
 
 .header_left_nav{
 	a{border: 1px solid #fff;
@@ -80,10 +77,10 @@ header.experiencefragment a:hover {
 	}
 }
 
-.logo{ 
-	margin:40px;
+nav li a:hover{
+color:#fff!important;
 }
-
+//mobile view st
 
 /////////////////Navigation
 /* Nav */
@@ -105,16 +102,19 @@ nav ul {
 
 nav li {
 	border-top: 1px solid #DDD;
+	padding:30px 0 30px 20px;
 }
 
 nav li a {
-	color: #9978B5;
-	display: block;
-	padding: 10px 0 10px 10px;
-	font-size: 14px;
-	border-right: 1px solid #f4f4f4;
-	text-decoration: none;
+	margin: 0;
+    color: #5a637c;
+    font-size: 24px;
+    letter-spacing: .02px;
+    line-height: 24px;
 	font-family: Bariol,GE SS Two,Arial,sans-serif;
+
+	text-decoration: none;
+	
 }
 
 nav li a:hover,
@@ -144,7 +144,6 @@ nav li a:focus,
 	float: right;
 	position: relative;
 	user-select: none;
-	background: #fff!important;
 	outline: none;
 	 ::selection {
 		background: none
@@ -159,7 +158,7 @@ nav li a:focus,
 	transition: background .2s ease-out;
 	width: 34px;
 	margin-right: 20px;
-	margin-top: 19px;
+	margin-top:30px;
 }
 
 .hamburger:before,
@@ -188,7 +187,6 @@ nav li a:focus,
 .menu__checkbox:checked~.menu {
 	max-height: 400px;
 	display: block;
-	margin-top: 40px!important;
 	width: 100%;
 	background: #fff;
 	border: 0;
@@ -196,8 +194,12 @@ nav li a:focus,
 	user-select: none;
 	appearance: none;
 	transition: max-height 0.4s linear;
+	margin-top:30px;
 }
 
+.menu__checkbox:checked~.menu:last-child{
+	margin-top:-24px!important;
+}
 .menu__checkbox:focus~.menu__icon {
 	outline: #5E9ED6 1px solid;
 	background-color: #f4f4f4;
@@ -206,11 +208,53 @@ nav li a:focus,
 .menu__checkbox:checked~.menu__icon {
 	background-color: transparent;
 }
-.custom-menu, .header_left_nav{display:block;}
+.menu:last-child{
+	position: absolute;
+    left: 0;
+    top:auto;
+    width: 100%;
+	padding: 100px 0 50px 30px;	
+	background:#fff;
+}
 
-@media (min-width: 48em) {
-	.custom-menu, .header_left_nav{ display:none;}
+.active{
+	border: 1px solid #5a637c;
+    border-radius: 4px;
+    background: none;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: .02px;
+    text-transform: none;
+    padding: 9px 23px;
+    float: left;
+    margin-top: 0;
+	}
+
+	.menu:last-child li:last-child{ 
+	display:none;
+	}
+
+//mobile view en
+
+//desktop view
+@media (min-width: 49em) {
+	.menu:last-child{ 
+	position: absolute;
+    margin-left:123px;
+    top:auto;
+	background:transparent;
+	left: -355px;
+    top: -75px;
+	z-index:4;
+	}
 	
+	.menu:last-child li{ 
+		margin-right: 15px;
+	}
+	.menu:last-child li:last-child{ 
+	display:block;
+	}
+
 	nav {
 		position: static;
 	}
@@ -219,24 +263,32 @@ nav li a:focus,
 	}
 	nav li {
 		float: left;
+		padding:0 30px;
 	}
 	nav li a {
-		padding: 9px 27px 9px 0;
 		border: 0;
 		color: #fff;
 		font-size: 20px;
 		font-weight: 500;
 		line-height: 20px;
 		font-family: Bariol,GE SS Two,Arial,sans-serif;
+		display:inline-block;
+		}
+	nav li a:hover {
+		border-bottom: 2px solid #fff;
 		}
 	.menu {
 		display: block;
 		clear: none;
 		// float: right;
 		max-height: none;
-		margin-top: 30px;
 		float: right;
+		position: absolute;
+		z-index: 5;
+		top: 24px;
+    	left: 470px;
 	}
+
 	.menu__icon,
 	.menu__checkbox,
 	.hamburger {
@@ -245,5 +297,34 @@ nav li a:focus,
 	nav li {
 		border-top: 0;
 	}
+
+	.active {
+		border: 1px solid #fff;
+		padding:0 20px 5px 20px;
+		a{
+			font-weight: 700;
+		}
+		a:hover{
+			font-weight: 700; 
+			text-decoration:none;
+		}
+	}
+
+	.menu__checkbox:checked~.menu{
+		background:transparent;
+		margin-top:0px;
+	}
+
+	.menu__checkbox:checked~.menu:last-child{
+			margin-top:0px!important;
+		}
+	.menu:last-child{
+		li a{
+			margin-top:6px;
+		}
+	}	
 }
+
+
+//new css
 
