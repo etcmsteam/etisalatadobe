@@ -38,20 +38,19 @@ public class FixedNavigationModel {
 	@PostConstruct
 	protected void init() {
 		fixedNav = new ArrayList<>();
-		if (null != currentResource) {
 			LOG.info("current resource is {}", currentResource.getPath());
 			if (currentResource.hasChildren()) {
-				Resource multifieldChild = currentResource.getChild(MULTIFIELD_NODE);
-				Iterator<Resource> multiItr = multifieldChild.listChildren();
-				while (multiItr.hasNext()) {
-					Resource res = multiItr.next();
-					FixedNavigtaionMultifieldModel modelObj = res.adaptTo(FixedNavigtaionMultifieldModel.class);
-					setExtensionToLink(modelObj);
-					fixedNav.add(modelObj);
+				Resource multifieldChild = currentResource.getChild(MULTIFIELD_NODE);	
+				if(null != multifieldChild) {
+					Iterator<Resource> multiItr = multifieldChild.listChildren();
+					while (multiItr.hasNext()) {
+						Resource res = multiItr.next();
+						FixedNavigtaionMultifieldModel modelObj = res.adaptTo(FixedNavigtaionMultifieldModel.class);
+						setExtensionToLink(modelObj);
+						fixedNav.add(modelObj);
+					}
 				}
-			}
-		}
-
+			}		
 	}
 
 	public List<FixedNavigtaionMultifieldModel> getFixedNav() {

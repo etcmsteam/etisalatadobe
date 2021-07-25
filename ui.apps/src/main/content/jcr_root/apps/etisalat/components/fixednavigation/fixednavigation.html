@@ -6,6 +6,16 @@
        data-sly-list.navItem="${navModel.fixedNav}" class="menu" role="menuitem">
       <li><a href="${navItem.navigationLink}">${navItem.navigationTitle}</a></li>
    </ul>
+   
+   <sly data-sly-test="${properties.actionsEnabled}"
+          data-sly-use.ctaObj="${resource.path}"
+          data-sly-list.actionItem="${ctaObj.listChildren}">
+       <ul data-sly-test="${actionItem.name == 'actions'}" data-sly-list.ctaitem="${actionItem.listChildren}" class="menu">
+      <li class="${currentPage.path == ctaitem.link ? 'active' : ''}"><a href="${ctaitem.link @ extension = 'html'}" class="account-type">${ctaitem.text}</a></li>    
+   </ul>                       
+  </sly>
+   
 </nav>
  
 <sly data-sly-call="${template.placeholder @ isEmpty=navModel.fixedNav.size == 0, classAppend='cmp-languagenavigation'}"></sly>
+
