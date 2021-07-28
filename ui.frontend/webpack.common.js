@@ -17,6 +17,7 @@ module.exports = {
     resolve: resolve,
     entry: {
         base: SOURCE_ROOT + '/base/main.js' ,
+        etisalat: SOURCE_ROOT + '/etisalat/main.js' ,
         fivemobile: SOURCE_ROOT + '/fivemobile/main.js' ,
         hiuapp: SOURCE_ROOT + '/hiuapp/main.js',
         ewallet: SOURCE_ROOT + '/ewallet/main.js'
@@ -108,6 +109,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             { from: path.resolve(__dirname, SOURCE_ROOT + '/base/resources'), to: './clientlib-base/' },
+            { from: path.resolve(__dirname, SOURCE_ROOT + '/etisalat/resources'), to: './clientlib-etisalat/' },
             { from: path.resolve(__dirname, SOURCE_ROOT + '/fivemobile/resources'), to: './clientlib-fivemobile/' },
             { from: path.resolve(__dirname, SOURCE_ROOT + '/hiuapp/resources'), to: './clientlib-hiuapp/' },
             { from: path.resolve(__dirname, SOURCE_ROOT + '/ewallet/resources'), to: './clientlib-ewallet/' }

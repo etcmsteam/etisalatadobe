@@ -82,6 +82,34 @@ module.exports = {
         }
       },
     {
+          ...libsBaseConfig,
+          name: 'clientlib-etisalat',
+          categories: ['etisalat.etisalat'],
+          dependencies: ['etisalat.dependencies'],
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-etisalat',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-etisalat',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-etisalat',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
+        },
+    {
       ...libsBaseConfig,
       name: 'clientlib-hiuapp',
       categories: ['etisalat.hiuapp'],
