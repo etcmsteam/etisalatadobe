@@ -1,24 +1,26 @@
-<div data-sly-use.model = "com.etisalat.core.models.GenericListModel"></div>
-<div>${properties.title}</div>
+<sly>
+   <div data-sly-use.model = "com.etisalat.core.models.GenericListModel"></div>
+   <h2 class="return-link">${properties.title}</h2>
+   <ul data-sly-list.items="${model.GenericListObj}">
+      <li>
+         <img src=${items.thumbnail}>
 
+<h3>${items.title}</h3>
 
-<sly div data-sly-list.items="${model.GenericListObj}">
-   <sly data-sly-test="${currentPage.path == items.path}">
-      <div>
-      <Strong><a href="${items.path @ extension='html'}">${items.title}</a></Strong>
-      </div>
-   </sly>
-   <div>
-      <p><img src=${items.thumbnail}  width="100" height="100"></p>
-      <a href="${items.path @ extension='html'}">${items.title}</a>
-	  
-	  <sly data-sly-test= "${properties.showDate}">
-      <b>${'MMM dd,yyyy' @ format=items.offTime}</b>
-      </sly>
-	  
-	   <sly data-sly-test= "${properties.showDescription}">
-      <b>${items.description}</b>
-      </sly>
-	  
-   </div>
+  <sly data-sly-test= "${properties.showDate}">
+
+          ${'MMM dd,yyyy' @ format=items.offTime}
+
+    </sly>
+         <sly data-sly-test= "${properties.showDescription}">
+            <p>${items.description}</p>
+         </sly>
+         <sly>
+            <a class="button" href="${items.path @ extension = 'html'}">${properties.viewall}</a>
+         </sly>
+         <div class="left-menu-title ${currentPage.path == items.path ? 'highlight' : ''}">
+            <a href="${items.path @ extension='html'}">${items.title}</a>
+         </div>
+      </li>
+   </ul>
 </sly>
