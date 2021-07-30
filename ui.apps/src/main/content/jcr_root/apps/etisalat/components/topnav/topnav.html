@@ -1,0 +1,31 @@
+<div class="top-nav-section top-nav hidden-xs hidden-ms hidden-sm">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 col-lg-5">
+            <div class="top-nav-left">
+               <sly data-sly-use.topnavObj="${resource.path}"
+                  data-sly-list.topItems="${topnavObj.listChildren}">
+                  <ul data-sly-test="${topItems.name == 'topnavlinks'}" data-sly-list.topItemsList="${topItems.listChildren}" class="links">
+                     <li>
+                        <a href="${topItemsList.link @ extension = 'html'}" data-sub-menu="sub-menu-mobile">${topItemsList.label}</a>
+                     </li>
+                  </ul>
+               </sly>
+            </div>
+         </div>
+         <div class="col-md-6 col-lg-7">
+            <div class="top-nav-right">
+               <sly data-sly-use.someObject="${resource.path}"
+                  data-sly-list.itemss="${someObject.listChildren}">
+                  <ul data-sly-test="${itemss.name == 'linkswithicons'}" data-sly-list.itemList="${itemss.listChildren}" class="links">
+                     <li>
+                        <a href="${itemList.links @ extension = 'html'}" data-sub-menu="sub-menu-mobile">${itemList.title}</a>
+                        <img src=${itemList.image}> 
+                     </li>
+                  </ul>
+               </sly>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
