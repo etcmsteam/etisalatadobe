@@ -1,17 +1,20 @@
 <sly>
    <div data-sly-use.model = "com.etisalat.core.models.GenericListModel"></div>
    <h2 class="return-link">${properties.title}</h2>
+   <div class="offer-title">
+<h2>${properties.title}</h2>
+  <a class="button" href="#">viewall</a>
+</div>
+
+<br>
    <ul data-sly-list.items="${model.GenericListObj}">
       <li>
          <img src=${items.thumbnail}>
 
 <h3>${items.title}</h3>
 
-  <sly data-sly-test= "${properties.showDate}">
 
-          ${'MMM dd,yyyy' @ format=items.offTime}
 
-    </sly>
          <sly data-sly-test= "${properties.showDescription}">
             <p>${items.description}</p>
          </sly>
@@ -21,6 +24,12 @@
          <div class="left-menu-title ${currentPage.path == items.path ? 'highlight' : ''}">
             <a href="${items.path @ extension='html'}">${items.title}</a>
          </div>
+		 <img class="offers-img" src=${items.thumbnail}>
+
+  <a class="offer-text" href="${items.path @ extension='html'}">${items.title}</a>
+<div class="date">${'MMM dd,yyyy' @ format=items.offTime}</div>
       </li>
    </ul>
 </sly>
+
+

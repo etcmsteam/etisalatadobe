@@ -1,0 +1,64 @@
+<template data-sly-template.desktop="${ @ properties,meganavigation}">
+<!-- Desktop Menu Start -->
+<div class="main-menu-desktop">
+   <nav class="navbar-default">
+      <div class="navbar">
+         <div class="container">
+            <div class="row nav-wrap">
+               <div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
+                  <div class="hamburger" id="hamburger-1">
+                     <span class="line"></span>
+                     <span class="line"></span>
+                     <span class="line"></span>
+                  </div>
+               </div>
+               <!--logo for mobile and desktop-->
+               <div class="col-xs-8 col-sm-8 col-md-2">
+                  <div class="logo-container">
+                     <div class="navbar-header">
+                        <a href="${meganavigation.logoMenuLink}" title="${properties.logoAltText}">  
+                        <img src="${meganavigation.imagePath}" class="etisalat-logo-en" width="150" />                         
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <!--search icon for mobile view -->
+               <div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
+                  <div class="user-loged-in">
+                     <ul class="navbar-right">
+                        <li class="search-link">
+                           <a href="#">
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <!--main menu links for desktop view -->
+               <div class="col-sm-6 col-md-6 hidden-xs hidden-sm">
+                  <div class="navbar-links">
+                     <div class="navbar-collapse collapse">
+                        <ul data-sly-test="${!meganavigation.megaNavigationItems.isEmpty}"
+                           data-sly-list.navItems="${meganavigation.megaNavigationItems}" class="nav navbar-nav navbar-left">
+                           <li id="dtsecondlevelmenu-${navItemsList.count}">
+                              <a href="${navItems.navigationLinkTo}" class="desktop-menu-link" data-sub-menu="sub-menu-mobile" title="${navItems.navigationAltText}">${navItems.navigationLabel}</a>    
+                              <div class="sub-account-menu-wrap">
+                                 <ul data-sly-test="${!navItems.subNavigationList.isEmpty}" 
+                                    data-sly-list.subItems="${navItems.subNavigationList}" class="sub-account-menu">
+                                    <li id="dtthirdlevelmenu-${'{0}{1}' @ format=[navItemsList.count, subItemsList.count]}">
+                                       <a href="${subItems.subNavLinkTo}" title="${subItems.subNavTitle}">${subItems.subNavLabel}</a>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+                            
+            </div>
+         </div>
+      </div>
+   </nav>
+</div>
+<!-- Desktop Menu End -->
+</template>
