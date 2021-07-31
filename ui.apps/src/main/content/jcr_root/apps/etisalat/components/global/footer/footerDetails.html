@@ -1,48 +1,62 @@
 <template data-sly-template.footerDetails="${ @ properties,footer}">
-<!-- Desktop Menu Start -->
+  <!-- Desktop Menu Start -->
+
+
+  <br/>QuickLinks Links:
+
+  <div data-sly-list.items="${footer.quickLinks}">
+
+    <br/>quickLinkTitle: ${items.quickLinkTitle}
+
+    <div data-sly-list.quickLinkItems="${footer.quickLinks}">
+      <br/>Text :  ${quickLinkItems.linkText}
+      <br/>Link: ${quickLinkItems.linkUrl}
+    </div>
+  </div>
 
 
 
 
-<br/>Download Links:
 
-<div data-sly-list.items="${footer.download}">
+  <br/>Download Links:
 
-<br/>Title: ${items.title}
-<br/>Image :  ${items.imgUrl}
-<br/>Link: ${items.linkUrl}
+  <div data-sly-list.items="${footer.download}">
 
-</div>
+    <br/>Title: ${items.title}
+    <br/>Image :  ${items.imgUrl}
+    <br/>Link: ${items.linkUrl}
 
-
-
-<br/>Follow Us Links:
-
-<div data-sly-list.items="${footer.followUs}">
-
-<br/>Title: ${items.title}
-<br/>Image :  ${items.imgUrl}
-<br/>Link: ${items.linkUrl}
-
-</div>
+  </div>
 
 
 
-<br/>Payment Links:
+  <br/>Follow Us Links:
 
-<div data-sly-list.items="${footer.payment}">
+  <div data-sly-list.items="${footer.followUs}">
 
-<br/>Title: ${items.title}
-<br/>Link: ${items.imgUrl}
+    <br/>Title: ${items.title}
+    <br/>Image :  ${items.imgUrl}
+    <br/>Link: ${items.linkUrl}
 
-</div>
+  </div>
 
 
-Copyright Text: ${footer.copyrightText}
-<br/>
 
-PROMO Image details : 
-<br/>Link: ${footer.promo.linkUrl}
-<br/>Image Path : ${footer.promo.imgUrl}
-<!-- Desktop Menu End -->
+  <br/>Payment Links:
+
+  <div data-sly-list.items="${footer.payment}">
+
+    <br/>Title: ${items.title}
+    <br/>Link: ${items.imgUrl}
+
+  </div>
+
+
+  Copyright Text: ${footer.copyrightText}
+  <br/>
+
+  PROMO Image details :
+  <br/>Link: ${footer.promo.linkUrl}
+  <br/>Image Path : ${footer.promo.imgUrl}
+  <!-- Desktop Menu End -->
 </template>

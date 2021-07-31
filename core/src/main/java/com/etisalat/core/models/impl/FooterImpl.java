@@ -47,7 +47,7 @@ public class FooterImpl implements Footer {
     Resource quickLinksRes = res.getChild(QUICKLINKS);
     List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
     if (null != quickLinksRes) {
-      quickLinksRes.listChildren().forEachRemaining(resource -> {
+        quickLinksRes.listChildren().forEachRemaining(resource -> {
         QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
         if(quickLinkModel !=null){
 					quickLinkModel.getLinks().forEach(linkModel -> linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(linkModel.getLinkUrl())));
