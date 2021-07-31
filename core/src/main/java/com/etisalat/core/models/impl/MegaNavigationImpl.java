@@ -1,5 +1,6 @@
 package com.etisalat.core.models.impl;
 
+import com.etisalat.core.util.CommonUtility;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -55,7 +56,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 		if (null != navItemRes) {
 			navItemRes.listChildren().forEachRemaining(resource -> {
 				MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
-				navModel.setNavigationLinkTo(appendHtmlExtensionToPage(navModel.getNavigationLinkTo()));
+				navModel.setNavigationLinkTo(CommonUtility.appendHtmlExtensionToPage(navModel.getNavigationLinkTo()));
 				setSubNavigationItems(resource, navModel);
 				navigationItemsList.add(navModel);
 			});
@@ -77,27 +78,12 @@ public class MegaNavigationImpl implements MegaNavigation {
 			List<MegaSubNavigationItem> subItemList = new ArrayList<>();
 			subItemRes.listChildren().forEachRemaining(resource -> {
 				MegaSubNavigationItem subNavModel = resource.adaptTo(MegaSubNavigationItem.class);
-				subNavModel.setSubNavLinkTo(appendHtmlExtensionToPage(subNavModel.getSubNavLinkTo()));
+				subNavModel.setSubNavLinkTo(CommonUtility.appendHtmlExtensionToPage(subNavModel.getSubNavLinkTo()));
 				subItemList.add(subNavModel);
 			});
 			nav.setSubNavigationList(subItemList);
 		}
 
-	}
-
-	/**
-	 * Appends the HTML extension to page
-	 * 
-	 * @param path
-	 * @return
-	 */
-	private String appendHtmlExtensionToPage(String path) {
-		if (StringUtils.isNotEmpty(path) && !(path.contains(PageConstants.HTTP) || path.contains(PageConstants.HTTPS))
-				&& (path.startsWith(PageConstants.CONTENT)
-						&& !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
-			return path + PageConstants.HTML_EXTENSION;
-		}
-		return path;
 	}
 
 	@Override
@@ -117,6 +103,6 @@ public class MegaNavigationImpl implements MegaNavigation {
 
 	@Override
 	public String getLogoMenuLink() {		
-		return appendHtmlExtensionToPage(logoLink);
+		return CommonUtility.appendHtmlExtensionToPage(logoLink);
 	}
 }
