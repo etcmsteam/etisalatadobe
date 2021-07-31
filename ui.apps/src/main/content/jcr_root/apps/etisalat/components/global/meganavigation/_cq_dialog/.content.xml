@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Mega Navigation"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <file
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/form/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget fileUploadResuable"
+                                        fieldDescription="Logo File"
+                                        fieldLabel="Logo File"
+                                        fileNameParameter="./fileName"
+                                        fileReferenceParameter="./fileReference"
+                                        mimeTypes="[image]"
+                                        multiple="{Boolean}false"
+                                        name="./file"
+                                        required="{Boolean}true"
+                                        requiredField="A logo image is required"
+                                        title="Upload Image Asset"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <logolink
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                        fieldDescription="Navigate to the home page root location."
+                                        fieldLabel="Navigation Root"
+                                        name="./logoLink"
+                                        required="{Boolean}true"
+                                        rootPath="/content"/>
+                                    <title
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Custom Alt-Text"
+                                        fieldLabel="Custom Alt-Text"
+                                        name="./logoAltText"
+                                        required="true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </general>
+                    <meganavigation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Mega Navigation"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <navigation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Navigation Item(s)">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./navigationItems">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <navigationlabel
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Text that will appear for the label."
+                                            fieldLabel="Navigation Label"
+                                            maxlength="{Long}40"
+                                            name="./navigationLabel"/>
+                                        <navigationtitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Alt-Text that will appear for the label."
+                                            fieldLabel="Navigation Alt-Text"
+                                            maxlength="{Long}40"
+                                            name="./navigationAltText"/>
+                                        <navigationlinkto
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Target URL for when the link is clicked."
+                                            fieldLabel="Navigation Link To"
+                                            name="./navigationLinkTo"
+                                            rootPath="/content"/>
+                                        <subnavigationitems
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldLabel="Sub Navigation Items">
+                                            <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                name="./subNavItems">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <subnavigationlinkto
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                fieldDescription="Target URL for when the link is clicked."
+                                                                fieldLabel="Sub Navigation Link To"
+                                                                name="./subNavLinkTo"
+                                                                required="{Boolean}true"
+                                                                rootPath="/content"/>
+                                                            <subnavigationlabel
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Text that will appear for the label."
+                                                                fieldLabel="Sub Navigation Label"
+                                                                maxlength="{Long}40"
+                                                                name="./subNavLabel"
+                                                                required="{Boolean}true"/>
+                                                            <subnavigationtitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="The alt text for Accessibility. This text will appear when the mouse hovers over the link."
+                                                                fieldLabel="Sub Navigation Alt-Text"
+                                                                maxlength="{Long}40"
+                                                                name="./subNavTitle"
+                                                                required="{Boolean}true"/>
+                                                        </items>
+                                                    </column>
+                                                </items>
+                                            </field>
+                                        </subnavigationitems>
+                                    </items>
+                                </field>
+                            </navigation>
+                        </items>
+                    </meganavigation>
+                    <utilitynavigation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Utility Navigation"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <addlinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Add Link(s)">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./addLinks">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <navigationlabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Text that will appear for the label."
+                                                    fieldLabel="Link Label"
+                                                    maxlength="{Long}40"
+                                                    name="./navigationLabel"/>
+                                                <navigationtitle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Alt-Text that will appear for the label."
+                                                    fieldLabel="Link Alt-Text"
+                                                    maxlength="{Long}40"
+                                                    name="./navigationAltText"/>
+                                                <navigationlinkto
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Target URL for when the link is clicked."
+                                                    fieldLabel="Link To"
+                                                    name="./navigationLinkTo"
+                                                    rootPath="/content"/>
+                                                <subnavigationitems
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Sub Link Items">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                        name="./subNavItems">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <labelpath
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldDescription="Target URL for when the link is clicked."
+                                                                        fieldLabel="Link To"
+                                                                        maxlength="{Long}40"
+                                                                        name="./subNavLinkTo"
+                                                                        required="{Boolean}true"
+                                                                        rootPath="/content"/>
+                                                                    <label
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Text that will appear for the label."
+                                                                        fieldLabel="Link Label"
+                                                                        maxlength="{Long}40"
+                                                                        name="./subNavLabel"
+                                                                        required="{Boolean}true"/>
+                                                                    <title
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="The alt text for Accessibility. This text will appear when the mouse hovers over the link."
+                                                                        fieldLabel="Link Alt-Text"
+                                                                        maxlength="{Long}40"
+                                                                        name="./subNavTitle"
+                                                                        required="{Boolean}true"/>
+                                                                </items>
+                                                            </column>
+                                                        </items>
+                                                    </field>
+                                                </subnavigationitems>
+                                            </items>
+                                        </field>
+                                    </addlinks>
+                                    <cart
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        checked="{Boolean}true"
+                                        fieldDescription="Toggle to show/hide for Cart in the site navigation"
+                                        fieldLabel="Cart"
+                                        name="./cart"
+                                        text="Cart"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <search
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        checked="{Boolean}true"
+                                        fieldDescription="Toggle to show/hide for Search link in the site navigation"
+                                        fieldLabel="Search"
+                                        name="./search"
+                                        text="Search"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </utilitynavigation>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
