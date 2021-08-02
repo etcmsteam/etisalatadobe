@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
  * @since 2021-07-31
  */
 public class CommonUtility {
-  private static final Logger LOG = LoggerFactory.getLogger(CommonUtility.class);
 
   /**
    * Appends the HTML extension to page
@@ -29,7 +28,7 @@ public class CommonUtility {
    * @return Path with HTML extension
    */
   public static String appendHtmlExtensionToPage(String path) {
-    if (StringUtils.isNotEmpty(path) && !(path.contains(PageConstants.HTTP) || path.contains(PageConstants.HTTPS))
+    if (StringUtils.isNotEmpty(path) && !path.contains(PageConstants.HTTPS)
         && (path.startsWith(PageConstants.CONTENT)
         && !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
       return path + PageConstants.HTML_EXTENSION;
@@ -71,5 +70,12 @@ public class CommonUtility {
   public static LinkModel getLinkItem(Resource res) {
     return res.adaptTo(LinkModel.class);
   }
+  
+	/**
+	 * private constructor to prevent instantiation of class.
+	 */
+	private CommonUtility() {
+
+	}
 
 }

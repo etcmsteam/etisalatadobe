@@ -13,11 +13,6 @@ public final class PageConstants {
 	public static final String HTML_EXTENSION = ".html";
 
 	/**
-	 * Constant for HTTP protocol.
-	 */
-	public static final String HTTP = "http";
-
-	/**
 	 * Constant for HTTPS protocol.
 	 */
 	public static final String HTTPS = "https";
