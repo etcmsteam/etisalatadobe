@@ -1,5 +1,6 @@
 package com.etisalat.core.models;
 
+import java.util.Collections;
 import java.util.List;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -13,7 +14,7 @@ public class QuickLinkModel {
   private String quickLinkTitle;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-  private List<LinkModel> links;
+  private List<LinkModel> links = Collections.emptyList();;
 
 	public String getQuickLinkTitle() {
 		return quickLinkTitle;
@@ -24,10 +25,10 @@ public class QuickLinkModel {
 	}
 
 	public List<LinkModel> getLinks() {
-		return links;
+		return Collections.unmodifiableList(links);
 	}
 
 	public void setLinks(List<LinkModel> links) {
-		this.links = links;
+		this.links = Collections.unmodifiableList(links);
 	}
 }
