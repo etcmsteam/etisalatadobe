@@ -2,6 +2,7 @@ package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,7 +46,7 @@ class MegaNavigationItemTest {
 		assertEquals(expectedMenuLabel, item.getNavigationLabel());
 		assertEquals(expectedMenuLink, item.getNavigationLinkTo());
 		assertEquals(expectedAltText, item.getNavigationAltText());
-		assertNull(item.getSubNavigationList());
+        assertTrue(item.getSubNavigationList().isEmpty());
 	}
 
 	@Test
