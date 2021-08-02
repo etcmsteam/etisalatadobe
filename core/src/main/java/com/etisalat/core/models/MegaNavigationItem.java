@@ -1,5 +1,6 @@
 package com.etisalat.core.models;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.sling.api.resource.Resource;
@@ -20,7 +21,7 @@ public class MegaNavigationItem {
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String navigationAltText;
 	
-	private List<MegaSubNavigationItem> subNavigationList;
+	private List<MegaSubNavigationItem> subNavigationList = Collections.emptyList();
 	
 
 	/**
@@ -41,7 +42,7 @@ public class MegaNavigationItem {
 	 * @return the subNavigationList
 	 */
 	public List<MegaSubNavigationItem> getSubNavigationList() {
-		return subNavigationList;
+		return Collections.unmodifiableList(subNavigationList);
 	}
 
 	/**
@@ -62,7 +63,7 @@ public class MegaNavigationItem {
 	 * @param subNavigationList the subNavigationList to set
 	 */
 	public void setSubNavigationList(List<MegaSubNavigationItem> subNavigationList) {
-		this.subNavigationList = subNavigationList;
+		this.subNavigationList = Collections.unmodifiableList(subNavigationList);
 	}
 
 	/**
