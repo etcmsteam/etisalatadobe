@@ -1,11 +1,9 @@
 package com.etisalat.core.models.impl;
 
-import com.etisalat.core.util.CommonUtility;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -14,10 +12,10 @@ import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.MegaNavigation;
 import com.etisalat.core.models.MegaNavigationItem;
 import com.etisalat.core.models.MegaSubNavigationItem;
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		MegaNavigation.class }, resourceType = { MegaNavigationImpl.RESOURCE_TYPE })
