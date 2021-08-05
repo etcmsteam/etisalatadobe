@@ -25,6 +25,8 @@ public class MegaNavigationImpl implements MegaNavigation {
 	 * The resource type.
 	 */
 	protected static final String RESOURCE_TYPE = "etisalat/components/global/meganavigation";
+	
+	private static final String TOP_NAVIGATION_RESOURCE_TYPE = "etisalat/components/global/topnav";
 
 	private static final String NAVIGATION_ITEMS = "navigationItems";
 
@@ -38,7 +40,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String fileReference;
-	
+
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String logoLink;
 
@@ -100,7 +102,23 @@ public class MegaNavigationImpl implements MegaNavigation {
 	}
 
 	@Override
-	public String getLogoMenuLink() {		
+	public String getLogoMenuLink() {
 		return CommonUtility.appendHtmlExtensionToPage(logoLink);
 	}
+
+	@Override
+	public Resource getTopNavigationResource() {
+		Resource topNavResource = res.getParent();
+		if (null != topNavResource) {
+			for (Resource childRes : topNavResource.getChildren()) {
+				String resourceType = childRes.getResourceType();
+				if (resourceType.equals(TOP_NAVIGATION_RESOURCE_TYPE)) {
+					topNavResource = childRes;
+					break;
+				}
+			}
+		}
+		return topNavResource;
+	}
+
 }

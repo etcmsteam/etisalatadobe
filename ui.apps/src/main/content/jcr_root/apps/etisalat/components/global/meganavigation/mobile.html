@@ -12,7 +12,7 @@
               <a id="dtsecondlevelmenumob-${navItemsList.count}" href="${navItems.navigationLinkTo}"
                 title="${navItems.navigationAltText}">${navItems.navigationLabel}</a>
               <div class="arrow_accordion collapsed" role="button" data-toggle="collapse" data-parent="#accordion_menu"
-                href="#collapse-15" aria-expanded="false" aria-controls="collapse-15">
+                href="#collapse-${navItemsList.count}" aria-expanded="false" aria-controls="collapse-${navItemsList.count}">
               </div>
             </h5>
           </div>
@@ -27,6 +27,23 @@
           </div>	     	     
 	  </div>
     </div>
+     <!-- For Revamp Menu Group Link -->
+    <div class="nav-footer-inline-wrapper" style="">
+      <sly data-sly-test="${meganavigation.topNavigationResource}" 
+           data-sly-use.topnavObj="${meganavigation.topNavigationResource.path}"
+           data-sly-list.topItems="${topnavObj.listChildren}">
+         <ul class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+             <li data-sly-test="${topItems.name == 'topnavlinks'}" 
+                 data-sly-list.topItemsList="${topItems.listChildren}" 
+                 class="nav-item nav-footer" style="display: block;">
+                 <a class="nav-inline-link nav-site-switch" 
+                    href="${topItemsList.link @ extension = 'html'}">${topItemsList.label}</a>
+              </li>
+          </ul>
+     </sly>
+    </div>
+   <!-- For Revamp Menu Group Link  end-->
+   
   </div>
 </div>
 <!-- Mobile Menu End-->
