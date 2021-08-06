@@ -44,7 +44,7 @@ class FixedNavigationModelTest {
 	}
 
 	@Test
-	public void testNavigationLinks() {
+	void testNavigationLinks() {
 		final int expectedSize = 2;
 		context.currentResource("/content/fixednavigation");
 		FixedNavigationModel fixedNav = context.request().adaptTo(FixedNavigationModel.class);
@@ -55,14 +55,14 @@ class FixedNavigationModelTest {
 	}
 
 	@Test
-	public void testEmptyLinks() {
+	void testEmptyLinks() {
 		context.currentResource("/content/empty");
 		FixedNavigationModel fixedNav = context.request().adaptTo(FixedNavigationModel.class);
 		assertTrue(fixedNav.getFixedNav().isEmpty());
 	}
 
 	@Test
-	public void testHtmlExtension() {
+	void testHtmlExtension() {
 		final String expected = "/content/etisalat/ae/en.html";
 		context.currentResource("/content/with-extension");
 		FixedNavigationModel fixedNav = context.request().adaptTo(FixedNavigationModel.class);
