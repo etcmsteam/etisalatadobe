@@ -1,11 +1,9 @@
 package com.etisalat.core.models.impl;
 
-import com.etisalat.core.util.CommonUtility;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -14,10 +12,10 @@ import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.MegaNavigation;
 import com.etisalat.core.models.MegaNavigationItem;
 import com.etisalat.core.models.MegaSubNavigationItem;
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		MegaNavigation.class }, resourceType = { MegaNavigationImpl.RESOURCE_TYPE })
@@ -27,6 +25,8 @@ public class MegaNavigationImpl implements MegaNavigation {
 	 * The resource type.
 	 */
 	protected static final String RESOURCE_TYPE = "etisalat/components/global/meganavigation";
+	
+	private static final String TOP_NAVIGATION_RESOURCE_TYPE = "etisalat/components/global/topnav";
 
 	private static final String NAVIGATION_ITEMS = "navigationItems";
 
@@ -40,7 +40,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String fileReference;
-	
+
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String logoLink;
 
@@ -102,7 +102,23 @@ public class MegaNavigationImpl implements MegaNavigation {
 	}
 
 	@Override
-	public String getLogoMenuLink() {		
+	public String getLogoMenuLink() {
 		return CommonUtility.appendHtmlExtensionToPage(logoLink);
 	}
+
+	@Override
+	public Resource getTopNavigationResource() {
+		Resource topNavResource = res.getParent();
+		if (null != topNavResource) {
+			for (Resource childRes : topNavResource.getChildren()) {
+				String resourceType = childRes.getResourceType();
+				if (resourceType.equals(TOP_NAVIGATION_RESOURCE_TYPE)) {
+					topNavResource = childRes;
+					break;
+				}
+			}
+		}
+		return topNavResource;
+	}
+
 }
