@@ -1,32 +1,8 @@
-/**
- * v20280725
- */
-
  //const URL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyD3xSlpPxMzhPSRDkvd4dqL9ityhr8WlJ0&libraries=places,geometry";
 (function () {
   require(['jquery','lodash','select2','swiper'], function ($,_) {
-      //'use strict';
-     
-      // var triggerTabList = [].slice.call(document.querySelectorAll('#myTab li'))
-      // triggerTabList.forEach(function (triggerEl) {
-      //   var tabTrigger = new bootstrap.Tab(triggerEl)
-
-      //   triggerEl.addEventListener('click', function (event) {
-      //     event.preventDefault()
-      //     var tabActive = document.querySelectorAll('#myTab li.active');         
-      //     var href = $(tabActive).children().attr('href');  
-      //     $(tabActive).removeClass('active');       
-      //     $('.tab-content ' + href + '').removeClass('active in'); 
-      //     tabTrigger.show();
-      //     var href1 = $(this).children().attr('href');
-      //     $('.tab-content ' + href1 + '').addClass('active in'); 
-        
-          
-      //   })
-      // })
-  
-      const position = "{lat: 25.208549, lng: 55.271945}";
-      //const locationURL= "https://ewallet.ae";
+      
+      const position = "{lat: 25.208549, lng: 55.271945}";      
       const lang = "en";
       const locationHref = "https://ewallet.ae/en/locations/locations.jsp";
       //return function () {
@@ -795,7 +771,7 @@
            interpolate: /<#=([\s\S]+?)#>/g,
            escape: /<#-([\s\S]+?)#>/g
          };
-         debugger;
+        
         
          var resultList = resultItemTemplateList(storeLocatorData);
         
