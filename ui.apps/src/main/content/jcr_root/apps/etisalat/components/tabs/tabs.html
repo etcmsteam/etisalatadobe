@@ -13,12 +13,11 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-<div class="cmp_tabs__horizontal_view_img hidden-sm hidden-xs">
 	<div data-sly-use.tabs="com.adobe.cq.wcm.core.components.models.Tabs"
 	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	     data-panelcontainer="${wcmmode.edit && 'tabs'}"
 	     id="${tabs.id}"
-	     class="cmp-tabs"
+	     class="cmp-tabs hidden-sm hidden-xs"
 	     data-cmp-is="tabs"
 	     data-cmp-data-layer="${tabs.data.json}"
 	     data-placeholder-text="${wcmmode.edit && 'Please drag Tab components here' @ i18n}">
@@ -55,10 +54,9 @@
 	    <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
 	         data-sly-test="${(wcmmode.edit || wcmmode.preview) && tabs.items.size < 1}"></sly>
 	</div>
-</div>
 
 <!--mobile view start-->
-<div id="GetMore-DownloadFactsheet" 
+<div data-sly-test="${wcmmode.preview || wcmmode.disabled}" id="GetMore-DownloadFactsheet" 
      data-sly-use.accord="com.adobe.cq.wcm.core.components.models.Tabs" 
      class="hidden-md hidden-lg cmp_accordion___view">
    <div data-sly-test="${accord.items && accord.items.size > 0}"
