@@ -2,6 +2,8 @@ package com.etisalat.core.models;
 
 import java.util.List;
 
+import org.apache.sling.api.resource.Resource;
+
 public interface MegaNavigation {
 
 	/**
@@ -29,5 +31,12 @@ public interface MegaNavigation {
 	 * @return
 	 */
 	String getLogoMenuLink();
+	
+	
+	/**
+	 * 
+	 * @return a top navigation path resource.
+	 */
+	Resource getTopNavigationResource();
 	
 }
