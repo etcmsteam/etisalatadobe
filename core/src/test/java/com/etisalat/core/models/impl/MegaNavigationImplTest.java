@@ -31,6 +31,8 @@ class MegaNavigationImplTest {
 	protected static final String MEGA_NAV_2 = TEST_PAGE_CONTAINER_ROOT + "/megaNavigationSubList";
 	protected static final String MEGA_NAV_3 = TEST_PAGE_CONTAINER_ROOT + "/utilityNavigationList";
 	protected static final String MEGA_NAV_4 = TEST_PAGE_CONTAINER_ROOT + "/empty";
+	protected static final String MEGA_NAV_5 = TEST_PAGE_CONTAINER_ROOT + "/topnav";
+	
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -111,4 +113,16 @@ class MegaNavigationImplTest {
 		String actual = megaNavigationModel.getLogoMenuLink();
 		assertEquals(expectedLink, actual);
 	}
+	
+	@Test
+	void testTopNavigationPath() {
+		final String expectedPath = MEGA_NAV_5;
+		context.currentResource(MEGA_NAV_1);
+		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
+		
+		String actual = megaNavigationModel.getTopNavigationResource().getPath();
+		assertEquals(expectedPath, actual);
+	}
+	
+	
 }
