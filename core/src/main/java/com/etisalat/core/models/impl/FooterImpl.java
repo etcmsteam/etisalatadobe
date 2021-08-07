@@ -50,12 +50,36 @@ public class FooterImpl implements Footer {
         quickLinksRes.listChildren().forEachRemaining(resource -> {
         QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
         if(quickLinkModel !=null){
-					quickLinkModel.getLinks().forEach(linkModel -> linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(linkModel.getLinkUrl())));
+            setSubLinkItems( resource, quickLinkModel);
 					quickLinkModelList.add(quickLinkModel);
 				}
       });
     }
     return quickLinkModelList;
+  }
+
+  /**
+   * Sets the Quicklinks Sub link items list.
+   *
+   * @param itemResource resource to read quicklinks
+   * @param quickLinkModel model object for quicklinks
+   */
+  private void setSubLinkItems(Resource itemResource, QuickLinkModel quickLinkModel) {
+    if (itemResource.hasChildren()) {
+      Resource subItemRes = itemResource.getChild(QUICKLINKS);
+      List<LinkModel> subItemList = new ArrayList<>();
+      if(subItemRes!=null){
+        subItemRes.listChildren().forEachRemaining(resource -> {
+          LinkModel linkModel = resource.adaptTo(LinkModel.class);
+          if(linkModel!=null) {
+            linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(linkModel.getLinkUrl()));
+          }
+          subItemList.add(linkModel);
+        });
+      }
+      quickLinkModel.setLinks(subItemList);
+    }
+
   }
 
 	private LinkModel getPromoItem() {
