@@ -1,4 +1,3 @@
-//const URL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyD3xSlpPxMzhPSRDkvd4dqL9ityhr8WlJ0&libraries=places,geometry";
 (function () {
     define(['lodash', 'select2', 'swiper'], function (_) {
 
@@ -58,23 +57,7 @@
         var kml2g = new google.maps.KmlLayer("https://sites.google.com/site/etisalatkml/home/kml/2g.kml", options),
             kml3g = new google.maps.KmlLayer("https://sites.google.com/site/etkmlz/kml/3gM2.kml", options),
             kml4g = new google.maps.KmlLayer("https://sites.google.com/site/etkmlz/kml/4gM7.kml", options);
-        function myStoreClick(id) {
-            // alert('testo:'+id)
 
-            var marker = _.find(markers, function (item) {
-                return parseInt(item.storeid.valueOf()) === parseInt(id.valueOf());
-            });
-
-            // console.log('marker.storeid:' + marker.storeid)
-            var pos = {
-                lat: marker.position.lat(),
-                lng: marker.position.lng()
-            };
-            //currentLocation = pos; // to avvoide changing user location
-            map.setCenter(marker.getPosition());
-
-            google.maps.event.trigger(marker, 'click');
-        }
         function resultItemTemplateList(resultData) {
             var items = [];
             var listItems = [];
@@ -106,22 +89,7 @@
          * @param data
          * @returns {*}
          */
-        // function formatData(data) {
-        //   if (!data.id) {
-        //     return data.text;
-        //   }
-
-        //   var icon = $(data.element).data('icon');
-        //   var $result = $(
-        //     '<div class="' + icon + '">' +
-        //     '<img src="' + currentUrlPath + '' + icon + '.svg" height="24" width="24" /><span>' + data.text + '</span>' +
-        //     '</div>'
-        //   );
-
-        //   return $result;
-        // }
-
-
+        
         /**
          * Initialize Google Maps
          * @param position
@@ -361,7 +329,23 @@
                     }
                 }
             });
+            function myStoreClick(id) {
+                // alert('testo:'+id)
 
+                var marker = _.find(markers, function (item) {
+                    return parseInt(item.storeid) === parseInt(id);
+                });
+
+                // console.log('marker.storeid:' + marker.storeid)
+                var pos = {
+                    lat: marker.position.lat(),
+                    lng: marker.position.lng()
+                };
+                //currentLocation = pos; // to avvoide changing user location
+                map.setCenter(marker.getPosition());
+
+                google.maps.event.trigger(marker, 'click');
+            }
 
             /**
              * open result details
@@ -458,6 +442,7 @@
             });
         }
         function renderAutoComplete(storeLocatorData) {
+            
             // autocomplete for Stores
             var datautocomplete = $.map(storeLocatorData, function (value, key) {
                 return {
@@ -468,6 +453,23 @@
 
                 };
             });
+            function myStoreClick(id) {
+                // alert('testo:'+id)
+    
+                var marker = _.find(markers, function (item) {
+                    return parseInt(item.storeid) === parseInt(id);
+                });
+    
+                // console.log('marker.storeid:' + marker.storeid)
+                var pos = {
+                    lat: marker.position.lat(),
+                    lng: marker.position.lng()
+                };
+                //currentLocation = pos; // to avvoide changing user location
+                map.setCenter(marker.getPosition());
+    
+                google.maps.event.trigger(marker, 'click');
+            }
             function renderStoresList(storeLocator) {
 
                 var storeLocatorData = JSON.parse(JSON.stringify(storeLocator));
@@ -706,11 +708,13 @@
                     $("ul.ui-menu").width($(this).innerWidth());
 
                 },
-                select: function (event, ui) {
+                select: function (e, ui) {
                     listFilterid = ui.item.id;
+
                     if (currentView == "map") {
                         myStoreClick(listFilterid);
-                    } else {
+                    }
+                    else {
                         renderStoresList(storeLocatorData);
                         listFilterid = '';
                     }
@@ -718,6 +722,8 @@
                     console.log(ui.item ?
                         "Selected: " + ui.item.value + ", geonameId: " + ui.item.id :
                         "Nothing selected, input was " + this.value);
+
+
                 }
             })
                 .autocomplete("instance")._renderItem = function (ul, item) {
