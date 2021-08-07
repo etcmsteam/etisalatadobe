@@ -1,6 +1,6 @@
 
-(function(define, window) {
-    define(['jquery'], function($) {
+(function(window) {
+   // define(['jquery','jquery-ui'], function($) {
       //'use strict';
   
       return function() {
@@ -160,6 +160,6 @@
         });
   //ttes
       };
-    });
-  }(define, window));
+   // });
+  }(window));
   
