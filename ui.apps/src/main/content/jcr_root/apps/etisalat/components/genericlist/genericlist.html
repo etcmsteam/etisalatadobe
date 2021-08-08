@@ -2,9 +2,7 @@
    data-sly-call="${clientlib.all @ categories='generlistcss'}" />
 <sly>
    <div data-sly-use.model="com.etisalat.core.models.GenericListModel"></div>
-   <sly data-sly-test="${properties.showtitle}">
       <h2 class="${currentPage.properties.jcr:title != 'Offer Main Page' ? 'return-link' : ''}">${properties.title}</h2>
-   </sly>
 
    <sly data-sly-test="${currentPage.properties.jcr:title == 'Offer Main Page'}">
       <a class="button" href="${items.path @ extension='html'}">${properties.viewall}</a>
@@ -12,7 +10,9 @@
    <ul data-sly-list.items="${model.genericListObj}">
       <li>
          <img src=${items.thumbnail}>
+         <sly data-sly-test="${properties.showtitle}">
          <h3>${items.title}</h3>
+         </sly>
          <sly data-sly-test="${properties.showDescription}">
             <p>${items.description}</p>
          </sly>
