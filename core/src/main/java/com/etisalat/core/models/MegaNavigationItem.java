@@ -21,6 +21,8 @@ public class MegaNavigationItem {
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String navigationAltText;
 	
+	private String active;
+	
 	private List<MegaSubNavigationItem> subNavigationList = Collections.emptyList();
 	
 
@@ -78,6 +80,20 @@ public class MegaNavigationItem {
 	 */
 	public void setNavigationAltText(String navigationAltText) {
 		this.navigationAltText = navigationAltText;
+	}
+
+	/**
+	 * @return the active
+	 */
+	public String getActive() {
+		return active;
+	}
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(String active) {
+		this.active = active;
 	}
 
 	
