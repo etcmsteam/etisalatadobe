@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.MegaNavigation;
 import com.etisalat.core.models.MegaNavigationItem;
 import com.etisalat.core.models.MegaSubNavigationItem;
@@ -37,6 +40,10 @@ public class MegaNavigationImpl implements MegaNavigation {
 	@SlingObject
 	@Optional
 	private Resource res;
+	
+	 @Self
+	 @Optional
+	 private SlingHttpServletRequest request;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String fileReference;
@@ -55,7 +62,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 		List<MegaNavigationItem> navigationItemsList = new ArrayList<>();
 		if (null != navItemRes) {
 			navItemRes.listChildren().forEachRemaining(resource -> {
-				MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
+				MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);				
 				navModel.setNavigationLinkTo(CommonUtility.appendHtmlExtensionToPage(navModel.getNavigationLinkTo()));
 				setSubNavigationItems(resource, navModel);
 				navigationItemsList.add(navModel);
@@ -78,12 +85,29 @@ public class MegaNavigationImpl implements MegaNavigation {
 			List<MegaSubNavigationItem> subItemList = new ArrayList<>();
 			subItemRes.listChildren().forEachRemaining(resource -> {
 				MegaSubNavigationItem subNavModel = resource.adaptTo(MegaSubNavigationItem.class);
+				setNavMenuActive(resource, subNavModel.getSubNavLinkTo(), nav);
 				subNavModel.setSubNavLinkTo(CommonUtility.appendHtmlExtensionToPage(subNavModel.getSubNavLinkTo()));
 				subItemList.add(subNavModel);
 			});
 			nav.setSubNavigationList(subItemList);
 		}
+	}
+	
+	/**
+	 * Sets menu active item if current page name equals to sub navigation link else empty.
+	 * @param resource
+	 * @param path
+	 * @param nav
+	 */
+	private void setNavMenuActive(Resource resource, String path, MegaNavigationItem nav) {
+		if (StringUtils.isNotEmpty(path) && !path.contains(PageConstants.HTTPS)
+				&& (path.startsWith(PageConstants.CONTENT)
+						&& !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
+			Resource subNavResource = resource.getResourceResolver().getResource(path);
+			if (null != subNavResource && StringUtils.isBlank(nav.getActive()))
+				nav.setActive(request.getPathInfo().contains(subNavResource.getName()) ? "active" : StringUtils.EMPTY);
 
+		}
 	}
 
 	@Override
