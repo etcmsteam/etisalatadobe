@@ -16,13 +16,12 @@
          <sly data-sly-test="${properties.showDescription}">
             <p>${items.description}</p>
          </sly>
-         <sly data-sly-test="${properties.showDate}">
-            <div class="date">VALID UNTIL ${'dd/MM/yyyy' @ format=items.offTime}</div>
-         </sly>
-
          <div class="left-menu-title ${currentPage.path == items.path ? 'highlight' : ''}">
             <a href="${currentPage.path @ extension='html'}" class="offer-text">${items.title}</a>
          </div>
+		 <sly data-sly-test="${properties.showDate}">
+            <div class="date">VALID UNTIL ${'dd/MM/yyyy' @ format=items.offTime}</div>
+         </sly>
 
          <sly data-sly-test="${currentPage.properties.jcr:title != 'Offer Main Page'}">
             <a class="button" href="${items.path @ extension='html'}">${properties.viewall}</a>
