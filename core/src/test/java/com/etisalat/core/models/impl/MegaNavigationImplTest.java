@@ -32,6 +32,7 @@ class MegaNavigationImplTest {
 	protected static final String MEGA_NAV_3 = TEST_PAGE_CONTAINER_ROOT + "/utilityNavigationList";
 	protected static final String MEGA_NAV_4 = TEST_PAGE_CONTAINER_ROOT + "/empty";
 	protected static final String MEGA_NAV_5 = TEST_PAGE_CONTAINER_ROOT + "/topnav";
+	protected static final String MEGA_SUBNAV = TEST_PAGE_CONTAINER_ROOT + "/pages/page_1/page_1_1";
 	
 
 	@BeforeEach
@@ -62,13 +63,17 @@ class MegaNavigationImplTest {
 	@Test
 	void testMegaNavSubMenuItems() {
 		final String expectedMenuLabel = "Submenulabel1";
+		final String expectedActiveItem = "active";
 		context.currentResource(MEGA_NAV_2);
+		context.requestPathInfo().setResourcePath(MEGA_SUBNAV);
 
 		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
 		MegaNavigationItem navigationItem = megaNavigationModel.getMegaNavigationItems().get(0);
 		String actualMenuLabel = navigationItem.getSubNavigationList().get(0).getSubNavLabel();
+		String actualActiveItem = navigationItem.getActive();
 
 		assertEquals(expectedMenuLabel, actualMenuLabel);
+		assertEquals(expectedActiveItem, actualActiveItem);
 	}
 
 	@Test

@@ -27,6 +27,7 @@ class MegaSubNavigationItemTest {
 			+ "/megaNavigationSubList/navigationItems/item0/subNavItems/item0";
 	protected static final String MEGA_NAV_2 = TEST_PAGE_CONTAINER_ROOT
 			+ "/megaNavigationSubList/navigationItems/item0/subNavItems";
+	protected static final String MEGA_SUBNAV = TEST_PAGE_CONTAINER_ROOT + "/pages/page_1/page_1_1";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -37,14 +38,13 @@ class MegaSubNavigationItemTest {
 	@Test
 	void testMegaNavMenuItem() {
 		final String expectedMenuLabel = "Submenulabel1";
-		final String expectedMenuLink = "#submenu1";
 		final String expectedAltText = "Submenualteext1";
 
 		Resource resource = context.resourceResolver().getResource(MEGA_NAV_1);
 		MegaSubNavigationItem item = resource.adaptTo(MegaSubNavigationItem.class);
 
 		assertEquals(expectedMenuLabel, item.getSubNavLabel());
-		assertEquals(expectedMenuLink, item.getSubNavLinkTo());
+		assertEquals(MEGA_SUBNAV, item.getSubNavLinkTo());
 		assertEquals(expectedAltText, item.getSubNavTitle());
 	}
 
