@@ -9,11 +9,11 @@
         // Common functions
         // ---------------------------------------------------------
         function checkIconURL(docLang, link) {
-            if (link.indexOf('/' + docLang + '/') > 1) {
+            if(link.indexOf('/'+docLang+'/') > 1){
+                return '/'+docLang+"/system/assets/img/bulk/";
+              }else{
                 return "/resources/images/";
-            } else {
-                return "/resources/images/";
-            }
+              }
         }
         function isJson(str) {
             try {
@@ -42,8 +42,10 @@
         var autocomplete;
         var listFilterid = '';
 
-        const checkURL = checkIconURL(lang, locationHref);
-        const currentUrlPath = window.location.origin + checkURL;
+        const checkURL = "https://ewallet.ae" + checkIconURL(lang, locationHref);
+        const currentUrlPath =  checkURL;
+        console.log(checkURL);
+        debugger;
         var $mapFilter = $('#mapFilter');
         var $mapFiltersLinks = $('.map-filter-topnav .nav a');
         var swiperMap;
@@ -346,7 +348,7 @@
 
                 google.maps.event.trigger(marker, 'click');
             }
-
+         
             /**
              * open result details
              * @type {*|jQuery|HTMLElement}
@@ -379,7 +381,7 @@
 
                     // simulate click on marker for the given storeid
                     // console.log('swiper clicked storeid:' + storeid)
-
+                   
                     $('.details-desc .more-details').click(function (e) {
                         e.preventDefault();
                         $('.store-locator-wrap .result-main-container > .swiper-container-map').removeClass('hidden').addClass('hidden-xs hidden-ms');
@@ -453,23 +455,23 @@
 
                 };
             });
-            function myStoreClick(id) {
-                // alert('testo:'+id)
+            // function myStoreClick(id) {
+            //     // alert('testo:'+id)
     
-                var marker = _.find(markers, function (item) {
-                    return parseInt(item.storeid) === parseInt(id);
-                });
+            //     var marker = _.find(markers, function (item) {
+            //         return parseInt(item.storeid) === parseInt(id);
+            //     });
     
-                // console.log('marker.storeid:' + marker.storeid)
-                var pos = {
-                    lat: marker.position.lat(),
-                    lng: marker.position.lng()
-                };
-                //currentLocation = pos; // to avvoide changing user location
-                map.setCenter(marker.getPosition());
+            //     // console.log('marker.storeid:' + marker.storeid)
+            //     var pos = {
+            //         lat: marker.position.lat(),
+            //         lng: marker.position.lng()
+            //     };
+            //     //currentLocation = pos; // to avvoide changing user location
+            //     map.setCenter(marker.getPosition());
     
-                google.maps.event.trigger(marker, 'click');
-            }
+            //     google.maps.event.trigger(marker, 'click');
+            // }
             function renderStoresList(storeLocator) {
 
                 var storeLocatorData = JSON.parse(JSON.stringify(storeLocator));
@@ -710,7 +712,23 @@
                 },
                 select: function (e, ui) {
                     listFilterid = ui.item.id;
-
+                    function myStoreClick(id) {
+                        // alert('testo:'+id)
+        
+                        var marker = _.find(markers, function (item) {
+                            return parseInt(item.storeid) === parseInt(id);
+                        });
+        
+                        // console.log('marker.storeid:' + marker.storeid)
+                        var pos = {
+                            lat: marker.position.lat(),
+                            lng: marker.position.lng()
+                        };
+                        //currentLocation = pos; // to avvoide changing user location
+                        map.setCenter(marker.getPosition());
+        
+                        google.maps.event.trigger(marker, 'click');
+                    }
                     if (currentView == "map") {
                         myStoreClick(listFilterid);
                     }
@@ -949,7 +967,23 @@
                     }
                 }
             });
+            function myStoreClick(id) {
+                // alert('testo:'+id)
 
+                var marker = _.find(markers, function (item) {
+                    return parseInt(item.storeid) === parseInt(id);
+                });
+
+                // console.log('marker.storeid:' + marker.storeid)
+                var pos = {
+                    lat: marker.position.lat(),
+                    lng: marker.position.lng()
+                };
+                //currentLocation = pos; // to avvoide changing user location
+                map.setCenter(marker.getPosition());
+
+                google.maps.event.trigger(marker, 'click');
+            }
             //   var formatPagination = function(index) {
             //    console.log(index);
             //    var paginationList  = $('.swiper-pagination-list > li');
