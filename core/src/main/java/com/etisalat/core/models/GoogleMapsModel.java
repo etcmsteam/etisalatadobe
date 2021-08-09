@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.etisalat.core.services.GoogleMapsService;
+import com.etisalat.core.services.StoreLocatorService;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class })
 
@@ -21,12 +22,16 @@ public class GoogleMapsModel {
 
 	String url;
 	String key;
+	String storeLocatorUrl;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String mapViewTitle;
 
 	@OSGiService
 	GoogleMapsService googleService;
+	
+	@OSGiService
+	StoreLocatorService storeService;
 
 	@PostConstruct
 	protected void init() {
@@ -34,6 +39,7 @@ public class GoogleMapsModel {
 
 		url = googleService.getGoogleUrl();
 		key = googleService.getGoogleKey();
+		storeLocatorUrl = storeService.getStoreLocatorUrl();
 
 	}
 
@@ -52,5 +58,14 @@ public class GoogleMapsModel {
 	public void setKey(String key) {
 		this.key = key;
 	}
+	
+	public String getStoreLocatorUrl() {
+		return storeLocatorUrl;
+	}
+
+	public void setStoreLocatorUrl(String storeLocatorUrl) {
+		this.storeLocatorUrl = storeLocatorUrl;
+	}
+
 
 }
