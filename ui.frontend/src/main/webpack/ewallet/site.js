@@ -250,9 +250,10 @@
             };
 
             //list view template
+           // $('.store-locator-wrap .result-slide').html('');
             var resultList = resultItemTemplateList(storeLocatorData);
 
-            $('.store-locator-wrap .result-slide').html('');
+            
             //map view template
             var compiledTemplateList = _.template(resultList);
             //var compiledTemplateList = _.template($('#store-locator-result-item-list-template').html());
@@ -260,8 +261,10 @@
 
 
             // swiper for results
-            var activeIndex = 0
+            var activeIndex = 0;
             if (!listFilterid) {
+                
+                
                 swiperList = new Swiper('.swiper-container-list', {
 
                     slidesPerView: 2,
@@ -272,6 +275,7 @@
                     paginationType: 'bullets',
                     paginationClickable: true,
                     pagination: '.swiper-pagination-list',
+                   
                     paginationBulletRender: function (index, className) {
                         if (index < (activeIndex + 7) && index >= activeIndex - 7) {
                             className = index == activeIndex ? className + " swiper-pagination-bullet-active" : className;
@@ -472,232 +476,232 @@
     
             //     google.maps.event.trigger(marker, 'click');
             // }
-            function renderStoresList(storeLocator) {
+            // function renderStoresList(storeLocator) {
 
-                var storeLocatorData = JSON.parse(JSON.stringify(storeLocator));
+            //     var storeLocatorData = JSON.parse(JSON.stringify(storeLocator));
 
-                if (listFilterid) {
-                    _.remove(storeLocatorData, function (n) {
-                        return n.id !== listFilterid;
-                    });
+            //     if (listFilterid) {
+            //         _.remove(storeLocatorData, function (n) {
+            //             return n.id !== listFilterid;
+            //         });
 
-                    $('.swiper-pagination-list')
-                        .html('<li class="active backtoList swiper-pagination-bullet">Back</li>');
+            //         $('.swiper-pagination-list')
+            //             .html('<li class="active backtoList swiper-pagination-bullet">Back</li>');
 
-                } else {
-                    //var storeLocatorData = (isJson(storeLocator.data) === false) ? storeLocator.data : JSON.parse(storeLocator.data); // enable this for cms
+            //     } else {
+            //         //var storeLocatorData = (isJson(storeLocator.data) === false) ? storeLocator.data : JSON.parse(storeLocator.data); // enable this for cms
 
-                    storeLocatorData = (isJson(storeLocatorData.data) === false) ? storeLocatorData.data : JSON.parse(storeLocatorData.data); // enable this for cms
-                    // filter stores
-                    if (currentFilter !== 'all') {
-                        _.remove(storeLocatorData, function (n) {
-                            return n.storeType.replace(/\s+/g, '') !== categoryMap[currentFilter];
-                        });
-                    }
-                }
+            //         storeLocatorData = (isJson(storeLocatorData.data) === false) ? storeLocatorData.data : JSON.parse(storeLocatorData.data); // enable this for cms
+            //         // filter stores
+            //         if (currentFilter !== 'all') {
+            //             _.remove(storeLocatorData, function (n) {
+            //                 return n.storeType.replace(/\s+/g, '') !== categoryMap[currentFilter];
+            //             });
+            //         }
+            //     }
 
-                var temp = {
-                    items: storeLocatorData
-                };
+            //     var temp = {
+            //         items: storeLocatorData
+            //     };
 
-                _.forEach(temp.items, function (item) {
-                    //  item.iconPath = currentUrlPath + iconMap[item.type.replace(/ +/g, "")];
-                    item.color = colorMap[item.storeType];
-                    item.distance = Math.round(google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(item.latitude, item.longitude), new google.maps.LatLng(currentLocation.lat, currentLocation.lng)) * 0.001) + " KM";
-                });
-                temp.items.sort(function (a, b) { return parseInt(a.distance) > parseInt(b.distance) ? 1 : -1 });
+            //     _.forEach(temp.items, function (item) {
+            //         //  item.iconPath = currentUrlPath + iconMap[item.type.replace(/ +/g, "")];
+            //         item.color = colorMap[item.storeType];
+            //         item.distance = Math.round(google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(item.latitude, item.longitude), new google.maps.LatLng(currentLocation.lat, currentLocation.lng)) * 0.001) + " KM";
+            //     });
+            //     temp.items.sort(function (a, b) { return parseInt(a.distance) > parseInt(b.distance) ? 1 : -1 });
 
-                _.templateSettings = {
-                    evaluate: /<#([\s\S]+?)#>/g,
-                    interpolate: /<#=([\s\S]+?)#>/g,
-                    escape: /<#-([\s\S]+?)#>/g
-                };
+            //     _.templateSettings = {
+            //         evaluate: /<#([\s\S]+?)#>/g,
+            //         interpolate: /<#=([\s\S]+?)#>/g,
+            //         escape: /<#-([\s\S]+?)#>/g
+            //     };
 
-                //list view template
-                var compiledTemplateList = _.template($('#store-locator-result-item-list-template').html());
-                $('.listview-wrap .result-slide').html(compiledTemplateList(temp));
-
-
-                // swiper for results
-                var activeIndex = 0
-                if (!listFilterid) {
-                    swiperList = new Swiper('.swiper-container-list', {
-
-                        slidesPerView: 2,
-                        slidesPerColumn: 4,
-
-                        spaceBetween: 20,
-                        mousewheelControl: false,
-                        paginationType: 'bullets',
-                        paginationClickable: true,
-                        pagination: '.swiper-pagination-list',
-                        paginationBulletRender: function (index, className) {
-                            if (index < (activeIndex + 7) && index >= activeIndex - 7) {
-                                className = index == activeIndex ? className + " swiper-pagination-bullet-active" : className;
-                                return '<li class="' + className + '">' + (index + 1) + '</li>';
-                            } else {
-                                return '<li class="' + className + ' hidden">' + (index + 1) + '</li>';
-                            }
-
-                        },
-                        onSlideChangeEnd: function (swiper) {
-
-                            if (swiper.activeIndex > activeIndex + 3 || swiper.activeIndex < activeIndex - 3) {
-                                activeIndex = swiper.activeIndex;
-                                swiper.updatePagination();
-                            }
-                            formatPagination(activeIndex);
-
-                        },
-
-                        breakpoints: {
-                            500: {
-                                slidesPerView: 1,
-                            }
-                        }
-
-                    });
-                }
+            //     //list view template
+            //     var compiledTemplateList = _.template($('#store-locator-result-item-list-template').html());
+            //     $('.listview-wrap .result-slide').html(compiledTemplateList(temp));
 
 
-                // scroll to top "onclick"
+            //     // swiper for results
+            //     var activeIndex = 0
+            //     if (!listFilterid) {
+            //         swiperList = new Swiper('.swiper-container-list', {
 
-                $('.result-item-container').on('click', function (event) {
+            //             slidesPerView: 2,
+            //             slidesPerColumn: 4,
 
-                    if (!$(this).hasClass('coverage')) {
-                        var target = $('.result-item-container:first-child');
-                        if (target.length) {
-                            event.preventDefault();
-                            $(this.div).stop().animate({
-                                scrollTop: target.offset().top
-                            }, 1000);
-                        }
-                    } else {
-                        event.stopPropagation();
-                    }
+            //             spaceBetween: 20,
+            //             mousewheelControl: false,
+            //             paginationType: 'bullets',
+            //             paginationClickable: true,
+            //             pagination: '.swiper-pagination-list',
+            //             paginationBulletRender: function (index, className) {
+            //                 if (index < (activeIndex + 7) && index >= activeIndex - 7) {
+            //                     className = index == activeIndex ? className + " swiper-pagination-bullet-active" : className;
+            //                     return '<li class="' + className + '">' + (index + 1) + '</li>';
+            //                 } else {
+            //                     return '<li class="' + className + ' hidden">' + (index + 1) + '</li>';
+            //                 }
 
-                });
+            //             },
+            //             onSlideChangeEnd: function (swiper) {
 
-                // var formatPagination = function(index) {
-                //   console.log(index);
-                //   var paginationList  = $('.swiper-pagination-list > li');
-                //   var postion = paginationList.length/index;
-                //   if(postion < 1.5){
-                //     $(paginationList).first().removeClass('hidden');
-                //   }
-                //   if(postion < 6 && postion > 1.5 ){
-                //     $(paginationList).first().removeClass('hidden');
-                //     $(paginationList).last().removeClass('hidden');
-                //   }
-                //   if(postion > 6 ){
-                //     $(paginationList).last().removeClass('hidden');
-                //   }
+            //                 if (swiper.activeIndex > activeIndex + 3 || swiper.activeIndex < activeIndex - 3) {
+            //                     activeIndex = swiper.activeIndex;
+            //                     swiper.updatePagination();
+            //                 }
+            //                 formatPagination(activeIndex);
 
-                // }
+            //             },
 
-                // swiper for filters
-                var swiper = new Swiper('.topnav-swiper-container', {
-                    slidesPerView: 'auto',
-                    breakpoints: {
-                        1023: {
-                            slidesPerView: 'auto',
-                            nextButton: '.swiper-button-next',
-                            prevButton: '.swiper-button-prev'
-                        }
-                    }
-                });
+            //             breakpoints: {
+            //                 500: {
+            //                     slidesPerView: 1,
+            //                 }
+            //             }
+
+            //         });
+            //     }
 
 
-                /**
-                 * open result details
-                 * @type {*|jQuery|HTMLElement}
-                 */
-                var resultAccordion = $('.result-item-container .desc-short');
-                resultAccordion.click(function (e) {
-                    e.preventDefault();
+            //     // scroll to top "onclick"
 
-                    if (!$(this).parent().hasClass('coverage')) {
+            //     $('.result-item-container').on('click', function (event) {
 
-                        var pressedButton = $(this);
-                        var actualWrapper = pressedButton.closest('.result-item-container');
-                        var storeid = $(this).data('storeid').toString();
+            //         if (!$(this).hasClass('coverage')) {
+            //             var target = $('.result-item-container:first-child');
+            //             if (target.length) {
+            //                 event.preventDefault();
+            //                 $(this.div).stop().animate({
+            //                     scrollTop: target.offset().top
+            //                 }, 1000);
+            //             }
+            //         } else {
+            //             event.stopPropagation();
+            //         }
 
-                        if (actualWrapper.hasClass('open-detail')) {
-                            actualWrapper.find('.desc-long').slideUp(300);
-                            // console.log('closing swiper:' + storeid)
-                            actualWrapper.removeClass('open-detail');
-                        } else {
+            //     });
 
-                            var containerHeight = actualWrapper.parent('.result-slide').height() - pressedButton.height();
-                            actualWrapper.find('.desc-long').css('height', containerHeight + 'px');
+            //     // var formatPagination = function(index) {
+            //     //   console.log(index);
+            //     //   var paginationList  = $('.swiper-pagination-list > li');
+            //     //   var postion = paginationList.length/index;
+            //     //   if(postion < 1.5){
+            //     //     $(paginationList).first().removeClass('hidden');
+            //     //   }
+            //     //   if(postion < 6 && postion > 1.5 ){
+            //     //     $(paginationList).first().removeClass('hidden');
+            //     //     $(paginationList).last().removeClass('hidden');
+            //     //   }
+            //     //   if(postion > 6 ){
+            //     //     $(paginationList).last().removeClass('hidden');
+            //     //   }
 
-                            actualWrapper.find('.desc-long').slideDown(300);
-                            // console.log('opening swiper:' + storeid)
-                            actualWrapper.addClass('open-detail');
+            //     // }
 
-                            swiperMap.slideTo(0, 0);
-                        }
-
-                        // simulate click on marker for the given storeid
-                        // console.log('swiper clicked storeid:' + storeid)
-
-                        $('.details-desc .more-details').click(function (e) {
-                            e.preventDefault();
-                            $('.store-locator-wrap .result-main-container > .swiper-container-map').removeClass('hidden').addClass('hidden-xs hidden-ms');
-                            // myStoreClick($('.result-item-container .desc-short').data('storeid'));
-                            myStoreClick(storeid);
-                        });
-                        $('.address-list .desc-short h5').click(function (e) {
-                            e.preventDefault();
-                            myStoreClick(storeid);
-                        });
-
-                    }
-
-                    /*
-                    else {
-                        var $toggle = $(this).find('input[type="checkbox"]');
-                        if($toggle.is(':checked')) {
-                            $toggle.prop('checked',false);
-                        }
-                        else {
-                            $toggle.prop('checked',true);
-                        }
-                    }
-                    */
-
-                });
+            //     // swiper for filters
+            //     var swiper = new Swiper('.topnav-swiper-container', {
+            //         slidesPerView: 'auto',
+            //         breakpoints: {
+            //             1023: {
+            //                 slidesPerView: 'auto',
+            //                 nextButton: '.swiper-button-next',
+            //                 prevButton: '.swiper-button-prev'
+            //             }
+            //         }
+            //     });
 
 
-                // ------------------ open result More details
-                var moreDetailsAccordion = $('.result-item-container .desc-long .details-desc a.more-details');
-                moreDetailsAccordion.click(function (e) {
-                    e.preventDefault();
-                    var pressedButton = $(this);
-                    var actualWrapper = pressedButton.closest('.result-main-container');
-                    // var sidebarImage = $('#sidebar-icon');
+            //     /**
+            //      * open result details
+            //      * @type {*|jQuery|HTMLElement}
+            //      */
+            //     var resultAccordion = $('.result-item-container .desc-short');
+            //     resultAccordion.click(function (e) {
+            //         e.preventDefault();
 
-                    if (actualWrapper.hasClass('open-more-detail')) {
-                        actualWrapper.find('.more-details-box').fadeIn(300);
+            //         if (!$(this).parent().hasClass('coverage')) {
 
-                        actualWrapper.removeClass('open-more-detail');
-                    } else {
-                        actualWrapper.find('.more-details-box').fadeOut(300);
+            //             var pressedButton = $(this);
+            //             var actualWrapper = pressedButton.closest('.result-item-container');
+            //             var storeid = $(this).data('storeid').toString();
 
-                        actualWrapper.addClass('open-more-detail');
-                    }
+            //             if (actualWrapper.hasClass('open-detail')) {
+            //                 actualWrapper.find('.desc-long').slideUp(300);
+            //                 // console.log('closing swiper:' + storeid)
+            //                 actualWrapper.removeClass('open-detail');
+            //             } else {
 
-                });
-                swiper.update(true);
-                // ----- close button
-                $('.desc-long .close-btn').click(function (e) {
-                    // console.log('pressing close')
-                    e.preventDefault();
-                    var inWrapper = $(this).closest('.result-item-container');
-                    inWrapper.find('.desc-long').slideUp(300);
-                    inWrapper.removeClass('open-detail');
-                });
-            }
+            //                 var containerHeight = actualWrapper.parent('.result-slide').height() - pressedButton.height();
+            //                 actualWrapper.find('.desc-long').css('height', containerHeight + 'px');
+
+            //                 actualWrapper.find('.desc-long').slideDown(300);
+            //                 // console.log('opening swiper:' + storeid)
+            //                 actualWrapper.addClass('open-detail');
+
+            //                 swiperMap.slideTo(0, 0);
+            //             }
+
+            //             // simulate click on marker for the given storeid
+            //             // console.log('swiper clicked storeid:' + storeid)
+
+            //             $('.details-desc .more-details').click(function (e) {
+            //                 e.preventDefault();
+            //                 $('.store-locator-wrap .result-main-container > .swiper-container-map').removeClass('hidden').addClass('hidden-xs hidden-ms');
+            //                 // myStoreClick($('.result-item-container .desc-short').data('storeid'));
+            //                 myStoreClick(storeid);
+            //             });
+            //             $('.address-list .desc-short h5').click(function (e) {
+            //                 e.preventDefault();
+            //                 myStoreClick(storeid);
+            //             });
+
+            //         }
+
+            //         /*
+            //         else {
+            //             var $toggle = $(this).find('input[type="checkbox"]');
+            //             if($toggle.is(':checked')) {
+            //                 $toggle.prop('checked',false);
+            //             }
+            //             else {
+            //                 $toggle.prop('checked',true);
+            //             }
+            //         }
+            //         */
+
+            //     });
+
+
+            //     // ------------------ open result More details
+            //     var moreDetailsAccordion = $('.result-item-container .desc-long .details-desc a.more-details');
+            //     moreDetailsAccordion.click(function (e) {
+            //         e.preventDefault();
+            //         var pressedButton = $(this);
+            //         var actualWrapper = pressedButton.closest('.result-main-container');
+            //         // var sidebarImage = $('#sidebar-icon');
+
+            //         if (actualWrapper.hasClass('open-more-detail')) {
+            //             actualWrapper.find('.more-details-box').fadeIn(300);
+
+            //             actualWrapper.removeClass('open-more-detail');
+            //         } else {
+            //             actualWrapper.find('.more-details-box').fadeOut(300);
+
+            //             actualWrapper.addClass('open-more-detail');
+            //         }
+
+            //     });
+            //     swiper.update(true);
+            //     // ----- close button
+            //     $('.desc-long .close-btn').click(function (e) {
+            //         // console.log('pressing close')
+            //         e.preventDefault();
+            //         var inWrapper = $(this).closest('.result-item-container');
+            //         inWrapper.find('.desc-long').slideUp(300);
+            //         inWrapper.removeClass('open-detail');
+            //     });
+            // }
 
             $("#storessuggestion").autocomplete({
                 source: datautocomplete,
