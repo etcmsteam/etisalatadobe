@@ -1,0 +1,35 @@
+**${properties.mainProductTitle}**<br>
+
+### ${properties.mainProductDesc}###
+
+<sly   data-sly-use.productDetailsData="com.etisalat.core.models.ProductDetails"></sly>
+
+<ul data-sly-test="${!productDetailsData.productDetailsItems.isEmpty}"
+                           data-sly-list.navItems="${productDetailsData.productDetailsItems}" class="nav navbar-nav navbar-left">
+                           <li id="dtsecondlevelmenu-${navItemsList.count}">
+                              <a href="${navItems.theme}" class="desktop-menu-link" data-sub-menu="sub-menu-mobile" title="${navItems.productTitle}">${navItems.productDesc @ context="html"}</a>    
+
+                           </li><br>
+ <li>${navItems.theme}</li><br><br>
+
+ <li>${navItems.offerText}</li><br><br>
+                         <li>${navItems.productTitle}</li><br><br>
+
+<li>${navItems.productSubTitle}</li><br><br>
+
+<li>${navItems.productPrice}</li><br><br>
+
+<li>${navItems.productCurrency}</li><br><br>
+
+<li>${navItems.vatInclude}</li><br><br>
+
+<li>${navItems.moreInfoLabel}</li><br><br>
+
+<li>${navItems.moreInfoDesc  @ context="html"}</li><br><br>
+
+<li>${navItems.contract}</li><br><br>
+
+<li>${navItems.buyNowButton}</li><br><br>
+
+<li>${navItems.buttonLink}</li><br><br>
+                        </ul>
