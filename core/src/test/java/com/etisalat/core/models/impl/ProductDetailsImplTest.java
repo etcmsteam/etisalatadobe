@@ -34,7 +34,7 @@ class ProductDetailsImplTest {
 
 	@BeforeEach
 	public void setup() throws Exception {
-		context.addModelsForClasses(MegaNavigationImpl.class);
+		context.addModelsForClasses(ProductDetailsImpl.class);
 		context.load().json("/com/etisalat/core/models/ProductDetailsImplTest.json", CONTENT_ROOT);
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
