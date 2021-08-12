@@ -20,11 +20,18 @@ $sand-white:          #f1f1eb;
 $white:               #ffffff;
 $sand-white-50:       #f7f8f4;
 $light-sand-brown:    #e2e1da;
+$yellow1:               #d4af37;
 
 // -- Text Colors
 $gray:                #919192;
 $almost-black:        #353738;
 $cold-gray:           #D1D2D1;
+$grey1:              #6f7273;
+$grey2:              #7e7f7f;
+$grey3:              #b5b5b5;
+$grey4:              #b2b2b2;
+$grey5:              #d8d8d8;
+$grey6:              #666;
 
 // Etisalat Extended Colors
 // --------------------------------
@@ -48,6 +55,7 @@ $sandy-white:          #dbdad0;
 $sand-grey:            #8d8e80;
 // grey dark grass
 $premium:              #353733;
+
 
 // End official Etisalt color palette
 // --------------------------------
@@ -79,6 +87,11 @@ $dark-accordion-gray:  #575956;
 $disabled-gray:        #474948;
 $business-table-head:  #3a3c3b;
 $business-table-ticked:#2c2e2d;
+$blue1:                #595783;
+$blue2:                #353738;
+$blue3:                 #630e92;
+$orange1:              #9e5419;
+$green1:              #3a4035;
 
 $padding-base-vertical: 6px;
 $padding-base-horizontal: 32px; // 12px
@@ -123,5 +136,89 @@ $btn-font-weight: normal;
 $btn-default-color: $black;
 $btn-default-bg: transparent;
 $btn-default-border: $black;
+//**Font
+$font14: 14px;
+
+//*Flots
+$floatL: left;
+$floatR: right;
+
+//*Link Arrow border
+$arrow-border : #b2b2b2;
+
+@mixin box-shadow {
+    background: $white;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+  }
+@mixin  link-arrow{
+    border: solid $arrow-border;
+    border-width: 0 1px 1px 0;
+    content: '';
+    display: inline-block;
+    height: 0.45em;
+    left: 9rem;
+    position: relative;
+    top: 0.6em;
+    transform: rotate(-45deg);
+    vertical-align: top;
+    width: 0.45em;
+}
+
+//*Break Points
+
+// 320px — 480px: Mobile devices
+@media (max-width: 480px) {}
+$screen-sm-max: 480px;
+
+// 481px — 768px: iPads, Tablets
+@media (max-width: 768) {}
+$screen-md-max: 768px;
+
+// 769px — 1024px: Small screens, laptops
+@media (max-width: 1024px) {}
+$screen-lg-max: 992px;
+
+// 1025px — 1200px: Desktops, large screens
+@media (max-width: 1200px) {}
+$screen-xl-max: 1200px;
+
+// 1201px and more —  Extra large screens, TV
+@media (max-width: 1201px) {}
+$screen-xxl-max: 1201px;
+
+// 320px — 480px: Mobile devices
+@mixin sm {
+    @media (max-width: #{$screen-sm-max}) {
+        @content;
+    }
+ }
+ 
+ // 481px — 768px: iPads, Tablets
+ @mixin md {
+    @media (max-width: #{$screen-md-max}) {
+        @content;
+    }
+ }
+ 
+ // 769px — 1024px: Small screens, laptops
+ @mixin lg {
+    @media (max-width: #{$screen-lg-max}) {
+        @content;
+    }
+ }
+ 
+// 1201px and more —  Extra large screens, TV
+ @mixin xl {
+    @media (max-width: #{$screen-xl-max}) {
+        @content;
+    }
+ }
+
+ @mixin xxl {
+    @media (max-width: #{$screen-xxl-max}) {
+        @content;
+    }
+ }
 
 
