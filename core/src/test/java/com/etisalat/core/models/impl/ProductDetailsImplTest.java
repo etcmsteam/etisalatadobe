@@ -3,6 +3,7 @@ package com.etisalat.core.models.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +41,7 @@ class ProductDetailsImplTest {
 
 	@Test
 	void testgetProductDetailsItems() {
-
+		Resource navItemRes = context.currentResource(PRODUCT_DATA);
 		context.currentResource(PRODUCT_DATA);
 		String expectedproductTitle = "Business First Plus";
 		ProductDetails productDetailsModel = context.request().adaptTo(ProductDetails.class);
