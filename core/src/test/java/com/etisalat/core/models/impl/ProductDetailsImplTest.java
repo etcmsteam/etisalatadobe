@@ -10,8 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import com.etisalat.core.models.MegaNavigation;
-import com.etisalat.core.models.MegaNavigationItem;
 import com.etisalat.core.models.ProductDetails;
 import com.etisalat.core.models.ProductDetailsItem;
 
