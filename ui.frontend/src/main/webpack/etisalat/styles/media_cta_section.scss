@@ -1,0 +1,70 @@
+// How to use breakpoint
+//  @include sm {
+//     padding: 0 20px;
+// }
+
+.no-padding-container {
+    .cmp-teaser {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        @include box-shadow();
+
+        @include md {
+            display: block;
+        }
+
+        .cmp-teaser__image {
+            img {
+                width: 100%;
+            }
+        }
+
+        .cmp-teaser__content {
+            padding: 1.5rem 4rem 2.5rem 1.5rem;
+            width: 50%;
+
+            @include sm {
+                width: 100%;
+                padding: 1rem 1rem 4rem;
+            }
+
+            @include md {
+                width: 100%;
+                padding: 1rem 1rem 4rem;
+            }
+
+            .cmp-teaser__description {
+                p {
+                    color: $black;
+                    font-size: $font14;
+                }
+            }
+
+            .cmp-teaser__action-container {
+                a {
+                    letter-spacing: 2px;
+                    padding: 0.5rem 1.5rem;
+                }
+
+                :hover {
+                    text-decoration: underline;
+                }
+
+                :before {
+                    @include link-arrow();
+                }
+            }
+        }
+    }
+
+    .cmp-container {
+        padding: 4rem 2rem;
+    }
+
+    .cmp-teaser__action-container {
+        margin-top: 3rem;
+        margin-left: -2rem;
+    }
+}
