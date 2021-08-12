@@ -49,18 +49,29 @@ class ProductDetailsItemTest {
 
 		Resource resource = context.resourceResolver().getResource(PRODUCT_DATA);
 		ProductDetailsItem item = resource.adaptTo(ProductDetailsItem.class);
-
+        item.setOfferText(expectedofferText);
 		assertEquals(expectedofferText, item.getOfferText());
+		item.setProductTitle(expectedproductTitle);
 		assertEquals(expectedproductTitle, item.getProductTitle());
+		item.setProductSubTitle(expectedproductSubTitle);
 		assertEquals(expectedproductSubTitle, item.getProductSubTitle());
+		item.setProductDesc(expectedproductDesc);
 		assertEquals(expectedproductDesc, item.getProductDesc());
+		item.setProductPrice(expectedproductPrice);
 		assertEquals(expectedproductPrice, item.getProductPrice());
+		item.setProductCurrency(expectedproductCurrency);
 		assertEquals(expectedproductCurrency, item.getProductCurrency());
+		item.setVatInclude(expectedvatInclude);
 		assertEquals(expectedvatInclude, item.getVatInclude());
+		item.setMoreInfoLabel(expectedmoreInfoLabel);
 		assertEquals(expectedmoreInfoLabel, item.getMoreInfoLabel());
+		item.setMoreInfoDesc(expectedmoreInfoDesc);
 		assertEquals(expectedmoreInfoDesc, item.getMoreInfoDesc());
+		item.setContract(expectedcontract);
 		assertEquals(expectedcontract, item.getContract());
+		item.setBuyNowButton(expectedbuyNowButton);
 		assertEquals(expectedbuyNowButton, item.getBuyNowButton());
+		item.setButtonLink(expectedbuttonLink);
 		assertEquals(expectedbuttonLink, item.getButtonLink());
 
 	}
