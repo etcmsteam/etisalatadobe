@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -55,12 +56,9 @@ public class TilesModelItem {
 	}
 
 	public List<TileModel> getTileList() {
-		return tileList;
+		return Collections.unmodifiableList(tileList);
 	}
 
-	public void setTileList(List<TileModel> tileList) {
-		this.tileList = tileList;
-	}
 
 	public String getTitle() {
 		return title;
