@@ -1,3 +1,41 @@
+swiperList = new Swiper('.swiper-container-list', {
+
+    slidesPerView: 2,
+    slidesPerColumn: 4,
+
+    spaceBetween: 20,
+    mousewheelControl: false,
+    paginationType: 'bullets',
+    paginationClickable: true,
+    pagination: '.swiper-pagination-list',
+   
+    paginationBulletRender: function (index, className) {
+        if (index < (activeIndex + 7) && index >= activeIndex - 7) {
+            className = index == activeIndex ? className + " swiper-pagination-bullet-active" : className;
+            return '<li class="' + className + '">' + (index + 1) + '</li>';
+        } else {
+            return '<li class="' + className + ' hidden">' + (index + 1) + '</li>';
+        }
+
+    },
+    onSlideChangeEnd: function (swiper) {
+
+        if (swiper.activeIndex > activeIndex + 3 || swiper.activeIndex < activeIndex - 3) {
+            activeIndex = swiper.activeIndex;
+            swiper.updatePagination();
+        }
+        formatPagination(activeIndex);
+
+    },
+
+    breakpoints: {
+        500: {
+            slidesPerView: 1,
+        }
+    }
+
+});
+
 
 var payload = {categoryId: "cat580028", navigationState: "", No: "0", Nrpp: "100"}
 function resultItemTemplateList(resultData) {
