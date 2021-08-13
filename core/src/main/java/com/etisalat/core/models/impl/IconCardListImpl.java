@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
-import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import com.etisalat.core.models.IconCardList;
 import com.etisalat.core.models.IconCardListItem;
@@ -19,17 +18,22 @@ import com.etisalat.core.models.IconCardListItem;
 		IconCardList.class }, resourceType = { IconCardListImpl.RESOURCE_TYPE })
 public class IconCardListImpl implements IconCardList {
 	
-	protected static final String RESOURCE_TYPE = "etisalat/components/iconcardlist";
+	public static final String RESOURCE_TYPE = "etisalat/components/iconcardlist";
+	public static final String NAV_ITEMS = "iconCardList";
 
-	@Inject
+	@SlingObject
 	@Optional
-	@ChildResource
-	private Resource iconCardList;
+	private Resource res;
+	
+	@Self
+	@Optional
+	private SlingHttpServletRequest request;
 
 	private List <IconCardListItem> iconCardListItem;
 
 	@Override
 	public List<IconCardListItem> getIconCardListItems() {
+		Resource iconCardList = res.getChild(NAV_ITEMS);
 		iconCardListItem = new ArrayList<>();
 		if(iconCardList !=null && iconCardList.hasChildren()) {
 			Iterator<Resource> list = iconCardList.listChildren();
