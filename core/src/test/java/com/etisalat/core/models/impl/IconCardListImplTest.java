@@ -31,7 +31,7 @@ class IconCardListImplTest {
 	@BeforeEach
 	public void setup() throws Exception {
 		context.addModelsForClasses(ProductDetailsImpl.class);
-		context.load().json("/com/etisalat/core/models/IconcardListTest.json", CONTENT_ROOT);		
+		context.load().json("/com/etisalat/core/models/IconCardListTest.json", CONTENT_ROOT);		
 	}
 
 	@Test
