@@ -1,7 +1,21 @@
 <sly data-sly-use.iconCardListData="com.etisalat.core.models.IconCardList"></sly>
 
-<ul data-sly-list.cardItems="${iconCardListData.iconCardListItems}">
-  <li class="context-nav-box content body-standard"><a href="${cardItems.cardLink @extension='html'}">
-  <div class="icon-area ${cardItems.cardIcon}"></div>${cardItems.cardTitle}</a></li>
-</ul>
+<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="spacer grey"></div>
+    <div class="context-nav-box-wrap swiper-container-horizontal">
+        <div class="swiper-wrapper" data-sly-list.cardItems="${iconCardListData.iconCardListItems}">
+            <div class="swiper-slide col-xs-10 col-sm-3 swiper-slide-active">
+                <div class="rect-responsive">
+                    <div class="context-nav-box content body-standard">
+                        <a href="${cardItems.cardLink @extension='html'}">
+                            <div class="icon-area ${cardItems.cardIcon}">
+                            </div>
+                            <h5>${cardItems.cardTitle}</h5>
+                        </a>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>
 

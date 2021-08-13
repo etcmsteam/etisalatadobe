@@ -39,9 +39,9 @@ class IconCardListTest {
 		final String expectedCardIcon = "prepaid";
 		Resource resource = context.resourceResolver().getResource(CARD_DATA);
 		IconCardListItem item = resource.adaptTo(IconCardListItem.class);		
-		assertEquals(expectedCardTitle, item.cardTitle());
-		assertEquals(expectedCardLink, item.cardLink());
-		assertEquals(expectedCardIcon, item.cardIcon());
+		assertEquals(expectedCardTitle, item.getCardTitle());
+		assertEquals(expectedCardLink, item.getCardLink());
+		assertEquals(expectedCardIcon, item.getCardIcon());
 	}
 
 }

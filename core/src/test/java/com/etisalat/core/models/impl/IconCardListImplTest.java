@@ -3,8 +3,6 @@ package com.etisalat.core.models.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
-import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,7 +39,7 @@ class IconCardListImplTest {
 		String expectedCardTitle = "Card Title 1";
 		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
 		IconCardListItem iconCardListItem = iconCardList.getIconCardListItems().get(0);
-		String actualCardTitle = iconCardListItem.cardTitle();
+		String actualCardTitle = iconCardListItem.getCardTitle();
 		assertEquals(expectedCardTitle, actualCardTitle);
 
 	}

@@ -10,12 +10,12 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 public interface IconCardListItem {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	String cardTitle();
+	String getCardTitle();
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	String cardLink();
+	String getCardLink();
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	String cardIcon();
+	String getCardIcon();
 	
 }
