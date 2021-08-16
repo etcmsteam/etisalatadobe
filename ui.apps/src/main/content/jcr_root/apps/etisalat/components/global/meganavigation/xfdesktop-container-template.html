@@ -14,9 +14,9 @@
 				  ${subFixedItems.navigationTitle}</a>
 			   </li>
 			</ul>
-			 <ul data-sly-test="${subMenuItems.isFeatureItemExist && subMenuItems.featureImageModel}" class="sub-menu brands">
-				 <li class="sub-menu-heading">${subMenuItems.featureImageModel.title}</li>
-				 <li data-sly-list.brandItem="${subMenuItems.featureImageModel.featureImageList}" class="menu-brand-wrapper">
+			 <ul data-sly-test="${subMenuItems.isFeatureItemExist && !subMenuItems.featureImageList.isEmpty}" class="sub-menu brands">
+				 <li class="sub-menu-heading">${subMenuItems.title}</li>
+				 <li data-sly-list.brandItem="${subMenuItems.featureImageList}" class="menu-brand-wrapper">
 					  <a class="menu-brand-item" loading="lazy" href="${brandItem.link}"><img src="${brandItem.fileReference}" width="80px" height="74px"></a>												  
 				 </li>
 			</ul>
