@@ -9,8 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
+import com.etisalat.core.models.MegaFixedNavigationItem;
 import com.etisalat.core.models.MegaNavigation;
 import com.etisalat.core.models.MegaNavigationItem;
+import com.etisalat.core.models.MegaTeaserModel;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -33,6 +36,7 @@ class MegaNavigationImplTest {
 	protected static final String MEGA_NAV_4 = TEST_PAGE_CONTAINER_ROOT + "/empty";
 	protected static final String MEGA_NAV_5 = TEST_PAGE_CONTAINER_ROOT + "/topnav";
 	protected static final String MEGA_SUBNAV = TEST_PAGE_CONTAINER_ROOT + "/pages/page_1/page_1_1";
+	protected static final String MEGA_XF_NAV_6 = TEST_PAGE_CONTAINER_ROOT + "/xfContainerList";
 	
 
 	@BeforeEach
@@ -129,5 +133,25 @@ class MegaNavigationImplTest {
 		assertEquals(expectedPath, actual);
 	}
 	
+	@Test
+	void testXFContainerMenuItems() {
+		final String expectedMenuLabel = "Mobile plans";
+		context.currentResource(MEGA_XF_NAV_6);
+
+		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
+		MegaNavigationItem navigationItem = megaNavigationModel.getMegaContainerItems().get(0);
+		MegaFixedNavigationItem subMenuItem = navigationItem.getContainerSubMenuList().get(0);
+		MegaTeaserModel promotionItem = navigationItem.getContainerPromotionList().get(0);
+		FixedNavigtaionMultifieldModel footerItem = navigationItem.getContainerFooterMenuList().get(0).getFixedItems()
+				.get(0);
+
+		String featureTitle = navigationItem.getContainerSubMenuList().get(2).getTitle();
+		assertEquals(2, subMenuItem.getFixedItems().size());
+		assertEquals(expectedMenuLabel, navigationItem.getNavigationLabel());
+		assertEquals("/content/dam/ewallet/sampletest.jpg", promotionItem.getFileReference());
+		assertEquals("My Etisalat App", footerItem.getNavigationTitle());
+		assertEquals("Top brands", featureTitle);
+
+	}
 	
 }

@@ -17,15 +17,14 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.commons.jcr.JcrConstants;
 import com.etisalat.core.constants.PageConstants;
-import com.etisalat.core.models.MegaFeatureImageModel;
 import com.etisalat.core.models.MegaFixedNavigationItem;
 import com.etisalat.core.models.MegaNavigation;
 import com.etisalat.core.models.MegaNavigationItem;
 import com.etisalat.core.models.MegaSubNavigationItem;
 import com.etisalat.core.models.MegaTeaserModel;
 import com.etisalat.core.util.CommonUtility;
-import com.day.cq.commons.jcr.JcrConstants;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		MegaNavigation.class }, resourceType = { MegaNavigationImpl.RESOURCE_TYPE })
@@ -250,11 +249,10 @@ public class MegaNavigationImpl implements MegaNavigation {
 	}
 	
 	private void setContainerBrandMenuList(Resource itemResource, MegaFixedNavigationItem fixedNavModel, List<MegaFixedNavigationItem> subMenuList) {
-		List<MegaTeaserModel> brandMenuList = new ArrayList<>();
-		MegaFeatureImageModel featureImageModel = new MegaFeatureImageModel();
+		List<MegaTeaserModel> brandMenuList = new ArrayList<>();		
 		for (Resource childRes : itemResource.getChildren()) {			
 			if (childRes.getResourceType().equals(TITLE_RESOURCE_TYPE)) {
-				featureImageModel.setTitle(childRes.getValueMap().get(JcrConstants.JCR_TITLE, StringUtils.EMPTY));
+				fixedNavModel.setTitle(childRes.getValueMap().get(JcrConstants.JCR_TITLE, StringUtils.EMPTY));
 			} else if (childRes.getResourceType().equals(TEASER_RESOURCE_TYPE)) {
 				MegaTeaserModel teaserModel = childRes.adaptTo(MegaTeaserModel.class);
 				if (null != teaserModel && StringUtils.isNotBlank(teaserModel.getFileReference())) {
@@ -262,8 +260,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 				}
 			}
 		}
-		featureImageModel.setFeatureImageList(brandMenuList);
-		fixedNavModel.setFeatureImageModel(featureImageModel);
+		fixedNavModel.setFeatureImageList(brandMenuList);		
 		subMenuList.add(fixedNavModel);
 	}
 	
