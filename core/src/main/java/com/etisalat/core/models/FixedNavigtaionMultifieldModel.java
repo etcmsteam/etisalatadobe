@@ -6,6 +6,8 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import com.etisalat.core.util.CommonUtility;
+
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class FixedNavigtaionMultifieldModel {
@@ -29,7 +31,7 @@ public class FixedNavigtaionMultifieldModel {
 	}
 
 	public String getNavigationLink() {
-		return navigationLink;
+		return CommonUtility.appendHtmlExtensionToPage(navigationLink);
 	}
 
 }
