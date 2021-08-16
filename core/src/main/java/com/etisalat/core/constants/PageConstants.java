@@ -28,12 +28,4 @@ public final class PageConstants {
 	public static final String JCR_TITLE = "jcr:title";
 	
 	
-	
-
-	/**
-	 * private constructor to prevent instantiation of class.
-	 */
-	private PageConstants() {
-
-	}
 }
