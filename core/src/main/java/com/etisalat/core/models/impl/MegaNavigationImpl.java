@@ -25,6 +25,7 @@ import com.etisalat.core.models.MegaNavigationItem;
 import com.etisalat.core.models.MegaSubNavigationItem;
 import com.etisalat.core.models.MegaTeaserModel;
 import com.etisalat.core.util.CommonUtility;
+import com.day.cq.commons.jcr.JcrConstants;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		MegaNavigation.class }, resourceType = { MegaNavigationImpl.RESOURCE_TYPE })
@@ -253,7 +254,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 		MegaFeatureImageModel featureImageModel = new MegaFeatureImageModel();
 		for (Resource childRes : itemResource.getChildren()) {			
 			if (childRes.getResourceType().equals(TITLE_RESOURCE_TYPE)) {
-				featureImageModel.setTitle(childRes.getValueMap().get(PageConstants.JCR_TITLE, StringUtils.EMPTY));
+				featureImageModel.setTitle(childRes.getValueMap().get(JcrConstants.JCR_TITLE, StringUtils.EMPTY));
 			} else if (childRes.getResourceType().equals(TEASER_RESOURCE_TYPE)) {
 				MegaTeaserModel teaserModel = childRes.adaptTo(MegaTeaserModel.class);
 				if (null != teaserModel && StringUtils.isNotBlank(teaserModel.getFileReference())) {

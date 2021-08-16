@@ -5,13 +5,15 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import com.day.cq.commons.jcr.JcrConstants;
+
 @Model(adaptables = Resource.class)
 public class MegaTeaserModel {
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String pretitle;
 	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL,name="jcr:title")
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL,name=JcrConstants.JCR_TITLE)
 	private String title;
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
