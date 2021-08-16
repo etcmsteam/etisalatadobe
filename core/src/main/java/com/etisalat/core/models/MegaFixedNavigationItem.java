@@ -20,7 +20,9 @@ public class MegaFixedNavigationItem {
 	
 	private boolean isFeatureItemExist;
 	
-	private MegaFeatureImageModel featureImageModel;
+    private String title;
+	
+	private List<MegaTeaserModel> featureImageList = Collections.emptyList();
 
 	/**
 	 * @return the navTitle
@@ -65,16 +67,32 @@ public class MegaFixedNavigationItem {
 	}
 
 	/**
-	 * @return the featureImageModel
+	 * @return the title
 	 */
-	public MegaFeatureImageModel getFeatureImageModel() {
-		return featureImageModel;
+	public String getTitle() {
+		return title;
 	}
 
 	/**
-	 * @param featureImageModel the featureImageModel to set
+	 * @return the featureImageList
 	 */
-	public void setFeatureImageModel(MegaFeatureImageModel featureImageModel) {
-		this.featureImageModel = featureImageModel;
+	public List<MegaTeaserModel> getFeatureImageList() {
+		return Collections.unmodifiableList(featureImageList);
 	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @param featureImageList the featureImageList to set
+	 */
+	public void setFeatureImageList(List<MegaTeaserModel> featureImageList) {
+		this.featureImageList = Collections.unmodifiableList(featureImageList);
+	}
+
+	
 }
