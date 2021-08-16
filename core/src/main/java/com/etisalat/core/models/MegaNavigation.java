@@ -39,4 +39,10 @@ public interface MegaNavigation {
 	 */
 	Resource getTopNavigationResource();
 	
+	/**
+	 * 
+	 * @return a collection of objects representing the experience fragment items that compose the list.
+	 */
+	List<MegaNavigationItem> getMegaContainerItems();
+	
 }

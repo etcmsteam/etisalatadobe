@@ -7,3 +7,4 @@ $('.hamburger').on('click', function (){
 $(document).ready(function(){
     $('.copyright-year').text(new Date().getFullYear());
   });
+  

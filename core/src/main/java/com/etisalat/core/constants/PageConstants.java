@@ -22,7 +22,10 @@ public final class PageConstants {
 	 */
 	public static final String CONTENT = "/content/";
 	
-	
+	/**
+	 * Constant for jcr:title path.
+	 */
+	public static final String JCR_TITLE = "jcr:title";
 	
 	
 	

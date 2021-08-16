@@ -59,7 +59,14 @@
                     <div class="col-sm-4 col-md-4 hidden-xs hidden-sm">
                         <ul data-sly-test="${!meganavigation.utilityNavItems.isEmpty}"
                            data-sly-list.utilityItems="${meganavigation.utilityNavItems}" class="navbar-nav navbar-right">                                   
-                            <li class="${utilityItems.active}"><a href="${utilityItems.navigationLinkTo}" title="${utilityItems.navigationAltText}">${utilityItems.navigationLabel}</a></li>                                                                                                                              
+                            <li class="${utilityItems.active}"><a href="${utilityItems.navigationLinkTo}" title="${utilityItems.navigationAltText}">${utilityItems.navigationLabel}</a>
+                              <div class="sub-account-menu-wrap">
+								<ul data-sly-test="${!utilityItems.subNavigationList.isEmpty}" 
+								   data-sly-list.subItems="${utilityItems.subNavigationList}" class="sub-account-menu">
+								   <li><a href="${subItems.subNavLinkTo}">${subItems.subNavLabel}</a></li>
+								</ul>
+							 </div>
+                            </li>                                                                                                                              
                          </ul>
                     </div>
                     
