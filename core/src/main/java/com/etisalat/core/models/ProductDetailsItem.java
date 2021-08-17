@@ -48,6 +48,8 @@ public class ProductDetailsItem {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String buttonLink="";
+	
+	
 
 	/**
 	 * @return the theme
@@ -231,5 +233,7 @@ public class ProductDetailsItem {
 	public void setButtonLink(String buttonLink) {
 		this.buttonLink = buttonLink;
 	}
+
+	
 
 }

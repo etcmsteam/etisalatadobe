@@ -36,13 +36,11 @@
 						 
                               <div  data-sly-use.productDataList2="com.etisalat.core.models.ProductDetails" data-sly-test="${!productDataList2.productDetailsItems.isEmpty}"
                            data-sly-list.productItems="${productDataList2.productDetailsItems}" class="swiper-wrapper">
-						   <sly data-sly-test.color="red" />
-							   <sly data-sly-test="${productItems.offerText.empty}" >
-							   <sly data-sly-test.color="green" />
-                                </sly>
+						   
+						       
 							  <div class="swiper-slide col-xs-12 col-sm-6 col-md-4 swiper-slide-active"
                                     style="width: 306px;">
-							 <div class="read-more-${color}-btn_bg">
+							 <div class="read-more-${productItems.offerText.empty ? 'green' : 'red'}-btn_bg">
                                     <div class="tile-table plan-card offer ">
                                        <div class="tile-card effect__click">
                                           <div class="tile">
