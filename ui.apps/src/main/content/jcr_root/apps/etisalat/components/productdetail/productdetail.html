@@ -1,35 +1,92 @@
-**${properties.mainProductTitle}**<br>
-
-### ${properties.mainProductDesc}###
-
-<sly   data-sly-use.productDetailsData="com.etisalat.core.models.ProductDetails"></sly>
-
-<ul data-sly-test="${!productDetailsData.productDetailsItems.isEmpty}"
-                           data-sly-list.navItems="${productDetailsData.productDetailsItems}" class="nav navbar-nav navbar-left">
-                           <li id="dtsecondlevelmenu-${navItemsList.count}">
-                              <a href="${navItems.theme}" class="desktop-menu-link" data-sub-menu="sub-menu-mobile" title="${navItems.productTitle}">${navItems.productDesc @ context="html"}</a>    
-
-                           </li><br>
- <li>${navItems.theme}</li><br><br>
-
- <li>${navItems.offerText}</li><br><br>
-                         <li>${navItems.productTitle}</li><br><br>
-
-<li>${navItems.productSubTitle}</li><br><br>
-
-<li>${navItems.productPrice}</li><br><br>
-
-<li>${navItems.productCurrency}</li><br><br>
-
-<li>${navItems.vatInclude}</li><br><br>
-
-<li>${navItems.moreInfoLabel}</li><br><br>
-
-<li>${navItems.moreInfoDesc  @ context="html"}</li><br><br>
-
-<li>${navItems.contract}</li><br><br>
-
-<li>${navItems.buyNowButton}</li><br><br>
-
-<li>${navItems.buttonLink}</li><br><br>
-                        </ul>
+<sly   data-sly-use.productDataList="com.etisalat.core.models.ProductDetails"/>
+<div class="row">
+   <div class="col-xs-12 col-md-3">
+      <div class="product-grid-text-section ">
+         <div class="wst-main-headings">
+            <h4>${properties.mainProductTitle}</h4>
+         </div>
+         <div class="main-text-content-wrapper">
+            <div class="paragraph-styling ul-list-cms">
+               <div class="p3">
+                  <p>${properties.mainProductDesc}</p>
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-xs-12 col-md-9">
+      <section class="cmp__bg-cards_product-grid">
+         <div class="row">
+            <div class="col-xs-12">
+               <div class="bg-cards ">
+                  <div data-sly-test="${!productDataList.productDetailsItems.isEmpty}"
+                           data-sly-list.productItems="${productDataList.productDetailsItems}" class="row row-tiles-table ">
+					<div data-sly-test.hasContent="${!productItems.offerText.empty}" />
+					<div data-sly-test.notHasContent="${productItems.offerText.empty}" />
+					
+                    <div  class=" col-xs-12 col-sm-6 col-md-4 ">
+					
+					
+					 
+					  <div class="read-more-red-btn_bg">
+					 
+                        <div class="tile-table plan-card offer ">
+                           <div class="tile-card effect__click">
+                              <div class="tile">
+                                 <div class="tile-card__front">
+                                    <div class="tiles-box content body-standard">
+                                       <div class="tiles-box-title">
+                                          <div class="special-offer"> ${productItems.offerText}</div>
+                                          <div class="catagory">${productItems.productTitle} </div>
+                                          <h2>${productItems.productSubTitle}  </h2>
+                                       </div>
+                                       <div class="tiles-box-list">
+                                          
+										  <ul class="featureList">
+                                             <li>
+                                                <ul>
+                                                    <li>${productItems.productDesc @ context="html"}</li>
+                                                </ul>
+                                             </li>
+                                          </ul>
+                                          <div class="detail-info-wrap detail-info-wrap-pricetag">
+                                             <div class="detail-price-new">
+                                                <div class="main-part">
+                                                   <div dir="ltr" class="from"> </div>
+                                                   <div dir="ltr" class="price">  ${productItems.productPrice}</div>
+                                                   <small>${productItems.productCurrency}/Month</small>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <p class="bottom-text">
+                                             ${productItems.vatInclude}
+                                          </p>
+										  <a data-label="popupN110"
+                                                         class="overlay-link learn-more btn-text mt-5 edit btn-green text-center"
+                                                         title="popupN110">
+                                                      <span
+                                                         class="moreg">${productItems.moreInfoLabel}</span>
+                                                      </a>
+                                       </div>
+                                       <div class="smile-points">
+                                          <span> ${productItems.contract}</span>
+                                       </div>
+                                       <div class="read-more select-product-from-grid select-product-from-grid-without-close link" data-extra-container=".extra-options-02">
+                                          <a href="" class="cms-button read-more-link" title="Silver"> <span>${productItems.buyNowButton}</span> </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+					 </div>
+                    </div>
+                    </div>
+               </div>
+            </div>
+         </div>
+         <!-- / .container -->
+      </section>
+   </div>
+</div>
