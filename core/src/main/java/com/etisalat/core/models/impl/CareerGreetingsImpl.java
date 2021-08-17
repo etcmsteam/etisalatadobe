@@ -1,9 +1,7 @@
 package com.etisalat.core.models.impl;
 
 import com.etisalat.core.models.CareerGreetings;
-import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
 import com.etisalat.core.models.LinkModel;
-import com.etisalat.core.models.TabImageItem;
 import javax.annotation.PostConstruct;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;

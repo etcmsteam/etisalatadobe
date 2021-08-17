@@ -43,8 +43,11 @@ class MegaSubNavigationItemTest {
 		Resource resource = context.resourceResolver().getResource(MEGA_NAV_1);
 		MegaSubNavigationItem item = resource.adaptTo(MegaSubNavigationItem.class);
 
+		item.setSubNavLabel(expectedMenuLabel);
 		assertEquals(expectedMenuLabel, item.getSubNavLabel());
+		item.setSubNavLinkTo(MEGA_SUBNAV);
 		assertEquals(MEGA_SUBNAV, item.getSubNavLinkTo());
+		item.setSubNavTitle(expectedAltText);
 		assertEquals(expectedAltText, item.getSubNavTitle());
 	}
 
