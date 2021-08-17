@@ -1,13 +1,6 @@
-/**
- * v###version###
- */
- (function(define, window) {
-    define(["swiper"], function($) {
-      "use strict";
-  
-      return function() {
-  
-        function initSwiper() {
+(function () {
+  define(['swiper'], function () {
+      function initSwiper() {
           // plans table slider for CMS modules start
           $(document).find('.product-grid-text-section.plans').each(function (index) {
             $(this).addClass('plansTable'+index);
@@ -86,82 +79,6 @@
           });
   
   
-  
-  
-          // var plansTableSliders = [];
-          // var $carousel = $(".related-products .swiper-container");
-          // var $carouselSliderTable = new Swiper(".related-products .swiper-container", {
-          //   loop: false,
-          //   autoplay: false,
-          //   touchEventsTarget: "swiper-wrapper",
-          //   slidesPerView: 4,
-          //   simulateTouch: true,
-          //   scrollbar: ".table-swiper-scrollbar",
-          //   scrollbarHide: false,
-          //   scrollbarDraggable: false,
-          //   nextButton: ".related-products .table-swiper-button-next",
-          //   prevButton: ".related-products .table-swiper-button-prev",
-          //   breakpoints: {
-          //
-          //     540: {
-          //       slidesPerView: 1.25
-          //     },
-          //     768: {
-          //       slidesPerView: 2
-          //     },
-          //     1024: {
-          //       slidesPerView: 3
-          //     },
-          //     1440: {
-          //       slidesPerView: 3
-          //     },
-          //     9999: {
-          //       centeredSlides: false,
-          //       slidesPerView: 3
-          //     }
-          //   }
-          // });
-  
-          // $carousel.each(function(index, element) {
-          //   $(this).addClass("s" + index);
-          //   var $planTableParent2 = $(this).parent();
-          //   $planTableParent2
-          //     .find(".table-swiper-button-next")
-          //     .addClass("r" + index);
-          //   $planTableParent2
-          //     .find(".table-swiper-button-prev")
-          //     .addClass("l" + index);
-          //   var $carouselSliderTable = new Swiper(".s" + index, {
-          //     loop: false,
-          //     autoplay: false,
-          //     touchEventsTarget: "swiper-wrapper",
-          //     slidesPerView: 4,
-          //     simulateTouch: true,
-          //     scrollbar: ".table-swiper-scrollbar",
-          //     scrollbarHide: false,
-          //     scrollbarDraggable: true,
-          //     nextButton: ".table-swiper-button-next.r" + index,
-          //     prevButton: ".table-swiper-button-prev.l" + index,
-          //     breakpoints: {
-          //       1024: {
-          //         slidesPerView: 4
-          //       },
-          //       768: {
-          //         slidesPerView: 3
-          //       },
-          //       640: {
-          //         slidesPerView: 2
-          //       },
-          //       320: {
-          //         slidesPerView: 1
-          //       },
-          //       9999: {
-          //         centeredSlides: false,
-          //         slidesPerView: 4
-          //       }
-          //     }
-          //   });
-          // });
         }
   
         function setSpacebetweenTableCarousel() {
@@ -210,8 +127,6 @@
             }
           });
         }
-  
-        // register the event handlers
         $(document).ready(function() {
           initSwiper();
           initMobileCarousel();
@@ -223,10 +138,11 @@
             }, 500);
           });
         });
-  
-  
-      };
-    });
-  })(define, window);
-  
-  
+ 
+  });
+
+
+
+
+
+}(define, window));
