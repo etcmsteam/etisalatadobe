@@ -48,6 +48,9 @@ public class ProductDetailsItem {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String buttonLink="";
+	
+	private String GreenColor;
+	private String RedColor;
 
 	/**
 	 * @return the theme
@@ -231,5 +234,15 @@ public class ProductDetailsItem {
 	public void setButtonLink(String buttonLink) {
 		this.buttonLink = buttonLink;
 	}
+
+	public String getGreenColor() {
+		return "green";
+	}
+
+	public String getRedColor() {
+		return "red";
+	}
+
+	
 
 }
