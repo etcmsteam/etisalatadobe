@@ -11,43 +11,45 @@ import org.slf4j.LoggerFactory;
 public class ProductDetailsItem {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String theme;
+	private String theme="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String offerText;
+	private String offerText="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String productTitle;
+	private String productTitle="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String productSubTitle;
+	private String productSubTitle="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String productDesc;
+	private String productDesc="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String productPrice;
+	private String productPrice="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String productCurrency;
+	private String productCurrency="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String vatInclude;
+	private String vatInclude="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String moreInfoLabel;
+	private String moreInfoLabel="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String moreInfoDesc;
+	private String moreInfoDesc="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String contract;
+	private String contract="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String buyNowButton;
+	private String buyNowButton="";
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String buttonLink;
+	private String buttonLink="";
+	
+	
 
 	/**
 	 * @return the theme
@@ -231,5 +233,7 @@ public class ProductDetailsItem {
 	public void setButtonLink(String buttonLink) {
 		this.buttonLink = buttonLink;
 	}
+
+	
 
 }
