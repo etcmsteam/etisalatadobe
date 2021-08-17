@@ -1,35 +1,160 @@
-**${properties.mainProductTitle}**<br>
+<div class="container-product-grid ">
+<div class="product-grid-text-section plans more-info-wrapper plansTable0">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-3 ">
+<div class="main-text-section">
+                        <div class="wst-main-headings">
+                            <h4>${properties.mainProductTitle}</h4>
+                        </div>
+                        <div class="main-text-content-wrapper">
+                            <div class="paragraph-styling ul-list-cms">
+                            <div class="p2"><p>${properties.mainProductDesc}</p> </div>
+                            </div>
+                        </div>                        
+						
+                    </div>
+					<div class="table-swiper-button-prev swiper-button-prev swiper-button-black">
 
-### ${properties.mainProductDesc}###
+                        </div>
+                        <div class="table-swiper-button-next swiper-button-next swiper-button-black">
+                        </div>
+</div>
+<div class="col-xs-12 col-md-9 ">
+		  
+            <div class="cmp__bg-cards_product-grid"> 
+			 
+               <div class="row">
+				 
+				   <div class="col-xs-12">
 
-<sly   data-sly-use.productDetailsData="com.etisalat.core.models.ProductDetails"></sly>
+                     <div class="bg-cards related-products">
+					  
+                        <div class="row row-tiles-table ">
+						 
+                           <div class="swiper-container swiper-container-horizontal">
+						 
+                              <div  data-sly-use.productDataList2="com.etisalat.core.models.ProductDetails" data-sly-test="${!productDataList2.productDetailsItems.isEmpty}"
+                           data-sly-list.productItems="${productDataList2.productDetailsItems}" class="swiper-wrapper">
+						   <sly data-sly-test.color="red" />
+							   <sly data-sly-test="${productItems.offerText.empty}" >
+							   <sly data-sly-test.color="green" />
+                                </sly>
+							  <div class="swiper-slide col-xs-12 col-sm-6 col-md-4 swiper-slide-active"
+                                    style="width: 306px;">
+							 <div class="read-more-${color}-btn_bg">
+                                    <div class="tile-table plan-card offer ">
+                                       <div class="tile-card effect__click">
+                                          <div class="tile">
+                                             <div class="tile-card__front">
+                                                <div
+                                                   class="tiles-box content body-standard">
+                                                   <div
+                                                      class="tiles-box-title">
+                                                      <div data-sly-test="${!productItems.offerText.empty}"
+                                                         class="special-offer">
+                                                         ${productItems.offerText}
+                                                      </div>
+                                                      <div class="catagory">
+                                                         ${productItems.productTitle}
+                                                      </div>
+                                                      <h2>${productItems.productSubTitle}</h2>
+                                                   </div>
+                                                   <div class="tiles-box-list">
+                                                      <ul class="featureList">
+                                                         <li>
+                                                            <ul>
+                                                               ${productItems.productDesc @ context="html"}
+                                                            </ul>
+                                                         </li>
+                                                      </ul>
+                                                      <div
+                                                         class="detail-info-wrap detail-info-wrap-pricetag">
+                                                         <div
+                                                            class="detail-price-new">
+                                                            <div
+                                                               class="main-part">
+                                                               <div dir="ltr"
+                                                                  class="from">
+                                                               </div>
+                                                               <div dir="ltr"
+                                                                  class="price">
+                                                                  ${productItems.productPrice}
+                                                               </div>
+                                                               <small>${productItems.productCurrency}/
+                                                               month</small>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <p class="bottom-text">
+                                                         ${productItems.vatInclude}
+                                                      </p>
+                                                      <a data-label="popupN110"
+                                                         class="overlay-link learn-more btn-text mt-5 edit btn-green text-center"
+                                                         title="popupN110">
+                                                      <span
+                                                         class="moreg">${productItems.moreInfoLabel}</span>
+                                                      </a>
+                                                   </div>
+                                                   <div class="smile-points">
+                                                      <span>
+                                                         <center>${productItems.contract}
+                                                         </center>
+                                                      </span>
+                                                   </div>
+                                                   <div class="read-more select-product-from-grid select-product-from-grid-without-close link"
+                                                      data-extra-container=".extra-options-02">
+                                                      <a href="https://www.etisalat.ae/b2bportal/login.html?next=mobile-plans-discovery&amp;ratePlanId=PKBXBFO1BP0000002RD&amp;productId=prod_PKBXBFO1BP0000002RD&amp;selectedFlow=Mobile%20Plans&amp;displayName=Business%20First%20+%20National%20110%20&amp;showRequestCallBack=true&amp;product=7&amp;subject=Mobile_BFP_Online-Exclusive-National110&amp;productName=Business_First_Plus_National_110_Exclusive_Online_Offer"
+                                                         class="cms-button read-more-link"
+                                                         title="National 110">
+                                                      <span> ${productItems.buyNowButton}</span> </a>
+                                                      <a href=""
+                                                         class="b2b-button read-more-link"
+                                                         title="National 110">
+                                                      <span>Buy Now</span>
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+									</div>
+                                    </div>         
+							
+							   </div>
+							  
+                              <div class="table-swiper-scrollbar swiper-scrollbar">
+                                 <div class="swiper-scrollbar-drag"
+                                    style="width: 449.5px;"></div>
+                              </div>
+                           </div>
+						   	
+                        </div>
+						
+                     </div>
+					
+                  </div>
+				 
+               </div>
+			   
+			   </div>
+               <!-- / .container -->
+			  
+            </div>
+			 
 
-<ul data-sly-test="${!productDetailsData.productDetailsItems.isEmpty}"
-                           data-sly-list.navItems="${productDetailsData.productDetailsItems}" class="nav navbar-nav navbar-left">
-                           <li id="dtsecondlevelmenu-${navItemsList.count}">
-                              <a href="${navItems.theme}" class="desktop-menu-link" data-sub-menu="sub-menu-mobile" title="${navItems.productTitle}">${navItems.productDesc @ context="html"}</a>    
+               
+					   
+             <!--   </ul>   --->       
 
-                           </li><br>
- <li>${navItems.theme}</li><br><br>
 
- <li>${navItems.offerText}</li><br><br>
-                         <li>${navItems.productTitle}</li><br><br>
 
-<li>${navItems.productSubTitle}</li><br><br>
 
-<li>${navItems.productPrice}</li><br><br>
+ </div>
 
-<li>${navItems.productCurrency}</li><br><br>
+</div>
 
-<li>${navItems.vatInclude}</li><br><br>
+</div>
 
-<li>${navItems.moreInfoLabel}</li><br><br>
-
-<li>${navItems.moreInfoDesc  @ context="html"}</li><br><br>
-
-<li>${navItems.contract}</li><br><br>
-
-<li>${navItems.buyNowButton}</li><br><br>
-
-<li>${navItems.buttonLink}</li><br><br>
-                        </ul>
+</div>
