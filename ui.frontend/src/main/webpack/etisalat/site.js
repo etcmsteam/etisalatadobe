@@ -9,7 +9,18 @@ $(document).ready(function () {
 
     // Dyanamic year 
     $('.copyright-year').text(new Date().getFullYear());
-  });
+
+    //ETSL -38
+    $(".beigebg-wrapper").hide();
+    $(".teaser-viewall").addClass("sort_asc");
+    $(".teaser-viewall").on("click", function () {
+        $(this).find('span').toggleClass('hidden');
+        $(this).toggleClass(function(){
+            return $(this).is('.sort_asc, .sort_desc') ? 'sort_asc sort_desc' : 'red';
+          })
+        $('.beigebg-wrapper').slideToggle();
+    });
+});
 
 // Nested Accordion View All, View Less Script
 $(".accordion-view").click(function() {
@@ -44,16 +55,3 @@ $(".accordion-view").click(function() {
     }
 
 });
-
-    //ETSL -38
-    $(".beigebg-wrapper").hide();
-    $(".teaser-viewall").addClass("sort_asc");
-    $(".teaser-viewall").on("click", function () {
-        $(this).find('span').toggleClass('hidden');
-        $(this).toggleClass(function(){
-            return $(this).is('.sort_asc, .sort_desc') ? 'sort_asc sort_desc' : 'red';
-          })
-        $('.beigebg-wrapper').slideToggle();
-    });
-});
-
