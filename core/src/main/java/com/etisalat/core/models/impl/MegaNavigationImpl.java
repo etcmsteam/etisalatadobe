@@ -235,7 +235,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 			String styleID = getContainerStyleID(childRes);
 			if (childRes.getResourceType().equals(resourceType)) {
 				MegaFixedNavigationItem fixedNavModel = childRes.adaptTo(MegaFixedNavigationItem.class);
-				if (null != fixedNavModel) {
+				if (null != fixedNavModel) {					
 					subMenuList.add(fixedNavModel);
 				}
 			} else if (childRes.getResourceType().equals("etisalat/components/container")

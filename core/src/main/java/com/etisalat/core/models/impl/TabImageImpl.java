@@ -10,8 +10,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
+import com.etisalat.core.models.LinkModel;
 import com.etisalat.core.models.TabImage;
-import com.etisalat.core.models.TabImageItem;
 
 @Model(adaptables = {Resource.class,SlingHttpServletRequest.class}, 
   adapters = {TabImage.class}, resourceType = {TabImageImpl.RESOURCE_TYPE})
@@ -34,12 +34,12 @@ public class TabImageImpl implements TabImage {
 	 * @param childItem
 	 * @return
 	 */
-	private List<TabImageItem> getItems() {
+	private List<LinkModel> getItems() {
 		Resource imageRes = res.getChild(IMAGE_TAB);
-		List<TabImageItem> itemsList = new ArrayList<>();
+		List<LinkModel> itemsList = new ArrayList<>();
 		if (null != imageRes) {
 			imageRes.listChildren().forEachRemaining(resource -> {
-				TabImageItem imageModel = resource.adaptTo(TabImageItem.class);
+				LinkModel imageModel = resource.adaptTo(LinkModel.class);
 
 				itemsList.add(imageModel);
 			});
@@ -48,7 +48,7 @@ public class TabImageImpl implements TabImage {
 	}
 
 	@Override
-	public List<TabImageItem> getTabImageItems() {
+	public List<LinkModel> getTabImageItems() {
 		return Collections.unmodifiableList(getItems());
 	}
 

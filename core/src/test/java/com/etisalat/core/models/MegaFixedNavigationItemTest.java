@@ -31,15 +31,24 @@ class MegaFixedNavigationItemTest {
 	@Test
 	void testTabImageItems() {		
 		final String expectedTitle = "SampleTest";
+		final String expectedLink = "#personal";
+		final String expectedNavTitle = "Personal";
+		final String expectedHeadingTitle = "Add-ons";
 		Resource resource = context.resourceResolver().getResource("/content/fixednavigation");
 		MegaFixedNavigationItem fixedNav = resource.adaptTo(MegaFixedNavigationItem.class);
 		FixedNavigtaionMultifieldModel item = fixedNav.getFixedItems().get(1);
 		int actual = fixedNav.getFixedItems().size();
 		assertEquals(2, actual);
-		assertEquals("#personal", item.getNavigationLink());
-		assertEquals("Personal", item.getNavigationTitle());
+		
+		fixedNav.setNavTitle(expectedTitle);
+		fixedNav.setFeatureItemExist(false);
+		fixedNav.setFixedItems(fixedNav.getFixedItems());
+		fixedNav.setTitle(expectedHeadingTitle);
+		assertEquals(expectedLink, item.getNavigationLink());
+		assertEquals(expectedNavTitle, item.getNavigationTitle());
 		assertEquals(expectedTitle, fixedNav.getNavTitle());
 		assertEquals(false, fixedNav.isFeatureItemExist());
+		assertEquals(expectedHeadingTitle, fixedNav.getTitle());
 	}
 	
 	@Test

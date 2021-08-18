@@ -1,52 +1,46 @@
 package com.etisalat.core.models;
 
-import org.apache.commons.lang3.StringUtils;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.apache.sling.api.resource.Resource;
-
 import org.junit.jupiter.api.BeforeEach;
-
 import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import com.day.cq.wcm.api.Page;
-
 import io.wcm.testing.mock.aem.junit5.AemContext;
-
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-import junitx.framework.Assert;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(AemContextExtension.class)
-
 class FixedNavigationMultifieldModelTest {
 
-	private FixedNavigtaionMultifieldModel fixedNavigationMultifieldModel;
+	private final AemContext context = new AemContext();
+	
+	private static final String CONTENT_ROOT = "/content";
+	
+	private static final String CONTENT_FIXED_NAV = "/content/fixednavigation/fixedItems/item0";
 
-	private Page page;
-
-	private Resource resource;
-
+	
 	@BeforeEach
-
-	public void setup(AemContext context) throws Exception {
-		page = context.create().page("/content/testPage");
-		resource = context.create().resource(page, "fixedNavigationMultifieldModel", "sling:resourceType",
-				"/etisalat/components/fixednavigation");
-		fixedNavigationMultifieldModel = resource.adaptTo(FixedNavigtaionMultifieldModel.class);
+	public void setup() throws Exception {
+		context.addModelsForClasses(FixedNavigtaionMultifieldModel.class);
+		context.load().json("/com/etisalat/core/models/FixedNavigationTest.json", CONTENT_ROOT);
+		
 	}
 	@Test
-	public void testGetNavigationTitle() {
-		Assert.assertNull(fixedNavigationMultifieldModel.getNavigationTitle());
+	 void testFixedNavigationItems() {
+		final String expectedFixedNavLink = "#overview";
+		final String expectedFixedNavTitle = "Overview";
+		final String expectedFixedNavDesc = "sampledesc";
+		Resource resource = context.resourceResolver().getResource(CONTENT_FIXED_NAV);
+		
+		FixedNavigtaionMultifieldModel item = resource.adaptTo(FixedNavigtaionMultifieldModel.class);
+		item.setNavigationLink(expectedFixedNavLink);
+		assertEquals(expectedFixedNavLink, item.getNavigationLink());
+		item.setNavigationDesc(expectedFixedNavDesc);
+		assertEquals(expectedFixedNavDesc, item.getNavigationDesc());
+		item.setNavigationTitle(expectedFixedNavTitle);
+		assertEquals(expectedFixedNavTitle, item.getNavigationTitle());
 	}
 
-	@Test
-	public void testGetNavigationLnk() {
-		Assert.assertNull(fixedNavigationMultifieldModel.getNavigationLink());
-	}
-
+	
 }
