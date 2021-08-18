@@ -36,15 +36,21 @@ class MegaTeaserModelTest {
 	void testTabImageItems() {
 		final String expectedImagePath = "/content/dam/etisalat/sampletest1.png";
 		final String expectedTitle = "Support";
+		final String expectedPreTitle = "presampletitle";
+	    final String isActionEnabled = "true";
 		Resource resource = context.resourceResolver().getResource(TAB_TEASER_1);
 		MegaTeaserModel teaser = resource.adaptTo(MegaTeaserModel.class);
 		String fileReference = teaser.getFileReference();
 		String title = teaser.getTitle();
 		
+		teaser.setActionsEnabled(isActionEnabled);
+        teaser.setFileReference(expectedImagePath);
+        teaser.setTitle(expectedTitle);
+        teaser.setPretitle(expectedPreTitle);
 		assertEquals(expectedImagePath, fileReference);
 		assertEquals(expectedTitle, title);	
-		assertEquals("presampletitle",teaser.getPretitle());
-		assertEquals("true",teaser.getActionsEnabled());
+		assertEquals(expectedPreTitle,teaser.getPretitle());
+		assertEquals(isActionEnabled,teaser.getActionsEnabled());
 	}
 	
 	@Test

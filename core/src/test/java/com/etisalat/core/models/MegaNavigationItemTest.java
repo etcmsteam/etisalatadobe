@@ -39,14 +39,27 @@ class MegaNavigationItemTest {
 		final String expectedMenuLabel = "MainMenu1";
 		final String expectedMenuLink = "/content/etisalat/ae/en";
 		final String expectedAltText = "MainMenuAltText1";
+		final String expectedXFPath = "/content/experience-fragments/sample";
+		final String expectedUtilityMenuLayout = "fixedmenulist";
+		final String expectedNavImagePath = "/content/dam/etisalat/samplenavimage.jpg";
 
 		Resource resource = context.resourceResolver().getResource(MEGA_NAV_1);
 		MegaNavigationItem item = resource.adaptTo(MegaNavigationItem.class);
 
+		item.setNavigationLabel(expectedMenuLabel);
+		item.setNavigationLinkTo(expectedMenuLink);
+		item.setNavigationAltText(expectedAltText);
+		item.setXfVariationPath(expectedXFPath);
+		item.setNavImagePath(expectedNavImagePath);
+		item.setUtilityMenuLayout(expectedUtilityMenuLayout);
+		
 		assertEquals(expectedMenuLabel, item.getNavigationLabel());
 		assertEquals(expectedMenuLink, item.getNavigationLinkTo());
 		assertEquals(expectedAltText, item.getNavigationAltText());
         assertTrue(item.getSubNavigationList().isEmpty());
+        assertEquals(expectedXFPath, item.getXfVariationPath());
+		assertEquals(expectedUtilityMenuLayout, item.getUtilityMenuLayout());
+		assertEquals(expectedNavImagePath, item.getNavImagePath());
 	}
 
 	@Test

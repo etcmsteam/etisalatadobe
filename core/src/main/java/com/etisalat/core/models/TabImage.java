@@ -8,5 +8,5 @@ public interface TabImage {
 	 * 
 	 * @return a collection of objects representing the tab image items that compose the list.
 	 */
-	List<TabImageItem> getTabImageItems();
+	List<LinkModel> getTabImageItems();
 }

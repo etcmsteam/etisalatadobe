@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import com.etisalat.core.models.LinkModel;
 import com.etisalat.core.models.TabImage;
-import com.etisalat.core.models.TabImageItem;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -44,9 +44,9 @@ public class TabImageImplTest {
 		TabImage tabImage = context.request().adaptTo(TabImage.class);
 		int actual = tabImage.getTabImageItems().size();
 		assertEquals(expectedSize, actual);
-		TabImageItem imageItem = tabImage.getTabImageItems().get(1);
-		assertEquals("Tab2", imageItem.getTabImageName());
-		assertEquals("/content/dam/etisalat/sampletest1.png", imageItem.getTabImagePath());
+		LinkModel imageItem = tabImage.getTabImageItems().get(1);
+		assertEquals("Tab2", imageItem.getLinkText());
+		assertEquals("/content/dam/etisalat/sampletest1.png", imageItem.getLinkUrl());
 	}
 	
 	@Test
