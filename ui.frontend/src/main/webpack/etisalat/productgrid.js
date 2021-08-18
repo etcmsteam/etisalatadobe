@@ -128,16 +128,42 @@
             }
           });
         }
+        function loadMore() {   
+          var swipersize = $('[id^=product] .swiper-slide').length;
+          x=6;
+         
+          $(document).find('[id^=product] .swiper-slide').each(function (index) {
+            if (index >= x){
+              $(this).addClass('hide');
+            }
+
+          });
+                      
+          
+        }
         $(document).ready(function() {
           initSwiper();
           initMobileCarousel();
-          if ($('.swiper-slide').length < 4){
-            $('.pager-arrows').addClass('hide');
-          }
+          $('.main-loader').hide();
+        
+          var isLoadExist = $('.loadmore-btn').length == 1 ? true : false;          
+          var defaultDataCount = $(".loadmore-btn").attr("data-defaultcount") != '' ? $(".loadmore-btn").attr("data-defaultcount") : 6;
+            $(document).find('[id^=product] .swiper-slide').each(function (i) {
+              if (i >= defaultDataCount && isLoadExist) {
+                $(this).addClass('hide');
+              }            
+            });
+          
+          $('.loadmore-btn .btn').on('click', function(e){            
+            $('[id^=product]').find('.swiper-slide').removeClass('hide');
+            $('.loadmore-btn').addClass('hide');
+          });
+        
   
           $('.collapse-tab[data-target="#collapseNumTwo"]').click(function() {
             setTimeout(function() {
               initSwiper();
+              $('.main-loader').hide();
               setSpacebetweenTableCarousel();
             }, 500);
           });
