@@ -1,3 +1,4 @@
+
 //JSON added here as temporarily - creating separated json file causes access denied in AEM
 var deviceDataJSON =
 {
@@ -600,102 +601,6 @@ var trendingDataJSON =
   "lastRecordIndex": 5,
   "success": true
 };
-function getProductCardupdate(data) {
-  var products = data.products;
-  var html = '';
-  var htmlStart = '';
-  var htmlEnd = '';
-  var htmlFinal = '';
-  htmlStart += '<div class="col-xs-12 col-md-9">' +
-    '<section class="cmp__bg-cards_product-grid ">' +
-    '<div class="row">' +
-    '<div class="col-xs-12">' +
-    '<div class="bg-cards related-products keepbtn">' +
-    '<div class="row row-tiles-table ">' +
-    '<div class="swiper-wrapper">' +
-    '<div class="swiper-container swiper-container-horizontal">' +
-    '<div id="productsRow-cat1060019" class="swiper-wrapper">';
-
-  for (var i = 0; i < products.length; i++) {
-    var product = products[i];
-    var classes;
-    if (product.specialOffer) {
-      classes = 'tile-table device-card offer'
-    }
-    html += '<div class="swiper-slide col-xs-12 col-sm-6 col-md-4 swiper-slide-active" style="width: 306px;">' +
-
-      '<div class="read-more-red-btn_bg">' +
-      '<div class="tile-table device-card">' +
-      '<div class="tile-card effect__click">' +
-      '<img class="product-img swiper-lazy swiper-lazy-loaded src="' + product.image + '" alt="device">';
-    '</div>';
-    html += '<div class="tiles-box-title"><div class="catagory">' + product.brand + '</div>' +
-      '<h2>' + product.productName + '</h2>' +
-      '<ul class="colorList">';
-
-    if (product.hasOwnProperty('availableConfgiurations')) {
-      var config = product.availableConfgiurations;
-      for (var j = 0; j < config.length; j++) {
-        if (config[j].type === 'COLOR') {
-          html += '<li style="background-color:' + config[j].value + '">' + config[j].name + '</li>';
-        }
-      }
-    }
-    html += '</ul>' +
-      '</div></div>' +
-      '<div class="tiles-box-list auto">' +
-      '<div class="detail-info-wrap detail-info-wrap-pricetag">' +
-      '<div class="detail-price-new">' +
-      '<div class="main-part">' +
-      '<div dir="ltr" class="from"> From </div>';
-    if (product.discountPrice != '') {
-      html += '<div dir="ltr" class="price">' + product.discountPrice + ' </div>';
-    } else {
-      html += '<div dir="ltr" class="price">' + product.price + ' </div>';
-    }
-
-    html += '<small>AED</small>' +
-      '</div>' +
-      '</div>' +
-      '</div>';
-    if (product.discountPrice != '') {
-      html += '<p class="bottom-text">' +
-        '<span class="before-price-container">was <span class="before-price">' + product.price + ' AED</span></span>' +
-        ' 5% VAT excluded ' +
-        '</p>';
-    }
-    html += '</div>' +
-      '<div class="smile-points">' +
-      'or ' + product.smilesPoints + ' Smiles Points' +
-      '</div>' +
-
-      '<a href="/b2c/eshop/device-configuration?productId=prod960054&amp;catName=Smartphones&amp;listVal=Trending&amp;locale=EN">' +
-      '<div class="read-more select-product-from-grid select-product-from-grid-without-close" data-extra-container=".extra-options-02">' +
-      '<span>BUY NOW</span>' +
-
-      '</div>' +
-      '</a>' +
-
-      '</div>' +
-      '</div>';
-
-  }
-
-  htmlEnd += '</div>' +
-    '</div>' +
-    '</div>' +
-    '<div class="table-swiper-scrollbar swiper-scrollbar" style="display: none;">' +
-    ' <div class="swiper-scrollbar-drag" style="width: 0px;"></div>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</section>' +
-    '</div>';
-  htmlFinal = htmlStart + html + htmlEnd;
-  return htmlFinal;
-}
 
 function isJson(str) {
   try {
@@ -714,6 +619,24 @@ function numberWithCommas(x) {
   return x;
 }
 
+
+function loadMore() {
+  $('#productsRow').removeClass('swiper-wrapper');
+  if ($('#productsRow .swiper-slide').length > 6){
+    $('.load-btn').removeClass('hide');
+    $('#productsRow .swiper-slide').each(function(i){
+      if (i >= 6){
+        $(this).addClass('hide')
+      }
+    });
+
+    $('.load-btn .btn').unbind().on('click', function(e){
+      e.preventDefault();
+      $(this).closest('.content-section').find('.swiper-slide').removeClass('hide');
+      $('.load-btn').addClass('hide');
+    });
+  }
+}
 function getProductCard(data) {
 
   var products = data.products;
@@ -753,11 +676,9 @@ function getProductCard(data) {
       '<div class="tile-card__front">' +
       '<div class="tiles-box content body-standard">' +
       '<div class="product">';
-    if ("@flag" == "Carousal") {
-      html += '<img class="product-img swiper-lazy" src="/b2c/assets/img/loader.gif"  data-src="' + product.image + '" alt="device">';
-    } else {
-      html += '<img class="product-img swiper-lazy" src="' + product.image + '" alt="device">';
-    }
+   
+      html += '<img class="product-img swiper-lazy" src=".\resources\images\loader.gif"  data-src="' + product.image + '" alt="device">';
+   
 
     if (product.onlineOnly == '1') {
       html += '<div class="green-online-exclusive bg-orange with-card">' +
@@ -862,6 +783,10 @@ var htmlTrendingCards = getProductCard(trendingDataJSON);
 
 $('#products_2gdevices').html(htmlCards);
 $('#products_smartlife').html(htmlTrendingCards);
+$( ".load-btn btn" ).click(function() {
+  loadMore();
+});
+
 
 //Dynamic Data commented for future usage
 var params = { "categoryId": "cat580028", "navigationState": "", "No": "0", "Nrpp": "100" };
