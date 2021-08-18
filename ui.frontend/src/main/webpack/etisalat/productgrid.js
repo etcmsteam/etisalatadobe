@@ -8,7 +8,8 @@
             $planTableParent.find('.table-swiper-button-next').addClass('plansRight'+index);
             $planTableParent.find('.table-swiper-button-prev').addClass('plansLeft'+index);
             var $carouselSliderPlansGrid = new Swiper('.plansTable'+index+' .swiper-container', {
-              //clickable: true,
+              touchEventsTarget: "swiper-wrapper",
+              simulateTouch: true,
               scrollbar: $(this).find('.table-swiper-scrollbar'),
               nextButton: '.table-swiper-button-next.plansRight'+index,
               prevButton: '.table-swiper-button-prev.plansLeft'+index,
@@ -39,7 +40,7 @@
           });
           // plans table slider for CMS modules ends
   
-  
+   
   
           $(document).find('.product-grid-text-section.addons').each(function (index) {
             $(this).addClass('addOnsTable'+index);
@@ -130,6 +131,9 @@
         $(document).ready(function() {
           initSwiper();
           initMobileCarousel();
+          if ($('.swiper-slide').length < 4){
+            $('.pager-arrows').addClass('hide');
+          }
   
           $('.collapse-tab[data-target="#collapseNumTwo"]').click(function() {
             setTimeout(function() {
