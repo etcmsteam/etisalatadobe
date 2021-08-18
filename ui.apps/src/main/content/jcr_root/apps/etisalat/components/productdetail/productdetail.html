@@ -1,3 +1,4 @@
+<sly   data-sly-use.productDataList2="com.etisalat.core.models.ProductDetails"></sly>
 <div class="container-product-grid ">
 <div class="product-grid-text-section plans more-info-wrapper plansTable0">
 <div class="container">
@@ -14,10 +15,10 @@
                         </div>                        
 						
                     </div>
-					<div class="table-swiper-button-prev swiper-button-prev swiper-button-black">
+					<div  class="${productDataList2.productDetailsItems.size > 3 ? '' : 'hide'} table-swiper-button-prev swiper-button-prev swiper-button-black">
 
                         </div>
-                        <div class="table-swiper-button-next swiper-button-next swiper-button-black">
+                        <div  class=" ${productDataList2.productDetailsItems.size > 3 ? '' : 'hide'} table-swiper-button-next swiper-button-next swiper-button-black">
                         </div>
 </div>
 <div class="col-xs-12 col-md-9 ">
@@ -34,7 +35,7 @@
 						 
                            <div class="swiper-container swiper-container-horizontal">
 						 
-                              <div  data-sly-use.productDataList2="com.etisalat.core.models.ProductDetails" data-sly-test="${!productDataList2.productDetailsItems.isEmpty}"
+                              <div   data-sly-test="${!productDataList2.productDetailsItems.isEmpty}"
                            data-sly-list.productItems="${productDataList2.productDetailsItems}" class="swiper-wrapper">
 						   
 						       
