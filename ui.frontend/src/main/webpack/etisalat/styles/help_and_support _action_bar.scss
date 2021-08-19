@@ -1,0 +1,210 @@
+.row-context-nav {
+    background-color: $sand-white;
+    position: relative;
+    .spacer {
+        height: 3rem;
+        width: 100%;
+        clear: both;
+        padding: 0;
+        margin: 0;
+    }
+
+    >.container-fluid {
+        background-color: $sand-white;
+    }
+
+    .context-nav-box-wrap {
+        text-align: center;
+        padding: 0 0 2rem;
+        overflow: hidden;
+
+        .swiper-wrapper {
+            -webkit-filter: blur(0);
+
+            .rect-responsive {
+                padding-bottom: 65%;
+            }
+
+            .swiper-slide {
+                width: 66.66666667%;
+            }
+        }
+
+        .context-nav-box {
+            background-color: $white;
+
+            &.content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 10px;
+            }
+
+            &:after {
+                content: " ";
+                background-color: $main-green;
+                width: 100%;
+                height: 6.57%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+
+            a h5 {
+                color: $almost-black;
+            }
+
+            h5 {
+                position: relative;
+                padding-top: 1em;
+                margin-top: 0.5rem;
+            }
+
+            h5:after {
+                content: " ";
+                width: 2.5rem;
+                height: 1px;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, 0);
+                background-color: $main-green;
+            }
+
+            &.hover,
+            &:hover {
+                cursor: pointer;
+                background-color: $main-green;
+
+
+                a h5 {
+                    color: $white;
+                }
+
+                h5:after {
+                    background-color: $white;
+                }
+
+                .icon-area {
+
+                    img,
+                    object,
+                    svg {
+                        .main-stroke {
+                            stroke: $white;
+                        }
+                    }
+                }
+            }
+
+            h5 {
+                height: 3.75rem;
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .icon-area {
+
+                img,
+                object,
+                svg {
+                    height: 3.375rem;
+                    width: auto;
+
+                    .main-stroke {
+                        stroke: $almost-black;
+                    }
+                }
+            }
+
+            .prepaid {
+                background-image: url("../resources/images/prepaid.svg");
+                @include context-nav-img();
+            }
+
+            .postpaid {
+                background-image: url("../resources/images/prepaid visitor.svg");
+                @include context-nav-img();
+            }
+
+            .visitorline {
+                background-image: url("../resources/images/visitor.svg");
+                @include context-nav-img();
+            }
+
+            .roaming {
+                background-image: url("../resources/images/roaming.svg");
+                @include context-nav-img();
+            }
+
+        }
+    }
+}
+
+/* -----------------------------------------
+  02 - sm viewport
+  ----------------------------------------- */
+@include sm {
+    .context-nav-box-wrap {
+        .swiper-wrapper .rect-responsive {
+            padding-bottom: 65% !important;
+        }
+
+        .context-nav-box {
+
+            .prepaid,
+            .postpaid,
+            .visitorline,
+            .roaming {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    .swiper-with-2-slides {
+        .context-nav-box-wrap {
+            .rect-responsive {
+                padding-bottom: 44%;
+            }
+        }
+    }
+}
+
+/* -----------------------------------------
+  03 - md viewport
+  ----------------------------------------- */
+@include md {
+    .context-nav-box-wrap {
+        padding: 0 0 2.25rem;
+
+        .context-nav-box {
+            &.content {}
+
+            .icon-area {
+                img {
+                    height: 2.4rem;
+                }
+            }
+        }
+
+        .swiper-wrapper .rect-responsive {
+            padding-bottom: 100%;
+        }
+    }
+
+    .swiper-with-2-slides {
+        .context-nav-box-wrap {
+            .rect-responsive {
+                padding-bottom: 44%;
+            }
+        }
+    }
+
+    .more-than-three {
+
+        .context-nav-swiper-button-next,
+        .context-nav-swiper-button-prev {
+            display: flex;
+        }
+    }
+}
