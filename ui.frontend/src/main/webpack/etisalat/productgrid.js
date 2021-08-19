@@ -146,9 +146,11 @@
                 }            
               });
             
-            $('.loadmore-btn .btn').on('click', function(e){            
+            $('.loadmore-btn .btn').on('click', function(e){ 
+              window.scrollTo(0,document.body.scrollHeight);           
               $('[id^=product]').find('.swiper-slide').removeClass('hide');
               $('.loadmore-btn').addClass('hide');
+             
             });
           }
   

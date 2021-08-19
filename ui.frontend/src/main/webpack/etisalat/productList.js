@@ -1820,10 +1820,6 @@ function numberWithCommas(x) {
   return x;
 }
 
-
-
-
-
 function getProductCard(data) {
 
   var products = data.products;
@@ -1844,22 +1840,16 @@ function getProductCard(data) {
   }
 
   for (var i = 0; i < products.length; i++) {
-    var product = products[i];
-    if (product.oldPrice != undefined && product.oldPrice > 0) {
-      colorClass = 'read-more-red-btn_bg';     
-    }else {
-      colorClass = 'read-more-green-btn_bg';
-    }
-     // html += '<div class="' + colorClass + '">' ;
+    var product = products[i];   
+   
     if (featuredPosition == i + 1) {
       html += '<div class="swiper-slide col-xs-12 col-sm-6 col-md-4" style="width: 306px;">';
       html += featuredTile.html();
       html += '</div>'
     }
     
-    var classes = 'tile-table device-card';
-    var devType = "@devtype";
-    var urlString = devType === "Bundles" ? 'bundleConfiguration' : 'device-configuration';
+    var classes = 'tile-table device-card';   
+    var urlString = 'device-configuration';
     var redirectUrl = '/b2c/eshop/' + urlString + '?productId=' + product.productId + '&catName=' + "@analyticstitle";
     if (product.oldPrice) {
       classes = 'tile-table device-card offer'
@@ -1965,8 +1955,7 @@ function getProductCard(data) {
       '</div>' +
       '</a>' +
       '</div>' +
-      '</div>' +
-      //'</div>' +
+      '</div>' +      
       '</div>';
   }
 
