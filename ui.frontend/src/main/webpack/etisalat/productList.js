@@ -1041,6 +1041,768 @@ var deviceiPoneDataJSON =
   "lastRecordIndex": 7,
   "success": true
 }
+var smartTVDataJSON = 
+{
+  "filters": [
+    {
+      "name": "Brand",
+      "dimensionName": "product.brand",
+      "dimensionInputType": "checkboxes",
+      "dimensionValues": [
+        {
+          "value": "All",
+          "count": 27,
+          "navigationState": "N=2341957007&Nr=product.language%3Aen-AE",
+          "isSelected": false
+        },
+        {
+          "value": "Lg",
+          "count": 7,
+          "navigationState": "N=2341957007+2467827926&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "2467827926"
+        },
+        {
+          "value": "Samsung",
+          "count": 6,
+          "navigationState": "N=2341957007+943544456&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "943544456"
+        },
+        {
+          "value": "Sony",
+          "count": 9,
+          "navigationState": "N=2341957007+3209142083&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "3209142083"
+        },
+        {
+          "value": "Tcl",
+          "count": 3,
+          "navigationState": "N=2341957007+1080498897&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1080498897"
+        },
+        {
+          "value": "Xiaomi",
+          "count": 2,
+          "navigationState": "N=2341957007+3715217052&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "3715217052"
+        }
+      ],
+      "refinementsCount": 5
+    },
+    {
+      "name": "Colour",
+      "dimensionName": "sku.deviceColorByColorGroup",
+      "dimensionInputType": "checkboxes",
+      "dimensionValues": [
+        {
+          "value": "All",
+          "count": 27,
+          "navigationState": "N=2341957007&Nr=product.language%3Aen-AE",
+          "isSelected": false
+        },
+        {
+          "value": "black",
+          "rgbValue": "#000000",
+          "count": 3,
+          "navigationState": "N=2341957007+1873201718&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1873201718",
+          "categoryId": "#000000"
+        },
+        {
+          "value": "Black",
+          "rgbValue": "#000000",
+          "count": 13,
+          "navigationState": "N=2341957007+878713606&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "878713606",
+          "categoryId": "#000000"
+        },
+        {
+          "value": "Brown",
+          "rgbValue": "#A52A2A",
+          "count": 1,
+          "navigationState": "N=2341957007+158459285&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "158459285",
+          "categoryId": "#A52A2A"
+        },
+        {
+          "value": "Gray",
+          "rgbValue": "#808080",
+          "count": 3,
+          "navigationState": "N=2341957007+1364820648&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1364820648",
+          "categoryId": "#808080"
+        },
+        {
+          "value": "Grey",
+          "rgbValue": "#808080",
+          "count": 4,
+          "navigationState": "N=2341957007+1017028468&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1017028468",
+          "categoryId": "#808080"
+        },
+        {
+          "value": "Silver",
+          "rgbValue": "#C0C0C0",
+          "count": 2,
+          "navigationState": "N=2341957007+2337289165&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "2337289165",
+          "categoryId": "#C0C0C0"
+        },
+        {
+          "value": "White",
+          "rgbValue": "#FFFFFF",
+          "count": 1,
+          "navigationState": "N=2341957007+2824591938&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "2824591938",
+          "categoryId": "#FFFFFF"
+        }
+      ],
+      "refinementsCount": 7
+    },
+    {
+      "name": "Price Range",
+      "dimensionInputType": "slider",
+      "minValue": 1522,
+      "maxValue": 9523,
+      "selectedMinValue": 1522,
+      "selectedMaxValue": 9523,
+      "sliderNavigationState": "N=2341957007&Nr=product.language%3Aen-AE&Nf=sku.listPrice|BTWN",
+      "unitOfMeasure": "AED"
+    }
+  ],
+  "products": [
+    {
+      "productId": "prod1240038",
+      "productName": "4K UHD Series 8 Smart TV TU8000UXZN",
+      "brand": "Samsung",
+      "description": "The power to use easily",
+      "descriptionAr": "The power to use easily",
+      "price": "2145.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/accessories/samsung/samsung-series-8-lcds/55in-tu8000-82uth1-front-black-metal-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "2399.0",
+      "compareId": "prod1240038",
+      "itemId": "bgSku4122150026",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1360021",
+      "productName": "Samsung AU8000 Crystal UHD 4K Smart TV (2021)",
+      "brand": "Samsung",
+      "description": "Vivid crystal color on our slimmest profile",
+      "descriptionAr": "Vivid crystal color on our slimmest profile",
+      "price": "2869.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/samsung/ua-65-au8000-crystal-uhd-4k-smart-tv-2021-65in-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "3099.0",
+      "compareId": "prod1360021",
+      "itemId": "bgSku4122154032",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1240040",
+      "productName": "4K QLED Smart TV Q70TAUXZN",
+      "brand": "Samsung",
+      "description": "Experience the full power of QLED",
+      "descriptionAr": "Experience the full power of QLED",
+      "price": "4999.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/samsung/smart-tvs/q70t-85qte3-smarttv-1-front1-eclipse-silver-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Silver",
+          "value": "#C0C0C0"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "5699.0",
+      "compareId": "prod1240040",
+      "itemId": "bgSku4122150091",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1260120",
+      "productName": "X9500H Series Smart TV",
+      "brand": "Sony",
+      "description": "X9500H Series | Full Array LED | 4K Ultra HD | High Dynamic Range (HDR) | Android Smart TV",
+      "descriptionAr": "X9500H Series | Full Array LED | 4K Ultra HD | High Dynamic Range (HDR) | Android Smart TV",
+      "price": "4199.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/sony-products/sony-smart-tv-kd55x9500h-1-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Glossy Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "4499.0",
+      "compareId": "prod1260120",
+      "itemId": "bgSku4122150643",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1190027",
+      "productName": "55\" 4S Smart TV ELA4374GL",
+      "brand": "Xiaomi",
+      "description": "Smart TV for everyone ",
+      "descriptionAr": "Smart TV for everyone ",
+      "price": "1899.080000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/mi-products/mi-led-tv-55-inch-1-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Metallic Grey",
+          "value": "#808080"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "1999.0",
+      "compareId": "prod1190027",
+      "itemId": "bgSku4122150207",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1230034",
+      "productName": "65\" 4S Smart TV ELA4457RU",
+      "brand": "Xiaomi",
+      "description": "Smart TV for everyone ",
+      "descriptionAr": "Smart TV for everyone ",
+      "price": "2499.080000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/mi-products/mi-led-smart-tv-65-4s-front-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Grey",
+          "value": "#808080"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "2599.0",
+      "compareId": "prod1230034",
+      "itemId": "bgSku4122150213",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1320030",
+      "productName": "X90H Full Array LED 4K UHD (HDR) Smart TV ",
+      "brand": "Sony",
+      "description": "Immerse yourself in Full Array LED contrast and cinematic sound",
+      "descriptionAr": "Immerse yourself in Full Array LED contrast and cinematic sound",
+      "price": "3399.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/sony/sony-x90h-xh90-65-55-inch-black-dark-silver-p1-small.jpg",
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "3499.0",
+      "compareId": "prod1320030",
+      "itemId": "bgSku4122150686",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1360022",
+      "productName": "Samsung AU7000 UHD 4K Smart TV (2021)",
+      "brand": "Samsung",
+      "description": "Open up your smart 4K experience",
+      "descriptionAr": "Open up your smart 4K experience",
+      "price": "2599.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/samsung/ua-55-au7000uxzn-uhd-4k-smart-tv-2021-55in-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "2799.0",
+      "compareId": "prod1360022",
+      "itemId": "bgSku4122154046",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1260118",
+      "productName": "X7500H Series Smart TV",
+      "brand": "Sony",
+      "description": "X7500H Series | 4K HDR Android Smart TV",
+      "descriptionAr": "X7500H Series | 4K HDR Android Smart TV",
+      "price": "2599.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/sony-products/sony-smart-tv-kd55x7500h-1-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Glossy Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "2824.0",
+      "compareId": "prod1260118",
+      "itemId": "bgSku4122150625",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1240042",
+      "productName": "The Serif  4K HDR QLED Smart TV LS01TAUXZN",
+      "brand": "Samsung",
+      "description": "Designed for every place, at every moment, from every angle",
+      "descriptionAr": "Designed for every place, at every moment, from every angle",
+      "price": "4999.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/samsung/smart-tvs/49in-q49tn1-the-serif-smarttv-1-front-white-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "White",
+          "value": "#F3F3F3"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1240042",
+      "itemId": "bgSku4122150880",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1260119",
+      "productName": "4K ULTRA HD HDR, Android Smart TV X8000H",
+      "brand": "Sony",
+      "description": "X8000H Series | 4K HDR Android Smart TV",
+      "descriptionAr": "X8000H Series | 4K HDR Android Smart TV",
+      "price": "2699.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/sony-products/sony-smart-tv-kd55x8000h-1-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Glossy Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "2887.5",
+      "compareId": "prod1260119",
+      "itemId": "bgSku4122150639",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1370022",
+      "productName": "LG UHD 4K TV UP81 Series",
+      "brand": "Lg",
+      "description": "LG UHD 4K TV UP81 Series Cinema Screen Design 4K Active HDR webOS Smart with ThinQ AI",
+      "descriptionAr": "LG UHD 4K TV UP81 Series Cinema Screen Design 4K Active HDR webOS Smart with ThinQ AI",
+      "price": "2499.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/lg/uhd-4k-tv-up81-series-50-55-60-65in-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Dark Brown",
+          "value": "#654321"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1370022",
+      "itemId": "bgSku4122155025",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1370026",
+      "productName": "LG OLED TV B1 Series",
+      "brand": "Lg",
+      "description": "LG OLED TV B1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "descriptionAr": "LG OLED TV B1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "price": "5099.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/lg/oled-tv-b1-series-55-65-77-on-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1370026",
+      "itemId": "bgSku4122155189",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1370024",
+      "productName": "LG OLED TV C1 Series",
+      "brand": "Lg",
+      "description": "LG OLED TV C1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "descriptionAr": "LG OLED TV C1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "price": "9999.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/lg/oled-tv-c1-series-48-55-65-77-on-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1370024",
+      "itemId": "bgSku4122155269",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1370025",
+      "productName": "LG OLED TV A1 Series",
+      "brand": "Lg",
+      "description": "LG OLED TV A1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "descriptionAr": "LG OLED TV A1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "price": "4822.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/lg/oled-tv-a1-series-55-65-on-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1370025",
+      "itemId": "bgSku4122155177",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1370021",
+      "productName": "LG UHD 4K TV UP77 Series",
+      "brand": "Lg",
+      "description": "LG UHD 4K TV UP77 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI",
+      "descriptionAr": "LG UHD 4K TV UP77 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI",
+      "price": "2299.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/lg/uhd-4k-tv-up77-series-70in-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Dark Grey",
+          "value": "#A9A9A9"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1370021",
+      "itemId": "bgSku4122155013",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1370023",
+      "productName": "LG UHD 4K TV UP75 Series",
+      "brand": "Lg",
+      "description": "LG UHD 4K TV UP75 Series  4K Active HDR webOS Smart with ThinQ AI",
+      "descriptionAr": "LG UHD 4K TV UP75 Series  4K Active HDR webOS Smart with ThinQ AI",
+      "price": "2799.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/lg/uhd-4k-tv-up75-series-50-55-65in-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Grey",
+          "value": "#808080"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1370023",
+      "itemId": "bgSku4122155038",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1370027",
+      "productName": "LG OLED TV C1 Series",
+      "brand": "Lg",
+      "description": "LG OLED TV C1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "descriptionAr": "LG OLED TV C1 Series Cinema Screen Design 4K Cinema HDR webOS Smart with ThinQ AI Pixel Dimming",
+      "price": "5999.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/lg/oled-tv-c1-series-48-55-65-77-on-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Silver",
+          "value": "#C0C0C0"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1370027",
+      "itemId": "bgSku4122155221",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1420036",
+      "productName": "X80J Series",
+      "brand": "Sony",
+      "description": "X80J | 4K Ultra HD | High Dynamic Range (HDR) | Smart TV (Google TV)",
+      "descriptionAr": "X80J | 4K Ultra HD | High Dynamic Range (HDR) | Smart TV (Google TV)",
+      "price": "3499.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/sony/bravia-x80j-series-4k-uhd-hdr-smart-tv-black-55in-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1420036",
+      "itemId": "bgSku4122158032",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1440028",
+      "productName": "The Frame Art Mode 4K Smart TV",
+      "brand": "Samsung",
+      "description": "Make your own TV",
+      "descriptionAr": "Make your own TV",
+      "price": "4999.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/samsung/50-55in-the-frame-art-mode-4k-smart-tv-black-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1440028",
+      "itemId": "bgSku4122159020",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1210025",
+      "productName": "4K UHD Android TV X8500G",
+      "brand": "Sony",
+      "description": "Embrace life's brilliant colours",
+      "descriptionAr": "Embrace life's brilliant colours",
+      "price": "2849.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/sony-products/sony-smart-tv-x8500g-4k-uhd-1-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "3199.0",
+      "compareId": "prod1210025",
+      "itemId": "bgSku4122150527",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1210023",
+      "productName": "4K OLED HDR Android TV A8G",
+      "brand": "Sony",
+      "description": "Deep black, true expression ",
+      "descriptionAr": "Deep black, true expression ",
+      "price": "4895.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/sony-products/sony-smart-tv-a8g-oled-55inch-1-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "5499.0",
+      "compareId": "prod1210023",
+      "itemId": "bgSku4122150505",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1210027",
+      "productName": "4K OLED  HDR Android TV A9G",
+      "brand": "Sony",
+      "description": "Mastering shadows and highlights",
+      "descriptionAr": "Mastering shadows and highlights",
+      "price": "8925.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/sony-products/sony-smart-tv-a9g-oled-4k-3-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "11499.0",
+      "compareId": "prod1210027",
+      "itemId": "bgSku4122150554",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1330024",
+      "productName": "TCL TV QLED C715",
+      "brand": "Tcl",
+      "description": "The Exceptional Colours of QLED",
+      "descriptionAr": "The Exceptional Colours of QLED",
+      "price": "2449.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/tcl/ultra-hd-qled-smart-tv-55in-55c715-p-1-small.jpg",
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "2623.95",
+      "compareId": "prod1330024",
+      "itemId": "bgSku4122153044",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1330025",
+      "productName": "TCL TV QLED C815",
+      "brand": "Tcl",
+      "description": "4K QLED Display Beyond Your Imagination",
+      "descriptionAr": "4K QLED Display Beyond Your Imagination",
+      "price": "2849.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smart-monitors-tvs/tcl/ultra-hd-qled-smart-tv-with-onkyo-sound-55in-55c815-p-1-small.jpg",
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "3038.7",
+      "compareId": "prod1330025",
+      "itemId": "bgSku4122153069",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1280027",
+      "productName": "TCL UHD P718",
+      "brand": "Tcl",
+      "description": "TCL UHD ANDROID AL SMART EDGELESS TV WITH HANDSFREE VOICE CONTROL P718",
+      "descriptionAr": "TCL UHD ANDROID AL SMART EDGELESS TV WITH HANDSFREE VOICE CONTROL P718",
+      "price": "1599.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/tcl/55in-tcl-p55718-p1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1280027",
+      "itemId": "bgSku4122153019",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1220022",
+      "productName": "4K UHD Android TV X9500G",
+      "brand": "Sony",
+      "description": "Unlock the world's colours",
+      "descriptionAr": "Unlock the world's colours",
+      "price": "3799.010000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/sony-products/sony-smart-tv-x9500g-4k-uhd-2-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1220022",
+      "itemId": "bgSku4122150531",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    }
+  ],
+  "sortingItems": [
+    {
+      "name": "Popular",
+      "navigationState": "N=2341957007&Nr=product.language%3Aen-AE&Ns=product.isPopular%7C1%7C%7Csku.isPopular%7C1%7C%7Cproduct.displayOrder_cat940018%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
+    },
+    {
+      "name": "New",
+      "navigationState": "N=2341957007&Nr=product.language%3Aen-AE&Ns=product.isNew%7C1%7C%7Csku.isNew%7C1%7C%7Cproduct.displayOrder_cat940018%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
+    },
+    {
+      "name": "Price(Low to High)",
+      "navigationState": "N=2341957007&Nr=product.language%3Aen-AE&Ns=sku.activePrice%7C0%7C%7Cproduct.displayOrder_cat940018%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
+    },
+    {
+      "name": "Price(High to Low)",
+      "navigationState": "N=2341957007&Nr=product.language%3Aen-AE&Ns=sku.activePrice%7C1%7C%7Cproduct.displayOrder_cat940018%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
+    }
+  ],
+  "recordCount": 27,
+  "lastRecordIndex": 27,
+  "success": true,
+  "bannerUrl": "",
+  "categoryTitle": "TV"
+};
 function isJson(str) {
   try {
     JSON.parse(str);
@@ -1088,7 +1850,7 @@ function getProductCard(data) {
     }else {
       colorClass = 'read-more-green-btn_bg';
     }
-      html += '<div class="' + colorClass + '">' ;
+     // html += '<div class="' + colorClass + '">' ;
     if (featuredPosition == i + 1) {
       html += '<div class="swiper-slide col-xs-12 col-sm-6 col-md-4" style="width: 306px;">';
       html += featuredTile.html();
@@ -1204,7 +1966,7 @@ function getProductCard(data) {
       '</a>' +
       '</div>' +
       '</div>' +
-      '</div>' +
+      //'</div>' +
       '</div>';
   }
 
@@ -1215,9 +1977,11 @@ function getProductCard(data) {
 var htmlCards = getProductCard(deviceDataJSON);
 var htmlTrendingCards = getProductCard(trendingDataJSON);
 var htmliPhoneCards = getProductCard(deviceiPoneDataJSON);
+var htmlsmartTVCards = getProductCard(smartTVDataJSON);
 $('#products_2gdevices').html(htmlCards);
 $('#products_smartlife').html(htmlTrendingCards);
 $('#products_iPhone').html(htmliPhoneCards);
+$('#products_smarttv').html(htmlsmartTVCards);
 
 
 
