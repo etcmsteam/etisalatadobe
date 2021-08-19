@@ -1,3 +1,4 @@
+
 //JSON added here as temporarily - creating separated json file causes access denied in AEM
 var deviceDataJSON =
 {
@@ -600,103 +601,446 @@ var trendingDataJSON =
   "lastRecordIndex": 5,
   "success": true
 };
-function getProductCardupdate(data) {
-  var products = data.products;
-  var html = '';
-  var htmlStart = '';
-  var htmlEnd = '';
-  var htmlFinal = '';
-  htmlStart += '<div class="col-xs-12 col-md-9">' +
-    '<section class="cmp__bg-cards_product-grid ">' +
-    '<div class="row">' +
-    '<div class="col-xs-12">' +
-    '<div class="bg-cards related-products keepbtn">' +
-    '<div class="row row-tiles-table ">' +
-    '<div class="swiper-wrapper">' +
-    '<div class="swiper-container swiper-container-horizontal">' +
-    '<div id="productsRow-cat1060019" class="swiper-wrapper">';
-
-  for (var i = 0; i < products.length; i++) {
-    var product = products[i];
-    var classes;
-    if (product.specialOffer) {
-      classes = 'tile-table device-card offer'
-    }
-    html += '<div class="swiper-slide col-xs-12 col-sm-6 col-md-4 swiper-slide-active" style="width: 306px;">' +
-
-      '<div class="read-more-red-btn_bg">' +
-      '<div class="tile-table device-card">' +
-      '<div class="tile-card effect__click">' +
-      '<img class="product-img swiper-lazy swiper-lazy-loaded src="' + product.image + '" alt="device">';
-    '</div>';
-    html += '<div class="tiles-box-title"><div class="catagory">' + product.brand + '</div>' +
-      '<h2>' + product.productName + '</h2>' +
-      '<ul class="colorList">';
-
-    if (product.hasOwnProperty('availableConfgiurations')) {
-      var config = product.availableConfgiurations;
-      for (var j = 0; j < config.length; j++) {
-        if (config[j].type === 'COLOR') {
-          html += '<li style="background-color:' + config[j].value + '">' + config[j].name + '</li>';
+var deviceiPoneDataJSON =
+{
+  "filters": [
+    {
+      "name": "Colour",
+      "dimensionName": "sku.deviceColorByColorGroup",
+      "dimensionInputType": "checkboxes",
+      "dimensionValues": [
+        {
+          "value": "All",
+          "count": 23,
+          "navigationState": "N=3307340096&Nr=product.language%3Aen-AE",
+          "isSelected": false
+        },
+        {
+          "value": "Black",
+          "rgbValue": "#000000",
+          "count": 5,
+          "navigationState": "N=3307340096+878713606&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "878713606",
+          "categoryId": "#000000"
+        },
+        {
+          "value": "Blue",
+          "rgbValue": "#0077be",
+          "count": 4,
+          "navigationState": "N=3307340096+3614498057&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "3614498057",
+          "categoryId": "#0077be"
+        },
+        {
+          "value": "Gold",
+          "rgbValue": "#D4AF37",
+          "count": 2,
+          "navigationState": "N=3307340096+1226392133&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1226392133",
+          "categoryId": "#D4AF37"
+        },
+        {
+          "value": "Green",
+          "rgbValue": "#baded2",
+          "count": 2,
+          "navigationState": "N=3307340096+811282336&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "811282336",
+          "categoryId": "#baded2"
+        },
+        {
+          "value": "Purple",
+          "rgbValue": "#cbb9df",
+          "count": 2,
+          "navigationState": "N=3307340096+2630503475&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "2630503475",
+          "categoryId": "#cbb9df"
+        },
+        {
+          "value": "Red",
+          "rgbValue": "#FF0000",
+          "count": 3,
+          "navigationState": "N=3307340096+3855985062&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "3855985062",
+          "categoryId": "#FF0000"
+        },
+        {
+          "value": "Silver",
+          "rgbValue": "#C0C0C0",
+          "count": 2,
+          "navigationState": "N=3307340096+2337289165&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "2337289165",
+          "categoryId": "#C0C0C0"
+        },
+        {
+          "value": "White",
+          "rgbValue": "#FFFFFF",
+          "count": 3,
+          "navigationState": "N=3307340096+2824591938&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "2824591938",
+          "categoryId": "#FFFFFF"
         }
-      }
+      ],
+      "refinementsCount": 8
+    },
+    {
+      "name": "Storage",
+      "dimensionName": "sku.deviceCapacity",
+      "dimensionInputType": "checkboxes",
+      "dimensionValues": [
+        {
+          "value": "All",
+          "count": 21,
+          "navigationState": "N=3307340096&Nr=product.language%3Aen-AE",
+          "isSelected": false
+        },
+        {
+          "value": "128GB",
+          "count": 7,
+          "navigationState": "N=3307340096+666356214&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "666356214"
+        },
+        {
+          "value": "256GB",
+          "count": 7,
+          "navigationState": "N=3307340096+1595906821&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1595906821"
+        },
+        {
+          "value": "512GB",
+          "count": 2,
+          "navigationState": "N=3307340096+1133827379&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1133827379"
+        },
+        {
+          "value": "64GB",
+          "count": 5,
+          "navigationState": "N=3307340096+3811313122&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "3811313122"
+        }
+      ],
+      "refinementsCount": 4
+    },
+    {
+      "name": "Memory",
+      "dimensionName": "sku.memory",
+      "dimensionInputType": "checkboxes",
+      "dimensionValues": [
+        {
+          "value": "All",
+          "count": 3,
+          "navigationState": "N=3307340096&Nr=product.language%3Aen-AE",
+          "isSelected": false
+        },
+        {
+          "value": "3GB",
+          "count": 1,
+          "navigationState": "N=3307340096+977028346&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "977028346"
+        },
+        {
+          "value": "4GB",
+          "count": 2,
+          "navigationState": "N=3307340096+1512903724&Nr=product.language%3Aen-AE",
+          "isSelected": false,
+          "dimensionValueID": "1512903724"
+        }
+      ],
+      "refinementsCount": 2
+    },
+    {
+      "name": "Price Range",
+      "dimensionInputType": "slider",
+      "minValue": 1618,
+      "maxValue": 4967,
+      "selectedMinValue": 1618,
+      "selectedMaxValue": 4967,
+      "sliderNavigationState": "N=3307340096&Nr=product.language%3Aen-AE&Nf=sku.listPrice|BTWN",
+      "unitOfMeasure": "AED"
     }
-    html += '</ul>' +
-      '</div></div>' +
-      '<div class="tiles-box-list auto">' +
-      '<div class="detail-info-wrap detail-info-wrap-pricetag">' +
-      '<div class="detail-price-new">' +
-      '<div class="main-part">' +
-      '<div dir="ltr" class="from"> From </div>';
-    if (product.discountPrice != '') {
-      html += '<div dir="ltr" class="price">' + product.discountPrice + ' </div>';
-    } else {
-      html += '<div dir="ltr" class="price">' + product.price + ' </div>';
+  ],
+  "products": [
+    {
+      "productId": "prod1260289",
+      "productName": "iPhone 12",
+      "brand": "Apple",
+      "description": "Blast past fast.",
+      "descriptionAr": "Blast past fast.",
+      "price": "2879.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/iphone-12/iphone-12-white-5g-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        },
+        {
+          "type": "COLOR",
+          "name": "Blue",
+          "value": "#154a6e"
+        },
+        {
+          "type": "COLOR",
+          "name": "Green",
+          "value": "#daefd8"
+        },
+        {
+          "type": "COLOR",
+          "name": "Product red",
+          "value": "#FF0000"
+        },
+        {
+          "type": "COLOR",
+          "name": "White",
+          "value": "#F3F3F3"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "3399.0",
+      "compareId": "prod1260289",
+      "itemId": "bgSku3820204737sp",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1260315",
+      "productName": "iPhone 12 Pro Max",
+      "brand": "Apple",
+      "description": "It’s a leap year.",
+      "descriptionAr": "It’s a leap year.",
+      "price": "4109.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/iphone-12-pro-max/iphone-12-pro-max-graphite-p-1-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Gold",
+          "value": "#fdeed7"
+        },
+        {
+          "type": "COLOR",
+          "name": "Graphite",
+          "value": "#4e4d49"
+        },
+        {
+          "type": "COLOR",
+          "name": "Pacific Blue",
+          "value": "#27424d"
+        },
+        {
+          "type": "COLOR",
+          "name": "Silver",
+          "value": "#f2f3ed"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "4699.0",
+      "compareId": "prod1260315",
+      "itemId": "bgSku3820204496mp",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1260290",
+      "productName": "iPhone 12 Pro",
+      "brand": "Apple",
+      "description": "It’s a leap year.",
+      "descriptionAr": "It’s a leap year.",
+      "price": "3669.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/iphone-12-pro-5g/iphone-12-pro-graphite-5g-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Gold",
+          "value": "#fdeed7"
+        },
+        {
+          "type": "COLOR",
+          "name": "Graphite",
+          "value": "#4e4d49"
+        },
+        {
+          "type": "COLOR",
+          "name": "Pacific Blue",
+          "value": "#27424d"
+        },
+        {
+          "type": "COLOR",
+          "name": "Silver",
+          "value": "#f2f3ed"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "4199.0",
+      "compareId": "prod1260290",
+      "itemId": "bgSku3820204412spp",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1260314",
+      "productName": "iPhone 12 Mini",
+      "brand": "Apple",
+      "description": "Blast past fast.",
+      "descriptionAr": "Blast past fast.",
+      "price": "2539.010000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/devices/iphone-12-mini/iphone-12-mini-black-5g-p-1-en-smal.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        },
+        {
+          "type": "COLOR",
+          "name": "Blue",
+          "value": "#154a6e"
+        },
+        {
+          "type": "COLOR",
+          "name": "Green",
+          "value": "#daefd8"
+        },
+        {
+          "type": "COLOR",
+          "name": "White",
+          "value": "#F3F3F3"
+        },
+        {
+          "type": "COLOR",
+          "name": "product red",
+          "value": "#FF0000"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "oldPrice": "2999.0",
+      "compareId": "prod1260314",
+      "itemId": "bgSku3820204423m",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1340043",
+      "productName": "iPhone 12 mini",
+      "brand": "Apple",
+      "description": "Blast past fast.",
+      "descriptionAr": "Blast past fast.",
+      "price": "2999.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smartphones/apple/iphone-12-mini-purple-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Purple",
+          "value": "#CBB9DF"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1340043",
+      "itemId": "bgSku3820204484",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1340044",
+      "productName": "iPhone 12",
+      "brand": "Apple",
+      "description": "Blast past fast.",
+      "descriptionAr": "Blast past fast.",
+      "price": "3399.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/2021/smartphones/apple/iphone-12-purple-p-1-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "Purple",
+          "value": "#CBB9DF"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1340044",
+      "itemId": "bgSku3820205548",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
+    },
+    {
+      "productId": "prod1170134",
+      "productName": "iPhone SE",
+      "brand": "Apple",
+      "description": "Lots to love. Less to spend ",
+      "descriptionAr": "Lots to love. Less to spend ",
+      "price": "1699.000000",
+      "image": "https://www.etisalat.ae/en/system/wst/assets/img/smartphones/apple/iphone-se/iphone-se-black-small.jpg",
+      "availableConfgiurations": [
+        {
+          "type": "COLOR",
+          "name": "(PRODUCT)RED",
+          "value": "#FF0000"
+        },
+        {
+          "type": "COLOR",
+          "name": "Black",
+          "value": "#000000"
+        },
+        {
+          "type": "COLOR",
+          "name": "White",
+          "value": "#F3F3F3"
+        }
+      ],
+      "onlineOnly": "0",
+      "browsable": false,
+      "compareId": "prod1170134",
+      "itemId": "bgSku3820204660",
+      "planSkus": [],
+      "typeOfProduct": "mobileDevices"
     }
-
-    html += '<small>AED</small>' +
-      '</div>' +
-      '</div>' +
-      '</div>';
-    if (product.discountPrice != '') {
-      html += '<p class="bottom-text">' +
-        '<span class="before-price-container">was <span class="before-price">' + product.price + ' AED</span></span>' +
-        ' 5% VAT excluded ' +
-        '</p>';
+  ],
+  "sortingItems": [
+    {
+      "name": "Popular",
+      "navigationState": "N=3307340096&Nr=product.language%3Aen-AE&Ns=product.isPopular%7C1%7C%7Csku.isPopular%7C1%7C%7Cproduct.displayOrder_cat860015%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
+    },
+    {
+      "name": "New",
+      "navigationState": "N=3307340096&Nr=product.language%3Aen-AE&Ns=product.isNew%7C1%7C%7Csku.isNew%7C1%7C%7Cproduct.displayOrder_cat860015%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
+    },
+    {
+      "name": "Price(Low to High)",
+      "navigationState": "N=3307340096&Nr=product.language%3Aen-AE&Ns=sku.activePrice%7C0%7C%7Cproduct.displayOrder_cat860015%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
+    },
+    {
+      "name": "Price(High to Low)",
+      "navigationState": "N=3307340096&Nr=product.language%3Aen-AE&Ns=sku.activePrice%7C1%7C%7Cproduct.displayOrder_cat860015%7C0%7C%7Csku.displayOrder%7C0",
+      "isActive": false,
+      "categoryId": "null"
     }
-    html += '</div>' +
-      '<div class="smile-points">' +
-      'or ' + product.smilesPoints + ' Smiles Points' +
-      '</div>' +
-
-      '<a href="/b2c/eshop/device-configuration?productId=prod960054&amp;catName=Smartphones&amp;listVal=Trending&amp;locale=EN">' +
-      '<div class="read-more select-product-from-grid select-product-from-grid-without-close" data-extra-container=".extra-options-02">' +
-      '<span>BUY NOW</span>' +
-
-      '</div>' +
-      '</a>' +
-
-      '</div>' +
-      '</div>';
-
-  }
-
-  htmlEnd += '</div>' +
-    '</div>' +
-    '</div>' +
-    '<div class="table-swiper-scrollbar swiper-scrollbar" style="display: none;">' +
-    ' <div class="swiper-scrollbar-drag" style="width: 0px;"></div>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</section>' +
-    '</div>';
-  htmlFinal = htmlStart + html + htmlEnd;
-  return htmlFinal;
+  ],
+  "recordCount": 7,
+  "lastRecordIndex": 7,
+  "success": true
 }
-
 function isJson(str) {
   try {
     JSON.parse(str);
@@ -714,6 +1058,10 @@ function numberWithCommas(x) {
   return x;
 }
 
+
+
+
+
 function getProductCard(data) {
 
   var products = data.products;
@@ -723,6 +1071,7 @@ function getProductCard(data) {
   var promoText = 'SPECIAL OFFER ';
   var off = " % OFF";
   var exclusive = "Online Exclusive";
+  var colorClass = '';
   if (window.location.href.indexOf("/ar/") > -1) {
     promoText = ' عرض خاص ';
     off = " % أقل ";
@@ -733,12 +1082,19 @@ function getProductCard(data) {
   }
 
   for (var i = 0; i < products.length; i++) {
+    var product = products[i];
+    if (product.oldPrice != undefined && product.oldPrice > 0) {
+      colorClass = 'read-more-red-btn_bg';     
+    }else {
+      colorClass = 'read-more-green-btn_bg';
+    }
+      html += '<div class="' + colorClass + '">' ;
     if (featuredPosition == i + 1) {
       html += '<div class="swiper-slide col-xs-12 col-sm-6 col-md-4" style="width: 306px;">';
       html += featuredTile.html();
       html += '</div>'
     }
-    var product = products[i];
+    
     var classes = 'tile-table device-card';
     var devType = "@devtype";
     var urlString = devType === "Bundles" ? 'bundleConfiguration' : 'device-configuration';
@@ -753,11 +1109,9 @@ function getProductCard(data) {
       '<div class="tile-card__front">' +
       '<div class="tiles-box content body-standard">' +
       '<div class="product">';
-    if ("@flag" == "Carousal") {
-      html += '<img class="product-img swiper-lazy" src="/b2c/assets/img/loader.gif"  data-src="' + product.image + '" alt="device">';
-    } else {
-      html += '<img class="product-img swiper-lazy" src="' + product.image + '" alt="device">';
-    }
+   
+      html += '<div class="main-loader"></div><img class="product-img swiper-lazy" src="' + product.image + '" alt="device">';
+   
 
     if (product.onlineOnly == '1') {
       html += '<div class="green-online-exclusive bg-orange with-card">' +
@@ -777,7 +1131,7 @@ function getProductCard(data) {
     }
     html += '</div>' +
       '<div class="tiles-box-title">';
-    if (product.oldPrice != undefined && product.oldPrice > 0) {
+    if (product.oldPrice != undefined && product.oldPrice > 0) {     
       html += '<div class="special-offer">' + promoText + Math.floor((product.oldPrice - product.price) / product.oldPrice * 100) + off + '</div>';
     }
 
@@ -850,6 +1204,7 @@ function getProductCard(data) {
       '</a>' +
       '</div>' +
       '</div>' +
+      '</div>' +
       '</div>';
   }
 
@@ -859,9 +1214,14 @@ function getProductCard(data) {
 
 var htmlCards = getProductCard(deviceDataJSON);
 var htmlTrendingCards = getProductCard(trendingDataJSON);
-
+var htmliPhoneCards = getProductCard(deviceiPoneDataJSON);
 $('#products_2gdevices').html(htmlCards);
 $('#products_smartlife').html(htmlTrendingCards);
+$('#products_iPhone').html(htmliPhoneCards);
+
+
+
+
 
 //Dynamic Data commented for future usage
 var params = { "categoryId": "cat580028", "navigationState": "", "No": "0", "Nrpp": "100" };

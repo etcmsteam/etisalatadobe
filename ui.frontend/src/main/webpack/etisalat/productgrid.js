@@ -8,7 +8,8 @@
             $planTableParent.find('.table-swiper-button-next').addClass('plansRight'+index);
             $planTableParent.find('.table-swiper-button-prev').addClass('plansLeft'+index);
             var $carouselSliderPlansGrid = new Swiper('.plansTable'+index+' .swiper-container', {
-              //clickable: true,
+              touchEventsTarget: "swiper-wrapper",
+              simulateTouch: true,
               scrollbar: $(this).find('.table-swiper-scrollbar'),
               nextButton: '.table-swiper-button-next.plansRight'+index,
               prevButton: '.table-swiper-button-prev.plansLeft'+index,
@@ -39,7 +40,7 @@
           });
           // plans table slider for CMS modules ends
   
-  
+   
   
           $(document).find('.product-grid-text-section.addons').each(function (index) {
             $(this).addClass('addOnsTable'+index);
@@ -127,13 +128,42 @@
             }
           });
         }
+        function loadMore() {   
+          var swipersize = $('[id^=product] .swiper-slide').length;
+          x=6;
+         
+          $(document).find('[id^=product] .swiper-slide').each(function (index) {
+            if (index >= x){
+              $(this).addClass('hide');
+            }
+
+          });
+                      
+          
+        }
         $(document).ready(function() {
           initSwiper();
           initMobileCarousel();
+          $('.main-loader').hide();
+        
+          var isLoadExist = $('.loadmore-btn').length == 1 ? true : false;          
+          var defaultDataCount = $(".loadmore-btn").attr("data-defaultcount") != '' ? $(".loadmore-btn").attr("data-defaultcount") : 6;
+            $(document).find('[id^=product] .swiper-slide').each(function (i) {
+              if (i >= defaultDataCount && isLoadExist) {
+                $(this).addClass('hide');
+              }            
+            });
+          
+          $('.loadmore-btn .btn').on('click', function(e){            
+            $('[id^=product]').find('.swiper-slide').removeClass('hide');
+            $('.loadmore-btn').addClass('hide');
+          });
+        
   
           $('.collapse-tab[data-target="#collapseNumTwo"]').click(function() {
             setTimeout(function() {
               initSwiper();
+              $('.main-loader').hide();
               setSpacebetweenTableCarousel();
             }, 500);
           });
