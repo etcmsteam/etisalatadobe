@@ -1826,16 +1826,14 @@ function getProductCard(data) {
   var products = data.products;
   var html = '';
   var featuredTile = $('.product-grid-cms');
-  var featuredPosition = 0;
-  var promoText = 'SPECIAL OFFER ';
-  var off = " % OFF";
-  var exclusive = "Online Exclusive";
-  var colorClass = '';
-  if (window.location.href.indexOf("/ar/") > -1) {
-    promoText = ' عرض خاص ';
-    off = " % أقل ";
-    exclusive = "حصريًا عبر الإنترنت";
-  }
+  var featuredPosition = 0; 
+  
+  var promoText = $('#related-products').attr("data-promoPreText") != '' ? $('#related-products').attr("data-promoPreText") : 'SPECIAL OFFER ';  
+  var off = $('#related-products').attr("data-off") != '' ? $('#related-products').attr("data-off") : '% OFF';
+  var exclusive = $('#related-products').attr("data-exclusive") != '' ? $('#related-products').attr("data-exclusive") : 'Online Exclusive';
+  var browserLang = $('html')[0].lang!='' ? $('html')[0].lang: '';  
+  var urlString = $('#related-products').attr("data-buyNowUrl") != '' ? $('#related-products').attr("data-buyNowUrl") : '';
+  
   if (featuredTile.length) {
     featuredPosition = featuredTile.data('position');
   }
@@ -1850,8 +1848,8 @@ function getProductCard(data) {
     }
     
     var classes = 'tile-table device-card';   
-    var urlString = 'device-configuration';
-    var redirectUrl = '/b2c/eshop/' + urlString + '?productId=' + product.productId + '&catName=' + "@analyticstitle";
+    
+    var redirectUrl =  urlString + '?productId=' + product.productId + '&locale=' + browserLang;
     if (product.oldPrice) {
       classes = 'tile-table device-card offer'
     }
@@ -1900,30 +1898,22 @@ function getProductCard(data) {
         }
       }
     }
+    var buyNowText = $('#related-products').attr("data-buyNowText") != '' ? $('#related-products').attr("data-buyNowText") : 'BUY NOW';
+       
+    if (product.isPreorder) {     
+      buyNowText = $('#related-products').attr("data-preOrderText") != '' ? $('#related-products').attr("data-preOrderText") : 'Pre-order';
+    }
+    var aedText = $('#related-products').attr("data-aedtext") != '' ? $('#related-products').attr("data-aedtext") : ' AED ';
+  
+    var fromText = $('#related-products').attr("data-fromText") != '' ? $('#related-products').attr("data-fromText") : ' From ';
+    
+    var wasText =  $('#related-products').attr("data-wasText") != '' ? $('#related-products').attr("data-wasText") : ' was ';
+    
+    var vatText = $('#related-products').attr("data-vatText") != '' ? $('#related-products').attr("data-vatText") : ' 5% VAT included';
 
-    var buyNowText = "BUY NOW";
-    if (product.isPreorder) {
-      buyNowText = "Pre-order";
-    }
-    var aedText = " AED ";
-    var fromText = " From ";
-    var wasText = " was ";
-    var vatText = " 5% VAT included";
-    var or = "or ";
-    var smilePoints = " Smiles Points"
-    if (window.location.href.indexOf("/ar/") > -1) {
-      //redirectUrl = redirectUrl + '&locale=AR';
-      buyNowText = "اشترِ الآن";
-      if (product.isPreorder) {
-        buyNowText = "اطلبه مسبقًا";
-      }
-      var wasText = " كان ";
-      aedText = " درهم ";
-      fromText = " بدءا من ";
-      vatText = " متضمن 5% ضريبة القيمة المضافة ";
-      or = " أو ";
-      smilePoints = " نقاط بسمات "
-    }
+    var or = $('#related-products').attr("data-or") != '' ? $('#related-products').attr("data-or") : 'or ';
+    var smilePoints = $('#related-products').attr("data-smilePoints") != '' ? $('#related-products').attr("data-smilePoints") : ' Smiles Points';
+  
     html += '</ul>' +
       '</div>' +
       '<div class="tiles-box-list auto">' +
@@ -1943,12 +1933,12 @@ function getProductCard(data) {
 
     html += '<p class="bottom-text">';
     if (product.oldPrice != '' && product.oldPrice > 0) {
-      html += '<span class="before-price-container">' + wasText + ' <span class="before-price">' + parseInt(product.oldPrice).toFixed(2) + aedText + ' </span></span>';
+      html += '<span class="before-price-container">' + wasText + ' <span class="before-price">' + parseInt(product.oldPrice).toFixed(2) + ' '  + aedText + ' </span></span>';
     }
     html += vatText + '</p>';
 
     html += '</div>';
-    html += '<div class="smile-points">' + or + numberWithCommas(parseInt(product.price) * 100) + smilePoints + '</div>' +
+    html += '<div class="smile-points">' + or + ' ' + numberWithCommas(parseInt(product.price) * 100) + ' ' + smilePoints + '</div>' +
       '<a href="' + redirectUrl + '"><div class="read-more select-product-from-grid select-product-from-grid-without-close" data-extra-container=".extra-options-02">' +
       '<span>' + buyNowText + '</span>' +
       '</div></a>' +

@@ -139,7 +139,7 @@
       $('.loadmore-btn .btn').on('click', function (e) {
         $('[id^=product]').find('.swiper-slide').removeClass('hide');
         $('.loadmore-btn').addClass('hide');
-        $('[id^=product]').find('.swiper-slide').animate({ scrollTop: $(document).height() }, "slow");
+        $(document).scrollTop($(document).height());
       });
     }
     $(document).ready(function () {
