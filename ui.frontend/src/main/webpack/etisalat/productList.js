@@ -1933,7 +1933,7 @@ function getProductCard(data) {
 
     html += '<p class="bottom-text">';
     if (product.oldPrice != '' && product.oldPrice > 0) {
-      html += '<span class="before-price-container">' + wasText + ' <span class="before-price">' + parseInt(product.oldPrice).toFixed(2) + aedText + ' </span></span>';
+      html += '<span class="before-price-container">' + wasText + ' <span class="before-price">' + parseInt(product.oldPrice).toFixed(2) + ' '  + aedText + ' </span></span>';
     }
     html += vatText + '</p>';
 
