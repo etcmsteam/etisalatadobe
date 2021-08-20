@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('.hamburger').on('click', function () {
         $(".hamburger").toggleClass("is-active");
         $(".main-menu-mobile").toggleClass("mob-visible");
+        $(".nav-drill").toggleClass("main-menu-slide");
     });
 
 
@@ -15,18 +16,18 @@ $(document).ready(function () {
     $(".teaser-viewall").addClass("sort_asc");
     $(".teaser-viewall").on("click", function () {
         $(this).find('span').toggleClass('hidden');
-        $(this).toggleClass(function(){
+        $(this).toggleClass(function () {
             return $(this).is('.sort_asc, .sort_desc') ? 'sort_asc sort_desc' : 'red';
-          })
+        })
         $('.beigebg-wrapper').slideToggle();
     });
 });
 
 // Nested Accordion View All, View Less Script
-$(".accordion-view").click(function() {
+$(".accordion-view").click(function () {
     if (!$(".more").hasClass('hidden') &&
         $(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function(index) {
+        $(".cmp-viewall").children().each(function (index) {
             var numberOfItems = $('.cmp-viewall').attr('data-items-show');
             if ($(this).hasClass('hidden')) {
                 $(this).addClass('show');
@@ -40,7 +41,7 @@ $(".accordion-view").click(function() {
 
     } else if ($(".more").hasClass('hidden') &&
         !$(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function(index) {
+        $(".cmp-viewall").children().each(function (index) {
             var numberOfItems = $('.cmp-viewall').attr('data-items-show');
             if ((index + 1) > numberOfItems) {
                 $(this).addClass('hidden');
@@ -54,4 +55,18 @@ $(".accordion-view").click(function() {
 
     }
 
+});
+
+
+// sub menu nav slide
+var c = [].slice.call(document.querySelectorAll(".nav-expand"));
+c.forEach(function (a) {
+    a.querySelector(".nav-link").addEventListener("click", function () {
+            a.classList.add("active"),
+                this.classList.contains("search-link") && e(".nav-drill").addClass("search-nav-drill")
+        }),
+        a.querySelector(".nav-back-link").addEventListener("click", function () {
+            a.classList.remove("active"),
+                e(".nav-drill").hasClass("search-nav-drill") && e(".nav-drill").removeClass("search-nav-drill")
+        })
 });
