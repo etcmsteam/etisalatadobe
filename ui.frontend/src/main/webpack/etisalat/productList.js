@@ -1826,22 +1826,14 @@ function getProductCard(data) {
   var products = data.products;
   var html = '';
   var featuredTile = $('.product-grid-cms');
-  var featuredPosition = 0;
-  var promoText = 'SPECIAL OFFER ';
-  promoText = $(".related-products").attr("promoText");
-  var off = " % OFF";
-  off = $(".related-products").attr("off");
-  var exclusive = "Online Exclusive";
-  exclusive = $(".related-products").attr("exclusive");
-  var browserLang = '';
-  browserLang = $('html')[0].lang;
-  var category = '';
-  category = $(".related-products").attr("category");
-  var urlString = 'device-configuration';
-  urlString = $(".related-products").attr("urlString");
+  var featuredPosition = 0; 
   
+  var promoText = $('#related-products').attr("data-promoPreText") != '' ? $('#related-products').attr("data-promoPreText") : 'SPECIAL OFFER ';  
+  var off = $('#related-products').attr("data-off") != '' ? $('#related-products').attr("data-off") : '% OFF';
+  var exclusive = $('#related-products').attr("data-exclusive") != '' ? $('#related-products').attr("data-exclusive") : 'Online Exclusive';
+  var browserLang = $('html')[0].lang!='' ? $('html')[0].lang: '';  
+  var urlString = $('#related-products').attr("data-buyNowUrl") != '' ? $('#related-products').attr("data-buyNowUrl") : '';
   
-
   if (featuredTile.length) {
     featuredPosition = featuredTile.data('position');
   }
@@ -1906,26 +1898,22 @@ function getProductCard(data) {
         }
       }
     }
-
-    var buyNowText = "BUY NOW";
-    buyNowText = $(".related-products").attr("buyNowText");
-    if (product.isPreorder) {
-      buyNowText = "Pre-order";
-      buyNowText = $(".related-products").attr("preOrderText");
+    var buyNowText = $('#related-products').attr("data-buyNowText") != '' ? $('#related-products').attr("data-buyNowText") : 'BUY NOW';
+       
+    if (product.isPreorder) {     
+      buyNowText = $('#related-products').attr("data-preOrderText") != '' ? $('#related-products').attr("data-preOrderText") : 'Pre-order';
     }
-    var aedText = " AED ";
-    aedText = $(".related-products").attr("aedText");
-    var fromText = " From ";
-    fromText = $(".related-products").attr("fromText");
-    var wasText = " was ";
-    wasText = $(".related-products").attr("wasText");
-    var vatText = " 5% VAT included";
-    vatText = $(".related-products").attr("vatText");
-    var or = "or ";
-    or = $(".related-products").attr("or");
-    var smilePoints = " Smiles Points"
-    smilePoints = $(".related-products").attr("smilePoints");
- 
+    var aedText = $('#related-products').attr("data-aedtext") != '' ? $('#related-products').attr("data-aedtext") : ' AED ';
+  
+    var fromText = $('#related-products').attr("data-fromText") != '' ? $('#related-products').attr("data-fromText") : ' From ';
+    
+    var wasText =  $('#related-products').attr("data-wasText") != '' ? $('#related-products').attr("data-wasText") : ' was ';
+    
+    var vatText = $('#related-products').attr("data-vatText") != '' ? $('#related-products').attr("data-vatText") : ' 5% VAT included';
+
+    var or = $('#related-products').attr("data-or") != '' ? $('#related-products').attr("data-or") : 'or ';
+    var smilePoints = $('#related-products').attr("data-smilePoints") != '' ? $('#related-products').attr("data-smilePoints") : ' Smiles Points';
+  
     html += '</ul>' +
       '</div>' +
       '<div class="tiles-box-list auto">' +
@@ -1950,7 +1938,7 @@ function getProductCard(data) {
     html += vatText + '</p>';
 
     html += '</div>';
-    html += '<div class="smile-points">' + or + numberWithCommas(parseInt(product.price) * 100) + smilePoints + '</div>' +
+    html += '<div class="smile-points">' + or + ' ' + numberWithCommas(parseInt(product.price) * 100) + ' ' + smilePoints + '</div>' +
       '<a href="' + redirectUrl + '"><div class="read-more select-product-from-grid select-product-from-grid-without-close" data-extra-container=".extra-options-02">' +
       '<span>' + buyNowText + '</span>' +
       '</div></a>' +
