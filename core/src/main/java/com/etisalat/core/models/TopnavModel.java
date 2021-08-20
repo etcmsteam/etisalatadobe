@@ -1,7 +1,9 @@
 package com.etisalat.core.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -40,11 +42,7 @@ public class TopnavModel {
 	@SlingObject
 	private SlingHttpServletRequest request;
 
-	ArrayList<String> localeList = new ArrayList<>();
-
 	ArrayList<String> localeAdding = new ArrayList<>();
-
-	String ListPath;
 
 	public static final String slash = "/";
 
@@ -63,25 +61,18 @@ public class TopnavModel {
 				Iterator<Page> grandChild = childPages.listChildren();
 				while (grandChild.hasNext()) {
 					Page grandChildPages = grandChild.next();
-					localeList.add(grandChildPages.getLanguage().toString());
-					extracted(childPages);
+					extracted( grandChildPages.getLanguage().toString());
 				}
-
 			}
-
 		}
-
 	}
 
-	private void extracted(Page childPages) {
+	private void extracted(String languageCode) {
 		Resource currentPageRes = currentPage.adaptTo(Resource.class);
 		Page currPage = currentPageRes.adaptTo(Page.class);
 		String currrentPath = currPage.getPath();
-		for (String path : localeList) {
-			ListPath = path.toString();
-		}
 		String newPagePath = currrentPath.replace(slash + currPage.getLanguage().toString() + slash,
-				slash + ListPath + slash);
+				slash + languageCode + slash);
 		LOG.info("new page path{}", newPagePath);
 
 		Resource childRes = resolver.getResource(newPagePath);
@@ -98,5 +89,18 @@ public class TopnavModel {
 	public void setNavigationRoot(String navigationRoot) {
 		this.navigationRoot = navigationRoot;
 	}
+	
+	
+
+	public List<String> getLocaleAdding() {
+		return Collections.unmodifiableList(localeAdding);
+	}
+
+	
+	
+	
+	
+	
+
 
 }
