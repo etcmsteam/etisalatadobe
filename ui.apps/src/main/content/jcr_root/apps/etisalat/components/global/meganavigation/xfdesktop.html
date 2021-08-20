@@ -19,7 +19,7 @@
                              data-sly-call="${xfcontainertemplate.xfDesktopContainerTemplate @ properties=properties,navItems=navItems}">  
                           </sly>
 					</ul>
-				    <ul data-sly-test="${!meganavigation.utilityNavItems.isEmpty}" class="nav navbar-nav nav-right">
+				    <ul data-sly-test="${!meganavigation.utilityNavItems.isEmpty || !meganavigation.accountNavigationItems.isEmpty}" class="nav navbar-nav nav-right">                       
                         <sly data-sly-list.utilityItems="${meganavigation.utilityNavItems}">
 						   <li data-sly-test="${utilityItems.utilityMenuLayout == 'fixedmenulist'}">
 							 <a class="mega-menu-link" data-sub-menu="sub-menu-help">${utilityItems.navigationLabel}</a>
@@ -35,23 +35,21 @@
                               </sly>
                             </sly>	
                          </sly>	
+                          <li data-sly-list.accountItems="${meganavigation.accountNavigationItems}">
+							 <a class="mega-menu-link" data-sub-menu="sub-menu-help">${accountItems.navigationLabel}</a>
+							 <div  data-sly-test="${!accountItems.subNavigationList.isEmpty}" class="sub-account-menu-wrap">
+								<ul data-sly-list.subItems="${accountItems.subNavigationList}" class="sub-account-menu">
+								   <li><a href="${subItems.subNavLinkTo}">${subItems.subNavLabel}</a></li>
+								</ul>
+							 </div>
+						  </li>                         
                           <li data-sly-test="${properties.cart}" class="icon-link">
 							<a href="${properties.cartLink}" class="mega-menu-link"><span class="cart-count hide"></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="replaced-svg">
-								<g fill="none" fill-rule="evenodd" stroke="#242424" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M6.75 20.25c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5.672-1.5 1.5-1.5 1.5.672 1.5 1.5h0zM16.875 20.25c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5.672-1.5 1.5-1.5 1.5.672 1.5 1.5h0zM22.5 2.25L19.261 2.25 15.527 18.75 5.25 18.75"></path>
-									<path d="M15.938 16.504L4.164 16.5 1.5 8.25 17.813 8.25"></path>
-								</g>
-								</svg>
+								<img src="${properties.cartImage}"/>
 							</a>
                           </li>
                            <li data-sly-test="${properties.search}" class="icon-link search-link-cms">
-							<a class="mega-menu-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="replaced-svg">
-								<g fill="none" fill-rule="evenodd" stroke="#242424" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M13.861 13.861L22.5 22.5M15.983 8.741c0 4-3.242 7.242-7.242 7.242-3.999 0-7.241-3.242-7.241-7.242C1.5 4.742 4.742 1.5 8.741 1.5c4 0 7.242 3.242 7.242 7.241h0z"> 
-									</path>
-								</g>
-							  </svg>
-							</a>
+							<a class="mega-menu-link"><img src="${properties.searchIconImage}"/></a>							
 						   </li>						 
 				     </ul>                      		  
 		          </div>
@@ -62,12 +60,8 @@
 						<span class="line"></span> 
 					</div>
 					<div data-sly-test="${properties.cart}" class="icon-link mobile-view shopping-cart">
-						<a href="/b2c/eshop/shopping-cart" class="mega-menu-link"><span class="cart-count hide"></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="replaced-svg">
-									<g fill="none" fill-rule="evenodd" stroke="#242424" stroke-linecap="round" stroke-linejoin="round">
-										<path d="M6.75 20.25c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5.672-1.5 1.5-1.5 1.5.672 1.5 1.5h0zM16.875 20.25c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5.672-1.5 1.5-1.5 1.5.672 1.5 1.5h0zM22.5 2.25L19.261 2.25 15.527 18.75 5.25 18.75"></path>
-										<path d="M15.938 16.504L4.164 16.5 1.5 8.25 17.813 8.25"></path>
-									</g>
-						  </svg>
+						<a href="${properties.cartLink}" class="mega-menu-link"><span class="cart-count hide"></span>
+						  <img src="${properties.cartImage}"/>
 						</a>
 					</div>
 		     </div>
