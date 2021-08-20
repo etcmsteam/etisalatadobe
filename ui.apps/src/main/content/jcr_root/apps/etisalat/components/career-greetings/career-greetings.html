@@ -16,7 +16,7 @@
 
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
 <div data-sly-use.careerGreetings="com.etisalat.core.models.CareerGreetings">
-  <sly data-sly-call="${templates.placeholder @ isEmpty = !careerGreetings.image && careerGreetings.cover}"></sly>
+  <sly data-sly-call="${templates.placeholder @ isEmpty = !careerGreetings.image && !careerGreetings.cover && !careerGreetings.description}"></sly>
 
 
 
@@ -25,8 +25,8 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-ms-5 col-sm-6 col-md-6 col-lg-6">
-            <div class="career-greetings-cover">
-              <div class="career-greetings-photo">
+            <div data-sly-test = "${careerGreetings.cover && careerGreetings.cover.imgUrl}" class="career-greetings-cover">
+              <div data-sly-test = "${careerGreetings.image && careerGreetings.image.imgUrl}" class="career-greetings-photo">
                 <img src=" ${careerGreetings.image.imgUrl}" alt="${careerGreetings.image.altText}">
               </div>
               <img src="${careerGreetings.cover.imgUrl}" alt="${careerGreetings.cover.altText}">
@@ -38,7 +38,7 @@
               <div class="col-xs-12">
                 <p class="heading-mini"> ${careerGreetings.preTitle}</p>
                 <h4>${careerGreetings.title}</h4>
-                  ${careerGreetings.description @ context='html'}
+                ${careerGreetings.description @ context='html'}
 
                 <!-- Got in their HTML. Need to find what is the functionality.
                 <div class="ceo-group">
