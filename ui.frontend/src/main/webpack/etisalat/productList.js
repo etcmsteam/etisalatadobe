@@ -1803,6 +1803,7 @@ var smartTVDataJSON =
   "bannerUrl": "",
   "categoryTitle": "TV"
 };
+
 function isJson(str) {
   try {
     JSON.parse(str);
@@ -1963,13 +1964,16 @@ function getProductCard(data) {
 
 }
 
+//With Slider
 var htmlCards = getProductCard(deviceDataJSON);
 var htmlTrendingCards = getProductCard(trendingDataJSON);
-var htmliPhoneCards = getProductCard(deviceiPoneDataJSON);
+//var htmliPhoneCards = getProductCard(deviceiPoneDataJSON);
+
+//With LoadMore button
 var htmlsmartTVCards = getProductCard(smartTVDataJSON);
 $('#products_2gdevices').html(htmlCards);
 $('#products_smartlife').html(htmlTrendingCards);
-$('#products_iPhone').html(htmliPhoneCards);
+//$('#products_iPhone').html(htmliPhoneCards);
 $('#products_smarttv').html(htmlsmartTVCards);
 
 

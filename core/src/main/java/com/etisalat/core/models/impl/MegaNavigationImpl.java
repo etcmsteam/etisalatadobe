@@ -53,6 +53,8 @@ public class MegaNavigationImpl implements MegaNavigation {
 
 	private static final String SUB_NAVIGATION_ITEMS = "subNavItems";
 	
+	private static final String MYACCOUNT_LINKS = "accountLinks";
+	
 	private static final String CQ_RESPONSIVE_NODE = "cq:responsive";
 	
 	private static final String PROPERTY_LINK = "link";
@@ -359,6 +361,12 @@ public class MegaNavigationImpl implements MegaNavigation {
 	@Override
 	public List<MegaNavigationItem> getMegaContainerItems() {
 		return Collections.unmodifiableList(getXFContainerMenuListItems(CONTAINER_ITEMS));
+	}
+
+
+	@Override
+	public List<MegaNavigationItem> getAccountNavigationItems() {
+		return Collections.unmodifiableList(getNavigationItems(MYACCOUNT_LINKS));
 	}
 
 }

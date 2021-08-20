@@ -72,10 +72,6 @@
     }
 }
 
-.main-mega-menu-desktop .mega-menu-navbar-default .mega-menu-navbar {
-    border: 0;
-    margin-bottom: 0
-}
 
 @media (min-width:992px) {
     .main-mega-menu-desktop .mega-menu-navbar-default .logo-container {
@@ -118,13 +114,13 @@
     }
 }
 
-.main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a svg {
+.main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a img {
     width: 86px;
     height: auto
 }
 
 @media (min-width:992px) {
-    .main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a svg {
+    .main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a img {
         width: 140px;
         transition: all .25s ease-in-out
     }
@@ -527,15 +523,6 @@
     border-radius: 0 0 8px 8px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
     overflow: hidden
-}
-
-.sub-menu-wrap.mega-dropdown .sub-menu {
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    border-top: 0;
-    padding: 2rem;
-    margin-bottom: 0
 }
 
 @media (max-width:1247px) {
@@ -1444,6 +1431,16 @@
 .main-mega-menu-desktop .mega-menu-navbar-default .mega-menu-navbar {
     border: 0;
     margin-bottom: 0;
+    margin: 0 auto;
+    width: 1224px;
+
+    @include sm {
+        width: 100%;
+    }
+
+    @include md {
+        width: 100%;
+    }
 }
 
 @media (min-width: 992px) {
@@ -1482,13 +1479,13 @@
     }
 }
 
-.main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a svg {
+.main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a img {
     width: 86px;
     height: auto;
 }
 
 @media (min-width: 992px) {
-    .main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a svg {
+    .main-mega-menu-desktop .mega-menu-navbar-default .logo-container .navbar-header a img {
         width: 140px;
         transition: all 0.25s ease-in-out;
     }
@@ -1842,15 +1839,6 @@
     overflow: hidden;
 }
 
-.sub-menu-wrap.mega-dropdown .sub-menu {
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    border-top: 0;
-    padding: 2rem;
-    margin-bottom: 0px;
-}
-
 .sub-menu-wrap .menu-items-wrapper {
     flex: 2 1 auto;
     padding: 0 .5rem;
@@ -2194,8 +2182,13 @@
     flex-direction: column;
 }
 
+// .nav-items {
+//     flex: 1 1 auto;
+//     margin-bottom: 0;
+// }
+
 .nav-items {
-    flex: 1 1 auto;
+
     margin-bottom: 0;
 }
 
@@ -2917,6 +2910,10 @@
 
 .mobile-view.shopping-cart {
     position: relative;
+
+    @include md {
+        margin-right: 1rem;
+    }
 }
 
 .mobile-view.shopping-cart .mega-menu-link .cart-count {
@@ -2936,4 +2933,128 @@
     font-weight: 700;
     font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
     font-size: 10px;
+}
+
+
+.sub-menu-wrap.mega-dropdown.with-single .menu-promotion-wrapper .tiles-wrapper {
+    min-height: 325px
+}
+
+.sub-menu-wrap.mega-dropdown.with-two .menu-promotion-wrapper .tiles-wrapper {
+    min-height: 277px
+}
+
+.sub-menu-wrap.mega-dropdown.with-two .menu-items-wrapper,
+.sub-menu-wrap.mega-dropdown.with-two .menu-promotion-wrapper {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: auto;
+    max-width: 50%
+}
+
+.sub-menu-wrap.mega-dropdown.with-two .menu-promotion-wrapper {
+    margin: 1.5rem 0;
+    margin-right: 1.5rem
+}
+
+.sub-menu-wrap.mega-dropdown.with-two .tiles-wrapper .tile {
+    margin-left: 1rem
+}
+
+.sub-menu-wrap.mega-dropdown.with-two .tiles-wrapper .tile .tile-content-wrapp,
+.sub-menu-wrap.mega-dropdown.with-two .tiles-wrapper .tile div.cover {
+    border-radius: 8px
+}
+
+.sub-menu-wrap.mega-dropdown.with-three .menu-items-wrapper,
+.sub-menu-wrap.mega-dropdown.with-three .menu-promotion-wrapper {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: auto;
+    max-width: 50%
+}
+
+.sub-menu-wrap.mega-dropdown.with-three .menu-top {
+    display: -ms-flexbox;
+    display: flex
+}
+
+.sub-menu-wrap.mega-dropdown.with-three .tiles-wrapper .tile .tile-content-wrapp,
+.sub-menu-wrap.mega-dropdown.with-three .tiles-wrapper .tile div.cover {
+    border-radius: 4px
+}
+
+.sub-menu-wrap.mega-dropdown.with-six .menu-items-wrapper,
+.sub-menu-wrap.mega-dropdown.with-six .menu-promotion-wrapper {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: auto;
+    max-width: 50%
+}
+
+.sub-menu-wrap.mega-dropdown.with-six .menu-top {
+    display: -ms-flexbox;
+    display: flex
+}
+
+.sub-menu-wrap.mega-dropdown.with-six .tiles-wrapper .tile .tile-content-wrapp,
+.sub-menu-wrap.mega-dropdown.with-six .tiles-wrapper .tile div.cover {
+    border-radius: 4px
+}
+
+.main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover a+.sub-menu-wrap.mega-dropdown.with-six,
+.main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover a+.sub-menu-wrap.mega-dropdown.with-three {
+    display: block !important
+}
+
+.main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover a+.sub-menu-wrap,
+.main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover a+.sub-menu-wrap.mega-dropdown.with-single,
+.main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover a+.sub-menu-wrap.mega-dropdown.with-two {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.sub-menu-wrap.mega-dropdown {
+    display: none;
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+    overflow: hidden;
+}
+
+.sub-menu-wrap {
+    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    position: absolute;
+    display: none;
+    left: 0;
+    width: 100%;
+    text-transform: none;
+}
+
+.main-menu-slide {
+    transform: translateX(0%);
+}
+
+.nav-footer-wrapper:first-child {
+    margin-top: 2rem;
+}
+.nav-footer-inline-wrapper .nav-footer-wrapper:first-child {
+    min-height: 229px;
+    max-height: 229px;
+}
+.nav-footer-wrapper:first-child .nav-footer {
+    display: block;
+    padding: 0;
+}
+.nav-link-arrow{
+    width: 12px;
+    height: 12px;
+}
+.main-menu-mobile.etisalat-carrier .nav-footer-wrapper .nav-footer {
+    background-color: #f7f8f4 !important;
+}
+
+.main-menu-mobile .nav-footer-inline-wrapper{
+    margin-left: -15px;
+    margin-right: -15px;
 }

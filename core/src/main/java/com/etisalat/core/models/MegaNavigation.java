@@ -45,4 +45,10 @@ public interface MegaNavigation {
 	 */
 	List<MegaNavigationItem> getMegaContainerItems();
 	
+	/**
+	 * 
+	 * @return a collection of objects representing the my account navigation items that compose the list.
+	 */
+	List<MegaNavigationItem> getAccountNavigationItems();
+	
 }

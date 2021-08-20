@@ -1,12 +1,37 @@
-<strong data-sly-test="${wcmmode.edit}">Tile Component</strong>
 <sly data-sly-use.tileModel="com.etisalat.core.models.TilesModelItem"></sly>
-<ul data-sly-list.items="${tileModel.tileList}">
-${tileModel.title}
-   <li>
-    ${items.title}
-    ${items.tiletitle}
-    <img src=${items.fileReference}>
-    ${items.text}
-<a href="${items.link}">${items.ctatext}</a>
-   </li>
-</ul>
+<div class="tile-boxes-section four-slides with-bg t-b-slider0">
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12">
+            <div class="tile-boxes-title-wrap">
+               <h2>${tileModel.title}</h2>
+            </div>
+         </div>
+      </div>
+      <div class="swiper-container swiper-container-horizontal card-shadow">
+         <div class="swiper-wrapper" data-sly-list.items="${tileModel.tileList}">
+            <div class="swiper-slide">
+               <div class="tile-boxes-image-wrapper">
+                  <div class="cover">
+                  <img src="${items.fileReference}">
+                  </div>
+               </div>
+               <div class="tile-box-body">
+                  <div class="tile-boxes-title-small">
+                     <h3>${items.tiletitle}</h3>
+                  </div>
+                  <div class="tile-box-description">
+                     ${items.text @ context='html'}
+                  </div>
+                  <div>${items.startDate }/div>
+                  <div class="learn-more-wrap">
+				  <a href="${items.link}" class="btn-text btn-green learn-more" title="Learn More">${items.ctatext}</a></div>
+               </div>
+            </div>
+         </div>
+         <div class="scrollbar swiper-scrollbar">
+            <div class="swiper-scrollbar-drag" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms; width: 956.175px;"></div>
+         </div>
+      </div>
+   </div>
+</div>
