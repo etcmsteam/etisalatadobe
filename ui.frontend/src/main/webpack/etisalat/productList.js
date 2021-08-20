@@ -1828,14 +1828,20 @@ function getProductCard(data) {
   var featuredTile = $('.product-grid-cms');
   var featuredPosition = 0;
   var promoText = 'SPECIAL OFFER ';
+  promoText = $(".related-products").attr("promoText");
   var off = " % OFF";
+  off = $(".related-products").attr("off");
   var exclusive = "Online Exclusive";
-  var colorClass = '';
-  if (window.location.href.indexOf("/ar/") > -1) {
-    promoText = ' عرض خاص ';
-    off = " % أقل ";
-    exclusive = "حصريًا عبر الإنترنت";
-  }
+  exclusive = $(".related-products").attr("exclusive");
+  var browserLang = '';
+  browserLang = $('html')[0].lang;
+  var category = '';
+  category = $(".related-products").attr("category");
+  var urlString = 'device-configuration';
+  urlString = $(".related-products").attr("urlString");
+  
+  
+
   if (featuredTile.length) {
     featuredPosition = featuredTile.data('position');
   }
@@ -1850,8 +1856,8 @@ function getProductCard(data) {
     }
     
     var classes = 'tile-table device-card';   
-    var urlString = 'device-configuration';
-    var redirectUrl = '/b2c/eshop/' + urlString + '?productId=' + product.productId + '&catName=' + "@analyticstitle";
+    
+    var redirectUrl =  urlString + '?productId=' + product.productId + '&locale=' + browserLang;
     if (product.oldPrice) {
       classes = 'tile-table device-card offer'
     }
@@ -1902,28 +1908,24 @@ function getProductCard(data) {
     }
 
     var buyNowText = "BUY NOW";
+    buyNowText = $(".related-products").attr("buyNowText");
     if (product.isPreorder) {
       buyNowText = "Pre-order";
+      buyNowText = $(".related-products").attr("preOrderText");
     }
     var aedText = " AED ";
+    aedText = $(".related-products").attr("aedText");
     var fromText = " From ";
+    fromText = $(".related-products").attr("fromText");
     var wasText = " was ";
+    wasText = $(".related-products").attr("wasText");
     var vatText = " 5% VAT included";
+    vatText = $(".related-products").attr("vatText");
     var or = "or ";
+    or = $(".related-products").attr("or");
     var smilePoints = " Smiles Points"
-    if (window.location.href.indexOf("/ar/") > -1) {
-      //redirectUrl = redirectUrl + '&locale=AR';
-      buyNowText = "اشترِ الآن";
-      if (product.isPreorder) {
-        buyNowText = "اطلبه مسبقًا";
-      }
-      var wasText = " كان ";
-      aedText = " درهم ";
-      fromText = " بدءا من ";
-      vatText = " متضمن 5% ضريبة القيمة المضافة ";
-      or = " أو ";
-      smilePoints = " نقاط بسمات "
-    }
+    smilePoints = $(".related-products").attr("smilePoints");
+ 
     html += '</ul>' +
       '</div>' +
       '<div class="tiles-box-list auto">' +
