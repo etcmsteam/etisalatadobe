@@ -2,7 +2,7 @@
     width: 18px;
     height: 18px;
     background-color: #fc0;
-    color: #353738;
+    color: $cart-count-black;
     border-radius: 50%;
     line-height: 18px;
     position: absolute;
@@ -13,7 +13,7 @@
     z-index: 99;
     letter-spacing: 0;
     font-weight: 700;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    @include font-family-lato();
     font-size: 10px
 }
 
@@ -57,7 +57,7 @@
     position: fixed;
     height: 56px;
     width: 100%;
-    background-color: #fff;
+    background-color: $white;
     text-transform: uppercase;
     border: none;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .15);
@@ -127,7 +127,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-items {
-    font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+    @include font-family-Neotech();
     display: -ms-flexbox;
     display: flex;
     -ms-flex: 1 1 0px;
@@ -154,7 +154,7 @@
     padding-right: 16px;
     padding-left: 16px;
     transition: all .25s ease-in-out;
-    color: #6b6b6b;
+    color: $gray-fill;
     cursor: pointer;
     font-size: 1rem
 }
@@ -169,7 +169,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-items .nav.navbar-nav>li>a:hover {
-    color: #6b6b6b
+    color: $gray-fill
 }
 
 @media (-ms-high-contrast:none) {
@@ -192,7 +192,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-items .nav.navbar-nav>li.active>a {
-    color: #719e19;
+    color: $main-green;
     background-color: transparent
 }
 
@@ -211,7 +211,7 @@
     content: "";
     width: 1px;
     height: 35px;
-    border: 1px solid #edeee6;
+    border: 1px solid $slight-gray;
     position: absolute;
     top: 28px;
     z-index: 2
@@ -246,7 +246,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover>a {
-    color: #719e19 !important
+    color: $main-green !important
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover a+.sub-menu-wrap,
@@ -262,7 +262,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover:after {
-    border-bottom: 3px solid #719e19
+    border-bottom: 3px solid $main-green
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover .sub-account-menu-wrap {
@@ -276,15 +276,15 @@
 .main-mega-menu-desktop .sub-account-menu-wrap {
     position: absolute;
     display: none;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif
+   @include font-family-lato();
 }
 
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu {
-    background: #fff;
+    background: $white;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
     min-width: 254px;
-    border-top: 4px solid #719e19;
+    border-top: 4px solid $main-green;
     padding: .8rem 1.5rem;
     padding-top: 27px;
     padding-bottom: 2rem;
@@ -304,7 +304,7 @@
     -ms-flex-pack: left;
     justify-content: left;
     display: block;
-    color: #353738;
+    color: $cart-count-black;
     height: auto !important;
     line-height: 1.43 !important;
     letter-spacing: .5px;
@@ -314,7 +314,7 @@
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu li.active a,
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu li a:focus,
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu li a:hover {
-    color: #719e19
+    color: $main-green
 }
 
 .main-mega-menu-desktop .hamburger {
@@ -330,7 +330,7 @@
 .main-mega-menu-desktop .hamburger .line {
     width: 20px;
     height: 1px;
-    background-color: #2b2e2c;
+    background-color: $moonlight-sand;
     display: block;
     margin: 6px auto;
     transition: all .3s ease-in-out
@@ -419,7 +419,7 @@
     }
 
     .nav-item .menu-brand-wrapper {
-        background-color: #fbfbfb
+        background-color: $white-gray;
     }
 }
 
@@ -519,7 +519,7 @@
 
 .sub-menu-wrap.mega-dropdown {
     display: none;
-    background: #fff;
+    background: $white;
     border-radius: 0 0 8px 8px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
     overflow: hidden
@@ -562,7 +562,7 @@
 .sub-menu-wrap .menu-items-footer .sub-menu {
     max-width: 100%;
     padding: 0;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid $sub-menu-gray;
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li {
@@ -575,7 +575,7 @@
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li a {
-    color: #9fa0a1;
+    color: $list-gray;
     text-transform: uppercase;
     letter-spacing: 1.6px;
     font-size: .75rem;
@@ -587,7 +587,7 @@
     font-size: 1.25rem;
     margin-bottom: 1rem;
     line-height: 1.2;
-    color: #353738;
+    color: $cart-count-black;
 }
 
 .sub-menu-wrap .sub-menu li.sub-menu-heading a {
@@ -684,7 +684,7 @@
 
 
 .sub-menu-wrap {
-    font-family: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
+    @include font-family-lato();
     position: absolute;
     display: none;
     left: 0;
@@ -701,12 +701,12 @@
 }
 
 .sub-menu-wrap .sub-menu {
-    background: #fff;
+    background: $white;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     min-width: 170px;
     max-width: 224px;
-    border-top: 3px solid #719e19;
+    border-top: 3px solid $main-green;
     padding: 0 1.5rem;
 }
 
@@ -727,18 +727,18 @@
     font-size: .875rem;
     justify-content: left;
     display: block;
-    color: #353738;
+    color: $cart-count-black;
     line-height: 1.43;
     letter-spacing: 0.5px;
 }
 
 .sub-menu-wrap .sub-menu li a:hover,
 .sub-menu-wrap .sub-menu li a:focus {
-    color: #719e19;
+    color: $main-green;
 }
 
 .sub-menu-wrap .sub-menu li.active a {
-    color: #719e19;
+    color: $main-green;
 }
 
 .sub-menu-wrap .sub-menu li.sub-menu-heading {
@@ -746,7 +746,7 @@
     font-size: 1.25rem;
     margin-bottom: 1rem;
     line-height: 1.2;
-    color: #353738;
+    color: $cart-count-black;
 }
 
 .sub-menu-wrap .sub-menu li.sub-menu-heading a {
@@ -760,7 +760,7 @@
 .sub-menu-wrap .sub-menu li p {
     font-size: .75rem;
     font-weight: normal;
-    color: #848789;
+    color: $steel-grey;
     line-height: 1.33;
     margin: 0;
 }
@@ -776,7 +776,7 @@
 
 .sub-menu-wrap.mega-dropdown {
     display: none;
-    background: #fff;
+    background: $white;
     border-radius: 0 0 8px 8px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -810,7 +810,7 @@
 .sub-menu-wrap .menu-items-footer .sub-menu {
     max-width: 100%;
     padding: 0;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid $sub-menu-gray;
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li {
@@ -823,7 +823,7 @@
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li a {
-    color: #9fa0a1;
+    color: $list-gray;
     text-transform: uppercase;
     letter-spacing: 1.6px;
     font-size: .75rem;
@@ -838,13 +838,13 @@
 
 .sub-menu-wrap .menu-promotion-wrapper.support {
     padding: 2rem 1.5rem;
-    background-color: #f7f8f4;
+    background-color: $sand-white-50;
     min-height: 325px;
 }
 
 .sub-menu-wrap .menu-promotion-wrapper.support .sub-menu-heading {
     font-weight: bold;
-    color: #353738;
+    color: $cart-count-black;
     font-size: 1.25rem;
     margin-bottom: .5rem;
     line-height: 1.2;
@@ -853,7 +853,7 @@
 .sub-menu-wrap .menu-promotion-wrapper.support p {
     font-size: .75rem;
     font-weight: normal;
-    color: #353738;
+    color: $cart-count-black;
     line-height: 1.33;
 }
 
@@ -877,7 +877,7 @@
     width: 96px;
     height: 90px;
     border-radius: 4px;
-    border: solid 1px #e3e5f1;
+    border: solid 1px $light-water-gray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -886,7 +886,7 @@
 }
 
 .sub-menu-wrap .menu-brand-wrapper .menu-brand-item:hover {
-    border-color: #719e19;
+    border-color: $main-green;
 }
 
 .sub-menu-wrap .menu-brand-wrapper .menu-brand-item img {
@@ -907,7 +907,7 @@
 .sub-menu-wrap .search-wrapper .search-group select {
     width: 100%;
     display: flex;
-    border-bottom: solid 1px #333;
+    border-bottom: solid 1px $custom-gray;
 }
 
 .sub-menu-wrap .search-wrapper .search-group .form-control,
@@ -918,12 +918,12 @@
 
 .sub-menu-wrap .form.wst-form input:-internal-autofill-selected,
 .sub-menu-wrap .form.wst-form input:focus {
-    background-color: #f7f8f4 !important;
-    -webkit-box-shadow: 0 0 0 100px #f7f8f4 inset !important;
+    background-color: $sand-white-50 !important;
+    -webkit-box-shadow: 0 0 0 100px $sand-white-50 inset !important;
 }
 
 .sub-menu-wrap .form.wst-form input:valid~label {
-    color: #353738;
+    color: $cart-count-black;
     -webkit-transform: translateY(-10px) scale(0.8);
     transform: translateY(-10px) scale(0.8);
     -webkit-transform-origin: 0 0;
@@ -942,7 +942,7 @@
 }
 
 .sub-menu-wrap .form.wst-form .input-field>label {
-    color: #848789;
+    color: $steel-grey;
     font-size: .88rem;
     left: 0;
     font-weight: 400;
@@ -978,9 +978,9 @@
 .sub-menu-wrap textarea.materialize-textarea {
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #B2B2B2;
+    border-bottom: 1px solid $arrow-border;
     border-radius: 0;
-    color: #353738;
+    color: $cart-count-black;
     outline: none;
     height: 2.5rem;
     width: 100%;
@@ -1030,7 +1030,7 @@
 .sub-menu-wrap .btn {
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
-    color: #353738;
+    color: $cart-count-black;
     background-color: transparent;
     text-align: center;
     padding: 0 .5rem;
@@ -1046,7 +1046,7 @@
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    border: 1px solid #151515;
+    border: 1px solid $darkest-night;
     white-space: nowrap;
     user-select: none;
 }
@@ -1064,9 +1064,9 @@
 .sub-menu-wrap .btn.btn-default:hover,
 .sub-menu-wrap .open>.dropdown-toggle.btn.btn-default {
     box-shadow: none !important;
-    color: #719e19;
-    background-color: #fff;
-    border-color: #719e19;
+    color: $main-green;
+    background-color: $white;
+    border-color: $main-green;
 }
 
 .nav-expand-content .sub-menu-wrap {
@@ -1118,7 +1118,7 @@
 .sub-menu-wrap .menu-items-footer .sub-menu {
     max-width: 100%;
     padding: 0;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid $sub-menu-gray;
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li {
@@ -1131,7 +1131,7 @@
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li a {
-    color: #9fa0a1;
+    color: $list-gray;
     text-transform: uppercase;
     letter-spacing: 1.6px;
     font-size: .75rem;
@@ -1192,7 +1192,7 @@
 }
 
 .menu-promotion-wrapper .tiles-wrapper .tile .tile-content-wrapp .content h4 {
-    color: #fff;
+    color: $white;
     line-height: 1.5rem;
     font-size: 1.5rem;
     margin: 0;
@@ -1200,7 +1200,7 @@
 }
 
 .menu-promotion-wrapper .tiles-wrapper .tile .tile-content-wrapp .content .btn-text {
-    color: #fff;
+    color: $white;
     letter-spacing: 2px;
     line-height: 20px;
     font-size: 14px;
@@ -1208,7 +1208,7 @@
 
 .menu-promotion-wrapper .tiles-wrapper .tile .tile-content-wrapp .content .btn-text:before {
     padding: 3.5px;
-    border-color: #fff;
+    border-color: $white;
 }
 
 .menu-promotion-wrapper.bottom-text .tiles-wrapper {
@@ -1259,11 +1259,11 @@
 }
 
 .menu-promotion-wrapper.bottom-text .tiles-wrapper .tile .tile-content-wrapp .content h4 {
-    font-family: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
+    @include font-family-lato();
     font-size: 14px;
     line-height: 1.43;
     letter-spacing: normal;
-    color: #848789;
+    color: $steel-grey;
     margin-bottom: 0;
 }
 
@@ -1323,11 +1323,11 @@
 }
 
 .menu-promotion-wrapper.right-text .tiles-wrapper .tile .tile-content-wrapp .content h4 {
-    font-family: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
+    @include font-family-lato();
     font-size: 14px;
     line-height: 1.43;
     letter-spacing: normal;
-    color: #848789;
+    color: $steel-grey;
     margin-bottom: 0;
 }
 
@@ -1413,7 +1413,7 @@
     position: fixed;
     height: 56px;
     width: 100%;
-    background-color: #fff;
+    background-color: $white;
     text-transform: uppercase;
     border: none;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.15);
@@ -1492,7 +1492,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-items {
-    font-family: Neotech-medium, 'GE SS Two', Roboto, Arial, sans-serif;
+    @include font-family-Neotech();
     display: flex;
     flex: 1 1 0;
     justify-content: space-between;
@@ -1515,7 +1515,7 @@
     padding-right: 23px;
     padding-left: 23px;
     transition: all 0.25s ease-in-out;
-    color: #6b6b6b;
+    color: $gray-fill;
     cursor: pointer;
     font-size: 1rem;
 }
@@ -1530,7 +1530,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-items .nav.navbar-nav>li>a:hover {
-    color: #6b6b6b;
+    color: $gray-fill;
 }
 
 @media all and (-ms-high-contrast: none) {
@@ -1553,7 +1553,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-items .nav.navbar-nav>li.active>a {
-    color: #719e19;
+    color: $main-green;
     background-color: transparent;
 }
 
@@ -1569,7 +1569,7 @@
     content: '';
     width: 1px;
     height: 35px;
-    border: solid 1px #edeee6;
+    border: solid 1px $slight-gray;
     position: absolute;
     top: 28px;
     z-index: 2;
@@ -1604,7 +1604,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover>a {
-    color: #719e19 !important;
+    color: $main-green !important;
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover a+.sub-menu-wrap {
@@ -1622,7 +1622,7 @@
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover:after {
-    border-bottom: 3px solid #719e19;
+    border-bottom: 3px solid $main-green;
 }
 
 .main-mega-menu-desktop .mega-menu-navbar-default .navbar-nav>li:hover .sub-account-menu-wrap {
@@ -1636,15 +1636,15 @@
 .main-mega-menu-desktop .sub-account-menu-wrap {
     position: absolute;
     display: none;
-    font-family: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
+    @include font-family-lato();
 }
 
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu {
-    background: #fff;
+    background: $white;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     min-width: 254px;
-    border-top: 4px solid #719e19;
+    border-top: 4px solid $main-green;
     padding: .8rem 1.5rem;
     padding-top: 27px;
     padding-bottom: 2rem;
@@ -1663,7 +1663,7 @@
     font-size: .875rem;
     justify-content: left;
     display: block;
-    color: #353738;
+    color: $cart-count-black;
     height: auto !important;
     line-height: 1.43 !important;
     letter-spacing: 0.5px;
@@ -1672,11 +1672,11 @@
 
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu li a:hover,
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu li a:focus {
-    color: #719e19;
+    color: $main-green;
 }
 
 .main-mega-menu-desktop .sub-account-menu-wrap .sub-account-menu li.active a {
-    color: #719e19;
+    color: $main-green;
 }
 
 .main-mega-menu-desktop .hamburger {
@@ -1692,7 +1692,7 @@
 .main-mega-menu-desktop .hamburger .line {
     width: 20px;
     height: 1px;
-    background-color: #2b2e2c;
+    background-color: $moonlight-sand;
     display: block;
     margin: 6px auto;
     -webkit-transition: all 0.3s ease-in-out;
@@ -1741,7 +1741,7 @@
 }
 
 .sub-menu-wrap {
-    font-family: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
+    @include font-family-lato();
     position: absolute;
     display: none;
     left: 0;
@@ -1758,12 +1758,12 @@
 }
 
 .sub-menu-wrap .sub-menu {
-    background: #fff;
+    background: $white;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     min-width: 170px;
     max-width: 224px;
-    border-top: 3px solid #719e19;
+    border-top: 3px solid $main-green;
     padding: 0 1.5rem;
 }
 
@@ -1784,18 +1784,18 @@
     font-size: .875rem;
     justify-content: left;
     display: block;
-    color: #353738;
+    color: $cart-count-black;
     line-height: 1.43;
     letter-spacing: 0.5px;
 }
 
 .sub-menu-wrap .sub-menu li a:hover,
 .sub-menu-wrap .sub-menu li a:focus {
-    color: #719e19;
+    color: $main-green;
 }
 
 .sub-menu-wrap .sub-menu li.active a {
-    color: #719e19;
+    color: $main-green;
 }
 
 .sub-menu-wrap .sub-menu li.sub-menu-heading {
@@ -1803,7 +1803,7 @@
     font-size: 1.25rem;
     margin-bottom: 1rem;
     line-height: 1.2;
-    color: #353738;
+    color: $cart-count-black;
 }
 
 .sub-menu-wrap .sub-menu li.sub-menu-heading a {
@@ -1817,7 +1817,7 @@
 .sub-menu-wrap .sub-menu li p {
     font-size: .75rem;
     font-weight: normal;
-    color: #848789;
+    color: $steel-grey;
     line-height: 1.33;
     margin: 0;
 }
@@ -1833,7 +1833,7 @@
 
 .sub-menu-wrap.mega-dropdown {
     display: none;
-    background: #fff;
+    background: $white;
     border-radius: 0 0 8px 8px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -1858,7 +1858,7 @@
 .sub-menu-wrap .menu-items-footer .sub-menu {
     max-width: 100%;
     padding: 0;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid $sub-menu-gray;
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li {
@@ -1871,7 +1871,7 @@
 }
 
 .sub-menu-wrap .menu-items-footer .sub-menu li a {
-    color: #9fa0a1;
+    color: $list-gray;
     text-transform: uppercase;
     letter-spacing: 1.6px;
     font-size: .75rem;
@@ -1886,13 +1886,13 @@
 
 .sub-menu-wrap .menu-promotion-wrapper.support {
     padding: 2rem 1.5rem;
-    background-color: #f7f8f4;
+    background-color: $sand-white-50;
     min-height: 325px;
 }
 
 .sub-menu-wrap .menu-promotion-wrapper.support .sub-menu-heading {
     font-weight: bold;
-    color: #353738;
+    color: $cart-count-black;
     font-size: 1.25rem;
     margin-bottom: .5rem;
     line-height: 1.2;
@@ -1901,7 +1901,7 @@
 .sub-menu-wrap .menu-promotion-wrapper.support p {
     font-size: .75rem;
     font-weight: normal;
-    color: #353738;
+    color: $cart-count-black;
     line-height: 1.33;
 }
 
@@ -1925,7 +1925,7 @@
     width: 96px;
     height: 90px;
     border-radius: 4px;
-    border: solid 1px #e3e5f1;
+    border: solid 1px $light-water-gray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1934,7 +1934,7 @@
 }
 
 .sub-menu-wrap .menu-brand-wrapper .menu-brand-item:hover {
-    border-color: #719e19;
+    border-color: $main-green;
 }
 
 .sub-menu-wrap .menu-brand-wrapper .menu-brand-item img {
@@ -1955,7 +1955,7 @@
 .sub-menu-wrap .search-wrapper .search-group select {
     width: 100%;
     display: flex;
-    border-bottom: solid 1px #333;
+    border-bottom: solid 1px $custom-gray;
 }
 
 .sub-menu-wrap .search-wrapper .search-group .form-control,
@@ -1966,12 +1966,12 @@
 
 .sub-menu-wrap .form.wst-form input:-internal-autofill-selected,
 .sub-menu-wrap .form.wst-form input:focus {
-    background-color: #f7f8f4 !important;
-    -webkit-box-shadow: 0 0 0 100px #f7f8f4 inset !important;
+    background-color: $sand-white-50 !important;
+    -webkit-box-shadow: 0 0 0 100px $sand-white-50 inset !important;
 }
 
 .sub-menu-wrap .form.wst-form input:valid~label {
-    color: #353738;
+    color: $cart-count-black;
     -webkit-transform: translateY(-10px) scale(0.8);
     transform: translateY(-10px) scale(0.8);
     -webkit-transform-origin: 0 0;
@@ -1990,7 +1990,7 @@
 }
 
 .sub-menu-wrap .form.wst-form .input-field>label {
-    color: #848789;
+    color: $steel-grey;
     font-size: .88rem;
     left: 0;
     font-weight: 400;
@@ -2026,9 +2026,9 @@
 .sub-menu-wrap textarea.materialize-textarea {
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #B2B2B2;
+    border-bottom: 1px solid $arrow-border;
     border-radius: 0;
-    color: #353738;
+    color: $cart-count-black;
     outline: none;
     height: 2.5rem;
     width: 100%;
@@ -2078,7 +2078,7 @@
 .sub-menu-wrap .btn {
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
-    color: #353738;
+    color: $cart-count-black;
     background-color: transparent;
     text-align: center;
     padding: 0 .5rem;
@@ -2094,7 +2094,7 @@
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    border: 1px solid #151515;
+    border: 1px solid $darkest-night;
     white-space: nowrap;
     user-select: none;
 }
@@ -2112,9 +2112,9 @@
 .sub-menu-wrap .btn.btn-default:hover,
 .sub-menu-wrap .open>.dropdown-toggle.btn.btn-default {
     box-shadow: none !important;
-    color: #719e19;
-    background-color: #fff;
-    border-color: #719e19;
+    color: $main-green;
+    background-color: $white;
+    border-color: $main-green;
 }
 
 .mobile-view {
@@ -2133,12 +2133,12 @@
     padding: 10px 20px;
     width: 100%;
     height: 50px;
-    background-color: #1c1d1e;
+    background-color: $nav-black;
 }
 
 .nav-top .hamburger {
     margin-left: auto;
-    color: #fff;
+    color: $white;
     cursor: pointer;
 }
 
@@ -2174,7 +2174,7 @@
     left: 0;
     width: 272px;
     height: calc(100vh - 56px);
-    background-color: #fff;
+    background-color: $white;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -2193,7 +2193,7 @@
 }
 
 .nav-item.highlighted .nav-link {
-    background-color: #f7f8f4;
+    background-color: $sand-white-50;
 }
 
 .nav-item.highlighted .nav-expand-content ul .nav-item {
@@ -2204,10 +2204,10 @@
     content: "";
     width: 100%;
     height: 1px;
-    background-color: #d8d8d8;
+    background-color: $grey5;
     opacity: .5;
     position: absolute;
-    border-bottom: 1px solid #979797;
+    border-bottom: 1px solid $nav-item-black;
     bottom: 0;
     left: 0;
     z-index: 1;
@@ -2215,8 +2215,8 @@
 
 .nav-item.highlighted .nav-expand-content ul .nav-item .nav-link {
     padding: .5rem 1rem;
-    background-color: #ffffff !important;
-    color: #353738;
+    background-color: $white !important;
+    color: $cart-count-black;
 }
 
 .nav-item.highlighted .nav-expand-content ul .nav-item-heading:before {
@@ -2236,8 +2236,8 @@
     width: 80px;
     height: 72px;
     border-radius: 4px;
-    border: solid 1px #e3e5f1;
-    background-color: #fff;
+    border: solid 1px $light-water-gray;
+    background-color: $white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2246,7 +2246,7 @@
 }
 
 .nav-item.menu-brand-wrapper .menu-brand-item:hover {
-    border-color: #719e19;
+    border-color: $main-green;
 }
 
 .nav-item.menu-brand-wrapper .menu-brand-item img {
@@ -2259,8 +2259,8 @@
 .nav-link {
     display: block;
     padding: 0.7rem 1rem;
-    background-color: #fff;
-    color: #353738;
+    background-color: $white;
+    color: $cart-count-black;
     font-size: 1rem;
     line-height: 2.1em;
     font-weight: bold;
@@ -2285,14 +2285,14 @@
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
-    background-color: #fbfbfb;
+    background-color: $white-gray;
     transition: 0.3s ease-out;
     visibility: hidden;
     overflow: hidden;
 }
 
 .nav-expand-content .nav-link {
-    background-color: #fbfbfb;
+    background-color: $white-gray;
 }
 
 .nav-expand-content .sub-menu-wrap {
@@ -2328,12 +2328,12 @@
 }
 
 .nav-expand .nav-expand-content {
-    background-color: #ffffff;
+    background-color: $white;
 }
 
 .nav-expand .nav-expand-content .nav-link {
-    background-color: #fbfbfb !important;
-    color: #606060;
+    background-color: $white-gray !important;
+    color: $dark-gray2;
     font-weight: normal;
     font-size: .88rem;
     padding: .48rem 1rem;
@@ -2343,10 +2343,10 @@
 .nav-expand .nav-expand-content .nav-back-link {
     display: flex;
     align-items: center;
-    background-color: #fff !important;
+    background-color: $white !important;
     text-transform: uppercase;
     font-size: .725rem !important;
-    color: #719e19 !important;
+    color: $main-green !important;
     letter-spacing: 1.6px;
     padding: .75rem 1rem !important;
 }
@@ -2359,7 +2359,7 @@
 }
 
 .nav-expand .nav-expand-content .nav-back-link .nav-link-icon path {
-    fill: #719e19;
+    fill: $main-green;
 }
 
 .nav-expand .nav-expand-footer .nav-item {
@@ -2367,7 +2367,7 @@
 }
 
 .nav-expand .nav-expand-footer .nav-link {
-    background-color: #f7f8f4 !important;
+    background-color: $sand-white-50 !important;
     color: #989a99;
     text-transform: uppercase;
     letter-spacing: 1.6px;
@@ -2388,7 +2388,7 @@
 .nav-item-heading {
     padding: .7rem 1rem;
     font-weight: bold;
-    background-color: #fff;
+    background-color: $white;
     position: relative;
 }
 
@@ -2396,10 +2396,10 @@
     content: "";
     width: 100%;
     height: 1px;
-    background-color: #d8d8d8;
+    background-color: $grey5;
     opacity: .5;
     position: absolute;
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 1px solid $grey5;
     bottom: 0;
     left: 0;
 }
@@ -2430,7 +2430,7 @@
     text-transform: uppercase;
     font-size: .7rem;
     letter-spacing: 2px;
-    color: #353738;
+    color: $cart-count-black;
     font-weight: normal;
     align-items: center;
     padding: 1rem 1rem;
@@ -2476,7 +2476,7 @@
 }
 
 .nav-footer {
-    background-color: #f7f8f4;
+    background-color: $sand-white-50;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -2504,11 +2504,11 @@
 }
 
 .nav-footer .mega-dropdown-mob .nav-link-arrow path {
-    fill: #719e19;
+    fill: $main-green;
 }
 
 .nav-footer .mega-dropdown-mob a {
-    color: #719e19;
+    color: $main-green;
 }
 
 .nav-footer .mega-dropdown-mob-menu {
@@ -2533,7 +2533,7 @@
 }
 
 .nav-footer.lang-switch .nav-lang {
-    color: #353738;
+    color: $cart-count-black;
 }
 
 .nav-site-switch {
@@ -2542,12 +2542,12 @@
     align-items: center;
     display: flex;
     letter-spacing: 2px;
-    color: #353738;
+    color: $cart-count-black;
 }
 
 .nav-lang {
     font-weight: 300;
-    color: #353738;
+    color: $cart-count-black;
 }
 
 .mega-dropdown-mob a {
@@ -2596,7 +2596,7 @@
     line-height: 1.3rem;
     font-weight: normal;
     letter-spacing: normal;
-    font-family: Neotech, Roboto, Arial, sans-serif;
+    @include font-family-Neotech();
     margin-bottom: .3rem;
 }
 
@@ -2608,7 +2608,7 @@
 
 .mega-dropdown-mob-promotion .menu-promotion-wrapper .tiles-wrapper .tile .tile-content-wrapp .content .btn-text:before {
     padding: 3.5px;
-    border-color: #fff;
+    border-color: $white;
     right: -1rem;
 }
 
@@ -2885,7 +2885,7 @@
     }
 
     .nav-item .menu-brand-wrapper {
-        background-color: #fbfbfb;
+        background-color: $white-gray;
     }
 }
 
@@ -2893,7 +2893,7 @@
     width: 18px;
     height: 18px;
     background-color: #ffcc00;
-    color: #353738;
+    color: $cart-count-black;
     border-radius: 50%;
     line-height: 18px;
     position: absolute;
@@ -2904,7 +2904,7 @@
     z-index: 99;
     letter-spacing: 0;
     font-weight: 700;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    @include font-family-lato();
     font-size: 10px;
 }
 
@@ -2920,7 +2920,7 @@
     width: 18px;
     height: 18px;
     background-color: #ffcc00;
-    color: #353738;
+    color: $cart-count-black;
     border-radius: 50%;
     line-height: 18px;
     position: absolute;
@@ -2931,7 +2931,7 @@
     z-index: 99;
     letter-spacing: 0;
     font-weight: 700;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    @include font-family-lato();
     font-size: 10px;
 }
 
@@ -3016,14 +3016,14 @@
 
 .sub-menu-wrap.mega-dropdown {
     display: none;
-    background: #fff;
+    background: $white;
     border-radius: 0 0 8px 8px;
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     overflow: hidden;
 }
 
 .sub-menu-wrap {
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    @include font-family-lato();
     position: absolute;
     display: none;
     left: 0;
@@ -3051,7 +3051,7 @@
     height: 12px;
 }
 .main-menu-mobile.etisalat-carrier .nav-footer-wrapper .nav-footer {
-    background-color: #f7f8f4 !important;
+    background-color: $sand-white-50 !important;
 }
 
 .main-menu-mobile .nav-footer-inline-wrapper{
