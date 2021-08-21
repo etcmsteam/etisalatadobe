@@ -4,12 +4,12 @@
   <!-- For MyAccount Menu: starts -->
     <ul data-sly-test="${!meganavigation.accountNavigationItems.isEmpty}" 
 	  data-sly-list.accountItems="${meganavigation.accountNavigationItems}" class="nav-items nav-level-1">
-      <li class="nav-item highlighted nav-expand">
-         <a class="nav-link" href="#">
+      <li class="nav-item highlighted ${accountItems.subNavigationList.size > 0 ? 'nav-expand' :''}">
+         <a class="nav-link" href="${accountItems.navigationLinkTo}">
              <img class="nav-link-icon" src="${accountItems.navImagePath}"/>
             <span class="accountName">${accountItems.navigationLabel}</span>
           </a>
-          <ul class="nav-items nav-expand-content">
+          <ul data-sly-test="${!accountItems.subNavigationList.isEmpty && accountItems.subNavigationList.size > 0}" class="nav-items nav-expand-content">
             <li class="nav-item">
               <a class="nav-link nav-back-link" href="#">
               <img class="nav-link-icon" src="${properties.linkArrowImage}"/>${properties.menuBack}</a>
@@ -56,12 +56,12 @@
 <ul data-sly-test="${!meganavigation.utilityNavItems.isEmpty}" class="nav-items nav-level-1">   
    <li class="nav-spacer spacer-32"></li>                    
 	<sly data-sly-list.utilityItems="${meganavigation.utilityNavItems}">
-	   <li class="nav-item nav-expand nav-quick-links" data-sly-test="${utilityItems.utilityMenuLayout == 'fixedmenulist'}">
-		 <a class="nav-link nav-expand-link" href="${utilityItems.navigationLinkTo}">
+	   <li class="nav-item nav-quick-links ${utilityItems.subNavigationList.size > 0 ? 'nav-expand' :''}" data-sly-test="${utilityItems.utilityMenuLayout == 'fixedmenulist'}">
+		 <a class="nav-link ${utilityItems.subNavigationList.size > 0 ? 'nav-expand-link' :''}" href="${utilityItems.navigationLinkTo}">
 		 <img class="nav-link-icon" src="${navItems.navImagePath}"/> ${utilityItems.navigationLabel}
-		 <img class="nav-link-arrow" src="${properties.linkArrowImage}"/></a>
+		 <img data-sly-test="${utilityItems.subNavigationList.size > 0}" class="nav-link-arrow" src="${properties.linkArrowImage}"/></a>
 
-         <ul data-sly-test="${!utilityItems.subNavigationList.isEmpty}" class="nav-items nav-expand-content">
+         <ul data-sly-test="${!utilityItems.subNavigationList.isEmpty && utilityItems.subNavigationList.size > 0}" class="nav-items nav-expand-content">
           <li class="nav-item">
               <a class="nav-link nav-back-link" href="#">
               <img class="nav-link-icon" src="${properties.linkArrowImage}"/>${properties.menuBack}</a>
@@ -78,7 +78,7 @@
          </ul>		
 	   </li>
 		<sly data-sly-test="${utilityItems.utilityMenuLayout == 'xfragment'}">
-          <li class="nav-item nav-expand nav-quick-links">
+          <li class="nav-item ${utilityItems.containerSubMenuList.size > 0 ? 'nav-expand' :''} nav-quick-links">
               <sly data-sly-use.xfMobileObj="/apps/etisalat/components/global/meganavigation/xf-mobile-template.html"
                 data-sly-call="${xfMobileObj.xfMobileTemplate @ properties=properties,navItems=utilityItems}">  
               </sly> 
@@ -97,12 +97,12 @@
 </ul>  
 
 <div class="nav-footer-inline-wrapper" data-sly-test="${meganavigation.topNavigationResource}"
-     data-sly-use.topnavRightObj="${meganavigation.topNavigationResource.path}">
-    <ul data-sly-list.topItems="${topnavRightObj.listChildren}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+     data-sly-use.topnavLeftObj="${meganavigation.topNavigationResource.path}">
+    <ul data-sly-list.topItems="${topnavLeftObj.listChildren}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
     <li data-sly-test="${topItems.name == 'topnavlinks'}"  
-	    data-sly-list.topRightItems="${topItems.listChildren}" class="nav-item nav-footer">
-      <a class="nav-inline-link nav-site-switch ${topRightItems.active ? 'active' : ''}" href="${topRightItems.link @ extension = 'html'}">
-        ${topRightItems.label}
+	    data-sly-list.topLeftItems="${topItems.listChildren}" class="nav-item nav-footer">
+      <a class="nav-inline-link nav-site-switch ${topLeftItems.active ? 'active' : ''}" href="${topLeftItems.link @ extension = 'html'}">
+        ${topLeftItems.label}
       </a>      
     </li>
   </ul>

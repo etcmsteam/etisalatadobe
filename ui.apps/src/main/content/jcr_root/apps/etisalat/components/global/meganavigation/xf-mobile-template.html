@@ -1,15 +1,14 @@
 <template data-sly-template.xfMobileTemplate="${ @ properties,navItems}">
-        <a class="nav-link nav-expand-link" href="#">
+        <a class="nav-link ${navItems.containerSubMenuList.size > 0 ? 'nav-expand-link' :''}" href="${navItems.navigationLinkTo}">
 		<img class="nav-link-icon" src="${navItems.navImagePath}"/> ${navItems.navigationLabel}
-		 <img class="nav-link-arrow" src="${properties.linkArrowImage}"/></a>
-         <ul class="nav-items nav-expand-content">
+		 <img data-sly-test="${navItems.containerSubMenuList.size > 0}" class="nav-link-arrow" src="${properties.linkArrowImage}"/></a>
+         <ul data-sly-test="${!navItems.containerSubMenuList.isEmpty && navItems.containerSubMenuList.size > 0}" class="nav-items nav-expand-content">
 		  <li class="nav-item">
               <a class="nav-link nav-back-link" href="#">
               <img class="nav-link-icon" src="${properties.linkArrowImage}"/>${properties.menuBack}</a>
           </li>
 		  <li>
-		    <sly data-sly-test="${!navItems.containerSubMenuList.isEmpty}" 
-			   data-sly-list.subMenuItems="${navItems.containerSubMenuList}">
+		    <sly data-sly-list.subMenuItems="${navItems.containerSubMenuList}">
 		      <ul data-sly-test="${!subMenuItems.isFeatureItemExist}">
                     <li data-sly-test="${subMenuItems.navTitle}" class="nav-item-heading">
                         ${subMenuItems.navTitle}
@@ -52,7 +51,7 @@
 				  </div>
                 </li>
               </ul>		
-              <ul  data-sly-test="${!navItems.containerFooterMenuList.isEmpty}" 
+              <ul  data-sly-test="${!navItems.containerFooterMenuList.isEmpty && navItems.containerFooterMenuList.size > 0}" 
 				  data-sly-list.footerMenuItems="${navItems.containerFooterMenuList}" class="nav-expand-footer">
 			   <li data-sly-test="${!footerMenuItems.fixedItems.isEmpty}"  
                    data-sly-repeat.items="${footerMenuItems.fixedItems}"   
