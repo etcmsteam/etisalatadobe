@@ -31,6 +31,7 @@ class FixedNavigationMultifieldModelTest {
 		final String expectedFixedNavLink = "#overview";
 		final String expectedFixedNavTitle = "Overview";
 		final String expectedFixedNavDesc = "sampledesc";
+		final String expectedFixedNavImage = "/content/dam/sample.png";
 		Resource resource = context.resourceResolver().getResource(CONTENT_FIXED_NAV);
 		
 		FixedNavigtaionMultifieldModel item = resource.adaptTo(FixedNavigtaionMultifieldModel.class);
@@ -40,6 +41,8 @@ class FixedNavigationMultifieldModelTest {
 		assertEquals(expectedFixedNavDesc, item.getNavigationDesc());
 		item.setNavigationTitle(expectedFixedNavTitle);
 		assertEquals(expectedFixedNavTitle, item.getNavigationTitle());
+		item.setNavigationImage(expectedFixedNavImage);
+		assertEquals(expectedFixedNavImage, item.getNavigationImage());
 	}
 
 	

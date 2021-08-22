@@ -22,6 +22,11 @@ public final class PageConstants {
 	 */
 	public static final String CONTENT = "/content/";
 	
+	/**
+	 * Constant for CONTENT slash to construct path.
+	 */
+	public static final String SLASH = "/";
+	
 	
 	/**
 	 * private constructor to prevent instantiation of class.

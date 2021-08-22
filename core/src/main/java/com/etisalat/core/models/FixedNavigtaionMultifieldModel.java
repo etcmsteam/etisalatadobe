@@ -21,6 +21,12 @@ public class FixedNavigtaionMultifieldModel {
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String navigationDesc;
 	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String navigationImage;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String active;
+	
 	public void setNavigationTitle(String navigationTitle) {
 		this.navigationTitle = navigationTitle;
 	}
@@ -49,6 +55,34 @@ public class FixedNavigtaionMultifieldModel {
 	 */
 	public void setNavigationDesc(String navigationDesc) {
 		this.navigationDesc = navigationDesc;
+	}
+
+	/**
+	 * @return the active
+	 */
+	public String getActive() {
+		return active;
+	}
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(String active) {
+		this.active = active;
+	}
+
+	/**
+	 * @return the navigationImage
+	 */
+	public String getNavigationImage() {
+		return navigationImage;
+	}
+
+	/**
+	 * @param navigationImage the navigationImage to set
+	 */
+	public void setNavigationImage(String navigationImage) {
+		this.navigationImage = navigationImage;
 	}
 
 }

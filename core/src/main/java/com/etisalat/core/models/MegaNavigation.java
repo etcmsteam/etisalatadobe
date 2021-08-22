@@ -2,8 +2,6 @@ package com.etisalat.core.models;
 
 import java.util.List;
 
-import org.apache.sling.api.resource.Resource;
-
 public interface MegaNavigation {
 
 	/**
@@ -32,13 +30,7 @@ public interface MegaNavigation {
 	 */
 	String getLogoMenuLink();
 	
-	
-	/**
-	 * 
-	 * @return a top navigation path resource.
-	 */
-	Resource getTopNavigationResource();
-	
+
 	/**
 	 * 
 	 * @return a collection of objects representing the experience fragment items that compose the list.
@@ -50,5 +42,17 @@ public interface MegaNavigation {
 	 * @return a collection of objects representing the my account navigation items that compose the list.
 	 */
 	List<MegaNavigationItem> getAccountNavigationItems();
+	
+	/**
+	 * 
+	 * @return a collection of objects representing the top navigation right side items that compose the list.
+	 */
+	List<FixedNavigtaionMultifieldModel> getTopNavMenuItems();
+	
+	/**
+	 * 
+	 * @return a collection of objects representing the top navigation left side items that compose the list.
+	 */
+	List<FixedNavigtaionMultifieldModel> getTopNavIconMenuItems();
 	
 }
