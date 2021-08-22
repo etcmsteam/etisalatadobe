@@ -124,16 +124,6 @@ class MegaNavigationImplTest {
 	}
 	
 	@Test
-	void testTopNavigationPath() {
-		final String expectedPath = MEGA_NAV_5;
-		context.currentResource(MEGA_NAV_1);
-		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
-		
-		String actual = megaNavigationModel.getTopNavigationResource().getPath();
-		assertEquals(expectedPath, actual);
-	}
-	
-	@Test
 	void testXFContainerMenuItems() {
 		final String expectedMenuLabel = "Mobile plans";
 		context.currentResource(MEGA_XF_NAV_6);
@@ -152,6 +142,39 @@ class MegaNavigationImplTest {
 		assertEquals("My Etisalat App", footerItem.getNavigationTitle());
 		assertEquals("Top brands", featureTitle);
 
+	}
+	
+	@Test
+	void testTopNavMenuItems() {
+		final int expectedSize = 2;
+		final String expectedMenuLink = "#topnavlink1";
+		final String expectedMenuLabel = "CONSUMER";		
+		context.currentResource(MEGA_NAV_1);
+
+		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
+		FixedNavigtaionMultifieldModel topNavModel = megaNavigationModel.getTopNavMenuItems().get(0);
+		
+		assertEquals(expectedSize, megaNavigationModel.getTopNavMenuItems().size());
+		assertEquals(expectedMenuLabel, topNavModel.getNavigationTitle());
+		assertEquals(expectedMenuLink, topNavModel.getNavigationLink());				
+	}
+	
+	
+	@Test
+	void testTopNavIconMenuItems() {
+		final int expectedSize = 2;
+		final String expectedMenuLink = "#findus";
+		final String expectedMenuLabel = "FindUS";		
+		final String expectedMenuImage = "/content/dam/sample.png";
+		context.currentResource(MEGA_NAV_1);
+
+		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
+		FixedNavigtaionMultifieldModel topNavModel = megaNavigationModel.getTopNavIconMenuItems().get(0);
+		
+		assertEquals(expectedSize, megaNavigationModel.getTopNavMenuItems().size());
+		assertEquals(expectedMenuLabel, topNavModel.getNavigationTitle());
+		assertEquals(expectedMenuLink, topNavModel.getNavigationLink());	
+		assertEquals(expectedMenuImage, topNavModel.getNavigationImage());	
 	}
 	
 }

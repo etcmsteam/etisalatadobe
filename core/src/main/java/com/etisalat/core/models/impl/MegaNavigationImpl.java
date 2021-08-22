@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import com.day.cq.commons.jcr.JcrConstants;
 import com.etisalat.core.constants.PageConstants;
+import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
 import com.etisalat.core.models.MegaFixedNavigationItem;
 import com.etisalat.core.models.MegaNavigation;
 import com.etisalat.core.models.MegaNavigationItem;
@@ -62,6 +63,12 @@ public class MegaNavigationImpl implements MegaNavigation {
 	private static final String STYLE_ID = "cq:styleIds";
 	
 	private static final String ACTIVE = "active";
+	
+	private static final String JCR_CONTENT_ROOT = "jcr:content/root";
+	
+	private static final String TOP_NAVIGATION_LINKS = "topnavlinks";
+	
+	private static final String  LINKS_WITH_ICONS = "linkswithicons";
 
 	@SlingObject
 	@Optional
@@ -79,6 +86,9 @@ public class MegaNavigationImpl implements MegaNavigation {
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String menuLayout;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String topNavMenuPath;
 	
 	
 
@@ -323,6 +333,55 @@ public class MegaNavigationImpl implements MegaNavigation {
 		return StringUtils.EMPTY;
 	}
 	
+	/**
+	 * Return a collection of objects representing the top navigation menu items.
+	 * 
+	 * @param childItem
+	 * @return
+	 */
+	private List<FixedNavigtaionMultifieldModel> getTopNavigationItems(String childItem) {
+		List<FixedNavigtaionMultifieldModel> topNavItemsList = new ArrayList<>();
+		Resource rootRes = null;
+		if (StringUtils.isNotBlank(topNavMenuPath) && currentRes.getPath().contains(topNavMenuPath)) {
+			rootRes = currentRes.getParent();
+		} else if (StringUtils.isNotBlank(topNavMenuPath)) {
+			Resource topNavRes = currentRes.getResourceResolver().getResource(topNavMenuPath);
+			if (null != topNavRes) {
+				rootRes = topNavRes.getChild(JCR_CONTENT_ROOT);
+			}
+		}
+
+		setTopNavigationMenuItems(topNavItemsList, rootRes, childItem);
+		return topNavItemsList;
+	}
+	
+	/**
+	 * Sets top navigation menu item details.
+	 * 
+	 * @param topNavItemsList
+	 * @param rootRes
+	 * @param childItem
+	 */
+	private void setTopNavigationMenuItems(List<FixedNavigtaionMultifieldModel> topNavItemsList, Resource rootRes,
+			String childItem) {
+		if (null != rootRes) {
+			for (Resource childRes : rootRes.getChildren()) {
+				String resourceType = childRes.getResourceType();
+				if (resourceType.equals(TOP_NAVIGATION_RESOURCE_TYPE) && null != childRes.getChild(childItem)) {
+					childRes.getChild(childItem).listChildren().forEachRemaining(resource -> {
+						FixedNavigtaionMultifieldModel navModel = resource
+								.adaptTo(FixedNavigtaionMultifieldModel.class);
+						navModel.setNavigationLink(
+								CommonUtility.appendHtmlExtensionToPage(navModel.getNavigationLink()));
+						topNavItemsList.add(navModel);
+					});
+
+					break;
+				}
+			}
+		}
+	}
+	
 	@Override
 	public List<MegaNavigationItem> getMegaNavigationItems() {
 		return Collections.unmodifiableList(getNavigationItems(NAVIGATION_ITEMS));
@@ -343,20 +402,6 @@ public class MegaNavigationImpl implements MegaNavigation {
 		return CommonUtility.appendHtmlExtensionToPage(logoLink);
 	}
 
-	@Override
-	public Resource getTopNavigationResource() {
-		Resource topNavResource = currentRes.getParent();
-		if (null != topNavResource) {
-			for (Resource childRes : topNavResource.getChildren()) {
-				String resourceType = childRes.getResourceType();
-				if (resourceType.equals(TOP_NAVIGATION_RESOURCE_TYPE)) {
-					topNavResource = childRes;
-					break;
-				}
-			}
-		}
-		return topNavResource;
-	}
 
 	@Override
 	public List<MegaNavigationItem> getMegaContainerItems() {
@@ -367,6 +412,18 @@ public class MegaNavigationImpl implements MegaNavigation {
 	@Override
 	public List<MegaNavigationItem> getAccountNavigationItems() {
 		return Collections.unmodifiableList(getNavigationItems(MYACCOUNT_LINKS));
+	}
+
+
+	@Override
+	public List<FixedNavigtaionMultifieldModel> getTopNavMenuItems() {		
+		return Collections.unmodifiableList(getTopNavigationItems(TOP_NAVIGATION_LINKS));
+	}
+
+
+	@Override
+	public List<FixedNavigtaionMultifieldModel> getTopNavIconMenuItems() {
+		return Collections.unmodifiableList(getTopNavigationItems(LINKS_WITH_ICONS));
 	}
 
 }
