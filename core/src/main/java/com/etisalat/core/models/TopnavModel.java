@@ -7,24 +7,22 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
+import com.etisalat.core.constants.PageConstants;
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class })
 public class TopnavModel {
-
-	private static final Logger LOG = LoggerFactory.getLogger(TopnavModel.class);
 
 	@SlingObject
 	@Optional
@@ -34,73 +32,70 @@ public class TopnavModel {
 	private String navigationRoot;
 
 	@ScriptVariable
-	private ResourceResolver resolver;
-
-	@ScriptVariable
 	protected Page currentPage;
+
+	List<LinkModel> linkModelList = new ArrayList<>();
 
 	@SlingObject
 	private SlingHttpServletRequest request;
 
-	ArrayList<String> localeAdding = new ArrayList<>();
-
-	public static final String slash = "/";
-
 	@PostConstruct
 	protected void init() {
-
-		Resource res = request.getResourceResolver().getResource(navigationRoot);
-		LOG.info("resource{}", res.getPath());
-
-		Page page = res.adaptTo(Page.class);
-		if (page != null) {
-			Iterator<Page> chilPage = page.listChildren();
-
-			while (chilPage.hasNext()) {
-				Page childPages = chilPage.next();
-				Iterator<Page> grandChild = childPages.listChildren();
-				while (grandChild.hasNext()) {
-					Page grandChildPages = grandChild.next();
-					extracted( grandChildPages.getLanguage().toString());
+		if (StringUtils.isNotBlank(navigationRoot)) {
+			Resource res = request.getResourceResolver().getResource(navigationRoot);
+			Page page = res.adaptTo(Page.class);
+			if (page != null) {
+				Iterator<Page> childPage = page.listChildren();
+				while (childPage.hasNext()) {
+					Page countryPage = childPage.next();
+					if (countryPage.getPath().contains("language-master")) {
+						continue;
+					}
+					getLanguageChildPages(countryPage);
 				}
 			}
 		}
 	}
 
-	private void extracted(String languageCode) {
-		Resource currentPageRes = currentPage.adaptTo(Resource.class);
-		Page currPage = currentPageRes.adaptTo(Page.class);
-		String currrentPath = currPage.getPath();
-		String newPagePath = currrentPath.replace(slash + currPage.getLanguage().toString() + slash,
-				slash + languageCode + slash);
-		LOG.info("new page path{}", newPagePath);
-
-		Resource childRes = resolver.getResource(newPagePath);
-		LOG.info("childRes {}", childRes);
-		if (childRes != null) {
-			localeAdding.add(newPagePath);
+	/**
+	 * 
+	 * @param countryPage
+	 */
+	private void getLanguageChildPages(Page countryPage) {
+		Iterator<Page> grandChild = countryPage.listChildren();
+		while (grandChild.hasNext()) {
+			Page grandChildPages = grandChild.next();
+			String pageTitle = grandChildPages.getTitle();
+			extracted(grandChildPages.getLanguage().toString(), pageTitle);
 		}
 	}
 
-	public String getNavigationRoot() {
-		return navigationRoot;
+	/**
+	 * 
+	 * @param languageCode
+	 * @param pageTitle
+	 */
+	private void extracted(String languageCode, String pageTitle) {
+		String currrentPath = currentPage.getPath();
+		String newPagePath = currrentPath.replace(
+				PageConstants.SLASH + currentPage.getLanguage().toString() + PageConstants.SLASH,
+				PageConstants.SLASH + languageCode + PageConstants.SLASH);
+		Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
+		if (null != childRes && !currrentPath.equals(newPagePath)) {
+			LinkModel model = new LinkModel();
+			model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
+			model.setTitle(pageTitle);
+			linkModelList.add(model);
+		}
 	}
 
-	public void setNavigationRoot(String navigationRoot) {
-		this.navigationRoot = navigationRoot;
+	/**
+	 * 
+	 * @return a collection of objects representing the language links.
+	 */
+	public List<LinkModel> getLocaleList() {
+		return Collections.unmodifiableList(linkModelList);
+
 	}
-	
-	
-
-	public List<String> getLocaleAdding() {
-		return Collections.unmodifiableList(localeAdding);
-	}
-
-	
-	
-	
-	
-	
-
 
 }
