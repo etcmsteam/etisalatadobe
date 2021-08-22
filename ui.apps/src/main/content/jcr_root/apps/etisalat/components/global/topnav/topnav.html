@@ -8,7 +8,7 @@
                   data-sly-list.topItems="${topnavObj.listChildren}">
                   <ul data-sly-test="${topItems.name == 'topnavlinks'}" data-sly-list.topItemsList="${topItems.listChildren}" class="links">
                     <li class="${topItemsList.active ? 'active' : ''}">
-                        <a href="${topItemsList.link @ extension = 'html'}" data-sub-menu="sub-menu-mobile">${topItemsList.label}</a>
+                        <a href="${topItemsList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">${topItemsList.navigationTitle}</a>
                     </li>
                   </ul>
                </sly>
@@ -19,10 +19,17 @@
                <sly data-sly-use.iconsObject="${resource.path}"
                   data-sly-list.itemss="${iconsObject.listChildren}">
                   <ul data-sly-test="${itemss.name == 'linkswithicons'}" data-sly-list.itemList="${itemss.listChildren}" class="links">
-                    <li class="${currentPage.path == topItemsList.link ? 'active' : ''}">
-                        <a href="${itemList.links @ extension = 'html'}" data-sub-menu="sub-menu-mobile">${itemList.title}</a>
-                        <img src=${itemList.image}> 
+                    <li class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
+                        <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">${itemList.navigationTitle}</a>
+                        <img src=${itemList.navigationImage}> 
                     </li>
+                     <li data-sly-list.langItem="${topnavModel.localeList}">
+                        <a href = "${langItem.linkUrl}" id="b2bcms" data-sub-menu="sub-menu-help">
+                        <span class="language-switch-content">
+                        ${langItem.title}
+                        </span>
+                        </a>
+                     </li>
                   </ul>
                </sly>
             </div>			 
