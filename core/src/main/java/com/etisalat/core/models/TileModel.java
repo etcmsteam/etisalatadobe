@@ -26,6 +26,12 @@ public class TileModel {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String fileReference;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String startDate;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String labeltext;
 
 	public String getText() {
 		return text;
@@ -65,6 +71,23 @@ public class TileModel {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+	
+
+	public String getLabeltext() {
+		return labeltext;
+	}
+
+	public void setLabeltext(String labeltext) {
+		this.labeltext = labeltext;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
 }
