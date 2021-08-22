@@ -84,29 +84,24 @@
               </sly> 
           </li>  
 		</sly>	
-		<sly  data-sly-test="${meganavigation.topNavigationResource}"
-             data-sly-use.topnavRightObj="${meganavigation.topNavigationResource.path}" 
-             data-sly-list.topItems="${topnavRightObj.listChildren}">	 
-          <li data-sly-test="${topItems.name == 'linkswithicons'}"  
-                 data-sly-list.topRightItems="${topItems.listChildren}" class="nav-item nav-quick-links">
-               <a class="nav-link" href="${topRightItems.links @ extension = 'html'}">
-                <img class="nav-link-icon" src="${topRightItems.image}"/> ${topRightItems.title} </a>
-            </li>
-        </sly>
+           <li data-sly-test="${!meganavigation.topNavIconMenuItems.isEmpty 
+                    && meganavigation.topNavIconMenuItems.size > 0}" data-sly-list.topRightItems="${meganavigation.topNavIconMenuItems}" class="nav-item nav-quick-links">
+               <a class="nav-link" href="${topRightItems.navigationLink}">
+                <img data-sly-test="${topRightItems.navigationImage}" class="nav-link-icon" src="${topRightItems.navigationImage}"/> ${topRightItems.navigationTitle} </a>
+            </li>        
 	 </sly>	
 </ul>  
 
-<div class="nav-footer-inline-wrapper" data-sly-test="${meganavigation.topNavigationResource}"
-     data-sly-use.topnavLeftObj="${meganavigation.topNavigationResource.path}">
-    <ul data-sly-list.topItems="${topnavLeftObj.listChildren}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
-    <li data-sly-test="${topItems.name == 'topnavlinks'}"  
-	    data-sly-list.topLeftItems="${topItems.listChildren}" class="nav-item nav-footer">
-      <a class="nav-inline-link nav-site-switch ${topLeftItems.active ? 'active' : ''}" href="${topLeftItems.link @ extension = 'html'}">
-        ${topLeftItems.label}
+<div class="nav-footer-inline-wrapper" data-sly-test="${!meganavigation.topNavMenuItems.isEmpty && meganavigation.topNavMenuItems.size > 0}">
+    <ul class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+    <li data-sly-list.topLeftItems="${meganavigation.topNavMenuItems}" class="nav-item nav-footer">
+      <a class="nav-inline-link nav-site-switch ${topLeftItems.active ? 'active' : ''}" href="${topLeftItems.navigationLink}">
+        ${topLeftItems.navigationTitle}
       </a>      
     </li>
   </ul>
 </div> 
+ 
 
 </nav>
 <!--main menu mobile version: ends-->
