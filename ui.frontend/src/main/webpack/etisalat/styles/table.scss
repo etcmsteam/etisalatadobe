@@ -1,7 +1,7 @@
 .cmp-rte-table {
 	table {
-		font-size: .875rem;
-		color: #353738;
+		font-size: $font14;
+		color: $almost-black;
 		width: 100%;
 		max-width: 100%;
 		margin-bottom: 25px;
@@ -10,26 +10,54 @@
 		border-radius: 4px 0 0 4px;
 	}
 	tr th {
-		font-size: 12px;
+		font-size:$font12;
 		letter-spacing: 2px;
 		font-weight: 400;
 		text-transform: uppercase;
 		vertical-align: bottom;
 		line-height: 16px;
 		padding: 1rem 1rem;
-		background-color: #fff;
-		font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+		background-color: $white;
+		@include font-family-lato();
 	}
 	tr td {
+		vertical-align: middle;
 		font-weight: 700;
 		line-height: 22px;
-		font-size: 1rem;
+		font-size: $font16;
 		padding: 1rem 1rem;
-		font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+		@include font-family-lato();
 	}
 	tr:nth-of-type(odd) {
 		background-color: #fafaf5;
 	}
+	tr td a{
+		position: relative;
+		color: $main-green;
+		@include font-family-lato();
+		font-size: $font14;
+		line-height: 1.25rem;
+		letter-spacing: 1.6px;
+		text-transform: uppercase;
+		font-weight: 400;
+	}
+	tr td a:before {
+		padding: 3.5px;
+		content: "";
+		position: absolute;
+		line-height: 1;
+		top: 50%;
+		transform: translateY(-20%) rotate(-135deg);
+		transition: all .3s ease-in-out;
+		-webkit-transform: translateY(-50%) rotate(-45deg);
+		right: -15px;
+		border:solid $main-green;
+		border-width: 0 1px 1px 0px;
+	}
+	tr td a:hover{
+		text-decoration:underline;
+	}
+	
 	@media screen and (min-width: 992px) {
 		tr th {
 			width: 20%;
@@ -39,7 +67,7 @@
 //table variation with no even and odd colors
 .cmp-table-v2{
 	table {
-		font-size: .875rem;
+		font-size: $font14;
 		width: 100%;
 		max-width: 100%;
 		margin-bottom: 25px;
@@ -48,26 +76,26 @@
 		border-radius: 4px 0 0 4px;
 	}
 	tr th {
-		font-size: 12px;
+		font-size: $font12;
 		letter-spacing: 2px;
 		font-weight: 400;
 		text-transform: uppercase;
 		vertical-align: bottom;
 		line-height: 16px;
 		padding: 1rem 1rem;
-        color: #353738;
-		background-color: #fff;
-	    border-bottom: 2px solid #ddd;
-		font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+        color: $almost-black;
+		background-color: $white;
+	    border-bottom: 2px solid $table-border-color;
+		@include font-family-lato();
 	}
 	tr td {
 		font-weight: 700;
-	    border-top: 1px solid #e2e1da;
+	    border-top: 1px solid $light-sand-brown;
 		line-height: 22px;
-		font-size: 1rem;
+		font-size: $font16;
 		padding: 1rem 1rem;
-        color:#848789;
-		font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+        color:$steel-grey;
+		@include font-family-lato();
 	}
 
 }
