@@ -23,18 +23,20 @@
     }
 
     p {
-        color: $black;
+        color: $dark-gray;
         @include font-family-lato();
 
         @include sm {
             color: #6f6c70;
             font-size: $font16;
+            margin-bottom: 3rem;
         }
     }
 
     h3 {
         margin-top: $font20;
-        @include font-family-lato();
+        @include font-family-Neotech;
+        color: $almost-black;
     }
 
     .cmp-text {
@@ -120,11 +122,21 @@
 
             @include sm {
                 margin: 1rem 0rem;
+                font-size: $font20;
             }
 
             @include md {
                 font-size: $font20;
                 margin: 1rem 0rem;
+            }
+
+            h3 {
+                @include sm {
+                    font-size: $font20;
+                    @include font-family-Neotech;
+                    line-height: 1.3;
+                    font-weight: 400;
+                }
             }
         }
     }
@@ -191,7 +203,7 @@
             border-spacing: 2rem 0;
             border-collapse: separate !important;
             margin: 0 -2rem;
-            color: #848789;
+            color: $steel-grey;
             line-height: 56px;
             @include font-family-lato();
 
@@ -218,12 +230,12 @@
 
 
         table tbody td {
-            color: #848789;
+            color: $steel-grey;
             line-height: 56px;
             padding: 0 1rem !important;
 
             @include sm {
-                color: #848789;
+                color: $steel-grey;
                 line-height: 2rem;
                 padding: 0 !important;
                 font-size: $font14 !important;
@@ -275,71 +287,88 @@
         z-index: 3;
         margin-top: -3rem;
         float: right;
-        @include md{
+
+        @include md {
             float: right;
-            margin-top: -4rem;
+            margin-top: -6rem;
         }
-        @include sm{
+
+        @include sm {
             float: right;
-            margin-top: -5.4rem;
+            margin-top: -8.4rem;
         }
     }
 
-    
->.cmp-container {
-    min-height: 140px;
-    position: relative;
-    background: #f7f8f4;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    border-radius: 4px;
 
-}
+    >.cmp-container {
+        min-height: 140px;
+        position: relative;
+        background: #f7f8f4;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        border-radius: 4px;
 
->.cmp-container:before {
-    background: url("../resources/images/sectionbg.svg");
-    content: "";
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 360px;
-    width: 340px;
-    position: absolute;
-    opacity: .1;
-    z-index: 1;
-    bottom: 0;
-    background-position: top left;
+        @include sm {
+            margin-bottom: 0;
+        }
 
-    @include md {
-        background-image: none;
-    }
-}
-
->.cmp-container:after {
-    background: url("../resources/images/sectionbg.svg");
-    content: "";
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 360px;
-    position: absolute;
-    width: 340px;
-    opacity: .1;
-    z-index: 1;
-    right: 0;
-    transform: rotate(180deg);
-    top: 0;
-
-    @include md {
-        height: 145px;
-        width: 140px;
+        @include md {
+            margin-bottom: 0;
+        }
     }
 
-    @include sm {
-        height: 145px;
-        width: 140px;
+    >.cmp-container:before {
+        background: url("../resources/images/sectionbg.svg");
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 360px;
+        width: 340px;
+        position: absolute;
+        opacity: .1;
+        z-index: 1;
+        bottom: 0;
+        background-position: top left;
+
+        @include md {
+            background-image: none;
+        }
     }
-}
 
+    >.cmp-container:after {
+        background: url("../resources/images/sectionbg.svg");
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 360px;
+        position: absolute;
+        width: 340px;
+        opacity: .1;
+        z-index: 1;
+        right: 0;
+        transform: rotate(180deg);
+        top: 0;
 
+        @include md {
+            height: 145px;
+            width: 140px;
+        }
+
+        @include sm {
+            height: 145px;
+            width: 140px;
+        }
+    }
+
+    .aem-Grid.aem-Grid--default--12>.aem-GridColumn.aem-GridColumn--default--6 {
+        @include sm {
+            width: 100%;
+        }
+
+        @include md {
+            width: 100%;
+        }
+    }
 }
 
 .sort_asc {
@@ -359,4 +388,9 @@
     display: inline-block;
     width: 138px;
 
+}
+
+.visiblityhidden {
+    visibility: hidden;
+    width: min-content;
 }
