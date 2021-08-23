@@ -21,6 +21,10 @@ $(document).ready(function () {
         })
         $('.beigebg-wrapper').slideToggle();
     });
+    if (window.matchMedia('(max-width: 768px)').matches)
+        {
+            $(".teaser-viewall").find('span').addClass('visiblityhidden');
+        }
 });
 
 // Nested Accordion View All, View Less Script

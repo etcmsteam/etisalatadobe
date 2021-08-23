@@ -140,6 +140,7 @@
         $('[id^=product]').find('.swiper-slide').removeClass('hide');
         $('.loadmore-btn').addClass('hide');
         $(document).scrollTop($(document).height());
+        e.preventDefault();
       });
     }
     $(document).ready(function () {
