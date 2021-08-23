@@ -1853,7 +1853,7 @@ function getProductCard(data) {
     if (product.oldPrice) {
       classes = 'tile-table device-card offer'
     }
-    html += '<div class="swiper-slide col-xs-12 col-sm-6 col-md-4" style="width: 306px;">' +
+    html += '<div class="swiper-slide col-xs-12 col-sm-6 col-md-4" style="width: 306px;min-width:306px">' +
       '<div class="' + classes + '">' +
       '<div class="tile-card effect__click">' +
       '<a href="' + redirectUrl + '" class="tile">' +
