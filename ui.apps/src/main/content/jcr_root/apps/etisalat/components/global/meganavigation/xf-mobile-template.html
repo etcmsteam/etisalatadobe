@@ -10,16 +10,32 @@
 		  <li>
 		    <sly data-sly-list.subMenuItems="${navItems.containerSubMenuList}">
 		      <ul data-sly-test="${!subMenuItems.isFeatureItemExist}">
-                    <li data-sly-test="${subMenuItems.navTitle}" class="nav-item-heading">
+		          <sly data-sly-test="${!subMenuItems.active}">
+                    <li  data-sly-test="${subMenuItems.navTitle}" class="nav-item-heading">
                         ${subMenuItems.navTitle}
                     </li>
-                    <li data-sly-test="${!subMenuItems.fixedItems.isEmpty}" 
+                  </sly>
+                    
+                    <li data-sly-test="${subMenuItems.active}" class="nav-item-heading mega-dropdown-mob open">
+                        <a href="#">${subMenuItems.navTitle}</a>  <img class="nav-link-arrow" src="${properties.linkArrowImage}"/>                      
+                     </li>
+                    <li data-sly-test="${!subMenuItems.active && !subMenuItems.fixedItems.isEmpty}" 
 							data-sly-repeat.subFixedItems="${subMenuItems.fixedItems}" 
 							class="${subFixedItems.navigationDesc ? 'nav-item-heading' : 'nav-item'}">
                         <a class="${subFixedItems.navigationDesc ? 'nav-item-heading-link' : 'nav-link'}" href="${subFixedItems.navigationLink}">
                          ${subFixedItems.navigationTitle}
                          <img data-sly-test="${subFixedItems.navigationDesc}" class="nav-link-arrow" src="${properties.linkArrowImage}"/> 
                         </a>
+                    </li>
+                    
+                    <li data-sly-test="${subMenuItems.active && !subMenuItems.fixedItems.isEmpty}" class="mega-dropdown-mob-menu" style="display: list-item;">
+                      <ul data-sly-list.subFixedItems="${subMenuItems.fixedItems}" role="menu">
+                            <li class="nav-item">
+                            <a class="nav-link" href="${subFixedItems.navigationLink}">
+                               ${subFixedItems.navigationTitle}
+                            </a>
+                            </li>
+                       </ul>
                     </li>
 			   </ul>
 			   <ul data-sly-test="${subMenuItems.isFeatureItemExist && !subMenuItems.featureImageList.isEmpty}">
@@ -41,7 +57,7 @@
 						   <div class="tile-content-wrapp">
 							  <div class="content">
 								 <h4>${promoObj.title}</h4>
-								 <a href="${promoObj.link}" class="btn-text learn-more">
+								 <a data-sly-test="${promoObj.link}" href="${promoObj.link}" class="btn-text learn-more">
 								 <span class="">${promoObj.text}</span>
 								 </a>
 							  </div>
