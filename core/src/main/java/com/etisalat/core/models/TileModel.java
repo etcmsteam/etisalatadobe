@@ -86,9 +86,9 @@ public class TileModel {
 	}
 	
 	public Date getTiledate() {
-        this.tiledate.clone();
-		return tiledate;
+        return (Date) this.tiledate.clone ();
     }
+	
 
     public void setTiledate(Date tiledate) {
         this.tiledate = (Date) tiledate.clone();;
