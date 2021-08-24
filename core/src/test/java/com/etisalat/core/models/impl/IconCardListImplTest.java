@@ -37,11 +37,14 @@ class IconCardListImplTest {
 		Resource navItemRes = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
 		String expectedCardTitle = "Card Title 1";
+		int expectedCardSize = 2;
 		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
 		IconCardListItem iconCardListItem = iconCardList.getIconCardListItems().get(0);
 		String actualCardTitle = iconCardListItem.getCardTitle();
+		int actualCardSize = iconCardList.getIconCardSize();
 		assertEquals(expectedCardTitle, actualCardTitle);
+		assertEquals(expectedCardSize, actualCardSize);
 
-	}
+	}		
 
 }
