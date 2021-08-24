@@ -47,5 +47,14 @@ public class IconCardListImpl implements IconCardList {
 		}
 		return Collections.unmodifiableList(iconCardListItem);
 	}
+	
+	@Override
+	public int getIconCardSize() {
+		int defaultSize = 0;
+		if(getIconCardListItems() !=null) {
+		return getIconCardListItems().size();
+		}
+	 return defaultSize;
+	}
 
 }

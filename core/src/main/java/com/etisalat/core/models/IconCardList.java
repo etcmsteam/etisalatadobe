@@ -10,5 +10,7 @@ public interface IconCardList {
 	 *         compose the list.
 	 */
 	List<IconCardListItem> getIconCardListItems();
+	
+	int getIconCardSize();
 
 }
