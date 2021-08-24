@@ -10,7 +10,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.Date;
 
 @Model(adaptables = { Resource.class,
-		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+		SlingHttpServletRequest.class })
 
 public class TileModel {
 
