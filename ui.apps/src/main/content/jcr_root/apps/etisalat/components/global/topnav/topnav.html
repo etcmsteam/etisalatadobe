@@ -18,10 +18,10 @@
             <div class="top-nav-right">
                <sly data-sly-use.iconsObject="${resource.path}"
                   data-sly-list.itemss="${iconsObject.listChildren}">
-                  <ul data-sly-test="${itemss.name == 'linkswithicons'}" data-sly-list.itemList="${itemss.listChildren}" class="links">
-                    <li class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
-                        <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">${itemList.navigationTitle}</a>
-                        <img src=${itemList.navigationImage}> 
+                  <ul data-sly-test="${itemss.name == 'linkswithicons'}" class="links">
+                    <li data-sly-repeat.itemList="${itemss.listChildren}" class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
+                        <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">
+                        <span class="text">${itemList.navigationTitle}</span><img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/></a>                         
                     </li>
                      <li data-sly-list.langItem="${topnavModel.localeList}">
                         <a href = "${langItem.linkUrl}" id="b2bcms" data-sub-menu="sub-menu-help">
