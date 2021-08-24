@@ -1,13 +1,13 @@
 package com.etisalat.core.models;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import java.util.Date;
 
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class })
@@ -30,10 +30,11 @@ public class TileModel {
 	private String fileReference;
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private Date tiledate;
+	private String labeltext;
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String labeltext;
+	private Date tiledate;
+
 
 	public String getText() {
 		return text;
@@ -92,6 +93,5 @@ public class TileModel {
     public void setTiledate(Date tiledate) {
         this.tiledate = (Date) tiledate.clone();;
     }
-
 
 }
