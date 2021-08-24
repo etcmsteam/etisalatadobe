@@ -2,6 +2,7 @@ package com.etisalat.core.models;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
@@ -26,6 +27,10 @@ public class FixedNavigtaionMultifieldModel {
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String active;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	@Default(values = "false")
+	private String hideDesktopLink;
 	
 	public void setNavigationTitle(String navigationTitle) {
 		this.navigationTitle = navigationTitle;
@@ -83,6 +88,20 @@ public class FixedNavigtaionMultifieldModel {
 	 */
 	public void setNavigationImage(String navigationImage) {
 		this.navigationImage = navigationImage;
+	}
+
+	/**
+	 * @return the hideDesktopLink
+	 */
+	public String getHideDesktopLink() {
+		return hideDesktopLink;
+	}
+
+	/**
+	 * @param hideDesktopLink the hideDesktopLink to set
+	 */
+	public void setHideDesktopLink(String hideDesktopLink) {
+		this.hideDesktopLink = hideDesktopLink;
 	}
 
 }
