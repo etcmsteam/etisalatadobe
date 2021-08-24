@@ -15,7 +15,7 @@
           prevButton: '.table-swiper-button-prev.plansLeft' + index,
           scrollbarHide: false,
           scrollbarDraggable: true,
-          breakpoints: {
+          breakpoints: {            
             540: {
               slidesPerView: 1.25
             },
@@ -139,7 +139,35 @@
       $('.loadmore-btn .btn').on('click', function (e) {
         $('[id^=product]').find('.swiper-slide').removeClass('hide');
         $('.loadmore-btn').addClass('hide');
-        $(document).scrollTop($(document).height());
+        //$(document).scrollTop($(document).height());
+        var rippler = $(this);
+
+        // create .ink element if it doesn't exist
+        if (rippler.find('.ink').length === 0) {
+          rippler.append('<span class="ink"></span>');
+        }
+
+        var ink = rippler.find('.ink');
+
+        // prevent quick double clicks
+        ink.removeClass('animate');
+
+        // set .ink diametr
+        if (!ink.height() && !ink.width()) {
+          var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
+          ink.css({ height: d, width: d });
+        }
+
+        // get click coordinates
+        var x = e.pageX - rippler.offset().left - ink.width() / 2;
+        var y = e.pageY - rippler.offset().top - ink.height() / 2;
+
+        // set .ink position and add class .animate
+        ink.css({
+          top: y + 'px',
+          left: x + 'px'
+        }).addClass('animate');
+    
         e.preventDefault();
       });
     }
