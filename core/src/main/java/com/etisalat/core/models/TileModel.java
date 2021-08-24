@@ -7,8 +7,10 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import java.util.Date;
+
 @Model(adaptables = { Resource.class,
-		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+		SlingHttpServletRequest.class })
 
 public class TileModel {
 
@@ -28,7 +30,7 @@ public class TileModel {
 	private String fileReference;
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String startDate;
+	private Date tiledate;
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String labeltext;
@@ -82,12 +84,13 @@ public class TileModel {
 		this.labeltext = labeltext;
 	}
 
-	public String getStartDate() {
-		return startDate;
+	public Date getTiledate() {
+		return tiledate;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setTiledate(Date tiledate) {
+		this.tiledate = tiledate;
 	}
+
 
 }
