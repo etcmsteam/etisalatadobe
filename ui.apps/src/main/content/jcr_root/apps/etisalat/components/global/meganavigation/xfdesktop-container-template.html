@@ -30,7 +30,7 @@
 			data-sly-list.footerMenuItems="${navItems.containerFooterMenuList}"
 			class="menu-items-footer">
 			<ul  data-sly-test="${!footerMenuItems.fixedItems.isEmpty}" data-sly-list.items="${footerMenuItems.fixedItems}"  class="sub-menu">
-			   <li data-sly-test="${items.navigationTitle}"><a href="${items.navigationLink}">${items.navigationTitle}</a></li>
+			   <li data-sly-test="${!items.hideDesktopLink && items.navigationTitle}"><a href="${items.navigationLink}">${items.navigationTitle}</a></li>
 			</ul>
 		 </div>
 	  </div>
@@ -43,7 +43,7 @@
 			   <div class="tile-content-wrapp">
 				  <div class="content">
 					 <h4>${promoObj.title}</h4>
-					 <a href="${promoObj.link}" class="btn-text learn-more">
+					 <a data-sly-test="${promoObj.link}" href="${promoObj.link}" class="btn-text learn-more">
 					 <span class="">${promoObj.text}</span>
 					 </a>
 				  </div>

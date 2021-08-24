@@ -92,12 +92,24 @@
 	 </sly>	
 </ul>  
 
-<div class="nav-footer-inline-wrapper" data-sly-test="${!meganavigation.topNavMenuItems.isEmpty && meganavigation.topNavMenuItems.size > 0}">
-    <ul class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+<div class="nav-footer-inline-wrapper">
+  <ul data-sly-test="${!meganavigation.topNavMenuItems.isEmpty && meganavigation.topNavMenuItems.size > 0}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
     <li data-sly-list.topLeftItems="${meganavigation.topNavMenuItems}" class="nav-item nav-footer">
       <a class="nav-inline-link nav-site-switch ${topLeftItems.active ? 'active' : ''}" href="${topLeftItems.navigationLink}">
-        ${topLeftItems.navigationTitle}
+        ${topLeftItems.navigationTitle}<img class="nav-link-arrow" src="${properties.linkArrowImage}"/>
       </a>      
+    </li>
+  </ul>
+
+  <ul data-sly-use.topnavModel="com.etisalat.core.models.TopnavModel" 
+   data-sly-test="${!topnavModel.localeList.isEmpty && topnavModel.localeList.size > 0}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+    <li class="nav-item nav-footer white-bg">
+      <a class="nav-inline-link nav-site-switch" href="#">
+        Language
+      </a>
+      <a data-sly-repeat.langItem="${topnavModel.localeList}" class="nav-inline-link nav-lang" href="${langItem.linkUrl}">
+        ${langItem.title}
+      </a>
     </li>
   </ul>
 </div> 

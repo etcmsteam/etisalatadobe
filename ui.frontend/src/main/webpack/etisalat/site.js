@@ -74,3 +74,8 @@ c.forEach(function (a) {
                 e(".nav-drill").hasClass("search-nav-drill") && e(".nav-drill").removeClass("search-nav-drill")
         })
 });
+
+$(".mega-dropdown-mob a").click(function() {
+    $(this).closest("ul").children(".mega-dropdown-mob-menu").slideToggle("100");
+    $(this).parent().toggleClass("open");
+});

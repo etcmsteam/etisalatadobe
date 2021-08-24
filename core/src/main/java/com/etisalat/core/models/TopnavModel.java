@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
@@ -29,6 +30,7 @@ public class TopnavModel {
 	protected Resource currentResource;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	@Default(values = "/content/etisalat")
 	private String navigationRoot;
 
 	@ScriptVariable
