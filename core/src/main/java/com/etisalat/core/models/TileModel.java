@@ -83,14 +83,15 @@ public class TileModel {
 	public void setLabeltext(String labeltext) {
 		this.labeltext = labeltext;
 	}
-
+	
 	public Date getTiledate() {
+        this.tiledate.clone();
 		return tiledate;
-	}
+    }
 
-	public void setTiledate(Date tiledate) {
-		this.tiledate = tiledate;
-	}
+    public void setTiledate(Date tiledate) {
+        this.tiledate = (Date) tiledate.clone();;
+    }
 
 
 }
