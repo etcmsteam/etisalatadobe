@@ -48,7 +48,6 @@ public class TilesModelItem {
 					Resource resource = multiItr.next();
 					TileModel model = resource.adaptTo(TileModel.class);
 					model.setLink(CommonUtility.appendHtmlExtensionToPage(model.getLink()));
-					model.setTiledate(model.getTiledate());
 					tileList.add(model);
 				}
 			}
