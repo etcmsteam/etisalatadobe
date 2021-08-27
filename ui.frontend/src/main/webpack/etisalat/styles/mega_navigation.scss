@@ -2145,6 +2145,7 @@
 .nav-drill {
     margin-top: 56px;
     transform: translateX(-100%);
+    padding-bottom: 150px;
 }
 
 .nav-is-toggled .nav-drill {
@@ -2324,7 +2325,7 @@
     visibility: visible;
     z-index: 2;
     overflow-y: auto;
-    height: 100vh;
+
 }
 
 .nav-expand .nav-expand-content {
@@ -2349,6 +2350,20 @@
     color: $main-green !important;
     letter-spacing: 1.6px;
     padding: .75rem 1rem !important;
+    &:before {
+        border: solid #719e19;
+    border-width: 0 1.5px 1.5px 0;
+    padding: 2.6px;
+    content: "";
+    margin-top: 0.3rem;
+    margin-right: 0.1rem;
+    line-height: 1;
+    top: 50%;
+    transform: translateY(-20%) rotate(-135deg);
+    transition: all .3s ease-in-out;
+    -webkit-transform: translateY(-50%) rotate(140deg);
+    right: 0;
+    }
 }
 
 .nav-expand .nav-expand-content .nav-back-link .nav-link-icon {
@@ -2447,7 +2462,7 @@
 .nav-footer-wrapper-inline .nav-footer {
     align-items: center;
     padding: .5rem 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: none
 }
 
 .nav-footer-wrapper-inline .nav-footer .link-icon {
@@ -2472,8 +2487,23 @@
 
 .nav-footer-inline-wrapper .nav-footer-wrapper .nav-footer {
     align-items: center;
-    padding: .5rem 1rem;
+    padding: .5rem 1rem .5rem 0rem;
 }
+.nav-item.nav-expand:active{
+    .nav-expand-footer{
+        padding-bottom: 1rem;
+        li:nth-child(4){
+            a{
+                padding-bottom: 1rem;
+            }
+        }
+    }   
+    
+}
+.navcontent-pad{
+    padding-bottom: 1rem;
+}
+
 
 .nav-footer {
     background-color: $sand-white-50;
@@ -2539,10 +2569,13 @@
 .nav-site-switch {
     font-size: .7rem;
     text-transform: uppercase;
+    -ms-flex-align: center;
     align-items: center;
+    display: -ms-flexbox;
     display: flex;
     letter-spacing: 2px;
     color: $cart-count-black;
+    padding: 1.25rem 1rem;
 }
 
 .nav-site-switch.active {
@@ -3075,4 +3108,9 @@
 .mega-menu-navbar>.container{
     padding-left: 24px;
     padding-right: 24px;
+}
+.main-menu-slide{
+img {
+    min-height: auto;
+}
 }
