@@ -23,13 +23,14 @@
                         <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">
                         <span class="text">${itemList.navigationTitle}</span><img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/></a>                         
                     </li>
-                     <li data-sly-list.langItem="${topnavModel.localeList}">
-                        <a href = "${langItem.linkUrl}" id="b2bcms" data-sub-menu="sub-menu-help">
-                        <span class="language-switch-content">
-                        ${langItem.title}
-                        </span>
-                        </a>
-                     </li>
+                    <li>
+<select data-sly-list.langItem="${topnavModel.localeList}" onchange="location = this.value;">
+
+
+                           <option value="${langItem.linkUrl}">${langItem.title}</option>
+                        </select>
+</li>
+
                   </ul>
                </sly>
             </div>			 
@@ -37,3 +38,10 @@
       </div>
    </div>
 </div>
+
+<script type="text/javascript">
+   function languageChange(lang)
+   {
+      window.location = lang.value;
+   }
+</script>

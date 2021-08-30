@@ -1,11 +1,17 @@
 package com.etisalat.core.models;
 
+ 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+ 
+
 import javax.annotation.PostConstruct;
+
+ 
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -18,86 +24,105 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+ 
+
 import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.util.CommonUtility;
 
+ 
+
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class })
 public class TopnavModel {
 
-	@SlingObject
-	@Optional
-	protected Resource currentResource;
+ 
 
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	@Default(values = "/content/etisalat")
-	private String navigationRoot;
+    @SlingObject
+    @Optional
+    protected Resource currentResource;
 
-	@ScriptVariable
-	protected Page currentPage;
+ 
 
-	List<LinkModel> linkModelList = new ArrayList<>();
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "/content/etisalat")
+    private String navigationRoot;
 
-	@SlingObject
-	private SlingHttpServletRequest request;
+ 
 
-	@PostConstruct
-	protected void init() {
-		if (StringUtils.isNotBlank(navigationRoot)) {
-			Resource res = request.getResourceResolver().getResource(navigationRoot);
-			Page page = res.adaptTo(Page.class);
-			if (page != null) {
-				Iterator<Page> childPage = page.listChildren();
-				while (childPage.hasNext()) {
-					Page countryPage = childPage.next();
-					if (countryPage.getPath().contains("language-master")) {
-						continue;
-					}
-					getLanguageChildPages(countryPage);
-				}
-			}
-		}
-	}
+    @ScriptVariable
+    protected Page currentPage;
 
-	/**
-	 * 
-	 * @param countryPage
-	 */
-	private void getLanguageChildPages(Page countryPage) {
-		Iterator<Page> grandChild = countryPage.listChildren();
-		while (grandChild.hasNext()) {
-			Page grandChildPages = grandChild.next();
-			String pageTitle = grandChildPages.getTitle();
-			extracted(grandChildPages.getLanguage().toString(), pageTitle);
-		}
-	}
+ 
 
-	/**
-	 * 
-	 * @param languageCode
-	 * @param pageTitle
-	 */
-	private void extracted(String languageCode, String pageTitle) {
-		String currrentPath = currentPage.getPath();
-		String newPagePath = currrentPath.replace(
-				PageConstants.SLASH + currentPage.getLanguage().toString() + PageConstants.SLASH,
-				PageConstants.SLASH + languageCode + PageConstants.SLASH);
-		Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
-		if (null != childRes && !currrentPath.equals(newPagePath)) {
-			LinkModel model = new LinkModel();
-			model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
-			model.setTitle(pageTitle);
-			linkModelList.add(model);
-		}
-	}
+    List<LinkModel> linkModelList = new ArrayList<>();
 
-	/**
-	 * 
-	 * @return a collection of objects representing the language links.
-	 */
-	public List<LinkModel> getLocaleList() {
-		return Collections.unmodifiableList(linkModelList);
+ 
 
-	}
+    @SlingObject
+    private SlingHttpServletRequest request;
+
+ 
+
+    @PostConstruct
+    protected void init() {
+        if (StringUtils.isNotBlank(navigationRoot)) {
+            Resource res = request.getResourceResolver().getResource(navigationRoot);
+            Page page = res.adaptTo(Page.class);
+            if (page != null) {
+                Iterator<Page> childPage = page.listChildren();
+                while (childPage.hasNext()) {
+                    Page languagePage = childPage.next();
+                    getLanguageChildPages(languagePage);
+                }
+            }
+        }
+    }
+
+ 
+
+    /**
+     * 
+     * @param countryPage
+     */
+    private void getLanguageChildPages(Page languagePage) {
+        String pageTitle = languagePage.getTitle();
+        extracted(languagePage.getLanguage().toString(), pageTitle);
+    }
+
+ 
+
+    /**
+     * 
+     * @param languageCode
+     * @param pageTitle
+     */
+    private void extracted(String languageCode, String pageTitle) {
+        String currrentPath = currentPage.getPath();
+        String newPagePath = currrentPath.replace(
+                PageConstants.SLASH + currentPage.getLanguage().toString() + PageConstants.SLASH,
+                PageConstants.SLASH + languageCode + PageConstants.SLASH);
+        Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
+        if (null != childRes && !currrentPath.equals(newPagePath)) {
+            LinkModel model = new LinkModel();
+            model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
+            model.setTitle(pageTitle);
+            linkModelList.add(model);
+        }
+    }
+
+ 
+
+    /**
+     * 
+     * @return a collection of objects representing the language links.
+     */
+    public List<LinkModel> getLocaleList() {
+        return Collections.unmodifiableList(linkModelList);
+
+ 
+
+    }
+
+ 
 
 }
