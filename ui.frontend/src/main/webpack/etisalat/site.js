@@ -12,18 +12,12 @@ $(document).ready(function () {
     $('.copyright-year').text(new Date().getFullYear());
 
     //ETSL -38
-    $(".beigebg-wrapper").hide();
-    $(".teaser-viewall").addClass("sort_asc");
-    $(".teaser-viewall").on("click", function () {
-        $(this).find('span').toggleClass('hidden');
-        $(this).toggleClass(function () {
-            return $(this).is('.sort_asc, .sort_desc') ? 'sort_asc sort_desc' : 'red';
-        })
-        $('.beigebg-wrapper').slideToggle();
+    $(".beigebg-container .cmp-accordion__button").on("click", function(event) {
+      $(".cmp-accordion__button").closest('.cmp-accordion__header').find('.accordion-top-view').find('span').toggleClass('hidden');
     });
     if (window.matchMedia('(max-width: 768px)').matches)
         {
-            $(".teaser-viewall").find('span').addClass('visiblityhidden');
+            $(".beigebg-container").find('.accordion-top-view').addClass('displaynone');
         }
 });
 
