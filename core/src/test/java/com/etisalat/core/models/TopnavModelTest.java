@@ -32,6 +32,20 @@ class TopnavModelTest {
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
-	
+	@Test
+	void testTopMenuLanguage() {
+		final int expectedSize = 1;
+		final String expectedLangTitle = "Arabic";
+		final String expetedLangURL = "/content/topnavmodel/ae/ar/index.html";
+
+		context.currentResource(TOP_NAV);
+
+		TopnavModel topNavModel = context.request().adaptTo(TopnavModel.class);
+		int actualSize = topNavModel.getLocaleList().size();
+		LinkModel linkModel = topNavModel.getLocaleList().get(0);
+		assertEquals(expectedSize, actualSize);
+		assertEquals(expectedLangTitle, linkModel.getTitle());
+		assertEquals(expetedLangURL, linkModel.getLinkUrl());
+	}
 
 }
