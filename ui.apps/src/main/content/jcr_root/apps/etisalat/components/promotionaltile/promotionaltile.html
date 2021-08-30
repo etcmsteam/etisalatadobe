@@ -1,49 +1,37 @@
-<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     data-panelcontainer="${wcmmode.edit && 'Promotional tile'}"
-     data-placeholder-text="${wcmmode.edit && 'Please update Promotional tile' @ i18n}">
+ <a href="${properties.promotionLinkBehavior == 'openmodalwindow'? '#' : properties.promotionCTALink}" class=""></a>  
 
-  <sly
-      data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}"></sly>
-
-
-  <a href="${properties.promotionLinkBehavior == 'openmodalwindow'? '#' : properties.promotionCTALink}"
-     class=""></a>
-
-  <div class="current-promotions-box">
-    <div class="icon-wrap">
+                          <div class="current-promotions-box">
+                                <div class="icon-wrap">
                                     <span class="icon-with-bg">
-										<div
-                        data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
-                                      <!--img source -->
+										<div data-sly-resource="${carousel @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+										<!--img source -->
 
 									</span>
-    </div>
-    <div class="title-wrap" data-sly-element="${properties.titleType}">
-      ${properties.title}
-    </div>
-    <div class="learn-more-wrap">
+                                </div>
+                                <div class="title-wrap" data-sly-element="${properties.titleType}">
+                                   ${properties.title}
+                                </div>
+	<div class="learn-more-wrap" >
 
-      <sly data-sly-test="${properties.promotionLinkBehavior != 'openmodalwindow'}">
-        <a href="${properties.promotionCTALink}" class="btn-text btn-green  learn-more"
-           title="${properties.promotionCTATitle}"
-           target="${properties.promotionLinkBehavior == 'opennewwindow'?'_self':'_blank'}">
-          <span class="moreg">${properties.promotionCTATitle}</span>
-        </a>
+	<sly data-sly-test= "${properties.promotionLinkBehavior != 'openmodalwindow'}">
+					<a href="${properties.promotionCTALink}" class="btn-text btn-green  learn-more" title="${properties.promotionCTATitle}" target="${properties.promotionLinkBehavior == 'opennewwindow'?'_self':'_blank'}">
+						<span class="moreg">${properties.promotionCTATitle}</span>
+					</a>  
 
-      </sly>
+	</sly>
 
-      <sly data-sly-test="${properties.promotionLinkBehavior == 'openmodalwindow'}">
-        <a data-label="${resource.name}" class="btn-text btn-green  learn-more"
-           title="${properties.promotionCTATitle}">
-          <span class="moreg">${properties.promotionCTATitle}</span>
-        </a>
-        <div class="offers-popup-wrapper">
-          <div id="${resource.name}" class="nv-modal fade  bottom-modal">
-            <sly
-                data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}"></sly>
-          </div>
-        </div>
-      </sly>
-    </div>
-  </div>
+	<sly data-sly-test= "${properties.promotionLinkBehavior == 'openmodalwindow'}">
+					<a data-label="${resource.name}" class="btn-text btn-green  learn-more" title="${properties.promotionCTATitle}">
+						<span class="moreg">${properties.promotionCTATitle}</span>
+					</a> 
+
+<div class="offers-popup-wrapper">
+    <div id="winsamsung" class="nv-modal fade  bottom-modal">
+
 </div>
+
+</div> 
+
+	</sly>
+	</div>
+                            </div>
