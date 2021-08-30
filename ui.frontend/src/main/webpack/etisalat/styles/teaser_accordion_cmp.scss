@@ -12,22 +12,22 @@
     @include md {
         h3 {
             font-size: $font16;
-            margin-top: $font20;
-            @include font-family-lato();
+            margin-top: 0.25rem;
+            @include font-family-lato;
         }
 
         h2 {
             font-size: $font20;
-            @include font-family-lato();
+            @include font-family-lato;
         }
     }
 
     p {
         color: $dark-gray;
-        @include font-family-lato();
+        @include font-family-lato;
 
         @include sm {
-            color: #6f6c70;
+            color: $dark-gray;
             font-size: $font16;
             margin-bottom: 3rem;
         }
@@ -112,12 +112,12 @@
 
         .cmp-teaser__title {
             font-size: $font28;
-            color: #353738;
+            color: $almost-black;
             letter-spacing: .5px;
             margin: 2.2rem 0 1.5rem;
 
             a {
-                color: #353738;
+                color: $almost-black;
             }
 
             @include sm {
@@ -145,11 +145,11 @@
         list-style-type: disc;
         padding-left: 0.5rem;
         position: relative;
-        color: #6f6c70;
+        color: $dark-gray;
         line-height: 24px;
         margin-left: 2rem;
         margin-bottom: 4px;
-        @include font-family-lato();
+        @include font-family-lato;
     }
 
     .beigebg-wrapper {
@@ -169,11 +169,16 @@
     }
 
     .aem-GridColumn.aem-GridColumn--default--6 {
-        padding-left: 2.5rem;
         padding-right: 2rem;
+        padding-left: 0;
+
+        @include sm {
+            padding-left: 0rem;
+            padding-right: 1rem;
+        }
 
         @include md {
-            padding-left: 1rem;
+            padding-left: 0rem;
             padding-right: 1rem;
         }
     }
@@ -196,7 +201,7 @@
 
 
         td {
-            border-bottom: 2px solid #e5e5e5;
+            border-bottom: 2px solid $white-2;
             font-size: $font20 !important;
             font-weight: 400;
             width: 50%;
@@ -205,7 +210,7 @@
             margin: 0 -2rem;
             color: $steel-grey;
             line-height: 56px;
-            @include font-family-lato();
+            @include font-family-lato;
 
             @include sm {
                 border-bottom: none;
@@ -244,12 +249,13 @@
 
         table th {
             font-size: $font20;
-            color: #353738;
-            @include font-family-lato();
+            color: $almost-black;
+            @include font-family-lato;
             vertical-align: bottom;
             padding: 0;
             line-height: 56px;
-            border-bottom: 2px solid #e5e5e5;
+            border-bottom: 2px solid $white-2;
+            ;
             font-weight: 400;
 
             @include sm {
@@ -277,11 +283,11 @@
     .teaser-viewall {
         cursor: pointer;
         text-transform: uppercase;
-        @include font-family-lato();
+        @include font-family-lato;
         font-size: $font14;
         letter-spacing: 2px;
         line-height: 1.25rem;
-        color: #353738;
+        color: $almost-black;
         position: relative;
         font-weight: 500;
         z-index: 3;
@@ -303,7 +309,7 @@
     >.cmp-container {
         min-height: 140px;
         position: relative;
-        background: #f7f8f4;
+        background: $sand-white-50;
         overflow: hidden;
         margin-bottom: 1.5rem;
         border-radius: 4px;
@@ -330,8 +336,14 @@
         bottom: 0;
         background-position: top left;
 
+        @include sm {
+            background-image: none;
+            display: none;
+        }
+
         @include md {
             background-image: none;
+            display: none;
         }
     }
 
@@ -369,6 +381,145 @@
             width: 100%;
         }
     }
+
+    .accordion {
+        padding-left: 36px;
+        padding-right: 36px;
+
+        @include sm {
+            padding-left: 12px;
+            padding-right: 12px;
+
+            .aem-Grid.aem-Grid--default--12>.aem-GridColumn.aem-GridColumn--default--5 {
+                width: 100%;
+            }
+        }
+
+        @include md {
+            padding-left: 12px;
+            padding-right: 12px;
+
+            .aem-Grid.aem-Grid--default--12>.aem-GridColumn.aem-GridColumn--default--5 {
+                width: 100%;
+            }
+        }
+
+    }
+
+    button:focus {
+        background-color: transparent;
+        outline: none;
+    }
+
+    .cmp-accordion {
+        background-color: transparent;
+    }
+
+    .accordion-top-view {
+        float: right;
+        margin-right: 2rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all .3s ease-in-out;
+        font-family: $font-family-lato;
+        font-size: .875rem;
+        letter-spacing: 2px;
+        line-height: 1.25rem;
+        z-index: 1;
+        color: $almost-black !important;
+    }
+
+    .cmp-accordion__item {
+        border-bottom: none;
+    }
+
+    // .cmp-accordion__button {
+    //     width: auto;
+    // }
+
+    .cmp-accordion__title {
+        font-size: 28px;
+        color: $almost-black;
+        letter-spacing: .5px;
+        margin: 2.2rem 0 1.5rem;
+        @include font-family-Neotech;
+
+        @include sm {
+            font-size: 20px;
+        }
+
+        @include md {
+            font-size: 20px;
+        }
+    }
+
+    .cmp-accordion__icon {
+        content: "";
+        position: relative;
+        transform: rotate(225deg);
+        color: $nav-item-black;
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid $nav-item-black;
+        border-left: 2px solid $nav-item-black;
+        float: right;
+        z-index: 10;
+
+        @include sm {
+            margin-top: -2rem;
+            margin-right: 0.5rem;
+            z-index: 10;
+        }
+
+        @include md {
+            margin-right: 1rem;
+        }
+    }
+
+    .cmp-accordion__button--expanded {
+        background-color: transparent !important;
+        z-index: 10;
+    }
+
+    .cmp-accordion__button--expanded .cmp-accordion__icon {
+        content: "";
+        transform: rotate(45deg);
+        display: block;
+        width: 10px;
+        height: 10px;
+        top: 10px;
+        border-top: 2px solid $nav-item-black;
+        border-left: 2px solid $nav-item-black;
+        float: right;
+    }
+
+    .cmp-accordion__button {
+        z-index: 10;
+    }
+
+    .visiblityhidden {
+        visibility: hidden;
+        width: min-content;
+    }
+
+    .displaynone {
+        display: none;
+    }
+    .cmp-accordion__itemdesc{
+        font-size: 18px;
+        margin-top: 2rem;
+        @include sm{
+            font-size: 16px;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        @include md{
+            font-size: 16px;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+    }
 }
 
 .sort_asc {
@@ -388,9 +539,4 @@
     display: inline-block;
     width: 138px;
 
-}
-
-.visiblityhidden {
-    visibility: hidden;
-    width: min-content;
 }
