@@ -44,7 +44,7 @@ public class TopnavModel {
  
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-    @Default(values = "/content/etisalat")
+    @Default(values = "/content/etisalat/ae")
     private String navigationRoot;
 
  
@@ -60,6 +60,8 @@ public class TopnavModel {
 
     @SlingObject
     private SlingHttpServletRequest request;
+    
+    private String currentPageLanguageTitle;
 
  
 
@@ -107,6 +109,8 @@ public class TopnavModel {
             model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
             model.setTitle(pageTitle);
             linkModelList.add(model);
+        }else {
+        	setCurrentPageLanguageTitle(pageTitle);
         }
     }
 
@@ -127,5 +131,23 @@ public class TopnavModel {
     public int getLanguageSize() {
     	return linkModelList.size();
     }
+
+
+
+	/**
+	 * @return the currentPageLanguageTitle
+	 */
+	public String getCurrentPageLanguageTitle() {
+		return currentPageLanguageTitle;
+	}
+
+
+
+	/**
+	 * @param currentPageLanguageTitle the currentPageLanguageTitle to set
+	 */
+	public void setCurrentPageLanguageTitle(String currentPageLanguageTitle) {
+		this.currentPageLanguageTitle = currentPageLanguageTitle;
+	}
 
 }

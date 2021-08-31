@@ -977,7 +977,7 @@ a:hover {
     }
 }
 
-.top-nav span.language-switch-content {
+*[lang="ar"] *[dir="rtl"] .top-nav span.language-switch-content {
     font-size: .6875rem;
 }
 
@@ -986,4 +986,82 @@ a:hover {
     font-weight: 100;
     font-family: GE SS Two,Arial,sans-serif;
     letter-spacing: 0;
+}
+
+//lang nav
+ul {
+	.language {
+		list-style: none;
+	}
+	.language {
+		text-transform: uppercase;
+		display: block;
+		padding-right: 28px;
+		position: relative;
+	}
+	.language a {
+		font-size: 12px;
+	}
+	.language a:after {
+		border-style: solid;
+		border-width: 1px 1px 0 0;
+		content: "";
+		display: inline-block;
+		height: 0.8em;
+		left: 7em;
+		top: 14px;
+		position: absolute;
+		-webkit-transform: rotate( 135deg);
+		transform: rotate( 135deg);
+		vertical-align: top;
+		width: 0.8em;
+		padding-right: 0;
+	}
+	.language a.open:after {
+		top: 1.65em;
+		-webkit-transform: rotate( -45deg);
+		transform: rotate(-45deg);
+	}
+	.language {
+		list-style: none;
+	}
+	.language li {
+		text-transform: uppercase;
+		display: block;
+		padding: 8px;
+	}
+	.language li a {
+		color: #ebebeb;
+		font-size: 12px;
+	}
+	.language-menu li a:after {
+		display: none;
+	}
+	.language-menu {
+		text-align: center;
+		left: -30px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 48px;
+		width: 150px;
+		z-index: 999;
+		background-color: $sand-white;
+	}
+	.language-menu li {
+		text-transform: uppercase;
+		display: inline-block;
+		padding: 10px;
+		width: calc(100% - 45px);
+	}
+	.language-menu li a {
+		color: $almost-black;
+		font-size: 12px;
+		padding: 2px!important;
+		height: 20px;
+	}
+	.language-menu li a:hover {
+		color: $main-green;
+	}
 }
