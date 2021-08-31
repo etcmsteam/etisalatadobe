@@ -118,11 +118,14 @@ public class TopnavModel {
      */
     public List<LinkModel> getLocaleList() {
         return Collections.unmodifiableList(linkModelList);
-
- 
-
     }
 
- 
+    /**
+     * 
+     * @return a size of the language list.
+     */
+    public int getLanguageSize() {
+    	return linkModelList.size();
+    }
 
 }
