@@ -998,9 +998,8 @@ ul {
 		padding-right: 28px;
 		position: relative;
         a {
-            font-size: 12px;
-        }
-        a:after {
+            font-size: $font12;
+         &:after{
             border-style: solid;
             border-width: 1px 1px 0 0;
             content: "";
@@ -1009,18 +1008,20 @@ ul {
             left: 7em;
             top: 14px;
             position: absolute;
-            -webkit-transform: rotate( 135deg);
             transform: rotate( 135deg);
             vertical-align: top;
             width: 0.8em;
             padding-right: 0;
         }
-        a.open:after {
-            top: 1.65em;
-            -webkit-transform: rotate( -45deg);
+         &.open {
+           &:after {
+             top: 1.65em;
             transform: rotate(-45deg);
-        }
-	}
+            }
+	    }
+    }
+}
+        
     .language-menu {
 		text-align: center;
 		left: -30px;
@@ -1044,12 +1045,12 @@ ul {
             font-size:$font12;
             padding: 2px!important;
             height: 20px;
-        }
-        li a:after {
-            display: none;
-        }
-        li a:hover {
-            color: $main-green;
+            &:after{
+                display: none;
+            }
+            &:hover{
+                color: $main-green;
+            }
         }
     }	
 }
