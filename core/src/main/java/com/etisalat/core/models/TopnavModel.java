@@ -104,14 +104,16 @@ public class TopnavModel {
                 PageConstants.SLASH + currentPage.getLanguage().toString() + PageConstants.SLASH,
                 PageConstants.SLASH + languageCode + PageConstants.SLASH);
         Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
-        if (null != childRes && !currrentPath.equals(newPagePath)) {
-            LinkModel model = new LinkModel();
-            model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
-            model.setTitle(pageTitle);
-            linkModelList.add(model);
-        }else {
-        	setCurrentPageLanguageTitle(pageTitle);
-        }
+		if (null != childRes) {
+			if (!currrentPath.equals(newPagePath)) {
+				LinkModel model = new LinkModel();
+				model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
+				model.setTitle(pageTitle);
+				linkModelList.add(model);
+			} else {
+				setCurrentPageLanguageTitle(pageTitle);
+			}
+		}
     }
 
  
