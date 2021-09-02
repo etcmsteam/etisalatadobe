@@ -3,16 +3,22 @@
  var doSubmit = false;
 
  function reCaptchaVerify(response) {
+
   if (response === document.querySelector('.g-recaptcha-response').value) {
     doSubmit = true;
+ $('#submitBtn').removeClass('hide');
+
    }
  }
 
  function reCaptchaExpired () {
    alert('Verify Google Captcha again');
+   $('#submitBtn').addClass('hide');
+
  }
 
- function reCaptchaCallback () {    
+ function reCaptchaCallback () { 
+      $('#submitBtn').addClass('hide');
    grecaptcha.render('rcaptcha', {
     'sitekey': document.getElementById('gcaptchaKeyV2').value,
     'callback': reCaptchaVerify,
@@ -30,5 +36,6 @@
             // add token value to form
             document.getElementById('g-recaptcha-response').value = token;
         });
+
     });
 
