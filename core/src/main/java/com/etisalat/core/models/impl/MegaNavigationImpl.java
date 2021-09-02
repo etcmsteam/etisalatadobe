@@ -11,20 +11,24 @@ import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.factory.ModelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.day.cq.commons.jcr.JcrConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
+import com.etisalat.core.models.LinkModel;
 import com.etisalat.core.models.MegaFixedNavigationItem;
 import com.etisalat.core.models.MegaNavigation;
 import com.etisalat.core.models.MegaNavigationItem;
 import com.etisalat.core.models.MegaSubNavigationItem;
 import com.etisalat.core.models.MegaTeaserModel;
+import com.etisalat.core.models.TopnavModel;
 import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
@@ -89,6 +93,14 @@ public class MegaNavigationImpl implements MegaNavigation {
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String topNavMenuPath;
+	
+	private Resource topNavResource;
+	
+	/**
+     * The model factory service.
+     */
+    @OSGiService
+    private ModelFactory modelFactory;
 	
 	
 
@@ -192,7 +204,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 		if (StringUtils.isNotBlank(variationPath)
 				&& null != resource.getResourceResolver().getResource(variationPath)) {
 			Resource variationRes = resource.getResourceResolver().getResource(variationPath);
-			Resource rootRes = variationRes.getChild("jcr:content/root");
+			Resource rootRes = variationRes.getChild(JCR_CONTENT_ROOT);
 			setMenuItems(rootRes, navModel);								
 		} else {
 			LOG.warn("Invalid experience fragment variation path");
@@ -375,7 +387,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 								CommonUtility.appendHtmlExtensionToPage(navModel.getNavigationLink()));
 						topNavItemsList.add(navModel);
 					});
-
+					setTopNavResource(childRes);
 					break;
 				}
 			}
@@ -424,6 +436,35 @@ public class MegaNavigationImpl implements MegaNavigation {
 	@Override
 	public List<FixedNavigtaionMultifieldModel> getTopNavIconMenuItems() {
 		return Collections.unmodifiableList(getTopNavigationItems(LINKS_WITH_ICONS));
+	}
+	
+	@Override
+	public List<LinkModel> getLanguageItems() {
+		List<LinkModel> langList = new ArrayList<>();
+		if (null != getTopNavResource()) {
+			TopnavModel topNavModel = this.modelFactory.getModelFromWrappedRequest(this.request, getTopNavResource(),
+					TopnavModel.class);
+			if (null != topNavModel) {
+				langList = topNavModel.getLocaleList();
+			}
+		}
+		return Collections.unmodifiableList(langList);
+	}
+
+
+	/**
+	 * @return the topNavResource
+	 */
+	public Resource getTopNavResource() {
+		return topNavResource;
+	}
+
+
+	/**
+	 * @param topNavResource the topNavResource to set
+	 */
+	public void setTopNavResource(Resource topNavResource) {
+		this.topNavResource = topNavResource;
 	}
 
 }
