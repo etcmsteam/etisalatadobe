@@ -55,4 +55,10 @@ public interface MegaNavigation {
 	 */
 	List<FixedNavigtaionMultifieldModel> getTopNavIconMenuItems();
 	
+	/**
+	 * 
+	 * @return a collection of objects representing the language items that compose the list.
+	 */
+	List<LinkModel> getLanguageItems();
+	
 }
