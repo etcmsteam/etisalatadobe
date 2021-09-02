@@ -67,17 +67,17 @@ public class TopnavModel {
 
     @PostConstruct
     protected void init() {
-        if (StringUtils.isNotBlank(navigationRoot)) {
-            Resource res = request.getResourceResolver().getResource(navigationRoot);
-            Page page = res.adaptTo(Page.class);
-            if (page != null) {
-                Iterator<Page> childPage = page.listChildren();
-                while (childPage.hasNext()) {
-                    Page languagePage = childPage.next();
-                    getLanguageChildPages(languagePage);
-                }
-            }
-        }
+		if (StringUtils.isNotBlank(navigationRoot)) {
+			Resource res = request.getResourceResolver().getResource(navigationRoot);
+			if (null != res && null != res.adaptTo(Page.class)) {
+				Page page = res.adaptTo(Page.class);
+				Iterator<Page> childPage = page.listChildren();
+				while (childPage.hasNext()) {
+					Page languagePage = childPage.next();
+					getLanguageChildPages(languagePage);
+				}
+			}
+		}
     }
 
  
