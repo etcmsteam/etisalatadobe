@@ -1,0 +1,109 @@
+.no-padding-container{
+    .cmp-container {
+        padding: 0;
+    }
+    .image-left{
+        .cmp-teaser{
+            flex-direction: row;
+            width:auto;
+            margin:10px;
+            .cmp-teaser__title{
+                h2{
+                    margin-bottom: 1.4rem;
+                    font-size:$font26;
+                    line-height: 0.5;
+                }
+                a {
+                    color:$almost-black;
+                }
+            }
+            .cmp-teaser__content {
+                padding: 0.5rem 1rem 2.5rem 1.5rem;
+            }
+            .cmp-teaser__description{
+                p{
+                    font-size: $font14;
+                    line-height: 19px;
+                } 
+            } 
+            @media (min-width:$screen-xl-max){
+                .cmp-teaser__description{
+                    height: 190px;
+                }
+            } 
+            .cmp-teaser__action-container {
+                margin-top: 0;
+                a{
+                &:before {
+                    @include link-arrow();
+                    left: 6rem;
+                }
+            } 
+        }
+        }
+    }
+    .image-right{
+        .cmp-teaser{
+            flex-direction: row-reverse;
+            width:auto;
+            margin:10px;
+            .cmp-teaser__title{
+                h2{
+                    margin-bottom: 1.4rem;
+                    font-size:$font26;
+                    line-height: 0.5;
+                }
+                a {
+                    color:$almost-black;
+                }
+            }
+            .cmp-teaser__content {
+                padding: 1.5rem 1rem 2.5rem 1.5rem;
+            }
+            .cmp-teaser__description{
+                p{
+                    font-size: $font14;
+                    line-height: 19px;
+                } 
+            } 
+            @media (min-width:$screen-xl-max){
+                .cmp-teaser__action-container{
+                    position: relative;
+                    margin-top: 0;
+                    a{
+                        position: absolute;
+                        bottom: 0px;
+                        top: 10rem;
+                    }
+                }    
+            }  
+        }
+    }
+    @media (min-width:$screen-xl-max){
+    .cmp-teaser__horizontal{
+        .cmp-teaser__image{
+            width: 30%;
+        }
+        .cmp-teaser__content {
+            width:70%;
+            padding: 1.5rem 1rem 2.5rem 1.5rem;
+        }
+        .cmp-teaser__description{
+                    height: 0px;
+                }
+        .cmp-teaser__title{
+            width:45%;
+        }
+        .cmp-teaser{
+            &__description,
+            &__action-container{
+            overflow: hidden; padding-left:20rem;
+            margin-top: -47px;
+            padding-right: 20px;
+            display:inline-block;
+        }
+           
+        }
+    }
+}
+}
