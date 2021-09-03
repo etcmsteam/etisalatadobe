@@ -23,7 +23,7 @@
             font-weight: 400;    
             font-size: $font16;
             position: relative;
-            margin-bottom: 46px;
+            margin-bottom: 36px;
             border: 0;
             color: $dropdown-grey;
           }
@@ -51,15 +51,18 @@
           .cmp-form-options--radio {
              border:0;
              margin: 0;
-             padding: .35em .625em 3.75em;
+             padding-bottom: 1.7rem;
+              padding-top: 0;
+              padding-left: 0;
           }
-          .cmp-form-options--radio > label{
+          .cmp-form-options--radio > label {
             width: 24px;
             height: 24px;
             display: inline-flex;
             background-size: 24px;
             margin-right: 5rem;
          }
+         
           [type=radio]:not(:checked) {
             background-image: url(../resources/images/icon-unselected.png);
             background-repeat: no-repeat;
@@ -99,7 +102,7 @@
             background-position: 100%;
             padding: 0;
             letter-spacing: 0;
-            line-height: 2.8rem;                      
+            line-height: 1.8rem;                      
             cursor: pointer;
             user-select: none;
           }
@@ -109,7 +112,7 @@
             //position: absolute;           
             top: 100%;
             left: 0;
-            right: 0;
+            right: -5px;
           
           list-style: none;
           text-align: left;
@@ -243,17 +246,7 @@
               }
             }
           }
-    .cmp-teaser__description {
-      & p {
-        font-size: $font16!important;
-        line-height: 1.5rem!important;
-        color: $gray;
-        @include font-family-lato;
-        padding-bottom: 6rem;
-
-      }
-
-    }
+   
     input:not([type]):focus:not([readonly])~label, .form input[type=date]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime-local]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime]:not(.browser-default):focus:not([readonly])~label, .form input[type=email]:not(.browser-default):focus:not([readonly])~label, .form input[type=number]:not(.browser-default):focus:not([readonly])~label, .form input[type=password]:not(.browser-default):focus:not([readonly])~label, .form input[type=search]:not(.browser-default):focus:not([readonly])~label, .form input[type=tel]:not(.browser-default):focus:not([readonly])~label, .form input[type=text]:not(.browser-default):focus:not([readonly])~label, .form input[type=time]:not(.browser-default):focus:not([readonly])~label, .form input[type=url]:not(.browser-default):focus:not([readonly])~label {
         color: $main-green;
         font-size: $font16;
@@ -280,7 +273,7 @@
         border-radius: 0;
         color: $almost-black;
         outline: none;
-        height: 2.5rem;
+        //height: 2.5rem;
         width: 80%;
         margin: 0;
         padding: 0;
@@ -3059,12 +3052,31 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     }
 
   
-
-
-
-
 }
-
+.new_form {
+  .cmp-teaser__description > p {
+    
+    font-size: $font16!important;
+    line-height: 1.5rem!important;
+    color: $gray!important;
+    @include font-family-lato;
+    padding-bottom: 6rem;
+  }
+}
+.has-error-fields {
+  input {
+    border-bottom: 1px solid #be1218;
+  }
+  
+}
+.cmp-teaser__description > p {
+    
+  font-size: $font16!important;
+  line-height: 1.5rem!important;
+  color: $gray!important;
+  @include font-family-lato;
+  padding-bottom: 4rem;
+}
 select:focus {
     outline: 1px solid $select-focus;
 }
