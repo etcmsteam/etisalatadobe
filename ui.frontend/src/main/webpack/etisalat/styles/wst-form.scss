@@ -1,20 +1,74 @@
 .cmp-form {
-  .cmp-form-options--drop-down{
-    position: relative;
-    bottom: 5px;
-    width: 86%;
-    select {
-      display:none;
-    }
-  }
-       
+        .cmp-form-options--drop-down{
+          position: relative;
+          bottom: 5px;
+          width: 86%;
+          border: none;
+          padding: 0;
+          margin: 0;
+          select {
+            display:none;
+          }
+        }
+              
            .select-hide {
             display: none;
           }
           .select-selected {
             background-color: $white;
+            color: $almost-black;
+            font-size: $font20;
           }
-          
+          .cmp-form-options__legend {
+            font-weight: 400;    
+            font-size: $font16;
+            position: relative;
+            margin-bottom: 46px;
+            border: 0;
+            color: $dropdown-grey;
+          }
+          .account-radio > label {
+            transform: translateY(-10px) scale(.8);
+            transform-origin: 0 0;
+            font-size: $font16;
+            z-index: 2;
+            :before {              
+                background-image: url(../resources/images/icon-unselected.png);
+                content: "";
+                width: 24px;
+                height: 24px;
+                display: block;
+                background-size: 24px;
+                margin-right: .5rem;
+                position: absolute;
+                left: 0;
+                transition: all .25s cubic-bezier(.55,.06,.68,.19);
+                border-radius: 50%;
+                box-shadow: 0 2px 5px 0 hsl(0deg 0% 71% / 50%);
+            }
+            
+          }
+          .cmp-form-options--radio {
+             border:0;
+             margin: 0;
+             padding: .35em .625em 3.75em;
+          }
+          .cmp-form-options--radio > label{
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            background-size: 24px;
+            margin-right: 5rem;
+         }
+          [type=radio]:not(:checked) {
+            background-image: url(../resources/images/icon-unselected.png);
+            background-repeat: no-repeat;
+          }
+          [type=radio]:checked {
+            background-image: url(../resources/images/icon-checkbox-selected.png);
+            background-repeat: no-repeat;
+          }
+  
           /*style the arrow inside the select element:*/
           .select-selected:after {
             position: absolute;
@@ -35,6 +89,9 @@
           }
           
           /*style the items (options), including the selected item:*/
+          .select-items div{
+            font-size: $font16;
+          }         
           .select-items div,.select-selected {
             color: $almost-black;            
             text-decoration: none;
@@ -130,7 +187,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: 14px;
+            font-size: $font14;
             text-transform: capitalize;
             font-weight: 400;
           }
@@ -153,7 +210,7 @@
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
-              font-size: 14px;
+              font-size: $font14;
               text-transform: capitalize;
               font-weight: 400;
             }
@@ -186,12 +243,23 @@
               }
             }
           }
-       input:not([type]):focus:not([readonly])~label, .form input[type=date]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime-local]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime]:not(.browser-default):focus:not([readonly])~label, .form input[type=email]:not(.browser-default):focus:not([readonly])~label, .form input[type=number]:not(.browser-default):focus:not([readonly])~label, .form input[type=password]:not(.browser-default):focus:not([readonly])~label, .form input[type=search]:not(.browser-default):focus:not([readonly])~label, .form input[type=tel]:not(.browser-default):focus:not([readonly])~label, .form input[type=text]:not(.browser-default):focus:not([readonly])~label, .form input[type=time]:not(.browser-default):focus:not([readonly])~label, .form input[type=url]:not(.browser-default):focus:not([readonly])~label {
-            color: $main-green;
-            font-size: 1rem;
-            transform: translateY(-10px) scale(.8);
-            transform-origin: 0 0;
-        }
+    .cmp-teaser__description {
+      & p {
+        font-size: $font16!important;
+        line-height: 1.5rem!important;
+        color: $gray;
+        @include font-family-lato;
+        padding-bottom: 6rem;
+
+      }
+
+    }
+    input:not([type]):focus:not([readonly])~label, .form input[type=date]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime-local]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime]:not(.browser-default):focus:not([readonly])~label, .form input[type=email]:not(.browser-default):focus:not([readonly])~label, .form input[type=number]:not(.browser-default):focus:not([readonly])~label, .form input[type=password]:not(.browser-default):focus:not([readonly])~label, .form input[type=search]:not(.browser-default):focus:not([readonly])~label, .form input[type=tel]:not(.browser-default):focus:not([readonly])~label, .form input[type=text]:not(.browser-default):focus:not([readonly])~label, .form input[type=time]:not(.browser-default):focus:not([readonly])~label, .form input[type=url]:not(.browser-default):focus:not([readonly])~label {
+        color: $main-green;
+        font-size: $font16;
+        transform: translateY(-10px) scale(.8);
+        transform-origin: 0 0;
+    }
     
     input:not([type]),
     input[type=date]:not(.browser-default),
@@ -224,7 +292,7 @@
         transition: border .3s, -webkit-box-shadow  3s;
         transition: box-shadow .3s, border  3s;
         transition: box-shadow .3s, border .3s, -webkit-box-shadow  3s;
-        font-size: 1.25rem;
+        font-size: $font20;
         position: relative;
         z-index: 1;
         margin-bottom: 4.25rem;
@@ -390,7 +458,7 @@ textarea.cmp-form-text__textarea.ng-not-empty {
  input[type=time]:not(.browser-default):focus:not([readonly]) ~label,
  input[type=url]:not(.browser-default):focus:not([readonly]) ~label {
     color: $main-green;
-    font-size: 1rem;
+    font-size: $font16;
     -webkit-transform: translateY(-10px) scale(0.8);
     transform: translateY(-10px) scale(0.8);
     -webkit-transform-origin: 0 0;
@@ -399,7 +467,7 @@ textarea.cmp-form-text__textarea.ng-not-empty {
 
 textarea.cmp-form-text__textarea:focus:not([readonly]) .parent~label {
     color: $main-green;
-    font-size: 1rem;
+    font-size: $font16;
     -webkit-transform: translateY(10px) scale(0.8);
     transform: translateY(10px) scale(0.8);
     -webkit-transform-origin: 0 0;
@@ -489,7 +557,7 @@ input[type=url]:not(.browser-default).ng-valid.ng-not-empty ~label {
     transform: translateY(-10px) scale(0.8);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
-    font-size: 1rem;
+    font-size: $font16;
 }
 
 textarea.cmp-form-text__textarea.ng-valid.ng-not-empty ~label {
@@ -497,7 +565,7 @@ textarea.cmp-form-text__textarea.ng-valid.ng-not-empty ~label {
     transform: translateY(10px) scale(0.8);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
-    font-size: 1rem;
+    font-size: $font16;
 }
 
 *[lang="ar"] *[dir="rtl"]  input:not([type]).ng-valid.ng-not-empty ~label,
@@ -553,7 +621,7 @@ textarea.cmp-form-text__textarea:focus.ng-invalid.ng-dirty:not([readonly]) ~labe
     transform: translateY(-10px) scale(0.8);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
-    font-size: 1rem;
+    font-size: $font16;
 }
 
 textarea.cmp-form-text__textarea.ng-invalid.ng-not-empty ~label {
@@ -561,7 +629,7 @@ textarea.cmp-form-text__textarea.ng-invalid.ng-not-empty ~label {
     transform: translateY(10px) scale(0.8);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
-    font-size: 1rem;
+    font-size: $font16;
 }
 
 *[lang="ar"] *[dir="rtl"]  input:not([type]).ng-invalid.ng-not-empty ~label,
@@ -896,7 +964,7 @@ textarea.cmp-form-text__textarea ~label:after {
 
         label {
             padding-left: 2.5rem !important;
-            font-size: 1rem;
+            font-size: $font16;
             color: $almost-black;
 
             &:before {
@@ -1025,7 +1093,7 @@ textarea.cmp-form-text__textarea ~label:after {
     top: 0;
     left: 12px;
     line-height: 24px;
-    font-size: 1.25rem;
+    font-size: $font20;
     cursor: text;
     -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out;
     transition: color .2s ease-out, -webkit-transform .2s ease-out;
@@ -1054,7 +1122,7 @@ textarea.cmp-form-text__textarea ~label:after {
 .cmp-form-text__text .cmp-form-options--drop-down>label {
     left: 4.6rem;
     color: $almost-black !important;
-    font-size: 1rem !important;
+    font-size: $font16 !important;
     top: 0 !important;
 }
 
@@ -1084,7 +1152,7 @@ textarea.cmp-form-text__textarea ~label:after {
     top: 1.25rem;
     right: 12px;
     @include font-family-lato;
-    font-size: 12px;
+    font-size: $font12;
     line-height: 18px;
     color: $steel-grey;
 }
@@ -1114,7 +1182,7 @@ input-field> input:not(.browser-default) ~label .input-field> input[type]:-webki
 .cmp-form-text__text.helper-text {
     position: relative;
     display: block;
-    font-size: 12px;
+    font-size: $font12;
     color: rgba(0, 0, 0, 0.54);
     text-align: left
 }
@@ -1144,7 +1212,7 @@ input-field> input:not(.browser-default) ~label .input-field> input[type]:-webki
 .cmp-form-text__text.prefix {
     position: absolute;
     width: 3rem;
-    font-size: 2rem;
+    font-size:$font32;
     -webkit-transition: color  2s;
     transition: color  2s;
     top:  5rem;
@@ -1179,7 +1247,7 @@ input-field> input:not(.browser-default) ~label .input-field> input[type]:-webki
     .input-field>label,
     .cmp-form-text__text .cmp-form-options--drop-down>label,
      .cmp-form-options--drop-down .selected-flag {
-        font-size: .875rem
+        font-size: $font14
     }
 }
 
@@ -1202,7 +1270,7 @@ input-field> input:not(.browser-default) ~label .input-field> input[type]:-webki
     input[type=time]:not(.browser-default),
     input[type=url]:not(.browser-default),
     textarea.cmp-form-text__textarea {
-      font-size: .875rem !important; 
+      font-size: $font14 !important; 
     }
     .cmp-form-text__text{
       margin-bottom: 1.5rem;
@@ -1274,7 +1342,7 @@ textarea.cmp-form-text__textarea {
     display: inline-block;
     height: 25px;
     line-height: 25px;
-    font-size: 1rem;
+    font-size: $font16;
     -webkit-transition: .28s ease;
     transition: .28s ease;
     -webkit-user-select: none;
@@ -1390,7 +1458,7 @@ textarea.cmp-form-text__textarea {
     display: inline-block;
     height: 25px;
     line-height: 25px;
-    font-size: 1rem;
+    font-size: $font16;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -1690,7 +1758,7 @@ select {
     -webkit-appearance:none; /* Safari and Chrome */
     appearance:none;
     color: $almost-black;
-    font-size: 1.25rem;
+    font-size: $font20;
     height: 2.5rem;
     margin: 0;
     outline: none;
@@ -1981,11 +2049,6 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     }
 }
 
-.cmp-form-text__textlabel.floating-label {
-    top: -1rem !important;
-    font-size: .75rem !important;
-    color: $steel-grey !important;
-}
 
 .cmp-form-text__text.inner-icon svg {
     stroke: $almost-black;
@@ -2032,7 +2095,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 -inline .cmp-form-text label,
 -inline .cmp-form-options--drop-down label {
     position: absolute;
-    font-size: 1.25rem;    
+    font-size: $font20;    
     font-weight: 400;
     color: #848789;
     letter-spacing: 0;
@@ -2130,7 +2193,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         line-height: 2.5 !important;
         opacity:  8;
         color: $dark-gray;
-        font-size: 14px;
+        font-size: $font14;
         @include font-family-Neotech-roboto;
         text-transform: capitalize;
         margin: 0 32px;
@@ -2198,7 +2261,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     }
 
     label {
-      font-size: 1.25rem;
+      font-size: $font20;
       left: 12px;
       font-weight: normal;
       color: $steel-grey;
@@ -2207,7 +2270,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         color: $almost-black;
         transform: translateY(-10px) scale(.8);
         transform-origin: 0 0;
-        font-size: 1rem;
+        font-size: $font16;
         z-index: 2;
         line-height: inherit;
       }
@@ -2274,30 +2337,6 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
   .cmp-form-text {
     &.floating-label-datepicker {
-      //label {
-      //  top: 0 !important;
-      //  font-size: 1rem !important;
-      //  line-height: 1rem !important;
-      //}
-
-      input:first-child {
-        // &:valid {
-        //   background-image: none;
-
-        //    ~label {
-        //     top: -1rem !important;
-        //     font-size: .75rem !important;
-        //   }
-        // }
-
-        //&.picker__input--active {
-        //   ~label {
-        //    top: -1rem !important;
-        //    font-size: .75rem !important;
-        //  }
-        //}
-      }
-
       .inner-icon {
         svg {
           stroke: $almost-black;
@@ -2379,7 +2418,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
               select {
                 float: right;
                 border: none;
-                font-size: 14px;
+                font-size: $font14;
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
@@ -2451,7 +2490,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
           .picker__select--month,
           .picker__select--year {
             margin: 0 10px !important;
-            font-size: 14px;
+            font-size: $font14;
 
             option {
               max-height: 200px;
@@ -2544,7 +2583,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     -section{
       -group{
         input{
-          font-size:1rem;
+          font-size:$font16;
           color:$main-green;
         }
       }
@@ -2581,7 +2620,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
   &.cmp-form-text {
     .floating-label {
       color: $almost-black !important;
-      font-size: 1rem !important;
+      font-size: $font16 !important;
       top: 0 !important;
     }
   }
@@ -2674,7 +2713,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         z-index: 9;
         .iti-flag {
           color: $almost-black;
-          font-size: 1.25rem;
+          font-size: $font20;
         }
       }
       input {
@@ -2751,7 +2790,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
           outline: 0;
           .select2-selection__rendered{
             padding-left: 0;
-            font-size: 1.25rem;
+            font-size: $font20;
             height: 2.5rem;
             line-height: 2.5rem;
           }
@@ -2810,7 +2849,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
             transform: translateY(-10px) scale(0.8);
             -webkit-transform-origin: 0 0;
             transform-origin: 0 0;
-            font-size: 1rem !important;
+            font-size: $font16 !important;
             z-index: 2;
             top: 0 !important;
             color: $almost-black!important;
@@ -2830,7 +2869,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
             transform: translateY(-10px) scale(0.8);
             -webkit-transform-origin: 0 0;
             transform-origin: 0 0;
-            font-size: 1rem;
+            font-size: $font16;
             z-index: 2;
           }
         }
@@ -2842,7 +2881,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
           transform: translateY(-10px) scale(0.8);
           -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
-          font-size: 1rem;
+          font-size: $font16;
           z-index: 2;
         }
       }
@@ -2857,7 +2896,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
       .checkboxes-wrap, .radio-wrap{
         label{
           top: 0!important;
-          font-size: 1.25rem!important;
+          font-size: $font20!important;
           color: $almost-black!important;
           line-height: 2.5rem;
           -ms-transform: translate(0px, 5px) scale(0.8) !important;
@@ -2877,7 +2916,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
       .compound-label {
         font-weight: normal;
         top: -1.5rem;
-        font-size: 1rem;
+        font-size: $font16;
         position: relative;
       }
       &.floating-label-selected{
@@ -2887,7 +2926,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
             transform: translateY(-10px) scale(0.8);
             -webkit-transform-origin: 0 0;
             transform-origin: 0 0;
-            font-size: 1rem !important;
+            font-size: $font16 !important;
             z-index: 2;
             top: 0 !important;
             color: $almost-black!important;
@@ -2928,7 +2967,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: 14px;
+        font-size: $font14;
         text-transform: capitalize;
         font-weight: 400;
         svg{
@@ -2948,7 +2987,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
           transform: translateY(-10px) scale(0.8);
           -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
-          font-size: 1rem;
+          font-size: $font16;
           z-index: 2;
         }
       }
@@ -2975,7 +3014,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
           transform: translateY(-10px) scale(0.8);
           -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
-          font-size: 1rem;
+          font-size: $font16;
           z-index: 2;
         }
       }
@@ -2989,7 +3028,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
             color: $almost-black;
             transform: translateY(-10px) scale(.8);
             transform-origin: 0 0;
-            font-size: 1rem;
+            font-size: $font16;
             z-index: 2;
         }
       }
@@ -2997,7 +3036,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     .custom-select{
       border-bottom: solid 1px $cust-select;
       .cmp-form-text__text  .cmp-form-options--drop-down{
-        //font-size: 1rem;
+        //font-size: $font16;
         height: 2rem;
         line-height: 2rem;
         font-weight: normal;
