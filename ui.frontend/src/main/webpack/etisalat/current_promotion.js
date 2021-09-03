@@ -47,27 +47,38 @@ $(document).ready(function () {
     // popup 
    
    
-    var popUpActive;
-    popUpActive = function (e) {
+    // var popUpActive;
+    // popUpActive = function (e) {
+    //     var dataLabel = $(this).attr("data-label");
+    //     if (dataLabel) {
+    //         $('#' + dataLabel).addClass('show');
+    //         // $('body').addClass('freeze');
+    //         $(".promo-offers-popup-wrapper").append($('#' + dataLabel));
+    //     }
+    // }
+    // // current promotions module with popup
+    // $('.learn-more-wrap').off().on('click', popUpActive);
+
+    $(".learn-more-wrap a").on("click", function(event) {
         var dataLabel = $(this).attr("data-label");
         if (dataLabel) {
             $('#' + dataLabel).addClass('show');
+            $('#' + dataLabel).removeClass('fade');
             $('body').addClass('freeze');
+            $('.modalpopup').addClass('show');
+            $(".promo-offers-popup-wrapper").append($('#' + dataLabel));
         }
-    }
-    // current promotions module with popup
-    $('.learn-more-wrap a').off().on('click', popUpActive);
-
-
+    });
+    
     // close popup
     var closePopUp;
     closePopUp = function (e) {
         e.stopPropagation();
         e.preventDefault();
-        var currentOpendPopUp = $(this).closest('.modalpopup');
+        var currentOpendPopUp = $(this).closest('.promo-offers-popup-wrapper');
         $(currentOpendPopUp).removeClass('show');
         $(currentOpendPopUp).css('display', 'none');
         $('body').removeClass('freeze');
     };
-    $('.modalpopup').off('click').on('click', '.nv-modal-close', closePopUp);
+    $('.promo-offers-popup-wrapper').off('click').on('click', '.nv-modal-close', closePopUp);
 });
