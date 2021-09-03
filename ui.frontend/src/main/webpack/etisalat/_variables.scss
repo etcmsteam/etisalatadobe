@@ -26,12 +26,18 @@ $yellow1:               #d4af37;
 $gray:                #919192;
 $almost-black:        #353738;
 $cold-gray:           #D1D2D1;
+$cold-gray-2:        #d1d1d1;
 $grey1:              #6f7273;
 $grey2:              #7e7f7f;
 $grey3:              #b5b5b5;
 $grey4:              #b2b2b2;
 $grey5:              #d8d8d8;
 $grey6:              #666;
+$grey-radio:         #5a5a5a;
+$grey-checked:       #949494;
+$switch-green:       #84c7c1;
+$switch-grey:        #F1F1F1;
+$dropdown-grey:      #9e9e9e;
 
 // Etisalat Extended Colors
 // --------------------------------
@@ -45,6 +51,8 @@ $grey-dark-grass:     #2a332f;
 $black:               #000000;
 
 $red:                  #b3170c;
+$error-red:            #BE1218;
+$alert-red:            #fdeeef;
 $gray:                 #909192;
 
 // sand brown
@@ -91,7 +99,7 @@ $blue1:                #595783;
 $blue2:                #353738;
 $blue3:                 #630e92;
 $orange1:              #9e5419;
-$green1:              #3a4035;
+$green1:               #3a4035;
 
 // main-menu and top-nav
 $sub-menu-gray:         #ebebeb;
@@ -105,6 +113,9 @@ $nav-item-black:        #979797;
 $dark-gray2:            #606060;
 $white-gray1:           #fafaf4;
 $dark-gray:             #6f6c70;
+$cust-select:           #ccc;
+$select-focus:          #c9f3ef;
+$btn-focus:            #2ab7a9;
 
 $gray-primary:          #5A637C;
 $green-primary:         #7da830;
@@ -112,6 +123,9 @@ $grey-secondary:        #ccd3e6;
 $black-secondary:       #2d2f31;
 $blue-secondary:        #007aff;
 $grey-brass:            #9CA1B0;
+$grey-warning:          #ffebd9;
+$grey-select:           #aaa;
+$green-btn:             #5f8515;
 
 $padding-base-vertical: 6px;
 $padding-base-horizontal: 32px; // 12px
@@ -206,6 +220,9 @@ $paracolor: #767676;
     font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
 }
 
+@mixin font-family-lato-withoutge{
+    font-family: Lato, Roboto, Arial, sans-serif;
+}
 @mixin font-family-Neotech{
     font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
 }
@@ -278,7 +295,7 @@ $screen-xxl-max: 1201px;
     }
  }
 
- //common property for image
+//common property for image
  @mixin context-nav-img{
     background-repeat: no-repeat;
     height: 4rem;
@@ -288,4 +305,97 @@ $screen-xxl-max: 1201px;
     margin-top: 15px;
  }
 
+@mixin box-shadow {
+    background: $white;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+  }
+
+@mixin  link-arrow{
+    border: solid $arrow-border;
+    border-width: 0 1px 1px 0;
+    content: '';
+    display: inline-block;
+    height: 0.45em;
+    left: 9rem;
+    position: relative;
+    top: 0.6em;
+    transform: rotate(-45deg);
+    vertical-align: top;
+    width: 0.45em;
+}
+
+
+@mixin font-family-lato{
+    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+}
+
+@mixin font-family-Neotech{
+    font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+}
+
+@mixin font-family-Neotech-ge{
+    font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
+}
+
+@mixin font-family-Neotech-roboto{
+    font-family: Neotech, Roboto, Arial, sans-serif;
+}
+
+@mixin font-family-Bariol{
+    font-family: Bariol,GE SS Two,Arial,sans-serif;
+}
+
+
+//common property for image
+ @mixin context-nav-img{
+    background-repeat: no-repeat;
+    height: 4rem;
+    width: 4rem;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+ }
+
+
+//common css for btn
+@mixin primary-btn{
+    text-transform: uppercase;
+    transition: all .3s ease-in-out;
+    color: #353738;
+    background-color: #fff;
+    text-align: center;
+    padding: 0 .5rem;
+    border-radius: 4px;
+    border-width: 1px;
+    width: 100%;
+    border-color: #151515;
+    outline: 0;
+    font-weight: 700;
+}
+ @mixin secondary-button{
+    text-transform: uppercase;
+    transition: all .3s ease-in-out;
+    text-align:center;
+    padding: 0 .5rem;
+    border-radius: 4px;
+    border-width: 1px;
+    width: 100%;
+    outline: 0;
+    font-weight: 700;
+    line-height: 3rem;
+    letter-spacing: .14285714em;
+	display:inline-block;
+	width:25%;
+}
+
+.gutter{
+  padding-right:0.75rem;
+}
+
+.gutter{margin-bottom:0.25rem;}
+.error--serious {
+  @extend .error;
+  border-width: 3px;
+}
 

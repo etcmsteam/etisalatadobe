@@ -23,13 +23,21 @@
                         <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">
                         <span class="text">${itemList.navigationTitle}</span><img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/></a>                         
                     </li>
-                     <li data-sly-list.langItem="${topnavModel.localeList}">
-                        <a href = "${langItem.linkUrl}" id="b2bcms" data-sub-menu="sub-menu-help">
-                        <span class="language-switch-content">
-                        ${langItem.title}
-                        </span>
+                    <li data-sly-test="${topnavModel.languageSize > 1}">
+                        <ul>
+                         <li class="language">
+                              <a href="#">${topnavModel.currentPageLanguageTitle}</a>
+                              <ul class="language-menu" data-sly-list.langItem="${topnavModel.localeList}">
+                                 <li><a href="${langItem.linkUrl}">${langItem.title}</a></li>                                 
+                              </ul>
+                           </li>
+                        </ul>
+                    </li>
+                    <li data-sly-test="${topnavModel.languageSize == 1}" data-sly-list.langItem="${topnavModel.localeList}">
+                       <a href = "${langItem.linkUrl}" data-sub-menu="sub-menu-help">
+                        <span class="language-switch-content"> ${langItem.title}</span>
                         </a>
-                     </li>
+                    </li>
                   </ul>
                </sly>
             </div>			 

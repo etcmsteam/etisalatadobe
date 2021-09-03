@@ -41,7 +41,7 @@ class TopnavModelTest {
 		context.currentResource(TOP_NAV);
 
 		TopnavModel topNavModel = context.request().adaptTo(TopnavModel.class);
-		int actualSize = topNavModel.getLocaleList().size();
+		int actualSize = topNavModel.getLanguageSize();
 		LinkModel linkModel = topNavModel.getLocaleList().get(0);
 		assertEquals(expectedSize, actualSize);
 		assertEquals(expectedLangTitle, linkModel.getTitle());

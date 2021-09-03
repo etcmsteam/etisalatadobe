@@ -12,7 +12,7 @@
           <ul data-sly-test="${!accountItems.subNavigationList.isEmpty && accountItems.subNavigationList.size > 0}" class="nav-items nav-expand-content">
             <li class="nav-item">
               <a class="nav-link nav-back-link" href="#">
-              <img class="nav-link-icon" src="${properties.linkArrowImage}"/>${properties.menuBack}</a>
+              ${properties.menuBack}</a>
             </li>
             <li>
               <ul>
@@ -64,7 +64,7 @@
          <ul data-sly-test="${!utilityItems.subNavigationList.isEmpty && utilityItems.subNavigationList.size > 0}" class="nav-items nav-expand-content">
           <li class="nav-item">
               <a class="nav-link nav-back-link" href="#">
-              <img class="nav-link-icon" src="${properties.linkArrowImage}"/>${properties.menuBack}</a>
+              ${properties.menuBack}</a>
           </li>
 		  <li>
 		      <ul data-sly-repeat.subMenuItems="${utilityItems.subNavigationList}">                    
@@ -101,13 +101,12 @@
     </li>
   </ul>
 
-  <ul data-sly-use.topnavModel="com.etisalat.core.models.TopnavModel" 
-   data-sly-test="${!topnavModel.localeList.isEmpty && topnavModel.localeList.size > 0}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+   <ul data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size > 0}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
     <li class="nav-item nav-footer white-bg">
       <a class="nav-inline-link nav-site-switch" href="#">
         Language
       </a>
-      <a data-sly-repeat.langItem="${topnavModel.localeList}" class="nav-inline-link nav-lang" href="${langItem.linkUrl}">
+      <a data-sly-repeat.langItem="${meganavigation.languageItems}" class="nav-inline-link nav-lang" href="${langItem.linkUrl}">
         ${langItem.title}
       </a>
     </li>

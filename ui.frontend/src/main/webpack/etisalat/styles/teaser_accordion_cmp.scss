@@ -1,5 +1,6 @@
 .beigebg-container {
-    padding: 2rem !important;
+    padding-left: 2rem!important;
+    padding-right: 2rem !important;
 
     @include md {
         padding: 1rem !important;
@@ -34,7 +35,7 @@
     }
 
     h3 {
-        margin-top: $font20;
+        margin-top: 0.25rem;
         @include font-family-Neotech;
         color: $almost-black;
     }
@@ -182,19 +183,18 @@
             padding-right: 1rem;
         }
     }
-
+    
     .beige-table {
-        padding-left: 3rem;
-        padding-right: 6rem;
+        padding-left: 1rem;
         margin-top: -1rem;
 
         @include sm {
-            padding-left: 2rem;
+            padding-left: 1rem;
             padding-right: 2rem;
         }
 
         @include md {
-            padding-left: 2rem;
+            padding-left: 1rem;
             padding-right: 2rem;
         }
 
@@ -218,14 +218,21 @@
             }
 
             p {
-                font-size: $font20 !important;
-                line-height: 56px !important;
+                margin: 0;
+                font-size: $font20;
+                line-height: 56px;
+                @include font-family-lato();
 
                 @include sm {
-                    font-size: $font14 !important;
-                    line-height: 28px !important;
-                    color: $black;
+                    font-size: $font14;
+                    line-height: 28px;
+                    color: $almost-black;
+                    width: 13rem;
                 }
+                @include md {
+
+                }
+                    
             }
 
             @include md {
@@ -234,16 +241,32 @@
         }
 
 
-        table tbody td {
-            color: $steel-grey;
-            line-height: 56px;
-            padding: 0 1rem !important;
-
+        table {
+            border-spacing: 2rem 0;
+                border-collapse: separate;
+                margin: 0 -2rem;
+            @include md {
+                border-spacing: 2rem 0;
+                border-collapse: separate;
+                margin: 0 -2rem;
+            }
             @include sm {
+                border-spacing: 0;
+                margin: 0;
+            }
+
+            tbody td {
                 color: $steel-grey;
-                line-height: 2rem;
-                padding: 0 !important;
-                font-size: $font14 !important;
+                line-height: 56px;
+                padding: 0 1rem !important;
+
+                @include sm {
+                    color: $steel-grey;
+                    line-height: 2rem;
+                    padding: 0 !important;
+                    font-size: $font14 !important;
+                    padding: .75rem 2rem 0.65rem 0rem !important;
+                }
             }
         }
 
@@ -255,7 +278,6 @@
             padding: 0;
             line-height: 56px;
             border-bottom: 2px solid $white-2;
-            ;
             font-weight: 400;
 
             @include sm {
@@ -277,6 +299,21 @@
             @include font-family-lato();
             font-size: $font14;
             line-height: 24px;
+        }
+
+        ol {
+            padding: 2rem 2rem 0px;
+        }
+    }
+
+    table tbody td:last-child {
+        color: $almost-black;
+        @include sm {
+            color: $almost-black !important;
+            font-weight: 700;
+        }
+        @include md {
+            color: $steel-grey;
         }
     }
 
@@ -417,7 +454,8 @@
 
     .accordion-top-view {
         float: right;
-        margin-right: 2rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
         cursor: pointer;
         text-transform: uppercase;
         transition: all .3s ease-in-out;
@@ -465,15 +503,15 @@
         border-left: 2px solid $nav-item-black;
         float: right;
         z-index: 10;
-
+        margin-top: 1rem;
         @include sm {
-            margin-top: -2rem;
-            margin-right: 0.5rem;
+            margin-right: 0.5rem !important;
             z-index: 10;
+            margin-top: 0.5rem;
         }
-
         @include md {
-            margin-right: 1rem;
+            margin-right: 0.5rem;
+            margin-top: .5rem;
         }
     }
 
@@ -511,7 +549,7 @@
         margin-top: 2rem;
         @include sm{
             font-size: 16px;
-            margin-top: 1rem;
+            margin-top: 2rem;
             margin-bottom: 2rem;
         }
         @include md{
@@ -520,6 +558,16 @@
             margin-bottom: 2rem;
         }
     }
+    .cmp-accordion__panel--expanded {
+        margin-top: -1rem;
+        @include sm{
+            margin-top: -3rem;
+        }
+        @include md{
+            margin-top: -2rem;
+        }
+    }
+    
 }
 
 .sort_asc {

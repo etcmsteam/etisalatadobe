@@ -12,47 +12,13 @@ $(document).ready(function () {
     $('.copyright-year').text(new Date().getFullYear());
 
     //ETSL -38
-    $(".beigebg-container .cmp-accordion__button").on("click", function(event) {
-      $(".cmp-accordion__button").closest('.cmp-accordion__header').find('.accordion-top-view').find('span').toggleClass('hidden');
+    $(".cmp-accordion__button").on("click", function(event) {
+      $(this).find('.accordion-top-view').find('span').toggleClass('hidden');
     });
     if (window.matchMedia('(max-width: 768px)').matches)
         {
             $(".beigebg-container").find('.accordion-top-view').addClass('displaynone');
         }
-});
-
-// Nested Accordion View All, View Less Script
-$(".accordion-view").click(function () {
-    if (!$(".more").hasClass('hidden') &&
-        $(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function (index) {
-            var numberOfItems = $('.cmp-viewall').attr('data-items-show');
-            if ($(this).hasClass('hidden')) {
-                $(this).addClass('show');
-                $(this).removeClass('hidden');
-                $(".less").removeClass('hidden');
-                $(".more").addClass('hidden');
-            }
-        });
-
-
-
-    } else if ($(".more").hasClass('hidden') &&
-        !$(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function (index) {
-            var numberOfItems = $('.cmp-viewall').attr('data-items-show');
-            if ((index + 1) > numberOfItems) {
-                $(this).addClass('hidden');
-                $(this).removeClass('show');
-                $(".accordion-view").addClass('show');
-                $(".accordion-view").removeClass('hidden');
-                $(".more").removeClass('hidden');
-                $(".less").addClass('hidden');
-            }
-        });
-
-    }
-
 });
 
 
@@ -69,7 +35,4 @@ c.forEach(function (a) {
         })
 });
 
-$(".mega-dropdown-mob a").click(function() {
-    $(this).closest("ul").children(".mega-dropdown-mob-menu").slideToggle("100");
-    $(this).parent().toggleClass("open");
-});
+
