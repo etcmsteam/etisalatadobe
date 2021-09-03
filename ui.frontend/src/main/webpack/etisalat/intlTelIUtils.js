@@ -282,8 +282,8 @@ import intlTelInput from 'intl-tel-input';
             $('h2.cmp-teaser__title')[0].innerText = urlString;
 
         }      
-        
-        var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+     
+          
         $("#companyName").keyup(function () {
             $("#companyName").parent().removeClass("has-error-fields");
             $("#companyName").parent().next(".alert-label").remove(); 
@@ -449,6 +449,33 @@ import intlTelInput from 'intl-tel-input';
                 $('.account-number').removeClass('hide').addClass('show')
             }
         });
+
+        
+    function setInputFilter(textbox, inputFilter) {
+        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+        textbox.addEventListener(event, function() {
+            if (inputFilter(this.value)) {
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            } else {
+            this.value = "";
+            }
+        });
+        });
+    }
+  
+  
+  // Install input filters.
+    setInputFilter(document.getElementById("mobileNumber"), function(value) {
+    return /^-?\d*$/.test(value); });
+    setInputFilter(document.getElementById("accountNumber"), function(value) {
+        return /^-?\d*$/.test(value); });
+
+
         function _classCallCheck(instance, Constructor) {
             if (!(instance instanceof Constructor)) {
                 throw new TypeError("Cannot call a class as a function");
