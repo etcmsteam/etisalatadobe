@@ -53,7 +53,7 @@ $(document).ready(function () {
             $(".promo-offers-popup-wrapper").append($el);
             $(".promo-offers-popup-wrapper #"+ dataLabel).addClass('show');
             $(".promo-offers-popup-wrapper #"+ dataLabel).removeClass('fade');
-            $('.promo-offers-popup-wrapper .modalpopup').addClass('show');
+            $('.promo-offers-popup-wrapper .modal-popup').addClass('show');
             $('body').addClass('freeze');
             $(".promo-offers-popup-wrapper").show;
             $(".promo-offers-popup-wrapper").css('display', 'block');
