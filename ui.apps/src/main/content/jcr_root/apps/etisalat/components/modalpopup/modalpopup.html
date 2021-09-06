@@ -5,13 +5,9 @@
   <sly
       data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}"></sly>
 
-
-  <div class="nv-modal-dialog">
-            <div class="nv-modal-content nv-py-5">
-                <div class="container">
-                    <div class="nv-modal-header">
-                        <div class="nv-modal-title" data-sly-element="${properties.titleType}"> ${properties.title}</div>
-                        <span class="nv-modal-close">
+  <div class="nv-modal-header">
+    <div class="nv-modal-title" data-sly-element="${properties.titleType}"> ${properties.title}</div>
+    <span class="nv-modal-close">
 <!-- svg to be applied by css on nv-modal-close class -->
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 22 22" version="1.1" class="replaced-svg">
@@ -31,28 +27,25 @@
                                 </g>
                             </svg>
                         </span>
-                    </div>
-                    <div class="nv-modal-body">
-                        <div class="nv-row justify-content-center mb-36">
-                            <div class="nv-col-md-11 m-y-auto">
-                                <div class="nv-row">
-                                    <div class="nv-col-md-4">
-                                        <div class="offer-image">
-                                            <div class="cover" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="nv-col-md-7">
-                                        <div class="offer-details-wrapper">
-
-											${properties.desc @ context='html'}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  </div>
+  <div class="nv-modal-body">
+    <div class="nv-row justify-content-center mb-36">
+      <div class="nv-col-md-11 m-y-auto">
+        <div class="nv-row">
+          <div class="nv-col-md-4">
+            <div class="offer-image">
+              <div class="cover" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
+              </div>
             </div>
+          </div>
+          <div class="nv-col-md-7">
+            <div class="offer-details-wrapper">
+
+              ${properties.desc @ context='html'}
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 </div>
