@@ -1,23 +1,26 @@
 
 //mobile view st
+
+
 .cmp-title{
-     margin: 0;
-    font-size: 28px;
+    margin: 0;
+    font-size:$font28;
     line-height: 1.21;
     letter-spacing: normal;
-    color: #353738;
+    color:$almost-black;
     
 }
 .cmp_accordion___view{
   .cmp-teaser__action-link{
-    font-size: 12px;
+    font-size:$font12;
     line-height: 16px;
     letter-spacing: 1.6px;
     position:relative;
     text-transform: uppercase;
+   
   }
   .cmp-teaser__action-link:before{
-        content:  "";  
+        content:"";  
             right: -13px;
             border: solid #719e19;
             border-width: 0 1px 1px 0;
@@ -41,6 +44,7 @@
     box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
     border-radius: 4px;
     margin: 1rem 1rem 3rem 1rem;
+    padding:1rem;
   }
 
 
@@ -50,16 +54,16 @@
   .cmp-teaser__description{
       h4{
       margin-bottom: 1rem;
-      font-family: 'Lato';
+       @include font-family-lato;
       font-weight: 700;
-      font-size: 18px;
-      color: #353738;
+      font-size:$font18;
+      color:$almost-black;
       }
       p{
         color: #767676;
-        font-size: 14px;
+        font-size:$font14;
         line-height: 19px;
-        font-family: 'Lato';
+         @include font-family-lato;
       }
 
       .cmp-teaser__action-link{
@@ -72,7 +76,7 @@
       font-size: 20px;
       line-height: 1.6;
       letter-spacing: normal;
-      color: #353738;
+      color:$almost-black;
       margin: 0;
   }
   .get-more-section .desktop-body .get-more-details .get-more-title-small {
@@ -86,7 +90,7 @@
 
   .nav-view-wrapp.panel>a.collapsed {
       font-weight: 400!important;
-      color: #719e19;
+      color:$main-green;
   }
   .nav-view-wrapp.panel>a:before {
       border: solid #b2b2b2;
@@ -169,7 +173,7 @@
       font-size: 14px;
       line-height: 1.43;
       letter-spacing: normal;
-      color: #848789;
+      color:$steel-grey;
       margin: 0;
   }
 
@@ -193,6 +197,7 @@
 //desktop view st
 @media (min-width: 48em) {
  .cmp_tabs__vertical_view{
+   a:hover{ text-decoration:underline!important;}
       .cmp-teaser{
         display: flex;
         flex-direction: row-reverse;
@@ -230,27 +235,44 @@
           cursor: pointer;
           font-size: 1.125rem;
           line-height: 1.4;
-          color: #848789;
+          color:$steel-grey;
           border-bottom:0;
           padding: 1rem 1rem 1rem 1rem;
-      }
 
-      .cmp-tabs__tab--active {      
-          border-color: inherit;
-          background: #fafaf4;
-          border-left: 4px solid #719e19;
-          font-weight: 700;
-          color: #719e19;
-          font-size: 20px;
-          line-height: 1.4;
-          @include font-family-lato;  
-          padding: 1rem 1rem 1rem 0.7rem!important;
-          span{
-            img{
-              margin: 0 10px 0 0px!important;
-            }
+          &--active{
+              border-color: inherit;
+              background: #fafaf4;
+              border-left: 4px solid #719e19;
+              font-weight: 700;
+              color: $main-green;
+              font-size:$font18;
+              line-height: 1.4;
+              @include font-family-lato;  
+              padding: 1rem 1rem 1rem 0.7rem!important;
+              span{
+                img{
+                  margin: 0 10px 0 0px!important;
+                }
+              }
           }
       }
+
+      // .cmp-tabs__tab--active {      
+      //     border-color: inherit;
+      //     background: #fafaf4;
+      //     border-left: 4px solid #719e19;
+      //     font-weight: 700;
+      //     color:$main-green;
+      //     font-size: 20px;
+      //     line-height: 1.4;
+      //     @include font-family-lato;  
+      //     padding: 1rem 1rem 1rem 0.7rem!important;
+      //     span{
+      //       img{
+      //         margin: 0 10px 0 0px!important;
+      //       }
+      //     }
+      // }
 
       .cmp-tabs__tabpanel--active {
           display: block;
@@ -270,6 +292,7 @@
           font-size: 16px;
           line-height: 1.5;
           color: #767676;
+          font-weight:normal;
         }
       }
       .cmp-teaser__content{
@@ -292,14 +315,17 @@
           cursor: pointer;
           text-transform: uppercase;
           transition: all .3s ease-in-out;
-          font-family: 'Lato';
+          @include font-family-lato;
           font-size: .875rem;
           letter-spacing: 2px;
           line-height: 1.25rem;
-          color: #719e19;
+          color:$main-green;
           position: relative;
           font-weight: 500;
-      
+        
+        a.cmp-teaser__action-link:hover{
+          text-decoration:underline!important;
+        }
           .cmp-teaser__action-link:before{
              border: solid #b2b2b2;
               border-width: 0 1px 1px 0;
@@ -313,9 +339,7 @@
               z-index: 1;
               top: 50%;
           }
-          .cmp-teaser__action-link:hover{
-              text-decoration: underline;
-          }
+         
 
       }
       .cmp-teaser__action-container{
@@ -326,12 +350,13 @@
 
 //2nd horiznatal with view  varition st
   .cmp_tabs__verticle_view_img{
+     a:hover{ text-decoration:underline!important;}
     .cmp-tabs__tabpanel{
-      width:70%;
+      width:51%;
     }
     .cmp-tabs__tab{
       margin-top:1rem;
-      font-size:1.125rem;
+      font-size:$font18;
       }
 
       .cmp-teaser__description{
@@ -339,15 +364,15 @@
         margin-bottom: 1rem;
         @include font-family-Neotech;
         font-weight: 400;
-        font-size: 26px;
-        color: #353738;
+        font-size:$font26;
+        color:$almost-black;
         }
       } 
 
       h3{
         font-size: 26px;
         @include font-family-Neotech;
-        color: #353738;
+        color:$almost-black;
         font-size: 32px;
         display: flex;
         position: relative;
@@ -357,9 +382,9 @@
 
       p {
       color: #767676!important;
-      font-size: 14px;
+      font-size:$font14;
       line-height: 19px;
-      font-family: 'Lato';
+      @include font-family-lato;
       }
      .cmp-tabs__tab{
         img {
@@ -371,12 +396,12 @@
     .cmp-teaser__action-link{
        position: absolute;
         bottom: 40px;
-        font-size: 14px;
+        font-size:$font14;
         letter-spacing: 2px;
         text-transform: uppercase;
-        font-family: 'Lato';
+        @include font-family-lato;
        }
-  
+       
    .cmp-tabs__tablist{
       display: block;
       -ms-flex-wrap: wrap;
@@ -401,11 +426,11 @@
     }
     .cmp-teaser__content{
       background: #fff;
-      padding:1.5rem 4rem 2.5rem 1.8rem;
+      padding:1.5rem 3rem 2.5rem 1.8rem;
       color: #767676;
-      font-size: 14px;
+      font-size:$font14;
       line-height: 19px;
-      font-family: 'Lato';
+      @include font-family-lato;
       position:relative;
       border-radius: 0 5px 5px 0;
       width:50%;
@@ -424,7 +449,7 @@
       align-items: center;
       justify-content: flex-end;
       color: #6b6b6b;
-      font-size:20px;
+      font-size:$font20;
       line-height: 1.125rem;
       text-align:left;
       margin: auto 0;
@@ -432,20 +457,17 @@
       padding:.5rem 1rem 0.5rem 0;
     }
     .cmp-tabs__tab--active{
-      color: #719e19;
+      color:$main-green;
       font-weight: 700;
-      font-size:1.125rem;
+      font-size:$font18;
+      @include font-family-lato;
     }
-  
   }
 
 //2nd vartion en
 }
 
-
 //3rd varition
-
-
 
 //desktop view en
 
@@ -462,7 +484,6 @@
         margin-top:0;
       }
   }
-
 
   .no-bg{
         .cmp_tabs__vertical_view .cmp-tabs__tabpanel--active{
@@ -485,21 +506,21 @@
 
 .teaser_list ul li {
     position: relative;
-    color: #6f6c70;
+    color:$dark-gray;
     font-size: 1.25rem;
     line-height: 28px;
     margin:0 0 0.5rem;
-    font-family:'Lato';
+    @include font-family-lato;
     font-weight: 400;
 }
 
 .teaser_list ol li {
     position: relative;
-    color: #6f6c70;
+   color:$dark-gray;
     font-size: 1.25rem;
     line-height: 28px;
     margin:0 0 0.5rem;
-    font-family:'Lato';
+    @include font-family-lato;
     font-weight: 400;
     list-style: decimal;
 }
@@ -515,13 +536,13 @@
 
  .cmp_tabs__vertical_view_whbg{  
    .cmp-tabs__tabpanel--active{  
-       background: #fff;
+       background:$white;
    }
  }
 
 .cmp_tabs__vertical_view_whbg{  
   .cmp-tabs__tab--active{
-      background: #fff;
+      background:$white;
   }
 }
 
