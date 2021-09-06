@@ -49,14 +49,15 @@ $(document).ready(function () {
     $(".learn-more-wrap a").on("click", function(event) {
         var dataLabel = $(this).attr("data-label");
         if (dataLabel) {
-            $('#' + dataLabel).addClass('show');
-            $('#' + dataLabel).removeClass('fade');
+            var $el = $('#' + dataLabel).clone();
+            $(".promo-offers-popup-wrapper").append($el);
+            $(".promo-offers-popup-wrapper #"+ dataLabel).addClass('show');
+            $(".promo-offers-popup-wrapper #"+ dataLabel).removeClass('fade');
+            $('.promo-offers-popup-wrapper .modalpopup').addClass('show');
             $('body').addClass('freeze');
             $(".promo-offers-popup-wrapper").show;
             $(".promo-offers-popup-wrapper").css('display', 'block');
-            $('.modalpopup').addClass('show');
-            $(".promo-offers-popup-wrapper").append($('#' + dataLabel));
-        }
+       }
     });
     
     // close popup
