@@ -12,9 +12,15 @@
           select {
             display:none;
           }
+          @media (max-width: $screen-md-max) {
+            width: 100%!important;
+          }
         }
         .form-group{
           margin-bottom: 0;
+        }
+        .account-number {
+          margin-top: 1rem;
         }
            .select-hide {
             display: none;
@@ -54,41 +60,12 @@
             margin-right: 5rem;
          }
          
-          // [type=radio]:not(:checked) {
-          //   background-image: url(../resources/images/icon-unselected.png);
-          //   background-repeat: no-repeat;
-          // }
-          // [type=radio]:checked {
-          //   background-image: url(../resources/images/icon-checkbox-selected.png);
-          //   background-repeat: no-repeat;
-          // }
+       
 
-          [type=radio]:checked+span:before {
-            border: 2px solid transparent;
-            content: "";
-           
-            background-image: url(../resources/images/icon-unselected.png);
-            background-repeat: no-repeat;
-            width: 26px;
-            height: 26px;   
-            display: block;
-            background-size: 24px;
-            margin-right: 1px;
-            position: absolute;
-            left: -3px;    
-            top: -2px;
-            transition: all .25s cubic-bezier(.55,.06,.68,.19);    
-            z-index: 2;
-          }
-          [type=radio]:checked+span:after {
+         
+          [type=radio]:checked+span:after,[type=radio]:not(:checked)+span:after {
             background-image: url(../resources/images/icon-checkbox-selected.png);
             background-repeat: no-repeat;
-          }
-          [type=radio]:not(:checked)+span:after {
-            background-image: url(../resources/images/icon-unselected.png);
-            background-repeat: no-repeat;
-          }
-          [type=radio]:checked+span:after,[type=radio]:not(:checked)+span:after {
             border: 2px solid transparent;
             content: "";  
             width: 24px;
@@ -98,11 +75,26 @@
             margin-right: 1px;
             position: absolute;
             left: -3px;    
-            top: -2px;
+            top: -5px;
             transition: all .25s cubic-bezier(.55,.06,.68,.19);    
             z-index: 2;
           }
-      
+          [type=radio]:not(:checked)+span:after, [type=radio]:not(:checked)+span:before {
+            background-image: url(../resources/images/icon-unselected.png);
+            border: 2px solid transparent;
+            background-repeat: no-repeat;
+            content: "";  
+            width: 24px;
+            height: 24px;   
+            display: block;
+            background-size: 21px;         
+            margin-right: 1px;
+            position: absolute;
+            left: -5px;    
+            top: -3px;
+            transition: all .25s cubic-bezier(.55,.06,.68,.19);    
+            z-index: 2;
+          }
           /*style the arrow inside the select element:*/
           .select-selected:after {
             position: absolute;
@@ -116,9 +108,12 @@
             display:none;
           }
           /*point the arrow upwards when the select box is open (active):*/
+          .select-arrow-active {
+            border-bottom: 1px solid $grey4;
+          }
           .select-selected.select-arrow-active:after {
             border-color: transparent transparent $sand-white transparent;           
-            border-bottom: 1px solid #b2b2b2;
+            border-bottom: 1px solid $grey4;
           }
           
           /*style the items (options), including the selected item:*/
@@ -135,9 +130,11 @@
             border-bottom: 1px solid $grey4;
           }
           .selecteddiv {
-            border-bottom: 1px solid $grey4;
-            
+            border-bottom: 1px solid $grey4;            
            }      
+           .select-service .selecteddiv:hover {
+            color:$main-green!important;
+           }
           .select-items div,.select-selected {
             color: $almost-black;            
             text-decoration: none;           
@@ -162,8 +159,8 @@
           padding: 0;
           margin: 0 0 0 -1px;
           box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
-          background-color: #fff;
-          border: 1px solid #ccc;
+          background-color:$white;
+          border: 1px solid $cust-select;
           white-space: nowrap;
           max-height: 200px;
           overflow-y: scroll;
