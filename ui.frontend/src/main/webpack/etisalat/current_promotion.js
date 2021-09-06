@@ -67,6 +67,7 @@ $(document).ready(function () {
         var currentOpendPopUp = $(this).closest('.promo-offers-popup-wrapper');
         $(currentOpendPopUp).removeClass('show');
         $(currentOpendPopUp).css('display', 'none');
+        $(currentOpendPopUp).children().remove();
         $('body').removeClass('freeze');
     };
     $('.promo-offers-popup-wrapper').off('click').on('click', '.nv-modal-close', closePopUp);
