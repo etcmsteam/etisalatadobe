@@ -45,19 +45,6 @@ $(document).ready(function () {
     // register the event handlers
     initSwiper();
     // popup 
-   
-   
-    // var popUpActive;
-    // popUpActive = function (e) {
-    //     var dataLabel = $(this).attr("data-label");
-    //     if (dataLabel) {
-    //         $('#' + dataLabel).addClass('show');
-    //         // $('body').addClass('freeze');
-    //         $(".promo-offers-popup-wrapper").append($('#' + dataLabel));
-    //     }
-    // }
-    // // current promotions module with popup
-    // $('.learn-more-wrap').off().on('click', popUpActive);
 
     $(".learn-more-wrap a").on("click", function(event) {
         var dataLabel = $(this).attr("data-label");
@@ -65,6 +52,8 @@ $(document).ready(function () {
             $('#' + dataLabel).addClass('show');
             $('#' + dataLabel).removeClass('fade');
             $('body').addClass('freeze');
+            $(".promo-offers-popup-wrapper").show;
+            $(".promo-offers-popup-wrapper").css('display', 'block');
             $('.modalpopup').addClass('show');
             $(".promo-offers-popup-wrapper").append($('#' + dataLabel));
         }
