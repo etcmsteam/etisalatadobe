@@ -99,7 +99,7 @@ import intlTelInput from 'intl-tel-input';
                     var y, i, k, s, h, sl, yl;
                     s = this.parentNode.parentNode.parentElement.getElementsByTagName("select")[0];
                     sl = s.length;
-                    h = this.parentNode.parentNode.previousSibling;;
+                    h = this.parentNode.parentNode.previousSibling;
                     for (i = 0; i < sl; i++) {
                         if (s.options[i].innerHTML == this.innerHTML) {
                             s.selectedIndex = i;
@@ -276,6 +276,7 @@ import intlTelInput from 'intl-tel-input';
         }
 
         $.urlParam = function(name) {
+            
             if(window.location.href.split('?')[1] == undefined) {
               return;
             }
@@ -284,12 +285,17 @@ import intlTelInput from 'intl-tel-input';
         }
         var urlString;
         
-        if($.urlParam('productName'))
-        {
-            urlString = 'Interested in ' + $.urlParam('productName') + '?';
-            $('h2.cmp-teaser__title')[0].innerText = urlString;
-
-        }      
+        var urlParams = new URLSearchParams(window.location.search);
+        var product = urlParams.get('productName');
+        if(product !== null) {
+            if($.urlParam('productName'))
+            {
+                urlString = 'Interested in ' + $.urlParam('productName') + '?';
+                $('h2.cmp-teaser__title')[0].innerText = urlString;
+    
+            }   
+        }
+          
      
           
         $("#companyName").keyup(function () {
