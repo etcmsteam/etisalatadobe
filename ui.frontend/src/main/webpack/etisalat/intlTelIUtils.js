@@ -223,7 +223,11 @@ import intlTelInput from 'intl-tel-input';
             d = document.createElement("DIV");
 	        d.setAttribute("class", "selecteddiv");  
             c.appendChild(d);
-            d.innerHTML = selElmntCounty.options[j].innerHTML;
+            if (selElmntCounty.options[j].innerHTML !== "Select Services*")
+            {
+                d.innerHTML = selElmntCounty.options[j].innerHTML;
+            }
+           
             d.addEventListener("click", function (e) {
                 /*when an item is clicked, update the original select box,
                 and the selected item:*/
