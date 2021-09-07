@@ -109,6 +109,7 @@ public class TopnavModel {
 				LinkModel model = new LinkModel();
 				model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
 				model.setTitle(pageTitle);
+				model.setAltText(languageCode);
 				linkModelList.add(model);
 			} else {
 				setCurrentPageLanguageTitle(pageTitle);
