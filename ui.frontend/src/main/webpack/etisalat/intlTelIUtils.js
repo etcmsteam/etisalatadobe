@@ -498,8 +498,6 @@ import intlTelInput from 'intl-tel-input';
             return /^-?\d*$/.test(value); });
     }
   
-   
-
 
         function _classCallCheck(instance, Constructor) {
             if (!(instance instanceof Constructor)) {
