@@ -111,9 +111,11 @@
       </a>
     </li>
   </ul>
-  <ul data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size > 1}" class="nav-items nav-level-1">
+  <ul data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page" 
+      data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size > 1}" 
+      class="nav-items nav-level-1 mega-lang-dropdown-mob">
 		<li class="nav-item-heading white-bg mega-dropdown-mob open">
-			<a href="#"> ${properties.langMobileLabel}</a>  <img class="nav-link-arrow" src="${properties.linkArrowImage}"/>                      
+			<a class="${page.language == 'ar' ? 'arabic-lang-content' :''}" href="#"> ${properties.langMobileLabel}</a>  <img class="nav-link-arrow" src="${properties.linkArrowImage}"/>                      
 		 </li>
 		<li class="mega-dropdown-mob-menu" style="display: list-item;">
 		  <ul data-sly-list.langItem="${meganavigation.languageItems}" role="menu">
