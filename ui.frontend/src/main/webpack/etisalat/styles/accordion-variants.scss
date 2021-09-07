@@ -117,16 +117,21 @@
         padding:5px 1.5rem;
         font-weight: 700;
     }
-    .cmp-accordion__disc{
+    .cmp-accordion__itemdesc{
         line-height: 1.5;
         font-size: $font16;
         color: $dark-gray;
         @include font-family-lato();
         padding:5px 1.5rem;
-        font-weight: 700;
+        font-weight: normal;
+    }
+    @media (max-width:$screen-sm-max){
+        .cmp-accordion__itemdesc{
+            padding-right: 6.5rem;
+        }
     }
     @media (min-width:$screen-xl-max){
-        .cmp-accordion__disc{
+        .cmp-accordion__itemdesc{
             font-size: $font20;
         }
     }
@@ -178,9 +183,9 @@
 
 }
 //tab with accordion
-.cmp-accordion--tab{
+
 @media (max-width:$screen-md-max){
-	.cmp_accordion___view .nav-view-wrapp.panel>a:active {
+    .cmp-accordion--tab .nav-view-wrapp.panel>a:active {
 		font-size: $font16;
         @include font-family-Neotech-roboto();
 		color: $main-green;
@@ -189,29 +194,33 @@
 		position: relative;
 		border-left: 4px solid $main-green;
 }
-.cmp_accordion___view .nav-view-wrapp.panel>a {
+.cmp-accordion--tab .nav-view-wrapp.panel>a {
 	font-size:  $font16;
 }
-.cmp_accordion___view .panel{
+.cmp-accordion--tab .panel{
 	background-color:$white!important;
 }
-.cmp_accordion___view .nav-view-wrapp.panel>a:before{
+.cmp-accordion--tab .nav-view-wrapp.panel>a:before{
 	padding:5px!important;
+}
+.cmp-accordion--tab .nav-view-wrapp.panel .cmp-title__text{
+    font-size: $font20;
 }
 }
 @media (min-width: $screen-xl-max){
-.cmp_tabs__vertical_view .cmp-tabs__tab--active {
+    .cmp-accordion--tab .cmp-tabs__tab--active {
 line-height: 60px!important;
 padding-left:22px!important;
 }
-.cmp_tabs__vertical_view .cmp-tabs__tablist {
+.cmp-accordion--tab .cmp-tabs__tablist {
 margin-left:8%;
 }
-.cmp_tabs__vertical_view .cmp-tabs__tabpanel--active {
+.cmp-accordion--tab .cmp-tabs__tabpanel--active {
 	margin-right:8%;
 	width:65%!important;
 }
 }
+
 .cmp_tabs__vertical_view{
 	@include  font-family-Neotech-roboto();
 
@@ -262,7 +271,7 @@ margin-left:8%;
     }
 }
 }
-}
+
 //accordion with child accordion as list 
 .nested-accordion{
 	button:focus{
