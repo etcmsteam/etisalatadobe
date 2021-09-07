@@ -1,4 +1,4 @@
-.no-padding-container{
+.cmp-teaser--shadow-view{
     .cmp-container {
         padding: 0;
     }
@@ -25,6 +25,20 @@
                     font-size: $font14;
                     line-height: 19px;
                 } 
+                ol{
+                    color: $dark-gray;
+                   @include font-family-lato();
+                    font-size: $font16;
+                    font-weight: 400;
+                    line-height: 22px;
+                    margin: 0 0 .4rem;
+                    position: relative;
+                    margin-left: 1rem;
+                ul{
+                    list-style: decimal;
+                }
+               
+            }
             } 
             @media (min-width:$screen-xl-max){
                 .cmp-teaser__description{
@@ -34,9 +48,15 @@
             .cmp-teaser__action-container {
                 margin-top: 0;
                 a{
+                    letter-spacing: 2px;
+                    padding: .5rem 1rem 1rem 2rem;
+                    position: relative;
+                    font-size: 14px;
+                  :hover {
+                        text-decoration: underline;
+                    }
                 &:before {
                     @include link-arrow();
-                    left: 6rem;
                 }
             } 
         }
@@ -98,11 +118,10 @@
             &__description,
             &__action-container{
             overflow: hidden; padding-left:20rem;
-            margin-top: -47px;
+            margin-top: -80px;
             padding-right: 20px;
             display:inline-block;
-        }
-           
+        }  
         }
     }
 }

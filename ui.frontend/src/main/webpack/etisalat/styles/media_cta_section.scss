@@ -1,17 +1,11 @@
-// How to use breakpoint
-//  @include sm {
-//     padding: 0 20px;
-// }
+
 
 .no-padding-container {
     padding: 2rem;
-    @include sm{
-        padding-left: 0rem;
-        padding-right: 0rem;
-    }
+
     @include md{
-        padding-left: 0rem;
-        padding-right: 0rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     .cmp-teaser {
         display: flex;
@@ -36,7 +30,7 @@
         }
 
         .cmp-teaser__content {
-            padding: 1.5rem 4rem 2.5rem 1.5rem;
+            padding: 1.5rem 4rem 1.5rem 1.5rem;
             width: 50%;
 
             @include sm {
@@ -53,6 +47,16 @@
                 p {
                     color: $black;
                     font-size: $font14;
+                    line-height: 19px;
+                }
+                h4{
+                    @include md{
+                        @include font-family-lato;
+                        font-weight: 700;
+                        font-size: $font18;
+                        margin-bottom: 1rem;
+                        margin-top: 0;
+                    }
                 }
             }
 
@@ -69,7 +73,7 @@
                 }
 
                 :before {
-                    @include link-arrow;
+                    @include arrow-after-link;
                 }
             }
         }
@@ -89,20 +93,8 @@
         }
     }
 
-    .cmp-container {
-        padding: 4rem 2rem;
-
-        @include sm {
-            padding: 4rem 1rem;
-        }
-
-        @include md {
-            padding: 4rem 1rem;
-        }
-    }
-
-    .cmp-teaser__action-container {
-        margin-top: 3rem;
+      .cmp-teaser__action-container {
+        margin-top: 5rem;
         margin-left: -2rem;
 
         @include sm {
@@ -115,5 +107,6 @@
     }
     p{
         color: $paracolor!important;
+        line-height: 19px;
     }
 }
