@@ -101,16 +101,30 @@
     </li>
   </ul>
 
-   <ul data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size > 0}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+   <ul data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size == 1}" class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
     <li class="nav-item nav-footer white-bg">
       <a class="nav-inline-link nav-site-switch" href="#">
-        Language
+        ${properties.langMobileLabel}
       </a>
       <a data-sly-repeat.langItem="${meganavigation.languageItems}" class="nav-inline-link nav-lang" href="${langItem.linkUrl}">
         ${langItem.title}
       </a>
     </li>
   </ul>
+  <ul data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size > 1}" class="nav-items nav-level-1">
+		<li class="nav-item-heading white-bg mega-dropdown-mob open">
+			<a href="#"> ${properties.langMobileLabel}</a>  <img class="nav-link-arrow" src="${properties.linkArrowImage}"/>                      
+		 </li>
+		<li class="mega-dropdown-mob-menu" style="display: list-item;">
+		  <ul data-sly-list.langItem="${meganavigation.languageItems}" role="menu">
+				<li class="nav-item">
+				<a class="nav-link" href=" ${langItem.linkUrl}">
+					${langItem.title}
+				</a>
+				</li>
+		   </ul>
+		</li>
+   </ul>
 </div> 
  
 
