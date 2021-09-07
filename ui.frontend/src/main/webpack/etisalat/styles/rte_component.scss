@@ -1,13 +1,15 @@
-.cmp-link__text{
+.cmp-link__arrow{
 	font-size:$font14;
     padding-right:0.75rem;
     line-height:1.25rem;
 	text-transform: uppercase;
     letter-spacing:0.125rem;
 	position: relative;
+	color:$main-green;
+	@include font-family-lato;
 }
 
-.cmp-link__text:before{
+.cmp-link__arrow:before{
     border: solid $main-green;
     border-width: 0 1px 1px 0;
   	padding: 0.203rem;
@@ -22,7 +24,7 @@
 	color:$main-green;
 }
 
-.cmp-button--primary{
+.cmp-button--grey{
     @include secondary-button;
     color:$almost-black; 
     background-color:$white;
@@ -64,7 +66,7 @@
     border-color:$lighty-gray;
 }
 
-.cmp-button--grey{
+.cmp-button--primary{
     @include secondary-button;
     color:$white; 
     background-color:$orange;
@@ -81,41 +83,65 @@
     list-style-type:disc;
     color:$dark-gray;
     font-size:$font18;
-    li{
         padding-left: 1.5rem;
         margin-bottom:0.25rem;
 		font-size:$font18;
     	line-height: 1.75rem;
 		@include font-family-lato;
-    }
 }
 .cmp-normal__list{ 
     list-style-type:none;
     color:$dark-gray;
     font-size:$font18;
-    li{
         padding-left: 1.5rem;
         margin-bottom:0.25rem;
 		font-size:$font18;
 		font-weight: 700;
 		@include font-family-lato;
-    }
 }
 
-ul>li:last-child, .ol>li:last-child{
+
+
+.cmp-text{
+	ul>li:last-child, .ol>li:last-child{
         margin-bottom:0;
     }
+	ol{
+	 list-style: decimal;
+	 margin-left: 1.75rem;
+	 li{
+	 padding-left: 1.5rem;
+	 margin-bottom:0.25rem;
+	        font-size:$font18;
+	     line-height: 28px;
+	        @include font-family-lato;
+	 }
+   }
+}
+
+.cmp-text {
+	 ul{ 
+	 list-style-type:disc!important;
+	 color:$dark-gray;
+	 font-size:$font18;
+	 li{
+	 padding-left: 1.5rem;
+	 margin-bottom:0.25rem;
+	        font-size:$font18;
+	     line-height: 1.75rem;
+	        @include font-family-lato;
+	 }
+	}
+}
 
 .cmp-list__ordered{
     list-style: decimal;
     margin-left: 1.75rem;
-     li{
         padding-left: 1.5rem;
         margin-bottom:0.25rem;
 		font-size:$font18;
     	line-height: 28px;
 		@include font-family-lato;
-    }
 }
 
 .font--small{
@@ -128,25 +154,26 @@ ul>li:last-child, .ol>li:last-child{
     font-size:$font16;
 }
 
+
 .cmp-icon__list{
-    margin-left: 1.75rem;
-    padding-left: 1.5rem;
-    position: relative;
-    color: #6f6c70;
-    font-size:$font14;
-    line-height:1.5rem;
-    margin: 0;
-    margin-bottom:0.25rem;
-     li:before{
-        content: " - ";
-        padding-left: 1.5rem;
-        margin-bottom:0.25rem;
-        width: 4px;
-        height: 1px;
-        position: absolute;
-	    left: 0;
-        top:0.875rem;
-        }
+ margin-left: 1.75rem;
+ padding-left: 1.5rem;
+ position: relative;
+ color: #6f6c70;
+ font-size:$font14;
+ line-height:1.5rem;
+ margin: 0;
+ margin-bottom:0.25rem;
+ .cmp-icon__list:before{
+ content: " - ";
+ padding-left: 1.5rem;
+ margin-bottom:0.25rem;
+ width: 4px;
+ height: 1px;
+ position: absolute;
+     left: 0;
+ top:0.875rem;
+ }
 }
 
 .font--xsmall{
@@ -178,7 +205,7 @@ ul>li:last-child, .ol>li:last-child{
 }
 
 //link arrow st
-.cmp-link__arrow a{
+.cmp-link__text {
     font-weight: 500;
     font-size:$font16;
     line-height:1.38;
@@ -191,24 +218,7 @@ ul>li:last-child, .ol>li:last-child{
 	position: relative;
 }
 
-.cmp-link__arrow a:hover{
-   text-decoration:underline;
-}
 
-.cmp-link__arrow a:before{
-    transform: translateY(-50%) rotate(-45deg);
-    -webkit-transform: translateY(-50%) rotate(-45deg);
-    right: -0.938rem;
-    border: solid $main-green;
-    border-width: 0 1px 1px 0;
-	content: " ";
-    position: absolute;
-	top: 50%;
-	right: -0.938rem;
-	line-height: 1;
-	transition: all .3s ease-in-out;
-	padding: 0.231rem;
-}
 .btn--strike{
 	text-decoration: line-through;
 	margin-right:0.5rem;

@@ -74,13 +74,12 @@ import intlTelInput from 'intl-tel-input';
                 }
     
             }
-            var x, i, j, l, ll, selElmnt, a, b, c;
+            var x, i, j, l, ll, selElmnt, a, b, c, d;
           
             selElmnt = document.querySelector("#country-code");
             ll = selElmnt.length;
             /*for each element, create a new DIV that will act as the selected item:*/
-            a = document.createElement("DIV");
-            a.setAttribute("class", "select-selected");
+            a = document.createElement("DIV");                  
             a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
             selElmnt.parentElement.appendChild(a);
             /*for each element, create a new DIV that will contain the option list:*/
@@ -90,14 +89,17 @@ import intlTelInput from 'intl-tel-input';
                 /*for each option in the original select element,
                 create a new DIV that will act as an option item:*/
                 c = document.createElement("DIV");
-                c.innerHTML = selElmnt.options[j].innerHTML;
-                c.addEventListener("click", function (e) {
+                d = document.createElement("DIV");
+                d.setAttribute("class", "selecteddiv");  
+                c.appendChild(d);
+                d.innerHTML = selElmnt.options[j].innerHTML;
+                d.addEventListener("click", function (e) {
                     /*when an item is clicked, update the original select box,
                     and the selected item:*/
                     var y, i, k, s, h, sl, yl;
-                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    s = this.parentNode.parentNode.parentElement.getElementsByTagName("select")[0];
                     sl = s.length;
-                    h = this.parentNode.previousSibling;
+                    h = this.parentNode.parentNode.previousSibling;
                     for (i = 0; i < sl; i++) {
                         if (s.options[i].innerHTML == this.innerHTML) {
                             s.selectedIndex = i;
@@ -107,7 +109,7 @@ import intlTelInput from 'intl-tel-input';
                             for (k = 0; k < yl; k++) {
                                 y[k].removeAttribute("class");
                             }
-                            this.setAttribute("class", "same-as-selected");
+                            this.setAttribute("class", "same-as-selected selecteddiv");
                             break;
                         }
                     }
@@ -136,7 +138,7 @@ import intlTelInput from 'intl-tel-input';
                 // POPULATE SELECT ELEMENT WITH JSON.
                 ele1.innerHTML += '<option value="' + allCountries[i]['dialCode'] + '">' + allCountries[i]['name'] + '</option>';
             }
-            var x, i, j, l, ll, selElmntCounty, a, b, c;
+            var x, i, j, l, ll, selElmntCounty, a, b, c, d;
             /*look for any elements with the class "custom-select":*/
     
             //for (i = 0; i < l; i++) {
@@ -156,16 +158,19 @@ import intlTelInput from 'intl-tel-input';
                 /*for each option in the original select element,
                 create a new DIV that will act as an option item:*/
                 c = document.createElement("DIV");
-                c.innerHTML = selElmntCounty.options[j].innerHTML;
-                c.addEventListener("click", function (e) {
+                d = document.createElement("DIV");
+                d.setAttribute("class", "selecteddiv");  
+                c.appendChild(d);
+                d.innerHTML = selElmntCounty.options[j].innerHTML;
+                d.addEventListener("click", function (e) {
                     /*when an item is clicked, update the original select box,
                     and the selected item:*/
                     var y, i, k, s, h, sl, yl;
-                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    s = this.parentNode.parentNode.parentElement.getElementsByTagName("select")[0];
                     sl = s.length;
-                    h = this.parentNode.previousSibling;
+                    h = this.parentNode.parentNode.previousSibling;
                     for (i = 0; i < sl; i++) {
-                        if (s.options[i].innerHTML == this.innerHTML) {
+                        if (s.options[i].innerHTML == this.innerHTML) { 
                             s.selectedIndex = i;
                             h.innerHTML = this.innerHTML;
                             y = this.parentNode.getElementsByClassName("same-as-selected");
@@ -173,7 +178,7 @@ import intlTelInput from 'intl-tel-input';
                             for (k = 0; k < yl; k++) {
                                 y[k].removeAttribute("class");
                             }
-                            this.setAttribute("class", "same-as-selected");
+                            this.setAttribute("class", "same-as-selected selecteddiv");
                             break;
                         }
                     }
@@ -198,7 +203,7 @@ import intlTelInput from 'intl-tel-input';
         }
         
 
-        var x, i, j, l, ll, selElmntCounty, a, b, c;
+        var x, i, j, l, ll, selElmntCounty, a, b, c, d;
     
         selElmntCounty = document.querySelector("#select2-selection__rendered");
         if(selElmntCounty !== null) {
@@ -215,14 +220,17 @@ import intlTelInput from 'intl-tel-input';
             /*for each option in the original select element,
             create a new DIV that will act as an option item:*/
             c = document.createElement("DIV");
-            c.innerHTML = selElmntCounty.options[j].innerHTML;
-            c.addEventListener("click", function (e) {
+            d = document.createElement("DIV");
+	        d.setAttribute("class", "selecteddiv");  
+            c.appendChild(d);
+            d.innerHTML = selElmntCounty.options[j].innerHTML;
+            d.addEventListener("click", function (e) {
                 /*when an item is clicked, update the original select box,
                 and the selected item:*/
                 var y, i, k, s, h, sl, yl;
-                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                s = this.parentNode.parentNode.parentElement.getElementsByTagName("select")[0];
                 sl = s.length;
-                h = this.parentNode.previousSibling;
+                h = this.parentNode.parentNode.previousSibling;;
                 for (i = 0; i < sl; i++) {
                     if (s.options[i].innerHTML == this.innerHTML) {
                         s.selectedIndex = i;
@@ -232,7 +240,7 @@ import intlTelInput from 'intl-tel-input';
                         for (k = 0; k < yl; k++) {
                             y[k].removeAttribute("class");
                         }
-                        this.setAttribute("class", "same-as-selected");
+                        this.setAttribute("class", "same-as-selected selecteddiv");
                         break;
                     }
                 }
@@ -268,6 +276,7 @@ import intlTelInput from 'intl-tel-input';
         }
 
         $.urlParam = function(name) {
+            
             if(window.location.href.split('?')[1] == undefined) {
               return;
             }
@@ -276,12 +285,17 @@ import intlTelInput from 'intl-tel-input';
         }
         var urlString;
         
-        if($.urlParam('productName'))
-        {
-            urlString = 'Interested in ' + $.urlParam('productName') + '?';
-            $('h2.cmp-teaser__title')[0].innerText = urlString;
-
-        }      
+        var urlParams = new URLSearchParams(window.location.search);
+        var product = urlParams.get('productName');
+        if(product !== null) {
+            if($.urlParam('productName'))
+            {
+                urlString = 'Interested in ' + $.urlParam('productName') + '?';
+                $('h2.cmp-teaser__title')[0].innerText = urlString;
+    
+            }   
+        }
+          
      
           
         $("#companyName").keyup(function () {
@@ -443,10 +457,10 @@ import intlTelInput from 'intl-tel-input';
 
         $('input[name="existingAccount"]').change(function() {
             if (this.value == 'no') {
-               $('.account-number').removeClass('show').addClass('hide')
+               $('.account-number').removeClass('showBusiness').addClass('hideBusiness')
             }
             else {
-                $('.account-number').removeClass('hide').addClass('show')
+                $('.account-number').removeClass('hideBusiness').addClass('showBusiness')
             }
         });
 
@@ -468,12 +482,19 @@ import intlTelInput from 'intl-tel-input';
         });
     }
   
+    if (document.getElementById("mobileNumber") !== null)
+    {
+        setInputFilter(document.getElementById("mobileNumber"), function(value) {
+            return /^-?\d*$/.test(value); });
+
+    }
+    if (document.getElementById("accountNumber") !== null)
+    {
+        setInputFilter(document.getElementById("accountNumber"), function(value) {
+            return /^-?\d*$/.test(value); });
+    }
   
-  // Install input filters.
-    setInputFilter(document.getElementById("mobileNumber"), function(value) {
-    return /^-?\d*$/.test(value); });
-    setInputFilter(document.getElementById("accountNumber"), function(value) {
-        return /^-?\d*$/.test(value); });
+   
 
 
         function _classCallCheck(instance, Constructor) {
