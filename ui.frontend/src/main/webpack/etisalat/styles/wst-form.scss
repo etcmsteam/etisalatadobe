@@ -1,4 +1,4 @@
-.cmp-form {
+.cws-form {
   padding: 0 1.45rem!important;
         .cmp-form-options--drop-down{
           position: relative;
@@ -7,8 +7,9 @@
           width: 86%;
           border: none;
           padding: 0;
-          margin: 0;
+          margin: 0;          
           font-size: $font20;
+          border-bottom: 1px solid $grey4;
           select {
             display:none;
           }
@@ -19,6 +20,11 @@
         }
         .form-group{
           margin-bottom: 0;
+        }
+        .cmp-form-text {
+          @media (max-width: $screen-md-max) {
+          //height: 5rem;
+          }
         }
         .account-number {
          
@@ -114,7 +120,7 @@
           }
           /*point the arrow upwards when the select box is open (active):*/
           .select-arrow-active {
-            border-bottom: 1px solid $grey4;
+            padding-bottom: 0.3rem;
           }
           .select-selected.select-arrow-active:after {
             border-color: transparent transparent $sand-white transparent;           
@@ -132,11 +138,28 @@
             }
           }   
           .select-selected {
-            border-bottom: 1px solid $grey4;
+           // border-bottom: 1px solid $grey4;
           }
           .selecteddiv {
-            border-bottom: 1px solid $grey4;            
-           }      
+            border-bottom: 1px solid $sand-white;            
+           }    
+           .select-service .cmp-form-options--drop-down{
+            @media (min-width: $screen-lg-max) { 
+              width: 30.5rem;
+            }
+           }  
+           .country-select .cmp-form-options--drop-down {
+            @media (min-width: $screen-lg-max) { 
+              width: 32rem;
+            }
+           } 
+        
+           input#fullName {
+            @media (min-width: $screen-lg-max) { 
+              width: 31.5rem;
+            }
+           }
+          
            .select-service .selecteddiv:hover {
             color:$main-green!important;
            }
@@ -1178,6 +1201,10 @@ textarea.cmp-form-text__textarea ~label:after {
 // intlTelInput starts //
 .cmp-form-text__text .cmp-form-options--drop-down {
     display: flex;
+    @media (max-width: $screen-md-max) {
+     margin-bottom: 2.5rem;
+    }
+
 }
 
 .cmp-form-text__text .cmp-form-options--drop-down>label {
