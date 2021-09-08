@@ -50,13 +50,13 @@ $(document).ready(function () {
         var dataLabel = $(this).attr("data-label");
         if (dataLabel) {
             var $el = $('#' + dataLabel).clone();
-            $(".promo-offers-popup-wrapper").append($el);
-            $(".promo-offers-popup-wrapper #"+ dataLabel).addClass('show');
-            $(".promo-offers-popup-wrapper #"+ dataLabel).removeClass('fade');
-            $('.promo-offers-popup-wrapper .modal-popup').addClass('show');
+            $(".modal-popup-wrapper").append($el);
+            $(".modal-popup-wrapper #"+ dataLabel).addClass('show');
+            $(".modal-popup-wrapper #"+ dataLabel).removeClass('fade');
+            $('.modal-popup-wrapper .modal-popup').addClass('show');
             $('body').addClass('freeze');
-            $(".promo-offers-popup-wrapper").show;
-            $(".promo-offers-popup-wrapper").css('display', 'block');
+            $(".modal-popup-wrapper").show;
+            $(".modal-popup-wrapper").css('display', 'block');
        }
     });
     
@@ -65,11 +65,11 @@ $(document).ready(function () {
     closePopUp = function (e) {
         e.stopPropagation();
         e.preventDefault();
-        var currentOpendPopUp = $(this).closest('.promo-offers-popup-wrapper');
+        var currentOpendPopUp = $(this).closest('.modal-popup-wrapper');
         $(currentOpendPopUp).removeClass('show');
         $(currentOpendPopUp).css('display', 'none');
         $(currentOpendPopUp).children().remove();
         $('body').removeClass('freeze');
     };
-    $('.promo-offers-popup-wrapper').off('click').on('click', '.nv-modal-close', closePopUp);
+    $('.modal-popup-wrapper').off('click').on('click', '.nv-modal-close', closePopUp);
 });
