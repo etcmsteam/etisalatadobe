@@ -1,7 +1,7 @@
 //basic teaser configration 
 .tile-teaser {
     .cmp-teaser__content {
-        padding: 1rem;
+        padding: 1.5rem;
 
         @include sm {
             padding: 1.5rem;
@@ -33,11 +33,25 @@
         .cmp-teaser__description {
             font-size: 1rem;
             line-height: 26px;
-            color: $white;
+            color: $white !important;
             @include font-family-lato;
+
+            ul {
+                padding-top: 1.4rem;
+                padding-bottom: 1rem;
+
+                li {
+                    color: $white;
+                    font-size: 1rem;
+                    line-height: 26px;
+                    color: $white;
+                    @include font-family-lato;
+
+                }
+            }
         }
 
-        p {
+        .cmp-teaser__action-container {
             a {
                 margin-top: 20px;
                 display: table;
@@ -55,54 +69,73 @@
                 @include sm {
                     width: 100%;
                 }
-            }
 
-            a:before {
-                transform: translateY(-50%) rotate(-45deg);
-                -webkit-transform: translateY(-50%) rotate(-45deg);
-                right: -0.938rem;
-                border: solid #fff;
-                border-width: 0 1px 1px 0;
-                content: " ";
-                position: absolute;
-                top: 50%;
-                right: -0.938rem;
-                line-height: 1;
-                transition: all .3s ease-in-out;
-                padding: 0.231rem;
+                border: 1px solid $white;
+                border-radius: 4px;
+                padding: .5rem 2rem;
+                text-align: center;
+                width: auto;
             }
         }
-    }
-}
 
-.image-right,
-.image-left {
-    .cmp-teaser__image {
-        position: relative;
-
-        img {
-            position: absolute;
-            height: 100% !important;
-
+        .cmp-teaser__content {
             @include sm {
-                max-width: 100%;
-                height: auto;
+                width: 100%;
             }
 
             @include md {
-                max-width: 100%;
-                position: inherit;
+                width: 100%;
             }
         }
+
     }
 
-    .cmp-teaser__content {
-        @include sm {
+    .image-right {
+        margin-right: 2rem;
+
+        .cmp-teaser__image {
+            position: relative;
             width: 100%;
+
+            img {
+                position: absolute;
+                height: 100% !important;
+
+                @include sm {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                @include md {
+                    max-width: 100%;
+                    position: inherit;
+                }
+            }
         }
 
-        @include md {
-            width: 100%;
+    }
+
+    .image-left {
+        margin-right: 2rem;
+
+        .cmp-teaser__image {
+            position: relative;
+            width: 100% !important;
+
+            img {
+                position: absolute;
+                height: 100% !important;
+
+                @include sm {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                @include md {
+                    max-width: 100%;
+                    position: inherit;
+                }
+            }
         }
     }
 }
@@ -116,34 +149,75 @@
 // two col teaser  
 .cmp-teaser__two__col .teaser {
     display: flex;
-
+    padding-left: 1rem;
     border-radius: 4px;
 
-    .cmp-teaser__content {
+    @include md {
         padding: 1rem;
     }
 
+    .cmp-teaser {
+        border-radius: 4px;
+
+        @include md {
+            margin-right: 1rem;
+        }
+    }
+
+    .cmp-teaser__content {
+        padding: 3rem 1rem;
+        margin-bottom: 20px;
+    }
+
     .cmp-teaser__title {
+        @include md {
+            margin-left: 0 !important;
+            margin: 0 !important;
+            margin-bottom: 10px;
+            margin-top: 0;
+            line-height: 20px;
+            font-size: $font20;
+            color: $white;
+        }
+
+        font-size: 24px;
         margin: 0;
         color: $white;
+
+        .cmp-teaser__title-link {
+            margin: 0;
+            color: $white;
+            font-size: 24px;
+
+            @include md {
+                padding: 0;
+                margin: 0;
+                font-size: $font20;
+            }
+        }
     }
 
     .cmp-teaser__description {
         p {
+            margin: 0;
             margin-top: 1rem;
         }
 
         width: 100%;
+
+        @include md {
+            color: $white;
+            width: 100%;
+        }
     }
 
     .cmp-teaser__action-container {
         padding: 10px;
         text-align: center;
         width: 282px;
-        margin-bottom: 1rem;
         border: 1px solid $white !important;
         border-radius: 4px;
-        margin-top: 1rem;
+        margin-top: 1.5rem;
 
         a {
             font-size: 14px;
@@ -151,9 +225,20 @@
         }
     }
 
+    // .teaser:nth-child(odd) {
+    //     margin-left: 1rem;
+    //   }
+
+    // .teaser:nth-child(even) {
+    //     margin-right: 1rem;
+    //   }
 
     :nth-child(1) {
         margin-right: 1rem;
+
+        @include md {
+            margin-right: 0;
+        }
     }
 }
 
@@ -199,13 +284,18 @@
 
 //teaser banner variation for out of container on container level
 .banner--image {
-    min-height: 415px;
-    max-height: 665px;
-    height: 500px;
+    // min-height: 500px;
+    max-height: 627px;
+    // height: 500px;
     margin-bottom: 50px;
     padding-top: 2.3rem;
     display: flex;
     flex-direction: row;
+
+    @include md {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 
     .cmp-image__image {
         margin-right: 140px;
@@ -219,6 +309,15 @@
         font-size: 16px;
         line-height: 22px;
         padding: 7rem 0 0 4rem;
+
+        p {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @include md {
+            padding: 4rem 0 0 4rem;
+        }
     }
 
 
@@ -228,5 +327,146 @@
     .aem-Grid--default--12 {
         flex-direction: row-reverse;
         display: flex;
+    }
+}
+
+.text--overlap__image {
+    padding: 1rem;
+}
+
+.gray--color {
+    color: $gray;
+}
+
+.cross-promo-plain {
+    .cmp-teaser__action-container {
+        width: 282px;
+        margin-top: -98px;
+        float: right;
+        margin-right: 59px;
+        border: 1px solid #fff !important;
+        border-radius: 4px;
+        border-width: 1px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .cmp-teaser__action-container a {
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        transition: all .3s ease-in-out;
+        color: #fff;
+    }
+
+    .cmp-teaser__action-container:after {
+        clear: both;
+    }
+
+    .cmp-teaser__description {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $white;
+        }
+
+        width: 100%;
+    }
+}
+
+
+.cross-promo-plain {
+    .cmp-teaser {
+        border-radius: 8px;
+        position: relative;
+        padding: 3rem 50px 3rem 38px;
+        color: #fff;
+    }
+
+    .cmp-teaser:before,
+    .cmp-teaser:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background: url('../resources/images/promo_pattern_top.svg') left 0 no-repeat;
+        background-size: contain;
+        opacity: .7;
+        left: 0px;
+    }
+
+    .cmp-teaser:after {
+        content: "";
+        right: auto;
+        left: 0;
+        transform: rotate(180deg);
+    }
+
+    a.cmp-teaser__title-link {
+        font-size: 24px;
+        margin-bottom: 16px;
+        margin-top: 0;
+        color: #fff;
+    }
+
+    .cmp-teaser__description p {
+        font-size: 1rem !important;
+        margin-top: 1.5rem;
+        line-height: 1.5;
+        color: #fff;
+    }
+}
+
+
+@media (min-width:375px) and (max-width:768px) {
+    .cross-promo-plain {
+        .cmp-teaser__action-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #fff !important;
+            border-radius: 4px;
+            border-width: 1px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cmp-teaser__action-container a {
+            font-size: 16px;
+            text-transform: uppercase;
+            transition: all .3s ease-in-out;
+            color: #fff;
+            letter-spacing: 3px;
+            outline: 0;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .cross-promo-plain .cmp-teaser__action-container {
+        border: 1px solid #fff !important;
+        border-radius: 4px;
+        border-width: 1px;
+        float: right;
+        margin-right: 59px;
+        margin-top: -98px;
+        padding: 10px;
+        text-align: center;
+        max-width: 100%;
+        min-width: 282px;
+    }
+}
+
+
+.large--banner {
+    .cmp-text {
+        padding: 2rem
     }
 }
