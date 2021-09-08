@@ -46,7 +46,7 @@ $(document).ready(function () {
     initSwiper();
     // popup 
 
-    $(".learn-more-wrap a").on("click", function(event) {
+    $(".btn-modal").on("click", function(event) {
         var dataLabel = $(this).attr("data-label");
         if (dataLabel) {
             var $el = $('#' + dataLabel).clone();
