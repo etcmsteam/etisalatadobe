@@ -297,13 +297,14 @@ font-weight: 900;
         &--active{
             border-color: inherit;
             background: #fafaf4;
-            border-left: 4px solid #719e19;
+            // border-left: 4px solid #719e19;
             font-weight: 700;
             color: $main-green;
             font-size:$font18;
             line-height: 1.4;
             @include font-family-lato;  
             padding: 1rem 1rem 1rem 0.7rem!important;
+            position: relative;
             span{
               img{
                 margin: 0 10px 0 0px!important;
@@ -513,6 +514,7 @@ font-weight: 900;
     padding:.5rem 1rem 0.5rem 0;
   }
   .cmp-tabs__tab--active{
+    position: relative;
     color:$main-green;
     font-weight: 700;
     font-size:$font18;
@@ -533,6 +535,7 @@ font-weight: 900;
    .cmp-tabs__tab--active {
     background:transparent;
     padding:0px 30px 30px 0;
+    position: relative;
     }
     .cmp-tabs__tabpanel--active{
        background:transparent;
@@ -553,12 +556,17 @@ font-weight: 900;
      }
   }
 
-.cmp-teaser__description ul{
-list-style-type: disc;
-padding-left: 30px;
-  ul:nth-type(1){
-    margin-top:2rem;
-}
+.cmp-teaser__description ul {
+  list-style-type: disc;
+  padding-left: 30px;
+
+  li {
+    font-size: $font14;
+  }
+
+  ul:nth-type(1) {
+    margin-top: 2rem;
+  }
 }
 
 .teaser_list ul li {
@@ -636,4 +644,19 @@ padding-left: 30px;
       }
     }
 
+    .cmp-tabs__tab--active:after {
+      border: solid #719e19;
+      border-width: 2px;
+      height: 28px;
+      border-radius: 4px;
+      content: "";
+      position: absolute;
+      line-height: 1;
+      left: 0;
+      z-index: 1;
+    }
+
+    .cmp_tabs__verticle_view_img .cmp-tabs__tab--active:after {
+      border: none;
+    }
  
