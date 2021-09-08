@@ -79,12 +79,30 @@
 // $(document).ready(function () {
 // $('#newsbuttonsubmit').on('submit', function(e){
 //     e.preventDefault(); //this stops the form submit + refresh 
-//         $.ajax({ 
-//             data:    {data_field: 'value'},
-//             type:    'post',
-//             url:     '/path/to/script.php',
-//             success: function(r) {$('#form-popup-box').css('display', 'block')},
-//             error:   function(r) {alert('error'); console.log(r)}
-//         });
+//         // $.ajax({ 
+//         //     data:    {data_field: 'value'},
+//         //     type:    'post',
+//         //     url:     '/path/to/script.php',
+//         //     success: function(r) {$('#form-popup-box').css('display', 'block')},
+//         //     error:   function(r) {alert('error'); console.log(r)}
+//         // });
+
+       
+//     $('#form-popup-box').show();
+        
+//         // $('#close').on('click', function () {
+//         //     $('.center').hide();
+//         //     $('#show').show();
+//         // })
 // });
 // });
+
+
+
+$(document).ready(function () {
+    $("#newsbuttonsubmit").click(function (e){
+        e.preventDefault(); //this stops the form submit + refresh 
+        $('#form-popup-box').show();
+        $('body').css('overflow', 'hidden')
+    });
+});

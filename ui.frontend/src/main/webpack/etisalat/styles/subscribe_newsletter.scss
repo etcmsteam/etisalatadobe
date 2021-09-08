@@ -49,6 +49,55 @@
     .cmp-form {
         padding: 0 2.3rem!important;
     }
+    
+    >.cmp-container:before {
+        background: url("../resources/images/sectionbg.svg");
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 360px;
+        width: 340px;
+        position: absolute;
+        opacity: .1;
+        z-index: 1;
+        bottom: 0;
+        background-position: top left;
+
+        // @include sm {
+        //     background-image: none;
+        //     display: none;
+        // }
+
+        // @include md {
+        //     background-image: none;
+        //     display: none;
+        // }
+    }
+
+    >.cmp-container:after {
+        background: url("../resources/images/sectionbg.svg");
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 360px;
+        position: absolute;
+        width: 340px;
+        opacity: .1;
+        z-index: 1;
+        right: 0;
+        transform: rotate(180deg);
+        top: 0;
+
+        // @include md {
+        //     height: 145px;
+        //     width: 140px;
+        // }
+
+        // @include sm {
+        //     height: 145px;
+        //     width: 140px;
+        //}
+    }
 }
 #form-popup-box {
     display: none;
@@ -111,4 +160,15 @@
             }
         }
     }
+}
+
+
+// ======= Custem Popup ===
+#form-popup-box {
+    position: fixed;
+    top: 0;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
 }
