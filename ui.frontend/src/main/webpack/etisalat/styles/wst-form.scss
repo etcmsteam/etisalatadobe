@@ -346,7 +346,12 @@
         transform: translateY(-10px) scale(.8);
         transform-origin: 0 0;
     }
-    
+    textarea.cmp-form-text__textarea:focus~label {
+      color: $main-green;
+      font-size: 1rem;
+      transform: translateY(10px) scale(.8);
+      transform-origin: 0 0;
+    }
     input:not([type]),
     input[type=date]:not(.browser-default),
     input[type=datetime-local]:not(.browser-default),
@@ -1212,6 +1217,10 @@ textarea.cmp-form-text__textarea ~label:after {
     text-overflow: ellipsis;
     overflow: hidden;
     z-index: 0;
+    @media (max-width: $screen-md-max) {
+      font-size: $font14;
+      line-height: 1.7rem;
+    }
 }
 
 .input-field>label {
@@ -2173,8 +2182,10 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     position: absolute;
     font-size: $font20;    
     font-weight: 400;
-    color: #848789;
+    color: $steel-grey;
     letter-spacing: 0;
+    margin-left: .7rem;
+    margin-top: .2rem
 
 
 }
