@@ -143,6 +143,10 @@ import intlTelInput from 'intl-tel-input';
           });
          
         $('.iti__flag-container').addClass('hide');
+        var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
+        document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
+        document.querySelector('#phone1').parentElement.append(labelHtml);
+        
         var errorMap = [ "Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];     
         var errorMsg;
         input.addEventListener('blur', function() {
@@ -308,6 +312,75 @@ import intlTelInput from 'intl-tel-input';
         then close all select boxes:*/
         document.addEventListener("click", closeAllSelect);
        }
+       var x, i, j, l, ll, selElmntAboutUs, a, b, c, d;
+    
+       selElmntAboutUs = document.querySelector("#select-hear-about-us");
+       if(selElmntAboutUs !== null) {
+         
+           $("#select-hear-about-us option[value='*']").each(function() {
+               $("#select-hear-about-us option[value='*']").remove();
+           });
+       
+           selElmntAboutUs = document.querySelector("#select-hear-about-us");
+           ll = selElmntAboutUs.length;
+       
+       /*for each element, create a new DIV that will act as the selected item:*/
+       a = document.createElement("DIV");
+       a.setAttribute("class", "select-selected");
+       a.innerHTML = selElmntAboutUs.options[selElmntAboutUs.selectedIndex].innerHTML;
+       selElmntAboutUs.parentElement.appendChild(a);
+       /*for each element, create a new DIV that will contain the option list:*/
+       b = document.createElement("DIV");
+       b.setAttribute("class", "select-items select-hide");
+       for (j = 0; j < ll; j++) {
+           /*for each option in the original select element,
+           create a new DIV that will act as an option item:*/
+           c = document.createElement("DIV");
+           d = document.createElement("DIV");
+           d.setAttribute("class", "selecteddiv");  
+           c.appendChild(d);
+           d.innerHTML = selElmntAboutUs.options[j].innerHTML;
+          
+           d.addEventListener("click", function (e) {
+               /*when an item is clicked, update the original select box,
+               and the selected item:*/
+               var y, i, k, s, h, sl, yl;
+               s = this.parentNode.parentNode.parentElement.getElementsByTagName("select")[0];
+               sl = s.length;
+               h = this.parentNode.parentNode.previousSibling;;
+               for (i = 0; i < sl; i++) {
+                   if (s.options[i].innerHTML == this.innerHTML) {
+                       s.selectedIndex = i;
+                       h.innerHTML = this.innerHTML;
+                       y = this.parentNode.getElementsByClassName("same-as-selected");
+                       yl = y.length;
+                       for (k = 0; k < yl; k++) {
+                           y[k].removeAttribute("class");
+                       }
+                       this.setAttribute("class", "same-as-selected selecteddiv");
+                       break;
+                   }
+               }
+               h.click();
+           });
+           b.appendChild(c);
+       }
+       selElmntAboutUs.parentElement.append(b);
+       
+       a.addEventListener("click", function (e) {
+           /*when the select box is clicked, close any other select boxes,
+           and open/close the current select box:*/
+           e.stopPropagation();
+           closeAllSelect(this);
+           this.nextSibling.classList.toggle("select-hide");
+           this.classList.toggle("select-arrow-active");
+       });
+
+       /*if the user clicks anywhere outside the select box,
+       then close all select boxes:*/
+       document.addEventListener("click", closeAllSelect);
+      }
+
 
        var x, i, j, l, ll, selElmntCounty, a, b, c, d;
     
@@ -435,6 +508,7 @@ import intlTelInput from 'intl-tel-input';
                 $("#url").parent().after('<div id="url-error" class="has-error alert-label">Please Enter A Valid URL.</div>');
             }
         });
+      
         
         $("#emailAddress").blur(function () {
             $("#emailAddress").parent().removeClass("has-error-fields");
@@ -486,7 +560,10 @@ import intlTelInput from 'intl-tel-input';
             $("#url").parent().next(".alert-label").remove(); // remove it 
             $("#url").parent().removeClass("has-error-fields");
         });
-
+        $("#justification").keypress(function () {
+            $("#justification").parent().removeClass("has-error-fields");
+            $("#justification").parent().next(".alert-label").remove();            
+        });
         $('.cmp-form-button').on('click', function () {           
             
             var svg = '<svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#alert-icon"></use></svg>';
@@ -499,6 +576,7 @@ import intlTelInput from 'intl-tel-input';
             $("#select2-selection__rendered").parent().next(".alert-label").remove(); // remove it
             $("#firstName").parent().next(".alert-label").remove();
             $("#url").parent().next(".alert-label").remove();
+            $("#justification").parent().next(".alert-label").remove();
             $("#fullName").parent().removeClass("has-error-fields");
             $("#emailAddress").parent().removeClass("has-error-fields");
             $("#companyName").parent().removeClass("has-error-fields");
@@ -506,6 +584,7 @@ import intlTelInput from 'intl-tel-input';
             $("#select2-selection__rendered").parent().removeClass("has-error-fields");
             $("#firstName").parent().removeClass("has-error-fields");
             $("#url").parent().removeClass("has-error-fields");
+            $("#justification").parent().removeClass("has-error-fields");
             
 
             if (!$('#fullName').val()) {
@@ -579,7 +658,7 @@ import intlTelInput from 'intl-tel-input';
 
                 }
                 $('#lastName').focus();
-                //focusSet = true;
+                
             }
             if (!$('#url').val()) {
                 $("#url").parent().addClass("has-error-fields");
@@ -589,7 +668,17 @@ import intlTelInput from 'intl-tel-input';
 
                 }
                 $('#url').focus();
-                //focusSet = true;
+                
+            }
+            if (!$('#justification').val()) {
+                $("#justification").parent().addClass("has-error-fields");
+                if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
+                {
+                    $("#justification").parent().after(div);
+
+                }
+                $('#justification').focus();
+                
             }
         });
 

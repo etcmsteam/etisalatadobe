@@ -160,7 +160,7 @@
            }    
            .select-service .cmp-form-options--drop-down{
             @media (min-width: $screen-lg-max) { 
-			  width: 98% !important; 
+			        width: 98% !important; 
             }
            }  
            .country-select .cmp-form-options--drop-down {
@@ -168,8 +168,48 @@
               width: 32rem;
             }
            } 
-        
-           input#fullName, .iti {
+            .iti {
+            input[type=tel]:not(.browser-default){               
+              width: 32.5rem;
+             } 
+             input[type=tel]:not(.browser-default)~label{               
+              left: 1.5rem;
+             }
+             input[type=tel]:focus ~label{
+           
+              color: $main-green;
+              font-size: $font16;
+              transform: translateY(-10px) scale(.8);
+              transform-origin: 0 0;               
+
+               }
+
+          }
+          
+          .select-block-unblock .cmp-form-options--drop-down > label {
+            transform: translateY(-10px) scale(.8);
+            transform-origin: 0 0;
+            font-size: 1rem;
+            z-index: 2;
+            top: 0!important;
+            line-height: 2px;
+      
+          }
+          .select-block-unblock .cmp-form-options--drop-down {
+            width: 9rem;
+            @media (max-width: $screen-md-max) {
+              margin-bottom: 2rem;
+            }
+          }
+         
+          .new {
+            margin: 0;
+          }
+      
+          .iti .cmp-form-text__textput {
+            width: 31.5rem ;
+          }
+            input#fullName {
             @media (min-width: $screen-lg-max) { 
               width: 31.5rem;
             }
@@ -339,7 +379,7 @@
               }
             }
           }
-   
+
     input:not([type]):focus:not([readonly])~label, .form input[type=date]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime-local]:not(.browser-default):focus:not([readonly])~label, .form input[type=datetime]:not(.browser-default):focus:not([readonly])~label, .form input[type=email]:not(.browser-default):focus:not([readonly])~label, .form input[type=number]:not(.browser-default):focus:not([readonly])~label, .form input[type=password]:not(.browser-default):focus:not([readonly])~label, .form input[type=search]:not(.browser-default):focus:not([readonly])~label, .form input[type=tel]:not(.browser-default):focus:not([readonly])~label, .form input[type=text]:not(.browser-default):focus:not([readonly])~label, .form input[type=time]:not(.browser-default):focus:not([readonly])~label, .form input[type=url]:not(.browser-default):focus:not([readonly])~label {
         color: $main-green;
         font-size: $font16;
@@ -347,17 +387,6 @@
         transform-origin: 0 0;
     }
 
-    [attribute^="select-block-unblock"] ~label {
-      transform: translateY(-10px) scale(.8);
-      transform-origin: 0 0;
-      font-size: 1rem!important;
-      z-index: 2;
-      top: 0!important;
-      
-      margin-left: 1px;
-      line-height: 2px;
-
-    }
 
 
     textarea.cmp-form-text__textarea:focus~label {
@@ -2197,8 +2226,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     font-size: $font20;    
     font-weight: 400;
     color: $steel-grey;
-    letter-spacing: 0;
-    margin-left: .7rem;
+    letter-spacing: 0;    
     margin-top: .2rem
 
 
