@@ -207,7 +207,14 @@ import intlTelInput from 'intl-tel-input';
     
         selElmntCounty = document.querySelector("#select2-selection__rendered");
         if(selElmntCounty !== null) {
-        ll = selElmntCounty.length;
+          
+            $("#select2-selection__rendered option[value='*']").each(function() {
+                $("#select2-selection__rendered option[value='*']").remove();
+            });
+        
+            selElmntCounty = document.querySelector("#select2-selection__rendered");
+            ll = selElmntCounty.length;
+        
         /*for each element, create a new DIV that will act as the selected item:*/
         a = document.createElement("DIV");
         a.setAttribute("class", "select-selected");
@@ -216,17 +223,14 @@ import intlTelInput from 'intl-tel-input';
         /*for each element, create a new DIV that will contain the option list:*/
         b = document.createElement("DIV");
         b.setAttribute("class", "select-items select-hide");
-        for (j = 1; j < ll; j++) {
+        for (j = 0; j < ll; j++) {
             /*for each option in the original select element,
             create a new DIV that will act as an option item:*/
             c = document.createElement("DIV");
             d = document.createElement("DIV");
 	        d.setAttribute("class", "selecteddiv");  
             c.appendChild(d);
-            if (selElmntCounty.options[j].innerHTML !== "Select Services*")
-            {
-                d.innerHTML = selElmntCounty.options[j].innerHTML;
-            }
+            d.innerHTML = selElmntCounty.options[j].innerHTML;
            
             d.addEventListener("click", function (e) {
                 /*when an item is clicked, update the original select box,

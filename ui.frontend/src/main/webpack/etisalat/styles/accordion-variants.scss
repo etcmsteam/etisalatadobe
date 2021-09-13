@@ -66,6 +66,7 @@
         margin-bottom: 0.8rem;
         font-size: $font14;
         line-height: 20px;
+        @include font-family-lato();
     }
     button:focus {
         background-color:transparent;
@@ -92,10 +93,10 @@
             right: 9px;
             position: relative;
             vertical-align: top;
-            font-size: $font30;
+            font-size: $font64;
             text-align: center;
             line-height: 12px;
-            font-weight:300;
+            font-weight:200;
             float: right;
 }
 }
@@ -118,6 +119,11 @@
         @include font-family-lato();
         padding:5px 1.5rem;
         font-weight: 700;
+    }
+    @media (max-width:$screen-sm-max){
+        .cmp-accordion__title{
+            padding-right: 5.5rem;
+        }
     }
     .cmp-accordion__itemdesc{
         line-height: 1.5;
@@ -192,7 +198,48 @@
 //tab with accordion
 
 @media (max-width:$screen-md-max){
-    .cmp-accordion--tab .nav-view-wrapp.panel>a:active {
+    .cmp-accordion--tab {
+        
+.nav-view-wrapp.panel>a, .nav-view-wrapp.panel>a.collapsed {
+    line-height: 1.5;
+    letter-spacing: normal;
+    padding: 18px 0;
+    padding-left: 1rem;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    flex-direction:row-reverse;
+    justify-content: flex-end;
+}
+
+.nav-view-wrapp.panel>a.collapsed {
+ color:$steel-grey;
+font-weight: 900;
+border-bottom: 1px solid $light-sand-brown;
+}
+  .nav-view-wrapp.panel>a.collapsed:before {
+    transform: translateY(-70%) rotate(45deg);
+  }
+
+  .nav-view-wrapp.panel>a:before {
+    border: solid #b2b2b2;
+    border-width: 0 1px 1px 0;
+    padding: 3.5px;
+    content: "";
+    position: absolute;
+    line-height: 1;
+    transform: translateY(-30%) rotate(-135deg);
+    transition: all .3s ease-in-out;
+    right: 18px;
+    z-index: 1;
+    top: 50%;
+}
+  .nav-view-wrapp.panel>a.collapsed:before {
+    transform: translateY(-70%) rotate(45deg);
+  }
+    .nav-view-wrapp.panel>a:active {
 		font-size: $font16;
         @include font-family-Neotech-roboto();
 		color: $main-green;
@@ -201,44 +248,69 @@
 		position: relative;
 		border-left: 4px solid $main-green;
 }
-.cmp-accordion--tab .nav-view-wrapp.panel>a {
+.nav-view-wrapp.panel>a {
 	font-size:  $font16;
 }
-.cmp-accordion--tab .panel{
+ .panel{
 	background-color:$white!important;
+    margin:28px;
+
 }
-.cmp-accordion--tab .nav-view-wrapp.panel>a:before{
+ .nav-view-wrapp.panel>a:before{
 	padding:5px!important;
 }
-.cmp-accordion--tab .nav-view-wrapp.panel .cmp-title__text{
+ .nav-view-wrapp.panel .cmp-title__text{
     font-size: $font20;
 }
 }
+}
 @media (min-width: $screen-xl-max){
-    .cmp-accordion--tab .cmp-tabs__tab--active {
-line-height: 60px!important;
-padding-left:22px!important;
+    .cmp-accordion--tab{
+        h3 {
+            margin: 0;
+        }
+        .cmp-tabs{
+            display:flex;
+           .cmp-tabs__tab{
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                font-size: $font20;
+                @include font-family-Neotech-roboto();
+                box-sizing: border-box;
+                cursor: pointer;
+                color:$steel-grey;
+                border-bottom:0;
+                padding: 1rem;
+
+            &--active{
+                    border-left: 4px solid $main-green!important;
+                    color: $main-green;
+                    display: block;
+                    line-height: 55px;
+                    padding-left: 22px;
+                    }
+            }
+        }
+        .cmp-tabs__tablist {
+            margin-left:8%;
+            display: block;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
+    width: 30%;
+         } 
+         .cmp-tabs__tabpanel--active {
+            margin-right:8%;
+            width:65%!important;
+        }
+    }
 }
-.cmp-accordion--tab .cmp-tabs__tablist {
-margin-left:8%;
-}
-.cmp-accordion--tab .cmp-tabs__tabpanel--active {
-	margin-right:8%;
-	width:65%!important;
-}
-}
-@media (min-width: 48em){
-.cmp-accordion--tab  h3 {
-    margin: 0!important;
-}
-}
-.cmp_tabs__vertical_view{
+.cmp-accordion--tab{
 	@include  font-family-Neotech-roboto();
 
 .line-accordion{
     .cmp-accordion__title{
         font-family: Lato,Roboto,Arial,sans-serif;
-        padding: 1.5rem 25px!important;
         color: $almost-black!important;
 		font-weight:400!important;
         border-bottom: 0!important;
