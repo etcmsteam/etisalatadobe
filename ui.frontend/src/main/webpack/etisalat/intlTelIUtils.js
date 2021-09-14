@@ -130,6 +130,8 @@ import intlTelInput from 'intl-tel-input';
 
         }
         var input = document.querySelector("#phone1")
+        if(input !== null)
+        {
         var iti = intlTelInput(input, {
             utilsScript: utilPath,
             separateDialCode: false,
@@ -140,7 +142,6 @@ import intlTelInput from 'intl-tel-input';
             autoPlaceholder: false,
 
         });
-
 
         $('.iti__flag-container').addClass('hide');
         var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
@@ -169,7 +170,7 @@ import intlTelInput from 'intl-tel-input';
                 }
             }
         });
-
+    }
 
         var ele1 = document.querySelector("#country-listbox");
         if (ele1 !== null) {
