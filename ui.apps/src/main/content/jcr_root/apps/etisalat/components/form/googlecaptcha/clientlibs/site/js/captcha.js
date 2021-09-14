@@ -7,6 +7,7 @@
   if (response === document.querySelector('.g-recaptcha-response').value) {
     doSubmit = true;
  $('#submitBtn').removeClass('hide');
+ $('.#disableBtn').addClass('btn-disabled');
 
    }
  }
@@ -14,6 +15,7 @@
  function reCaptchaExpired () {
    alert('Verify Google Captcha again');
    $('#submitBtn').addClass('hide');
+   $('.#disableBtn').removeClass('btn-disabled');
 
  }
 
