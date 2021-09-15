@@ -6,6 +6,7 @@ const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
 const TSConfigPathsPlugin     = require('tsconfig-paths-webpack-plugin');
 const CopyWebpackPlugin       = require('copy-webpack-plugin');
 const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
+const intlTelInputUtils    =    require('intl-tel-input');
 
 const SOURCE_ROOT = __dirname + '/src/main/webpack';
 
