@@ -641,19 +641,30 @@ general Paragraph styling
         min-height: 124px;
         height: 100%;
 
+        @media (min-width:320px) and (max-width:767px){
+            min-height: 310px;
+        }
         @media (min-width: 992px) {
             min-height: 360px;
         }
     }
 
     .offer-details-wrapper {
-        margin-top: 1rem;
+        margin: 1rem;
+        margin-top: 0;
+        overflow: auto;
 
-        @media (min-width: 768px) {
-            margin-top: 0;
-            overflow: auto;
-            max-height: 600px;
+        @media (min-width:320px) and (max-width:767px){
+            max-height: 300px;
         }
+
+        @media (min-width: 768px){
+            max-height: 400px;
+        }
+
+        // @media (min-width: 1024px) {
+        //     max-height: 600px;
+        // }
 
         h3,
         p {
@@ -1300,12 +1311,21 @@ general Paragraph styling
                 position: fixed;
                 right: 0;
                 top: 0;
+                width: 47%;
             }
         }
-        @media (min-width:$tablet){
+        @media (min-width:$tablet) and (max-width:1023px){
             .right-50-modal{
                 .nv-modal-dialog{
-                    width:550px;
+                    // width:550px;
+                    width: 49%;
+                }
+            }
+        }
+        @media (min-width:320px) and (max-width:767px){
+            .right-50-modal{
+                .nv-modal-dialog{
+                    width:100%;
                 }
             }
         }
@@ -1317,7 +1337,7 @@ general Paragraph styling
             li{
                 font-size: $font20;
                 color: #919192;
-                padding-left: 1rem;
+                // padding-left: 1rem;
                 margin-bottom: 1rem;
             }
             @media (max-width:$tablet){
@@ -1330,7 +1350,9 @@ general Paragraph styling
             border: 1px solid grey;
             td{
                 border: 1px solid grey;
-                padding: 6px;
+                // padding: 6px;
+                line-height: 1.5;
+                vertical-align: middle;
             }
         }
    
