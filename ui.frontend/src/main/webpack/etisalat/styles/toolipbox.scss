@@ -22,17 +22,21 @@
             max-width:toRem(384);
             height:toRem(160);
             left: unset;
-            h3{
-                margin-top:1.25rem;
-                margin-top:toRem(8);
-            }
-            a{margin-top: 2rem;}
+            a{
+                margin-top: 2rem;
+                }
         }
         h3{
             font-size: 1.25rem;
             color:$white;
             padding-top: 0;
             margin-left: 0;
+            margin-top:0;
+            margin-bottom:0;
+            @include respond-to-min($desktop) {
+               margin-top:1.25rem;
+               margin-top:toRem(8);
+            }
         }
         p{
             padding: 0;
@@ -40,6 +44,16 @@
             font-size:$font14;
             line-height:toRem(18);
             margin-bottom: 0.5rem;
+            margin-top: 0.3rem;
+            @include respond-to-min($desktop) {
+            margin-top: 1rem;
+            }
+            @include respond-to-max($tablet) {
+            margin-top:1.7rem;
+            }
+             @include respond-to-max($phone) {
+            margin-top:0;
+            }
         }
         a{
             color:$white;
@@ -49,6 +63,10 @@
             display: inline-block;
         }
     }
+
+    .hero-banner-section {
+        height:452px;
+    }
 }
  .promotional-min-banner{
      .cmp-container{
@@ -56,9 +74,16 @@
          min-height:toRem(80);
          min-width: 100%;
          text-align:center;
+         @include respond-to-max($phone) {
+            text-align:left;
+         }
      }
      h5{
          margin:0;
+          @include respond-to-max($phone) {
+            font-size:toRem(22);
+            line-height: 30px;
+          }
      }
     
      .text{
@@ -67,9 +92,19 @@
         margin: 0 auto;
         left: 0;
         right: 0;
+         @include respond-to-max($phone) {
+            padding: 10px 0 0 10px;
+         }
      }
      p{
          font-size:$font14;
-    }
-}
+         @include respond-to-max($phone) {
+            font-size:toRem(13);
+            line-height: 2rem;
+         }
+
+     }
+ }
+
+
  
