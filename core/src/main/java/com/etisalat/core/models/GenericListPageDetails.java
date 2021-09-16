@@ -2,6 +2,8 @@ package com.etisalat.core.models;
 
 import java.util.Calendar;
 
+import org.apache.sling.api.resource.Resource;
+
 public class GenericListPageDetails{
 	private String title;
 	private String pageTitle;
@@ -11,6 +13,11 @@ public class GenericListPageDetails{
 	private String path;
 
 	private String thumbnail;
+	
+	private String category;
+	private Calendar articleDate;
+	private String tileSize;
+	private Resource thumbnailResource;
 
 	public String getThumbnail() {
 		return thumbnail;
@@ -66,6 +73,62 @@ public class GenericListPageDetails{
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	/**
+	 * @return the category
+	 */
+	public String getCategory() {
+		return category;
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	/**
+	 * @return the articleDate
+	 */
+	public Calendar getArticleDate() {
+		return articleDate;
+	}
+
+	/**
+	 * @param articleDate the articleDate to set
+	 */
+	public void setArticleDate(Calendar articleDate) {
+		this.articleDate = articleDate;
+	}
+
+	/**
+	 * @return the tileSize
+	 */
+	public String getTileSize() {
+		return tileSize;
+	}
+
+	/**
+	 * @param tileSize the tileSize to set
+	 */
+	public void setTileSize(String tileSize) {
+		this.tileSize = tileSize;
+	}
+
+	/**
+	 * @return the thumbnailResource
+	 */
+	public Resource getThumbnailResource() {
+		return thumbnailResource;
+	}
+
+	/**
+	 * @param thumbnailResource the thumbnailResource to set
+	 */
+	public void setThumbnailResource(Resource thumbnailResource) {
+		this.thumbnailResource = thumbnailResource;
 	}
 
 }

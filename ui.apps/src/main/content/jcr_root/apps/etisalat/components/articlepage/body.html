@@ -1,0 +1,44 @@
+<div data-sly-use.blogpost="com.etisalat.core.models.BlogpostSearch" class="article-header-text-wrapper">
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12">
+            <div class="article-wrapper">
+               <div class="back-to-insight">
+                  <a data-sly-test="${pageProperties.backToBusinessLbl}" 
+                     href="javascript:history.go(-1)" class="btn-text btn-green back">${pageProperties.backToBusinessLbl}</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12">
+            <div class="article-wrapper">
+               <div data-sly-test="${blogpost.businessCategoryTag}" class="aritcle-category mb-20">
+                  <span class="category">${blogpost.businessCategoryTag}</span>
+               </div>
+            </div>
+         </div>
+         <div class="col-xs-12 col-md-9">
+            <div class="wst-main-headings mb-20">
+               <div data-sly-resource="${'title' @ resourceType='etisalat/components/title'}"></div>
+            </div>
+            <div class="article-wrapper">
+               <div class="read-time-date-wrapper-norm">
+                  <div data-sly-test="${pageProperties.articleDate}" class="date">
+                     <span><img data-sly-test="${pageProperties.articleDateIcon}" class="read-time-icon" src="${pageProperties.articleDateIcon}"/></span>
+                     <p>${'dd MMM yyyy' @ format=pageProperties.articleDate}</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer"
+   data-sly-repeat.child="${templatedContainer.structureResources}"
+   data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
+   
+   
