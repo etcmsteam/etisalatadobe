@@ -1,4 +1,17 @@
 (function () {
+    var url=window.location.href;
+            if(url.indexOf('faq-main') != -1 || url.indexOf('offer_main_page') != -1 || url.indexOf('locations') != -1){
+                $('#mobile-non-active').eq(0).show().addClass('active').removeClass('noactive');
+            }
+            if(url.indexOf('business') != -1){
+                $('#mobile-non-active').show().addClass('active').removeClass('noactive');
+                $('#mobile-active').hide();
+            }
+            if(url.indexOf('personal') != -1){
+                $('#mobile-active').hide();
+                $('#mobile-non-active').show().addClass('active').removeClass('noactive');
+            }
+
     define(['lodash', 'select2', 'swiper'], function (_) {
 
         const position = "{lat: 25.208549, lng: 55.271945}";
@@ -1563,9 +1576,12 @@
             setTimeout(function () {
                 positionOnMyLocation();
             }, 1000);
+
+
+            
         });
 
-
+        
         //};
     });
 }(define, window));
