@@ -1,0 +1,100 @@
+<div class="cmp-blogpost-search" 
+     data-sly-use.blogpost="com.etisalat.core.models.BlogpostSearch" 
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-set.blogPostList="${blogpost.pageItems}"
+     id="blogpost-${blogpost.id}">
+<div data-sly-test="${blogPostList.size >0}" class="main-text-section with-search-field">
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12">
+            <div data-sly-test="${properties.blogTitle}" class="wst-main-headings">
+               <h3>${properties.blogTitle}</h3>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12 col-md-9 main-text-content-wrapper">
+            <div data-sly-test="${properties.text}" class="paragraph-styling ul-list-cms">
+               <div class="p2">${properties.text @ context = 'html'}</div>
+            </div>
+         </div>
+         <div class="col-xs-12 col-md-3 main-text-action-wrapper">
+            <div class="search-wrapper">
+               <form action="${currentPage.path @ extension = 'html'}" class="form wst-form" id="search_${blogpost.id}" method="POST" novalidate="" data-active="true">
+                  <div class="form-group floating-label-input input-field ">
+                     <input id="${properties.searchInputID}"
+                        placeholder="${properties.placeholderTxt}"
+                        name="${properties.name}"
+                        value="${properties.value}" 
+                        required="${properties.required}" 
+                        type="text">
+                     <label> ${properties.inputLbl}</label>
+                     <span class="search-icon">                                   
+                     </span>
+                  </div>
+               </form>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+    <div class="search-results-wrapper" style="display: none">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 search-target">
+                    <h3 class="mb-12"> <span class="search-count"></span>${properties.searchResultTxt}</h3> <span class="searchTarget"></span>
+                </div>
+                <div class="col-xs-12 mb-40">
+                    <span class="no-result-found" style="display: none;">${properties.noResultLbl}</span>
+                    <a data-sly-test="${properties.clearSearchLbl}" href="#" class="clear-search"> ${properties.clearSearchLbl}</a>
+                </div>
+            </div>
+        </div>
+   </div>
+   <div class="blogpost-wrapper" 
+       data-sly-test="${blogPostList.size >0}"
+       data-sly-set.itemsDisplay="${(properties.numberOfItems && properties.numberOfItems > 0) ? properties.numberOfItems : blogPostList.size}">
+      <div class="container">
+         <div class="row">
+            <div data-sly-repeat.pageItem="${blogPostList}" class="col-xs-12 col-md-${pageItem.tileSize} item ${pageItemList.index < itemsDisplay ? '':'hidden'}">
+               <a href="${pageItem.path @ extension='html'}">
+                  <div class="blog-post-wrapper">
+	                 <div class="tile-box-tile">
+	                        <div class="img-cover">
+	                           <div data-sly-test="${pageItem.thumbnailResource}" class="cover lazyloaded" data-sly-resource="${pageItem.thumbnailResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>                          
+	                           <div class="category">
+	                              <p data-sly-test="${pageItem.category}"> ${pageItem.category}</p>
+	                           </div>
+	                        </div>
+	                        <div class="tile-box-body">
+	                           <div class="box-title">
+	                              <h2 data-sly-test="${pageItem.title}">${pageItem.title}</h2>
+	                           </div>
+	                           <div class="box-details">
+	                              <p data-sly-test="${pageItem.description}">${pageItem.description @ context = 'html'}</p>
+	                           </div>
+	                           <div class="date" data-sly-test="${pageItem.articleDate}">
+	                              <p>${'dd MMM yyyy' @ format=pageItem.articleDate}</p>
+	                           </div>                           
+	                        </div>
+	                     </div>
+                     </div>
+                   </a>
+                 </div>              
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="col-xs-12 col-md-4 col-md-offset-4 text-center pt-8 pb-50">
+                <div class="action" data-sly-test="${properties.loadMore}" style="display: block;">
+                    <a href="" class="btn btn-default ripple-effect">${properties.loadMore}</a>
+                </div>
+            </div>
+         </div>
+   </div>
+</div>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = blogPostList.size == 0}"></sly>
+
