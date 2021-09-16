@@ -1,7 +1,7 @@
 <div
 	data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	data-panelcontainer="${wcmmode.edit && 'Product Tile Component'}"
-	data-placeholder-text="${wcmmode.edit && 'Please add the product tile data here' @ i18n}">
+	data-placeholder-text="${wcmmode.edit && 'Please configure the product tiles component data here' @ i18n}">
 
 	<div class="read-more-${properties.offerText ? 'red' : 'green'}-btn_bg">
 		<div class="tile-table plan-card offer ">
@@ -12,13 +12,13 @@
 							<div class="tiles-box-title">
 								<div data-sly-test="${properties.offerText}"
 									class="special-offer">${properties.offerText}</div>
-								<div class="catagory">${properties.productTitle}</div>
-								<h2>${properties.productSubTitle}</h2>
+								<div class="catagory" data-sly-test="${properties.productTitle}">${properties.productTitle}</div>
+								<h2 data-sly-test="${properties.productSubTitle}">${properties.productSubTitle}</h2>
 							</div>
 							<div class="tiles-box-list">
 								<ul class="featureList">
 									<li>
-										<ul>${properties.productDesc @ context="html"}
+										<ul data-sly-test="${properties.productDesc}">${properties.productDesc @ context="html"}
 										</ul>
 									</li>
 								</ul>
@@ -26,7 +26,7 @@
 									<div class="detail-price-new">
 										<div class="main-part">
 											<div dir="ltr" class="from"></div>
-											<div dir="ltr" class="price">
+											<div dir="ltr" class="price" data-sly-test="${properties.productPrice}">
 												${properties.productPrice}</div>
 											<small>${properties.productCurrency}/ month</small>
 										</div>
