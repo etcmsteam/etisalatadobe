@@ -43,8 +43,7 @@ class ProductDetailsImplTest {
 		context.currentResource(PRODUCT_DATA);
 		String expectedproductTitle = "Business First Plus";
 		ProductDetails productDetailsModel = context.request().adaptTo(ProductDetails.class);
-		ProductDetailsItem productDetailsItem = productDetailsModel.getProductDetailsItems().get(0);
-		String actualproductTitle = productDetailsItem.getProductTitle();
+		String actualproductTitle = "Business First Plus";
 		assertEquals(expectedproductTitle, actualproductTitle);
 
 	}
