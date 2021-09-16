@@ -1,18 +1,24 @@
 //basic teaser configration 
 .tile-teaser {
-    .cmp-teaser__content {
-        padding: 1.5rem;
+    margin-bottom: 2rem;
 
-        @include sm {
+    .cmp-teaser__content {
+        padding-left: 0;
+        width: 100%;
+        padding: 1.3rem;
+
+        @include respond-to-min($desktop) {
             padding: 1.5rem;
+            width: 50%;
         }
 
-        @include md {
-            padding: 1.5rem;
+        @include respond-to-max($tablet) {
+            padding-left: 0;
+            width: 100%;
         }
 
         .cmp-teaser__pretitle {
-            font-size: 12px;
+            font-size: $font12;
             font-weight: 700;
             letter-spacing: 4px;
             line-height: 12px;
@@ -24,8 +30,7 @@
 
         .cmp-teaser__title {
             font-size: 32px;
-            margin-bottom: 35px;
-            margin-top: 0;
+            margin: 0 0 35px 0;
             line-height: 38px;
             color: $white;
         }
@@ -33,12 +38,26 @@
         .cmp-teaser__description {
             font-size: 1rem;
             line-height: 26px;
-            color: $white !important;
+            color: $white;
             @include font-family-lato;
 
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h5,
+            h6 {
+                color: $white;
+            }
+
             ul {
-                padding-top: 1.4rem;
-                padding-bottom: 1rem;
+                padding: 2rem 2rem 0rem;
+
+                @include respond-to-min($desktop) {
+                    padding: 1.4rem 0 1rem;
+                }
+
 
                 li {
                     color: $white;
@@ -47,6 +66,15 @@
                     color: $white;
                     @include font-family-lato;
 
+                }
+            }
+
+            p a span {
+                color: $white;
+
+                &:before,
+                &:after {
+                    color: $white;
                 }
             }
         }
@@ -61,12 +89,12 @@
                 cursor: pointer;
                 text-transform: uppercase;
                 @include font-family-lato;
-                font-size: .875rem;
+                font-size: $font14;
                 line-height: 1.25rem;
                 position: relative;
                 font-weight: 500;
 
-                @include sm {
+                @include respond-to-max($phone) {
                     width: 100%;
                 }
 
@@ -79,13 +107,7 @@
         }
 
         .cmp-teaser__content {
-            @include sm {
-                width: 100%;
-            }
-
-            @include md {
-                width: 100%;
-            }
+            width: 100%;
         }
 
     }
@@ -93,153 +115,196 @@
     .image-right {
         margin-right: 2rem;
 
+        @include respond-to-max($tablet) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
         .cmp-teaser__image {
-            position: relative;
+
             width: 100%;
 
+            @include respond-to-min($desktop) {
+                position: relative;
+                width: 60%;
+            }
+
+            @include respond-to-max($tablet) {
+                width: 100%;
+            }
+
+
+
             img {
-                position: absolute;
-                height: 100% !important;
 
-                @include sm {
-                    max-width: 100%;
-                    height: auto;
-                }
+                max-width: 100%;
+                height: auto;
 
-                @include md {
+                @include respond-to-max($tablet) {
                     max-width: 100%;
                     position: inherit;
                 }
+
+                @include respond-to-min($desktop) {
+                    position: absolute;
+                    height: 100% !important;
+                }
+
             }
         }
 
     }
 
     .image-left {
-        margin-right: 2rem;
+        margin-left: 1rem;
+
+        @include respond-to-max($tablet) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
 
         .cmp-teaser__image {
-            position: relative;
-            width: 100% !important;
+            width: 100%;
+
+            @include respond-to-min($desktop) {
+                position: relative;
+                width: 60%;
+            }
+
+            @include respond-to-max($tablet) {
+                width: 100%;
+            }
 
             img {
-                position: absolute;
-                height: 100% !important;
+                max-width: 100%;
+                height: auto;
 
-                @include sm {
-                    max-width: 100%;
-                    height: auto;
-                }
-
-                @include md {
+                @include respond-to-max($tablet) {
                     max-width: 100%;
                     position: inherit;
                 }
+
+                @include respond-to-min($desktop) {
+                    position: absolute;
+                    height: 100% !important;
+                }
             }
         }
     }
 }
 
-.image--60 {
-    .cmp-teaser__image {
-        width: 60% !important;
-    }
-}
+
 
 // two col teaser  
-.cmp-teaser__two__col .teaser {
-    display: flex;
-    padding-left: 1rem;
-    border-radius: 4px;
+.cmp-teaser__two__col {
+    .teaser {
+        border-radius: 8px;
 
-    @include md {
-        padding: 1rem;
-    }
-
-    .cmp-teaser {
-        border-radius: 4px;
-
-        @include md {
-            margin-right: 1rem;
-        }
-    }
-
-    .cmp-teaser__content {
-        padding: 3rem 1rem;
-        margin-bottom: 20px;
-    }
-
-    .cmp-teaser__title {
-        @include md {
-            margin-left: 0 !important;
-            margin: 0 !important;
-            margin-bottom: 10px;
-            margin-top: 0;
-            line-height: 20px;
-            font-size: $font20;
-            color: $white;
+        @include respond-to-max($tablet) {
+            padding: 1rem;
+            margin-bottom: 2rem;
         }
 
-        font-size: 24px;
-        margin: 0;
-        color: $white;
+        .cmp-teaser {
+            border-radius: 4px;
 
-        .cmp-teaser__title-link {
-            margin: 0;
-            color: $white;
-            font-size: 24px;
+            @include respond-to-max($tablet) {
+                margin-right: 1rem;
+            }
 
-            @include md {
-                padding: 0;
+            &__content {
+                padding: 3rem 1rem;
+                margin-bottom: 20px;
+            }
+
+            &__title {
+                @include respond-to-max($tablet) {
+                    margin-left: 0 !important;
+                    margin: 0 !important;
+                    margin-bottom: 10px;
+                    margin-top: 0;
+                    line-height: 20px;
+                    font-size: $font20;
+                    color: $white;
+                }
+
+                font-size: 24px;
                 margin: 0;
-                font-size: $font20;
+                color: $white;
+
+                &__title-link {
+                    margin: 0;
+                    color: $white;
+                    font-size: 24px;
+
+                    @include respond-to-max($tablet) {
+                        padding: 0;
+                        margin: 0;
+                        font-size: $font20;
+                    }
+                }
+            }
+
+            &__description {
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h5,
+                h6 {
+                    color: $white;
+                }
+
+                p {
+                    margin: 0;
+                    margin-top: 1rem;
+                }
+
+                width: 100%;
+
+                @include respond-to-max($tablet) {
+                    color: $white;
+                    width: 100%;
+                }
+            }
+
+            &__action-container {
+                padding: 10px;
+                text-align: center;
+                width: 282px;
+                border: 1px solid $white !important;
+                border-radius: 4px;
+                margin-top: 1.5rem;
+
+                a {
+                    font-size: 14px;
+                    color: $white;
+                }
+            }
+        }
+
+    }
+
+    .cmp-container {
+        >.aem-Grid {
+            display: flex;
+
+            .container:first-child {
+                margin-right: 0.5rem;
+            }
+
+            .container:last-child {
+                margin-left: 0.5rem;
             }
         }
     }
 
-    .cmp-teaser__description {
-        p {
-            margin: 0;
-            margin-top: 1rem;
-        }
-
-        width: 100%;
-
-        @include md {
-            color: $white;
-            width: 100%;
-        }
+    .container {
+        border-radius: 8px;
     }
 
-    .cmp-teaser__action-container {
-        padding: 10px;
-        text-align: center;
-        width: 282px;
-        border: 1px solid $white !important;
-        border-radius: 4px;
-        margin-top: 1.5rem;
-
-        a {
-            font-size: 14px;
-            color: $white;
-        }
-    }
-
-    // .teaser:nth-child(odd) {
-    //     margin-left: 1rem;
-    //   }
-
-    // .teaser:nth-child(even) {
-    //     margin-right: 1rem;
-    //   }
-
-    :nth-child(1) {
-        margin-right: 1rem;
-
-        @include md {
-            margin-right: 0;
-        }
-    }
 }
 
 // btn with border around 
@@ -284,15 +349,14 @@
 
 //teaser banner variation for out of container on container level
 .banner--image {
-    // min-height: 500px;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
     max-height: 627px;
-    // height: 500px;
-    margin-bottom: 50px;
     padding-top: 2.3rem;
     display: flex;
     flex-direction: row;
 
-    @include md {
+    @include respond-to-max($tablet) {
         padding-left: 2rem;
         padding-right: 2rem;
     }
@@ -305,21 +369,69 @@
         top: 0px;
         margin-top: 0px;
         margin-bottom: 4px;
-        font-family: 'GothamRounded-Book', "Helvetica Neue";
         font-size: 16px;
         line-height: 22px;
-        padding: 7rem 0 0 4rem;
+        padding: 2rem 0 0 2rem;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h5,
+        h6 {
+            color: $white;
+        }
 
         p {
             margin-top: 2rem;
             margin-bottom: 2rem;
+            color: $white;
         }
 
-        @include md {
+        @include respond-to-max($tablet) {
             padding: 4rem 0 0 4rem;
+        }
+
+        @include respond-to-min($desktop) {
+            padding: 7rem 0 0 4rem;
         }
     }
 
+    .cmp-button--grey {
+        @include respond-to-max($tablet) {
+            line-height: 2rem;
+        }
+    }
+
+    @include respond-to-max($phone) {
+        height: 450px;
+        margin-bottom: 13rem;
+
+        .cmp-container {
+            >.aem-Grid {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+            .aem-Grid.aem-Grid--phone--12>.aem-GridColumn.aem-GridColumn--phone--5 {
+                width: 70%;
+                margin-top: -3rem;
+
+                img {
+                    margin-left: 3.4rem;
+                }
+            }
+
+            .aem-Grid.aem-Grid--phone--12>.aem-GridColumn.aem-GridColumn--phone--7 {
+                width: 100%;
+            }
+
+            .cmp-text {
+                padding: 2rem;
+            }
+        }
+    }
 
 }
 
@@ -338,17 +450,23 @@
     color: $gray;
 }
 
-.cross-promo-plain {
+.cross-promotion-plain {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+
     .cmp-teaser__action-container {
         width: 282px;
         margin-top: -98px;
-        float: right;
+        float: left;
         margin-right: 59px;
-        border: 1px solid #fff !important;
+        border: 1px solid $white;
         border-radius: 4px;
         border-width: 1px;
         padding: 10px;
         text-align: center;
+        @include respond-to-min($desktop) {
+            float: right;
+        }
     }
 
     .cmp-teaser__action-container a {
@@ -356,7 +474,7 @@
         letter-spacing: 3px;
         text-transform: uppercase;
         transition: all .3s ease-in-out;
-        color: #fff;
+        color: $white;
     }
 
     .cmp-teaser__action-container:after {
@@ -379,12 +497,12 @@
 }
 
 
-.cross-promo-plain {
+.cross-promotion-plain {
     .cmp-teaser {
         border-radius: 8px;
         position: relative;
         padding: 3rem 50px 3rem 38px;
-        color: #fff;
+        color: $white;
     }
 
     .cmp-teaser:before,
@@ -411,28 +529,28 @@
         font-size: 24px;
         margin-bottom: 16px;
         margin-top: 0;
-        color: #fff;
+        color: $white;
     }
 
     .cmp-teaser__description p {
         font-size: 1rem !important;
         margin-top: 1.5rem;
         line-height: 1.5;
-        color: #fff;
+        color: $white;
     }
 }
 
 
-@media (min-width:375px) and (max-width:768px) {
-    .cross-promo-plain {
+@include respond-to-max($tablet) {
+    .cross-promotion-plain {
         .cmp-teaser__action-container {
             margin-top: 20px;
             padding: 10px;
-            border: 1px solid #fff !important;
+            border: 1px solid $white;
             border-radius: 4px;
             border-width: 1px;
             text-align: center;
-            width: 100%;
+            width: auto;
             margin: 0 auto;
             margin-top: 1rem;
             margin-bottom: 1rem;
@@ -442,16 +560,16 @@
             font-size: 16px;
             text-transform: uppercase;
             transition: all .3s ease-in-out;
-            color: #fff;
+            color: $white;
             letter-spacing: 3px;
             outline: 0;
         }
     }
 }
 
-@media (min-width: 992px) {
-    .cross-promo-plain .cmp-teaser__action-container {
-        border: 1px solid #fff !important;
+@include respond-to-min($desktop) {
+    .cross-promotion-plain .cmp-teaser__action-container {
+        border: 1px solid $white;
         border-radius: 4px;
         border-width: 1px;
         float: right;
@@ -469,4 +587,68 @@
     .cmp-text {
         padding: 2rem
     }
+
+    .cmp-container {
+        height: 100%;
+        min-height: 579px;
+        background-size: 100% auto;
+    }
+}
+
+.purpal--color {
+    color: $white;
+}
+
+.green--color {
+    color: $white;
+}
+
+.orange--color {
+    color: $white;
+}
+
+.aqua--color {
+    color: $white;
+}
+
+.direction-column {
+
+    height: 450px;
+    margin-bottom: 13rem;
+
+    .cmp-container {
+        >.aem-Grid {
+            flex-direction: column;
+        }
+
+        .aem-Grid.aem-Grid--phone--12>.aem-GridColumn.aem-GridColumn--phone--5 {
+            width: 70%;
+            margin-top: -3rem;
+
+            @include respond-to-min($desktop) {
+                width: 58.33333333%;
+                margin-top: 0;
+            }
+
+            img {
+                width: 70%;
+                margin-left: 0;
+
+                @include respond-to-max($tablet) {
+                    width: 100%;
+                }
+            }
+
+        }
+
+        .aem-Grid.aem-Grid--phone--12>.aem-GridColumn.aem-GridColumn--phone--7 {
+            width: 100%;
+        }
+
+        .cmp-text {
+            padding: 2rem;
+            width: 100%;
+        }
+    }
+
 }
