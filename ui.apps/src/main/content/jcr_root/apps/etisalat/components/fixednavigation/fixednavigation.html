@@ -5,14 +5,16 @@
    <ul data-sly-use.navModel="com.etisalat.core.models.FixedNavigationModel"
        data-sly-use.template="core/wcm/components/commons/v1/templates.html"
        data-sly-list.navItem="${navModel.fixedNav}" class="menu" role="menuitem">
-      <li><a href="${navItem.navigationLink}">${navItem.navigationTitle}</a></li>
+	   <div data-sly-test.nav_class_obj="${currentPage.path@ extension = 'html'}" data-sly-unwrap></div>
+      <li class=" ${navItem.navigationLink  == nav_class_obj ? 'active-nav' : ''}"><a href="${navItem.navigationLink}">${navItem.navigationTitle}</a>
+      </li>
    </ul>
    
    <sly data-sly-test="${properties.actionsEnabled}"
           data-sly-use.ctaObj="${resource.path}"
           data-sly-list.actionItem="${ctaObj.listChildren}">
        <ul data-sly-test="${actionItem.name == 'actions'}" data-sly-list.ctaitem="${actionItem.listChildren}" class="menu">
-      <li class="${currentPage.path == ctaitem.link ? 'active' : ''}"><a href="${ctaitem.link @ extension = 'html'}" class="account-type">${ctaitem.text}</a></li>    
+         <li id="${currentPage.path == ctaitem.link ? 'mobile-active' : 'mobile-non-active'}" class="${currentPage.path == ctaitem.link ? 'active' : 'noactive'}"><a href="${ctaitem.link @ extension = 'html'}" class="account-type">${ctaitem.text}</a></li>
    </ul>                       
   </sly>
    
