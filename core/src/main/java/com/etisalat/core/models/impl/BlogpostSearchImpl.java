@@ -37,6 +37,8 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	private static final String PN_ARTICLE_DATE = "articleDate";
 
 	private static final String PN_BLOG_SIZE = "blogsize";
+	
+	private static final String PN_YOUTUBE_URL = "youTubeUrl";
 
 	private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-business-blog-template";
 	
@@ -94,9 +96,11 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 			pageDetails.setDescription(page.getDescription());
 			pageDetails.setPath(page.getPath());
 			pageDetails.setTileSize(page.getProperties().get(PN_BLOG_SIZE, "3"));
+			pageDetails.setYouTubeUrl(page.getProperties().get(PN_YOUTUBE_URL, String.class));
 			setBusinessCategory(page, resource, pageDetails);
 
-			if (page.getProperties().containsKey(PN_ARTICLE_DATE)) {
+			if (page.getProperties().containsKey(PN_ARTICLE_DATE) &&
+					null != page.getProperties().get(PN_ARTICLE_DATE, Calendar.class)) {
 				pageDetails.setArticleDate(page.getProperties().get(PN_ARTICLE_DATE, Calendar.class));
 			}
 			pageDetailsList.add(pageDetails);
