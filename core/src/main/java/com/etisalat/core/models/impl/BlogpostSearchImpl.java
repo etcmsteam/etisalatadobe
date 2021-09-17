@@ -22,6 +22,7 @@ import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.BlogpostSearch;
 import com.etisalat.core.models.GenericListPageDetails;
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		BlogpostSearch.class }, resourceType = { BlogpostSearchImpl.RESOURCE_TYPE })
@@ -63,7 +64,7 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String parentPath;
-
+	
 	/**
 	 * The ID for this component.
 	 */
@@ -156,6 +157,14 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 			}
 		}
 		return category;
+	}
+	
+	@Override
+	public String getBackToHomeLink() {
+		String backToLink = currentPage.getProperties().get("backToBusinessLink",
+				currentPage.getAbsoluteParent(3).getPath());
+
+		return CommonUtility.appendHtmlExtensionToPage(backToLink);
 	}
 
 }
