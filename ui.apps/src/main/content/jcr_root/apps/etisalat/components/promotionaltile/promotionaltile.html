@@ -5,18 +5,18 @@
             data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}">
     </sly>
     <div class="current-promotions-box ${properties.textAlignment}">
-        <div class="icon-wrap">
+        <div  data-sly-test="${properties.fileReference}" class="icon-wrap">
          <span class="icon-with-bg">
             <div
                     data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
             </div>
          </span>
         </div>
-        <div class="title-wrap" data-sly-element="${properties.titleType}">
+        <div data-sly-test="${properties.title}" class="title-wrap" data-sly-element="${properties.titleType}">
             ${properties.title}
         </div>
         <div class="description" data-sly-test="${properties.description}">${properties.description @ context='html'}</div>
-        <div class="learn-more-wrap">
+        <div data-sly-test="${properties.promotionCTATitle}" class="learn-more-wrap">
             <sly data-sly-test="${properties.promotionLinkBehavior != 'openmodalwindow'}">
                 <a href="${ properties.promotionLinkBehavior == 'opensamewindow'? properties.promotionCTALinkSameWindow : properties.promotionCTALinkNewWindow}"
                    class="btn-text btn-green learn-more "
