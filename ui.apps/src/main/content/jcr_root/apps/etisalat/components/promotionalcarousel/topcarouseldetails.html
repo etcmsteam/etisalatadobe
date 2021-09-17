@@ -43,12 +43,26 @@
                   <div class="swiper-scrollbar-drag"></div>
                </div>
             </div>
-            <sly data-sly-use.controlTemplate="/apps/etisalat/components/promotionalcarousel/controls.html" data-sly-test="${carousel.items.size >3 && properties.controlDisplayBehavior=='arrow'}"
-               data-sly-call="${controlTemplate.leftAngle @ properties=properties}">
-            </sly>
-            <sly data-sly-use.controlTemplate="/apps/etisalat/components/promotionalcarousel/controls.html" data-sly-test="${carousel.items.size >3 && properties.controlDisplayBehavior=='arrow'}"
-               data-sly-call="${controlTemplate.rightAngle @ properties=properties}">
-            </sly>
+            <!-- Control Arrows for carousel-->
+            <div class="controls" data-sly-test="${carousel.items.size >3 && properties.controlDisplayBehavior=='arrow'}">
+               <sly data-sly-use.controlTemplate="/apps/etisalat/components/promotionalcarousel/controls.html"
+                  data-sly-call="${controlTemplate.rightArrow @ properties=properties}">
+               </sly>
+               <sly data-sly-use.controlTemplate="/apps/etisalat/components/promotionalcarousel/controls.html"
+                  data-sly-call="${controlTemplate.leftArrow @ properties=properties}">
+               </sly>
+            </div>
+            <!-- Control Arrows for carousel ends-->
+            <!-- Control Angle for carousel-->
+            <div class="controls" data-sly-test="${carousel.items.size >3 && properties.controlDisplayBehavior=='angle'}">
+               <sly data-sly-use.controlTemplate="/apps/etisalat/components/promotionalcarousel/controls.html"
+                  data-sly-call="${controlTemplate.rightAngle @ properties=properties}">
+               </sly>
+               <sly data-sly-use.controlTemplate="/apps/etisalat/components/promotionalcarousel/controls.html"
+                  data-sly-call="${controlTemplate.leftAngle @ properties=properties}">
+               </sly>
+            </div>
+            <!-- Control Angle for carousel ends-->
             <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar',
                appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
                data-sly-test="${wcmmode.edit || wcmmode.preview}"></sly>

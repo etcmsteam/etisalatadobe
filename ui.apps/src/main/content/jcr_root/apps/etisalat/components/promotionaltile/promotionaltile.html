@@ -4,7 +4,7 @@
     <sly
             data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}">
     </sly>
-    <div class="current-promotions-box">
+    <div class="current-promotions-box ${properties.textAlignment}">
         <div class="icon-wrap">
          <span class="icon-with-bg">
             <div
@@ -15,7 +15,7 @@
         <div class="title-wrap" data-sly-element="${properties.titleType}">
             ${properties.title}
         </div>
-        <div class="description">${properties.desc @ context='html'}</div>
+        <div class="description" data-sly-test="${properties.description}">${properties.description @ context='html'}</div>
         <div class="learn-more-wrap">
             <sly data-sly-test="${properties.promotionLinkBehavior != 'openmodalwindow'}">
                 <a href="${ properties.promotionLinkBehavior == 'opensamewindow'? properties.promotionCTALinkSameWindow : properties.promotionCTALinkNewWindow}"
