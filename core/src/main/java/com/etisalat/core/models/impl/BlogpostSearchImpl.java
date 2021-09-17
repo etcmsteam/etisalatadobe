@@ -40,6 +40,8 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	private static final String PN_BLOG_SIZE = "blogsize";
 	
 	private static final String PN_YOUTUBE_URL = "youTubeUrl";
+	
+	private static final String PN_PLAYICON_TEXT = "playIconText";
 
 	private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-business-blog-template";
 	
@@ -72,14 +74,23 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 
 	@Override
 	public String getId() {
-		if (uniqueId == null) {
-			int nodeHashCode = currentRes.getName().hashCode();
-			if (nodeHashCode < 0) {
-				nodeHashCode *= -1;
-			}
-			this.uniqueId = String.valueOf(nodeHashCode);
+		if (uniqueId == null) {			
+			this.uniqueId = getUniqueID(currentRes);
 		}
 		return uniqueId;
+	}
+	
+	/**
+	 * Returns component unique id.
+	 * @param res
+	 * @return
+	 */
+	private String getUniqueID(Resource res) {
+		int nodeHashCode = res.getName().hashCode();
+		if (nodeHashCode < 0) {
+			nodeHashCode *= -1;
+		}
+		return String.valueOf(nodeHashCode);
 	}
 
 	/**
@@ -98,13 +109,28 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 			pageDetails.setPath(page.getPath());
 			pageDetails.setTileSize(page.getProperties().get(PN_BLOG_SIZE, "3"));
 			pageDetails.setYouTubeUrl(page.getProperties().get(PN_YOUTUBE_URL, String.class));
+			pageDetails.setPlayIconText(page.getProperties().get(PN_PLAYICON_TEXT, String.class));
 			setBusinessCategory(page, resource, pageDetails);
-
-			if (page.getProperties().containsKey(PN_ARTICLE_DATE) &&
-					null != page.getProperties().get(PN_ARTICLE_DATE, Calendar.class)) {
-				pageDetails.setArticleDate(page.getProperties().get(PN_ARTICLE_DATE, Calendar.class));
+			setBlogArticleDate(page, resource, pageDetails);
+			
+			if(pageDetails.getTileSize().equals("video")) {
+				pageDetails.setBlogVideoID(getUniqueID(resource));
 			}
+			
 			pageDetailsList.add(pageDetails);
+		}
+	}
+	
+	/**
+	 * Sets the blog article date.
+	 * @param page
+	 * @param resource
+	 * @param pageDetails
+	 */
+	private void setBlogArticleDate(Page page, Resource resource, GenericListPageDetails pageDetails) {
+		if (page.getProperties().containsKey(PN_ARTICLE_DATE) &&
+				null != page.getProperties().get(PN_ARTICLE_DATE, Calendar.class)) {
+			pageDetails.setArticleDate(page.getProperties().get(PN_ARTICLE_DATE, Calendar.class));
 		}
 	}
 
