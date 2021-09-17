@@ -18,6 +18,7 @@ public class GenericListPageDetails{
 	private Calendar articleDate;
 	private String tileSize;
 	private Resource thumbnailResource;
+	private String youTubeUrl;
 
 	public String getThumbnail() {
 		return thumbnail;
@@ -129,6 +130,20 @@ public class GenericListPageDetails{
 	 */
 	public void setThumbnailResource(Resource thumbnailResource) {
 		this.thumbnailResource = thumbnailResource;
+	}
+
+	/**
+	 * @return the youTubeUrl
+	 */
+	public String getYouTubeUrl() {
+		return youTubeUrl;
+	}
+
+	/**
+	 * @param youTubeUrl the youTubeUrl to set
+	 */
+	public void setYouTubeUrl(String youTubeUrl) {
+		this.youTubeUrl = youTubeUrl;
 	}
 
 }

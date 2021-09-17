@@ -22,6 +22,7 @@ import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.BlogpostSearch;
 import com.etisalat.core.models.GenericListPageDetails;
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		BlogpostSearch.class }, resourceType = { BlogpostSearchImpl.RESOURCE_TYPE })
@@ -37,6 +38,8 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	private static final String PN_ARTICLE_DATE = "articleDate";
 
 	private static final String PN_BLOG_SIZE = "blogsize";
+	
+	private static final String PN_YOUTUBE_URL = "youTubeUrl";
 
 	private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-business-blog-template";
 	
@@ -61,7 +64,7 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String parentPath;
-
+	
 	/**
 	 * The ID for this component.
 	 */
@@ -94,9 +97,11 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 			pageDetails.setDescription(page.getDescription());
 			pageDetails.setPath(page.getPath());
 			pageDetails.setTileSize(page.getProperties().get(PN_BLOG_SIZE, "3"));
+			pageDetails.setYouTubeUrl(page.getProperties().get(PN_YOUTUBE_URL, String.class));
 			setBusinessCategory(page, resource, pageDetails);
 
-			if (page.getProperties().containsKey(PN_ARTICLE_DATE)) {
+			if (page.getProperties().containsKey(PN_ARTICLE_DATE) &&
+					null != page.getProperties().get(PN_ARTICLE_DATE, Calendar.class)) {
 				pageDetails.setArticleDate(page.getProperties().get(PN_ARTICLE_DATE, Calendar.class));
 			}
 			pageDetailsList.add(pageDetails);
@@ -152,6 +157,14 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 			}
 		}
 		return category;
+	}
+	
+	@Override
+	public String getBackToHomeLink() {
+		String backToLink = currentPage.getProperties().get("backToBusinessLink",
+				currentPage.getAbsoluteParent(3).getPath());
+
+		return CommonUtility.appendHtmlExtensionToPage(backToLink);
 	}
 
 }

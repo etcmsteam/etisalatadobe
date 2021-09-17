@@ -14,7 +14,7 @@
                     sling:resourceType="cq/gui/components/coral/common/form/tagfield"
                     allowBulkEdit="{Boolean}true"
                     autocreateTag="{Boolean}true"
-                    fieldDescription="Defines the page meta tags for SEO."
+                    fieldDescription="Defines the blogpost meta tags for search."
                     fieldLabel="Business Category Tags"
                     name="./businessBlogTag"
                     rootPath="/content/cq:tags/etisalat/business/smb/category">
@@ -27,21 +27,33 @@
                     sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
                     fieldDescription="Article Date"
                     fieldLabel="Article Date"
-                    name="./articleDate"/>
+                    name="./articleDate">
+                    <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-msm-lockable="articleDate"/>
+                </articledate>
                 <articledateicon
                    jcr:primaryType="nt:unstructured"
                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                    fieldDescription="Article Date Icon Image"
                    fieldLabel="Article Date Icon Image"
                    name="./articleDateIcon"                   
-                   rootPath="/content/dam"/>
+                   rootPath="/content/dam">
+                   <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-msm-lockable="articleDateIcon"/>
+                </articledateicon>
                 <articletime
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
                     fieldDescription="Article Time"
                     fieldLabel="Article Time"
                     name="./articleTime"
-                    type="time"/>
+                    type="time">
+                    <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-msm-lockable="articleTime"/>
+                </articletime>
                 <blogsize
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -60,15 +72,22 @@
                         <video
                             jcr:primaryType="nt:unstructured"
                             text="Video"
-                            value="6"/>
+                            value="video"/>
                     </items>
+                    <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-msm-lockable="blogsize"/>
                 </blogsize>
                 <youtubeurl
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                     fieldDescription="Enter the Youtube URL."
                     fieldLabel="Youtube Video URL"
-                    name="./youTubeUrl"/>
+                    name="./youTubeUrl">
+                    <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-msm-lockable="youTubeUrl"/>
+                 </youtubeurl>
                 <imageresourcehidden
                     granite:class="js-browse-activator"
                     jcr:primaryType="nt:unstructured"
@@ -81,12 +100,21 @@
                     fieldDescription="Enter Back to Business Blogpost Label"
                     fieldLabel="Back to Business Label"
                     name="./backToBusinessLbl"
-                    renderReadOnly="{Boolean}true"
-                    required="{Boolean}true">
+                    value="BACK TO BUSINESS BLOG HOME">
                     <granite:data
                         jcr:primaryType="nt:unstructured"
                         cq-msm-lockable="backToBusinessLbl"/>
                 </backtobusiness>
+                <backtobusinesslink
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldDescription="Enter Back to Business Blogpost Link."
+                    fieldLabel="Back to Business Link"
+                    name="./backToBusinessLink">
+                    <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-msm-lockable="backToBusinessLink"/>
+                 </backtobusinesslink>
             </items>
         </column>
     </items>

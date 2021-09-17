@@ -58,8 +58,8 @@
        data-sly-test="${blogPostList.size >0}"
        data-sly-set.itemsDisplay="${(properties.numberOfItems && properties.numberOfItems > 0) ? properties.numberOfItems : blogPostList.size}">
       <div class="container">
-         <div class="row">
-            <div data-sly-repeat.pageItem="${blogPostList}" class="col-xs-12 col-md-${pageItem.tileSize} item ${pageItemList.index < itemsDisplay ? 'show':'hidden'}">
+         <div class="row" data-sly-list.pageItem="${blogPostList}">
+            <div data-sly-test="${pageItem.tileSize != 'video'}" class="col-xs-12 col-md-${pageItem.tileSize} item ${pageItemList.index < itemsDisplay ? 'show':'hidden'}">
                <a href="${pageItem.path @ extension='html'}">
                   <div class="blog-post-wrapper">
 	                 <div class="tile-box-tile">
@@ -82,8 +82,13 @@
 	                        </div>
 	                     </div>
                      </div>
-                   </a>
-                 </div>              
+                 </a>
+              </div>
+              <div data-sly-test="${pageItem.tileSize == 'video'}" class="col-xs-12 col-md-6 item ${pageItemList.index < itemsDisplay ? 'show':'hidden'}">
+                <sly data-sly-use.videoTemplate="/apps/etisalat/components/blogsearch/video.html"
+			         data-sly-call="${videoTemplate.blogvideo @ pageItem=pageItem}">  
+			    </sly>
+              </div>                           
             </div>
          </div>
 

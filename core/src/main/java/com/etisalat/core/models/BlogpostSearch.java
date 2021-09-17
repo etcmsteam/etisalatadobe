@@ -22,5 +22,12 @@ public interface BlogpostSearch {
 	 * @return a business category tag title.
 	 */
 	String getBusinessCategoryTag();
+	
+	
+	/**
+	 * 
+	 * @return a back to business home link.
+	 */
+	String getBackToHomeLink();
 		
 }
