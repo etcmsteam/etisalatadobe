@@ -71,7 +71,7 @@
          <div class="row" data-sly-list.pageItem="${blogPostList}">
             <div data-sly-test="${pageItem.tileSize != 'video'}" class="col-xs-12 col-md-${pageItem.tileSize} item" style= "display: ${pageItemList.index < itemsDisplay ? 'block':'none' @ context='styleToken'};">
                <a href="${pageItem.path @ extension='html'}">
-                  <div class="blog-post-wrapper">
+                  <div class="blog-post-wrapper ${pageItem.tileSize == '6' ? 'video' : ''}">
 	                 <div class="tile-box-tile">
 	                        <div class="img-cover">
 	                           <div data-sly-test="${pageItem.thumbnailResource}" class="cover lazyloaded" data-sly-resource="${pageItem.thumbnailResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>                          

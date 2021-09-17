@@ -19,6 +19,8 @@ public class GenericListPageDetails{
 	private String tileSize;
 	private Resource thumbnailResource;
 	private String youTubeUrl;
+	private String playIconText;
+	private String blogVideoID;
 
 	public String getThumbnail() {
 		return thumbnail;
@@ -144,6 +146,34 @@ public class GenericListPageDetails{
 	 */
 	public void setYouTubeUrl(String youTubeUrl) {
 		this.youTubeUrl = youTubeUrl;
+	}
+
+	/**
+	 * @return the playIconText
+	 */
+	public String getPlayIconText() {
+		return playIconText;
+	}
+
+	/**
+	 * @param playIconText the playIconText to set
+	 */
+	public void setPlayIconText(String playIconText) {
+		this.playIconText = playIconText;
+	}
+
+	/**
+	 * @return the blogVideoID
+	 */
+	public String getBlogVideoID() {
+		return blogVideoID;
+	}
+
+	/**
+	 * @param blogVideoID the blogVideoID to set
+	 */
+	public void setBlogVideoID(String blogVideoID) {
+		this.blogVideoID = blogVideoID;
 	}
 
 }
