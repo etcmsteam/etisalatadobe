@@ -10,18 +10,18 @@
       <sly data-sly-test.twoTile="${carousel.items.size ==2}"></sly>
       <div
          class="current-promotions-wrraper c-p-slider0  ${oneTile ? 'one-only' :''} ${twoTile ? 'two-only' : ''} ${!oneTile && !twoTile ? 'three-plus': ''} ">
-         <div class="background-with-color">
+         <div data-sly-test="${properties.fileReference}" class="background-with-color">
             <div class="cover"
                data-sly-resource="${carousel @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
          </div>
          <div class="container">
             <div class="row">
                <div class="col-md-3 col-xs-12">
-                  <span class="lbl"> ${properties.promotionPreTitle}</span>
-                  <div class="promotions-title-wrap">
+                  <span data-sly-test="${properties.promotionPreTitle}" class="lbl"> ${properties.promotionPreTitle}</span>
+                  <div data-sly-test="${properties.promotionTitle}" class="promotions-title-wrap">
                      <h2>${properties.promotionTitle} </h2>
                   </div>
-                  <div class="paragraph-styling ul-list-cms">${properties.promotionalDesc @ context='html'}</div>
+                  <div data-sly-test="${properties.promotionalDesc}" class="paragraph-styling ul-list-cms">${properties.promotionalDesc @ context='html'}</div>
                   <a data-sly-test="${properties.promotionCTALink}" class="btn-text learn-more learn--more__white" title="${properties.promotionCTATitle}" href="${properties.promotionCTALink @ extension='html'} "
                      target="${properties.promotionLinkBehavior == '
                      opennewwindow'?'_blank' : '_self'}">
