@@ -3,28 +3,11 @@ $(document).ready(function () {
         var modalCTA = $(this).closest('.blog-post-wrapper.video').find('.mediaCtaVideo')
         modalCTA.modal().show();
     });
+
 });
+
 // number of rows to show for example 4 then 4*12 number bootstrap col = 48
 var btnLoadMore = $('.blogpost-wrapper .action');
-
-// function makeRowsVisible(maxColCount) {
-//     var item = $('.blogpost-wrapper .item');
-//     var itemCount = 0;
-//     for (var i = 0; i < item.length; i++) {
-//         if (item[i].className.indexOf('col-md-6') !== -1) {
-//             itemCount += 6;
-//         } else {
-//             itemCount += 3;
-//         }
-//         if (itemCount <= maxColCount) {
-//             item[i].style.display = 'block';
-//             btnLoadMore.addClass('hidden');
-//         } else {
-//             btnLoadMore.removeClass('hidden');
-//         }
-//     }
-// }
-// makeRowsVisible(48);
 
 // load more items button
 $(btnLoadMore).on('click', function (e) {
@@ -68,12 +51,31 @@ $(".search-wrapper input").on("keyup", function () {
 });
 
 // clear the search functionality / reset
-function clearSearch(e) {
+
+$('.clear-search').on('click', function (e) {
     e.preventDefault();
     $(".search-wrapper form .form-group input").val('');
-    $('.blogpost-wrapper .item').css('display', 'block');
-    $('.search-results-wrapper').css('display', 'none');
-    makeRowsVisible(48);
+    var btnLoadMore = $('.blogpost-wrapper .action');
+    var numberofitem = $('.cmp-blogpost-search').attr('data-noof-items');
+
+    function makeRowsVisible(maxColCount) {
+        var item = $('.blogpost-wrapper .item');
+        if ((Number(numberofitem)) > 0) {
+            for (var i = 0; i < (Number(numberofitem) - 1); i++) {
+                item[i].style.display = 'block';
+                btnLoadMore.removeClass('hidden');
+            }
+            var itemLength = item.length;
+            for (var i = (Number(numberofitem)); i < item.length; i++) {
+                item[i].style.display = 'hidden';
+            }
+        }
+    }
+    makeRowsVisible(numberofitem);
     $(btnLoadMore).css('display', 'block');
+});
+
+var numberofitem = $('.cmp-blogpost-search').attr('data-noof-items');
+if(Number(numberofitem) == 0){
+    $(btnLoadMore).css('display', 'none');
 }
-$('.clear-search').off('click').on('click', clearSearch)
