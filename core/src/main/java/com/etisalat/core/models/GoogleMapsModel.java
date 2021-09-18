@@ -23,6 +23,7 @@ public class GoogleMapsModel {
 	String url;
 	String key;
 	String storeLocatorUrl;
+	String googleContactUrl;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String mapViewTitle;
@@ -40,7 +41,7 @@ public class GoogleMapsModel {
 		url = googleService.getGoogleUrl();
 		key = googleService.getGoogleKey();
 		storeLocatorUrl = storeService.getStoreLocatorUrl();
-
+		googleContactUrl = googleService.getGoogleContactUsUrl();
 	}
 
 	public String getUrl() {
@@ -65,6 +66,20 @@ public class GoogleMapsModel {
 
 	public void setStoreLocatorUrl(String storeLocatorUrl) {
 		this.storeLocatorUrl = storeLocatorUrl;
+	}
+
+	/**
+	 * @return the googleContactUrl
+	 */
+	public String getGoogleContactUrl() {
+		return googleContactUrl;
+	}
+
+	/**
+	 * @param googleContactUrl the googleContactUrl to set
+	 */
+	public void setGoogleContactUrl(String googleContactUrl) {
+		this.googleContactUrl = googleContactUrl;
 	}
 
 
