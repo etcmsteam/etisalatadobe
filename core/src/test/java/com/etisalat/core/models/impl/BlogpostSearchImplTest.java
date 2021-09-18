@@ -7,7 +7,6 @@ import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.etisalat.core.models.BlogpostSearch;
 import com.etisalat.core.models.GenericListPageDetails;
@@ -18,7 +17,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 /**
  * JUnit test verifying the BlogpostSearch
  */
-@ExtendWith({AemContextExtension.class,MockitoExtension.class})
+@ExtendWith(AemContextExtension.class)
  class BlogpostSearchImplTest {
 	
 	private final AemContext context = new AemContext();
