@@ -656,10 +656,17 @@ general Paragraph styling
 
         @media (min-width:320px) and (max-width:767px){
             max-height: 300px;
+            margin-top: 1rem;
+            overflow-x: hidden;
+        }
+
+        @media (min-width: 768px)and (max-width:1024px){
+            margin-top: 1rem;
         }
 
         @media (min-width: 768px){
             max-height: 400px;
+            overflow-x: hidden;
         }
 
         // @media (min-width: 1024px) {
@@ -991,6 +998,12 @@ general Paragraph styling
         }
     }
 }
+
+.nv-modal-close svg,
+    .nv-modal-close img {
+        width: 12px !important;
+        height: 12px !important;
+    }
 
 @media only screen and (max-width: 991px) {
     .nv-modal.full-height-mob .new-sim+.migrate-to-plan {
@@ -1333,8 +1346,10 @@ general Paragraph styling
     .nv-modal__doublemin{
     .offer-details-wrapper{
         ul{
-            list-style: inside;
+            //list-style: none;
             li{
+                margin: 0 1.5rem 1rem 1.5rem;
+                list-style: outside;
                 font-size: $font20;
                 color: #919192;
                 // padding-left: 1rem;
@@ -1355,6 +1370,98 @@ general Paragraph styling
                 vertical-align: middle;
             }
         }
-   
+        table:first-child {
+            width: 50%;
+        }
+        table:last-child {
+            width: 80%;
+        }
     }
 }
+
+.bottom-modal{
+    .nv-modal__doublemin{
+        .offer-details-wrapper{
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0px;
+            font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+        }
+        @media (min-width: 992px){
+            h4.nv-modal-title {
+                margin-right: 70px;
+            }
+            .modal-popup .nv-modal-header {
+                padding-bottom: 25px;
+                margin-right: 70px;
+            }
+        }
+    }
+    @media (min-width:320px) and (max-width:767px){
+        .right-50-modal {
+            .nv-modal__doublemin{
+                 .modal-popup .offer-details-wrapper {
+                        padding-right: 15px;
+                 }
+            }
+        }
+    }
+}
+.nv-modal-dialog{
+    .nv-modal-content .nv-py-5{
+        padding: 2rem 2.5rem 0 !important;
+    }
+}
+.nv__left-modal{
+    @media (min-width: 768px){
+        .offer-details-wrapper {
+            padding-top: 1rem;
+        }
+    }
+    .cmp-image__image {
+        border-radius: 15px;
+    }
+    @media (min-width: 768px) and (max-width: 1024px){
+        .modal-popup .offer-details-wrapper {
+            margin: 0 0.5rem 1rem;
+        }
+    }
+    .modal-popup .offer-details-wrapper p{
+        padding-right: 8px;
+    }
+}   
+.nv__bottom-modal{
+    .nv-row{
+        padding: 0px !important;
+    }
+    .offer-details-wrapper {
+        overflow: hidden !important;
+        padding: 1rem 0 0 0;
+        ul {
+            li {
+                font-size: 16px;
+                line-height: 1.6;
+                font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+                a {
+                    color: #719e19;
+                }
+            }
+            li :last-child{
+                font-size: 18px;
+                line-height: 1.56;
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        .offer-details-wrapper {
+            overflow: hidden;
+            padding: 0px; 
+        }
+    }
+    @media (min-width: 320px) and (max-width: 767px){
+        .modal-popup .offer-details-wrapper {
+            max-height: 500px;
+        }
+    }
+}
+
