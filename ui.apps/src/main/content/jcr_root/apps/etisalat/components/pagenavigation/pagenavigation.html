@@ -11,11 +11,22 @@
          </div>
          <div class="col-xs-12 col-md-9">
             <div data-simplebar data-sly-test="${!pageNav.pageNavItems.isEmpty}">
-               <ul class="page-nav" data-sly-list.navItems="${pageNav.pageNavItems}">
-                  <li class="${request.pathInfo == navItems.navigationLink ? 'active' : ''}">
-                     <a href="${navItems.navigationLink}">${navItems.navigationTitle}</a>
-                  </li>
-               </ul>
+               <div class="simplebar-wrapper" style="margin: 0px;">
+                  <div class="simplebar-height-auto-observer-wrapper">
+                     <div class="simplebar-height-auto-observer"></div>
+                  </div>
+                  <div class="simplebar-mask">
+                     <div class="simplebar-offset">
+                        <div class="simplebar-content">
+                           <ul class="page-nav" data-sly-list.navItems="${pageNav.pageNavItems}">
+                              <li class="${request.pathInfo == navItems.navigationLink ? 'active' : ''}">
+                                 <a href="${navItems.navigationLink}">${navItems.navigationTitle}</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
