@@ -71,7 +71,7 @@ $(".search-wrapper input").on("keyup", function () {
 function clearSearch(e) {
     e.preventDefault();
     $(".search-wrapper form .form-group input").val('');
-    $('.blogpost-wrapper .item').css('display', 'none');
+    $('.blogpost-wrapper .item').css('display', 'block');
     $('.search-results-wrapper').css('display', 'none');
     makeRowsVisible(48);
     $(btnLoadMore).css('display', 'block');
