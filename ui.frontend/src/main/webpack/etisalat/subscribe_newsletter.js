@@ -1,108 +1,168 @@
-// // fade in the popup
-// $("#overlay").fadeIn(1500);
+import intlTelInput from 'intl-tel-input';
+/*
+ * International Telephone Input v15.0.2
+ * https://github.com/jackocnr/intl-tel-input.git
+ * Licensed under the MIT license
+ */
 
-// // this is an extra action that can be called any time
-// $(".close").click(function () {
-//     $("#overlay").hide();
-// });
+// wrap in UMD
 
-// $(window).load(function () {
+(function (factory) {
+    var intlTelInput = factory(window, document);
+    if (typeof module === "object" && module.exports) module.exports = intlTelInput;
+    else window.intlTelInput = intlTelInput;
+})(function (window, document, undefined) {
+    //"use strict";
+    return function () {
 
-//     var popup = $("#submitBtn");
+        function email2(value) {
+            var regex = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
 
-//     popup.submit(function (event) {
-//         var $this = $(this);
-//         if (!$this.hasClass('paused')) { // check if it isn't in a pause state
-//             event.preventDefault(); // prevent the submission
-//             $this.addClass('paused'); // use this class as a flag
-//             $("#overlay").append('SUCCESS!'); // add the success message
-//             setTimeout(function () {
-//                 $("#overlay").append('  ...');
-//                 $(".form-button").trigger('click'); // mechanically trigger a second click
-//             }, 2000); // define a delay
-//         }
-//     })
-
-//     popup.validate({
-//         rules: {
-//             first_name: "required",
-//             last_name: "required",
-//             email: {
-//                 required: true,
-//                 email: true
-//             },
-//             phone: {
-//                 customphone: 'customphone',
-//                 required: false
-//             }
-//         },
-//         messages: {
-//             first_name: "Please enter your first name",
-//             last_name: "Please enter your last name",
-//             email: {
-//                 required: "Please enter your email address",
-//                 email: "Please enter a valid email address"
-//             }
-//         },
-//         success: function (event) {
-//             //   alert('success message');
-//             // do other things for a valid form
-
-//         },
-//         submitHandler: function (form, event) {
-//             // do other things for a valid form
-
-//         }
-//     });
-
-// });
+            return regex.test(value);
+        };
 
 
 
-// $(document).ready(function () {
-//     $("#newsbuttonsubmit").click(function (e) {
-//         e.preventDefault();
-//        /* Get some values from elements on the page: */
-//         var values = $(this).serialize();
-//         $.ajax({
-//             url: "submit.php",
-//             type: "post",
-//             data: values            
-//         });
-//         $("#form-popup-box").dialog({modal: true, height: 200, width: 300 });
+        $("#NewsLetterEmailAddress").blur(function () {
+            $("#NewsLetterEmailAddress").parent().removeClass("has-error-fields");
+            $("#NewsLetterEmailAddress").parent().next(".alert-label").remove();
+            if (!email2($('#NewsLetterEmailAddress').val())) {
+                $("#NewsLetterEmailAddress").parent().addClass("has-error-fields");
+                $("#NewsLetterEmailAddress").parent().after('<div id="email-error" class="has-error alert-label">Please enter a valid email address.</div>');
+            }
+
+        });
+
+
+        $("#NewsLetterEmailAddress").keypress(function () {
+            $("#NewsLetterEmailAddress").parent().next(".alert-label").remove(); // remove it 
+            $("#NewsLetterEmailAddress").parent().removeClass("has-error-fields");
+            if (!email2($('#NewsLetterEmailAddress').val())) {
+                $("#NewsLetterEmailAddress").parent().addClass("has-error-fields").removeClass("is-valid");
+                $("#NewsLetterEmailAddress").parent().after('<div id="email-error" class="has-error alert-label">Please enter a valid email address.</div>');
+            } else {
+                $("#NewsLetterEmailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
+
+            }
+        });
+        // accept only letters and spaces only
+        function realalphabetic(value) {
+            var regex = /^[a-zA-Z\s]+$/i;
+            return regex.test(value);
+        }
+        $("#CustomerName").keyup(function () {
+            $("#CustomerName").parent().removeClass("has-error-fields");
+            $("#CustomerName").parent().next(".alert-label").remove();
+            if (!realalphabetic($('#CustomerName').val())) {
+                $("#CustomerName").parent().addClass("has-error-fields").removeClass("is-valid");
+                $("#CustomerName").parent().after('<div id="companyName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
+            } else {
+                $("#CustomerName").parent().removeClass("has-error-fields").addClass("is-valid");
+
+            }
+        });
 
 
 
-//     });
-// });
 
-// $(document).ready(function () {
-// $('#newsbuttonsubmit').on('submit', function(e){
-//     e.preventDefault(); //this stops the form submit + refresh 
-//         // $.ajax({ 
-//         //     data:    {data_field: 'value'},
-//         //     type:    'post',
-//         //     url:     '/path/to/script.php',
-//         //     success: function(r) {$('#form-popup-box').css('display', 'block')},
-//         //     error:   function(r) {alert('error'); console.log(r)}
-//         // });
 
-       
-//     $('#form-popup-box').show();
-        
-//         // $('#close').on('click', function () {
-//         //     $('.center').hide();
-//         //     $('#show').show();
-//         // })
-// });
-// });
 
+        $('.subscribe_newsletter .cmp-form-button').on('click', function () {
+
+            $("#CustomerName").keypress(function () {
+                $("#CustomerName").parent().next(".alert-label").remove(); // remove it 
+                $("#CustomerName").parent().removeClass("has-error-fields");
+            });
+
+            var svg = '<svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#alert-icon"></use></svg>';
+            var div = "";
+            div = '<div id="fullName-error" class="has-error alert-label">This field is required.</div>'
+            $("#NewsLetterEmailAddress").parent().next(".alert-label").remove(); // remove it        
+            $("#CustomerName").parent().next(".alert-label").remove();
+            $("#NewsLetterEmailAddress").parent().removeClass("has-error-fields");
+            $("#CustomerName").parent().removeClass("has-error-fields");
+
+            if ($('#CustomerName').val() == "") {
+                $("#CustomerName").parent().addClass("has-error-fields");
+                if ($("#CustomerName").parent().next(".alert-label").length == 0) // only add if not added
+                {
+                    $("#CustomerName").parent().after(div);
+                }
+                // $('#CustomerName').focus();
+                //return false;
+            }
+            if ($('#NewsLetterEmailAddress').val() == "") {
+                $("#NewsLetterEmailAddress").parent().addClass("has-error-fields");
+                if ($("#NewsLetterEmailAddress").parent().next(".alert-label").length == 0) // only add if not added
+                {
+                    $("#NewsLetterEmailAddress").parent().after(div);
+                }
+                $('#NewsLetterEmailAddress').focus();
+                return false;
+            } else {
+                if (!email2($('#NewsLetterEmailAddress').val())) {
+                    $("#NewsLetterEmailAddress").parent().addClass("has-error-fields");
+                    $("#NewsLetterEmailAddress").parent().after('<div id="email-error" class="has-error alert-label">Please enter a valid email address.</div>');
+                    $('#NewsLetterEmailAddress').focus();
+                    return false;
+                }
+            }
+            $('.dynamicEmail').text($("input[name='NewsLetterEmailAddress']").val());
+            $('.cmp-experiencefragment--Newsletter-subscription-pop-up').show();
+        });
+
+        function setInputFilter(textbox, inputFilter) {
+            ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+                textbox.addEventListener(event, function () {
+                    if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    } else {
+                        this.value = "";
+                    }
+                });
+            });
+        }
+
+    }();
+});
 
 
 $(document).ready(function () {
-    $("#newsbuttonsubmit").click(function (e){
-        e.preventDefault(); //this stops the form submit + refresh 
-        $('#form-popup-box').show();
-        $('body').css('overflow', 'hidden')
+    $('.subscribe_newsletter .cmp-form-text label[for="NewsLetterEmailAddress"]').addClass('input_div_unique');
+    $('.subscribe_newsletter .cmp-form-text label[for="CustomerName"]').addClass('div_label_unique');
+
+    $(".form-close").on("click", function (event) {
+        event.preventDefault(); //this stops the form submit + refresh 
+        $(".cmp-experiencefragment--Newsletter-subscription-pop-up").hide();
+    });
+
+    $(".subscribe_newsletter .cmp-form-text #CustomerName").focusin(function () {
+        // $('.subscribe_newsletter .cmp-form-text label').css("background-color", "black");
+        $('div_label_unique').addClass('lablelClass');
+        $('.div_label_unique').removeClass('lablelClassNew');
+    });
+
+    $(".subscribe_newsletter .cmp-form-text #CustomerName").focusout(function () {
+        // $('.subscribe_newsletter .cmp-form-text label').css("background-color", "black");
+        $('div_label_unique').removeClass('lablelClass');
+        $('.div_label_unique').addClass('lablelClassNew');
+    });
+
+
+    $(".subscribe_newsletter .cmp-form-text #NewsLetterEmailAddress").focusin(function () {
+        // $('.subscribe_newsletter .cmp-form-text label').css("background-color", "black");
+        $('.input_div_unique').addClass('lablelClass');
+        $('.input_div_unique').removeClass('lablelClassNew');
+    });
+
+    $(".subscribe_newsletter .cmp-form-text #NewsLetterEmailAddress").focusout(function () {
+        // $('.subscribe_newsletter .cmp-form-text label').css("background-color", "black");
+        $('.input_div_unique').removeClass('lablelClass');
+        $('.input_div_unique').addClass('lablelClassNew');
     });
 });
