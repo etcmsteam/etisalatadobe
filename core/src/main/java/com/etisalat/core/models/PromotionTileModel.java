@@ -11,28 +11,28 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class})
-public class ButtonModel {
+public class PromotionTileModel {
 
     @SlingObject
     private ResourceResolver resourceResolver;
 
     @ValueMapValue
     @Optional
-    private String linkBehavior;
+    private String promotionLinkBehavior;
 
     @ValueMapValue
     @Optional
-    private String ctaNewWindowLink;
+    private String promotionCTALinkNewWindow;
 
     @ValueMapValue
     @Optional
-    private String ctaSameWindowLink;
+    private String promotionCTALinkSameWindow;
 
     public String getLink() {
-        if (linkBehavior.equals(PageConstants.OPEN_SAME_WINDOW)) {
-            return CommonUtility.appendHtmlExtensionToPage(resourceResolver, ctaSameWindowLink);
+        if (promotionLinkBehavior.equals(PageConstants.OPEN_SAME_WINDOW)) {
+            return CommonUtility.appendHtmlExtensionToPage(resourceResolver, promotionCTALinkSameWindow);
         }
-        return CommonUtility.appendHtmlExtensionToPage(resourceResolver, ctaNewWindowLink);
+        return CommonUtility.appendHtmlExtensionToPage(resourceResolver, promotionCTALinkNewWindow);
     }
 
 }

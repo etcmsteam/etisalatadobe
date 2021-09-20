@@ -41,6 +41,11 @@ public final class PageConstants {
 	 * Constant for CQ_Page.
 	 */
 	public static final String CQ_Page ="cq:Page";
+
+	/**
+	 * Constant for opensamewindow.
+	 */
+	public static final String OPEN_SAME_WINDOW = "opensamewindow";
 	
 	
 	/**
