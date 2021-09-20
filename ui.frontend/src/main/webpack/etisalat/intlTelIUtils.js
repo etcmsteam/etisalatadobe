@@ -701,7 +701,7 @@ import intlTelInput from 'intl-tel-input';
 
             }
             if (!$('#phone1').val()) {
-                //$("#phone1").parent().parent().addClass("has-error-fields");
+                $("#phone1").parent().addClass("has-error-fields");
                 if ($("#phone1").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#phone1").parent().append(div);

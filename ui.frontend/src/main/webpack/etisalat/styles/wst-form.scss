@@ -146,6 +146,45 @@
       width: 32.5rem !important; //default dropdown container with overrides so using important
     }
   }
+  .select-hear-about-us {
+    .selecteddiv {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    
+     
+    
+    #select-hear-about-us {
+    .select-items {
+    div {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    }
+    
+    .select-block-unblock {
+    .selecteddiv {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    
+     
+    
+    #select-block-unblock {
+    .select-items {
+    div {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    }
   .select-block-unblock {
     @media (max-width: $screen-md-max) {
       margin-bottom: 4rem;
@@ -171,7 +210,14 @@
       }
     }
   }
-   
+  .select-items {
+		overflow-y: auto !important;
+		div {
+			width: 100% !important;
+			margin: 0 !important;
+			padding: 3px 8px !important;
+		}
+	}
   .account-number {
     @media (min-width: $screen-lg-max) {
       margin-bottom: 1rem;
@@ -224,7 +270,7 @@
     input[type="tel"]:not(.browser-default) {
       width: 32.5rem;
       & ~ label {
-        left: 1.5rem;
+        left: 0;
       }
     }
     input[type="tel"]:focus {
@@ -425,7 +471,7 @@
     border-radius: 0;
     color: $almost-black;
     outline: none;  
-    width: 84%;
+    width: 100%;
     margin: 0;
     padding: 0;
     -webkit-box-shadow: none;
@@ -1009,6 +1055,10 @@
     }
     label {
       color: $error-red !important; //To use Important Form default AEM Control css overrides
+      transform: translateY(-10px) scale(.8);
+      transform-origin: 0 0;
+      font-size: 1rem;
+      z-index: 2;
     }
     .has-error {
       ~ label {
@@ -1151,4 +1201,10 @@
       line-height: calculateRem(52px);
     }
   }
+}
+.cws-form .has-error-fields textarea ~label {
+  transform: translateY(10px) scale(.8);
+}
+#justification + label {
+  padding-left: 20px;
 }
