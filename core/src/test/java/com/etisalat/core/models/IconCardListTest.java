@@ -36,7 +36,7 @@ class IconCardListTest {
 	void testIconCardItem() {
 		final String expectedCardTitle = "Card Title 1";
 		final String expectedCardLink = "/content/etisalat/ae/en/carrier-and-wholesale/help";
-		final String expectedCardIcon = "prepaid";
+		final String expectedCardIcon = "/content/dam/etisalat/internet.svg";
 		Resource resource = context.resourceResolver().getResource(CARD_DATA);
 		IconCardListItem item = resource.adaptTo(IconCardListItem.class);		
 		assertEquals(expectedCardTitle, item.getCardTitle());
