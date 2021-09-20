@@ -614,7 +614,7 @@ general Paragraph styling
 
         @media (min-width: 992px) {
             margin-bottom: 3rem;
-            padding-bottom: 40px;
+            padding-bottom: 20px;
         }
 
         .nv-modal-close {
@@ -1366,60 +1366,99 @@ general Paragraph styling
             td{
                 border: 1px solid grey;
                 // padding: 6px;
-                line-height: 1.5;
+                line-height: 1.6;
                 vertical-align: middle;
+                font-size: 16px;
+            }
+            th {
+                border: 1px solid gray;
+                font-weight: 700 !important;
+                font-size: 16px;
+                line-height: 1.6;
+                vertical-align: middle;
+                font-weight: 700;
+                border-right: 1px solid;
             }
         }
-        table:first-child {
+        table{
             width: 50%;
         }
-        table:last-child {
+        table :last-child{
             width: 80%;
         }
     }
 }
+@media (min-width:320px) and (max-width:1024px){
+    .modal-popup .nv-modal-header {
+        margin-left:  20px !important;
+        margin-right: 20px !important;
+    }
+}
 
-.bottom-modal{
+@media  (min-width:1136px){
+    .modal-popup .nv-modal-header {
+        margin-left:  30px !important;
+        margin-right: 30px !important;
+    }
+    
+}
+.right-50-modal {
     .nv-modal__doublemin{
-        .offer-details-wrapper{
-            font-size: 16px;
-            line-height: 1.6;
+        .offer-details-wrapper{ 
+            ul{          
+             font-size: 1.25rem;
+            line-height: 24px;
             margin: 0px;
             font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+            }
+            ul li {
+                margin: 0 0rem 1rem 1.5rem;
+            }
+            p{
+                font-size: 20px;
+                line-height: 1.6;
+            }
         }
         @media (min-width: 992px){
-            h4.nv-modal-title {
-                margin-right: 70px;
+            .nv-modal-header{
+                h4.nv-modal-title {
+                    font-size: 24px;
+                    margin-right: 48px;
+                    text-align: left;
+                    font-weight: 400;
+                }
             }
             .modal-popup .nv-modal-header {
-                padding-bottom: 25px;
-                margin-right: 70px;
+                padding-bottom: 20px;
             }
         }
-    }
-    @media (min-width:320px) and (max-width:767px){
-        .right-50-modal {
-            .nv-modal__doublemin{
-                 .modal-popup .offer-details-wrapper {
-                        padding-right: 15px;
-                 }
+        @media (min-width:320px) and (max-width:767px){
+            .right-50-modal {
+                .nv-modal__doublemin{
+                    .modal-popup .offer-details-wrapper {
+                            padding-right: 15px;
+                    }
+                }
+                .modalpopup.teaser.nv-modal__doublemin {
+                    padding: 0 1rem;
+                }
             }
         }
     }
 }
-.nv-modal-dialog{
-    .nv-modal-content .nv-py-5{
-        padding: 2rem 2.5rem 0 !important;
-    }
-}
+
 .nv__left-modal{
-    @media (min-width: 768px){
-        .modal-popup .offer-image {
+    @media (min-width: 992px){
+        .modal-popup{
+             .offer-image {
             padding-top: 25px;
         }
+        .modal-popup .cmp-image__image {
+            border-radius: 15px;
+        }
     }
-    .cmp-image__image {
-        border-radius: 15px;
     }
     @media (min-width: 768px) and (max-width: 1024px){
         .modal-popup .offer-details-wrapper {
@@ -1435,20 +1474,19 @@ general Paragraph styling
         padding: 0px !important;
     }
     .offer-details-wrapper {
-        overflow: hidden !important;
-        padding: 1rem 0 0 0;
-        ul {
-            li {
+        overflow: hidden;
+        margin: 0 0 1rem 0;
+        padding-left: 15px !important;
+    }
+    .offer-details-wrapper ul li {
                 font-size: 16px;
                 line-height: 1.6;
                 font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
-            }
-            li a{
+    }
+    .offer-details-wrapper ul li a{
                 font-size: 18px;
                 line-height: 1.56;
                 color: $main-green !important;
-            }
-        }
     }
     @media (min-width: 768px) {
         .offer-details-wrapper {
@@ -1470,7 +1508,12 @@ general Paragraph styling
 
 .nv__bottom-modal .offer-details-wrapper ul li:last-child {
     font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     color: gray;
 }
+
+.nv-modal__doublemin .offer-details-wrapper table:last-child {
+    width: 80% !important;
+}
+
