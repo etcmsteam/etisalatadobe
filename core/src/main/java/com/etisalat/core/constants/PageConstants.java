@@ -36,6 +36,11 @@ public final class PageConstants {
 	 * Constant for CQ_TEMPLATE.
 	 */
 	public static final String CQ_TEMPLATE ="cq:template";
+
+	/**
+	 * Constant for CQ_Page.
+	 */
+	public static final String CQ_Page ="cq:Page";
 	
 	
 	/**

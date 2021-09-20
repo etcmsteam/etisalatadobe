@@ -2,9 +2,11 @@ package com.etisalat.core.models;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.etisalat.core.util.CommonUtility;
@@ -12,6 +14,9 @@ import com.etisalat.core.util.CommonUtility;
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class })
 public class FixedNavigtaionMultifieldModel {
+
+	@SlingObject
+	private ResourceResolver resourceResolver;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String navigationTitle;
@@ -45,7 +50,7 @@ public class FixedNavigtaionMultifieldModel {
 	}
 
 	public String getNavigationLink() {
-		return CommonUtility.appendHtmlExtensionToPage(navigationLink);
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver, navigationLink);
 	}
 
 	/**

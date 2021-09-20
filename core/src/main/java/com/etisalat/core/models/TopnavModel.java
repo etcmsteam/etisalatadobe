@@ -16,6 +16,7 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
@@ -35,7 +36,8 @@ import com.etisalat.core.util.CommonUtility;
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class })
 public class TopnavModel {
 
- 
+	@SlingObject
+	private ResourceResolver resourceResolver;
 
     @SlingObject
     @Optional
@@ -107,7 +109,7 @@ public class TopnavModel {
 		if (null != childRes) {
 			if (!currrentPath.equals(newPagePath)) {
 				LinkModel model = new LinkModel();
-				model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(childRes.getPath()));
+				model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(resourceResolver,childRes.getPath()));
 				model.setTitle(pageTitle);
 				model.setAltText(languageCode);
 				linkModelList.add(model);
