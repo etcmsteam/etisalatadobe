@@ -18755,7 +18755,12 @@ ul.featureList li.platinum-number:before {
 
 .benefits-section .media-cta-container {
 	background-color: $white;
-	border-radius: 4px
+	border-radius: 4px;
+}
+.media-cta-wrapper{
+	background-color: $white;
+	border-radius: 4px;
+	box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
 }
 
 .benefits-section .benefits-mobile {
@@ -19272,7 +19277,9 @@ ul.featureList li.platinum-number:before {
 	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
 	border-radius: 4px
 }
-
+.media-cta-wrapper{
+	position:relative;
+}
 .cta-benefits .media-cta-wrapper p,
 .media-cta-section .media-cta-wrapper p {
 	color: #767676!important;
@@ -28657,10 +28664,31 @@ input[type=radio] {
  .media-cta-wrapper .ul-list-cms ul li{
 	font-size: $font14;
 	line-height: 20px;
-		.cmp-text ul li {
-			padding-left:20px;
-	}
+	padding-left:20px!important;
  }
+ @include respond-to-max($tablet){
+ .media-cta-wrapper{
+	.aem-Grid{
+	 display: flex!important;
+	 flex-direction: column-reverse!important;
+ }
+}
+ }
+ @include respond-to-min($tablet){
+ .media-cta-wrapper{
+	.ul-list-cms{
+	   padding: 1.5rem 4rem 2.5rem 1.5rem;
+   }
+   }
+}
+@include respond-to-max($tablet){
+	.media-cta-wrapper{
+	   .ul-list-cms{
+padding: 1rem 1rem 4rem;
+	   }
+	}
+}
+
 .non-action-boxes-section .media-cta-section .media-cta-wrapper h4 {
 	font-size: 22px;
 	@include font-family-Neotech;
@@ -49909,4 +49937,3 @@ html[lang=ar] [dir=rtl] .add-from-map-wrap .switch-add-from-map .switcher svg {
 		text-align: right
 	}
 }
-
