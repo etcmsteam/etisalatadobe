@@ -21,6 +21,9 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
 
 	private String url;
 	private String key;
+	private String contactMap;
+
+	private static final String NO_CONFIG_FOUND = "No config found";
 
 	@Override
 	public String getGoogleUrl() {
@@ -35,9 +38,14 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
 	@Activate
 	@Modified
 	protected void activate(final GoogleMapsConfiguration config) {
-		this.url = PropertiesUtil.toString(config.getGoogleUrl(), "No config found");
-		this.key = PropertiesUtil.toString(config.getGoogleKey(), "No config found");
-
+		this.url = PropertiesUtil.toString(config.getGoogleUrl(), NO_CONFIG_FOUND);
+		this.key = PropertiesUtil.toString(config.getGoogleKey(), NO_CONFIG_FOUND);
+		this.contactMap = PropertiesUtil.toString(config.getGoogleContactUsUrl(), NO_CONFIG_FOUND);
+	}
+	
+	@Override
+	public String getGoogleContactUsUrl() {
+		return this.contactMap;
 	}
 
 }
