@@ -1,46 +1,46 @@
-<div  data-sly-use.promotionTileModel="com.etisalat.core.models.PromotionTileModel"  data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-      data-panelcontainer="${wcmmode.edit && 'Promotional tile'}"
-      data-placeholder-text="${wcmmode.edit && 'Please update Promotional tile' @ i18n}">
+<div data-sly-use.promotionTileModel="com.etisalat.core.models.PromotionTileModel" data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-panelcontainer="${wcmmode.edit && 'Promotional tile'}"
+     data-placeholder-text="${wcmmode.edit && 'Please update Promotional tile' @ i18n}">
 
-    <sly
-            data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}">
-    </sly>
+  <sly
+      data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}">
+  </sly>
 
-    <div class="current-promotions-box">
-        <div class="icon-wrap">
+  <div class="current-promotions-box">
+    <div class="icon-wrap">
       <span class="icon-with-bg">
         <div
-                data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
+            data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
         </div>
       </span>
-        </div>
-        <div class="title-wrap" data-sly-element="${properties.titleType}">
-            ${properties.title}
-        </div>
-        <div class="learn-more-wrap">
+    </div>
+    <div class="title-wrap" data-sly-element="${properties.titleType}">
+      ${properties.title}
+    </div>
+    <div class="learn-more-wrap">
 
-            <sly data-sly-test="${properties.promotionLinkBehavior != 'openmodalwindow'}">
-                <a href="${promotionTileModel.link}"
-                   class="btn-text btn-green learn-more"
-                   title="${properties.promotionCTATitle}"
-                   target="${properties.promotionLinkBehavior == 'opennewwindow'?'_blank':'_self'}">
-                    <span class="moreg">${properties.promotionCTATitle}</span>
-                </a>
-            </sly>
+      <sly data-sly-test="${properties.promotionLinkBehavior != 'openmodalwindow'}">
+        <a href="${promotionTileModel.link}"
+           class="btn-text btn-green learn-more"
+           title="${properties.promotionCTATitle}"
+           target="${properties.promotionLinkBehavior == 'opennewwindow'?'_blank':'_self'}">
+          <span class="moreg">${properties.promotionCTATitle}</span>
+        </a>
+      </sly>
 
-            <sly data-sly-test="${properties.promotionLinkBehavior == 'openmodalwindow'}">
-                <a data-label="${resource.name}" class="btn-text btn-green  learn-more btn-modal"
-                   title="${properties.promotionCTATitle}">
-                    <span class="moreg">${properties.promotionCTATitle}</span>
-                </a>
-                <div class="offers-popup-wrapper">
-                    <div id="${resource.name}" class="nv-modal fade  ${properties.modalBehavior}-modal">
+      <sly data-sly-test="${properties.promotionLinkBehavior == 'openmodalwindow'}">
+        <a data-label="${resource.name}" class="btn-text btn-green  learn-more btn-modal"
+           title="${properties.promotionCTATitle}">
+          <span class="moreg">${properties.promotionCTATitle}</span>
+        </a>
+        <div class="offers-popup-wrapper">
+          <div id="${resource.name}" class="nv-modal fade  ${properties.modalBehavior}-modal">
 
 
-                        <div class="nv-modal-dialog">
-                            <div class="nv-modal-content nv-py-5">
-                                <div class="container">
-                                    <div class="modal-popup">
+            <div class="nv-modal-dialog">
+              <div class="nv-modal-content nv-py-5">
+                <div class="container">
+                  <div class="modal-popup">
 
 					<span class="nv-modal-close">
 <!-- svg to be applied by css on nv-modal-close class -->
@@ -62,18 +62,18 @@
                                 </g>
                             </svg>
                         </span>
-                                        <sly
-                                                data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
-                                        </sly>
+                    <sly
+                        data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
+                    </sly>
 
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </sly>
+              </div>
+            </div>
+          </div>
         </div>
+      </sly>
     </div>
+  </div>
 </div>
