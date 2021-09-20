@@ -1,7 +1,7 @@
-<template data-sly-template.primaryButton="${ @ properties}">
+<template data-sly-template.primaryButton="${ @ properties,buttonModel}">
   <div data-sly-test="${properties.linkBehavior != 'openmodalwindow'}" class="button cmp-button--primary">
     <a class="cmp-button"
-       href="${ properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink @ extension='html'}"
+       href="${buttonModel.link}"
        target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
       <span class="cmp-button__text">${properties.title}</span>
     </a>
