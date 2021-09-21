@@ -1003,6 +1003,9 @@ general Paragraph styling
     .nv-modal-close img {
         width: 12px !important;
         height: 12px !important;
+        top: 10px;
+        right: 20px;
+        position: relative;
     }
 
 @media only screen and (max-width: 991px) {
@@ -1364,6 +1367,7 @@ general Paragraph styling
         table{
             border: 1px solid grey;
             td{
+                font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
                 border: 1px solid grey;
                 // padding: 6px;
                 line-height: 1.6;
@@ -1373,6 +1377,8 @@ general Paragraph styling
             th {
                 border: 1px solid gray;
                 font-weight: 700 !important;
+                text-align: left;
+                font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
                 font-size: 16px;
                 line-height: 1.6;
                 vertical-align: middle;
@@ -1450,7 +1456,7 @@ general Paragraph styling
 }
 
 .nv__left-modal{
-    @media (min-width: 992px){
+    @media (min-width: 1240px){
         .cmp-image_image{
             border-radius: 15px;
         }
@@ -1462,6 +1468,11 @@ general Paragraph styling
     }
     .modal-popup .offer-details-wrapper p{
         padding-right: 8px;
+    }
+    @media (min-width: 320px) and (max-width: 1024px){
+        .modal-popup .offer-details-wrapper {
+            padding-right: 15px;
+        }
     }
 }   
 .nv__bottom-modal{
@@ -1478,10 +1489,15 @@ general Paragraph styling
                 line-height: 1.6;
                 font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
     }
-    .offer-details-wrapper ul li a{
+    .offer-details-wrapper{ 
+        ul li a{
                 font-size: 18px;
                 line-height: 1.56;
                 color: $main-green !important;
+            }
+            a:hover {
+                color: #618816 !important;
+            }
     }
     @media (min-width: 768px) {
         .offer-details-wrapper {
@@ -1491,7 +1507,22 @@ general Paragraph styling
     }
     @media (min-width: 320px) and (max-width: 767px){
         .modal-popup .offer-details-wrapper {
-            max-height: 500px;
+            height: 500px !important;
+        }
+    }
+    @media(min-width: 1136px){
+        .nv-row{
+            .nv-col-md-4{
+                margin-left: 30px;
+            }
+            .nv-col-md-7{
+                padding-left: 0px !important;
+            }
+        }
+        @media (min-width: 320px) and (max-width: 767px){
+            .modal-popup .offer-details-wrapper {
+                max-height: 400px;
+            }
         }
     }
 }
@@ -1523,21 +1554,25 @@ general Paragraph styling
             margin: 0 1rem 1rem 0;
         }
         @media (min-width:320px) and (max-width: 1024px){
-            .nv-modal-body .offer-details-wrapper p{
-            font-size: 16px;
+            .nv-modal-body .offer-details-wrapper {
+                    p{
+                font-size: 16px;
+                }
+                b{font-size: 16px;}
             }
         }
     }
 }
 
+@media (min-width:320px) and (max-width: 1024px){
 .nv-modal-content .nv-py-5{
     .nv-modal-close {
-        top: 10px;
-        right: 20px;
+        top: 10px !important;
+        right: 20px !important;
         position: relative;
     }
 }
-
+}
 .right-50-modal{
     @media (min-width: 768px) {
         .right-50-modal{
@@ -1551,9 +1586,33 @@ general Paragraph styling
 
 @media (min-width: 1136px){
     .nv__left-modal .nv-col-md-4 {
-        padding-top: 25px !important;
+        padding-top: 40px !important;
     }
 }
-    
 
+@media(min-width: 1136px){
+    .nv-modal-close svg {
+        height: 24px !important;
+        position: relative;
+        right: 30px;
+        top: 25px;
+        width: 24px !important;
+    }
+}
 
+.nv__left-modal{
+    @media (min-width: 768px)and (max-width: 1366px){
+        .offer-details-wrapper {
+            margin-right: 1px !important;
+            padding-right: 10px !important;
+        }
+    }
+}
+
+@media (min-width:320px) and (max-width: 1024px){
+    .nv__left-modal{
+        .nv__bottom-modal .offer-details-wrapper {
+            overflow: unset !important;
+        }
+    }
+}
