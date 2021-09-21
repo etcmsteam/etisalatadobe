@@ -7,8 +7,9 @@
      data-placeholder-text="${wcmmode.edit && 'Please add Promotional Carousel items here' @ i18n}">
   <sly data-sly-test.oneTile="${carousel.items.size == 1}"></sly>
   <sly data-sly-test.twoTile="${carousel.items.size ==2}"></sly>
+  <sly data-sly-test.threeTile="${carousel.items.size ==3}"></sly>
   <div
-      class="current-promotions-wrraper c-p-slider0  ${oneTile ? 'one-only' :''} ${twoTile ? 'two-only' : ''} ${!oneTile && !twoTile ? 'three-plus': ''}">
+      class="current-promotions-wrraper ${oneTile ? 'one-only' :''} ${twoTile ? 'two-only' : ''} ${threeTile ? 'three-only' : ''} ${!oneTile && !twoTile && !threeTile ? 'three-plus': ''}">
 
     <div class="background-with-color">
       <div class="cover"
@@ -70,7 +71,7 @@ opennewwindow'?'_blank' : '_self'}">
               <div data-sly-repeat.item="${carousel.items}" class="${!wcmmode.edit ? 'swiper-slide':''}"
                    data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
             </div>
-            <div class="scrollbar swiper-scrollbar" data-sly-test="${carousel.items.size >3}">
+            <div class="scrollbar swiper-scrollbar">
               <div class="swiper-scrollbar-drag"></div>
             </div>
           </div>
