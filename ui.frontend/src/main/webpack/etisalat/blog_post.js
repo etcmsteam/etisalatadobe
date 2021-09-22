@@ -73,6 +73,7 @@ $('.clear-search').on('click', function (e) {
     }
     makeRowsVisible(numberofitem);
     $(btnLoadMore).css('display', 'block');
+    $('.search-results-wrapper').css('display', 'none');
 });
 
 var numberofitem = $('.cmp-blogpost-search').attr('data-noof-items');

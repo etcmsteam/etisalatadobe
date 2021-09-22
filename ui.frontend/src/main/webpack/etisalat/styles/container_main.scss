@@ -26,7 +26,7 @@ h6 {
 		font-size: 1.875rem;
 	}
 	h3 {
-		font-size:1.75rem;
+		// font-size:1.75rem;
 	}
 
 	h4 {
@@ -87,7 +87,7 @@ h6 {
 h1,
 h2,
 h3 {
-	margin-top: 25px;
+	// margin-top: 25px;
 	margin-bottom: 12.5px
 }
 
@@ -183,32 +183,32 @@ h6 {
 	}
 }
 
-img:before {
-	content: " ";
-	top: -10px;
-	height: 110%;
-	background-color: #e6e6e6;
-	border: 2px dotted #c8c8c8;
-	border-radius: 5px
-}
+// img:before {
+// 	content: " ";
+// 	top: -10px;
+// 	height: 110%;
+// 	background-color: #e6e6e6;
+// 	border: 2px dotted #c8c8c8;
+// 	border-radius: 5px
+// }
 
-img:after,
-img:before {
-	display: block;
-	position: absolute;
-	left: 0;
-	width: 100%
-}
+// img:after,
+// img:before {
+// 	display: block;
+// 	position: absolute;
+// 	left: 0;
+// 	width: 100%
+// }
 
-img:after {
-	content: " Broken Image of " attr(alt);
-	font-size: 16px;
-	font-style: normal;
-	font-family: Arial, sans-serif;
-	color: #646464;
-	top: 5px;
-	text-align: center
-}
+// img:after {
+// 	content: " Broken Image of " attr(alt);
+// 	font-size: 16px;
+// 	font-style: normal;
+// 	font-family: Arial, sans-serif;
+// 	color: #646464;
+// 	top: 5px;
+// 	text-align: center
+// }
 
 
 .no-margin {
@@ -18755,7 +18755,12 @@ ul.featureList li.platinum-number:before {
 
 .benefits-section .media-cta-container {
 	background-color: $white;
-	border-radius: 4px
+	border-radius: 4px;
+}
+.media-cta-wrapper{
+	background-color: $white;
+	border-radius: 4px;
+	box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
 }
 
 .benefits-section .benefits-mobile {
@@ -19272,7 +19277,9 @@ ul.featureList li.platinum-number:before {
 	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
 	border-radius: 4px
 }
-
+.media-cta-wrapper{
+	position:relative;
+}
 .cta-benefits .media-cta-wrapper p,
 .media-cta-section .media-cta-wrapper p {
 	color: #767676!important;
@@ -24771,9 +24778,9 @@ screen and (-ms-high-contrast:active) {
 	z-index: 8
 }
 
-.config-section-wrap>.container>.row>.col-xs-12.col-md-3 {
-	display: none
-}
+// .config-section-wrap>.container>.row>.col-xs-12.col-md-3 {
+// 	display: none
+// }
 
 @media (min-width:1366px) {
 	.config-section-wrap>.container>.row>.col-xs-12.col-md-3 {
@@ -28649,11 +28656,37 @@ input[type=radio] {
 
 .non-action-boxes-section .media-cta-section .media-cta-wrapper .paragraph-styling p,
 .non-action-boxes-section .media-cta-section .media-cta-wrapper .ul-list-cms ol li,
-.non-action-boxes-section .media-cta-section .media-cta-wrapper .ul-list-cms ul li,
 .non-action-boxes-section .media-cta-section .media-cta-wrapper p {
 	font-size: 16px;
 	color: #919192!important;
 	line-height: 26px
+}
+ .media-cta-wrapper .ul-list-cms ul li{
+	font-size: $font14;
+	line-height: 20px;
+	padding-left:20px!important;
+ }
+ @include respond-to-max($tablet){
+ .media-cta-wrapper{
+	.aem-Grid{
+	 display: flex!important;
+	 flex-direction: column-reverse!important;
+ }
+}
+ }
+ @include respond-to-min($tablet){
+ .media-cta-wrapper{
+	.ul-list-cms{
+	   padding: 1.5rem 4rem 2.5rem 1.5rem;
+   }
+   }
+}
+@include respond-to-max($tablet){
+	.media-cta-wrapper{
+	   .ul-list-cms{
+padding: 1rem 1rem 4rem;
+	   }
+	}
 }
 
 .non-action-boxes-section .media-cta-section .media-cta-wrapper h4 {
@@ -49904,4 +49937,3 @@ html[lang=ar] [dir=rtl] .add-from-map-wrap .switch-add-from-map .switcher svg {
 		text-align: right
 	}
 }
-

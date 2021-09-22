@@ -4,12 +4,12 @@
    id="pagenav-${properties.id}">
    <div class="container">
       <div class="row">
-         <div class="col-xs-12 col-md-3" style="display:none;">
-            <div class="config-section-main-label-top">
+         <div class="col-xs-12 col-md-3">
+            <div data-sly-test="${properties.pageTitle}" class="config-section-main-label-top">
                ${properties.pageTitle}
             </div>
          </div>
-         <div class="col-xs-12 col-md-12">
+         <div class="col-xs-12 col-md-${properties.pageTitle ? 9 : 12}">
             <div data-simplebar data-sly-test="${!pageNav.pageNavItems.isEmpty}">                                
                   <div class="simplebar-wrapper">                    
                         <div class="simplebar-content">
