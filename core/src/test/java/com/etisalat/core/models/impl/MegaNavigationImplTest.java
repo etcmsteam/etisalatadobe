@@ -3,7 +3,6 @@ package com.etisalat.core.models.impl;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.WCMException;
 import com.etisalat.core.models.*;
-import com.etisalat.core.util.CommonTestUtility;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
