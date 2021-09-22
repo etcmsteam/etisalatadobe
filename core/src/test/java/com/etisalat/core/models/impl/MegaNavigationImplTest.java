@@ -1,22 +1,19 @@
 package com.etisalat.core.models.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.WCMException;
+import com.etisalat.core.models.*;
+import com.etisalat.core.util.CommonTestUtility;
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
-import com.etisalat.core.models.MegaFixedNavigationItem;
-import com.etisalat.core.models.MegaNavigation;
-import com.etisalat.core.models.MegaNavigationItem;
-import com.etisalat.core.models.MegaTeaserModel;
-
-import io.wcm.testing.mock.aem.junit5.AemContext;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * JUnit test verifying the MegaNavigation
@@ -37,12 +34,13 @@ class MegaNavigationImplTest {
 	protected static final String MEGA_NAV_5 = TEST_PAGE_CONTAINER_ROOT + "/topnav";
 	protected static final String MEGA_SUBNAV = TEST_PAGE_CONTAINER_ROOT + "/pages/page_1/page_1_1";
 	protected static final String MEGA_XF_NAV_6 = TEST_PAGE_CONTAINER_ROOT + "/xfContainerList";
-	
+
 
 	@BeforeEach
 	public void setup() throws Exception {
 		context.addModelsForClasses(MegaNavigationImpl.class);
 		context.load().json("/com/etisalat/core/models/MegaNavigationImplTest.json", CONTENT_ROOT);
+		context.load().json("/com/etisalat/core/models/SamplePage.json", "/content/etisalat/ae/en");
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
@@ -102,27 +100,31 @@ class MegaNavigationImplTest {
 		assertTrue(genericListModel.getMegaNavigationItems().isEmpty());
 		assertTrue(genericListModel.getUtilityNavItems().isEmpty());
 	}
-	
+
 	@Test
-	 void testNavLinkHtmlExtension() {
-		final String expected = "/content/etisalat/ae/en.html";
+	 void testNavLinkHtmlExtension() throws WCMException {
+		final String expected = "/content/etisalat/ae/home.html";
+		Page page = context.pageManager().create("/content/etisalat/ae", "home",
+				"etisalat/templates/homepage", "title1", true);
 		context.currentResource(MEGA_NAV_1);
 		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
 		MegaNavigationItem navigationItem = megaNavigationModel.getMegaNavigationItems().get(0);
 		String actual = navigationItem.getNavigationLinkTo();
 		assertEquals(expected, actual);
+		context.pageManager().delete(page, false);
+
 	}
-	
+
 	@Test
-	 void testNavigationLogoLink() {
+	 void testNavigationLogoLink() throws WCMException {
 		final String expectedLink = "/content/etisalat/ae/en/index.html";
 		context.currentResource(MEGA_NAV_1);
 		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
-		
+
 		String actual = megaNavigationModel.getLogoMenuLink();
 		assertEquals(expectedLink, actual);
 	}
-	
+
 	@Test
 	void testXFContainerMenuItems() {
 		final String expectedMenuLabel = "Mobile plans";
@@ -143,38 +145,38 @@ class MegaNavigationImplTest {
 		assertEquals("Top brands", featureTitle);
 
 	}
-	
+
 	@Test
 	void testTopNavMenuItems() {
 		final int expectedSize = 2;
 		final String expectedMenuLink = "#topnavlink1";
-		final String expectedMenuLabel = "CONSUMER";		
+		final String expectedMenuLabel = "CONSUMER";
 		context.currentResource(MEGA_NAV_1);
 
 		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
 		FixedNavigtaionMultifieldModel topNavModel = megaNavigationModel.getTopNavMenuItems().get(0);
-		
+
 		assertEquals(expectedSize, megaNavigationModel.getTopNavMenuItems().size());
 		assertEquals(expectedMenuLabel, topNavModel.getNavigationTitle());
-		assertEquals(expectedMenuLink, topNavModel.getNavigationLink());				
+		assertEquals(expectedMenuLink, topNavModel.getNavigationLink());
 	}
-	
-	
+
+
 	@Test
 	void testTopNavIconMenuItems() {
 		final int expectedSize = 2;
 		final String expectedMenuLink = "#findus";
-		final String expectedMenuLabel = "FindUS";		
+		final String expectedMenuLabel = "FindUS";
 		final String expectedMenuImage = "/content/dam/sample.png";
 		context.currentResource(MEGA_NAV_1);
 
 		MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
 		FixedNavigtaionMultifieldModel topNavModel = megaNavigationModel.getTopNavIconMenuItems().get(0);
-		
+
 		assertEquals(expectedSize, megaNavigationModel.getTopNavMenuItems().size());
 		assertEquals(expectedMenuLabel, topNavModel.getNavigationTitle());
-		assertEquals(expectedMenuLink, topNavModel.getNavigationLink());	
-		assertEquals(expectedMenuImage, topNavModel.getNavigationImage());	
+		assertEquals(expectedMenuLink, topNavModel.getNavigationLink());
+		assertEquals(expectedMenuImage, topNavModel.getNavigationImage());
 	}
-	
+
 }
