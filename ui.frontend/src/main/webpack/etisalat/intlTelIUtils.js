@@ -508,8 +508,11 @@ import intlTelInput from 'intl-tel-input';
             $("#url").parent().removeClass("has-error-fields");
             $("#url").parent().next(".alert-label").remove();
             if (!urlvalid($('#url').val())) {
-                $("#url").parent().addClass("has-error-fields");
+                $("#url").parent().addClass("has-error-fields").removeClass('is-valid');
                 $("#url").parent().after('<div id="url-error" class="has-error alert-label">Please Enter A Valid URL.</div>');
+            }
+            else{
+                $("#url").parent().addClass("is-valid").removeClass("has-error-fields");
             }
         });
 
