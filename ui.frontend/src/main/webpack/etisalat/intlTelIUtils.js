@@ -443,8 +443,12 @@ import intlTelInput from 'intl-tel-input';
             var regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
             return regex.test(value);
         }
-
-
+        function phonevalid(value) {
+            /* eslint-disable no-control-regex, max-len */
+            var regex = /^(050|054|055|056|052)/i;
+            return regex.test(value);
+        }
+         
 
         var urlString;
         var urlParams = new URLSearchParams(window.location.search);
@@ -476,7 +480,7 @@ import intlTelInput from 'intl-tel-input';
         document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
         document.querySelector('#phone1').parentElement.append(labelHtml);
 
-        var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+        var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
         var errorMsg;
         if($("#phone1")!== null) {
             $("#phone1").parent().parent().parent().parent().find('.new').remove();
@@ -490,7 +494,29 @@ import intlTelInput from 'intl-tel-input';
             if ($("#phone1").val().trim()) {
                 iti.telInput.value = $('#phone1').val();
                 if (iti.isValidNumber()) {
-				$("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                    $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                    if(!phonevalid($("#phone1").val().trim())){
+                        
+                        errorMsg = "";
+                        $("#phone1").parent().parent().addClass("has-error-fields");
+                        errorMsg = errorMap[4];
+                        if (errorMsg) {
+                            $("#phone1").parent().parent().addClass("has-error-fields");
+                            
+                            alertIcon = "";
+                            alertIcon = contentString;
+    
+                            if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
+                                $("#phone1").parent().find(".alert-label").remove();
+                                $("#phone1").parent().find(".alert-icon").remove(); 
+                                document.querySelector('#phone1').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
+                                
+                                $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
+                                $('#phone1-error').parent().parent().find('.new').remove();
+                              };
+                        }
+                    }
+			
                 } else {
                     //input.classList.add("error");
                     var errorCode = "";
