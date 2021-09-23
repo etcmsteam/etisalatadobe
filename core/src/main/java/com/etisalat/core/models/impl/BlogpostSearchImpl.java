@@ -22,6 +22,7 @@ import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.BlogpostSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 import com.etisalat.core.util.CommonUtility;
+import com.day.cq.wcm.api.NameConstants;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		BlogpostSearch.class }, resourceType = { BlogpostSearchImpl.RESOURCE_TYPE })
@@ -99,7 +100,7 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	 */
 	private void setBlogPages(Resource res, List<GenericListPageDetails> pageDetailsList) {
 		Page page = res.adaptTo(Page.class);
-		if (null != page && page.getProperties().get(PageConstants.CQ_TEMPLATE, StringUtils.EMPTY)
+		if (null != page && page.getProperties().get(NameConstants.PN_TEMPLATE, StringUtils.EMPTY)
 				.equals(BUSINESS_BLOG_TEMPLATE)) {
 			GenericListPageDetails pageDetails = new GenericListPageDetails();
 			pageDetails.setThumbnailResource(res.getChild(PageConstants.JCR_CONTENT_IMAGE));
