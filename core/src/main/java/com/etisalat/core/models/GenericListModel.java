@@ -37,9 +37,8 @@ public class GenericListModel {
 	private List<GenericListPageDetails> genericListObj;
 
 	String thumbnailPath;
-	
-	private static final String FIXEDLIST_NODE = "fixedlist";
 
+	private static final String FIXEDLIST_NODE = "fixedlist";
 
 	@SlingObject
 	@Optional
@@ -51,24 +50,26 @@ public class GenericListModel {
 
 		genericListObj = new ArrayList<>();
 
-		if (StringUtils.isNotBlank("pagelist") && pagelist.equals(FIXEDLIST_NODE)) {
-			Resource fixedPathRes = currentResource.getChild("fixedpath");
-			if (null != fixedPathRes) {
-				fixedPathRes.listChildren().forEachRemaining(itemResource -> {
+		if (currentResource.getChild("fixedpath") != null || StringUtils.isNotBlank(rootPath)) {
+
+			if (StringUtils.isNotBlank("pagelist") && pagelist.equals(FIXEDLIST_NODE)) {
+
+				currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
 					String itemPath = itemResource.getValueMap().get("link").toString();
 					Resource itemChildRes = request.getResourceResolver().getResource(itemPath);
 					storeListData(itemChildRes);
 				});
-			}
-		} else {
-			Resource res = request.getResourceResolver().getResource(rootPath);
-			if (null != res) {
-				res.listChildren().forEachRemaining(childResource -> {
-					if (!childResource.getPath().contains("/jcr:content")) {
-						storeListData(childResource);
 
-					}
-				});
+			} else {
+				Resource res = request.getResourceResolver().getResource(rootPath);
+				if (null != res) {
+					res.listChildren().forEachRemaining(childResource -> {
+						if (!childResource.getPath().contains("/jcr:content")) {
+							storeListData(childResource);
+
+						}
+					});
+				}
 			}
 		}
 

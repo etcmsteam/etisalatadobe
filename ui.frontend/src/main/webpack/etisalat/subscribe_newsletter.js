@@ -28,7 +28,7 @@ import intlTelInput from 'intl-tel-input';
             $("#NewsLetterEmailAddress").parent().next(".alert-label").remove();
             if (!email2($('#NewsLetterEmailAddress').val())) {
                 $("#NewsLetterEmailAddress").parent().addClass("has-error-fields");
-                $("#NewsLetterEmailAddress").parent().after('<div id="email-error" class="has-error alert-label">Please enter a valid email address.</div>');
+                $("#NewsLetterEmailAddress").parent().after('<div id="email-error" class="has-error alert-label">This Field Is Required.</div>');
             }
 
         });
@@ -39,7 +39,7 @@ import intlTelInput from 'intl-tel-input';
             $("#NewsLetterEmailAddress").parent().removeClass("has-error-fields");
             if (!email2($('#NewsLetterEmailAddress').val())) {
                 $("#NewsLetterEmailAddress").parent().addClass("has-error-fields").removeClass("is-valid");
-                $("#NewsLetterEmailAddress").parent().after('<div id="email-error" class="has-error alert-label">Please enter a valid email address.</div>');
+                $("#NewsLetterEmailAddress").parent().after('<div id="email-error" class="has-error alert-label">Invalid Email Address. Please Enter Again.</div>');
             } else {
                 $("#NewsLetterEmailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
 
@@ -76,7 +76,7 @@ import intlTelInput from 'intl-tel-input';
 
             var svg = '<svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#alert-icon"></use></svg>';
             var div = "";
-            div = '<div id="fullName-error" class="has-error alert-label">This field is required.</div>'
+            div = '<div id="fullName-error" class="has-error alert-label">This Field Is Required.</div>'
             $("#NewsLetterEmailAddress").parent().next(".alert-label").remove(); // remove it        
             $("#CustomerName").parent().next(".alert-label").remove();
             $("#NewsLetterEmailAddress").parent().removeClass("has-error-fields");
@@ -133,6 +133,9 @@ import intlTelInput from 'intl-tel-input';
 
 
 $(document).ready(function () {
+    $("input[type='text'], input[type='email']").bind('focus', function() {
+        $(this).css('background-color', 'white');
+     });
     $('.subscribe_newsletter .cmp-form-text label[for="NewsLetterEmailAddress"]').addClass('input_div_unique');
     $('.subscribe_newsletter .cmp-form-text label[for="CustomerName"]').addClass('div_label_unique');
 
