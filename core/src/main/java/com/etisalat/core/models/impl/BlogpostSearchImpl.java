@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import java.util.Comparator;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
@@ -172,6 +173,13 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 				res.listChildren().forEachRemaining(resource -> setBlogPages(resource, pageDetailsList));
 			}
 		}
+		
+		if (!pageDetailsList.isEmpty() && pageDetailsList.size() > 1) {
+			pageDetailsList.sort(Comparator
+					.comparing(GenericListPageDetails::getArticleDate, Comparator.nullsFirst(Comparator.naturalOrder()))
+					.reversed());
+		}
+		
 		return Collections.unmodifiableList(pageDetailsList);
 	}
 
