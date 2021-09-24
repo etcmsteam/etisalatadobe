@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import java.util.Comparator;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
@@ -22,6 +23,7 @@ import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.BlogpostSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 import com.etisalat.core.util.CommonUtility;
+import com.day.cq.wcm.api.NameConstants;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		BlogpostSearch.class }, resourceType = { BlogpostSearchImpl.RESOURCE_TYPE })
@@ -99,7 +101,7 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	 */
 	private void setBlogPages(Resource res, List<GenericListPageDetails> pageDetailsList) {
 		Page page = res.adaptTo(Page.class);
-		if (null != page && page.getProperties().get(PageConstants.CQ_TEMPLATE, StringUtils.EMPTY)
+		if (null != page && page.getProperties().get(NameConstants.PN_TEMPLATE, StringUtils.EMPTY)
 				.equals(BUSINESS_BLOG_TEMPLATE)) {
 			GenericListPageDetails pageDetails = new GenericListPageDetails();
 			pageDetails.setThumbnailResource(res.getChild(PageConstants.JCR_CONTENT_IMAGE));
@@ -171,6 +173,13 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 				res.listChildren().forEachRemaining(resource -> setBlogPages(resource, pageDetailsList));
 			}
 		}
+		
+		if (!pageDetailsList.isEmpty() && pageDetailsList.size() > 1) {
+			pageDetailsList.sort(Comparator
+					.comparing(GenericListPageDetails::getArticleDate, Comparator.nullsFirst(Comparator.naturalOrder()))
+					.reversed());
+		}
+		
 		return Collections.unmodifiableList(pageDetailsList);
 	}
 
