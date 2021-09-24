@@ -599,7 +599,7 @@ import intlTelInput from 'intl-tel-input';
                   };
                 
             }else {
-                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");;
+                $("#url").parent().addClass("is-valid").removeClass("has-error-fields");;
             }
         });
         $(document).on("keyup", "#fullName", function (e) {
@@ -675,7 +675,7 @@ import intlTelInput from 'intl-tel-input';
                 
             }
             else {
-                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");;
+                $("#emailAddress").parent().addClass("is-valid").removeClass("has-error-fields");;
             }
         });
         $(document).on("keyup", "#justification", function (e) {
