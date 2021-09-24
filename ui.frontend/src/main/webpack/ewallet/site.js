@@ -1,5 +1,6 @@
 (function () {
-    var url=window.location.href;
+    if($(window).width() <= 768) {
+        var url=window.location.href;
             if(url.indexOf('faq-main') != -1 || url.indexOf('offer_main_page') != -1 || url.indexOf('locations') != -1){
                 $('#mobile-non-active').eq(0).show().addClass('active').removeClass('noactive');
             }
@@ -11,6 +12,7 @@
                 $('#mobile-active').hide();
                 $('#mobile-non-active').show().addClass('active').removeClass('noactive');
             }
+     }
 
     define(['lodash', 'select2', 'swiper'], function (_) {
 
