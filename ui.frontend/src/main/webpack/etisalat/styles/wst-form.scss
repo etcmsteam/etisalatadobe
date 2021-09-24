@@ -296,7 +296,10 @@
     
    
     input[type="tel"]:not(.browser-default) {
-      width: 32.5rem;
+      
+      @media (min-width: $screen-lg-max) {
+        width: 31.5rem; //default dropdown container with overrides so using important
+      }
       & ~ label {
         left: 0;
       }
@@ -372,12 +375,10 @@
       position: relative;
     }
   }
-  input#phone1+label {
-    margin-top: 17px;
-}
-input#phone1 {
-  margin-top: 1rem;
-}
+//   input#phone1+label {
+//     margin-top: 17px;
+// }
+
   .has-error {
     display: block;
     color: $error-red;
@@ -700,7 +701,7 @@ input#phone1 {
   }
 
    .cmp-form-options--drop-down {
-    
+    top:0;
       & label {
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
