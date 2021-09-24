@@ -1,6 +1,7 @@
 .cws-form,
 .wst-form {
   padding: 0 1.45rem !important; //Form default container responsive grid padding overrides
+  margin-top: 5rem;
   .form-group {
     margin-bottom: 0;
   }
@@ -149,9 +150,14 @@
    
   }
   .select-hear-about-us {
-    @media (min-width: $screen-lg-max) {
-      width: 32.5rem !important; //default dropdown container with overrides so using important
+   
+    width: 100%;
+    @include respond-to-min($tablet) {
+      width: 20.5rem;
     }
+    @include respond-to-min($desktop) {
+      width: 31.5rem;
+      }
   }
   .select-hear-about-us {
     .selecteddiv {
@@ -197,7 +203,14 @@
       margin-bottom: 4rem;
     }
     .cmp-form-options--drop-down {
-      width: 9rem;
+      
+      width: 100%;
+      @include respond-to-min($tablet) {
+        width: 5.5rem;
+      }
+      @include respond-to-min($desktop) {
+        width: 9rem;
+        }
     }
   }
   .select-service {
@@ -296,10 +309,14 @@
     
    
     input[type="tel"]:not(.browser-default) {
-      
-      @media (min-width: $screen-lg-max) {
-        width: 31.5rem; //default dropdown container with overrides so using important
+      width: 20.5rem;
+      @include respond-to-min($tablet) {
+        width: 20.5rem;
       }
+      @include respond-to-min($desktop) {
+        width: 31.5rem;
+        }
+     
       & ~ label {
         left: 0;
       }
@@ -318,13 +335,24 @@
     margin: 0;
   }
 
-  .iti .cmp-form-text__textput {
-    width: 31.5rem;
+  .iti .cmp-form-text__textput {    
+    width: 100%;
+    @include respond-to-min($tablet) {
+      width: 20.5rem;
+    }
+    @include respond-to-min($desktop) {
+      width: 31.5rem;
+      }
   }
   input#fullName, input#firstName, input#designation {
-    @media (min-width: $screen-lg-max) {
-      width: 31.5rem;
-    }
+   
+    width: 100%;
+      @include respond-to-min($tablet) {
+        width: 20.5rem;
+      }
+      @include respond-to-min($desktop) {
+        width: 31.5rem;
+        }
   }
 
   select {
@@ -480,7 +508,7 @@
   input[type="text"]:not(.browser-default),
   input[type="url"]:not(.browser-default),
   textarea.cmp-form-text__textarea {
-    background-color: transparent;
+    background-color: transparent!important;
     border: none;
     border-bottom: 1px solid $grey4;
     border-radius: 0;
@@ -846,11 +874,16 @@
   -inline .cmp-form-text label,
   -inline .cmp-form-options--drop-down label {
     position: absolute;
-    font-size: $font20;
+    font-size: $font14;
     font-weight: 400;
     color: $steel-grey;
     letter-spacing: 0;
     margin-top: 0.2rem;
+   
+    @include respond-to-min($desktop) {
+      font-size: $font20;
+      }
+    
   }
 
   .textarea.input-field > label {
@@ -861,6 +894,7 @@
   .cmp-form-text__text, .cmp-form-options--drop-down {
     position: relative;    
     margin-bottom: 1.25rem;
+    background-color: transparent;
     & > label {
       color: $steel-grey;
     }
