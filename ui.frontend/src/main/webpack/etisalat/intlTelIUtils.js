@@ -598,6 +598,8 @@ import intlTelInput from 'intl-tel-input';
                     document.querySelector('#url').parentElement.innerHTML += alertIcon;
                   };
                 
+            }else {
+                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");;
             }
         });
         $(document).on("keyup", "#fullName", function (e) {
@@ -613,6 +615,8 @@ import intlTelInput from 'intl-tel-input';
                     document.querySelector('#fullName').parentElement.innerHTML += alertIcon;
                   };
                   $('#fullName-error').parent().parent().find('.new').remove();
+            }else {
+                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");;
             }
         });
 
@@ -630,6 +634,8 @@ import intlTelInput from 'intl-tel-input';
                   };
                   $('#firstName-error').parent().parent().find('.new').remove();
                 
+            }else {
+                $("#firstName").parent().addClass("is-valid").removeClass("has-error-fields");;
             }
         });
         $(document).on("keyup", "#lastName", function (e) {
@@ -645,6 +651,8 @@ import intlTelInput from 'intl-tel-input';
                     document.querySelector('#lastName').parentElement.innerHTML += alertIcon;
                   };
                   $('#lastName-error').parent().parent().find('.new').remove();
+            }else {
+                $("#lastName").parent().addClass("is-valid").removeClass("has-error-fields");;
             }
         });
      
@@ -666,6 +674,9 @@ import intlTelInput from 'intl-tel-input';
     
                 
             }
+            else {
+                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");;
+            }
         });
         $(document).on("keyup", "#justification", function (e) {
             $("#justification").parent().removeClass("has-error-fields"); // remove it 
@@ -680,6 +691,7 @@ import intlTelInput from 'intl-tel-input';
                     document.querySelector('#justification').parentElement.innerHTML += alertIcon;
                   };
                   $('#justification-error').parent().parent().find('.new').remove();
+                $("#justification").parent().addClass("is-valid").removeClass("has-error-fields");
             }else{
                 $("#justification").parent().addClass("has-error-fields").removeClass('is-valid');
             }
