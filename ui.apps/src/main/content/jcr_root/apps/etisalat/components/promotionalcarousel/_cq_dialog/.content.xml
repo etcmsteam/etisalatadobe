@@ -238,38 +238,48 @@
                                     jcr:primaryType="nt:unstructured"
                                     cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
                             </crouselDetailPosition>
-                            <controldisplaybehavior
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                fieldLabel="Controls Display as"
-                                name="./controlDisplayBehavior">
+                            <topcarouselOptions
+                                    granite:class="linkbehavior-showhide-target"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <arrow
-                                        jcr:primaryType="nt:unstructured"
-                                        text="Arrow"
-                                        value="arrow"/>
-                                    <angle
-                                        jcr:primaryType="nt:unstructured"
-                                        text="Angle"
-                                        value="angle"/>
+                                    <controldisplaybehavior
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Controls Display as"
+                                            name="./controlDisplayBehavior">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <arrow
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Arrow"
+                                                    value="arrow"/>
+                                            <angle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Angle"
+                                                    value="angle"/>
+                                        </items>
+                                    </controldisplaybehavior>
+                                    <swiperdisplaybehavior
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Swiper"
+                                            name="./swiperDisplayBehavior">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <show
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Show"
+                                                    value="true"/>
+                                            <hide
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Hide"
+                                                    value="false"/>
+                                        </items>
+                                    </swiperdisplaybehavior>
                                 </items>
-                            </controldisplaybehavior>
-                            <swiperdisplaybehavior
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                fieldLabel="Swiper"
-                                name="./swiperDisplayBehavior">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <show
+                                <granite:data
                                         jcr:primaryType="nt:unstructured"
-                                        text="Show"
-                                        value="true"/>
-                                    <hide
-                                        jcr:primaryType="nt:unstructured"
-                                        text="Hide"
-                                        value="false"/>
-                                </items>
-                            </swiperdisplaybehavior>
+                                        showhidetargetvalue="top"/>
+                            </topcarouselOptions>
                         </items>
                     </controldata>
                 </items>
