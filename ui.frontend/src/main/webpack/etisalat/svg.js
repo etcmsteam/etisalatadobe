@@ -1,6 +1,7 @@
  /**
      * Replace all SVG images with inline SVG
      */
+    
   jQuery('img').each(function(){
     var $img = jQuery(this);
     var imgID = $img.attr('id');
