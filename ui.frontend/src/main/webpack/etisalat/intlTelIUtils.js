@@ -512,27 +512,7 @@ import intlTelInput from 'intl-tel-input';
                 iti.telInput.value = inputVal;
                 if (iti.isValidNumber()) {
                     $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
-                    // if(!phonevalid($("#phone1").val().trim())){
-                        
-                    //     errorMsg = "";
-                    //     $("#phone1").parent().parent().addClass("has-error-fields");
-                    //     errorMsg = errorMap[4];
-                    //     if (errorMsg) {
-                    //         $("#phone1").parent().parent().addClass("has-error-fields").removeClass("is-valid");
-                            
-                    //         alertIcon = "";
-                    //         alertIcon = contentString;
-    
-                    //         if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
-                    //             $("#phone1").parent().find(".alert-label").remove();
-                    //             $("#phone1").parent().find(".alert-icon").remove(); 
-                    //             document.querySelector('#phone1').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
-                                
-                    //             $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
-                    //             $('#phone1-error').parent().parent().find('.new').remove();
-                    //           };
-                    //     }
-                    // }
+                   
 			
                 } else {
                     //input.classList.add("error");
