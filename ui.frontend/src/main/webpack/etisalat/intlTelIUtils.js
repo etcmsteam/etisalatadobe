@@ -663,7 +663,7 @@ import intlTelInput from 'intl-tel-input';
                   else{
                     $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
                 }
-    
+                removeunWantedParsers();
                 
             }
             else {
@@ -693,9 +693,11 @@ import intlTelInput from 'intl-tel-input';
             if($("#designation").value()){
                 $("#designation").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#designation").parent().next(".alert-label").remove();
+
             }
             else{
                 $("#designation").parent().addClass("has-error-fields").removeClass('is-valid');
+                removeunWantedParsers();
             }
             
         });
