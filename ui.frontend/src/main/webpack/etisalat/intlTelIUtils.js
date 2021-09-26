@@ -452,10 +452,10 @@ import intlTelInput from 'intl-tel-input';
         function removeunWantedParsers() {
 
             $('#phone1-error').parent().parent().find('.new').remove();
-            $('#error').parent().find('.new').remove(); 
-            $('#fullName-error').parent().find('.new').remove();      
-            $("#firstName-error").parent().find('.new').remove();
-            $("#lastName-error").parent().find('.new').remove();
+            $('#error').parent().parent().find('.new').remove();
+            $('#fullName-error').parent().parent().find('.new').remove();      
+            $("#firstName-error").parent().parent().find('.new').remove();
+            $("#lastName-error").parent().parent().find('.new').remove();
             
            }
            function autoCompleteoff() {
@@ -712,76 +712,7 @@ import intlTelInput from 'intl-tel-input';
             
         });
      
-        // $("#firstName").keypress(function () {
-        //     $("#firstName").parent().removeClass("has-error-fields"); // remove it 
-        //     $("#firstName").parent().next(".alert-label").remove();
-        //     if (!realalphabetic($('#firstName').val())) {
-        //         $("#firstName").parent().addClass("has-error-fields").removeClass("is-valid");
-        //         $("#firstName").parent().after('<div id="firstName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-        //     }
-        //     else{
-        //         $("#firstName").parent().addClass("is-valid").removeClass("has-error-fields");
-        //     }
-        // });
-        // $("#lastName").keypress(function () {
-        //     $("#lastName").parent().removeClass("has-error-fields"); // remove it 
-        //     $("#lastName").parent().next(".alert-label").remove();
-        //     if (!realalphabetic($('#lastName').val())) {
-        //         $("#lastName").parent().addClass("has-error-fields").removeClass("is-valid");
-        //         $("#lastName").parent().after('<div id="lastName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-        //     }
-        //     else{
-        //         $("#lastName").parent().addClass("is-valid").removeClass("has-error-fields");
-        //     }
-        // });
-       
-        // $("#companyName").keypress(function () {
-        //     $("#companyName").parent().next(".alert-label").remove(); // remove it 
-        //     $("#companyName").parent().removeClass("has-error-fields");
-        // });
-        // $("#description").keypress(function () {
-        //     $("#description").parent().next(".alert-label").remove(); // remove it 
-        //     $("#description").parent().removeClass("has-error-fields");
-        // });
-        // $("#select2-selection__rendered").keypress(function () {
-        //     $("#select2-selection__rendered").parent().next(".alert-label").remove(); // remove it 
-        //     $("#select2-selection__rendered").parent().removeClass("has-error-fields");
-        // });
-        // $("#url").keypress(function () {
-        //     if($("#url").value()){
-        //         $("#url").parent().next(".alert-label").remove(); // remove it 
-        //         $("#url").parent().removeClass("has-error-fields").addClass("has-error-fields");
-        //     }
-        //     else{
-        //         $("#url").parent().addClass("has-error-fields").removeClass('is-valid');
-        //     }
-           
-        // });
-        // $("#justification").keypress(function () {
-        //     if($("#justification").value()){
-        //         $("#justification").parent().removeClass("has-error-fields").addClass('is-valid');
-        //         $("#justification").parent().next(".alert-label").remove();
-        //     }
-        //     else{
-        //         $("#justification").parent().addClass("has-error-fields").removeClass('is-valid');
-        //     }
-            
-        // });
-        // $("#designation").keypress(function () {
-        //     if($("#designation").val()){
-        //         $("#designation").parent().removeClass("has-error-fields").addClass("is-valid");
-        //         $("#designation").parent().next(".alert-label").remove();
-        //     }
-        //     else{
-        //         $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
-        //     }
-            
-        // });
-        // $("#select-hear-about-us").keypress(function () {
-        //     $("#select-hear-about-us").parent().removeClass("has-error-fields");
-        //     $("#select-hear-about-us").parent().next(".alert-label").remove();
-        // });
-
+        
         function clearForm() {
             alertIcon = "";
             $("#emailAddress").parent().next(".alert-label").remove(); // remove it        
