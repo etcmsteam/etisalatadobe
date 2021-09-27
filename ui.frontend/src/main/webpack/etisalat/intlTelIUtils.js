@@ -720,7 +720,7 @@ import intlTelInput from 'intl-tel-input';
         });
 
         $(document).on("keyup", "#designation", function (e) {        
-            if($("#designation").value()){
+            if(!$("#designation").val()){
                 $("#designation").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#designation").parent().next(".alert-label").remove();
 
@@ -733,7 +733,7 @@ import intlTelInput from 'intl-tel-input';
             
         });
         $(document).on("keyup", "#select-hear-about-us", function (e) {        
-            if($("#select-hear-about-us").value()){
+            if($("#select-hear-about-us").val()){
                 $("#select-hear-about-us").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#select-hear-about-us").parent().next(".alert-label").remove();
             }
