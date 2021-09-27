@@ -619,6 +619,7 @@ import intlTelInput from 'intl-tel-input';
             }else {
                
                 if ($('#fullName').val() == "" ) {
+                    $("#fullName").parent().removeClass("has-error-fields").removeClass("is-valid");
                     $("#fullName").parent().addClass("has-error-fields");
                     $("#fullName").parent().after('<div id="url-error" class="has-error alert-label">This field is required.</div>');
                     alertIcon = "";
@@ -719,7 +720,7 @@ import intlTelInput from 'intl-tel-input';
         });
 
         $(document).on("keyup", "#designation", function (e) {        
-            if($("#designation").value()){
+            if($("#designation").val()){
                 $("#designation").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#designation").parent().next(".alert-label").remove();
 
@@ -732,7 +733,7 @@ import intlTelInput from 'intl-tel-input';
             
         });
         $(document).on("keyup", "#select-hear-about-us", function (e) {        
-            if($("#select-hear-about-us").value()){
+            if($("#select-hear-about-us").val()){
                 $("#select-hear-about-us").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#select-hear-about-us").parent().next(".alert-label").remove();
             }
@@ -969,7 +970,7 @@ import intlTelInput from 'intl-tel-input';
 
                     }
                     else {                      
-                        $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                        $("#phone1").parent().removeClass("has-error-fields").addClass('is-valid');
                     }
             if (!$('#designation').val() || $('#designation').val() == "") {
                 $("#designation").parent().addClass("has-error-fields");
@@ -981,12 +982,12 @@ import intlTelInput from 'intl-tel-input';
                    
                     if (document.querySelector('#designation') != null) {
                         
-                        $("#designation").parent().removeClass("has-error-fields").addClass("is-valid");
+                        $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                     }
-                    
-                } else{
                     $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                     document.querySelector('#designation').parentElement.innerHTML += alertIcon;
+                } else{
+                    $("#designation").parent().parent().removeClass("has-error-fields").addClass('is-valid');
                 }
                 $('#designation').focus();
                 removeunWantedParsers();
