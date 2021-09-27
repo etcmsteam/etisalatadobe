@@ -619,6 +619,7 @@ import intlTelInput from 'intl-tel-input';
             }else {
                
                 if ($('#fullName').val() == "" ) {
+                    $("#fullName").parent().removeClass("has-error-fields").removeClass("is-valid");
                     $("#fullName").parent().addClass("has-error-fields");
                     $("#fullName").parent().after('<div id="url-error" class="has-error alert-label">This field is required.</div>');
                     alertIcon = "";
@@ -969,7 +970,7 @@ import intlTelInput from 'intl-tel-input';
 
                     }
                     else {                      
-                        $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                        $("#phone1").parent().removeClass("has-error-fields").addClass('is-valid');
                     }
             if (!$('#designation').val() || $('#designation').val() == "") {
                 $("#designation").parent().addClass("has-error-fields");
@@ -981,12 +982,12 @@ import intlTelInput from 'intl-tel-input';
                    
                     if (document.querySelector('#designation') != null) {
                         
-                        $("#designation").parent().removeClass("has-error-fields").addClass("is-valid");
+                        $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                     }
-                    
-                } else{
                     $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                     document.querySelector('#designation').parentElement.innerHTML += alertIcon;
+                } else{
+                    $("#designation").parent().parent().removeClass("has-error-fields").addClass('is-valid');
                 }
                 $('#designation').focus();
                 removeunWantedParsers();
