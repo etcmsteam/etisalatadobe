@@ -720,7 +720,7 @@ import intlTelInput from 'intl-tel-input';
         });
 
         $(document).on("keyup", "#designation", function (e) {        
-            if(!$("#designation").val()){
+            if($("#designation").val()){
                 $("#designation").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#designation").parent().next(".alert-label").remove();
 
