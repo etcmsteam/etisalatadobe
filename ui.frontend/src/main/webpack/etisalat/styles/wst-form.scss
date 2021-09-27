@@ -1,8 +1,16 @@
 .cws-form,
 .wst-form {
   padding: 0 1.45rem !important; //Form default container responsive grid padding overrides
+  margin-top: 5rem;
   .form-group {
     margin-bottom: 0;
+    .is-valid~label {
+      color: $almost-black;
+      transform: translateY(-10px) scale(.8);
+      transform-origin: 0 0;
+      font-size: $font16;
+      z-index: 2;
+    }
   }
   .cmp-form-options--drop-down {
       position: relative;
@@ -52,7 +60,7 @@
         font-size: $font16;
         padding: 0.5rem 0;
         overflow-x: hidden;
-        color: $almost-black;
+        color: $search-grey;
         text-decoration: none;
         background-position: 100%;    
         letter-spacing: 0;
@@ -60,12 +68,19 @@
         cursor: pointer;
         user-select: none;
         width: 100%;
+        
         @media (max-width: $screen-md-max) {
           padding: 0.3rem 0.3rem;
         }
       }
+
+     
+       & > div:last-child .selecteddiv {          
+          border: none;
+       }
+      }   
       
-    }
+    
     //Custom Dropdown starts 
     .select-selected {
       color: $almost-black;
@@ -127,7 +142,7 @@
    }
   }
   .select-hear-about-us,
-  .select-block-unblock {
+  .select-block-unblock {    
     .cmp-form-options--drop-down{
     & label {
       transform: translateY(-10px) scale(0.8);
@@ -142,16 +157,67 @@
    
   }
   .select-hear-about-us {
-    @media (min-width: $screen-lg-max) {
-      width: 32.5rem !important; //default dropdown container with overrides so using important
+   
+    width: 100%;
+    @include respond-to-min($tablet) {
+      width: 20.5rem;
     }
+    @include respond-to-min($desktop) {
+      width: 31.5rem;
+      }
   }
+  .select-hear-about-us {
+    .selecteddiv {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    
+     
+    
+    #select-hear-about-us {
+    .select-items {
+    div {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    }
+    
+    .select-block-unblock {
+    .selecteddiv {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    
+     
+    
+    #select-block-unblock {
+    .select-items {
+    div {
+    &:hover {
+    color: $main-green;
+    }
+    }
+    }
+    }
   .select-block-unblock {
     @media (max-width: $screen-md-max) {
       margin-bottom: 4rem;
     }
     .cmp-form-options--drop-down {
-      width: 9rem;
+      
+      width: 100%;
+      @include respond-to-min($tablet) {
+        width: 5.5rem;
+      }
+      @include respond-to-min($desktop) {
+        width: 9rem;
+        }
     }
   }
   .select-service {
@@ -171,7 +237,14 @@
       }
     }
   }
-   
+  .select-items {
+		overflow-y: auto !important;
+		div {
+			width: 100% !important;
+			margin: 0 !important;
+			padding: 3px 8px !important;
+		}
+	}
   .account-number {
     @media (min-width: $screen-lg-max) {
       margin-bottom: 1rem;
@@ -221,10 +294,38 @@
   }
 
   .iti {
+    
+      border-color: $error-red;
+  
+      .icon-error,
+      .alert-icon {
+        display: block;
+        float: right !important;
+        svg {
+          fill: $pink;
+          width: 1.5rem;
+          height: 1.5rem;
+          //top: 2.5rem;
+          position: relative;
+          right: 1.2rem;
+          top: 0;
+          width: 1.5rem;
+          z-index: 2;
+        }
+      }
+    
+   
     input[type="tel"]:not(.browser-default) {
-      width: 32.5rem;
+      width: 20.5rem;
+      @include respond-to-min($tablet) {
+        width: 20.5rem;
+      }
+      @include respond-to-min($desktop) {
+        width: 31.5rem;
+        }
+     
       & ~ label {
-        left: 1.5rem;
+        left: 0;
       }
     }
     input[type="tel"]:focus {
@@ -241,13 +342,24 @@
     margin: 0;
   }
 
-  .iti .cmp-form-text__textput {
-    width: 31.5rem;
-  }
-  input#fullName {
-    @media (min-width: $screen-lg-max) {
-      width: 31.5rem;
+  .iti .cmp-form-text__textput {    
+    width: 100%;
+    @include respond-to-min($tablet) {
+      width: 20.5rem;
     }
+    @include respond-to-min($desktop) {
+      width: 31.5rem;
+      }
+  }
+  input#fullName, input#firstName, input#designation {
+   
+    width: 100%;
+      @include respond-to-min($tablet) {
+        width: 20.5rem;
+      }
+      @include respond-to-min($desktop) {
+        width: 31.5rem;
+        }
   }
 
   select {
@@ -293,6 +405,15 @@
       margin-bottom: 4rem;
     }
   }
+  form {
+    div.cmp-container {
+      position: relative;
+    }
+  }
+//   input#phone1+label {
+//     margin-top: 17px;
+// }
+
   .has-error {
     display: block;
     color: $error-red;
@@ -317,32 +438,7 @@
   }
 
   &.has-error-fields {
-    .alert-label {
-      color: $alert-red;
-      line-height: 1rem;
-      height: 1rem;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      position: absolute;
-      /* top: 3rem; */
-      text-align: left;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: $font14;
-      text-transform: capitalize;
-      font-weight: 400;
-    }
-
-    .alert-icon {
-      svg {
-        top: 2.3rem;
-        right: 0;
-        height: calculateRem(24px);
-        width: calculateRem(24px);
-      }
-    }
+    
 
     input {
       border-color: $error-red;
@@ -419,13 +515,13 @@
   input[type="text"]:not(.browser-default),
   input[type="url"]:not(.browser-default),
   textarea.cmp-form-text__textarea {
-    background-color: transparent;
+    background-color: transparent!important;
     border: none;
     border-bottom: 1px solid $grey4;
     border-radius: 0;
     color: $almost-black;
     outline: none;  
-    width: 84%;
+    width: 100%;
     margin: 0;
     padding: 0;
     -webkit-box-shadow: none;
@@ -639,30 +735,17 @@
     }
   }
 
-  .cmp-form-text__text .cmp-form-options--drop-down {
-    &  > label {
-    color: $almost-black;
-    font-weight: normal;
-    position: absolute;
-    top: 0;
-    left: calculateRem(12px);
-    line-height: calculateRem(24px);
-    font-size: $font20;
-    cursor: text;
-    -webkit-transition: color 0.2s ease-out, -webkit-transform 0.2s ease-out;
-    transition: color 0.2s ease-out, -webkit-transform 0.2s ease-out;
-    transition: transform 0.2s ease-out, color 0.2s ease-out;
-    transition: transform 0.2s ease-out, color 0.2s ease-out,
-      -webkit-transform 0.2s ease-out;
-    -webkit-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    text-align: initial;
-    -webkit-transform: translateY(10px);
-    transform: translateY(10px);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    z-index: 0;
+   .cmp-form-options--drop-down {
+    top:0;
+      & label {
+        transform: translateY(-10px) scale(0.8);
+        transform-origin: 0 0;
+        font-size: $font16;
+        z-index: 2;
+        top: -.5rem;
+        line-height: calculateRem(2px);
+  
+        
     @media (max-width: $screen-md-max) {
       font-size: $font14;
       line-height: 1.7rem;
@@ -798,11 +881,16 @@
   -inline .cmp-form-text label,
   -inline .cmp-form-options--drop-down label {
     position: absolute;
-    font-size: $font20;
+    font-size: $font14;
     font-weight: 400;
     color: $steel-grey;
     letter-spacing: 0;
     margin-top: 0.2rem;
+   
+    @include respond-to-min($desktop) {
+      font-size: $font20;
+      }
+    
   }
 
   .textarea.input-field > label {
@@ -813,6 +901,7 @@
   .cmp-form-text__text, .cmp-form-options--drop-down {
     position: relative;    
     margin-bottom: 1.25rem;
+    background-color: transparent;
     & > label {
       color: $steel-grey;
     }
@@ -976,32 +1065,14 @@
         width: 1.5rem;
         height: 1.5rem;
         //top: 2.5rem;
-        right: 0.5rem;
-        position: absolute;
-        top: 0.5rem;
+        position: relative;
+        right: 1.2rem;
+        top: 0;
+        width: 1.5rem;
         z-index: 2;
       }
     }
-    .alert-label {
-      color: $error-red;
-      line-height: 1rem;
-      height: 1rem;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      position: absolute;
-      top: 3rem;
-      text-align: left;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: $font14;
-      text-transform: capitalize;
-      font-weight: 400;
-      svg {
-        display: none;
-      }
-    }
+    
     input,
     textarea {
       border-bottom: 1px solid $error-red;
@@ -1009,6 +1080,10 @@
     }
     label {
       color: $error-red !important; //To use Important Form default AEM Control css overrides
+      transform: translateY(-10px) scale(.8);
+      transform-origin: 0 0;
+      font-size: 1rem;
+      z-index: 2;
     }
     .has-error {
       ~ label {
@@ -1130,7 +1205,7 @@
 }
 .has-error-fields {
   input {
-    border-bottom: 1px solid $error-red;
+    border-bottom: 1px solid $error-red !important;
   }
 }
 .teaser-form {
@@ -1151,4 +1226,10 @@
       line-height: calculateRem(52px);
     }
   }
+}
+.cws-form .has-error-fields textarea ~label {
+  transform: translateY(10px) scale(.8);
+}
+#justification + label {
+  padding-left: calculateRem(10px);
 }

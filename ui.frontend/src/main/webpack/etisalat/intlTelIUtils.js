@@ -129,49 +129,28 @@ import intlTelInput from 'intl-tel-input';
 
 
         }
-        var input = document.querySelector("#phone1")
-        if(input !== null)
-        {
-        var iti = intlTelInput(input, {
-            utilsScript: utilPath,
-            separateDialCode: false,
-            allowDropdown: false,
-            // if there is just a dial code in the input: remove it on blur
-            autoHideDialCode: true,
-            // add a placeholder in the input with an example number for the selected country
-            autoPlaceholder: false,
-
-        });
-
-        $('.iti__flag-container').addClass('hide');
-        var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
-        document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
-        document.querySelector('#phone1').parentElement.append(labelHtml);
-
-        var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
-        var errorMsg;
-        input.addEventListener('blur', function () {
-
-            if (input.value.trim()) {
-                $("#phone1").parent().parent().removeClass("has-error-fields");
-                $("#phone1").parent().parent().next(".alert-label").remove();
-                if (iti.isValidNumber()) {
-
-                } else {
-                    //input.classList.add("error");
-                    var errorCode = iti.getValidationError();
-                    errorMsg = errorMap[errorCode];
-
-                    if (errorMsg) {
-                        $("#phone1").parent().parent().addClass("has-error-fields");
-                        $("#phone1").parent().parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
-                    }
-
-                }
-            }
-        });
-    }
-
+        var contentString = "";
+        var alertIcon;
+        contentString = `<div class="alert-icon"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+         <use xlink:href="#error-icon-red">
+          <symbol id="error-icon-red" viewBox="0 0 64 64">
+            <defs></defs>
+            <g id="icon_error" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"  stroke-linejoin="round">
+                <g id="icon_error_red_64" stroke="#BE1218"> 
+                <g id="@-Self-Care-/-Icon-/-Outline-/-Error-/-red">
+                <path d="M59.9958503,31.5126196 C60.2643926,46.9726045 47.4634532,59.7271876 31.9999998,59.9956917 C16.5390919,60.2641958 4.27269159,47.9486362 4.00414931,32.4873787 C3.73560704,17.0273937 16.5378192,4.27281071 31.9999998,4.00430657 C47.4634532,3.73580243 59.727308,16.0564522 59.9958503,31.5126196 L59.9958503,31.5126196 Z" id="Line"></path>
+                <g id="Group-2" fill-rule="evenodd" transform="translate(20.000000, 20.000000)">
+                     <path d="M24,0 L0,24" id="Line"></path>
+                    <path d="M24,24 L0,0" id="Line"></path>
+                    </g>
+                </g>
+                </g>
+              </g>
+            </symbol>
+            </use>
+         </svg>
+        </div>`
+       
         var ele1 = document.querySelector("#country-listbox");
         if (ele1 !== null) {
             for (var i = 0; i < allCountries.length; i++) {
@@ -464,9 +443,26 @@ import intlTelInput from 'intl-tel-input';
             var regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
             return regex.test(value);
         }
+        function phonevalid(value) {
+            /* eslint-disable no-control-regex, max-len */
+            var regex = /^(050|054|055|056|052)/i;
+            return regex.test(value);
+        }
+         
+        function removeunWantedParsers() {
 
-
-
+            $('#phone1-error').parent().parent().find('.new').remove();
+            $('#error').parent().parent().find('.new').remove();
+            $('#fullName-error').parent().parent().find('.new').remove();      
+            $("#firstName-error").parent().parent().find('.new').remove();
+            $("#lastName-error").parent().parent().find('.new').remove();
+            
+           }
+           function autoCompleteoff() {
+            $("#fullName").attr("autocomplete", "off");
+            $("#url").attr("autocomplete", "off");
+            $("#emailAddress").attr("autocomplete", "off");
+           }
         var urlString;
         var urlParams = new URLSearchParams(window.location.search);
         var product = urlParams.get('productName');
@@ -478,100 +474,247 @@ import intlTelInput from 'intl-tel-input';
             }
         }
 
+        var input = document.querySelector("#phone1")
+        if(input !== null)
+        {
+        var iti = intlTelInput(input, {
+            utilsScript: utilPath,
+            separateDialCode: false,
+            allowDropdown: false,
+            // if there is just a dial code in the input: remove it on blur
+            autoHideDialCode: true,
+            // add a placeholder in the input with an example number for the selected country
+            autoPlaceholder: false,
 
+        });
 
-        $("#companyName").keyup(function () {
-            $("#companyName").parent().removeClass("has-error-fields");
-            $("#companyName").parent().next(".alert-label").remove();
+        $('.iti__flag-container').addClass('hide');
+        var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
+        document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
+        document.querySelector('#phone1').parentElement.append(labelHtml);
+
+        var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+        var errorMsg;
+        if($("#phone1")!== null) {
+            $("#phone1").parent().parent().parent().parent().find('.new').remove();
+        }
+        if($("#select-block-unblock") !==null){
+            $("#select-block-unblock").parent().parent().parent().find('.new').remove();
+        }
+      
+        
+       autoCompleteoff();
+
+        $(document).on("blur", "#phone1" , function (e) {
+            
+            if ($("#phone1").val().trim()) {
+                var inputVal = $('#phone1').val();
+                iti.telInput.value = inputVal;
+                if (iti.isValidNumber()) {
+                    $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                   
+			
+                } else {
+                    //input.classList.add("error");
+                    var errorCode = "";
+                    errorCode = iti.getValidationError();
+                    errorMsg = "";
+                    errorMsg = errorMap[errorCode];
+                    $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                    
+                    
+                    if (errorMsg) {
+                        $("#phone1").parent().parent().addClass("has-error-fields");
+                        //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
+                        alertIcon = "";
+                        alertIcon = contentString;
+
+                        if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
+                            $("#phone1").parent().find(".alert-label").remove();
+                            $("#phone1").parent().find(".alert-icon").remove(); 
+                            document.querySelector('#phone1').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
+                            //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
+                            $('#phone1').val(inputVal);
+                            
+                            $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
+                            $('#phone1-error').parent().parent().find('.new').remove();
+                          };
+                    }
+
+                }
+            }
+        });
+    }
+      
+        $(document).on("keyup", "#companyName", function (e) {
+            $("#companyName").parent().removeClass("has-error-fields"); // remove it 
+            $("#companyName").parent().next(".alert-label").remove();            
+            $("#companyName").parent().find(".alert-icon").remove(); 
             if (!realalphabetic($('#companyName').val())) {
-                $("#companyName").parent().addClass("has-error-fields");
+                $("#companyName").parent().addClass("has-error-fields").removeClass('is-valid');
                 $("#companyName").parent().after('<div id="companyName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-
+                alertIcon = "";
+                alertIcon = contentString;              
+                if ($("#companyName").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#companyName').parentElement.innerHTML += alertIcon;
+                    
+                  };
+                
+            } else{
+                $("#companyName").parent().addClass("is-valid").removeClass('has-error-fields');
             }
         });
-        $("#fullName").keyup(function () {
-            $("#fullName").parent().removeClass("has-error-fields");
-            $("#fullName").parent().next(".alert-label").remove();
-            if (!realalphabetic($('#fullName').val())) {
-                $("#fullName").parent().addClass("has-error-fields");
-                $("#fullName").parent().after('<div id="fullName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-            }
-        });
-
-        $("#url").keyup(function () {
-            $("#url").parent().removeClass("has-error-fields");
-            $("#url").parent().next(".alert-label").remove();
+      
+        $(document).on("blur", "#url", function (e) {
+            $("#url").parent().removeClass("has-error-fields"); // remove it 
+            $("#url").parent().next(".alert-label").remove();            
+            $("#url").parent().find(".alert-icon").remove(); 
+            var inputVal = $('#url').val();
             if (!urlvalid($('#url').val())) {
                 $("#url").parent().addClass("has-error-fields");
-                $("#url").parent().after('<div id="url-error" class="has-error alert-label">Please Enter A Valid URL.</div>');
+                $("#url").parent().after('<div id="url-error" class="has-error alert-label">Please Enter A Valid URL</div>');
+                alertIcon = "";
+                alertIcon = contentString;
+                if ($("#url").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#url').parentElement.innerHTML += alertIcon;
+                    $('#url').val(inputVal);
+                  };
+                
+            }else {
+                $("#url").parent().addClass("is-valid").removeClass("has-error-fields");;
+            }
+        });
+        $(document).on("keyup", "#fullName", function (e) {
+            $("#fullName").parent().removeClass("has-error-fields"); // remove it 
+            $("#fullName").parent().next(".alert-label").remove();            
+            $("#fullName").parent().find(".alert-icon").remove(); 
+
+            var inputVal = $('#fullName').val();
+            if (!realalphabetic($('#fullName').val())) {
+                
+                $("#fullName").parent().addClass("has-error-fields");
+                $("#fullName").parent().after('<div id="fullName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
+                alertIcon = "";
+                alertIcon = contentString;
+                if ($("#fullName").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#fullName').parentElement.innerHTML += alertIcon;
+                    $('#fullName').val(inputVal);
+                  };
+                  $('#fullName-error').parent().parent().find('.new').remove();
+            }else {
+                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");
             }
         });
 
-
-        $("#emailAddress").blur(function () {
-            $("#emailAddress").parent().removeClass("has-error-fields");
-            $("#emailAddress").parent().next(".alert-label").remove();
-            if (!email2($('#emailAddress').val())) {
-                $("#emailAddress").parent().addClass("has-error-fields");
-                $("#emailAddress").parent().after('<div id="email-error" class="has-error alert-label">Please enter a valid email address.</div>');
-            }
-
-        });
-        $("#firstName").keypress(function () {
+        $(document).on("keyup", "#firstName", function (e) {
             $("#firstName").parent().removeClass("has-error-fields"); // remove it 
-            $("#firstName").parent().next(".alert-label").remove();
+            $("#firstName").parent().next(".alert-label").remove();            
+            $("#firstName").parent().find(".alert-icon").remove(); 
+            var inputVal = $('#firstName').val();
             if (!realalphabetic($('#firstName').val())) {
-                $("#firstName").parent().addClass("has-error-fields");
+                $("#firstName").parent().addClass("has-error-fields").removeClass("is-valid");
                 $("#firstName").parent().after('<div id="firstName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
+                alertIcon = "";
+                alertIcon = contentString;
+                if ($("#firstName").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#firstName').parentElement.innerHTML += alertIcon;
+                    $('#firstName').val(inputVal);
+                  };
+                  $('#firstName-error').parent().parent().find('.new').remove();
+                
+            }else {
+                $("#firstName").parent().addClass("is-valid").removeClass("has-error-fields");;
             }
         });
-        $("#lastName").keypress(function () {
+        $(document).on("keyup", "#lastName", function (e) {
             $("#lastName").parent().removeClass("has-error-fields"); // remove it 
-            $("#lastName").parent().next(".alert-label").remove();
+            $("#lastName").parent().next(".alert-label").remove();            
+            $("#lastName").parent().find(".alert-icon").remove(); 
+            var inputVal = $('#lastName').val();
             if (!realalphabetic($('#lastName').val())) {
-                $("#lastName").parent().addClass("has-error-fields");
+                $("#lastName").parent().addClass("has-error-fields").removeClass("is-valid");
                 $("#lastName").parent().after('<div id="lastName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
+                alertIcon = "";
+                alertIcon = contentString;
+                if ($("#lastName").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#lastName').parentElement.innerHTML += alertIcon;
+                    $('#lastName').val(inputVal);
+                  };                  
+                  removeunWantedParsers();
+            }else {
+                $("#lastName").parent().addClass("is-valid").removeClass("has-error-fields");
             }
         });
-        $("#emailAddress").keypress(function () {
-            $("#emailAddress").parent().next(".alert-label").remove(); // remove it 
-            $("#emailAddress").parent().removeClass("has-error-fields");
+     
+        $(document).on("blur", "#emailAddress", function (e) {
+            $("#emailAddress").parent().removeClass("has-error-fields"); // remove it 
+            $("#emailAddress").parent().next(".alert-label").remove();            
+            $("#emailAddress").parent().find(".alert-icon").remove(); 
+            var inputVal = $('#emailAddress').val();
             if (!email2($('#emailAddress').val())) {
-                $("#emailAddress").parent().addClass("has-error-fields");
-                $("#emailAddress").parent().after('<div id="email-error" class="has-error alert-label">Please enter a valid email address.</div>');
+                $("#emailAddress").parent().addClass("has-error-fields").removeClass("is-valid");
+                $("#emailAddress").parent().after('<div id="emailAddress-error" class="has-error alert-label">Please enter a valid email address</div>');
+                alertIcon = "";
+                alertIcon = contentString;
+                if ($("#emailAddress").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
+                    $('#emailAddress').val(inputVal);
+                  }
+                  else{
+                    $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
+                }
+                removeunWantedParsers();
+                
+            }
+            else {
+                $("#emailAddress").parent().addClass("is-valid").removeClass("has-error-fields");;
+            }
+        });
+        $(document).on("keyup", "#justification", function (e) {
+            $("#justification").parent().removeClass("has-error-fields"); // remove it 
+            $("#justification").parent().next(".alert-label").remove();            
+            $("#justification").parent().find(".alert-icon").remove(); 
+            if($("#justification").value()) {
+                $("#justification").parent().removeClass("has-error-fields").addClass('is-valid');
+                $("#justification").parent().next(".alert-label").remove();
+                alertIcon = "";
+                alertIcon = contentString;
+                if ($("#justification").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#justification').parentElement.innerHTML += alertIcon;
+                  };
+                  $('#justification-error').parent().parent().find('.new').remove();
+                $("#justification").parent().addClass("is-valid").removeClass("has-error-fields");
+            }else{
+                $("#justification").parent().addClass("has-error-fields").removeClass('is-valid');
             }
         });
 
-        $("#companyName").keypress(function () {
-            $("#companyName").parent().next(".alert-label").remove(); // remove it 
-            $("#companyName").parent().removeClass("has-error-fields");
-        });
-        $("#description").keypress(function () {
-            $("#description").parent().next(".alert-label").remove(); // remove it 
-            $("#description").parent().removeClass("has-error-fields");
-        });
-        $("#select2-selection__rendered").keypress(function () {
-            $("#select2-selection__rendered").parent().next(".alert-label").remove(); // remove it 
-            $("#select2-selection__rendered").parent().removeClass("has-error-fields");
-        });
-        $("#url").keypress(function () {
-            $("#url").parent().next(".alert-label").remove(); // remove it 
-            $("#url").parent().removeClass("has-error-fields");
-        });
-        $("#justification").keypress(function () {
-            $("#justification").parent().removeClass("has-error-fields");
-            $("#justification").parent().next(".alert-label").remove();
-        });
-        $("#designation").keypress(function () {
-            $("#designation").parent().removeClass("has-error-fields");
-            $("#designation").parent().next(".alert-label").remove();
-        });
-        $("#select-hear-about-us").keypress(function () {
-            $("#select-hear-about-us").parent().removeClass("has-error-fields");
-            $("#select-hear-about-us").parent().next(".alert-label").remove();
-        });
+        $(document).on("keyup", "#designation", function (e) {        
+            if($("#designation").value()){
+                $("#designation").parent().removeClass("has-error-fields").addClass('is-valid');
+                $("#designation").parent().next(".alert-label").remove();
 
+            }
+            else{
+                $("#designation").parent().addClass("has-error-fields").removeClass('is-valid');
+                removeunWantedParsers();
+            }
+            
+        });
+        $(document).on("keyup", "#select-hear-about-us", function (e) {        
+            if($("#select-hear-about-us").value()){
+                $("#select-hear-about-us").parent().removeClass("has-error-fields").addClass('is-valid');
+                $("#select-hear-about-us").parent().next(".alert-label").remove();
+            }
+            else{
+                $("#select-hear-about-us").parent().addClass("has-error-fields").removeClass('is-valid');
+            }
+            
+        });
+     
+        
         function clearForm() {
+            alertIcon = "";
             $("#emailAddress").parent().next(".alert-label").remove(); // remove it        
             $("#fullName").parent().next(".alert-label").remove(); // remove it         
             $("#companyName").parent().next(".alert-label").remove();
@@ -596,41 +739,65 @@ import intlTelInput from 'intl-tel-input';
             $("#designation").parent().removeClass("has-error-fields");
             $("#select-hear-about-us").parent().removeClass("has-error-fields");
 
+            $("#fullName").parent().find(".alert-icon").remove(); // remove it   
+            $("#emailAddress").parent().find(".alert-icon").remove(); // remove it   
+            $("#companyName").parent().find(".alert-icon").remove(); 
+            $("#description").parent().find(".alert-icon").remove(); 
+            $("#firstName").parent().find(".alert-icon").remove(); 
+            $("#lastName").parent().find(".alert-icon").remove(); 
+            $("#url").parent().find(".alert-icon").remove(); 
+            $("#justification").parent().find(".alert-icon").remove(); 
+            $("#phone1").parent().find(".alert-icon").remove(); 
+            $("#designation").parent().find(".alert-icon").remove(); 
+
         }
 
         $('.cmp-form-button').on('click', function () {
-
-            var svg = '<svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#alert-icon"></use></svg>';
+            
             var div = "";
-            div = '<div id="fullName-error" class="has-error alert-label">This field is required.</div>'
+            div = '<div id="error" class="has-error alert-label">This field is required.</div>'
 
             clearForm();
 
 
             if (!$('#fullName').val()) {
-                $("#fullName").parent().addClass("has-error-fields");
+                $("#fullName").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#fullName").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#fullName").parent().after(div);
-
-                }
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#fullName') != null) {
+                        document.querySelector('#fullName').parentElement.innerHTML += alertIcon;
+                    }
+                    $('#error').parent().parent().find('.new').remove();
+                }   
                 $('#fullName').focus();
 
+            }else {
+                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");
             }
 
             if (!$('#emailAddress').val()) {
-                $("#emailAddress").parent().addClass("has-error-fields");
+                $("#emailAddress").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#emailAddress").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#emailAddress").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#emailAddress') != null) {
+                        document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
+                    }
 
+                }else {
+                    $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
                 }
 
                 $('#emailAddress').focus();
 
             }
             if (!$('#companyName').val()) {
-                $("#companyName").parent().addClass("has-error-fields");
+                $("#companyName").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#companyName").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#companyName").parent().after(div);
@@ -638,21 +805,31 @@ import intlTelInput from 'intl-tel-input';
                 }
                 $('#companyName').focus();
 
+            } else {
+                $("#companyName").parent().removeClass("has-error-fields").addClass("is-valid");
             }
             if (!$('#description').val()) {
                 if ($("#description").parent().next(".alert-label").length == 0) // only add if not added
                 {
-                    $("#description").parent().addClass("has-error-fields");
+                    $("#description").parent().removeClass("is-valid").addClass("has-error-fields");
                     $("#description").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#description') != null) {
+                        document.querySelector('#description').parentElement.innerHTML += alertIcon;
+                    }
                 }
 
                 $('#description').focus();
 
+            } else {
+                $("#description").parent().removeClass("has-error-fields").addClass("is-valid");
             }
+
             if (!$('#select2-selection__rendered').val()) {
                 if ($("#select2-selection__rendered").parent().next(".alert-label").length == 0) // only add if not added
                 {
-                    $("#select2-selection__rendered").parent().addClass("has-error-fields");
+                    $("#select2-selection__rendered").parent().removeClass("is-valid").addClass("has-error-fields");
                     $("#select2-selection__rendered").parent().after(div);
 
                 }
@@ -660,63 +837,112 @@ import intlTelInput from 'intl-tel-input';
                 $('#select2-selection__rendered').focus();
 
             }
+            
             if (!$('#firstName').val()) {
-                $("#firstName").parent().addClass("has-error-fields");
+                $("#firstName").parent().removeClass("has-error-fields").addClass("has-error-fields");
                 if ($("#firstName").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#firstName").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#firstName') != null) {
+                        document.querySelector('#firstName').parentElement.innerHTML += alertIcon;
+                    }
 
                 }
                 $('#firstName').focus();
 
+            }else {
+                $("#firstName").parent().removeClass("has-error-fields").addClass("is-valid");
             }
             if (!$('#lastName').val()) {
-                $("#lastName").parent().addClass("has-error-fields");
+                $("#lastName").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#lastName").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#lastName").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#lastName') != null) {
+                        document.querySelector('#lastName').parentElement.innerHTML += alertIcon;
+                    }
 
                 }
                 $('#lastName').focus();
 
+            }else {
+                $("#lastName").parent().removeClass("has-error-fields").addClass("is-valid");
             }
+
             if (!$('#url').val()) {
-                $("#url").parent().addClass("has-error-fields");
+                $("#url").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#url").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#url").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#url') != null) {
+                        document.querySelector('#url').parentElement.innerHTML += alertIcon;
+                    }
 
                 }
                 $('#url').focus();
 
             }
+            else {
+                $("#url").parent().removeClass("has-error-fields").addClass("is-valid");
+            }
             if (!$('#justification').val()) {
-                $("#justification").parent().addClass("has-error-fields");
+                $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#justification").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#justification') != null) {
+                        document.querySelector('#justification').parentElement.innerHTML += alertIcon;
+                    }
 
                 }
                 $('#justification').focus();
 
+            } else {
+                $("#justification").parent().removeClass("has-error-fields").addClass("is-valid");
             }
             if (!$('#phone1').val()) {
-                //$("#phone1").parent().parent().addClass("has-error-fields");
-                if ($("#phone1").parent().next(".alert-label").length == 0) // only add if not added
-                {
-                    $("#phone1").parent().append(div);
+                
+                $("#phone1").parent().parent().addClass("has-error-fields");
+                        //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
+                        alertIcon = "";
+                        alertIcon = contentString;
+                        $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                        if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
+                            $("#phone1").parent().find(".alert-label").remove();
+                            $("#phone1").parent().find(".alert-icon").remove(); 
+                            document.querySelector('#phone1').parentElement.innerHTML += div;                            
+                            $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
+                           
+                            $('#phone1-error').parent().parent().find('.new').remove();
+                          };
+                        $('#phone1').focus();
 
-                }
-                $('#phone1').focus();
-
-            }
-
+                    }
+                    else {                      
+                        $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                    }
             if (!$('#designation').val()) {
                 $("#designation").parent().addClass("has-error-fields");
                 if ($("#designation").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#designation").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#designation') != null) {
+                        document.querySelector('#designation').parentElement.innerHTML += alertIcon;
+                        $("#designation").parent().removeClass("has-error-fields").addClass("is-valid");
+                    }
 
+                } else{
+                    $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                 }
                 $('#designation').focus();
 
@@ -732,7 +958,7 @@ import intlTelInput from 'intl-tel-input';
                 $('#select-hear-about-us').focus();
 
             }
-
+            removeunWantedParsers();
 
         });
 
@@ -789,32 +1015,6 @@ import intlTelInput from 'intl-tel-input';
 
 
 
-        // function _classCallCheck(instance, Constructor) {
-        //     if (!(instance instanceof Constructor)) {
-        //         throw new TypeError("Cannot call a class as a function");
-        //     }
-        // }
-        // function _defineProperties(target, props) {
-        //     for (var i = 0; i < props.length; i++) {
-        //         var descriptor = props[i];
-        //         descriptor.enumerable = descriptor.enumerable || false;
-        //         descriptor.configurable = true;
-        //         if ("value" in descriptor) descriptor.writable = true;
-        //         Object.defineProperty(target, descriptor.key, descriptor);
-        //     }
-        // }
-        // function _createClass(Constructor, protoProps, staticProps) {
-        //     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-        //     if (staticProps) _defineProperties(Constructor, staticProps);
-        //     return Constructor;
-        // }
-        // window.intlTelInputGlobals = {
-        //     getInstance: function getInstance(input) {
-        //         var id = input.getAttribute("data-intl-tel-input-id");
-        //         return window.intlTelInputGlobals.instances[id];
-        //     },
-        //     instances: {}
-        // };
         // these vars persist through all instances of the plugin
         var id = 0;
         var defaults = {

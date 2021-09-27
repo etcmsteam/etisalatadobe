@@ -27,6 +27,11 @@ public final class PageConstants {
 	 */
 	public static final String SLASH = "/";
 	
+	/**
+	 * Constant for JCR_CONTENT Image.
+	 */
+	public static final String JCR_CONTENT_IMAGE = "jcr:content/image";
+		
 	
 	/**
 	 * private constructor to prevent instantiation of class.

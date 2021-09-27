@@ -1,4 +1,4 @@
-<div class="container_location">
+<div data-sly-test="${!properties.contactMap}" class="container_location">
   <div class="locateus-view-tabs wrap store-locator-wrap">
 
     <div class="locateus-filters">
@@ -171,3 +171,7 @@
     </div>
   </div>
 </div>
+
+<sly data-sly-test="${properties.contactMap}" data-sly-use.contactMapTemplate="/apps/etisalat/components/locateus/contactus.html"
+      data-sly-call="${contactMapTemplate.contactmap @ properties=properties}">  
+ </sly>
