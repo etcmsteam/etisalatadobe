@@ -18,7 +18,9 @@
 input:not([type]):focus~label {
   @extend %focus;
 }
-
+input#phone1:focus~label {
+	@extend %focus;
+  }
 // .cmp-form-text:focus-within+label {
 // 	color: $main-green;
 // 	font-size: $font16;
@@ -62,6 +64,7 @@ input:not([type]):focus~label {
 		text-align: center;
 	}
 	.btn-disabled {
+		border:none;
 		&:hover {
 			color: $steel-grey;
 			background-color: $cold-gray-2;
@@ -78,7 +81,9 @@ input:not([type]):focus~label {
 		text-align: center;
 		padding: 0 0.5rem;
 		border-width: calculateRem(1px);
-		width: 52%;
+		width: calculateRem(327.33px);
+		border-radius: 4px;
+		border-width: 1px;
 		outline: 0;
 		font-weight: 700;
 		position: relative;
@@ -88,6 +93,9 @@ input:not([type]):focus~label {
 		font-size: $font14;
 		line-height: 3rem;
 		letter-spacing: 0.14285714em;
+		@include respond-to-min($desktop) {
+			width: calculateRem(375.99px);
+			}
 		&:active {
 			box-shadow: none !important;
 			color: $main-green;
@@ -100,7 +108,13 @@ input:not([type]):focus~label {
 			background-color: $green-btn;
 			border-color: $green-btn;
 		}
-	}
+		&:hover {
+			box-shadow: none!important;
+			color:$white;
+			background-color: $green-btn;
+			border-color:$green-btn;
+				}
+	     }
 }
 
 .btn-validate {
@@ -232,6 +246,9 @@ input:not([type]):focus~label {
 	}
 }
 
+input:-internal-autofill-selected  {
+	background-color: $white!important;
+}
 *[lang="ar"] *[dir="rtl"] {
 	.cmp-form {
 		&.wst-form {
@@ -325,8 +342,11 @@ button#disableBtn.btn-disabled.cmp-form-button {
 	border-width: 1px;
 	outline: 0;
 	font-weight: 700;
-	width: 32%;
+	width: calculateRem(327.33px);
 	height: 3rem;
+	@include respond-to-min($desktop) {
+		width: calculateRem(375.99px);
+		}
 }
 
 button#disableBtn.cmp-form-button {
@@ -341,8 +361,11 @@ button#disableBtn.cmp-form-button {
 	border-width: 1px;
 	outline: 0;
 	font-weight: 700;
-	width: 32%;
+	width: calculateRem(327.33px);
 	height: 3rem;
+	@include respond-to-min($desktop) {
+		width: calculateRem(375.99px);
+		}
 }
 
 .has-error-fields input {
