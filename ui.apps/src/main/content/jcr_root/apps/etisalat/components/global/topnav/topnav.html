@@ -19,10 +19,39 @@
                <sly data-sly-use.iconsObject="${resource.path}"
                   data-sly-list.itemss="${iconsObject.listChildren}">
                   <ul data-sly-test="${itemss.name == 'linkswithicons'}" class="links">
-                    <li data-sly-repeat.itemList="${itemss.listChildren}" class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
-                        <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">
-                        <span class="text">${itemList.navigationTitle}</span><img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/></a>                         
-                    </li>
+                    <sly data-sly-list.itemList="${itemss.listChildren}" class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
+					   <li data-sly-test="${!itemList.openmodalwindow}">
+						  <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">
+						  <span class="text">${itemList.navigationTitle}</span><img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/></a>                         
+					   </li>
+					    <li data-sly-test="${itemList.openmodalwindow}">
+						  <a data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="btn-modal"
+							 title="${itemList.navigationTitle}">
+							<span class="text">${itemList.navigationTitle}</span>
+                            <img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/>
+						  </a>
+                         </li>
+					   <div  data-sly-test="${itemList.openmodalwindow}" >                        
+						  <div id="${resource.name}" class="nv-modal fade  black-overlay-modal">
+							<div class="nv-modal-dialog">
+							  <div class="nv-modal-content nv-py-5">
+								<div class="container">
+								  <div class="modal-popup">
+									<sly
+										data-sly-use.closebuttonTemplate="/apps/etisalat/components/button/closebutton.html"
+										data-sly-call="${closebuttonTemplate.close}">
+									</sly>
+									<sly
+										data-sly-resource="${itemList @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
+									</sly>
+								  </div>
+								</div>
+							  </div>
+							</div>
+						  </div>
+
+						</div>
+					</sly>                   
                     <li data-sly-test="${topnavModel.languageSize > 1}">
                         <ul>
                          <li class="language" data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page">
