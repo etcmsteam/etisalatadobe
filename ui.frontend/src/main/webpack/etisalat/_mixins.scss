@@ -2,6 +2,7 @@
     background: $white;
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     border-radius: 4px;
+    
   }
 @mixin  arrow-after-link{
     border: solid $arrow-border;
@@ -17,6 +18,21 @@
     width: 0.45em;
 }
 
+@mixin spacer-light-gray{
+    background-color: $light-gray;
+    opacity: .30;
+}
+@mixin spacer-color-sand-white{
+    .sand-white {
+        background-color: $sand-white-50;
+      }
+}
+
+@mixin spacer-color-white{
+.white {
+    background-color: $white;
+  }
+}
 
 @mixin font-family-lato{
     font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
@@ -107,12 +123,6 @@ $screen-xxl-max: 1201px;
     margin-top: 15px;
  }
 
-@mixin box-shadow {
-    background: $white;
-    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-    border-radius: 4px;
-  }
-
 @mixin  link-arrow{
     border: solid $arrow-border;
     border-width: 0 1px 1px 0;
@@ -174,6 +184,10 @@ $screen-xxl-max: 1201px;
     border-color:$darkest-night;
     outline: 0;
     font-weight: 700;
+    line-height: 3rem;
+    cursor: pointer;
+    font-size:$font14;
+    @include font-family-lato;
 }
  @mixin secondary-button{
     text-transform: uppercase;
@@ -188,6 +202,9 @@ $screen-xxl-max: 1201px;
     line-height: 3rem;
     letter-spacing: .14285714em;
 	display:inline-block;
+    cursor: pointer;
+    font-size:$font14;
+    @include font-family-lato;
 }
 
 @mixin truncate($truncation-boundary) {
@@ -314,3 +331,11 @@ $screen-xxl-max: 1201px;
 //     width: toRem(400);
 //     height: toRem(400);
 // }
+
+@mixin background-icon() {
+    background-size: 20px 20px;
+	background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
