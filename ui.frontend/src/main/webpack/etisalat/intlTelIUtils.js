@@ -493,7 +493,9 @@ import intlTelInput from 'intl-tel-input';
         document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
         document.querySelector('#phone1').parentElement.append(labelHtml);
 
-        var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+        //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+        var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
+        
         var errorMsg;
         if($("#phone1")!== null) {
             $("#phone1").parent().parent().parent().parent().find('.new').remove();
@@ -515,9 +517,10 @@ import intlTelInput from 'intl-tel-input';
             if ($("#phone1").val().trim() ) {
                 var inputVal = $('#phone1').val();
                 iti.telInput.value = inputVal;
-                if (iti.isValidNumber()) {
+                if (phonevalid(inputVal) && inputVal.length == 10 ) {
                     $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
-                   
+                    $("#phone1").parent().find(".alert-label").remove();
+                    $("#phone1").parent().find(".alert-icon").remove(); 
 			
                 } else {
                    
@@ -526,7 +529,7 @@ import intlTelInput from 'intl-tel-input';
                     errorMsg = "";
                     errorMsg = errorMap[errorCode];
                     $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
-                    
+                   
                     
                     if (errorMsg) {
                         $("#phone1").parent().parent().addClass("has-error-fields");
