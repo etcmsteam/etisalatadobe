@@ -34,6 +34,12 @@
 										<ul data-sly-test="${properties.productDesc}">${properties.productDesc @ context="html"}
 										</ul>
 									</li>
+									<li data-sly-test="${properties.channelLabel && properties.channelLink}">
+                                        <div class="view-channel-list">
+                                            <a href=">${properties.channelLink}" target="_new">                                         
+                                             <i class="channel-list-icon"></i>${properties.channelLabel} </a>                                            
+                                            </div>
+                                    </li>
 								</ul>
 
  <a data-label="${resource.name}" class="btn-text btn-green  learn-more btn-modal "
@@ -42,15 +48,6 @@
         </a>
 
 <span class="${properties.offerText ? 'commitment--orange' : 'commitment'}"  data-sly-test="${properties.commitmentText}">${properties.commitmentText}</span>
-
-<div class="view-channel-list" data-sly-test="${properties.channelLabel && properties.channelLink}">
-
-<a href=">${properties.channelLink}" target="_new">
-
- <i class="channel-list-icon"></i>${properties.channelLabel} </a>
-
-</div>
-
 
 								<div class="detail-info-wrap detail-info-wrap-pricetag">
 									<div class="detail-price-new">
