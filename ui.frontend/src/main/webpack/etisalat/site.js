@@ -19,6 +19,14 @@ $(document).ready(function () {
         {
             $(".beigebg-container").find('.accordion-top-view').addClass('displaynone');
         }
+    //ETSL -196
+    if ($(".showNoContract").length > 0){ 
+        $("a.showNoContract").click(function(event) {
+            event.preventDefault();
+            $(this).hide();
+            $('.hide-product--grid').show();
+        });
+    }
 });
 
 
