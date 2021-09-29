@@ -1,85 +1,121 @@
 <template data-sly-template.CommonTheme="${ @ properties}">
 
 
-<sly data-sly-test.fileReference="${properties.fileReference}" />
+	<sly data-sly-test.fileReference="${properties.fileReference}" />
 	<div class="read-more-${properties.offerText ? 'red' : 'green'}-btn_bg">
 
 
-		<div class="tile-table plan-card offer ">
+		<div
+			class="tile-table ${properties.fileReference ? 'product-home-card' : 'plan-card'} offer ">
 			<div class="tile-card effect__click">
 				<div class="tile">
 					<div class="tile-card__front">
 						<div class="tiles-box content body-standard">
-							<div class="tiles-box-title">
 
-
-    <div class="background-with-color">
-      <div class="cover"
-           data-sly-resource="${carousel @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
-    </div>
+							<div class="tiles-box-title"
+								data-sly-test="${!properties.fileReference}">
 								<div data-sly-test="${properties.offerText}"
 									class="special-offer">${properties.offerText}</div>
 								<div class="catagory" data-sly-test="${properties.productTitle}">${properties.productTitle}</div>
 								<h2 data-sly-test="${properties.productSubTitle}">${properties.productSubTitle}</h2>
 							</div>
+
+							<div class="product" data-sly-test="${properties.fileReference}">
+								<sly
+									data-sly-resource="${carousel @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" />
+								<div class="tiles-box-title">
+									<div data-sly-test="${properties.offerText}"
+										class="special-offer">${properties.offerText}</div>
+									<div class="catagory"
+										data-sly-test="${properties.productTitle}">${properties.productTitle}</div>
+									<h2 data-sly-test="${properties.productSubTitle}">${properties.productSubTitle}</h2>
+								</div>
+							</div>
+
 							<div class="tiles-box-list">
 								<ul class="featureList">
 									<li>
-										<ul data-sly-test="${properties.productDesc}">${properties.productDesc @ context="html"}
+										<ul data-sly-test="${properties.productDesc}">${properties.productDesc
+											@ context="html"}
 										</ul>
 									</li>
 								</ul>
 
- <a data-label="${resource.name}" class="btn-text btn-green  learn-more btn-modal "
-           title="${properties.seeAllLabel}" data-sly-test="${properties.seeAllLabel}">
-          <span class="moreg">${properties.seeAllLabel}</span>
-        </a>
-
-<span class="${properties.offerText ? 'commitment--orange' : 'commitment'}"  data-sly-test="${properties.commitmentText}">${properties.commitmentText}</span>
+								<a data-label="${resource.name}"
+									class="btn-text btn-green  learn-more btn-modal "
+									title="${properties.seeAllLabel}"
+									data-sly-test="${properties.seeAllLabel}"> <span
+									class="moreg">${properties.seeAllLabel}</span>
+								</a> <span
+									class="${properties.offerText ? 'commitment--orange' : 'commitment'}"
+									data-sly-test="${properties.commitmentText}">${properties.commitmentText}</span>
 
 
 								<div class="detail-info-wrap detail-info-wrap-pricetag">
 									<div class="detail-price-new">
-										<div class="main-part" data-sly-test="${properties.productPrice}">
+										<div class="main-part"
+											data-sly-test="${properties.productPrice}">
 											<div dir="ltr" class="from"></div>
-											<div dir="ltr" class="price" >
+											<div dir="ltr" class="price">
 												${properties.productPrice}</div>
-											<small>${properties.productCurrency}/ month</small>
+											<small>${properties.productCurrency}</small>
 										</div>
 									</div>
 								</div>
 
-                                <p class="bottom-text"><span class="${properties.offerText ? 'old-price--orange' : 'old-price'}" data-sly-test="${properties.productOldPrice}">was  <span class="strikethrough">${properties.productOldPrice} ${properties.productCurrency}</span></span>
-								${properties.vatInclude}</p>
-								
+								<p class="bottom-text">
+									<span
+										class="${properties.offerText ? 'old-price--orange' : 'old-price'}"
+										data-sly-test="${properties.productOldPrice}">was <span
+										class="strikethrough">${properties.productOldPrice}
+											${properties.productCurrency}</span></span> ${properties.vatInclude}
+								</p>
 
 
 
- <a data-label="${resource.name}" class="btn-text btn-green  learn-more btn-modal text-center"
-           title="${properties.moreInfoLabel}" data-sly-test="${properties.moreInfoLabel && !properties.seeAllLabel}">
-          <span class="moreg">${properties.moreInfoLabel}</span>
-        </a>
-        <div class="offers-popup-wrapper">
-          <div id="${resource.name}" class="nv-modal fade  ${properties.modalBehavior}-modal">
+
+								<a data-label="${resource.name}"
+									class="btn-text btn-green  learn-more btn-modal text-center"
+									title="${properties.moreInfoLabel}"
+									data-sly-test="${properties.moreInfoLabel && !properties.seeAllLabel}">
+									<span class="moreg">${properties.moreInfoLabel}</span>
+								</a>
+								<div class="offers-popup-wrapper">
+									<div id="${resource.name}"
+										class="nv-modal fade  ${properties.modalBehavior}-modal">
 
 
-            <div class="nv-modal-dialog">
-              <div class="nv-modal-content nv-py-5">
-                <div class="container">
-                  <div class="modal-popup">
+										<div class="nv-modal-dialog">
+											<div class="nv-modal-content nv-py-5">
+												<div class="container">
+													<div class="modal-popup">
 
-					<span class="nv-modal-close">
-<!-- svg to be applied by css on nv-modal-close class -->
+														<span class="nv-modal-close"> <!-- svg to be applied by css on nv-modal-close class -->
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 22 22" version="1.1" class="replaced-svg">
-                                <g id="eLife-Flows---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-                                    <g id="dd_eLifeConfig-1.0.7" transform="translate(-1297.000000, -629.000000)" stroke="#242424">
-                                        <g id="verifyEligibility" transform="translate(0.000000, 576.000000)">
-                                            <g id="title" transform="translate(609.000000, 40.000000)">
-                                                <g id="closeIcon" transform="translate(675.000000, 0.000000)">
-                                                    <g id="Close-icon-Icon/Outline-1pt/close/close_black" transform="translate(12.000000, 12.000000)">
-                                                        <line x1="22.5" y1="1.5" x2="1.5" y2="22.5" id="Line"></line>
-                                                        <line x1="22.5" y1="22.5" x2="1.5" y2="1.5" id="Line"></line>
+															<svg xmlns="http://www.w3.org/2000/svg"
+																xmlns:xlink="http://www.w3.org/1999/xlink" width="22px"
+																height="22px" viewBox="0 0 22 22" version="1.1"
+																class="replaced-svg">
+                                <g id="eLife-Flows---Desktop"
+																	stroke="none" stroke-width="1" fill="none"
+																	fill-rule="evenodd" stroke-linecap="round"
+																	stroke-linejoin="round">
+                                    <g id="dd_eLifeConfig-1.0.7"
+																	transform="translate(-1297.000000, -629.000000)"
+																	stroke="#242424">
+                                        <g id="verifyEligibility"
+																	transform="translate(0.000000, 576.000000)">
+                                            <g id="title"
+																	transform="translate(609.000000, 40.000000)">
+                                                <g id="closeIcon"
+																	transform="translate(675.000000, 0.000000)">
+                                                    <g
+																	id="Close-icon-Icon/Outline-1pt/close/close_black"
+																	transform="translate(12.000000, 12.000000)">
+                                                        <line x1="22.5"
+																	y1="1.5" x2="1.5" y2="22.5" id="Line"></line>
+                                                        <line x1="22.5"
+																	y1="22.5" x2="1.5" y2="1.5" id="Line"></line>
                                                     </g>
                                                 </g>
                                             </g>
@@ -87,18 +123,18 @@
                                     </g>
                                 </g>
                             </svg>
-                        </span>
-                    <sly
-                        data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
-                    </sly>
+														</span>
+														<sly
+															data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
+														</sly>
 
 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
 
 
