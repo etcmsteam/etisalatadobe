@@ -8,7 +8,7 @@
         padding: 1.3rem;
 
         @include respond-to-min($desktop) {
-            padding: 1.5rem;
+            padding: 3.5rem 2rem;
             width: 50%;
         }
 
@@ -23,9 +23,13 @@
             letter-spacing: 4px;
             line-height: 12px;
             display: inline-block;
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
             text-transform: uppercase;
             color: $white;
+
+            @include respond-to-max($tablet) {
+               font-size: $font10;
+            }
         }
 
         .cmp-teaser__title {
@@ -36,7 +40,7 @@
         }
 
         .cmp-teaser__description {
-            font-size: 1rem;
+            font-size: $font16;
             line-height: 26px;
             color: $white;
             @include font-family-lato;
@@ -44,24 +48,31 @@
             h1,
             h2,
             h3,
-            h4,
             h5,
             h5,
             h6 {
                 color: $white;
             }
+            h4 {
+                color: $white;
+                margin-bottom: 1.4rem;
+                margin-top: 0.625rem;
+            }
 
             ul {
-                padding: 2rem 2rem 0rem;
+                padding: 2rem 0 1rem 2rem;
 
                 @include respond-to-min($desktop) {
-                    padding: 1.4rem 0 1rem;
+                    padding: 1.4rem 0 1rem 2rem;
                 }
 
+                @include respond-to-max($tablet) {
+                    padding: 1rem 0 1rem 2rem;
+                 }
 
                 li {
                     color: $white;
-                    font-size: 1rem;
+                    font-size: $font16;
                     line-height: 26px;
                     color: $white;
                     @include font-family-lato;
@@ -83,7 +94,7 @@
 
         .cmp-teaser__action-container {
             a {
-                margin-top: 20px;
+                // margin-top: 20px;
                 display: table;
                 margin-bottom: 5px;
                 letter-spacing: 3px;
@@ -97,12 +108,12 @@
                 font-weight: 500;
 
                 @include respond-to-max($phone) {
-                    width: 100%;
+                    // width: 100%;
                 }
 
                 border: 1px solid $white;
                 border-radius: 4px;
-                padding: .5rem 2rem;
+                padding: .8rem 2rem;
                 text-align: center;
                 width: auto;
             }
