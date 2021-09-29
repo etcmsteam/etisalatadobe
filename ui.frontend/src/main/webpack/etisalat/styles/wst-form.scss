@@ -296,6 +296,16 @@
     }
   }
 
+  .desc-text {
+    .alert-icon {
+      svg {
+        right: 2rem;
+        top: .5rem;
+      }
+    }
+  }
+ 
+
   .iti {
     margin-top: 1rem;
       border-color: $error-red;
@@ -1172,7 +1182,30 @@
     color: $cold-gray-2;
   }
 }
-
+.smb-event {
+  .contact-number{
+  .alert-icon {
+    svg {
+      position: absolute!important;
+      top: 1rem!important;
+      right: -2rem!important;
+      
+      @include respond-to-min($desktop) {
+        right: 1.8rem!important;
+        }
+    }
+  }
+  input[type="tel"]:not(.browser-default) {
+    width: 19.5rem!important;
+    @include respond-to-min($tablet) {
+      width: 18rem!important;
+    }
+    @include respond-to-min($desktop) {
+      width: 30.8rem !important;
+      }
+  }
+}
+}
 .new_form {
   .hideBusiness {
     visibility: hidden;
@@ -1228,9 +1261,11 @@
     }
   }
 }
+
 .cws-form .has-error-fields textarea ~label {
   transform: translateY(10px) scale(.8);
 }
+
 #justification + label {
   padding-left: calculateRem(10px);
 }
