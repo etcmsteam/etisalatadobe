@@ -5,10 +5,9 @@ $(function() {
 	    $(elm).addClass(className);
 		const pageLimit = $(elm).attr('data-page-limit');
 		$('td', elm).each(function(index) {
-			const self = $(this);
 			const columnIndex = $(this).parent().find('td').index(this);
 			const th = $('th', elm)[columnIndex];
-			self.attr("data-label", $(th).text())
+			$(this).attr("data-label", $(th).text())
 		});
 		$('tr', elm).each(function(index) {
 			$(this).attr("role", "row")
@@ -25,7 +24,7 @@ $(function() {
 
 	function initializeTable(component) {
 		$(component).each((index, elm) => {
-		const className = $(elm).attr('data-class');
+		    const className = $(elm).attr('data-class');
 		    const table = $('table', elm)[0];
 			initializeDataTable(table,className);
 		});
