@@ -15,7 +15,7 @@
 								<div data-sly-test="${properties.offerText}"
 									class="special-offer">${properties.offerText}</div>
 								<div class="catagory" data-sly-test="${properties.productTitle}">${properties.productTitle}</div>
-								<h2 data-sly-test="${properties.productSubTitle}">${properties.productSubTitle}</h2>
+								<h2 data-sly-test="${properties.productSubTitle}"><span class="strikethrough" data-sly-test="${properties.wasproductSubTitle}">${properties.wasproductSubTitle}</span>${properties.productSubTitle}</h2>                              
 							</div>
 							
 							<div class="product" data-sly-test="${properties.fileReference}">
@@ -36,7 +36,7 @@
 									</li>
 									<li data-sly-test="${properties.channelLabel && properties.channelLink}">
                                         <div class="view-channel-list">
-                                            <a href=">${properties.channelLink}" target="_new">                                         
+                                            <a href="${properties.channelLink @ extension = 'html'}" target="_new">                                         
                                              <i class="channel-list-icon"></i>${properties.channelLabel} </a>                                            
                                             </div>
                                     </li>
@@ -119,7 +119,7 @@
 
 							</div>
 							<div class="smile-points">
-								<span>
+								<span data-sly-test="${properties.contract}">
 									<center>${properties.contract}</center>
 								</span>
 							</div>
@@ -128,11 +128,9 @@
 								data-extra-container=".extra-options-02">
 								<a
 									href="https://www.etisalat.ae/b2bportal/login.html?next=mobile-plans-discovery&amp;ratePlanId=PKBXBFO1BP0000002RD&amp;productId=prod_PKBXBFO1BP0000002RD&amp;selectedFlow=Mobile%20Plans&amp;displayName=Business%20First%20+%20National%20110%20&amp;showRequestCallBack=true&amp;product=7&amp;subject=Mobile_BFP_Online-Exclusive-National110&amp;productName=Business_First_Plus_National_110_Exclusive_Online_Offer"
-									class="cms-button read-more-link" title="National 110"> <span>
+									class="cms-button read-more-link" title="National 110"> <span data-sly-test="${properties.buyNowButton}">
 										${properties.buyNowButton}</span>
-								</a> <a href="" class="b2b-button read-more-link"
-									title="National 110"> <span>Buy Now</span>
-								</a>
+								</a> 
 							</div>
 						</div>
 					</div>
