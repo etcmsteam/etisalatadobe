@@ -1,9 +1,5 @@
 
- (function(define, window) {
-  
-      "use strict";
-  
-      return function() {
+   
   
         var getLink = window.location.href;
         var linkInput = document.getElementById("linkText");
@@ -51,7 +47,3 @@
             shareLink('ShareOnTwitter','Hey everyone, come & see this link!','https://twitter.com/intent/tweet?url=',e.target)
           });
   
-  
-      };
-   
-  })(define, window);
