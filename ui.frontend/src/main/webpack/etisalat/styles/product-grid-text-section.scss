@@ -1548,6 +1548,7 @@ table {
 		line-height: 1.43;
 		padding: 1px .5rem;
 		display: block;
+		width: fit-content;
 		@include respond-to-min($screen-lg-max) {
 			font-size: $font14;
 		}
@@ -2519,6 +2520,35 @@ ul.featureList li strong {
     .productdetail.hide-product--grid {
 	  display: none;
 	}
+	.bg-cards {
+		.row-tiles-table {
+			#product {
+				display: block;
+				@include respond-to-min($tablet) {
+					display: flex;
+				}
+				.swiper-slide {
+					height: auto;
+					.producttile {
+						height: 100%;
+					    > div {
+							height: 100%;
+							.read-more-green-btn_bg,.read-more-red-btn_bg,.tile-table,.tile-card,.tile,.tile-card__front,.tiles-box {
+								height: 100%;
+							}
+							.tiles-box-list {
+								height: auto;
+								flex: 2 2 auto;
+								.featureList {
+									height: auto;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	.productdetail{
 		.tile {
 			.tile-card__front {
@@ -2537,5 +2567,60 @@ ul.featureList li strong {
 				}
 			}
 		}
+	}
+	.producttile {
+		.tile-table .tile-card .tiles-box{
+			.tiles-box-title {
+				padding: 1rem;
+				height: 8.75rem;
+				.catagory {
+					margin-bottom: .5rem;
+					@include font-family-lato;
+					line-height: .75rem;
+					opacity: .8;
+				}
+				.btn-text.btn-green::before {
+					border:none;
+				}
+				
+			}
+			.tiles-box-list {
+				padding: 1rem;
+				a.btn-text.btn-green.learn-more.btn-modal {
+					margin-bottom: 0px;
+					margin-top: .375px;
+					&:hover {
+						text-decoration: none;
+					}
+					&::before {
+						border: none;
+					}
+					span {
+						font-size: $font12;
+						color: $main-green;
+						padding-right: 1rem;
+						letter-spacing: 1.6px;
+						line-height: 21px;
+						position: relative;
+						text-transform: uppercase;
+						display: inline-block;
+						@include font-family-lato;
+						cursor: pointer;
+						&::before {
+							content: "";
+							line-height: 1;
+							right: 0;
+							display: inline-block;
+							padding: 3px;
+							position: absolute;
+							top: 40%;
+							border: solid $main-green;
+							-webkit-transform: translateY(-50%) rotate(-45deg);
+							border-width: 0 1px 1px 0;
+						}
+					}
+				}
+			}
+		} 
 	}   
   
