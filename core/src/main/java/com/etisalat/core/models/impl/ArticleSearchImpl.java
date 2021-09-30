@@ -4,6 +4,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -15,24 +18,25 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.Comparator;
+import java.util.HashMap;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.PageConstants;
-import com.etisalat.core.models.BlogpostSearch;
+import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 import com.etisalat.core.util.CommonUtility;
 import com.day.cq.wcm.api.NameConstants;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
-		BlogpostSearch.class }, resourceType = { BlogpostSearchImpl.RESOURCE_TYPE })
-public class BlogpostSearchImpl implements BlogpostSearch {
+		ArticleSearch.class }, resourceType = { ArticleSearchImpl.RESOURCE_TYPE })
+public class ArticleSearchImpl implements ArticleSearch {
 
 	/**
 	 * The resource type.
 	 */
-	protected static final String RESOURCE_TYPE = "etisalat/components/blogsearch";
+	protected static final String RESOURCE_TYPE = "etisalat/components/articlelist";
 	
 	private static final String PN_BUSINESS_BLOG_TAG = "businessBlogTag";
 
@@ -43,8 +47,14 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	private static final String PN_YOUTUBE_URL = "youTubeUrl";
 	
 	private static final String PN_PLAYICON_TEXT = "playIconText";
+	
+	private static final String PN_BLOGPOST = "blogpost";
+	
+	private static final String PN_NEWSROOM = "newsroom";
+	
+	private static final String PN_ARTICLE_TYPE = "articleType";
 
-	private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-business-blog-template";
+	private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-article-page-template";
 	
 
 	/**
@@ -72,6 +82,8 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	 * The ID for this component.
 	 */
 	private String uniqueId;
+	
+	private Map<String, Long> categoryMap;
 
 	@Override
 	public String getId() {
@@ -95,14 +107,33 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	}
 
 	/**
-	 * Sets the Blog post page details list.
-	 * @param resource
+	 * Sets the article page details list.
+	 * @param res
 	 * @param pageDetailsList
+	 * @param articlePageType
 	 */
-	private void setBlogPages(Resource res, List<GenericListPageDetails> pageDetailsList) {
+	private void setArticlePages(Resource res, List<GenericListPageDetails> pageDetailsList, String articlePageType) {
 		Page page = res.adaptTo(Page.class);
 		if (null != page && page.getProperties().get(NameConstants.PN_TEMPLATE, StringUtils.EMPTY)
 				.equals(BUSINESS_BLOG_TEMPLATE)) {
+			setChildPageDetails(res, page, pageDetailsList, articlePageType);
+		}
+
+		if (null != page && res.hasChildren()) {
+			res.listChildren().forEachRemaining(resource -> setArticlePages(resource, pageDetailsList, articlePageType));
+		}
+	}
+	
+	/**
+	 * Sets the article child page details
+	 * @param res
+	 * @param page
+	 * @param pageDetailsList
+	 * @param articlePageType
+	 */
+	private void setChildPageDetails(Resource res, Page page, List<GenericListPageDetails> pageDetailsList, String articlePageType) {
+		if(!page.isHideInNav() && page.getProperties().get(PN_ARTICLE_TYPE, StringUtils.EMPTY)
+				.equals(articlePageType)) {
 			GenericListPageDetails pageDetails = new GenericListPageDetails();
 			pageDetails.setThumbnailResource(res.getChild(PageConstants.JCR_CONTENT_IMAGE));
 			pageDetails.setTitle(page.getPageTitle());
@@ -113,15 +144,12 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 			pageDetails.setPlayIconText(page.getProperties().get(PN_PLAYICON_TEXT, String.class));
 			setBusinessCategory(page, res, pageDetails);
 			setBlogArticleDate(page, pageDetails);
-			setBlogTileVideoID(res,pageDetails);
+			setBlogTileVideoID(res, pageDetails);
 
 			pageDetailsList.add(pageDetails);
-		}
-
-		if (null != page && res.hasChildren()) {
-			res.listChildren().forEachRemaining(resource -> setBlogPages(resource, pageDetailsList));
-		}
+		}		
 	}
+	
 	
 	/**
 	 * Sets Blog tile video id.
@@ -155,7 +183,7 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	 */
 	private void setBusinessCategory(Page page, Resource resource, GenericListPageDetails pageDetails) {
 		final TagManager tagManager = resource.getResourceResolver().adaptTo(TagManager.class);
-		String businessCatg = page.getProperties().get(PN_BUSINESS_BLOG_TAG, String.class);
+		String businessCatg = page.getProperties().get(PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
 		if (StringUtils.isNotBlank(businessCatg)) {
 			final Tag tag = tagManager.resolve(businessCatg);
 			if (null != tag) {
@@ -164,24 +192,56 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 		}
 	}
 
-	@Override
-	public List<GenericListPageDetails> getPageItems() {
-		List<GenericListPageDetails> pageDetailsList = new LinkedList<>();
-		if (StringUtils.isNotBlank(parentPath)) {
-			Resource res = request.getResourceResolver().getResource(parentPath);
-			if (null != res && res.hasChildren()) {
-				res.listChildren().forEachRemaining(resource -> setBlogPages(resource, pageDetailsList));
-			}
-		}
-		
+	/**
+	 * Sort the article pages by date descending order.
+	 * 
+	 * @param pageDetailsList
+	 */
+	private void sortArticlePages(List<GenericListPageDetails> pageDetailsList) {
 		if (!pageDetailsList.isEmpty() && pageDetailsList.size() > 1) {
 			pageDetailsList.sort(Comparator
 					.comparing(GenericListPageDetails::getArticleDate, Comparator.nullsFirst(Comparator.naturalOrder()))
 					.reversed());
 		}
-		
-		return Collections.unmodifiableList(pageDetailsList);
 	}
+	
+	/**
+	 * Returns the article page list.
+	 * 
+	 * @param articlePageType
+	 * @return
+	 */
+	private List<GenericListPageDetails> getItems(String articlePageType) {
+		List<GenericListPageDetails> pageDetailsList = new LinkedList<>();
+		if (StringUtils.isNotBlank(parentPath)) {
+			Resource res = request.getResourceResolver().getResource(parentPath);
+			if (null != res && res.hasChildren()) {
+				res.listChildren().forEachRemaining(resource -> setArticlePages(resource, pageDetailsList, articlePageType));
+			}
+		}
+
+		sortArticlePages(pageDetailsList);
+		return pageDetailsList;
+	}
+	
+	@Override
+	public List<GenericListPageDetails> getBlogPageItems() {
+		return Collections.unmodifiableList(getItems(PN_BLOGPOST));
+	}
+	
+	@Override
+	public List<GenericListPageDetails> getNewsPageItems() {
+		List<GenericListPageDetails> newsPageList = getItems(PN_NEWSROOM);
+		categoryMap = new HashMap<>();
+		if (!newsPageList.isEmpty()) {
+			categoryMap = newsPageList.stream().filter(p -> StringUtils.isNotBlank(p.getCategory()))
+					.collect(Collectors.groupingBy(GenericListPageDetails::getCategory, Collectors.counting()));
+		}
+
+		return Collections.unmodifiableList(newsPageList);
+	}
+	
+	
 
 	@Override
 	public String getBusinessCategoryTag() {
@@ -202,6 +262,11 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 				currentPage.getAbsoluteParent(3).getPath());
 
 		return CommonUtility.appendHtmlExtensionToPage(backToLink);
+	}
+	
+	@Override
+	public Map<String, Long> getSearchCategories() {
+		return Collections.unmodifiableMap(categoryMap);
 	}
 
 }

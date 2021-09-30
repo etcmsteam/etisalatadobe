@@ -8,17 +8,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import com.etisalat.core.models.BlogpostSearch;
+import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
- * JUnit test verifying the BlogpostSearch
+ * JUnit test verifying the ArticleSearch
  */
 @ExtendWith(AemContextExtension.class)
- class BlogpostSearchImplTest {
+ class ArticleSearchImplTest {
 	
 	private final AemContext context = new AemContext();
 
@@ -30,8 +30,8 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 	
 	@BeforeEach
 	public void setup() throws Exception {
-		context.addModelsForClasses(BlogpostSearchImpl.class);
-		context.load().json("/com/etisalat/core/models/BlogpostSearchImplTest.json", CONTENT_ROOT);
+		context.addModelsForClasses(ArticleSearchImpl.class);
+		context.load().json("/com/etisalat/core/models/ArticleSearchImplTest.json", CONTENT_ROOT);
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
@@ -42,9 +42,9 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 		
 		context.currentResource(BLOG_SEARCH_1);
 
-		BlogpostSearch blogPostSearchModel = context.request().adaptTo(BlogpostSearch.class);
-		GenericListPageDetails pageDetails = blogPostSearchModel.getPageItems().get(0);
-		int actual = blogPostSearchModel.getPageItems().size();	
+		ArticleSearch blogPostSearchModel = context.request().adaptTo(ArticleSearch.class);
+		GenericListPageDetails pageDetails = blogPostSearchModel.getBlogPageItems().get(0);
+		int actual = blogPostSearchModel.getBlogPageItems().size();	
 		String actualTitle = pageDetails.getTitle();
 		assertEquals(expectedSize, actual);
 		assertEquals(expectedTitle, actualTitle);
@@ -56,7 +56,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 		final String expected = "775607242";
 		context.currentResource(BLOG_SEARCH_1);
 
-		BlogpostSearch blogPostSearchModel = context.request().adaptTo(BlogpostSearch.class);
+		ArticleSearch blogPostSearchModel = context.request().adaptTo(ArticleSearch.class);
 
 		String actual = blogPostSearchModel.getId();
 		assertEquals(expected, actual);
@@ -66,7 +66,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 	void testCategory() {
 		final String expected = "etisalat:business/smb/category/business-advice-ideas";
 		context.currentResource(BLOG_SEARCH_1);
-		BlogpostSearch blogPostSearchModel = context.request().adaptTo(BlogpostSearch.class);
+		ArticleSearch blogPostSearchModel = context.request().adaptTo(ArticleSearch.class);
 
 		String actual = blogPostSearchModel.getBusinessCategoryTag();
 		assertEquals(expected, actual);
