@@ -1,0 +1,195 @@
+/* HEADER STARTS */
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $white-color;
+  z-index: 1;
+  min-height: 60px;
+  -webkit-transition: height 0.35s ease-in-out;
+  transition: height 0.35s ease-in-out;
+  padding: 10px;
+  .header--wrapper,
+  .cmp-experiencefragment--header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $white-color;
+    z-index: 1;
+    min-height: 60px;
+    -webkit-transition: height 0.3s ease-in-out;
+    transition: height 0.35s ease-in-out;
+  }
+  .cmp-container {
+    .cmp-image {
+      position: relative;
+      width: 86px;
+      top: 20px;
+      transition: width 0.35s ease-in-out;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      z-index: 3;
+      width: 100%;
+      left: 0;
+      top: 0;
+      .menu__checkbox {
+        opacity: 0;
+        &:checked ~ .menu {
+          max-height: 400px;
+          display: block;
+          margin-top: 43px !important;
+          width: 100%;
+          background: $white-color;
+          border: 0;
+          outline: 0;
+          user-select: none;
+          appearance: none;
+          transition: max-height 0.4s linear;
+        }
+        &:focus ~ .menu__icon {
+          outline: $light-blue 1px solid;
+          background-color: $thick-white;
+        }
+        &:checked ~ .menu__icon {
+          background-color: transparent;
+        }
+      }
+
+      .menu__icon {
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        user-select: none;
+        background: $white-color;
+        outline: none;
+        ::selection {
+          background: none;
+        }
+        .hamburger {
+          background: $color-violet;
+          display: block;
+          height: 5px;
+          position: relative;
+          width: 34px;
+          margin-right: 20px;
+          margin-top: 19px;
+          &::before,
+          &::after {
+            background: $light-grey;
+            content: "";
+            display: block;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+          }
+          &::before {
+            top: 8px;
+          }
+
+          &::after {
+            top: -8px;
+          }
+        }
+      }
+      ul.menu {
+        display: none;
+        clear: both;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+        box-shadow: none;
+        @media (min-width: #{$screen-xl-max}) {
+          clear: none;
+          display: block;
+          max-height: none;
+          transition: width 0.35s ease-in-out;
+      }
+        li {
+          border-top: 1px solid $light-white;
+          &:first-child {
+            border-width: 0;
+          }
+          a {
+            color: $light-purple;
+            display: block;
+            padding: 10px 15px;
+            font-size: toRem(14);
+            border-right: 1px solid $thick-white;
+            text-decoration: none;
+            font-family: $fontfamily-book;
+            &:hover,
+            &:focus {
+              color: $greyish-white;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    @media (min-width: #{$screen-md-max}) {
+      nav {
+        position: static;
+        ul.menu {
+          background: none;
+          display: block;
+          clear: none;
+          max-height: none;
+          float: right;
+          margin: 50px 25px 0 0;
+          li {
+            float: left;
+            border-top: 0;
+            a {
+              border: 0;
+            }
+          }
+        }
+
+        .menu__icon,
+        .menu__checkbox,
+        .menu__icon.hamburger {
+          display: none;
+        }
+        .cmp-experiencefragment--header .cmp-image__image {
+          max-width: 60%;
+        }
+        header.experiencefragment .cmp-image {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+/* HEADER ENDS */
+
+//should be removed
+.cmp-image__image {
+  max-width: 100%;
+}
+
+/* FOOTER STARTS */
+footer {
+  border-top: none;
+  .cmp-container {
+    padding: 15px 0;
+    margin: 10px auto;
+    max-width: 1024px;
+    background-color: none;
+    .cmp-text {
+      font-size: $font-size;
+      padding: 35px 0;
+      text-align: center;
+      line-height: 20px;
+      color: $white-color;
+      font-family: $fontfamily-light;
+    }
+  }
+}
+
+/* FOOTER ENDS */
