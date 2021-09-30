@@ -1,16 +1,7 @@
 .top-carousel {
     .swiper-container {
-        width: 1120px;
         max-width: 100%;
         padding: 0;
-        .swiper-slide {
-            @include respond-to-max($phone) {
-                width: 401px !important;
-            }
-            @include respond-to-min($tablet) {
-                width: 397px !important;
-            }
-        }
     }
 
     .controls {
@@ -94,12 +85,10 @@
             padding: 0 .5rem;
             border-radius: toRem(4);
             border-width: toRem(1);
-            width: 60%;
             border-color: $darkest-night;
             outline: 0;
-            height: 2.5rem;
             font-size: $font14;
-            line-height: 2.5rem;
+            line-height:3rem;
             letter-spacing: .14285714em;
             display: inline-block;
             margin-bottom: 0;
@@ -109,14 +98,16 @@
             background-image: none;
             border: toRem(1) solid $almost-black;
             white-space: nowrap;
-
+            height: toRem(50);
+            min-width: 180px;
+            width: auto;
             a {
                 color: $almost-black;
                 font-size: toRem(14);
 
                 &:hover {
                     text-decoration: none;
-                    color: $almost-black;
+                    color:$main-green;
                 }
 
                 &:before {
@@ -129,7 +120,6 @@
 
     .center {
         text-align: center;
-
         .title-wrap,
         .description,
         .learn-more-wrap {
@@ -218,7 +208,7 @@
         }
 
         .learn-more-wrap {
-            margin-top: 4rem;
+            margin-top:2rem;
         }
     }
 
@@ -233,4 +223,11 @@
     // .swiper-scrollbar {
     //     visibility: hidden;
     // }
+    .learn-more-wrap:hover{
+        border-color: #719e19;
+    }
+}
+
+.slider-fnt_small .description{
+    font-size:$font16;
 }
