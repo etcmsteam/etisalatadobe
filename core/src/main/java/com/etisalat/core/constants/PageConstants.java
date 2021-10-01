@@ -32,7 +32,13 @@ public final class PageConstants {
 	 */
 	public static final String JCR_CONTENT_IMAGE = "jcr:content/image";
 
-	
+	/**
+	 * Constant for opensamewindow.
+	 */
+	public static final String OPEN_SAME_WINDOW = "opensamewindow";
+
+
+
 	/**
 	 * private constructor to prevent instantiation of class.
 	 */

@@ -9,6 +9,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import com.day.cq.wcm.api.NameConstants;
 
 /**
  * Util Class
@@ -34,7 +35,7 @@ public class CommonUtility {
                 && !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
 
             final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(path));
-            if (resource.isPresent() && resourceResolver.resolve(path).isResourceType(PageConstants.CQ_Page)) {
+            if (resource.isPresent() && resourceResolver.resolve(path).isResourceType(NameConstants.NT_PAGE)) {
                 return path + PageConstants.HTML_EXTENSION;
             }
         }
