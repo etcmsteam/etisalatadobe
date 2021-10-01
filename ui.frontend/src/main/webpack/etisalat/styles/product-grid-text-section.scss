@@ -245,6 +245,17 @@
 		}
 	}
 
+	.btn-container-noContract {
+		display: block;
+		text-align: center;
+		.showNoContract {
+			width: 100%;
+			@include respond-to-min($desktop) {
+			 max-width: 25%;
+			}
+		}
+	}
+
 .bg-cards .device-card.tile-table,
 .bg-cards .device-card-selection.tile-table,
 .bg-cards .device-multi-card-selection.tile-table,
@@ -864,6 +875,12 @@
 	text-align: center;
 	background: $white;
 	overflow: hidden;
+	div.cmp-image {
+		height: 100%;
+		.cmp-image__image {
+			height: 100%;
+		}
+	}
 }
 .bg-cards .product-home-card.tile-table .tile-card .product::before,
 .bg-cards .product-home-multi-card-selection.tile-table .tile-card .product::before,
@@ -1518,6 +1535,29 @@ table {
 	//font-family: "Neotech-medium", "GE SS Two", Arial, sans-serif;
 	@include font-family-Neotech-ge;
 }
+.tile-table .tile-card .tiles-box-list {
+	&__contractDuration {
+		margin-top: 1rem;
+		margin-right: 0.5rem;
+		font-size: $font12;
+		line-height: 0.938rem;
+		font-weight: 700;
+		border-radius: 1rem;
+		color: $main-green;
+		background-color: $celadon-green;
+		line-height: 1.43;
+		padding: 1px .5rem;
+		display: block;
+		width: fit-content;
+		@include respond-to-min($screen-lg-max) {
+			font-size: $font14;
+		}
+		&--orange {
+			background-color: $light-orange;
+			color: $dark-orange;
+		}
+	}
+}
 ul {
 	&.featureList {
 		padding: 0;
@@ -1576,7 +1616,7 @@ ul.featureList li strong {
 	-webkit-box-flex: none;
 	-webkit-flex: none;
 	-ms-flex: none;
-	height: 235px;
+	height: 100%;
 }
 .bg-cards .device-card.offer .tile-card.effect__click .read-more, .bg-cards .device-card.offer .tile-card .read-more, .bg-cards .device-multi-card-selection.offer .tile-card .read-more, .bg-cards .device-single-card-selection.offer .tile-card .read-more, .bg-cards .plan-card.offer .tile-card .read-more, .bg-cards .plan-multi-card-selection.offer .tile-card .read-more, .bg-cards .plan-single-card-selection.offer .tile-card .read-more, .bg-cards .product-grid.offer .tile-card .read-more, .bg-cards .product-home-card.offer .tile-card .read-more, .bg-cards .product-home-multi-card-selection.offer .tile-card .read-more, .bg-cards .product-home-single-card-selection.offer .tile-card .read-more {
     background-color: $dark-orange;
@@ -1588,6 +1628,89 @@ ul.featureList li strong {
 }
 .bg-cards .device-card-selection.offer .tile-card .price, .bg-cards .device-card-selection.offer .tile-card small, .bg-cards .device-card.offer .tile-card .price, .bg-cards .device-card.offer .tile-card small, .bg-cards .device-multi-card-selection.offer .tile-card .price, .bg-cards .device-multi-card-selection.offer .tile-card small, .bg-cards .device-single-card-selection.offer .tile-card .price, .bg-cards .device-single-card-selection.offer .tile-card small, .bg-cards .plan-card.offer .tile-card .price, .bg-cards .plan-card.offer .tile-card small, .bg-cards .plan-multi-card-selection.offer .tile-card .price, .bg-cards .plan-multi-card-selection.offer .tile-card small, .bg-cards .plan-single-card-selection.offer .tile-card .price, .bg-cards .plan-single-card-selection.offer .tile-card small, .bg-cards .product-grid.offer .tile-card .price, .bg-cards .product-grid.offer .tile-card small, .bg-cards .product-home-card.offer .tile-card .price, .bg-cards .product-home-card.offer .tile-card small, .bg-cards .product-home-multi-card-selection.offer .tile-card .price, .bg-cards .product-home-multi-card-selection.offer .tile-card small, .bg-cards .product-home-single-card-selection.offer .tile-card .price, .bg-cards .product-home-single-card-selection.offer .tile-card small {
     color: $dark-orange;
+}
+
+.read-more-green-btn_bg {
+	.plan-card.tile-table .tile-card:hover .smile-points,
+	.plan-card.tile-table .tile-card:hover .tiles-box-list,
+	.plan-multi-card-selection.tile-table .tile-card:hover .smile-points,
+	.plan-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
+	.plan-single-card-selection.tile-table .tile-card:hover .smile-points,
+	.plan-single-card-selection.tile-table .tile-card:hover .tiles-box-list {
+		border-left: 1px solid $main-green;
+		border-right: 1px solid $main-green;
+		transition: all 0.5s ease-in-out;
+	}
+	
+	 .plan-card.offer .tile-card .tiles-box-title,
+	 .plan-multi-card-selection.offer .tile-card .tiles-box-title,
+	 .plan-single-card-selection.offer .tile-card .tiles-box-title {		
+			background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$main-green,$blue2);
+		}
+	 .plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+	 .plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+	 .plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {		
+		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$main-green,$blue2);
+	}
+	.product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
+	.product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
+	.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
+		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$main-green,$blue2);
+	}
+	 .device-card-selection.tile-table .tile-card .special-offer,
+	 .device-card.tile-table .tile-card .special-offer,
+	 .device-multi-card-selection.tile-table .tile-card .special-offer,
+	 .device-single-card-selection.tile-table .tile-card .special-offer,
+	 .plan-card.tile-table .tile-card .special-offer,
+	 .plan-multi-card-selection.tile-table .tile-card .special-offer,
+	 .plan-single-card-selection.tile-table .tile-card .special-offer,
+	 .product-grid.tile-table .tile-card .special-offer,
+	 .product-home-card.tile-table .tile-card .special-offer,
+	 .product-home-multi-card-selection.tile-table .tile-card .special-offer,
+	 .product-home-single-card-selection.tile-table .tile-card .special-offer {	
+		background-color: $main-green;
+		
+	}
+
+	.device-card.offer .tile-card small,
+	 .device-card-selection.offer .tile-card small,
+	 .device-multi-card-selection.offer .tile-card small,
+	 .device-single-card-selection.offer .tile-card small,
+	 .plan-card.offer .tile-card small,
+	 .plan-multi-card-selection.offer .tile-card small,
+	 .plan-single-card-selection.offer .tile-card small,
+	 .product-grid.offer .tile-card small,
+	 .product-home-card.offer .tile-card small,
+	 .product-home-multi-card-selection.offer .tile-card small,
+	 .product-home-single-card-selection.offer .tile-card small {
+		color: $main-green;
+	}
+	.device-card.offer .tile-card .price,
+	.device-card-selection.offer .tile-card .price,
+	.device-multi-card-selection.offer .tile-card .price,
+	.device-single-card-selection.offer .tile-card .price,
+	.plan-card.offer .tile-card .price,
+	.plan-multi-card-selection.offer .tile-card .price,
+	.plan-single-card-selection.offer .tile-card .price,
+	.product-grid.offer .tile-card .price,
+	.product-home-card.offer .tile-card .price,
+	.product-home-multi-card-selection.offer .tile-card .price,
+	.product-home-single-card-selection.offer .tile-card .price {
+		color: $main-green;
+	}
+	.device-card.offer .tile-card .smile-points,
+	.device-card-selection.offer .tile-card .smile-points,
+	.device-multi-card-selection.offer .tile-card .smile-points,
+	.device-single-card-selection.offer .tile-card .smile-points,
+	.plan-card.offer .tile-card .smile-points,
+	.plan-multi-card-selection.offer .tile-card .smile-points,
+	.plan-single-card-selection.offer .tile-card .smile-points,
+	.product-grid.offer .tile-card .smile-points,
+	.product-home-card.offer .tile-card .smile-points,
+	.product-home-multi-card-selection.offer .tile-card .smile-points,
+	.product-home-single-card-selection.offer .tile-card .smile-points {
+		color: $main-green;
+	}
 }
 .read-more-red-btn_bg {
 	.plan-card.tile-table .tile-card:hover .smile-points,
@@ -1626,6 +1749,10 @@ ul.featureList li strong {
 	.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
 		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$orange1,$green1);
 	}
+
+	.tile-table.plan-card .tile-card .tiles-box-title h2 {
+		color:$white;
+	}	
 	
 	 .device-card-selection.tile-table .tile-card .special-offer,
 	 .device-card.tile-table .tile-card .special-offer,
@@ -1708,91 +1835,462 @@ ul.featureList li strong {
 	border-left: 1px solid $main-green;
 	border-right: 1px solid $main-green;;
 	transition: all 0.5s ease-in-out;
+ }
 }
-
-}
-
-
-.read-more-green-btn_bg {
-	.plan-card.tile-table .tile-card:hover .smile-points,
-	.plan-card.tile-table .tile-card:hover .tiles-box-list,
-	.plan-multi-card-selection.tile-table .tile-card:hover .smile-points,
-	.plan-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
-	.plan-single-card-selection.tile-table .tile-card:hover .smile-points,
-	.plan-single-card-selection.tile-table .tile-card:hover .tiles-box-list {
+.orange-bg-theme {
+	@extend .read-more-green-btn_bg;
+	.read-more-green-btn_bg {
+		.plan-card.tile-table .tile-card:hover .smile-points,
+		.plan-card.tile-table .tile-card:hover .tiles-box-list,
+		.plan-multi-card-selection.tile-table .tile-card:hover .smile-points,
+		.plan-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.plan-single-card-selection.tile-table .tile-card:hover .smile-points,
+		.plan-single-card-selection.tile-table .tile-card:hover .tiles-box-list {
+			border-left: 1px solid $dark-orange;
+			border-right: 1px solid $dark-orange;
+			transition: all 0.5s ease-in-out;
+		}
+		.plan-card.offer .tile-card:hover .smile-points,
+		.plan-card.offer .tile-card:hover .tiles-box-list,
+		.plan-multi-card-selection.offer .tile-card:hover .smile-points,
+		.plan-multi-card-selection.offer .tile-card:hover .tiles-box-list,
+		.plan-single-card-selection.offer .tile-card:hover .smile-points,
+		.plan-single-card-selection.offer .tile-card:hover .tiles-box-list {
+			border-left: 1px solid $dark-orange;
+			border-right: 1px solid $dark-orange;
+			transition: all 0.5s ease-in-out $dark-orange;
+		}
+		.plan-card.offer .tile-card .tiles-box-title,
+		.plan-multi-card-selection.offer .tile-card .tiles-box-title,
+		.plan-single-card-selection.offer .tile-card .tiles-box-title {			
+				background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$dark-orange,$blue2);
+			}
+	
+		.plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+		.plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+		.plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {			
+			background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$dark-orange,$blue2);
+		}
+		.product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
+		.product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
+		.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
+			background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$dark-orange,$blue2);
+		}
+	
+		.tile-table.plan-card .tile-card .tiles-box-title h2 {
+			color:$white;
+		}	
+		
+		 .device-card-selection.tile-table .tile-card .special-offer,
+		 .device-card.tile-table .tile-card .special-offer,
+		 .device-multi-card-selection.tile-table .tile-card .special-offer,
+		 .device-single-card-selection.tile-table .tile-card .special-offer,
+		 .plan-card.tile-table .tile-card .special-offer,
+		 .plan-multi-card-selection.tile-table .tile-card .special-offer,
+		 .plan-single-card-selection.tile-table .tile-card .special-offer,
+		 .product-grid.tile-table .tile-card .special-offer,
+		 .product-home-card.tile-table .tile-card .special-offer,
+		 .product-home-multi-card-selection.tile-table .tile-card .special-offer,
+		 .product-home-single-card-selection.tile-table .tile-card .special-offer {	
+			background-color: $dark-orange ;
+			
+		}
+		 .device-card.offer .tile-card .read-more,
+		 .device-card-selection.offer .tile-card .read-more,
+		 .device-multi-card-selection.offer .tile-card .read-more,
+		 .device-single-card-selection.offer .tile-card .read-more,
+		 .plan-card.offer .tile-card .read-more,
+		 .plan-multi-card-selection.offer .tile-card .read-more,
+		 .plan-single-card-selection.offer .tile-card .read-more,
+		 .product-grid.offer .tile-card .read-more,
+		 .product-home-card.offer .tile-card .read-more,
+		 .product-home-multi-card-selection.offer .tile-card .read-more,
+		 .product-home-single-card-selection.offer .tile-card .read-more {
+			background-color: $dark-orange;
+		}
+		 .device-card.offer .tile-card small,
+		 .device-card-selection.offer .tile-card small,
+		 .device-multi-card-selection.offer .tile-card small,
+		 .device-single-card-selection.offer .tile-card small,
+		 .plan-card.offer .tile-card small,
+		 .plan-multi-card-selection.offer .tile-card small,
+		 .plan-single-card-selection.offer .tile-card small,
+		 .product-grid.offer .tile-card small,
+		 .product-home-card.offer .tile-card small,
+		 .product-home-multi-card-selection.offer .tile-card small,
+		 .product-home-single-card-selection.offer .tile-card small {
+			color: $dark-orange;
+		}
+		.device-card.offer .tile-card .price,
+		.device-card-selection.offer .tile-card .price,
+		.device-multi-card-selection.offer .tile-card .price,
+		.device-single-card-selection.offer .tile-card .price,
+		.plan-card.offer .tile-card .price,
+		.plan-multi-card-selection.offer .tile-card .price,
+		.plan-single-card-selection.offer .tile-card .price,
+		.product-grid.offer .tile-card .price,
+		.product-home-card.offer .tile-card .price,
+		.product-home-multi-card-selection.offer .tile-card .price,
+		.product-home-single-card-selection.offer .tile-card .price {
+			color: $dark-orange;
+		}
+		.device-card.offer .tile-card .smile-points,
+		.device-card-selection.offer .tile-card .smile-points,
+		.device-multi-card-selection.offer .tile-card .smile-points,
+		.device-single-card-selection.offer .tile-card .smile-points,
+		.plan-card.offer .tile-card .smile-points,
+		.plan-multi-card-selection.offer .tile-card .smile-points,
+		.plan-single-card-selection.offer .tile-card .smile-points,
+		.product-grid.offer .tile-card .smile-points,
+		.product-home-card.offer .tile-card .smile-points,
+		.product-home-multi-card-selection.offer .tile-card .smile-points,
+		.product-home-single-card-selection.offer .tile-card .smile-points {
+			color: $dark-orange;
+		}
+		.bg-cards .device-card.tile-table .tile-card:hover .product,
+		.bg-cards .device-card.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-card.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-card.tile-table .tile-card:hover .tiles-box-title,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .product,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .tiles-box-title,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .product,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .tiles-box-title {
 		border-left: 1px solid $main-green;
-		border-right: 1px solid $main-green;
+		border-right: 1px solid $main-green;;
 		transition: all 0.5s ease-in-out;
 	}
 	
-	 .plan-card.offer .tile-card .tiles-box-title,
-	 .plan-multi-card-selection.offer .tile-card .tiles-box-title,
-	 .plan-single-card-selection.offer .tile-card .tiles-box-title {		
-			background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$main-green,$blue2)!important;
+	}
+	@extend .read-more-red-btn_bg;
+	.read-more-red-btn_bg {
+		.plan-card.offer .tile-card .tiles-box-title,
+	.plan-multi-card-selection.offer .tile-card .tiles-box-title,
+	.plan-single-card-selection.offer .tile-card .tiles-box-title {			
+		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$dark-orange,$blue2);
 		}
-	 .plan-card.postpaid.tile-table .tile-card .tiles-box-title,
-	 .plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
-	 .plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {		
-		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$main-green,$blue2)!important;
+
+	.plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+	.plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+	.plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {			
+		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$dark-orange,$blue2);
 	}
 	.product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
 	.product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
 	.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
-		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$main-green,$blue2);
+		background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat,linear-gradient(45deg,$dark-orange,$blue2);
 	}
-	 .device-card-selection.tile-table .tile-card .special-offer,
-	 .device-card.tile-table .tile-card .special-offer,
-	 .device-multi-card-selection.tile-table .tile-card .special-offer,
-	 .device-single-card-selection.tile-table .tile-card .special-offer,
-	 .plan-card.tile-table .tile-card .special-offer,
-	 .plan-multi-card-selection.tile-table .tile-card .special-offer,
-	 .plan-single-card-selection.tile-table .tile-card .special-offer,
-	 .product-grid.tile-table .tile-card .special-offer,
-	 .product-home-card.tile-table .tile-card .special-offer,
-	 .product-home-multi-card-selection.tile-table .tile-card .special-offer,
-	 .product-home-single-card-selection.tile-table .tile-card .special-offer {	
-		background-color: $main-green;
+	}
+}
+.gold-bg-theme {
+	@extend .read-more-green-btn_bg;
+	.read-more-green-btn_bg {
+		.plan-card.tile-table .tile-card:hover .smile-points,
+		.plan-card.tile-table .tile-card:hover .tiles-box-list,
+		.plan-multi-card-selection.tile-table .tile-card:hover .smile-points,
+		.plan-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.plan-single-card-selection.tile-table .tile-card:hover .smile-points,
+		.plan-single-card-selection.tile-table .tile-card:hover .tiles-box-list {
+			border-left: 1px solid $main-green;
+			border-right: 1px solid $main-green;
+			transition: all 0.5s ease-in-out;
+		}
+		.plan-card.offer .tile-card:hover .smile-points,
+		.plan-card.offer .tile-card:hover .tiles-box-list,
+		.plan-multi-card-selection.offer .tile-card:hover .smile-points,
+		.plan-multi-card-selection.offer .tile-card:hover .tiles-box-list,
+		.plan-single-card-selection.offer .tile-card:hover .smile-points,
+		.plan-single-card-selection.offer .tile-card:hover .tiles-box-list {
+			border-left: 1px solid $main-green;
+			border-right: 1px solid $main-green;
+			transition: all 0.5s ease-in-out $main-green;
+		}
+		.plan-card.offer .tile-card .tiles-box-title,
+		.plan-multi-card-selection.offer .tile-card .tiles-box-title,
+		.plan-single-card-selection.offer .tile-card .tiles-box-title {			
+				background: url("../resources/images/bg-cards/card-header-gold.png") 100% 0 no-repeat,linear-gradient(45deg,$pine,$portica);
+				background-size: cover;
+			}
+	
+		.plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+		.plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+		.plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {			
+			background: url("../resources/images/bg-cards/card-header-gold.png") 100% 0 no-repeat,linear-gradient(45deg,$pine,$portica);
+			background-size: cover;
+		}
+		.product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
+		.product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
+		.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
+			background: url("../resources/images/bg-cards/card-header-gold.png") 100% 0 no-repeat,linear-gradient(45deg,$pine,$portica);
+			background-size: cover;
+		}
+	
+		.tile-table.plan-card .tile-card .tiles-box-title h2 {
+			color:$white;
+		}	
 		
+		 .device-card-selection.tile-table .tile-card .special-offer,
+		 .device-card.tile-table .tile-card .special-offer,
+		 .device-multi-card-selection.tile-table .tile-card .special-offer,
+		 .device-single-card-selection.tile-table .tile-card .special-offer,
+		 .plan-card.tile-table .tile-card .special-offer,
+		 .plan-multi-card-selection.tile-table .tile-card .special-offer,
+		 .plan-single-card-selection.tile-table .tile-card .special-offer,
+		 .product-grid.tile-table .tile-card .special-offer,
+		 .product-home-card.tile-table .tile-card .special-offer,
+		 .product-home-multi-card-selection.tile-table .tile-card .special-offer,
+		 .product-home-single-card-selection.tile-table .tile-card .special-offer {	
+			background-color: $main-green ;
+			
+		}
+		 .device-card.offer .tile-card .read-more,
+		 .device-card-selection.offer .tile-card .read-more,
+		 .device-multi-card-selection.offer .tile-card .read-more,
+		 .device-single-card-selection.offer .tile-card .read-more,
+		 .plan-card.offer .tile-card .read-more,
+		 .plan-multi-card-selection.offer .tile-card .read-more,
+		 .plan-single-card-selection.offer .tile-card .read-more,
+		 .product-grid.offer .tile-card .read-more,
+		 .product-home-card.offer .tile-card .read-more,
+		 .product-home-multi-card-selection.offer .tile-card .read-more,
+		 .product-home-single-card-selection.offer .tile-card .read-more {
+			background-color: $main-green;
+		}
+		 .device-card.offer .tile-card small,
+		 .device-card-selection.offer .tile-card small,
+		 .device-multi-card-selection.offer .tile-card small,
+		 .device-single-card-selection.offer .tile-card small,
+		 .plan-card.offer .tile-card small,
+		 .plan-multi-card-selection.offer .tile-card small,
+		 .plan-single-card-selection.offer .tile-card small,
+		 .product-grid.offer .tile-card small,
+		 .product-home-card.offer .tile-card small,
+		 .product-home-multi-card-selection.offer .tile-card small,
+		 .product-home-single-card-selection.offer .tile-card small {
+			color: $main-green;
+		}
+		.device-card.offer .tile-card .price,
+		.device-card-selection.offer .tile-card .price,
+		.device-multi-card-selection.offer .tile-card .price,
+		.device-single-card-selection.offer .tile-card .price,
+		.plan-card.offer .tile-card .price,
+		.plan-multi-card-selection.offer .tile-card .price,
+		.plan-single-card-selection.offer .tile-card .price,
+		.product-grid.offer .tile-card .price,
+		.product-home-card.offer .tile-card .price,
+		.product-home-multi-card-selection.offer .tile-card .price,
+		.product-home-single-card-selection.offer .tile-card .price {
+			color: $main-green;
+		}
+		.device-card.offer .tile-card .smile-points,
+		.device-card-selection.offer .tile-card .smile-points,
+		.device-multi-card-selection.offer .tile-card .smile-points,
+		.device-single-card-selection.offer .tile-card .smile-points,
+		.plan-card.offer .tile-card .smile-points,
+		.plan-multi-card-selection.offer .tile-card .smile-points,
+		.plan-single-card-selection.offer .tile-card .smile-points,
+		.product-grid.offer .tile-card .smile-points,
+		.product-home-card.offer .tile-card .smile-points,
+		.product-home-multi-card-selection.offer .tile-card .smile-points,
+		.product-home-single-card-selection.offer .tile-card .smile-points {
+			color: $main-green;
+		}
+		.bg-cards .device-card.tile-table .tile-card:hover .product,
+		.bg-cards .device-card.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-card.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-card.tile-table .tile-card:hover .tiles-box-title,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .product,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .tiles-box-title,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .product,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .tiles-box-title {
+		border-left: 1px solid $main-green;
+		border-right: 1px solid $main-green;;
+		transition: all 0.5s ease-in-out;
 	}
+	
+	}
+	@extend .read-more-red-btn_bg;
+	.read-more-red-btn_bg {
+		.plan-card.offer .tile-card .tiles-box-title,
+	.plan-multi-card-selection.offer .tile-card .tiles-box-title,
+	.plan-single-card-selection.offer .tile-card .tiles-box-title {			
+		background: url("../resources/images/bg-cards/card-header-gold.png") 100% 0 no-repeat,linear-gradient(45deg,$pine,$portica);
+		background-size: cover;
+		}
 
-	.device-card.offer .tile-card small,
-	 .device-card-selection.offer .tile-card small,
-	 .device-multi-card-selection.offer .tile-card small,
-	 .device-single-card-selection.offer .tile-card small,
-	 .plan-card.offer .tile-card small,
-	 .plan-multi-card-selection.offer .tile-card small,
-	 .plan-single-card-selection.offer .tile-card small,
-	 .product-grid.offer .tile-card small,
-	 .product-home-card.offer .tile-card small,
-	 .product-home-multi-card-selection.offer .tile-card small,
-	 .product-home-single-card-selection.offer .tile-card small {
-		color: $main-green;
+	.plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+	.plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+	.plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {			
+		background: url("../resources/images/bg-cards/card-header-gold.png") 100% 0 no-repeat,linear-gradient(45deg,$pine,$portica);
+		background-size: cover;
 	}
-	.device-card.offer .tile-card .price,
-	.device-card-selection.offer .tile-card .price,
-	.device-multi-card-selection.offer .tile-card .price,
-	.device-single-card-selection.offer .tile-card .price,
-	.plan-card.offer .tile-card .price,
-	.plan-multi-card-selection.offer .tile-card .price,
-	.plan-single-card-selection.offer .tile-card .price,
-	.product-grid.offer .tile-card .price,
-	.product-home-card.offer .tile-card .price,
-	.product-home-multi-card-selection.offer .tile-card .price,
-	.product-home-single-card-selection.offer .tile-card .price {
-		color: $main-green;
+	.product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
+	.product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
+	.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
+		background: url("../resources/images/bg-cards/card-header-gold.png") 100% 0 no-repeat,linear-gradient(45deg,$pine,$portica);
+		background-size: cover;
 	}
-	.device-card.offer .tile-card .smile-points,
-	.device-card-selection.offer .tile-card .smile-points,
-	.device-multi-card-selection.offer .tile-card .smile-points,
-	.device-single-card-selection.offer .tile-card .smile-points,
-	.plan-card.offer .tile-card .smile-points,
-	.plan-multi-card-selection.offer .tile-card .smile-points,
-	.plan-single-card-selection.offer .tile-card .smile-points,
-	.product-grid.offer .tile-card .smile-points,
-	.product-home-card.offer .tile-card .smile-points,
-	.product-home-multi-card-selection.offer .tile-card .smile-points,
-	.product-home-single-card-selection.offer .tile-card .smile-points {
-		color: $main-green;
+	}
+}
+.blue-bg-theme {
+	@extend .read-more-green-btn_bg;
+	.read-more-green-btn_bg {
+		.plan-card.tile-table .tile-card:hover .smile-points,
+		.plan-card.tile-table .tile-card:hover .tiles-box-list,
+		.plan-multi-card-selection.tile-table .tile-card:hover .smile-points,
+		.plan-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.plan-single-card-selection.tile-table .tile-card:hover .smile-points,
+		.plan-single-card-selection.tile-table .tile-card:hover .tiles-box-list {
+			border-left: 1px solid $main-green;
+			border-right: 1px solid $main-green;
+			transition: all 0.5s ease-in-out;
+		}
+		.plan-card.offer .tile-card:hover .smile-points,
+		.plan-card.offer .tile-card:hover .tiles-box-list,
+		.plan-multi-card-selection.offer .tile-card:hover .smile-points,
+		.plan-multi-card-selection.offer .tile-card:hover .tiles-box-list,
+		.plan-single-card-selection.offer .tile-card:hover .smile-points,
+		.plan-single-card-selection.offer .tile-card:hover .tiles-box-list {
+			border-left: 1px solid $main-green;
+			border-right: 1px solid $main-green;
+			transition: all 0.5s ease-in-out $main-green;
+		}
+		.plan-card.offer .tile-card .tiles-box-title,
+		.plan-multi-card-selection.offer .tile-card .tiles-box-title,
+		.plan-single-card-selection.offer .tile-card .tiles-box-title {			
+				background: url("../resources/images/bg-cards/card-header-platinum.png") 100% 0 no-repeat,linear-gradient(45deg,$platinum-blue,$platinum-white);
+				background-size: cover;
+			}
+	
+		.plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+		.plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+		.plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {			
+			background: url("../resources/images/bg-cards/card-header-platinum.png") 100% 0 no-repeat,linear-gradient(45deg,$platinum-blue,$platinum-white);
+			background-size: cover;
+		}
+		.product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
+		.product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
+		.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
+			background: url("../resources/images/bg-cards/card-header-platinum.png") 100% 0 no-repeat,linear-gradient(45deg,$platinum-blue,$platinum-white);
+			background-size: cover;
+		}
+	
+		.tile-table.plan-card .tile-card .tiles-box-title h2 {
+			color:$white;
+		}	
+		
+		 .device-card-selection.tile-table .tile-card .special-offer,
+		 .device-card.tile-table .tile-card .special-offer,
+		 .device-multi-card-selection.tile-table .tile-card .special-offer,
+		 .device-single-card-selection.tile-table .tile-card .special-offer,
+		 .plan-card.tile-table .tile-card .special-offer,
+		 .plan-multi-card-selection.tile-table .tile-card .special-offer,
+		 .plan-single-card-selection.tile-table .tile-card .special-offer,
+		 .product-grid.tile-table .tile-card .special-offer,
+		 .product-home-card.tile-table .tile-card .special-offer,
+		 .product-home-multi-card-selection.tile-table .tile-card .special-offer,
+		 .product-home-single-card-selection.tile-table .tile-card .special-offer {	
+			background-color: $main-green ;
+			
+		}
+		 .device-card.offer .tile-card .read-more,
+		 .device-card-selection.offer .tile-card .read-more,
+		 .device-multi-card-selection.offer .tile-card .read-more,
+		 .device-single-card-selection.offer .tile-card .read-more,
+		 .plan-card.offer .tile-card .read-more,
+		 .plan-multi-card-selection.offer .tile-card .read-more,
+		 .plan-single-card-selection.offer .tile-card .read-more,
+		 .product-grid.offer .tile-card .read-more,
+		 .product-home-card.offer .tile-card .read-more,
+		 .product-home-multi-card-selection.offer .tile-card .read-more,
+		 .product-home-single-card-selection.offer .tile-card .read-more {
+			background-color: $main-green;
+		}
+		 .device-card.offer .tile-card small,
+		 .device-card-selection.offer .tile-card small,
+		 .device-multi-card-selection.offer .tile-card small,
+		 .device-single-card-selection.offer .tile-card small,
+		 .plan-card.offer .tile-card small,
+		 .plan-multi-card-selection.offer .tile-card small,
+		 .plan-single-card-selection.offer .tile-card small,
+		 .product-grid.offer .tile-card small,
+		 .product-home-card.offer .tile-card small,
+		 .product-home-multi-card-selection.offer .tile-card small,
+		 .product-home-single-card-selection.offer .tile-card small {
+			color: $main-green;
+		}
+		.device-card.offer .tile-card .price,
+		.device-card-selection.offer .tile-card .price,
+		.device-multi-card-selection.offer .tile-card .price,
+		.device-single-card-selection.offer .tile-card .price,
+		.plan-card.offer .tile-card .price,
+		.plan-multi-card-selection.offer .tile-card .price,
+		.plan-single-card-selection.offer .tile-card .price,
+		.product-grid.offer .tile-card .price,
+		.product-home-card.offer .tile-card .price,
+		.product-home-multi-card-selection.offer .tile-card .price,
+		.product-home-single-card-selection.offer .tile-card .price {
+			color: $main-green;
+		}
+		.device-card.offer .tile-card .smile-points,
+		.device-card-selection.offer .tile-card .smile-points,
+		.device-multi-card-selection.offer .tile-card .smile-points,
+		.device-single-card-selection.offer .tile-card .smile-points,
+		.plan-card.offer .tile-card .smile-points,
+		.plan-multi-card-selection.offer .tile-card .smile-points,
+		.plan-single-card-selection.offer .tile-card .smile-points,
+		.product-grid.offer .tile-card .smile-points,
+		.product-home-card.offer .tile-card .smile-points,
+		.product-home-multi-card-selection.offer .tile-card .smile-points,
+		.product-home-single-card-selection.offer .tile-card .smile-points {
+			color: $main-green;
+		}
+		.bg-cards .device-card.tile-table .tile-card:hover .product,
+		.bg-cards .device-card.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-card.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-card.tile-table .tile-card:hover .tiles-box-title,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .product,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-multi-card-selection.tile-table .tile-card:hover .tiles-box-title,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .product,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .smile-points,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .tiles-box-list,
+		.bg-cards .device-single-card-selection.tile-table .tile-card:hover .tiles-box-title {
+		border-left: 1px solid $main-green;
+		border-right: 1px solid $main-green;;
+		transition: all 0.5s ease-in-out;
+	}
+	
+	}
+	@extend .read-more-red-btn_bg;
+	.read-more-red-btn_bg {
+		.plan-card.offer .tile-card .tiles-box-title,
+	.plan-multi-card-selection.offer .tile-card .tiles-box-title,
+	.plan-single-card-selection.offer .tile-card .tiles-box-title {			
+		background: url("../resources/images/bg-cards/card-header-platinum.png") 100% 0 no-repeat,linear-gradient(45deg,$platinum-blue,$platinum-white);
+		background-size: cover;
+		}
+
+	.plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+	.plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+	.plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {			
+		background: url("../resources/images/bg-cards/card-header-platinum.png") 100% 0 no-repeat,linear-gradient(45deg,$platinum-blue,$platinum-white);
+		background-size: cover;
+	}
+	.product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
+	.product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
+	.product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
+		background: url("../resources/images/bg-cards/card-header-platinum.png") 100% 0 no-repeat,linear-gradient(45deg,$platinum-blue,$platinum-white);
+		background-size: cover;
+	}
 	}
 }
 
@@ -2018,4 +2516,111 @@ ul.featureList li strong {
 	  }
 	}
   }
+
+    .productdetail.hide-product--grid {
+	  display: none;
+	}
+	.bg-cards {
+		.row-tiles-table {
+			#product {
+				display: block;
+				@include respond-to-min($tablet) {
+					display: flex;
+				}
+				.swiper-slide {
+					height: auto;
+					.producttile {
+						height: 100%;
+					    > div {
+							height: 100%;
+							.read-more-green-btn_bg,.read-more-red-btn_bg,.tile-table,.tile-card,.tile,.tile-card__front,.tiles-box {
+								height: 100%;
+							}
+							.tiles-box-list {
+								height: auto;
+								flex: 2 2 auto;
+								.featureList {
+									height: auto;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.productdetail{
+		.tile {
+			.tile-card__front {
+				.view-channel-list {
+					a {
+						display: flex;
+						align-items: center;
+						.channel-list-icon {
+						    background-image: url(../resources/images/icon-tv.svg);
+							height: 24px;
+							width: 24px;
+							background-size: 24px 24px;
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+	}
+	.producttile {
+		.tile-table .tile-card .tiles-box{
+			.tiles-box-title {
+				padding: 1rem;
+				height: 8.75rem;
+				.catagory {
+					margin-bottom: .5rem;
+					@include font-family-lato;
+					line-height: .75rem;
+					opacity: .8;
+				}
+				.btn-text.btn-green::before {
+					border:none;
+				}
+				
+			}
+			.tiles-box-list {
+				padding: 1rem;
+				a.btn-text.btn-green.learn-more.btn-modal {
+					margin-bottom: 0px;
+					margin-top: .375px;
+					&:hover {
+						text-decoration: none;
+					}
+					&::before {
+						border: none;
+					}
+					span {
+						font-size: $font12;
+						color: $main-green;
+						padding-right: 1rem;
+						letter-spacing: 1.6px;
+						line-height: 21px;
+						position: relative;
+						text-transform: uppercase;
+						display: inline-block;
+						@include font-family-lato;
+						cursor: pointer;
+						&::before {
+							content: "";
+							line-height: 1;
+							right: 0;
+							display: inline-block;
+							padding: 3px;
+							position: absolute;
+							top: 40%;
+							border: solid $main-green;
+							-webkit-transform: translateY(-50%) rotate(-45deg);
+							border-width: 0 1px 1px 0;
+						}
+					}
+				}
+			}
+		} 
+	}   
   

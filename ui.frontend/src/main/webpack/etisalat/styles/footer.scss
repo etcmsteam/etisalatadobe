@@ -130,6 +130,22 @@
         margin-right: 16px;
     }
 }
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap{
+    flex-direction: row-reverse;
+}
+
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap .icon,
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap .icon:last-child {
+	margin-left: 12px;
+	margin-right: 0
+}
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap .icon {
+        @include respond-to-min($tablet){
+		margin-left: 16px;
+		margin-right: 0
+        }
+    }
+
 
 .follow-etisalat .icons-wrap .icon {
     width: 36px;
@@ -185,6 +201,7 @@
 }
 
 .footer-links-logo-section {
+    font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
     background: #fff;
     min-height: 100px;
 }
@@ -244,23 +261,40 @@
     }
 }
 
-@media (min-width: 992px) {
+
     .footer-links-logo-section .copyright {
+        @include respond-to-min($desktop){
         display: none;
+        }
     }
-}
+
+
+
+	[lang=ar] [dir=rtl] .desktop {
+        @include respond-to-min($desktop){
+		text-align: right
+        }
+	}
+
 
 .footer-links-logo-section .copyright {
     text-align: center;
     color: #848789;
     font-size: 12px;
     line-height: 1.2;
+    padding-top: 10px;
 }
 
 @media (min-width: 992px) {
     .footer-links-logo-section .flex-container .etisalat-logo {
         text-align: right;
     }
+
+    .footer-links-logo-section .etisalat-logo svg {
+
+        height: 100%;
+        margin-right: 2.5rem;
+        }
 }
 
 .footer-links-logo-section .etisalat-logo {
@@ -317,10 +351,6 @@
         height: 74px;
     }
 
-    .footer-links-logo-section .copyright,
-    .footer-links-logo-section .footer-links-nav {
-        padding-left: 2.4rem;
-    }
 
     .quick-links-section {
         padding: 1.5rem 2rem !important;
@@ -378,6 +408,17 @@
 
 }
 
+*[lang="ar"] *[dir="rtl"] .quick-links-section .arrow_accordion.collapsed:after{
+    right: auto;
+    left: 0;
+}
+
+*[lang="ar"] *[dir="rtl"] .quick-links-section .arrow_accordion:after{
+    right: auto;
+    left: 0;
+}
+
+
 @media (min-width: 481px) and (max-width: 767px) {
     .HideForMobile {
         display: block;
@@ -391,21 +432,24 @@
 
 }
 
-.footer-links-logo-section {
-    .footer-links-nav {
-        padding-left: 3.4rem;
-    }
-
-    .copyright {
-        padding-left: 3.4rem;
-    }
-
-    img {
-        height: 74px;
-        float: right;
-        margin-right: 2.3rem;
+@include respond-to-min($desktop){
+    .footer-links-logo-section {
+        .footer-links-nav {
+            padding-left: 3.4rem;
+        }
+    
+        .copyright {
+            padding-left: 3.4rem;
+        }
+    
+        img {
+            height: 74px;
+            float: right;
+            margin-right: 2.3rem;
+        }
     }
 }
+
 
 @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
     .quick-links-section {
@@ -517,10 +561,6 @@
 }
 
 
-
-
-
-
 .quick-links-section .arrow_accordion {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -566,10 +606,6 @@
     width: 11px;
 }
 
-
-.main-menu-mobile.etisalat-carrier .nav-footer-wrapper .nav-footer {
-    background-color: $white !important;
-}
 .copyright-year{
     font-family: arial,sans-serif !important;
 }

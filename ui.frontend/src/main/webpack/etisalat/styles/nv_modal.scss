@@ -766,7 +766,6 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-
     display: flex;
 
     img,
@@ -775,6 +774,9 @@
         height: 24px;
         min-height: auto;
     }
+    *[lang="ar"] *[dir=rtl] & {
+        float:left;
+     }
 }
 
 .nv-modal-content {
@@ -800,6 +802,10 @@
 
 .nv-modal-body {
     padding: 1rem 0;
+    *[lang="ar"] *[dir=rtl] 
+    &{
+        text-align:right;
+        }
 }
 
 .nv-modal-body-flex {
@@ -853,7 +859,7 @@
     }
 
     .nv-modal-content {
-        padding: 1.5rem 0 !important;
+        padding: 1.5rem 0 ;
         border-radius: 8px 8px 0 0;
     }
 
@@ -979,7 +985,7 @@
 .nv-py-5 {
     padding-bottom: 3rem ;
     @include md{
-        padding-top: 1rem !important;
+        padding-top: 1rem;
     }
 }
 
@@ -987,7 +993,7 @@
 .nv-py-5 {
     padding-top: 2rem ;
     @include md{
-        padding-top: 1rem !important;
+        padding-top: 1rem;
         overflow: auto;
         height: 100%;
     }
@@ -1128,4 +1134,184 @@
        flex-direction: column;
     }
     }
- 
+
+//center modal
+.nv-modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+
+        &.black-overlay-modal {
+            background-color: rgba(0,0,0,.9);
+
+                    .nv-modal-dialog {
+                     @include respond-to-max($phone){
+                            max-width: 760px;
+                            margin: 50px 10px 0px;
+                     }
+                     @include respond-to-min($tablet){
+                        max-width: 1000px;
+                        margin-top: 50px;
+                    }
+                     @include respond-to-min($desktop){
+                        width: auto;
+                        max-width: 1054px;
+                        margin: 100px auto 30px;
+                    }
+
+                    .nv-modal-content {
+                          border-radius: 0;
+                          @include respond-to-max($phone){
+                            padding: 10px 20px;
+                          }
+                          
+                          @include respond-to-min($tablet){
+                            padding: 30px 52px 40px;
+                          }
+                          @include respond-to-max($desktop){
+                          .modal-popup.show .cmp-container {
+                            padding: 0;
+                        }
+                    }
+                    }
+                    .nv-modal-close {
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
+                        display: block;
+                        height: 18px;
+                        position: absolute;
+                        right: 2%;
+                        /* top: 4.34%; */
+                        width: 22px;
+                    
+                    svg {
+                        width: 100%;
+                        height: 100%;
+                        @include respond-to-min($tablet){
+                            top: 0;
+                            right: 0;
+                        }
+                        
+                         }
+                    }
+                    h1 {
+                         font-size: $font30;
+                         line-height: 38px;
+                         color: $almost-black;
+                        @include respond-to-max($phone){
+                                  margin-top: 15px;
+                                 padding-bottom: 25px;
+                                 line-height: 16px;
+                                 font-size: $font16;
+                                 border-bottom: 1px solid $light-sand-brown;
+                                margin-bottom: 25px;
+                            }
+                        }
+                      p {
+                        
+                         color: $almost-black;
+                         letter-spacing: .6px;
+                         @include font-family-Neotech();        
+                         font-size:$font16;
+                         line-height: 22px;
+                         text-align: left;
+                            @include respond-to-min($tablet){
+                                text-align: center;
+                                font-size:$font14;
+                                line-height: 20px;
+                                margin-bottom: 40px;
+                                }
+                        }
+
+                    .modal-footer {
+                        border-top: none;
+                        padding: 15px;
+                    }
+                    .country-box{
+                        
+                        @include respond-to-max($phone){
+                            height:350px;
+                            overflow-y: auto;
+                            overflow-x: hidden;
+                            padding: 1px;
+                        }
+                    }
+    }
+@include respond-to-min($tablet){
+    .button{
+        &.country-selection-btn {
+            margin-left:12px;
+            margin-right: 12px;
+        }
+    }
+    
+}
+
+
+.aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--offset--phone--0{
+width: 100%;
+@include respond-to-min($tablet){
+    width: 46.2%;
+    }
+    @include respond-to-min($desktop){
+        width:30.5%;
+    }
+}
+
+
+.country-selection-btn {
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    background-color: $white;
+    transition: all .5s ease-in-out;
+    color: $almost-black;
+    padding: 13px 10px 12px;
+    text-align: left;
+    font-size: $font16;
+    margin-bottom: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+
+    a{
+        display: flex;
+        align-items: center;
+    }
+    svg{
+        width:toRem(45);
+    height: toRem(35);
+    padding: 3px 8px;
+    title{
+        display: none;
+    }
+    }
+    
+        .btn-text{
+            font-size: $font16;
+            line-height: 24px;
+            text-transform: none;
+            font-weight: 0;
+            letter-spacing: 0;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        .btn-text.btn-green{
+            color:inherit
+        }
+        .btn-text.btn-green:before{
+            display: none;
+            }
+            .moreg{
+                padding-left: 7px;
+            }
+}
+
+
+.country-selection-btn:hover {
+    border: 1px solid $main-green;
+    color: $main-green;
+}
+}
+}

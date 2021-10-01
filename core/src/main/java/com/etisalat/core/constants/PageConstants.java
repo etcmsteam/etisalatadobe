@@ -31,22 +31,7 @@ public final class PageConstants {
 	 * Constant for JCR_CONTENT Image.
 	 */
 	public static final String JCR_CONTENT_IMAGE = "jcr:content/image";
-	
-	/**
-	 * Constant for CQ_TEMPLATE.
-	 */
-	public static final String CQ_TEMPLATE ="cq:template";
 
-	/**
-	 * Constant for CQ_Page.
-	 */
-	public static final String CQ_Page ="cq:Page";
-
-	/**
-	 * Constant for opensamewindow.
-	 */
-	public static final String OPEN_SAME_WINDOW = "opensamewindow";
-	
 	
 	/**
 	 * private constructor to prevent instantiation of class.

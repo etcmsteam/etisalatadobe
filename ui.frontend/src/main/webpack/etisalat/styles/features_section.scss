@@ -8,7 +8,7 @@
         padding: 1.3rem;
 
         @include respond-to-min($desktop) {
-            padding: 1.5rem;
+            padding: 3.5rem 2rem;
             width: 50%;
         }
 
@@ -23,9 +23,13 @@
             letter-spacing: 4px;
             line-height: 12px;
             display: inline-block;
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
             text-transform: uppercase;
             color: $white;
+
+            @include respond-to-max($tablet) {
+               font-size: $font10;
+            }
         }
 
         .cmp-teaser__title {
@@ -36,7 +40,7 @@
         }
 
         .cmp-teaser__description {
-            font-size: 1rem;
+            font-size: $font16;
             line-height: 26px;
             color: $white;
             @include font-family-lato;
@@ -44,24 +48,31 @@
             h1,
             h2,
             h3,
-            h4,
             h5,
             h5,
             h6 {
                 color: $white;
             }
+            h4 {
+                color: $white;
+                margin-bottom: 1.4rem;
+                margin-top: 0.625rem;
+            }
 
             ul {
-                padding: 2rem 2rem 0rem;
+                padding: 2rem 0 1rem 2rem;
 
                 @include respond-to-min($desktop) {
-                    padding: 1.4rem 0 1rem;
+                    padding: 1.4rem 0 1rem 2rem;
                 }
 
+                @include respond-to-max($tablet) {
+                    padding: 1rem 0 1rem 2rem;
+                 }
 
                 li {
                     color: $white;
-                    font-size: 1rem;
+                    font-size: $font16;
                     line-height: 26px;
                     color: $white;
                     @include font-family-lato;
@@ -69,19 +80,21 @@
                 }
             }
 
-            p a span {
+            .cmp-link__arrow {
                 color: $white;
 
                 &:before,
                 &:after {
-                    color: $white;
+                    border: solid $white;
+                    border-width: 0 1px 1px 0;
+                    color: $white
                 }
             }
         }
 
         .cmp-teaser__action-container {
             a {
-                margin-top: 20px;
+                // margin-top: 20px;
                 display: table;
                 margin-bottom: 5px;
                 letter-spacing: 3px;
@@ -95,12 +108,12 @@
                 font-weight: 500;
 
                 @include respond-to-max($phone) {
-                    width: 100%;
+                    // width: 100%;
                 }
 
                 border: 1px solid $white;
                 border-radius: 4px;
-                padding: .5rem 2rem;
+                padding: .8rem 2rem;
                 text-align: center;
                 width: auto;
             }
@@ -197,13 +210,27 @@
 
 // two col teaser  
 .cmp-teaser__two__col {
+    @include respond-to-min($desktop) {
+        margin: 0 2rem !important;
+        width: 95% !important;
+    }
+    @include respond-to-max($tablet) {
+        margin: 0 1rem !important;
+        width: 96% !important;
+    }
+    @include respond-to-max($phone) {
+        margin: 0 1rem !important;
+        width: 92% !important;
+    }
+    
     .teaser {
         border-radius: 8px;
-
-        @include respond-to-max($tablet) {
-            padding: 1rem;
-            margin-bottom: 2rem;
-        }
+        padding: 0;
+        margin-bottom: 0;
+        // @include respond-to-max($tablet) {
+        //     padding: 1rem;
+        //     margin-bottom: 2rem;
+        // }
 
         .cmp-teaser {
             border-radius: 4px;
@@ -213,8 +240,13 @@
             }
 
             &__content {
-                padding: 3rem 1rem;
-                margin-bottom: 20px;
+                padding: 2.5rem 2.5rem;
+                margin-bottom: 0px;
+                @include respond-to-max($tablet) {
+                    margin-bottom: 0px;
+                    padding: 1rem;
+                }
+                
             }
 
             &__title {
@@ -268,19 +300,41 @@
                     color: $white;
                     width: 100%;
                 }
+
+                .cmp-link__arrow {
+                    color: $white;
+                    vertical-align: super;
+
+                    &:before,
+                    &:after {
+                        border: solid $white;
+                        border-width: 0 1px 1px 0;
+                        color: $white
+                    }
+                }
             }
 
             &__action-container {
-                padding: 10px;
+                // padding: 10px;
                 text-align: center;
                 width: 282px;
                 border: 1px solid $white !important;
                 border-radius: 4px;
                 margin-top: 1.5rem;
+                position: relative;
+                z-index: 2;
+
+                @include respond-to-max($phone) {
+                    width: 105%;
+                }
 
                 a {
                     font-size: 14px;
                     color: $white;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    padding: 10px;
+                    display: block;
                 }
             }
         }
@@ -289,14 +343,22 @@
 
     .cmp-container {
         >.aem-Grid {
-            display: flex;
+            display: block;
+
+            @include respond-to-min($desktop) {
+                display: flex;
+            }
 
             .container:first-child {
-                margin-right: 0.5rem;
+                margin-right: 12px;
             }
 
             .container:last-child {
-                margin-left: 0.5rem;
+                margin-left: 0;
+
+                @include respond-to-min($desktop) {
+                    margin-left: 12px;
+                }
             }
         }
     }
@@ -349,12 +411,15 @@
 
 //teaser banner variation for out of container on container level
 .banner--image {
-    margin-bottom: 4rem;
+    margin-bottom: 7rem !important;
     margin-top: 4rem;
     max-height: 627px;
     padding-top: 2.3rem;
     display: flex;
     flex-direction: row;
+    @include respond-to-max($phone) {
+        padding-top: 0;
+    }
 
     @include respond-to-max($tablet) {
         padding-left: 2rem;
@@ -387,6 +452,11 @@
             margin-top: 2rem;
             margin-bottom: 2rem;
             color: $white;
+
+            @include respond-to-max($phone) {
+                margin-bottom: 1.5rem;
+                margin-top: 0;
+            }
         }
 
         @include respond-to-max($tablet) {
@@ -394,7 +464,7 @@
         }
 
         @include respond-to-min($desktop) {
-            padding: 7rem 0 0 4rem;
+            padding: 7rem 2rem 0 2rem;
         }
     }
 
@@ -437,7 +507,7 @@
 
 .banner-image__left {
     .aem-Grid--default--12 {
-        flex-direction: row-reverse;
+        flex-direction: column;
         display: flex;
     }
 }
@@ -453,6 +523,21 @@
 .cross-promotion-plain {
     margin-bottom: 2rem;
     border-radius: 8px;
+    position: relative;
+
+    @include respond-to-min($desktop) {
+        margin: 0 2rem !important;
+        width: 95% !important;
+    }
+    @include respond-to-max($tablet) {
+        margin: 0 1rem !important;
+        width: 96% !important;
+    }
+    @include respond-to-max($phone) {
+        margin: 0 1rem !important;
+        width: 92% !important;
+    }
+    
 
     .cmp-teaser__action-container {
         width: 282px;
@@ -462,8 +547,8 @@
         border: 1px solid $white;
         border-radius: 4px;
         border-width: 1px;
-        padding: 10px;
         text-align: center;
+
         @include respond-to-min($desktop) {
             float: right;
         }
@@ -493,6 +578,10 @@
         }
 
         width: 100%;
+
+        @include respond-to-max($tablet) {
+            width: 100%;
+        }
     }
 }
 
@@ -501,8 +590,24 @@
     .cmp-teaser {
         border-radius: 8px;
         position: relative;
-        padding: 3rem 50px 3rem 38px;
         color: $white;
+
+        @include respond-to-min($desktop) {
+            // padding: 3rem 50px 3rem 38px;
+            flex-direction: row;
+            padding: 48px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+            align-items: center;
+        }
+
+        @include respond-to-max($tablet) {
+            padding: .1rem 15px 1rem;
+        }
+
+        @include respond-to-max($phone) {
+            padding: .1rem 15px 1rem;
+        }
     }
 
     .cmp-teaser:before,
@@ -534,9 +639,19 @@
 
     .cmp-teaser__description p {
         font-size: 1rem !important;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         line-height: 1.5;
         color: $white;
+    }
+
+    .cmp-teaser__content {
+        display: flex;
+        align-items: center;
+
+        @include respond-to-max($tablet) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
 
@@ -550,10 +665,27 @@
             border-radius: 4px;
             border-width: 1px;
             text-align: center;
-            width: auto;
-            margin: 0 auto;
+            min-width: 282px;
+            width: 100%;
+            max-width: 100%;
+            margin: 24px auto 0 auto; 
             margin-top: 1rem;
             margin-bottom: 1rem;
+
+            @include respond-to-min($desktop) {
+                min-width: 282px;
+            }
+
+            @include respond-to-max($tablet) {
+                min-width: 100%;
+                width: 100%;
+                margin: 24px auto 0 auto;
+            }
+
+            @include respond-to-max($phone) {
+                min-width: 100%;
+                width: 100%;
+            }
         }
 
         .cmp-teaser__action-container a {
@@ -572,18 +704,36 @@
         border: 1px solid $white;
         border-radius: 4px;
         border-width: 1px;
-        float: right;
-        margin-right: 59px;
-        margin-top: -98px;
-        padding: 10px;
+        // float: right;
+        // margin-right: 59px;
+        // margin-top: -92px;
         text-align: center;
         max-width: 100%;
         min-width: 282px;
+        width: 282px;
+        max-width: 282px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 54px;
+
+        a {
+            color: $white;
+            z-index: 4;
+            position: relative;
+            display: block;
+            padding: 15px;
+            min-width: 282px;
+            max-width: 282px;
+        }
     }
 }
 
 
 .large--banner {
+    @include respond-to-max($phone) {
+        margin-top: 5rem !important;
+    }
     .cmp-text {
         padding: 2rem
     }
@@ -601,6 +751,7 @@
 
 .green--color {
     color: $white;
+    background: linear-gradient(225deg, #353738, #719e19) !important;
 }
 
 .orange--color {

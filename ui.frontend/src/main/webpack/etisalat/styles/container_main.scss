@@ -15,6 +15,9 @@ h5,
 h6 {
 	letter-spacing: 0;
 	color:$almost-black;
+	*[lang="ar"] *[dir=rtl] & {	
+		text-align:right;	
+	}
 }
 
 @media (max-width:770px) {
@@ -26,7 +29,7 @@ h6 {
 		font-size: 1.875rem;
 	}
 	h3 {
-		// font-size:1.75rem;
+		font-size:1.75rem;
 	}
 
 	h4 {
@@ -973,9 +976,7 @@ tbody.collapse.in {
 	}
 }
 
-.navbar-nav {
-	margin: 6.25px -12px
-}
+
 
 .navbar-nav>li>a {
 	padding-top: 10px;
@@ -5179,13 +5180,6 @@ textarea.materialize-textarea~label:after {
 
 .textarea.input-field>label {
 	left: 24px
-}
-
-[lang=ar] [dir=rtl] .input-field>label {
-	width: 94%;
-	left: auto;
-	right: 12px;
-	transform-origin: 100% 0
 }
 
 [lang=ar] [dir=rtl] .input-field.textarea>label {
@@ -14976,6 +14970,7 @@ html[lang=ar] [dir=rtl] .align-cart a>div:nth-child(2) {
 }
 
 .top-nav-section {
+	font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
 	height: 48px
 }
 
@@ -22668,28 +22663,27 @@ screen and (-ms-high-contrast:active) {
 }
 
 .sub-account-menu-wrap .sub-account-menu {
-	background: $white;
-	border-radius: 0 0 4px 4px;
-	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
-	min-width: 254px;
-	border-top: 3px solid #719e19;
-	padding: 0 1.5rem;
-	margin-left: -1.5rem
+	background: #fff;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+    min-width: 254px;
+    border-top: 3px solid #719e19;
+    padding: 1.2rem 1.5rem 0;
+    margin-left: -1.5rem;
 }
-
-.sub-account-menu-wrap .sub-account-menu li:last-child {
-	padding-bottom: 0
+.sub-account-menu-wrap .sub-account-menu li {
+    padding-bottom: 1.5rem;
 }
 
 .sub-account-menu-wrap .sub-account-menu li a {
 	font-size: .875rem;
-	-ms-flex-pack: left;
-	justify-content: left;
-	display: block;
-	color: #6b6b6b;
-	height: 48px!important;
-	line-height: 48px!important;
-	letter-spacing: .6px
+    -ms-flex-pack: left;
+    justify-content: left;
+    display: block;
+    color: #6b6b6b;
+    line-height: 1.43!important;
+    height: auto!important;
+    letter-spacing: .6px;
 }
 
 .sub-account-menu-wrap .sub-account-menu li.active a,
@@ -22830,7 +22824,6 @@ screen and (-ms-high-contrast:active) {
 	align-items: center;
 	font-size: 11px;
 	text-transform: uppercase;
-	@include font-family-Neotech-ge;
 	padding: 1rem 4px;
 	color: #353738;
 	letter-spacing: 2px
@@ -22842,7 +22835,7 @@ screen and (-ms-high-contrast:active) {
 }
 
 .main-menu-mobile .menu-account .menu-account-link span {
-	padding-left: 1.25rem
+	padding-left: 0.5rem
 }
 
 .main-menu-mobile .panel-group {
@@ -25035,6 +25028,7 @@ a:focus {
 }
 
 .footer-links-logo-section {
+	font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
 	background: $white;
 	min-height: 100px
 }
@@ -25063,7 +25057,8 @@ a:focus {
 
 @media (min-width:992px) {
 	.footer-links-logo-section .etisalat-logo svg {
-		height: 100%
+		height: 100%;
+		margin-right: 2.5rem;
 	}
 }
 
@@ -25155,7 +25150,7 @@ a:focus {
 	color: $steel-grey;
 	font-size: 12px;
 	line-height: 1.2;
-	@include font-family-Neotech-ge;
+	
 }
 
 @media (min-width:992px) {
@@ -29227,7 +29222,13 @@ padding: 1rem 1rem 4rem;
 }
 
 .product-grid-text-section.plans .product-tile-section.bg-cards.product-plan-card .plan-card.tile-table .tile-card .tile-card__front .body-standard>.cover {
-	height: 280px
+	height: 280px;
+	div.cmp-image {
+		height: 100%;
+		.cmp-image__image {
+			height: 100%;
+		}
+	}
 }
 
 @media (max-width:991px) {
@@ -29529,7 +29530,7 @@ padding: 1rem 1rem 4rem;
 }
 
 .product-grid-text-section.plans.more-info-wrapper .tile-table.plan-card .tile-card>.tile .tile-card__front .tiles-box.content.body-standard {
-	height: 580px
+	height: 580px;
 }
 
 .product-grid-text-section.plans.more-info-wrapper .product-tile-section.bg-cards .plan-card.tile-table .tile-card .tile-card__front {
@@ -49937,3 +49938,29 @@ html[lang=ar] [dir=rtl] .add-from-map-wrap .switch-add-from-map .switcher svg {
 		text-align: right
 	}
 }
+
+.btn-text {
+    font-family: Lato,GE SS Two,Roboto,Arial,sans-serif !important; 
+    
+}
+
+@media(min-width: 320px) and (max-width: 1024px){
+	.modal-popup.show .cmp-container {
+		padding: 0 15px;
+	}
+}
+@media (max-width: 1440px){
+	.nv-modal.right-modal .nv-modal-title {
+		text-align: center!important;
+	}
+	}
+	
+	@include respond-to-max($tablet) {
+		.hero-banner-section .cmp-image__image {
+		height: 100% !important;
+	}
+	.hero-banner-section .cmp-teaser__image {
+		height: 220px !important;
+		}
+	}
+	

@@ -44,7 +44,7 @@ margin-top: -2px;
 
 .cmp-button--grey {
 	@include secondary-button;
-	color: $almost-black;
+	color: $almost-black !important;
 	background-color: $white;
 	text-align: $white;
 	border-color: $darkest-night;
@@ -64,7 +64,7 @@ margin-top: -2px;
 }
 .cmp-button--width_100 {
 	@include secondary-button;
-	color: $white;
+	color: $white !important;
 	width: 100%;
 	background-color: $main-green;
 	border-color: $main-green;
@@ -79,7 +79,7 @@ margin-top: -2px;
 
 .cmp-button--secondary {
 	@include secondary-button;
-	color: $white;
+	color: $white !important;
 	background-color: $main-green;
 	border-color: $main-green;
 	font-size: 0.875rem;
@@ -93,13 +93,13 @@ margin-top: -2px;
 
 .cmp-button--disabled {
 	@include secondary-button;
-	color: $dark-gray;
+	color: $dark-gray !important;
 	background-color: $lighty-gray;
 	border-color: $lighty-gray;
 }
 .cmp-button--primary {
 	@include secondary-button;
-	color: $white;
+	color: $white !important;
 	background-color: $orange;
 	border-color: $orange;
 	&:hover {
@@ -138,7 +138,7 @@ ol {
 	margin-left: 1.75rem;
 	li {
 		margin-bottom: 0.25rem;
-		padding-left:40px;
+		padding-left:.75rem;
 		font-size: $font18;
 		line-height: 28px;
 		@include font-family-lato;
@@ -182,17 +182,6 @@ ul {
 	font-size: $font16;
 }
 
-.cmp-icon__list {
-	margin-left: 1.75rem;
-	padding-left: 1.5rem;
-	position: relative;
-	color: #6f6c70;
-	font-size: $font14;
-	line-height: 1.5rem;
-	margin: 0;
-	margin-bottom: 0.25rem;
-}
-
 .cmp-icon__arrow__list {
 	margin-left: 1.75rem;
 	padding-left: 1.5rem;
@@ -209,17 +198,6 @@ ul {
 	background: url("../resources/images/icon-list-tick.svg") no-repeat;
 	width: 24px;
 	height: 24px;
-}
-
-.cmp-icon__list:before {
-	content: " - ";
-	padding-left: 1.5rem;
-	margin-bottom: 0.25rem;
-	width: 4px;
-	height: 1px;
-	position: absolute;
-	left: 0;
-	top: 0.875rem;
 }
 
 .font--xsmall {
@@ -245,6 +223,16 @@ ul {
 
 .text--black {
 	color: $almost-black;
+}
+.font--productdesc {
+	font-size: .875rem;
+    line-height: 1.43;
+    margin-bottom: .25rem;
+	color: $steel-grey;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	@include font-family-lato;
 }
 
 .cmp-text {
@@ -282,6 +270,18 @@ ul {
 	color: $white;
 	background-color: $main-green;
 	line-height: 0.938rem;
+	&--orange {
+		background-color: $dark-orange;
+	}
+}
+.divider-line {
+	background-image: url(../resources/images/divider.png);
+	background-repeat: repeat;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 .cmp-text {
@@ -301,8 +301,8 @@ ul {
 	line-height: 28px;
 ul {
 	li {
-		
-	list-style-type: none;
+		padding-left: 1.5rem;
+		list-style-type: none;
 		margin-left: 0;
 		font-size: 1.25rem;
 		line-height: 28px;
@@ -356,6 +356,9 @@ ul {
 	}
 }
 
+.text--white {
+    color: $white;
+}
 
 .cmp-text {
 	h3{margin-left: 0rem;}
@@ -379,3 +382,43 @@ ul {
 	margin-left:1rem;
 }
 
+.icon-checkbox-platinum {
+	position: relative;
+	margin-right: 1.575rem;
+	&::before {
+		background-image: url(../resources/images/icon-checkbox-platinum.svg);
+		@include background-icon;
+	}
+}
+.icon-checkbox-gold {
+	position: relative;
+	margin-right: 1.575rem;
+	&::before {
+		background-image: url(../resources/images/icon-checkbox-gold.svg);
+		@include background-icon;
+	}
+}
+.icon-smiles {
+	position: relative;
+	margin-right: 1.575rem;
+	&::before {
+		background-image: url(../resources/images/icon-smiles.png);
+		@include background-icon;
+	}
+}
+.icon-switch {
+	position: relative;
+	margin-right: 1.575rem;
+	&::before {
+		background-image: url(../resources/images/icon-switch.png);
+		@include background-icon;
+	}
+}
+.icon-unlimited {
+	position: relative;
+	margin-right: 1.575rem;
+	&::before {
+		background-image: url(../resources/images/icon-goChat.png);
+		@include background-icon;
+	}
+}
