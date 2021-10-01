@@ -43,43 +43,45 @@ public class CommonUtility {
     }
 
 
-    /**
-     * Returns generic ListModel list for multifield for different purpose
-     *
-     * @param childItem Child node name
-     * @param res       Parent Resource
-     * @return List of LinkModel
-     */
-    public static List<LinkModel> getLinkItems(String childItem, Resource res) {
-        Resource linkParentRes = res.getChild(childItem);
-        List<LinkModel> linkModelList = new ArrayList<>();
-        if (null != linkParentRes) {
-            linkParentRes.listChildren().forEachRemaining(childResource -> {
-                LinkModel linkModel = childResource.adaptTo(LinkModel.class);
-                if (null != linkModel) {
-                    linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(res.getResourceResolver(), linkModel.getLinkUrl()));
-                    linkModelList.add(linkModel);
-                }
-            });
+  /**
+   *
+   * Returns generic ListModel list for multifield for different purpose
+   *
+   * @param childItem Child node name
+   * @param res Parent Resource
+   * @return List of LinkModel
+   */
+  public static List<LinkModel> getLinkItems(String childItem, Resource res) {
+    Resource linkParentRes = res.getChild(childItem);
+    List<LinkModel> linkModelList = new ArrayList<>();
+    if (null != linkParentRes) {
+      linkParentRes.listChildren().forEachRemaining(childResource -> {
+        LinkModel linkModel = childResource.adaptTo(LinkModel.class);
+        if (null != linkModel) {
+          linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(res.getResourceResolver(), linkModel.getLinkUrl()));
+          linkModelList.add(linkModel);
         }
-        return linkModelList;
+      });
     }
+    return linkModelList;
+  }
 
-    /**
-     * Returns generic ListModel list for multifield for different purpose
-     *
-     * @param res link resource
-     * @return LinkModel generic Link model
-     */
-    public static LinkModel getLinkItem(Resource res) {
-        return res.adaptTo(LinkModel.class);
-    }
+  /**
+   *
+   * Returns generic ListModel list for multifield for different purpose
+   *
+   * @param res link resource
+   * @return LinkModel generic Link model
+   */
+  public static LinkModel getLinkItem(Resource res) {
+    return res.adaptTo(LinkModel.class);
+  }
 
-    /**
-     * private constructor to prevent instantiation of class.
-     */
-    private CommonUtility() {
+	/**
+	 * private constructor to prevent instantiation of class.
+	 */
+	private CommonUtility() {
 
-    }
+	}
 
 }
