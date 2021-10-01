@@ -1049,7 +1049,20 @@ general Paragraph styling
     .nv-modal-close {
         width: 12px;
         height: 12px;
+            *[lang="ar"] *[dir=rtl] 
+            &{
+                position: relative;
+                left:40px;
+                top: -4px;
+             }
+       
     }
+
+    [lang=ar] [dir=rtl] .nv-modal-close {
+        float: left;
+        margin-left: 19px;
+    }
+    
 
     .nv-modal-close svg,
     .nv-modal-close img {
@@ -1442,6 +1455,9 @@ general Paragraph styling
                     margin-right: 48px;
                     text-align: left;
                     font-weight: 400;
+                    *[lang="ar"] *[dir=rtl] & {
+                        text-align:right;
+                    }
                 }
             }
             .modal-popup .nv-modal-header {
@@ -1582,7 +1598,7 @@ general Paragraph styling
 @include respond-to-max($tablet){
 .nv-modal-content .nv-py-5{
     .nv-modal-close {
-        top: 10px !important;
+        top: 15px !important;
         right: 20px !important;
         position: relative;
     }
@@ -1607,8 +1623,8 @@ general Paragraph styling
         height: 24px ;
         position: relative;
         right: 30px;
-        top: 25px;
-        width: 24px ;
+        top:30px;
+        width: 24px;
     }
 }
 
