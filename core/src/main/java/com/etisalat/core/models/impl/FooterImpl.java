@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
@@ -35,6 +36,9 @@ public class FooterImpl implements Footer {
   @SlingObject
   @Optional
   private Resource res;
+
+    @SlingObject
+    private ResourceResolver resourceResolver;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String copyrightText;
@@ -72,7 +76,7 @@ public class FooterImpl implements Footer {
         subItemRes.listChildren().forEachRemaining(resource -> {
           LinkModel linkModel = resource.adaptTo(LinkModel.class);
           if(linkModel!=null) {
-            linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(linkModel.getLinkUrl()));
+            linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(resourceResolver,linkModel.getLinkUrl()));
           }
           subItemList.add(linkModel);
         });
@@ -87,7 +91,7 @@ public class FooterImpl implements Footer {
 		if(promoRes!=null){
 			LinkModel linkModel = promoRes.adaptTo(LinkModel.class);
 			if(linkModel!=null) {
-				linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(linkModel.getLinkUrl()));
+				linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(resourceResolver,linkModel.getLinkUrl()));
 				return linkModel;
 			}
 		}

@@ -34,6 +34,7 @@ class PageNavigationImplTest {
 	public void setup() throws Exception {
 		context.addModelsForClasses(PageNavigationImpl.class);
 		context.load().json("/com/etisalat/core/models/PageNavigationTest.json", CONTENT_ROOT);
+		context.load().json("/com/etisalat/core/models/SamplePage.json", "/content/etisalat/ae/en");
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
@@ -41,7 +42,7 @@ class PageNavigationImplTest {
 	void testPageNavigationLinks() {
 		final int expectedSize = 4;
 		final String expectedTitle = "Prepaid";
-		final String expecctedPageLink = "/content/etisalat/en/prepaid.html";
+		final String expectedPageLink = "/content/etisalat/ae/en/prepaid.html";
 		context.currentResource(PAGE_NAV_1);
 		PageNavigation pageNav = context.request().adaptTo(PageNavigation.class);
 
@@ -50,7 +51,7 @@ class PageNavigationImplTest {
 		assertEquals(expectedSize, actual);
 
 		assertEquals(expectedTitle, pageNavItem.getNavigationTitle());
-		assertEquals(expecctedPageLink, pageNavItem.getNavigationLink());
+		assertEquals(expectedPageLink, pageNavItem.getNavigationLink());
 	}
 	
 	@Test

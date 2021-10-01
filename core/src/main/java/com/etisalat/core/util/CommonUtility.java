@@ -2,12 +2,14 @@ package com.etisalat.core.util;
 
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.LinkModel;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.sling.api.resource.ResourceResolver;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import com.day.cq.wcm.api.NameConstants;
 
 /**
  * Util Class
@@ -21,20 +23,24 @@ import org.slf4j.LoggerFactory;
  */
 public class CommonUtility {
 
-  /**
-   * Appends the HTML extension to page
-   *
-   * @param path Original content path
-   * @return Path with HTML extension
-   */
-  public static String appendHtmlExtensionToPage(String path) {
-    if (StringUtils.isNotEmpty(path) && !path.contains(PageConstants.HTTPS)
-        && (path.startsWith(PageConstants.CONTENT)
-        && !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
-      return path + PageConstants.HTML_EXTENSION;
+    /**
+     * Appends the HTML extension to page
+     *
+     * @param path Original content path
+     * @return Path with HTML extension
+     */
+    public static String appendHtmlExtensionToPage(ResourceResolver resourceResolver, String path) {
+        if (StringUtils.isNotEmpty(path)
+                && (path.startsWith(PageConstants.CONTENT)
+                && !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
+
+            final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(path));
+            if (resource.isPresent() && resourceResolver.resolve(path).isResourceType(NameConstants.NT_PAGE)) {
+                return path + PageConstants.HTML_EXTENSION;
+            }
+        }
+        return path;
     }
-    return path;
-  }
 
 
   /**
@@ -52,7 +58,7 @@ public class CommonUtility {
       linkParentRes.listChildren().forEachRemaining(childResource -> {
         LinkModel linkModel = childResource.adaptTo(LinkModel.class);
         if (null != linkModel) {
-          linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(linkModel.getLinkUrl()));
+          linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(res.getResourceResolver(), linkModel.getLinkUrl()));
           linkModelList.add(linkModel);
         }
       });
@@ -70,7 +76,7 @@ public class CommonUtility {
   public static LinkModel getLinkItem(Resource res) {
     return res.adaptTo(LinkModel.class);
   }
-  
+
 	/**
 	 * private constructor to prevent instantiation of class.
 	 */
