@@ -261,17 +261,21 @@
     }
 }
 
-@media (min-width: 992px) {
-    .footer-links-logo-section .copyright {
-        display: none;
-    }
-}
 
-@media (min-width:992px) {
+    .footer-links-logo-section .copyright {
+        @include respond-to-min($desktop){
+        display: none;
+        }
+    }
+
+
+
 	[lang=ar] [dir=rtl] .desktop {
+        @include respond-to-min($desktop){
 		text-align: right
+        }
 	}
-}
+
 
 .footer-links-logo-section .copyright {
     text-align: center;
