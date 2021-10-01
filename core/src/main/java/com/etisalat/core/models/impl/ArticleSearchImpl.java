@@ -53,6 +53,10 @@ public class ArticleSearchImpl implements ArticleSearch {
 	private static final String PN_NEWSROOM = "newsroom";
 	
 	private static final String PN_ARTICLE_TYPE = "articleType";
+	
+	private static final String IMAGE = "image";
+	
+	private static final String  PN_BACK_TO_HOMELINK = "backToBusinessLink";
 
 	private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-article-page-template";
 	
@@ -258,7 +262,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 	
 	@Override
 	public String getBackToHomeLink() {
-		String backToLink = currentPage.getProperties().get("backToBusinessLink",
+		String backToLink = currentPage.getProperties().get(PN_BACK_TO_HOMELINK,
 				currentPage.getAbsoluteParent(3).getPath());
 
 		return CommonUtility.appendHtmlExtensionToPage(backToLink);
@@ -267,6 +271,16 @@ public class ArticleSearchImpl implements ArticleSearch {
 	@Override
 	public Map<String, Long> getSearchCategories() {
 		return Collections.unmodifiableMap(categoryMap);
+	}
+	
+	@Override
+	public Resource getThumbnailPageResource() {
+		Resource imageResource = currentRes.getChild(IMAGE);
+		if (null != imageResource) {
+			return imageResource;
+		} else {
+			return currentRes;
+		}
 	}
 
 }

@@ -3,6 +3,8 @@ package com.etisalat.core.models;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.sling.api.resource.Resource;
+
 public interface ArticleSearch {
 
 	/**
@@ -45,5 +47,11 @@ public interface ArticleSearch {
 	 *         compose the map.
 	 */
 	Map<String,Long> getSearchCategories();
+	
+	/**
+	 * return a THUMBNAIL page image resource.
+	 * @return
+	 */
+	Resource getThumbnailPageResource();
 		
 }
