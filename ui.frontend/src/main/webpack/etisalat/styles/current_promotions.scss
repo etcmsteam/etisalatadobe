@@ -1415,20 +1415,20 @@ general Paragraph styling
         }
     }
 }
-@media (min-width:320px) and (max-width:1024px){
-    .modal-popup .nv-modal-header {
-        margin-left:  20px !important;
-        margin-right: 20px !important;
-    }
-}
+// @media (min-width:320px) and (max-width:1024px){
+//     .modal-popup .nv-modal-header {
+//         margin-left:  20px !important;
+//         margin-right: 20px !important;
+//     }
+// }
 
-@media  (min-width:1136px){
-    .modal-popup .nv-modal-header {
-        margin-left:  30px !important;
-        margin-right: 30px !important;
-    }
+// @media  (min-width:1136px){
+//     .modal-popup .nv-modal-header {
+//         margin-left:  30px !important;
+//         margin-right: 30px !important;
+//     }
     
-}
+// }
 .right-50-modal {
     .nv-modal__doublemin{
         .offer-details-wrapper{ 
@@ -1626,8 +1626,62 @@ general Paragraph styling
         top:30px;
         width: 24px;
     }
+
+    .right-50-modal{
+    .nv-modal-close svg {
+            *[lang="ar"] *[dir=rtl] & {
+                right:0px;
+            }
+        }
+    }
+
+    .bottom-modal{
+        .nv-modal-close svg {
+                *[lang="ar"] *[dir=rtl] & {
+                    right:-33px;
+                }
+            }
+        }
+        .right-modal{
+            .nv-modal-close svg {
+                    *[lang="ar"] *[dir=rtl] & {
+                        right: -20px!important;
+                    }
+                }
+            }
+            .left-modal{
+                .nv-modal-close svg {
+                        *[lang="ar"] *[dir=rtl] & {
+                            right: -30px!important;
+                        }
+                    }
+                }
+}
+@include respond-to-min($desktop){
+    .right-50-modal{
+        .nv-modal-close img, .nv-modal-close svg {
+            *[lang="ar"] *[dir=rtl] & {
+                right: 42px;
+            }
+        }
+    }
 }
 
+@include respond-to-max($tablet){
+    .nv-modal-close svg {
+        *[lang="ar"] *[dir=rtl] & {
+            right: 37px;
+        }
+    }
+
+    .bottom-modal{
+        .nv-modal-close svg {
+                *[lang="ar"] *[dir=rtl] & {
+                    top: 0;
+                }
+            }
+    }
+}
 
 .nv__left-modal{
     @include respond-to-min($tablet){
