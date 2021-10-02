@@ -387,6 +387,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 					childRes.getChild(childItem).listChildren().forEachRemaining(resource -> {
 						FixedNavigtaionMultifieldModel navModel = resource
 								.adaptTo(FixedNavigtaionMultifieldModel.class);
+						navModel.setTopNavigationXFResource(resource);
 						navModel.setNavigationLink(
 								CommonUtility.appendHtmlExtensionToPage(resourceResolver, navModel.getNavigationLink()));
 						topNavItemsList.add(navModel);

@@ -37,6 +37,12 @@ public class FixedNavigtaionMultifieldModel {
 	@Default(values = "false")
 	private String hideDesktopLink;
 	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	@Default(values = "false")
+	private String openmodalwindow;
+	
+	private Resource topNavigationXFResource;
+	
 	public void setNavigationTitle(String navigationTitle) {
 		this.navigationTitle = navigationTitle;
 	}
@@ -107,6 +113,34 @@ public class FixedNavigtaionMultifieldModel {
 	 */
 	public void setHideDesktopLink(String hideDesktopLink) {
 		this.hideDesktopLink = hideDesktopLink;
+	}
+
+	/**
+	 * @return the openmodalwindow
+	 */
+	public String getOpenmodalwindow() {
+		return openmodalwindow;
+	}
+
+	/**
+	 * @return the topNavigationXFResource
+	 */
+	public Resource getTopNavigationXFResource() {
+		return topNavigationXFResource;
+	}
+
+	/**
+	 * @param openmodalwindow the openmodalwindow to set
+	 */
+	public void setOpenmodalwindow(String openmodalwindow) {
+		this.openmodalwindow = openmodalwindow;
+	}
+
+	/**
+	 * @param topNavigationXFResource the topNavigationXFResource to set
+	 */
+	public void setTopNavigationXFResource(Resource topNavigationXFResource) {
+		this.topNavigationXFResource = topNavigationXFResource;
 	}
 
 }
