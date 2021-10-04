@@ -1,10 +1,10 @@
 
 if ($('.backToTop').length) {
     var scrollTrigger; // px   
-    var mediaType = window.matchMedia("(max-width: 700px)")
+    var mediaType = window.matchMedia("(max-width: 767px)")
     function myFunction(media) {
         if (media.matches) { // If media query matches
-            scrollTrigger = 300;
+            scrollTrigger = 200;
         } else {
             scrollTrigger = 100;
         }
