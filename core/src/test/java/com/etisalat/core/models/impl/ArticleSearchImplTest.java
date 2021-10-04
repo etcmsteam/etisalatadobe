@@ -27,6 +27,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
 	protected static final String BLOG_SEARCH_1 = TEST_PAGE_CONTAINER_ROOT + "/blogsearch";
+	protected static final String BLOG_SEARCH_2 = "/content/blogpostpage/etisalat/en/overview";
 	
 	@BeforeEach
 	public void setup() throws Exception {
@@ -42,9 +43,9 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 		
 		context.currentResource(BLOG_SEARCH_1);
 
-		ArticleSearch blogPostSearchModel = context.request().adaptTo(ArticleSearch.class);
-		GenericListPageDetails pageDetails = blogPostSearchModel.getBlogPageItems().get(0);
-		int actual = blogPostSearchModel.getBlogPageItems().size();	
+		ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
+		GenericListPageDetails pageDetails = articleModel.getBlogPageItems().get(0);
+		int actual = articleModel.getBlogPageItems().size();	
 		String actualTitle = pageDetails.getTitle();
 		assertEquals(expectedSize, actual);
 		assertEquals(expectedTitle, actualTitle);
@@ -56,9 +57,9 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 		final String expected = "775607242";
 		context.currentResource(BLOG_SEARCH_1);
 
-		ArticleSearch blogPostSearchModel = context.request().adaptTo(ArticleSearch.class);
+		ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
 
-		String actual = blogPostSearchModel.getId();
+		String actual = articleModel.getId();
 		assertEquals(expected, actual);
 	}
 	
@@ -66,9 +67,19 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 	void testCategory() {
 		final String expected = "etisalat:business/smb/category/business-advice-ideas";
 		context.currentResource(BLOG_SEARCH_1);
-		ArticleSearch blogPostSearchModel = context.request().adaptTo(ArticleSearch.class);
+		ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
 
-		String actual = blogPostSearchModel.getBusinessCategoryTag();
+		String actual = articleModel.getBusinessCategoryTag();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void testBackLink() {
+		final String expected = "/content/blogpostpage/etisalat/en.html";
+		context.currentResource(BLOG_SEARCH_2);
+		ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
+
+		String actual = articleModel.getBackToHomeLink();
 		assertEquals(expected, actual);
 	}
 
