@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
@@ -64,6 +65,9 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 	 */
 	@SlingObject
 	protected Resource currentRes;
+
+	@SlingObject
+	private ResourceResolver resourceResolver;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String parentPath;
@@ -201,7 +205,7 @@ public class BlogpostSearchImpl implements BlogpostSearch {
 		String backToLink = currentPage.getProperties().get("backToBusinessLink",
 				currentPage.getAbsoluteParent(3).getPath());
 
-		return CommonUtility.appendHtmlExtensionToPage(backToLink);
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver,backToLink);
 	}
 
 }

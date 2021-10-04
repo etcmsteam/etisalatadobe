@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
@@ -82,6 +83,9 @@ public class MegaNavigationImpl implements MegaNavigation {
 	 @Optional
 	 private SlingHttpServletRequest request;
 
+	@SlingObject
+	private ResourceResolver resourceResolver;
+
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String fileReference;
 
@@ -140,7 +144,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 		if (null != navItemRes) {
 			navItemRes.listChildren().forEachRemaining(resource -> {
 				MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
-				navModel.setNavigationLinkTo(CommonUtility.appendHtmlExtensionToPage(navModel.getNavigationLinkTo()));
+				navModel.setNavigationLinkTo(CommonUtility.appendHtmlExtensionToPage(resourceResolver, navModel.getNavigationLinkTo()));
 				if (StringUtils.isBlank(navModel.getUtilityMenuLayout())
 						|| navModel.getUtilityMenuLayout().equals("fixedmenulist")) {
 					setSubNavigationItems(resource, navModel);
@@ -169,7 +173,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 			subItemRes.listChildren().forEachRemaining(resource -> {
 				MegaSubNavigationItem subNavModel = resource.adaptTo(MegaSubNavigationItem.class);
 				setNavMenuActive(resource, subNavModel.getSubNavLinkTo(), navModel);
-				subNavModel.setSubNavLinkTo(CommonUtility.appendHtmlExtensionToPage(subNavModel.getSubNavLinkTo()));
+				subNavModel.setSubNavLinkTo(CommonUtility.appendHtmlExtensionToPage(resourceResolver, subNavModel.getSubNavLinkTo()));
 				subItemList.add(subNavModel);
 			});
 			navModel.setSubNavigationList(subItemList);			
@@ -321,7 +325,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 				for (Resource itemRes : item.getChildren()) {
 					ValueMap vm = itemRes.getValueMap();
 					teaserModel.setLink(vm.containsKey(PROPERTY_LINK)
-							? CommonUtility.appendHtmlExtensionToPage(vm.get(PROPERTY_LINK, String.class))
+							? CommonUtility.appendHtmlExtensionToPage(resourceResolver, vm.get(PROPERTY_LINK, String.class))
 							: StringUtils.EMPTY);
 					teaserModel.setText(vm.get("text", String.class));
 				}
@@ -383,8 +387,9 @@ public class MegaNavigationImpl implements MegaNavigation {
 					childRes.getChild(childItem).listChildren().forEachRemaining(resource -> {
 						FixedNavigtaionMultifieldModel navModel = resource
 								.adaptTo(FixedNavigtaionMultifieldModel.class);
+						navModel.setTopNavigationXFResource(resource);
 						navModel.setNavigationLink(
-								CommonUtility.appendHtmlExtensionToPage(navModel.getNavigationLink()));
+								CommonUtility.appendHtmlExtensionToPage(resourceResolver, navModel.getNavigationLink()));
 						topNavItemsList.add(navModel);
 					});
 					setTopNavResource(childRes);
@@ -411,7 +416,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 
 	@Override
 	public String getLogoMenuLink() {
-		return CommonUtility.appendHtmlExtensionToPage(logoLink);
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver,logoLink);
 	}
 
 

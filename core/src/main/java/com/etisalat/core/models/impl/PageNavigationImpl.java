@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
@@ -31,6 +32,9 @@ public class PageNavigationImpl implements PageNavigation {
 	@SlingObject
 	protected Resource currentRes;
 
+	@SlingObject
+	private ResourceResolver resourceResolver;
+
 	@Override
 	public List<FixedNavigtaionMultifieldModel> getPageNavItems() {
 		Resource pageItemRes = currentRes.getChild(PAGE_CHILD_ITEMS);
@@ -39,7 +43,7 @@ public class PageNavigationImpl implements PageNavigation {
 			pageItemRes.listChildren().forEachRemaining(resource -> {
 				FixedNavigtaionMultifieldModel pageModel = resource.adaptTo(FixedNavigtaionMultifieldModel.class);
 				if (StringUtils.isNotBlank(pageModel.getNavigationLink())) {
-					pageModel.setNavigationLink(CommonUtility.appendHtmlExtensionToPage(pageModel.getNavigationLink()));
+					pageModel.setNavigationLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
 				}
 				pageItemList.add(pageModel);
 			});

@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
@@ -31,6 +32,10 @@ public class TilesModelItem {
 	@SlingObject
 	private SlingHttpServletRequest request;
 
+	@SlingObject
+	private ResourceResolver resourceResolver;
+
+
 	private static final Logger LOG = LoggerFactory.getLogger(TilesModelItem.class);
 
 	private static final String TILE_ITEMS = "tileitems";
@@ -47,7 +52,7 @@ public class TilesModelItem {
 				while (multiItr.hasNext()) {
 					Resource resource = multiItr.next();
 					TileModel model = resource.adaptTo(TileModel.class);
-					model.setLink(CommonUtility.appendHtmlExtensionToPage(model.getLink()));
+					model.setLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver, model.getLink()));
 					tileList.add(model);
 				}
 			}

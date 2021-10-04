@@ -130,6 +130,22 @@
         margin-right: 16px;
     }
 }
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap{
+    flex-direction: row-reverse;
+}
+
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap .icon,
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap .icon:last-child {
+	margin-left: 12px;
+	margin-right: 0
+}
+[lang=ar] [dir=rtl] .download-etisalat .icons-wrap .icon {
+        @include respond-to-min($tablet){
+		margin-left: 16px;
+		margin-right: 0
+        }
+    }
+
 
 .follow-etisalat .icons-wrap .icon {
     width: 36px;
@@ -245,11 +261,21 @@
     }
 }
 
-@media (min-width: 992px) {
+
     .footer-links-logo-section .copyright {
+        @include respond-to-min($desktop){
         display: none;
+        }
     }
-}
+
+
+
+	[lang=ar] [dir=rtl] .desktop {
+        @include respond-to-min($desktop){
+		text-align: right
+        }
+	}
+
 
 .footer-links-logo-section .copyright {
     text-align: center;
@@ -381,6 +407,17 @@
     }
 
 }
+
+*[lang="ar"] *[dir="rtl"] .quick-links-section .arrow_accordion.collapsed:after{
+    right: auto;
+    left: 0;
+}
+
+*[lang="ar"] *[dir="rtl"] .quick-links-section .arrow_accordion:after{
+    right: auto;
+    left: 0;
+}
+
 
 @media (min-width: 481px) and (max-width: 767px) {
     .HideForMobile {
@@ -522,10 +559,6 @@
         justify-content: center;
     }
 }
-
-
-
-
 
 
 .quick-links-section .arrow_accordion {

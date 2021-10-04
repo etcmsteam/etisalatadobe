@@ -2,9 +2,11 @@ package com.etisalat.core.models;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.etisalat.core.util.CommonUtility;
@@ -12,6 +14,9 @@ import com.etisalat.core.util.CommonUtility;
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class })
 public class FixedNavigtaionMultifieldModel {
+
+	@SlingObject
+	private ResourceResolver resourceResolver;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String navigationTitle;
@@ -32,6 +37,12 @@ public class FixedNavigtaionMultifieldModel {
 	@Default(values = "false")
 	private String hideDesktopLink;
 	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	@Default(values = "false")
+	private String openmodalwindow;
+	
+	private Resource topNavigationXFResource;
+	
 	public void setNavigationTitle(String navigationTitle) {
 		this.navigationTitle = navigationTitle;
 	}
@@ -45,7 +56,7 @@ public class FixedNavigtaionMultifieldModel {
 	}
 
 	public String getNavigationLink() {
-		return CommonUtility.appendHtmlExtensionToPage(navigationLink);
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver, navigationLink);
 	}
 
 	/**
@@ -102,6 +113,34 @@ public class FixedNavigtaionMultifieldModel {
 	 */
 	public void setHideDesktopLink(String hideDesktopLink) {
 		this.hideDesktopLink = hideDesktopLink;
+	}
+
+	/**
+	 * @return the openmodalwindow
+	 */
+	public String getOpenmodalwindow() {
+		return openmodalwindow;
+	}
+
+	/**
+	 * @return the topNavigationXFResource
+	 */
+	public Resource getTopNavigationXFResource() {
+		return topNavigationXFResource;
+	}
+
+	/**
+	 * @param openmodalwindow the openmodalwindow to set
+	 */
+	public void setOpenmodalwindow(String openmodalwindow) {
+		this.openmodalwindow = openmodalwindow;
+	}
+
+	/**
+	 * @param topNavigationXFResource the topNavigationXFResource to set
+	 */
+	public void setTopNavigationXFResource(Resource topNavigationXFResource) {
+		this.topNavigationXFResource = topNavigationXFResource;
 	}
 
 }

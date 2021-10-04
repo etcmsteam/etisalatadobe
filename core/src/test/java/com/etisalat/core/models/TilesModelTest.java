@@ -1,16 +1,15 @@
 package com.etisalat.core.models;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import io.wcm.testing.mock.aem.junit5.AemContext;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * JUnit test verifying the TilesModel
@@ -26,6 +25,7 @@ class TilesModelTest {
 	public void setup() throws Exception {
 		context.addModelsForClasses(TilesModelItem.class);
 		context.load().json("/com/etisalat/core/models/TilesModel.json", "/content");
+		context.load().json("/com/etisalat/core/models/SamplePage.json", "/content/etisalat/language-master/en");
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
@@ -33,6 +33,7 @@ class TilesModelTest {
 	void testTilesLinks() {
 		final int expectedSize = 1;
 		context.currentResource("/content/tile");
+
 		TilesModelItem tileList = context.request().adaptTo(TilesModelItem.class);
 		int actual = tileList.getTileList().size();
 		assertEquals(expectedSize, actual);
@@ -43,7 +44,7 @@ class TilesModelTest {
 		assertEquals("Learn More", tileList.getTileList().get(0).getCtatext());
 		assertEquals(TEST_PAGE_URL,tileList.getTileList().get(0).getLink());
 	}
-	
+
 	@Test
 	void testEmptyLinks() {
 		context.currentResource("/content/empty");

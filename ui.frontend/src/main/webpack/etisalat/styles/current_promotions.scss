@@ -1049,7 +1049,20 @@ general Paragraph styling
     .nv-modal-close {
         width: 12px;
         height: 12px;
+            *[lang="ar"] *[dir=rtl] 
+            &{
+                position: relative;
+                left:40px;
+                top: -4px;
+             }
+       
     }
+
+    [lang=ar] [dir=rtl] .nv-modal-close {
+        float: left;
+        margin-left: 19px;
+    }
+    
 
     .nv-modal-close svg,
     .nv-modal-close img {
@@ -1402,20 +1415,20 @@ general Paragraph styling
         }
     }
 }
-@media (min-width:320px) and (max-width:1024px){
-    .modal-popup .nv-modal-header {
-        margin-left:  20px !important;
-        margin-right: 20px !important;
-    }
-}
+// @media (min-width:320px) and (max-width:1024px){
+//     .modal-popup .nv-modal-header {
+//         margin-left:  20px !important;
+//         margin-right: 20px !important;
+//     }
+// }
 
-@media  (min-width:1136px){
-    .modal-popup .nv-modal-header {
-        margin-left:  30px !important;
-        margin-right: 30px !important;
-    }
+// @media  (min-width:1136px){
+//     .modal-popup .nv-modal-header {
+//         margin-left:  30px !important;
+//         margin-right: 30px !important;
+//     }
     
-}
+// }
 .right-50-modal {
     .nv-modal__doublemin{
         .offer-details-wrapper{ 
@@ -1442,6 +1455,9 @@ general Paragraph styling
                     margin-right: 48px;
                     text-align: left;
                     font-weight: 400;
+                    *[lang="ar"] *[dir=rtl] & {
+                        text-align:right;
+                    }
                 }
             }
             .modal-popup .nv-modal-header {
@@ -1582,7 +1598,7 @@ general Paragraph styling
 @include respond-to-max($tablet){
 .nv-modal-content .nv-py-5{
     .nv-modal-close {
-        top: 10px !important;
+        top: 15px !important;
         right: 20px !important;
         position: relative;
     }
@@ -1607,11 +1623,65 @@ general Paragraph styling
         height: 24px ;
         position: relative;
         right: 30px;
-        top: 25px;
-        width: 24px ;
+        top:30px;
+        width: 24px;
+    }
+
+    .right-50-modal{
+    .nv-modal-close svg {
+            *[lang="ar"] *[dir=rtl] & {
+                right:0px;
+            }
+        }
+    }
+
+    .bottom-modal{
+        .nv-modal-close svg {
+                *[lang="ar"] *[dir=rtl] & {
+                    right:-33px;
+                }
+            }
+        }
+        .right-modal{
+            .nv-modal-close svg {
+                    *[lang="ar"] *[dir=rtl] & {
+                        right: -20px!important;
+                    }
+                }
+            }
+            .left-modal{
+                .nv-modal-close svg {
+                        *[lang="ar"] *[dir=rtl] & {
+                            right: -30px!important;
+                        }
+                    }
+                }
+}
+@include respond-to-min($desktop){
+    .right-50-modal{
+        .nv-modal-close img, .nv-modal-close svg {
+            *[lang="ar"] *[dir=rtl] & {
+                right: 42px;
+            }
+        }
     }
 }
 
+@include respond-to-max($tablet){
+    .nv-modal-close svg {
+        *[lang="ar"] *[dir=rtl] & {
+            right: 37px;
+        }
+    }
+
+    .bottom-modal{
+        .nv-modal-close svg {
+                *[lang="ar"] *[dir=rtl] & {
+                    top: 0;
+                }
+            }
+    }
+}
 
 .nv__left-modal{
     @include respond-to-min($tablet){
