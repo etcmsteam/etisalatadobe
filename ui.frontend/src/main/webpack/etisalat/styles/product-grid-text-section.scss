@@ -249,9 +249,13 @@
 		display: block;
 		text-align: center;
 		.showNoContract {
-			width: 100%;
+			width: 85%;
+			@include respond-to-min($tablet) {
+				width: 92%;
+			}
 			@include respond-to-min($desktop) {
-			 max-width: 25%;
+			 max-width: 100%;
+			 width: auto;
 			}
 		}
 	}
@@ -1020,6 +1024,30 @@
 	min-height: 316px;
     height: 316px;
 }
+.bg-cards .tile-card table.table-striped.compareTableGrid tfoot tr td .read-more {
+	text-align: center;
+	background-color: $main-green;
+	text-transform: uppercase;
+	color: $white;
+	font-size: 1em;
+	letter-spacing: 4px;
+	padding: 1em;
+	height: 52px!important;
+	border-radius: 0 0 10px 10px;
+	cursor: pointer;
+	line-height: 32px;
+	@include font-family-lato;
+	a {
+		span {
+			line-height: 19.3px;
+			padding-top: 2px;
+		}
+	}
+}
+
+table.table-striped.compareTableGrid tfoot tr td .read-more.rounded {
+	border-radius: 10px
+}
 .swiper-container-horizontal {
 	.swiper-scrollbar {
 		background-color: $sand-white;
@@ -1507,8 +1535,13 @@ table {
 						}
 					}
 					 p {
-						color: $grey1 !important;
-						font-size: 1.25rem !important;
+						color: $grey1;
+						font-size: 1.25rem;
+						line-height: 26px;
+						padding-bottom: .825rem;
+						list-style: none;
+						white-space: nowrap;
+						text-overflow: ellipsis;
 					}
 				}
 			}
@@ -1882,8 +1915,7 @@ ul.featureList li strong {
 	
 		.tile-table.plan-card .tile-card .tiles-box-title h2 {
 			color:$white;
-		}	
-		
+		}
 		 .device-card-selection.tile-table .tile-card .special-offer,
 		 .device-card.tile-table .tile-card .special-offer,
 		 .device-multi-card-selection.tile-table .tile-card .special-offer,
@@ -2296,6 +2328,11 @@ ul.featureList li strong {
 	}
 	}
 }
+.gold-bg-theme,.blue-bg-theme {
+	.catagory {
+		margin-bottom: .5rem;
+	}
+} 
 
 .bg-cards .plan-card.postpaid.tile-table .tile-card .tiles-box-title,
 	.bg-cards .plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
@@ -2526,13 +2563,15 @@ ul.featureList li strong {
 	.bg-cards {
 		.row-tiles-table {
 			#product {
-				display: block;
-				@include respond-to-min($tablet) {
+				display: flex;
+				flex-wrap: nowrap;
+				@include respond-to-min($desktop) {
 					display: flex;
 					flex-wrap: wrap;
 				}
 				.swiper-slide {
 					height: auto;
+					margin-bottom: 30px;
 					.producttile {
 						height: 100%;
 					    > div {
@@ -2548,6 +2587,12 @@ ul.featureList li strong {
 								}
 							}
 						}
+					}
+				}
+				&:not(.swiper-wrapper){
+					overflow: auto;
+					@include respond-to-min($desktop) {
+						overflow: hidden;
 					}
 				}
 			}
@@ -2566,6 +2611,7 @@ ul.featureList li strong {
 					a {
 						display: flex;
 						align-items: center;
+						@include font-family-lato;
 						.channel-list-icon {
 						    background-image: url(../resources/images/icon-tv.svg);
 							height: 24px;
@@ -2584,7 +2630,6 @@ ul.featureList li strong {
 				padding: 1rem;
 				height: 8.75rem;
 				.catagory {
-					margin-bottom: .5rem;
 					@include font-family-lato;
 					line-height: .75rem;
 					opacity: .8;
