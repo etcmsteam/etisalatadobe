@@ -1,11 +1,11 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"  
 data-sly-use.articleObj="com.etisalat.core.models.ArticleSearch">
   <sly data-sly-test="${properties.searchType && properties.searchType == 'freetextsearch'}" 
-       data-sly-use.blogSearchTemplate="/apps/etisalat/components/articlelist/blogpostsearch.html"
+       data-sly-use.blogSearchTemplate="blogpostsearch.html"
        data-sly-call="${blogSearchTemplate.blogPostObj @ properties=properties,blogpost=articleObj}">
   </sly>
   <sly data-sly-test="${properties.searchType && properties.searchType == 'searchcategory'}" 
-        data-sly-use.newsRoomTemplate="/apps/etisalat/components/articlelist/newsroomsearch.html"
+        data-sly-use.newsRoomTemplate="newsroomsearch.html"
        data-sly-call="${newsRoomTemplate.newsRoomObj @ properties=properties,newsroom=articleObj}">
   </sly>
 </sly>
