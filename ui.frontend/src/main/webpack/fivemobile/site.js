@@ -1,25 +1,23 @@
-$(() => {
+$(document).ready(function () {
   $(window).scroll(() => {
     var windowTop = $(window).scrollTop();
     if (windowTop > 100) {
-      $("#main-header").css({
-        "border-bottom": "1px solid #ddd",
-        height: "60px",
-      });
-      $("header.experiencefragment .cmp-image").css({
-        width: "36px",
-        top: "5px",
-      });
-      $(".menu").css("margin-top", "14px");
+      $("#main-header").addClass("Scroll-Up");
+      $("#main-header").removeClass("Scroll-Down");
     } else {
-      $("#main-header").css("border-bottom", "none").css("height", "100px");
+      $("#main-header").addClass("Scroll-Down");
+      $("#main-header").removeClass("Scroll-Up");
       $("nav ul").css("overflow", "visible");
-      $("header.experiencefragment .cmp-image").css({
-        display: "block",
-        width: "86px",
-        top: "20px",
-      });
-      $(".menu").css("margin-top", "60px");
     }
+  });
+
+  $(".menu__icon").on("click", function (e) {
+    e.preventDefault();
+    $(".menu").toggleClass("ShowMenu");
+  });
+
+  $(".menu li a").on("click", function (e) {
+    e.preventDefault();
+    $(".menu").removeClass("ShowMenu");
   });
 });

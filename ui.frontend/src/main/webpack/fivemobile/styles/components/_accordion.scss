@@ -100,7 +100,6 @@
   }
 }
 
-
 .section-roaming {
   max-width: 1024px;
   margin: 0 auto;
@@ -241,7 +240,7 @@ table thead th span {
   font-size: toRem(20);
 }
 
-@media (min-width: 992px) {
+@include respond-to-min($desktop) {
   .width50 {
     width: 50%;
     margin-top: 20px;
@@ -367,7 +366,7 @@ table thead th span {
     }
   }
 }
-@media (min-width: 992px) {
+@include respond-to-min($desktop) {
   ul.width50 p {
     margin: 0px;
   }
@@ -451,14 +450,15 @@ table thead th span {
   }
 }
 
-.cmp-container{
-#section-subscription .lead+.cmp_circle_list li{
-  padding-bottom: 0px;
-}
+.cmp-container {
+  #section-subscription .lead + .cmp_circle_list li {
+    padding-bottom: 0px;
+  }
 }
 
-.cmp-container{
-  #section-roaming, #section-charges{
+.cmp-container {
+  #section-roaming,
+  #section-charges {
     table:first-of-type th {
       background-color: $color-violet !important;
       color: $white-color;
@@ -466,7 +466,7 @@ table thead th span {
   }
 }
 
-.cmp-container{
+.cmp-container {
   #section-reservecredit table thead th {
     padding: 12px !important;
   }
