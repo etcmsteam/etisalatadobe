@@ -24,13 +24,22 @@ $(function() {
 		const sortableColumn = $(elem).attr('data-column-sort')
 		const hiddenColumn = $(elem).attr('data-hide-columns')
 
+		var allColumnSortable = false;
+
 		const table = $('table', elem)[0];
 		$(table).addClass(className);
 		addDataAttributes(table);
 		let columnIndex = [];
 
-		if (sortableColumn && sortableColumn !== '[]')
-			columnIndex = sortableColumn.match(/\d+/g).map(Number);
+		if (sortableColumn && sortableColumn !== '[]') {
+			if (sortableColumn.indexOf("_all") != -1) {
+
+				columnIndex = '_all';
+				allColumnSortable = true;
+			} else {
+				columnIndex = sortableColumn.match(/\d+/g).map(Number);
+			}
+		}
 		if (!pageLimit && $('tr', table).length) {
 			pageLimit = $('tr', table).length;
 		}
@@ -50,7 +59,7 @@ $(function() {
 			"bLengthChange": false,
 			"pageLength": Number(pageLimit),
 			"fnInfoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
-			    const currentPage = this.api().page.info().page + 1 ;
+				const currentPage = this.api().page.info().page + 1;
 				return "Page " + currentPage + " of " + this.api().page.info().pages;
 			},
 			drawCallback: function(settings) {
@@ -70,9 +79,10 @@ $(function() {
 					targets: columnIndex
 				},
 				{
-					orderable: false,
+					orderable: allColumnSortable,
 					targets: '_all'
 				}
+
 			],
 			'createdRow': function(row, data, rowIndex) {
 				// Per-cell function to do whatever needed with cells
