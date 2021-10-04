@@ -14,15 +14,15 @@
 }
 
 .cmp-teaser__description{
-	ul li{
-		color: #6f6c70;
-		font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
-		font-size: 1.25rem;
-		font-weight: 400;
-		line-height: 20px;
-		margin: 0 0 .5rem;
-		position: relative;
-		}
+    ul li{
+        color: #6f6c70;
+        font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 0 .5rem;
+        position: relative;
+        }
 }
 
 .cmp_accordion___view{
@@ -165,8 +165,8 @@ color: $main-green;
 .nav-view-wrapp.panel>a, .nav-view-wrapp.panel>a.collapsed {
     line-height: 1.5;
     letter-spacing: normal;
-    padding: 18px 0;
-    padding-left: 1rem;
+    padding: 24px 0 24px 15px !important;
+    padding-left: 15px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -241,12 +241,15 @@ font-weight: 900;
 .cmp_tabs__vertical_view--active-full-bdr{
 .nav-view-wrapp.panel>a.collapsed {
   border-left: 4px solid transparent;
+  color: $almost-black;
+  border-bottom: 1px solid $light-sand-brown;
 }
 }
 
 .cmp_tabs__vertical_view--active-full-bdr{
 .nav-view-wrapp.panel>a{
   border-left: 4px solid $main-green;
+  @include font-family-Neotech;
   }
 }
 
@@ -259,9 +262,6 @@ font-weight: 900;
   stroke-width: 1px;
   }
   .cmp_tabs__vertical_view--active-full-bdr {
-    a:hover {
-      text-decoration: underline !important;
-    }
     .cmp-teaser {
       display: flex;
       flex-direction: row-reverse;
@@ -281,7 +281,7 @@ font-weight: 900;
         padding: 1rem;
         text-align: left;
         @include font-family-Neotech;
-        // color: #353738;
+        color: $almost-black;
       }
   
       span {
@@ -311,19 +311,18 @@ font-weight: 900;
       height: 90px;
       display: flex;
       align-items: center;
-      padding: 0px 0px 0px 26px !important;
+      padding: 0px 0px 0px 22px !important;
       border-left: 4px solid transparent;
   
       &--active {
-        background: $white-gray1;
         font-size: 20px;
         border-left: 4px solid $main-green;
-        color: $main-green;
+        color: $main-green !important;
         line-height: 25px;
         height: 90px;
         display: flex;
         align-items: center;
-        padding: 0px 0px 0px 26px !important;
+        padding: 0px 0px 0px 22px !important;
   
         span {
           img {
@@ -339,8 +338,10 @@ font-weight: 900;
     .cmp-tabs__tabpanel--active {
       display: block;
       width: 70%;
-      background: $white-gray1;
+      // background: $white-gray1;
       font-weight: 700;
+      padding-left: 37px;
+      padding-top: 40px;
     }
   
     .cmp-teaser__description {
@@ -385,7 +386,7 @@ font-weight: 900;
       height: auto;
       border-radius: 4px;
           @include respond-to-min($tablet) {
-            width: 11rem;
+            width: 10.3rem;
           }
     }
   
@@ -433,7 +434,8 @@ font-weight: 900;
       border-bottom: none;
     }
       h5{
-      color:$gray;;
+      color:$gray;
+      margin: 5px 0 0;
       }
   
     .cmp-text{
@@ -447,12 +449,44 @@ font-weight: 900;
             font-size: 24px !important;
           }
         }
+
+        h2 {
+          font-size: 24px !important;
+          margin-top: 25px;
+
+          @include respond-to-max($phone) {
+            font-size: 18px !important;
+            color: $grey1;
+          }
+        }
+
+        p{
+          color: $gray !important;
+          line-height: 1.625rem;
+          font-size: 1rem;
+          margin: 20px 0;
+
+          @include respond-to-max($phone) {
+            color: $grey1 !important;
+          }
+
+          .font--med {
+            @include respond-to-max($phone) {
+              font-size: $font14;
+            }
+          }
+        }
     }
   
       .text--gray{
         color: $gray;;
         font-size: 16px;
         letter-spacing: 0;
+
+        @include respond-to-max($phone) {
+          font-size: 14px !important;
+          color: $grey1;
+        }
       }
       .space-bottom{
         margin-bottom: 0;
@@ -464,13 +498,39 @@ font-weight: 900;
         margin-left: 0;
           @include respond-to-min($tablet) {
             background: transparent !important;
-            margin-left: 16.66666667%;
+            margin-left: 17.66666667%;
           }
           @include respond-to-min($desktop) {
             margin-left: 0;
          }
         
       }
+
+      .nav-view-wrapp.panel>a:before {
+        border: solid $main-green;
+        border-width: 0 1px 1px 0;
+        padding: 5px;
+        content: "";
+        position: absolute;
+        line-height: 1;
+        transform: translateY(-30%) rotate(-135deg);
+        transition: all .3s ease-in-out;
+        right: 18px;
+        z-index: 1;
+        top: 50%;
+    }
+    .nav-view-wrapp.panel>a.collapsed:before{
+      border-color: $almost-black;
+    }
+
+    .panel {
+      box-shadow: none;
+      border: none;
+    }
+
+    .cmp_accordion___view .nav-view-wrapp.panel>a.collapsed:before {
+      border-color: $almost-black;
+    }
   }
 //desktop view st
 @media (min-width: 48em) {
@@ -574,7 +634,7 @@ font-weight: 900;
     .cmp-tabs__tabpanel--active {
         display: block;
         width: 70%;
-        background: #fafaf4;
+        // background: #fafaf4;
         font-weight: 700;
     }
     .cmp-teaser__description{
@@ -802,7 +862,7 @@ font-weight: 900;
       font-size: 16px;
       line-height: 26px;
       font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
-      color: $gray;;
+      color: $gray;
       margin-bottom: 20px;
       margin-top: 20px;
       }
