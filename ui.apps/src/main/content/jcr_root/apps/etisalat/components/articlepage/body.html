@@ -1,10 +1,10 @@
 <sly data-sly-use.articleObj="com.etisalat.core.models.ArticleSearch">	
     <sly data-sly-test="${!pageProperties.articleType || pageProperties.articleType == 'blogpost'}" 
-	       data-sly-use.blogSearchTemplate="/apps/etisalat/components/articlepage/blogpost.html"
+	       data-sly-use.blogSearchTemplate="blogpost.html"
 	       data-sly-call="${blogSearchTemplate.blogpost @ pageProperties=pageProperties,articleObj=articleObj}">
     </sly>
     <sly data-sly-test="${pageProperties.articleType && pageProperties.articleType == 'newsroom'}" 
-	       data-sly-use.newsRoomTemplate="/apps/etisalat/components/articlepage/newsroom.html"
+	       data-sly-use.newsRoomTemplate="newsroom.html"
 	       data-sly-call="${newsRoomTemplate.newsroom @ pageProperties=pageProperties,articleObj=articleObj}">
     </sly>
 </sly>
