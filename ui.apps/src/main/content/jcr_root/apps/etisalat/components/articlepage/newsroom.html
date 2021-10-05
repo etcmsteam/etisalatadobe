@@ -1,7 +1,7 @@
 <template data-sly-template.newsroom="${ @ pageProperties,articleObj}">
-  <div class="hero-image-section  hero-image medium">
+  <div class="hero-image-section  hero-image medium" data-sly-test="${currentPage.properties['image/fileReference']}">
    <div class="cover">
-     <div data-sly-test="${articleObj.thumbnailPageResource}" class="cover" data-sly-resource="${articleObj.thumbnailPageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+     <sly data-sly-resource="${articleObj.thumbnailPageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
    </div>
  </div>
  <div class="container">
@@ -13,3 +13,4 @@
 	</div>
 </div>
 </template>
+
