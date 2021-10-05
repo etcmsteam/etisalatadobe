@@ -36,11 +36,15 @@ c.forEach(function (a) {
     a.querySelector(".nav-link").addEventListener("click", function () {
             a.classList.add("active"),
                 this.classList.contains("search-link") && e(".nav-drill").addClass("search-nav-drill")
-        }),
-        a.querySelector(".nav-back-link").addEventListener("click", function () {
-            a.classList.remove("active"),
-                e(".nav-drill").hasClass("search-nav-drill") && e(".nav-drill").removeClass("search-nav-drill")
         })
+        //Added condition causing errors and stop here when null
+        if(a.querySelector(".nav-back-link") != null){
+            a.querySelector(".nav-back-link").addEventListener("click", function () {
+                a.classList.remove("active"),
+                    e(".nav-drill").hasClass("search-nav-drill") && e(".nav-drill").removeClass("search-nav-drill")
+            })
+        }
+        
 });
 
 
