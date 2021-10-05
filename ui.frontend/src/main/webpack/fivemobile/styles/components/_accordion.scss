@@ -32,7 +32,7 @@
   .cmp-accordion__button {
     position: relative;
     border: 0;
-    padding: 0.5rem 0;
+    padding: 0.3rem 0;
     background: 0;
     color: inherit;
     font: inherit;
@@ -131,7 +131,10 @@
   }
 }
 .signifierPlusIcon .cmp-accordion {
-  padding: 0 20px;
+  padding: 20px 20px 0 20px;
+  .cmp-text p{
+    padding-left: 30px;
+  }
 }
 .signifierPlusIcon .cmp-accordion__title {
   padding-left: 10px;
@@ -142,6 +145,7 @@
 }
 .signifierPlusIcon .cmp-accordion__item:last-child {
   border-bottom: 0;
+  padding-bottom: 15px;
 }
 .signifierPlusIcon .cmp-accordion__title::before {
   padding: 4px;
@@ -208,9 +212,6 @@ table thead th span {
   clear: both !important;
 }
 
-.signifierPlusIcon .cmp-accordion {
-  padding: 0 20px;
-}
 
 .grey h1 {
   padding-top: 0;
@@ -240,7 +241,7 @@ table thead th span {
   font-size: toRem(20);
 }
 
-@include respond-to-min($desktop) {
+@include respond-to-min($tablet) {
   .width50 {
     width: 50%;
     margin-top: 20px;
@@ -253,7 +254,7 @@ table thead th span {
 
 .width50 li {
   border-bottom: 1px solid $greyish-white;
-  padding-bottom: 5px;
+  padding: 6px 0;
 }
 .width50 li:last-child {
   border-bottom: none !important;
@@ -312,9 +313,14 @@ table thead th span {
   border: 0 !important;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (max-width: $phone) {
   footer #main-footer {
     margin: 2rem;
+  }
+}
+@media (max-width: $tablet) {
+  body{
+    overflow-x: scroll;
   }
 }
 .accordion.signifierNoIcon.cmp_center_block {
@@ -356,6 +362,9 @@ table thead th span {
     .cmp-text h1 + p {
       font-size: toRem(20);
     }
+    p.lead {
+      margin-bottom: 0.5rem;
+  }
   }
   #section-subscription {
     .cmp-text h2 + p {
@@ -365,8 +374,11 @@ table thead th span {
       font-size: toRem(20);
     }
   }
+  p.lead {
+    margin: 0;
 }
-@include respond-to-min($desktop) {
+}
+@include respond-to-min($tablet) {
   ul.width50 p {
     margin: 0px;
   }
@@ -431,6 +443,9 @@ table thead th span {
     h2 {
       margin-top: 14px;
     }
+    h1:first-child {
+      padding-top: 30px;
+    }
   }
 }
 .cmp-container {
@@ -451,8 +466,14 @@ table thead th span {
 }
 
 .cmp-container {
-  #section-subscription .lead + .cmp_circle_list li {
-    padding-bottom: 0px;
+  #section-subscription .lead + .cmp_circle_list {
+    li {
+      padding-bottom: 0px;
+      font-size: toRem(20);
+    }
+    .lead {
+      margin-top: -20px;
+    }
   }
 }
 
@@ -496,4 +517,16 @@ ul .ul_padding {
   p {
     color: $oslo-gray;
   }
+}
+
+.faq-page{
+  .width100 li{
+    padding: 6px 0;
+    b{
+      font-family: $fontfamily-bold;
+      font-size: toRem(16);
+      font-weight: bold;
+      padding: 5px 0;
+    }
+  } 
 }
