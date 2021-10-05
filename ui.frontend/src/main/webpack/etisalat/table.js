@@ -4,6 +4,24 @@ window.dt = require('datatables.net');
 
 const CUSTOM_TABLE_COMPONENT = '.custom-datatable';
 $(function() {
+	debugger;
+
+    function enableExternalSorting(elem,table) {
+    let columnIndex = []
+    const sortableColumn = $(elem).attr('data-column-sort')
+    columnIndex = sortableColumn.match(/\d+/g).map(Number);
+    const ul = $('ul.dropdown-menu', elem)[0];
+    const anchors = ul.querySelectorAll('a');
+    anchors.forEach(el => el.addEventListener('click', event => {
+      const sortingType = event.target.getAttribute("data-sort");
+      table.order([ [columnIndex,sortingType]]).draw();
+    }));
+
+    //ul.querySelector("a").addEventListener("click", function (){
+      //const sortingType = this.getAttribute("data-sort");
+     // table.order([ [1,sortingType]]).draw();
+   // });
+    }
 
 	function addDataAttributes(table) {
 		$('tr', table).each(function(index) {
@@ -19,6 +37,7 @@ $(function() {
 	}
 
 	function initializeDataTable(elem) {
+	    debugger;
 		const className = $(elem).attr('data-class');
 		const pageLimit = $(elem).attr('data-page-limit');
 		const sortableColumn = $(elem).attr('data-column-sort')
@@ -33,7 +52,6 @@ $(function() {
 
 		if (sortableColumn && sortableColumn !== '[]') {
 			if (sortableColumn.indexOf("_all") != -1) {
-
 				columnIndex = '_all';
 				allColumnSortable = true;
 			} else {
@@ -93,12 +111,13 @@ $(function() {
 				});
 			}
 		});
-
+    return tabl;
 	}
 
 	function initializeTable(component) {
 		$(component).each((index, elem) => {
-			initializeDataTable(elem);
+			const table = initializeDataTable(elem);
+			enableExternalSorting(elem,table);
 		});
 	}
 	initializeTable(CUSTOM_TABLE_COMPONENT);
