@@ -1,0 +1,15 @@
+<sly data-sly-template.csv="${ @ tableModel}">
+   <sly data-sly-include="filter-sorting.html"></sly>
+   <table class="four-col">
+      <thead>
+         <tr data-sly-list="${tableModel.headerList}">
+            <th data-sly-test="${item != 'data-filter'}">${item}</th>
+         </tr>
+      </thead>
+      <tbody data-sly-list.allrows="${tableModel.allRows}">
+         <tr>
+            <td data-sly-test.myMap="${allrows}" data-sly-repeat.mapItem="${myMap}" data-filter="${myMap[mapItem]}">${mapItem}</td>
+         </tr>
+      </tbody>
+   </table>
+</sly>

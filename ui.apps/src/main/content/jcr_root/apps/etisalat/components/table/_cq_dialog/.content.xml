@@ -30,14 +30,62 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <text
+                                            <tableSource
+                                                granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
-                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldLabel="Table"
-                                                name="./text"
-                                                removeSingleParagraphContainer="{Boolean}true"
-                                                useFixedInlineToolbar="{Boolean}true"/>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Make Columns Sortable"
+                                                name="./tableSource">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <rte
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Using RTE"
+                                                        value="rte"/>
+                                                    <csv
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="using CSV"
+                                                        value="csv"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
+                                            </tableSource>
+                                            <rteOptions
+                                                granite:class="linkbehavior-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <text
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldLabel="Table"
+                                                        name="./text"
+                                                        removeSingleParagraphContainer="{Boolean}true"
+                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="rte"/>
+                                            </rteOptions>
+                                            <csvOptions
+                                                granite:class="linkbehavior-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <csvPath
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldLabel="CSV Path"
+                                                        name="./csvPath"
+                                                        removeSingleParagraphContainer="{Boolean}true"
+                                                        rootPath="/content/dam/etisalat"
+                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="csv"/>
+                                            </csvOptions>
                                             <cssclass
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
