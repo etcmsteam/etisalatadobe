@@ -1,7 +1,7 @@
 .cws-form,
 .wst-form {
   padding: 0 1.45rem !important; //Form default container responsive grid padding overrides
-  margin-top: 5rem;
+  //margin-top: 5rem;
   .form-group {
     margin-bottom: 0;
     .is-valid~label {
@@ -15,13 +15,13 @@
   .cmp-form-options--drop-down {
       position: relative;
       bottom: 0;
-      top: calculateRem(2px);
+      top: toRem(2);
       width: 100%;
       border: none;
       padding: 0;
       margin: 0;
       font-size: $font20;
-      border-bottom: calculateRem(1px) solid $grey4;
+      border-bottom: toRem(1) solid $grey4;
       select {
         display: none;
       }
@@ -38,7 +38,7 @@
       position: absolute;
       content: "";
       top: 14px;
-      right: calculateRem(10px);
+      right: toRem(10);
       width: 0;
       height: 0;
       border: 6px solid transparent;
@@ -51,7 +51,7 @@
     }
     .select-selected.select-arrow-active:after {
       border-color: transparent transparent $sand-white transparent;
-      border-bottom: calculateRem(1px) solid $grey4;
+      border-bottom: toRem(1) solid $grey4;
     }
 
     /*style the items (options), including the selected item:*/
@@ -108,7 +108,7 @@
       background-color: $white;
       //border: 1px solid $cust-select;
       white-space: nowrap;
-      max-height: calculateRem(200px);
+      max-height: toRem(200);
       overflow-y: scroll;
       position: absolute;
       z-index: 2;
@@ -119,7 +119,7 @@
   
    
     .selecteddiv {
-      border-bottom: calculateRem(1px) solid $sand-white;
+      border-bottom: toRem(1) solid $sand-white;
       margin-left: 1rem;
       width: 94%;
     }
@@ -137,11 +137,14 @@
     }
   }
   .country-select {
-    &.cmp-form-options--drop-down {
-    @media (min-width: $screen-lg-max) {
-      width: 32rem;
+    width: 100%;
+    @include respond-to-min($tablet) {
+      width: 18rem !important;
     }
-   }
+    @include respond-to-min($desktop) {
+      width: 32.5rem !important;
+      }   
+   
   }
   .select-hear-about-us,
   .select-block-unblock {    
@@ -152,7 +155,7 @@
       font-size: $font16;
       z-index: 2;
       top: 0;
-      line-height: calculateRem(2px);
+      line-height: toRem(2);
 
       }
     }
@@ -165,7 +168,7 @@
       width: 20.5rem;
     }
     @include respond-to-min($desktop) {
-      width: 31.5rem;
+      width: 32rem;
       }
   }
   .select-hear-about-us {
@@ -259,13 +262,13 @@
     font-weight: 400;
     font-size: $font16;
     position: relative;
-    margin-bottom: calculateRem(36px);
+    margin-bottom: toRem(36);
     border: 0;
     color: $dropdown-grey;
   }
   .account-radio {
     & > label {
-      transform: translateY(calculateRem(-10px)) scale(0.8);
+      transform: translateY(toRem(-10)) scale(0.8);
       transform-origin: 0 0;
       font-size: $font16;
       z-index: 2;
@@ -279,10 +282,10 @@
     padding-top: 0;
     padding-left: 0;
     & > label {
-      width: calculateRem(24px);
-      height: calculateRem(24px);
+      width: toRem(24);
+      height: toRem(24);
       display: inline-flex;
-      background-size: calculateRem(24px);
+      background-size: toRem(24);
       margin-right: 5rem;
     }
   }
@@ -307,9 +310,12 @@
  
 
   .iti {
-    margin-top: 1rem;
+   
+    position: relative;
       border-color: $error-red;
-  
+      @include respond-to-max($tablet) {
+        width: 20.5rem;
+      }
       .icon-error,
       .alert-icon {
         display: block;
@@ -334,7 +340,7 @@
         width: 20.5rem;
       }
       @include respond-to-min($desktop) {
-        width: 31.5rem;
+        width: 32rem;
         }
      
       & ~ label {
@@ -361,23 +367,46 @@
       width: 20.5rem;
     }
     @include respond-to-min($desktop) {
-      width: 31.5rem;
+      width: 100%;
       }
   }
-  input#fullName, input#firstName, input#designation {
+  input#fullName {
    
     width: 100%;
-      @include respond-to-min($tablet) {
-        width: 20.5rem;
-      }
+    @include respond-to-min($tablet) {
+      width: 20.5rem;
+    }
       @include respond-to-min($desktop) {
-        width: 31.5rem;
+        width: 32rem;
         }
+       
+  }
+  input#contactNumber {
+   
+    width: 17rem;
+    @include respond-to-min($tablet) {
+      width: 10rem;
+    }
+      @include respond-to-min($desktop) {
+        width: 26rem;
+        }
+       
+  }
+  input#firstName, input#designation {
+   
+    width: 100%;
+    // @include respond-to-min($tablet) {
+    //   width: 20.5rem;
+    // }
+      @include respond-to-min($desktop) {
+        width: 100%;
+        }
+       
   }
 
   select {
     width: 84% !important; //To use Important Form default AEM Control css overrides
-    max-height: calculateRem(200px);
+    max-height: toRem(200);
     overflow-y: auto;
     option {
       text-decoration: none;
@@ -397,20 +426,34 @@
       width: 100%;
       display: none;
     }
+    .cmp-form-options--drop-down {
+      padding-bottom: 0.5rem;
+    }
+    
   }
 
-  .contact-number {
+  .contactNumber {
     display: inline-flex;
     position: relative;
     width: 85%;
-    bottom: calculateRem(15px);
-
-    input {
-      display: -ms-inline-flexbox;
-      display: inline-flex;
-      //position: absolute;
-      width: 100%;
+    bottom: toRem(15);
+    margin-top: 1rem;
+    input {     
+      display: inline-flex;     
+      
+      width: 20.5rem;
+      @include respond-to-min($tablet) {
+        width: 20.5rem;
+      }
+      @include respond-to-min($desktop) {
+        width: 26rem !important;
+        }
+     
+      & ~ label {
+        left: 0;
+      }
     }
+    
   }
   .country-select,
   .select-service {
@@ -476,16 +519,16 @@
   [type="radio"]:not(:checked) + span:after {
     background-image: url(../resources/images/icon-checkbox-selected.png);
     background-repeat: no-repeat;
-    border: calculateRem(2px) solid transparent;
+    border: toRem(2) solid transparent;
     content: "";
-    width: calculateRem(24px);
-    height: calculateRem(24px);
+    width: toRem(24);
+    height: toRem(24);
     display: block;
-    background-size: calculateRem(21px);
-    margin-right: calculateRem(1px);
+    background-size: toRem(21);
+    margin-right: toRem(1);
     position: absolute;
-    left: calculateRem(-3px);
-    top: calculateRem(-3px);
+    left: toRem(-3);
+    top: toRem(-3);
     transition: all 0.25s cubic-bezier(0.55, 0.06, 0.68, 0.19);
     z-index: 2;
   }
@@ -495,14 +538,14 @@
     border: 2px solid transparent;
     background-repeat: no-repeat;
     content: "";
-    width: calculateRem(24px);
-    height: calculateRem(24px);
+    width: toRem(24);
+    height: toRem(24);
     display: block;
     background-size: 21px;
-    margin-right: calculateRem(1px);
+    margin-right: toRem(1);
     position: absolute;
-    left: calculateRem(-3px);
-    top: calculateRem(-3px);
+    left: toRem(-3);
+    top: toRem(-3);
     transition: all 0.25s cubic-bezier(0.55, 0.06, 0.68, 0.19);
     z-index: 2;
   }
@@ -754,7 +797,7 @@
         font-size: $font16;
         z-index: 2;
         top: -.5rem;
-        line-height: calculateRem(2px);
+        line-height: toRem(2);
   
         
     @media (max-width: $screen-md-max) {
@@ -771,7 +814,7 @@
   
   // intlTelInput ends //
   .textarea.input-field > label {
-    left: calculateRem(24px);
+    left: toRem(24);
   }
 
   @media only screen and (max-width: 991px) {
@@ -833,7 +876,7 @@
   }
 
   [type="radio"]:checked + span:after {
-    border: calculateRem(2px) solid $main-green;
+    border: toRem(2) solid $main-green;
   }
 
   [type="radio"]:checked + span:after {
@@ -905,9 +948,7 @@
   }
 
   .textarea.input-field > label {
-    left: calculateRem(
-      24px
-    ) !important; //To use Important Form default AEM Control css overrides
+    left: toRem(24) !important; //To use Important Form default AEM Control css overrides
   }
   .cmp-form-text__text, .cmp-form-options--drop-down {
     position: relative;    
@@ -956,7 +997,7 @@
             transform: none;
             background: transparent;
             margin: 0;
-            height: calculateRem(38px);
+            height: toRem(38);
             box-shadow: none;
           }
         }
@@ -964,7 +1005,7 @@
       .country-list {
         width: 100%;
         padding: 0 1rem;
-        top: calculateRem(40px);
+        top: toRem(40);
         .country {
           text-decoration: none;
           border-bottom: 1px solid $sand-white;
@@ -1071,15 +1112,14 @@
     .icon-error,
     .alert-icon {
       display: block;
+      position: relative;
       svg {
         fill: $pink;
-        width: 1.5rem;
-        height: 1.5rem;
-        //top: 2.5rem;
-        position: relative;
-        right: 1.2rem;
+        height: 1.6rem;
+        position: absolute;
+        right: 0;
         top: 0;
-        width: 1.5rem;
+        width: 1.6rem;
         z-index: 2;
       }
     }
@@ -1114,7 +1154,7 @@
         }
       }
       .alert-label {
-        bottom: calculateRem(-20px);
+        bottom: toRem(-20);
         top: auto;
       }
       .alert-icon {
@@ -1201,7 +1241,7 @@
       width: 18rem!important;
     }
     @include respond-to-min($desktop) {
-      width: 30.8rem !important;
+      width: 32rem;
       }
   }
 }
@@ -1219,7 +1259,7 @@
     text-align: center;
     h2 {
       font-size: $font40;
-      line-height: calculateRem(52px);
+      line-height: toRem(52);
       @media (max-width: $screen-md-max) {
         font-size: $font28;
         line-height: 34px;
@@ -1257,7 +1297,7 @@
     text-align: center;
     h2 {
       font-size: 2.5rem;
-      line-height: calculateRem(52px);
+      line-height: toRem(52);
     }
   }
 }
@@ -1267,5 +1307,5 @@
 }
 
 #justification + label {
-  padding-left: calculateRem(10px);
+  padding-left: toRem(10);
 }
