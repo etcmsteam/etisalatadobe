@@ -12,8 +12,8 @@ $(document).ready(function () {
     $('.copyright-year').text(new Date().getFullYear());
 
     //ETSL -38
-    $(".cmp-accordion__button").on("click", function(event) {
-      $(this).find('.accordion-top-view').find('span').toggleClass('hidden');
+    $(".beigebg-container .cmp-accordion__button").on("click", function(event) {
+      $(".cmp-accordion__button").closest('.cmp-accordion__header').find('.accordion-top-view').find('span').toggleClass('hidden');
     });
     if (window.matchMedia('(max-width: 768px)').matches)
         {
