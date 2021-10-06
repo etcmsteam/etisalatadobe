@@ -3,12 +3,10 @@ header,
 .header {
   background-color: $white-color;
   @include respond-to-max($tablet) {
-    .cmp-experiencefragment--header,
-    .header__wrapper {
+    .cmp-experiencefragment--header{
       .cmp-image {
         max-width: 45px;
       }
-      ul.menu,
       .main-nav__list {
         background-color: $white-color;
         display: none;
@@ -22,8 +20,7 @@ header,
       }
     }
   }
-  .cmp-experiencefragment--header,
-  .header__wrapper {
+  .cmp-experiencefragment--header{
     padding: 0 10px;
     position: fixed;
     top: 0;
@@ -41,40 +38,37 @@ header,
         width: 36px;
         top: 5px;
       }
-      .menu,
       .main-nav__list {
         top: 15px;
+        @include respond-to-min($desktop){
+          right: 70px;
+        }
       }
     }
     &.Scroll-Down {
       border-bottom: none;
       height: 100px;
 
-      .cmp-image,
-      .header__figure {
+      .cmp-image{
         display: block;
         width: 86px;
         top: 20px;
       }
-      .menu,
       .main-nav__list {
         top: 60px;
       }
     }
 
-    .header__figure,
     .cmp-image {
       position: relative;
       top: 20px;
       transition: width 0.35s ease-in-out;
-      .header__logo,
-      .cmp-image__image {
+     .cmp-image__image {
         width: 100%;
       }
     }
 
-    nav,
-    .main-nav {
+    nav{
       position: fixed;
       width: 100%;
       z-index: 3;
@@ -122,7 +116,6 @@ header,
           }
         }
       }
-      ul.menu,
       .main-nav__list {
         position: relative;
         clear: both;
@@ -131,13 +124,11 @@ header,
         max-height: none;
         transition: width 0.35s ease-in-out;
 
-        li,
         .main-nav__item {
           border-top: 1px solid $light-white;
           &:first-child {
             border-width: 0;
           }
-          a,
           .main-nav__link {
             color: $light-purple;
             display: block;
@@ -164,7 +155,6 @@ header,
       nav {
         position: static;
         background: $white-color;
-        ul.menu,
         .main-nav__list {
           display: block;
           clear: none;
@@ -172,11 +162,9 @@ header,
           float: right;
           margin: 0 15px 0 0;
           top: 60px;
-          li,
           .main-nav__item {
             float: left;
             border-top: 0;
-            a,
             .main-nav__link {
               border: 0;
             }
@@ -200,23 +188,22 @@ header,
 }
 
 /* FOOTER STARTS */
-footer,.footer {
+footer{
   border-top: none;
-  .cmp-container,.footer__wrapper {
+  .cmp-container{
     padding: 0;
     margin: 0 auto;
     max-width: 1024px;
     background-color: none;
-    @media(min-width: $tablet){
-      padding: 1.5rem 0;
-    }
-    .cmp-text, .footer__wrapper__text {
-      font-size: $font-size;
-      padding: 35px 0;
-      text-align: center;
-      line-height: 20px;
-      color: $white-color;
-      font-family: $fontfamily-light;
+    font-size: $font-size;
+    padding: 40px 0;
+    text-align: center;
+    line-height: 20px;
+    color: $white-color;
+    font-family: $fontfamily-light;
+    @include respond-to-min($tablet){
+      padding: 0.5rem 0;
+      margin-bottom: 1.0rem;
     }
   }
 }
