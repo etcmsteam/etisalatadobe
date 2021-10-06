@@ -4,9 +4,9 @@
    <label class="menu__icon" for="menu"><span class="hamburger"></span></label>
    <ul data-sly-use.navModel="com.etisalat.core.models.FixedNavigationModel"
        data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-       data-sly-list.navItem="${navModel.fixedNav}" class="menu" role="menuitem">
+       data-sly-list.navItem="${navModel.fixedNav}" class="menu main-nav__list" role="menuitem">
 	   <div data-sly-test.nav_class_obj="${currentPage.path@ extension = 'html'}" data-sly-unwrap></div>
-      <li class=" ${navItem.navigationLink  == nav_class_obj ? 'active-nav' : ''}"><a href="${navItem.navigationLink}">${navItem.navigationTitle}</a>
+      <li class="main-nav__item ${navItem.navigationLink  == nav_class_obj ? 'active-nav' : ''}"><a href="${navItem.navigationLink}" class="main-nav__link">${navItem.navigationTitle}</a>
       </li>
    </ul>
    
