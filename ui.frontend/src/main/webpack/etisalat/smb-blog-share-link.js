@@ -2,8 +2,11 @@
    
   
         var getLink = window.location.href;
-        var linkInput = document.getElementById("linkText");
+        if(document.getElementById("linkShareText") != null)
+        {
+        var linkInput = document.getElementById("linkShareText");
         linkInput.value = getLink;
+        }
   
         $('.copyLink').click(function() {
           linkInput.select();

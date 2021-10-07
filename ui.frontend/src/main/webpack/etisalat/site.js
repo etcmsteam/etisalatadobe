@@ -12,8 +12,8 @@ $(document).ready(function () {
     $('.copyright-year').text(new Date().getFullYear());
 
     //ETSL -38
-    $(".cmp-accordion__button").on("click", function(event) {
-      $(this).find('.accordion-top-view').find('span').toggleClass('hidden');
+    $(".beigebg-container .cmp-accordion__button").on("click", function(event) {
+      $(".cmp-accordion__button").closest('.cmp-accordion__header').find('.accordion-top-view').find('span').toggleClass('hidden');
     });
     if (window.matchMedia('(max-width: 768px)').matches)
         {
@@ -36,11 +36,15 @@ c.forEach(function (a) {
     a.querySelector(".nav-link").addEventListener("click", function () {
             a.classList.add("active"),
                 this.classList.contains("search-link") && e(".nav-drill").addClass("search-nav-drill")
-        }),
-        a.querySelector(".nav-back-link").addEventListener("click", function () {
-            a.classList.remove("active"),
-                e(".nav-drill").hasClass("search-nav-drill") && e(".nav-drill").removeClass("search-nav-drill")
         })
+        //Added condition causing errors and stop here when null
+        if(a.querySelector(".nav-back-link") != null){
+            a.querySelector(".nav-back-link").addEventListener("click", function () {
+                a.classList.remove("active"),
+                    e(".nav-drill").hasClass("search-nav-drill") && e(".nav-drill").removeClass("search-nav-drill")
+            })
+        }
+        
 });
 
 
