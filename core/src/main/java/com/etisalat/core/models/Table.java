@@ -27,7 +27,10 @@ import java.util.List;
 public class Table {
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-    private String sortingType;
+    private String tableSource;
+
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String doSorting;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     private String columnToSort;
@@ -44,9 +47,9 @@ public class Table {
     ResourceResolver resourceResolver;
 
     public String getSorting() {
-        if (sortingType.equals("_all")) {
+        if (tableSource.equals("rte") && doSorting.equals("true")) {
             return "_all";
-        } else if (sortingType.equals("custom")) {
+        } else if (tableSource.equals("csv")) {
             return "[" + columnToSort + "]";
         }
         return "[]";

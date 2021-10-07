@@ -4,24 +4,22 @@ window.dt = require('datatables.net');
 
 const CUSTOM_TABLE_COMPONENT = '.custom-datatable';
 $(function() {
-	debugger;
 
-    function enableExternalSorting(elem,table) {
-    let columnIndex = []
-    const sortableColumn = $(elem).attr('data-column-sort')
-    columnIndex = sortableColumn.match(/\d+/g).map(Number);
-    const ul = $('ul.dropdown-menu', elem)[0];
-    const anchors = ul.querySelectorAll('a');
-    anchors.forEach(el => el.addEventListener('click', event => {
-      const sortingType = event.target.getAttribute("data-sort");
-      table.order([ [columnIndex,sortingType]]).draw();
-    }));
-
-    //ul.querySelector("a").addEventListener("click", function (){
-      //const sortingType = this.getAttribute("data-sort");
-     // table.order([ [1,sortingType]]).draw();
-   // });
-    }
+	function enableExternalSorting(elem, table) {
+		let columnIndex = []
+		const sortableColumn = $(elem).attr('data-column-sort')
+		if (sortableColumn && sortableColumn !== '[]') {
+			columnIndex = sortableColumn.match(/\d+/g).map(Number);
+			const ul = $('ul.dropdown-menu', elem)[0];
+			const anchors = ul.querySelectorAll('a');
+			anchors.forEach(el => el.addEventListener('click', event => {
+				const sortingType = event.target.getAttribute("data-sort");
+				table.order([
+					[columnIndex, sortingType]
+				]).draw();
+			}));
+		}
+	}
 
 	function addDataAttributes(table) {
 		$('tr', table).each(function(index) {
@@ -37,11 +35,12 @@ $(function() {
 	}
 
 	function initializeDataTable(elem) {
-	    debugger;
+		debugger;
 		const className = $(elem).attr('data-class');
 		const pageLimit = $(elem).attr('data-page-limit');
 		const sortableColumn = $(elem).attr('data-column-sort')
 		const hiddenColumn = $(elem).attr('data-hide-columns')
+		const showMobileView = $(elem).attr('data-mobile-view')
 
 		var allColumnSortable = false;
 
@@ -74,6 +73,15 @@ $(function() {
 					sPrevious: '<span class="pagination-previous"></span>'
 				}
 			},
+			'createdRow': function(row, data, rowIndex) {
+				if (showMobileView && showMobileView == "true") {
+					$.each($('td', row), function(colIndex) {
+						const th = $('th', table)[colIndex];
+						$(this).attr('data-label', $(th).text());
+					});
+				}
+			},
+
 			"bLengthChange": false,
 			"pageLength": Number(pageLimit),
 			"fnInfoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
@@ -101,23 +109,15 @@ $(function() {
 					targets: '_all'
 				}
 
-			],
-			'createdRow': function(row, data, rowIndex) {
-				// Per-cell function to do whatever needed with cells
-				$.each($('td', row), function(colIndex) {
-					// For example, adding data-* attributes to the cell
-					const th = $('th', table)[colIndex];
-					$(this).attr('data-label', $(th).text());
-				});
-			}
+			]
 		});
-    return tabl;
+		return tabl;
 	}
 
 	function initializeTable(component) {
 		$(component).each((index, elem) => {
 			const table = initializeDataTable(elem);
-			enableExternalSorting(elem,table);
+			enableExternalSorting(elem, table);
 		});
 	}
 	initializeTable(CUSTOM_TABLE_COMPONENT);
