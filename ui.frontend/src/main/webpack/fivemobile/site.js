@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $(window).scroll(() => {
     var windowTop = $(window).scrollTop();
-    if (windowTop > 100) {
+    if (windowTop > 160) {
       $("#main-header").addClass("Scroll-Up");
       $("#main-header").removeClass("Scroll-Down");
     } else {
@@ -13,10 +13,10 @@ $(document).ready(function () {
 
   $(".menu__icon").on("click", function (e) {
     e.preventDefault();
-    $(".menu").toggleClass("ShowMenu");
+    $(".main-nav__list").toggleClass("ShowMenu");
   });
 
   $(".menu li a").on("click", function () {
-    $(".menu").removeClass("ShowMenu");
+    $(".main-nav__list").removeClass("ShowMenu");
   });
 });
