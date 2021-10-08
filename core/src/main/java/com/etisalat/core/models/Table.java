@@ -93,7 +93,13 @@ public class Table {
                 if (j > 1) {
                     LinkedHashMap<String, String> row = new LinkedHashMap<>();
                     for (int i = 0; i < values.length; i = i + 2) {
-                        row.put(values[i], values[i + 1]);
+                        String key = values[i];
+                        String value = StringUtils.EMPTY;
+                        if(values.length > i+1){
+                            value = values[i + 1];
+                        }
+
+                        row.put(key,value);
                     }
                     rows.add(row);
                 }
