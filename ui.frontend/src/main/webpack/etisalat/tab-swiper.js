@@ -3,8 +3,6 @@
     $(document).find('.cmp-tabs__tabpanel.cmp-tabs__tabpanel--active').each(function (index) {
       
         $(this).addClass('slider-outlet-brands'+index);
-        console.log("alert");
-        alert("hi");
         var $planTableParent = $(this);
         $planTableParent.find('.table-swiper-button-next').addClass('plansRight'+index);
         $planTableParent.find('.table-swiper-button-prev').addClass('plansLeft'+index);
