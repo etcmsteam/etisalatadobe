@@ -111,6 +111,9 @@ $(function() {
 
 			]
 		});
+		$('.advanced-table-search', elem).on( 'keyup', function () {
+        tabl.search(this.value).draw();
+        });
 		return tabl;
 	}
 
