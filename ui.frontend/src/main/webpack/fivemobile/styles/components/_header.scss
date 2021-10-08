@@ -3,7 +3,8 @@ header,
 .header {
   background-color: $white-color;
   @include respond-to-max($tablet) {
-    .cmp-experiencefragment--header{
+    .cmp-experiencefragment--header {
+      min-height: 160px;
       .cmp-image {
         max-width: 45px;
       }
@@ -15,19 +16,19 @@ header,
         &.ShowMenu {
           display: block;
           max-height: 400px;
-          margin-top: 28px;
+          margin-top: 20px;
         }
       }
     }
   }
-  .cmp-experiencefragment--header{
+  .cmp-experiencefragment--header {
     padding: 0 10px;
     position: fixed;
     top: 0;
     width: 100%;
     background: $white-color;
     z-index: 1;
-    min-height: 160px;
+    min-height: 100px;
     -webkit-transition: height 0.35s ease-in-out;
     transition: height 0.35s ease-in-out;
 
@@ -48,9 +49,9 @@ header,
     }
     &.Scroll-Down {
       border-bottom: none;
-      height: 160px;
+      height: 100px;
 
-      .cmp-image{
+      .cmp-image {
         display: block;
         width: 86px;
         top: 20px;
@@ -69,7 +70,7 @@ header,
       }
     }
 
-    nav{
+    nav {
       position: fixed;
       width: 100%;
       z-index: 3;
@@ -84,8 +85,8 @@ header,
         cursor: pointer;
         display: block;
         position: absolute;
-        top: 5px;
-        right: 10px;
+        top: 10px;
+        right: 15px;
         user-select: none;
         background: $white-color;
         outline: none;
@@ -146,7 +147,14 @@ header,
         }
       }
     }
-    @include respond-to-min($tablet) {
+    @include respond-to-min($desktop) {
+      &.Scroll-Down {
+        border-bottom: none;
+        height: 160px;
+        .menu__icon{
+          top: 25px;
+        }
+      }
       .cmp-image,
       .header__figure {
         max-width: 83px;
@@ -207,7 +215,7 @@ footer {
     @include respond-to-max($phone) {
       padding: 0 !important;
     }
-    @include respond-to-max($tablet) {
+    @include respond-to-min($desktop) {
       margin-bottom: 1rem;
       padding-left: 1rem;
       padding-right: 1rem;
@@ -215,19 +223,24 @@ footer {
   }
 }
 /* FOOTER ENDS */
-
-.teaser__wrapper {
-  height: 410px;
-  @include respond-to-max($tablet) {
-    height: 270px;
-    @include respond-to-max($phone) {
-      height: 150px;
-    }
-  }
-  .cmp-image__image {
-    @include respond-to-max($tablet) {
-      position: relative;
-      top: 20px;
+.section-banner {
+  .section-banner__bgcolor {
+    .cmp-container {
+      &:first-child {
+        height: 410px;
+        @include respond-to-max($tablet) {
+          height: 270px;
+          @include respond-to-max($phone) {
+            height: 150px;
+          }
+        }
+      }
+      .cmp-image__image {
+        @include respond-to-max($tablet) {
+          position: relative;
+          top: 20px;
+        }
+      }
     }
   }
 }

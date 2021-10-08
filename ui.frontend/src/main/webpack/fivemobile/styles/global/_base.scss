@@ -52,12 +52,12 @@ a {
   color: $light-purple;
   font-family: $fontfamily-book;
   text-decoration: none;
-  :hover {
+  &:hover {
     color: $greyish-white;
     text-decoration: none;
     outline: 0;
   }
-  :active, :focus {
+  &:active, &:focus {
     outline: 0;
   }
 }
@@ -77,6 +77,9 @@ html {
 body {
   background: none;
   padding-top: 170px;
+  @include respond-to-max($desktop) {
+    padding-top: 100px;
+  }
 }
 
 table {
