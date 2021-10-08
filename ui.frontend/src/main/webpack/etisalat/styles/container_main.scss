@@ -19954,6 +19954,18 @@ ul.featureList li.platinum-number:before {
 	}
 }
 
+@media (max-width:768px) {
+	.media-cta-wrapper .h3,
+	.media-cta-wrapper .h4,
+	.media-cta-wrapper h3,
+	.media-cta-wrapper h4 {
+		font-size: 1.125rem !important;
+		margin-top: 0;
+		margin-bottom: 1rem !important;
+		@include font-family-lato;
+	}
+}
+
 @media (min-width:768px) {
 	.media-cta-wrapper.col-reverse {
 		display: -ms-flexbox;
@@ -20216,7 +20228,10 @@ ul.featureList li.platinum-number:before {
 }
 
 .media-cta-wrapper p {
-	margin-bottom: .5rem!important
+	margin-bottom: .5rem!important;
+	@include respond-to-max($phone) {
+		font-size: $font14;
+	}
 }
 
 .media-cta-wrapper p+p {
@@ -24718,71 +24733,6 @@ screen and (-ms-high-contrast:active) {
 	background-color: #00000091!important
 }
 
-.config-section-wrap {
-	background: $white;
-	min-height: 56px;
-	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
-	transition: all .25s ease-in-out;
-	max-height: 78px;
-	position: relative;
-	z-index: 8
-}
-
-// .config-section-wrap>.container>.row>.col-xs-12.col-md-3 {
-// 	display: none
-// }
-
-@media (min-width:1366px) {
-	.config-section-wrap>.container>.row>.col-xs-12.col-md-3 {
-		display: block
-	}
-}
-
-@media (min-width:992px) {
-	.config-section-wrap {
-		min-height: 90px;
-		max-height: 90px
-	}
-	.config-section-wrap.tabs {
-		background: $white;
-		min-height: 56px;
-		box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
-		transition: all .25s ease-in-out;
-		max-height: 78px;
-		position: relative;
-		z-index: 8
-	}
-}
-
-@media (min-width:992px) and (min-width:992px) {
-	.config-section-wrap.tabs {
-		min-height: 90px;
-		max-height: 90px
-	}
-	.config-section-wrap.tabs.tabs {
-		max-height: none
-	}
-}
-
-@media (max-width:991px) {
-	.config-section-wrap .row .col-xs-12.col-md-9 {
-		padding: 0
-	}
-}
-
-
-.config-section-wrap.add-links {
-	height: 56px
-}
-
-@media (max-width:991px) {
-	.config-section-wrap.add-links {
-		margin-top: 100px
-	}
-	.config-section-wrap.add-links.m-top-24 {
-		margin-top: 24px
-	}
-}
 
 .config-section-wrap.add-links>.container {
 	position: relative
@@ -28616,7 +28566,7 @@ input[type=radio] {
  .media-cta-wrapper .ul-list-cms ul li{
 	font-size: $font14;
 	line-height: 20px;
-	padding-left:20px!important;
+	padding-left:24px!important;
  }
  @include respond-to-max($tablet){
  .media-cta-wrapper{
