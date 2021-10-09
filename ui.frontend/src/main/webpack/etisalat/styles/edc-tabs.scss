@@ -69,29 +69,32 @@
       }
     }
   
-    // with arrows option
-    &.with-arrows {
-      @media (min-width: 992px) {
-        min-height: 68px;
-        max-height: 68px;
-        .page-nav {
-          .swiper-slide,
-          li {
-            min-height: 68px;
-            a {
-              height: 68px;
-              font-size: 16px;
-              letter-spacing: 0.6px;
-              line-height: 68px;
-            }
+   
+  }
+   // with years
+   .cmp_tabs__horizontal_with_years{
+    .edc-tabs-wrapper {
+    @media (min-width: 992px) {
+      min-height: 68px;
+      max-height: 68px;
+      .page-nav {
+        .swiper-slide,
+        li {
+          min-height: 68px;
+          a {
+            height: 68px;
+            font-size: 16px;
+            letter-spacing: 0.6px;
+            line-height: 68px;
           }
         }
-        .swiper-button-next, .swiper-button-prev {
-          top: 65%;
-        }
+      }
+      .swiper-button-next, .swiper-button-prev {
+        top: 65%;
       }
     }
   }
+}
   .media-cta-section-tabs{
     background-color: hsla(0, 0%, 95%, .33);
     padding-bottom: 4rem;
@@ -326,8 +329,10 @@
     }
   }
   //tab-panel content
-  .cmp-tabs__tabpanel{
+  
     .media-cta-wrapper{
+      display:inherit;
+        flex-direction: inherit;
     @include respond-to-max($tablet){
       .aem-Grid {
         display:inherit;
@@ -343,4 +348,49 @@
       }
 
     }
+  
+  //tab panel with carosal
+  .cmp-tabs__tabpanel{
+    
+    .cmp-carousel__actions{
+      button{
+        border: 0px solid transparent;
+        background-color: transparent;
+      }
+     button:focus{
+      background-color: transparent;
+     }
+      
+  }
+  .cmp-carousel__actions{
+    position: absolute;
+    bottom: 12rem;
+    right: 71rem;
+  }
+  .cmp-carousel__action-text {
+		display: none;
+	}
+  .cmp-carousel__indicators {
+		display: none;
+	}
+  .cmp-carousel__action.cmp-carousel__action--previous::after,
+	 .cmp-carousel__action.cmp-carousel__action--next::after {
+		content: "";
+		position: absolute;
+		top: 15px;
+		z-index: 11;
+		display: block;
+		width: 11px;
+		height: 11px;
+    border-bottom: 1px solid  $grey4;
+    border-right: 1px solid  $grey4;
+	}
+ .cmp-carousel__action.cmp-carousel__action--previous::after {
+		left: 2rem;
+		transform: rotate(-45deg);
+	}
+ .cmp-carousel__action.cmp-carousel__action--next::after {
+		right: 1.2rem;
+		transform: rotate(135deg);
+	}
   }

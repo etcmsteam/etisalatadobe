@@ -463,6 +463,10 @@ import intlTelInput from 'intl-tel-input';
             $("#url").attr("autocomplete", "off");
             $("#emailAddress").attr("autocomplete", "off");
            }
+           var excludedKeys = [
+            16, 17, 18, 20, 35, 36, 37,
+            38, 39, 40, 45, 144, 225
+        ];
         var urlString;
         var urlParams = new URLSearchParams(window.location.search);
         var product = urlParams.get('productName');
@@ -474,7 +478,11 @@ import intlTelInput from 'intl-tel-input';
             }
         }
 
+        autoCompleteoff();
         var input = document.querySelector("#phone1")
+        var input2 = document.querySelector("#contactNumber");
+        
+      
         if(input !== null)
         {
         var iti = intlTelInput(input, {
@@ -487,12 +495,12 @@ import intlTelInput from 'intl-tel-input';
             autoPlaceholder: false,
 
         });
-
+      
         $('.iti__flag-container').addClass('hide');
         var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
         document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
         document.querySelector('#phone1').parentElement.append(labelHtml);
-
+      
         //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
         var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
         
@@ -503,12 +511,9 @@ import intlTelInput from 'intl-tel-input';
         if($("#select-block-unblock") !==null){
             $("#select-block-unblock").parent().parent().parent().find('.new').remove();
         }
-        var excludedKeys = [
-            16, 17, 18, 20, 35, 36, 37,
-            38, 39, 40, 45, 144, 225
-        ];
+       
         
-       autoCompleteoff();
+      
 
         $(document).on("keyup", "#phone1" , function (e) {
             if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
@@ -554,8 +559,86 @@ import intlTelInput from 'intl-tel-input';
         }
 
         });
+
     }
-      
+  
+    if(input2 !== null)
+    {
+        var iti = intlTelInput(input2, {
+            utilsScript: utilPath,
+            excludeCountries:["ae"],
+            autoPlaceholder:false
+          });
+    $('.iti__flag-container').addClass('hide');
+  
+    var labelContactNumHtml = document.querySelector('#contactNumber').parentElement.parentElement.getElementsByTagName("label")[0];
+    document.querySelector('#contactNumber').parentElement.parentElement.getElementsByTagName("label")[0].remove();
+    document.querySelector('#contactNumber').parentElement.append(labelContactNumHtml);
+    iti.selectedFlag.children[0].textContent = '+'+iti.getSelectedCountryData().dialCode;
+      //$('.contactNumber').val(iti.getSelectedCountryData().dialCode);
+      //$('.selected-flag .iti-flag').text('');
+      input2.addEventListener("countrychange", function(e) {
+        //console.log(iti.getSelectedCountryData().dialCode);
+        iti.selectedFlag.children[0].textContent = '+'+iti.getSelectedCountryData().dialCode;
+        $('.contactNumber').closest('.floating-label-input').find('label').addClass('floating-label');
+        //$('.contactNumber').val(iti.getSelectedCountryData().dialCode);
+      });
+    var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+    //var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
+    
+    var errorMsg;
+    if($("#contactNumber")!== null) {
+        $("#contactNumber").parent().parent().parent().parent().find('.new').remove();
+    }
+   
+    
+
+    $(document).on("keyup", "#contactNumber" , function (e) {
+        if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
+            return;
+        } else {
+        if ($("#contactNumber").val().trim() ) {
+            var inputVal = $('#contactNumber').val();
+            iti.telInput.value = inputVal;
+            if (phonevalid(inputVal) && inputVal.length == 10 ) {
+                $("#contactNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                $("#contactNumber").parent().find(".alert-label").remove();
+                $("#contactNumber").parent().find(".alert-icon").remove(); 
+        
+            } else {
+               
+                var errorCode = "";
+                errorCode = iti.getValidationError();
+                errorMsg = "";
+                errorMsg = errorMap[errorCode];
+                $("#contactNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+               
+                
+                if (errorMsg) {
+                    $("#contactNumber").parent().parent().addClass("has-error-fields");
+                    
+                    alertIcon = "";
+                    alertIcon = contentString;
+
+                    if ($("#contactNumber").parent().parent().hasClass("has-error-fields")) {
+                        $("#contactNumber").parent().find(".alert-label").remove();
+                        $("#contactNumber").parent().find(".alert-icon").remove(); 
+                        document.querySelector('#contactNumber').parentElement.innerHTML += '<div id="contactNumber-error" class="has-error alert-label">' + errorMsg + '</div>';
+                        //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
+                        $('#contactNumber').val(inputVal);
+                        $("#contactNumber").keyup();
+                        $("#contactNumber").parent().find('.iti__flag-container').after(alertIcon);
+                        $('#contactNumber-error').parent().parent().find('.new').remove();
+                      };
+                }
+                $('#contactNumber').focus();
+            }
+        }
+    }
+
+    });
+}
+  
         $(document).on("keyup", "#companyName", function (event) {
             if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
 				return;

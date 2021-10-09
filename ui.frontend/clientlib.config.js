@@ -165,6 +165,34 @@ module.exports = {
             }
           }
         },
+        {
+          ...libsBaseConfig,
+          name: 'clientlib-gochat',
+          categories: ['etisalat.gochat'],
+      dependencies: ['etisalat.dependencies'],
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-gochat',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-gochat',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-gochat',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
+        },
     {
           ...libsBaseConfig,
           name: 'clientlib-ewallet',

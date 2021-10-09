@@ -1,4 +1,6 @@
-
+$(document).ready(function () {
+    var initSwiper;
+    initSwiper = function () {
     // plans table slider for CMS modules start
     $(document).find('.cmp-tabs__tabpanel.cmp-tabs__tabpanel--active').each(function (index) {
       
@@ -11,7 +13,7 @@
           autoplay: false,
           touchEventsTarget: "swiper-wrapper",
           simulateTouch: true,
-          
+          disabledClass: 'swiper-button-disabled',
           nextButton: '.table-swiper-button-next.plansRight'+index,
           prevButton: '.table-swiper-button-prev.plansLeft'+index,
           breakpoints: {
@@ -125,4 +127,5 @@
   
         });
   
-    
+    }
+});
