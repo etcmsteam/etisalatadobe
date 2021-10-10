@@ -1,5 +1,5 @@
 header {
- // height: toRem(80);
+  // height: toRem(80);
   position: fixed;
   top: 0;
   z-index: 99;
@@ -15,7 +15,7 @@ header {
 }
 
 .logo {
-  font-size:toRem(72);
+  font-size: toRem(72);
   font-weight: 700;
   color: $white;
   line-height: 1;
@@ -40,7 +40,7 @@ nav {
   li a {
     display: block;
     padding: 10px 0 10px 10px;
-    font-size:toRem(40);
+    font-size: toRem(40);
     border-right: 1px solid $shade-off-white2;
     text-decoration: none;
     font-family: $font-family;
@@ -55,24 +55,31 @@ nav li a:focus,
 .menu__checkbox:hover,
 .menu__checkbox:focus,
 :focus {
-	// background-color: #F4F4F4;
+  // background-color: #F4F4F4;
 }
-
 
 /* menu */
 
 .menu {
-	display: none;
-	clear: both;
-	max-height: 0;
-	transition: max-height .2s ease-out;
-	box-shadow: none;
-	li {
-		padding-right: 15px;
-	}
+  display: none;
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  box-shadow: none;
+  li {
+    padding-right: 15px;
+  }
 }
-
-
+@media (min-width: $small-phone) and (max-width: $tablet) {
+  .menu li {
+    padding-right: 4px;
+  }
+}
+@media (min-width: $tablet) and (max-width: $desktop) {
+  .menu li {
+    padding-right: 9px;
+  }
+}
 /* menu icon */
 
 .menu__icon {
@@ -137,9 +144,8 @@ nav li a:focus,
 }
 
 .hamburger:after {
-	top: -8px;
+  top: -8px;
 }
-
 
 /* menu checkbox */
 
@@ -155,7 +161,7 @@ nav li a:focus,
     user-select: none;
     appearance: none;
     transition: max-height 0.4s linear;
-    padding-bottom:toRem(40);
+    padding-bottom: toRem(40);
   }
   :focus ~ .menu__icon {
     outline: $shade-purple2 1px solid;
@@ -173,13 +179,12 @@ nav li a:focus,
   }
 }
 
-.menu__checkbox:checked~.menu{
-	margin-top: 55px!important;
+.menu__checkbox:checked ~ .menu {
+  margin-top: 55px !important;
 }
 
-
 .gr-bold {
-	font-family: 'GothamRounded-Bold';
+  font-family: "GothamRounded-Bold";
 }
 
 //MEDIA QUERIES
@@ -196,59 +201,57 @@ nav li a:focus,
   }
 }
 
-	.hiuapp_termspage .hiuapp_pink-rotate-bg .cmp-teaser{
-		margin: 21px 0 0 16px;
-	}
+.hiuapp_termspage .hiuapp_pink-rotate-bg .cmp-teaser {
+  margin: 21px 0 0 16px;
+}
 
+.cmp-experiencefragment--header .cmp-image__image {
+  display: none;
+}
 
-	.cmp-experiencefragment--header .cmp-image__image {
-		display: none;
-		}
-		
-	.menu li {
-		&:first-child{
-		//	margin-top: 55px;
-		}
-	}
-	.logo {
-		font-size: toRem(72) !important;
-		padding: 10px 0 0 0!important;
-	}
+.menu li {
+  &:first-child {
+    //	margin-top: 55px;
+  }
+}
+.logo {
+  font-size: toRem(72) !important;
+  padding: 10px 0 0 0 !important;
+}
 
+.hiuapp_teaser_ctn .cmp-teaser__content {
+  //padding-bottom: 110px;
+}
+.hiuapp_teaser_ctn .cmp-teaser__content a {
+  top: 174px;
+  left: 0;
+  margin-top: 34px;
+  width: 41%;
+  margin-left: 6px;
+}
+nav li a {
+  color: #db4f74;
+  font-size: 40px;
+  padding: 5px 15px;
+  display: block;
+  text-align: center;
+}
+nav li a:hover {
+  color: #fff;
+}
+.cmp_btn .cmp_store_btn {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.hiuapp_teaser_ctn .cmp-teaser {
+  // padding-bottom: 40px;
+}
 
-	.hiuapp_teaser_ctn .cmp-teaser__content {
-		//padding-bottom: 110px;
-	}
-	.hiuapp_teaser_ctn .cmp-teaser__content a {
-		top: 174px;
-		left: 0;
-		margin-top: 34px;
-		width: 41%;
-		margin-left: 6px;
-	}
-	nav li a {
-		color: #db4f74;
-		font-size: 40px;
-		padding: 5px 15px;
-		display: block;
-		text-align: center;
-	}
-	nav li a:hover {
-		color: #fff;
-	}
-	.cmp_btn .cmp_store_btn{
-		 margin-bottom: 20px;  
-		 width: 100%;
-	}
-	.hiuapp_teaser_ctn .cmp-teaser {
-		   // padding-bottom: 40px;
-	}
-
-	.hiuapp_teaser_ctn {
-    .cmp-teaser__content a {
-    left: 0!important;
-    bottom: 0!important;
-	}
+.hiuapp_teaser_ctn {
+  .cmp-teaser__content a {
+    left: 0 !important;
+    bottom: 0 !important;
+  }
 }
 
 @media (min-width: $tablet) and (max-width: $desktop) {
@@ -258,55 +261,55 @@ nav li a:focus,
     }
   }
 
-	.wellcome-heading {
-		margin-bottom: 70px;
-	}
+  .wellcome-heading {
+    margin-bottom: 70px;
+  }
 
   .menu__checkbox:checked ~ .menu {
     margin-top: toRem(80) !important;
   }
 
-	nav {
-		position: static;
-	}
-	nav ul {
-		background: none;
-	}
-	nav li {
-		float: left;
-	}
-	nav li a {
-		padding: 9px 17px 9px 0;
-		border: 0;
-		font-size: 16px;
-		color: #ffffff;
-		margin-top: -10px;
-	}
-	.menu {
-		display: block;
-		clear: none;
-		// float: right;
-		max-height: none;
-        margin-right: 0;
-		float: right;
-		margin-top: 36px;
-	}
-	.menu__icon,
-	.menu__checkbox,
-	.hamburger {
-		display: none;
-	}
-	nav li {
-		border-top: 0;
-	}
-	
-	header{
-    background:$pink-color;
-    .cmp-container{
-        padding-right:24px;
-        }
+  nav {
+    position: static;
+  }
+  nav ul {
+    background: none;
+  }
+  nav li {
+    float: left;
+  }
+  nav li a {
+    padding: 9px 17px 9px 0;
+    border: 0;
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: -10px;
+  }
+  .menu {
+    display: block;
+    clear: none;
+    // float: right;
+    max-height: none;
+    margin-right: 0;
+    float: right;
+    margin-top: 36px;
+  }
+  .menu__icon,
+  .menu__checkbox,
+  .hamburger {
+    display: none;
+  }
+  nav li {
+    border-top: 0;
+  }
+
+  header {
+    background: $pink-color;
+    .cmp-container {
+      padding-right: 24px;
     }
   }
+}
 
 @media (min-width: $tablet) {
   nav a:hover {
@@ -355,4 +358,3 @@ nav li a:focus,
     border: none;
   }
 }
- 
