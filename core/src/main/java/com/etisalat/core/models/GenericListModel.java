@@ -56,11 +56,12 @@ public class GenericListModel {
 
 			if (StringUtils.isNotBlank("pagelist") && pagelist.equals(FIXEDLIST_NODE)) {
 
-				currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
+				  currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
 					String	authoredImage = StringUtils.EMPTY;
 					String  authoredLabel = StringUtils.EMPTY;
+					String  itemPath = StringUtils.EMPTY;
 					ValueMap properties = itemResource.getValueMap();
-					String itemPath = itemResource.getValueMap().get("link").toString();
+				    itemPath = properties.get("link", String.class);
                     authoredImage = properties.get("fileReference", String.class);
 				    authoredLabel = properties.get("label", String.class);
 					if(itemPath.contains("/content")) {					
@@ -83,7 +84,7 @@ public class GenericListModel {
 					genericListObj.add(detail);
 					}
 					else {
-						if(StringUtils.isNotBlank(itemPath)) {
+						if(StringUtils.isNotEmpty(itemPath)) {
 							GenericListPageDetails detail = new GenericListPageDetails();			
 							detail.setTitle(authoredLabel);	
 							detail.setPath(itemPath);	
