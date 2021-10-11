@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
@@ -34,7 +36,7 @@ public class GenericListModel {
 	@SlingObject
 	private SlingHttpServletRequest request;
 
-	private List<GenericListPageDetails> genericListObj;
+	private List<GenericListPageDetails> genericListObj = new ArrayList<>();
 
 	String thumbnailPath;
 
@@ -48,16 +50,47 @@ public class GenericListModel {
 	protected void init() {
 		LOG.info("In GenericListModel Init method");
 
-		genericListObj = new ArrayList<>();
+		
 
 		if (currentResource.getChild("fixedpath") != null || StringUtils.isNotBlank(rootPath)) {
 
 			if (StringUtils.isNotBlank("pagelist") && pagelist.equals(FIXEDLIST_NODE)) {
 
 				currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
+					ValueMap properties = itemResource.getValueMap();
 					String itemPath = itemResource.getValueMap().get("link").toString();
+                    String	authoredImage = properties.get("fileReference", String.class);
+				    String	authoredLabel = properties.get("label", String.class);
+					if(itemPath.contains("/content")) {					
 					Resource itemChildRes = request.getResourceResolver().getResource(itemPath);
-					storeListData(itemChildRes);
+					Resource imageRes = request.getResourceResolver().getResource(itemChildRes.getPath() + "/jcr:content/image");
+					String imagePath = null != imageRes && imageRes.getValueMap().containsKey("fileReference")
+							? imageRes.getValueMap().get("fileReference").toString()
+							: StringUtils.EMPTY;
+
+					Page childPage = itemChildRes.adaptTo(Page.class);
+
+					GenericListPageDetails detail = new GenericListPageDetails();
+					LOG.info("list of pages {}", childPage.getPageTitle());
+					detail.setTitle(StringUtils.isNotEmpty(authoredLabel) ? authoredLabel : (
+							StringUtils.isNotBlank(childPage.getPageTitle()) ? childPage.getPageTitle() : childPage.getTitle()));
+					detail.setDescription(childPage.getDescription());
+					detail.setOffTime(childPage.getOffTime());
+					detail.setPath(childPage.getPath());
+					detail.setThumbnail(StringUtils.isNotEmpty(authoredImage) ? authoredImage : imagePath);
+					genericListObj.add(detail);
+					}
+					else {
+						if(StringUtils.isNotBlank(itemPath)) {
+							GenericListPageDetails detail = new GenericListPageDetails();			
+							detail.setTitle(authoredLabel);	
+							detail.setPath(itemPath);	
+							detail.setThumbnail(authoredImage);							
+							genericListObj.add(detail);
+						}
+					}
+					
+					
 				});
 
 			} else {
