@@ -1,21 +1,85 @@
-<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     data-panelcontainer="${wcmmode.edit && 'Promotional tile'}"
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-panelcontainer="${wcmmode.edit && 'Global Footprint tile'}"
      data-placeholder-text="${wcmmode.edit && 'Please update Global Footprint tile' @ i18n}">
 
-  <sly
-      data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}">
-  </sly>
 
-  <div class="current-promotions-box">
-    <div class="icon-wrap">
-      <span class="icon-with-bg">
-        <div
-            data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
+<!-- Swiper Content-->
+ <div class="swiper-slide" data-sly-test="${!wcmmode.edit}">
+        <div class="global-slide-content">
+          <div class="container">
+            <div class="global-slide-info">
+              <span class="icon-flag icon-flag--${properties.countryFlag}"></span>
+              <h4 data-sly-test="${properties.countryTitle}">${properties.countryTitle}</h4>
+              <ul>
+                <li data-sly-test="${properties.brand}">Brand: <b>${properties.brand}</b></li>
+
+                <li data-sly-test="${properties.since}">Since <b>${properties.since}</b></li>
+
+                <li data-sly-test="${properties.population}">Population: <b>${properties.population}</b></li>
+
+              </ul>
+              <a class="btn-text btn-green learn-more" data-sly-test="${properties.moreInfoLink}" href="${properties.moreInfoLink @ extension = 'html'}">${properties.moreInfoTitle}</a>
+            </div>
+          </div>
         </div>
-      </span>
+		
+<!-- Swiper Thumb Tiles-->
+		<div class="swiper-slide-container">
+          <div class="slide-thumb-content">
+            <div class="slide-thumb-img">
+              <img src="${properties.fileReference}" alt="">
+            </div>
+            <a href="${properties.moreInfoLink @ extension = 'html'}">
+            <div class="slide-thumb-info">
+
+                <span class="icon-flag icon-flag--${properties.countryFlag}"></span>
+                <h4 data-sly-test="${properties.countryTitle}">${properties.countryTitle}</h4>
+             
+            </div>
+          </a>
+            <!-- Thumbs info for Mobile only-->
+            <div class="slide-thumb-info-mobile">
+              <h4 data-sly-test="${properties.countryTitle}">${properties.countryTitle}</h4>
+              <ul>
+                <li data-sly-test="${properties.brand}">Brand: <b>${properties.brand}</b></li>
+
+                <li data-sly-test="${properties.since}">Since <b>${properties.since}</b></li>
+
+                <li data-sly-test="${properties.population}">Population: <b>${properties.population}</b></li>
+
+              </ul>
+              <a class="btn-text btn-green learn-more" data-sly-test="${properties.moreInfoLink}" href="${properties.moreInfoLink @ extension = 'html'}">${properties.moreInfoTitle}</a>
+           
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+ <div class="current-promotions-box" data-sly-test="${wcmmode.edit}">
+    <div class="icon-wrap">
+     
+       <div class="slide-thumb-img">
+              <img src="${properties.fileReference}" alt="">
+            </div>
+     
     </div>
-    <div class="title-wrap" data-sly-element="${properties.titleType}">
-      ${properties.countryTitle}
+    <div  data-sly-element="${properties.titleType}">
+
+     <h4 data-sly-test="${properties.countryTitle}">${properties.countryTitle}</h4>
+              <ul>
+
+                 <li>  <span class="icon-flag--${properties.countryFlag}"></li>
+                <li data-sly-test="${properties.brand}">Brand: <b>${properties.brand}</b></li>
+
+                <li data-sly-test="${properties.since}">Since <b>${properties.since}</b></li>
+
+                <li data-sly-test="${properties.population}">Population: <b>${properties.population}</b></li>
+
+              </ul>
+              <a class="btn-text btn-green learn-more" data-sly-test="${properties.moreInfoLink}" href="${properties.moreInfoLink @ extension = 'html'}">${properties.moreInfoTitle}</a>
+           
     </div>
     <div class="learn-more-wrap">
 
@@ -24,4 +88,5 @@
     
     </div>
   </div>
-</div>
+
+</sly>
