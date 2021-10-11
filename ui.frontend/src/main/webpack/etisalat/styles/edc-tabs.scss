@@ -16,13 +16,11 @@
         .swiper-slide,
         li {
           display: flex;
-          
             border-bottom: 2px solid transparent;
           
         }
         .swiper-slide {
           align-items: flex-end;
-          
             border-bottom: 2px solid transparent;
           
         }
@@ -81,12 +79,10 @@
         .swiper-slide,
         li {
           min-height: 68px;
-          a {
             height: 68px;
-            font-size: 16px;
+            font-size: $font16;
             letter-spacing: 0.6px;
             line-height: 68px;
-          }
         }
       }
       .swiper-button-next, .swiper-button-prev {
@@ -95,23 +91,7 @@
     }
   }
 }
-  .media-cta-section-tabs{
-    background-color: hsla(0, 0%, 95%, .33);
-    padding-bottom: 4rem;
-    .media-year-section{
-      h2{
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        line-height: 40px;
-        color: $almost-black;
-        padding-top: 2rem;
-      }
-    }
-    .media-cta-section{
-      padding: 1rem 0;
-      background-color: transparent;
-    }
-  }
+ 
   
   //arabic
   *[lang="ar"] {
@@ -136,6 +116,7 @@
     max-height: 78px;
     position: relative;
     z-index: 8;
+    @include font-family-lato;
     //>.container>.row>.col-xs-12.col-md-3 {
     //  display: none;
     //  @media (min-width: 1366px) {
@@ -145,6 +126,7 @@
     @include respond-to-min($desktop) {
       min-height: 90px;
       max-height: 90px;
+      @include font-family-Neotech;
   
       &.tabs {
         //max-height: none;
@@ -307,7 +289,7 @@
   
     .config-section-main-label-top {
       color: $gray;
-      font-size: 12px;
+      font-size: $font12;
       margin: 0;
       position: relative;
       margin-top: -10px;
@@ -320,7 +302,7 @@
         display: flex;
      @include font-family-lato;
         align-items: center;
-        font-size: 18px;
+        font-size: $font18;
         line-height: 20px;
         height: 90px;
         margin: 0;
@@ -393,4 +375,13 @@
 		right: 1.2rem;
 		transform: rotate(135deg);
 	}
+  }
+  *[lang=ar] {
+    *[dir=rtl] {
+      .edc-tabs-wrapper{
+        .ul-list-cms ul li:before {
+         display: none;
+        }
+      }
+    }
   }
