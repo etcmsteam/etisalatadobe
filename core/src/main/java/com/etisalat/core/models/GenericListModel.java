@@ -50,38 +50,38 @@ public class GenericListModel {
 	protected void init() {
 		LOG.info("In GenericListModel Init method");
 
-		
+
 
 		if (currentResource.getChild("fixedpath") != null || StringUtils.isNotBlank(rootPath)) {
 
 			if (StringUtils.isNotBlank("pagelist") && pagelist.equals(FIXEDLIST_NODE)) {
 
-				  currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
+				currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
 					String	authoredImage = StringUtils.EMPTY;
 					String  authoredLabel = StringUtils.EMPTY;
 					String  itemPath = StringUtils.EMPTY;
 					ValueMap properties = itemResource.getValueMap();
-				    itemPath = properties.get("link", String.class);
-                    authoredImage = properties.get("fileReference", String.class);
-				    authoredLabel = properties.get("label", String.class);
+					itemPath = properties.get("link", String.class);
+					authoredImage = properties.get("fileReference", String.class);
+					authoredLabel = properties.get("label", String.class);
 					if(itemPath.contains("/content")) {					
-					Resource itemChildRes = request.getResourceResolver().getResource(itemPath);
-					Resource imageRes = request.getResourceResolver().getResource(itemChildRes.getPath() + "/jcr:content/image");
-					String imagePath = null != imageRes && imageRes.getValueMap().containsKey("fileReference")
-							? imageRes.getValueMap().get("fileReference").toString()
-							: StringUtils.EMPTY;
+						Resource itemChildRes = request.getResourceResolver().getResource(itemPath);
+						Resource imageRes = request.getResourceResolver().getResource(itemChildRes.getPath() + "/jcr:content/image");
+						String imagePath = null != imageRes && imageRes.getValueMap().containsKey("fileReference")
+								? imageRes.getValueMap().get("fileReference").toString()
+										: StringUtils.EMPTY;
 
-					Page childPage = itemChildRes.adaptTo(Page.class);
+						Page childPage = itemChildRes.adaptTo(Page.class);
 
-					GenericListPageDetails detail = new GenericListPageDetails();
-					LOG.info("list of pages {}", childPage.getPageTitle());
-					detail.setTitle(StringUtils.isNotEmpty(authoredLabel) ? authoredLabel : (
-							StringUtils.isNotBlank(childPage.getPageTitle()) ? childPage.getPageTitle() : childPage.getTitle()));
-					detail.setDescription(childPage.getDescription());
-					detail.setOffTime(childPage.getOffTime());
-					detail.setPath(childPage.getPath());
-					detail.setThumbnail(StringUtils.isNotEmpty(authoredImage) ? authoredImage : imagePath);
-					genericListObj.add(detail);
+						GenericListPageDetails detail = new GenericListPageDetails();
+						LOG.info("list of pages {}", childPage.getPageTitle());
+						detail.setTitle(StringUtils.isNotEmpty(authoredLabel) ? authoredLabel : (
+								StringUtils.isNotBlank(childPage.getPageTitle()) ? childPage.getPageTitle() : childPage.getTitle()));
+						detail.setDescription(childPage.getDescription());
+						detail.setOffTime(childPage.getOffTime());
+						detail.setPath(childPage.getPath());
+						detail.setThumbnail(StringUtils.isNotEmpty(authoredImage) ? authoredImage : imagePath);
+						genericListObj.add(detail);
 					}
 					else {
 						if(StringUtils.isNotEmpty(itemPath)) {
@@ -92,8 +92,8 @@ public class GenericListModel {
 							genericListObj.add(detail);
 						}
 					}
-					
-					
+
+
 				});
 
 			} else {
@@ -116,7 +116,7 @@ public class GenericListModel {
 		Resource imageRes = request.getResourceResolver().getResource(childResource.getPath() + "/jcr:content/image");
 		String imagePath = null != imageRes && imageRes.getValueMap().containsKey("fileReference")
 				? imageRes.getValueMap().get("fileReference").toString()
-				: StringUtils.EMPTY;
+						: StringUtils.EMPTY;
 
 		Page childPage = childResource.adaptTo(Page.class);
 
