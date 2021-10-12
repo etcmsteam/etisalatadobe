@@ -1,4 +1,4 @@
-if ($(".swiper-gallery-thumbs").length > 0) {
+if ($(".globalfootprintcontainer").length > 0) {
   var galleryTop = new Swiper('.swiper-gallery-slide', {
     spaceBetween: 10,
     effect: 'fade',
