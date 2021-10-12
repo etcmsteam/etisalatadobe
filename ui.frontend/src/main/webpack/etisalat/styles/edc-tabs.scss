@@ -31,7 +31,7 @@
         text-transform: uppercase;
       }
     }
-    @media (max-width: 991px) {
+    @include respond-to-max($desktop){
       .page-nav {
         .swiper-slide,
         li {
@@ -64,13 +64,13 @@
           stroke-width: 3px;
         }
       }
-      @media (max-width: 991px) {
+      @include respond-to-max($desktop){
         display: none;
       }
     }
     .swiper-button-next {
       right: -24px;
-      @media (min-width: 1248px) {
+      @include respond-to-min($desktop-wide) {
         right: -50px;
       }
       svg{
@@ -92,7 +92,7 @@
    // with years
    .cmp_tabs__horizontal_with_years{
     .edc-tabs-wrapper {
-    @media (min-width: 992px) {
+      @include respond-to-min($desktop) {
       min-height: 68px;
       max-height: 68px;
       .page-nav {
@@ -191,8 +191,7 @@
   
       //overflow-x: auto;
       white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
+      
   
       ::-webkit-scrollbar {
         display: none;
@@ -303,10 +302,11 @@
       button{
         border: 0px solid transparent;
         background-color: transparent;
+        &:focus{
+          background-color: transparent;
+         }
       }
-     button:focus{
-      background-color: transparent;
-     }
+    
       
   }
   .cmp-carousel__actions{
@@ -320,8 +320,10 @@
   .cmp-carousel__indicators {
 		display: none;
 	}
-  .cmp-carousel__action.cmp-carousel__action--previous::after,
-	 .cmp-carousel__action.cmp-carousel__action--next::after {
+  .cmp-carousel__action
+  {
+    &--previous::after,
+	 &--next::after {
 		content: "";
 		position: absolute;
 		top: 15px;
@@ -332,15 +334,16 @@
     border-bottom: 1px solid  $grey4;
     border-right: 1px solid  $grey4;
 	}
- .cmp-carousel__action.cmp-carousel__action--previous::after {
+ &--previous::after {
 		left: 2rem;
 		transform: rotate(-45deg);
 	}
- .cmp-carousel__action.cmp-carousel__action--next::after {
+ &--next::after {
 		right: 1.2rem;
 		transform: rotate(135deg);
 	}
   }
+}
   *[lang=ar] {
     *[dir=rtl] {
       .edc-tabs-wrapper{
