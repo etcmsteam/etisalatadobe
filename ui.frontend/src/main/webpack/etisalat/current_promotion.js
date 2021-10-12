@@ -95,10 +95,10 @@ $(document).ready(function () {
             scrollbarDraggable: true,
             breakpoints: {
                 540: {
-                  slidesPerView: 1
+                  slidesPerView: 1.25
                 },
                 768: {
-                  slidesPerView: 2
+                  slidesPerView: 1
                 },
                 1024: {
                   slidesPerView: 1
