@@ -15,7 +15,7 @@
                 <items
                     jcr:primaryType="nt:unstructured"
                     sling:hideChildren="[text,actions]">
-                    <promotiondetails
+                    <footprintdetails
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Global Footprint Tile Details"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -36,6 +36,27 @@
                                                 fieldDescription="A Country Title will appear."
                                                 fieldLabel="Global Country Title"
                                                 name="./countryTitle"/>
+                                            <svgimage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <file
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        autoStart="{Boolean}false"
+                                                        class="cq-droptarget"
+                                                        fieldLabel="Country Flag Icon SVG"
+                                                        fileNameParameter="./fileName"
+                                                        fileReferenceParameter="./fileReferenceIcon"
+                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                        multiple="{Boolean}false"
+                                                        name="./file"
+                                                        title="Upload Image Asset"
+                                                        uploadUrl="${suffix.path}"
+                                                        useHTML5="{Boolean}true"/>
+                                                </items>
+                                            </svgimage>
                                             <brand
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -72,7 +93,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </promotiondetails>
+                    </footprintdetails>
                 </items>
             </tabs>
         </items>

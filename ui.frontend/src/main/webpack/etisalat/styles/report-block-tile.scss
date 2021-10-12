@@ -1,0 +1,154 @@
+
+.basicpage .report-block-tile {
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
+    margin-bottom: 1rem;
+    padding: 3.2375rem 3.2375rem 2.2175rem 3.2375rem;
+  
+    @include respond-to-max($desktop){
+      padding: 1.8rem;
+    }
+    @include respond-to-max($tablet){
+      padding: 1;
+    }
+  
+    h2 {
+      font-size:$font20;
+      line-height: 28px;
+      color: $almost-black;
+      margin-top: 5px;
+      margin-bottom: 10;
+    @include respond-to-min($desktop){
+        line-height: 1.4;
+      }
+    }
+  
+    .cmp-text h5{
+      margin: 0;
+         font-size: $font12;
+         color: $steel-grey;
+         line-height: 12px;
+         @include font-family-lato;
+     }
+     
+    h6 {
+      @include font-family-lato;
+        font-size: $font12;
+        letter-spacing: 4px;
+        line-height: 12px;
+        color:#909090;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom: 0px;
+    }
+    p.cmp-link__text:first-child{
+      font-size:$font12;
+      @include respond-to-min($tablet){
+        font-size:$font14;
+      }
+    }
+  
+    p{
+        z-index: 1;
+        position: static;
+        top: 0px;
+        right: 0;
+        text-align: right;
+        margin-right: 17px;
+        font-size:$font14;
+
+        svg{
+          width:14px;
+            position: relative ;
+        }
+  
+        @include respond-to-max($desktop){
+          position: static;
+          text-align: left;
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+  
+        .cmp-link__text{
+          color: $main-green;
+          letter-spacing: 2px;
+          font-size:$font14;
+          line-height: 20px;
+          display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+  
+           @include respond-to-min($desktop){
+              margin-top: 10px;
+            }
+            @include respond-to-max($tablet){
+            font-size:$font12;
+            padding-right: 0.8rem;
+          }
+        }
+      }
+          }
+        
+    
+        
+  
+    
+  
+  
+  *[lang=ar] {
+    *[dir=rtl] {
+      .report-block-tile {
+        p{
+          text-align: right;
+        }
+        &.bgpattern {
+          background: linear-gradient(225deg, $white 0%, $white 100%);
+  
+          &:after,
+          &:before {
+            right: auto;
+            left: 0;
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+
+
+  ///tab with carosol on desktop 
+  .product-grid-single {
+    padding: 1rem 0;
+    @include respond-to-min($desktop){
+      padding: 2.5rem 1rem;
+    }
+  }
+
+.product-grid-single .next svg,
+.product-grid-single .prev svg {
+    stroke: #353738;
+    width: 1rem;
+    height: 1rem
+}
+.product-grid-single .next.swiper-button-disabled svg, .product-grid-single .prev.swiper-button-disabled svg {
+    stroke: #919192;
+}
+.product-grid-single .next,
+.product-grid-single .prev {
+    width: 54px!important;
+    float: left;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1rem
+}
+@include respond-to-max($tablet){
+  .product-promotions-wrraper{
+    .swiper-slide{
+      padding-left:12px;
+      padding-right: 12px;
+    }
+  }
+}
