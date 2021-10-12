@@ -4,6 +4,26 @@
     //  z-index: 2;
     //  text-transform: uppercase;
     //}
+  .swiper-container{
+    padding: 0;
+  }
+  @include respond-to-max($tablet){
+    .swiper-slide{
+      display: flex;
+      justify-content: center;
+       font-size: $font18;
+     }
+  }
+ 
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 12px;
+    padding-right: 12px;
+    @include respond-to-min($tablet){
+      width: 756px;
+    }
+}
   
     .page-nav {
       .swiper-slide a,
@@ -146,66 +166,12 @@
         }
       }
     }
-  
-    .row .col-xs-12.col-md-9 {
-     // @media (max-width: @screen-sm-max) {
-     //   padding: 0;
-    //  }
-    }
-  
-    .simplebar-track.horizontal {
-      display: none;
-    }
-  
-    &.add-links {
-      height: 56px;
-      @media (max-width:991px) {
-        margin-top: 100px;
-        &.m-top-24 {
-          margin-top: 24px;
-        }
-      }
-      > .container {
-        position: relative;
-      }
-      .links-wrapper {
-        position: absolute;
-        top: 25px;
-        right: 0;
-        z-index: 9;
-        @media (max-width:991px) {
-          width: 100%;
-          top: -134px;
-          position: relative;
-          &.fixed {
-            position: fixed;
-            top: auto;
-            right: 0;
-            z-index: 9;
-            bottom: 0;
-            padding: 0 1rem;
-          }
-          .hero-links-secton > .container-fluid > .row > .col-xs-12 {
-            padding: 0;
-          }
-        }
-      }
-    }
-  
     .nav-tabs {
       border: 0;
       > li {
-       
           border: 0;
           border-bottom: 4px solid transparent;
-  
-        //  @media (max-width: @screen-sm-max) {
-         //   border-bottom: 2px solid transparent;
-         // }
-        
       }
-  
-      
         &:hover {
           border-color: #fff;
         }
@@ -242,11 +208,8 @@
         @include respond-to-min($tablet){
           min-height: 90px;
         }
-  
-        
           padding: 0 1rem;
-          
-          font-size: 12px;
+          font-size: $font12;
           padding-bottom: 10px;
           color: $almost-black;
           cursor: pointer;
@@ -258,17 +221,16 @@
             line-height: 90px;
             height: 90px;
             @include font-family-Neotech;
-            font-size: 1.25rem;
+            font-size: $font20;
             text-transform: none;
           }
-  
+
           &:hover {
             color:  $main-green;
           }
         
   
         &.cmp-tabs__tab--active{
-          
             border-bottom: 2px solid  $main-green;
             border-left: 0;
             border-right: 0;
@@ -297,18 +259,21 @@
       top: 20px;
       line-height: 22px;
       letter-spacing: 1px;
-  
-      @include respond-to-min($tablet) {
+      @include font-family-lato;
+
+      @include respond-to-min($desktop) {
         display: flex;
-     @include font-family-lato;
         align-items: center;
         font-size: $font18;
         line-height: 20px;
-        height: 90px;
+       height: 90px;
         margin: 0;
         top: 0;
       }
     }
+    .config-section-wrap .page-nav li, .edc-tabs-wrapper .page-nav li {
+      padding-right: 1.4rem;
+  }
   }
   //tab-panel content
   

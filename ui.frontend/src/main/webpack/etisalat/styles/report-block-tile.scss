@@ -60,12 +60,10 @@
 
         svg{
           width:14px;
-          height: 14px;
             position: relative ;
-            top: -4px;
         }
   
-        @media (max-width: 991.98px) {
+        @include respond-to-max($desktop){
           position: static;
           text-align: left;
           margin-right: 0;
@@ -86,119 +84,16 @@
            @include respond-to-min($desktop){
               margin-top: 10px;
             }
-          @media (max-width: 767.98px) {
-            font-size: 12px;
+            @include respond-to-max($tablet){
+            font-size:$font12;
             padding-right: 0.8rem;
           }
         }
       }
           }
         
-      /*Start: Styles sticky button only on mobile*/
-      @media (max-width: 991.98px) {
-        p{
-              position: absolute;
-              left: 12px;
-              bottom: 0px;
-              margin-top: .3rem;
-            }
-          }
+    
         
-    /*Start: Styles for columns*/
-    .report-block-highlights {
-      padding-top: 26px;
-      position: relative;
-      z-index: 1;
-      @media (max-width: 991.98px) {
-        padding-top: 20px;
-      }
-      h3 {
-        &.title {
-          font-size: 20px;
-          line-height: 28px;
-          color: $almost-black;
-          margin-top: 16px;
-          margin-bottom: 19px;
-  
-          @media (max-width: 991.98px) {
-            margin-bottom: 28px;
-          }
-        }
-      }
-  
-     
-  
-      .desc {
-        @media (max-width: 991.98px) {
-          margin-bottom: 20px;
-        }
-  
-        p {
-          font-size: 14px;
-          line-height: 24px;
-          color: $steel-grey;
-          font-family: sans-serif;
-        }
-  
-        li {
-          margin-bottom: 21px;
-  
-          @media (max-width: 991.98px) {
-            margin-bottom: 10px;
-            text-align: left;
-          }
-  
-          &:last-child {
-            margin-bottom: 0px;
-          }
-  
-          /*Start: Styles for default link in the list*/
-          a {
-            padding-right: 1rem;
-            color: $main-green  !important;
-            font-size: 14px;
-            letter-spacing: 2px;
-            line-height: 20px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-            text-transform: uppercase;
-            position: relative;
-  
-            &:hover {
-              text-decoration: underline;
-            }
-  
-            &:before {
-              display: none;
-            }
-  
-            @media (max-width: 1199.98px) {
-              max-width: 465px;
-              display: block;
-            }
-  
-            @media (max-width: 991.98px) {
-              max-width: 500px;
-              display: inline-block;
-            }
-  
-            @media (max-width: 767.98px) {
-              font-size: 12px;
-              padding-right: 0.8rem;
-            }
-  
-            @media (max-width: 575.98px) {
-              max-width: 250px;
-            }
-  
-          }
-        }
-  
-       
-      }
-    }
   
     
   
@@ -217,191 +112,6 @@
             right: auto;
             left: 0;
             transform: rotate(180deg);
-          }
-        }
-  
-        &.report-block-tile-top-link {
-          .btn-report-link {
-            right: auto;
-            left: 2rem;
-            top: 2.5rem;
-            text-align: left;
-            @media (max-width: 991.98px) {
-              right: 0.8rem;
-              left: auto;
-              top: 0;
-              text-align: right;
-              .btn-text {
-                padding-right: 0;
-              }
-            }
-  
-            .btn-text {
-              &:before {
-                @media (max-width: 991.98px) {
-                  right: auto;
-                }
-              }
-            }
-  
-          }
-        }
-  
-        &.download-link {
-          @media (max-width: 991.98px) {
-            // right: 2rem;
-            // left: auto;
-          }
-  
-          .btn-report-link {
-            .btn-text {
-              padding-left: 1.2rem;
-              padding-right: 0;
-              font-size: 16px;
-              &:before {
-                left: 0;
-                right: auto;
-              }
-              span{
-                font-weight: 400;
-              }
-            }
-          }
-  
-        }
-  
-        .report-block-highlights {
-          .desc {
-            p {
-              font-weight: normal !important;
-            }
-  
-            ul {
-              li {
-                text-align: right;
-                a {
-                  font-size: 16px;
-                  letter-spacing: 0px !important;
-                  font-weight: normal;
-                }
-              }
-            }
-  
-            &.download-report-list {
-              &.right-list {
-                text-align: left;
-  
-                ul {
-                  li {
-                    text-align: left;
-  
-                    a {
-                      padding-left: 1.3rem;
-                    }
-                  }
-                }
-                @media (max-width: 991.98px) {
-                  text-align: right;
-                  ul {
-                    li {
-                      text-align: right;
-                      a {
-                        padding-left: 1.3rem;
-                      }
-                    }
-                  }
-                }
-              }
-  
-              @media (max-width: 991.98px) {
-                text-align: right;
-                ul {
-                  li {
-                    text-align: right;
-                    a {
-                      padding-left: 1.3rem;
-                    }
-                  }
-                }
-              }
-  
-              ul {
-                li {
-                  text-align: right;
-  
-                  a {
-                    padding-right: 0;
-                    padding-left: 1.3rem;
-                    font-size: 16px;
-                    letter-spacing: 0px !important;
-                    font-weight: normal;
-  
-                    &:before {
-                      transform: translateY(-50%) rotate(0deg);
-                      right: auto;
-                      left: 0;
-                    }
-                  }
-                }
-              }
-            }
-  
-            &.chevron-report-list {
-              text-align: left;
-  
-              @media (max-width: 991.98px) {
-                text-align: right;
-              }
-              &.right-list {
-                text-align: right;
-                max-width: 100%;
-      
-                ul {
-                  li {
-                    a {
-                      padding-left: 1.3rem;
-                      padding-right: 0px;
-                      &:before {
-                        left: 1%;
-                        right: auto;
-                      }
-                    }
-                  }
-                }
-              }
-  
-              ul {
-                li {
-                  text-align: left;
-                  @media (max-width: 991.98px) {
-                    text-align: right;
-                  }
-  
-                  a {
-                    padding-right: 0;
-                    padding-left: 1.3rem;
-                    font-size: 16px;
-                    letter-spacing: 0px !important;
-                    font-weight: normal;
-                    display: inline-block;
-  
-                    &:before {
-                      transform: translateY(-50%) rotate(135deg);
-                      right: auto;
-                      left: 3%;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-  
-        &.download-quarter-list {
-          .desc {
-            &.download-report-list {
-              text-align: right;
-            }
           }
         }
       }
@@ -428,4 +138,12 @@
     cursor: pointer;
     margin-top: 1rem;
     margin-bottom: 1rem
+}
+@include respond-to-max($tablet){
+  .product-promotions-wrraper{
+    .swiper-slide{
+      padding-left:12px;
+      padding-right: 12px;
+    }
+  }
 }

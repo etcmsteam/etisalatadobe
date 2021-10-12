@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var initSwiper;
     initSwiper = function () {
+       
         // plans table slider for CMS modules start
         $(document).find('.current-promotions-wrraper').each(function (index) {
             $(this).addClass('c-p-slider' + index);
@@ -94,10 +95,10 @@ $(document).ready(function () {
             scrollbarDraggable: true,
             breakpoints: {
                 540: {
-                  slidesPerView: 1.25
+                  slidesPerView: 1
                 },
                 768: {
-                  slidesPerView: 1
+                  slidesPerView: 2
                 },
                 1024: {
                   slidesPerView: 1
