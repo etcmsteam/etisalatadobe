@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
-public class HeroLinkSectionPojo {
+public class HeroLinkSectionVO {
+    
     String iconLink;
     String iconText;
     String iconImage;
