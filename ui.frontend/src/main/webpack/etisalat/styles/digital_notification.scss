@@ -1,17 +1,17 @@
 // more notifications
 .more-notifications {
     a {
-        font-size: 12px;
+        font-size: $font12;
         line-height: normal;
         letter-spacing: 1.71px;
-        color: #ffffff;
+        color: $white;
         text-transform: uppercase;
         display: flex;
-        padding-right: 14px;
+        padding-right: toRem(14);
         position: relative;
 
         @media (min-width: 992px) {
-            font-size: 11px;
+            font-size: $font11;
             letter-spacing: 1.57px;
         }
 
@@ -20,10 +20,10 @@
         }
 
         &:after {
-            border: solid #719e19;
+            border: solid $main-green;
             border-width: 0 1px 1px 0;
             right: 3px;
-            border: solid #fff;
+            border: solid $white;
             border-width: 0 1px 1px 0;
             padding: 2.7px;
             content: "";
@@ -40,8 +40,8 @@
 .noti-icon-info,
 .noti-icon-dismis,
 .noti-icon-dismis a {
-    width: 18px;
-    height: 18px;
+    width: toRem(18);
+    height: toRem(18);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,8 +56,8 @@
 
         svg,
         img {
-            width: 18px;
-            height: 18px;
+            width: toRem(18);
+            height: toRem(18);
         }
     }
 }
@@ -90,12 +90,12 @@
         a {
 
             margin: 0;
-            font-size: 14px;
+            font-size: $font14;
             font-weight: bold;
             line-height: 1.29;
             letter-spacing: normal;
-            color: #ffffff;
-            font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+            color: $white;
+            @include font-family-lato;
 
             @media (min-width: 992px) {
                 font-weight: 500;
@@ -119,13 +119,13 @@
         p,
         a {
             margin: 0;
-            font-size: 12px;
+            font-size: $font12;
             line-height: 1.5;
             letter-spacing: normal;
-            color: #ffffff;
+            color: $white;
 
             @media (min-width: 992px) {
-                font-size: 14px;
+                font-size: $font14;
                 font-weight: 500;
                 line-height: 1.29;
             }
@@ -144,11 +144,11 @@
 
         li,
         li a {
-            font-size: 12px;
+            font-size: $font12;
             font-weight: normal;
             line-height: 1.5;
             letter-spacing: normal;
-            color: #ffffff;
+            color: $white;
             position: relative;
 
             @media (min-width: 992px) {
@@ -165,7 +165,7 @@
         }
 
         li {
-            padding-left: 10px;
+            padding-left: toRem(10);
 
             &:after {
                 content: " ";
@@ -175,7 +175,7 @@
                 left: 0;
                 position: absolute;
                 left: 0;
-                background: #fff;
+                background: $white;
                 top: 50%;
             }
         }
@@ -192,51 +192,51 @@
     }
 
     &.bg-black {
-        background-color: #000000;
+        background-color: $black;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
 
     &.bg-yellow {
         background-color: #f8dc51;
-        
+
         .title {
 
             h3,
             a {
-                color: #353738;
+                color: $almost-black;
             }
         }
 
         .noti-icon-info svg g {
-            stroke: #353738;
+            stroke: $almost-black;
         }
 
         .notifications-body .description a,
         .notifications-body .description p {
-            color: #353738;
+            color: $almost-black;
         }
 
         .notifications-body ul li,
         .notifications-body ul li a {
-            color: #353738;
+            color: $almost-black;
         }
 
         .notifications-body ul li:after {
-            background: #353738;
+            background: $almost-black;
         }
 
         .more-notifications a {
-            color: #353738;
+            color: $almost-black;
 
             &:after {
-                border-color: #353738;
+                border-color: $almost-black;
             }
         }
 
         .noti-icon-dismis svg g,
         .noti-icon-dismis svg path {
-            stroke: #353738;
+            stroke: $almost-black;
         }
     }
 
@@ -249,7 +249,7 @@
     }
 
     .noti-icon-info {
-        margin-right: 10px;
+        margin-right: toRem(10);
     }
 
     .noti-icon-dismis {
@@ -355,7 +355,8 @@
             padding-left: 24px;
             padding-right: 24px;
         }
-        .noti-icon-dismis{
+
+        .noti-icon-dismis {
             display: none;
         }
     }
@@ -387,7 +388,7 @@
                     width: 24px;
                     height: 4px;
                     border-radius: 2px;
-                    background-color: #808080;
+                    background-color: $grey1;
                     display: block;
                     margin-bottom: 16px;
                     margin-top: -12px;
@@ -428,7 +429,7 @@
             }
 
             a {
-                padding-right: 18px;
+                padding-right: toRem(18);
 
                 &:after {
                     transform: translateY(-50%) rotate(45deg);
@@ -461,18 +462,18 @@
     .notification-title h3,
     .notification-date h3 {
         margin: 0;
-        font-size: 16px;
+        font-size: $font16;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.5;
         letter-spacing: normal;
-        color: #353738;
+        color: $almost-black;
 
         @media (min-width: 992px) {
-            font-size: 20px;
+            font-size: $font20;
             letter-spacing: normal;
-            color: #000000;
+            color: $black;
         }
     }
 
@@ -489,15 +490,15 @@
     .notification-description {
         p {
             margin: 0;
-            font-size: 14px;
+            font-size: $font14;
             line-height: 1.43;
             letter-spacing: normal;
-            color: #848789;
+            color: $steel-grey;
 
             @media (min-width: 992px) {
-                font-size: 14px;
+                font-size: $font14;
                 line-height: 1.71;
-                color: #353738;
+                color: $almost-black;
             }
         }
 
@@ -514,18 +515,18 @@
         }
 
         a {
-            font-size: 14px;
+            font-size: $font14;
             line-height: 1.43;
             letter-spacing: 2px;
-            color: #719e19;
-            padding-right: 14px;
+            color: $main-green;
+            padding-right: toRem(14);
             position: relative;
             display: inline-block;
             text-transform: uppercase;
 
             &:after {
                 right: 3px;
-                border: solid #719e19;
+                border: solid $main-green;
                 border-width: 0 1px 1px 0;
                 padding: 3.7px;
                 content: "";
@@ -559,7 +560,7 @@
         overflow-y: auto;
 
         &::-webkit-scrollbar-track {
-            border-radius: 10px;
+            border-radius: toRem(10);
             background-color: transparent;
         }
 
@@ -569,14 +570,14 @@
 
         &::-webkit-scrollbar-thumb {
             border-radius: 4px;
-            background-color: #719e19;
+            background-color: $main-green;
         }
 
     }
 
     .nv-modal-header {
         padding: 0;
-        border-bottom: 1px solid #d8d8d8;
+        border-bottom: 1px solid $grey5;
         margin-bottom: 1.5rem;
 
         @media (min-width: 992px) {
@@ -591,7 +592,7 @@
                 line,
                 g {
                     @media (max-width: 991px) {
-                        stroke: #ccc;
+                        stroke: $cold-gray;
                         stroke-width: 4px;
                     }
                 }
@@ -622,7 +623,7 @@
 
         .digital-notifications-wrapper .notifications-head .noti-icon-info {
             margin-right: 0;
-            margin-left: 10px;
+            margin-left: toRem(10);
         }
 
         .digital-notifications-wrapper {
@@ -693,7 +694,7 @@
 
         .more-notifications a {
             padding-right: 0;
-            padding-left: 14px;
+            padding-left: toRem(14);
 
             &:after {
                 transform: translateY(-50%) rotate(136deg);
@@ -705,7 +706,7 @@
         .notifications-body ol li,
         .notifications-body ul li {
             padding-left: 0;
-            padding-right: 10px;
+            padding-right: toRem(10);
 
             &:after {
                 left: auto;
@@ -719,7 +720,7 @@
 
         .single-notification .notifications-learn-more a {
             padding-right: 0;
-            padding-left: 14px;
+            padding-left: toRem(14);
 
             &:after {
                 transform: translateY(-50%) rotate(-226deg);
@@ -747,6 +748,7 @@
 }
 
 .show-digital-notification-top {
+
     .top-nav-section,
     .mega-menu-navbar-default {
         position: absolute;
@@ -754,63 +756,75 @@
 }
 
 .bg-black {
-    .more-notifications{
+    .more-notifications {
         margin-right: 3rem;
-        a{
+
+        a {
             color: $white;
         }
-        
+
     }
-    .btn-text.btn-green{
-        &:before{
+
+    .btn-text.btn-green {
+        &:before {
             display: none;
         }
-        &:hover{
-            color: #fff;
+
+        &:hover {
+            color: $white;
         }
     }
 }
-.bg-yellow{
-    .notifications-head .more-notifications{
+
+.bg-yellow {
+    .notifications-head .more-notifications {
         margin-right: 0rem;
     }
 }
-.moreg{
-    font-size: 11px;
+
+.moreg {
+    font-size: $font11;
     letter-spacing: 1.57px;
 }
-.nv-modal-close svg{
+
+.nv-modal-close svg {
     top: 0 !important;
 }
-.swipercontainer{
-    .swiper-container{
+
+.swipercontainer {
+    .swiper-container {
         padding: 0;
     }
-} 
+}
 
-.digital-notification{
-.top-modal{
-    height: 100%;
-    @include respond-to-min($tablet) {
+.digital-notification {
+    .top-modal {
         height: 100%;
+
+        @include respond-to-min($tablet) {
+            height: 100%;
+        }
+
+        @include respond-to-min($desktop) {
+            height: 61%;
+        }
+
     }
-    @include respond-to-min($desktop) {
-      margin-top: 1rem;
-   }
-    
-}
-.nv-modal-content {
-    border-radius: 0 !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    @include respond-to-min($tablet) {
-        padding-left: 0;
-        padding-right: 0;
+
+    .nv-modal-content {
+        border-radius: 0 !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        @include respond-to-min($tablet) {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
-}
-.nv-modal-dialog{
-    @include respond-to-min($tablet) {
-        height: 50%;
+
+    .nv-modal-dialog {
+        @include respond-to-min($tablet) {
+            height: 50%;
+        }
     }
-}
 }
