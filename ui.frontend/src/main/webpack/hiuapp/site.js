@@ -22,8 +22,14 @@ $( () => {
   }
 });
 });
-
-
-
-
-
+// Dyanamic year
+$('.copyright-year .cmp-text').text(new Date().getFullYear());
+//oct 13
+$(document).on('click', 'a[href^="#"]', function (event) {
+  event.preventDefault();
+  
+   $('html, body').animate({
+  scrollTop: $($.attr(this, 'href')).offset().top -150
+  }, 300);
+  });
+//oct 13
