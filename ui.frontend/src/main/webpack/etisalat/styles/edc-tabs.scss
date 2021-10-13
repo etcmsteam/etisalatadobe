@@ -267,21 +267,36 @@
         
   
         &.cmp-tabs__tab--active{
-            border-bottom: 2px solid  $main-green;
+           
             border-left: 0;
             border-right: 0;
             border-top: 0;
             color: $main-green;
   
-            @include respond-to-min($tablet){
+            @include respond-to-min($desktop){
               border-bottom: 4px solid $main-green;
               color:  $main-green;
+              &:after{
+                display: none!important;
+              }
+            }
+            &:after{
+              content:"";
+              border-bottom: 2px solid  $main-green;
+              color: $main-green;
+              width: 72px;
+              position: absolute;
+              content: "";
+              bottom: 0;
+              margin: 0 auto;
+              display: block;
             }
           
         }
       }
       li {
         padding-right: 1.4rem;
+        position:relative
       }
     }
   
