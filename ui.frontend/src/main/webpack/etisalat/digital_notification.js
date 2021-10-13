@@ -1,9 +1,5 @@
-// OLD JS
-/**
- * v###version###
- */
-
-
+$( document ).ready(function() {
+    console.log( "ready!" );
 // get height of slide and assign it to container
 var getSwiperSlideHeight
 getSwiperSlideHeight = function () {
@@ -96,15 +92,6 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
     $(this).closest('.digital-notifications-wrapper.expand-collapse').find('.notifications-body').toggleClass('expanded');
 });
 
-var notificationsswiper = new Swiper('.swipercontainer .swiper-container .container', {
-    loop: true,
-    direction: 'vertical',
-    autoplay: {
-        delay: 10000,
-        disableOnInteraction: true,
-    },
-});
-notificationsswiper();
 
 // close popup
 var closePopUp;
@@ -128,7 +115,7 @@ $('.nv-modal-close').on('click', function (e) {
 });
 
 // close notifications - contextual ( bottom )
-$('.noti-icon-dismis').on('click', function (e) {
+$('.digital-notifications-wrapper.bottom .noti-icon-dismis').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.digital-notifications-wrapper').css('display', 'none');
@@ -144,7 +131,7 @@ function reset() {
     $('.mega-menu-navbar-default').css("top", '');
     $('.show-digital-notification-top').css("margin-top", '');
 };
-$('.noti-icon-dismis').off('click').on('click', 'a', function (e) {
+$('.digital-notifications-wrapper.top .noti-icon-dismis').off('click').on('click', 'a', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.digital-notifications-wrapper').css('display', 'none');
@@ -213,7 +200,6 @@ function setNotificaiton(condtion) {
         posNotifications(top, divNotification, bodyMargintop);
     });
 }
-
 $('body').addClass('show-digital-notification-top');
 if ($('body').hasClass('show-digital-notification-top') && sessionStorage.getItem('notifications') != "true") {
     setNotificaiton(false);
@@ -222,3 +208,4 @@ if ($('body').hasClass('show-digital-notification-top') && sessionStorage.getIte
 
     setNotificaiton(true);
 }
+});
