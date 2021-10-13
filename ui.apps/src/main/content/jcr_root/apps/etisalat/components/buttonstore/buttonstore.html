@@ -1,15 +1,21 @@
-<div class="row cmp_btn" data-sly-list.multifieldObj="${resource.getChildren}">
-   <div data-sly-test="${multifieldObj.name == 'storeitems'}">
-      <div class="cmp_btn" data-sly-list.gsItems="${multifieldObj.getChildren}">
-         <div class="cmp_store_btn wow fadeInUp" data-wow-delay="0.2s" >
-            <!-- Store Btn -->
-            <a href="${gsItems.btnLink}">
-               <i class="${gsItems.icon}"></i>
-               <p class="mb-0">
-                  <span>${gsItems.btnDesc}</span>${gsItems.btnTitle}
-               </p>
-            </a>
-         </div>
-      </div>
-   </div>
-</div>
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div class="row cmp_btn" data-sly-list.multifieldObj="${resource.getChildren}">
+       <div data-sly-test="${multifieldObj.name == 'storeitems'}">
+          <div class="cmp_btn" data-sly-list.gsItems="${multifieldObj.getChildren}">
+             <div class="cmp_store_btn wow fadeInUp" data-wow-delay="0.2s" >
+                <!-- Store Btn -->
+                <a href="${gsItems.btnLink}">
+                   <i data-sly-test="${gsItems.icon}" class="${gsItems.icon}"></i>
+                   <p data-sly-test="${gsItems.icon}" class="mb-0">
+                      <span>${gsItems.btnDesc}</span>${gsItems.btnTitle}
+                   </p>
+    
+                     <img data-sly-test="${gsItems.fileReference}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/>
+                </a>
+             </div>
+          </div>
+       </div>
+    </div>
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !resource.hasChildren}"></sly>
