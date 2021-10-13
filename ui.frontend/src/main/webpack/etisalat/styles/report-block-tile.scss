@@ -61,6 +61,11 @@
         svg{
           width:14px;
             position: relative ;
+            top: -4px;
+            margin-left: 3.7px;
+            @include respond-to-min($desktop){
+              top: 0;
+            }
         }
   
         @include respond-to-max($desktop){
@@ -86,7 +91,6 @@
             }
             @include respond-to-max($tablet){
             font-size:$font12;
-            padding-right: 0.8rem;
           }
         }
       }
@@ -122,9 +126,33 @@
   ///tab with carosol on desktop 
   .product-grid-single {
     padding: 1rem 0;
-    @include respond-to-min($desktop){
+    @include respond-to-min($tablet){
       padding: 2.5rem 1rem;
     }
+    .controls {
+      display: none;
+  
+     @include respond-to-min($desktop) {
+          display: block;
+      }
+      .prev,
+      .next {
+          // opacity: 0.4;
+          // border-radius: 24px;
+          // background-color: @black;
+          width: 48px;
+          height: 48px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+  
+          &.swiper-button-disabled {
+             
+              pointer-events: none;
+              cursor: not-allowed;
+          }
+      }
+  }
   }
 
 .product-grid-single .next svg,
@@ -152,3 +180,22 @@
     }
   }
 }
+//tab content where tab with alphabets
+.cmp_tabs__horizontal_with_target{
+  .cmp-tabs__tabpanel{
+     &--active{
+       padding: 1.5rem 0;
+       @include respond-to-min($desktop){
+         padding-top: 3rem 0;
+       }
+       .ul-list-cms ul li{
+         font-size: $font14;
+         line-height: 20px;
+         @include respond-to-min($desktop){
+           line-height: 1.5rem;
+         }
+       }
+     }
+  }
+}
+
