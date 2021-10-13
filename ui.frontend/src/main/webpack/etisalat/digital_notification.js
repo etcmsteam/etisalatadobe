@@ -94,8 +94,8 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
 
 
 // close popup
-var closePopUp;
-closePopUp = function (e) {
+var closePopUp2;
+closePopUp2 = function (e) {
     e.stopPropagation();
     e.preventDefault();
     var currentOpendPopUp = $(this).closest('.nv-modal');
@@ -103,16 +103,16 @@ closePopUp = function (e) {
     $(currentOpendPopUp).css('display', 'none');
     $('body').removeClass('freeze');
 };
-$('.notifications-popup-wrapper').off('click').on('click', '.nv-modal-close', closePopUp);
+$('.digital-notification .digital-notifications-wrapper').off('click').on('click', '.nv-modal-close', closePopUp2);
 
 
-$('.nv-modal-close').on('click', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    alert('close click');
-    var currentOpendPopUp = $(this).closest('.nv-modal');
-    $(currentOpendPopUp).removeClass('show');
-});
+// $('.nv-modal-close').on('click', function (e) {
+//     e.stopPropagation();
+//     e.preventDefault();
+//     alert('close click');
+//     var currentOpendPopUp = $(this).closest('.nv-modal');
+//     $(currentOpendPopUp).removeClass('show');
+// });
 
 // close notifications - contextual ( bottom )
 $('.digital-notifications-wrapper.bottom .noti-icon-dismis').on('click', function (e) {
@@ -200,6 +200,7 @@ function setNotificaiton(condtion) {
         posNotifications(top, divNotification, bodyMargintop);
     });
 }
+$('body').addClass('digital-notification');
 $('body').addClass('show-digital-notification-top');
 if ($('body').hasClass('show-digital-notification-top') && sessionStorage.getItem('notifications') != "true") {
     setNotificaiton(false);

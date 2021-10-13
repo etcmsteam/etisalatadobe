@@ -193,11 +193,13 @@
 
     &.bg-black {
         background-color: #000000;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     &.bg-yellow {
         background-color: #f8dc51;
-
+        
         .title {
 
             h3,
@@ -281,7 +283,7 @@
         }
 
         .more-notifications {
-            display: none;
+            // display: none;
 
             @media (min-width: 992px) {
                 display: block;
@@ -351,6 +353,9 @@
         @media (min-width: 768px) {
             padding-left: 24px;
             padding-right: 24px;
+        }
+        .noti-icon-dismis{
+            display: none;
         }
     }
 }
@@ -749,7 +754,7 @@
 
 .bg-black {
     .more-notifications{
-        margin-right: 5rem;
+        margin-right: 3rem;
         a{
             color: $white;
         }
@@ -766,7 +771,7 @@
 }
 .bg-yellow{
     .notifications-head .more-notifications{
-        margin-right: 5rem;
+        margin-right: 0rem;
     }
 }
 .moreg{
@@ -781,6 +786,30 @@
         padding: 0;
     }
 } 
+
+.digital-notification{
 .top-modal{
-    height: 70%;
+    height: 61%;
+    @include respond-to-min($tablet) {
+        height: 100%;
+    }
+    @include respond-to-min($desktop) {
+      margin-top: 1rem;
+   }
+    
+}
+.nv-modal-content {
+    border-radius: 0 !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    @include respond-to-min($tablet) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.nv-modal-dialog{
+    @include respond-to-min($tablet) {
+        height: 50%;
+    }
+}
 }
