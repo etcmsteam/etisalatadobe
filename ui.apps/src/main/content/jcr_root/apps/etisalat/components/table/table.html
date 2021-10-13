@@ -2,7 +2,7 @@
    data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
    data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
    id="${component.id}"
-   class="cmp-text custom-datatable" data-page-limit="${properties.pageLimit}" data-column-sort="${tableModel.sorting}"  data-class="${properties.cssClass}" data-column-filter="[]" data-mobile-view="${properties.mobileView}">
+     class="cmp-text custom-datatable ${properties.tableSource == 'csv' ? 'tables-4-0' : ''}" data-page-limit="${properties.pageLimit}" data-column-sort="${tableModel.sorting}"  data-class="${properties.cssClass}" data-column-filter="[]" data-mobile-view="${properties.mobileView}">
    <sly data-sly-test="${properties.tableSource == 'rte'}" data-sly-include="manual.html"></sly>
    <sly data-sly-test="${properties.tableSource == 'csv'}" data-sly-use.csvTemplate="csv.html" data-sly-call="${csvTemplate.csv @ tableModel=tableModel}"></sly>
    <div class="data-table__info"></div>
