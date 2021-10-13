@@ -92,7 +92,7 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
     $(this).closest('.digital-notifications-wrapper.expand-collapse').find('.notifications-body').toggleClass('expanded');
 });
 
-var $notifications = new Swiper('.swiper-container', {
+var $notifications = new Swiper('.digital-notification-swiper-container .swiper-container', {
     direction: 'vertical',
     slidesPerView: 1,
     //effect: 'fade',
@@ -101,18 +101,6 @@ var $notifications = new Swiper('.swiper-container', {
   });
 
 // close popup
-// var closePopUp2;
-// closePopUp2 = function (e) {
-//     e.stopPropagation();
-//     e.preventDefault();
-//     var currentOpendPopUp = $(this).closest('.nv-modal');
-//     $(currentOpendPopUp).removeClass('show');
-//     $(currentOpendPopUp).css('display', 'none');
-//     $('body').removeClass('freeze');
-// };
-// $('.digital-notifications-wrapper').off('click').on('click', '.nv-noti-modal-close', closePopUp2);
-
-
 $('.nv-noti-modal-close').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
