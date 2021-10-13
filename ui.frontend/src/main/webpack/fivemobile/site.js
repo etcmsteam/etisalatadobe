@@ -20,3 +20,11 @@ $(document).ready(function () {
     $(".main-nav__list").removeClass("ShowMenu");
   });
 });
+
+$(document).on('click', '.main-nav__item a[href^="#"]', function (event) {
+  event.preventDefault();
+
+  $('html, body').animate({
+      scrollTop: $($.attr(this, 'href')).offset().top - 240
+  }, 300);
+});
