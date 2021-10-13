@@ -1,30 +1,58 @@
 //component st css
-.mainaccordion {
+.mainaccordion,
+#section-faqs {
   padding: 20px;
   background-color: $white-color;
   font-size: toRem(20);
 
-  &::before {
-    content: " - ";
-    border-radius: 50%;
-    display: table-cell;
-    padding: 5px;
-    right: 9px;
-    position: relative;
-    width: 12px;
-    height: 10px;
-    vertical-align: top;
-    color: $greyish-white;
-    font-size: toRem(21);
-    text-align: center;
-    line-height: 12px;
+  .cmp-accordion__header {
+    .cmp-accordion__button--expanded .cmp-accordion__title {
+      &::before {
+        content: " - ";
+        display: block;
+        color: $light-purple;
+        background: $white-color;
+        font-size: toRem(30);
+        padding: 4px;
+      }
+    }
+  }
+
+  .cmp-accordion__title {
+    display: block;
+    min-height: 25px;
+    padding-top: 4px;
+    padding-left: 60px;
     font-weight: 100;
+    font-size: toRem(18);
+    line-height: 22px;
+    color: $light-purple;
+    font-family: $fontfamily-book;
+    &::before {
+      content: " + ";
+      color: $white-color;
+      background: $light-purple;
+      border-radius: 50%;
+      padding: 6px;
+      left: 20px;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      font-size: toRem(20);
+      text-align: center;
+      line-height: 12px;
+    }
+    &::hover {
+      color: $color-white-light;
+    }
   }
   .cmp-accordion__item {
     position: relative;
     border-bottom: 1px solid;
     border-color: $greyish-white;
     margin-bottom: 20px;
+    padding-right: 20px;
+    min-height: 50px;
     &::last-child {
       border-bottom: 0;
     }
@@ -43,7 +71,7 @@
     text-align: left;
   }
   p {
-    padding-left: 25px;
+    padding-left: 65px;
     margin-top: 0px;
     margin-bottom: 4px;
     color: $oslo-gray;
@@ -60,36 +88,7 @@
     margin: 0;
     padding-top: 5px;
   }
-  .cmp-accordion__title {
-    min-height: 25px;
-    padding-top: 4px;
-    padding-left: 10px;
-    font-weight: 100;
-    font-size: toRem(18);
-    line-height: 22px;
-    color: $light-purple;
-    font-family: $fontfamily-book;
-    &::before {
-      content: " + ";
-      border-radius: 50%;
-      display: table-cell;
-      background: $light-purple;
-      padding: 5px;
-      right: 9px;
-      position: relative;
-      width: 11px;
-      height: 10px;
-      vertical-align: top;
-      color: $white-color;
-      font-size: toRem(21);
-      text-align: center;
-      line-height: 12px;
-      font-weight: 100;
-    }
-    &::hover {
-      color: $color-white-light;
-    }
-  }
+
   .cmp-accordion__panel {
     &--hidden {
       display: none;
@@ -132,16 +131,16 @@
 }
 .signifierPlusIcon .cmp-accordion {
   padding: 20px 20px 0 20px;
-  .cmp-text p{
+  .cmp-text p {
     padding-left: 30px;
+    @include respond-to-min($tablet) {
+      padding-left: 45x;
+    }
   }
 }
 .signifierPlusIcon .cmp-accordion__title {
-  padding-left: 10px;
   font-weight: 100;
-}
-.signifierPlusIcon .cmp-accordion__item {
-  margin-bottom: 20px;
+  padding-left: 20px;
 }
 .signifierPlusIcon .cmp-accordion__item:last-child {
   border-bottom: 0;
@@ -211,7 +210,6 @@ table thead th span {
   float: none !important;
   clear: both !important;
 }
-
 
 .grey h1 {
   padding-top: 0;
@@ -313,14 +311,14 @@ table thead th span {
   border: 0 !important;
 }
 
-@include respond-to-max($phone){
+@include respond-to-max($phone) {
   footer #main-footer {
     margin: 2rem;
   }
 }
 
-@include respond-to-max($tablet){
-  body{
+@include respond-to-max($tablet) {
+  body {
     overflow-x: scroll;
   }
 }
@@ -336,28 +334,25 @@ table thead th span {
   margin-bottom: 30px;
 }
 
-.cmp_center_block {
-  #section-overview .cmp-text h1 ~ p {
-    font-size: toRem(20);
-    margin: 0px;
-  }
-  #section-overview h1{
-    padding-top: 0;
-  }
+#section-overview .cmp-text h1 ~ p {
+  font-size: toRem(20);
+  margin: 0px;
 }
-.cmp_center_block {
-  #section-overview .cmp-text {
-    h1 ~ p:last-child {
-      font-size: toRem(20);
-      line-height: 1.33333;
-    }
-    h1 ~ p:nth-child(4) {
-      margin-top: 1rem;
-      font-size: toRem(18);
-    }
-    h2 {
-      margin: 0;
-    }
+#section-overview h1 {
+  padding-top: 0;
+}
+
+#section-overview .cmp-text {
+  h1 ~ p:last-child {
+    font-size: toRem(20);
+    line-height: 1.33333;
+  }
+  h1 ~ p:nth-child(4) {
+    margin-top: 1rem;
+    font-size: toRem(18);
+  }
+  h2 {
+    margin: 0;
   }
 }
 
@@ -368,7 +363,7 @@ table thead th span {
     }
     p.lead {
       margin-bottom: 0.5rem;
-  }
+    }
   }
   #section-subscription {
     .cmp-text h1 + p {
@@ -377,7 +372,7 @@ table thead th span {
   }
   p.lead {
     margin: 0;
-}
+  }
 }
 @include respond-to-min($tablet) {
   ul.width50 p {
@@ -410,14 +405,16 @@ table thead th span {
 }
 .cmp-container {
   #section-fivesimcombopacks,
-  #section-fivecallingcard,
-  #section-reservecredit {
+  #section-fivecallingcard{
     .width100 li {
       padding-bottom: 0px;
     }
     .width100 p {
       margin: 6px;
     }
+  }
+  #section-reservecredit .width100 p {
+    margin: 6px 0;
   }
 }
 .cmp-container {
@@ -455,14 +452,14 @@ table thead th span {
   }
 }
 .cmp-container {
-  #section-subscription{
+  #section-subscription {
     h1 {
       padding-top: 0px;
+    }
+    .lead + h1 {
+      padding-top: 2rem !important;
+    }
   }
-  .lead+h1 {
-    padding-top: 2rem !important;
-  }
-  } 
 }
 
 .cmp-container {
@@ -519,38 +516,41 @@ p .lead {
   span.cmp-accordion__title {
     font-weight: 100;
   }
+  .cmp-text{
+    margin-bottom: 5px;
+  }
   .cmp-text,
   p {
     color: $oslo-gray;
+    margin: 0;
   }
 }
 
-.faq-page{
-  .width100 li{
+.faq-page {
+  .width100 li {
     padding: 6px 0;
-    b{
+    b {
       font-family: $fontfamily-bold;
       font-size: toRem(16);
       font-weight: bold;
       padding: 5px 0;
     }
-  } 
+  }
 }
 
 #section-overview h1 {
   margin-top: 2rem;
 }
 
-#section-roaming h3{
+#section-roaming h3 {
   color: $light-grey;
-    font-family: $fontfamily-book;
-    font-weight: 100;
-    margin: 10px 0;
+  font-family: $fontfamily-book;
+  font-weight: 100;
+  margin: 10px 0;
 }
 
-@include respond-to-max($tablet)
-  {
-    #section-overview .cmp-text h1{
-      padding-top: 0;
-    }
+@include respond-to-max($tablet) {
+  #section-overview .cmp-text h1 {
+    padding-top: 0;
   }
+}

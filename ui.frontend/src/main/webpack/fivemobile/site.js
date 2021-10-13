@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $(window).scroll(() => {
     var windowTop = $(window).scrollTop();
-    if (windowTop > 160) {
+    if (windowTop > 250) {
       $("#main-header").addClass("Scroll-Up");
       $("#main-header").removeClass("Scroll-Down");
     } else {

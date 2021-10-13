@@ -34,9 +34,8 @@
   margin-left: auto !important;
   margin-right: auto !important;
 }
-#termsandconditions.cmp-container {
-  max-width: toRem(1520) !important;
-  //max-width: toRem(1290) !important;
+#termsandconditions .cmp-teaser {
+  max-width: toRem(1200) !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -46,12 +45,7 @@
   padding-left: $padding-small;
   margin-right: auto;
   margin-left: auto;
-  max-width: toRem(1000) !important;
 }
-// .cmp-container{
-//   max-width: 1140px !important;
-//   margin: 0 auto !important;
-// }
 
 .row.cmp_btn {
   width: 100% !important;
@@ -103,6 +97,7 @@
   height: toRem(50);
   line-height: toRem(50);
   position: fixed;
+  scroll-behavior: smooth; //10 oct
   z-index: 1;
   :hover {
     color: $white;
@@ -136,30 +131,6 @@
 .fa-apple:before {
   content: "\f179";
 }
-
-.hiuapp_teaser_ctn .cmp-teaser__content a {
-  background: #ffffff;
-  height: 50px;
-  min-width: 160px;
-  display: inline-block;
-  text-align: center;
-  line-height: 50px;
-  color: #fb397d;
-  font-weight: 500;
-  border-radius: 6px;
-  position: absolute;
-  right: 0;
-  top: 63px;
-  text-decoration: none;
-}
-
-.hiuapp_teaser_ctn .cmp-teaser__content a:hover {
-  background: #5b32b4;
-  color: #fff;
-  -webkit-transition-duration: 500ms;
-  -o-transition-duration: 500ms;
-  transition-duration: 500ms;
-}
 .hiuapp_termspage
   .hiuapp_pink-rotate-bg
   .aem-Grid.aem-Grid--default--12
@@ -167,15 +138,6 @@
   width: 100%;
   padding-left: toRem(24);
 }
-
-/*.cmp-teaser a:hover {
-	background: #5b32b4;
-	color: #fff;
-	-webkit-transition-duration: 500ms;
-	-o-transition-duration: 500ms;
-	transition-duration: 500ms;
-}*/
-
 .cmp-teaser p {
   color: #fff;
   font-weight: 300;
@@ -245,35 +207,39 @@
   }
 }
 .cmp_box_shadow {
-  width: 25% !important;
-  margin-left: toRem(72) !important;
+  width: 24% !important;
+  margin-left: toRem(75) !important;
   margin-bottom: 10px;
 }
 
 .cmp_box_shadow h4 {
   margin-bottom: 15px;
 }
-
-// .cmp-form-button {
-// 	background: #fb397d;
-// 	height: 48px;
-// 	min-width: 185px;
-// 	color: #ffffff;
-// 	font-weight: 500;
-// 	border-radius: 6px;
-// 	border-color: transparent!important;
-//   float: right;
-//   margin-right: toRem(-306);
-// }
+@media (min-width: $small-phone) and (max-width: $tablet) {
+  .cmp_box_shadow {
+    width: 100% !important;
+    margin-left: toRem(0) !important;
+    margin-bottom: 10px;
+  }
+}
 .hiuapp_pink-rotate-bg {
   .teaser {
     .cmp-teaser {
       position: absolute;
       top: toRem(285);
+      left: toRem(194);//10 oct
     }
   }
 }
-
+@media (min-width: $small-phone) and (max-width: $tablet) {
+  .hiuapp_pink-rotate-bg {
+    .teaser {
+      .cmp-teaser {
+        left: toRem(0) !important;
+      }
+    }
+  }
+}
 .hiuapp_termspage h3 {
   font-size: 2em;
   border-bottom: 2px solid #db4f74;
@@ -336,7 +302,7 @@
 
   .hiuapp_lightblue-rotate-bg {
     .cmp-image__image {
-      max-width: 82%;
+      max-width: 69%;
       margin-left: 10%;
     }
   }
@@ -352,11 +318,6 @@
   .hiuapp_lightblue_bg {
     padding-top: toRem(90) !important;
   }
-
-  // .hiuapp_termspage{
-  // .cmp-text {
-  // 	padding: 0 12px;
-  //   }
 }
 
 h1 {
@@ -382,19 +343,6 @@ h1 {
   padding: 80px 30px 0 25px !important;
 }
 
-.hiuapp_termspage {
-  .hiuapp_pink-rotate-bg {
-    background-image: -webkit-linear-gradient(
-      -82deg,
-      $pink-color 80%,
-      $white 0
-    );
-    height: 100%;
-    margin-bottom: toRem(80) !important;
-    padding: 10px 21px 0 0 !important;
-  }
-}
-
 .hiuapp_lightblue-rotate-bg {
   .cmp-container h1 {
     line-height: toRem(49);
@@ -407,12 +355,6 @@ h1 {
     margin: 75px 30px 16px 0px;
     line-height: toRem(39);
   }
-}
-
-.cmp_box_shadow {
-  width: 100% !important;
-  margin-left: 0 !important;
-  margin-bottom: toRem(20);
 }
 .cmp_store_btn {
   width: 50%;
@@ -427,7 +369,7 @@ h2 {
   .cmp-container p {
     color: $white;
     padding: 0;
-    margin: 7px 36px 50px 0;
+    margin: 18px 36px 18px 0;//10 oct
     line-height: toRem(23);
   }
 }
@@ -440,7 +382,6 @@ h2 {
   .cmp-teaser {
     padding-left: 40px;
     padding-right: 27px;
-    //padding-bottom: 30px;
   }
 }
 
@@ -469,17 +410,6 @@ h2 {
   z-index: 99;
 }
 @media (min-width: $tablet) and (max-width: $desktop) {
-  .hiuapp_termspage {
-    .hiuapp_pink-rotate-bg {
-      background-image: -webkit-linear-gradient(
-        -82deg,
-        $pink-color 73%,
-        $white 0
-      );
-      height: toRem(300);
-    }
-  }
-
   .hiuapp_termspage {
     .hiuapp_pink-rotate-bg {
       .cmp-container {
@@ -537,11 +467,11 @@ footer ul li a {
   padding: 0 6px !important;
 }
 u {
-  text-decoration-color: #5b32b4;
+  text-decoration-color: $blue-color;
 }
 .cmp_img {
   .cmp-image__image {
-    width: 80%;
+    width: 68%;
   }
 }
 .cmp_img {
@@ -551,23 +481,41 @@ u {
 }
 #about {
   #line-shape {
-    width: toRem(80);
-    height: toRem(4);
     background-color: $blue-color;
+    height: toRem(4);
+    margin-left: toRem(528); //10 oct
     margin-top: toRem(-45);
-    margin-left: toRem(720);
-    // margin-left: calc(50% - 40px);
+    width: toRem(48); //10 oct
   }
 }
-
-
+@media (min-width: $small-phone) and (max-width: $tablet) {
+  #about {
+    #line-shape {
+      margin-left: toRem(123);
+    }
+  }
+}
+@media (min-width: $tablet) and (max-width: $desktop) {
+  #about {
+    #line-shape {
+      margin-left: toRem(283);
+    }
+  }
+}
 #contact {
   #line-shape {
-    width: toRem(80);
+    width: toRem(52); //oct 10
     height: toRem(4);
     background-color: $blue-color;
     margin-top: toRem(-45);
-    margin-left: toRem(137);
+    margin-left: toRem(71);// oct 10
+  }
+}
+@media (min-width: $small-phone) and (max-width: $tablet) {
+  #contact {
+    #line-shape {
+      margin-left: toRem(5);
+    }
   }
 }
 .cmp_no_space {
@@ -587,19 +535,93 @@ u {
 }
 .cmp_img {
   .cmp-image__image {
-    max-width: 80% !important;
+    max-width: 68% !important;
     margin: 0 auto !important;
   }
 }
+.hiuapp_pink-rotate-bg {
+  .cmp-teaser {
+    h1 {
+      font-size: toRem(60);
+    }
+  }
+}
+
+#about {
+  margin-top: 11.25rem !important;
+}
+#about.cmp-container {
+  width: 86% !important;
+  margin: toRem(100) auto 0px auto !important;
+}
+.cmp_btn {
+  width: 100% !important;
+}
+.hiuapp_pink-rotate-bg {
+  .cmp-teaser__content {
+    max-width: toRem(1515); //10 oct
+    margin: 0 auto;
+  }
+}
+//10 oct
+#downloadHiU {
+  .cmp-text {
+    h2 {
+     font-size: toRem(45) !important;
+    }
+  }
+  .cmp_btn{
+    a:focus, a:hover{
+  text-decoration: none !important;
+    }
+  }
+  .cmp-text {
+    h2 span {
+      display: block;
+      margin-bottom: toRem(8);
+    }
+  }
+}
+//10 oct
+@media (min-width: $small-phone) and (max-width: $phone) {
+  #contact .container.responsivegrid .cmp-text {
+    width: 280px !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet) {
+  #contact .container.responsivegrid .cmp-text {
+    width: 680px !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet) {
+  .hiuapp_termspage {
+    .cmp_container_block {
+      padding: 0px 15px !important;
+    }
+  }
+}
+@media (min-width: $small-phone) and (max-width: 340px) {
+  .hiuapp_pink-rotate-bg {
+    .cmp-teaser h1 {
+      font-size: toRem(42);
+    }
+  }
+}
 // @media (min-width: $small-phone) and (max-width: $tablet) {
-// .cmp_img .cmp-image__image {
-//   max-width:30% !important;
-//   margin: 0 auto !important;
-// }
+//   .cmp_img {
+//     .cmp-image {
+//       width: 30% !important;
+//     }
+//   }
 // }
 // @media (min-width: $tablet) and (max-width: $desktop) {
-//   .cmp_img .cmp-image__image {
-//     max-width:40% !important;
-//     margin: 0 auto !important;
+//   .cmp_img {
+//     .cmp-image {
+//       width: 40% !important;
+//     }
 //   }
-//   }
+// }

@@ -1,10 +1,9 @@
 /* HEADER STARTS */
-header,
-.header {
+header {
   background-color: $white-color;
-  @include respond-to-max($tablet) {
+  @include respond-to-max($desktop) {
     .cmp-experiencefragment--header {
-      min-height: 160px;
+      min-height: 16px;
       .cmp-image {
         max-width: 45px;
       }
@@ -29,7 +28,6 @@ header,
     background: $white-color;
     z-index: 1;
     min-height: 100px;
-    -webkit-transition: height 0.35s ease-in-out;
     transition: height 0.35s ease-in-out;
 
     &.Scroll-Up {
@@ -42,9 +40,6 @@ header,
       }
       .main-nav__list {
         top: 15px;
-        @include respond-to-min($desktop) {
-          right: 70px;
-        }
       }
     }
     &.Scroll-Down {
@@ -55,6 +50,9 @@ header,
         display: block;
         width: 86px;
         top: 20px;
+      }
+      .menu__icon {
+        top: 25px;
       }
       .main-nav__list {
         top: 60px;
@@ -119,10 +117,6 @@ header,
       }
       .main-nav__list {
         position: relative;
-        clear: both;
-        transition: max-height 0.3s ease-out;
-        clear: none;
-        max-height: none;
         transition: width 0.35s ease-in-out;
 
         .main-nav__item {
@@ -151,7 +145,7 @@ header,
       &.Scroll-Down {
         border-bottom: none;
         height: 160px;
-        .menu__icon{
+        .menu__icon {
           top: 25px;
         }
       }
@@ -223,22 +217,32 @@ footer {
   }
 }
 /* FOOTER ENDS */
+
+/* Banner Component */
 .section-banner {
   .section-banner__bgcolor {
     .cmp-container {
       &:first-child {
         height: 410px;
-        @include respond-to-max($tablet) {
-          height: 270px;
+        @include respond-to-max($desktop) {
+          height: 330px;
           @include respond-to-max($phone) {
             height: 150px;
           }
         }
       }
-      .cmp-image__image {
-        @include respond-to-max($tablet) {
-          position: relative;
-          top: 20px;
+      .teaser {
+        max-width: 1024px;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        padding: 0 15px;
+        float: none;
+        .cmp-image__image {
+          @include respond-to-max($desktop) {
+            position: relative;
+            top: 20px;
+          }
         }
       }
     }
