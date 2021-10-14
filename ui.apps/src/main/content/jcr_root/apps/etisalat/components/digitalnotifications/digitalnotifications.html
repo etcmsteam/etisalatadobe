@@ -1,4 +1,5 @@
 <div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.notification="com.etisalat.core.models.DigitalNotification" 
     data-sly-set.notiAlignment="${properties.alignment == 'top' || properties.alignment == 'bottom'}" 
    class="digital-notifications-wrapper ${wcmmode.edit && notiAlignment ? '': properties.alignment} ${properties.themeColor} ${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'viewmore' ? 'expand-collapse' : ''}">
    <div class="container">
@@ -44,7 +45,7 @@
               </svg>                    
             </div>
             <h3>${properties.notificationTitle} 
-               <a data-sly-test="${properties.titleLinkText}" href="${properties.titleLink}">${properties.titleLinkText}</a> 
+               <a data-sly-test="${properties.titleLinkText && notification.titleLink}" href="${notification.titleLink}">${properties.titleLinkText}</a> 
             </h3>
          </div>
          <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'learnmore'}" class="more-notifications">
@@ -66,8 +67,10 @@
                <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'learnmore'}" class="more-notifications">
 		            <div data-sly-test="${properties.title}" data-sly-resource="${resource @ resourceType='etisalat/components/button'}"></div>
 		         </div>
-               <a data-sly-test="${properties.actionsEnabled && properties.notificationCTATitle}" href="${properties.notificationCTALink}" class="btn btn-green ripple-effect">${properties.notificationCTATitle}</a>		  
-            </div>
+					<a data-sly-test="${properties.actionsEnabled && properties.notificationCTATitle && notification.notificationCTALink}"
+						href="${notification.notificationCTALink}"
+						class="btn btn-green ripple-effect">${properties.notificationCTATitle}</a>
+				</div>
          </div>
       </div>
    </div>
