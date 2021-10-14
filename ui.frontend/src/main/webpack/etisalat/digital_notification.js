@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
+
 // get height of slide and assign it to container
 var getSwiperSlideHeight
 getSwiperSlideHeight = function () {
@@ -92,14 +92,14 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
     $(this).closest('.digital-notifications-wrapper.expand-collapse').find('.notifications-body').toggleClass('expanded');
 });
 
-var $notifications = new Swiper('.digital-notification-swiper-container .swiper-container', {
+var notificationsswiper = new Swiper('.swiper-container', {
     direction: 'vertical',
     slidesPerView: 1,
-    //effect: 'fade',
-    autoplay: 5000,
-    //loop: true,
-  });
-
+    autoplay: {
+      delay: 9000,
+    },
+});
+ 
 // close popup
 $('.nv-noti-modal-close').on('click', function (e) {
     e.stopPropagation();
@@ -145,7 +145,6 @@ if (sessionStorage.getItem("notifications")) {
 }
 
 function posNotifications(scrollPos, targetDiv, bodyMargin) {
-    console.log("div " + targetDiv.outerHeight() + "body " + scrollPos);
     if (targetDiv.outerHeight() > scrollPos) {
         $('body').addClass('show-digital-notification-top');
         $('.top-nav-section').css("top", targetDiv.outerHeight())
