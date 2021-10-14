@@ -5,7 +5,7 @@
       <h2 class="${currentPage.properties.jcr:title != 'Offer Main Page' ? 'return-link' : ''}">${properties.title}</h2>
 
    <sly data-sly-test="${currentPage.properties.jcr:title == 'Offer Main Page'}">
-      <a class="button" href="${items.path @ extension='html'}">${properties.viewall}</a>
+      <a class="button" href="${items.path}">${properties.viewall}</a>
    </sly>
    <ul data-sly-list.items="${model.genericListObj}">
       <li>
@@ -17,14 +17,14 @@
             <p>${items.description}</p>
          </sly>
          <div class="left-menu-title ${currentPage.path == items.path ? 'highlight' : ''}">
-            <a href="${items.path @ extension='html'}" class="offer-text">${items.title}</a>
+            <a href="${items.path}" class="offer-text">${items.title}</a>
          </div>
 		 <sly data-sly-test="${properties.showDate}">
             <div class="date">VALID UNTIL ${'dd/MM/yyyy' @ format=items.offTime}</div>
          </sly>
 
          <sly data-sly-test="${currentPage.properties.jcr:title != 'Offer Main Page'}">
-            <a class="button" href="${items.path @ extension='html'}">${properties.viewall}</a>
+            <a class="button" href="${items.path}">${properties.viewall}</a>
          </sly>
       </li>
    </ul>
