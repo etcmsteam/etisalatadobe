@@ -41,6 +41,7 @@ $(function() {
 		const hiddenColumn = $(elem).attr('data-hide-columns')
 		const showMobileView = $(elem).attr('data-mobile-view')
 		let pageLimit = $(elem).attr('data-page-limit');
+		const noSearchResultsText = $(elem).attr('data-no-search-results-text');
 
 		var allColumnSortable = false;
 
@@ -67,6 +68,7 @@ $(function() {
 		}
 		const tabl = $(table).DataTable({
 			"language": {
+			    "zeroRecords": noSearchResultsText,
 				"info": "_START_ to _END_ of _TOTAL_ records",
 				"oPaginate": {
 					sNext: '<span class="pagination-next"></span>',
