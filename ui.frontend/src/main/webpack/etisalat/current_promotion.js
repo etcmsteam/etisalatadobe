@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var initSwiper;
     initSwiper = function () {
+       
         // plans table slider for CMS modules start
         $(document).find('.current-promotions-wrraper').each(function (index) {
             $(this).addClass('c-p-slider' + index);
@@ -79,6 +80,40 @@ $(document).ready(function () {
                 }
             });
         });
+       //swiper with single tile
+       $(document).find('.product-grid-single .product-promotions-wrraper').each(function (index) {
+        $(this).addClass('c-p-slider' + index);
+        var $slider = $(this);
+        $slider.find('.next').addClass('right' + index);
+        $slider.find('.prev').addClass('left' + index);
+        var $carouselSliderCurrentPromotions = new Swiper('.c-p-slider' + index + ' .swiper-container', {
+            //clickable: true,
+            
+            nextButton: '.next.right' + index,
+            prevButton: '.prev.left' + index,
+            scrollbarHide: false,
+            scrollbarDraggable: true,
+            breakpoints: {
+                540: {
+                  slidesPerView: 1.25
+                },
+                768: {
+                  slidesPerView: 1
+                },
+                1024: {
+                  slidesPerView: 1
+                },
+                1440: {
+                  slidesPerView: 1
+                },
+                9999: {
+                  centeredSlides: false,
+                  slidesPerView: 1
+                }
+              }
+        });
+    });
+
         // plans table slider for CMS modules ends
     }
     // register the event handlers

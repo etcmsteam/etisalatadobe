@@ -150,7 +150,7 @@ import intlTelInput from 'intl-tel-input';
             </use>
          </svg>
         </div>`
-       
+
         var ele1 = document.querySelector("#country-listbox");
         if (ele1 !== null) {
             for (var i = 0; i < allCountries.length; i++) {
@@ -448,26 +448,28 @@ import intlTelInput from 'intl-tel-input';
             var regex = /^(050|054|055|056|052)/i;
             return regex.test(value);
         }
-         
+
         function removeunWantedParsers() {
 
             $('#phone1-error').parent().parent().find('.new').remove();
             $('#error').parent().parent().find('.new').remove();
-            $('#fullName-error').parent().parent().find('.new').remove();      
+            $('#fullName-error').parent().parent().find('.new').remove();
             $("#firstName-error").parent().parent().find('.new').remove();
             $("#lastName-error").parent().parent().find('.new').remove();
-            $('#designation').parent().parent().parent().find('.new').remove();
-           }
-           function autoCompleteoff() {
+            $("#lastName-error").parent().parent().find('.new').remove();
+         
+        }
+        function autoCompleteoff() {
             $("#fullName").attr("autocomplete", "off");
             $("#url").attr("autocomplete", "off");
             $("#emailAddress").attr("autocomplete", "off");
-           }
-           var excludedKeys = [
+        }
+        var excludedKeys = [
             16, 17, 18, 20, 35, 36, 37,
             38, 39, 40, 45, 144, 225
         ];
         var urlString;
+        var fieldRequired = '<div id="error" class="has-error alert-label">This field is required.</div>'
         var urlParams = new URLSearchParams(window.location.search);
         var product = urlParams.get('productName');
         if (product !== null) {
@@ -481,373 +483,517 @@ import intlTelInput from 'intl-tel-input';
         autoCompleteoff();
         var input = document.querySelector("#phone1")
         var input2 = document.querySelector("#contactNumber");
+        var input3 = document.querySelector("#mobileNumber");
         
-      
-        if(input !== null)
-        {
-        var iti = intlTelInput(input, {
-            utilsScript: utilPath,
-            separateDialCode: false,
-            allowDropdown: false,
-            // if there is just a dial code in the input: remove it on blur
-            autoHideDialCode: true,
-            // add a placeholder in the input with an example number for the selected country
-            autoPlaceholder: false,
 
-        });
-      
-        $('.iti__flag-container').addClass('hide');
-        var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
-        document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
-        document.querySelector('#phone1').parentElement.append(labelHtml);
-      
-        //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
-        var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
-        
-        var errorMsg;
-        if($("#phone1")!== null) {
-            $("#phone1").parent().parent().parent().parent().find('.new').remove();
-        }
-        if($("#select-block-unblock") !==null){
-            $("#select-block-unblock").parent().parent().parent().find('.new').remove();
-        }
-       
-        
-      
+        if (input !== null) {
+            var iti = intlTelInput(input, {
+                utilsScript: utilPath,
+                separateDialCode: false,
+                allowDropdown: false,
+                // if there is just a dial code in the input: remove it on blur
+                autoHideDialCode: true,
+                // add a placeholder in the input with an example number for the selected country
+                autoPlaceholder: false,
 
-        $(document).on("keyup", "#phone1" , function (e) {
-            if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
-			} else {
-            if ($("#phone1").val().trim() ) {
-                var inputVal = $('#phone1').val();
-                iti.telInput.value = inputVal;
-                if (phonevalid(inputVal) && inputVal.length == 10 ) {
-                    $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
-                    $("#phone1").parent().find(".alert-label").remove();
-                    $("#phone1").parent().find(".alert-icon").remove(); 
-			
-                } else {
-                   
-                    var errorCode = "";
-                    errorCode = iti.getValidationError();
-                    errorMsg = "";
-                    errorMsg = errorMap[errorCode];
-                    $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
-                   
-                    
-                    if (errorMsg) {
-                        $("#phone1").parent().parent().addClass("has-error-fields");
-                        //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
-                        alertIcon = "";
-                        alertIcon = contentString;
+            });
 
-                        if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
-                            $("#phone1").parent().find(".alert-label").remove();
-                            $("#phone1").parent().find(".alert-icon").remove(); 
-                            document.querySelector('#phone1').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
-                            //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
-                            $('#phone1').val(inputVal);
-                            $("#phone1").keyup();
-                            $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
-                            $('#phone1-error').parent().parent().find('.new').remove();
-                          };
-                    }
-                    $('#phone1').focus();
-                }
+            $('.iti__flag-container').addClass('hide');
+            var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
+            document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
+            document.querySelector('#phone1').parentElement.append(labelHtml);
+
+            //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+            var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
+
+            var errorMsg;
+            if ($("#phone1") !== null) {
+                $("#phone1").parent().parent().parent().parent().find('.new').remove();
             }
+            if ($("#select-block-unblock") !== null) {
+                $("#select-block-unblock").parent().parent().parent().find('.new').remove();
+            }
+
+
+
+
+            $(document).on("keyup", "#phone1", function (e) {
+                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                    return;
+                } else {
+                    if ($("#phone1").val().trim()) {
+                        var inputVal = $('#phone1').val();
+                        iti.telInput.value = inputVal;
+                        if (phonevalid(inputVal) && inputVal.length == 10) {
+                            $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                            $("#phone1").parent().find(".alert-label").remove();
+                            $("#phone1").parent().find(".alert-icon").remove();
+
+                        } else {
+
+                            var errorCode = "";
+                            errorCode = iti.getValidationError();
+                            errorMsg = "";
+                            errorMsg = errorMap[errorCode];
+                            $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+
+
+                            if (errorMsg) {
+                                $("#phone1").parent().parent().addClass("has-error-fields");
+                                //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
+                                alertIcon = "";
+                                alertIcon = contentString;
+
+                                if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
+                                    $("#phone1").parent().find(".alert-label").remove();
+                                    $("#phone1").parent().find(".alert-icon").remove();
+                                    document.querySelector('#phone1').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
+                                    //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
+                                    $('#phone1').val(inputVal);
+                                    $("#phone1").keyup();
+                                    $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
+                                    $('#phone1-error').parent().parent().find('.new').remove();
+                                };
+                            }
+                            $('#phone1').focus();
+                        }
+                    }
+                }
+
+            });
+
         }
 
-        });
+        if (input2 !== null) {
+            var iti = intlTelInput(input2, {
+                utilsScript: utilPath,
+                excludeCountries: ["ae"],
+                autoPlaceholder: false
+            });
+            $('.iti__flag-container').addClass('hide');
 
-    }
-  
-    if(input2 !== null)
-    {
-        var iti = intlTelInput(input2, {
-            utilsScript: utilPath,
-            excludeCountries:["ae"],
-            autoPlaceholder:false
-          });
-    $('.iti__flag-container').addClass('hide');
-  
-    var labelContactNumHtml = document.querySelector('#contactNumber').parentElement.parentElement.getElementsByTagName("label")[0];
-    document.querySelector('#contactNumber').parentElement.parentElement.getElementsByTagName("label")[0].remove();
-    document.querySelector('#contactNumber').parentElement.append(labelContactNumHtml);
-    iti.selectedFlag.children[0].textContent = '+'+iti.getSelectedCountryData().dialCode;
-      //$('.contactNumber').val(iti.getSelectedCountryData().dialCode);
-      //$('.selected-flag .iti-flag').text('');
-      input2.addEventListener("countrychange", function(e) {
-        //console.log(iti.getSelectedCountryData().dialCode);
-        iti.selectedFlag.children[0].textContent = '+'+iti.getSelectedCountryData().dialCode;
-        $('.contactNumber').closest('.floating-label-input').find('label').addClass('floating-label');
-        //$('.contactNumber').val(iti.getSelectedCountryData().dialCode);
-      });
-    var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
-    //var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
-    
-    var errorMsg;
-    if($("#contactNumber")!== null) {
-        $("#contactNumber").parent().parent().parent().parent().find('.new').remove();
-    }
-   
-    
+            var labelContactNumHtml = document.querySelector('#contactNumber').parentElement.parentElement.getElementsByTagName("label")[0];
+            document.querySelector('#contactNumber').parentElement.parentElement.getElementsByTagName("label")[0].remove();
+            document.querySelector('#contactNumber').parentElement.append(labelContactNumHtml);
+            iti.selectedFlag.children[0].textContent = '+' + iti.getSelectedCountryData().dialCode;
+            //$('.contactNumber').val(iti.getSelectedCountryData().dialCode);
+            //$('.selected-flag .iti-flag').text('');
+            input2.addEventListener("countrychange", function (e) {
+                //console.log(iti.getSelectedCountryData().dialCode);
+                iti.selectedFlag.children[0].textContent = '+' + iti.getSelectedCountryData().dialCode;
+                $('.contactNumber').closest('.floating-label-input').find('label').addClass('floating-label');
+                //$('.contactNumber').val(iti.getSelectedCountryData().dialCode);
+            });
+            var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+            //var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
 
-    $(document).on("keyup", "#contactNumber" , function (e) {
-        if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-            return;
-        } else {
-        if ($("#contactNumber").val().trim() ) {
-            var inputVal = $('#contactNumber').val();
-            iti.telInput.value = inputVal;
-            if (phonevalid(inputVal) && inputVal.length == 10 ) {
-                $("#contactNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
-                $("#contactNumber").parent().find(".alert-label").remove();
-                $("#contactNumber").parent().find(".alert-icon").remove(); 
-        
+            var errorMsg;
+            if ($("#contactNumber") !== null) {
+                $("#contactNumber").parent().parent().parent().parent().find('.new').remove();
+            }
+
+
+
+            $(document).on("keyup", "#contactNumber", function (e) {
+                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                    return;
+                } else {
+                    if ($("#contactNumber").val().trim()) {
+                        var inputVal = $('#contactNumber').val();
+                        iti.telInput.value = inputVal;
+                        if (phonevalid(inputVal) && inputVal.length == 10) {
+                            $("#contactNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                            $("#contactNumber").parent().find(".alert-label").remove();
+                            $("#contactNumber").parent().find(".alert-icon").remove();
+
+                        } else {
+
+                            var errorCode = "";
+                            errorCode = iti.getValidationError();
+                            errorMsg = "";
+                            errorMsg = errorMap[errorCode];
+                            $("#contactNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+
+
+                            if (errorMsg) {
+                                $("#contactNumber").parent().parent().addClass("has-error-fields");
+
+                                alertIcon = "";
+                                alertIcon = contentString;
+
+                                if ($("#contactNumber").parent().parent().hasClass("has-error-fields")) {
+                                    $("#contactNumber").parent().find(".alert-label").remove();
+                                    $("#contactNumber").parent().find(".alert-icon").remove();
+                                    document.querySelector('#contactNumber').parentElement.innerHTML += '<div id="contactNumber-error" class="has-error alert-label">' + errorMsg + '</div>';
+                                    //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
+                                    $('#contactNumber').val(inputVal);
+                                    $("#contactNumber").keyup();
+                                    $("#contactNumber").parent().find('.iti__flag-container').after(alertIcon);
+                                    $('#contactNumber-error').parent().parent().find('.new').remove();
+                                };
+                            }
+                            $('#contactNumber').focus();
+                        }
+                    }
+                }
+
+            });
+        }
+        if (input3 !== null) {
+            var iti = intlTelInput(input3, {
+                utilsScript: utilPath,
+                separateDialCode: false,
+                allowDropdown: false,
+                // if there is just a dial code in the input: remove it on blur
+                autoHideDialCode: true,
+                // add a placeholder in the input with an example number for the selected country
+                autoPlaceholder: false,
+
+            });
+
+            $('.iti__flag-container').addClass('hide');
+            var labelHtml = document.querySelector('#mobileNumber').parentElement.parentElement.getElementsByTagName("label")[0];
+            document.querySelector('#mobileNumber').parentElement.parentElement.getElementsByTagName("label")[0].remove();
+            document.querySelector('#mobileNumber').parentElement.append(labelHtml);
+
+            //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+            var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
+
+            var errorMsg;
+            if ($("#mobileNumber") !== null) {
+                $("#mobileNumber").parent().parent().parent().parent().find('.new').remove();
+            }
+    
+            $(document).on("keyup", "#mobileNumber", function (e) {
+                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                    return;
+                } else {
+                    if ($("#mobileNumber").val().trim()) {
+                        var inputVal = $('#mobileNumber').val();
+                        iti.telInput.value = inputVal;
+                        if (phonevalid(inputVal) && inputVal.length == 10) {
+                            $("#mobileNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                            $("#mobileNumber").parent().find(".alert-label").remove();
+                            $("#mobileNumber").parent().find(".alert-icon").remove();
+
+                        } else {
+
+                            var errorCode = "";
+                            errorCode = iti.getValidationError();
+                            errorMsg = "";
+                            errorMsg = errorMap[errorCode];
+                            $("#mobileNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+
+
+                            if (errorMsg) {
+                                $("#mobileNumber").parent().parent().addClass("has-error-fields");
+                                //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
+                                alertIcon = "";
+                                alertIcon = contentString;
+
+                                if ($("#mobileNumber").parent().parent().hasClass("has-error-fields")) {
+                                    $("#mobileNumber").parent().find(".alert-label").remove();
+                                    $("#mobileNumber").parent().find(".alert-icon").remove();
+                                    document.querySelector('#mobileNumber').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
+                                    //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
+                                    $('#mobileNumber').val(inputVal);
+                                    $("#mobileNumber").keyup();
+                                    $("#mobileNumber").parent().find('.iti__flag-container').after(alertIcon);
+                                    $('#mobileNumber-error').parent().parent().find('.new').remove();
+                                };
+                            }
+                            $('#mobileNumber').focus();
+                        }
+                    }
+                }
+
+            });
+
+        }
+
+        $(document).on("keyup", "#companyName", function (event) {
+            if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                return;
             } else {
-               
-                var errorCode = "";
-                errorCode = iti.getValidationError();
-                errorMsg = "";
-                errorMsg = errorMap[errorCode];
-                $("#contactNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
-               
-                
-                if (errorMsg) {
-                    $("#contactNumber").parent().parent().addClass("has-error-fields");
-                    
+                $("#companyName").parent().removeClass("has-error-fields"); // remove it 
+                $("#companyName").parent().next(".alert-label").remove();
+                $("#companyName").parent().find(".alert-icon").remove();
+                var inputVal = $('#companyName').val();
+                if (!realalphabetic($('#companyName').val())) {
+                    $("#companyName").parent().addClass("has-error-fields").removeClass('is-valid');
+                    $("#companyName").parent().after('<div id="companyName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
                     alertIcon = "";
                     alertIcon = contentString;
+                   
+                    if ($("#companyName").parent().hasClass("has-error-fields")) {                      
+                        document.querySelector('#companyName').parentElement.innerHTML += alertIcon;
+                        $('#companyName').val(inputVal);
+                        $("#companyName").keyup();
+                    };
 
-                    if ($("#contactNumber").parent().parent().hasClass("has-error-fields")) {
-                        $("#contactNumber").parent().find(".alert-label").remove();
-                        $("#contactNumber").parent().find(".alert-icon").remove(); 
-                        document.querySelector('#contactNumber').parentElement.innerHTML += '<div id="contactNumber-error" class="has-error alert-label">' + errorMsg + '</div>';
-                        //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
-                        $('#contactNumber').val(inputVal);
-                        $("#contactNumber").keyup();
-                        $("#contactNumber").parent().find('.iti__flag-container').after(alertIcon);
-                        $('#contactNumber-error').parent().parent().find('.new').remove();
-                      };
+                } else {
+                    $("#companyName").parent().addClass("is-valid").removeClass('has-error-fields');
                 }
-                $('#contactNumber').focus();
+                $('#companyName').focus();
             }
-        }
-    }
-
-    });
-}
-  
-        $(document).on("keyup", "#companyName", function (event) {
-            if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
-			} else {
-            $("#companyName").parent().removeClass("has-error-fields"); // remove it 
-            $("#companyName").parent().next(".alert-label").remove();            
-            $("#companyName").parent().find(".alert-icon").remove(); 
-            if (!realalphabetic($('#companyName').val()) ) {
-                $("#companyName").parent().addClass("has-error-fields").removeClass('is-valid');
-                $("#companyName").parent().after('<div id="companyName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-                alertIcon = "";
-                alertIcon = contentString;              
-                if ($("#companyName").parent().hasClass("has-error-fields")) {
-                    document.querySelector('#companyName').parentElement.innerHTML += alertIcon;
-                    $('#companyName').val(inputVal);
-                    $("#companyName").keyup();
-                  };
-                
-            } else{
-                $("#companyName").parent().addClass("is-valid").removeClass('has-error-fields');
-            }
-            $('#companyName').focus();
-         }
         });
-       
+
         $(document).on("keyup", "#url", function (event) {
-            if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
-			} else {
-            $("#url").parent().removeClass("has-error-fields"); // remove it 
-            $("#url").parent().next(".alert-label").remove();            
-            $("#url").parent().find(".alert-icon").remove(); 
-            var inputVal = $('#url').val();
-            if (!urlvalid($('#url').val())) {
-                $("#url").parent().addClass("has-error-fields");
-                $("#url").parent().after('<div id="url-error" class="has-error alert-label">Please Enter A Valid URL</div>');
-                alertIcon = "";
-                alertIcon = contentString;
-                if ($("#url").parent().hasClass("has-error-fields")) {
-                    document.querySelector('#url').parentElement.innerHTML += alertIcon;
-                    $('#url').val(inputVal);
-                    $("#url").keyup();
-                  }
-                
-            }else {              
-              
+            if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                return;
+            } else {
+                $("#url").parent().removeClass("has-error-fields"); // remove it 
+                $("#url").parent().next(".alert-label").remove();
+                $("#url").parent().find(".alert-icon").remove();
+                var inputVal = $('#url').val();
+                if (!urlvalid($('#url').val())) {
+                    $("#url").parent().addClass("has-error-fields");
+                    $("#url").parent().after('<div id="url-error" class="has-error alert-label">Please Enter A Valid URL</div>');
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#url").parent().hasClass("has-error-fields")) {
+                        document.querySelector('#url').parentElement.innerHTML += alertIcon;
+                        $('#url').val(inputVal);
+                        $("#url").keyup();
+                    }
+
+                } else {
+
                     $("#url").parent().addClass("is-valid").removeClass("has-error-fields");
-                
-               }
-               $('#url').focus();
+
+                }
+                $('#url').focus();
             }
         });
         $(document).on("keyup", "#fullName", function (event) {
-            if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
-			} else {
-            $("#fullName").parent().removeClass("has-error-fields"); // remove it 
-            $("#fullName").parent().next(".alert-label").remove();            
-            $("#fullName").parent().find(".alert-icon").remove(); 
+            if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                return;
+            } else {
+                $("#fullName").parent().removeClass("has-error-fields"); // remove it 
+                $("#fullName").parent().next(".alert-label").remove();
+                $("#fullName").parent().find(".alert-icon").remove();
 
-            var inputVal = $('#fullName').val();
-            if (!realalphabetic($('#fullName').val())) {
-                
-                $("#fullName").parent().addClass("has-error-fields");
-                $("#fullName").parent().after('<div id="fullName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-                alertIcon = "";
-                alertIcon = contentString;
-                if ($("#fullName").parent().hasClass("has-error-fields")) {
-                    document.querySelector('#fullName').parentElement.innerHTML += alertIcon;
-                    $('#fullName').val(inputVal);
-                    $("#fullName").keyup();
-                  };
-                  $('#fullName-error').parent().parent().find('.new').remove();
-            }else {               
-             
+                var inputVal = $('#fullName').val();
+                if (!realalphabetic($('#fullName').val())) {
+
+                    $("#fullName").parent().addClass("has-error-fields");
+                    $("#fullName").parent().after('<div id="fullName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#fullName").parent().hasClass("has-error-fields")) {
+                        document.querySelector('#fullName').parentElement.innerHTML += alertIcon;
+                        $('#fullName').val(inputVal);
+                        $("#fullName").keyup();
+                    };
+                    $('#fullName-error').parent().parent().find('.new').remove();
+                } else {
+
                     $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");
-                
+
+                }
             }
-        }
         });
 
         $(document).on("keyup", "#firstName", function (event) {
-            if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
-			} else {
-            $("#firstName").parent().removeClass("has-error-fields"); // remove it 
-            $("#firstName").parent().next(".alert-label").remove();            
-            $("#firstName").parent().find(".alert-icon").remove(); 
-            var inputVal = $('#firstName').val();
-            if (!realalphabetic($('#firstName').val()) && $('#firstName').val() != "" ) {
-                $("#firstName").parent().addClass("has-error-fields").removeClass("is-valid");
-                $("#firstName").parent().after('<div id="firstName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-                alertIcon = "";
-                alertIcon = contentString;
-                if ($("#firstName").parent().hasClass("has-error-fields")) {
-                    document.querySelector('#firstName').parentElement.innerHTML += alertIcon;
-                    $('#firstName').val(inputVal);
-                    $("#firstName").keyup();
-                  };
-                  $('#firstName-error').parent().parent().find('.new').remove();
-                
-            }else {
-                $("#firstName").parent().addClass("is-valid").removeClass("has-error-fields");;
+            if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                return;
+            } else {
+                $("#firstName").parent().removeClass("has-error-fields"); // remove it 
+                $("#firstName").parent().next(".alert-label").remove();
+                $("#firstName").parent().find(".alert-icon").remove();
+                var inputVal = $('#firstName').val();
+                if (!realalphabetic($('#firstName').val()) && $('#firstName').val() != "") {
+                    $("#firstName").parent().addClass("has-error-fields").removeClass("is-valid");
+                    $("#firstName").parent().after('<div id="firstName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#firstName").parent().hasClass("has-error-fields")) {
+                        document.querySelector('#firstName').parentElement.innerHTML += alertIcon;
+                        $('#firstName').val(inputVal);
+                        $("#firstName").keyup();
+                    };
+                    $('#firstName-error').parent().parent().find('.new').remove();
+
+                } else {
+                    $("#firstName").parent().addClass("is-valid").removeClass("has-error-fields");;
+                }
             }
-          }
         });
         $(document).on("keyup", "#lastName", function (event) {
-            if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
-			} else {
-            $("#lastName").parent().removeClass("has-error-fields"); // remove it 
-            $("#lastName").parent().next(".alert-label").remove();            
-            $("#lastName").parent().find(".alert-icon").remove(); 
-            var inputVal = $('#lastName').val();
-            if (!realalphabetic($('#lastName').val()) && $('#lastName').val() != "") {
-                $("#lastName").parent().addClass("has-error-fields").removeClass("is-valid");
-                $("#lastName").parent().after('<div id="lastName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
-                alertIcon = "";
-                alertIcon = contentString;
-                if ($("#lastName").parent().hasClass("has-error-fields")) {
-                    document.querySelector('#lastName').parentElement.innerHTML += alertIcon;
-                    $('#lastName').val(inputVal);
-                    $("#lastName").keyup();
-                  };                  
-                  removeunWantedParsers();
-            }else {
-                $("#lastName").parent().addClass("is-valid").removeClass("has-error-fields");
-            }
+            if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                return;
+            } else {
+                $("#lastName").parent().removeClass("has-error-fields"); // remove it 
+                $("#lastName").parent().next(".alert-label").remove();
+                $("#lastName").parent().find(".alert-icon").remove();
+                var inputVal = $('#lastName').val();
+                if (!realalphabetic($('#lastName').val()) && $('#lastName').val() != "") {
+                    $("#lastName").parent().addClass("has-error-fields").removeClass("is-valid");
+                    $("#lastName").parent().after('<div id="lastName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#lastName").parent().hasClass("has-error-fields")) {
+                        document.querySelector('#lastName').parentElement.innerHTML += alertIcon;
+                        $('#lastName').val(inputVal);
+                        $("#lastName").keyup();
+                    };
+                    removeunWantedParsers();
+                } else {
+                    $("#lastName").parent().addClass("is-valid").removeClass("has-error-fields");
+                }
             }
         });
-     
+
         $(document).on("keyup", "#emailAddress", function (element) {
-           
-			if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
-			} else {
-				
-			
-            $("#emailAddress").parent().removeClass("has-error-fields"); // remove it 
-            $("#emailAddress").parent().next(".alert-label").remove();            
-            $("#emailAddress").parent().find(".alert-icon").remove(); 
-            var inputVal = $('#emailAddress').val();
-            if (!email2($('#emailAddress').val())) {
-               
-                $("#emailAddress").parent().addClass("has-error-fields").removeClass("is-valid");
-                $("#emailAddress").parent().after('<div id="emailAddress-error" class="has-error alert-label">Please enter a valid email address</div>');
-                alertIcon = "";
-                alertIcon = contentString;
-                if ($("#emailAddress").parent().hasClass("has-error-fields")) {
-                    document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
-                    $('#emailAddress').val(inputVal);
-                    $("#emailAddress").keyup();
-                  }
-                  else{
-                    $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
+
+            if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                return;
+            } else {
+
+
+                $("#emailAddress").parent().removeClass("has-error-fields"); // remove it 
+                $("#emailAddress").parent().next(".alert-label").remove();
+                $("#emailAddress").parent().find(".alert-icon").remove();
+                var inputVal = $('#emailAddress').val();
+                if (!email2($('#emailAddress').val())) {
+
+                    $("#emailAddress").parent().addClass("has-error-fields").removeClass("is-valid");
+                    $("#emailAddress").parent().after('<div id="emailAddress-error" class="has-error alert-label">Please enter a valid email address</div>');
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#emailAddress").parent().hasClass("has-error-fields")) {
+                        document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
+                        $('#emailAddress').val(inputVal);
+                        $("#emailAddress").keyup();
+                    }
+                    else {
+                        $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
+                    }
+
+
                 }
-                
-                
+                else {
+                    $("#emailAddress").parent().addClass("is-valid").removeClass("has-error-fields");
+                }
+                $('#emailAddress').focus();
             }
-            else {
-                $("#emailAddress").parent().addClass("is-valid").removeClass("has-error-fields");
-            }
-            $('#emailAddress').focus();
-        }
         });
         $(document).on("keyup", "#justification", function (e) {
             $("#justification").parent().removeClass("has-error-fields"); // remove it 
-            $("#justification").parent().next(".alert-label").remove();            
-            $("#justification").parent().find(".alert-icon").remove(); 
-            if($("#justification").value()) {
+            $("#justification").parent().next(".alert-label").remove();
+            $("#justification").parent().find(".alert-icon").remove();
+            if ($("#justification").val()) {
                 $("#justification").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#justification").parent().next(".alert-label").remove();
                 alertIcon = "";
                 alertIcon = contentString;
                 if ($("#justification").parent().hasClass("has-error-fields")) {
                     document.querySelector('#justification').parentElement.innerHTML += alertIcon;
-                  };
-                  $('#justification-error').parent().parent().find('.new').remove();
+                };
+                $('#justification-error').parent().parent().find('.new').remove();
                 $("#justification").parent().addClass("is-valid").removeClass("has-error-fields");
-            }else{
+            } else {
                 $("#justification").parent().addClass("has-error-fields").removeClass('is-valid');
+                var div = "";
+                div = fieldRequired;
+                if ($("#justification").parent().hasClass("has-error-fields")) {
+                    $("#justification").parent().after(div);
+                    document.querySelector('#justification').parentElement.innerHTML += alertIcon;
+                };
             }
         });
-
-        $(document).on("keyup", "#designation", function (e) {        
-            if($("#designation").val()){
+        $(document).on("keyup", "#description", function (e) {
+            $("#description").parent().removeClass("has-error-fields"); // remove it 
+            $("#description").parent().next(".alert-label").remove();
+            $("#description").parent().find(".alert-icon").remove();
+            if ($("#description").val()) {
+                $("#description").parent().removeClass("has-error-fields").addClass('is-valid');
+                $("#description").parent().next(".alert-label").remove();
+                alertIcon = "";
+                alertIcon = contentString;
+                var div = "";
+                div = fieldRequired;
+                if ($("#description").parent().hasClass("has-error-fields")) {
+                    $("#description").parent().after(div);
+                    document.querySelector('#description').parentElement.innerHTML += alertIcon;
+                };
+                $('#description-error').parent().parent().find('.new').remove();
+                $("#description").parent().addClass("is-valid").removeClass("has-error-fields");
+            } else {
+                $("#description").parent().addClass("has-error-fields").removeClass('is-valid');
+                var div = "";
+                div = fieldRequired;
+                if ($("#description").parent().hasClass("has-error-fields")) {
+                    $("#description").parent().after(div);
+                    document.querySelector('#description').parentElement.innerHTML += alertIcon;
+                };
+            }
+        });
+        $(document).on("keyup", "#accountNumber", function (e) {
+            $("#accountNumber").parent().removeClass("has-error-fields"); // remove it 
+            $("#accountNumber").parent().next(".alert-label").remove();
+            $("#accountNumber").parent().find(".alert-icon").remove();
+            if ($("#accountNumber").val()) {
+                $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+                $("#accountNumber").parent().next(".alert-label").remove();
+               
+                $('#accountNumber-error').parent().parent().find('.new').remove();
+                $("#accountNumber").parent().addClass("is-valid").removeClass("has-error-fields");
+            } else {
+                
+                $("#accountNumber").parent().addClass("has-error-fields").removeClass('is-valid');
+                alertIcon = "";
+                alertIcon = contentString;
+                var div = "";
+                div = fieldRequired;
+                if ($("#accountNumber").parent().hasClass("has-error-fields")) {
+                    $("#accountNumber").parent().after(div);
+                    document.querySelector('#accountNumber').parentElement.innerHTML += alertIcon;                    
+                   
+                };
+            }
+        });
+        $(document).on("keyup", "#designation", function (e) {
+            $("#designation").parent().removeClass("has-error-fields"); // remove it 
+            $("#designation").parent().next(".alert-label").remove();
+            $("#designation").parent().find(".alert-icon").remove();
+            if ($("#designation").val()) {
                 $("#designation").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#designation").parent().next(".alert-label").remove();
-
-            }
-            else{
+                alertIcon = "";
+                alertIcon = contentString;
+                if ($("#designation").parent().hasClass("has-error-fields")) {
+                    document.querySelector('#designation').parentElement.innerHTML += alertIcon;
+                };
+                $('#designation-error').parent().parent().find('.new').remove();
+                $("#designation").parent().addClass("is-valid").removeClass("has-error-fields");
+            } else {
                 $("#designation").parent().addClass("has-error-fields").removeClass('is-valid');
-              
+                alertIcon = "";                
+                alertIcon = contentString;
+                var div = "";
+                div = fieldRequired;
+                div = '<div id="error" class="has-error alert-label">This field is required.</div>'
+                if ($("#designation").parent().hasClass("has-error-fields")) {
+                    $("#designation").parent().after(div);
+                    document.querySelector('#designation').parentElement.innerHTML += alertIcon;
+                };
             }
-            removeunWantedParsers();
-            
         });
-        $(document).on("keyup", "#select-hear-about-us", function (e) {        
-            if($("#select-hear-about-us").val()){
+
+      
+        $(document).on("keyup", "#select-hear-about-us", function (e) {
+            if ($("#select-hear-about-us").val()) {
                 $("#select-hear-about-us").parent().removeClass("has-error-fields").addClass('is-valid');
                 $("#select-hear-about-us").parent().next(".alert-label").remove();
             }
-            else{
+            else {
                 $("#select-hear-about-us").parent().addClass("has-error-fields").removeClass('is-valid');
             }
-            
+
         });
-     
-        
+
+
         function clearForm() {
             alertIcon = "";
             $("#emailAddress").parent().next(".alert-label").remove(); // remove it        
@@ -860,8 +1006,9 @@ import intlTelInput from 'intl-tel-input';
             $("#justification").parent().next(".alert-label").remove();
             $("#phone1").parent().parent().next(".alert-label").remove();
             $("#designation").parent().next(".alert-label").remove();
-            $("#select-hear-about-us").parent().next(".alert-label").remove();
-
+            $("#accountNumber").parent().next(".alert-label").remove();
+            $("#mobileNumber").parent().parent().next(".alert-label").remove();
+            
             $("#fullName").parent().removeClass("has-error-fields");
             $("#emailAddress").parent().removeClass("has-error-fields");
             $("#companyName").parent().removeClass("has-error-fields");
@@ -873,22 +1020,27 @@ import intlTelInput from 'intl-tel-input';
             $("#phone1").parent().parent().removeClass("has-error-fields");
             $("#designation").parent().removeClass("has-error-fields");
             $("#select-hear-about-us").parent().removeClass("has-error-fields");
+            $("#accountNumber").parent().removeClass("has-error-fields");
+            $("#mobileNumber").parent().parent().removeClass("has-error-fields");
+            
 
             $("#fullName").parent().find(".alert-icon").remove(); // remove it   
             $("#emailAddress").parent().find(".alert-icon").remove(); // remove it   
-            $("#companyName").parent().find(".alert-icon").remove(); 
-            $("#description").parent().find(".alert-icon").remove(); 
-            $("#firstName").parent().find(".alert-icon").remove(); 
-            $("#lastName").parent().find(".alert-icon").remove(); 
-            $("#url").parent().find(".alert-icon").remove(); 
-            $("#justification").parent().find(".alert-icon").remove(); 
-            $("#phone1").parent().find(".alert-icon").remove(); 
-            $("#designation").parent().find(".alert-icon").remove(); 
+            $("#companyName").parent().find(".alert-icon").remove();
+            $("#description").parent().find(".alert-icon").remove();
+            $("#firstName").parent().find(".alert-icon").remove();
+            $("#lastName").parent().find(".alert-icon").remove();
+            $("#url").parent().find(".alert-icon").remove();
+            $("#justification").parent().find(".alert-icon").remove();
+            $("#phone1").parent().find(".alert-icon").remove();
+            $("#mobileNumber").parent().find(".alert-icon").remove();
+            $("#designation").parent().find(".alert-icon").remove();
+            $("#accountNumber").parent().find(".alert-icon").remove();
 
         }
 
         $('.cmp-form-button').on('click', function () {
-            
+
             var div = "";
             div = '<div id="error" class="has-error alert-label">This field is required.</div>'
 
@@ -906,10 +1058,10 @@ import intlTelInput from 'intl-tel-input';
                         document.querySelector('#fullName').parentElement.innerHTML += alertIcon;
                     }
                     $('#error').parent().parent().find('.new').remove();
-                }   
+                }
                 $('#fullName').focus();
 
-            }else {
+            } else {
                 $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");
             }
 
@@ -924,7 +1076,7 @@ import intlTelInput from 'intl-tel-input';
                         document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
                     }
 
-                }else {
+                } else {
                     $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
                 }
 
@@ -934,16 +1086,16 @@ import intlTelInput from 'intl-tel-input';
             if (!$('#companyName').val()) {
                 $("#companyName").parent().removeClass("is-valid").addClass("has-error-fields");
                 alertIcon = "";
-                alertIcon = contentString;  
+                alertIcon = contentString;
                 if ($("#companyName").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#companyName").parent().after(div);
-                               
+
                     if ($("#companyName").parent().hasClass("has-error-fields")) {
                         document.querySelector('#companyName').parentElement.innerHTML += alertIcon;
-                        
-                      };
-                      removeunWantedParsers();
+
+                    };
+                    removeunWantedParsers();
                 }
                 $('#companyName').focus();
 
@@ -980,7 +1132,7 @@ import intlTelInput from 'intl-tel-input';
                 $('#select2-selection__rendered').focus();
 
             }
-            
+
             if (!$('#firstName').val()) {
                 $("#firstName").parent().removeClass("has-error-fields").addClass("has-error-fields");
                 if ($("#firstName").parent().next(".alert-label").length == 0) // only add if not added
@@ -995,7 +1147,7 @@ import intlTelInput from 'intl-tel-input';
                 }
                 $('#firstName').focus();
 
-            }else {
+            } else {
                 $("#firstName").parent().removeClass("has-error-fields").addClass("is-valid");
             }
 
@@ -1013,7 +1165,7 @@ import intlTelInput from 'intl-tel-input';
                 }
                 $('#lastName').focus();
 
-            }else {
+            } else {
                 $("#lastName").parent().removeClass("has-error-fields").addClass("is-valid");
             }
 
@@ -1035,7 +1187,7 @@ import intlTelInput from 'intl-tel-input';
             else {
                 $("#url").parent().removeClass("has-error-fields").addClass("is-valid");
             }
-            
+
             if (!$('#justification').val()) {
                 $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
@@ -1058,24 +1210,89 @@ import intlTelInput from 'intl-tel-input';
             if (!$('#phone1').val() || $('#phone1').val() == "") {
                 $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
                 $("#phone1").parent().parent().addClass("has-error-fields");
-                        //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
-                        alertIcon = "";
-                        alertIcon = contentString;
-                       
-                        if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
-                            $("#phone1").parent().find(".alert-label").remove();
-                            $("#phone1").parent().find(".alert-icon").remove(); 
-                            document.querySelector('#phone1').parentElement.innerHTML += div;                            
-                            $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
-                           
-                            $('#phone1-error').parent().parent().find('.new').remove();
-                          };
-                        $('#phone1').focus();
+                //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
+                alertIcon = "";
+                alertIcon = contentString;
 
-                    }
-                    else {                      
-                        $("#phone1").parent().removeClass("has-error-fields").addClass('is-valid');
-                    }
+                if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
+                    $("#phone1").parent().find(".alert-label").remove();
+                    $("#phone1").parent().find(".alert-icon").remove();
+                    document.querySelector('#phone1').parentElement.innerHTML += div;
+                    $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
+
+                    $('#phone1-error').parent().parent().find('.new').remove();
+                };
+                $('#phone1').focus();
+
+            }
+            else {
+                $("#phone1").parent().removeClass("has-error-fields").addClass('is-valid');
+            }
+
+            
+            if (!$('#mobileNumber').val() || $('#mobileNumber').val() == "") {
+                $("#mobileNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                $("#mobileNumber").parent().parent().addClass("has-error-fields");
+                //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
+                alertIcon = "";
+                alertIcon = contentString;
+
+                if ($("#mobileNumber").parent().parent().hasClass("has-error-fields")) {
+                    $("#mobileNumber").parent().find(".alert-label").remove();
+                    $("#mobileNumber").parent().find(".alert-icon").remove();
+                    document.querySelector('#mobileNumber').parentElement.innerHTML += div;
+                    $("#mobileNumber").parent().find('.iti__flag-container').after(alertIcon);
+
+                    $('#mobileNumber-error').parent().parent().find('.new').remove();
+                };
+                $('#mobileNumber').focus();
+
+            }
+            else {
+                $("#mobileNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+            }
+            if (!$('#contactNumber').val() || $('#contactNumber').val() == "") {
+                $("#contactNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                $("#contactNumber").parent().parent().addClass("has-error-fields");
+                
+                alertIcon = "";
+                alertIcon = contentString;
+
+                if ($("#contactNumber").parent().parent().hasClass("has-error-fields")) {
+                    $("#contactNumber").parent().find(".alert-label").remove();
+                    $("#contactNumber").parent().find(".alert-icon").remove();
+                    document.querySelector('#contactNumber').parentElement.innerHTML += div;
+                    $("#contactNumber").parent().find('.iti__flag-container').after(alertIcon);
+
+                    $('#contactNumber-error').parent().parent().find('.new').remove();
+                };
+                $('#contactNumber').focus();
+
+            }
+            else {
+                $("#contactNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+            }
+            if (!$('#accountNumber').val() || $('#accountNumber').val() == "") {
+                $("#accountNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                $("#accountNumber").parent().parent().addClass("has-error-fields");
+                
+                alertIcon = "";
+                alertIcon = contentString;
+
+                if ($("#accountNumber").parent().parent().hasClass("has-error-fields")) {
+                    $("#accountNumber").parent().find(".alert-label").remove();
+                    $("#accountNumber").parent().find(".alert-icon").remove();
+                    document.querySelector('#accountNumber').parentElement.innerHTML += div;
+                    $("#accountNumber").parent().find('.iti__flag-container').after(alertIcon);
+
+                    $('#accountNumber-error').parent().parent().find('.new').remove();
+                };
+                $('#accountNumber').focus();
+
+            }
+            else {
+                $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+            }
             if (!$('#designation').val() || $('#designation').val() == "") {
                 $("#designation").parent().addClass("has-error-fields");
                 alertIcon = "";
@@ -1083,14 +1300,14 @@ import intlTelInput from 'intl-tel-input';
                 if ($("#designation").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#designation").parent().after(div);
-                   
+
                     if (document.querySelector('#designation') != null) {
-                        
+
                         $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                     }
                     $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                     document.querySelector('#designation').parentElement.innerHTML += alertIcon;
-                } else{
+                } else {
                     $("#designation").parent().parent().removeClass("has-error-fields").addClass('is-valid');
                 }
                 $('#designation').focus();
