@@ -35,12 +35,12 @@ $(function() {
 	}
 
 	function initializeDataTable(elem) {
-		debugger;
+
 		const className = $(elem).attr('data-class');
-		const pageLimit = $(elem).attr('data-page-limit');
 		const sortableColumn = $(elem).attr('data-column-sort')
 		const hiddenColumn = $(elem).attr('data-hide-columns')
 		const showMobileView = $(elem).attr('data-mobile-view')
+		let pageLimit = $(elem).attr('data-page-limit');
 
 		var allColumnSortable = false;
 
