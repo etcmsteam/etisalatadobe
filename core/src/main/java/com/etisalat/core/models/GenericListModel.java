@@ -6,10 +6,11 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-
+import com.etisalat.core.util.CommonUtility;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
@@ -32,6 +33,9 @@ public class GenericListModel {
 	@ValueMapValue
 	@Optional
 	private String pagelist;
+	
+	@SlingObject
+    ResourceResolver resourceResolver;
 
 	@SlingObject
 	private SlingHttpServletRequest request;
@@ -79,7 +83,7 @@ public class GenericListModel {
 								StringUtils.isNotBlank(childPage.getPageTitle()) ? childPage.getPageTitle() : childPage.getTitle()));
 						detail.setDescription(childPage.getDescription());
 						detail.setOffTime(childPage.getOffTime());
-						detail.setPath(childPage.getPath());
+						detail.setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, childPage.getPath()));
 						detail.setThumbnail(StringUtils.isNotEmpty(authoredImage) ? authoredImage : imagePath);
 						genericListObj.add(detail);
 					}
@@ -126,7 +130,7 @@ public class GenericListModel {
 				StringUtils.isNotBlank(childPage.getPageTitle()) ? childPage.getPageTitle() : childPage.getTitle());
 		detail.setDescription(childPage.getDescription());
 		detail.setOffTime(childPage.getOffTime());
-		detail.setPath(childPage.getPath());
+		detail.setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, childPage.getPath()));
 		detail.setThumbnail(imagePath);
 		genericListObj.add(detail);
 
