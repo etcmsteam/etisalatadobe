@@ -92,11 +92,12 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
     $(this).closest('.digital-notifications-wrapper.expand-collapse').find('.notifications-body').toggleClass('expanded');
 });
 
-var notificationsswiper = new Swiper('.swiper-container', {
+var notificationsswiper = new Swiper('.digital-notification-swiper-container .swiper-container', {
     direction: 'vertical',
     slidesPerView: 1,
+    //effect: 'fade',
     autoplay: {
-      delay: 9000,
+      delay: 5000,
     },
 });
  
