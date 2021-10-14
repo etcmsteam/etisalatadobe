@@ -57,11 +57,11 @@
                 $(this).closest('.head-wrapper').find('.search-close').css('display', 'flex');
             });
             // clsoe the search to default view
-            $('.head-wrapper .search-close').off().on('click', function (e) {
+            $('.search-wrapper .search-close').off().on('click', function (e) {
                 e.preventDefault();
                 $(this).hide();
-                $(this).closest('.head-wrapper').removeClass('search-expanded');
-                $(this).closest('.head-wrapper').find('.form-control').val('').trigger('keyup');
+                $(this).closest('.search-wrapper').removeClass('search-expanded');
+                $(this).closest('.search-wrapper').find('.form-control').val('').trigger('keyup');
                 $(this).focus();
             });
 
@@ -71,9 +71,9 @@
                 $(table).show();
 
                 if ($(this).val() != '') {
-                    $(this).closest('.head-wrapper').find('.search-close').css('display', 'flex');
+                    $(this).closest('.search-wrapper').find('.search-close').css('display', 'flex');
                 } else {
-                    $(this).closest('.head-wrapper').find('.search-close').css('display', 'none');
+                    $(this).closest('.search-wrapper').find('.search-close').css('display', 'none');
                 }
                 var value = $(this).val().toLowerCase();
                 $('.tables-4-0 tbody > tr:not("[class^=filtered]")').filter(function () {
