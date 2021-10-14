@@ -35,11 +35,7 @@ $(document).find('.brand-portfolio').each(function (index) {
           slidesPerView: 6
         }
       }
-    });
-
-
-  
-   
+    });   
     });
 
 
