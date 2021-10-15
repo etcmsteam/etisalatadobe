@@ -193,6 +193,7 @@ import intlTelInput from 'intl-tel-input';
                             yl = y.length;
                             for (k = 0; k < yl; k++) {
                                 y[k].removeAttribute("class");
+                                y[k].setAttribute("class", "selecteddiv");
                             }
                             this.setAttribute("class", "same-as-selected selecteddiv");
                             break;
