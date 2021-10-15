@@ -184,7 +184,7 @@ import intlTelInput from 'intl-tel-input';
                     var y, i, k, s, h, sl, yl;
                     s = this.parentNode.parentNode.parentElement.getElementsByTagName("select")[0];
                     sl = s.length;
-                    h = this.parentNode.parentNode.previousSibling;;
+                    h = this.parentNode.parentNode.previousSibling;
                     for (i = 0; i < sl; i++) {
                         if (s.options[i].innerHTML == this.innerHTML) {
                             s.selectedIndex = i;
