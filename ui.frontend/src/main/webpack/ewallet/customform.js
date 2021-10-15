@@ -192,8 +192,8 @@ import intlTelInput from 'intl-tel-input';
                             y = this.parentNode.parentNode.getElementsByClassName("same-as-selected");
                             yl = y.length;
                             for (k = 0; k < yl; k++) {
-                                y[k].removeAttribute("class");
-                                y[k].setAttribute("class", "selecteddiv");
+                               // y[k].removeAttribute("class");                              
+                                $(this).removeClass('same-as-selected')
                             }
                             this.setAttribute("class", "same-as-selected selecteddiv");
                             break;
