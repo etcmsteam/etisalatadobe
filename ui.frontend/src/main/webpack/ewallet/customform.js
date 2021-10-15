@@ -15,7 +15,7 @@ import intlTelInput from 'intl-tel-input';
     //"use strict";
     return function () {
 
-    
+        var utilPath = "https://cdn.jsdelivr.net/npm/intl-tel-input@15.0.2/build/js/utils.js";
         var contentString = "";
         var alertIcon;
         
