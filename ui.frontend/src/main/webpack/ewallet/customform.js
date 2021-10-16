@@ -185,7 +185,12 @@ import intlTelInput from 'intl-tel-input';
                     s = this.parentNode.parentNode.parentElement.getElementsByTagName("select")[0];
                     sl = s.length;
                     h = this.parentNode.parentNode.previousSibling;
+                    var elems = document.querySelectorAll(".same-as-selected");
+                    [].forEach.call(elems, function(el) {
+                        el.classList.remove("same-as-selected");
+                      });
                     for (i = 0; i < sl; i++) {
+                        
                         if (s.options[i].innerHTML == this.innerHTML) {
                             s.selectedIndex = i;
                             h.innerHTML = this.innerHTML;
@@ -193,9 +198,11 @@ import intlTelInput from 'intl-tel-input';
                             yl = y.length;
                             for (k = 0; k < yl; k++) {
                                // y[k].removeAttribute("class");                              
-                                $(this).removeClass('same-as-selected')
+                                $(this).removeClass('same-as-selected');
+                               
                             }
-                            this.setAttribute("class", "same-as-selected selecteddiv");
+                            $(this).addClass('same-as-selected selecteddiv');
+                            //this.setAttribute("class", "same-as-selected selecteddiv");
                             break;
                         }
                     }
