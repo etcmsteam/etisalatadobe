@@ -121,7 +121,7 @@ import intlTelInput from 'intl-tel-input';
 
         function removeunWantedParsers() {
 
-            $('#phone1-error').parent().parent().find('.new').remove();
+            $('#phoneNumber-error').parent().parent().find('.new').remove();
             $('#error').parent().parent().find('.new').remove();           
             $("#firstName-error").parent().parent().find('.new').remove();
             $("#lastName-error").parent().parent().find('.new').remove();
@@ -202,7 +202,8 @@ import intlTelInput from 'intl-tel-input';
                                
                             }
                             $(this).addClass('same-as-selected selecteddiv');
-                            //this.setAttribute("class", "same-as-selected selecteddiv");
+                            $("#emirate").parent().parent().find("label").removeClass("floating-label").addClass("floating-label");
+                            
                             break;
                         }
                     }
@@ -242,7 +243,7 @@ import intlTelInput from 'intl-tel-input';
        
 
        
-        var input = document.querySelector("#phone1")
+        var input = document.querySelector("#phoneNumber")
       
         
 
@@ -259,16 +260,16 @@ import intlTelInput from 'intl-tel-input';
             });
 
             $('.iti__flag-container').addClass('hide');
-            var labelHtml = document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0];
-            //document.querySelector('#phone1').parentElement.parentElement.getElementsByTagName("label")[0].remove();
-            document.querySelector('#phone1').parentElement.append(labelHtml);
+            var labelHtml = document.querySelector('#phoneNumber').parentElement.parentElement.getElementsByTagName("label")[0];
+            //document.querySelector('#phoneNumber').parentElement.parentElement.getElementsByTagName("label")[0].remove();
+            document.querySelector('#phoneNumber').parentElement.append(labelHtml);
 
             //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
             var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
 
             var errorMsg;
-            if ($("#phone1") !== null) {
-                $("#phone1").parent().parent().parent().parent().find('.new').remove();
+            if ($("#phoneNumber") !== null) {
+                $("#phoneNumber").parent().parent().parent().parent().find('.new').remove();
             }
             if ($("#select-block-unblock") !== null) {
                 $("#select-block-unblock").parent().parent().parent().find('.new').remove();
@@ -277,17 +278,17 @@ import intlTelInput from 'intl-tel-input';
 
 
 
-            $(document).on("keyup", "#phone1", function (e) {
+            $(document).on("keyup", "#phoneNumber", function (e) {
                 if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                     return;
                 } else {
-                    if ($("#phone1").val().trim()) {
-                        var inputVal = $('#phone1').val();
+                    if ($("#phoneNumber").val().trim()) {
+                        var inputVal = $('#phoneNumber').val();
                         iti.telInput.value = inputVal;
                         if (phonevalid(inputVal) && inputVal.length == 10) {
-                            $("#phone1").parent().parent().removeClass("has-error-fields").addClass('is-valid');
-                            $("#phone1").parent().find(".alert-label").remove();
-                            $("#phone1").parent().find(".alert-icon").remove();
+                            $("#phoneNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                            $("#phoneNumber").parent().find(".alert-label").remove();
+                            $("#phoneNumber").parent().find(".alert-icon").remove();
 
                         } else {
 
@@ -295,27 +296,27 @@ import intlTelInput from 'intl-tel-input';
                             errorCode = iti.getValidationError();
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];
-                            $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
-                            $("#phone1").parent().parent().find("label").removeClass("floating-label").addClass("floating-label");
+                            $("#phoneNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                            $("#phoneNumber").parent().parent().find("label").removeClass("floating-label").addClass("floating-label");
 
                             if (errorMsg) {
-                                $("#phone1").parent().parent().addClass("has-error-fields");
+                                $("#phoneNumber").parent().parent().addClass("has-error-fields");
                                 
                                 alertIcon = "";
                                 alertIcon = contentString;
 
-                                if ($("#phone1").parent().parent().hasClass("has-error-fields")) {
-                                    $("#phone1").parent().find(".alert-label").remove();
-                                    $("#phone1").parent().find(".alert-icon").remove();
-                                    document.querySelector('#phone1').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
+                                if ($("#phoneNumber").parent().parent().hasClass("has-error-fields")) {
+                                    $("#phoneNumber").parent().find(".alert-label").remove();
+                                    $("#phoneNumber").parent().find(".alert-icon").remove();
+                                    document.querySelector('#phoneNumber').parentElement.innerHTML += '<div id="phoneNumber-error" class="has-error alert-label">' + errorMsg + '</div>';
                                     
-                                    $('#phone1').val(inputVal);
-                                    $("#phone1").keyup();
-                                    $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
-                                    $('#phone1-error').parent().parent().find('.new').remove();
+                                    $('#phoneNumber').val(inputVal);
+                                    $("#phoneNumber").keyup();
+                                    $("#phoneNumber").parent().find('.iti__flag-container').after(alertIcon);
+                                    $('#phoneNumber-error').parent().parent().find('.new').remove();
                                 };
                             }
-                            $('#phone1').focus();
+                            $('#phoneNumber').focus();
                         }
                     }
                 }
@@ -533,7 +534,7 @@ import intlTelInput from 'intl-tel-input';
             $("#lastName").parent().find(".alert-icon").remove();
             $("#url").parent().find(".alert-icon").remove();
             $("#justification").parent().find(".alert-icon").remove();
-            $("#phone1").parent().find(".alert-icon").remove();
+            $("#phoneNumber").parent().find(".alert-icon").remove();
             $("#mobileNumber").parent().find(".alert-icon").remove();
             $("#designation").parent().find(".alert-icon").remove();
             $("#accountNumber").parent().find(".alert-icon").remove();
@@ -551,6 +552,7 @@ import intlTelInput from 'intl-tel-input';
 
             if (!$('#emailAddress').val()) {
                 $("#emailAddress").parent().removeClass("is-valid").addClass("has-error-fields");
+                 $("#emailAddress").parent().find("label").removeClass("floating-label").addClass("floating-label");
                 if ($("#emailAddress").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#emailAddress").parent().after(div);
@@ -558,8 +560,9 @@ import intlTelInput from 'intl-tel-input';
                     alertIcon = contentString;
                     if (document.querySelector('#emailAddress') != null) {
                         document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
+                        
                     }
-
+                    break;
                 } else {
                     $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
                 }
@@ -569,6 +572,7 @@ import intlTelInput from 'intl-tel-input';
             }
             if (!$('#companyName').val()) {
                 $("#companyName").parent().removeClass("is-valid").addClass("has-error-fields");
+                $("#companyName").parent().find("label").removeClass("floating-label").addClass("floating-label");
                 alertIcon = "";
                 alertIcon = contentString;
                 if ($("#companyName").parent().next(".alert-label").length == 0) // only add if not added
@@ -577,11 +581,12 @@ import intlTelInput from 'intl-tel-input';
 
                     if ($("#companyName").parent().hasClass("has-error-fields")) {
                         document.querySelector('#companyName').parentElement.innerHTML += alertIcon;
-
+                       
                     };
                     removeunWantedParsers();
                 }
                 $('#companyName').focus();
+                break;
 
             } else {
                 $("#companyName").parent().removeClass("has-error-fields").addClass("is-valid");
@@ -591,6 +596,7 @@ import intlTelInput from 'intl-tel-input';
          
             if (!$('#firstName').val()) {
                 $("#firstName").parent().removeClass("has-error-fields").addClass("has-error-fields");
+                $("#firstName").parent().find("label").removeClass("floating-label").addClass("floating-label");
                 if ($("#firstName").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#firstName").parent().after(div);
@@ -598,10 +604,12 @@ import intlTelInput from 'intl-tel-input';
                     alertIcon = contentString;
                     if (document.querySelector('#firstName') != null) {
                         document.querySelector('#firstName').parentElement.innerHTML += alertIcon;
+                       
                     }
 
                 }
                 $('#firstName').focus();
+                break;
 
             } else {
                 $("#firstName").parent().removeClass("has-error-fields").addClass("is-valid");
@@ -609,6 +617,7 @@ import intlTelInput from 'intl-tel-input';
 
             if (!$('#lastName').val()) {
                 $("#lastName").parent().removeClass("is-valid").addClass("has-error-fields");
+                $("#lastName").parent().find("label").removeClass("floating-label").addClass("floating-label");
                 if ($("#lastName").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#lastName").parent().after(div);
@@ -616,10 +625,12 @@ import intlTelInput from 'intl-tel-input';
                     alertIcon = contentString;
                     if (document.querySelector('#lastName') != null) {
                         document.querySelector('#lastName').parentElement.innerHTML += alertIcon;
+                        
                     }
                     removeunWantedParsers();
                 }
                 $('#lastName').focus();
+                break;
 
             } else {
                 $("#lastName").parent().removeClass("has-error-fields").addClass("is-valid");
@@ -627,6 +638,7 @@ import intlTelInput from 'intl-tel-input';
 
             if (!$('#phoneNumber').val() || $('#phoneNumber').val() == "") {
                 $("#phoneNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
+                $("#phoneNumber").parent().parent().find("label").removeClass("floating-label").addClass("floating-label");
                 $("#phoneNumber").parent().parent().addClass("has-error-fields");
                 
                 alertIcon = "";
@@ -641,6 +653,7 @@ import intlTelInput from 'intl-tel-input';
                     $('#phoneNumber-error').parent().parent().find('.new').remove();
                 };
                 $('#phoneNumber').focus();
+                break;
 
             }
             else {
@@ -683,8 +696,8 @@ import intlTelInput from 'intl-tel-input';
                 return /^-?\d*$/.test(value);
             });
         }
-        if (document.getElementById("phone1") !== null) {
-            setInputFilter(document.getElementById("phone1"), function (value) {
+        if (document.getElementById("phoneNumber") !== null) {
+            setInputFilter(document.getElementById("phoneNumber"), function (value) {
                 return /^-?\d*$/.test(value);
             });
 
