@@ -609,7 +609,7 @@ import intlTelInput from 'intl-tel-input';
 
                 }
                 $('#firstName').focus();
-                \
+                
 
             } else {
                 $("#firstName").parent().removeClass("has-error-fields").addClass("is-valid");
