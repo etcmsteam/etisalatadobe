@@ -204,7 +204,7 @@ import intlTelInput from 'intl-tel-input';
                             $(this).addClass('same-as-selected selecteddiv');
                             $("#emirate").parent().parent().find("label").removeClass("floating-label").addClass("floating-label");
                             
-                            break;
+                           
                         }
                     }
                     h.click();
@@ -562,7 +562,7 @@ import intlTelInput from 'intl-tel-input';
                         document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
                         
                     }
-                    break;
+                    
                 } else {
                     $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
                 }
@@ -586,7 +586,7 @@ import intlTelInput from 'intl-tel-input';
                     removeunWantedParsers();
                 }
                 $('#companyName').focus();
-                break;
+                
 
             } else {
                 $("#companyName").parent().removeClass("has-error-fields").addClass("is-valid");
@@ -609,7 +609,7 @@ import intlTelInput from 'intl-tel-input';
 
                 }
                 $('#firstName').focus();
-                break;
+                \
 
             } else {
                 $("#firstName").parent().removeClass("has-error-fields").addClass("is-valid");
@@ -630,7 +630,7 @@ import intlTelInput from 'intl-tel-input';
                     removeunWantedParsers();
                 }
                 $('#lastName').focus();
-                break;
+                
 
             } else {
                 $("#lastName").parent().removeClass("has-error-fields").addClass("is-valid");
@@ -653,7 +653,7 @@ import intlTelInput from 'intl-tel-input';
                     $('#phoneNumber-error').parent().parent().find('.new').remove();
                 };
                 $('#phoneNumber').focus();
-                break;
+                
 
             }
             else {
