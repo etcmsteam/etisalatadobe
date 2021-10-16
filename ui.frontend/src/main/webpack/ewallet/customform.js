@@ -300,7 +300,7 @@ import intlTelInput from 'intl-tel-input';
 
                             if (errorMsg) {
                                 $("#phone1").parent().parent().addClass("has-error-fields");
-                                //$("#phone1").parent().after('<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>');
+                                
                                 alertIcon = "";
                                 alertIcon = contentString;
 
@@ -308,7 +308,7 @@ import intlTelInput from 'intl-tel-input';
                                     $("#phone1").parent().find(".alert-label").remove();
                                     $("#phone1").parent().find(".alert-icon").remove();
                                     document.querySelector('#phone1').parentElement.innerHTML += '<div id="phone1-error" class="has-error alert-label">' + errorMsg + '</div>';
-                                    //document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
+                                    
                                     $('#phone1').val(inputVal);
                                     $("#phone1").keyup();
                                     $("#phone1").parent().find('.iti__flag-container').after(alertIcon);
