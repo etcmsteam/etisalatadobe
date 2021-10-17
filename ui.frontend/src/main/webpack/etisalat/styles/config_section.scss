@@ -1,351 +1,184 @@
 .config-section-wrap {
-    background: $white;
-    min-height: 56px;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.25s ease-in-out;
-    max-height: 78px;
-    position: relative;
-    z-index: 10;
-    @include respond-to-min($desktop) {
-      min-height: 90px;
-      max-height: 90px;
-    }
-    >.container>.row>.col-xs-12.col-md-3 {
-      display: none;
-      @media (min-width: 1366px) {
-        display: block;
-      }
-    }
+	background: $white;
+	min-height: 56px;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+	transition: all 0.25s ease-in-out;
+	max-height: 78px;
+	position: relative;
+	z-index: 10;
+	@include respond-to-min($desktop) {
+		min-height: 90px;
+		max-height: 90px;
+	}
+	>.container>.row>.col-xs-12.col-md-3 {
+		display: none;
+		@include respond-to-min($desktop-wide) {
+			display: block;
+		}
+	}
+	&.tabs {
+		//max-height: none;
+		background: $white;
+		min-height: 56px;
+		box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+		transition: all .25s ease-in-out;
+		max-height: 78px;
+		position: relative;
+		z-index: 8;
+		@include respond-to-min($desktop) {
+			min-height: 90px;
+			max-height: 90px;
+			&.tabs {
+				max-height: none;
+			}
+		}
+	}
+	.row .col-xs-12.col-md-9 {
+		@include respond-to-min($desktop) {
+			padding: 0;
+		}
+	}
+	.config-section-main-label-top {
+		color: $gray;
+		font-size: $font12;
+		margin: 0;
+		position: relative;
+		margin-top: -10px;
+		margin-bottom: 10px;
+		top: 20px;
+		line-height: 22px;
+		letter-spacing: 1px;
+		@include respond-to-min($tablet) {
+			display: flex;
+			align-items: center;
+			font-size: 18px;
+			line-height: 20px;
+			height: 90px;
+			margin: 0;
+			top: 0;
+		}
+	}
+}
 
-      &.tabs {
-        //max-height: none;
-        background: $white;
-        min-height: 56px;
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-        transition: all .25s ease-in-out;
-        max-height: 78px;
-        position: relative;
-        z-index: 8;
-        @include respond-to-min($desktop) {
-          min-height: 90px;
-          max-height: 90px;
-          &.tabs {
-            max-height: none;
-          }
-        }
-      }
-    
-  
-    .row .col-xs-12.col-md-9 {
-      @include respond-to-min($desktop) {
-        padding: 0;
-      }
-    }
-  
-    .simplebar-track.horizontal {
-      display: none;
-    }
-  
-    &.add-links {
-      height: 56px;
-      @media (max-width:991px) {
-        margin-top: 100px;
-        &.m-top-24 {
-          margin-top: 16px !important;
-        }
-      }
-  
-      > .container {
-        position: relative;
-      }
-    
-      &.add-links-with-span {
-        @media (max-width:991px) {
-          margin-top: 120px;
-        }
-        .links-wrapper {
-          
-          @media (max-width:991px) {
-            top: -160px;           
-          }
-        }
-      }
-    }
-  
-    .nav-tabs {
-      border: 0;
-      > li {
-        > a {
-          border: 0;
-          border-bottom: 4px solid transparent;
-  
-        //   @media (max-width: @screen-sm-max) {
-        //     border-bottom: 2px solid transparent;
-        //   }
-        }
-      }
-  
-      a {
-        &:hover {
-          border-color: $white;
-        }
-      }
-    }
-  
-    .page-nav {
-      display: flex;
-      align-items: flex-end;
-      min-height: 56px;
-      height: 56px;
-      margin-bottom: 0;
-      @include respond-to-min($tablet){
-        display: block;
-        height: auto;
-        }
-      //overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-  
-      ::-webkit-scrollbar {
-        display: none;
-      }
-  
-      .swiper-slide,
-      li {
-        display: inline-block;
-        width: auto !important;
-        //min-height: 56px;
-        @include respond-to-min($tablet){
-          min-height: 90px;
-        }
-  
-        a {
-          padding: 0 1rem;
-          display: block;
-          font-size: $font12;
-          padding-bottom: 10px;
-          color:$almost-black;
-          cursor: pointer;
-          letter-spacing: 0.25px;
-          text-transform: uppercase;
-  
-          @include respond-to-min($tablet) {
-            padding: 0 1.5rem;
-            // font-family: @headings-font-family;
-            line-height: 90px;
-            height: 90px;
-            font-size: 1.25rem;
-            text-transform: none;
-          }
-  
-          &:hover {
-            color:$main-green;
-          }
-        }
-  
-        &.active {
-          a {
-            border-bottom: 2px solid $main-green;
-            border-left: 0;
-            border-right: 0;
-            border-top: 0;
-            color:$main-green;
-  
-            @include respond-to-min($tablet){
-              border-bottom: 4px solid $main-green;
-              color: $main-green;
-            }
-          }
-        }
-      }
-      li {
-        padding-right: 1.4rem;
-      }
-    }
-  
-    .config-section-main-label-top {
-      color:$gray;
-      font-size: $font12;
-      margin: 0;
-      position: relative;
-      margin-top: -10px;
-      margin-bottom: 10px;
-      top: 20px;
-      line-height: 22px;
-      letter-spacing: 1px;
-      @include respond-to-min($tablet) {
-        display: flex;
-        align-items: center;
-        font-size: 18px;
-        line-height: 20px;
-        height: 90px;
-        margin: 0;
-        top: 0;
-     }
-    }
-  }
-  
-  
-  // fix for spacing issue in case hero image has call to action and config section
-  .hero-image-section  {
-    &.hero-image-add {
-      ~ .config-section-wrap {
-        @media (max-width: 991px) {
-          margin-top: 70px;
-        }
-      }
-  
-      ~ .config-section-wrap ~ .config-section-wrap {
-        @media (max-width: 991px) {
-          margin-top: 0;
-        }
-      }
-  
-      ~ .config-section-wrap {
-        &.add-links {
-          @media (max-width: 991px) {
-            margin-top: -168px;
-          }
-        }
-      }
-    }
-  }
-  
-  // fix the config-section on top and hide topbar
-  .fixed-config-section {
-    margin-top: 0 !important;
-  
-    .top-nav-section.top-nav {
-      display: none;
-    }
-    .navbar-default {
-      top: 0;
-    }
-    .affix {
-      top: 56px;
-      width: 100%;
-    }
-  }
-  
-  a:focus {
-    outline: none;
-  }
-  
-  *[lang="ar"] {
-    *[dir="rtl"] {
-      .config-section-wrap.add-links {
-        .links-wrapper {
-          left: 0;
-          right: auto;
-  
-        }
-      }
-    }
-  }
-  
-  
-// // .config-section-wrap.add-links .links-wrapper {
-// // 	position: absolute;
-// // 	top: 25px;
-// // 	right: 0;
-// // 	z-index: 9
-// // }
-// // @media (max-width:991px) {
-// // 	.config-section-wrap.add-links .links-wrapper {
-// // 		width: 100%;
-// // 		top: -134px;
-// // 		position: relative
-// // 	}
-// // 	.config-section-wrap.add-links .links-wrapper.fixed {
-// // 		position: fixed;
-// // 		top: auto;
-// // 		right: 0;
-// // 		z-index: 9;
-// // 		bottom: 0;
-// // 		padding: 0 1rem
-// // 	}
-// // 	.config-section-wrap.add-links .links-wrapper .hero-links-secton>.container-fluid>.row>.col-xs-12 {
-// // 		padding: 0
-// // 	}
-// // }
+// fix for spacing issue in case hero image has call to action and config section
+.hero-image-section {
+	&.hero-image-add {
+		~.config-section-wrap {
+			@include respond-to-max($desktop) {
+				margin-top: 70px;
+			}
+		}
+		~.config-section-wrap~.config-section-wrap {
+			@include respond-to-max($desktop) {
+				margin-top: 0;
+			}
+		}
+		~.config-section-wrap {
+			&.add-links {
+				@include respond-to-max($desktop) {
+					margin-top: -168px;
+				}
+			}
+		}
+	}
+}
 
+// fix the config-section on top and hide topbar
+.fixed-config-section {
+	margin-top: 0 !important;
+	.top-nav-section.top-nav {
+		display: none;
+	}
+	.navbar-default {
+		top: 0;
+	}
+	.affix {
+		top: 56px;
+		width: 100%;
+	}
+}
 
-// .hero-links-add .links-wrapper {
-// 	margin-top: -92px;
-// 	z-index: 99999;
-// 	position: relative
-// }
+a:focus {
+	outline: none;
+}
 
-// .hero-links-add .links-wrapper .hero-links-secton {
-// 	bottom: 0;
-// 	top: 2.5rem;
-// 	right: 0;
-// 	left: auto;
-// 	margin-bottom: 10px;
-// 	display: block!important
-// }
+*[lang="ar"] {
+	*[dir="rtl"] {
+		.config-section-wrap{
+			.links-wrapper {
+				left: 30px;
+				right: auto;
+			}
+		}
+	}
+}
 
 [lang=ar] [dir=rtl] .config-section-wrap.add-links .links-wrapper {
-	left: 0;
-	right: auto
+	left: 30px;
+	right: auto;
 }
 
 .links-wrapper {
-  position: absolute;
-  top: 25px;
-  right:30px;
-  z-index: 9;
-  @media (max-width:991px) {
-    width: 100%;
-    top: -134px;
-    position: relative;
-    padding: 0 26px;
-    &.fixed {
-      position: fixed;
-      top: auto !important;
-      right: 0;
-      z-index: 9;
-      bottom: 0;
-      padding: 0 1rem;
-    }
-    .hero-links-secton > .container-fluid > .row > .col-xs-12 {
-      padding: 0;
-    }
-  }
+	position: absolute;
+	top: 25px;
+	right: 30px;
+	z-index: 9;
+	@include respond-to-max($desktop) {
+		right: 0;
+		padding: 0 3rem;
+		width: 100%;
+		top: -134px;
+		position: relative;
+		padding: 0 43px;
+		&.fixed {
+			position: fixed;
+			top: auto !important;
+			right: 0;
+			z-index: 9;
+			bottom: 0;
+			padding: 0 1rem;
+		}
+		.hero-links-secton>.container-fluid>.row>.col-xs-12 {
+			padding: 0;
+		}
+	}
 }
 
 .hero-links-secton ul {
 	width: 100%;
 	box-shadow: 0 2px 10px 0 hsla(0, 0%, 67%, .2);
-	background-color: #719e19;
+	background-color: $main-green;
 	border-radius: 5px
 }
 
-.hero-links-secton ul li {
-	display: table-cell;
-	width: 1%; 
-  position: relative;
+.hero-links-secton ul {
+	li {
+		display: table-cell;
+		width: 1%;
+		position: relative;
+	}
 }
 
-.hero-links-secton ul li a {
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-align: center;
-	align-items: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	height: 64px
+.hero-links-secton ul {
+	li {
+		a {
+			display: flex;
+			-ms-flex-align: center;
+			align-items: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			height: 64px
+		}
+	}
 }
 
 .hero-links-secton ul li a span {
 	display: none
 }
 
-@media (min-width:992px) {
+@include respond-to-max($desktop) {
 	.hero-links-secton ul li a {
 		height: 96px;
-		-ms-flex-direction: column;
 		flex-direction: column;
 		text-align: center;
 		color: $white;
@@ -372,19 +205,20 @@
 	stroke: $white
 }
 
-.hero-links-secton ul li:after {
-	border-right: 1px solid $white;
-  content: "";
-  top: 50%;
-  transform: translateY(-50%);
-  height: 24px;
-  position: absolute;
+.hero-links-secton ul li {
+	&:after {
+		border-right: 1px solid $white;
+		content: "";
+		top: 55%;
+		transform: translateY(-50%);
+		height: 50px;
+		position: absolute;
+	}
 }
 
-@media (min-width:992px) {
+@include respond-to-max($desktop) {
 	.hero-links-secton ul li:after {
-		top:52px;
-		height: 50px
+		top: 52px;
 	}
 }
 
@@ -399,7 +233,6 @@
 }
 
 .hero-links-add .hero-links-secton ul li:after {
-	display: -ms-flexbox;
 	display: flex
 }
 
@@ -408,23 +241,48 @@
 }
 
 .hero-links-secton.show-span ul li a {
-  height: 96px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-align: center;
-  color: #fff;
-  font-weight: bold;
-  font-size: 8px;
-  font-family: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
-  text-transform: uppercase;
+	height: 96px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	text-align: center;
+	color: $white;
+	font-weight: bold;
+	font-size: 8px;
+	@include font-family-lato;
+	text-transform: uppercase;
 }
-.hero-links-secton.show-span ul li a p{
-  line-height: 1.5;
-  margin-top: 10px;
-  display: block;
-  width: 82%;
-  letter-spacing: 0.8px;
+
+.hero-links-secton.show-span {
+	ul {
+		li {
+			a {
+				p {
+					line-height: 1.5;
+					margin-top: 10px;
+					display: block;
+					width: 66%;
+					letter-spacing: 0.8px;
+					@include respond-to-max($desktop) {
+						width: 70%;
+					}
+					*[lang="ar"] *[dir=rtl] & {
+						width: 54%;
+					}
+				}
+			}
+		}
+	}
+}
+
+.config-section-column .hero-links-secton.show-span {
+	ul {
+		li {
+			a {
+				p {
+					width: 37%;
+				}
+			}
+		}
+	}
 }
