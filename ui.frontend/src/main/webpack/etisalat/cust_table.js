@@ -15,6 +15,9 @@
             } else {
                 $('.tables-4-0').css('height', (availableHeight + 32) + 'px');
             }
+            if ($(".not-found").length > 0) { 
+                $(".not-found").find("a").addClass("btn btn-default ripple-effect");
+            }
 
 
             function initSwiper() {
