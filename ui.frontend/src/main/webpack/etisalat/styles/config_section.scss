@@ -142,30 +142,40 @@
 }
 
 .hero-links-secton ul {
-	width: 100%;
+  width: 100%;
 	box-shadow: 0 2px 10px 0 hsla(0, 0%, 67%, .2);
 	background-color: $main-green;
-	border-radius: 5px
-}
-
-.hero-links-secton ul {
+	border-radius: 5px;
 	li {
 		display: table-cell;
 		width: 1%;
 		position: relative;
-	}
-}
-
-.hero-links-secton ul {
-	li {
-		a {
+    a {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			height: 64px
+			height: 64px;
+      svg {
+        width: 26px;
+        height: 26px;
+        stroke: $white;
+        g {
+          stroke: $white
+        }
+      }
 		}
+    &:after {
+      border-right: 1px solid $white;
+      content: "";
+      top: 55%;
+      transform: translateY(-50%);
+      height: 50px;
+      position: absolute;
+    }
 	}
+ 
 }
+
 
 .hero-links-secton ul li a span {
 	display: none
@@ -183,67 +193,27 @@
           font-weight: 700;
           font-size: 10px;
           @include font-family-Neotech-ge;
-          text-transform: uppercase
-        }
-      } 
-    } 
-  } 
-  
-	.hero-links-secton{
-    ul{
-      li{
-        a{
+          text-transform: uppercase;
           span {
             line-height: 1.2;
             margin-top: 10px;
             display: block;
             width: 80%
           }
-        } 
-      } 
-    } 
-  }
-
-}
-
-.hero-links-secton{
-  ul{
-    li{
-      a {
-        svg {
-          width: 26px;
-          height: 26px;
-          stroke: $white
-        }
-      }
-    } 
-  }
-} 
-
-.hero-links-secton{
-  ul{
-    li{
-      a{
-        svg{
-          g {
-            stroke: $white
+          svg {
+            width: 26px;
+            height: 26px;
+            stroke: $white;
+            g {
+              stroke: $white
+            }
           }
         }
       } 
-    }
+    } 
   } 
-} 
-
-.hero-links-secton ul li {
-	&:after {
-		border-right: 1px solid $white;
-		content: "";
-		top: 55%;
-		transform: translateY(-50%);
-		height: 50px;
-		position: absolute;
-	}
 }
+
 
 @include respond-to-max($desktop) {
 	.hero-links-secton ul li:after {
