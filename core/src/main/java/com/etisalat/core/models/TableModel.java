@@ -97,39 +97,35 @@ public class TableModel {
     public List<LinkedHashMap<String, String>> getAllRows() {
 
         List<LinkedHashMap<String, String>> rows = new ArrayList<>();
+
+        final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
+
+        if (!resource.isPresent()) { // if the resource doesn't exists
+            LOGGER.error("The resource doesn't exists at the path {}",
+                    csvPath);
+            return rows;
+        }
+
         try {
-
-            final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
-
-            if (!resource.isPresent()) { // if the resource doesn't exists
-                LOGGER.error("The resource doesn't exists at the path {}",
-                        csvPath);
-                return rows;
-            }
-
             Asset asset = resource.get().adaptTo(Asset.class);
             Rendition rendition = asset.getOriginal();
             InputStream inputStream = rendition.adaptTo(InputStream.class);
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             int j = 1;
-            while ((line = br.readLine()) != null) {
-                if (line.contains(COMMA_DELIMITER)) {
-                    String[] values = line.split(COMMA_DELIMITER);
-                    if (j > 1) {
-                        LinkedHashMap<String, String> row = new LinkedHashMap<>();
-                        for (int i = 0; i < values.length; i = i + 2) {
-                            String key = values[i];
-                            String value = StringUtils.EMPTY;
-                            if (values.length > i + 1) {
-                                value = values[i + 1];
-                            }
-
-                            row.put(key, value);
+            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+                String[] values = line.split(COMMA_DELIMITER);
+                if (j > 1) {
+                    LinkedHashMap<String, String> row = new LinkedHashMap<>();
+                    for (int i = 0; i < values.length; i = i + 2) {
+                        String key = values[i];
+                        String value = StringUtils.EMPTY;
+                        if (values.length > i + 1) {
+                            value = values[i + 1];
                         }
-                        rows.add(row);
+                        row.put(key, value);
                     }
-
+                    rows.add(row);
                 }
                 j++;
             }
@@ -140,15 +136,15 @@ public class TableModel {
         return rows;
     }
 
-    public LinkedHashMap<String, String> getCategories() {
+    public Map<String, String> getCategories() {
         return getFilters(0);
     }
 
-    public LinkedHashMap<String, String> getLanguages() {
+    public Map<String, String> getLanguages() {
         return getFilters(1);
     }
 
-    public LinkedHashMap<String, String> getPackages() {
+    public Map<String, String> getPackages() {
         return getFilters(2);
     }
 
@@ -168,15 +164,14 @@ public class TableModel {
             InputStream inputStream = rendition.adaptTo(InputStream.class);
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
             String line;
-
-            while ((line = br.readLine()) != null ) {
+            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
                 String[] cols = line.split(COMMA_DELIMITER);
-                if(cols.length > index){
+                if (cols.length > index) {
                     String item = cols[index];
                     if (item.contains(EQUAL_DELIMITER)) {
                         String[] string = item.split(EQUAL_DELIMITER);
                         row.put(string[0], string[1]);
-                    } else if(StringUtils.isNotBlank(item)){
+                    } else if (StringUtils.isNotBlank(item)) {
                         row.put(item, StringUtils.EMPTY);
                     }
                 }
