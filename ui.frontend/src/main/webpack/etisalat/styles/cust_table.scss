@@ -680,12 +680,12 @@
 }
 
 .elife-channel-list-header {
-    padding: 4px 0;
+    padding: 4px 16px;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
 
-    @media screen and (min-width: 992px) {
-        padding: 14px 0;
+    @include respond-to-min($desktop) {
+        padding: 14px 12px;
     }
 
     .container {
@@ -702,7 +702,7 @@
     .logo-wrapper {
         display: flex;
 
-        .logo-link {
+        .cmp-image {
             margin-right: 8px;
 
             @media screen and (min-width: 992px) {
@@ -725,15 +725,12 @@
             display: flex;
             flex-direction: column;
             padding-left: 4px 0;
-
             .back {
                 margin-bottom: 4px;
-
                 @media screen and (min-width: 992px) {
                     margin-bottom: 8px;
                 }
             }
-
             a {
                 width: fit-content;
                 text-transform: uppercase;
@@ -742,42 +739,38 @@
                 padding-left: 8px;
                 line-height: 16px;
                 position: relative;
-
-                // @media (min-width: @screen-md-min) {
-                //   font-size: 14px;
-                //   padding-left: 12px;
-                //   line-height: 20px;
-                // }
-                &:hover {
-                    text-decoration: underline;
-                    //   color: @brand-primary;
+                @include respond-to-min($desktop) {
+                  font-size: 14px;
+                  padding-left: 12px;
+                  line-height: 20px;
                 }
-
+                &:hover {
+                  text-decoration: underline;
+                  color: $main-green;
+                }
                 &:before {
-                    //   border: solid @brand-primary;
-                    border-width: 0 1px 1px 0;
-                    padding: 2.6px;
-                    content: "";
-                    position: absolute;
-                    line-height: 1;
-                    top: 50%;
-                    transform: translateY(-50%) rotate(135deg);
-                    transition: all .3s ease-in-out;
-                    left: 0;
-                    //   @media (min-width: @screen-md-min) {
-                    //     padding: 3.25px;
-                    //   }
+                  border: solid $main-green;
+                  border-width: 0 1px 1px 0;
+                  padding: 2.6px;
+                  content: "";
+                  position: absolute;
+                  line-height: 1;
+                  top: 50%;
+                  transform: translateY(-50%) rotate(135deg);
+                  transition: all .3s ease-in-out;
+                  left: 0;
+                  @include respond-to-min($desktop) {
+                    padding: 3.25px;
+                  }
                 }
             }
-
             h4 {
                 margin: 0;
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 1.14;
                 color: #353738;
-
-                @media screen and (min-width: 992px) {
+                @include respond-to-min($desktop) {
                     font-size: 16px;
                     line-height: 1;
                 }
@@ -951,6 +944,7 @@
                         }
                     }
                 }
+                
             }
 
         }
@@ -961,6 +955,7 @@
 .not-found {
     text-align: center;
     margin-top: 16px;
+    display: none;
 
     @media screen and (min-width: 992px) {
         margin-top: 24px;

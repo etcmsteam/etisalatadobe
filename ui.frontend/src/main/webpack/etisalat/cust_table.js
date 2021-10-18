@@ -61,12 +61,19 @@
                 e.preventDefault();
                 $(this).hide();
                 $(this).closest('.search-wrapper').removeClass('search-expanded');
-                $(this).closest('.search-wrapper').find('.form-control').val('').trigger('keyup');
-                $(this).focus();
+                if($(this).closest('.head-wrapper').hasClass('search-expanded')){
+                    $('#searchInput').val('');
+                    $(this).closest('.head-wrapper').removeClass('search-expanded');
+                    
+                }else {
+                    $(this).closest('.search-wrapper').find('.form-control').val('').trigger('keyup');
+                    $(this).focus();
+                }
+                
             });
 
             $("#searchInput").on("change keyup copy paste cut", function () {
-                var table = $(".tables-4-0");
+                var table = $(".tables-4-0 table");
                 var inputValue = $(this).val();
                 $(table).show();
 
@@ -86,7 +93,7 @@
                 table.each(function (index, value) {
                     var table = $(value);
                     var trSel = table.find('tbody > tr:not([style*="display: none"])') //('tbody > tr:not("[class^=filtered]")'); $
-                    var notFound = table.closest('.table-default-section').find('.not-found');
+                    var notFound = table.closest('.custom-datatable').find('.not-found');
 
                     if (trSel.length === 0) {
                         notFound.show();
