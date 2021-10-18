@@ -504,7 +504,7 @@ import intlTelInput from 'intl-tel-input';
             document.querySelector('#phone1').parentElement.append(labelHtml);
 
             //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
-            var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
+            var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid number"];
 
             var errorMsg;
             if ($("#phone1") !== null) {
