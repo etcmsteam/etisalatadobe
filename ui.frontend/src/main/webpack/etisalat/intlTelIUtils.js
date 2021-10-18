@@ -517,7 +517,7 @@ import intlTelInput from 'intl-tel-input';
 
 
 
-            $(document).on("keyup", "#phone1", function (e) {
+            $(document).on("keyup", "#phone1", function (element) {
                 if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                     return;
                 } else {
@@ -594,7 +594,7 @@ import intlTelInput from 'intl-tel-input';
 
 
 
-            $(document).on("keyup", "#contactNumber", function (e) {
+            $(document).on("keyup", "#contactNumber", function (element) {
                 if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                     return;
                 } else {
@@ -664,7 +664,7 @@ import intlTelInput from 'intl-tel-input';
                 $("#mobileNumber").parent().parent().parent().parent().find('.new').remove();
             }
     
-            $(document).on("keyup", "#mobileNumber", function (e) {
+            $(document).on("keyup", "#mobileNumber", function (element) {
                 if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                     return;
                 } else {
@@ -711,7 +711,7 @@ import intlTelInput from 'intl-tel-input';
 
         }
 
-        $(document).on("keyup", "#companyName", function (event) {
+        $(document).on("keyup", "#companyName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -738,7 +738,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
 
-        $(document).on("keyup", "#url", function (event) {
+        $(document).on("keyup", "#url", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -765,7 +765,7 @@ import intlTelInput from 'intl-tel-input';
                 $('#url').focus();
             }
         });
-        $(document).on("keyup", "#fullName", function (event) {
+        $(document).on("keyup", "#fullName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -794,7 +794,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
 
-        $(document).on("keyup", "#firstName", function (event) {
+        $(document).on("keyup", "#firstName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -819,7 +819,7 @@ import intlTelInput from 'intl-tel-input';
                 }
             }
         });
-        $(document).on("keyup", "#lastName", function (event) {
+        $(document).on("keyup", "#lastName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
