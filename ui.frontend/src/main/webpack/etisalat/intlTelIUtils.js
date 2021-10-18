@@ -438,6 +438,12 @@ import intlTelInput from 'intl-tel-input';
             var regex = /^[a-zA-Z\s]+$/i;
             return regex.test(value);
         }
+        function realnumeric(value) {
+            var regex = /^[0-9]*$/;
+            return regex.test(value);
+        }
+
+       
         function urlvalid(value) {
             /* eslint-disable no-control-regex, max-len */
             var regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
@@ -530,9 +536,15 @@ import intlTelInput from 'intl-tel-input';
                             $("#phone1").parent().find(".alert-icon").remove();
 
                         } else {
-
                             var errorCode = "";
-                            errorCode = iti.getValidationError();
+                            if(!realnumeric(inputVal))
+                            {
+                                errorCode = 0;
+                            }else{
+                                errorCode = iti.getValidationError();
+                            }
+                            
+                            
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];
                             $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
@@ -609,7 +621,12 @@ import intlTelInput from 'intl-tel-input';
                         } else {
 
                             var errorCode = "";
-                            errorCode = iti.getValidationError();
+                            if(!realnumeric(inputVal))
+                            {
+                                errorCode = 0;
+                            }else{
+                                errorCode = iti.getValidationError();
+                            }
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];
                             $("#contactNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
@@ -679,7 +696,12 @@ import intlTelInput from 'intl-tel-input';
                         } else {
 
                             var errorCode = "";
-                            errorCode = iti.getValidationError();
+                            if(!realnumeric(inputVal))
+                            {
+                                errorCode = 0;
+                            }else{
+                                errorCode = iti.getValidationError();
+                            }
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];
                             $("#mobileNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
