@@ -169,14 +169,16 @@ public class TableModel {
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
             String line;
 
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null ) {
                 String[] cols = line.split(COMMA_DELIMITER);
-                String item = cols[index];
-                if (item.contains(EQUAL_DELIMITER)) {
-                    String[] string = item.split(EQUAL_DELIMITER);
-                    row.put(string[0], string[1]);
-                } else {
-                    row.put(item, StringUtils.EMPTY);
+                if(cols.length > index){
+                    String item = cols[index];
+                    if (item.contains(EQUAL_DELIMITER)) {
+                        String[] string = item.split(EQUAL_DELIMITER);
+                        row.put(string[0], string[1]);
+                    } else if(StringUtils.isNotBlank(item)){
+                        row.put(item, StringUtils.EMPTY);
+                    }
                 }
             }
         } catch (IOException e) {
