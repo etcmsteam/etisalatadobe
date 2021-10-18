@@ -56,8 +56,6 @@ public class TableModel {
     public String getSorting() {
         if (tableSource.equals(RTE) && doSorting.equals(TRUE)) {
             return ALL;
-        } else if (tableSource.equals(CSV)) {
-            return "[" + columnToSort + "]";
         }
         return "[]";
     }

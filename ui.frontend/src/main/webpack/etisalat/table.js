@@ -122,7 +122,7 @@ $(function() {
 	function initializeTable(component) {
 		$(component).each((index, elem) => {
 			const table = initializeDataTable(elem);
-			enableExternalSorting(elem, table);
+			//enableExternalSorting(elem, table);
 		});
 	}
 	initializeTable(CUSTOM_TABLE_COMPONENT);
