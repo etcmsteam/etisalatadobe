@@ -1,3 +1,61 @@
+ // with years
+ .cmp_tabs__horizontal_with_years{
+  .edc-tabs-wrapper {
+    li{
+      &.cmp-tabs__tab--active{
+      border:0!important;
+      color: $main-green;
+
+      &:after{
+        content:"";
+        border-bottom: 2px solid  $main-green;
+        color: $main-green;
+        width: 72px;
+        position: absolute;
+        content: "";
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        display: block;
+      }
+      }
+    }
+    @include respond-to-min($desktop) {
+    min-height: 68px;
+    max-height: 68px;
+    padding: 0 2rem;
+    .page-nav {
+      .swiper-slide,
+      li {
+        min-height: 68px;
+          height: 68px;
+          font-size: $font16;
+          letter-spacing: 0.6px;
+          line-height: 68px;
+          position: relative;
+          &.cmp-tabs__tab--active{
+         
+              border-bottom: 4px solid $main-green;
+              color:  $main-green;
+              &:after{
+                display: none !important;;
+              }
+            
+            
+        }
+      }
+    }
+    .swiper-button-next, .swiper-button-prev {
+      top: 65%;
+    }
+  }
+}
+//tab-panel content
+
+}
+
+
 .edc-tabs-wrapper {
   position: relative;
  .tabs-title {
@@ -91,61 +149,7 @@
 
  
 }
- // with years
- .cmp_tabs__horizontal_with_years{
-  .edc-tabs-wrapper {
-    @include respond-to-min($desktop) {
-    min-height: 68px;
-    max-height: 68px;
-    padding: 0 2rem;
-    .page-nav {
-      .swiper-slide,
-      li {
-        min-height: 68px;
-          height: 68px;
-          font-size: $font16;
-          letter-spacing: 0.6px;
-          line-height: 68px;
-          position: relative;
-          &.cmp-tabs__tab--active{
-           
-            border-left: 0;
-            border-right: 0;
-            border-top: 0;
-            color: $main-green;
-  
-            &:after{
-              content:"";
-              border-bottom: 2px solid  $main-green;
-              color: $main-green;
-              width: 72px;
-              position: absolute;
-              content: "";
-              bottom: 0;
-              right: 0;
-              left: 0;
-              margin: 0 auto;
-              display: block;
-            }
-            @include respond-to-min($desktop){
-              border-bottom: 4px solid $main-green;
-              color:  $main-green;
-              &:after{
-                display: none !important;;
-              }
-            
-            }
-        }
-      }
-    }
-    .swiper-button-next, .swiper-button-prev {
-      top: 65%;
-    }
-  }
-}
-//tab-panel content
 
-}
 .basicpage .container .media-cta-wrapper{
 @include respond-to-max($tablet){
   padding:0 1rem;
