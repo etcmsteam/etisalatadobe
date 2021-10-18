@@ -98,9 +98,6 @@
 	}
 }
 
-a:focus {
-	outline: none;
-}
 
 *[lang="ar"] {
 	*[dir="rtl"] {
@@ -175,33 +172,67 @@ a:focus {
 }
 
 @include respond-to-max($desktop) {
-	.hero-links-secton ul li a {
-		height: 96px;
-		flex-direction: column;
-		text-align: center;
-		color: $white;
-		font-weight: 700;
-		font-size: 10px;
-		@include font-family-Neotech-ge;
-		text-transform: uppercase
-	}
-	.hero-links-secton ul li a span {
-		line-height: 1.2;
-		margin-top: 10px;
-		display: block;
-		width: 80%
-	}
+	.hero-links-secton{
+    ul{
+      li{
+        a {
+          height: 96px;
+          flex-direction: column;
+          text-align: center;
+          color: $white;
+          font-weight: 700;
+          font-size: 10px;
+          @include font-family-Neotech-ge;
+          text-transform: uppercase
+        }
+      } 
+    } 
+  } 
+  
+	.hero-links-secton{
+    ul{
+      li{
+        a{
+          span {
+            line-height: 1.2;
+            margin-top: 10px;
+            display: block;
+            width: 80%
+          }
+        } 
+      } 
+    } 
+  }
+
 }
 
-.hero-links-secton ul li a svg {
-	width: 26px;
-	height: 26px;
-	stroke: $white
-}
+.hero-links-secton{
+  ul{
+    li{
+      a {
+        svg {
+          width: 26px;
+          height: 26px;
+          stroke: $white
+        }
+      }
+    } 
+  }
+} 
 
-.hero-links-secton ul li a svg g {
-	stroke: $white
-}
+.hero-links-secton{
+  ul{
+    li{
+      a{
+        svg{
+          g {
+            stroke: $white
+          }
+        }
+      } 
+    }
+  } 
+} 
 
 .hero-links-secton ul li {
 	&:after {
@@ -238,17 +269,23 @@ a:focus {
 	display: none
 }
 
-.hero-links-secton.show-span ul li a {
-	height: 96px;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	flex-direction: column;
-	text-align: center;
-	color: $white;
-	font-weight: bold;
-	font-size: 8px;
-	@include font-family-lato;
-	text-transform: uppercase;
+.hero-links-secton.show-span{ 
+    ul{
+      li{
+        a {
+          height: 96px;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          flex-direction: column;
+          text-align: center;
+          color: $white;
+          font-weight: bold;
+          font-size: 8px;
+          @include font-family-lato;
+          text-transform: uppercase;
+      } 
+    } 
+  }
 }
 
 .hero-links-secton.show-span {
@@ -262,11 +299,16 @@ a:focus {
 					width: 66%;
 					letter-spacing: 0.8px;
 					@include respond-to-max($desktop) {
-						width: 70%;
+						width: 73%;
 					}
 					*[lang="ar"] *[dir=rtl] & {
 						width: 54%;
 					}
+
+          @media (min-width: 768px) and (max-width: 769px){
+            width:40%;
+          }
+
 				}
 			}
 		}
