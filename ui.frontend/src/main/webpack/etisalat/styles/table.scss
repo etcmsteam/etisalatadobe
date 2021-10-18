@@ -18,7 +18,7 @@
 		line-height: 16px;
 		padding: 1rem 1rem;
 		background-color: $white;
-		@include font-family-lato();
+		@include font-family-lato;
 	}
 	tr td {
 		vertical-align: middle;
@@ -26,7 +26,7 @@
 		line-height: 22px;
 		font-size: $font16;
 		padding: 1rem 1rem;
-		@include font-family-lato();
+		@include font-family-lato;
 	}
 	tr:nth-of-type(odd) {
 		background-color: #fafaf5;
@@ -34,7 +34,7 @@
 	tr td a {
 		position: relative;
 		color: $main-green;
-		@include font-family-lato();
+		@include font-family-lato;
 		font-size: $font14;
 		line-height: 1.25rem;
 		letter-spacing: 1.6px;
@@ -86,7 +86,7 @@
 		color: $almost-black;
 		background-color: $white;
 		border-bottom: 2px solid $table-border-color;
-		@include font-family-lato();
+		@include font-family-lato;
 	}
 	tr td {
 		font-weight: 700;
@@ -95,7 +95,7 @@
 		font-size: $font16;
 		padding: 1rem 1rem;
 		color: $steel-grey;
-		@include font-family-lato();
+		@include font-family-lato;
 	}
 }
 .striped {
@@ -108,7 +108,7 @@
 		background-color: transparent;
 		border-collapse: collapse;
 		border-spacing: 0;
-		font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+		@include font-family-lato;
 	}
 
 	table > tfoot > tr > th:last-child,
@@ -139,7 +139,7 @@
 	table thead th {
 		font-size: 12px;
 		letter-spacing: 2px;
-		font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+		@include font-family-lato;
 		color: #353738;
 		text-transform: uppercase;
 		vertical-align: bottom;
@@ -185,7 +185,7 @@
 	table tbody > tr > td {
 		font-weight: 700;
 		color: #353738;
-		font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+		@include font-family-lato;
 		line-height: 22px;
 		font-size: 1rem;
 	}
@@ -232,7 +232,7 @@
 			display: block;
 			font-size: 0.75rem;
 			letter-spacing: 2px;
-			font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+			@include font-family-lato;
 			color: #353738;
 			text-transform: uppercase;
 			vertical-align: bottom;
@@ -262,6 +262,8 @@
 			line-height: 1.13;
 			letter-spacing: normal;
 			color: #353738;
+			@include font-family-lato;
+
 			tr {
 				border-bottom: 1px solid #e4e4e4;
 				td,
@@ -280,7 +282,8 @@
 		tbody {
 			font-size: 14px;
 			line-height: 20px;
-			color: #6f6c70;
+			color: $dark-gray;
+			@include font-family-lato;
 			@include respond-to-min($desktop) {
 				font-size: 16px;
 				line-height: 1.5;
@@ -289,12 +292,20 @@
 			tr {
 				border-bottom: 1px solid #e4e4e4;
 				padding: 56px 0 16px;
+
+				@media only screen and (max-width: 767px) {
+					display: block;
+				}
+				@media only screen and (max-width: 1239px) and (min-width: 768px) {
+					display: flex;
+				}
 				@media screen and (max-width: 1239px) {
 					border-top: 1px solid #e4e4e4;
 					margin-bottom: -1px;
 					position: relative;
 					flex-wrap: wrap;
 				}
+
 				td {
 					padding-top: 17px;
 					padding-bottom: 19px;
@@ -314,54 +325,72 @@
 						letter-spacing: 2px;
 						color: #353738;
 						text-transform: uppercase;
-						@media screen and (max-width: 767px) {
+						@media screen and (max-width: 991px) {
 							top: 24px;
+							line-height: 16px;
 						}
 
 						@media screen and (max-width: 1239px) {
 							position: absolute;
 							padding: 0;
+							font-size: 14px;
 						}
 					}
 				}
 			}
 		}
 	}
-
-	@media screen and (max-width: 991px) {
-		table tbody td,
-		table tbody tr,
-		table td {
+	table tbody tr td {
+		width: 100%;
+		@include respond-to-min($tablet) { 
+			width: 33.2%;
+		}
+		@include respond-to-min($desktop) { 
+			width: 306px;
+		}
+		@media screen and (max-width: 991px) {
 			display: block;
 		}
-		table tbody tr td:before {
-			content: attr(data-label);
-			display: block;
-			letter-spacing: 2px;
-			font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-			color: #353738;
-			text-transform: uppercase;
-			vertical-align: bottom;
-			font-size: 14px;
-			line-height: 16px;
-			font-weight: 400;
-			margin-bottom: 4px;
+		&:before {
+			@media screen and (max-width: 991px) {
+				content: attr(data-label);
+				display: block;
+				letter-spacing: 2px;
+				@include font-family-lato;
+				color: #353738;
+				text-transform: uppercase;
+				vertical-align: bottom;
+				font-size: 14px;
+				line-height: 16px;
+				font-weight: 400;
+				margin-bottom: 4px;
+			}
+		}
+		
+		@media screen and (max-width: 1239px) {
+			padding: 12px 0;
+			padding-right: 24px;
 		}
 	}
 }
-.table  {
+.table {
 	table {
 		img {
 			object-fit: contain;
-			margin-right: .875rem;
+			margin-right: 0.875rem;
 		}
 	}
 }
 .tables-4-0 {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 	.dataTables_info {
 		display: none;
 	}
 	.dataTables_paginate {
+		display: none;
+	}
+	&::-webkit-scrollbar {
 		display: none;
 	}
 }
@@ -384,7 +413,6 @@
 		top: 0 !important;
 	}
 }
-
 
 .e-life-modal.nv-modal {
 	.w-auto {
@@ -2424,6 +2452,10 @@
 	}
 	.nv-checkboxes-text {
 		margin-left: 1rem;
+		@include font-family-lato;
+		&.gray-color {
+			color: $steel-grey;
+		}
 	}
 }
 .dataTables_filter {
