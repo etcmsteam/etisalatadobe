@@ -1,103 +1,3 @@
-.cmp-rte-table {
-	table {
-		font-size: $font14;
-		color: $almost-black;
-		width: 100%;
-		max-width: 100%;
-		margin-bottom: 25px;
-	}
-	tr th:first-child {
-		border-radius: 4px 0 0 4px;
-	}
-	tr th {
-		font-size: $font12;
-		letter-spacing: 2px;
-		font-weight: 400;
-		text-transform: uppercase;
-		vertical-align: bottom;
-		line-height: 16px;
-		padding: 1rem 1rem;
-		background-color: $white;
-		@include font-family-lato;
-	}
-	tr td {
-		vertical-align: middle;
-		font-weight: 700;
-		line-height: 22px;
-		font-size: $font16;
-		padding: 1rem 1rem;
-		@include font-family-lato;
-	}
-	tr:nth-of-type(odd) {
-		background-color: $light-yellow;
-	}
-	tr td a {
-		position: relative;
-		color: $main-green;
-		@include font-family-lato;
-		font-size: $font14;
-		line-height: 1.25rem;
-		letter-spacing: 1.6px;
-		text-transform: uppercase;
-		font-weight: 400;
-	}
-	tr td a:before {
-		padding: 3.5px;
-		content: "";
-		position: absolute;
-		line-height: 1;
-		top: 50%;
-		transform: translateY(-20%) rotate(-135deg);
-		transition: all 0.3s ease-in-out;
-		-webkit-transform: translateY(-50%) rotate(-45deg);
-		right: -15px;
-		border: solid $main-green;
-		border-width: 0 1px 1px 0px;
-	}
-	tr td a:hover {
-		text-decoration: underline;
-	}
-
-	@include respond-to-min($desktop) {
-		tr th {
-			width: 20%;
-		}
-	}
-}
-//table variation with no even and odd colors
-.cmp-table-v2 {
-	table {
-		font-size: $font14;
-		width: 100%;
-		max-width: 100%;
-		margin-bottom: 25px;
-	}
-	tr th:first-child {
-		border-radius: 4px 0 0 4px;
-	}
-	tr th {
-		font-size: $font12;
-		letter-spacing: 2px;
-		font-weight: 400;
-		text-transform: uppercase;
-		vertical-align: bottom;
-		line-height: 16px;
-		padding: 1rem 1rem;
-		color: $almost-black;
-		background-color: $white;
-		border-bottom: 2px solid $table-border-color;
-		@include font-family-lato;
-	}
-	tr td {
-		font-weight: 700;
-		border-top: 1px solid $light-sand-brown;
-		line-height: 22px;
-		font-size: $font16;
-		padding: 1rem 1rem;
-		color: $steel-grey;
-		@include font-family-lato;
-	}
-}
 .striped {
 	table {
 		font-size: $font14;
@@ -209,7 +109,7 @@
 		word-break: break-word;
 	}
 
-	@media (min-width: 1200px) {
+	@include respond-to-min($desktop-wide) {
 		table > tbody > tr > td,
 		table > tfoot > tr > td,
 		table > thead > tr > td {
@@ -217,7 +117,7 @@
 		}
 	}
 
-	@media screen and (max-width: 991px) {
+	@include respond-to-max($desktop - 1) {
 		table thead {
 			display: none;
 		}
@@ -248,7 +148,7 @@
 		background-color: transparent;
 		border-collapse: collapse;
 		border-spacing: 0;
-		@media screen and (max-width: 767px) {
+		@include respond-to-max($tablet - 1) {
 			margin-left: 16px;
 			margin-right: 16px;
 		}
@@ -293,7 +193,7 @@
 				border-bottom: 1px solid $silver-white;
 				padding: 56px 0 16px;
 
-				@media only screen and (max-width: 767px) {
+				@include respond-to-max($tablet - 1) {
 					display: block;
 				}
 				@media only screen and (max-width: 1239px) and (min-width: 768px) {
@@ -311,7 +211,7 @@
 					padding-bottom: 19px;
 					padding-right: 24px;
 					vertical-align: baseline;
-					@media screen and (max-width: 767px) {
+					@include respond-to-max($tablet - 1) {
 						padding: 8px 0;
 					}
 					@media screen and (min-width: 1248px) {
@@ -325,7 +225,7 @@
 						letter-spacing: 2px;
 						color: $almost-black;
 						text-transform: uppercase;
-						@media screen and (max-width: 991px) {
+						@include respond-to-max($desktop - 1) {
 							top: 24px;
 							line-height: 16px;
 						}
@@ -342,17 +242,17 @@
 	}
 	table tbody tr td {
 		width: 100%;
-		@include respond-to-min($tablet) { 
+		@include respond-to-min($tablet) {
 			width: 33.2%;
 		}
-		@include respond-to-min($desktop) { 
+		@include respond-to-min($desktop) {
 			width: 306px;
 		}
-		@media screen and (max-width: 991px) {
+		@include respond-to-max($desktop - 1) {
 			display: block;
 		}
 		&:before {
-			@media screen and (max-width: 991px) {
+			@include respond-to-max($desktop - 1) {
 				content: attr(data-label);
 				display: block;
 				@include font-family-lato;
@@ -364,7 +264,7 @@
 				margin-bottom: 4px;
 			}
 		}
-		
+
 		@media screen and (max-width: 1239px) {
 			padding: 12px 0;
 			padding-right: 24px;
@@ -380,7 +280,7 @@
 	}
 }
 .tables-4-0 {
-	-ms-overflow-style: none;
+	overflow-style: none;
 	scrollbar-width: none;
 	.dataTables_info {
 		display: none;
@@ -395,125 +295,6 @@
 
 .fade.show {
 	opacity: 1;
-}
-
-.nv-modal.right-modal .nv-modal-dialog {
-	width: auto;
-	height: auto;
-}
-.nv-modal.right-modal .nv-modal-title {
-	margin-right: 0 !important;
-	margin-top: 0 !important;
-}
-@media screen and (min-width: 1200px) {
-	.nv-modal-close svg {
-		right: 0 !important;
-		top: 0 !important;
-	}
-}
-.e-life-modal.nv-modal {
-	.nv-checkboxes-wrap,
-	.nv-radio-wrap {
-		height: 32px;
-		position: relative;
-		display: flex;
-		line-height: 2;
-		align-items: center;
-		background-color: $white;
-	}
-	.nv-checkboxes-wrap label,
-	.nv-radio-wrap label {
-		border-radius: 50%;
-		cursor: pointer;
-		margin: 0;
-		border: 1px solid;
-		box-shadow: 0 2px 5px 0 rgba(121, 68, 68, 0.5);
-		height: 32px;
-		width: 32px;
-		position: relative;
-	}
-	.nv-checkboxes-wrap label:after,
-	.nv-radio-wrap label:after {
-		content: "";
-		position: absolute;
-		opacity: 0;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-	}
-	.nv-checkboxes-wrap input,
-	.nv-radio-wrap input {
-		position: absolute;
-		top: 0;
-		left: 0;
-		opacity: 0;
-		visibility: hidden;
-	}
-	.nv-checkboxes-wrap input[type="radio"]:checked ~ label,
-	.nv-radio-wrap input[type="radio"]:checked ~ label {
-		border: 1px solid $main-green;
-		box-shadow: inset 0 2px 5px 0 rgba(143, 163, 105, 0.5);
-	}
-	.nv-checkboxes-wrap input[type="radio"]:checked ~ label:after,
-	.nv-radio-wrap input[type="radio"]:checked ~ label:after {
-		box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-		border-radius: 50%;
-		opacity: 1;
-		border: 6px solid;
-	}
-	.nv-checkboxes-wrap input[type="checkbox"]:checked ~ label,
-	.nv-radio-wrap input[type="checkbox"]:checked ~ label {
-		background-color: $main-green;
-		border-color: $main-green;
-		box-shadow: 0 2px 5px 0 rgba(143, 163, 105, 0.5);
-	}
-	.nv-checkboxes-wrap input[type="checkbox"]:checked ~ label:after,
-	.nv-radio-wrap input[type="checkbox"]:checked ~ label:after {
-		border: 2px solid;
-		border-top: none;
-		border-right: none;
-		height: 6px;
-		-webkit-transform: translate(-50%, -50%) rotate(-45deg);
-		transform: translate(-50%, -50%) rotate(-45deg);
-		width: 12px;
-		top: 45%;
-		left: 51%;
-		opacity: 1;
-	}
-	.nv-checkboxes-wrap.sm,
-	.nv-radio-wrap.sm {
-		height: 24px;
-		width: 24px;
-	}
-	.nv-checkboxes-wrap.sm label,
-	.nv-radio-wrap.sm label {
-		height: 24px;
-		width: 24px;
-	}
-	.nv-checkboxes-wrap.sm input,
-	.nv-radio-wrap.sm input {
-		position: absolute;
-		top: 0;
-		left: 0;
-		opacity: 0;
-		visibility: hidden;
-	}
-	.nv-checkboxes-wrap.sm input[type="radio"]:checked ~ label:after,
-	.nv-radio-wrap.sm input[type="radio"]:checked ~ label:after {
-		border: 5px solid $main-green;
-	}
-	.nv-checkboxes-wrap.sm input[type="checkbox"]:checked ~ label:after,
-	.nv-radio-wrap.sm input[type="checkbox"]:checked ~ label:after {
-		height: 5px;
-		width: 10px;
-	}
-	.nv-checkboxes-text {
-		margin-left: 1rem;
-		@include font-family-lato;
-		&.gray-color {
-			color: $steel-grey;
-		}
-	}
 }
 .dataTables_filter {
 	display: none;
