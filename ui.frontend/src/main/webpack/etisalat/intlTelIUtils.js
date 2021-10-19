@@ -1148,6 +1148,24 @@ import intlTelInput from 'intl-tel-input';
             } else {
                 $("#description").parent().removeClass("has-error-fields").addClass("is-valid");
             }
+            if (!$('#justification').val()) {
+                if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
+                {
+                    $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
+                    $("#justification").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#justification') != null) {
+                        document.querySelector('#justification').parentElement.innerHTML += alertIcon;
+                    }
+                    removeunWantedParsers();
+                }
+
+                $('#justification').focus();
+
+            } else {
+                $("#justification").parent().removeClass("has-error-fields").addClass("is-valid");
+            }
 
             if (!$('#select2-selection__rendered').val()) {
                 if ($("#select2-selection__rendered").parent().next(".alert-label").length == 0) // only add if not added
