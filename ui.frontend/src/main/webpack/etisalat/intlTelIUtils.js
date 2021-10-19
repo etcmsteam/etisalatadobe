@@ -523,7 +523,7 @@ import intlTelInput from 'intl-tel-input';
             $(document).on("keypress", "#phone1", function (event) {                         
                 var x = event.which || event.keycode;
                 // not allow alphabets
-                if (x>=65 && x<=90) {
+                if (x>=65 && x<=90 || x>=97 && x<=127) {
                   event.preventDefault();
                 }
               });
