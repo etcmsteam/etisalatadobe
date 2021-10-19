@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $(".cmp-experiencefragment--header").addClass("Scroll-Down");
   $(window).scroll(() => {
     var windowTop = $(window).scrollTop();
     if (windowTop > 250) {
@@ -13,7 +14,7 @@ $(document).ready(function () {
 
   $(".menu__icon").on("click", function (e) {
     e.preventDefault();
-    $(".main-nav__list").toggleClass("ShowMenu");
+    $(".main-nav__list").toggleClass("Scroll-Down");
     $(".main-nav__list").slideToggle("slow");
   });
 
