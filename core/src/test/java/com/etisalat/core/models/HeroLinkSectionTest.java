@@ -32,6 +32,7 @@ class HeroLinkSectionTest {
                 () -> assertFalse(list.isEmpty()),
                 () -> assertEquals("/content/dam/etisalat/433/quick-pay-recharge.svg", item.iconImage),
                 () -> assertEquals("<p>Quick Pay &amp; Recharge</p>", item.iconText),
+                () -> assertEquals("_blank", item.getLinkTarget()),
                 () -> assertEquals("/content/etisalat/en.html", item.iconLink)
         );
     }

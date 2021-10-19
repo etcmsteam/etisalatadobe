@@ -27,6 +27,7 @@ public class HeroLinkSection {
     public static final String ICON_IMAGE = "iconImage";
     public static final String ICON_LINK = "iconLink";
     public static final String ICON_TEXT = "iconText";
+    public static final String LINK_TARGET = "linkTarget";
 
     public List<HeroLinkSectionVO> getHeroLinkSectionList() {
         List<HeroLinkSectionVO> linkSectionPojoList = new ArrayList<>();
@@ -37,6 +38,7 @@ public class HeroLinkSection {
             HeroLinkSectionVO heroLinkSectionVO = new HeroLinkSectionVO();
             heroLinkSectionVO.setIconImage(item.getValueMap().get(ICON_IMAGE, String.class));
             heroLinkSectionVO.setIconText(item.getValueMap().get(ICON_TEXT, String.class));
+            heroLinkSectionVO.setLinkTarget(item.getValueMap().get(LINK_TARGET, String.class));
             heroLinkSectionVO.setIconLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver, item.getValueMap().get(ICON_LINK, String.class)));
             linkSectionPojoList.add(heroLinkSectionVO);
         }
