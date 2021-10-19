@@ -54,25 +54,18 @@
             }
 
             // search expand for mobile view 
-            $('.head-wrapper .input-group .input-icon').off().on('click', function (e) {
+            $('.head-wrapper .input-group .input-icon').off().on('click', function(e) {
                 e.preventDefault();
                 $(this).closest('.head-wrapper').addClass('search-expanded');
                 $(this).closest('.head-wrapper').find('.search-close').css('display', 'flex');
             });
             // clsoe the search to default view
-            $('.search-wrapper .search-close').off().on('click', function (e) {
+            $('.head-wrapper .search-close').off().on('click', function(e) {
                 e.preventDefault();
                 $(this).hide();
-                $(this).closest('.search-wrapper').removeClass('search-expanded');
-                if($(this).closest('.head-wrapper').hasClass('search-expanded')){
-                    $('#searchInput').val('');
-                    $(this).closest('.head-wrapper').removeClass('search-expanded');
-                    
-                }else {
-                    $(this).closest('.search-wrapper').find('.form-control').val('').trigger('keyup');
-                    $(this).focus();
-                }
-                
+                $(this).closest('.head-wrapper').removeClass('search-expanded');
+                $(this).closest('.head-wrapper').find('.form-control').val('').trigger('keyup');
+                $(this).focus();
             });
 
             $("#searchInput").on("change keyup copy paste cut", function () {
