@@ -524,7 +524,8 @@ import intlTelInput from 'intl-tel-input';
 
 
             $(document).on("keyup", "#phone1", function (element) {
-                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                var x = element.which || element.keycode;
+                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1 || (x>=65 && x<=90)) {
                     return;
                 } else {
                     if ($("#phone1").val().trim()) {
