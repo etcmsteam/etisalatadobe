@@ -309,11 +309,15 @@
   }
 
   .desc-text {
+    position: relative;
     .alert-icon {
       svg {
         right: 2rem;
         top: .5rem;
       }
+    }
+    .alert-label{
+      top: 10.5rem;
     }
   }
  
@@ -462,7 +466,7 @@
      
       & ~ label {
         left: 0;
-        font-size: $font16;
+        font-size: $font20;
       }
     }
     
@@ -775,7 +779,7 @@
     top: 100%;
     left: 0;
     opacity: 0;
-    font-size: $font16;
+    font-size: $font20;
     -webkit-transition: 0.2s opacity ease-out, 0.2s color ease-out;
     transition: 0.2s opacity ease-out, 0.2s color ease-out;
   }
@@ -787,7 +791,7 @@
     top: 100%;
     left: 0;
     opacity: 0;
-    font-size: $font16;
+    font-size: $font20;
     -webkit-transition: 0.2s opacity ease-out, 0.2s color ease-out;
     transition: 0.2s opacity ease-out, 0.2s color ease-out;
   }
@@ -806,7 +810,7 @@
       & label {
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
-        font-size: $font16;
+        font-size: $font20;
         z-index: 2;
         top: -.5rem;
         line-height: toRem(2);
@@ -954,7 +958,7 @@
     margin-top: 0.2rem;
    
     @include respond-to-min($desktop) {
-      font-size: $font16;
+      font-size: $font20;
       }
     
   }
@@ -1182,7 +1186,7 @@
         transform: translateY(-10px) scale(0.8);
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
-        font-size: $font16;
+        font-size: $font20;
         z-index: 2;
       }
     }
@@ -1196,7 +1200,7 @@
         color: $almost-black;
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
-        font-size: $font16;
+        font-size: $font20;
         z-index: 2;
       }
     }
@@ -1281,7 +1285,7 @@
 
   .cmp-teaser__description {
     text-align: center;
-    
+    width:100%;
     & p {
       font-size: $font16 !important; //To use Important Form default AEM Control css overrides
       line-height: 1.5rem !important;
@@ -1296,10 +1300,33 @@
     border-bottom: 1px solid $error-red !important;
   }
 }
+
+.needHelpForm_Teaser {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+ 
+  
+    .cmp-teaser__description {
+      margin-top: 0!important;
+      width:100%!important; //Some body added width 70%important for teaser causing issue here
+    }
+    h3, h2 {     
+      @include respond-to-max($tablet) {
+        font-size: $font30 !important;
+      }
+    }
+   
+    .cmp-teaser__content {      
+      margin-bottom: 0;
+    }
+  
+  
+}
 .teaser-form {
   .cmp-teaser__description {
     text-align: center;
     margin-top: 3rem;
+    width:100%!important; //Some body added width 70%important for teaser causing issue here
     & > p {
       font-size: $font16;
       line-height: 1.5rem;
@@ -1308,10 +1335,18 @@
       padding-bottom: 1.5rem;
     }
   }
+
   .cmp-teaser__content {    
-    text-align: center;
+    @include font-family-lato;
+		text-align: center;
+		margin-bottom: 3.5rem;
     h3 {
-      font-size: 2rem;
+      font-size: $font32;
+      line-height: toRem(52);
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-size: $font40;
       line-height: toRem(52);
       margin-bottom: 1.5rem;
     }
