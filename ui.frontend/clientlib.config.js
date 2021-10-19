@@ -46,7 +46,7 @@ module.exports = {
       ...libsBaseConfig,
       name: 'clientlib-base',
       categories: ['etisalat.base'],
-      embed: ['core.wcm.components.accordion.v1,core.wcm.components.tabs.v1,core.wcm.components.carousel.v1,core.wcm.components.image.v2,core.wcm.components.breadcrumb.v2,core.wcm.components.search.v1,core.wcm.components.form.text.v2,core.wcm.components.pdfviewer.v1,core.wcm.components.commons.datalayer.v1,etisalat.grid,etisalat-text-rte-plugin-color-picker'],
+      embed: ['core.wcm.components.accordion.v1,core.wcm.components.tabs.v1,core.wcm.components.carousel.v1,core.wcm.components.image.v2,core.wcm.components.breadcrumb.v2,core.wcm.components.search.v1,core.wcm.components.form.text.v2,core.wcm.components.pdfviewer.v1,core.wcm.components.commons.datalayer.v1,etisalat-text-rte-plugin-color-picker'],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
@@ -86,6 +86,7 @@ module.exports = {
           name: 'clientlib-etisalat',
           categories: ['etisalat.etisalat'],
           dependencies: ['etisalat.dependencies'],
+		  embed: ['etisalat.grid.latest'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
@@ -114,6 +115,7 @@ module.exports = {
       name: 'clientlib-hiuapp',
       categories: ['etisalat.hiuapp'],
       dependencies: ['etisalat.dependencies'],
+	  embed: ['etisalat.grid'],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
@@ -142,6 +144,7 @@ module.exports = {
           name: 'clientlib-fivemobile',
           categories: ['etisalat.fivemobile'],
       dependencies: ['etisalat.dependencies'],
+	  embed: ['etisalat.grid'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
@@ -170,6 +173,7 @@ module.exports = {
           name: 'clientlib-gochat',
           categories: ['etisalat.gochat'],
       dependencies: ['etisalat.dependencies'],
+	  embed: ['etisalat.grid.latest'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
@@ -198,6 +202,7 @@ module.exports = {
           name: 'clientlib-ewallet',
           categories: ['etisalat.ewallet'],
           dependencies: ['etisalat.dependencies'],
+		  embed: ['etisalat.grid'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
