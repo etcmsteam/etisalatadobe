@@ -1133,6 +1133,7 @@ import intlTelInput from 'intl-tel-input';
             if (!$('#description').val()  && $('#description').val() !== undefined ) {
                 if ($("#description").parent().next(".alert-label").length == 0) // only add if not added
                 {
+                    $("#description").parent().next(".alert-label").remove();
                     $("#description").parent().removeClass("is-valid").addClass("has-error-fields");
                     $("#description").parent().after(div);
                     alertIcon = "";
@@ -1149,6 +1150,7 @@ import intlTelInput from 'intl-tel-input';
                 $("#description").parent().removeClass("has-error-fields").addClass("is-valid");
             }
             if (!$('#justification').val() && $('#justification').val() !== undefined ) {
+                $("#justification").parent().next(".alert-label").remove();
                 if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
