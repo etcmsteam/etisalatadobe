@@ -520,12 +520,17 @@ import intlTelInput from 'intl-tel-input';
                 $("#select-block-unblock").parent().parent().parent().find('.new').remove();
             }
 
-
-
+            $(document).on("keypress", "#phone1", function (event) {                         
+                var x = event.which || event.keycode;
+                // not allow alphabets
+                if (x>=65 && x<=90) {
+                  event.preventDefault();
+                }
+              });
 
             $(document).on("keyup", "#phone1", function (element) {
                 var x = element.which || element.keycode;
-                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1 || (x>=65 && x<=90)) {
+                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1 ) {
                     return;
                 } else {
                     if ($("#phone1").val().trim()) {
