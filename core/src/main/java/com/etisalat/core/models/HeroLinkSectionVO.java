@@ -5,6 +5,15 @@ public class HeroLinkSectionVO {
     String iconLink;
     String iconText;
     String iconImage;
+    String linkTarget;
+
+    public String getLinkTarget() {
+        return linkTarget;
+    }
+
+    public void setLinkTarget(String linkTarget) {
+        this.linkTarget = linkTarget;
+    }
 
     public String getIconLink() {
         return iconLink;

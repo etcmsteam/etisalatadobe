@@ -17,7 +17,7 @@
                         <heroLinksSetionBehaviour
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                fieldLabel="Hero Link Section Behaviour"
+                                fieldLabel="Hero Link Section Behaviour In Mobile View"
                                 name="./heroLinksSectionBehaviour">
                             <items jcr:primaryType="nt:unstructured">
                                 <static
@@ -45,24 +45,32 @@
                                     <image
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="icon Image Path"
-                                        fieldLabel="icon Image Path"
+                                        fieldDescription="Please enter the image path"
+                                        fieldLabel="Image Path"
                                         name="./iconImage"
                                         rootPath="/content/dam"/>
-                                    <link
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Please enter the link"
-                                        fieldLabel="Link"
-                                        name="./iconLink"/>
                                     <text
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
                                         sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                        fieldDescription="Please enter the tab name"
+                                        fieldDescription="Please enter the icon text"
                                         fieldLabel="Text"
                                         name="./iconText"
                                         useFixedInlineToolbar="{Boolean}true"/>
+                                    <link
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Please enter the link"
+                                            fieldLabel="Link"
+                                            name="./iconLink"/>
+                                    <linkTarget
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            fieldDescription="Check to open link in new tab?"
+                                            name="./linkTarget"
+                                            text="Open link in new tab?"
+                                            uncheckedValue="_self"
+                                            value="_blank"/>
                                 </items>
                             </field>
                         </herolinkssection>

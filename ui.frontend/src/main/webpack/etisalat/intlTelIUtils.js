@@ -438,6 +438,12 @@ import intlTelInput from 'intl-tel-input';
             var regex = /^[a-zA-Z\s]+$/i;
             return regex.test(value);
         }
+        function realnumeric(value) {
+            var regex = /^[0-9]*$/;
+            return regex.test(value);
+        }
+
+       
         function urlvalid(value) {
             /* eslint-disable no-control-regex, max-len */
             var regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
@@ -504,7 +510,7 @@ import intlTelInput from 'intl-tel-input';
             document.querySelector('#phone1').parentElement.append(labelHtml);
 
             //var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
-            var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
+            var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid number"];
 
             var errorMsg;
             if ($("#phone1") !== null) {
@@ -517,7 +523,7 @@ import intlTelInput from 'intl-tel-input';
 
 
 
-            $(document).on("keyup", "#phone1", function (e) {
+            $(document).on("keyup", "#phone1", function (element) {
                 if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                     return;
                 } else {
@@ -530,9 +536,15 @@ import intlTelInput from 'intl-tel-input';
                             $("#phone1").parent().find(".alert-icon").remove();
 
                         } else {
-
                             var errorCode = "";
-                            errorCode = iti.getValidationError();
+                            if(!realnumeric(inputVal))
+                            {
+                                errorCode = 0;
+                            }else{
+                                errorCode = iti.getValidationError();
+                            }
+                            
+                            
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];
                             $("#phone1").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
@@ -594,7 +606,7 @@ import intlTelInput from 'intl-tel-input';
 
 
 
-            $(document).on("keyup", "#contactNumber", function (e) {
+            $(document).on("keyup", "#contactNumber", function (element) {
                 if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                     return;
                 } else {
@@ -609,7 +621,12 @@ import intlTelInput from 'intl-tel-input';
                         } else {
 
                             var errorCode = "";
-                            errorCode = iti.getValidationError();
+                            if(!realnumeric(inputVal))
+                            {
+                                errorCode = 0;
+                            }else{
+                                errorCode = iti.getValidationError();
+                            }
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];
                             $("#contactNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
@@ -664,7 +681,7 @@ import intlTelInput from 'intl-tel-input';
                 $("#mobileNumber").parent().parent().parent().parent().find('.new').remove();
             }
     
-            $(document).on("keyup", "#mobileNumber", function (e) {
+            $(document).on("keyup", "#mobileNumber", function (element) {
                 if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                     return;
                 } else {
@@ -679,7 +696,12 @@ import intlTelInput from 'intl-tel-input';
                         } else {
 
                             var errorCode = "";
-                            errorCode = iti.getValidationError();
+                            if(!realnumeric(inputVal))
+                            {
+                                errorCode = 0;
+                            }else{
+                                errorCode = iti.getValidationError();
+                            }
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];
                             $("#mobileNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
@@ -711,7 +733,7 @@ import intlTelInput from 'intl-tel-input';
 
         }
 
-        $(document).on("keyup", "#companyName", function (event) {
+        $(document).on("keyup", "#companyName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -738,7 +760,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
 
-        $(document).on("keyup", "#url", function (event) {
+        $(document).on("keyup", "#url", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -765,7 +787,7 @@ import intlTelInput from 'intl-tel-input';
                 $('#url').focus();
             }
         });
-        $(document).on("keyup", "#fullName", function (event) {
+        $(document).on("keyup", "#fullName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -794,7 +816,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
 
-        $(document).on("keyup", "#firstName", function (event) {
+        $(document).on("keyup", "#firstName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -819,7 +841,7 @@ import intlTelInput from 'intl-tel-input';
                 }
             }
         });
-        $(document).on("keyup", "#lastName", function (event) {
+        $(document).on("keyup", "#lastName", function (element) {
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
