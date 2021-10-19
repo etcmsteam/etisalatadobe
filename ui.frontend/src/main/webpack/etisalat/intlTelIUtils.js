@@ -1111,7 +1111,7 @@ import intlTelInput from 'intl-tel-input';
                 $('#emailAddress').focus();
 
             }
-            if (!$('#companyName').val()) {
+            if (!$('#companyName').val() && $('#companyName').val() !== undefined ) {
                 $("#companyName").parent().removeClass("is-valid").addClass("has-error-fields");
                 alertIcon = "";
                 alertIcon = contentString;
@@ -1130,7 +1130,7 @@ import intlTelInput from 'intl-tel-input';
             } else {
                 $("#companyName").parent().removeClass("has-error-fields").addClass("is-valid");
             }
-            if (!$('#description').val()) {
+            if (!$('#description').val()  && $('#description').val() !== undefined ) {
                 if ($("#description").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#description").parent().removeClass("is-valid").addClass("has-error-fields");
@@ -1148,7 +1148,7 @@ import intlTelInput from 'intl-tel-input';
             } else {
                 $("#description").parent().removeClass("has-error-fields").addClass("is-valid");
             }
-            if (!$('#justification').val()) {
+            if (!$('#justification').val() && $('#justification').val() !== undefined ) {
                 if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
                 {
                     $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
@@ -1234,23 +1234,7 @@ import intlTelInput from 'intl-tel-input';
                 $("#url").parent().removeClass("has-error-fields").addClass("is-valid");
             }
 
-            if (!$('#justification').val()) {
-                $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
-                if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
-                {
-                    $("#justification").parent().after(div);
-                    alertIcon = "";
-                    alertIcon = contentString;
-                    if (document.querySelector('#justification') != null) {
-                        document.querySelector('#justification').parentElement.innerHTML += alertIcon;
-                    }
-
-                }
-                $('#justification').focus();
-
-            } else {
-                $("#justification").parent().removeClass("has-error-fields").addClass("is-valid");
-            }
+         
 
 
             if (!$('#phone1').val() || $('#phone1').val() == "") {
@@ -1339,7 +1323,7 @@ import intlTelInput from 'intl-tel-input';
             else {
                 $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
             }
-            if (!$('#designation').val() || $('#designation').val() == "") {
+            if ((!$('#designation').val() || $('#designation').val() == "") && $('#designation').val() !== undefined ) {
                 $("#designation").parent().addClass("has-error-fields");
                 alertIcon = "";
                 alertIcon = contentString;
