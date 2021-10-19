@@ -3,19 +3,31 @@ header {
   background-color: $white-color;
   @include respond-to-max($desktop) {
     .cmp-experiencefragment--header {
-      min-height: 16px;
+      min-height: 20px;
+      &.Scroll-Up {
+        border-bottom: 1px solid $color-white-light;
+        height: 67px;
+        min-height: 0;
+        .main-nav__list {
+          top: 50px;
+        }
+      }
+      &.Scroll-Down {
+        .main-nav__list {
+          top: 80px;
+        }
+      }
       .cmp-image {
         max-width: 45px;
       }
       .main-nav__list {
         background-color: $white-color;
         display: none;
-        max-height: 0;
         box-shadow: none;
+        top: 80px;
+        transition: all 0.2s ease-in-out;
         &.ShowMenu {
-          display: block;
           max-height: 400px;
-          margin-top: 20px;
         }
       }
     }
@@ -27,19 +39,12 @@ header {
     width: 100%;
     background: $white-color;
     z-index: 1;
-    min-height: 100px;
     transition: height 0.35s ease-in-out;
 
     &.Scroll-Up {
-      border-bottom: 1px solid $color-white-light;
-      height: 60px;
-      min-height: 0;
       .cmp-image {
         width: 36px;
         top: 5px;
-      }
-      .main-nav__list {
-        top: 15px;
       }
     }
     &.Scroll-Down {
@@ -53,9 +58,6 @@ header {
       }
       .menu__icon {
         top: 25px;
-      }
-      .main-nav__list {
-        top: 60px;
       }
     }
 
@@ -128,7 +130,7 @@ header {
             color: $light-purple;
             display: block;
             padding: 10px 14px;
-            font-size: toRem(14);
+            font-size: toRem(16);
             border-right: 1px solid $thick-white;
             text-decoration: none;
             font-family: $fontfamily-book;
@@ -142,11 +144,21 @@ header {
       }
     }
     @include respond-to-min($desktop) {
-      &.Scroll-Down {
-        border-bottom: none;
-        height: 160px;
+      min-height: 160px;
+
+      &.Scroll-Up {
+        min-height: 70px;
+        border-bottom: 1px solid $color-white-light;
         .menu__icon {
           top: 25px;
+        }
+        .main-nav__list {
+          top: 20px;
+        }
+      }
+      &.Scroll-Down {
+        .main-nav__list {
+          top: 60px;
         }
       }
       .cmp-image,
@@ -185,7 +197,6 @@ header {
 }
 /* HEADER ENDS */
 
-//should be removed
 .cmp-image__image {
   max-width: 100%;
 }
@@ -242,6 +253,12 @@ footer {
           @include respond-to-max($desktop) {
             position: relative;
             top: 20px;
+          }
+        }
+        @include respond-to-min($desktop) {
+          .cmp-teaser__content {
+            height: 20px;
+            float: left;
           }
         }
       }
