@@ -1,11 +1,11 @@
 // elife starter header module
 .starter-header {
     &.has-bg {
-        background-color: #f7f8f4;
+        background-color: $sand-white-50;
         padding-top: 24px;
         padding-bottom: 24px;
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             padding-top: 36px;
             padding-bottom: 36px;
         }
@@ -44,12 +44,12 @@
         margin-bottom: 16px;
 
         .third-action-wrapper {
-            font-size: 15px;
+            font-size: $font15;
             line-height: 15px;
         }
 
         .link {
-            font-size: 12px;
+            font-size: $font12;
             padding-right: 6px;
             margin-right: 3px;
             line-height: 15px;
@@ -60,7 +60,7 @@
             }
 
             &:last-child {
-                color: #6b6b6b;
+                color: $gray-fill;
 
                 &:before {
                     display: none;
@@ -106,17 +106,13 @@
         align-items: flex-end;
         justify-content: space-between;
         flex-direction: column;
-
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             flex-direction: row;
-
             .content {
                 max-width: 750px;
             }
         }
-
         @media screen and (max-width: 991px) {
-
             .content,
             .cta {
                 width: 100%;
@@ -132,7 +128,7 @@
             margin-bottom: 16px;
         }
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             flex-direction: row;
             align-items: center;
 
@@ -143,16 +139,13 @@
         }
     }
 }
-
-
-
 // elife popups module
 .e-life-modal {
     .nv-modal-content {
         padding: 0 !important;
         overflow: hidden !important;
         .nv-btn-link { 
-            font-size: 1rem;
+            font-size: $font16;
             letter-spacing: 2px;
             line-height: 21px;
             position: relative;
@@ -165,8 +158,7 @@
 
     .nv-modal-header {
         padding: 20px 0 20px 0;
-
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             padding: 48px 0 40px 0;
             border-bottom: 1px solid #97979724;
         }
@@ -176,8 +168,7 @@
         padding: 16px 0 !important;
         overflow-x: hidden;
         overflow-y: auto;
-
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             padding: 48px 0 !important;
         }
     }
@@ -205,11 +196,9 @@
         position: relative;
         width: 136px;
         height: 136px;
-
         margin: 0 auto;
         margin-bottom: 16px;
-
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             margin: 0;
             height: 360px;
             width: auto;
@@ -219,7 +208,6 @@
 
     .popup-details {
         .wst-secondary-headings {
-
             h2,
             h3,
             h4,
@@ -228,17 +216,16 @@
             }
 
             &.bold {
-
                 h2,
                 h3,
                 h4,
                 h5 {
                     margin-bottom: 12px;
                     letter-spacing: 2px;
-                    color: #353738;
+                    color: $blue2;
                     font-weight: 900;
 
-                    @media screen and (min-width: 992px) {
+                    @include respond-to-min($desktop) {
                         margin-bottom: 16px;
                     }
                 }
@@ -248,14 +235,14 @@
         &.specifications {
             margin-top: 32px;
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 margin-top: 48px;
             }
 
             .wst-secondary-headings.bold {
                 margin-bottom: 24px;
 
-                @media screen and (min-width: 992px) {
+                @include respond-to-min($desktop) {
                     margin-top: 24px;
                 }
             }
@@ -272,48 +259,41 @@
         align-items: center;
         margin-bottom: 16px;
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             margin-bottom: 20px;
         }
 
         .title {
-            font-size: 14px;
+            font-size: $font14;
             line-height: 1.43;
-            color: #6f6c70;
+            color: $dark-gray;
             flex: 1;
 
-            @media screen and (min-width: 992px) {
-                font-size: 16px;
+            @include respond-to-min($desktop) {
+                font-size: $font16;
                 line-height: 1.5;
             }
         }
 
         .value {
             flex: 1;
-            font-size: 14px;
+            font-size: $font14;
             font-weight: bold;
             line-height: 1.43;
-            color: #353738;
+            color: $blue2;
 
-            @media screen and (min-width: 992px) {
-                font-size: 16px;
+            @include respond-to-min($desktop) {
+                font-size: $font16;
                 line-height: 1.5;
             }
         }
 
     }
 }
-
-
-
-
-
-
 // channel list page ( search sorting filtering ) start page/module
 .channel-list-page {
     margin-top: 0;
-
-    @media screen and (min-width: 992px) {
+    @include respond-to-min($desktop) {
         margin-top: 49px;
     }
 
@@ -329,7 +309,7 @@
     .nv-modal-body {
         &::-webkit-scrollbar-thumb {
             border-radius: 14px;
-            background-color: #719e19;
+            background-color: $main-green;
         }
 
         &::-webkit-scrollbar-track {
@@ -376,8 +356,7 @@
 
         li {
             margin-bottom: 8px;
-
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 margin-bottom: 24px;
             }
         }
@@ -386,22 +365,21 @@
             list-style: none;
             padding: 8px 16px 8px 20px;
             border-radius: 50px;
-            border: solid 0.9px #719e19;
+            border: solid 0.9px $main-green;
             background-color: rgba(113, 158, 25, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 8px;
-
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 margin-right: 24px;
             }
 
             span {
-                font-size: 16px;
+                font-size: $font16;
                 font-weight: bold;
                 line-height: 1.5;
-                color: #719e19;
+                color: $main-green;
                 padding-right: 8px;
             }
 
@@ -424,14 +402,14 @@
             list-style: none;
             padding-left: 0px;
             a {
-                font-size: 12px;
+                font-size: $font12;
                 line-height: 1.33;
                 letter-spacing: 1.6px;
-                color: #719e19;
+                color: $main-green;
                 text-transform: uppercase;
 
-                @media screen and (min-width: 992px) {
-                    font-size: 14px;
+                @include respond-to-min($desktop) {
+                    font-size: $font14;
                     line-height: 1.43;
                     letter-spacing: 2px;
                 }
@@ -457,14 +435,14 @@
     align-items: flex-start;
     justify-content: space-between;
     @include font-family-lato;
-    @media screen and (min-width: 992px) {
+    @include respond-to-min($desktop) {
         flex-direction: row;
         min-height: 56px;
         margin-bottom: 30px;
     }
 
     .filter-tags {
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             width: 100%;
         }
 
@@ -483,7 +461,7 @@
             margin-bottom: 8px;
         }
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             max-width: 384px;
             justify-content: space-between;
         }
@@ -491,7 +469,7 @@
         .mobile-view {
             display: flex !important;
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 display: none !important;
             }
         }
@@ -499,7 +477,7 @@
         .desktop-view {
             display: none !important;
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 display: flex !important;
             }
         }
@@ -531,12 +509,12 @@
                     }
 
                     a {
-                        color: #6f6c70;
+                        color: $dark-gray;
                         padding: 0;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        font-size: 16px;
+                        font-size: $font16;
                         line-height: 24px;
                         background-color: transparent;
 
@@ -585,7 +563,7 @@
             padding: 12px 0;
             position: relative;
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 padding: 17px 24px;
                 flex: inherit;
             }
@@ -593,8 +571,8 @@
             .circle-count {
                 position: absolute;
                 font-size: 8px;
-                color: #fff;
-                background-color: #719e19;
+                color: $white;
+                background-color: $main-green;
                 border-radius: 50%;
                 line-height: 1;
                 display: none;
@@ -605,7 +583,7 @@
                 top: 0;
                 right: -4px;
 
-                @media screen and (min-width: 992px) {
+                @include respond-to-min($desktop) {
                     width: 16px;
                     height: 16px;
                     font-size: 10px;
@@ -616,21 +594,21 @@
             }
 
             .label {
-                font-size: 12px;
+                font-size: $font12;
                 line-height: 1.33;
                 letter-spacing: 1.6px;
-                color: #353738;
+                color: $blue2;
                 font-weight: bold;
                 padding: 0;
 
-                @media screen and (min-width: 992px) {
-                    font-size: 16px;
+                @include respond-to-min($desktop) {
+                    font-size: $font16;
                     line-height: 1.38;
                     letter-spacing: 2px;
                 }
 
                 .sub-label {
-                    color: #6f6c70;
+                    color: $dark-gray;
                     font-weight: normal;
 
                     @media screen and (max-width: 991px) {
@@ -647,7 +625,7 @@
                 line-height: 24px;
                 margin-right: 4px;
 
-                @media screen and (min-width: 992px) {
+                @include respond-to-min($desktop) {
                     margin-right: 8px;
                     width: 20px;
                     height: 20px;
@@ -659,7 +637,7 @@
                     width: 24px;
                     height: 24px;
 
-                    @media screen and (min-width: 992px) {
+                    @include respond-to-min($desktop) {
                         width: 20px;
                         height: 20px;
                     }
@@ -668,16 +646,16 @@
         }
 
         .filter-lable {
-            border-right: 1px solid #e2e1da;
+            border-right: 1px solid $light-sand-brown;
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 border-right: none;
                 margin-right: 8px;
             }
         }
 
         .sort-label {
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 padding-right: 30px;
             }
         }
@@ -694,7 +672,7 @@
 .elife-channel-list-header {
     padding: 4px 16px;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
+    background-color: $white;
 
     @include respond-to-min($desktop) {
         padding: 14px 12px;
@@ -717,7 +695,7 @@
         .cmp-image {
             margin-right: 8px;
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 margin-right: 40px;
             }
 
@@ -726,7 +704,7 @@
                 width: 40px;
                 height: 40px;
 
-                @media screen and (min-width: 992px) {
+                @include respond-to-min($desktop) {
                     width: 52px;
                     height: 52px;
                 }
@@ -739,7 +717,7 @@
             padding-left: 4px 0;
             .back {
                 margin-bottom: 4px;
-                @media screen and (min-width: 992px) {
+                @include respond-to-min($desktop) {
                     margin-bottom: 8px;
                 }
             }
@@ -747,12 +725,12 @@
                 width: fit-content;
                 text-transform: uppercase;
                 letter-spacing: 2px;
-                font-size: 12px;
+                font-size: $font12;
                 padding-left: 8px;
                 line-height: 16px;
                 position: relative;
                 @include respond-to-min($desktop) {
-                  font-size: 14px;
+                  font-size: $font14;
                   padding-left: 12px;
                   line-height: 20px;
                 }
@@ -778,12 +756,12 @@
             }
             h4 {
                 margin: 0;
-                font-size: 14px;
+                font-size: $font14;
                 font-weight: 600;
                 line-height: 1.14;
-                color: #353738;
+                color: $blue2;
                 @include respond-to-min($desktop) {
-                    font-size: 16px;
+                    font-size: $font16;
                     line-height: 1;
                 }
             }
@@ -800,7 +778,7 @@
 
             .search-close {
 
-                background-color: #f7f8f4;
+                background-color: $sand-white-50;
                 position: absolute;
                 z-index: 9;
                 align-items: center;
@@ -820,20 +798,20 @@
                     cursor: pointer;
                 }
 
-                @media screen and (min-width: 992px) {
+                @include respond-to-min($desktop) {
                     svg {
                         width: 16px;
                         height: 16px;
 
                         g {
-                            stroke: #353738;
+                            stroke: $blue2;
                             opacity: 1;
                         }
                     }
                 }
             }
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 max-width: 588px;
                 min-width: 588px;
             }
@@ -855,8 +833,8 @@
                     left: 16px;
 
 
-                    @media screen and (min-width: 992px) {
-                        background-color: #f7f8f4;
+                    @include respond-to-min($desktop) {
+                        background-color: $sand-white-50;
                     }
 
 
@@ -869,7 +847,7 @@
                         width: 24px;
                         height: 24px;
 
-                        @media screen and (min-width: 992px) {
+                        @include respond-to-min($desktop) {
                             width: 16px;
                             height: 16px;
                         }
@@ -884,7 +862,7 @@
                     height: 48px;
                     box-shadow: none;
                     color: $almost-black;
-                    font-size: 16px;
+                    font-size: $font16;
                     line-height: 1.6;
 
                     &:focus {
@@ -907,10 +885,7 @@
                         box-shadow: none;
                         width: 24px;
                         height: 48px;
-
-                        height: 48px;
                         width: 48px;
-
                         right: 0;
                         left: auto;
                     }
@@ -919,7 +894,6 @@
                         opacity: 0;
                         width: 0;
                         padding: 0;
-
                     }
                 }
             }
@@ -939,7 +913,7 @@
                         .input-icon {
                             border-radius: 4px;
                             border: none;
-                            background-color: #f7f8f4;
+                            background-color: $sand-white-50;
                             padding: 0;
                             box-shadow: none;
                             width: 24px;
@@ -954,7 +928,7 @@
                             width: 100%;
                             padding: 6px 32px;
                             padding-left: 54px;
-                            color: #353738;
+                            color: $blue2;
                         }
                     }
                 }
@@ -974,7 +948,7 @@
         padding-left: 12px;
         padding-right: 12px;
     }
-    @media screen and (min-width: 992px) {
+    @include respond-to-min($desktop) {
         margin-top: 24px;
     }
 
@@ -984,7 +958,7 @@
             height: 84px;
             margin-bottom: 20px;
 
-            @media screen and (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 width: 120px;
                 height: 120px;
             }
@@ -1007,9 +981,9 @@
         margin-bottom: 8px;
         box-shadow: 0 3px 4px 0 #00000033;
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             margin-bottom: 19px;
-            border-top: 1px solid #e4e4e4;
+            border-top: 1px solid $silver-white;
         }
 
         .swiper-button-next,
@@ -1040,7 +1014,7 @@
         margin-right: 0;
         margin-left: 8px;
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             margin-right: 0;
             margin-left: 40px;
         }
@@ -1051,7 +1025,7 @@
         margin-right: 0;
         margin-left: 4px;
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             margin-right: 0;
             margin-left: 8px;
         }
@@ -1065,7 +1039,7 @@
         margin-right: 8px;
         margin-left: 0;
 
-        @media screen and (min-width: 992px) {
+        @include respond-to-min($desktop) {
             margin-right: 16px;
             margin-left: 0;
         }
