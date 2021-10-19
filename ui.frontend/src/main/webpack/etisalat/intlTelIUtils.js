@@ -604,7 +604,7 @@ import intlTelInput from 'intl-tel-input';
             });
             var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
             //var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
-
+            var fieldRequired = '<div id="errorRequired" class="has-error alert-label">This field is required.</div>'
             var errorMsg;
             if ($("#contactNumber") !== null) {
                 $("#contactNumber").parent().parent().parent().parent().find('.new').remove();
@@ -797,13 +797,28 @@ import intlTelInput from 'intl-tel-input';
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
+                var inputVal = $('#fullName').val();
                 $("#fullName").parent().removeClass("has-error-fields"); // remove it 
                 $("#fullName").parent().next(".alert-label").remove();
                 $("#fullName").parent().find(".alert-icon").remove();
-
-                var inputVal = $('#fullName').val();
+                
+                if ($('#fullName').val()== "") {
+                    $("#fullName").parent().addClass("has-error-fields").removeClass("is-valid");                   
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#fullName").parent().hasClass("has-error-fields")) {
+                        document.querySelector("#fullName").parentElement.innerHTML += fieldRequired;    
+                        document.querySelector('#fullName').parentElement.innerHTML += alertIcon;
+                        $('#fullName').val(inputVal);
+                        $("#fullName").keyup();
+                        
+                    };
+                  return;
+                }
+              
                 if (!realalphabetic($('#fullName').val())) {
-
+                    $("#fullName").parent().next(".alert-label").remove();
+                    $("#fullName").parent().find(".alert-icon").remove();
                     $("#fullName").parent().addClass("has-error-fields");
                     $("#fullName").parent().after('<div id="fullName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
                     alertIcon = "";
