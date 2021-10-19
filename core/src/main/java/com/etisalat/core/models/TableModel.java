@@ -75,12 +75,9 @@ public class TableModel {
             InputStream inputStream = rendition.adaptTo(InputStream.class);
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
             String line;
-            while ((line = br.readLine()) != null) {
-                if (line.contains(COMMA_DELIMITER)) {
+            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
                     String[] values = line.split(COMMA_DELIMITER);
                     headerList = Arrays.asList(values);
-                }
-
                 break;
             }
 
