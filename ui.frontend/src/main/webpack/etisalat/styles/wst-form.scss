@@ -2,15 +2,24 @@
 .wst-form {
   padding: 0 1.45rem !important; //Form default container responsive grid padding overrides
   //margin-top: 5rem;
-  .form-group {
+  .is-valid {
     margin-bottom: 0;
-    .is-valid~label {
-      color: $almost-black;
+    &label {
+      color: $main-green;
       transform: translateY(-10px) scale(.8);
       transform-origin: 0 0;
       font-size: $font16;
       z-index: 2;
     }
+      
+    #description + label, #justification + label {
+      color: $almost-black;
+      transform: translateY(10px) scale(.8);
+      font-size: $font16;
+      z-index: 2;
+    }
+     
+    
   }
   .cmp-form-options--drop-down {
       position: relative;
@@ -345,6 +354,7 @@
      
       & ~ label {
         left: 0;
+       
       }
     }
     input[type="tel"]:focus {
@@ -353,6 +363,7 @@
         font-size: $font16;
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
+        font-size: $font16;
       }
     }
   }
@@ -451,6 +462,7 @@
      
       & ~ label {
         left: 0;
+        font-size: $font16;
       }
     }
     
@@ -466,9 +478,7 @@
       position: relative;
     }
   }
-//   input#phone1+label {
-//     margin-top: 17px;
-// }
+
 
   .has-error {
     display: block;
@@ -550,7 +560,7 @@
     z-index: 2;
   }
   
-  input:not([type]):focus:not([readonly]) ~ label
+  input:focus ~ label
   {
     color: $main-green;
     font-size: $font16;
@@ -765,6 +775,7 @@
     top: 100%;
     left: 0;
     opacity: 0;
+    font-size: $font16;
     -webkit-transition: 0.2s opacity ease-out, 0.2s color ease-out;
     transition: 0.2s opacity ease-out, 0.2s color ease-out;
   }
@@ -776,6 +787,7 @@
     top: 100%;
     left: 0;
     opacity: 0;
+    font-size: $font16;
     -webkit-transition: 0.2s opacity ease-out, 0.2s color ease-out;
     transition: 0.2s opacity ease-out, 0.2s color ease-out;
   }
@@ -942,7 +954,7 @@
     margin-top: 0.2rem;
    
     @include respond-to-min($desktop) {
-      font-size: $font20;
+      font-size: $font16;
       }
     
   }
@@ -1151,6 +1163,7 @@
         ~ label {
           -webkit-transform: translateY(10px) scale(0.8);
           transform: translateY(10px) scale(0.8);
+          font-size: $font16;
         }
       }
       .alert-label {
@@ -1292,13 +1305,13 @@
       line-height: 1.5rem;
       color: $gray;
       @include font-family-lato;
-      padding-bottom: 4rem;
+      padding-bottom: 1.5rem;
     }
   }
   .cmp-teaser__content {    
     text-align: center;
     h3 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       line-height: toRem(52);
       margin-bottom: 1.5rem;
     }
@@ -1308,6 +1321,7 @@
 .cws-form .has-error-fields textarea ~label {
   transform: translateY(10px) scale(.8);
 }
+
 
 #justification + label {
   padding-left: toRem(10);
