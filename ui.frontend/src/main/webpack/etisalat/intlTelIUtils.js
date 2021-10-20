@@ -520,11 +520,17 @@ import intlTelInput from 'intl-tel-input';
                 $("#select-block-unblock").parent().parent().parent().find('.new').remove();
             }
 
-
-
+            $(document).on("keypress", "#phone1", function (event) {                         
+                var x = event.which || event.keycode;
+                // not allow alphabets
+                if (x>=65 && x<=90 || x>=97 && x<=127) {
+                  event.preventDefault();
+                }
+              });
 
             $(document).on("keyup", "#phone1", function (element) {
-                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
+                var x = element.which || element.keycode;
+                if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1 ) {
                     return;
                 } else {
                     if ($("#phone1").val().trim()) {
@@ -1105,7 +1111,7 @@ import intlTelInput from 'intl-tel-input';
                 $('#emailAddress').focus();
 
             }
-            if (!$('#companyName').val()) {
+            if (!$('#companyName').val() && $('#companyName').val() !== undefined ) {
                 $("#companyName").parent().removeClass("is-valid").addClass("has-error-fields");
                 alertIcon = "";
                 alertIcon = contentString;
@@ -1124,9 +1130,10 @@ import intlTelInput from 'intl-tel-input';
             } else {
                 $("#companyName").parent().removeClass("has-error-fields").addClass("is-valid");
             }
-            if (!$('#description').val()) {
+            if (!$('#description').val()  && $('#description').val() !== undefined ) {
                 if ($("#description").parent().next(".alert-label").length == 0) // only add if not added
                 {
+                    $("#description").parent().next(".alert-label").remove();
                     $("#description").parent().removeClass("is-valid").addClass("has-error-fields");
                     $("#description").parent().after(div);
                     alertIcon = "";
@@ -1141,6 +1148,25 @@ import intlTelInput from 'intl-tel-input';
 
             } else {
                 $("#description").parent().removeClass("has-error-fields").addClass("is-valid");
+            }
+            if (!$('#justification').val() && $('#justification').val() !== undefined ) {
+                $("#justification").parent().next(".alert-label").remove();
+                if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
+                {
+                    $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
+                    $("#justification").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#justification') != null) {
+                        document.querySelector('#justification').parentElement.innerHTML += alertIcon;
+                    }
+                    removeunWantedParsers();
+                }
+
+                $('#justification').focus();
+
+            } else {
+                $("#justification").parent().removeClass("has-error-fields").addClass("is-valid");
             }
 
             if (!$('#select2-selection__rendered').val()) {
@@ -1210,23 +1236,7 @@ import intlTelInput from 'intl-tel-input';
                 $("#url").parent().removeClass("has-error-fields").addClass("is-valid");
             }
 
-            if (!$('#justification').val()) {
-                $("#justification").parent().removeClass("is-valid").addClass("has-error-fields");
-                if ($("#justification").parent().next(".alert-label").length == 0) // only add if not added
-                {
-                    $("#justification").parent().after(div);
-                    alertIcon = "";
-                    alertIcon = contentString;
-                    if (document.querySelector('#justification') != null) {
-                        document.querySelector('#justification').parentElement.innerHTML += alertIcon;
-                    }
-
-                }
-                $('#justification').focus();
-
-            } else {
-                $("#justification").parent().removeClass("has-error-fields").addClass("is-valid");
-            }
+         
 
 
             if (!$('#phone1').val() || $('#phone1').val() == "") {
@@ -1315,7 +1325,7 @@ import intlTelInput from 'intl-tel-input';
             else {
                 $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
             }
-            if (!$('#designation').val() || $('#designation').val() == "") {
+            if ((!$('#designation').val() || $('#designation').val() == "") && $('#designation').val() !== undefined ) {
                 $("#designation").parent().addClass("has-error-fields");
                 alertIcon = "";
                 alertIcon = contentString;
