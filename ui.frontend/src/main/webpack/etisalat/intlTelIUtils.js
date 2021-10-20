@@ -800,9 +800,11 @@ import intlTelInput from 'intl-tel-input';
                 var inputVal = $('#fullName').val();
                 $("#fullName").parent().removeClass("has-error-fields"); // remove it 
                 $("#fullName").parent().next(".alert-label").remove();
+                $("#fullName").parent().find(".alert-label").remove();
                 $("#fullName").parent().find(".alert-icon").remove();
-                
+               
                 if ($('#fullName').val()== "") {
+                    
                     $("#fullName").parent().addClass("has-error-fields").removeClass("is-valid");                   
                     alertIcon = "";
                     alertIcon = contentString;
@@ -817,6 +819,7 @@ import intlTelInput from 'intl-tel-input';
                 }
               
                 if (!realalphabetic($('#fullName').val())) {
+                    $("#fullName").parent().find(".alert-label").remove();
                     $("#fullName").parent().next(".alert-label").remove();
                     $("#fullName").parent().find(".alert-icon").remove();
                     $("#fullName").parent().addClass("has-error-fields");
