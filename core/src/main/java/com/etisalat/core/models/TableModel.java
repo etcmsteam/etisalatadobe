@@ -27,6 +27,7 @@ public class TableModel {
 
     public static final String RTE = "rte";
     public static final String CSV = "csv";
+    public static final String SIMPLE_CSV = "simplecsv";
     public static final String ALL = "_all";
     public static final String TRUE = "true";
     public static final String EQUAL_DELIMITER = "=";
@@ -47,6 +48,9 @@ public class TableModel {
     private String csvPath;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String simplecsvPath;
+
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     private String filterCsvPath;
 
 
@@ -63,21 +67,11 @@ public class TableModel {
     public List<String> getHeaderList() {
         List<String> headerList = new ArrayList<>();
         try {
-            final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
-            if (!resource.isPresent()) { // if the resource doesn't exists
-                LOGGER.error("While reading the header the resource doesn't exists at the path {}",
-                        csvPath);
-                return headerList;
-            }
-
-            Asset asset = resource.get().adaptTo(Asset.class);
-            Rendition rendition = asset.getOriginal();
-            InputStream inputStream = rendition.adaptTo(InputStream.class);
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader br = readAsset(csvPath);
             String line;
             while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-                    String[] values = line.split(COMMA_DELIMITER);
-                    headerList = Arrays.asList(values);
+                String[] values = line.split(COMMA_DELIMITER);
+                headerList = Arrays.asList(values);
                 break;
             }
 
@@ -92,20 +86,8 @@ public class TableModel {
     public List<LinkedHashMap<String, String>> getAllRows() {
 
         List<LinkedHashMap<String, String>> rows = new ArrayList<>();
-
-        final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
-
-        if (!resource.isPresent()) { // if the resource doesn't exists
-            LOGGER.error("The resource doesn't exists at the path {}",
-                    csvPath);
-            return rows;
-        }
-
         try {
-            Asset asset = resource.get().adaptTo(Asset.class);
-            Rendition rendition = asset.getOriginal();
-            InputStream inputStream = rendition.adaptTo(InputStream.class);
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader br = readAsset(csvPath);
             String line;
             int j = 1;
             while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
@@ -146,18 +128,7 @@ public class TableModel {
     private LinkedHashMap<String, String> getFilters(int index) {
         LinkedHashMap<String, String> row = new LinkedHashMap<>();
         try {
-            final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(filterCsvPath));
-            if (!resource.isPresent()) { // if the resource doesn't exists
-
-                LOGGER.error("The resource doesn't exists at the path {}",
-                        filterCsvPath);
-                return row;
-            }
-
-            Asset asset = resource.get().adaptTo(Asset.class);
-            Rendition rendition = asset.getOriginal();
-            InputStream inputStream = rendition.adaptTo(InputStream.class);
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader br = readAsset(filterCsvPath);
             String line;
             while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
                 String[] cols = line.split(COMMA_DELIMITER);
@@ -176,6 +147,35 @@ public class TableModel {
                     filterCsvPath);
         }
         return row;
+    }
+
+    public List<List<String>> getAllRowsSimpleCSV() {
+        List<List<String>> headerList = new ArrayList<>();
+        try {
+            BufferedReader br = readAsset(simplecsvPath);
+            String line;
+            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+                String[] values = line.split(COMMA_DELIMITER);
+                headerList.add(Arrays.asList(values));
+            }
+
+        } catch (IOException e) {
+            LOGGER.error("The exception occurred in getting header while reading table csv {}",
+                    csvPath);
+        }
+        return headerList;
+    }
+
+    private BufferedReader readAsset(String csvPath) {
+
+        final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
+        if (!resource.isPresent()) { // if the resource doesn't exists
+            LOGGER.error("The resource doesn't exists at the path {}", csvPath);
+        }
+        Asset asset = resource.get().adaptTo(Asset.class);
+        Rendition rendition = asset.getOriginal();
+        InputStream inputStream = rendition.adaptTo(InputStream.class);
+        return new BufferedReader(new InputStreamReader(inputStream));
     }
 
 }

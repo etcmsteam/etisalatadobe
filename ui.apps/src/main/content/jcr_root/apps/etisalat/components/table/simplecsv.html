@@ -1,0 +1,19 @@
+<sly data-sly-template.simplecsv="${ @ tableModel}">
+   <div data-sly-test="${properties.enableSearch == 'true'}" id="channels_filter" class="table-inline--search input-field search-field cms-search"><input type="search" required="" class="advanced-table-search" placeholder="" aria-controls="channels"><label>${!properties.searchPlaceholderText ? 'Search by channel name' : properties.searchPlaceholderText}</label></div>
+   <table  data-sly-test.rows="${tableModel.allRowsSimpleCSV}">
+      <thead>
+         <sly  data-sly-list.row="${rows}" >
+            <tr  data-sly-test="${rowList.index == 0}">
+               <th  data-sly-repeat="${row}"> ${item} </th>
+            </tr>
+         </sly>
+      </thead>
+      <tbody>
+         <sly  data-sly-list.row="${rows}">
+            <tr data-sly-test="${rowList.index > 0}">
+               <td data-sly-repeat="${row}"> ${item}</td>
+            </tr>
+         </sly>
+      </tbody>
+   </table>
+</sly>
