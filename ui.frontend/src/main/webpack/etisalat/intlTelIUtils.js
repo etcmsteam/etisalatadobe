@@ -1108,7 +1108,9 @@ import intlTelInput from 'intl-tel-input';
                 $('#fullName').focus();
 
             } else {
-                $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");
+                if ($("#fullName").parent().hasClass("has-error-fields") == false) {
+                    $("#fullName").parent().addClass("is-valid").removeClass("has-error-fields");
+                }
             }
 
             if (!$('#emailAddress').val()) {
@@ -1123,7 +1125,9 @@ import intlTelInput from 'intl-tel-input';
                     }
 
                 } else {
+                    if ($("#emailAddress").parent().hasClass("has-error-fields")== false) {
                     $("#emailAddress").parent().removeClass("has-error-fields").addClass("is-valid");
+                    }
                 }
 
                 $('#emailAddress').focus();
@@ -1146,7 +1150,9 @@ import intlTelInput from 'intl-tel-input';
                 $('#companyName').focus();
 
             } else {
-                $("#companyName").parent().removeClass("has-error-fields").addClass("is-valid");
+                if ($("#companyName").parent().hasClass("has-error-fields")== false) {
+                    $("#companyName").parent().removeClass("has-error-fields").addClass("is-valid");
+                }
             }
             if (!$('#description').val()  && $('#description').val() !== undefined ) {
                 if ($("#description").parent().next(".alert-label").length == 0) // only add if not added
@@ -1165,7 +1171,9 @@ import intlTelInput from 'intl-tel-input';
                 $('#description').focus();
 
             } else {
+                if ($("#description").parent().hasClass("has-error-fields")== false) {
                 $("#description").parent().removeClass("has-error-fields").addClass("is-valid");
+                }
             }
             if (!$('#justification').val() && $('#justification').val() !== undefined ) {
                 $("#justification").parent().next(".alert-label").remove();
@@ -1184,7 +1192,9 @@ import intlTelInput from 'intl-tel-input';
                 $('#justification').focus();
 
             } else {
+                if ($("#justification").parent().hasClass("has-error-fields")== false) {
                 $("#justification").parent().removeClass("has-error-fields").addClass("is-valid");
+                }
             }
 
             if (!$('#select2-selection__rendered').val()) {
@@ -1214,7 +1224,9 @@ import intlTelInput from 'intl-tel-input';
                 $('#firstName').focus();
 
             } else {
-                $("#firstName").parent().removeClass("has-error-fields").addClass("is-valid");
+                if ($("#firstName").parent().hasClass("has-error-fields")== false) {
+                      $("#firstName").parent().removeClass("has-error-fields").addClass("is-valid");
+                }
             }
 
             if (!$('#lastName').val()) {
@@ -1232,7 +1244,9 @@ import intlTelInput from 'intl-tel-input';
                 $('#lastName').focus();
 
             } else {
+                if ($("#lastName").parent().hasClass("has-error-fields")== false) {
                 $("#lastName").parent().removeClass("has-error-fields").addClass("is-valid");
+                }
             }
 
             if (!$('#url').val()) {
@@ -1251,7 +1265,9 @@ import intlTelInput from 'intl-tel-input';
 
             }
             else {
-                $("#url").parent().removeClass("has-error-fields").addClass("is-valid");
+                if ($("#url").parent().hasClass("has-error-fields")== false) {
+                    $("#url").parent().removeClass("has-error-fields").addClass("is-valid");
+                }
             }
 
          
@@ -1276,7 +1292,9 @@ import intlTelInput from 'intl-tel-input';
 
             }
             else {
-                $("#phone1").parent().removeClass("has-error-fields").addClass('is-valid');
+                if ($("#phone1").parent().parent().hasClass("has-error-fields")== false) {
+                    $("#phone1").parent().removeClass("has-error-fields").addClass('is-valid');
+                }
             }
 
             
@@ -1299,7 +1317,9 @@ import intlTelInput from 'intl-tel-input';
 
             }
             else {
+                if ($("#mobileNumber").parent().parent().hasClass("has-error-fields"))== false {
                 $("#mobileNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+                }
             }
             if (!$('#contactNumber').val() || $('#contactNumber').val() == "") {
                 $("#contactNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
@@ -1320,7 +1340,9 @@ import intlTelInput from 'intl-tel-input';
 
             }
             else {
-                $("#contactNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+                if ($("#mobileNumber").parent().parent().hasClass("has-error-fields")== false) {
+                    $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+                }
             }
             if (!$('#accountNumber').val() || $('#accountNumber').val() == "") {
                 $("#accountNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
@@ -1341,7 +1363,9 @@ import intlTelInput from 'intl-tel-input';
 
             }
             else {
-                $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+                if ($("#accountNumber").parent().parent().hasClass("has-error-fields")== false) {
+                     $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+                }
             }
             if ((!$('#designation').val() || $('#designation').val() == "") && $('#designation').val() !== undefined ) {
                 $("#designation").parent().addClass("has-error-fields");
@@ -1358,7 +1382,9 @@ import intlTelInput from 'intl-tel-input';
                     $("#designation").parent().removeClass("is-valid").addClass("has-error-fields");
                     document.querySelector('#designation').parentElement.innerHTML += alertIcon;
                 } else {
-                    $("#designation").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                    if ($("#accountNumber").parent().parent().hasClass("has-error-fields")== false) {
+                     $("#accountNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                    }
                 }
                 $('#designation').focus();
                 removeunWantedParsers();
