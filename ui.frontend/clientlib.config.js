@@ -86,7 +86,7 @@ module.exports = {
           name: 'clientlib-etisalat',
           categories: ['etisalat.etisalat'],
           dependencies: ['etisalat.dependencies'],
-		  embed: ['etisalat.grid.latest'],
+		  embed: ['etisalat.custom.grid'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
@@ -173,7 +173,7 @@ module.exports = {
           name: 'clientlib-gochat',
           categories: ['etisalat.gochat'],
       dependencies: ['etisalat.dependencies'],
-	  embed: ['etisalat.grid.latest'],
+	  embed: ['etisalat.custom.grid'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
