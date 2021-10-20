@@ -541,7 +541,28 @@ import intlTelInput from 'intl-tel-input';
                             $("#phone1").parent().find(".alert-label").remove();
                             $("#phone1").parent().find(".alert-icon").remove();
 
-                        } else {
+                        } else {  
+                                     
+                        $("#phone1").parent().parent().removeClass("has-error-fields"); // remove it 
+                        $("#phone1").parent().next(".alert-label").remove();
+                        $("#phone1").parent().find(".alert-label").remove();
+                        $("#phone1").parent().find(".alert-icon").remove();
+        
+                        if ($('#phone1').val() == "") {
+        
+                            $("#phone1").parent().addClass("has-error-fields").removeClass("is-valid");
+                            alertIcon = "";
+                            alertIcon = contentString;
+                            if ($("#phone1").parent().hasClass("has-error-fields")) {
+                                document.querySelector("#phone1").parentElement.innerHTML += fieldRequired;
+                                document.querySelector('#phone1').parentElement.innerHTML += alertIcon;
+                                $('#phone1').val(inputVal);
+                                $("#phone1").keyup();
+        
+                            };
+                            return;
+                        }
+
                             var errorCode = "";
                             if (!realnumeric(inputVal)) {
                                 errorCode = 0;
@@ -1505,29 +1526,28 @@ import intlTelInput from 'intl-tel-input';
                     $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
                 }
             }
-            if (!$('#accountNumber').val() || $('#accountNumber').val() == "") {
-                $("#accountNumber").parent().parent().removeClass("has-error-fields").removeClass('is-valid');
-                $("#accountNumber").parent().parent().addClass("has-error-fields");
+            if (!$('#accountNumber').val()) {
+                $("#accountNumber").parent().removeClass("has-error-fields").addClass("has-error-fields");
+                if ($("#accountNumber").parent().next(".alert-label").length == 0) // only add if not added
+                {
+                    $("#accountNumber").parent().after(div);
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if (document.querySelector('#accountNumber') != null) {
+                        document.querySelector('#accountNumber').parentElement.innerHTML += alertIcon;
+                    }
 
-                alertIcon = "";
-                alertIcon = contentString;
-
-                if ($("#accountNumber").parent().parent().hasClass("has-error-fields")) {
-                    $("#accountNumber").parent().find(".alert-label").remove();
-                    $("#accountNumber").parent().find(".alert-icon").remove();
-                    document.querySelector('#accountNumber').parentElement.innerHTML += div;
-                    $("#accountNumber").parent().find('.iti__flag-container').after(alertIcon);
-
-                    $('#accountNumber-error').parent().parent().find('.new').remove();
-                };
+                }
                 $('#accountNumber').focus();
 
-            }
-            else {
-                if ($("#accountNumber").parent().parent().hasClass("has-error-fields") == false) {
-                    $("#accountNumber").parent().removeClass("has-error-fields").addClass('is-valid');
+            } else {
+                if ($("#accountNumber").parent().hasClass("has-error-fields") == false) {
+                    $("#accountNumber").parent().removeClass("has-error-fields").addClass("is-valid");
                 }
             }
+
+          
+         
             if ((!$('#designation').val() || $('#designation').val() == "") && $('#designation').val() !== undefined) {
                 $("#designation").parent().addClass("has-error-fields");
                 alertIcon = "";
