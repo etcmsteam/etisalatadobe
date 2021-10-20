@@ -66,15 +66,15 @@ public class TableModel {
 
     public List<String> getHeaderList() {
         List<String> headerList = new ArrayList<>();
-        try {
-            BufferedReader br = readAsset(csvPath);
-            String line;
-            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-                String[] values = line.split(COMMA_DELIMITER);
-                headerList = Arrays.asList(values);
-                break;
+        try (BufferedReader br = readAsset(csvPath)) {
+            if (br != null) {
+                String line;
+                while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+                    String[] values = line.split(COMMA_DELIMITER);
+                    headerList = Arrays.asList(values);
+                    break;
+                }
             }
-
         } catch (IOException e) {
             LOGGER.error("The exception occurred in getting header while reading table csv {}",
                     csvPath);
@@ -86,11 +86,10 @@ public class TableModel {
     public List<LinkedHashMap<String, String>> getAllRows() {
 
         List<LinkedHashMap<String, String>> rows = new ArrayList<>();
-        try {
-            BufferedReader br = readAsset(csvPath);
+        try (BufferedReader br = readAsset(csvPath)) {
             String line;
             int j = 1;
-            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+            while (br != null && (line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
                 String[] values = line.split(COMMA_DELIMITER);
                 if (j > 1) {
                     LinkedHashMap<String, String> row = new LinkedHashMap<>();
@@ -106,6 +105,8 @@ public class TableModel {
                 }
                 j++;
             }
+
+
         } catch (IOException e) {
             LOGGER.error("The exception occurred while reading table csv {}",
                     csvPath);
@@ -127,10 +128,9 @@ public class TableModel {
 
     private LinkedHashMap<String, String> getFilters(int index) {
         LinkedHashMap<String, String> row = new LinkedHashMap<>();
-        try {
-            BufferedReader br = readAsset(filterCsvPath);
+        try (BufferedReader br = readAsset(filterCsvPath)) {
             String line;
-            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+            while (br != null && (line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
                 String[] cols = line.split(COMMA_DELIMITER);
                 if (cols.length > index) {
                     String item = cols[index];
@@ -151,12 +151,13 @@ public class TableModel {
 
     public List<List<String>> getAllRowsSimpleCSV() {
         List<List<String>> headerList = new ArrayList<>();
-        try {
-            BufferedReader br = readAsset(simplecsvPath);
+        try (BufferedReader br = readAsset(simplecsvPath)) {
             String line;
-            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-                String[] values = line.split(COMMA_DELIMITER);
-                headerList.add(Arrays.asList(values));
+            if (br != null) {
+                while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+                    String[] values = line.split(COMMA_DELIMITER);
+                    headerList.add(Arrays.asList(values));
+                }
             }
 
         } catch (IOException e) {
@@ -167,15 +168,17 @@ public class TableModel {
     }
 
     private BufferedReader readAsset(String csvPath) {
-
+        BufferedReader bufferedReader = null;
         final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
         if (!resource.isPresent()) { // if the resource doesn't exists
             LOGGER.error("The resource doesn't exists at the path {}", csvPath);
+        } else {
+            Asset asset = resource.get().adaptTo(Asset.class);
+            Rendition rendition = asset.getOriginal();
+            InputStream inputStream = rendition.adaptTo(InputStream.class);
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         }
-        Asset asset = resource.get().adaptTo(Asset.class);
-        Rendition rendition = asset.getOriginal();
-        InputStream inputStream = rendition.adaptTo(InputStream.class);
-        return new BufferedReader(new InputStreamReader(inputStream));
+        return bufferedReader;
     }
 
 }
