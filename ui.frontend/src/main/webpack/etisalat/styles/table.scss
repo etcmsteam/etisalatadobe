@@ -299,3 +299,102 @@
 .dataTables_filter {
 	display: none;
 }
+.table-inline {
+	&--search {
+		&.input-field {
+			width: 25%;
+			margin-left: 75%;
+			margin-bottom: 2.5rem;
+			.advanced-table-search {
+				background-color: transparent;
+				border: none;
+				border-bottom: 1px solid #b2b2b2;
+				border-radius: 0;
+				color: #353738;
+				outline: none;
+				height: 2.5rem;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				box-shadow: none;
+				box-sizing: content-box;
+				transition: box-shadow 0.3s, border 0.3s;
+				font-size: 1.25rem;
+				position: relative;
+				z-index: 1;
+			}
+			&:after {
+				background-image: url(../resources/images/icon_search.svg) !important;
+			}
+			input[type="search"]:not(.browser-default):focus:not([readonly]) ~ label {
+				color: #719e19;
+				font-size: 1rem;
+				transform: translateY(-10px) scale(0.8);
+				transform-origin: 0 0;
+			}
+
+			input[type="search"]:not(.browser-default):focus:not([readonly]) {
+				border-bottom: 1px solid #719e19;
+				box-shadow: 0 1px 0 0 #719e19;
+				transform-origin: 0 0;
+				z-index: 0;
+			}
+			label {
+				@include font-family-lato;
+			}
+		}
+	}
+}
+
+.custom-datatable {
+	.dataTables_info {
+		display: none;
+		@media (min-width: 1247px) {
+			display: block;
+			padding-left: 1rem;
+			clear: both;
+			float: left;
+			padding-top: 0.755em;
+			color: #848789;
+			font-size: 14px;
+			line-height: 17px;
+		}
+	}
+	.dataTables_paginate {
+		float: right;
+		text-align: right;
+		padding-top: .25em;
+		cursor: pointer;
+		.paginate_button {
+			margin: 0 20px;
+			color: #848789;
+			font-family: Neotech,Roboto,Arial,sans-serif;
+			font-size: 16px;
+			line-height: 20px;
+			text-align: center;
+			outline: 0;
+			&.current {
+				color: #719e19;
+			}
+			&.disabled {
+				visibility: hidden;
+			}
+			&.next, &.previous {
+				font-size: 24px;
+			}
+		}
+	}
+}
+.search-input {
+	.check-availability-style {
+		.form-control {
+			opacity: 1;
+			font-size: $font16;
+			line-height: 1.6;
+		}
+		.form-control, .search-input .check-availability-style .input-icon {
+			@include font-family-lato;
+			background-color: $sand-white-50 !important;
+		}
+	}
+}

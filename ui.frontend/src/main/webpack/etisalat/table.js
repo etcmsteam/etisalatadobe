@@ -57,8 +57,8 @@ $(function () {
 				"zeroRecords": noSearchResultsText,
 				"info": "_START_ to _END_ of _TOTAL_ records",
 				"oPaginate": {
-					sNext: '<span class="pagination-next"></span>',
-					sPrevious: '<span class="pagination-previous"></span>'
+					sNext: '<span class="pagination-next">⟶</span>',
+					sPrevious: '<span class="pagination-previous">⟵</span>'
 				}
 			},
 			'createdRow': function (row, data, rowIndex) {
@@ -116,4 +116,22 @@ $(function () {
 		});
 	}
 	initializeTable(CUSTOM_TABLE_COMPONENT);
+});
+
+$(document).ready(function() {
+	if ($(".search-input").length > 0){
+		$("#searchInput").on("keyup", function() {
+			const value = $(this).val().toLowerCase();
+			let searchTarget = $("table tbody tr");
+			const targetID = $(this).attr("data-search-target");
+			if(targetID && targetID != null){
+				searchTarget = $('#' + targetID).find("table tbody tr");
+			}
+			searchTarget.filter(function() {
+				$(this).toggle(
+				  $(this).text().toLowerCase().indexOf(value) > -1
+				);
+			});
+		});
+	}
 });
