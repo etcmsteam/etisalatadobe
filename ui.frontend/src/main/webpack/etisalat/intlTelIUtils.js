@@ -740,10 +740,27 @@ import intlTelInput from 'intl-tel-input';
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
+               
+                var inputVal = $('#companyName').val();               
                 $("#companyName").parent().removeClass("has-error-fields"); // remove it 
                 $("#companyName").parent().next(".alert-label").remove();
+                $("#companyName").parent().find(".alert-label").remove();
                 $("#companyName").parent().find(".alert-icon").remove();
-                var inputVal = $('#companyName').val();
+
+                if ($('#companyName').val() == "") {
+
+                    $("#companyName").parent().addClass("has-error-fields").removeClass("is-valid");
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#companyName").parent().hasClass("has-error-fields")) {
+                        document.querySelector("#companyName").parentElement.innerHTML += fieldRequired;
+                        document.querySelector('#companyName').parentElement.innerHTML += alertIcon;
+                        $('#companyName').val(inputVal);
+                        $("#companyName").keyup();
+
+                    };
+                    return;
+                }
                 if (!realalphabetic($('#companyName').val())) {
                     $("#companyName").parent().addClass("has-error-fields").removeClass('is-valid');
                     $("#companyName").parent().after('<div id="companyName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
@@ -767,10 +784,27 @@ import intlTelInput from 'intl-tel-input';
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
+                var inputVal = $('#url').val();
                 $("#url").parent().removeClass("has-error-fields"); // remove it 
                 $("#url").parent().next(".alert-label").remove();
+                $("#url").parent().find(".alert-label").remove();
                 $("#url").parent().find(".alert-icon").remove();
-                var inputVal = $('#url').val();
+
+                if ($('#url').val() == "") {
+
+                    $("#url").parent().addClass("has-error-fields").removeClass("is-valid");
+                    alertIcon = "";
+                    alertIcon = contentString;
+                    if ($("#url").parent().hasClass("has-error-fields")) {
+                        document.querySelector("#url").parentElement.innerHTML += fieldRequired;
+                        document.querySelector('#url').parentElement.innerHTML += alertIcon;
+                        $('#url').val(inputVal);
+                        $("#url").keyup();
+
+                    };
+                    return;
+                }
+                
                 if (!urlvalid($('#url').val())) {
                     $("#url").parent().addClass("has-error-fields");
                     $("#url").parent().after('<div id="url-error" class="has-error alert-label">Please Enter A Valid URL</div>');
@@ -861,8 +895,11 @@ import intlTelInput from 'intl-tel-input';
                     };
                     return;
                 }
-                if (!realalphabetic($('#firstName').val()) && $('#firstName').val() != "") {
-                    $("#firstName").parent().addClass("has-error-fields").removeClass("is-valid");
+                if (!realalphabetic($('#firstName').val())) {
+                    $("#firstName").parent().find(".alert-label").remove();
+                    $("#firstName").parent().next(".alert-label").remove();
+                    $("#firstName").parent().find(".alert-icon").remove();
+                    $("#firstName").parent().addClass("has-error-fields");
                     $("#firstName").parent().after('<div id="firstName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
                     alertIcon = "";
                     alertIcon = contentString;
@@ -872,10 +909,12 @@ import intlTelInput from 'intl-tel-input';
                         $("#firstName").keyup();
                     };
                     $('#firstName-error').parent().parent().find('.new').remove();
-
                 } else {
-                    $("#firstName").parent().addClass("is-valid").removeClass("has-error-fields");;
+
+                    $("#firstName").parent().addClass("is-valid").removeClass("has-error-fields");
+
                 }
+             
             }
         });
         $(document).on("keyup", "#lastName", function (element) {
@@ -902,9 +941,11 @@ import intlTelInput from 'intl-tel-input';
                     return;
                 }
 
-
-                if (!realalphabetic($('#lastName').val()) && $('#lastName').val() != "") {
-                    $("#lastName").parent().addClass("has-error-fields").removeClass("is-valid");
+                if (!realalphabetic($('#lastName').val())) {
+                    $("#lastName").parent().find(".alert-label").remove();
+                    $("#lastName").parent().next(".alert-label").remove();
+                    $("#lastName").parent().find(".alert-icon").remove();
+                    $("#lastName").parent().addClass("has-error-fields");
                     $("#lastName").parent().after('<div id="lastName-error" class="has-error alert-label">Letters, and spaces only please.</div>');
                     alertIcon = "";
                     alertIcon = contentString;
@@ -913,10 +954,13 @@ import intlTelInput from 'intl-tel-input';
                         $('#lastName').val(inputVal);
                         $("#lastName").keyup();
                     };
-                    removeunWantedParsers();
+                    $('#lastName-error').parent().parent().find('.new').remove();
                 } else {
+
                     $("#lastName").parent().addClass("is-valid").removeClass("has-error-fields");
+
                 }
+              
             }
         });
 
