@@ -1,6 +1,9 @@
 // elife table filter popups module
 .e-life-modal {
     &.nv-modal {
+        &.fade.show {
+            opacity: 1;
+        }
 		.nv-checkboxes-wrap,
 		.nv-radio-wrap {
 			height: 32px;
@@ -293,18 +296,12 @@
 }
 // channel list page ( search sorting filtering ) start page/module for table
 .channel-list-page {
-    margin-top: 0;
-    @include respond-to-min($desktop) {
-        margin-top: 49px;
-    }
-
     @include respond-to-max($desktop - 1) {
         .tab-content .table-default-section {
             margin: 0;
             padding: 0;
         }
     }
-
 
     .tables-4-0,
     .nv-modal-body {
@@ -328,8 +325,6 @@
         overflow-y: auto;
     }
 }
-
-
 
 .channel-list-page {
     .table-default-section {
@@ -767,10 +762,7 @@
         align-items: center;
 
         .search-wrapper {
-
-
             .search-close {
-
                 background-color: $sand-white-50;
                 position: absolute;
                 z-index: 9;
@@ -780,7 +772,6 @@
                 width: 12px;
                 height: 48px;
                 display: none;
-
                 svg,
                 img {
                     width: 12px;
@@ -824,13 +815,9 @@
                     justify-content: center;
                     display: flex;
                     left: 16px;
-
-
                     @include respond-to-min($desktop) {
                         background-color: $sand-white-50;
                     }
-
-
                     &:hover {
                         cursor: pointer;
                     }
