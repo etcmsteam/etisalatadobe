@@ -95,10 +95,9 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
 var notificationsswiper = new Swiper('.digital-notification-swiper-container .swiper-container', {
     direction: 'vertical',
     slidesPerView: 1,
-    //effect: 'fade',
-    autoplay: {
-      delay: 5000,
-    },
+    effect: 'fade',
+    autoplay: 5000,
+   
 });
  
 // close popup
