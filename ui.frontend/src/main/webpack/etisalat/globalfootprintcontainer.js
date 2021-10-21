@@ -1,4 +1,5 @@
-var galleryTop = new Swiper('.swiper-gallery-slide', {
+if ($(".globalfootprintcontainer").length > 0) {
+  var galleryTop = new Swiper('.swiper-gallery-slide', {
     spaceBetween: 10,
     effect: 'fade',
     navigation: {
@@ -43,3 +44,4 @@ var galleryTop = new Swiper('.swiper-gallery-slide', {
   });
   galleryTop.controller.control = galleryThumbs;
   galleryThumbs.controller.control = galleryTop;
+}

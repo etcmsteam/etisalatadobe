@@ -1,16 +1,26 @@
 .cws-form,
 .wst-form {
   padding: 0 1.45rem !important; //Form default container responsive grid padding overrides
+  @include font-family-lato;
   //margin-top: 5rem;
-  .form-group {
-    margin-bottom: 0;
-    .is-valid~label {
-      color: $almost-black;
+  .is-valid {
+    
+    &label {
+      color: $main-green;
       transform: translateY(-10px) scale(.8);
       transform-origin: 0 0;
       font-size: $font16;
       z-index: 2;
     }
+      
+    #description + label, #justification + label {
+      color: $almost-black;
+      transform: translateY(10px) scale(.8);
+      font-size: $font16;
+      z-index: 2;
+    }
+     
+    
   }
   .cmp-form-options--drop-down {
       position: relative;
@@ -111,7 +121,7 @@
       max-height: toRem(200);
       overflow-y: scroll;
       position: absolute;
-      z-index: 2;
+      z-index: 9999;
       @media (max-width: $screen-md-max) {
         margin: 0 0 0 -21px;
       }
@@ -224,6 +234,11 @@
       @include respond-to-min($desktop) {
         width: 9rem;
         }
+        .selecteddiv {
+          &:hover {
+            color: $main-green;
+          }
+        }
     }
   }
   .select-service {
@@ -257,6 +272,9 @@
       margin-top: 3rem;
       width: 100%;
     }
+   
+      position: relative;
+    
   }
   .cmp-form-options__legend {
     font-weight: 400;
@@ -300,11 +318,15 @@
   }
 
   .desc-text {
+    position: relative;
     .alert-icon {
       svg {
         right: 2rem;
         top: .5rem;
       }
+    }
+    .alert-label{
+      top: 10.5rem;
     }
   }
  
@@ -345,6 +367,7 @@
      
       & ~ label {
         left: 0;
+       
       }
     }
     input[type="tel"]:focus {
@@ -353,6 +376,7 @@
         font-size: $font16;
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
+        font-size: $font16;
       }
     }
   }
@@ -450,7 +474,9 @@
         }
      
       & ~ label {
+        @include font-family-lato;
         left: 0;
+        font-size: $font20;
       }
     }
     
@@ -466,9 +492,7 @@
       position: relative;
     }
   }
-//   input#phone1+label {
-//     margin-top: 17px;
-// }
+
 
   .has-error {
     display: block;
@@ -550,9 +574,10 @@
     z-index: 2;
   }
   
-  input:not([type]):focus:not([readonly]) ~ label
+  input:focus ~ label
   {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     transform: translateY(-10px) scale(0.8);
     transform-origin: 0 0;
@@ -560,6 +585,7 @@
 
   textarea.cmp-form-text__textarea:focus ~ label {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     transform: translateY(10px) scale(0.8);
     transform-origin: 0 0;
@@ -639,11 +665,13 @@
   input[type="url"]:not(.browser-default):disabled ~ label,
   input[type="url"]:not(.browser-default)[readonly="readonly"] ~ label {
     color: $steel-grey;
+    @include font-family-lato;
   }
 
   textarea.cmp-form-text__textarea:disabled ~ label,
   textarea.cmp-form-text__textarea[readonly="readonly"] ~ label {
     color: $steel-grey;
+  
   }
   input:not([type]):focus:not([readonly]),
   input[type="email"]:not(.browser-default):focus:not([readonly]),
@@ -699,15 +727,18 @@
   input[type="text"]:not(.browser-default):focus:not([readonly]) ~ label,  
   input[type="url"]:not(.browser-default):focus:not([readonly]) ~ label {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     -webkit-transform: translateY(-10px) scale(0.8);
     transform: translateY(-10px) scale(0.8);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
+   
   }
 
   textarea.cmp-form-text__textarea:focus:not([readonly]) .parent ~ label {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     -webkit-transform: translateY(10px) scale(0.8);
     transform: translateY(10px) scale(0.8);
@@ -765,6 +796,7 @@
     top: 100%;
     left: 0;
     opacity: 0;
+    font-size: $font20;
     -webkit-transition: 0.2s opacity ease-out, 0.2s color ease-out;
     transition: 0.2s opacity ease-out, 0.2s color ease-out;
   }
@@ -776,6 +808,7 @@
     top: 100%;
     left: 0;
     opacity: 0;
+    font-size: $font20;
     -webkit-transition: 0.2s opacity ease-out, 0.2s color ease-out;
     transition: 0.2s opacity ease-out, 0.2s color ease-out;
   }
@@ -794,7 +827,7 @@
       & label {
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
-        font-size: $font16;
+        font-size: $font20;
         z-index: 2;
         top: -.5rem;
         line-height: toRem(2);
@@ -1102,6 +1135,7 @@
   }
   .cmp-form-text {
     display: flex;
+    position:relative;
   }
 
   margin-bottom: 3rem;
@@ -1151,6 +1185,7 @@
         ~ label {
           -webkit-transform: translateY(10px) scale(0.8);
           transform: translateY(10px) scale(0.8);
+          font-size: $font16;
         }
       }
       .alert-label {
@@ -1169,7 +1204,7 @@
         transform: translateY(-10px) scale(0.8);
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
-        font-size: $font16;
+        font-size: $font20;
         z-index: 2;
       }
     }
@@ -1183,7 +1218,7 @@
         color: $almost-black;
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
-        font-size: $font16;
+        font-size: $font20;
         z-index: 2;
       }
     }
@@ -1254,8 +1289,7 @@
     visibility: visible;
   }
   padding: 0 1.45rem !important; //Form default container responsive grid padding overrides;
-  .cmp-teaser__content {
-    padding: 0 1.45rem !important;
+  .cmp-teaser__content {    
     text-align: center;
     h2 {
       font-size: $font40;
@@ -1268,6 +1302,8 @@
   }
 
   .cmp-teaser__description {
+    text-align: center;
+    width:100%;
     & p {
       font-size: $font16 !important; //To use Important Form default AEM Control css overrides
       line-height: 1.5rem !important;
@@ -1282,22 +1318,55 @@
     border-bottom: 1px solid $error-red !important;
   }
 }
+
+.needHelpForm_Teaser {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+ 
+  
+    .cmp-teaser__description {
+      margin-top: 0!important;
+      width:100%!important; //Some body added width 70%important for teaser causing issue here
+    }
+    h3, h2 {     
+      @include respond-to-max($tablet) {
+        font-size: $font30 !important;
+      }
+    }
+   
+    .cmp-teaser__content {      
+      margin-bottom: 0;
+    }
+  
+  
+}
 .teaser-form {
   .cmp-teaser__description {
+    text-align: center;
+    margin-top: 3rem;
+    width:100%!important; //Some body added width 70%important for teaser causing issue here
     & > p {
       font-size: $font16;
       line-height: 1.5rem;
       color: $gray;
       @include font-family-lato;
-      padding-bottom: 4rem;
+      padding-bottom: 1.5rem;
     }
   }
-  .cmp-teaser__content {
-    padding: 0 1.45rem;
-    text-align: center;
-    h2 {
-      font-size: 2.5rem;
+
+  .cmp-teaser__content {    
+    @include font-family-lato;
+		text-align: center;
+		margin-bottom: 3.5rem;
+    h3 {
+      font-size: $font32;
       line-height: toRem(52);
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-size: $font40;
+      line-height: toRem(52);
+      margin-bottom: 1.5rem;
     }
   }
 }
@@ -1305,6 +1374,7 @@
 .cws-form .has-error-fields textarea ~label {
   transform: translateY(10px) scale(.8);
 }
+
 
 #justification + label {
   padding-left: toRem(10);

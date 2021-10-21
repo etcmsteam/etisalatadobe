@@ -24,6 +24,9 @@ public class GoogleMapsModel {
 	String key;
 	String storeLocatorUrl;
 	String googleContactUrl;
+	String captchaV2;
+	String captchaV3;
+	String captchaInvisible;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String mapViewTitle;
@@ -36,12 +39,16 @@ public class GoogleMapsModel {
 
 	@PostConstruct
 	protected void init() {
-		log.info("In GoogleMapsModel init method");
+		log.debug("In GoogleMapsModel init method");
 
 		url = googleService.getGoogleUrl();
 		key = googleService.getGoogleKey();
 		storeLocatorUrl = storeService.getStoreLocatorUrl();
 		googleContactUrl = googleService.getGoogleContactUsUrl();
+		
+		this.captchaV2 = googleService.getCaptchaV2SiteKey();
+		this.captchaV3 = googleService.getCaptchaV3SiteKey();
+		this.captchaInvisible = googleService.getCaptchaInvisibleSiteKey();
 	}
 
 	public String getUrl() {
@@ -80,6 +87,27 @@ public class GoogleMapsModel {
 	 */
 	public void setGoogleContactUrl(String googleContactUrl) {
 		this.googleContactUrl = googleContactUrl;
+	}
+
+	/**
+	 * @return the captchaV2
+	 */
+	public String getCaptchaV2() {
+		return captchaV2;
+	}
+
+	/**
+	 * @return the captchaV3
+	 */
+	public String getCaptchaV3() {
+		return captchaV3;
+	}
+
+	/**
+	 * @return the captchaInvisible
+	 */
+	public String getCaptchaInvisible() {
+		return captchaInvisible;
 	}
 
 
