@@ -20,4 +20,22 @@ public interface GoogleMapsService {
 	 * @return
 	 */
 	String getGoogleContactUsUrl();
+	
+	/**
+	 * Returns Google CAPTCHA v2 site key.
+	 * @return
+	 */
+	String getCaptchaV2SiteKey();
+	
+	/**
+	 * Returns Google CAPTCHA v3 site key.
+	 * @return
+	 */
+	String getCaptchaV3SiteKey();
+	
+	/**
+	 * Returns Google CAPTCHA invisible site key.
+	 * @return
+	 */
+	String getCaptchaInvisibleSiteKey();
 }
