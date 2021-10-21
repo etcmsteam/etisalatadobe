@@ -1,0 +1,48 @@
+#about.cmp-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 100px 0;
+  @include respond-to-max($desktop) {
+    width: 720px;
+  }
+  @include respond-to-max($phone) {
+    width: 100%;
+  }
+
+  h2 {
+    &:after {
+      content: "";
+      display: block;
+      background: #5b32b4;
+      height: 4px;
+      width: 80px;
+      margin-top: 15px;
+      margin-left: calc(50% - 40px);
+    }
+  }
+}
+
+.cmp_box_shadow {
+  margin-bottom: 10px;
+  transition-duration: 800ms;
+  min-height: toRem(230);
+  padding-top: toRem(28);
+  :hover {
+    box-shadow: 0 10px 90px rgb(0 0 0 / 8%);
+  }
+  .cmp-text {
+    position: relative;
+    padding: toRem(72) toRem(8);
+    width: 100%;
+    border: $font2 solid $shade-white;
+    border-radius: toRem(10);
+    margin: 0;
+    display: block;
+    min-height: toRem(256);
+    font-family: $font-family;
+  }
+  h4 {
+    padding-bottom: $padding-small;
+    margin-bottom: $padding-small;
+  }
+}

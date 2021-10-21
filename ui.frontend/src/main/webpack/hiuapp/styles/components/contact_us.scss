@@ -1,0 +1,92 @@
+.hiuapp_contact {
+  padding: 100px 0;
+  @extend .container-block;
+  h2 {
+    &:after {
+      content: "";
+      display: block;
+      background: #5b32b4;
+      height: 4px;
+      width: 80px;
+      margin-top: 15px;
+      margin-left: calc(50% - 40px);
+    }
+  }
+  .contact-form {
+    .cmp-form-text {
+      margin-bottom: 1rem;
+    }
+    .cmp-form-text {
+      input {
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        display: block;
+        width: 85%;
+        font-size: toRem(18);
+        padding: $padding-small $padding-small;
+        border-radius: toRem(6);
+        line-height: 1.5;
+        color: $off-white;
+        background-color: $white;
+        background-image: none;
+        background-clip: padding-box;
+        border: 1px solid $off-white;
+      }
+      textarea {
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        display: block;
+        width: 85%;
+        font-size: toRem(18);
+        padding: $padding-small;
+        border-radius: toRem(6);
+        line-height: 1.5;
+        color: $off-white;
+        background-color: $white;
+        background-image: none;
+        background-clip: padding-box;
+        border: 1px solid $off-white;
+      }
+    }
+  }
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+  color: #ced4da;
+}
+
+#contact input,
+#contact textarea {
+  color: #000;
+}
+
+#contact {
+  .cmp-text {
+    width: toRem(493);
+    margin: auto;
+  }
+}
+
+.cmp-form-text__text:focus,
+.cmp-form-text__textarea:focus {
+  color: $shade-gray;
+  background-color: $white;
+  border-color: $shade-blue;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.submit-btn:hover {
+  background: #5b32b4;
+  color: #fff;
+  transition-duration: 500ms;
+  p {
+    color: #fff;
+  }
+}
+
+.cmp-form-button {
+  @extend .btn;
+  background: $title-color;
+  color: #fff;
+  border: none;
+}
