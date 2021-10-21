@@ -1,9 +1,10 @@
 .cws-form,
 .wst-form {
   padding: 0 1.45rem !important; //Form default container responsive grid padding overrides
+  @include font-family-lato;
   //margin-top: 5rem;
   .is-valid {
-    margin-bottom: 0;
+    
     &label {
       color: $main-green;
       transform: translateY(-10px) scale(.8);
@@ -120,7 +121,7 @@
       max-height: toRem(200);
       overflow-y: scroll;
       position: absolute;
-      z-index: 2;
+      z-index: 9999;
       @media (max-width: $screen-md-max) {
         margin: 0 0 0 -21px;
       }
@@ -233,6 +234,11 @@
       @include respond-to-min($desktop) {
         width: 9rem;
         }
+        .selecteddiv {
+          &:hover {
+            color: $main-green;
+          }
+        }
     }
   }
   .select-service {
@@ -266,6 +272,9 @@
       margin-top: 3rem;
       width: 100%;
     }
+   
+      position: relative;
+    
   }
   .cmp-form-options__legend {
     font-weight: 400;
@@ -465,6 +474,7 @@
         }
      
       & ~ label {
+        @include font-family-lato;
         left: 0;
         font-size: $font20;
       }
@@ -567,6 +577,7 @@
   input:focus ~ label
   {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     transform: translateY(-10px) scale(0.8);
     transform-origin: 0 0;
@@ -574,6 +585,7 @@
 
   textarea.cmp-form-text__textarea:focus ~ label {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     transform: translateY(10px) scale(0.8);
     transform-origin: 0 0;
@@ -653,11 +665,13 @@
   input[type="url"]:not(.browser-default):disabled ~ label,
   input[type="url"]:not(.browser-default)[readonly="readonly"] ~ label {
     color: $steel-grey;
+    @include font-family-lato;
   }
 
   textarea.cmp-form-text__textarea:disabled ~ label,
   textarea.cmp-form-text__textarea[readonly="readonly"] ~ label {
     color: $steel-grey;
+  
   }
   input:not([type]):focus:not([readonly]),
   input[type="email"]:not(.browser-default):focus:not([readonly]),
@@ -713,15 +727,18 @@
   input[type="text"]:not(.browser-default):focus:not([readonly]) ~ label,  
   input[type="url"]:not(.browser-default):focus:not([readonly]) ~ label {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     -webkit-transform: translateY(-10px) scale(0.8);
     transform: translateY(-10px) scale(0.8);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
+   
   }
 
   textarea.cmp-form-text__textarea:focus:not([readonly]) .parent ~ label {
     color: $main-green;
+    @include font-family-lato;
     font-size: $font16;
     -webkit-transform: translateY(10px) scale(0.8);
     transform: translateY(10px) scale(0.8);
@@ -1118,6 +1135,7 @@
   }
   .cmp-form-text {
     display: flex;
+    position:relative;
   }
 
   margin-bottom: 3rem;
