@@ -48,7 +48,28 @@
         font-size:$font14;
       }
     }
-  
+  a:hover{
+    text-decoration: underline;
+  }
+  .cmp-link__text{
+    color: $main-green;
+    letter-spacing: 2px;
+    font-size:$font14;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+
+     @include respond-to-min($desktop){
+        margin-top: 10px;
+      }
+      @include respond-to-max($tablet){
+      font-size:$font12;
+    }
+  }
     p{
         z-index: 1;
         position: static;
@@ -56,25 +77,13 @@
         right: 0;
         text-align: right;
         margin-right: 17px;
-        font-size:$font14;
-
-        svg{
-          width:14px;
-            position: relative ;
-            top: -4px;
-            margin-left: 3.7px;
-            @include respond-to-min($desktop){
-              top: 0;
-            }
-        }
-  
+        font-size:$font14;  
         @include respond-to-max($desktop){
           position: static;
           text-align: left;
           margin-right: 0;
           margin-bottom: 10px;
         }
-  
         .cmp-link__text{
           color: $main-green;
           letter-spacing: 2px;
@@ -94,6 +103,16 @@
           }
         }
       }
+      svg{
+        width:14px;
+          position: relative ;
+          top: -4px;
+          margin-left: 3.7px;
+          @include respond-to-min($desktop){
+            top: 0;
+          }
+      }
+     
           }
         
     
