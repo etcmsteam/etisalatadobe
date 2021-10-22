@@ -1,484 +1,570 @@
 .cross-promotion-plain {
-	margin-bottom: 2rem;
-	border-radius: 8px;
-	position: relative;
-	.cmp-teaser__action-container {
-		width: 282px;
-		margin-top: -98px;
-		float: left;
-		margin-right: 59px;
-		border: 1px solid $white;
-		border-radius: 4px;
-		border-width: 1px;
-		text-align: center;
-		@include respond-to-min($desktop) {
-			float: right;
-		}
-	}
-	.cmp-teaser__action-container a {
-		font-size: 16px;
-		letter-spacing: 3px;
-		text-transform: uppercase;
-		transition: all .3s ease-in-out;
-		color: $white;
-	}
-	.cmp-teaser__action-container:after {
-		clear: both;
-	}
-	.cmp-teaser__description {
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			margin-top: 0;
-			font-size: $font24;
-		}
-		width: 100%;
-		@include respond-to-max($tablet) {
-			width: 100%;
-		}
-	}
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    position: relative;
+    .cmp-teaser__action-container {
+        width: 282px;
+        margin-top: -98px;
+        float: left;
+        margin-right: 59px;
+        border: 1px solid $white;
+        border-radius: 4px;
+        border-width: 1px;
+        text-align: center;
+
+        @include respond-to-min($desktop) {
+            float: right;
+        }
+    }
+
+    .cmp-teaser__action-container a {
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        transition: all .3s ease-in-out;
+        color: $white;
+    }
+
+    .cmp-teaser__action-container:after {
+        clear: both;
+    }
+
+    .cmp-teaser__description {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $white;
+            margin-top: 0;
+            font-size: $font24;
+        }
+        width: 100%;
+
+        @include respond-to-max($tablet) {
+            width: 100%;
+        }
+    }
+    .cmp-teaser {
+        border-radius: 8px;
+        position: relative;
+        color: $white;
+
+        @include respond-to-min($desktop) {
+            // padding: 3rem 50px 3rem 38px;
+            flex-direction: row;
+            padding: 48px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+            align-items: center;
+        }
+
+        @include respond-to-max($tablet) {
+            padding: .1rem 15px 1rem;
+        }
+
+        @include respond-to-max($phone) {
+            padding: .1rem 15px 1rem;
+        }
+    }
+
+    .cmp-teaser:before,
+    .cmp-teaser:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background: url('../resources/images/promo_pattern_top.svg') left 0 no-repeat;
+        background-size: contain;
+        opacity: .7;
+        left: 0px;
+    }
+
+    .cmp-teaser:after {
+        content: "";
+        right: auto;
+        left: 0;
+        transform: rotate(180deg);
+    }
+
+    a.cmp-teaser__title-link {
+        font-size: 24px;
+        margin-bottom: 16px;
+        margin-top: 0;
+        color: $white;
+    }
+
+    .cmp-teaser__description p {
+        font-size: 1rem;
+        margin-top: 1rem;
+        line-height: 1.5;
+        color: $white;
+    }
+
+    .cmp-teaser__content {
+        display: flex;
+        align-items: center;
+
+        @include respond-to-max($tablet) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
 
-.cross-promotion-plain {
-	.cmp-teaser {
-		border-radius: 8px;
-		position: relative;
-		color: $white;
-		@include respond-to-min($desktop) {
-			// padding: 3rem 50px 3rem 38px;
-			flex-direction: row;
-			padding: 48px;
-			padding-top: 48px;
-			padding-bottom: 48px;
-			align-items: center;
-		}
-		@include respond-to-max($tablet) {
-			padding: .1rem 15px 1rem;
-		}
-		@include respond-to-max($phone) {
-			padding: .1rem 15px 1rem;
-		}
-	}
-	.cmp-teaser:before,
-	.cmp-teaser:after {
-		content: "";
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		background: url('../resources/images/promo_pattern_top.svg') left 0 no-repeat;
-		background-size: contain;
-		opacity: .7;
-		left: 0px;
-	}
-	.cmp-teaser:after {
-		content: "";
-		right: auto;
-		left: 0;
-		transform: rotate(180deg);
-	}
-	a.cmp-teaser__title-link {
-		font-size: 24px;
-		margin-bottom: 16px;
-		margin-top: 0;
-		color: $white;
-	}
-	.cmp-teaser__description p {
-		font-size: 1rem;
-		margin-top: 1rem;
-		line-height: 1.5;
-		color: $white;
-	}
-	.cmp-teaser__content {
-		display: flex;
-		align-items: center;
-		@include respond-to-max($tablet) {
-			display: flex;
-			flex-direction: column;
-		}
-	}
-}
 
 @include respond-to-max($tablet) {
-	.cross-promotion-plain {
-		.cmp-teaser__action-container {
-			margin-top: 20px;
-			padding: 10px;
-			border: 1px solid $white;
-			border-radius: 4px;
-			border-width: 1px;
-			text-align: center;
-			min-width: 282px;
-			width: 100%;
-			max-width: 100%;
-			margin: 24px auto 0 auto;
-			margin-top: 1rem;
-			margin-bottom: 1rem;
-			@include respond-to-min($desktop) {
-				min-width: 282px;
-			}
-			@include respond-to-max($tablet) {
-				min-width: 100%;
-				width: 100%;
-				margin: 24px auto 0 auto;
-			}
-			@include respond-to-max($phone) {
-				min-width: 100%;
-				width: 100%;
-			}
-		}
-		.cmp-teaser__action-container a {
-			font-size: 16px;
-			text-transform: uppercase;
-			transition: all .3s ease-in-out;
-			color: $white;
-			letter-spacing: 3px;
-			outline: 0;
-		}
-	}
+    .cross-promotion-plain {
+        .cmp-teaser__action-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid $white;
+            border-radius: 4px;
+            border-width: 1px;
+            text-align: center;
+            min-width: 282px;
+            width: 100%;
+            max-width: 100%;
+            margin: 24px auto 0 auto; 
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+
+            @include respond-to-min($desktop) {
+                min-width: 282px;
+            }
+
+            @include respond-to-max($tablet) {
+                min-width: 100%;
+                width: 100%;
+                margin: 24px auto 0 auto;
+            }
+
+            @include respond-to-max($phone) {
+                min-width: 100%;
+                width: 100%;
+            }
+        }
+        .cmp-teaser__action-container a {
+            font-size: 16px;
+            text-transform: uppercase;
+            transition: all .3s ease-in-out;
+            color: $white;
+            letter-spacing: 3px;
+            outline: 0;
+        }
+    }
 }
 
 @include respond-to-min($desktop) {
-	.cross-promotion-plain .cmp-teaser__action-container {
-		border: 1px solid $white;
-		border-radius: 4px;
-		border-width: 1px;
-		text-align: center;
-		max-width: 100%;
-		min-width: 282px;
-		width: 282px;
-		max-width: 282px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 0 54px;
-		a {
-			color: $white;
-			z-index: 4;
-			position: relative;
-			display: block;
-			padding: 15px;
-			min-width: 282px;
-			max-width: 282px;
-		}
-	}
+    .cross-promotion-plain .cmp-teaser__action-container {
+        border: 1px solid $white;
+        border-radius: 4px;
+        border-width: 1px;
+        text-align: center;
+        max-width: 100%;
+        min-width: 282px;
+        width: 282px;
+        max-width: 282px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 54px;
+        a {
+            color: $white;
+            z-index: 4;
+            position: relative;
+            display: block;
+            padding: 15px;
+            min-width: 282px;
+            max-width: 282px;
+        }
+    }
 }
+
 
 // two col teaser  
 .cmp-teaser__two__col {
-	.teaser {
-		border-radius: 8px;
-		padding: 0;
-		margin-bottom: 0;
-		// @include respond-to-max($tablet) {
-		//     padding: 1rem;
-		//     margin-bottom: 2rem;
-		// }
-		.cmp-teaser {
-			border-radius: 4px;
-			@include respond-to-max($tablet) {
-				margin-right: 1rem;
-			}
-			&__content {
-				padding: 2.5rem 2.5rem;
-				margin-bottom: 0px;
-				@include respond-to-max($tablet) {
-					margin-bottom: 0px;
-					padding: 1rem;
-				}
-			}
-			&__title {
-				@include respond-to-max($tablet) {
-					margin-left: 0;
-					margin: 0;
-					margin-bottom: 10px;
-					margin-top: 0;
-					line-height: 20px;
-					font-size: $font20;
-					color: $white;
-				}
-				font-size: 24px;
-				margin: 0;
-				color: $white;
-				&__title-link {
-					margin: 0;
-					color: $white;
-					font-size: 24px;
-					@include respond-to-max($tablet) {
-						padding: 0;
-						margin: 0;
-						font-size: $font20;
-					}
-				}
-			}
-			&__description {
-				h1,
-				h2,
-				h3,
-				h4,
-				h5,
-				h5,
-				h6 {
-					color: $white;
-				}
-				p {
-					margin: 0;
-					margin-top: 1rem;
-				}
-				width: 100%;
-				@include respond-to-max($tablet) {
-					color: $white;
-					width: 100%;
-				}
-				.cmp-link__arrow {
-					color: $white;
-					&:before,
-					&:after {
-						border: solid $white;
-						border-width: 0 1px 1px 0;
-						color: $white
-					}
-				}
-			}
-			&__action-container {
-				// padding: 10px;
-				text-align: center;
-				width: 282px;
-				border: 1px solid $white;
-				border-radius: 4px;
-				margin-top: 1.5rem;
-				position: relative;
-				z-index: 2;
-				@include respond-to-max($phone) {
-					width: 105%;
-				}
-				a {
-					font-size: $font16;
-					color: $white;
-					text-transform: uppercase;
-					letter-spacing: 2px;
-					padding: 15px;
-					display: block;
-				}
-			}
-		}
-	}
-	.cmp-container {
-		>.aem-Grid {
-			display: block;
-			@include respond-to-min($desktop) {
-				display: flex;
-			}
-			.container:first-child {
-				margin-right: 12px;
-			}
-			.container:last-child {
-				margin-left: 0;
-				@include respond-to-min($desktop) {
-					margin-left: 12px;
-				}
-			}
-		}
-	}
-	.container {
-		border-radius: 8px;
-	}
+    .teaser {
+        border-radius: 8px;
+        padding: 0;
+        margin-bottom: 0;
+        // @include respond-to-max($tablet) {
+        //     padding: 1rem;
+        //     margin-bottom: 2rem;
+        // }
+
+        .cmp-teaser {
+            border-radius: 4px;
+
+            @include respond-to-max($tablet) {
+                margin-right: 1rem;
+            }
+
+            &__content {
+                padding: 2.5rem 2.5rem;
+                margin-bottom: 0px;
+                @include respond-to-max($tablet) {
+                    margin-bottom: 0px;
+                    padding: 1rem;
+                }
+                
+            }
+
+            &__title {
+                @include respond-to-max($tablet) {
+                    margin-left: 0;
+                    margin: 0 ;
+                    margin-bottom: 10px;
+                    margin-top: 0;
+                    line-height: 20px;
+                    font-size: $font20;
+                    color: $white;
+                }
+
+                font-size: 24px;
+                margin: 0;
+                color: $white;
+
+                &__title-link {
+                    margin: 0;
+                    color: $white;
+                    font-size: 24px;
+
+                    @include respond-to-max($tablet) {
+                        padding: 0;
+                        margin: 0;
+                        font-size: $font20;
+                    }
+                }
+            }
+
+            &__description {
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h5,
+                h6 {
+                    color: $white;
+                }
+
+                p {
+                    margin: 0;
+                    margin-top: 1rem;
+                }
+
+                width: 100%;
+
+                @include respond-to-max($tablet) {
+                    color: $white;
+                    width: 100%;
+                }
+
+                .cmp-link__arrow {
+                    color: $white;
+
+                    &:before,
+                    &:after {
+                        border: solid $white;
+                        border-width: 0 1px 1px 0;
+                        color: $white
+                    }
+                }
+            }
+
+            &__action-container {
+                // padding: 10px;
+                text-align: center;
+                width: 282px;
+                border: 1px solid $white ;
+                border-radius: 4px;
+                margin-top: 1.5rem;
+                position: relative;
+                z-index: 2;
+
+                @include respond-to-max($phone) {
+                    width: 105%;
+                }
+
+                a {
+                    font-size: $font16;
+                    color: $white;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    padding: 15px;
+                    display: block;
+                }
+            }
+        }
+
+    }
+
+    .cmp-container {
+        >.aem-Grid {
+            display: block;
+
+            @include respond-to-min($desktop) {
+                display: flex;
+            }
+
+            .container:first-child {
+                margin-right: 12px;
+            }
+
+            .container:last-child {
+                margin-left: 0;
+
+                @include respond-to-min($desktop) {
+                    margin-left: 12px;
+                }
+            }
+        }
+    }
+
+    .container {
+        border-radius: 8px;
+    }
+
 }
 
 //cross promo full bleed
 .tile-teaser {
-	margin-bottom: 2rem;
-	.cmp-teaser__content {
-		padding-left: 0;
-		width: 100%;
-		padding: 1.3rem;
-		@include respond-to-min($desktop) {
-			padding: 3.5rem 2rem;
-			width: 50%;
-		}
-		@include respond-to-max($tablet) {
-			padding-left: 0;
-			width: 100%;
-		}
-		.cmp-teaser__pretitle {
-			font-size: $font12;
-			font-weight: 700;
-			letter-spacing: 4px;
-			line-height: 12px;
-			display: inline-block;
-			// margin-bottom: 10px;
-			text-transform: uppercase;
-			color: $white;
-			@include respond-to-max($tablet) {
-				font-size: $font10;
-			}
-		}
-		.cmp-teaser__title {
-			font-size: 32px;
-			margin: 0 0 35px 0;
-			line-height: 38px;
-			color: $white;
-		}
-		.cmp-teaser__description {
-			font-size: $font16;
-			line-height: 26px;
-			color: $white;
-			@include font-family-lato;
-			h1,
-			h2,
-			h3,
-			h5,
-			h5,
-			h6 {
-				color: $white;
-			}
-			h4 {
-				color: $white;
-				margin-bottom: 1.4rem;
-				margin-top: 0.625rem;
-			}
-			ul {
-				padding: 2rem 0 1rem 2rem;
-				@include respond-to-min($desktop) {
-					padding: 1.4rem 0 1rem 2rem;
-				}
-				@include respond-to-max($tablet) {
-					padding: 1rem 0 1rem 2rem;
-				}
-				li {
-					color: $white;
-					font-size: $font16;
-					line-height: 26px;
-					color: $white;
-					@include font-family-lato;
-				}
-			}
-			.cmp-link__arrow {
-				color: $white;
-				&:before,
-				&:after {
-					border: solid $white;
-					border-width: 0 1px 1px 0;
-					color: $white
-				}
-			}
-		}
-		.cmp-teaser__action-container {
-			a {
-				// margin-top: 20px;
-				display: table;
-				margin-bottom: 5px;
-				letter-spacing: 3px;
-				color: $white;
-				cursor: pointer;
-				text-transform: uppercase;
-				@include font-family-lato;
-				font-size: $font14;
-				line-height: 1.25rem;
-				position: relative;
-				font-weight: 500;
-				@include respond-to-max($phone) {
-					// width: 100%;
-				}
-				border: 1px solid $white;
-				border-radius: 4px;
-				padding: .8rem 2rem;
-				text-align: center;
-				width: auto;
-			}
-		}
-		.cmp-teaser__content {
-			width: 100%;
-		}
-	}
-	.image-right {
-		margin-right: 2rem;
-		@include respond-to-max($tablet) {
-			margin-left: 1rem;
-			margin-right: 1rem;
-		}
-		.cmp-teaser__image {
-			width: 100%;
-			@include respond-to-min($desktop) {
-				position: relative;
-				width: 60%;
-			}
-			@include respond-to-max($tablet) {
-				width: 100%;
-			}
-			img {
-				max-width: 100%;
-				height: auto;
-				@include respond-to-max($tablet) {
-					max-width: 100%;
-					position: inherit;
-				}
-				@include respond-to-min($desktop) {
-					position: absolute;
-					height: 100%;
-				}
-			}
-		}
-	}
-	.image-left {
-		margin-left: 1rem;
-		@include respond-to-max($tablet) {
-			margin-left: 1rem;
-			margin-right: 1rem;
-		}
-		.cmp-teaser__image {
-			width: 100%;
-			@include respond-to-min($desktop) {
-				position: relative;
-				width: 60%;
-			}
-			@include respond-to-max($tablet) {
-				width: 100%;
-			}
-			img {
-				max-width: 100%;
-				height: auto;
-				@include respond-to-max($tablet) {
-					max-width: 100%;
-					position: inherit;
-				}
-				@include respond-to-min($desktop) {
-					position: absolute;
-					height: 100%;
-				}
-			}
-		}
-	}
+    margin-bottom: 2rem;
+
+    .cmp-teaser__content {
+        padding-left: 0;
+        width: 100%;
+        padding: 1.3rem;
+
+        @include respond-to-min($desktop) {
+            padding: 3.5rem 2rem;
+            width: 50%;
+        }
+
+        @include respond-to-max($tablet) {
+            padding-left: 0;
+            width: 100%;
+        }
+
+        .cmp-teaser__pretitle {
+            font-size: $font12;
+            font-weight: 700;
+            letter-spacing: 4px;
+            line-height: 12px;
+            display: inline-block;
+            // margin-bottom: 10px;
+            text-transform: uppercase;
+            color: $white;
+
+            @include respond-to-max($tablet) {
+               font-size: $font10;
+            }
+        }
+
+        .cmp-teaser__title {
+            font-size: 32px;
+            margin: 0 0 35px 0;
+            line-height: 38px;
+            color: $white;
+        }
+
+        .cmp-teaser__description {
+            font-size: $font16;
+            line-height: 26px;
+            color: $white;
+            @include font-family-lato;
+
+            h1,
+            h2,
+            h3,
+            h5,
+            h5,
+            h6 {
+                color: $white;
+            }
+            h4 {
+                color: $white;
+                margin-bottom: 1.4rem;
+                margin-top: 0.625rem;
+            }
+
+            ul {
+                padding: 2rem 0 1rem 2rem;
+
+                @include respond-to-min($desktop) {
+                    padding: 1.4rem 0 1rem 2rem;
+                }
+
+                @include respond-to-max($tablet) {
+                    padding: 1rem 0 1rem 2rem;
+                 }
+
+                li {
+                    color: $white;
+                    font-size: $font16;
+                    line-height: 26px;
+                    color: $white;
+                    @include font-family-lato;
+
+                }
+            }
+
+            .cmp-link__arrow {
+                color: $white;
+
+                &:before,
+                &:after {
+                    border: solid $white;
+                    border-width: 0 1px 1px 0;
+                    color: $white
+                }
+            }
+        }
+
+        .cmp-teaser__action-container {
+            a {
+                // margin-top: 20px;
+                display: table;
+                margin-bottom: 5px;
+                letter-spacing: 3px;
+                color: $white;
+                cursor: pointer;
+                text-transform: uppercase;
+                @include font-family-lato;
+                font-size: $font14;
+                line-height: 1.25rem;
+                position: relative;
+                font-weight: 500;
+
+                @include respond-to-max($phone) {
+                    // width: 100%;
+                }
+
+                border: 1px solid $white;
+                border-radius: 4px;
+                padding: .8rem 2rem;
+                text-align: center;
+                width: auto;
+            }
+        }
+
+        .cmp-teaser__content {
+            width: 100%;
+        }
+
+    }
+
+    .image-right {
+        margin-right: 2rem;
+
+        @include respond-to-max($tablet) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .cmp-teaser__image {
+
+            width: 100%;
+
+            @include respond-to-min($desktop) {
+                position: relative;
+                width: 60%;
+            }
+
+            @include respond-to-max($tablet) {
+                width: 100%;
+            }
+
+            img {
+
+                max-width: 100%;
+                height: auto;
+
+                @include respond-to-max($tablet) {
+                    max-width: 100%;
+                    position: inherit;
+                }
+
+                @include respond-to-min($desktop) {
+                    position: absolute;
+                    height: 100% ;
+                }
+
+            }
+        }
+
+    }
+
+    .image-left {
+        margin-left: 1rem;
+
+        @include respond-to-max($tablet) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .cmp-teaser__image {
+            width: 100%;
+
+            @include respond-to-min($desktop) {
+                position: relative;
+                width: 60%;
+            }
+
+            @include respond-to-max($tablet) {
+                width: 100%;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+
+                @include respond-to-max($tablet) {
+                    max-width: 100%;
+                    position: inherit;
+                }
+
+                @include respond-to-min($desktop) {
+                    position: absolute;
+                    height: 100% ;
+                }
+            }
+        }
+    }
 }
+
 
 //teaser background pattern
 .teaser--pattern__bg {
-	.cmp-teaser {
-		margin-right: 12px;
-		-ms-flex: 1 1 auto;
-		flex: 1 1 auto;
-		border-radius: 5px;
-		position: relative;
-		&:after,
-		&:before {
-			background: url(../resources/images/promo_pattern_top.svg) left 0 no-repeat;
-			background-size: contain;
-			content: "";
-			height: 100%;
-			left: 0;
-			opacity: .7;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
-		&:after {
-			content: "";
-			left: 0;
-			right: auto;
-			transform: rotate(180deg);
-		}
-	}
+    .cmp-teaser {
+        margin-right: 12px;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        border-radius: 5px;
+        position: relative;
+
+        &:after,
+        &:before {
+            background: url(../resources/images/promo_pattern_top.svg) left 0 no-repeat;
+            background-size: contain;
+            content: "";
+            height: 100%;
+            left: 0;
+            opacity: .7;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        &:after {
+            content: "";
+            left: 0;
+            right: auto;
+            transform: rotate(180deg);
+        }
+    }
 }
