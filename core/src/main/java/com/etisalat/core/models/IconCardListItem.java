@@ -1,21 +1,30 @@
 package com.etisalat.core.models;
 
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-
-@Model(adaptables = Resource.class)
-public interface IconCardListItem {
-
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	String getCardTitle();
-
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	String getCardLink();
-
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	String getCardIcon();
+public class IconCardListItem {
+		
+	private String cardTitle;		
+	private String cardLink;	
+	private String cardIcon;
+	
+	public String getCardTitle() {
+		return cardTitle;
+	}
+	public void setCardTitle(String cardTitle) {
+		this.cardTitle = cardTitle;
+	}
+	public String getCardLink() {
+		return cardLink;
+	}
+	public void setCardLink(String cardLink) {
+		this.cardLink = cardLink;
+	}
+	public String getCardIcon() {
+		return cardIcon;
+	}
+	public void setCardIcon(String cardIcon) {
+		this.cardIcon = cardIcon;
+	}
+	
+	
 	
 }

@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
+import com.etisalat.core.util.CommonUtility;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
+import com.etisalat.core.models.HeroLinkSectionVO;
 import com.etisalat.core.models.IconCardList;
 import com.etisalat.core.models.IconCardListItem;
 
@@ -21,6 +23,9 @@ public class IconCardListImpl implements IconCardList {
 	
 	public static final String RESOURCE_TYPE = "etisalat/components/iconcardlist";
 	public static final String NAV_ITEMS = "iconCardList";
+	public static final String CARD_TITLE = "cardTitle";
+	public static final String CARD_ICON = "cardIcon";
+	public static final String CARD_LINK = "cardLink";
 
 	@SlingObject
 	@Optional
@@ -29,6 +34,9 @@ public class IconCardListImpl implements IconCardList {
 	@Self
 	@Optional
 	private SlingHttpServletRequest request;
+	
+	@SlingObject
+    ResourceResolver resourceResolver;
 
 	private List <IconCardListItem> iconCardListItem;
 
@@ -40,8 +48,11 @@ public class IconCardListImpl implements IconCardList {
 			Iterator<Resource> list = iconCardList.listChildren();
 			while (list.hasNext()) {
 				Resource r = list.next();
-				IconCardListItem cardList = r.adaptTo(IconCardListItem.class);
-				iconCardListItem.add(cardList);
+				IconCardListItem cardList = new IconCardListItem();
+				cardList.setCardIcon(r.getValueMap().get(CARD_ICON,String.class));
+				cardList.setCardTitle(r.getValueMap().get(CARD_TITLE,String.class));
+				cardList.setCardLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,r.getValueMap().get(CARD_LINK,String.class)));				
+			    iconCardListItem.add(cardList);
 			}
 			
 		}
