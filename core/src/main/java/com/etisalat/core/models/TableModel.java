@@ -32,6 +32,9 @@ public class TableModel {
     public static final String TRUE = "true";
     public static final String EQUAL_DELIMITER = "=";
     public static final String COMMA_DELIMITER = ",";
+    public static final int CATEGORIES_INDEX = 0;
+    public static final int LANGUAGE_INDEX = 1;
+    public static final int PACKAGES_INDEX = 2;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TableModel.class);
 
@@ -115,15 +118,15 @@ public class TableModel {
     }
 
     public Map<String, String> getCategories() {
-        return getFilters(0);
+        return getFilters(CATEGORIES_INDEX);
     }
 
     public Map<String, String> getLanguages() {
-        return getFilters(1);
+        return getFilters(LANGUAGE_INDEX);
     }
 
     public Map<String, String> getPackages() {
-        return getFilters(2);
+        return getFilters(PACKAGES_INDEX);
     }
 
     private LinkedHashMap<String, String> getFilters(int index) {
