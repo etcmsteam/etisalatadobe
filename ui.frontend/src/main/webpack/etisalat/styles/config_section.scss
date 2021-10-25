@@ -1,0 +1,294 @@
+.config-section-wrap {
+	background: $white;
+	min-height: 56px;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+	transition: all 0.25s ease-in-out;
+	max-height: 78px;
+	position: relative;
+	z-index: 10;
+	@include respond-to-min($desktop) {
+		min-height: 90px;
+		max-height: 90px;
+	}
+	>.container>.row>.col-xs-12.col-md-3 {
+		display: none;
+		@include respond-to-min($desktop-wide) {
+			display: block;
+		}
+	}
+	&.tabs {
+		//max-height: none;
+		background: $white;
+		min-height: 56px;
+		box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+		transition: all .25s ease-in-out;
+		max-height: 78px;
+		position: relative;
+		z-index: 8;
+		@include respond-to-min($desktop) {
+			min-height: 90px;
+			max-height: 90px;
+			&.tabs {
+				max-height: none;
+			}
+		}
+	}
+	.row .col-xs-12.col-md-9 {
+		@include respond-to-min($desktop) {
+			padding: 0;
+		}
+	}
+	.config-section-main-label-top {
+		color: $gray;
+		font-size: $font12;
+		margin: 0;
+		position: relative;
+		margin-top: -10px;
+		margin-bottom: 10px;
+		top: 20px;
+		line-height: 22px;
+		letter-spacing: 1px;
+		@include respond-to-min($tablet) {
+			display: flex;
+			align-items: center;
+			font-size: 18px;
+			line-height: 20px;
+			height: 90px;
+			margin: 0;
+			top: 0;
+		}
+	}
+}
+// fix for spacing issue in case hero image has call to action and config section
+.hero-image-section {
+	&.hero-image-add {
+		~.config-section-wrap {
+			@include respond-to-max($desktop) {
+				margin-top: 70px;
+			}
+		}
+		~.config-section-wrap~.config-section-wrap {
+			@include respond-to-max($desktop) {
+				margin-top: 0;
+			}
+		}
+		~.config-section-wrap {
+			&.add-links {
+				@include respond-to-max($desktop) {
+					margin-top: -168px;
+				}
+			}
+		}
+	}
+}
+// fix the config-section on top and hide topbar
+.fixed-config-section {
+	margin-top: 0 !important;
+	.top-nav-section.top-nav {
+		display: none;
+	}
+	.navbar-default {
+		top: 0;
+	}
+	.affix {
+		top: 56px;
+		width: 100%;
+	}
+}
+
+*[lang="ar"] {
+	*[dir="rtl"] {
+		.config-section-wrap{
+			.links-wrapper {
+				left: 30px;
+				right: auto;
+			}
+		}
+	}
+}
+
+[lang=ar] [dir=rtl] .config-section-wrap.add-links .links-wrapper {
+	left: 30px;
+	right: auto;
+}
+
+.links-wrapper {
+	position: absolute;
+	top: 25px;
+	right: 30px;
+	z-index: 9;
+	@include respond-to-max($desktop) {
+		right: 0;
+		padding: 0 3rem;
+		width: 100%;
+		top: -134px;
+		position: relative;
+		padding: 0 43px;
+		&.fixed {
+			position: fixed;
+			top: auto !important;
+			right: 0;
+			z-index: 9;
+			bottom: 0;
+			padding: 0 1rem;
+		}
+		.hero-links-secton>.container-fluid>.row>.col-xs-12 {
+			padding: 0;
+		}
+	}
+}
+
+.hero-links-secton ul {
+  width: 100%;
+	box-shadow: 0 2px 10px 0 hsla(0, 0%, 67%, .2);
+	background-color: $main-green;
+	border-radius: 5px;
+	li {
+		display: table-cell;
+		width: 1%;
+		position: relative;
+    a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 64px;
+      svg {
+        width: 26px;
+        height: 26px;
+        stroke: $white;
+        g {
+          stroke: $white
+        }
+      }
+		}
+		&:after {
+		border-right: 1px solid $white;
+		content: "";
+		top: 55%;
+		transform: translateY(-50%);
+		height: 50px;
+		position: absolute;
+			@include respond-to-max($tablet) {
+				height:24px;
+			}
+		}
+	}
+ 
+}
+
+
+.hero-links-secton ul li a span {
+	display: none
+}
+
+@include respond-to-max($desktop) {
+	.hero-links-secton{
+    ul{
+      li{
+        a {
+          height: 96px;
+          flex-direction: column;
+          text-align: center;
+          color: $white;
+          font-weight: 700;
+          font-size: 10px;
+          @include font-family-Neotech-ge;
+          text-transform: uppercase;
+          span {
+            line-height: 1.2;
+            margin-top: 10px;
+            display: block;
+            width: 80%
+          }
+          svg {
+            width: 26px;
+            height: 26px;
+            stroke: $white;
+            g {
+              stroke: $white
+            }
+          }
+        }
+      } 
+      &:after {
+        top: 52px;
+      }
+    } 
+  } 
+}
+
+.hero-links-secton ul li:first-child:after {
+	display: none
+}
+
+.hero-links-secton #icon--pay {
+	height: 32px;
+	width: 32px;
+	margin-top: -6px
+}
+
+.hero-links-add .hero-links-secton ul li:after {
+	display: flex
+}
+
+.hero-links-add .hero-links-secton ul li:first-child:after {
+	display: none
+}
+
+.hero-links-secton.show-span{ 
+    ul{
+      li{
+        a {
+          height: 96px;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          flex-direction: column;
+          text-align: center;
+          color: $white;
+          font-weight: bold;
+          font-size: 8px;
+          @include font-family-lato;
+          text-transform: uppercase;
+      } 
+    } 
+  }
+}
+
+.hero-links-secton.show-span {
+	ul {
+		li {
+			a {
+				p {
+					line-height: 1.5;
+					margin-top: 10px;
+					display: block;
+					width: 66%;
+					letter-spacing: 0.8px;
+					@include respond-to-max($desktop) {
+						width: 73%;
+					}
+					*[lang="ar"] *[dir=rtl] & {
+						width: 54%;
+					}
+
+          @media (min-width: 768px) and (max-width: 769px){
+            width:40%;
+          }
+
+				}
+			}
+		}
+	}
+}
+
+.config-section-column .hero-links-secton.show-span {
+	ul {
+		li {
+			a {
+				p {
+					width: 37%;
+				}
+			}
+		}
+	}
+}

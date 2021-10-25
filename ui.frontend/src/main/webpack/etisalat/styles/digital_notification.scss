@@ -1,0 +1,835 @@
+// more notifications
+.more-notifications {
+    a {
+        font-size: $font12;
+        line-height: normal;
+        letter-spacing: 1.71px;
+        color: $white;
+        text-transform: uppercase;
+        display: flex;
+        padding-right: toRem(14);
+        position: relative;
+
+        @include respond-to-min($desktop) {
+            font-size: $font11;
+            letter-spacing: 1.57px;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:after {
+            border: solid $main-green;
+            border-width: 0 1px 1px 0;
+            right: 3px;
+            border: solid $white;
+            border-width: 0 1px 1px 0;
+            padding: 2.7px;
+            content: "";
+            position: absolute;
+            line-height: 1;
+            top: 50%;
+            transform: translateY(-50%) rotate(-45deg);
+            transition: all .3s ease-in-out;
+        }
+    }
+}
+
+// icons 
+.noti-icon-info,
+.noti-icon-dismis,
+.noti-icon-dismis a {
+    width: toRem(18);
+    height: toRem(18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg,
+    img {
+        width: 15px;
+        height: 15px;
+    }
+
+    @include respond-to-min($desktop) {
+
+        svg,
+        img {
+            width: toRem(18);
+            height: toRem(18);
+        }
+    }
+}
+
+.noti-icon-dismis a {
+    z-index: 2;
+}
+
+// notifications head styling
+.notifications-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .title {
+        display: flex;
+        align-items: center;
+
+        a {
+            text-decoration: underline;
+            padding-left: 6px;
+        }
+
+        h3 {
+            padding-right: 24px;
+        }
+
+        h3,
+        a {
+
+            margin: 0;
+            font-size: $font14;
+            font-weight: bold;
+            line-height: 1.29;
+            letter-spacing: normal;
+            color: $white;
+            @include font-family-lato;
+
+            @include respond-to-min($desktop) {
+                font-weight: 500;
+            }
+
+            @media (min-width: 1260px) {
+                display: flex;
+            }
+        }
+    }
+}
+
+
+// notifications body styling
+.notifications-body {
+    .description {
+        a {
+            text-decoration: underline;
+        }
+
+        p,
+        a {
+            margin: 0;
+            font-size: $font12;
+            line-height: 1.5;
+            letter-spacing: normal;
+            color: $white;
+
+            @include respond-to-min($desktop) {
+                font-size: $font14;
+                font-weight: 500;
+                line-height: 1.29;
+            }
+        }
+
+        p+p {
+            margin-top: 8px;
+        }
+    }
+
+    ul,
+    ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li,
+        li a {
+            font-size: $font12;
+            font-weight: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            color: $white;
+            position: relative;
+
+            @include respond-to-min($desktop) {
+                font-weight: 500;
+            }
+        }
+
+        li a {
+            text-decoration: underline;
+        }
+
+        li+li {
+            margin-top: 8px;
+        }
+
+        li {
+            padding-left: toRem(10);
+
+            &:after {
+                content: " ";
+                display: block;
+                height: 1px;
+                width: 4px;
+                left: 0;
+                position: absolute;
+                left: 0;
+                background: $white;
+                top: 50%;
+            }
+        }
+    }
+}
+
+
+// notifications as a module
+.digital-notifications-wrapper {
+    padding: 17px 16px 24px 16px;
+
+    @include respond-to-min($tablet) {
+        padding: 24px 0 24px 0;
+    }
+
+    &.bg-black {
+        background-color: $black;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    &.bg-yellow {
+        background-color: $yellow-bg;
+
+        .title {
+
+            h3,
+            a {
+                color: $almost-black;
+            }
+        }
+
+        .noti-icon-info svg g {
+            stroke: $almost-black;
+        }
+
+        .notifications-body .description a,
+        .notifications-body .description p {
+            color: $almost-black;
+        }
+
+        .notifications-body ul li,
+        .notifications-body ul li a {
+            color: $almost-black;
+        }
+
+        .notifications-body ul li:after {
+            background: $almost-black;
+        }
+
+        .more-notifications a {
+            color: $almost-black;
+
+            &:after {
+                border-color: $almost-black;
+            }
+        }
+
+        .noti-icon-dismis svg g,
+        .noti-icon-dismis svg path {
+            stroke: $almost-black;
+        }
+    }
+
+    >.container {
+        position: relative;
+
+        @media (max-width: 767px) {
+            padding: 0 !important;
+        }
+    }
+
+    .noti-icon-info {
+        margin-right: toRem(10);
+    }
+
+    .noti-icon-dismis {
+        position: absolute;
+        right: 0;
+
+        @include respond-to-min($tablet) {
+            right: 12px;
+        }
+
+        @include respond-to-min($desktop) {
+            right: -16px;
+        }
+
+        @media (min-width: 1248px) {
+            right: -12px;
+        }
+
+        @media (min-width: 1348px) {
+            right: -40px;
+        }
+    }
+
+    .notifications-head {
+        @media (max-width: 767px) {
+            align-items: flex-start;
+
+            .title {
+                align-items: flex-start;
+            }
+        }
+
+        .more-notifications {
+            display: none;
+
+            @include respond-to-min($desktop) {
+                display: block;
+            }
+        }
+    }
+
+    .notifications-body {
+        @include respond-to-min($desktop) {
+            margin-top: -1px;
+        }
+
+        .description {
+            margin-top: 8px;
+        }
+
+        ul {
+            margin-top: 8px;
+        }
+
+        a.btn {
+            margin-top: 16px;
+            width: auto;
+            min-width: 180px;
+            margin-bottom: 0;
+        }
+
+        .more-notifications {
+            display: block;
+            margin-top: 16px;
+
+            @include respond-to-min($desktop) {
+                display: none;
+                margin-top: 0;
+            }
+
+            a {
+                @media (max-width: 991px) {
+                    display: inline-block;
+                }
+
+            }
+        }
+    }
+
+
+
+    .swiper-slide {
+        display: block;
+        width: 100%;
+    }
+
+    .swiper-slide {
+        text-align: left;
+        background-color: transparent;
+    }
+}
+
+
+// mid page banner 
+.digital-notifications-wrapper {
+    &.mid-page {
+        // border-radius: 4px;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-top: 1rem;
+
+        @include respond-to-min($tablet) {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .noti-icon-dismis {
+            display: none;
+        }
+    }
+}
+
+
+// notifications with bottom position ( contextual notifications )
+.digital-notifications-wrapper {
+    .mob-tab-bar {
+        display: none;
+    }
+
+    &.bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9;
+    }
+
+    &.expand-collapse {
+        .mob-tab-bar {
+            @media (max-width: 991px) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .tab-line {
+                    width: 24px;
+                    height: 4px;
+                    border-radius: 2px;
+                    background-color: $grey1;
+                    display: block;
+                    margin-bottom: 16px;
+                    margin-top: -12px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .notifications-body {
+            @media (max-width: 991px) {
+                display: block !important;
+                height: 30px;
+                opacity: .5;
+                overflow: hidden;
+
+                &.expanded {
+                    height: auto;
+                    opacity: 1;
+                    transition: all .3s ease-in-out;
+                }
+            }
+
+            @include respond-to-min($desktop) {
+
+                //display: none;
+                &.active {
+                    display: block;
+                }
+            }
+        }
+
+        .more-notifications {
+            @media (max-width: 991px) {
+                display: none;
+            }
+
+            a {
+                padding-right: toRem(18);
+
+                &:after {
+                    transform: translateY(-50%) rotate(45deg);
+                    top: 45%;
+                }
+
+            }
+
+            &.active {
+                a {
+                    &:after {
+                        transform: translateY(-50%) rotate(-135deg);
+                        top: 54%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// notification popup
+.single-notification {
+    margin-bottom: 32px;
+
+    @include respond-to-min($desktop) {
+        margin-bottom: 36px;
+    }
+
+    .notification-title h3,
+    .notification-date h3 {
+        margin: 0;
+        font-size: $font16;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: $almost-black;
+
+        @include respond-to-min($desktop) {
+            font-size: $font20;
+            letter-spacing: normal;
+            color: $black;
+        }
+    }
+
+    .notification-title {
+        margin-bottom: 16px;
+    }
+
+    .notification-date {
+        @media (max-width: 991px) {
+            margin-bottom: 8px;
+        }
+    }
+
+    .notification-description {
+        p {
+            margin: 0;
+            font-size: $font14;
+            line-height: 1.43;
+            letter-spacing: normal;
+            color: $steel-grey;
+
+            @include respond-to-min($desktop) {
+                font-size: $font14;
+                line-height: 1.71;
+                color: $almost-black;
+            }
+        }
+
+        p+p {
+            margin-top: 16px;
+        }
+    }
+
+    .notifications-learn-more {
+        margin-top: 16px;
+
+        @include respond-to-min($desktop) {
+            margin-top: 8px;
+        }
+
+        a {
+            font-size: $font14;
+            line-height: 1.43;
+            letter-spacing: 2px;
+            color: $main-green;
+            padding-right: toRem(14);
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+
+            &:after {
+                right: 3px;
+                border: solid $main-green;
+                border-width: 0 1px 1px 0;
+                padding: 3.7px;
+                content: "";
+                position: absolute;
+                line-height: 1;
+                top: 50%;
+                transform: translateY(-50%) rotate(-45deg);
+                transition: all .3s ease-in-out;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+
+
+.notifications-popup-wrapper {
+    .nv-modal-content {
+        display: block;
+    }
+
+    .nv-modal-body {
+        padding: 0 !important;
+
+        max-height: 80vh;
+        overflow: hidden;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar-track {
+            border-radius: toRem(10);
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: $main-green;
+        }
+
+    }
+
+    .nv-modal-header {
+        padding: 0;
+        border-bottom: 1px solid $grey5;
+        margin-bottom: 1.5rem;
+
+        @include respond-to-min($desktop) {
+            margin-bottom: 3rem;
+            padding-bottom: 40px;
+        }
+
+        .nv-modal-close {
+
+            svg {
+
+                line,
+                g {
+                    @media (max-width: 991px) {
+                        stroke: $cold-gray;
+                        stroke-width: 4px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .offers-popup-wrapper {
+        .nv-modal.bottom-modal {
+            .nv-modal-dialog {
+                top: 0;
+
+                .nv-modal-content {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+// *************************************
+// arabic overides
+// *************************************
+*[lang="ar"] {
+    *[dir="rtl"] {
+
+        .digital-notifications-wrapper .notifications-head .noti-icon-info {
+            margin-right: 0;
+            margin-left: toRem(10);
+        }
+
+        .digital-notifications-wrapper {
+            .noti-icon-dismis {
+                left: 0;
+                right: auto;
+
+                @include respond-to-min($tablet) {
+                    left: 12px;
+                    right: auto;
+                }
+
+                @include respond-to-min($desktop) {
+                    left: -16px;
+                    right: auto;
+                }
+
+                @media (min-width: 1248px) {
+                    left: -12px;
+                    right: auto;
+                }
+
+                @media (min-width: 1348px) {
+                    left: -40px;
+                    right: auto;
+                }
+            }
+        }
+
+
+        .notifications-head .title a {
+            padding-left: 0;
+            padding-right: 6px;
+        }
+
+        .notifications-head .title h3 {
+            padding-right: 0;
+            padding-left: 24px;
+        }
+
+        .digital-notifications-wrapper .notifications-head {
+            .noti-icon-dismis {
+                position: absolute;
+                left: 0;
+                right: auto;
+
+                @include respond-to-min($tablet) {
+                    left: 12px;
+                    right: auto;
+                }
+
+                @include respond-to-min($desktop) {
+                    left: -16px;
+                    right: auto;
+                }
+
+                @media (min-width: 1248px) {
+                    left: -12px;
+                    right: auto;
+                }
+
+                @media (min-width: 1348px) {
+                    left: -40px;
+                    right: auto;
+                }
+            }
+        }
+
+        .more-notifications a {
+            padding-right: 0;
+            padding-left: toRem(14);
+
+            &:after {
+                transform: translateY(-50%) rotate(136deg);
+                right: auto;
+                left: 3px;
+            }
+        }
+
+        .notifications-body ol li,
+        .notifications-body ul li {
+            padding-left: 0;
+            padding-right: toRem(10);
+
+            &:after {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        .digital-notifications-wrapper .notifications-body {
+            text-align: right;
+        }
+
+        .single-notification .notifications-learn-more a {
+            padding-right: 0;
+            padding-left: toRem(14);
+
+            &:after {
+                transform: translateY(-50%) rotate(-226deg);
+                right: auto;
+                left: 3px;
+            }
+        }
+
+        .quick-links-section.flexible-col .quick-links-body .links-item a img,
+        .quick-links-section.flexible-col .quick-links-body .links-item a svg {
+            margin-left: 0;
+            margin-right: 4px;
+        }
+    }
+}
+
+
+
+// configure notifications with menu
+.digital-notifications-wrapper.top {
+    top: 0;
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+}
+
+.show-digital-notification-top {
+
+    .top-nav-section,
+    .mega-menu-navbar-default {
+        position: absolute;
+    }
+}
+
+.bg-black {
+    .more-notifications {
+        margin-right: 3rem;
+
+        a {
+            color: $white;
+        }
+
+    }
+
+    .btn-text.btn-green {
+        &:before {
+            display: none;
+        }
+
+        &:hover {
+            color: $white;
+        }
+    }
+}
+
+.bg-yellow {
+    .btn-text.btn-green {
+        &:before {
+            display: none;
+        }
+    }
+    .notifications-head .more-notifications {
+        margin-right: 0rem;
+    }
+}
+
+.moreg {
+    font-size: $font11;
+    letter-spacing: 1.57px;
+}
+
+.nv-modal-close svg {
+    top: 0 !important;
+}
+
+.swipercontainer {
+    .swiper-container {
+        padding: 0;
+    }
+}
+
+.digital-notification {
+    .top-modal {
+        height: 100%;
+
+        @include respond-to-min($tablet) {
+            height: 100%;
+        }
+
+        @include respond-to-min($desktop) {
+            height: 61%;
+        }
+
+    }
+
+    .nv-modal-content {
+        border-radius: 0 !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        @include respond-to-min($tablet) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .nv-modal-dialog {
+        @include respond-to-min($tablet) {
+            height: 50%;
+        }
+    }
+}
