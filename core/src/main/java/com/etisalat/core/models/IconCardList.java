@@ -9,7 +9,7 @@ public interface IconCardList {
 	 * @return a collection of objects representing the icon card items that
 	 *         compose the list.
 	 */
-	List<IconCardListItem> getIconCardListItems();
+	List<IconCardVO> getIconCardListItems();
 	
 	int getIconCardSize();
 
