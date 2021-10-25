@@ -1,6 +1,6 @@
 package com.etisalat.core.models;
 
-public class IconCardListItem {
+public class IconCardVO {
 		
 	private String cardTitle;		
 	private String cardLink;	

@@ -15,7 +15,7 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import com.etisalat.core.models.HeroLinkSectionVO;
 import com.etisalat.core.models.IconCardList;
-import com.etisalat.core.models.IconCardListItem;
+import com.etisalat.core.models.IconCardVO;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		IconCardList.class }, resourceType = { IconCardListImpl.RESOURCE_TYPE })
@@ -38,17 +38,17 @@ public class IconCardListImpl implements IconCardList {
 	@SlingObject
     ResourceResolver resourceResolver;
 
-	private List <IconCardListItem> iconCardListItem;
+	private List <IconCardVO> iconCardListItem;
 
 	@Override
-	public List<IconCardListItem> getIconCardListItems() {
+	public List<IconCardVO> getIconCardListItems() {
 		Resource iconCardList = res.getChild(NAV_ITEMS);
 		iconCardListItem = new ArrayList<>();
 		if(iconCardList !=null && iconCardList.hasChildren()) {
 			Iterator<Resource> list = iconCardList.listChildren();
 			while (list.hasNext()) {
 				Resource r = list.next();
-				IconCardListItem cardList = new IconCardListItem();
+				IconCardVO cardList = new IconCardVO();
 				cardList.setCardIcon(r.getValueMap().get(CARD_ICON,String.class));
 				cardList.setCardTitle(r.getValueMap().get(CARD_TITLE,String.class));
 				cardList.setCardLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,r.getValueMap().get(CARD_LINK,String.class)));				
