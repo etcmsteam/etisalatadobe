@@ -1,15 +1,10 @@
 #about.cmp-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 100px 0;
-  @include respond-to-max($desktop) {
-    width: 720px;
-  }
-  @include respond-to-max($phone) {
-    width: 100%;
-  }
+  @extend .container-block;
 
   h2 {
+    @include respond-to-min($desktop) {
+      padding-top: 100px;
+    }
     &:after {
       content: "";
       display: block;
@@ -23,10 +18,14 @@
 }
 
 .cmp_box_shadow {
-  margin-bottom: 10px;
   transition-duration: 800ms;
-  min-height: toRem(230);
-  padding-top: toRem(28);
+  clear: both;
+  margin-bottom: 15px;
+  min-height: 270px;
+  @include respond-to-min($tablet) {
+    clear: none;
+    margin-bottom: 0;
+  }
   :hover {
     box-shadow: 0 10px 90px rgb(0 0 0 / 8%);
   }
@@ -40,6 +39,13 @@
     display: block;
     min-height: toRem(256);
     font-family: $font-family;
+    width: 100%;
+
+    @include respond-to-min($tablet) {
+      width: 96%;
+      clear: none;
+      margin-bottom: 0;
+    }
   }
   h4 {
     padding-bottom: $padding-small;

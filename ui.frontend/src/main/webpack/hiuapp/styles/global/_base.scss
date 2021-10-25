@@ -6,6 +6,11 @@ body {
   font-family: $font-family;
   line-height: $font-height;
   overflow-x: hidden;
+  background-color: #fff;
+}
+
+body {
+  margin-bottom: 400px;
 }
 
 p {
@@ -65,15 +70,22 @@ h4 {
 }
 
 .container-block {
-  max-width: 1140px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  @include respond-to-max($desktop) {
-    width: 720px;
+  @include respond-to-max($tablet) {
+    width: 100%;
   }
   @include respond-to-max($phone) {
     width: 100%;
   }
+  @include respond-to-min($tablet) {
+    max-width: 1070px;
+  }
+}
+
+.container {
+  padding: 0;
 }
 
 .scrollUp {
@@ -119,4 +131,26 @@ h4 {
     color: $white;
     transition-duration: 500ms;
   }
+}
+
+.content-shadow {
+  padding-top: 30px;
+  background: #f5f9fc;
+  background-image: -webkit-linear-gradient(80deg, #f5f9fc 55%, #fff 45%);
+  position: relative;
+  z-index: 1;
+  background-position: bottom center;
+  background-size: cover;
+  box-shadow: rgb(0 0 0 / 30%) 0px 20px 30px -20px;
+}
+
+.footer-boxshadow{
+  padding-top: 30px;
+  background: #f5f9fc;
+  background-image: -webkit-linear-gradient(80deg, #f5f9fc 55%, #fff 45%);
+  position: relative;
+  z-index: 1;
+  background-position: bottom center;
+  background-size: cover;
+  box-shadow: rgb(0 0 0 / 30%) 0px 20px 30px -20px;
 }

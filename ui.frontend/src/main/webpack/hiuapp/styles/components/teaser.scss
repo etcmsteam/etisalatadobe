@@ -1,103 +1,103 @@
 .section-banner {
   padding: 0;
-  @include respond-to-max($desktop) {
+  @include respond-to-min($desktop) {
     min-height: 1000px;
   }
   .container {
     padding: 0;
   }
-}
-
-.hiuapp_pink-rotate-bg {
-  background-position: bottom center;
-  background-image: -webkit-linear-gradient(
-    -80deg,
-    $pink-color 65%,
-    $white 35%
-  );
-
-  background-size: cover;
-  height: 900px;
-  padding: 0 30px 0 25px !important;
-  @include respond-to-max($tablet) {
-    background-image: -webkit-linear-gradient(
-      -70deg,
-      $pink-color 70%,
-      $white 30%
-    );
-  }
-  @include respond-to-max($phone) {
-    background-image: -webkit-linear-gradient(
-      -74deg,
-      $pink-color 80%,
-      $white 20%
-    );
-  }
-  @media (min-width: $desktop) {
-    .hidden {
-      display: block !important;
-    }
-  }
-  .cmp-container:first-of-type {
-    padding: 0;
-    @extend .container-block;
-  }
-  .cmp-container p {
-    color: $white;
-    padding: 0;
-    line-height: toRem(23);
-    color: $white-color;
-  }
-  .cmp_img {
-    position: relative;
-    top: 340px;
-    .cmp-image__image {
-      @include respond-to-max($phone) {
-        display: none;
-      }
-    }
-  }
-}
-.hiuapp_pink-rotate-bg {
-  min-height: 900px;
-  @include respond-to-min($tablet) {
-    min-height: 920px;
-  }
-  @include respond-to-min($desktop) {
+  .hiuapp_pink-rotate-bg {
     min-height: 900px;
-  }
-  .teaser {
-    position: relative;
-    .cmp-teaser {
-      position: relative;
-      top: 330px;
-      left: 0;
+    background-size: cover;
+    height: 900px;
+    padding: 0 30px 0 25px ;
+    @include respond-to-min($tablet) {
+      min-height: 900px;
+    }
+    @include respond-to-min($desktop) {
+      min-height: 900px;
+    }
+    background-position: bottom center;
+    background-image: -webkit-linear-gradient(
+      -80deg,
+      $pink-color 65%,
+      $white 35%
+    );
+
+    @include respond-to-max($tablet) {
+      background-image: -webkit-linear-gradient(
+        -70deg,
+        $pink-color 70%,
+        $white 30%
+      );
+    }
+    @include respond-to-max($phone) {
+      background-image: -webkit-linear-gradient(
+        -74deg,
+        $pink-color 80%,
+        $white 20%
+      );
+    }
+    @media (min-width: $desktop) {
+      .hidden {
+        display: block !important;
+      }
+    }
+    > .cmp-container:nth-child(1) {
       padding: 0;
-      text-align: center;
-      @include respond-to-min($phone) {
-        text-align: left;
-      }
-      @include respond-to-min($tablet) {
-        top: 140px;
-      }
-      @include respond-to-min($desktop) {
-        top: 330px;
-      }
-      h1 {
-        font-size: toRem(42);
+      @extend .container-block;
+    }
+
+    .teaser {
+      position: relative;
+      .cmp-teaser {
+        position: relative;
+        top: 150px !important;
+        left: 0;
+        padding: 0;
+        text-align: center;
         @include respond-to-min($tablet) {
-          font-size: toRem(60);
+          top: 230px;
+          text-align: left;
+        }
+        @include respond-to-min($desktop) {
+          top: 330px;
+        }
+        .cmp-teaser__content p {
+          padding: 0;
+          line-height: toRem(23);
+          color: $white-color;
+          font-weight: $font-weight3;
+          margin-top: toRem(10);
+          margin-bottom: 1rem;
+        }
+
+        h1 {
+          font-size: toRem(42);
+          @include respond-to-min($tablet) {
+            font-size: toRem(60);
+          }
+        }
+
+        .cmp-teaser__action-container {
+          @include respond-to-max($tablet) {
+            margin-top: 70px;
+          }
+        }
+
+        .cmp-teaser__action-link {
+          @extend .btn;
         }
       }
-      p {
-        color: $white;
-        font-weight: $font-weight3;
-        margin-top: toRem(10);
-        margin-bottom: 1rem;
+    }
+    .cmp_img {
+      position: relative;
+      top: 340px;
+      @include respond-to-max($tablet) {
+        top: 420px;
       }
-
-      .cmp-teaser__action-link {
-        @extend .btn;
+      @include respond-to-max($phone) {
+        display: none;
       }
     }
   }

@@ -13,11 +13,14 @@
   @include respond-to-max($tablet) {
     padding-top: toRem(60);
   }
-  .cmp-container:first-child {
+  @include respond-to-min($desktop) {
+    padding: 100px 0;
+  }
+  > .cmp-container:nth-child(1) {
     @extend .container-block;
   }
   .cmp-image__image {
-    max-width: 90%;
+    max-width: 100%;
   }
   .cmp-text {
     h2 {

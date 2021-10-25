@@ -1,25 +1,37 @@
-.hiuapp_lightblue_bg,
 .hiuapp_terms {
   background: linear-gradient(to left, $pink-color, $shade-pink);
   padding: 50px 0px;
   .cmp-container:first-child {
     @extend .container-block;
   }
-  .hiuapp_teaser_ctn {
+  .teaser {
+    @include respond-to-max($phone) {
+      text-align: center;
+    }
     .cmp-teaser__content {
       position: relative;
       .cmp-teaser__pretitle {
         font-size: toRem(36);
         color: $white;
       }
-      p {
-        color: #fff;
+      .cmp-teaser__description {
+        @include respond-to-min($phone) {
+          margin: 10px 0 20px 0;
+        }
+        p {
+          color: #fff;
+          margin-bottom: 15px 0 20px 0;
+        }
       }
       .cmp-teaser__action-container {
-        position: absolute;
-        top: 0;
-        right: 0;
-
+        @include respond-to-min($phone) {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+        @include respond-to-max($desktop) {
+          top: 30px;
+        }
         .cmp-teaser__action-link {
           @extend .btn;
         }
@@ -34,6 +46,12 @@
 
 .cmp_btn {
   display: flex;
+  @include respond-to-max($phone) {
+    flex-direction: column;
+    .cmp_store_btn{
+      margin-bottom: 10px;
+    }
+  }
   .cmp_store_btn {
     border: 1px solid $table-border-color;
     background-color: $white;
@@ -75,43 +93,51 @@
   }
 }
 
-.hiuapp_termspage .hiuapp_pink-rotate-bg {
-  background-image: -webkit-linear-gradient(-80deg, #db4f74 65%, #fff 0);
-  height: 350px;
-  position: relative;
-  z-index: 1;
-  background-position: bottom center;
-  background-size: cover;
+// Terms page
+.hiuapp_termspage {
+  @extend .footer-boxshadow;
+  .section-banner{
+    min-height: auto;
+  }
+  .hiuapp_pink-rotate-bg {
+    background-image: -webkit-linear-gradient(-80deg, #db4f74 60%, #fff 40%);
+    height: 350px;
+    position: relative;
+    z-index: 1;
+    background-position: bottom center;
+    background-size: cover;
+    min-height: 350px;
 
-  .cmp-text{
-    float: none!important;
+    .cmp-teaser {
+      top: 100px;
+      h1 {
+        font-size: toRem(50);
+        margin: 0;
+      }
+      p {
+        color: #fff;
+        margin: 18px 36px 18px 0;
+      }
+    }
+  }
+  .cmp_container_block {
     @extend .container-block;
-  }
-  .cmp-teaser h1 {
-    font-size: 3.25rem;
-    margin-bottom: 30px;
-    margin-left: 0;
-    margin-top: -20px;
-  }
+    float: none !important;
+    h3 {
+      border-bottom: 2px solid #db4f74;
+      font-size: 2em;
+    }
 
-  .cmp-container p {
-    color: #fff;
-    line-height: 1.4375rem;
-    margin: 18px 36px 18px 0;
-    padding: 0;
-  }
-
-  h3,
-  h4 {
-    color: #000;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 25px 0 15px;
-  }
-
-  h3 {
-    border-bottom: 2px solid #db4f74;
-    font-size: 2em;
+    h3,
+    h4 {
+      color: #000;
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 25px 0 15px;
+    }
+    p{
+      margin-bottom: 15px;
+    }
   }
 }
