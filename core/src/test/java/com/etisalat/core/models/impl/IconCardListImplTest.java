@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import com.etisalat.core.models.IconCardList;
-import com.etisalat.core.models.IconCardListItem;
+import com.etisalat.core.models.IconCardVO;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -36,13 +36,19 @@ class IconCardListImplTest {
 	void testGetIConCardListItems() {
 		Resource navItemRes = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
-		String expectedCardTitle = "Card Title 1";
+		final String expectedCardTitle = "Card Title 1";
+		final String expectedCardLink = "/content/etisalat/ae/en/carrier-and-wholesale/help";
+		final String expectedCardIcon = "/content/dam/etisalat/internet.svg";
 		int expectedCardSize = 2;
 		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
-		IconCardListItem iconCardListItem = iconCardList.getIconCardListItems().get(0);
+		IconCardVO iconCardListItem = iconCardList.getIconCardListItems().get(0);
 		String actualCardTitle = iconCardListItem.getCardTitle();
+		String actualCardLink = iconCardListItem.getCardLink();
+		String actualCardIcon = iconCardListItem.getCardIcon();
 		int actualCardSize = iconCardList.getIconCardSize();
 		assertEquals(expectedCardTitle, actualCardTitle);
+		assertEquals(expectedCardLink, actualCardLink);
+		assertEquals(expectedCardIcon, actualCardIcon);
 		assertEquals(expectedCardSize, actualCardSize);
 
 	}		
