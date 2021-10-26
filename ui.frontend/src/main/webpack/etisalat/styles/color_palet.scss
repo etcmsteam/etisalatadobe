@@ -1,16 +1,74 @@
 //background color variation
-.purpal--color {
-    background: linear-gradient(-92.14deg, #222 41%, #491873 110%) !important;
+.purpal--color{
+    background: linear-gradient(-92.14deg, #222 41%, #491873 110%);
 }
 
 .green--color {
-    background: linear-gradient(225deg, #353738, #719e19) !important;
+    background: linear-gradient(225deg, #353738, #719e19);
 }
 
 .orange--color {
-    background: linear-gradient(225deg, #353738, #9e5419) !important;
+    background: linear-gradient(225deg, #353738, #9e5419);
 }
 
-.aqua--color {
-    background: linear-gradient(225deg, #3d3d3d, #199e94) !important;
+.aqua-green--color {
+    background-image: linear-gradient(180deg,#679116 -46%,#199e94);
 }
+.aqua-bg--color {
+    background: linear-gradient(225deg, #3d3d3d, #199e94); 
+}
+
+.default-color{
+    background: #f7f8f4;
+}
+
+.aqua-bg--color,.aqua-green--color,.orange--color,.green--color,.purpal--color{
+    h4, p{
+        color: $white;
+    }
+}
+
+.beigebg--pattern-bg{
+    position: relative;
+}
+.beigebg--pattern-bg{
+    &::before{
+        background: url("../resources/images/sectionbg.svg");
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 360px;
+        width: 340px;
+        position: absolute;
+        opacity: .1;
+        z-index: 1;
+        bottom: 0;
+        background-position: top left;
+    
+        @include md {
+            background-image: none;
+        }
+    }
+    background:#f7f8f4; 
+    &:after{
+        background: url("../resources/images/sectionbg.svg");
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 360px;
+        position: absolute;
+        width: 340px;
+        opacity: .1;
+        z-index: 1;
+        right: 0;
+        transform: rotate(180deg);
+        top: 0;
+    
+        @include md {
+            height: 145px;
+            width: 140px;
+        }
+    }
+}
+
+
