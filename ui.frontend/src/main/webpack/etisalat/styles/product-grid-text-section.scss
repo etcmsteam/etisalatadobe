@@ -1,3 +1,16 @@
+.product-grid-text-section.plans {
+	.product-tile-section.bg-cards.product-plan-card {
+		.plan-card.tile-table .tile-card .tile-card__front .body-standard > .cover {
+			height: 315px;
+			div.cmp-image {
+				height: 100%;
+				.cmp-image__image {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
 .container-product-grid {
 	margin-right: auto;
 	margin-left: auto;
@@ -99,6 +112,9 @@
 		.row-tiles-table .col-xs-12 {
 			width: 377px !important;
 		}
+	}
+	.ul-list-cms ul {
+		padding-left: 0;
 	}
 }
 
@@ -392,6 +408,7 @@
 		overflow: hidden;
 		letter-spacing: 0;
 		line-height: 1.4;
+		color: $white;
 	}
 	.bg-cards .device-card.tile-table .tile-card .tiles-box-title ul.colorList,
 	.bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title ul.colorList,
@@ -466,14 +483,13 @@
 	.bg-cards .product-home-card.tile-table .tile-card .smile-points,
 	.bg-cards .product-home-multi-card-selection.tile-table .tile-card .smile-points,
 	.bg-cards .product-home-single-card-selection.tile-table .tile-card .smile-points {
-		padding: 0.5rem 1.5rem;
-		font-size: $font16;
+		padding: 1em 1.5rem;
+		font-size: $font15;
 		background: $sand-white-50;
 		color: $main-green;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		font-weight: 700;
 	}
 	.bg-cards .device-card.tile-table .tile-card .tiles-box-list,
 	.bg-cards .device-card-selection.tile-table .tile-card .tiles-box-list,
@@ -531,6 +547,7 @@
 		-webkit-box-pack: start;
 		-webkit-justify-content: flex-start;
 		-ms-flex-pack: start;
+		margin-top: auto;
 	}
 	.bg-cards .device-card.tile-table .tile-card .detail-price-new .price,
 	.bg-cards .device-card-selection.tile-table .tile-card .detail-price-new .price,
@@ -646,6 +663,7 @@
 		color: $white;
 		padding: 1.125em 1em;
 		display: block;
+		font-weight: bold;
 	}
 	.bg-cards .device-card.tile-table .tile-card .read-more,
 	.bg-cards .device-card-selection.tile-table .tile-card .read-more,
@@ -2738,7 +2756,7 @@
 				margin-right: 12px;
 			}
 			@include respond-to-min($desktop) {
-				margin-left:30px;
+				margin-left: 30px;
 				margin-right: 30px;
 			}
 			@include respond-to-min($desktop-wide) {
@@ -2754,14 +2772,14 @@
 					padding-right: 0;
 					padding-left: 0;
 					margin-right: 24px;
-					max-width: 282px;	
+					max-width: 282px;
 				}
 				&:last-child {
-					@include respond-to-min($tablet) { 
+					@include respond-to-min($tablet) {
 						margin-right: 0;
 					}
 				}
-				
+
 				.producttile {
 					height: 100%;
 					> div {
@@ -2801,7 +2819,6 @@
 						max-width: 282px;
 					}
 				}
-				
 			}
 		}
 		.swiper-container {
@@ -2824,6 +2841,7 @@
 	.tile {
 		.tile-card__front {
 			.view-channel-list {
+				margin-bottom: .825rem;
 				a {
 					display: flex;
 					align-items: center;
@@ -2848,7 +2866,6 @@
 			.catagory {
 				@include font-family-lato;
 				line-height: 0.75rem;
-				opacity: 0.8;
 			}
 			.btn-text.btn-green::before {
 				border: none;
@@ -2876,23 +2893,6 @@
 					display: inline-block;
 					@include font-family-lato;
 					cursor: pointer;
-					&::before {
-						content: "";
-						line-height: 1;
-						right: 0;
-						display: inline-block;
-						padding: 3px;
-						position: absolute;
-						top: 40%;
-						border: solid $main-green;
-						-webkit-transform: translateY(-50%) rotate(-45deg);
-						border-width: 0 1px 1px 0;
-					}
-					&.moreg {
-						&::before {
-							display: none;
-						}
-					}
 				}
 			}
 		}
