@@ -160,12 +160,21 @@
 //tab with accordion
 .cmp-accordion--tab {
 	@include font-family-Neotech-roboto();
+	.cmp-accordion__button{
+		padding: 0;
+	}
 	.cmp-accordion__title {
-		@include font-family-lato();
+		line-height: 1.5;
+		font-size: $font12;
+		display: inline-block;
 		color: $almost-black;
-		font-weight: 400;
-		border-bottom: 0;
-		font-size: $font16;
+		@include font-family-lato();
+		padding:1.25rem 25px;
+		@include respond-to-min($desktop) {
+			line-height: 1.4;
+			font-size: $font16;
+			padding:1.5rem 25px;
+		}
 	}
 	button:focus {
 		background-color: transparent;
@@ -197,11 +206,15 @@
 		background-color: $sand-white-50;
 		border-top-color: transparent;
 		border-bottom: 1px solid $light-sand-brown;
-		padding: 1.3rem 1.5rem;
-		line-height: 20px;
+		padding: 1rem;
 		font-size: $font12;
+		@include font-family-lato();
+		line-height: 20px;
 		color: $steel-grey;
 		margin-bottom: 0px;
+		@include respond-to-min($desktop) {
+			padding: 1.3rem 1.5rem;
+		}
 	}
 	@include respond-to-max($tablet) {
 		.nav-view-wrapp.panel>a,
