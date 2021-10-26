@@ -10,7 +10,7 @@
     min-height: 900px;
     background-size: cover;
     height: 900px;
-    padding: 0 30px 0 25px ;
+    padding: 0 30px 0 25px;
     @include respond-to-min($tablet) {
       min-height: 900px;
     }
@@ -50,19 +50,24 @@
 
     .teaser {
       position: relative;
-      .cmp-teaser {
-        position: relative;
-        top: 150px !important;
-        left: 0;
-        padding: 0;
-        text-align: center;
-        @include respond-to-min($tablet) {
+      &.hiuapp_home {
+        top: 150px;
+        @include respond-to-max($tablet) {
           top: 230px;
           text-align: left;
         }
         @include respond-to-min($desktop) {
           top: 330px;
+          text-align: left;
         }
+      }
+      .cmp-teaser {
+        position: relative;
+        left: 0;
+        padding: 0;
+        text-align: center;
+        
+
         .cmp-teaser__content p {
           padding: 0;
           line-height: toRem(23);
