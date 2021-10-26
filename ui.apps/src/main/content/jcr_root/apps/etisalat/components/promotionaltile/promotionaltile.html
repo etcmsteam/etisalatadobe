@@ -18,7 +18,8 @@
         <div class="description" data-sly-test="${properties.description}">${properties.description @ context='html'}</div>
         <div data-sly-test="${properties.promotionCTATitle}" class="learn-more-wrap">
             <sly data-sly-test="${properties.promotionLinkBehavior != 'openmodalwindow'}">
-                <a href="${ properties.promotionLinkBehavior == 'opensamewindow'? properties.promotionCTALinkSameWindow : properties.promotionCTALinkNewWindow}"
+                <sly data-sly-test.link="${properties.promotionLinkBehavior == 'opensamewindow'? properties.promotionCTALinkSameWindow : properties.promotionCTALinkNewWindow}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=link}"/>
+                <a href="${commonlinkmodel.link}"
                    class="btn-text btn-green learn-more "
                    title="${properties.promotionCTATitle}"
                    target="${properties.promotionLinkBehavior == 'opennewwindow'?'_blank':'_self'}">
