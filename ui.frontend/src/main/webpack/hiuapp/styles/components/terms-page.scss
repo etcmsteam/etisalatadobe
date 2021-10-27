@@ -51,7 +51,7 @@
   display: flex;
   @include respond-to-max($phone) {
     flex-direction: column;
-    .cmp_store_btn{
+    .cmp_store_btn {
       margin-bottom: 10px;
     }
   }
@@ -98,26 +98,39 @@
 
 // Terms page
 .hiuapp_termspage {
-  box-shadow: rgb(0 0 0 / 30%) 0px 20px 30px -20px;
-  margin-bottom: 50px;
+  background: $grey-color;
+  background-image: -webkit-linear-gradient(80deg, $grey-color 55%, $white 45%);
+  position: relative;
+  z-index: 1;
+  background-position: bottom center;
+  background-size: cover;
+  &:nth-of-type(2) {
+    box-shadow: rgb(0 0 0 / 30%) 0px 20px 30px -20px;
+    margin-bottom: 50px;
+  }
   padding-top: 0;
-  .section-banner{
+  .section-banner {
     min-height: auto;
   }
   .hiuapp_pink-rotate-bg {
-    background-image: -webkit-linear-gradient(-80deg, $pink-color 60%, $white 40%);
+    background-image: -webkit-linear-gradient(
+      -80deg,
+      $pink-color 60%,
+      $white 40%
+    );
     height: 350px;
     position: relative;
     z-index: 1;
     background-position: bottom center;
     background-size: cover;
     min-height: 350px;
-    .aem-GridColumn.aem-GridColumn--default--6{
+    padding: 0 30px 0 15px;
+    .aem-GridColumn.aem-GridColumn--default--6 {
       width: 100% !important;
     }
 
     .cmp-teaser {
-      top: 100px;
+      top: 105px;
       h1 {
         font-size: toRem(50);
         margin: 0;
@@ -125,7 +138,10 @@
         margin: 0;
 
         @include respond-to-max($phone) {
-          font-size: toRem(35);
+          font-size: toRem(35) !important;
+        }
+        @include respond-to-min($tablet) {
+          font-size: toRem(50);
         }
       }
       p {
@@ -137,6 +153,13 @@
   .cmp_container_block {
     @extend .container-block;
     float: none !important;
+
+    @include respond-to-min($desktop) {
+      padding: 0 !important;
+    }
+    @include respond-to-max($tablet) {
+      padding: 0 20px !important;
+    }
     h3 {
       border-bottom: 2px solid $pink-color;
       font-size: 2em;
@@ -150,7 +173,7 @@
       line-height: 1.2;
       margin: 25px 0 15px;
     }
-    p{
+    p {
       margin-bottom: 15px;
     }
   }
