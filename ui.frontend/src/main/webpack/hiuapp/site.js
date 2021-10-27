@@ -14,13 +14,17 @@ $(document).ready(function () {
 
   $(".menu__icon").on("click", function (e) {
     e.preventDefault();
+    $(".main-nav__list").addClass("ShowMenu");
     $(".main-nav__list").toggleClass("Scroll-Down");
-    $(".main-nav__list").slideToggle("slow");
+    $(".main-nav__list.ShowMenu").slideToggle("slow");
+
   });
 
   $(".menu li a").on("click", function () {
+    $(".ShowMenu").slideToggle("slow");
     $(".main-nav__list").removeClass("ShowMenu");
-    $(".main-nav__list").slideToggle("slow");
+
+
   });
 });
 
