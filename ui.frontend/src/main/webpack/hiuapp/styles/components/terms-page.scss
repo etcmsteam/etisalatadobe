@@ -1,6 +1,6 @@
 .hiuapp_terms {
   background: linear-gradient(to left, $pink-color, $shade-pink);
-  padding: 50px 0px;
+  padding: 30px 0 50px 0;
   .cmp-container:first-child {
     @extend .container-block;
   }
@@ -26,11 +26,14 @@
       .cmp-teaser__action-container {
         @include respond-to-min($phone) {
           position: absolute;
-          top: 15px;
+          top: 10px;
           right: 0;
         }
         @include respond-to-max($desktop) {
-          top: 30px;
+          top: 20px;
+        }
+        @include respond-to-max($tablet) {
+          top: 10px;
         }
         .cmp-teaser__action-link {
           @extend .btn;
@@ -95,7 +98,7 @@
 
 // Terms page
 .hiuapp_termspage {
-  @extend .footer-boxshadow;
+  padding-top: 0;
   .section-banner{
     min-height: auto;
   }
@@ -107,10 +110,13 @@
     background-position: bottom center;
     background-size: cover;
     min-height: 350px;
+    .aem-GridColumn.aem-GridColumn--default--6{
+      width: 100% !important;
+    }
 
     .cmp-teaser {
       top: 100px;
-      h2 {
+      h1 {
         font-size: toRem(50);
         margin: 0;
         color: $white;

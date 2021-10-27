@@ -6,8 +6,6 @@
   background-position: bottom center;
   background-size: cover;
   margin-top: toRem(150);
-  padding-top: toRem(100);
-  padding-bottom: toRem(100);
   padding-right: 0;
   padding-left: 0;
   @include respond-to-max($tablet) {
@@ -15,6 +13,8 @@
   }
   @include respond-to-min($desktop) {
     padding: 100px 0;
+    padding-top: toRem(100);
+    padding-bottom: toRem(100);
   }
   > .cmp-container:nth-child(1) {
     @extend .container-block;
@@ -24,9 +24,14 @@
   }
   .cmp-text {
     h2 {
-      font-size: toRem(45) !important;
-      display: block;
-      margin-bottom: toRem(8);
+      @include respond-to-min($desktop) {
+        font-size: toRem(45);
+        margin-bottom: toRem(45);
+      }
+      @include respond-to-max($tablet) {
+        font-size: toRem(30);
+        margin-bottom: 30px;
+      }
     }
   }
 }

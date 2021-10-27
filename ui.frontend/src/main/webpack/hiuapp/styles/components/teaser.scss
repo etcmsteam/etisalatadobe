@@ -1,7 +1,7 @@
 .section-banner {
   padding: 0;
   @include respond-to-min($desktop) {
-    min-height: 1000px;
+    // min-height: 1000px;
   }
   .container {
     padding: 0;
@@ -51,22 +51,23 @@
     .teaser {
       position: relative;
       &.hiuapp_home {
-        top: 150px;
+        @include respond-to-min($tablet) {
+          top: 330px;
+          text-align: left;
+        }
         @include respond-to-max($tablet) {
           top: 230px;
           text-align: left;
         }
-        @include respond-to-min($desktop) {
-          top: 330px;
-          text-align: left;
+        @include respond-to-max($tablet) {
+          top: 150px;
+          text-align: center;
         }
       }
       .cmp-teaser {
         position: relative;
         left: 0;
         padding: 0;
-        text-align: center;
-        
 
         .cmp-teaser__content p {
           padding: 0;
@@ -101,7 +102,7 @@
       @include respond-to-max($tablet) {
         top: 420px;
       }
-      @include respond-to-max($phone) {
+      @include respond-to-max($tablet) {
         display: none;
       }
     }

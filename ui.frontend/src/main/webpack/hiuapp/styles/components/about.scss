@@ -1,6 +1,6 @@
 #about.cmp-container {
   @extend .container-block;
-
+  text-align: center;
   h2 {
     @include respond-to-min($desktop) {
       padding-top: 100px;
@@ -28,6 +28,7 @@
   }
   @include respond-to-max($tablet) {
     margin: 10px 0;
+    width: 100%;
   }
   :hover {
     box-shadow: 0 10px 90px rgb(0 0 0 / 8%);
@@ -45,7 +46,7 @@
     width: 100%;
 
     @include respond-to-min($tablet) {
-      width: 96%;
+      width: 90%;
       clear: none;
       margin-bottom: 15px;
     }
@@ -53,5 +54,14 @@
   h4 {
     padding-bottom: 15px;
     margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-device-width: 1600px) and (orientation: landscape) {
+  body {
+    border: 2px solid red;
+  }
+  .hiuapp_pink-rotate-bg .cmp-image {
+    display: none;
   }
 }
