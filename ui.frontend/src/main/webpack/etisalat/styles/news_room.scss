@@ -1,33 +1,35 @@
-.tile-boxes-section {
-    @include respond-to-min($tablet) {
-        padding-left: 0px !important;
-    }
-
-    position: relative;
-    overflow: hidden;
-
-    .swiper-scrollbar {
-        bottom: 0 !important;
-    }
-
-    .swiper-scrollbar-drag {
-        //   background: @brand-primary;
-        background-color: #ccc;
-    }
-
-    .swiper-wrapper {
-        display: block !important;
-    }
-
-    @media (max-width: 991px) {
-        .swiper-wrapper .swiper-slide {
-            padding-left: 1rem !important;
-        }
-    }
+.cmp-newsroom-search {
+	.tile-boxes-section {
+	    @include respond-to-min($tablet) {
+	        padding-left: 0px !important;
+	    }
+	
+	    position: relative;
+	    overflow: hidden;
+	
+	    .swiper-scrollbar {
+	        bottom: 0 !important;
+	    }
+	
+	    .swiper-scrollbar-drag {
+	        //   background: @brand-primary;
+	        background-color: $grey-brass;
+	    }
+	
+	    .swiper-wrapper {
+	        display: block !important;
+	    }
+	
+	    @media (max-width: 991px) {
+	        .swiper-wrapper .swiper-slide {
+	            padding-left: 0rem !important;
+	        }
+	    }
+	}
 }
 
-
-.tile-box-tile {
+.cmp-newsroom-search {
+ .tile-box-tile {
     min-height: 280px;
     overflow: hidden;
     background: $white;
@@ -128,6 +130,7 @@
             }
         }
     }
+  }
 }
 
 //for HBH
@@ -297,7 +300,7 @@
     }
 
     @media (max-width: 991.98px) {
-        padding: 3.8rem 4rem 1.6rem 4rem;
+        padding: 3.8rem 1rem 1.6rem 1rem;
     }
 
     @media (max-width: 767.98px) {
@@ -438,11 +441,51 @@
             }
         }
     }
+    
+    .btn.btn-default.active, .btn.btn-default:hover{
+        box-shadow: none;
+        color: $main-green;
+        background-color: $white;
+        border-color: $main-green;
+    }
+    .btn.btn-default:focus {
+        outline: 0;
+        color: $white;
+        background-color: $green-btn;
+        border-color: $green-btn;
+    }
+    @media (max-width: 991px) {
+        .tile-boxes-section {
+            padding: 1.5rem !important;
+        }
+    }
 }
 
-@media (max-width: 991px) {
-    .tile-boxes-section {
-        padding: 1rem !important;
+
+
+.set-heading__title{
+    margin-top: 2.6rem;
+    padding-left: 0.7rem;
+    @include respond-to-max($tablet) {
+        margin-top: 0;
+    }
+    @include respond-to-max($phone) {
+        margin-top: 2.6rem;
+    }
+}
+.category-search{
+    padding: 0  0.7rem; 
+}
+.cmp-newsroom-search {
+    .select2-dropdown {
+        width: 21rem;
+        @include respond-to-min($tablet) {
+            width: 45rem;
+        }
+
+        @include respond-to-min($desktop) {
+            width: 16.5rem;
+        }
     }
 }
 
