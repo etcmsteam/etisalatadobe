@@ -1,44 +1,50 @@
-
-
-.media-cta-wrapper{
-    position: relative;
-    border-radius: 4px;
-    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-    min-height: 150px;
-    @include respond-to-min($tablet){
-        min-height: auto;
-    }
-    h4{
-        margin-bottom: 1rem;
-        @include font-family-lato();
-        font-weight: 700;
-        font-size: $font18;
-        color: $almost-black;
-        @include respond-to-min($desktop){
-            margin-bottom: 1.4rem;
-            margin-top: 0;
-            font-size: $font26;
-            font-weight: normal;
-            @include font-family-Neotech();
-        }
-    }
-    .ul-list-cms{
-        @include respond-to-min($tablet){
-            padding: 1.5rem 4rem 2.5rem 1.5rem;
-    }
-    li{
-        font-size: $font14;
-        line-height: 20px;
-    }
+.media-cta-wrapper {
+	position: relative;
+	border-radius: 4px;
+	box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+	min-height: 150px;
+	.aem-Grid {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	@include respond-to-min($tablet) {
+		min-height: auto;
+	}
+	@include respond-to-min($desktop) {
+		.aem-Grid {
+			display: inherit;
+			flex-direction: inherit;
+		}
+	}
+	h4 {
+		margin-bottom: 1rem;
+		@include respond-to-max($tablet){
+			@include font-family-lato();
+		}
+		font-weight: 700;
+		font-size: $font18;
+		color: $almost-black;
+		@include respond-to-min($desktop) {
+			margin-bottom: 1.4rem;
+			margin-top: 0;
+			font-size: $font26;
+			font-weight: normal;
+		}
+	}
+	.ul-list-cms {
+		@include respond-to-min($tablet) {
+			padding: 1.5rem 4rem 2.5rem 1.5rem;
+		}
+		li {
+			font-size: $font14;
+			line-height: 20px;
+		}
+	}
+	p {
+		margin-bottom: .5rem;
+		font-size: $font14;
+	}
+	p+p {
+		margin-top: .55rem;
+	}
 }
-p{
-    margin-bottom: .5rem;
-    font-size: $font14;
-}
-p+p {
-    margin-top: .55rem;
-}
-
-}
-
-
