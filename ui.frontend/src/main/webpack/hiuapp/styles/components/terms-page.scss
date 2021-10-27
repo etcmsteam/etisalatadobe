@@ -13,6 +13,7 @@
       .cmp-teaser__pretitle {
         font-size: toRem(36);
         color: $white;
+        padding-bottom: 5px;
       }
       .cmp-teaser__description {
         @include respond-to-max($tablet) {
@@ -26,7 +27,7 @@
       .cmp-teaser__action-container {
         @include respond-to-min($phone) {
           position: absolute;
-          top: 10px;
+          top: 15px;
           right: 0;
         }
         @include respond-to-max($desktop) {
@@ -37,64 +38,15 @@
         }
         .cmp-teaser__action-link {
           @extend .btn;
+          min-width: 9.5rem;;
+
         }
       }
     }
   }
 }
 
-.buttonstore {
-  margin-top: 2.75rem;
-}
 
-.cmp_btn {
-  display: flex;
-  @include respond-to-max($phone) {
-    flex-direction: column;
-    .cmp_store_btn {
-      margin-bottom: 10px;
-    }
-  }
-  .cmp_store_btn {
-    border: 1px solid $greyish-white;
-    background-color: $white;
-    padding: 15px 30px;
-    border-radius: toRem(6);
-    box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
-    margin-right: toRem(20);
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      i {
-        color: $shade-grey;
-        font-size: toRem(24);
-        margin-right: toRem(15);
-        transition-duration: 500ms;
-      }
-      p {
-        font-size: 16px;
-        line-height: 1;
-        transition-duration: 500ms;
-
-        span {
-          font-size: 12px;
-          display: block;
-        }
-      }
-    }
-    &:hover {
-      background-color: $pink-color;
-      color: $white;
-      cursor: pointer;
-
-      p,
-      i {
-        color: $white;
-      }
-    }
-  }
-}
 
 // Terms page
 .hiuapp_termspage {
@@ -104,11 +56,14 @@
   z-index: 1;
   background-position: bottom center;
   background-size: cover;
-  &:nth-of-type(2) {
+  padding-top: 0;
+  &.terms__boxshadow, &::after {
     box-shadow: rgb(0 0 0 / 30%) 0px 20px 30px -20px;
     margin-bottom: 50px;
+    content: "";
   }
-  padding-top: 0;
+
+
   .section-banner {
     min-height: auto;
   }
@@ -148,13 +103,18 @@
         color: $white;
         margin: 18px 36px 18px 0;
       }
+      .cmp-teaser__content{
+        @include respond-to-min($desktop) {
+          padding-left: 10px
+        }
+      }
     }
   }
   .cmp_container_block {
     @extend .container-block;
     float: none !important;
 
-    @include respond-to-min($desktop) {
+    @include respond-to-min($desktop-wide) {
       padding: 0 !important;
     }
     @include respond-to-max($tablet) {
@@ -175,6 +135,7 @@
     }
     p {
       margin-bottom: 15px;
+      line-height: 24px;
     }
   }
 }

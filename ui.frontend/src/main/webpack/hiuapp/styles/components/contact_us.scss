@@ -11,6 +11,7 @@
     @extend .container-block;
   }
   h2 {
+    text-align: center;
     &:after {
       content: "";
       display: block;
@@ -22,6 +23,12 @@
     }
   }
   .contact-form {
+    @include respond-to-min($desktop) {
+      padding-left: 20px;
+    }
+    .googlecaptcha {
+      margin-bottom: 10px;
+    }
     .cmp-form-text {
       margin-bottom: 1rem;
     }
@@ -34,7 +41,7 @@
         padding: 15px;
         border-radius: toRem(6);
         line-height: 1.5;
-        color: $off-white;
+        color: $shade-gray;
         background-color: $white;
         background-image: none;
         background-clip: padding-box;
@@ -48,7 +55,7 @@
         padding: 15px;
         border-radius: toRem(6);
         line-height: 1.5;
-        color: $off-white;
+        color: $shade-gray;
         background-color: $white;
         background-image: none;
         background-clip: padding-box;
@@ -58,10 +65,6 @@
   }
 }
 
-#contact input::placeholder,
-#contact textarea::placeholder {
-  color: $off-white;
-}
 
 #contact input,
 #contact textarea {

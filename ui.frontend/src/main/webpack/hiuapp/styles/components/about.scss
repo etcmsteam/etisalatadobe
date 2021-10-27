@@ -18,11 +18,9 @@
 }
 
 .cmp_box_shadow {
-  transition-duration: 800ms;
   clear: both;
   margin-bottom: 15px;
   min-height: 270px;
-  transition: all 0.2s ease-out;
   @include respond-to-min($tablet) {
     clear: none;
     margin-bottom: 0;
@@ -31,9 +29,7 @@
     margin: 10px 0;
     width: 100%;
   }
-  :hover {
-    box-shadow: 0 10px 90px rgb(0 0 0 / 8%);
-  }
+
   .cmp-text {
     position: relative;
     padding: toRem(72) toRem(8);
@@ -45,6 +41,10 @@
     min-height: 270px;
     font-family: $font-family;
     width: 100%;
+    transition: all 0.8s ease-out;
+    &:hover {
+      box-shadow: 0 10px 90px rgb(0 0 0 / 8%);
+    }
 
     @include respond-to-min($tablet) {
       width: 90%;
@@ -58,8 +58,66 @@
   }
 }
 
-@media screen and (max-device-width: 1024px) and (orientation: landscape) {
-.hiuapp_pink-rotate-bg .cmp-image {
+.buttonstore {
+  margin-top: 2.75rem;
+}
+
+.cmp_btn {
+  display: flex;
+  @include respond-to-max($phone) {
+    flex-direction: column;
+    .cmp_store_btn {
+      margin-bottom: 10px;
+    }
+  }
+  .cmp_store_btn {
+    border: 1px solid $greyish-white;
+    background-color: $white;
+    padding: 15px 30px;
+    border-radius: toRem(6);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+    margin-right: toRem(20);
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        color: $shade-grey;
+        font-size: toRem(24);
+        margin-right: toRem(15);
+        transition-duration: 500ms;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1;
+        transition-duration: 500ms;
+
+        span {
+          font-size: 12px;
+          display: block;
+        }
+      }
+      &:focus,
+      p,
+      p span {
+        text-decoration: none;
+      }
+    }
+    &:hover {
+      background-color: $pink-color;
+      color: $white;
+      cursor: pointer;
+
+      p,
+      i {
+        color: $white;
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: $desktop-wide) and (orientation: landscape) {
+  .hiuapp_pink-rotate-bg .cmp-image {
     display: none;
   }
 }
