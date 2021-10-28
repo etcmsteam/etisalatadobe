@@ -40,18 +40,18 @@ class TableModelTest {
     }
 
     @Test
-    void testGetHeader() throws FileNotFoundException {
+    void testGetHeaderForChannelsTable() throws FileNotFoundException {
         TableModel tableModel = context.request().adaptTo(TableModel.class);
         createAsset(csvPath, channelsCSVTXT);
-        List<String> list = tableModel.getHeaderList();
+        List<String> list = tableModel.getHeaderListForChannelsTable();
         assertFalse(list.isEmpty());
     }
 
     @Test
-    void testGetAllRows() throws FileNotFoundException {
+    void testGetAllRowsForChannelsTable() throws FileNotFoundException {
         TableModel tableModel = context.request().adaptTo(TableModel.class);
         createAsset(csvPath, channelsCSVTXT);
-        List<LinkedHashMap<String, String>> list = tableModel.getAllRows();
+        List<LinkedHashMap<String, String>> list = tableModel.getAllRowsForChannelsTable();
         assertFalse(list.isEmpty());
     }
 
@@ -64,10 +64,10 @@ class TableModelTest {
     }
 
     @Test
-    void testGetFilters() throws FileNotFoundException {
+    void testGetFiltersForChannelsTable() throws FileNotFoundException {
         TableModel tableModel = context.request().adaptTo(TableModel.class);
         createAsset(filterCSV, channelsFiltersCSVTXT);
-        Map<String, Map<String, String>> map = tableModel.getAllFilters();
+        Map<String, Map<String, String>> map = tableModel.getAllFiltersForChannelsTable();
         assertFalse(map.isEmpty());
     }
 

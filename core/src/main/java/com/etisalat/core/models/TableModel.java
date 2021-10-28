@@ -26,13 +26,13 @@ import java.util.*;
 public class TableModel {
 
 
-    public static final String RTE = "rte";
-    public static final String CSV = "csv";
-    public static final String SIMPLE_CSV = "simplecsv";
-    public static final String ALL = "_all";
-    public static final String TRUE = "true";
-    public static final String EQUAL_DELIMITER = "=";
-    public static final String COMMA_DELIMITER = ",";
+    private static final String RTE = "rte";
+    private static final String CSV = "csv";
+    private static final String SIMPLE_CSV = "simplecsv";
+    private static final String ALL = "_all";
+    private static final String TRUE = "true";
+    private static final String EQUAL_DELIMITER = "=";
+    private static final String COMMA_DELIMITER = ",";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TableModel.class);
 
@@ -56,6 +56,7 @@ public class TableModel {
 
     @SlingObject
     ResourceResolver resourceResolver;
+    
 
     /**
      * Gets sorting.
@@ -74,7 +75,7 @@ public class TableModel {
      *
      * @return the header list
      */
-    public List<String> getHeaderList() {
+    public List<String> getHeaderListForChannelsTable() {
         List<String> headerList = new ArrayList<>();
         try (BufferedReader br = readAsset(csvPath)) {
             if (br != null) {
@@ -98,7 +99,7 @@ public class TableModel {
      *
      * @return the all rows
      */
-    public List<LinkedHashMap<String, String>> getAllRows() {
+    public List<LinkedHashMap<String, String>> getAllRowsForChannelsTable() {
 
         List<LinkedHashMap<String, String>> rows = new ArrayList<>();
         try (BufferedReader br = readAsset(csvPath)) {
@@ -157,7 +158,7 @@ public class TableModel {
      * @return tall the filters from csv
      */
 
-    public LinkedHashMap<String, Map<String, String>> getAllFilters() {
+    public LinkedHashMap<String, Map<String, String>> getAllFiltersForChannelsTable() {
         LinkedHashMap<String, Map<String, String>> map = new LinkedHashMap<>();
 
         try (BufferedReader br = readAsset(filterCsvPath)) {
