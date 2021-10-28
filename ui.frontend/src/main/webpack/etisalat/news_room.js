@@ -10,9 +10,12 @@
 
     $('#filtering-select').on('click', function () {
         if ($('#filtering-select--menu').hasClass('select2-container--open')) {
+            $('#filtering-select').removeClass('select2-container--open');
             $('#filtering-select--menu').removeClass('select2-container--open');
         } else {
             $('#filtering-select--menu').addClass('select2-container--open');
+            $('#filtering-select').addClass('select2-container--open');
+            
         }
     });
 
