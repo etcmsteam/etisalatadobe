@@ -33,18 +33,6 @@ public class TableModel {
     public static final String TRUE = "true";
     public static final String EQUAL_DELIMITER = "=";
     public static final String COMMA_DELIMITER = ",";
-    /**
-     * The constant CATEGORIES_INDEX.
-     */
-    public static final int CATEGORIES_INDEX = 0;
-    /**
-     * The constant LANGUAGE_INDEX.
-     */
-    public static final int LANGUAGE_INDEX = 1;
-    /**
-     * The constant PACKAGES_INDEX.
-     */
-    public static final int PACKAGES_INDEX = 2;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TableModel.class);
 
