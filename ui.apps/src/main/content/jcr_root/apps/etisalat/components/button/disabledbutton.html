@@ -1,17 +1,17 @@
-<template data-sly-template.promoButton="${ @ properties}">
-  <div data-sly-test="${properties.linkBehavior != 'openmodalwindow'}" class="button cmp-button--promo">
+<template data-sly-template.disabledButton="${ @ properties}">
+  <div data-sly-test="${properties.linkBehavior != 'openmodalwindow'}" class="button cmp-button--disabled">
     <sly data-sly-test.customLink="${properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
     <a class="cmp-button"
        href="${commonlinkmodel.link}"
        target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
-      <span class="cmp-button__text cmp-button--promo">${properties.title}</span>
+      <span class="cmp-button__text cmp-button--disabled">${properties.title}</span>
     </a>
   </div>
   <div data-sly-test="${properties.linkBehavior == 'openmodalwindow'}"
-       class="button cmp-button--promo">
+       class="button cmp-button--disabled">
     <a data-label="${resource.name}" class="cmp-button btn-modal"
        title="${properties.title}">
-      <span class="cmp-button__text cmp-button--promo">${properties.title}</span>
+      <span class="cmp-button__text cmp-button--disabled">${properties.title}</span>
     </a>
     <div id="${resource.name}" class="nv-modal fade  ${properties.modalBehavior}-modal">
       <div class="nv-modal-dialog">
