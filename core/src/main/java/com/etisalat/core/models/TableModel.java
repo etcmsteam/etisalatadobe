@@ -139,32 +139,6 @@ public class TableModel {
         return rows;
     }
 
-    /**
-     * Gets categories from csv (it will read 1st column from csv).
-     *
-     * @return the categories
-     */
-    public Map<String, String> getCategories() {
-        return getFilters(CATEGORIES_INDEX);
-    }
-
-    /**
-     * Gets languages from csv (it will read 2nd column from csv).
-     *
-     * @return the languages
-     */
-    public Map<String, String> getLanguages() {
-        return getFilters(LANGUAGE_INDEX);
-    }
-
-    /**
-     * Gets packages list from csv (it will read 3rd column from csv).
-     *
-     * @return the packages
-     */
-    public Map<String, String> getPackages() {
-        return getFilters(PACKAGES_INDEX);
-    }
 
     /**
      * Gets all rows for simple csv where there is no data attributes for filtering or sorting.
@@ -189,19 +163,32 @@ public class TableModel {
         return headerList;
     }
 
-    private BufferedReader readAsset(String csvPath) {
-        BufferedReader bufferedReader = null;
-        final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
-        if (!resource.isPresent()) { // if the resource doesn't exists
-            LOGGER.error("The resource doesn't exists at the path {}", csvPath);
-        } else {
-            Asset asset = resource.get().adaptTo(Asset.class);
-            Rendition rendition = asset.getOriginal();
-            InputStream inputStream = rendition.adaptTo(InputStream.class);
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    /**
+     * Read the filters csv
+     *
+     * @return tall the filters from csv
+     */
+
+    public LinkedHashMap<String, Map<String, String>> getAllFilters() {
+        LinkedHashMap<String, Map<String, String>> map = new LinkedHashMap<>();
+
+        try (BufferedReader br = readAsset(filterCsvPath)) {
+            String line;
+            while (br != null && (line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+                String[] cols = line.split(COMMA_DELIMITER);
+                for (int index = 0; index < cols.length; index++) {
+                    map.put(getRadioButtonProperty(cols[index]), getFilters(index));
+                }
+                break;
+            }
+        } catch (IOException e) {
+            LOGGER.error("The exception occurred while reading filter csv {}",
+                    filterCsvPath);
         }
-        return bufferedReader;
+
+        return map;
     }
+
 
     private LinkedHashMap<String, String> getFilters(int index) {
         LinkedHashMap<String, String> row = new LinkedHashMap<>();
@@ -225,4 +212,27 @@ public class TableModel {
         }
         return row;
     }
+
+
+    private String getRadioButtonProperty(String string) {
+        if (string.contains(EQUAL_DELIMITER)) {
+            return string.split(EQUAL_DELIMITER)[1];
+        }
+        return string;
+    }
+
+    private BufferedReader readAsset(String csvPath) {
+        BufferedReader bufferedReader = null;
+        final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
+        if (!resource.isPresent()) { // if the resource doesn't exists
+            LOGGER.error("The resource doesn't exists at the path {}", csvPath);
+        } else {
+            Asset asset = resource.get().adaptTo(Asset.class);
+            Rendition rendition = asset.getOriginal();
+            InputStream inputStream = rendition.adaptTo(InputStream.class);
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        }
+        return bufferedReader;
+    }
+
 }

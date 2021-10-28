@@ -64,29 +64,12 @@ class TableModelTest {
     }
 
     @Test
-    void testGetCategories() throws FileNotFoundException {
+    void testGetFilters() throws FileNotFoundException {
         TableModel tableModel = context.request().adaptTo(TableModel.class);
         createAsset(filterCSV, channelsFiltersCSVTXT);
-        Map<String, String> map = tableModel.getCategories();
+        Map<String, Map<String, String>> map = tableModel.getAllFilters();
         assertFalse(map.isEmpty());
     }
-
-    @Test
-    void testGetLanguages() throws FileNotFoundException {
-        TableModel tableModel = context.request().adaptTo(TableModel.class);
-        createAsset(filterCSV, channelsFiltersCSVTXT);
-        Map<String, String> map = tableModel.getLanguages();
-        assertFalse(map.isEmpty());
-    }
-
-    @Test
-    void testGetPackages() throws FileNotFoundException {
-        TableModel tableModel = context.request().adaptTo(TableModel.class);
-        createAsset(filterCSV, channelsFiltersCSVTXT);
-        Map<String, String> map = tableModel.getPackages();
-        assertFalse(map.isEmpty());
-    }
-
 
     private void createAsset(String assetPath, String txtFilePath) throws FileNotFoundException {
         String basePath = "src/test/resources/com/etisalat/core/models/";
