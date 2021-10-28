@@ -30,6 +30,13 @@
   </sly>
 </sly>
 
+<sly
+    data-sly-test="${properties.displayBehavior && properties.displayBehavior == 'disabledbutton'}">
+  <sly data-sly-use.disabledButtonTemplate="/apps/etisalat/components/button/disabledbutton.html"
+       data-sly-call="${disabledButtonTemplate.disabledButton @ properties=properties}">
+  </sly>
+</sly>
+
 <sly data-sly-test="${properties.displayBehavior && properties.displayBehavior == 'ctabutton'}">
   <sly data-sly-use.ctaTemplate="/apps/etisalat/components/button/cta.html"
        data-sly-call="${ctaTemplate.cta @ properties=properties}">
