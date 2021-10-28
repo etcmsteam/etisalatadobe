@@ -59,7 +59,7 @@
               touchEventsTarget: "swiper-wrapper",
               scrollbarDraggable: true,
               scrollbarHide: false,
-              scrollbar: ".table-swiper-scrollbar",
+              scrollbar: $(this).find('.table-swiper-scrollbar'),
               centeredSlides: true,
               spaceBetween: 20
             });
