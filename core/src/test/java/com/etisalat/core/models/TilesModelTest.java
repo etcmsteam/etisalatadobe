@@ -1,15 +1,16 @@
 package com.etisalat.core.models;
 
-import io.wcm.testing.mock.aem.junit5.AemContext;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
  * JUnit test verifying the TilesModel
@@ -17,48 +18,73 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(AemContextExtension.class)
 class TilesModelTest {
-
-	private static final String  TEST_PAGE_URL = "/content/etisalat/language-master/en/carrier-and-wholesale.html";
+	
 	private final AemContext context = new AemContext();
+	
+	private static final String CONTENT_ROOT = "/content";
+	private static final String CURRENT_PAGE = "/content/testtileboxes";
+
+	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
+	protected static final String TILE_DATA = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer/tile1";
+	protected static final String TILE_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer/tile2";
+	protected static final String TILE_DATA2 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer/tile3";
+	protected static final String TILE_DATA3 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer1/tile1";
 
 	@BeforeEach
 	public void setup() throws Exception {
-		context.addModelsForClasses(TilesModelItem.class);
-		context.load().json("/com/etisalat/core/models/TilesModel.json", "/content");
-		context.load().json("/com/etisalat/core/models/SamplePage.json", "/content/etisalat/language-master/en");
+		context.addModelsForClasses(TileModel.class);
+		context.load().json("/com/etisalat/core/models/TilesModel.json", CONTENT_ROOT);		
 		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
 	@Test
-	void testTilesLinks() {
-		final int expectedSize = 1;
-		context.currentResource("/content/tile");
+	void testTiles() {
+		String expectedTileTitle = "Mobility";
+		String expectedFileReference = "/content/dam/etisalat/elife-tv-gaming-desktop_tcm313-225320.jpg";
+		String expectedTileDesc = "<p>Keep your workforce connected anytime, anywhere. Ensure constant business accessibility with our bespoke mobility solutions.</p>";
+		Resource resource = context.resourceResolver().getResource(TILE_DATA);
+		TileModel tileModel = resource.adaptTo(TileModel.class);
+		tileModel.setTiletitle(expectedTileTitle);
+		assertEquals(expectedTileTitle, tileModel.getTiletitle());		
+		tileModel.setText(expectedTileDesc);
+		assertEquals(expectedTileDesc, tileModel.getText());
+		assertEquals(expectedFileReference,
+				tileModel.getTileImageResource().getValueMap().get("fileReference", String.class));
+		
+	}
+	
+	@Test
+	void testTileLink() {
+		String expectedCTAText = "Learn More";
+		String expectedTileCTALinkNewWindow = "/content/etisalat/ae/en/connectivity.html";
+		String expectedTileCTALinkSameWindow = "/content/etisalat/ae/en/connectivity.html";
 
-		TilesModelItem tileList = context.request().adaptTo(TilesModelItem.class);
-		int actual = tileList.getTileList().size();
-		assertEquals(expectedSize, actual);
-		assertEquals("/content/dam/etisalat/13.3.jpg", tileList.getTileList().get(0).getFileReference());
-		assertEquals("Sample Title", tileList.getTitle());
-		assertEquals("Easy Insurance", tileList.getTileList().get(0).getTiletitle());
-		assertEquals("Health Insurance", tileList.getTileList().get(0).getText());
-		assertEquals("Learn More", tileList.getTileList().get(0).getCtatext());
-		assertEquals(TEST_PAGE_URL,tileList.getTileList().get(0).getLink());
+		Resource resource = context.resourceResolver().getResource(TILE_DATA1);
+		TileModel tileModel = resource.adaptTo(TileModel.class);
+		tileModel.setTileCTALinkNewWindow(expectedTileCTALinkNewWindow);
+		tileModel.setTileCTALinkSameWindow(expectedTileCTALinkNewWindow);
+		assertEquals(expectedTileCTALinkNewWindow, tileModel.getTileCTALinkNewWindow());
+		assertEquals(expectedTileCTALinkSameWindow, tileModel.getTileCTALinkSameWindow());
+		tileModel.setCtatext(expectedCTAText);
+		assertEquals(expectedCTAText, tileModel.getCtatext());
+	}
+	
+	@Test
+	void testTileContianerLayout() {
+		String expectedLayout = "threeTileBox";
+
+		Resource resource = context.resourceResolver().getResource(TILE_DATA2);
+		TileModel tileModel = resource.adaptTo(TileModel.class);
+
+		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
 
 	@Test
-	void testEmptyLinks() {
-		context.currentResource("/content/empty");
-		TilesModelItem tileList = context.request().adaptTo(TilesModelItem.class);
-		assertTrue(tileList.getTileList().isEmpty());
-	}
+	void testTileContianerEmptyLayout() {
+		String expectedLayout = "";
+		Resource resource = context.resourceResolver().getResource(TILE_DATA3);
+		TileModel tileModel = resource.adaptTo(TileModel.class);
 
-	@Test
-	void testHtmlExtension() {
-		final String expected = "/content/etisalat/language-master/en/carrier-and-wholesale/index.html";
-		context.currentResource("/content/with-extension");
-		TilesModelItem tileList = context.request().adaptTo(TilesModelItem.class);
-		String actual = tileList.getTileList().get(0).getLink();
-		assertEquals(expected, actual);
+		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
-
 }
