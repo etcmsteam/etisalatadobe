@@ -73,8 +73,10 @@
 .line-accordion{
 	.cmp-accordion__item {
 		display: block;
+		border-bottom: 0;
 	}
-	.cmp-accordion__title {
+	.cmp-accordion {
+		&__title{
 		line-height: 1.5;
 		font-size: $font16;
 		display: inline-block;
@@ -88,6 +90,7 @@
 			padding:15px 1.5rem;
 		}
 	}
+}
 	.cmp-accordion__itemdesc {
 		line-height: 1.5;
 		font-size: $font16;
@@ -116,8 +119,20 @@
 		transform: translateY(-80%) rotate(45deg);
 		top: 50%;
 		transition: all .3s ease-in-out;
-		margin-right: 36px;
+		margin-right: 2px;
+		@include respond-to-min($desktop){
+			margin-right: 36px;
+		}
 	}
+	.cmp-accordion{
+	&__button{
+		border-bottom: 1px solid $light-sand-brown;
+	
+	&--expanded{
+		border-bottom: 1px solid $sand-white-50;
+	}
+}
+}
 	.cmp-accordion__button--expanded .cmp-accordion__icon {
 		transform: translateY(-20%) rotate(-135deg);
 		-webkit-transform: translateY(-20%) rotate(-135deg);
@@ -134,12 +149,9 @@
 	}
 	.cmp-text {
 		display: block;
-		padding-left: 1.375rem;
-		padding-right: 1.375rem;
-		padding-top: 1.5rem;
-		font-size: $font20;
+		padding:1.5rem 1.375rem 1rem 1.375rem;
+		font-size: $font16;
 		line-height: 28px;
-		padding-bottom: 1rem;
 		color: $dark-gray;
 		@include font-family-lato();
 		margin-bottom: 0px;
@@ -148,6 +160,7 @@
 		max-width: 1224px;
 		@include respond-to-min($desktop) {
 			padding: 1.5rem 6.5rem;
+			font-size: $font20;
 		}
 		ol {
 			li {
@@ -160,6 +173,19 @@
 //tab with accordion
 .cmp-accordion--tab {
 	@include font-family-Neotech-roboto();
+	.cmp-title{
+		padding: 1.5rem 1rem;
+		@include respond-to-min($desktop){
+			padding: 0;
+			margin-top: 45px;
+		}
+	}
+	.cmp-accordion{
+	&__item {
+		display: block;
+		border-bottom: 1px solid $light-sand-brown;
+	}
+}
 	.cmp-accordion__button{
 		padding: 0;
 	}
@@ -185,15 +211,17 @@
 		width: 11px;
 		right: 3px;
 		border: solid $almost-black;
-		;
-		border-width: 0 2px 2px 0;
+		border-width: 0 1px 1px 0;
 		padding: 5px;
 		position: absolute;
 		line-height: 1;
 		transform: translateY(-80%) rotate(45deg);
 		top: 50%;
 		transition: all .3s ease-in-out;
-		margin-right: 36px;
+		margin-right: 3px;
+		@include respond-to-min($desktop){
+			border-width: 0 2px 2px 0;
+		}
 	}
 	.cmp-accordion__button--expanded .cmp-accordion__icon {
 		transform: translateY(-20%) rotate(-135deg);
@@ -205,7 +233,6 @@
 	.cmp-text {
 		background-color: $sand-white-50;
 		border-top-color: transparent;
-		border-bottom: 1px solid $light-sand-brown;
 		padding: 1rem;
 		font-size: $font12;
 		@include font-family-lato();
@@ -221,47 +248,49 @@
 		.nav-view-wrapp.panel>a.collapsed {
 			line-height: 1.5;
 			letter-spacing: normal;
-			padding: 18px 0;
-			padding-left: 1rem;
+			padding: 1.5rem;
 			display: flex;
-			-ms-flex-align: center;
 			align-items: center;
 			position: relative;
 			flex-direction: row-reverse;
 			justify-content: flex-end;
-		}
-		.nav-view-wrapp.panel>a.collapsed {
-			color: $steel-grey;
-			font-weight: 900;
 			border-bottom: 1px solid $light-sand-brown;
 		}
-		.nav-view-wrapp.panel>a.collapsed:before {
-			transform: translateY(-70%) rotate(45deg);
+		.nav-view-wrapp.panel>a.collapsed {
+			color: $almost-black;
 		}
 		.nav-view-wrapp.panel>a:before {
-			border: solid #b2b2b2;
+			content: "";
+			border-left: 4px solid $main-green;
+			display: block;
+			position: absolute;
+			height: 100%;
+			left: -12px;
+			top: 0;
+			font-size: $font16;
+			@include font-family-Neotech-roboto();
+			color: $main-green;
+		}
+		.nav-view-wrapp.panel>a.collapsed:before {
+			display: none;
+		}
+		.nav-view-wrapp.panel>a:after{
+			border: solid $main-green;
 			border-width: 0 1px 1px 0;
-			padding: 3.5px;
+			padding: 5px;
 			content: "";
 			position: absolute;
 			line-height: 1;
 			transform: translateY(-30%) rotate(-135deg);
 			transition: all .3s ease-in-out;
-			right: 18px;
+			right: 3px;
 			z-index: 1;
 			top: 50%;
 		}
-		.nav-view-wrapp.panel>a.collapsed:before {
+		.nav-view-wrapp.panel>a.collapsed:after {
 			transform: translateY(-70%) rotate(45deg);
-		}
-		.nav-view-wrapp.panel>a:active {
-			font-size: $font16;
-			@include font-family-Neotech-roboto();
-			color: $main-green;
-			margin: 0 1rem;
-			border-bottom: 1px solid $light-sand-brown;
-			position: relative;
-			border-left: 4px solid $main-green;
+			border: solid $almost-black;
+			border-width: 0 1px 1px 0;
 		}
 		.nav-view-wrapp.panel>a {
 			font-size: $font16;
@@ -279,7 +308,7 @@
 	}
 	@include respond-to-min($desktop) {
 		h3 {
-			margin: 0;
+			margin: 0px;
 		}
 		.cmp-tabs {
 			display: flex;
@@ -290,20 +319,21 @@
 				@include font-family-Neotech-roboto();
 				box-sizing: border-box;
 				cursor: pointer;
-				color: $steel-grey;
+				color: $almost-black;
+				line-height: 90px;
 				border-bottom: 0;
-				padding: 1rem;
+				padding: 0 0 0 30px;
 				&--active {
 					border-left: 4px solid $main-green;
 					color: $main-green;
 					display: block;
-					line-height: 55px;
-					padding-left: 22px;
+					line-height: 90px;
+					padding:0 0 0 26px;
 				}
 			}
 		}
 		.cmp-tabs__tablist {
-			margin-left: 8%;
+			margin-left: 9%;
 			display: block;
 			flex-wrap: wrap;
 			list-style: none;
@@ -312,7 +342,7 @@
 		}
 		.cmp-tabs__tabpanel--active {
 			margin-right: 8%;
-			width: 65%;
+			width: 60%;
 		}
 	}
 }
