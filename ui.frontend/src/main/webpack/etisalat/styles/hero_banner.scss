@@ -246,14 +246,15 @@
 }
 
 @include respond-to-max($tablet) {
-	.hero-banner-section .cmp-image__image {
-	height: 100% !important;
-}
-.hero-banner-section .cmp-teaser__image {
-	height: 220px !important;
+	.hero-banner-section {
+		.cmp-image__image {
+			height: 100% !important;
+		}
+		.cmp-teaser__image {
+			height: 220px !important;
+		}
 	}
 }
-
 @include respond-to-max($phone) {
 .hero-banner-section .cmp-image__image {
 	height: 196px !important;
@@ -261,19 +262,27 @@
 }
 
 @include respond-to-max($tablet){
-	.hero-banner-section .cmp-teaser__content{
-		font-size: 26px;
-		line-height: 33px;
-		position: absolute;
-		top: 275px;
-		width: 100%;
-		z-index: 2;
-	}
-	.hero-banner-section .cmp-teaser__title-link{
-		color: $main-green;
-	}	
-	.hero-banner-section .hero-heading-big p{
-		color: $main-green;
+	.hero-banner-section .cmp-teaser{
+		&__content{
+			font-size: $font26;
+			line-height: 33px;
+			position: absolute;
+			top: 275px;
+			width: 100%;
+			z-index: 2;
+		}
+		&__title-link{
+			color: $main-green;
+		}
+		&__title a{
+			color: $almost-black;
+		}
+		&__description p{
+			color: $almost-black;
+		}
+		.hero-heading-big p{
+			color: $main-green;
+		}
 	}
 	.cmp-carousel__content .video-wrapper~.hero-heading-big p {
 		color: $almost-black;
@@ -283,26 +292,23 @@
 			height: 215px;
 		}
 	}
-	.replaced-svg, a.video_link svg g g {
-		stroke: $main-green;
-	}
-	.replaced-svg, a.video_link svg polygon {
-		stroke: $main-green;
-	}
-	.hero-banner-section{
-		.cmp-teaser__title a{
-			color: $almost-black;
+	.replaced-svg, a.video_link svg{
+		g g {
+			stroke: $main-green;
 		}
-		.cmp-teaser__description p{
-			color: $almost-black;
+		polygon {
+			stroke: $main-green;
 		}
-	}
+	} 
 }
 
 @include respond-to-max($phone){
 	.cmp-carousel__content .video-wrapper{
 		.hero-heading-big {
 			top: 6rem;
+			p {
+				color: #353738;
+			}
 		}
 		.video-wrapper {
 			margin-bottom: 1rem;
@@ -320,29 +326,28 @@
 		background: #e7e4e4;
 		padding: 48px 0;
 	}
-	.cmp-carousel__content .video-wrapper~.hero-heading-big p {
-		color: #353738;
-	}
 	.hero-banner-section{
-		.cmp-teaser__action-container{
-			margin-top: 1.875rem;
-			top: 18rem;
-			width: 100%;
-		}
-		.cmp-teaser__content{
-			position: absolute;
-			top: 240px;
-			padding-left: 10px;
-			width: 100%;
-		}
-		.cmp-teaser__title{
-			position: absolute;
-			left: 12.5px;
-			margin: 0;
-		}
-		.cmp-teaser__description{
-			margin-top: 70px;
-			margin-right: 70px;
+		.cmp-teaser{
+			&__action-container{
+				margin-top: 1.875rem;
+				top: 18rem;
+				width: 100%;
+			}
+			&__content{
+				position: absolute;
+				top: 240px;
+				padding-left: 10px;
+				width: 100%;
+			}
+			&__title{
+				position: absolute;
+				left: 12.5px;
+				margin: 0;
+			}
+			&__description{
+				margin-top: 70px;
+				margin-right: 70px;
+			}
 		}
 	} 
 } 
@@ -395,12 +400,14 @@
 			color: $white;
 		}
 		.hero-banner-section{
-			.cmp-teaser__content{
-				width: 50%;
-    			margin-left: 0;
-			}
-			.cmp-teaser__title a{
-				color: $white;
+			.cmp-teaser{
+				&__content{
+					width: 50%;
+					margin-left: 0;
+				}
+				&__title a{
+					color: $white;
+				}
 			}
 		} 
 	}
