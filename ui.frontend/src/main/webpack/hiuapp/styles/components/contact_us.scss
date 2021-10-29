@@ -2,12 +2,22 @@
   box-shadow: rgb(0 0 0 / 30%) 0px 20px 30px -20px;
   margin-bottom: 50px;
   background-color: $white;
-  padding: 100px 0;
+  #contact {
+    padding: 50px 15px;
+      @include respond-to-min($tablet) {
+        padding: 100px 15px;
+      }
+  }
+
   > .cmp-container:nth-child(1) {
     @extend .container-block;
   }
   h2 {
-    text-align: center;
+    color: $pink-color;
+    font-size: toRem(32);
+    @include respond-to-min($desktop) {
+      font-size: toRem(45);
+    }
     &:after {
       content: "";
       display: block;
@@ -15,8 +25,10 @@
       height: 4px;
       width: 80px;
       margin-top: 15px;
-      margin-left: calc(50% - 40px);
     }
+  }
+  p {
+    margin-bottom: 50px;
   }
   .contact-form {
     @include respond-to-min($desktop) {
@@ -24,7 +36,7 @@
     }
     .googlecaptcha {
       margin-bottom: 10px;
-      .col-md-12{
+      .col-md-12 {
         padding: 0;
       }
     }
@@ -61,21 +73,6 @@
         background-clip: padding-box;
         border: 1px solid $off-white;
       }
-    }
-  }
-}
-
-
-#contact input,
-#contact textarea {
-  color: $shade-gray;
-}
-
-#contact {
-  .cmp-text {
-    text-align: center;
-    @include respond-to-min($tablet) {
-      text-align: left;
     }
   }
 }

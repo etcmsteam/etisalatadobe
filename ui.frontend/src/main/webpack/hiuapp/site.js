@@ -3,9 +3,11 @@ $(document).ready(function () {
   $(window).scroll(() => {
     var windowTop = $(window).scrollTop();
     if (windowTop > 250) {
+      $(".scrollUp").show();
       $("#main-header").addClass("Scroll-Up");
       $("#main-header").removeClass("Scroll-Down");
     } else {
+      $(".scrollUp").hide();
       $("#main-header").addClass("Scroll-Down");
       $("#main-header").removeClass("Scroll-Up");
       $("nav ul").css("overflow", "visible");
@@ -46,7 +48,7 @@ $('a[href*="#"]')
         event.preventDefault();
         $("html, body").animate(
           {
-            scrollTop: target.offset().top,
+            scrollTop: target.offset().top -120,
           },
           1000,
           function () {

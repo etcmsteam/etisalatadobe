@@ -1,11 +1,11 @@
 #downloadHiU {
-  margin-top: toRem(150);
+  padding-top: 100px;
   @include respond-to-max($tablet) {
-    padding-top: toRem(60);
+    padding-top: 50px;
     padding-bottom: 100px;
   }
   @include respond-to-min($desktop) {
-    padding: 150px 0 100px 0;
+    padding: 100px 0 100px 0;
   }
 }
 
@@ -35,6 +35,67 @@
       @include respond-to-max($tablet) {
         font-size: toRem(30);
         margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+.buttonstore {
+  margin-top: 2.75rem;
+}
+
+.cmp_btn {
+  display: flex;
+  @include respond-to-max($phone) {
+    flex-direction: column;
+    .cmp_store_btn {
+      margin-bottom: 10px;
+    }
+  }
+  .cmp_store_btn {
+    border: 1px solid $greyish-white;
+    background-color: $white;
+    padding: 15px 30px;
+    border-radius: toRem(6);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+    margin-right: toRem(20);
+    @include respond-to-max($phone) {
+      margin-right: 0;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        color: $shade-grey;
+        font-size: toRem(24);
+        margin-right: toRem(15);
+        transition-duration: 500ms;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1;
+        transition-duration: 500ms;
+
+        span {
+          font-size: 12px;
+          display: block;
+        }
+      }
+      &:focus,
+      p,
+      p span {
+        text-decoration: none;
+      }
+    }
+    &:hover {
+      background-color: $pink-color;
+      color: $white;
+      cursor: pointer;
+
+      p,
+      i {
+        color: $white;
       }
     }
   }
