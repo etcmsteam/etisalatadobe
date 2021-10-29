@@ -1,7 +1,7 @@
-<template data-sly-template.promoButton="${ @ properties}">
+<template data-sly-template.disabledButton="${ @ properties}">
   <div data-sly-test="${properties.linkBehavior != 'openmodalwindow'}" class="button">
     <sly data-sly-test.customLink="${properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-    <a class="cmp-button  cmp-button--promo"
+    <a class="cmp-button  cmp-button--disabled"
        href="${commonlinkmodel.link}"
        target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
       <span class="cmp-button__text">${properties.title}</span>
@@ -9,7 +9,7 @@
   </div>
   <div data-sly-test="${properties.linkBehavior == 'openmodalwindow'}"
        class="button">
-    <a data-label="${resource.name}" class="cmp-button btn-modal cmp-button--promo"
+    <a data-label="${resource.name}" class="cmp-button btn-modal cmp-button--disabled"
        title="${properties.title}">
       <span class="cmp-button__text">${properties.title}</span>
     </a>
