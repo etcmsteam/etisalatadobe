@@ -11,27 +11,15 @@
 		}
 	}
 }
-.container-product-grid {
-	margin-right: auto;
-	margin-left: auto;
-	padding-left: 12px;
-	padding-right: 12px;
-	// @media (max-width: 767px)
-	//  {
-	// 		width: 756px;
-	// 	}
-	@media (min-width: 1248px) {
-		width: 1224px;
-	}
-}
 
 .product-grid-text-section {
 	padding: 1.5rem 0;
-
-	.swiper-slide & {
-		min-height: 580px !important;
+	.container {
+		> div.row {
+			margin-left: 0;
+			margin-right: 0;
+		}
 	}
-
 	.btn-green {
 		background-color: $white !important;
 	}
@@ -119,8 +107,11 @@
 }
 
 .cmp__bg-cards_product-grid {
+	> div.row {
+		margin-left: -12px;
+		margin-right: -12px;
+	}
 	position: relative;
-
 	.product-grid {
 		&.tile-table {
 			.tile-card {
@@ -2579,10 +2570,6 @@
 								border-bottom: 1px solid $main-green;
 							}
 						}
-
-						.read-more {
-							//display: none;
-						}
 					}
 				}
 
@@ -2749,38 +2736,16 @@
 		#product {
 			display: flex;
 			flex-wrap: nowrap;
-			margin-left: 6px;
-			margin-right: 6px;
 			@include respond-to-min($tablet) {
 				flex-wrap: wrap;
-				margin-left: 12px;
-				margin-right: 12px;
-			}
-			@include respond-to-min($desktop) {
-				margin-left: 30px;
-				margin-right: 30px;
-			}
-			@include respond-to-min($desktop-wide) {
-				margin-left: 6px;
-				margin-right: 30px;
 			}
 			.swiper-slide {
-				width: 282px;
 				height: auto;
 				margin-bottom: 30px;
 				cursor: pointer;
-				@include respond-to-min($tablet) {
-					padding-right: 0;
-					padding-left: 0;
-					margin-right: 24px;
-					max-width: 282px;
-				}
-				&:last-child {
-					@include respond-to-min($tablet) {
-						margin-right: 0;
-					}
-				}
-
+				padding-left: 12px;
+				padding-right: 12px;
+				
 				.producttile {
 					height: 100%;
 					> div {
@@ -2811,29 +2776,12 @@
 					flex-direction: row;
 					overflow: hidden;
 				}
-				.swiper-slide {
-					max-width: 100%;
-					@include respond-to-min($tablet) {
-						max-width: 45%;
-					}
-					@include respond-to-min($desktop) {
-						max-width: 282px;
-					}
-				}
 			}
 		}
 		.swiper-container {
+			padding: 0 0 20px 0;
 			#product.swiper-wrapper {
 				flex-wrap: nowrap;
-				.swiper-slide {
-					max-width: 267px;
-					@include respond-to-min($tablet) {
-						max-width: 45%;
-					}
-					@include respond-to-min($desktop) {
-						max-width: 282px;
-					}
-				}
 			}
 		}
 	}
