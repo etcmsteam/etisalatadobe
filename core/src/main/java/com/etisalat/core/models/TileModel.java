@@ -1,12 +1,16 @@
 package com.etisalat.core.models;
 
-import java.util.Date;
-
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class })
@@ -17,24 +21,26 @@ public class TileModel {
 	private String tiletitle;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String link;
-
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String ctatext;
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String text;
 
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String fileReference;
+	@ChildResource(name="image",injectionStrategy= InjectionStrategy.OPTIONAL)
+	private Resource tileImageResource;
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String labeltext;
+	private String tileCTALinkNewWindow;
 	
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private Date tiledate;
+	private String tileCTALinkSameWindow;
+	
+	@SlingObject	
+	protected Resource currentResource;
 
-
+	@SlingObject
+	private ResourceResolver resourceResolver;
+	
 	public String getText() {
 		return text;
 	}
@@ -51,14 +57,6 @@ public class TileModel {
 		this.tiletitle = tiletitle;
 	}
 
-	public String getFileReference() {
-		return fileReference;
-	}
-
-	public void setFileReference(String fileReference) {
-		this.fileReference = fileReference;
-	}
-
 	public String getCtatext() {
 		return ctatext;
 	}
@@ -67,30 +65,55 @@ public class TileModel {
 		this.ctatext = ctatext;
 	}
 
-	public String getLink() {
-		return link;
+	/**
+	 * @return the tileImageResource
+	 */
+	public Resource getTileImageResource() {
+		return tileImageResource;
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	/**
+	 * @param tileImageResource the tileImageResource to set
+	 */
+	public void setTileImageResource(Resource tileImageResource) {
+		this.tileImageResource = tileImageResource;
+	}
+
+	/**
+	 * @return the tileCTALinkNewWindow
+	 */
+	public String getTileCTALinkNewWindow() {
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver,tileCTALinkNewWindow);
+	}
+
+	/**
+	 * @return the tileCTALinkSameWindow
+	 */
+	public String getTileCTALinkSameWindow() {
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver,tileCTALinkSameWindow);
+	}
+
+	/**
+	 * @param tileCTALinkNewWindow the tileCTALinkNewWindow to set
+	 */
+	public void setTileCTALinkNewWindow(String tileCTALinkNewWindow) {
+		this.tileCTALinkNewWindow = tileCTALinkNewWindow;
+	}
+
+	/**
+	 * @param tileCTALinkSameWindow the tileCTALinkSameWindow to set
+	 */
+	public void setTileCTALinkSameWindow(String tileCTALinkSameWindow) {
+		this.tileCTALinkSameWindow = tileCTALinkSameWindow;
 	}
 	
-
-	public String getLabeltext() {
-		return labeltext;
+	public String getTileBoxContainerLayout() {		
+		Resource tileContainerResource = currentResource.getParent();
+		if (null != tileContainerResource
+				&& tileContainerResource.getResourceType().equals("etisalat/components/tilecontainer")) {
+              return tileContainerResource.getValueMap().get("tileBoxLayout",StringUtils.EMPTY);
+		}
+		return StringUtils.EMPTY;
 	}
-
-	public void setLabeltext(String labeltext) {
-		this.labeltext = labeltext;
-	}
-	
-	public Date getTiledate() {
-        return (Date) this.tiledate.clone ();
-    }
-	
-
-    public void setTiledate(Date tiledate) {
-        this.tiledate = (Date) tiledate.clone();;
-    }
 
 }
