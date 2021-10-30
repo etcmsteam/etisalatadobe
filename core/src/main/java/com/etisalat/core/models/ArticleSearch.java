@@ -6,13 +6,6 @@ import java.util.Map;
 import org.apache.sling.api.resource.Resource;
 
 public interface ArticleSearch {
-
-	/**
-	 * 
-	 * @return a ID for this component.
-	 */
-	String getId();
-
 	/**
 	 * 
 	 * @return a collection of objects representing the blog article items that
