@@ -4,24 +4,26 @@
   @include font-family-lato;
   //margin-top: 5rem;
   .is-valid {
-    
-    &label {
-      color: $main-green;
-      transform: translateY(-10px) scale(.8);
-      transform-origin: 0 0;
-      font-size: $font16;
-      z-index: 2;
-    }
-      
-    #description + label, #justification + label {
-      color: $almost-black;
-      transform: translateY(10px) scale(.8);
-      font-size: $font16;
-      z-index: 2;
-    }
-     
-    
-  }
+	&label {
+		color: $main-green;
+		transform: translateY(20px) scale(.8);
+		transform-origin: 0 0;
+		font-size: $font16;
+		z-index: 2;
+	}
+	#description+label,
+	#justification+label {
+		color: $almost-black;
+		transform: translateY(10px) scale(.8);
+		font-size: $font16;
+		z-index: 2;
+	}
+	.cmp-form-option-country-code &
+	{
+		margin-top: 0;
+	}
+}
+
   .cmp-form-options--drop-down {
       position: relative;
       bottom: 0;
@@ -319,15 +321,18 @@
 
   .desc-text {
     position: relative;
-    .alert-icon {
-      svg {
-        right: 2rem;
-        top: .5rem;
-      }
-    }
-    .alert-label{
-      top: 10.5rem;
-    }
+		.alert-icon {
+			svg {
+				right: 2rem;
+				top: .5rem;
+			}
+		}
+		.alert-label {
+			top: 10.5rem;
+		}
+		@include respond-to-min($desktop) {
+			margin-top: 1.2rem;
+		}
   }
  
 
@@ -582,13 +587,22 @@
     transform: translateY(-10px) scale(0.8);
     transform-origin: 0 0;
   }
-
+  
   textarea.cmp-form-text__textarea:focus ~ label {
     color: $main-green;
     @include font-family-lato;
     font-size: $font16;
-    transform: translateY(10px) scale(0.8);
+    transform: translateY(-10) scale(1);
     transform-origin: 0 0;
+  }
+  textarea.cmp-form-text__textarea:focus:not([readonly]) {
+    border-bottom: 1px solid $main-green;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transform: translateY(5px) scale(1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    z-index: 0;
   }
   input:not([type]),
   input[type="email"]:not(.browser-default),
@@ -687,14 +701,7 @@
     z-index: 0;
   }
 
-  textarea.cmp-form-text__textarea:focus:not([readonly]) {
-    border-bottom: 1px solid $main-green;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    z-index: 0;
-  }
+
   
   
   *[lang="ar"] *[dir="rtl"] input:not([type]):focus:not([readonly]),
@@ -1381,12 +1388,24 @@
   padding-top: toRem(10);
 }
 #description + label {
-  padding-left: toRem(10);
-  padding-top: toRem(10);
+  padding-left: toRem(10);  
 }
 .description > label{
   transform: translateY(4px) scale(.9);
     margin-left: 1rem;
+}
+.desc-text {
+    .cmp-form-text label {
+        padding-left: .5rem;
+        padding-top: .5rem;
+    }
+    .has-error-fields label {
+        padding-left: 1rem;
+        padding-top: 1.5rem;
+    }
+    .cmp-form-text .alert-label {
+        top: 10.5rem;
+    }
 }
 
 .grecaptcha-badge {
