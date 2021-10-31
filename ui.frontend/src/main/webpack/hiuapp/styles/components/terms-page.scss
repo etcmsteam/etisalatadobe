@@ -4,7 +4,7 @@
   .cmp-container:first-child {
     @extend .container-block;
   }
-  #termsandconditions{
+  #termsandconditions {
     padding: 50px 15px;
   }
   .teaser {
@@ -14,6 +14,7 @@
         font-size: toRem(32);
         color: $white;
         padding-bottom: 5px;
+        line-height: 100%;
         @include respond-to-min($tablet) {
           font-size: toRem(36);
         }
@@ -30,26 +31,22 @@
       .cmp-teaser__action-container {
         @include respond-to-min($phone) {
           position: absolute;
-          top: 15px;
           right: 0;
         }
-        @include respond-to-max($desktop) {
-          top: 20px;
-        }
         @include respond-to-max($tablet) {
-          top: 10px;
+          top: 15px;
+        }
+        @include respond-to-min($desktop) {
+          top: 5px;
         }
         .cmp-teaser__action-link {
           @extend .btn;
           min-width: 155px;
-
         }
       }
     }
   }
 }
-
-
 
 // Terms page
 .hiuapp_termspage {
@@ -60,12 +57,11 @@
   background-position: bottom center;
   background-size: cover;
   padding-top: 0;
-  &.terms__boxshadow{
+  &.terms__boxshadow {
     box-shadow: rgb(0 0 0 / 30%) 0px 20px 30px -20px;
     margin-bottom: 50px;
     content: "";
   }
-
 
   .section-banner {
     min-height: auto;
@@ -89,11 +85,11 @@
 
     .cmp-teaser {
       top: 105px;
-      h1 {
-        font-size: toRem(50);
+      h2 {
         margin: 0;
         color: $white;
         margin: 0;
+        font-weight: 700;
 
         @include respond-to-max($phone) {
           font-size: toRem(35) !important;
@@ -106,9 +102,9 @@
         color: $white;
         margin: 18px 36px 18px 0;
       }
-      .cmp-teaser__content{
+      .cmp-teaser__content {
         @include respond-to-min($desktop) {
-          padding-left: 10px
+          padding-left: 10px;
         }
       }
     }
@@ -128,14 +124,20 @@
       font-size: 2em;
     }
 
-    h3,
-    h4 {
+    h3 {
       color: $black;
-      display: inline-block;
       font-weight: 400;
       line-height: 1.2;
       margin: 25px 0 15px 0;
     }
+
+    h4 {
+      color: $black;
+      font-size: toRem(24);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
     p {
       margin-bottom: 16px;
       line-height: 24px;
