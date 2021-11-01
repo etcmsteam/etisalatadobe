@@ -52,14 +52,32 @@ input#phone1:focus~label {
 		margin: 0 auto;
 		text-align: center;
 	}
+	
 	.btn-disabled {
 		border:none;
+		width: toRem(327.33)!important;
+		background-color:  $cold-gray-2;
+		border-color:  $cold-gray-2;
+		border-radius: .25rem;
+		border-width: 0;
+		color: $steel-grey;
+		font-weight: 700;
+		height: 3rem;
+		opacity: 1;
+		outline: 0;
+		padding: 0 .5rem;
+		pointer-events: none;
+		text-align: center;
+		text-transform: uppercase;
 		&:hover {
 			color: $steel-grey;
 			background-color: $cold-gray-2;
 			border-color: $cold-gray-2;
 			opacity: 1;
 		}
+		@include respond-to-min($desktop) {
+			width: toRem(588);
+			}
 	}
 	.cmp-form-button {
 		text-transform: uppercase;
@@ -69,10 +87,10 @@ input#phone1:focus~label {
 		border-color: $main-green;
 		text-align: center;
 		padding: 0 0.5rem;
-		border-width: calculateRem(1px);
-		width: calculateRem(327.33px);
-		border-radius: 4px;
-		border-width: 1px;
+		border-width: toRem(1);
+		width: toRem(327.33);
+		border-radius: toRem(4);
+		border-width: toRem(1);
 		outline: 0;
 		font-weight: 700;
 		position: relative;
@@ -83,8 +101,8 @@ input#phone1:focus~label {
 		line-height: 3rem;
 		letter-spacing: 0.14285714em;
 		@include respond-to-min($desktop) {
-			width: calculateRem(375.99px);
-			}
+			width: toRem(588)!important;
+			}	
 		&:active {
 			box-shadow: none !important;
 			color: $main-green;
@@ -345,7 +363,7 @@ input:-internal-autofill-selected  {
 		margin-bottom: 2rem;
 	}
 }
-
+.button {
 button#disableBtn.btn-disabled.cmp-form-button {
 	pointer-events: none;
 	color: $steel-grey;
@@ -384,6 +402,7 @@ button#disableBtn.cmp-form-button {
 	@include respond-to-min($desktop) {
 		width: calculateRem(375.99px);
 		}
+}
 }
 
 .has-error-fields input {
