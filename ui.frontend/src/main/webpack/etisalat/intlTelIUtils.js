@@ -531,7 +531,7 @@ import intlTelInput from 'intl-tel-input';
 
             $(document).on("keyup", "#phone1", function (element) {
                 var inputVal = $('#phone1').val();
-               
+                  $('.cmp-form-button').removeClass('active');
 
                 if ($('#phone1').val() == "") {
                     $("#phone1").parent().parent().removeClass("has-error-fields"); // remove it 
@@ -655,7 +655,7 @@ import intlTelInput from 'intl-tel-input';
 
             $(document).on("keyup", "#contactNumber", function (element) {
                 var inputVal = $('#contactNumber').val();
-               
+                  $('.cmp-form-button').removeClass('active');
 
                 if ($('#contactNumber').val() == "") {
                     $("#contactNumber").parent().parent().removeClass("has-error-fields"); // remove it 
@@ -723,6 +723,7 @@ import intlTelInput from 'intl-tel-input';
             });
         }
         if (input3 !== null) {
+              $('.cmp-form-button').removeClass('active');
             var iti = intlTelInput(input3, {
                 utilsScript: utilPath,
                 separateDialCode: false,
@@ -749,6 +750,7 @@ import intlTelInput from 'intl-tel-input';
 
             $(document).on("keyup", "#mobileNumber", function (element) {
                 var inputVal = $('#mobileNumber').val();
+                  $('.cmp-form-button').removeClass('active');
                 if ($('#mobileNumber').val() == "") {
                     $("#mobileNumber").parent().parent().removeClass("has-error-fields"); // remove it 
                     $("#mobileNumber").parent().next(".alert-label").remove();
@@ -826,7 +828,7 @@ import intlTelInput from 'intl-tel-input';
                 $("#companyName").parent().next(".alert-label").remove();
                 $("#companyName").parent().find(".alert-label").remove();
                 $("#companyName").parent().find(".alert-icon").remove();
-
+                  $('.cmp-form-button').removeClass('active');
                 if ($('#companyName').val() == "") {
 
                     $("#companyName").parent().addClass("has-error-fields").removeClass("is-valid");
@@ -861,6 +863,7 @@ import intlTelInput from 'intl-tel-input';
         });
 
         $(document).on("keyup", "#url", function (element) {
+              $('.cmp-form-button').removeClass('active');
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -906,6 +909,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
         $(document).on("keyup", "#fullName", function (element) {
+              $('.cmp-form-button').removeClass('active');
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -954,6 +958,7 @@ import intlTelInput from 'intl-tel-input';
         });
 
         $(document).on("keyup", "#firstName", function (element) {
+              $('.cmp-form-button').removeClass('active');
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -1052,7 +1057,7 @@ import intlTelInput from 'intl-tel-input';
         });
 
         $(document).on("keyup", "#emailAddress", function (element) {
-
+            $('btn-validate').removeClass('active');
             if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
                 return;
             } else {
@@ -1077,10 +1082,11 @@ import intlTelInput from 'intl-tel-input';
                     };
                     return;
                 }
-                if (!email2($('#emailAddress').val())) {
+                if (!email2(inputVal)) {
 
                     alertIcon = "";
                     alertIcon = contentString;
+                    $("#emailAddress").parent().removeClass("is-valid").addClass("has-error-fields");
                     if ($("#emailAddress").parent().hasClass("has-error-fields")) {
                         document.querySelector("#emailAddress").parentElement.innerHTML += '<div id="emailAddress-error" class="has-error alert-label">Please enter a valid email address</div>';  
                         document.querySelector('#emailAddress').parentElement.innerHTML += alertIcon;
@@ -1099,7 +1105,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
         $(document).on("keyup", "#justification", function (e) {
-
+              $('.cmp-form-button').removeClass('active');
             var inputVal = $('#justification').val();
             $("#justification").parent().removeClass("has-error-fields"); // remove it 
             $("#justification").parent().next(".alert-label").remove();
@@ -1141,7 +1147,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
         $(document).on("keyup", "#description", function (e) {
-            
+              $('.cmp-form-button').removeClass('active');
             var inputVal = $('#description').val();
             $("#description").parent().removeClass("has-error-fields"); // remove it 
             $("#description").parent().next(".alert-label").remove();
@@ -1186,7 +1192,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
         $(document).on("keyup", "#accountNumber", function (e) {
-          
+              $('.cmp-form-button').removeClass('active');
             var inputVal = $('#accountNumber').val();
             $("#accountNumber").parent().removeClass("has-error-fields"); // remove it 
             $("#accountNumber").parent().next(".alert-label").remove();
@@ -1228,7 +1234,7 @@ import intlTelInput from 'intl-tel-input';
             }
         });
         $(document).on("keyup", "#designation", function (e) {
-            
+            $('.cmp-form-button').removeClass('active');
             var inputVal = $('#designation').val();
             $("#designation").parent().removeClass("has-error-fields"); // remove it 
             $("#designation").parent().next(".alert-label").remove();
@@ -1339,7 +1345,7 @@ import intlTelInput from 'intl-tel-input';
 
             clearForm();
 
-
+            $(this).removeClass('active').addClass('active');
             if (!$('#fullName').val()) {
                 $("#fullName").parent().removeClass("is-valid").addClass("has-error-fields");
                 if ($("#fullName").parent().next(".alert-label").length == 0) // only add if not added
