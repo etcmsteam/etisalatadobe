@@ -2745,7 +2745,7 @@
 				cursor: pointer;
 				padding-left: 12px;
 				padding-right: 12px;
-				
+
 				.producttile {
 					height: 100%;
 					> div {
@@ -2782,6 +2782,16 @@
 			padding: 0 0 20px 0;
 			#product.swiper-wrapper {
 				flex-wrap: nowrap;
+				.swiper-slide {
+					&.has-product-description {
+						@include respond-to-min($desktop) {
+							width: 250px !important;
+						}
+						@include respond-to-min($desktop-wide) {
+							width: 306px !important;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -2790,7 +2800,7 @@
 	.tile {
 		.tile-card__front {
 			.view-channel-list {
-				margin-bottom: .825rem;
+				margin-bottom: 0.825rem;
 				a {
 					display: flex;
 					align-items: center;
