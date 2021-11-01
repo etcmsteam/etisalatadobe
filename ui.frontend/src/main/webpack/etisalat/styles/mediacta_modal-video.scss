@@ -3,12 +3,14 @@
 	border-radius: 4px;
 	box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
 	min-height: 150px;
+	padding: 0 !important;
 	.aem-Grid {
 		display: flex;
 		flex-direction: column-reverse;
 	}
 	@include respond-to-min($tablet) {
 		min-height: auto;
+		display: block;
 	}
 	@include respond-to-min($desktop) {
 		.aem-Grid {
@@ -31,20 +33,67 @@
 			font-weight: normal;
 		}
 	}
-	.ul-list-cms {
-		@include respond-to-min($tablet) {
+	.text {
+		@include respond-to-min($desktop) {
 			padding: 1.5rem 4rem 2.5rem 1.5rem;
 		}
-		li {
+		@include respond-to-max($tablet) {
+			padding: 1rem 1rem 4rem;
+		}
+		ul {
+			padding-left: 1rem;
+			li {
 			font-size: $font14;
 			line-height: 20px;
+			color: $gray-fill;
+			padding-left: 0;
+    		margin: 0 0 4px 0;
+			}
 		}
 	}
-	p {
+	.cmp-text {
+		p {
 		margin-bottom: .5rem;
 		font-size: $font14;
+		color: $paracolor;
+		line-height: 19px;
+		}
 	}
 	p+p {
-		margin-top: .55rem;
+		margin-top: 1rem;
 	}
+	.cover-image__with-play-icon {
+		padding-left: 24px;
+		@include respond-to-max($tablet) {
+			padding-left: 12px;
+		}
+		@include respond-to-max($phone) {
+			height: 240px;
+		}
+
+		img {
+			@include respond-to-max($phone) {
+				position: absolute;
+				width: 550px;
+				left: 50%;
+				margin-left: -275px;
+			}
+			
+		}
+	}
+	.media-cta-image{
+		@include respond-to-max($phone) {
+			position: relative;
+			height: 240px;
+			overflow: hidden;
+		}
+		
+	}
+
+	.cover-image__with-play-btn-icon{
+		position: relative;
+		max-height: 260px;
+		overflow: hidden;
+		margin-left: -13px;
+	  }
 }
