@@ -11,27 +11,29 @@
 		}
 	}
 }
-.container-product-grid {
-	margin-right: auto;
-	margin-left: auto;
-	padding-left: 12px;
-	padding-right: 12px;
-	// @media (max-width: 767px)
-	//  {
-	// 		width: 756px;
-	// 	}
-	@media (min-width: 1248px) {
-		width: 1224px;
-	}
-}
 
 .product-grid-text-section {
 	padding: 1.5rem 0;
-
-	.swiper-slide & {
-		min-height: 580px !important;
+	.container {
+		> div.row {
+			margin-left: 0;
+		    margin-right: 0;
+			padding-left: 4px;
+				padding-right: 4px;
+			@include respond-to-min($tablet) {
+				padding-left: 6px;
+				padding-right: 6px;
+			}
+			@include respond-to-min($desktop) {
+				padding-left: 24px;
+				padding-right: 24px;
+			}
+			@include respond-to-min($desktop-wide) {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
 	}
-
 	.btn-green {
 		background-color: $white !important;
 	}
@@ -119,8 +121,11 @@
 }
 
 .cmp__bg-cards_product-grid {
+	> div.row {
+		margin-left: -12px;
+		margin-right: -12px;
+	}
 	position: relative;
-
 	.product-grid {
 		&.tile-table {
 			.tile-card {
@@ -560,7 +565,7 @@
 	.bg-cards .product-home-card.tile-table .tile-card .detail-price-new .price,
 	.bg-cards .product-home-multi-card-selection.tile-table .tile-card .detail-price-new .price,
 	.bg-cards .product-home-single-card-selection.tile-table .tile-card .detail-price-new .price {
-		font-size: 1.75rem;
+		font-size: $font28;
 	}
 	.bg-cards .device-card.tile-table .tile-card .detail-price-new .from,
 	.bg-cards .device-card-selection.tile-table .tile-card .detail-price-new .from,
@@ -707,6 +712,7 @@
 		font-size: $font14;
 		//font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
 		@include font-family-lato();
+		margin-left: 8px;
 	}
 
 	.bg-cards .device-card.offer .tile-card .before-price-container,
@@ -753,6 +759,7 @@
 	.bg-cards .product-home-multi-card-selection.offer .tile-card .bottom-text,
 	.bg-cards .product-home-single-card-selection.offer .tile-card .bottom-text {
 		padding-top: 5px;
+		@include font-family-lato;
 	}
 	.bg-cards .plan-card.tile-table .tile-card .tiles-box-title,
 	.bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-title,
@@ -1165,6 +1172,10 @@
 			opacity: 1 !important;
 			z-index: 1;
 			height: 4px;
+			margin-left: 12px;
+			@include respond-to-min($tablet) { 
+				margin-left: 6px;
+			}
 			.swiper-scrollbar-drag {
 				background-color: $main-green;
 			}
@@ -1739,6 +1750,7 @@
 					color: $grey1 !important;
 					font-size: 1.25rem !important;
 					margin-bottom: 0.825rem;
+					@include font-family-lato;
 				}
 				&:last-child {
 					margin-bottom: auto;
@@ -2579,10 +2591,6 @@
 								border-bottom: 1px solid $main-green;
 							}
 						}
-
-						.read-more {
-							//display: none;
-						}
 					}
 				}
 
@@ -2749,37 +2757,15 @@
 		#product {
 			display: flex;
 			flex-wrap: nowrap;
-			margin-left: 6px;
-			margin-right: 6px;
 			@include respond-to-min($tablet) {
 				flex-wrap: wrap;
-				margin-left: 12px;
-				margin-right: 12px;
-			}
-			@include respond-to-min($desktop) {
-				margin-left: 30px;
-				margin-right: 30px;
-			}
-			@include respond-to-min($desktop-wide) {
-				margin-left: 6px;
-				margin-right: 30px;
 			}
 			.swiper-slide {
-				width: 282px;
 				height: auto;
 				margin-bottom: 30px;
 				cursor: pointer;
-				@include respond-to-min($tablet) {
-					padding-right: 0;
-					padding-left: 0;
-					margin-right: 24px;
-					max-width: 282px;
-				}
-				&:last-child {
-					@include respond-to-min($tablet) {
-						margin-right: 0;
-					}
-				}
+				padding-left: 12px;
+				padding-right: 12px;
 
 				.producttile {
 					height: 100%;
@@ -2811,27 +2797,20 @@
 					flex-direction: row;
 					overflow: hidden;
 				}
-				.swiper-slide {
-					max-width: 100%;
-					@include respond-to-min($tablet) {
-						max-width: 45%;
-					}
-					@include respond-to-min($desktop) {
-						max-width: 282px;
-					}
-				}
 			}
 		}
 		.swiper-container {
+			padding: 0 0 20px 0;
 			#product.swiper-wrapper {
 				flex-wrap: nowrap;
 				.swiper-slide {
-					max-width: 267px;
-					@include respond-to-min($tablet) {
-						max-width: 45%;
-					}
-					@include respond-to-min($desktop) {
-						max-width: 282px;
+					&.has-product-description {
+						@include respond-to-min($desktop) {
+							width: 250px !important;
+						}
+						@include respond-to-min($desktop-wide) {
+							width: 306px !important;
+						}
 					}
 				}
 			}
@@ -2842,7 +2821,7 @@
 	.tile {
 		.tile-card__front {
 			.view-channel-list {
-				margin-bottom: .825rem;
+				margin-bottom: 0.825rem;
 				a {
 					display: flex;
 					align-items: center;
