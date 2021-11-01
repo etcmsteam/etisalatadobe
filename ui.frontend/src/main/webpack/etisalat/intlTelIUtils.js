@@ -656,9 +656,8 @@ import intlTelInput from 'intl-tel-input';
             $(document).on("keyup", "#contactNumber", function (element) {
                 var inputVal = $('#contactNumber').val();
                   $('.cmp-form-button').removeClass('active');
-
-                if ($('#contactNumber').val() == "") {
-                    $("#contactNumber").parent().parent().removeClass("has-error-fields"); // remove it 
+                  $("#contactNumber").parent().removeClass("has-error-fields"); // remove it 
+                if ($('#contactNumber').val() == "") {                   
                     $("#contactNumber").parent().next(".alert-label").remove();
                     $("#contactNumber").parent().find(".alert-label").remove();
                     $("#contactNumber").parent().find(".alert-icon").remove();
@@ -681,7 +680,7 @@ import intlTelInput from 'intl-tel-input';
                         var inputVal = $('#contactNumber').val();
                         iti.telInput.value = inputVal;
                         if (phonevalid(inputVal) && inputVal.length == 10) {
-                            $("#contactNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
+                            $("#contactNumber").parent().removeClass("has-error-fields").addClass('is-valid');
                             $("#contactNumber").parent().find(".alert-label").remove();
                             $("#contactNumber").parent().find(".alert-icon").remove();
 
@@ -705,12 +704,12 @@ import intlTelInput from 'intl-tel-input';
 
 
                             if (errorMsg) {
-                                $("#contactNumber").parent().parent().addClass("has-error-fields");
+                                $("#contactNumber").parent().addClass("has-error-fields").removeClass('is-valid');
 
                                 alertIcon = "";
                                 alertIcon = contentString;
 
-                                if ($("#contactNumber").parent().parent().hasClass("has-error-fields")) {
+                                if ($("#contactNumber").parent().hasClass("has-error-fields")) {
                                     $("#contactNumber").parent().find(".alert-label").remove();
                                     $("#contactNumber").parent().find(".alert-icon").remove();
                                     document.querySelector('#contactNumber').parentElement.innerHTML += '<div id="contactNumber-error" class="has-error alert-label">' + errorMsg + '</div>';
