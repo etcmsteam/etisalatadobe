@@ -17,7 +17,21 @@
 	.container {
 		> div.row {
 			margin-left: 0;
-			margin-right: 0;
+		    margin-right: 0;
+			padding-left: 4px;
+				padding-right: 4px;
+			@include respond-to-min($tablet) {
+				padding-left: 6px;
+				padding-right: 6px;
+			}
+			@include respond-to-min($desktop) {
+				padding-left: 24px;
+				padding-right: 24px;
+			}
+			@include respond-to-min($desktop-wide) {
+				padding-left: 0;
+				padding-right: 0;
+			}
 		}
 	}
 	.btn-green {
@@ -551,7 +565,7 @@
 	.bg-cards .product-home-card.tile-table .tile-card .detail-price-new .price,
 	.bg-cards .product-home-multi-card-selection.tile-table .tile-card .detail-price-new .price,
 	.bg-cards .product-home-single-card-selection.tile-table .tile-card .detail-price-new .price {
-		font-size: 1.75rem;
+		font-size: $font28;
 	}
 	.bg-cards .device-card.tile-table .tile-card .detail-price-new .from,
 	.bg-cards .device-card-selection.tile-table .tile-card .detail-price-new .from,
@@ -698,6 +712,7 @@
 		font-size: $font14;
 		//font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
 		@include font-family-lato();
+		margin-left: 8px;
 	}
 
 	.bg-cards .device-card.offer .tile-card .before-price-container,
@@ -744,6 +759,7 @@
 	.bg-cards .product-home-multi-card-selection.offer .tile-card .bottom-text,
 	.bg-cards .product-home-single-card-selection.offer .tile-card .bottom-text {
 		padding-top: 5px;
+		@include font-family-lato;
 	}
 	.bg-cards .plan-card.tile-table .tile-card .tiles-box-title,
 	.bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-title,
@@ -1156,6 +1172,10 @@
 			opacity: 1 !important;
 			z-index: 1;
 			height: 4px;
+			margin-left: 12px;
+			@include respond-to-min($tablet) { 
+				margin-left: 6px;
+			}
 			.swiper-scrollbar-drag {
 				background-color: $main-green;
 			}
@@ -1730,6 +1750,7 @@
 					color: $grey1 !important;
 					font-size: 1.25rem !important;
 					margin-bottom: 0.825rem;
+					@include font-family-lato;
 				}
 				&:last-child {
 					margin-bottom: auto;
