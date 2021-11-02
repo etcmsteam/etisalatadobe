@@ -643,7 +643,7 @@ import intlTelInput from 'intl-tel-input';
                 $('.contactNumber').closest('.floating-label-input').find('label').addClass('floating-label');
                 //$('.contactNumber').val(iti.getSelectedCountryData().dialCode);
             });
-            var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format"];
+            var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid format","Please Enter No More Than 15 Characters."];
             //var errorMap = ["Invalid number", "Invalid country code", "Please Enter At Least 10 Characters.", "Please Enter No More Than 10 Characters.", "Invalid format"];
             var fieldRequired = '<div id="errorRequired" class="has-error alert-label">This field is required.</div>'
             var errorMsg;
@@ -691,7 +691,13 @@ import intlTelInput from 'intl-tel-input';
                             if (!realnumeric(inputVal)) {
                                 errorCode = 0;
                             } else {
-                                errorCode = iti.getValidationError();
+                                if(inputVal.length == 16)
+                                {
+                                    errorCode = 5;
+                                } else {
+                                    errorCode = iti.getValidationError();
+                                }
+                                
                             }
                             errorMsg = "";
                             errorMsg = errorMap[errorCode];

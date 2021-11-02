@@ -7,110 +7,174 @@
     width: auto;
 }
 
+//class name feature-watch
+//aem authoring name Feature Watch
 
-//teaser banner variation for out of container on container level
-.banner--image {
-    margin-bottom: 7rem !important;
-    margin-top: 4rem;
-    max-height: 627px;
-    padding-top: 2.3rem;
-    display: flex;
-    flex-direction: row;
-    @include respond-to-max($phone) {
-        padding-top: 0;
+
+
+
+.feature-watch {
+   
+    @include respond-to-min($tablet) {
+        min-height: 293px;
+        max-height: 293px;
+        margin-bottom: 3rem !important;
     }
-
-    @include respond-to-max($tablet) {
-        padding-left: 2rem;
-        padding-right: 2rem;
+    @include respond-to-min($desktop) {
+        min-height: 468px;
+        max-height: 468px;
+        margin-bottom: 50px !important;
     }
-
     .cmp-image__image {
-        margin-right: 140px;
+        @include respond-to-min($tablet) {
+            margin-top: 16px;
+        }
+        @include respond-to-min($desktop) {
+            height: 479px;
+            margin-top: 36px;
+        }
+    }
+
+    .cmp_btn {
+        margin: 0;
+
+        img {
+            
+            @include respond-to-min($tablet) {
+                height: 29px;
+                margin: 60px 0 16px 0;
+            }
+            @include respond-to-min($desktop) {
+                height: 36px;
+                margin: 140px 0 32px 0;
+            }
+        }
     }
 
     .cmp-text {
-        top: 0px;
-        margin-top: 0px;
-        margin-bottom: 4px;
-        font-size: 16px;
-        line-height: 22px;
-        padding: 2rem 0 0 2rem;
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h5,
-        h6 {
-            color: $white;
+        
+        @include respond-to-min($tablet) {
+            width: 340px;
         }
-
-        p {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            color: $white;
-
-            @include respond-to-max($phone) {
-                margin-bottom: 1.5rem;
-                margin-top: 0;
-            }
-        }
-
-        @include respond-to-max($tablet) {
-            padding: 4rem 0 0 4rem;
-        }
-
         @include respond-to-min($desktop) {
-            padding: 7rem 2rem 0 2rem;
+            width: 588px;
         }
-    }
 
-    .cmp-button--grey {
-        @include respond-to-max($tablet) {
-            line-height: 2rem;
+        h4 {
+           
+            @include respond-to-min($tablet) {
+                font-size: $font28;
+                line-height: 34px;
+                margin: 75px 0 16px 0;
+            }
+            @include respond-to-min($desktop) {
+                font-size: $font32;
+                line-height: 40px;
+                margin:160px 0 32px 0;
+            }
         }
-    }
-
-    @include respond-to-max($phone) {
-        height: 450px;
-        margin-bottom: 13rem;
-
-        .cmp-container {
-            >.aem-Grid {
-                display: flex;
-                flex-direction: column-reverse;
+        p {
+            
+            @include respond-to-min($tablet) {
+                font-size: $font14;
+                line-height: 20px;
+                margin-bottom: 16px;
+            }
+            @include respond-to-min($desktop) {
+                margin-bottom: 24px;
             }
 
-            .aem-Grid.aem-Grid--phone--12>.aem-GridColumn.aem-GridColumn--phone--5 {
-                width: 70%;
-                margin-top: -3rem;
+            .cmp-link__arrow_left {
+                
 
-                img {
-                    margin-left: 3.4rem;
+                @include respond-to-min($tablet) {
+                    padding-right: 8px;
+                    padding-left: 0;
+                }
+                @include respond-to-min($desktop) {
+                    font-size: $font14;
+                    line-height: 20px;
+                    padding-right: 12px;
                 }
             }
 
-            .aem-Grid.aem-Grid--phone--12>.aem-GridColumn.aem-GridColumn--phone--7 {
-                width: 100%;
-            }
-
-            .cmp-text {
-                padding: 2rem;
+            .cmp-button--secondary {
+                min-width: 280px;
             }
         }
     }
+
     .cmp-container{
         margin: 0 auto;
-        width: 1224px;
+        width: 100%;
+        padding: 0 12px;
+
+        @include respond-to-min($tablet) {
+            width: 756px;
+        }
+        @include respond-to-min($desktop) {
+            width: 1224px;
+        }
     }
 }
 
-.banner-image__left {
-    .aem-Grid--default--12 {
-        flex-direction: column;
-        display: flex;
+@include respond-to-max($phone) {
+    .feature-watch {
+        padding-top: 24px !important;
+        min-height: 374px;
+        max-height: 374px;
+        margin-bottom: 10rem !important;
+        .image {
+            .cmp-image__image {
+                height: 283px;
+                width: 240px;
+                margin-left: 1.5rem;
+            }
+        }
+
+        .cmp_btn {
+            margin: 0;
+
+            img {
+                height: 29px;
+                margin-bottom: 24px;
+            }
+        }
+
+        .cmp-text {
+
+            h4 {
+                font-size: 28px;
+                line-height: 34px;
+                margin: 0 0 24px 0;
+            }
+            p {
+                font-size: 14px;
+                margin-bottom: 16px;
+
+                .cmp-link__arrow_left {
+                    position: absolute;
+                    bottom: 90px;
+                    right: 85px;
+                }
+
+                .cmp-button--secondary {
+                    min-width: 280px;
+                }
+            }
+        }
+
+        // .aem-Grid {
+        //     display: flex !important;
+        //     flex-direction: column-reverse !important;
+        //     border: 1px solid red;
+        // }
+
+        .cmp-container{
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 12px;
+        }
     }
 }
 
@@ -122,21 +186,24 @@
     color: $gray;
 }
 
-
-.large--banner {
+//banner-full-bleed class name 
+//Feature Banner Full Bleed aem authoring name
+.banner-full-bleed {
 
     @include respond-to-min($desktop) {
-        height: 530px;
+        height: 545px;
     }
-    
-    @include respond-to-max($phone) {
-        margin-top: 5rem !important;
-    }
+
     .cmp-text {
-        padding: 4rem 0 4rem 1.5rem;
+        width: 588px;
+        padding: 4rem 0 4rem 1rem;
 
         @include respond-to-max($tablet) {
-            padding: 3.25rem 0;
+            padding: 3.25rem 3.75rem;
+        }
+        @include respond-to-max($phone) {
+            padding: 2rem 1rem;
+            margin-bottom: 50px;
         }
 
         pre{
@@ -159,6 +226,9 @@
                 line-height: 34px;
                 margin: 0 0 3rem 0;
             }
+            @include respond-to-max($phone) {
+                margin: 0 0 1.25rem 0;
+            }
         }
 
         .body-copy1 {
@@ -170,6 +240,7 @@
             @include respond-to-max($tablet) {
                 font-size: $font28;
                 line-height: 36px;
+                margin-bottom: 8px;
             }
         }
 
@@ -185,33 +256,61 @@
             }
         }
 
-        td {
-            font-size: $font20;
-            line-height: 28px;
-            @include font-family-lato;
-            padding-bottom: 10px;
+        ul {
 
-            @include respond-to-max($tablet) {
-                font-size: $font16;
-                line-height: 24px;
-                margin-bottom: 8px;
+            @include respond-to-min($desktop) {
+                display: flex;
+                flex-wrap: wrap;
             }
+            
+            li {
+                @include respond-to-min($desktop) {
+                    flex: 1 0 50%;
+                }
+                font-size: $font20;
+                margin-bottom: 10px;
+                padding: 0;
+                @include respond-to-max($tablet) {
+                    font-size: $font16;
+                    margin-bottom: 8px;
+                }
+            }
+        }
+
+        sub {
+            font-size: $font12;
         }
 
         .cmp-button--primary {
             width: 288px;
-            margin-left: 60px;
+            position: relative;
+            bottom: 20px;
+            left: 75px;
 
             @include respond-to-max($tablet) {
                 margin: 24px 0 0;
+                left: 0;
+            }
+
+            @include respond-to-max($phone) {
+                margin: 24px 0 0;
+                left: -205px;
+                top: 50px;
             }
         }
+    }
+
+    .text {
+        margin: 0 auto;
+        width: 1224px;
+        float: none;
     }
 
     .cmp-container {
         height: 100%;
         min-height: 579px;
         background-size: 100% auto;
+        background-position: top center;
     }
 }
 

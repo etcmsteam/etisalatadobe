@@ -1,7 +1,7 @@
   //shop swiper st 
   function initTileBoxesSlider() {
           // plans table slider for CMS modules start
-          $(document).find('.tile-boxes-section').each(function (index) {
+          $(document).find('.tilecontainer .tile-boxes-section').each(function (index) {
             $(this).addClass('t-b-slider'+index);
             var $tileBoxesCarousal = new Swiper('.t-b-slider'+index+' .swiper-container', {
               //clickable: true,
@@ -42,6 +42,30 @@
   
           });
           // plans table slider for CMS modules ends
+          
+           $(document).find('.tilecontainer .tileBoxMobCarWrap').each(function (itemindex) {
+
+          var swiperSlideLength = $(this).find('.swiper-slide').length;
+          $(this).addClass('swiper-with-' + swiperSlideLength + '-slides');
+          if ($(window).width() > 991) {
+            $(this).find('.tileboxCarousal').addClass('destroyed');
+          } else {
+            var $carouselSlider = new Swiper($(this).find('.tileboxCarousal'), {
+              loop: false,
+              autoplay: false,
+              slidesPerView: 1,
+              simulateTouch: true,
+              pagination: '.swiper-pagination',
+              touchEventsTarget: "swiper-wrapper",
+              scrollbarDraggable: true,
+              scrollbarHide: false,
+              scrollbar: $(this).find('.table-swiper-scrollbar'),
+              centeredSlides: true,
+              spaceBetween: 20
+            });
+          }
+        });
+        
         }
   
         // register the event handlers

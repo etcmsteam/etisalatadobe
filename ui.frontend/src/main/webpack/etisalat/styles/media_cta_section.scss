@@ -1,56 +1,67 @@
-
-
 .no-padding-container {
-    padding: 0px!important;
-
-    @include md{
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
     .cmp-teaser {
         display: flex;
         width: 100%;
         flex-wrap: wrap;
         flex-direction: row-reverse;
-        @include box-shadow();
+        border-radius: 4px;
+        @include media-box-shadow();
+        .cmp-image {
+            position: relative;
+            height: 100%;
 
-        @include sm {
-            flex-direction: column-reverse;
-        }
-
-        @include md {
+            position: relative;
+            width: 100%;
+            top: 0;
+            left: 0;
             display: block;
+            overflow: hidden;
         }
 
         .cmp-teaser__image {
-            margin-top: 5px;
-            img {
-                width: 100%;
+            width: 100%;
+            @include respond-to-min($desktop) {
+                width: 50%;
+
+                img {
+                    height: 240px;
+                    @include respond-to-min($desktop) {
+                        height: auto;
+                    }
+                }
             }
+        }
+
+        .cmp-image__image {
+            position: absolute;
+            left: -9999px;
+            right: -9999px;
+            top: -9999px;
+            bottom: -9999px;
+            margin: auto;
+            min-width: 100%;
+            min-height: 100%;
+            border-radius: 0 4px 4px 0;
         }
 
         .cmp-teaser__content {
             padding: 0.5rem 4rem 1.5rem 1.5rem;
             width: 50%;
-
-            @include sm {
+            position: relative;
+            padding-bottom: 80px;
+            @include respond-to-max($phone) {
                 width: 100%;
-                padding: 1rem 1rem 2rem;
+                padding: 1rem 1rem 5rem 1rem;
             }
-
-            @include md {
-                width: 100%;
-                padding: 1rem 1rem 2rem;
-            }
-
             .cmp-teaser__description {
                 p {
                     color: $black;
                     font-size: $font14;
                     line-height: 19px;
+                    @include font-family-lato;
                 }
-                h4{
-                    @include md{
+                h4 {
+                    @include md {
                         @include font-family-lato;
                         font-weight: 700;
                         font-size: $font18;
@@ -61,12 +72,16 @@
             }
 
             .cmp-teaser__action-container {
+                position: absolute;
+                left: 1rem;
+                bottom: 40px;
                 a {
                     letter-spacing: 2px;
-                    padding: .5rem 1rem 1rem 2rem;
                     position: relative;
                     font-size: 14px;
-                    @include md{
+                    text-transform: uppercase;
+                    @include font-family-lato;
+                    @include md {
                         font-size: $font12;
                     }
                 }
@@ -78,8 +93,13 @@
                 :before {
                     @include link-arrow;
                     border: solid $arrow-border-green;
-                    top: 5px;
+                    top: 3px;
                     border-width: 0 1px 1px 0;
+                    height: 7px;
+                    width: 7px;
+                    right:  -20px;
+                    position: absolute;
+                    padding: 3.5px;
                 }
             }
         }
@@ -99,10 +119,7 @@
         }
     }
 
-      .cmp-teaser__action-container {
-        margin-top: 5rem;
-        margin-left: -2rem;
-
+    .cmp-teaser__action-container {
         @include sm {
             margin-top: 0rem;
         }
@@ -111,8 +128,20 @@
             margin-top: 2rem;
         }
     }
-    p{
-        color: $paracolor!important;
+    p {
+        color: $paracolor !important;
         line-height: 19px;
+    }
+}
+
+.teser-small-2 {
+    .no-padding-container:nth-child(even) {
+        margin-left: 12px !important;
+        width: 49% !important;
+    }
+    .no-padding-container:nth-child(odd) {
+        margin-right: 12px;
+        width: 49% !important;
+        float: left;
     }
 }

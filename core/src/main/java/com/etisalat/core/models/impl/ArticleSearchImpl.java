@@ -1,5 +1,6 @@
 package com.etisalat.core.models.impl;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -61,6 +62,8 @@ public class ArticleSearchImpl implements ArticleSearch {
 
 	private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-article-page-template";
 	
+	private static final String PARENT_PAGE = "parentPage";
+	
 
 	/**
 	 * The current request.
@@ -86,20 +89,14 @@ public class ArticleSearchImpl implements ArticleSearch {
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String parentPath;
 	
-	/**
-	 * The ID for this component.
-	 */
-	private String uniqueId;
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String articleListFrom;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String[] pages;
 	
 	private Map<String, Long> categoryMap;
 
-	@Override
-	public String getId() {
-		if (uniqueId == null) {			
-			this.uniqueId = getUniqueID(currentRes);
-		}
-		return uniqueId;
-	}
 	
 	/**
 	 * Returns component unique id.
@@ -146,7 +143,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 			pageDetails.setThumbnailResource(res.getChild(PageConstants.JCR_CONTENT_IMAGE));
 			pageDetails.setTitle(page.getPageTitle());
 			pageDetails.setDescription(page.getDescription());
-			pageDetails.setPath(page.getPath());
+			pageDetails.setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, page.getPath()));
 			pageDetails.setTileSize(page.getProperties().get(PN_BLOG_SIZE, "3"));
 			pageDetails.setYouTubeUrl(page.getProperties().get(PN_YOUTUBE_URL, String.class));
 			pageDetails.setPlayIconText(page.getProperties().get(PN_PLAYICON_TEXT, String.class));
@@ -221,15 +218,49 @@ public class ArticleSearchImpl implements ArticleSearch {
 	 */
 	private List<GenericListPageDetails> getItems(String articlePageType) {
 		List<GenericListPageDetails> pageDetailsList = new LinkedList<>();
-		if (StringUtils.isNotBlank(parentPath)) {
-			Resource res = request.getResourceResolver().getResource(parentPath);
-			if (null != res && res.hasChildren()) {
-				res.listChildren().forEachRemaining(resource -> setArticlePages(resource, pageDetailsList, articlePageType));
+		if (StringUtils.isNotBlank(articleListFrom)) {
+			if (articleListFrom.equals(PARENT_PAGE)) {
+				getRootPageItems(pageDetailsList, articlePageType);
+			} else {
+				getStaticPageItems(pageDetailsList, articlePageType);
 			}
 		}
 
 		sortArticlePages(pageDetailsList);
 		return pageDetailsList;
+	}
+	
+	/**
+	 * Returns root page child article details list.
+	 * 
+	 * @param pageDetailsList
+	 * @param articlePageType
+	 */
+	private void getRootPageItems(List<GenericListPageDetails> pageDetailsList, String articlePageType) {
+		if (StringUtils.isNotBlank(parentPath)) {
+			Resource res = request.getResourceResolver().getResource(parentPath);
+			if (null != res && res.hasChildren()) {
+				res.listChildren()
+						.forEachRemaining(resource -> setArticlePages(resource, pageDetailsList, articlePageType));
+			}
+		}
+	}
+	
+	/**
+	 * Returns static page article list.
+	 * 
+	 * @param pageDetailsList
+	 * @param articlePageType
+	 */
+	private void getStaticPageItems(List<GenericListPageDetails> pageDetailsList, String articlePageType) {
+		if (null != pages && pages.length > 0) {
+			Arrays.asList(pages).forEach(path -> {
+				Resource saticPageResource = resourceResolver.getResource(path);
+				if (null != saticPageResource && resourceResolver.resolve(path).isResourceType(NameConstants.NT_PAGE)) {
+					setArticlePages(saticPageResource, pageDetailsList, articlePageType);
+				}
+			});
+		}
 	}
 	
 	@Override
