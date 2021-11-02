@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Tile"
-    sling:resourceType="cq/gui/components/authoring/dialog"
-    helpPath="https://www.adobe.com/go/aem_cmp_title_v2">
+    jcr:title="Person Details"
+    sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -35,19 +34,14 @@
                                                 autoStart="{Boolean}false"
                                                 class="cq-droptarget"
                                                 fieldLabel="Image Asset"
-                                                fileNameParameter="./image/fileName"
-                                                fileReferenceParameter="./image/fileReference"
+                                                fileNameParameter="./fileName"
+                                                fileReferenceParameter="./fileReference"
                                                 mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
                                                 multiple="{Boolean}false"
-                                                name="./image/file"
+                                                name="./file"
                                                 title="Upload Image Asset"
                                                 uploadUrl="${suffix.path}"
                                                 useHTML5="{Boolean}true"/>
-                                            <imageresourcehidden
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./image/sling:resourceType"
-                                                value="etisalat/components/image"/>
                                         </items>
                                     </column>
                                 </items>
@@ -69,18 +63,18 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <tiletitle
+                                            <name
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Add Tile Title"
-                                                required="{Boolean}true"
-                                                fieldLabel="Tile Title"
-                                                name="./tiletitle"/>
-                                            <titleType
+                                                fieldDescription="Name"
+                                                fieldLabel="Name"
+                                                name="./name"
+                                                required="{Boolean}true"/>
+                                            <namestyle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Title Style"
-                                                name="./titleType">
+                                                fieldLabel="Name Style"
+                                                name="./nameStyle">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <def
                                                         jcr:primaryType="nt:unstructured"
@@ -111,27 +105,32 @@
                                                         text="H6"
                                                         value="h6"/>
                                                 </items>
-                                            </titleType>
+                                            </namestyle>
+                                            <designation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Designation"
+                                                fieldLabel="Designation"
+                                                name="./designation"/>
                                             <text
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Add Tile Description"
-                                                fieldLabel="Tile Description"
+                                                fieldDescription="Add Description"
+                                                fieldLabel="Description"
                                                 name="./text"
-                                                useFixedInlineToolbar="{Boolean}true"/>                                                                                     
+                                                useFixedInlineToolbar="{Boolean}true"/>
                                             <tilelinklabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Text"
-                                                fieldDescription="Add Tile Link Label"
-                                                fieldLabel="Tile CTA Label"
+                                                fieldDescription="CTA Link Label"
+                                                fieldLabel="CTA Label"
                                                 name="./ctatext"/>
                                             <tileLinkBehavior
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Tile Link Behavior"
+                                                fieldLabel="Link Behavior"
                                                 name="./tileLinkBehavior">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <opennewwindow
@@ -190,7 +189,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                         fieldDescription="Target URL for when the link is clicked."
-                                                        fieldLabel="Tile CTA link"
+                                                        fieldLabel="CTA link"
                                                         name="./tileCTALinkNewWindow"
                                                         rootPath="/content"/>
                                                 </items>
@@ -207,7 +206,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                         fieldDescription="Target URL for when the link is clicked."
-                                                        fieldLabel="Tile CTA link"
+                                                        fieldLabel="CTA link"
                                                         name="./tileCTALinkSameWindow"
                                                         rootPath="/content"/>
                                                 </items>
