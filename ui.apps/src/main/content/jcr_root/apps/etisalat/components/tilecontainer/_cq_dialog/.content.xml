@@ -32,31 +32,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items
                                             jcr:primaryType="nt:unstructured"
-                                            sling:hideChildren="[layout]">
-                                            <layout
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Layout"
-                                                name="./layout">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <default
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="(Default)"
-                                                        value=""/>
-                                                    <simple
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Simple"
-                                                        value="simple"/>
-                                                    <responsive
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Responsive Grid"
-                                                        value="responsiveGrid"/>
-                                                </items>
-                                                <granite:rendercondition
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/foundation/renderconditions/simple"
-                                                    expression="${!cqDesign.layoutDisabled}"/>
-                                            </layout>
+                                            sling:hideChildren="[layout]">                                            
                                             <tiletitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -66,6 +42,7 @@
                                                 value=""/>
                                             <tilegridlayout
                                                 jcr:primaryType="nt:unstructured"
+                                                granite:class="cq-dialog-dropdown-showhide"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 defaultValue="Default"
                                                 fieldLabel="Display tile as a"
@@ -84,7 +61,28 @@
                                                         text="Main Text Grid"
                                                         value="mainTextGrid"/>                                                
                                                 </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".tilegridlayout-showhide-target"/>
                                             </tilegridlayout>
+                                            <maintextlearnmore
+                                                granite:class="tilegridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <learmore
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Learn More Label for Mobile View"
+                                                        required="{Boolean}true"
+                                                        fieldLabel="Learn More Label"
+                                                        name="./mainTextLearnMore"
+                                                        rootPath="/content"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="mainTextGrid"/>
+                                            </maintextlearnmore>
                                             <swiperdisplaybehavior
 	                                            jcr:primaryType="nt:unstructured"
 	                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
