@@ -14,7 +14,9 @@
 
    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
       <div data-sly-test="${properties.ctatext}" class="action">
-         <a href="${properties.tileLinkBehavior == 'opensamewindow'? properties.tileCTALinkSameWindow : properties.tileCTALinkNewWindow}" 
+       <sly data-sly-test.link="${properties.tileLinkBehavior == 'opensamewindow'? properties.tileCTALinkSameWindow : properties.tileCTALinkNewWindow}" 
+            data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=link}"/>
+         <a href="${commonlinkmodel.link}" 
             class="link"
             target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
             title="${properties.ctatext}">${properties.ctatext}</a>
