@@ -1,23 +1,25 @@
+
+//class for image on the top for mobile and ipad
+@include respond-to-max($tablet){
+	.media-cta-flipped .aem-Grid{
+	display:flex;
+	flex-direction:column-reverse;
+	}
+	}
+
+
 .media-cta-wrapper {
 	position: relative;
 	border-radius: 4px;
 	box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
 	min-height: 150px;
 	padding: 0 !important;
-	.aem-Grid {
-		display: flex;
-		flex-direction: column-reverse;
-	}
+	
 	@include respond-to-min($tablet) {
 		min-height: auto;
 		display: block;
 	}
-	@include respond-to-min($desktop) {
-		.aem-Grid {
-			display: inherit;
-			flex-direction: inherit;
-		}
-	}
+	
 	h4 {
 		margin-bottom: 1rem;
 		@include respond-to-max($tablet){
@@ -62,6 +64,13 @@
 	p+p {
 		margin-top: 1rem;
 	}
+	.video{
+		height: inherit;
+max-height: inherit; 
+min-height:inherit; 
+position: inherit; 
+top: inherit;
+}
 	.cover-image__with-play-icon {
 		padding-left: 24px;
 		@include respond-to-max($tablet) {
