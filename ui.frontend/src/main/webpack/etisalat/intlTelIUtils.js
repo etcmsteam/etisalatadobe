@@ -1553,14 +1553,7 @@ import intlTelInput from "intl-tel-input";
       }
     });
 
-    $(document).on("keyup blur", "#emailAddress", function (element) {
-      if (
-        element.type === "keyup" &&
-        !$(this).parent().hasClass("has-error-fields")
-      ) {
-        return false;
-      }
-
+    $(document).on("keyup", "#emailAddress", function (element) {
       if (
         (event.which === 9 && this.elementValue(element) === "") ||
         $.inArray(event.keyCode, excludedKeys) !== -1
