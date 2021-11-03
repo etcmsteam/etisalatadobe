@@ -1,15 +1,11 @@
 $(document).ready(function () {
-  $(".cmp-experiencefragment--header").addClass("Scroll-Down");
+  $(".scrollUp").hide();
   $(window).scroll(() => {
     var windowTop = $(window).scrollTop();
     if (windowTop > 250) {
       $(".scrollUp").show();
-      $("#main-header").addClass("Scroll-Up");
-      $("#main-header").removeClass("Scroll-Down");
     } else {
       $(".scrollUp").hide();
-      $("#main-header").addClass("Scroll-Down");
-      $("#main-header").removeClass("Scroll-Up");
       $("nav ul").css("overflow", "visible");
     }
   });
@@ -17,9 +13,7 @@ $(document).ready(function () {
   $(".menu__icon").on("click", function (e) {
     e.preventDefault();
     $(".main-nav__list").addClass("ShowMenu");
-    $(".main-nav__list").toggleClass("Scroll-Down");
-    $(".main-nav__list.ShowMenu").slideToggle("slow");
-  });
+    $(".main-nav__list.ShowMenu").slideToggle("slow");  });
 
   $(".menu li a").on("click", function () {
     $(".ShowMenu").slideToggle("slow");
