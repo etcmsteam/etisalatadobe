@@ -360,6 +360,11 @@
 		flex-direction: row;
 		border-top: 1px solid $light-sand-brown;
 	}
+	a{
+		display: block;
+		width: 100%;
+		position: relative;
+	}
 	.cmp-list__item-title {
 		cursor: pointer;
 		display: block;
@@ -369,19 +374,21 @@
 		line-height: 22px;
 		margin: 0;
 		padding: 15px 0;
-	}
-	.cmp-list__item-icon {
-		content: "";
-		position: relative;
-		transform: translateY(-50%) rotate(45deg);
-		color: $almost-black;
-		display: block;
-		width: 12px;
-		top: 27px;
-		height: 12px;
-		margin-left: 10px;
-		border-top: 1.5px solid $main-green;
-		border-right: 1.5px solid $main-green;
+		&:after{
+			border-right: 1.5px solid $main-green;
+			border-top: 1.5px solid $main-green;
+			color: $almost-black;
+			content: "";
+			display: inline;
+			right: inherit;
+			height: 12px;
+			margin-left: 10px;
+			margin-top: 10px;
+			position: absolute;
+			top: inherit;
+			transform: translateY(-50%) rotate(45deg);
+			width: 12px;
+		}
 	}
 	span.more,
 	span.less {
