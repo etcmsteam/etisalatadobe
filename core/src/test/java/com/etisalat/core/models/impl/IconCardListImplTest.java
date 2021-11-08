@@ -39,17 +39,20 @@ class IconCardListImplTest {
 		final String expectedCardTitle = "Card Title 1";
 		final String expectedCardLink = "/content/etisalat/ae/en/carrier-and-wholesale/help";
 		final String expectedCardIcon = "/content/dam/etisalat/internet.svg";
+		final String expectedLinkBehavior ="opennewwindow";
 		int expectedCardSize = 2;
 		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
 		IconCardVO iconCardListItem = iconCardList.getIconCardListItems().get(0);
 		String actualCardTitle = iconCardListItem.getCardTitle();
 		String actualCardLink = iconCardListItem.getCardLink();
 		String actualCardIcon = iconCardListItem.getCardIcon();
+		String actualLinkBehavior = iconCardListItem.getLinkBehavior();
 		int actualCardSize = iconCardList.getIconCardSize();
 		assertEquals(expectedCardTitle, actualCardTitle);
 		assertEquals(expectedCardLink, actualCardLink);
 		assertEquals(expectedCardIcon, actualCardIcon);
 		assertEquals(expectedCardSize, actualCardSize);
+		assertEquals(expectedLinkBehavior, actualLinkBehavior);
 
 	}		
 
