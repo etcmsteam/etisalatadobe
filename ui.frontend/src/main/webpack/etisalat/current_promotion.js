@@ -93,6 +93,8 @@ $(document).ready(function () {
             prevButton: '.prev.left' + index,
             scrollbarHide: false,
             scrollbarDraggable: true,
+            observer: true,
+            observeParents: true,
             breakpoints: {
                 540: {
                   slidesPerView: 1.25
