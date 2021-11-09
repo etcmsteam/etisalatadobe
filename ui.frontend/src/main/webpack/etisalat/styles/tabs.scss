@@ -258,7 +258,6 @@ font-weight: 900;
       width:100%;
        padding: 2rem;
     }
-   
     .cmp-tabs{
     display: flex;
     li.cmp-tabs__tab{
@@ -270,12 +269,11 @@ font-weight: 900;
        @include font-family-lato;
     } 
     span {
-          img{
+        img{
           width: 24px;
           height: 24px;
-          display:block;
-         margin: 0 10px 0 0;
-        }
+         margin: 0 10px 0 0;     
+         }
       }
     }
       .cmp-tabs__tablist {
@@ -307,6 +305,7 @@ font-weight: 900;
             span{
               img{
                 margin: 0 10px 0 0px!important;
+                color: #719E20;
               }
             }
         }
@@ -491,10 +490,6 @@ font-weight: 900;
     border-radius: 0 5px 5px 0;
     width:50%;
     }
-  .cmp-tabs{
-    display: flex;
-    padding:2rem 2rem 4rem 2rem;
-    }
     .cmp-teaser{
       width:100%;
       display: flex;
@@ -581,29 +576,21 @@ padding-left: 30px;
   font-weight: 400;
   list-style: decimal;
 }
-
-
-
 .cmp-tabs_noteaser_img{
 .cmp_tabs__vertical_view .cmp-teaser__content{
     width:100%;
 }
 }
-
-
 .cmp_tabs__vertical_view_whbg{  
  .cmp-tabs__tabpanel--active{  
      background:$white;
  }
 }
-
 .cmp_tabs__vertical_view_whbg{  
 .cmp-tabs__tab--active{
-    background:$white;
+    background:$white; 
+  }  
 }
-}
-
-
 .tabs-container__panal{
   .cmp-text {
       margin: 2rem 0 4rem 2rem;
@@ -612,8 +599,6 @@ padding-left: 30px;
       }
     }
 }
-
-
 @media(max-width: 770px){
   h3 {
     margin: 1rem;
@@ -635,5 +620,22 @@ padding-left: 30px;
         margin:1rem;
       }
     }
-
- 
+   .cmp-tabs{
+      display: flex;
+      padding:2rem 2rem 4rem 2rem;
+      &__active-icon{
+       display: none;
+      }
+      &__default-icon{
+        display: block;
+       }
+      &__tab--active{
+       .cmp-tabs__active-icon{
+         display: block;
+       }
+       .cmp-tabs__default-icon{
+         display: none!important;  //due to css override i need to put imp//
+        }
+      }
+    }
+  
