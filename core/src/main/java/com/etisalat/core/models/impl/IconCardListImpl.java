@@ -26,6 +26,7 @@ public class IconCardListImpl implements IconCardList {
 	public static final String CARD_TITLE = "cardTitle";
 	public static final String CARD_ICON = "cardIcon";
 	public static final String CARD_LINK = "cardLink";
+	public static final String LINK_BEHAVIOR = "linkBehavior";
 
 	@SlingObject
 	@Optional
@@ -51,6 +52,7 @@ public class IconCardListImpl implements IconCardList {
 				IconCardVO cardList = new IconCardVO();
 				cardList.setCardIcon(r.getValueMap().get(CARD_ICON,String.class));
 				cardList.setCardTitle(r.getValueMap().get(CARD_TITLE,String.class));
+				cardList.setLinkBehavior(r.getValueMap().get(LINK_BEHAVIOR,String.class));
 				cardList.setCardLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,r.getValueMap().get(CARD_LINK,String.class)));				
 			    iconCardListItem.add(cardList);
 			}
