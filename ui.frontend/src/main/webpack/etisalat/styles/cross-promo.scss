@@ -736,6 +736,9 @@
       line-height: 24px;
       margin: 0;
       margin-bottom: 4px;
+      *[lang="ar"] *[dir=rtl] & {
+        padding-right: 1.5rem;
+      }
       &::before {
         content: "";
         width: 4px;
@@ -746,6 +749,10 @@
         position: absolute;
         left: 0;
         top: 10px;
+        *[lang="ar"] *[dir=rtl] & {
+          left:auto;
+          right:0;
+        }
       }
     }
   }
@@ -781,7 +788,7 @@
   }
 }
 
-.teaser_sibling_2 {
+.teaser_sibling_2, .teaser_sibling_3 {
   .cmp-teaser {
     padding: 16px;
 
@@ -814,39 +821,39 @@
   }
 }
 
-.teaser_sibling_3 {
-  .cmp-teaser {
-    padding: 16px;
+// .teaser_sibling_3 {
+//   .cmp-teaser {
+//     padding: 16px;
 
-    @include respond-to-min($tablet) {
-      padding: 24px 16 16px 16px;
-    }
-    @include respond-to-min($desktop) {
-      padding: 32px;
-    }
-  }
-  .cmp-teaser__action-container {
-    clear: both;
-    display: inline-block;
-    margin-top: 23px;
-    position: inherit;
-    float: none;
-  }
+//     @include respond-to-min($tablet) {
+//       padding: 24px 16 16px 16px;
+//     }
+//     @include respond-to-min($desktop) {
+//       padding: 32px;
+//     }
+//   }
+//   .cmp-teaser__action-container {
+//     clear: both;
+//     display: inline-block;
+//     margin-top: 23px;
+//     position: inherit;
+//     float: none;
+//   }
 
-  .cmp-teaser:before {
-    display: none;
-  }
+//   .cmp-teaser:before {
+//     display: none;
+//   }
 
-  .cross-promotion-plain .cmp-teaser:after {
-    transform: scaleX(-1);
-  }
+//   .cross-promotion-plain .cmp-teaser:after {
+//     transform: scaleX(-1);
+//   }
 
-  @include respond-to-min($tablet) {
-    .cross-promotion-plain .cmp-teaser__content{
-      width:100%;
-    }
-  }
-}
+//   @include respond-to-min($tablet) {
+//     .cross-promotion-plain .cmp-teaser__content{
+//       width:100%;
+//     }
+//   }
+// }
 
 .default-color.cross-promotion-plain {
   .cmp-teaser__action-container a {
@@ -899,12 +906,18 @@
   .tile-teaser.image-right {
     .cmp-teaser__image {
       margin-left: 24px;
+      *[lang="ar"] *[dir=rtl] & {
+        margin-right: 24px;
+      }
     }
   }
 
   .tile-teaser.image-left {
     .cmp-teaser__image {
       margin-right: 24px;
+      *[lang="ar"] *[dir=rtl] & {
+        margin-left: 24px;
+      }
     }
   }
 }
