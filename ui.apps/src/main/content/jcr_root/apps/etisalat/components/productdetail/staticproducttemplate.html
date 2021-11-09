@@ -19,7 +19,11 @@
 					<div class="row">
 						<div data-sly-test="${properties.mainProductTitle}" 
 							class="col-12 col-md-${carousel.items.size > 2 ? '3' : '6'} ">
-							<div class="main-text-section">
+							<div class="main-text-section">							     
+							     <a data-sly-test="${properties.productCTALink && properties.productCTATitle}"
+							        data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.productCTALink}"
+							         href="${commonlinkmodel.link}" class="btn-text btn-green  learn-more">
+                                   <span> ${properties.productCTATitle} </span></a>					         					
 								<div class="wst-main-headings">
 									<h4>${properties.mainProductTitle}</h4>
 								</div>
@@ -72,13 +76,20 @@
 													<div
 														class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'swiper-wrapper' : ''}"
 														id="product">
-
-
-														<div data-sly-repeat.item="${carousel.items}"
-															class="swiper-slide  ${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'col-12 col-sm-6 col-md-4 swiper-slide-active' : 'swiper-slide-active col-12 col-md-6 col-lg-6'}"
-															style="width: 306px;"
-															data-sly-resource="${item.name @ decorationTagName='div'}"
+														<sly data-sly-test="${properties.mainProductTitle}">
+															<div data-sly-repeat.item="${carousel.items}"
+														class="swiper-slide  ${!wcmmode.edit && carousel.items.size > 2 ? 'col-12 col-sm-6 col-md-4 swiper-slide-active' : 'swiper-slide-active col-12 col-sm-6'}"
+														data-sly-resource="${item.name @ decorationTagName='div'}"
 															id="${item.id}"></div>
+														</sly>
+
+														<sly data-sly-test="${!properties.mainProductTitle}">
+															<div data-sly-repeat.item="${carousel.items}"
+														class="swiper-slide  ${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'col-12 col-sm-6 col-md-3 swiper-slide-active' : 'swiper-slide-active col-12 col-sm-6 col-md-3'}"
+														data-sly-resource="${item.name @ decorationTagName='div'}"
+															id="${item.id}"></div>
+														</sly>
+														
 
 													</div>
 
@@ -111,4 +122,4 @@
 		</div>
 
 		<div class="promo-offers-popup-wrapper"></div>
-	</div>
+	</template>

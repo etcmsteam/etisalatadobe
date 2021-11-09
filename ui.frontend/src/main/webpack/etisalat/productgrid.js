@@ -15,7 +15,7 @@
           prevButton: '.table-swiper-button-prev.plansLeft' + index,
           scrollbarHide: false,
           scrollbarDraggable: true,
-          breakpoints: {            
+          breakpoints: {
             540: {
               slidesPerView: 1.25
             },
@@ -30,7 +30,7 @@
             },
             9999: {
               centeredSlides: false,
-              slidesPerView: 3
+              slidesPerView: 4
             }
           }
         });
