@@ -550,7 +550,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
     z-index: 0;
-    font-size: 1.25rem;
+    font-size: $font14;
+    @include respond-to-min($tablet) {
+      font-size: $font20;
+    }
   }
 
   textarea.cmp-form-text__textarea:focus ~ label {
@@ -927,7 +930,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    @include respond-to-min($desktop) {
+    @include respond-to-min($tablet) {
       font-size: $font20;
     }
   }
@@ -1317,11 +1320,15 @@
 }
 
 #justification + label {
-  padding-left: toRem(10);
-  padding-top: toRem(10);
+  padding-left: toRem(15);
 }
+
 #description + label {
-  padding-left: toRem(10);
+  padding-left: toRem(15);
+  font-size: $font14;
+   @include respond-to-min($tablet) {
+      font-size: $font20;
+    }
 }
 .description > label {
   transform: translateY(4px) scale(0.9);
@@ -1329,8 +1336,7 @@
 }
 .desc-text {
   .cmp-form-text label {
-    padding-left: 0.5rem;
-    padding-top: 0.5rem;
+    padding-left: toRem(15);
   }
   .cmp-form-text .alert-label {
     top: 10.5rem;
