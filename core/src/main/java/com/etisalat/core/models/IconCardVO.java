@@ -5,7 +5,14 @@ public class IconCardVO {
 	private String cardTitle;		
 	private String cardLink;	
 	private String cardIcon;
+	private String linkBehavior;
 	
+	public String getLinkBehavior() {
+		return linkBehavior;
+	}
+	public void setLinkBehavior(String linkBehavior) {
+		this.linkBehavior = linkBehavior;
+	}
 	public String getCardTitle() {
 		return cardTitle;
 	}
