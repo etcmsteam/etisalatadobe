@@ -15,8 +15,8 @@
     }
     @media screen and (max-width: 767px) {
       .container {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 4px;
+        padding-right: 4px;
       }
     }
   
@@ -73,6 +73,13 @@
         //     padding-right: 0;
         //   }
         // }
+        .persondetails {
+          display: flex;
+          flex-direction: column;
+          @include respond-to-min($tablet) { 
+            height: 100%;
+          }
+        }
         .person-details {
           display: flex;
           margin-bottom: 16px;
@@ -108,6 +115,7 @@
               font-size: 12px;
               line-height: 1.33;
               color: $almost-black;
+              @include font-family-lato; 
               @media screen and (min-width: 992px) {
                 font-size: 14px;
                 line-height: 1.43;
@@ -126,6 +134,7 @@
             font-size: 14px;
             line-height: 1.43;
             color: $gray-text-color;
+            @include font-family-lato;
             @media screen and (min-width: 992px) {
               font-size: 16px;
               line-height: 1.5;
