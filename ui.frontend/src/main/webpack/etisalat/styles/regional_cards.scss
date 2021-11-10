@@ -52,12 +52,12 @@
 
 .hero-card {
 	.cmp-container{
-        padding:0px;
+        padding: 0px;
     }
 	.image-right {
 	margin-bottom: 1.5625rem;
 	padding-left: 15px;
-		padding-right: 15px;
+	padding-right: 15px;
 	.cmp-teaser {
 		display: flex;
 		flex-direction: row-reverse;
@@ -122,9 +122,6 @@
 
 .promo-card-rev {
 	margin-bottom: 3.125rem;
-	.cmp-rte-text {
-		padding-left: 0;
-	}
 	.cmp-teaser__content {
 		position: absolute;
 		width: 100%;
@@ -182,35 +179,6 @@
 	}
 }
 
-.promo-card-rev {
-	&:nth-of-type(1) {
-		padding-right: 12px;
-	}
-	&:nth-of-type(2) {
-		padding-left: 12px;
-	}
-}
-
-.promo-card-section {
-	&:nth-of-type(1) {
-		padding-right: 12px;
-	}
-	&:nth-of-type(2) {
-		padding-left: 12px;
-		padding-right: 12px;
-	}
-	&:nth-of-type(3) {
-		padding-left: 12px;
-	}
-}
-
-.promo-card-rev.aem-GridColumn--medium--none {
-	margin-bottom: 1.5625rem;
-	.cmp-teaser {
-		overflow: hidden;
-	}
-}
-
 @media (min-width:768px) and (max-width:990px) {
 	.promo-card-rev,
 	.image-right {
@@ -243,6 +211,13 @@
 }
 }
 
+.gutter-padding-left {
+	padding-left: 12px;
+}
+.gutter-padding-right {
+	padding-right: 12px;
+}
+
 @include respond-to-min($desktop){
 	.hero-card {
 		.promo-card-rev .cmp-teaser {
@@ -268,9 +243,6 @@
 			.cmp-teaser {
 				max-height: 262px;
 				overflow: hidden;
-			}
-			.cmp-image__image {
-				height: 262px;
 			}
 			.cmp-teaser__title {
 				font-size: $font26;
@@ -299,39 +271,63 @@
 		}
 		.cmp-image__image {
 			border-radius: 4px;
-			min-height: 545px;
+			min-height: 546px;
     		object-fit: cover;
 		}
 	}
-	.promo-card .promo-card-section .cmp-teaser__content {
-		bottom: 0;
-		padding-top: 135px;
-		padding-left: 20px;
-		padding-right: 20px;
-		height: 100%;
-		min-height: 47px;
-		border-radius: 4px;
-		position: absolute;
-		z-index: 9;
-		background: linear-gradient(0deg, #000, transparent);
-		width: 100%;
-		.cmp-teaser__title {
-			font-size: $font26;
-		}
-	}
-	.promo-card .promo-card-row .promo-card-section {
-		.cmp-teaser {
+	.promo-card {
+		.promo-card-section .cmp-teaser__content {
+			bottom: 0;
+			padding-top: 135px;
+			padding-left: 20px;
+			padding-right: 20px;
 			height: 100%;
-			min-height: 250px;
-			position: relative;
-			overflow: hidden;
+			min-height: 47px;
 			border-radius: 4px;
+			position: absolute;
+			z-index: 9;
+			background: linear-gradient(0deg, #000, transparent);
+			width: 100%;
+			.cmp-teaser__title {
+				font-size: $font26;
+			}
+		}
+		.promo-card-row .promo-card-section {
+			.cmp-teaser {
+				height: 100%;
+				min-height: 250px;
+				position: relative;
+				overflow: hidden;
+				border-radius: 4px;
+			}
+			.cmp-image__image {
+				border-radius: 4px;
+				height: 250px;
+			}
+		}
+		.promo-card-row.container {
+			.promo-card-section {
+				&:nth-of-type(1) {
+					padding-right: 16px;
+				}
+				&:nth-of-type(2) {
+					padding-left: 8px;
+					padding-right: 8px;
+				}
+				&:nth-of-type(3) {
+					padding-left: 16px;
+				}
+			}
 		}
 	}
-	.promo-card .promo-card-row .promo-card-section {
+	
+	.promo-card-rev.aem-GridColumn--medium--none {
+		margin-bottom: 1.5625rem;
 		.cmp-image__image {
-			border-radius: 4px;
-			height: 250px;
+			min-height: auto;
+		}
+		.cmp-teaser {
+			overflow: hidden;
 		}
 	}
 }
@@ -350,62 +346,63 @@
 					}
 				}
 			}
-			.cmp-teaser__image img {
+			.cmp-teaser__image {
 				border-radius: 4px;
-			}
-			.cmp-rte-text {
-				padding-left: 12px;
+				max-height: 546px;
+				object-fit: cover;
 			}
 		}
 	}
-	.promo-card .promo-card-section .cmp-teaser__content {
-		width: 100%;
-		bottom: 0;
-		padding-top: 64px;
-		padding-left: 19px;
-		height: 100%;
-		min-height: 47px;
-		border-radius: 4px;
-		position: absolute;
-		z-index: 9;
-		background: linear-gradient(0deg, #000, transparent);
-		.cmp-teaser__title {
-			font-size: $font20;
-			margin: 0 0 $font16 0;
-		}
-	}
-	.promo-card .promo-card-row .promo-card-section {
-		.cmp-teaser {
-			margin-bottom: $font24;
-			max-height: 148px;
-			position: relative;
-			overflow: hidden
-		}
-		.cmp-teaser:nth-of-type(1){
-			padding-left: 12px;
-			padding-right: 12px;
-		}
-		.cmp-image__image {
+	.promo-card {
+		.promo-card-section .cmp-teaser__content {
+			width: 100%;
+			bottom: 0;
+			padding-top: 64px;
+			padding-left: 19px;
+			height: 100%;
+			min-height: 47px;
 			border-radius: 4px;
-			img {
-				border-radius: 4px;
+			position: absolute;
+			z-index: 9;
+			background: linear-gradient(0deg, #000, transparent);
+			.cmp-teaser__title {
+				font-size: $font20;
+				margin: 0 0 $font16 0;
 			}
 		}
-	}
-	.promo-card .promo-card-row.container:nth-of-type(1){
-		margin-top: 35px;
-	}
-	.promo-card-rev {
-		&:nth-of-type(1) {
-			padding-right: 0;
+		.promo-card-row {
+			.promo-card-section {
+				.cmp-teaser {
+					margin-bottom: $font24;
+					max-height: 148px;
+					position: relative;
+					overflow: hidden
+				}
+				.cmp-image__image {
+					border-radius: 4px;
+				}
+			}
 		}
-		&:nth-of-type(2) {
-			padding-left: 0;
+		.promo-card-row.container {
+			margin-top: 0;
+			margin-bottom: 15px;
+			&:nth-of-type(1) {
+				margin-top: 35px;
+			}
 		}
 	}
 	.teaser {
 		.promo-card-section{
 			padding: 0;
 		}
+	}
+}
+
+@include respond-to-max($phone){
+	.gutter-padding-left {
+		padding-left: 0;
+	}
+	.gutter-padding-right {
+		padding-right: 0;
 	}
 }
