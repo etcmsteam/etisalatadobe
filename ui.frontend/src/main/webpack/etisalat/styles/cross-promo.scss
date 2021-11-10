@@ -1,6 +1,6 @@
 //cross promo banner
 .cross-promotion-plain {
-  border-radius: 4px;
+  border-radius: 8px;
   position: relative;
   .cmp-teaser__action-container {
     width: 282px;
@@ -15,6 +15,7 @@
     *[lang="ar"] *[dir="rtl"] & {
       left: 38px;
       right: auto;
+      margin-right: 0;
     }
 
     @include respond-to-min($desktop) {
@@ -31,8 +32,7 @@
     font-size: $font14;
     @include font-family-lato;
     font-weight: 700;
-    letter-spacing: 2px;
-    letter-spacing: 3px;
+    letter-spacing: 3px !important;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
     color: $white;
@@ -55,7 +55,6 @@
     @include respond-to-max($tablet) {
       width: 100%;
     }
-    
   }
   .cmp-teaser {
     @include respond-to-min($desktop) {
@@ -78,9 +77,9 @@
       margin-bottom: 16px;
       margin-top: 0;
       line-height: 34px;
-      font-size: $font28;
+      font-size: $font24;
       @include respond-to-max($tablet) {
-        font-size: $font24;
+        font-size: $font22;
       }
     }
   }
@@ -135,16 +134,16 @@
 
   .cmp-teaser__content {
     display: block;
-    width:100%;
+    width: 100%;
     @include respond-to-max($tablet) {
       display: flex;
       flex-direction: column;
     }
     @include respond-to-min($desktop) {
-      width:55%;
+      width: 55%;
     }
     @include respond-to-min($desktop-wide) {
-      width: 66%;
+      width: 33%;
     }
   }
 
@@ -157,11 +156,16 @@
     margin-top: -10px;
     right: 120px;
     z-index: 1;
+    *[lang="ar"] *[dir="rtl"] & {
+      left: 38px;
+      right: auto;
+    }
+
     @include respond-to-max($tablet) {
       font-size: $font12;
     }
     @include respond-to-max($tablet) {
-      font-size: .75rem;
+      font-size: 0.75rem;
       left: 0;
       bottom: -10px;
       margin-top: 20px;
@@ -199,7 +203,6 @@
       }
 
       @include respond-to-max($tablet) {
-        width: 282px;
         margin: 16px 0 0 0;
       }
 
@@ -534,11 +537,11 @@
       font-size: $font16;
       line-height: 26px;
       color: $white;
+      width: 100%;
+
       @include respond-to-min($desktop) {
         padding-bottom: 80px;
       }
-      @include font-family-lato;
-      width: 100%;
 
       a {
         color: $white;
@@ -555,9 +558,8 @@
 
       p {
         margin-bottom: 16px;
+        @include font-family-lato;
         @include respond-to-max($tablet) {
-          font-size: $font14;
-          @include font-family-lato;
           line-height: 20px;
           margin-bottom: 12px;
         }
@@ -736,7 +738,7 @@
       line-height: 24px;
       margin: 0;
       margin-bottom: 4px;
-      *[lang="ar"] *[dir=rtl] & {
+      *[lang="ar"] *[dir="rtl"] & {
         padding-right: 1.5rem;
       }
       &::before {
@@ -744,14 +746,14 @@
         width: 4px;
         height: 4px;
         border-radius: 50%;
-        background-color: #848789;
+        background-color: $steel-grey;
         display: block;
         position: absolute;
         left: 0;
         top: 10px;
-        *[lang="ar"] *[dir=rtl] & {
-          left:auto;
-          right:0;
+        *[lang="ar"] *[dir="rtl"] & {
+          left: auto;
+          right: 0;
         }
       }
     }
@@ -788,7 +790,7 @@
   }
 }
 
-.teaser_sibling_2, .teaser_sibling_3 {
+.teaser_sibling_2 {
   .cmp-teaser {
     padding: 16px;
 
@@ -815,45 +817,43 @@
     transform: scaleX(-1);
   }
   @include respond-to-min($tablet) {
-    .cross-promotion-plain .cmp-teaser__content{
-      width:100%;
+    .cross-promotion-plain .cmp-teaser__content {
+      width: 100%;
     }
   }
 }
 
-// .teaser_sibling_3 {
-//   .cmp-teaser {
-//     padding: 16px;
+.teaser_sibling_3 {
+  .cmp-teaser {
+    padding: 16px;
+    @include respond-to-min($tablet) {
+      padding: 24px 16 16px 16px;
+    }
+    @include respond-to-min($desktop) {
+      padding: 32px;
+    }
+  }
+  .cmp-teaser__action-container {
+    clear: both;
+    display: inline-block;
+    margin-top: 23px;
+    position: inherit;
+    float: none;
+  }
 
-//     @include respond-to-min($tablet) {
-//       padding: 24px 16 16px 16px;
-//     }
-//     @include respond-to-min($desktop) {
-//       padding: 32px;
-//     }
-//   }
-//   .cmp-teaser__action-container {
-//     clear: both;
-//     display: inline-block;
-//     margin-top: 23px;
-//     position: inherit;
-//     float: none;
-//   }
+  .cmp-teaser:before {
+    display: none;
+  }
+  .cross-promotion-plain .cmp-teaser:after {
+    transform: scaleX(-1);
+  }
 
-//   .cmp-teaser:before {
-//     display: none;
-//   }
-
-//   .cross-promotion-plain .cmp-teaser:after {
-//     transform: scaleX(-1);
-//   }
-
-//   @include respond-to-min($tablet) {
-//     .cross-promotion-plain .cmp-teaser__content{
-//       width:100%;
-//     }
-//   }
-// }
+  @include respond-to-min($tablet) {
+    .cross-promotion-plain .cmp-teaser__content {
+      width: 100%;
+    }
+  }
+}
 
 .default-color.cross-promotion-plain {
   .cmp-teaser__action-container a {
@@ -899,14 +899,13 @@
       padding-left: 0 !important;
     }
   }
-
 }
 
 @include respond-to-min($desktop) {
   .tile-teaser.image-right {
     .cmp-teaser__image {
       margin-left: 24px;
-      *[lang="ar"] *[dir=rtl] & {
+      *[lang="ar"] *[dir="rtl"] & {
         margin-right: 24px;
       }
     }
@@ -915,7 +914,7 @@
   .tile-teaser.image-left {
     .cmp-teaser__image {
       margin-right: 24px;
-      *[lang="ar"] *[dir=rtl] & {
+      *[lang="ar"] *[dir="rtl"] & {
         margin-left: 24px;
       }
     }

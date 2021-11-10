@@ -1,9 +1,11 @@
 /*Teaser CSS */
-.whitebg-container .cmp-container {
-	padding: 2rem;
-	margin: 40px;
-	box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-	border-radius: 4px;
+.whitebg-container{
+	.cmp-container {
+		padding: 2rem;
+		margin: 40px;
+		box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+		border-radius: 4px;
+	}
 }
 
 /*Teaser CSS with variants*/
@@ -12,8 +14,10 @@
 	margin-top: 0px;
 	line-height: 1.3;
 }
-.cmp_tabs__vertical_view h2 a {
-	line-height: 1.3;
+.cmp_tabs__vertical_view{
+	h2 {
+		a {line-height: 1.3;}
+	} 
 }
 
 .greybg-container,
@@ -22,9 +26,6 @@
 		margin: 0 auto;
 		width: 100%;
 		padding: 0 12px;
-		@media (min-width: 320px) and (max-width: 769px) {
-			padding: 0;
-		}
 		@media (min-width: 768px) {
 			width: 756px;
 		}
@@ -48,48 +49,40 @@
 			letter-spacing: 4px;
 			color: $gray;
 			line-height: 26px;
-			font-size: 12px;
+			font-size:$font12;
 			text-transform: uppercase;
 			@include font-family-lato;
 		}
 		.cmp-teaser__description ul {
 			list-style-position: none;
 			margin-bottom: 1rem;
-			color: #7a7a7a;
+			color:$warm-gray;
 		}
 		.cmp-teaser__description ul li {
 			padding-left: 1rem;
 			position: relative;
 			margin: 0;
 			margin-bottom: 4px;
-			font-size: 16px;
+			font-size:$font16;
 			color: $gray;
 			line-height: 26px;
 			@include font-family-lato;
 		}
 
 		.cmp-teaser__description p {
-			font-size: 16px;
+			font-size:$font16;
 			color: $gray;
 			line-height: 26px;
 			@include font-family-lato;
 		}
 		.cmp-teaser__description p {
-			margin-bottom: 0.5rem;
+			margin-bottom:toRem(8);
 		}
 		.cmp-teaser__description p + p {
 			margin-top: 1rem;
 		}
 		.cmp-teaser__content {
 			width: 50%;
-		}
-	}
-}
-@media (min-width: 375px) and (max-width: 900px) {
-	.greybg-container,
-	.whitebg-container {
-		.cmp-teaser__title {
-			font-size: 22px;
 		}
 	}
 }
@@ -221,10 +214,10 @@
 	}
 	.cmp-teaser__action-container a:hover {
 		box-shadow: none;
-		color: #719e19;
-		background-color: #fff;
+		color:$arrow-border-green;
+		background-color:$white;
 		.cmp-teaser__action-container {
-			border-color: #719e19;
+			border-color:$arrow-border-green;
 		}
 	}
 	.cmp-teaser__action-container a {
@@ -331,11 +324,11 @@
 		font-size: 1rem;
 		margin-top: 1.5rem;
 		line-height: 26px;
-		color: #fff;
+		color: $white;
 		width: 44%;
 	}
 	.cmp-teaser__action-container {
-		border: 1px solid #fff;
+		border: 1px solid $white;
 		border-radius: 4px;
 		border-width: 1px;
 		padding: 0;
@@ -348,7 +341,7 @@
 		letter-spacing: 3px;
 		text-transform: uppercase;
 		transition: all 0.3s ease-in-out;
-		color: #fff;
+		color: $white;
 		height: 3rem;
 		font-size: 0.875rem;
 		line-height: 1.5rem;
@@ -360,7 +353,7 @@
 	}
 	.cmp-teaser__description h3 {
 		font-size: 24px;
-		color: #fff;
+		color: $white;
 	}
 	@media (min-width: $screen-xl-max) {
 		.cmp-teaser__description {
@@ -403,7 +396,7 @@
 			font-size: 16px;
 			text-transform: uppercase;
 			transition: all 0.3s ease-in-out;
-			color: #fff;
+			color: $white;
 			letter-spacing: 3px;
 			outline: 0;
 		}
@@ -441,7 +434,7 @@
 		margin-bottom: 1.65rem;
 	}
 	.cmp-teaser__description p {
-		color: #848789;
+		color: $steel-grey;
 		font-size: 0.875rem;
 		line-height: 24px;
 		margin: 0;
@@ -457,8 +450,8 @@
 	}
 	.cmp-teaser__action-link:after {
 		transform: translateY(-50%) rotate(45deg);
-		border-top: 1px solid #719e19;
-		border-right: 1px solid #719e19;
+		border-top: 1px solid $arrow-border-green;
+		border-right: 1px solid $arrow-border-green;
 		padding: 3px;
 		margin: 12px 0px 0px 12px;
 		content: "";
