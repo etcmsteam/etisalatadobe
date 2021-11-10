@@ -3,26 +3,10 @@ import $ from 'jquery';
 window.dt = require('datatables.net');
 
 const CUSTOM_TABLE_COMPONENT = '.custom-datatable';
-$(function() {
-
-	function enableExternalSorting(elem, table) {
-		let columnIndex = []
-		const sortableColumn = $(elem).attr('data-column-sort')
-		if (sortableColumn && sortableColumn !== '[]') {
-			columnIndex = sortableColumn.match(/\d+/g).map(Number);
-			const ul = $('ul.dropdown-menu', elem)[0];
-			const anchors = ul.querySelectorAll('a');
-			anchors.forEach(el => el.addEventListener('click', event => {
-				const sortingType = event.target.getAttribute("data-sort");
-				table.order([
-					[columnIndex, sortingType]
-				]).draw();
-			}));
-		}
-	}
+$(function () {
 
 	function addDataAttributes(table) {
-		$('tr', table).each(function(index) {
+		$('tr', table).each(function (index) {
 			$(this).attr("role", "row")
 			if (index > 0) {
 				if (index % 2 == 0) {
@@ -38,11 +22,13 @@ $(function() {
 
 		const className = $(elem).attr('data-class');
 		const sortableColumn = $(elem).attr('data-column-sort')
-		const hiddenColumn = $(elem).attr('data-hide-columns')
 		const showMobileView = $(elem).attr('data-mobile-view')
 		let pageLimit = $(elem).attr('data-page-limit');
 		const noSearchResultsText = $(elem).attr('data-no-search-results-text');
-
+		let showTablePageInfo = true;
+		if (!pageLimit) {
+			showTablePageInfo = false;
+		}
 		var allColumnSortable = false;
 
 		const table = $('table', elem)[0];
@@ -68,16 +54,16 @@ $(function() {
 		}
 		const tabl = $(table).DataTable({
 			"language": {
-			    "zeroRecords": noSearchResultsText,
+				"zeroRecords": noSearchResultsText,
 				"info": "_START_ to _END_ of _TOTAL_ records",
 				"oPaginate": {
-					sNext: '<span class="pagination-next"></span>',
-					sPrevious: '<span class="pagination-previous"></span>'
+					sNext: '<span class="pagination-next">⟶</span>',
+					sPrevious: '<span class="pagination-previous">⟵</span>'
 				}
 			},
-			'createdRow': function(row, data, rowIndex) {
+			'createdRow': function (row, data, rowIndex) {
 				if (showMobileView && showMobileView == "true") {
-					$.each($('td', row), function(colIndex) {
+					$.each($('td', row), function (colIndex) {
 						const th = $('th', table)[colIndex];
 						$(this).attr('data-label', $(th).text());
 					});
@@ -86,20 +72,20 @@ $(function() {
 
 			"bLengthChange": false,
 			"pageLength": Number(pageLimit),
-			"fnInfoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
+			"fnInfoCallback": function (oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 				const currentPage = this.api().page.info().page + 1;
 				return "Page " + currentPage + " of " + this.api().page.info().pages;
 			},
-			drawCallback: function(settings) {
-				const pagination = $('.data-table__pagination', table);
-				const info = $('.data-table__info', table);
+			drawCallback: function (settings) {
+				const pagination = $('.data-table__pagination', elem);
+				const info = $('.data-table__info', elem);
 				pagination.toggle(this.api().page.info().pages > 1);
 				info.toggle(this.api().page.info().pages > 1);
 			},
 
-			initComplete: function(settings, json) {
-				$('.dataTables_paginate', table).appendTo($('.data-table__pagination', table));
-				$('.dataTables_info', table).appendTo($('.data-table__info', table));
+			initComplete: function (settings, json) {
+				$('.dataTables_paginate', elem).appendTo($('.data-table__pagination', elem));
+				$('.dataTables_info', elem).appendTo($('.data-table__info', elem));
 			},
 			order: [],
 			columnDefs: [{
@@ -110,20 +96,42 @@ $(function() {
 					orderable: allColumnSortable,
 					targets: '_all'
 				}
-
 			]
 		});
-		$('.advanced-table-search', elem).on( 'keyup', function () {
-        tabl.search(this.value).draw();
-        });
+		$('.advanced-table-search', elem).on('keyup', function () {
+			tabl.search(this.value).draw();
+		});
+
+		if (!showTablePageInfo) { // hide pagination and page info when all results are displayed
+			$('.dataTables__paginate', elem).addClass("hide");
+			$('.dataTables__info', elem).addClass("hide");
+		}
+
 		return tabl;
 	}
 
 	function initializeTable(component) {
 		$(component).each((index, elem) => {
-			const table = initializeDataTable(elem);
-			//enableExternalSorting(elem, table);
+			initializeDataTable(elem);
 		});
 	}
 	initializeTable(CUSTOM_TABLE_COMPONENT);
+});
+
+$(document).ready(function() {
+	if ($(".search-input").length > 0){
+		$("#searchInput").on("keyup", function() {
+			const value = $(this).val().toLowerCase();
+			let searchTarget = $("table tbody tr");
+			const targetID = $(this).attr("data-search-target");
+			if(targetID && targetID != null){
+				searchTarget = $('#' + targetID).find("table tbody tr");
+			}
+			searchTarget.filter(function() {
+				$(this).toggle(
+				  $(this).text().toLowerCase().indexOf(value) > -1
+				);
+			});
+		});
+	}
 });

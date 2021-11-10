@@ -275,8 +275,8 @@
                      </svg>
                   </span>
                </div>
-               <div class="nv-modal-body" style="height: 384px;">
-                  <div class="nv-row nv-mt-3 ng-scope" data-sly-test.myMap="${tableModel.categories}">
+               <div class="nv-modal-body" style="height: 384px;" data-sly-test.filtersMap="${tableModel.allFiltersForChannelsTable}" data-sly-list.filtersItem="${filtersMap}">
+                  <div class="nv-row nv-mt-3 ng-scope" data-sly-test.myMap="${filtersMap[filtersItem]}">
                      <div class="nv-col-12 nv-mb-0 nv-mb-lg-2" data-sly-list.mapItem="${myMap}" >
                         <strong class="ng-binding" data-sly-test="${mapItemList.index == 0}">
                            ${mapItem}
@@ -286,56 +286,10 @@
                         <div class="d-flex nv-py-3">
                            <div class="nv-checkboxes-wrap sm">
                               <sly data-sly-test="${mapItemList.index == 1}" >
-                                 <input name="category" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" checked>
+                                 <input name="${filtersItem}" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" checked>
                               </sly>
                               <sly data-sly-test="${mapItemList.index >= 2}" >
-                                 <input name="category" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" >
-                              </sly>
-                              <label for="${myMap[mapItem]}"> </label>
-                           </div>
-                           <div class="nv-checkboxes-text gray-color flex-fill">
-                              ${mapItem}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="nv-row nv-mt-3 ng-scope" data-sly-test.myMap="${tableModel.languages}">
-                     <div class="nv-col-12 nv-mb-0 nv-mb-lg-2" data-sly-list.mapItem="${myMap}">
-                        <strong data-sly-test="${mapItemList.index == 0}">
-                           ${mapItem}
-                        </strong>
-                     </div>
-                     <div class="nv-col-12"  data-sly-repeat.mapItem="${myMap @ begin = 1}">
-                        <div class="d-flex nv-py-3">
-                           <div class="nv-checkboxes-wrap sm">
-                              <sly data-sly-test="${mapItemList.index == 1}" >
-                                 <input name="languange" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" checked>
-                              </sly>
-                              <sly data-sly-test="${mapItemList.index >= 2}" >
-                                 <input name="languange" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}">
-                              </sly>
-                              <label for="${myMap[mapItem]}"> </label>
-                           </div>
-                           <div class="nv-checkboxes-text gray-color flex-fill">
-                              ${mapItem}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="nv-row nv-mt-3 ng-scope" data-sly-test.myMap="${tableModel.packages}">
-                     <div class="nv-col-12 nv-mb-0 nv-mb-lg-2" data-sly-list.mapItem="${myMap}">
-                        <strong data-sly-test="${mapItemList.index == 0}">
-                           ${mapItem}
-                        </strong>
-                     </div>
-                     <div class="nv-col-12"  data-sly-repeat.mapItem="${myMap @ begin = 1}">
-                        <div class="d-flex nv-py-3">
-                           <div class="nv-checkboxes-wrap sm">
-                              <sly data-sly-test="${mapItemList.index == 1}" >
-                                 <input name="package" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" checked>
-                              </sly>
-                              <sly data-sly-test="${mapItemList.index >= 2}" >
-                                 <input name="package" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}">
+                                 <input name="${filtersItem}" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" >
                               </sly>
                               <label for="${myMap[mapItem]}"> </label>
                            </div>
@@ -370,11 +324,11 @@
    <div class="tables-4-0">
       <table>
          <thead>
-         <tr data-sly-list="${tableModel.headerList}">
+         <tr data-sly-list="${tableModel.headerListForChannelsTable}">
             <th data-sly-test="${item != 'data-filter'}">${item}</th>
          </tr>
          </thead>
-         <tbody data-sly-list.allrows="${tableModel.allRows}">
+         <tbody data-sly-list.allrows="${tableModel.allRowsForChannelsTable}">
          <tr>
             <td data-sly-test.myMap="${allrows}" data-sly-repeat.mapItem="${myMap}" data-filter="${myMap[mapItem]}">${mapItem}</td>
          </tr>
