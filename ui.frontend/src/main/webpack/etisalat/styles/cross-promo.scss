@@ -26,16 +26,16 @@
       margin-top: toRem(-25);
       top: 50%;
     }
-  }
-
-  .cmp-teaser__action-container a {
-    font-size: $font14;
-    @include font-family-lato;
-    font-weight: 700;
-    letter-spacing: toRem(3) !important;
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
-    color: $white;
+    a {
+      font-size: $font14;
+      @include font-family-lato;
+      font-weight: 700;
+      letter-spacing: toRem(3) !important;
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+      color: $white;
+      white-space: nowrap;
+    }
   }
 
   .cmp-teaser__action-container:after {
@@ -159,11 +159,8 @@
 
     @include respond-to-max($tablet) {
       font-size: $font12;
-    }
-    @include respond-to-max($tablet) {
-      font-size: $font12;
       left: 0;
-      bottom: toRem(-10);
+      bottom: toRem(-3);
       margin-top: toRem(20);
       position: relative;
     }
@@ -536,7 +533,7 @@
       width: 100%;
 
       @include respond-to-min($desktop) {
-        padding-bottom: toRem(80);
+        padding-bottom: toRem(50);
       }
 
       a {
@@ -553,20 +550,21 @@
       }
 
       p {
-        margin-bottom: 16px;
         @include font-family-lato;
         @include respond-to-max($tablet) {
           line-height: 20px;
           margin-bottom: toRem(12);
+          font-size: $font14;
         }
       }
 
       ul {
         list-style-type: none;
         padding: 2rem 0 1rem 2rem;
+        margin-bottom: 3rem;
 
         @include respond-to-min($desktop) {
-          padding: 0rem 0 1.25rem 2rem;
+          padding: 1rem 0 1.25rem 2rem;
         }
 
         @include respond-to-max($tablet) {
@@ -580,6 +578,9 @@
           padding-left: 1.5rem;
           margin-bottom: toRem(4);
           color: $white;
+          *[lang="ar"] *[dir="rtl"] & {
+            font-weight: 300;
+          }
           @include font-family-lato;
 
           @include respond-to-max($tablet) {
@@ -621,17 +622,19 @@
         text-transform: uppercase;
         @include font-family-lato;
         font-size: $font14;
-        line-height: 48px;
+        line-height: toRem(45);
         position: relative;
         font-weight: 700;
         border: 1px solid $white;
         border-radius: 4px;
         text-align: center;
         min-width: toRem(180);
-        padding: 0 toRem(12);
+        padding: 0 toRem(8);
         width: toRem(180);
         max-width: toRem(180);
-        box-sizing: content-box;
+        box-sizing: border-box;
+        white-space: nowrap;
+        height: toRem(47);
         @include respond-to-max($phone) {
           width: 100%;
           box-sizing: inherit;
@@ -796,25 +799,37 @@
     @include respond-to-min($desktop) {
       padding: toRem(32);
     }
-  }
-  .cmp-teaser__action-container {
-    clear: both;
-    display: inline-block;
-    margin-top: toRem(23);
-    position: inherit;
-    float: none;
-  }
 
-  .cmp-teaser:before {
-    display: none;
-  }
+    .cmp-teaser__action-container {
+      clear: both;
+      display: inline-block;
+      position: inherit;
+      float: none;
+      padding: 0 0 0 -5.5rem;
+      @include respond-to-min($desktop) {
+        width: 15rem;
+        min-width: 15rem;
+      }
+    }
 
-  .cross-promotion-plain .cmp-teaser:after {
-    transform: scaleX(-1);
-  }
-  @include respond-to-min($tablet) {
-    .cross-promotion-plain .cmp-teaser__content {
-      width: 100%;
+    &:before {
+      display: none;
+    }
+
+    .cross-promotion-plain .cmp-teaser:after {
+      transform: scaleX(-1);
+    }
+
+    .cmp-teaser__title {
+      margin-bottom: 0rem;
+      @include respond-to-min($desktop) {
+        margin-bottom: 2rem;
+      }
+    }
+    @include respond-to-min($tablet) {
+      .cmp-teaser__content {
+        width: 100%;
+      }
     }
   }
 }
@@ -828,25 +843,35 @@
     @include respond-to-min($desktop) {
       padding: toRem(32);
     }
-  }
-  .cmp-teaser__action-container {
-    clear: both;
-    display: inline-block;
-    margin-top: toRem(23);
-    position: inherit;
-    float: none;
-  }
 
-  .cmp-teaser:before {
-    display: none;
-  }
-  .cross-promotion-plain .cmp-teaser:after {
-    transform: scaleX(-1);
-  }
+    .cmp-teaser__action-container {
+      clear: both;
+      display: inline-block;
+      position: inherit;
+      float: none;
+      @include respond-to-min($desktop) {
+        width: 15rem;
+        min-width: 15rem;
+      }
+    }
 
-  @include respond-to-min($tablet) {
-    .cross-promotion-plain .cmp-teaser__content {
-      width: 100%;
+    &:before {
+      display: none;
+    }
+    .cross-promotion-plain .cmp-teaser:after {
+      transform: scaleX(-1);
+    }
+
+    .cmp-teaser__title {
+      margin-bottom: 0rem;
+      @include respond-to-min($desktop) {
+        margin-bottom: 2rem;
+      }
+    }
+    @include respond-to-min($tablet) {
+      .cmp-teaser__content {
+        width: 100%;
+      }
     }
   }
 }
