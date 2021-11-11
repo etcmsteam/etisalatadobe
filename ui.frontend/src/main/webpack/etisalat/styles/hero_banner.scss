@@ -19,12 +19,22 @@
     margin-bottom: 12px;
   }
   p {
-    font-size: $font14;
+    font-size: $font16;
     line-height: 22px;
     @include font-family-lato();
     letter-spacing: normal;
     color: $white;
     margin: 0;
+    @include respond-to-min($desktop){
+      font-size: $font18;
+    }
+    a{
+      font-size: $font16;
+      @include respond-to-min($desktop){
+        font-size: $font18;
+      }
+    }
+
   }
   .cmp-teaser {
     &__image {
@@ -506,9 +516,12 @@
       }
     }
     .hero-banner-section {
-      .cmp-teaser__title a {
+      .cmp-teaser__title{
         color: $white;
-      }
+          a {
+            color: $white;
+          }
+      } 
     }
   }
 }
