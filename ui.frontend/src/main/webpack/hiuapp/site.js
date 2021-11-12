@@ -19,6 +19,7 @@ $(document).ready(function () {
     $(".ShowMenu").slideToggle("slow");
     $(".main-nav__list").removeClass("ShowMenu");
   });
+  //dynamic year
   $('.footer-copyright-year').html(new Date().getFullYear());
 });
 
