@@ -15,10 +15,13 @@ public class LinkModel {
   private String linkUrl;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String linkUrlActive;
+
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String altText;
 
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String title;
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String title;
 
   @ValueMapValue(name = "fileReference" ,injectionStrategy = InjectionStrategy.OPTIONAL)
   private String imgUrl;
@@ -35,8 +38,17 @@ public class LinkModel {
 		return linkUrl;
 	}
 
+	public String getLinkUrlActive() {
+		return linkUrlActive;
+	}
+
 	public void setLinkUrl(String linkUrl) {
 		this.linkUrl = linkUrl;
+	}
+	
+	
+	public void setLinkUrlActive(String linkUrlActive) {
+		this.linkUrlActive = linkUrlActive;
 	}
 
 	public String getAltText() {
