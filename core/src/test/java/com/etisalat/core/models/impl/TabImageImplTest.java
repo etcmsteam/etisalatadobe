@@ -47,6 +47,7 @@ public class TabImageImplTest {
 		LinkModel imageItem = tabImage.getTabImageItems().get(1);
 		assertEquals("Tab2", imageItem.getLinkText());
 		assertEquals("/content/dam/etisalat/sampletest1.png", imageItem.getLinkUrl());
+		assertEquals("/content/dam/etisalat/sampleactivetest1.png", imageItem.getLinkUrlActive());
 	}
 	
 	@Test
