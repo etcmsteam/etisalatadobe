@@ -1,28 +1,39 @@
 .blog-post-wrapper {
-  .tile-box-tile {
+  .tile-box-blogtile {
+	overflow: hidden;
+    background: $white;
+    border-radius: 4px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+    position: relative;
+    width: 100%;
     @media (min-width: 992px) {
       min-height: toRem(341);
       max-height: toRem(341);
-
-      .tile-box-body {
+      margin-bottom: 2rem;
+      .tile-box-blogbody {
         max-height: toRem(171);
       }
+    }
+    @media (max-width: 992px) {
+      margin-bottom: 1.5rem;      
     }
 
     .img-cover {
       height: toRem(168);
       position: relative;
+      overflow: hidden;
+      border-radius: 4px 4px 0 0;
 
       .category p {
         color: $white;
-        font-size: $font11;
+        font-size: $font10;
         letter-spacing: toRem(1);
         text-align: center;
         margin: 0;
         position: absolute;
         top: 0;
         left: 1.5rem;
-        background: $gray;
+        background: $main-green;
         padding: toRem(5) toRem(10);
         text-transform: uppercase;
         border-radius: 0 0 toRem(4) toRem(4);
@@ -34,7 +45,7 @@
     }
   }
 
-  .tile-box-body {
+  .tile-box-blogbody {
     padding: 1rem;
     padding-top: toRem(12);
 
@@ -76,14 +87,14 @@
       margin-bottom: toRem(8);
       text-overflow: inherit;
       white-space: inherit;
-      
+      overflow: hidden;      
     }
   }
 
 
   // video variation
   &.video {
-    .tile-box-tile {
+    .tile-box-blogtile {
       .img-cover {
         height: toRem(341);
 
@@ -101,7 +112,7 @@
         }
       }
 
-      .tile-box-body {
+      .tile-box-blogbody {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -136,7 +147,7 @@
       }
     }
   }
-  .tile-box-tile .tile-box-body {
+  .tile-box-blogtile .tile-box-blogbody {
     padding: 12px 1rem 1rem;
     text-align: left;
 }
@@ -559,7 +570,7 @@
       }
     }
 
-    .blog-post-wrapper .tile-box-tile .img-cover .category p {
+    .blog-post-wrapper .tile-box-blogtile .img-cover .category p {
       left: auto;
       right: 1.5rem;
     }
@@ -706,7 +717,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   background-color: $white !important;
 }
 
-.blog-post-wrapper.video .tile-box-tile .img-cover {
+.blog-post-wrapper.video .tile-box-blogtile .img-cover {
   height: toRem(341) !important;
 }
 
