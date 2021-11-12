@@ -1,3 +1,6 @@
+$(document).ready(function () {
+    $('.footer-copyright-year').html(new Date().getFullYear());
+    });
 (function () {
     if($(window).width() <= 768) {
         var url=window.location.href;
