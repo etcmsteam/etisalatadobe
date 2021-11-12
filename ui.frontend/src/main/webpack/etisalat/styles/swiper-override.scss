@@ -1,0 +1,76 @@
+.slider-destroy {
+  @include respond-to-max($tablet) {
+    .swiper-wrapper {
+      display: inline-block;
+
+      .swiper-slide {
+        .title-wrap {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .controls {
+      display: none !important;
+    }
+  }
+}
+
+//Load more slide Button
+.slider-load-more-cta {
+  @extend .btn;
+  transition: $transition-step-1;
+  color: $almost-black;
+  background-color: $white;
+  border-radius: $border-radius-step-1;
+  border-color: $darkest-night;
+  display: none;
+
+  &:active {
+    outline: 0;
+    color: $white;
+    background-color: $green-btn;
+    border-color: $green-btn;
+  }
+  &:hover {
+    box-shadow: none;
+    color: $main-green;
+    background-color: $white;
+    border-color: $main-green;
+  }
+  &:focus {
+    outline: 0;
+    color: $white;
+    background-color: $green-btn;
+    border-color: $green-btn;
+  }
+}
+
+//Load More slide Variation for Mobile view only
+
+.slider-load-more {
+  @include respond-to-max($tablet) {
+    .swiper-wrapper {
+      .swiper-slide {
+        &:nth-child(n + 4) {
+          display: none;
+        }
+      }
+    }
+
+    &--active {
+      .swiper-wrapper {
+        .swiper-slide {
+          &:nth-child(n + 4) {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .slider-load-more-cta {
+      display: block;
+    }
+  }
+}
