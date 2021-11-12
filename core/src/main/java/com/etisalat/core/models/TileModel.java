@@ -7,9 +7,12 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
 import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class,
@@ -35,11 +38,23 @@ public class TileModel {
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String tileCTALinkSameWindow;
 	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String categoryTag;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String linkURL;
+	
 	@SlingObject	
 	protected Resource currentResource;
 
 	@SlingObject
 	private ResourceResolver resourceResolver;
+	
+	/**
+	 * The current request.
+	 */
+	@Self
+	protected SlingHttpServletRequest request;
 	
 	public String getText() {
 		return text;
@@ -107,6 +122,38 @@ public class TileModel {
 		this.tileCTALinkSameWindow = tileCTALinkSameWindow;
 	}
 	
+	/**
+	 * @return the categoryTag
+	 */
+	public String getCategoryTag() {
+		return categoryTag;
+	}
+
+	/**
+	 * @param categoryTag the categoryTag to set
+	 */
+	public void setCategoryTag(String categoryTag) {
+		this.categoryTag = categoryTag;
+	}
+
+	/**
+	 * @return the linkURL
+	 */
+	public String getLinkURL() {
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkURL);
+	}
+
+	/**
+	 * @param linkURL the linkURL to set
+	 */
+	public void setLinkURL(String linkURL) {
+		this.linkURL = linkURL;
+	}
+
+	/**
+	 * Returns tile box container layout option.
+	 * @return
+	 */
 	public String getTileBoxContainerLayout() {		
 		Resource tileContainerResource = currentResource.getParent();
 		if (null != tileContainerResource
@@ -115,5 +162,19 @@ public class TileModel {
 		}
 		return StringUtils.EMPTY;
 	}
-
+	
+	/**
+	 * Returns article category tag title.
+	 * @return
+	 */
+	public String getCategoryTagTitle() {
+		final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+		if (StringUtils.isNotBlank(categoryTag) && null != tagManager) {
+			final Tag tag = tagManager.resolve(categoryTag);
+			if (null != tag) {
+				return tag.getTitle();
+			}
+		}
+		return StringUtils.EMPTY;
+	}
 }
