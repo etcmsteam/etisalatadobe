@@ -71,8 +71,13 @@
       </div>
    </div>
    </div>
-   <!--Load More Button -->
-   <button type="button" id="loadMoreSlide" class="slider-load-more-cta">Submit</button>
-   <!--End-->
+      <!--Load More Button  for Mobile-->
+      <sly data-sly-test="${properties.mobileDisplayBehavior == 'loadmore'}">
+         <button type="button" id="loadMoreSlide" class="slider-load-more-cta">Submit</button>
+      </sly>
+      <!--End-->
+      <!--condition to be added inside class property incase on one below display for Mobile
+      {properties.mobileDisplayBehavior == 'simpleview' ? 'required_class_name': '' }
+      -->
    </div>
 </template>
