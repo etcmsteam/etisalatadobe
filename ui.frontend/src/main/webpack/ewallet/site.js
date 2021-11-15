@@ -1,3 +1,7 @@
+$(document).ready(function () {
+   //footer copyright year in dynamic
+   $(".footer-copyright-year").text(new Date().getFullYear());
+});
 (function () {
   if ($(window).width() <= 768) {
     var url = window.location.href;
@@ -1588,8 +1592,7 @@
         positionOnMyLocation();
       }, 1000);
 
-      //footer copyright year in dynamic
-      $(".footer-copyright-year").html(new Date().getFullYear());
+     
     });
 
     //};
