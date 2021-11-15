@@ -18,7 +18,15 @@
             
         }
     });
-
+	
+	$(document).on('click', function(event) {
+	  if (!$(event.target).closest('#filtering-select').length) {
+	    if ($('#filtering-select--menu').hasClass('select2-container--open')) {
+	      $('#filtering-select').removeClass('select2-container--open');
+          $('#filtering-select--menu').removeClass('select2-container--open');
+        }
+	  }
+	});
 
     $('#NewsloadMore').on('click', function (e) {
         var x = pagesize;
