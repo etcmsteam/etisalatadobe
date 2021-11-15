@@ -48,18 +48,26 @@
   .tile-box-blogbody {
     padding: 1rem;
     padding-top: toRem(12);
-
-    .box-details p {
-      margin: 0;
-      margin-bottom: toRem(8);
-      color: $steel-grey;
-      font-size: $font12;
-      line-height: toRem(16);
-      @include font-family-lato;
-      
+    @include respond-to-min($desktop) { 
+      max-height: 175px;
+    }
+    .box-details {
       @include respond-to-min($desktop) { 
-        max-height: 105px;
+        max-height: 70px;
         overflow: hidden;
+      }
+      p {
+        margin: 0;
+        margin-bottom: toRem(8);
+        color: $steel-grey;
+        font-size: $font12;
+        line-height: toRem(16);
+        @include font-family-lato;
+        
+        @include respond-to-min($desktop) { 
+          max-height: 105px;
+          overflow: hidden;
+        }
       }
     }
 
@@ -71,12 +79,18 @@
       line-height: toRem(16);
     }
 
-    .date p {
-      color: $steel-grey;
-      font-size: $font11;
-      line-height: toRem(16);
-      margin: 0;
-      @include font-family-lato;
+    .date {
+      @include respond-to-min($desktop) { 
+        position: absolute;
+        bottom: 0.5rem;
+      }
+      p {
+        color: $steel-grey;
+        font-size: $font11;
+        line-height: toRem(16);
+        margin: 0;
+        @include font-family-lato;
+      }
     }
 
     .box-title h2 {
