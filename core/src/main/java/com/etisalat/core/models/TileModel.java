@@ -44,6 +44,9 @@ public class TileModel {
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String linkURL;
 	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String validDateText;
+	
 	@SlingObject	
 	protected Resource currentResource;
 
@@ -150,6 +153,21 @@ public class TileModel {
 		this.linkURL = linkURL;
 	}
 
+
+	/**
+	 * @return the validDateText
+	 */
+	public String getValidDateText() {
+		return validDateText;
+	}
+
+	/**
+	 * @param validDateText the validDateText to set
+	 */
+	public void setValidDateText(String validDateText) {
+		this.validDateText = validDateText;
+	}
+	
 	/**
 	 * Returns tile box container layout option.
 	 * @return
@@ -177,4 +195,5 @@ public class TileModel {
 		}
 		return StringUtils.EMPTY;
 	}
+
 }
