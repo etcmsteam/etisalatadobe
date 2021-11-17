@@ -75,10 +75,6 @@
   }
 }
 
-
-.cmp-teaser__content{
-    // padding: 1rem;
-}
 .cmp-teaser__description{
     h4{
     margin-bottom: 1rem;
@@ -773,11 +769,24 @@ font-weight: 900;
     line-height: 19px;
     @include font-family-lato;
     }
-   .cmp-tabs__tab{
-      img {
-        width: 32px;
-        height: 32px;
-        margin-right: 1rem;
+    .cmp-tabs__tab--active .cmp-tabs__default-icon{
+      display: inline-block !important;
+    }
+    .cmp-tabs__active-icon{
+      display: none;
+    }
+    .cmp-tabs__tab{
+      img, svg {
+        height: 40px;
+        width: 35px;
+        margin-right: calc(#{$margin-step-1} + 2px);
+        @include respond-to-min($tablet){
+          float: left;
+          height: 30px;
+          width: 32px;
+          margin-right: calc(#{$margin-step-4} + 4px);
+          fill: inherit;
+        } 
       }
     }
   .cmp-teaser__action-link{
@@ -838,7 +847,7 @@ font-weight: 900;
     text-align:left;
     margin: auto 0;
     border:0;
-    padding:.5rem 1rem 0.5rem 0;
+    padding: $padding-step-2 0;
   }
   .cmp-tabs__tab--active{
     position: relative;

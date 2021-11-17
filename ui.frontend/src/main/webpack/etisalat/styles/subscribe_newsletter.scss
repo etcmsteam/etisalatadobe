@@ -37,7 +37,7 @@
         position: relative;
         overflow: hidden;
         background: transparent;
-        margin-top: -8px;
+        margin-top: toRem(-6);
         z-index: 5;
         text-transform: uppercase;
         transition: all .3s ease-in-out;
@@ -155,10 +155,6 @@
     input:-internal-autofill-selected,
     input:focus {
         background-color: $white !important;
-    }
-
-    .button {
-        margin-top: -14px;
     }
 
 }
@@ -320,3 +316,13 @@
     margin-right: 0;
     @include font-family-lato;
 }
+@include respond-to-max ($tablet){
+    .subscribe_newsletter{
+        .cmp-form-button{
+        width:100%;
+        }
+        .form-group {
+            margin-bottom:-$margin-step-2;
+        }
+    }
+    }

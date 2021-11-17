@@ -118,7 +118,9 @@
       padding-bottom: 50px;
       align-items: center;
       justify-content: center;
-      
+      @include respond-to-min($desktop){
+        padding-top: calc(#{$padding-step-3} + 1px);
+      }
       *[lang="ar"] *[dir=rtl] & {
         text-align: right;
      }
@@ -158,11 +160,16 @@
       img,svg
           {
             display: -webkit-inline-box;
-            margin-bottom: 24px;
-            width: 64px;
-            height: 64px;
+            margin-bottom: calc(#{$margin-step-2}); 
+            width: 45px;
+            height: 45px;
             position: relative;
-             right: 4px;
+            right: 4px;
+             @include respond-to-min($desktop){
+              width: 64px;
+              height: 64px;
+              margin-bottom: calc(#{$margin-step-2} + 4px); 
+             }
           }
        }
     }
