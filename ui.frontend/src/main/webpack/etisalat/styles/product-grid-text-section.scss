@@ -1765,7 +1765,10 @@
 		}
 	}
 	.gold-bg-theme,
-	.blue-bg-theme {
+	.blue-bg-theme {	
+		.plan-card.tile-table .tile-card .tiles-box-list .bottom-text {
+			font-size: $font14;
+		}
 		.featureList {
 			li {
 				ul {
@@ -2875,15 +2878,29 @@
 				span {
 					font-size: $font14;
 					color: $main-green;
-					padding-right: 1rem;
+					padding-right: calc(#{$padding-step-2} - 2px);
 					letter-spacing: 1.6px;
-					line-height: 21px;
+					line-height: toRem(21);
 					position: relative;
 					text-transform: uppercase;
 					display: inline-block;
 					@include font-family-lato;
 					cursor: pointer;
+
+					&::before {
+						content: "";
+						line-height: 1;
+						padding: calc(#{$padding-step-0} + 3px);
+						top: 50%;
+						right: 0;
+						position: absolute;
+						transition: all .3s ease-in-out;
+						transform: translateY(-50%) rotate(-45deg);
+						border: solid $main-green;
+						border-width: $border-step-0 $border-step-1 $border-step-1 $border-step-0;
+					}
 				}
+
 			}
 		}
 	}
