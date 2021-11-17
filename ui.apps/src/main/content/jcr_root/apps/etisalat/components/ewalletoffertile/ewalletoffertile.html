@@ -1,6 +1,6 @@
 <sly data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
- <div data-sly-test="${properties['image/fileReference']}" class="single-offer-row">
+ <div data-sly-test="${properties['image/fileReference']}" class="${tileModel.tileBoxContainerLayout == 'ewallet-offer' ? 'single-offer-row' : 'offer-content'}">
       <sly data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
        <div class="offer-txt">
            <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"             
