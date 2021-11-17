@@ -27,19 +27,12 @@
   }
 }
 
-//container st 
-/* .container{
-    @include clearFix();
-    .column{ float: left;}
-} */
-
 @mixin push--auto {
 	margin: { 
         left: auto; 
         right: auto;
     }
 }
-
 
 /* @include push--auto() */
 
@@ -117,4 +110,23 @@
 @mixin common-height-width {
     width: 40px;
     height: 40px;
+}
+
+//media query
+@mixin respond-to-max($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+@mixin respond-to-min-max($width-max, $width-min) {
+	@media screen and (max-width: $width-max) and (min-width: $width-min) {
+		@content;
+	}
+}
+
+@mixin respond-to-min($width) {
+	@media screen and (min-width: $width) {
+		@content;
+	}
 }
