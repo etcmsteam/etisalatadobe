@@ -273,28 +273,25 @@
 // ============= CLOSE BTN =============
 .form-close {
     position: absolute;
-    right: 32px;
-    top: 32px;
-    width: 32px;
-    height: 32px;
+    right: toRem(32);
+    top: toRem(32);
+    width: toRem(32);
+    height: toRem(32);
     opacity: 0.3;
 
-    @include md {
-        top: 2.4rem;
-        right: 1rem;
+    @include respond-to-min($tablet) {
+        top: toRem(38px);
+        right: toRem(16);
     }
 
-    &:hover {
-        opacity: 1;
-    }
 
     &:before,
     &:after {
         position: absolute;
-        left: 15px;
+        left: toRem(15);
         content: ' ';
-        height: 33px;
-        width: 2px;
+        height: toRem(33);
+        width: toRem(2);
         background-color: $almost-black;
     }
 }
@@ -316,10 +313,13 @@
     margin-right: 0;
     @include font-family-lato;
 }
-@media (min-width: 360px) and (max-width: 768px){
+@include respond-to-max ($tablet){
     .subscribe_newsletter{
         .cmp-form-button{
         width:100%;
+        }
+        .form-group {
+            margin-bottom:-$margin-step-2;
         }
     }
     }

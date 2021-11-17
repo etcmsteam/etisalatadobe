@@ -36,7 +36,9 @@
         background: $main-green;
         padding: toRem(5) toRem(10);
         text-transform: uppercase;
-        border-radius: 0 0 toRem(4) toRem(4);
+        border-radius: $border-radius-step-0 $border-radius-step-0 $border-radius-step-1 $border-radius-step-1;
+        line-height: toRem(16);
+        @include font-family-lato;
       }
       img{
         position: absolute;
@@ -48,18 +50,26 @@
   .tile-box-blogbody {
     padding: 1rem;
     padding-top: toRem(12);
-
-    .box-details p {
-      margin: 0;
-      margin-bottom: toRem(8);
-      color: $steel-grey;
-      font-size: $font12;
-      line-height: toRem(16);
-      @include font-family-lato;
-      
+    @include respond-to-min($desktop) { 
+      max-height: 175px;
+    }
+    .box-details {
       @include respond-to-min($desktop) { 
-        max-height: 105px;
+        max-height: toRem(88);
         overflow: hidden;
+      }
+      p {
+        margin: 0;
+        margin-bottom: toRem(8);
+        color: $steel-grey;
+        font-size: $font12;
+        line-height: toRem(16);
+        @include font-family-lato;
+        
+        @include respond-to-min($desktop) { 
+          max-height: 105px;
+          overflow: hidden;
+        }
       }
     }
 
@@ -71,12 +81,18 @@
       line-height: toRem(16);
     }
 
-    .date p {
-      color: $steel-grey;
-      font-size: $font11;
-      line-height: toRem(16);
-      margin: 0;
-      @include font-family-lato;
+    .date {
+      @include respond-to-min($desktop) { 
+        position: absolute;
+        bottom: 0.5rem;
+      }
+      p {
+        color: $steel-grey;
+        font-size: $font11;
+        line-height: toRem(16);
+        margin: 0;
+        @include font-family-lato;
+      }
     }
 
     .box-title h2 {
@@ -148,7 +164,7 @@
     }
   }
   .tile-box-blogtile .tile-box-blogbody {
-    padding: 12px 1rem 1rem;
+    padding: calc(#{$padding-step-1} + 4px) calc(#{$padding-step-1} + 4px) $padding-step-2 $padding-step-2;
     text-align: left;
 }
 }
@@ -195,8 +211,6 @@
 }
 
 .blogpost-wrapper {
-  padding-left: 1rem;
-  padding-right: 1rem;
 
   .video {
     min-height: 0;
