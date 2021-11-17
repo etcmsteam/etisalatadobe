@@ -99,6 +99,13 @@
       }
     }
   }
+  .hero-banner__right_text{
+    @include respond-to-min($desktop){
+      .cmp-teaser__content{
+        left: 50%;
+      }
+    }
+  }
   .video {
     min-height: toRem(550);
     @include respond-to-min($desktop) {
@@ -117,8 +124,8 @@
     }
     .cover-image__with-play-icon {
       @include respond-to-min($desktop) {
-        margin-left: -toRem(12);
-        margin-right: -toRem(12);
+        margin-left: -calc(#{$padding-step-1} + 4px);
+        margin-right: -calc(#{$padding-step-1} + 4px);
       }
     }
     .video-wrapper {
@@ -435,46 +442,6 @@
 
     @include respond-to-min($desktop) {
       height: auto;
-    }
-  }
-}
-.main-carousel .container__panal_height {
-  height: auto;
-  .hero-banner-section {
-    @include respond-to-min($desktop) {
-      height: 500px;
-      position: relative;
-      max-height: toRem(500);
-      overflow: hidden;
-      .cmp-teaser {
-        &__content {
-          width: 100%;
-          margin-left: $margin-step-0;
-        }
-        &__title {
-          width: 97%;
-          margin: $margin-step-0;
-          font-size: $font54;
-          line-height: 64px;
-        }
-        &__action-container {
-          margin-bottom: $margin-step-7;
-          margin-top: calc(#{$margin-step-6} - 2px);
-        }
-        @include respond-to-min($desktop-wide) {
-          &__content {
-            width: 100%;
-            margin-left: $margin-step-0;
-          }
-        }
-      }
-    }
-  }
-  @include respond-to-max($tablet) {
-    .aem-Grid.aem-Grid--default--12
-      > .aem-GridColumn.aem-GridColumn--offset--default--6 {
-      margin-left: $margin-step-0;
-      width: 100%;
     }
   }
 }
