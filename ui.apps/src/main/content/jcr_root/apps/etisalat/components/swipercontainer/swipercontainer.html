@@ -1,6 +1,7 @@
 <sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">   
    <div data-sly-test="${wcmmode.edit}" 
-       data-sly-use.templates="core/wcm/components/commons/v1/templates.html"       
+       data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+       data-placeholder-text="${wcmmode.edit && 'Drag swiper components here' @ i18n}"       
        id="${container.id}">
       <h2 data-sly-test="${properties.layoutTitle}">${properties.layoutTitle}</h2>          
       
@@ -17,7 +18,7 @@
       <sly data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
    </div>
    
-   <div class = "cmp-swipercontainer" data-sly-test="${!wcmmode.edit}" id="${container.id}">
+   <div class="cmp-swipercontainer" data-sly-test="${!wcmmode.edit}" id="${container.id}">
       <h2 data-sly-test="${properties.layoutTitle && properties.tileBoxLayout == 'default'}">${properties.layoutTitle}</h2>
       <sly data-sly-test="${!properties.tileBoxLayout || properties.tileBoxLayout == 'default'}"
          data-sly-use.defaultTemplate="default.html"

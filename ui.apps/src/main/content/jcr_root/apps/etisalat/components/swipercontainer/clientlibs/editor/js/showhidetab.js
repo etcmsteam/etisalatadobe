@@ -27,6 +27,13 @@
 
     });
 
+    $(document).on("click", ".cq-dialog-submit", function(e) {
+        var layout = $(".swiper-container-content-displaylayout coral-select-item:selected").val();       
+        if(layout != $ewalletFeatureContent) {
+            $(swiperContainerImageTabSelector).empty();
+            $(swiperContainerFeatureTabSelector).empty();
+        }
+    });
 
     $(document).on("change", '.swiper-container-content-displaylayout', function(e) {
         var layoutSelectedVal = $(this).val();
