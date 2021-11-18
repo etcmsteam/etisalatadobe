@@ -120,10 +120,14 @@
     color:$dark-gray;
 
 }
+.nav-view-wrapp.panel > :not(a.collapsed) {
+  font-weight: 900 !important;
+ }
+
 .nav-view-wrapp.panel>a:before {
     border: solid #b2b2b2;
     border-width: 0 1px 1px 0;
-    padding: 3.5px;
+    padding: calc(#{$padding-step-1} - 2px) !important;
     content: "";
     position: absolute;
     line-height: 1;
@@ -990,28 +994,20 @@ font-weight: 900;
       }
     }
 
-    
-
     .cmp_tabs__verticle_view_img .cmp-tabs__tab--active:after {
       border: none;
     }
- //commenting this as of now it is causing regression pls add it under proper parent class
-  //  .cmp-tabs{
-  //     display: flex;
-  //     padding:2rem 2rem 4rem 2rem;
-  //     &__active-icon{
-  //      display: none;
-  //     }
-  //     &__default-icon{
-  //       display: block;
-  //      }
-  //     &__tab--active{
-  //      .cmp-tabs__active-icon{
-  //        display: block;
-  //      }
-  //      .cmp-tabs__default-icon{
-  //        display: none!important;  //due to css override i need to put imp//
-  //       }
-  //     }
-  //   }
-  
+    
+    @include respond-to-max($tablet){
+      .cmp_tabs__verticle_view_img .nav-view-wrapp span img {
+        width: toRem(35);
+        }
+        }
+        
+//  commenting this as of now it is causing regression pls add it under proper parent class
+ .cmp_tabs__verticle_view_img{
+   .cmp-tabs{
+      display: flex;
+      padding:$padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px) $padding-step-2; 
+    }
+ }
