@@ -1,17 +1,22 @@
 <template data-sly-template.offers="${ @ container,properties}">
 <div class="offers-main-wrap">
    <div class="container action-head">
-      <h2>${properties.layoutTitle}</h2>
+      <h2 data-sly-test="${!wcmmode.edit}">${properties.layoutTitle}</h2>
       <a data-sly-test="${properties.offerViewAll}" 
          data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.offerViewAllLink}" 
          class="btn btn-default active ripple-effect hidden-xs" href="${commonlinkmodel.link}">${properties.offerViewAll}</a>
    </div>
    <div data-sly-test="${properties.offerViewAll && properties.offerViewAllLink}" class="container slider-offer slider-offer-new">
-      <div class="swiper-container slider-offerNew swiper-container-horizontal">
-         <div class="swiper-wrapper">
+      <div data-sly-test="${!wcmmode.edit}" class="${!wcmmode.edit ? 'swiper-container slider-offerNew swiper-container-horizontal': ''}">
+         <div class="${!wcmmode.edit ? 'swiper-wrapper': ''}">
             <div class="swiper-slide ${properties.noSwapDesktop ? 'no-swap-desktop-new' : ''}" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
          </div>
       </div>
+       <div data-sly-test="${wcmmode.edit}" class="slider-alloffers">
+         <div class="all-offers">
+            <div class="no-swap-desktop-offers" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
+         </div>
+       </div>
       <div class="container action-footer visible-xs">
         <a data-sly-test="${properties.offerViewAll}"
            data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.offerViewAllLink}" 

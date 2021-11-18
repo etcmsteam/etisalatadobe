@@ -1,7 +1,8 @@
-<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
-   <div data-sly-test="${wcmmode.edit}" data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-      id="${container.id}">
-      <h2 data-sly-test="${!properties.tileBoxLayout || properties.tileBoxLayout == 'default'}">${properties.layoutTitle}</h2>          
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">   
+   <div data-sly-test="${wcmmode.edit}" 
+       data-sly-use.templates="core/wcm/components/commons/v1/templates.html"       
+       id="${container.id}">
+      <h2 data-sly-test="${properties.layoutTitle}">${properties.layoutTitle}</h2>          
       
       <sly data-sly-test="${!properties.tileBoxLayout || properties.tileBoxLayout == 'default'}" 
            data-sly-repeat="${container.items}" data-sly-resource="${item.path @ decoration=true}"></sly>
@@ -15,7 +16,9 @@
       </sly>      
       <sly data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
    </div>
-   <div data-sly-test="${!wcmmode.edit}" id="${container.id}">
+   
+   <div class = "cmp-swipercontainer" data-sly-test="${!wcmmode.edit}" id="${container.id}">
+      <h2 data-sly-test="${properties.layoutTitle && properties.tileBoxLayout == 'default'}">${properties.layoutTitle}</h2>
       <sly data-sly-test="${!properties.tileBoxLayout || properties.tileBoxLayout == 'default'}"
          data-sly-use.defaultTemplate="default.html"
          data-sly-call="${defaultTemplate.defaultSwiper @ container=container,properties=properties}">      

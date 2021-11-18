@@ -3,11 +3,9 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Swiper Container"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[core.wcm.components.container.v1.editor]"
-    helpPath="https://www.adobe.com/go/aem_cmp_container_v1"
-    trackingFeature="core-components:container:v1">
+    extraClientlibs="[cmp.swiper.container.editor]">
     <content
-        granite:class="cmp-container__editor"
+        granite:class="cmp-swiper-container__editor"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
@@ -15,8 +13,10 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
-                <items jcr:primaryType="nt:unstructured">
-                    <properties
+                <items 
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[image,text,actions]">
+                    <swiperproperties
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Properties"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -42,7 +42,7 @@
                                                 value=""/>
                                             <gridlayout
                                                 jcr:primaryType="nt:unstructured"
-                                                granite:class="cq-dialog-dropdown-showhide"
+                                                granite:class="cq-dialog-dropdown-showhide swiper-container-content-displaylayout"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 defaultValue="default"
                                                 fieldLabel="Display layout as a"
@@ -135,14 +135,7 @@
                                                         text="Show"
                                                         value="true"/>
                                                 </items>
-                                            </swiperdisplaybehavior>                                            
-                                            <accessibilityLabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Value of an aria-label attribute for the container, which describes the container content."
-                                                fieldLabel="Label"
-                                                name="./accessibilityLabel"
-                                                value=""/>                                                                               
+                                            </swiperdisplaybehavior>                                                                                                                                                                   
                                              <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -154,9 +147,10 @@
                                 </items>
                             </columns>
                         </items>
-                    </properties>
-                    <image
+                    </swiperproperties>
+                    <featureimage
                         jcr:primaryType="nt:unstructured"
+                        granite:class="swiper-container-image-tab"
                         jcr:title="Image"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
@@ -177,28 +171,24 @@
                                                 autoStart="{Boolean}false"
                                                 class="cq-droptarget"
                                                 fieldLabel="Image Asset"
-                                                fileNameParameter="./image/fileName"
-                                                fileReferenceParameter="./image/fileReference"
+                                                fileNameParameter="./fileName"
+                                                fileReferenceParameter="./fileReference"
                                                 mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
                                                 multiple="{Boolean}false"
-                                                name="./image/file"
+                                                name="./file"
                                                 title="Upload Image Asset"
                                                 uploadUrl="${suffix.path}"
                                                 useHTML5="{Boolean}true"/>
-                                            <imageresourcehidden
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./image/sling:resourceType"
-                                                value="etisalat/components/image"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </image>
+                    </featureimage>
                     <featurecontent
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Feature Offer Content"
+                        granite:class="swiper-container-featurecontent-tab"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">

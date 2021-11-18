@@ -1,15 +1,15 @@
 <template data-sly-template.featureContent="${ @ container,properties}">
 <div class="offers-main-wrap">
    <div class="container action-head">
-      <h2>${properties.layoutTitle}</h2>
+      <h2 data-sly-test="${!wcmmode.edit}">${properties.layoutTitle}</h2>
       <a data-sly-test="${properties.offerFeatureViewAll}" 
          data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.offerFeatureViewAllLink}" 
          class="btn btn-default active ripple-effect hidden-xs" href="${commonlinkmodel.link}">${properties.offerFeatureViewAll}</a>
    </div>
    <div data-sly-use.tileModel="com.etisalat.core.models.TileModel" class="container slider-offer hidden-xs">
       <div class="row">
-         <div class="col-sm-6 col-lg-6 offer-content">
-            <sly data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
+         <div data-sly-test="${properties.fileReference}" class="col-sm-6 col-lg-6 offer-content">
+            <sly data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
             <div class="offer-txt extra-pad">
                <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"             
                   target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
@@ -25,8 +25,8 @@
       </div>
    </div>
    <div class="container slider-offer visible-xs">
-      <div class="swiper-container slider-featureOffer swiper-container-horizontal">
-         <div class="swiper-wrapper">
+      <div class="${!wcmmode.edit ? 'swiper-container slider-featureOffer swiper-container-horizontal': ''}">
+         <div class="${!wcmmode.edit ? 'swiper-wrapper': ''}">
             <div class="swiper-slide ${properties.noSwapDesktop ? 'no-swap-desktop-feature' : ''}">
                <div class="offer-content">
                   <sly data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
