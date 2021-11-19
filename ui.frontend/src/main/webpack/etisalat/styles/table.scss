@@ -3,9 +3,8 @@
 	padding-left: 1rem;
 
 	p {
-		color: #848789;
-
-		font-size: 16px;
+		color: $steel-grey;
+		font-size: $font16;
 		line-height: 22px;
 		margin: 0;
 		margin-bottom: 0.5rem;
@@ -31,7 +30,7 @@
 	.see-more {
 		text-transform: uppercase;
 		text-align: right;
-		font-size: 14px;
+		font-size: $font14;
 		letter-spacing: 2px;
 		line-height: 18px;
 		color: $almost-black;
@@ -39,7 +38,7 @@
 }
 
 .table {
-	font-size: 0.875rem;
+	font-size: $font14;
 	border: 0;
 
 	.table-foot-note {
@@ -90,7 +89,7 @@
 	&.table-striped {
 		table {
 			> tbody > tr:nth-of-type(odd) {
-				background-color: #fafaf5;
+				background-color: $light-yellow;
 			}
 
 			// Cells
@@ -208,7 +207,7 @@
 	}
 	&.table-collapsed {
 		.table-striped tbody > tr td:nth-child(odd) {
-			color: #848789 !important;
+			color: $steel-grey !important;
 			font-weight: 400 !important;
 		}
 
@@ -276,11 +275,16 @@
 	}
 
 	&.table-striped {
+		.dataTables_wrapper {
+			height: 480px;
+			overflow: auto;
+		}
+
 		tbody > tr > td {
 			color: $almost-black !important;
 
 			@include respond-to-max($desktop - 1) {
-				font-size: 14px;
+				font-size: $font14;
 			}
 		}
 
@@ -295,6 +299,15 @@
 		}
 
 		&.three-col {
+			thead,tbody {
+				tr {
+					th,td {
+						@include respond-to-min($desktop) {
+							width: 33.33%;
+						}
+					}
+				}
+			}
 			&.no-img {
 				tbody tr td:first-child {
 					padding-left: 1rem;
@@ -372,8 +385,8 @@
 		&.table-link {
 			a {
 				position: relative;
-				color: #719e19;
-				font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+				color: $arrow-border-green;
+				@include font-family-lato;
 				font-size: 0.875rem;
 				line-height: 1.25rem;
 				letter-spacing: 1.6px;
@@ -395,7 +408,7 @@
 					transition: all 0.3s ease-in-out;
 					-webkit-transform: translateY(-50%) rotate(-45deg);
 					right: -15px;
-					border: solid #719e19;
+					border: solid $arrow-border-green;
 					border-width: 0 1px 1px 0;
 				}
 			}
@@ -413,7 +426,7 @@
 
 		thead {
 			th {
-				font-size: 12px;
+				font-size: $font12;
 				letter-spacing: 2px;
 				@include font-family-lato;
 				color: $almost-black;
@@ -428,7 +441,7 @@
 			> tr {
 				> td {
 					font-weight: 700;
-					color: #848789;
+					color: $steel-grey;
 					@include font-family-lato;
 					line-height: 22px;
 					font-size: 1rem;
@@ -438,8 +451,8 @@
 					}
 
 					.text {
-						font-size: 14px;
-						color: #6b6b6b;
+						font-size: $font14;
+						color: $light-yellow;
 						opacity: 0.9;
 					}
 				}
@@ -539,13 +552,13 @@
 						margin-bottom: 0;
 
 						@include respond-to-max($desktop - 1) {
-							font-size: 14px;
+							font-size: $font14;
 						}
 					}
 
 					@include respond-to-max($desktop - 1) {
 						display: table-cell;
-						font-size: 14px;
+						font-size: $font14;
 					}
 
 					&:last-child {
@@ -632,7 +645,7 @@
 					@include respond-to-max($desktop - 1) {
 						display: table-cell;
 						vertical-align: top;
-						font-size: 14px;
+						font-size: $font14;
 					}
 
 					&:last-child {
@@ -655,7 +668,7 @@
 					padding-bottom: 20px;
 
 					@include respond-to-max($desktop - 1) {
-						font-size: 14px;
+						font-size: $font14;
 					}
 				}
 			}
@@ -745,7 +758,7 @@
 		thead {
 			td,
 			th {
-				font-size: 20px;
+				font-size: $font20;
 				color: $almost-black;
 
 				vertical-align: bottom;
@@ -754,11 +767,11 @@
 				border: none;
 
 				@media screen and (min-width: 768px) {
-					border-bottom: 2px solid #e5e5e5;
+					border-bottom: 2px solid $white-2;
 				}
 
 				@media screen and (max-width: 767px) {
-					font-size: 14px;
+					font-size: $font14;
 					vertical-align: middle;
 					line-height: 28px;
 					height: 48px;
@@ -785,10 +798,6 @@
 					padding: 0 1rem !important;
 				}
 
-				&:first-child {
-					//min-width: 400px;
-				}
-
 				@media screen and (max-width: 767px) {
 					&:first-child {
 						min-width: 100px;
@@ -812,7 +821,7 @@
 
 				td {
 					width: 50%;
-					border-bottom: 1px solid #e5e5e5;
+					border-bottom: 1px solid $white-2;
 					padding-left: 0;
 
 					@media (min-width: 992px) {
@@ -884,14 +893,14 @@
 			margin: 0 20px;
 			color: $steel-grey;
 			font-family: Neotech, Roboto, Arial, sans-serif;
-			font-size: 16px;
+			font-size: $font16;
 			line-height: 20px;
 			text-align: center;
 			outline: 0;
 
 			&.previous,
 			&.next {
-				font-size: 24px;
+				font-size: $font24;
 			}
 
 			&.disabled {
@@ -909,7 +918,7 @@
 		float: left;
 		padding-top: 0.755em;
 		color: $steel-grey;
-		font-size: 14px;
+		font-size: $font14;
 		line-height: 17px;
 	}
 }
@@ -977,14 +986,14 @@ table {
 		min-width: 100px;
 		color: $steel-grey;
 
-		font-size: 14px;
+		font-size: $font14;
 		font-weight: 700;
 		letter-spacing: 1.75px;
 	}
 
 	.channel-description {
 		color: $almost-black;
-		font-size: 16px;
+		font-size: $font16;
 		letter-spacing: 0.5px;
 		line-height: 20px;
 	}
@@ -1013,7 +1022,7 @@ table {
 
 /* ----------------- out of bundle charges ----------------- */
 .out-of-bundle-charges-title {
-	font-size: 20px;
+	font-size: $font20;
 	font-weight: bold;
 	line-height: 1.4;
 	letter-spacing: normal;
@@ -1037,7 +1046,7 @@ table {
 	.bundles {
 		display: flex;
 		padding: 1.5rem 0;
-		border-bottom: 1px dashed #b2b2b2;
+		border-bottom: 1px dashed $arrow-border;
 		position: relative;
 		margin-left: -12px;
 		margin-right: -12px;
@@ -1099,10 +1108,10 @@ table {
 				line-height: 1;
 				margin-top: 6px;
 				letter-spacing: normal;
-				color: #848789;
+				color: $steel-grey;
 
 				@include respond-to-max($desktop - 1) {
-					font-size: 14px;
+					font-size: $font14;
 					line-height: 1.43;
 				}
 			}
@@ -1118,11 +1127,11 @@ table {
 
 .bundles-footer {
 	margin-top: 2.25rem;
-	color: #848789;
+	color: $steel-grey;
 	@include respond-to-max($desktop - 1) {
 		position: absolute;
 		left: 12px;
-		font-size: 14px;
+		font-size: $font14;
 	}
 
 	p,
@@ -1131,13 +1140,13 @@ table {
 		line-height: 1.63;
 
 		@include respond-to-max($desktop - 1) {
-			font-size: 14px;
+			font-size: $font14;
 			line-height: 1.43;
 		}
 	}
 
 	p {
-		color: #919192;
+		color: $gray;
 		margin-bottom: 0.5rem;
 	}
 }
@@ -1147,14 +1156,14 @@ table {
 	padding: 0;
 
 	li {
-		font-size: 14px;
+		font-size: $font14;
 		font-weight: normal;
 		line-height: 1.43;
 		letter-spacing: normal;
-		color: #848789;
+		color: $steel-grey;
 
 		@include respond-to-max($desktop - 1) {
-			font-size: 12px;
+			font-size: $font12;
 			line-height: 1.33;
 		}
 	}
@@ -1248,13 +1257,13 @@ table {
 	table {
 		width: 100%;
 		thead {
-			font-size: 16px;
+			font-size: $font16;
 			font-weight: bold;
 			line-height: 1.13;
 			letter-spacing: normal;
-			color: #353738;
+			color: $silver-white;
 			tr {
-				border-bottom: 1px solid #e4e4e4;
+				border-bottom: 1px solid $silver-white;
 				th {
 					padding-bottom: 15px;
 					@include font-family-lato;
@@ -1262,11 +1271,11 @@ table {
 			}
 		}
 		tbody {
-			font-size: 16px;
+			font-size: $font16;
 			line-height: 1.5;
-			color: #6f6c70;
+			color: $gray-text-color;
 			tr {
-				border-bottom: 1px solid #e4e4e4;
+				border-bottom: 1px solid $silver-white;
 				td {
 					padding-top: 17px;
 					padding-bottom: 19px;
@@ -1274,11 +1283,11 @@ table {
 					vertical-align: baseline;
 					@include font-family-lato;
 					&:first-child {
-						font-size: 12px;
+						font-size: $font12;
 						font-weight: bold;
 						line-height: 1.33;
 						letter-spacing: 2px;
-						color: #353738;
+						color: $silver-white;
 						text-transform: uppercase;
 					}
 					&:last-child {
@@ -1304,7 +1313,7 @@ table {
 			}
 			tbody {
 				tr {
-					border-top: 1px solid #e4e4e4;
+					border-top: 1px solid $silver-white;
 					padding: 80px 0 24px 0;
 					margin-bottom: -1px;
 					position: relative;
@@ -1317,15 +1326,15 @@ table {
 						&:before {
 							content: attr(data-label);
 							display: block;
-							font-size: 16px;
+							font-size: $font16;
 							font-weight: 700;
 							line-height: 1.5;
 							letter-spacing: normal;
-							color: #353738;
+							color: $silver-white;
 							margin-bottom: 4px;
 						}
 						&:first-child {
-							font-size: 14px;
+							font-size: $font14;
 							line-height: 1.43;
 							letter-spacing: 2px;
 							position: absolute;
@@ -1342,7 +1351,7 @@ table {
 
 		@include respond-to-max($desktop - 1) {
 			tbody {
-				font-size: 14px;
+				font-size: $font14;
 				line-height: 20px;
 				tr {
 					padding: 52px 0 12px;
@@ -1352,7 +1361,7 @@ table {
 							line-height: 16px;
 						}
 						&:before {
-							font-size: 14px;
+							font-size: $font14;
 							line-height: 16px;
 						}
 					}
@@ -1370,11 +1379,11 @@ table {
 						width: 100%;
 						&:first-child {
 							top: 24px;
-							font-size: 12px;
+							font-size: $font12;
 							font-weight: bold;
 							line-height: 16px;
 							letter-spacing: 2px;
-							color: #353738;
+							color: $silver-white;
 							text-transform: uppercase;
 						}
 					}
@@ -1488,9 +1497,9 @@ table {
 			.advanced-table-search {
 				background-color: transparent;
 				border: none;
-				border-bottom: 1px solid #b2b2b2;
+				border-bottom: 1px solid $arrow-border;
 				border-radius: 0;
-				color: #353738;
+				color: $silver-white;
 				outline: none;
 				height: 2.5rem;
 				width: 100%;
@@ -1507,15 +1516,15 @@ table {
 				background-image: url(../resources/images/icon_search.svg) !important;
 			}
 			input[type="search"]:not(.browser-default):focus:not([readonly]) ~ label {
-				color: #719e19;
+				color: $arrow-border-green;
 				font-size: 1rem;
 				transform: translateY(-10px) scale(0.8);
 				transform-origin: 0 0;
 			}
 
 			input[type="search"]:not(.browser-default):focus:not([readonly]) {
-				border-bottom: 1px solid #719e19;
-				box-shadow: 0 1px 0 0 #719e19;
+				border-bottom: 1px solid $arrow-border-green;
+				box-shadow: 0 1px 0 0 $arrow-border-green;
 				transform-origin: 0 0;
 				z-index: 0;
 			}
@@ -1535,8 +1544,8 @@ table {
 			clear: both;
 			float: left;
 			padding-top: 0.755em;
-			color: #848789;
-			font-size: 14px;
+			color: $steel-grey;
+			font-size: $font14;
 			line-height: 17px;
 		}
 	}
@@ -1547,21 +1556,21 @@ table {
 		cursor: pointer;
 		.paginate_button {
 			margin: 0 20px;
-			color: #848789;
+			color: $steel-grey;
 			font-family: Neotech, Roboto, Arial, sans-serif;
-			font-size: 16px;
+			font-size: $font16;
 			line-height: 20px;
 			text-align: center;
 			outline: 0;
 			&.current {
-				color: #719e19;
+				color: $arrow-border-green;
 			}
 			&.disabled {
 				visibility: hidden;
 			}
 			&.next,
 			&.previous {
-				font-size: 24px;
+				font-size: $font24;
 			}
 		}
 	}
