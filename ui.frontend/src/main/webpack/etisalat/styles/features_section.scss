@@ -357,69 +357,77 @@
 //Feature Banner Full Bleed aem authoring name
 .banner-full-bleed {
     @include respond-to-min($desktop) {
-        height: 545px;
+        min-height: toRem(520);
     }
 
     .cmp-text {
-        width: 588px;
+        width: toRem(588);
         padding-top: calc(#{$padding-step-5} + 24px);
+        padding-bottom: calc(#{$padding-step-5} + 4px);
+        margin-bottom: $margin-step-0;
         @include respond-to-max($tablet) {
             padding-top: calc(#{$padding-step-5} + 12px);
-            margin-left: 36px;
+            margin-left: calc(#{$margin-step-4} + 4px);
+            padding-bottom: calc(#{$padding-step-5} + 25px);
         }
         @include respond-to-max($phone) {
-            margin-bottom: 50px;
+            margin-bottom: calc(#{$margin-step-6} + 2px);
             padding-top: $padding-step-4;
-            margin-left: 0;
+            margin-left: $margin-step-0;
+            padding-bottom: $padding-step-0;
         }
 
         pre {
             font-size: $font12;
             font-weight: 700;
             @include font-family-lato;
-            letter-spacing: 4px;
-            line-height: 16px;
-            margin-bottom: 8px;
+            letter-spacing: toRem(4);
+            line-height: toRem(16);
+            margin-bottom: $margin-step-1
         }
 
         h4 {
             font-size: $font32;
             font-weight: 400;
-            line-height: 40px;
-            margin: 0 0 2.5rem 0;
+            line-height: toRem(40);
+            margin: $margin-step-0 $margin-step-0 $margin-step-5 $margin-step-0;
 
             @include respond-to-max($tablet) {
                 font-size: $font28;
-                line-height: 34px;
-                margin: 0 0 3rem 0;
+                line-height: toRem(34);
+                margin: $margin-step-0 $margin-step-0 $margin-step-6 $margin-step-0;
             }
             @include respond-to-max($phone) {
-                margin: 0 0 1.25rem 0;
+                margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} + 4px) $margin-step-0;
             }
         }
 
         .body-copy1 {
             font-size: $font32;
-            line-height: 40px;
+            line-height: toRem(40);
             @include font-family-Neotech;
             padding-right: calc(#{$padding-step-1} - 4px);
 
             @include respond-to-max($tablet) {
                 font-size: $font28;
-                line-height: 36px;
-                margin-bottom: 8px;
+                line-height: toRem(36);
+                margin-bottom: $margin-step-1;
             }
         }
 
         .body-copy2 {
             font-size: $font20;
-            line-height: 28px;
-            margin-bottom: 1rem;
+            line-height: toRem(28);
+            margin-bottom: $margin-step-2;
 
             @include respond-to-max($tablet) {
                 font-size: $font16;
-                line-height: 24px;
-                margin-bottom: 0.75rem;
+                line-height: toRem(24);
+                margin-bottom: calc(#{$margin-step-1} + 4px);
+                width: toRem(380);
+            }
+            @include respond-to-max($phone) {
+                width: toRem(330);
             }
         }
 
@@ -434,11 +442,11 @@
                     flex: 1 0 50%;
                 }
                 font-size: $font20;
-                margin-bottom: 10px;
+                margin-bottom: calc(#{$margin-step-1} + 2px);
                 padding: $padding-step-0;
                 @include respond-to-max($tablet) {
                     font-size: $font16;
-                    margin-bottom: 8px;
+                    margin-bottom: $margin-step-1;
                 }
             }
         }
@@ -448,27 +456,28 @@
         }
 
         sup {
+            top: toRem(-16);
             @include respond-to-max($tablet) {
-                top: -2.5rem;
+                top: toRem(-44.8);
             }
         }
 
         .cmp-button--primary,.cmp-button--promo,.cmp-button--secondary {
-            width: 288px;
+            width: toRem(288);
             position: relative;
-            bottom: 20px;
-            left: 75px;
+            bottom: toRem(25);
+            left: toRem(75);
 
             @include respond-to-max($tablet) {
-                margin: 24px 0 0;
-                left: -13rem;
-                top: 1rem;
+                margin: $margin-step-3 $margin-step-0 $margin-step-0;
+                left: toRem(-208);
+                top: toRem(16);
             }
 
             @include respond-to-max($phone) {
-                margin: 24px 0 0;
-                left: -205px;
-                top: 16px;
+                margin: $margin-step-3 $margin-step-0 $margin-step-0;
+                left: toRem(-205);
+                top: toRem(16);
             }
         }
     }
@@ -485,14 +494,14 @@
 
     .cmp-container {
         height: 100%;
-        min-height: 536px;
+        min-height: toRem(520);
         background-size: 100% auto;
         background-position: top center;
         @include respond-to-max($tablet) {
-            min-height: 685px;
+            min-height: toRem(685);
         }
         @include respond-to-max($phone) {
-            min-height: 620px;
+            min-height: toRem(620);
         }
     }
 }
