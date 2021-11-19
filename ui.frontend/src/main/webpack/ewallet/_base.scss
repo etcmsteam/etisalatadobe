@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  font-size: 20px;
+  font-size: $font20;
   line-height: 1.3;
   color: #3c485e;
   font-family: Bariol, GE SS Two, Arial, sans-serif;
@@ -75,7 +75,7 @@ h6 {
 }
 
 h2 {
-  font-size: 48px;
+  font-size: $font48;
 }
 
 @font-face {
@@ -102,29 +102,30 @@ h2 {
 .container-center {
   margin: 0 auto !important;
   max-width: 100% !important;
-  width: 1240px !important;
+  width: toRem(1240) !important;
   float: none !important;
   padding: 0 15px !important;
   clear: both !important;
   .container {
     margin: 0 auto !important;
   }
-  @media (min-width: 320px) and (max-width: 767px) {
+  @include respond-to-max($phone) {
     padding: 0;
   }
-  @media (min-width: 768px) {
-    width: 690px !important;
+
+  @include respond-to-min($tablet) {
+    width: toRem(690) !important;
     .cmp-container {
       padding: 0 !important;
     }
   }
-  @media (min-width: 992px) {
-    width: 890px !important;
+  @include respond-to-min($desktop) {
+    width: toRem(890) !important;
     .cmp-container {
       padding: 0 !important;
     }
   }
-  @media (min-width: 1280px) {
-    width: 1240px !important;
+  @include respond-to-min($desktop-wide) {
+    width: toRem(1240) !important;
   }
 }
