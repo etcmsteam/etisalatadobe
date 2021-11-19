@@ -38,7 +38,7 @@
 }
 
 .table {
-	font-size: $font14;
+	font-size: 0.875rem;
 	border: 0;
 
 	.table-foot-note {
@@ -55,7 +55,6 @@
 		padding: 1rem 0;
 		text-transform: uppercase;
 	}
-	
 
 	&.table-without-title {
 		> tfoot,
@@ -193,9 +192,11 @@
 	&.shorter-first-column {
 		table {
 			@media screen and (min-width: 1248px) {
-				thead,tbody {
+				thead,
+				tbody {
 					tr {
-						th,td {
+						th,
+						td {
 							&:first-child {
 								width: 20%;
 							}
@@ -275,10 +276,13 @@
 	}
 
 	&.table-striped {
-		.dataTables_wrapper {
-			height: 480px;
-			overflow: auto;
+		.custom-datatable:not(.table-with-pagination) {
+			.dataTables_wrapper {
+				height: 480px;
+				overflow: auto;
+			}
 		}
+		
 
 		tbody > tr > td {
 			color: $almost-black !important;
@@ -299,9 +303,11 @@
 		}
 
 		&.three-col {
-			thead,tbody {
+			thead,
+			tbody {
 				tr {
-					th,td {
+					th,
+					td {
 						@include respond-to-min($desktop) {
 							width: 33.33%;
 						}
@@ -386,7 +392,7 @@
 			a {
 				position: relative;
 				color: $arrow-border-green;
-				@include font-family-lato;
+				font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
 				font-size: 0.875rem;
 				line-height: 1.25rem;
 				letter-spacing: 1.6px;
@@ -452,7 +458,7 @@
 
 					.text {
 						font-size: $font14;
-						color: $light-yellow;
+						color: $gray-fill;
 						opacity: 0.9;
 					}
 				}
@@ -748,7 +754,7 @@
 	}
 
 	table {
-		@media screen and (min-width: 768px) {
+		@include respond-to-min($tablet) {
 			border-spacing: 2rem 0;
 			border-collapse: separate;
 			margin: 0 -2rem;
@@ -766,11 +772,11 @@
 				line-height: 56px;
 				border: none;
 
-				@media screen and (min-width: 768px) {
+				@include respond-to-min($tablet) {
 					border-bottom: 2px solid $white-2;
 				}
 
-				@media screen and (max-width: 767px) {
+				@include respond-to-max($tablet - 1) {
 					font-size: $font14;
 					vertical-align: middle;
 					line-height: 28px;
@@ -783,7 +789,7 @@
 		thead {
 			th {
 				&:first-child {
-					@media screen and (min-width: 768px) {
+					@include respond-to-min($tablet) {
 						width: 50%;
 					}
 				}
@@ -794,11 +800,15 @@
 			td {
 				color: $steel-grey;
 
-				@media screen and (min-width: 768px) {
+				@include respond-to-min($tablet) {
 					padding: 0 1rem !important;
 				}
 
-				@media screen and (max-width: 767px) {
+				&:first-child {
+					//min-width: 400px;
+				}
+
+				@include respond-to-max($tablet - 1) {
 					&:first-child {
 						min-width: 100px;
 					}
@@ -824,7 +834,7 @@
 					border-bottom: 1px solid $white-2;
 					padding-left: 0;
 
-					@media (min-width: 992px) {
+					@include respond-to-min($desktop) {
 						padding-left: 3rem;
 					}
 
@@ -832,7 +842,7 @@
 						min-width: 20px;
 						width: 50%;
 
-						@media (min-width: 992px) {
+						@include respond-to-min($desktop) {
 							padding-left: 3rem;
 						}
 					}
@@ -897,10 +907,16 @@
 			line-height: 20px;
 			text-align: center;
 			outline: 0;
+			position: relative;
 
 			&.previous,
 			&.next {
 				font-size: $font24;
+			}
+			.pagination-previous,
+			.pagination-next {
+				position: absolute;
+				top: 25%;
 			}
 
 			&.disabled {
@@ -938,7 +954,6 @@ table {
 					padding-right: 20px;
 				}
 			}
-			
 		}
 	}
 }
@@ -1046,7 +1061,7 @@ table {
 	.bundles {
 		display: flex;
 		padding: 1.5rem 0;
-		border-bottom: 1px dashed $arrow-border;
+		border-bottom: 1px dashed $grey4;
 		position: relative;
 		margin-left: -12px;
 		margin-right: -12px;
@@ -1231,8 +1246,7 @@ table {
 	padding: 0;
 	margin: 0;
 	@include respond-to-min($desktop) {
-		padding: 0 $padding-step-3;
-		margin: 0 8px;
+		margin-left: 1.625rem;
 	}
 
 	&.has-bg {
@@ -1261,7 +1275,7 @@ table {
 			font-weight: bold;
 			line-height: 1.13;
 			letter-spacing: normal;
-			color: $silver-white;
+			color: $blue2;
 			tr {
 				border-bottom: 1px solid $silver-white;
 				th {
@@ -1287,7 +1301,7 @@ table {
 						font-weight: bold;
 						line-height: 1.33;
 						letter-spacing: 2px;
-						color: $silver-white;
+						color: $blue2;
 						text-transform: uppercase;
 					}
 					&:last-child {
@@ -1330,7 +1344,7 @@ table {
 							font-weight: 700;
 							line-height: 1.5;
 							letter-spacing: normal;
-							color: $silver-white;
+							color: $blue2;
 							margin-bottom: 4px;
 						}
 						&:first-child {
@@ -1383,7 +1397,7 @@ table {
 							font-weight: bold;
 							line-height: 16px;
 							letter-spacing: 2px;
-							color: $silver-white;
+							color: $blue2;
 							text-transform: uppercase;
 						}
 					}
@@ -1393,15 +1407,13 @@ table {
 	}
 
 	.six-col {
-		table {
-			@media screen and (min-width: 1248px) {
-				tbody {
-					tr {
-						td {
-							width: 204px;
-							&:last-child {
-								width: 180px;
-							}
+		@media screen and (min-width: 1248px) {
+			tbody {
+				tr {
+					td {
+						width: 204px;
+						&:last-child {
+							width: 180px;
 						}
 					}
 				}
@@ -1410,21 +1422,19 @@ table {
 	}
 
 	.five-col {
-		table {
-			@media screen and (min-width: 1248px) {
-				tbody {
-					tr {
-						td {
-							width: 204px;
-							min-width: 204px;
-							&:first-child {
-								width: 408px;
-								min-width: 408px;
-							}
-							&:last-child {
-								width: 180px;
-								min-width: 180px;
-							}
+		@media screen and (min-width: 1248px) {
+			tbody {
+				tr {
+					td {
+						width: 204px;
+						min-width: 204px;
+						&:first-child {
+							width: 408px;
+							min-width: 408px;
+						}
+						&:last-child {
+							width: 180px;
+							min-width: 180px;
 						}
 					}
 				}
@@ -1433,17 +1443,15 @@ table {
 	}
 
 	.four-col {
-		table {
-			@media screen and (min-width: 1248px) {
-				tbody {
-					tr {
-						td {
-							width: 306px;
-							min-width: 306px;
-							&:last-child {
-								width: 282px;
-								min-width: 282px;
-							}
+		@media screen and (min-width: 1248px) {
+			tbody {
+				tr {
+					td {
+						width: 306px;
+						min-width: 306px;
+						&:last-child {
+							width: 282px;
+							min-width: 282px;
 						}
 					}
 				}
@@ -1452,17 +1460,15 @@ table {
 	}
 
 	.three-col {
-		table {
-			@media screen and (min-width: 1248px) {
-				tbody {
-					tr {
-						td {
-							width: 408px;
-							min-width: 408px;
-							&:last-child {
-								width: 384px;
-								min-width: 384px;
-							}
+		@media screen and (min-width: 1248px) {
+			tbody {
+				tr {
+					td {
+						width: 408px;
+						min-width: 408px;
+						&:last-child {
+							width: 384px;
+							min-width: 384px;
 						}
 					}
 				}
@@ -1471,13 +1477,11 @@ table {
 	}
 
 	.two-col {
-		table {
-			@media screen and (min-width: 1248px) {
-				tbody {
-					tr {
-						td {
-							width: 50%;
-						}
+		@media screen and (min-width: 1248px) {
+			tbody {
+				tr {
+					td {
+						width: 50%;
 					}
 				}
 			}
@@ -1497,9 +1501,9 @@ table {
 			.advanced-table-search {
 				background-color: transparent;
 				border: none;
-				border-bottom: 1px solid $arrow-border;
+				border-bottom: 1px solid $grey4;
 				border-radius: 0;
-				color: $silver-white;
+				color: $blue2;
 				outline: none;
 				height: 2.5rem;
 				width: 100%;
@@ -1562,6 +1566,7 @@ table {
 			line-height: 20px;
 			text-align: center;
 			outline: 0;
+			position: relative;
 			&.current {
 				color: $arrow-border-green;
 			}
@@ -1571,6 +1576,11 @@ table {
 			&.next,
 			&.previous {
 				font-size: $font24;
+			}
+			.pagination-previous,
+			.pagination-next {
+				position: absolute;
+				top: 30%;
 			}
 		}
 	}

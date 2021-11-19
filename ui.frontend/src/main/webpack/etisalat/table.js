@@ -57,8 +57,8 @@ $(function () {
 				"zeroRecords": noSearchResultsText,
 				"info": "_START_ to _END_ of _TOTAL_ records",
 				"oPaginate": {
-					sNext: '<span class="pagination-next">⟶</span>',
-					sPrevious: '<span class="pagination-previous">⟵</span>'
+					sNext: '<span class="pagination-next">></span>',
+					sPrevious: '<span class="pagination-previous"><</span>'
 				}
 			},
 			'createdRow': function (row, data, rowIndex) {
