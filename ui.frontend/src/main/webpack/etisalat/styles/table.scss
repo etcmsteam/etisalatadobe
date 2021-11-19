@@ -48,7 +48,7 @@
 
 	caption {
 		color: $almost-black;
-		font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
+		@include font-family-lato;
 		font-size: 0.75rem;
 		font-weight: 900;
 		letter-spacing: 2px;
@@ -56,67 +56,7 @@
 		padding: 1rem 0;
 		text-transform: uppercase;
 	}
-
-	> tfoot,
-	> thead,
-	> tbody {
-		> tr {
-			> th,
-			> td {
-				line-height: 14px;
-				vertical-align: middle;
-				padding: 1rem; // please use with specific class
-				font-weight: 400;
-				color: $steel-grey;
-				border-top: 1px solid $light-sand-brown;
-				word-break: break-word;
-
-				.price {
-					color: $almost-black;
-					font-weight: 900;
-					margin-right: 4px;
-				}
-
-				&.price-col {
-					text-align: right;
-				}
-
-				&:first-child {
-					padding-left: 0;
-				}
-
-				&:last-child {
-					padding-right: 0;
-				}
-			}
-
-			> th.order-shipped,
-			> td.order-shipped {
-				padding: 0 0 0 12% !important;
-			}
-
-			> th {
-				font-weight: 400;
-				color: $steel-grey;
-			}
-		}
-
-		> tr.discount {
-			color: #f5a623;
-
-			.btn-text {
-				&:before {
-					padding: 4.7px;
-				}
-
-				&:hover {
-					&:before {
-						border-color: #f5a623;
-					}
-				}
-			}
-		}
-	}
+	
 
 	&.table-without-title {
 		> tfoot,
@@ -188,6 +128,84 @@
 
 /* ----------------- tables for WST variations ----------------- */
 .table-default-section {
+	table {
+		> tfoot,
+		> thead,
+		> tbody {
+			> tr {
+				> th,
+				> td {
+					line-height: 14px;
+					vertical-align: middle;
+					padding: 1rem; // please use with specific class
+					font-weight: 400;
+					color: $steel-grey;
+					border-top: 1px solid $light-sand-brown;
+					word-break: break-word;
+					@include font-family-lato;
+
+					.price {
+						color: $almost-black;
+						font-weight: 900;
+						margin-right: 4px;
+					}
+
+					&.price-col {
+						text-align: right;
+					}
+
+					&:first-child {
+						padding-left: 0;
+					}
+
+					&:last-child {
+						padding-right: 0;
+					}
+				}
+
+				> th.order-shipped,
+				> td.order-shipped {
+					padding: 0 0 0 12% !important;
+				}
+
+				> th {
+					font-weight: 400;
+					color: $steel-grey;
+				}
+			}
+
+			> tr.discount {
+				color: #f5a623;
+
+				.btn-text {
+					&:before {
+						padding: 4.7px;
+					}
+
+					&:hover {
+						&:before {
+							border-color: #f5a623;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.shorter-first-column {
+		table {
+			@media screen and (min-width: 1248px) {
+				thead,tbody {
+					tr {
+						th,td {
+							&:first-child {
+								width: 20%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	&.table-collapsed {
 		.table-striped tbody > tr td:nth-child(odd) {
 			color: #848789 !important;
@@ -199,7 +217,7 @@
 		}
 		table {
 			table-layout: fixed;
-			@include respond-to-max($desktop -1) {
+			@include respond-to-max($desktop - 1) {
 				display: table;
 				tbody,
 				thead {
@@ -261,7 +279,7 @@
 		tbody > tr > td {
 			color: $almost-black !important;
 
-			@include respond-to-max($desktop -1) {
+			@include respond-to-max($desktop - 1) {
 				font-size: 14px;
 			}
 		}
@@ -269,7 +287,7 @@
 		&.two-col {
 			thead {
 				tr th {
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						width: 50%;
 					}
 				}
@@ -289,7 +307,7 @@
 
 			thead {
 				tr th {
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						width: 33.33%;
 					}
 				}
@@ -304,7 +322,7 @@
 							padding-left: 3.5rem;
 
 							&:before {
-								@include respond-to-max($desktop -1) {
+								@include respond-to-max($desktop - 1) {
 									margin-left: -40px;
 								}
 							}
@@ -320,7 +338,7 @@
 							min-height: 24px;
 							transform: translateY(-50%);
 
-							@include respond-to-max($desktop -1) {
+							@include respond-to-max($desktop - 1) {
 								top: 2.5rem;
 							}
 						}
@@ -332,7 +350,7 @@
 		&.four-col {
 			thead {
 				tr th {
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						width: 25%;
 					}
 				}
@@ -342,7 +360,7 @@
 		&.five-col {
 			thead {
 				tr th {
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						width: 20%;
 					}
 				}
@@ -397,27 +415,21 @@
 			th {
 				font-size: 12px;
 				letter-spacing: 2px;
-
+				@include font-family-lato;
 				color: $almost-black;
 				text-transform: uppercase;
 				vertical-align: bottom;
 				line-height: 16px;
 				padding-bottom: 16px !important;
-
-				&:nth-child(1) {
-					@include respond-to-min($desktop) {
-						//width: 60%;
-					}
-				}
 			}
 		}
 
 		tbody {
 			> tr {
 				> td {
-					font-weight: bold;
+					font-weight: 700;
 					color: #848789;
-
+					@include font-family-lato;
 					line-height: 22px;
 					font-size: 1rem;
 
@@ -434,7 +446,7 @@
 			}
 		}
 
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			tbody,
 			thead {
 				td,
@@ -470,7 +482,7 @@
 		&.table-no-border {
 			thead {
 				tr {
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-row;
 					}
 				}
@@ -485,20 +497,20 @@
 					padding: 0;
 					padding-bottom: 34px !important;
 
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-cell;
 						padding-bottom: 26px !important;
 					}
 				}
 
-				@include respond-to-max($desktop -1) {
+				@include respond-to-max($desktop - 1) {
 					display: table-header-group;
 				}
 			}
 
 			tbody {
 				tr {
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-row;
 					}
 				}
@@ -510,6 +522,7 @@
 					font-weight: 900;
 					padding: 0;
 					padding-bottom: 20px;
+					@include font-family-lato;
 
 					&:nth-child(1) {
 						@include respond-to-min($desktop) {
@@ -525,12 +538,12 @@
 						color: $steel-grey;
 						margin-bottom: 0;
 
-						@include respond-to-max($desktop -1) {
+						@include respond-to-max($desktop - 1) {
 							font-size: 14px;
 						}
 					}
 
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-cell;
 						font-size: 14px;
 					}
@@ -545,7 +558,7 @@
 		&.table-row-border {
 			thead {
 				tr {
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-row;
 					}
 				}
@@ -561,13 +574,13 @@
 					padding-top: 0;
 					padding-left: 0;
 
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-cell;
 						padding-bottom: 26px !important;
 					}
 				}
 
-				@include respond-to-max($desktop -1) {
+				@include respond-to-max($desktop - 1) {
 					display: table-header-group;
 				}
 			}
@@ -576,7 +589,7 @@
 				tr {
 					border-bottom: 2px solid #d2d2d2;
 
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-row;
 					}
 
@@ -587,6 +600,9 @@
 							@include respond-to-min($desktop) {
 								padding-left: 1rem;
 							}
+						}
+						p {
+							margin: 0 0 12.5px;
 						}
 					}
 
@@ -604,6 +620,7 @@
 					font-weight: 900;
 					vertical-align: middle;
 					padding: 0;
+					@include font-family-lato;
 
 					& label {
 						border: none;
@@ -612,7 +629,7 @@
 						font-weight: 400;
 					}
 
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						display: table-cell;
 						vertical-align: top;
 						font-size: 14px;
@@ -637,7 +654,7 @@
 					padding: 0;
 					padding-bottom: 20px;
 
-					@include respond-to-max($desktop -1) {
+					@include respond-to-max($desktop - 1) {
 						font-size: 14px;
 					}
 				}
@@ -912,24 +929,7 @@ table {
 					padding-right: 20px;
 				}
 			}
-
-			.sorting {
-				span {
-					// background-image: url('/en/system/wst/assets/img/svg-icons/chevron_down_black.png'); // broken-link img missing
-				}
-			}
-
-			.sorting_asc {
-				span {
-					// background-image: url('/en/system/wst/assets/img/svg-icons/chevron_up_business.png'); // broken-link img missing
-				}
-			}
-
-			.sorting_desc {
-				span {
-					// background-image: url('/en/system/wst/assets/img/svg-icons/chevron_down_black.png'); // broken-link img missing
-				}
-			}
+			
 		}
 	}
 }
@@ -943,7 +943,7 @@ table {
 			align-items: center;
 			border-bottom: 1px solid rgba(151, 151, 151, 0.14);
 
-			@include respond-to-max($desktop -1) {
+			@include respond-to-max($desktop - 1) {
 				display: block;
 			}
 		}
@@ -954,7 +954,7 @@ table {
 	.channel-description {
 		display: inline-block;
 
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			display: block;
 			width: 100%;
 		}
@@ -992,7 +992,7 @@ table {
 
 .table-default-section {
 	.dataTables_info {
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			display: none;
 		}
 	}
@@ -1019,7 +1019,7 @@ table {
 	letter-spacing: normal;
 	color: $almost-black;
 	margin-top: 3rem;
-	@include respond-to-max($desktop -1) {
+	@include respond-to-max($desktop - 1) {
 		font-size: 1rem;
 		line-height: 1.5;
 		margin-top: 1.5rem;
@@ -1029,7 +1029,7 @@ table {
 .bundle-charges-wrapper {
 	margin-top: 12px;
 
-	@include respond-to-max($desktop -1) {
+	@include respond-to-max($desktop - 1) {
 		margin-top: 0;
 		margin: 0 12px;
 	}
@@ -1046,7 +1046,7 @@ table {
 			border-bottom: none;
 		}
 
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			display: block;
 			padding: 1rem 0;
 		}
@@ -1056,7 +1056,7 @@ table {
 			width: 50%;
 			padding: 0 12px;
 
-			@include respond-to-max($desktop -1) {
+			@include respond-to-max($desktop - 1) {
 				width: 100%;
 			}
 		}
@@ -1065,7 +1065,7 @@ table {
 			display: flex;
 			align-items: flex-start;
 
-			@include respond-to-max($desktop -1) {
+			@include respond-to-max($desktop - 1) {
 				margin: 0;
 				margin-bottom: 0.5rem;
 			}
@@ -1081,7 +1081,7 @@ table {
 					min-height: auto;
 				}
 
-				@include respond-to-max($desktop -1) {
+				@include respond-to-max($desktop - 1) {
 					margin-right: 1rem;
 					width: 20px;
 					height: 20px;
@@ -1101,7 +1101,7 @@ table {
 				letter-spacing: normal;
 				color: #848789;
 
-				@include respond-to-max($desktop -1) {
+				@include respond-to-max($desktop - 1) {
 					font-size: 14px;
 					line-height: 1.43;
 				}
@@ -1109,7 +1109,7 @@ table {
 		}
 
 		.bundle-body {
-			@include respond-to-max($desktop -1) {
+			@include respond-to-max($desktop - 1) {
 				padding-left: 3rem;
 			}
 		}
@@ -1119,7 +1119,7 @@ table {
 .bundles-footer {
 	margin-top: 2.25rem;
 	color: #848789;
-	@include respond-to-max($desktop -1) {
+	@include respond-to-max($desktop - 1) {
 		position: absolute;
 		left: 12px;
 		font-size: 14px;
@@ -1130,7 +1130,7 @@ table {
 		font-size: 1rem;
 		line-height: 1.63;
 
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			font-size: 14px;
 			line-height: 1.43;
 		}
@@ -1153,7 +1153,7 @@ table {
 		letter-spacing: normal;
 		color: #848789;
 
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			font-size: 12px;
 			line-height: 1.33;
 		}
@@ -1169,7 +1169,7 @@ table {
 		}
 
 		.bundles-footer {
-			@include respond-to-max($desktop -1) {
+			@include respond-to-max($desktop - 1) {
 				left: auto;
 				right: 0;
 			}
@@ -1219,11 +1219,18 @@ table {
 }
 
 .tables-4-0 {
+	padding: 0;
+	margin: 0;
+	@include respond-to-min($desktop) {
+		padding: 0 $padding-step-3;
+		margin: 0 8px;
+	}
+
 	&.has-bg {
 		padding: 16px 0;
 		background-color: $module-bg-color;
 	}
-	@include respond-to-max($tablet -1) {
+	@include respond-to-max($tablet - 1) {
 		.container {
 			padding-left: 16px;
 			padding-right: 16px;
@@ -1233,7 +1240,7 @@ table {
 	.foot-notes-section.under-table {
 		margin-top: 24px;
 		margin-bottom: 0;
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			display: none;
 		}
 	}
@@ -1250,6 +1257,7 @@ table {
 				border-bottom: 1px solid #e4e4e4;
 				th {
 					padding-bottom: 15px;
+					@include font-family-lato;
 				}
 			}
 		}
@@ -1264,6 +1272,7 @@ table {
 					padding-bottom: 19px;
 					padding-right: 24px;
 					vertical-align: baseline;
+					@include font-family-lato;
 					&:first-child {
 						font-size: 12px;
 						font-weight: bold;
@@ -1331,7 +1340,7 @@ table {
 			}
 		}
 
-		@include respond-to-max($desktop -1) {
+		@include respond-to-max($desktop - 1) {
 			tbody {
 				font-size: 14px;
 				line-height: 20px;
@@ -1351,7 +1360,7 @@ table {
 			}
 		}
 
-		@include respond-to-max($tablet -1) {
+		@include respond-to-max($tablet - 1) {
 			tbody {
 				tr {
 					display: block;
@@ -1374,7 +1383,7 @@ table {
 		}
 	}
 
-	&.six-col {
+	.six-col {
 		table {
 			@media screen and (min-width: 1248px) {
 				tbody {
@@ -1389,8 +1398,8 @@ table {
 				}
 			}
 		}
-	} 
-	
+	}
+
 	.five-col {
 		table {
 			@media screen and (min-width: 1248px) {
@@ -1413,7 +1422,7 @@ table {
 			}
 		}
 	}
-	
+
 	.four-col {
 		table {
 			@media screen and (min-width: 1248px) {
@@ -1451,7 +1460,7 @@ table {
 			}
 		}
 	}
-	
+
 	.two-col {
 		table {
 			@media screen and (min-width: 1248px) {
@@ -1465,7 +1474,6 @@ table {
 			}
 		}
 	}
-	
 }
 
 .dataTables_filter {
