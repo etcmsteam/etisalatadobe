@@ -397,3 +397,78 @@
         padding-bottom: 65%;
     }
 }
+
+/* HELP & SUPPORT */
+.support-wrapper {
+    margin-top: -60px !important;
+    .action-bar {
+        position: relative;
+        background-color: $white;
+        @include respond-to-max($phone) {
+            background-color: $main-green;
+            border-top: $border-step-1 solid $white;
+        }
+        .cmp-text {
+            margin-bottom: $margin-step-0;
+        }
+        a {
+            font-size: $font18;
+            line-height: toRem(60);
+            display: block;
+            .cmp-link__text {
+                font-size: $font18;
+                color: $main-green;
+                @include font-family-Neotech-roboto();
+                @include respond-to-max($desktop-wide) {
+                    font-size: $font16;
+                }
+            }
+            @include respond-to-min($tablet) {
+                pointer-events: none;
+            }
+            @include respond-to-max($phone) {
+                line-height: toRem(59);
+                .cmp-link__text {
+                    font-size: $font12;
+                    color: $white;
+                }
+                &:after {
+                    content: ' ';
+                    border: solid $white;
+                    border-width: $border-step-0 $border-step-3 $border-step-3 $border-step-0;
+                    display: inline-block;
+                    padding: 3px;
+                    position: absolute;
+                    top: toRem(26);
+                    right: toRem(30);
+                    transform: rotate(-135deg);
+                }
+            }
+        }
+    }
+}
+
+/* DOWNLOAD LINKS */
+.download-links {
+    padding: $padding-step-8 $padding-step-0 $padding-step-10;
+    p {
+        padding: $padding-step-2 $padding-step-0;
+        border-top: $border-step-1 solid $light-sand-brown;
+        a {
+            display: flex;
+            flex-direction: row;
+            svg {
+                float: left;
+                box-sizing: content-box;
+                margin-top: $margin-step-0;
+            }
+            .cmp-link__text {
+                text-transform: initial;
+                letter-spacing: initial;
+            }
+        }
+        &:last-child {
+            border-bottom: $border-step-1 solid $light-sand-brown;
+        }
+    }
+}

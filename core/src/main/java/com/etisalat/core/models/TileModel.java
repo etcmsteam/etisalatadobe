@@ -44,11 +44,18 @@ public class TileModel {
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String linkURL;
 	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String validDateText;
+	
 	@SlingObject	
 	protected Resource currentResource;
 
 	@SlingObject
 	private ResourceResolver resourceResolver;
+	
+	private static final String TILE_CONTAINER_RESOURCETYPE = "etisalat/components/tilecontainer";
+	
+	private static final String SWIPER_CONTAINER_RESOURCETYPE = "etisalat/components/swipercontainer";
 	
 	/**
 	 * The current request.
@@ -150,6 +157,21 @@ public class TileModel {
 		this.linkURL = linkURL;
 	}
 
+
+	/**
+	 * @return the validDateText
+	 */
+	public String getValidDateText() {
+		return validDateText;
+	}
+
+	/**
+	 * @param validDateText the validDateText to set
+	 */
+	public void setValidDateText(String validDateText) {
+		this.validDateText = validDateText;
+	}
+	
 	/**
 	 * Returns tile box container layout option.
 	 * @return
@@ -157,7 +179,8 @@ public class TileModel {
 	public String getTileBoxContainerLayout() {		
 		Resource tileContainerResource = currentResource.getParent();
 		if (null != tileContainerResource
-				&& tileContainerResource.getResourceType().equals("etisalat/components/tilecontainer")) {
+				&& (tileContainerResource.getResourceType().equals(TILE_CONTAINER_RESOURCETYPE) ||
+						tileContainerResource.getResourceType().equals(SWIPER_CONTAINER_RESOURCETYPE))) {
               return tileContainerResource.getValueMap().get("tileBoxLayout",StringUtils.EMPTY);
 		}
 		return StringUtils.EMPTY;
@@ -177,4 +200,5 @@ public class TileModel {
 		}
 		return StringUtils.EMPTY;
 	}
+
 }
