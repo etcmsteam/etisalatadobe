@@ -5,11 +5,18 @@
 .basicpage .container-sm,
 .basicpage .container-xl,
 .basicpage .container-xxl {
-  margin: $margin-step-0;
+  // margin: $margin-step-0;
   width: 100%;
   padding: $padding-step-0;
 }
-
+[lang=ar] [dir=rtl]   .main-carousel {
+  .hero-heading-big{
+    right: 0;
+  }
+  .btn-green{
+    right: 0;
+  }
+}
 .main-carousel {
   .cmp-carousel {
     &__actions {
@@ -194,14 +201,14 @@
           left: toRem(18);
           top: toRem(336);
           width: toRem(180);
-          margin-top: $margin-step-0;
+          margin-top: calc(#{$margin-step-2} + 4px);
         }
       }
       .hero-heading-big {
         margin-top: toRem(15);
         @include respond-to-min($desktop) {
           left: toRem(15);
-          top: toRem(60);
+          top: toRem(48);
           margin-top: toRem(60);
         }
         @include respond-to-max($desktop) {
@@ -212,6 +219,9 @@
               color: $white;
             }
           }
+        }
+        h1{
+          margin: $margin-step-0;
         }
       }
     }
