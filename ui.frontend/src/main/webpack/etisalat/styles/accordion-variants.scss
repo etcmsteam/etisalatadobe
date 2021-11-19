@@ -1,3 +1,47 @@
+[lang=ar] [dir=rtl] .cmp-accordion__title {
+float: right;
+text-align: right;
+}
+
+[lang=ar] [dir=rtl] .strip-accordion  .cmp-accordion__title:after  {
+	@include respond-to-max($tablet){
+	float: left;
+	}
+	@include respond-to-min($desktop){
+		margin-left: 0.5rem;
+	}
+}
+[lang=ar] [dir=rtl] .line-accordion, .cmp-accordion--tab {
+	 .cmp-accordion__icon {
+	left: 0;
+	right: auto;
+	@include respond-to-max($tablet){
+		margin-left: 0;
+	}
+	margin-left: 36px;
+	margin-right: 0;
+	}
+}
+[lang=ar] [dir=rtl] .line-accordion .cmp-accordion__title{
+	padding-left: 5.5rem;
+	padding-right: 0;
+}
+[lang=ar] [dir=rtl] .line-accordion .cmp-accordion__panel--expanded {
+	left: 0;
+	margin-left: 0;
+	width: 100%;
+}
+[lang=ar] [dir=rtl] .green-list{
+	.cmp-list__item-title:after{
+		margin-right: 10px;
+		transform: translateY(-50%) rotate(-135deg);
+	}
+	span.more,
+	span.less {
+		float: left;
+		text-align: left;
+	}
+} 
 .strip-accordion {
 	h3 {
 		vertical-align: middle;
@@ -19,6 +63,9 @@
 		font-weight: 700;
 		line-height: 1.5;
 		color: $almost-black;
+		[lang=ar] [dir=rtl] {
+			font-weight: normal;
+		}
 	}
 	.cmp-rte-text {
 		padding-left: 0px;
@@ -49,6 +96,7 @@
 			float: right;
 		}
 	}
+	
 	.cmp-accordion__button--expanded .cmp-accordion__title {
 		&:after {
 			content: " - ";
@@ -70,6 +118,7 @@
 }
 
 //Simple line accordion
+
 .line-accordion{
 	.cmp-accordion__item {
 		display: block;
@@ -124,6 +173,8 @@
 			margin-right: 36px;
 		}
 	}
+	
+	
 	.cmp-accordion{
 	&__button{
 		border-bottom: 1px solid $light-sand-brown;
@@ -223,6 +274,8 @@
 			border-width: 0 2px 2px 0;
 		}
 	}
+	
+	
 	.cmp-accordion__button--expanded .cmp-accordion__icon {
 		transform: translateY(-20%) rotate(-135deg);
 		-webkit-transform: translateY(-20%) rotate(-135deg);
@@ -348,10 +401,15 @@
 }
 
 //accordion with child accordion as list 
+
 .green-list {
-	margin-left: auto;
-	margin-right: auto;
-	width: 860px;
+	width: 100%;
+	@include respond-to-min($desktop){
+		margin-left: auto;
+		margin-right: auto;
+		width: 860px;
+	}
+	
 	.cmp-list {
 		margin-top: 65px;
 	}

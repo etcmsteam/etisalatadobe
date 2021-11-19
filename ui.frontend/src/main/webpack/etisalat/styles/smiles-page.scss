@@ -94,7 +94,6 @@
 		margin-bottom: 0;
 		display: flex;
 		flex-wrap: wrap;
-		padding: 0 0.5rem;
 		align-items: center;
 		@include respond-to-min($desktop) {
 			margin-bottom: 2rem;
@@ -116,11 +115,14 @@
 		-ms-flex-pack: center;
 		justify-content: center;
 		overflow: hidden;
-		margin-top: 2rem;
+		margin-top: $margin-step-4;
 		@include respond-to-min($desktop) {
-			margin-top: -32px;
+			margin-top: -$margin-step-4;
 			height: 460px;
 		}
+		@include respond-to-max($phone){
+			margin-top: -$margin-step-4;	
+		 }
 		img {
 			width: auto;
 			z-index: 11;
