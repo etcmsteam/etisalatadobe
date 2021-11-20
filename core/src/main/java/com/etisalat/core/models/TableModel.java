@@ -25,12 +25,11 @@ import java.util.*;
 
 public class TableModel {
 
-    public static final String RTE = "rte";
-    public static final String CSV = "csv";
-    public static final String ALL = "_all";
-    public static final String TRUE = "true";
-    public static final String EQUAL_DELIMITER = "=";
-    public static final String COMMA_DELIMITER = ",";
+    private static final String RTE = "rte";
+    private static final String ALL = "_all";
+    private static final String TRUE = "true";
+    private static final String EQUAL_DELIMITER = "=";
+    private static final String COMMA_DELIMITER = ",";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TableModel.class);
 
@@ -47,12 +46,20 @@ public class TableModel {
     private String csvPath;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-    private String filterCsvPath;
+    private String simplecsvPath;
 
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String filterCsvPath;
 
     @SlingObject
     ResourceResolver resourceResolver;
 
+
+    /**
+     * Gets sorting.
+     *
+     * @return the sorting
+     */
     public String getSorting() {
         if (tableSource.equals(RTE) && doSorting.equals(TRUE)) {
             return ALL;
@@ -60,57 +67,47 @@ public class TableModel {
         return "[]";
     }
 
-    public List<String> getHeaderList() {
+    /**
+     * Gets header list from csv where there is filter data attributes. This method is only to create th for table.
+     *
+     * @return the header list
+     */
+    public List<String> getHeaderListForChannelsTable() {
         List<String> headerList = new ArrayList<>();
-        try {
-            final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
-            if (!resource.isPresent()) { // if the resource doesn't exists
-                LOGGER.error("While reading the header the resource doesn't exists at the path {}",
-                        csvPath);
-                return headerList;
-            }
-
-            Asset asset = resource.get().adaptTo(Asset.class);
-            Rendition rendition = asset.getOriginal();
-            InputStream inputStream = rendition.adaptTo(InputStream.class);
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+        Rendition rendition = getAsset(csvPath);
+        if (rendition != null) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
+                String line;
+                while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
                     String[] values = line.split(COMMA_DELIMITER);
                     headerList = Arrays.asList(values);
-                break;
-            }
+                    break;
+                }
 
-        } catch (IOException e) {
-            LOGGER.error("The exception occurred in getting header while reading table csv {}",
-                    csvPath);
+            } catch (IOException e) {
+                LOGGER.error("The exception occurred in getting header while reading table csv {}",
+                        csvPath);
+            }
         }
+
 
         return headerList;
     }
 
-    public List<LinkedHashMap<String, String>> getAllRows() {
-
+    /**
+     * Gets all rows. This will read all rows except table header. Applicable for channels table.
+     *
+     * @return the all rows
+     */
+    public List<LinkedHashMap<String, String>> getAllRowsForChannelsTable() {
         List<LinkedHashMap<String, String>> rows = new ArrayList<>();
-
-        final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
-
-        if (!resource.isPresent()) { // if the resource doesn't exists
-            LOGGER.error("The resource doesn't exists at the path {}",
-                    csvPath);
-            return rows;
-        }
-
-        try {
-            Asset asset = resource.get().adaptTo(Asset.class);
-            Rendition rendition = asset.getOriginal();
-            InputStream inputStream = rendition.adaptTo(InputStream.class);
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            int j = 1;
-            while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-                String[] values = line.split(COMMA_DELIMITER);
-                if (j > 1) {
+        Rendition rendition = getAsset(csvPath);
+        if (rendition != null) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
+                String line;
+                line = br.readLine(); // this will read the first line (to ignore csv header)
+                while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {//loop will run from 2nd line
+                    String[] values = line.split(COMMA_DELIMITER);
                     LinkedHashMap<String, String> row = new LinkedHashMap<>();
                     for (int i = 0; i < values.length; i = i + 2) {
                         String key = values[i];
@@ -122,42 +119,72 @@ public class TableModel {
                     }
                     rows.add(row);
                 }
-                j++;
+            } catch (IOException e) {
+                LOGGER.error("The exception occurred while reading table csv {}",
+                        csvPath);
             }
-        } catch (IOException e) {
-            LOGGER.error("The exception occurred while reading table csv {}",
-                    csvPath);
         }
         return rows;
     }
 
-    public Map<String, String> getCategories() {
-        return getFilters(0);
-    }
 
-    public Map<String, String> getLanguages() {
-        return getFilters(1);
-    }
+    /**
+     * Read the filters csv for channels table
+     *
+     * @return all the filters from csv
+     */
 
-    public Map<String, String> getPackages() {
-        return getFilters(2);
-    }
-
-    private LinkedHashMap<String, String> getFilters(int index) {
-        LinkedHashMap<String, String> row = new LinkedHashMap<>();
-        try {
-            final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(filterCsvPath));
-            if (!resource.isPresent()) { // if the resource doesn't exists
-
-                LOGGER.error("The resource doesn't exists at the path {}",
+    public Map<String, Map<String, String>> getAllFiltersForChannelsTable() {
+        LinkedHashMap<String, Map<String, String>> map = new LinkedHashMap<>();
+        Rendition rendition = getAsset(filterCsvPath);
+        if (rendition != null) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
+                String line;
+                while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+                    String[] cols = line.split(COMMA_DELIMITER);
+                    for (int index = 0; index < cols.length; index++) {
+                        map.put(getRadioButtonProperty(cols[index]), getFilters(index, rendition));
+                    }
+                    break;
+                }
+            } catch (IOException e) {
+                LOGGER.error("The exception occurred while reading filter csv {}",
                         filterCsvPath);
-                return row;
             }
+        }
 
-            Asset asset = resource.get().adaptTo(Asset.class);
-            Rendition rendition = asset.getOriginal();
-            InputStream inputStream = rendition.adaptTo(InputStream.class);
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+
+        return map;
+    }
+
+    /**
+     * Gets all rows for simple csv where there is no data attributes for filtering or sorting. Normal tables.
+     *
+     * @return the all rows simple csv
+     */
+    public List<List<String>> getAllRowsSimpleCSV() {
+        List<List<String>> headerList = new ArrayList<>();
+        Rendition rendition = getAsset(simplecsvPath);
+        if (rendition != null) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
+                String line;
+                while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
+                    String[] values = line.split(COMMA_DELIMITER);
+                    headerList.add(Arrays.asList(values));
+                }
+
+            } catch (IOException e) {
+                LOGGER.error("The exception occurred in getting header while reading table csv {}",
+                        csvPath);
+            }
+        }
+
+        return headerList;
+    }
+
+    private LinkedHashMap<String, String> getFilters(int index, Rendition rendition) {
+        LinkedHashMap<String, String> row = new LinkedHashMap<>();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
             String line;
             while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
                 String[] cols = line.split(COMMA_DELIMITER);
@@ -176,6 +203,27 @@ public class TableModel {
                     filterCsvPath);
         }
         return row;
+    }
+
+
+    private String getRadioButtonProperty(String string) {
+        if (string.contains(EQUAL_DELIMITER)) {
+            return string.split(EQUAL_DELIMITER)[1];
+        }
+        return string;
+    }
+
+    private Rendition getAsset(String csvPath) {
+        Rendition rendition = null;
+        final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
+        if (!resource.isPresent()) { // if the resource doesn't exists
+            LOGGER.error("The resource doesn't exists at the path {}", csvPath);
+        } else {
+            Asset asset = resource.get().adaptTo(Asset.class);
+            rendition = asset.getOriginal();
+
+        }
+        return rendition;
     }
 
 }
