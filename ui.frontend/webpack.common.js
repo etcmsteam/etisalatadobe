@@ -3,7 +3,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin')
@@ -31,33 +30,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            options: {
-              eslintPath: require.resolve('eslint'),
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-          {
-            loader: 'ts-loader',
-          },
-          {
-            loader: 'glob-import-loader',
-            options: {
-              resolve: resolve,
-            },
-          },
-        ],
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
           'babel-loader',
           {
             loader: 'eslint-loader',
+            options: {
+              failOnError: false,
+              emitWarning: true,
+            },
           },
           {
             loader: 'glob-import-loader',
@@ -81,7 +63,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins() {
-                return [require('autoprefixer')]
+                return [require('autoprefixer')];
               },
             },
           },
@@ -140,4 +122,4 @@ module.exports = {
     source: false,
     warnings: true,
   },
-}
+};
