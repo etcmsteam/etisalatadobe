@@ -743,10 +743,10 @@
       text-decoration: underline !important;
     }
     .cmp-tabs__tabpanel {
-      width: 51%;
+      width: 49%;
     }
     .cmp-tabs__tab {
-      margin-top: 1rem;
+      margin-top: $margin-step-2;
       font-size: $font18;
     }
 
@@ -788,14 +788,14 @@
       display: none;
     }
     .cmp-tabs__tab {
-      svg {
-        height: 40px;
-        width: 35px;
+      svg,img {
+        height: toRem(40);
+        width: toRem(35);
         margin-right: calc(#{$margin-step-1} + 2px);
         @include respond-to-min($tablet) {
           float: left;
-          height: 30px;
-          width: 32px;
+          height: toRem(30);
+          width: toRem(32);
           margin-right: calc(#{$margin-step-4} + 4px);
           fill: inherit;
         }
@@ -820,6 +820,7 @@
     }
     .cmp-tabs__tablist {
       width: 50%;
+      padding-left:calc(#{$padding-step-2} + 4px);
     }
 
     .cmp-teaser__image {
@@ -868,8 +869,8 @@
       *[lang="ar"] *[dir="rtl"] & {
         font-weight: get-font-weight("light");
       }
-      font-size: $font20;
-      @include font-family-lato;
+      font-size: $font18;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
   }
 
@@ -1011,7 +1012,6 @@
 .cmp_tabs__verticle_view_img .cmp-tabs__tab--active:after {
   border: none;
 }
-
 @include respond-to-max($tablet) {
   .cmp_tabs__verticle_view_img .nav-view-wrapp span img {
     width: toRem(35);
