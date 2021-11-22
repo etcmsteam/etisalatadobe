@@ -3,7 +3,7 @@ $(document).ready(function () {
   initSwiper = function () {
  
     //edc-tabs-wrapper
-    $(document).find('.cmp_tabs__horizontal_with_years .edc-tabs-wrapper').each(function (index) {
+    $(document).find('.edc-tabs-wrapper').each(function (index) {
         $(this).addClass('edc-swiper-tabs'+index);
         var $swiperTabsParent = $(this);
         $swiperTabsParent.find('.swiper-button-next').addClass('r'+index);
@@ -36,8 +36,6 @@ $(document).ready(function () {
        
 
       });
-
-
 
      
 
