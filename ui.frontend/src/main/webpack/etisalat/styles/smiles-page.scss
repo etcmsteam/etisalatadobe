@@ -1,11 +1,11 @@
 .smiles-page {
-	min-height: 525px;
-	max-height: 525px;
+	min-height: toRem(525);
+	max-height: toRem(600);
 	position: relative;
 	@include respond-to-min($desktop) {
-		max-height: 420px;
-		min-height: 420px;
-		margin-top: 20px;
+		max-height: toRem(420);
+		min-height: toRem(420);
+		margin-top: calc(#{$margin-step-3} - 4px);
 		&:before {
 			content: "";
 			background: url("../resources/images/sectionbg.svg") no-repeat;
@@ -115,13 +115,15 @@
 		-ms-flex-pack: center;
 		justify-content: center;
 		overflow: hidden;
-		margin-top: $margin-step-4;
 		@include respond-to-min($desktop) {
 			margin-top: -$margin-step-4;
-			height: 460px;
+			height: toRem(460);
 		}
-		@include respond-to-max($phone){
-			margin-top: -$margin-step-4;	
+		@include respond-to-max($tablet){
+			margin-top: $margin-step-0;	
+		 }
+		 @include respond-to-max($phone){
+			margin-top: $margin-step-4;
 		 }
 		img {
 			width: auto;
