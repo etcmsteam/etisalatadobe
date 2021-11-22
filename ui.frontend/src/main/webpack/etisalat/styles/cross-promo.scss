@@ -1,68 +1,12 @@
-//cross promo banner
+//cross promo banner st
 .cross-promotion-plain {
   border-radius: toRem(8);
   position: relative;
-  .cmp-teaser__action-container {
-    width: toRem(282);
-    margin-top: toRem(-98);
-    float: left;
-    margin-right: toRem(59);
-    border: 1px solid $white;
-    border-radius: toRem(4);
-    border-width: toRem(1);
-    text-align: center;
-
-    *[lang="ar"] *[dir="rtl"] & {
-      left: toRem(38);
-      right: auto;
-      margin-right: 0;
-    }
-
-    @include respond-to-min($desktop) {
-      float: right;
-      position: absolute;
-      right: toRem(54);
-      height: toRem(50);
-      margin-top: toRem(-25);
-      top: 50%;
-    }
-    a {
-      font-size: $font14;
-      @include font-family-lato;
-      font-weight: 700;
-      letter-spacing: toRem(3) !important;
-      text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
-      color: $white;
-      white-space: nowrap;
-    }
-  }
-
-  .cmp-teaser__action-container:after {
-    clear: both;
-  }
-
-  .cmp-teaser__description {
-    h4 {
-      margin-top: 0;
-      font-size: $font28;
-      @include respond-to-max($tablet) {
-        font-size: $font24;
-      }
-    }
-    width: 100%;
-
-    @include respond-to-max($tablet) {
-      width: 100%;
-    }
-  }
   .cmp-teaser {
+    border-radius: toRem(8);
     @include respond-to-min($desktop) {
       flex-direction: row;
       padding: toRem(48);
-      padding-top: toRem(48);
-      padding-bottom: toRem(48);
-      align-items: center;
     }
 
     @include respond-to-max($tablet) {
@@ -73,270 +17,16 @@
       padding: toRem(16);
     }
 
-    .cmp-teaser__title {
-      margin-bottom: toRem(16);
-      margin-top: 0;
+    &__title {
+      margin: 0 0 1.5rem;
       line-height: toRem(34);
       font-size: $font24;
       @include respond-to-max($tablet) {
         font-size: $font22;
       }
     }
-  }
-
-  .cmp-teaser:before,
-  .cmp-teaser:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background: url("../resources/images/promo_pattern_top.svg") left 0 no-repeat;
-    background-size: contain;
-    opacity: 0.7;
-    left: 0px;
-  }
-  .cmp-teaser:before {
-    @include respond-to-max($phone) {
-      width: toRem(130);
-      height: toRem(130);
-      left: 0;
-    }
-  }
-  .cmp-teaser:after {
-    content: "";
-    right: auto;
-    left: 0;
-    transform: rotate(180deg);
-    @include respond-to-max($phone) {
-      display: none;
-    }
-  }
-
-  a.cmp-teaser__title-link {
-    font-size: $font24;
-    margin-bottom: toRem(16);
-    margin-top: 0;
-  }
-
-  .cmp-teaser__description p {
-    font-size: 1rem;
-    line-height: 1.5;
-    @include font-family-lato;
-    @include respond-to-max($tablet) {
-      font-size: $font14;
-    }
-  }
-
-  .cmp-teaser__content {
-    display: block;
-    width: 100%;
-    @include respond-to-max($tablet) {
-      display: flex;
-      flex-direction: column;
-    }
-    @include respond-to-min($desktop) {
-      width: 55%;
-    }
-    @include respond-to-min($desktop-wide) {
-      width: 33%;
-    }
-  }
-
-  .cmp-link__arrow {
-    color: $white;
-    font-size: $font14;
-    position: absolute;
-    top: 50%;
-    height: toRem(20);
-    margin-top: toRem(-10);
-    right: toRem(120);
-    z-index: 1;
-    *[lang="ar"] *[dir="rtl"] & {
-      left: toRem(38);
-      right: auto;
-    }
-
-    @include respond-to-max($tablet) {
-      font-size: $font12;
-      left: 0;
-      bottom: toRem(-3);
-      margin-top: toRem(20);
-      position: relative;
-    }
-
-    &:before,
-    &:after {
-      border: solid $white;
-      border-width: 0 toRem(1) toRem(1) 0;
-      color: $white;
-    }
-
-    a {
-      color: $white;
-    }
-  }
-}
-
-@include respond-to-max($tablet) {
-  .cross-promotion-plain {
-    .cmp-teaser__action-container {
-      margin-top: toRem(20);
-      padding: toRem(18);
-      border: 1px solid $white;
-      border-radius: toRem(4);
-      border-width: toRem(1);
-      text-align: center;
-      min-width: toRem(282);
-      width: 100%;
-      margin: 1rem auto;
-
-      @include respond-to-min($desktop) {
-        min-width: toRem(282);
-      }
-
-      @include respond-to-max($tablet) {
-        margin: 16px 0 0 0;
-      }
-
-      @include respond-to-max($phone) {
-        min-width: 100%;
-        width: 100%;
-      }
-    }
-    .cmp-teaser__action-container a {
-      font-size: $font14;
-      @include font-family-lato;
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
-      color: $white;
-      letter-spacing: toRem(2);
-      outline: 0;
-    }
-  }
-}
-
-@include respond-to-min($desktop) {
-  .cross-promotion-plain .cmp-teaser__action-container {
-    border: 1px solid $white;
-    border-radius: toRem(4);
-    border-width: toRem(1);
-    text-align: center;
-    min-width: toRem(282);
-    width: toRem(282);
-    max-width: toRem(282);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    a {
-      color: $white;
-      z-index: 4;
-      position: relative;
-      display: block;
-      padding: toRem(18);
-      min-width: toRem(282);
-      max-width: toRem(282);
-    }
-  }
-}
-
-//new code
-.cmp-teaser__two__col {
-  border-radius: toRem(4);
-  position: relative;
-  .cmp-teaser {
-    padding: toRem(48);
-    border-radius: toRem(4);
-    position: relative;
-    &:after {
-      background: url(../resources/images/promo_pattern_top.svg) left 0 no-repeat;
-      background-size: contain;
-      content: "";
-      height: 100%;
-      opacity: 0.7;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      transform: scaleX(-1);
-      right: 0;
-    }
-
-    @include respond-to-max($tablet) {
-      margin-right: 1rem;
-    }
-
-    &__content {
-      padding: 2rem;
-      margin-bottom: 0px;
-      @include respond-to-max($tablet) {
-        margin-bottom: 0px;
-        padding: 2rem 1rem 1.5rem 1rem;
-      }
-      @include respond-to-max($phone) {
-        margin-bottom: 0px;
-        padding: 1rem;
-      }
-    }
-
-    &__title {
-      @include respond-to-max($tablet) {
-        line-height: 32px;
-        font-size: $font24;
-        color: $white;
-      }
-
-      font-size: $font28;
-      line-height: 34px;
-      margin: 0 0 1rem 0;
-      color: $white;
-
-      &__title-link {
-        margin: 0;
-        color: $white;
-        font-size: 24px;
-
-        @include respond-to-max($tablet) {
-          padding: 0;
-          margin: 0;
-          font-size: $font20;
-        }
-
-        a {
-          color: $white;
-        }
-      }
-    }
-
     &__description {
       width: 100%;
-
-      @include respond-to-max($tablet) {
-        color: $white;
-        width: 100%;
-      }
-
-      .cmp-link__arrow {
-        color: $white;
-        font-size: $font14;
-        @include respond-to-max($tablet) {
-          font-size: $font12;
-        }
-
-        &:before,
-        &:after {
-          border: solid $white;
-          border-width: 0 1px 1px 0;
-          color: $white;
-        }
-
-        a {
-          color: $white;
-        }
-      }
-    }
-
-    .cmp-teaser__description {
       h4 {
         margin-top: 0;
         font-size: $font28;
@@ -344,133 +34,164 @@
           font-size: $font24;
         }
       }
-      width: 100%;
-
-      @include respond-to-max($tablet) {
-        width: 100%;
-      }
-
       p {
-        margin: 1rem 0 2rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        @include font-family-lato;
         @include respond-to-max($tablet) {
-          margin: 1rem 0 0;
+          font-size: $font14;
         }
+      }
+      a.cmp-teaser__title-link {
+        font-size: $font24;
+        margin-bottom: toRem(16);
+        margin-top: 0;
+      }
+    }
+
+    &__content {
+      display: block;
+      width: 100%;
+      @include respond-to-max($tablet) {
+        display: flex;
+        flex-direction: column;
+      }
+      @include respond-to-min($desktop) {
+        width: 50%;
+      }
+      @include respond-to-min($desktop-wide) {
+        width: 33%;
       }
     }
 
     &__action-container {
-      text-align: center;
-      width: toRem(282);
-      border: 1px solid $white;
-      border-radius: 4px;
-      position: relative;
+      position: absolute;
       z-index: 2;
+      right: toRem(102);
+      *[lang="ar"] *[dir="rtl"] & {
+        left: 6.375rem;
+        right: auto;
+        margin-right: 0;
+        @include respond-to-max($tablet) {
+          left: 0;
+        }
+      }
+      &::after {
+        clear: both;
+      }
+      @include respond-to-max($tablet) {
+        min-width: 100%;
+        width: 100%;
+        position: relative;
+        right: 0;
+      }
+    }
 
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      background: url("../resources/images/promo_pattern_top.svg") left 0 no-repeat;
+      background-size: contain;
+      opacity: 0.7;
+      left: 0;
+    }
+    &:before {
       @include respond-to-max($phone) {
-        width: 105%;
+        width: toRem(130);
+        height: toRem(130);
+        left: 0;
       }
-
-      a {
-        color: $white;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        padding: toRem(16);
-        display: block;
-        font-size: $font14;
-        @include font-family-lato;
-        font-weight: 700;
-      }
+    }
+    &:after {
+      content: "";
+      right: auto;
+      left: 0;
     }
   }
 
-  .cmp-teaser:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background: url("../resources/images/promo_pattern_top.svg") left 0 no-repeat;
-    background-size: contain;
-    opacity: 0.7;
-    right: 0;
-    transform: scaleX(-1);
-  }
-
-  .cmp-container {
-    > .aem-Grid {
-      display: block;
-
+  &.link__arrow {
+    .cmp-teaser__action-container {
       @include respond-to-min($desktop) {
-        display: flex;
+        height: toRem(20) !important;
+        margin-top: toRem(-10) !important;
+        top: 50%;
       }
-
-      .container:first-child {
-        margin-right: toRem(12);
-      }
-
-      .container:last-child {
-        margin-left: 0;
-
-        @include respond-to-min($desktop) {
-          margin-left: 12px;
+      &:after {
+        @include respond-to-max($tablet) {
+          right: auto !important;
         }
       }
     }
+    @include respond-to-max($tablet) {
+      position: relative;
+      right: 0;
+    }
   }
 
-  .container {
-    border-radius: 8px;
+  &.button--transparent {
+    .cmp-teaser__action-container {
+      @include respond-to-min($desktop) {
+        height: toRem(50);
+        margin-top: toRem(-25);
+        top: 50%;
+        width: 280px;
+      }
+      @include respond-to-max($tablet) {
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &.button--secondary {
+    .cmp-teaser__action-container {
+      @include respond-to-min($desktop) {
+        height: toRem(50);
+        margin-top: toRem(-25);
+        top: 50%;
+        width: 280px;
+      }
+      @include respond-to-max($tablet) {
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &.button--primary {
+    .cmp-teaser__action-container {
+      @include respond-to-min($desktop) {
+        height: toRem(50);
+        margin-top: toRem(-25);
+        top: 50%;
+        width: 280px;
+      }
+      @include respond-to-max($tablet) {
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+    }
   }
 }
+//cross-promo en
 
-//cross promo full bleed
+//cross promo full bleed st
 .tile-teaser {
   width: 100vw !important;
   position: relative;
   margin-left: -50vw;
   left: 50%;
-
-  .cmp-teaser__action-container {
-    @include respond-to-min($desktop) {
-      bottom: 88px;
-      position: absolute;
-    }
-  }
-
-  .cmp-teaser__image {
-    position: relative;
-
-    .cmp-image__image {
-      min-height: 170px;
-
-      @include respond-to-min($tablet) {
-        min-height: 408px;
-      }
-      @include respond-to-min($desktop) {
-        position: absolute;
-        left: -9999px;
-        right: -9999px;
-        top: -9999px;
-        bottom: -9999px;
-        margin: auto;
-        min-width: 100%;
-        min-height: 100%;
-      }
-    }
-    @include respond-to-min($desktop) {
-      min-height: 426px;
-      width: toRem(476);
-      min-width: toRem(476);
-    }
-
-    @include respond-to-min($desktop-wide) {
-      width: toRem(690);
-      min-width: toRem(690);
-    }
-  }
   .cmp-teaser {
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 toRem(16);
     width: 100%;
     @include respond-to-min($tablet) {
       width: toRem(756);
@@ -482,170 +203,193 @@
     @include respond-to-min($desktop-wide) {
       width: toRem(1224);
     }
-  }
-  .cmp-teaser__content {
-    position: relative;
-    width: 100%;
-    padding: toRem(16) 0;
-
-    @include respond-to-min($desktop) {
-      width: 50%;
-      padding: toRem(64) 0px;
-      height: auto;
-    }
-
-    @include respond-to-max($tablet) {
-      width: 100%;
-    }
-
-    .cmp-teaser__pretitle {
-      font-size: $font14;
-      line-height: 20px;
-      @include font-family-lato;
-      margin-bottom: toRem(4);
-      font-weight: 700;
-      letter-spacing: 4px;
-      display: inline-block;
-      text-transform: uppercase;
-      color: $white;
-
-      @include respond-to-max($tablet) {
-        font-size: $font12;
-      }
-    }
-
-    .cmp-teaser__title {
-      font-size: 32px;
+    &__title {
+      font-size: $font32;
       margin: 0 0 toRem(24) 0;
-      line-height: 40px;
-      color: $white;
-
+      line-height: toRem(40);
       @include respond-to-max($tablet) {
         font-size: $font28;
         margin-bottom: 1rem;
       }
     }
 
-    .cmp-teaser__description {
-      font-size: $font16;
-      line-height: 26px;
-      color: $white;
+    &__image {
+      position: relative;
+
+      .cmp-image__image {
+        min-height: toRem(170);
+
+        @include respond-to-min($tablet) {
+          min-height: toRem(408);
+        }
+        @include respond-to-min($desktop) {
+          position: absolute;
+          left: toRem(-9999);
+          right: toRem(-9999);
+          top: toRem(-9999);
+          bottom: toRem(-9999);
+          margin: auto;
+          min-width: 100%;
+          min-height: 100%;
+        }
+      }
+      @include respond-to-min($desktop) {
+        min-height: toRem(426);
+        width: toRem(476);
+        min-width: toRem(476);
+      }
+
+      @include respond-to-min($desktop-wide) {
+        width: toRem(690);
+        min-width: toRem(690);
+      }
+    }
+    &__content {
+      position: relative;
       width: 100%;
+      padding: 1rem 0 1.5rem 0;
 
       @include respond-to-min($desktop) {
-        padding-bottom: toRem(50);
+        width: 50%;
+        padding: toRem(64) 0;
+        height: auto;
       }
 
-      a {
-        color: $white;
-        margin-bottom: 1.5rem;
-        margin-top: 0;
-        font-size: $font32;
-        line-height: 40px;
-
-        @include respond-to-max($tablet) {
-          font-size: $font28;
-          margin-bottom: 1rem;
-        }
+      @include respond-to-max($tablet) {
+        width: 100%;
       }
 
-      p {
+      &__pretitle {
+        font-size: $font14;
+        line-height: toRem(20);
         @include font-family-lato;
-        @include respond-to-max($tablet) {
-          line-height: 20px;
-          margin-bottom: toRem(12);
-          font-size: $font14;
-        }
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 2rem 0 1rem 2rem;
-        margin-bottom: 3rem;
-
-        @include respond-to-min($desktop) {
-          padding: 1rem 0 1.25rem 2rem;
-        }
-
-        @include respond-to-max($tablet) {
-          padding: 0.75rem 1rem 1rem;
-        }
-
-        li {
-          color: $white;
-          font-size: $font16;
-          line-height: 24px;
-          padding-left: 1.5rem;
-          margin-bottom: toRem(4);
-          color: $white;
-          *[lang="ar"] *[dir="rtl"] & {
-            font-weight: 300;
-          }
-          @include font-family-lato;
-
-          @include respond-to-max($tablet) {
-            font-size: $font14;
-            line-height: 20px;
-          }
-        }
-      }
-
-      .cmp-link__arrow {
-        color: $white;
+        margin-bottom: toRem(4);
+        font-weight: 700;
+        letter-spacing: toRem(4);
         display: inline-block;
-        bottom: 0px;
-        position: relative;
+        text-transform: uppercase;
+        color: $white;
+
         @include respond-to-max($tablet) {
           font-size: $font12;
         }
-
-        @include respond-to-min($desktop) {
-          bottom: toRem(88);
-          position: absolute;
-        }
-
-        &:before,
-        &:after {
-          border: solid $white;
-          border-width: 0 1px 1px 0;
-          color: $white;
-        }
       }
-    }
-
-    .cmp-teaser__action-container {
-      a {
-        display: table;
-        letter-spacing: 2px;
+      &__description {
+        font-size: $font16;
+        line-height: toRem(26);
         color: $white;
-        cursor: pointer;
-        text-transform: uppercase;
-        @include font-family-lato;
-        font-size: $font14;
-        line-height: toRem(45);
-        position: relative;
-        font-weight: 700;
-        border: 1px solid $white;
-        border-radius: 4px;
-        text-align: center;
-        min-width: toRem(180);
-        padding: 0 toRem(8);
-        width: toRem(180);
-        max-width: toRem(180);
-        box-sizing: border-box;
-        white-space: nowrap;
-        height: toRem(47);
-        @include respond-to-max($phone) {
-          width: 100%;
-          box-sizing: inherit;
-          min-width: 100%;
-          max-width: 100%;
+        width: 100%;
+        a {
+          color: $white;
+          margin-bottom: 1.5rem;
+          margin-top: 0;
+          font-size: $font32;
+          line-height: toRem(40);
+          @include respond-to-max($tablet) {
+            font-size: $font28;
+            margin-bottom: 1rem;
+          }
+        }
+
+        p {
+          @include font-family-lato;
+          font-size: $font14;
+          line-height: 1.5rem;
+          margin-bottom: 0.75rem;
+          @include respond-to-max($desktop) {
+            font-size: $font16;
+          }
+        }
+
+        ul {
+          list-style-type: none;
+          padding: 2rem 0 1rem 2rem;
+
+          @include respond-to-min($desktop) {
+            padding: 1rem 0 1.25rem 2rem;
+          }
+
+          @include respond-to-max($tablet) {
+            padding: 0.75rem 1rem 1rem;
+          }
+
+          li {
+            color: $white;
+            font-size: $font16;
+            line-height: toRem(24);
+            padding-left: 1.5rem;
+            margin-bottom: toRem(4);
+            color: $white;
+            *[lang="ar"] *[dir="rtl"] & {
+              font-weight: 300;
+            }
+            @include font-family-lato;
+
+            @include respond-to-max($tablet) {
+              font-size: $font14;
+              line-height: toRem(20);
+            }
+          }
         }
       }
     }
 
-    .cmp-teaser__content {
-      width: 100%;
+    &__description {
+      ul {
+        position: relative;
+        list-style-type: none;
+        li {
+          padding-left: 1.5rem;
+          position: relative;
+          color: $white;
+          font-size: toRem(14);
+          line-height: toRem(24);
+          margin: 0;
+          margin-bottom: toRem(4);
+          *[lang="ar"] *[dir="rtl"] & {
+            padding-right: 1.5rem;
+          }
+          &::before {
+            content: "";
+            width: toRem(4);
+            height: toRem(4);
+            border-radius: 50%;
+            background-color: $steel-grey;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: toRem(10);
+            *[lang="ar"] *[dir="rtl"] & {
+              left: auto;
+              right: 0;
+            }
+          }
+        }
+      }
+    }
+    &__action-container {
+      display: table;
+      letter-spacing: toRem(2);
+      cursor: pointer;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin: 24px 0;
+      @include font-family-lato;
+      font-size: $font14;
+      line-height: toRem(48);
+      position: relative;
+      border: 1px solid $white;
+      border-radius: toRem(4);
+      padding: 0 toRem(12);
+      box-sizing: inherit;
+      a {
+        color: $white;
+      }
+      *[lang="ar"] *[dir="rtl"] & {
+        left: auto;
+        margin-right: 0;
+        right: 0;
+      }
     }
   }
 
@@ -727,197 +471,78 @@
     }
   }
 
-  .cmp-teaser__description ul {
-    position: relative;
-    li {
-      padding-left: 1.5rem;
-      position: relative;
-      color: $white;
-      font-size: 14px;
-      line-height: 24px;
-      margin: 0;
-      margin-bottom: 4px;
-      *[lang="ar"] *[dir="rtl"] & {
-        padding-right: 1.5rem;
-      }
-      &::before {
-        content: "";
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background-color: $steel-grey;
-        display: block;
+  .link__arrow {
+    .cmp-teaser__action-container {
+      @include respond-to-min($desktop) {
         position: absolute;
-        left: 0;
-        top: toRem(10);
-        *[lang="ar"] *[dir="rtl"] & {
-          left: auto;
-          right: 0;
-        }
+        right: 0;
+        margin-top: 0 !important;
+        bottom: 0 !important;
       }
     }
   }
+
+  &.button--primary {
+    .cmp-teaser__action-container {
+      width: toRem(180);
+      max-width: 100%;
+      min-width: 100%;
+    }
+  }
+
+  &.button--transparent {
+    .cmp-teaser__action-container {
+      width: toRem(180);
+      max-width: 100%;
+      min-width: 100%;
+    }
+  }
+
+  &.button--secondary {
+    .cmp-teaser__action-container {
+      width: toRem(180);
+      max-width: 100%;
+      min-width: 100%;
+    }
+  }
 }
+//cross promo full bleed en
 
 //teaser background pattern
 .teaser--pattern__bg {
-  .cmp-teaser {
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    border-radius: 5px;
-    position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  position: relative;
 
-    &:after,
-    &:before {
-      background: url(../resources/images/promo_pattern_top.svg) left 0 no-repeat;
-      background-size: contain;
-      content: "";
-      height: 100%;
-      left: 0;
-      opacity: 0.7;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
+  &:after,
+  &:before {
+    background: url(../resources/images/promo_pattern_top.svg) left 0 no-repeat;
+    background-size: contain;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
-    &:after {
-      content: "";
-      left: 0;
-      right: auto;
-      transform: scaleX(-1);
-    }
+  &:after {
+    content: "";
+    left: 0;
+    right: auto;
+    transform: scaleX(-1);
+    display: none;
   }
 }
 
-.teaser_sibling_2 {
-  .cmp-teaser {
-    padding: 16px;
-
-    @include respond-to-min($tablet) {
-      padding: 24px 16 16px 16px;
-    }
-    @include respond-to-min($desktop) {
-      padding: toRem(32);
-    }
-
-    .cmp-teaser__action-container {
-      clear: both;
-      display: inline-block;
-      position: inherit;
-      float: none;
-      padding: 0 0 0 -5.5rem;
-      @include respond-to-min($desktop) {
-        width: 15rem;
-        min-width: 15rem;
-      }
-    }
-
-    &:before {
-      display: none;
-    }
-
-    .cross-promotion-plain .cmp-teaser:after {
-      transform: scaleX(-1);
-    }
-
-    .cmp-teaser__title {
-      margin-bottom: 0rem;
-      @include respond-to-min($desktop) {
-        margin-bottom: 2rem;
-      }
-    }
-    @include respond-to-min($tablet) {
-      .cmp-teaser__content {
-        width: 100%;
-      }
-    }
-  }
-}
-
-.teaser_sibling_3 {
-  .cmp-teaser {
-    padding: toRem(16);
-    @include respond-to-min($tablet) {
-      padding: 24px 16 16px 16px;
-    }
-    @include respond-to-min($desktop) {
-      padding: toRem(32);
-    }
-
-    .cmp-teaser__action-container {
-      clear: both;
-      display: inline-block;
-      position: inherit;
-      float: none;
-      @include respond-to-min($desktop) {
-        width: 15rem;
-        min-width: 15rem;
-      }
-    }
-
-    &:before {
-      display: none;
-    }
-    .cross-promotion-plain .cmp-teaser:after {
-      transform: scaleX(-1);
-    }
-
-    .cmp-teaser__title {
-      margin-bottom: 0rem;
-      @include respond-to-min($desktop) {
-        margin-bottom: 2rem;
-      }
-    }
-    @include respond-to-min($tablet) {
-      .cmp-teaser__content {
-        width: 100%;
-      }
-    }
-  }
-}
-
-.default-color.cross-promotion-plain {
-  .cmp-teaser__action-container a {
-    color: $dark-gray;
-  }
-}
-.default-color.cross-promotion-plain {
+.cmp-teaser--default-bg.cross-promotion-plain {
   .cmp-teaser__action-container {
     border: 1px solid $dark-gray;
-  }
-}
-
-.gutter_24 {
-  padding-right: toRem(24);
-  @include respond-to-max($phone) {
-    padding-right: 0px;
-  }
-}
-
-@include respond-to-min($desktop) {
-  .teaser_sibling_2:nth-of-type(1) {
-    padding-right: 12px !important;
-  }
-  .teaser_sibling_2:nth-of-type(2) {
-    padding-left: 12px !important;
-  }
-
-  .teaser_sibling_3:nth-of-type(1) {
-    padding-right: 0.8rem !important;
-  }
-  .teaser_sibling_3:nth-of-type(2) {
-    padding-left: 0.4em !important;
-    padding-right: 0.4em !important;
-  }
-  .teaser_sibling_3:nth-of-type(3) {
-    padding-left: 0.8rem !important;
-  }
-
-  .teaser_sibling.two-clumn {
-    padding-left: toRem(12) !important;
-    padding-right: 0 !important;
-    @include respond-to-max($phone) {
-      padding-left: 0 !important;
+    @include secondary-button;
+    width: toRem(282) !important;
+    a {
+      color: $dark-gray;
     }
   }
 }
@@ -928,6 +553,7 @@
       margin-left: toRem(24);
       *[lang="ar"] *[dir="rtl"] & {
         margin-right: toRem(24);
+        margin-left: 0;
       }
     }
   }
@@ -936,7 +562,192 @@
       margin-right: toRem(24);
       *[lang="ar"] *[dir="rtl"] & {
         margin-left: toRem(24);
+        margin-right: 0;
       }
+    }
+  }
+}
+
+.button--primary {
+  .cmp-teaser__action-container {
+    @include secondary-button;
+    background-color: $main-green;
+    border-color: $main-green;
+    white-space: nowrap;
+    a {
+      color: $white;
+    }
+    &:hover {
+      background-color: $green-btn;
+      border-color: $green-btn;
+    }
+
+    @include respond-to-max($phone) {
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+}
+
+.button--secondary {
+  .cmp-teaser__action-container {
+    @include secondary-button;
+    background-color: $white;
+    text-align: $white;
+    border-color: $white;
+    border-style: solid;
+    white-space: nowrap;
+    a {
+      color: $almost-black;
+    }
+
+    @include respond-to-max($phone) {
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+}
+
+.button--transparent {
+  .cmp-teaser__action-container {
+    @include secondary-button;
+    width: toRem(282);
+    background-color: transparent;
+    text-align: $white;
+    border-color: $white;
+    border-style: solid;
+    white-space: nowrap;
+    a {
+      color: $white;
+    }
+
+    @include respond-to-max($phone) {
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+}
+
+.link__arrow {
+  .cmp-teaser__action-container {
+    font-size: $font14;
+    padding-right: 0.75rem;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    display: inline-block;
+    border: 0;
+
+    a {
+      color: $white;
+      *[lang="ar"] *[dir="rtl"] & {
+        padding-left: toRem(10);
+      }
+    }
+    &:after {
+      @include link-arrow;
+      border: solid $white;
+      top: toRem(6);
+      border-width: 0 1px 1px 0;
+      position: absolute;
+      padding: toRem(3.25);
+      right: 0 !important;
+      left: auto !important;
+      *[lang="ar"] *[dir="rtl"] & {
+        left: -1rem;
+        right: auto !important;
+        top: toRem(10);
+        transform: translateY(-50%) rotate(135deg);
+      }
+    }
+  }
+}
+
+$prefix: "cmp-teaser";
+.cmp-teaser--multicol {
+  .#{$prefix}--purpal-bg {
+    background: none;
+  }
+  .#{$prefix}--purpal-bg .#{$prefix} {
+    background: get-background-gredient(purpal-bg);
+  }
+  .#{$prefix}--green-bg {
+    background: none;
+  }
+  .#{$prefix}--green-bg .#{$prefix} {
+    background: get-background-gredient(green-bg);
+  }
+  .#{$prefix}--orange-bg {
+    background: none;
+  }
+  .#{$prefix}--orange-bg .#{$prefix} {
+    background: get-background-gredient(orange-bg);
+  }
+  .#{$prefix}--aqua-green-bg {
+    background: none;
+  }
+  .#{$prefix}--aqua-green-bg .#{$prefix} {
+    background: get-background-gredient(aqua-green-bg);
+  }
+  .#{$prefix}--aqua-bg {
+    background: none;
+  }
+  .#{$prefix}--aqua-bg .#{$prefix} {
+    background: get-background-gredient(aqua-bg);
+  }
+  .cmp-teaser {
+    @include respond-to-min($tablet) {
+      padding: toRem(24) toRem(16) toRem(16) toRem(16);
+    }
+    @include respond-to-min($desktop) {
+      padding: toRem(32);
+    }
+
+    &__content {
+      width: 100%;
+      *[lang="ar"] *[dir="rtl"] & {
+        width: 100%;
+      }
+    }
+    &__action-container {
+      position: relative;
+      right: 0;
+      max-width: 100%;
+      *[lang="ar"] *[dir="rtl"] & {
+        left: 0;
+        margin-right: 0;
+        right: auto;
+        position: relative;
+      }
+    }
+
+    @include respond-to-min($tablet) {
+      &__content {
+        width: 100%;
+      }
+    }
+    &:after {
+      transform: scaleX(-1);
+    }
+    &:before {
+      display: none;
+    }
+  }
+
+  @include respond-to-min($desktop) {
+    .aem-GridColumn {
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  @include respond-to-max($tablet) {
+    .cross-promotion-plain {
+      padding: 0;
     }
   }
 }
