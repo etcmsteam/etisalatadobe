@@ -6,8 +6,8 @@
   }
 
   .cmp-image__image {
-    width: auto;
     max-width: 100%;
+    width: auto;
   }
 
   &__content {
@@ -22,6 +22,8 @@
     .cmp-text {
       h4 {
         @include ts-step-0;
+        margin-bottom: $margin-step-2;
+        margin-top: $margin-step-0;
 
         @include respond-to-min($tablet) {
           @include ts-step-2;
@@ -30,9 +32,6 @@
         @include respond-to-min($desktop) {
           @include ts-step-3;
         }
-
-        margin-top: $margin-step-0;
-        margin-bottom: $margin-step-2;
       }
 
       .space-left {
@@ -62,11 +61,11 @@
     }
 
     .cmp-teaser {
-      display: flex;
-      justify-content: center;
       align-items: center;
-      flex-direction: row-reverse;
       border-bottom: $border-step-1 solid $light-sand-brown;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
 
       &__content {
         color: $almost-black;
@@ -76,8 +75,7 @@
       &__title {
         @include ts-step-3;
         @include font-family-Neotech;
-        margin-top: 0;
-        margin-bottom: toRem(16);
+        margin: 0 toRem(16) 0;
       }
 
       &__description {
@@ -86,13 +84,15 @@
       }
 
       &__image {
-        min-width: toRem(160);
-        max-width: toRem(160);
-        margin-left: toRem(10);
         margin-bottom: toRem(12);
-        *[lang='ar'] *[dir='rtl'] & {
+        margin-left: toRem(10);
+        max-width: toRem(160);
+        min-width: toRem(160);
+
+        *[lang="ar"] *[dir="rtl"] & {
           margin-right: toRem(10);
         }
+
         .cmp-image__image {
           width: 100%;
         }
