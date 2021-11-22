@@ -2,8 +2,11 @@
 .cross-promotion-plain {
   border-radius: toRem(8);
   position: relative;
+  padding: 0;
+
   .cmp-teaser {
     border-radius: toRem(8);
+
     @include respond-to-min($desktop) {
       flex-direction: row;
       padding: toRem(48);
@@ -18,22 +21,27 @@
     }
 
     &__title {
-      margin: 0 0 1.5rem;
-      line-height: toRem(34);
       font-size: $font24;
+      line-height: toRem(34);
+      margin: 0 0 1.5rem;
+
       @include respond-to-max($tablet) {
         font-size: $font22;
       }
     }
+
     &__description {
       width: 100%;
+
       h4 {
-        margin-top: 0;
         font-size: $font28;
+        margin-top: 0;
+
         @include respond-to-max($tablet) {
           font-size: $font24;
         }
       }
+
       p {
         font-size: 1rem;
         line-height: 1.5;
@@ -102,15 +110,24 @@
     }
     &:before {
       @include respond-to-max($phone) {
-        width: toRem(130);
-        height: toRem(130);
-        left: 0;
+        display: none;
       }
     }
     &:after {
       content: "";
       right: auto;
       left: 0;
+    }
+    * {
+      color: $white;
+    }
+  }
+
+  &.cmp-teaser--default-bg {
+    background: get-background-gredient(default-bg);
+    *,
+    a {
+      color: $dark-gray;
     }
   }
 
@@ -191,14 +208,18 @@
   left: 50%;
   .cmp-teaser {
     margin: 0 auto;
-    padding: 0 toRem(16);
+    padding: 0;
     width: 100%;
     @include respond-to-min($tablet) {
       width: toRem(756);
-      padding: 0 toRem(12);
+      padding: 0 16px 0 4px;
+      *[lang="ar"] *[dir="rtl"] & {
+        padding: 0 4px 0 16px;
+      }
     }
     @include respond-to-min($desktop) {
       width: toRem(976);
+      padding: 0 toRem(12);
     }
     @include respond-to-min($desktop-wide) {
       width: toRem(1224);
@@ -504,6 +525,9 @@
       max-width: 100%;
       min-width: 100%;
     }
+  }
+  * {
+    color: $white;
   }
 }
 //cross promo full bleed en
