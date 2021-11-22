@@ -1,27 +1,18 @@
-$primary-color: #2199e8;
-$secondary-color: #777777;
-$success-color: #3adb76;
-$warning-color: #ffae00;
-$alert-color: #ec5840;
 $light-gray: #f3f3f3;
-$medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
-$darkblack:  #000000;
-//added for location
-$almost-black:#353738;
-$legend-color: #333;
-$link-color:  #7da830;
+$darkblack: #000000;
+$almost-black: #353738;
+$link-color: #7da830;
 $link-hover-color: darken($link-color, 15%);
-$link-hover-decoration: underline;
+
 //** Link hover decoration.
 
-$white: #ffffff;
-$pre-color: #ff6908;
-$pink:	 #fb193f;
-$red:   #b3170c;
-$error-red: #BE1218;
-$alert-red:  #fdeeef;
+$white: #fff;
+$pink: #fb193f;
+$red: #b3170c;
+$error-red: #be1218;
+$alert-red: #fdeeef;
 $global-width: 496px;
 $global-width-small: 95%;
 $global-gutter: 16px;
@@ -40,27 +31,27 @@ $global-breakpoint: $global-width + $global-gutter;
 $base-font-size: 16px;
 $font-size-base: 14px;
 //** Unit-less `line-height` for use in components like buttons.
-$line-height-base:        1.428571429; // 20/14
+$line-height-base: 1.428571429; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-$line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
+$line-height-computed: floor(($font-size-base * $line-height-base)); // ~20px
 //=== Shared nav styles
 $nav-link-padding: 10px 15px;
-$gray-base:           #919192;;
-$nav-link-hover-bg:  lighten($gray-base, 93.5%);
-$dark-gray:           #242424;
-$dark-sand-brown:     #393c3a;
-$sand-brown:          #c1b792;
-$sand-white:          #f1f1eb;
-$black-grey:        #3c485e;
-$grey-bottom:       #e6e6e6;
-$gray-primary:          #5A637C;
-$grey-select:           #aaa;
-$green-btn:             #5f8515;
-$main-green:            #769a2f;
-$grey-secondary:        #ccd3e6;
-$nav-blue:              #202e4d;
+$gray-base: #919192;
+$nav-link-hover-bg: lighten($gray-base, 93.5%);
+$dark-gray: #242424;
+$dark-sand-brown: #393c3a;
+$sand-brown: #c1b792;
+$sand-white: #f1f1eb;
+$black-grey: #3c485e;
+$grey-bottom: #e6e6e6;
+$gray-primary: #5a637c;
+$grey-select: #aaa;
+$green-btn: #5f8515;
+$main-green: #769a2f;
+$grey-secondary: #ccd3e6;
+$nav-blue: #202e4d;
 $blue-secondary: #2a5082;
-$blue-grey:     #e3e3ed;
+$blue-grey: #e3e3ed;
 $font-family-base: 'Georgia, "Times New Roman", Times, serif';
 
 $screen-ms: 541px;
@@ -71,7 +62,7 @@ $chatboatbg: #719e19;
 $chatbotgray: #fbfbfb;
 
 //**Font size
-$font11:0.6875rem;
+$font11: 0.6875rem;
 $font12: 0.75rem;
 $font14: 0.875rem;
 $font16: 1rem;
@@ -86,5 +77,27 @@ $font20: 1.25rem;
 $font28: 1.75rem;
 $font10: 0.625rem;
 $font30: 1.875rem;
-$font64:4rem;
-$font48:3rem;
+$font64: 4rem;
+$font48: 3rem;
+
+@mixin respond-to-max($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+@mixin respond-to-min($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+//sm
+$phone-xs: 380px;
+//sm
+$phone: 576px;
+//md
+$tablet: 768px;
+//lg
+$desktop: 992px;
+//xl
+$desktop-wide: 1200px;

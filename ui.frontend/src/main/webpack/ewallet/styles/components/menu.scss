@@ -1,0 +1,95 @@
+/* menu */
+
+nav {
+  position: static;
+  margin-top: 25px;
+  ul {
+    background: none;
+    float: right;
+    &.main-nav__list{
+      float: left;
+    }
+    li {
+      float: left;
+      padding: 0 15px;
+      &.active {
+        border: none;
+        a {
+          border: 1px solid $white;
+          font-weight: bold;
+          border-radius: 4px;
+        }
+      }
+      a {
+        border: 0;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 20px;
+        &:hover {
+          border-bottom: 2px solid $white;
+          color: $white;
+          padding-bottom: 10px;
+          text-decoration: none;
+        }
+      }
+    }
+    &:second-child{
+      float: right;
+    }
+  }
+}
+
+/* menu icon */
+
+.menu__icon {
+  cursor: pointer;
+  display: block;
+  float: right;
+  position: relative;
+  outline: none;
+  ::selection {
+    background: none;
+  }
+  .hamburger {
+    background: #fff;
+    display: block;
+    height: 1px;
+    position: relative;
+    transition: background 0.2s ease-out;
+    width: 30px;
+    margin-right: 17px;
+    margin-top: -13px;
+    &::before,
+    &::after {
+      background: #fff;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      // transition: all .5s ease-out;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      margin-right: 40px;
+    }
+  }
+}
+
+/* menu checkbox */
+
+.menu__checkbox {
+  opacity: 0;
+}
+
+//mobile view en
+
+// //desktop view
+@media (min-width: 49em) {
+  .menu__icon,
+  .menu__checkbox,
+  .hamburger {
+    display: none;
+  }
+}
