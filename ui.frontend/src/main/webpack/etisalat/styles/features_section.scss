@@ -1,561 +1,594 @@
 // btn with border around
 .btn-wit-border {
-    border: 1px solid $white;
-    border-radius: 4px;
-    padding: $padding-step-1 $padding-step-4;
-    text-align: center;
-    width: auto;
+  border: 1px solid $white;
+  border-radius: 4px;
+  padding: $padding-step-1 $padding-step-4;
+  text-align: center;
+  width: auto;
 }
 
 //class name feature-watch
 //aem authoring name Feature Watch
 .feature-watch {
+  @include respond-to-min($tablet) {
+    margin-bottom: 7rem !important;
+    max-height: 293px;
+    min-height: 293px;
+  }
+
+  @include respond-to-min($desktop) {
+    margin-bottom: 50px !important;
+    max-height: 468px;
+    min-height: 468px;
+  }
+
+  .cmp-image__image {
     @include respond-to-min($tablet) {
-        min-height: 293px;
-        max-height: 293px;
-        margin-bottom: 7rem !important;
+      height: 371px;
+      margin-left: -30px;
+      margin-top: 16px;
+      width: 297px;
     }
+
     @include respond-to-min($desktop) {
-        min-height: 468px;
-        max-height: 468px;
-        margin-bottom: 50px !important;
+      height: 479px;
+      margin-left: 0;
+      margin-top: 36px;
+      width: 384px;
     }
-    .cmp-image__image {
+  }
+
+  .cmp_btn {
+    margin: 0;
+
+    img {
+      @include respond-to-min($tablet) {
+        height: 29px;
+        margin: 60px 0 16px;
+      }
+
+      @include respond-to-min($desktop) {
+        height: 36px;
+        margin: 140px 0 32px;
+      }
+    }
+  }
+
+  .cmp-text {
+    @include respond-to-min($tablet) {
+      width: 340px;
+    }
+
+    @include respond-to-min($desktop) {
+      width: 588px;
+    }
+
+    h4 {
+      @include respond-to-min($tablet) {
+        font-size: $font28;
+        line-height: 34px;
+        margin: 75px 0 16px;
+      }
+
+      @include respond-to-min($desktop) {
+        font-size: $font32;
+        line-height: 40px;
+        margin: 160px 0 32px;
+      }
+    }
+
+    p {
+      @include respond-to-min($tablet) {
+        font-size: $font14;
+        line-height: 20px;
+        margin-bottom: 16px;
+      }
+
+      @include respond-to-min($desktop) {
+        font-size: $font16;
+        margin-bottom: 24px;
+      }
+
+      .cmp-link__arrow_left {
         @include respond-to-min($tablet) {
-            margin-top: 16px;
-            width: 297px;
-            height: 371px;
-            margin-left: -30px;
+          padding-left: $padding-step-0;
+          padding-right: $padding-step-1;
         }
+
         @include respond-to-min($desktop) {
-            height: 479px;
-            width: 384px;
-            margin-top: 36px;
-            margin-left: 0;
+          font-size: $font14;
+          line-height: 20px;
+          padding-right: calc(#{$padding-step-1} + 4px);
         }
+      }
+
+      .cmp-button--secondary {
+        min-width: 280px;
+      }
+    }
+  }
+
+  .cmp-container {
+    margin: 0 auto;
+    padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
+    width: 100%;
+
+    @include respond-to-min($tablet) {
+      width: 756px;
     }
 
-    .cmp_btn {
-        margin: 0;
-
-        img {
-            @include respond-to-min($tablet) {
-                height: 29px;
-                margin: 60px 0 16px 0;
-            }
-            @include respond-to-min($desktop) {
-                height: 36px;
-                margin: 140px 0 32px 0;
-            }
-        }
+    @include respond-to-min($desktop) {
+      width: 1224px;
     }
-
-    .cmp-text {
-        @include respond-to-min($tablet) {
-            width: 340px;
-        }
-        @include respond-to-min($desktop) {
-            width: 588px;
-        }
-
-        h4 {
-            @include respond-to-min($tablet) {
-                font-size: $font28;
-                line-height: 34px;
-                margin: 75px 0 16px 0;
-            }
-            @include respond-to-min($desktop) {
-                font-size: $font32;
-                line-height: 40px;
-                margin: 160px 0 32px 0;
-            }
-        }
-        p {
-            @include respond-to-min($tablet) {
-                font-size: $font14;
-                line-height: 20px;
-                margin-bottom: 16px;
-            }
-            @include respond-to-min($desktop) {
-                margin-bottom: 24px;
-                font-size: $font16;
-            }
-
-            .cmp-link__arrow_left {
-                @include respond-to-min($tablet) {
-                    padding-right: $padding-step-1;
-                    padding-left: $padding-step-0;
-                }
-                @include respond-to-min($desktop) {
-                    font-size: $font14;
-                    line-height: 20px;
-                    padding-right: calc(#{$padding-step-1} + 4px);
-                }
-            }
-
-            .cmp-button--secondary {
-                min-width: 280px;
-            }
-        }
-    }
-
-    .cmp-container {
-        margin: 0 auto;
-        width: 100%;
-        padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
-
-        @include respond-to-min($tablet) {
-            width: 756px;
-        }
-        @include respond-to-min($desktop) {
-            width: 1224px;
-        }
-    }
+  }
 }
 
 @include respond-to-max($phone) {
-    .feature-watch {
-        padding-top: $padding-step-3 !important;
-        min-height: 374px;
-        max-height: 374px;
-        margin-bottom: 11rem !important;
-        .image {
-            .cmp-image__image {
-                height: 283px;
-                width: 240px;
-                margin-left: 1.5rem;
-            }
-        }
+  .feature-watch {
+    margin-bottom: 11rem !important;
+    max-height: 374px;
+    min-height: 374px;
+    padding-top: $padding-step-3 !important;
 
-        .cmp_btn {
-            margin: 0;
-
-            img {
-                height: 29px;
-                margin-bottom: 24px;
-            }
-        }
-
-        .cmp-text {
-            position: relative;
-
-            h4 {
-                font-size: 28px;
-                line-height: 34px;
-                margin: 0 0 24px 0;
-            }
-            p {
-                font-size: 14px;
-                margin-bottom: 16px;
-
-                .cmp-link__arrow_left {
-                    position: absolute;
-                    top: 400px;
-                    right: 70px;
-                }
-
-                .cmp-button--secondary {
-                    width: 100%;
-                    position: absolute;
-                    top: 460px;
-                }
-            }
-        }
-
-        .cmp-container {
-            margin: 0 auto;
-            width: 100%;
-            padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
-        }
+    .image {
+      .cmp-image__image {
+        height: 283px;
+        margin-left: 1.5rem;
+        width: 240px;
+      }
     }
+
+    .cmp_btn {
+      margin: 0;
+
+      img {
+        height: 29px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .cmp-text {
+      position: relative;
+
+      h4 {
+        font-size: 28px;
+        line-height: 34px;
+        margin: 0 0 24px;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        .cmp-link__arrow_left {
+          position: absolute;
+          right: 70px;
+          top: 400px;
+        }
+
+        .cmp-button--secondary {
+          position: absolute;
+          top: 460px;
+          width: 100%;
+        }
+      }
+    }
+
+    .cmp-container {
+      margin: 0 auto;
+      padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
+      width: 100%;
+    }
+  }
 }
 
 //class name feature-watch-flipped
 //aem authoring name Feature Watch Flipped
 .feature-watch-flipped {
+  @include respond-to-min($tablet) {
+    margin-bottom: 7rem !important;
+    max-height: 293px;
+    min-height: 293px;
+  }
+
+  @include respond-to-min($desktop) {
+    margin-bottom: 50px !important;
+    max-height: 468px;
+    min-height: 468px;
+  }
+
+  .cmp-image__image {
     @include respond-to-min($tablet) {
-        min-height: 293px;
-        max-height: 293px;
-        margin-bottom: 7rem !important;
+      height: 371px;
+      margin-left: -30px;
+      margin-top: 16px;
+      width: 297px;
     }
+
     @include respond-to-min($desktop) {
-        min-height: 468px;
-        max-height: 468px;
-        margin-bottom: 50px !important;
+      height: 479px;
+      margin-left: 0;
+      margin-top: 36px;
+      width: 384px;
     }
-    .cmp-image__image {
+  }
+
+  .cmp_btn {
+    margin: 0;
+
+    img {
+      @include respond-to-min($tablet) {
+        height: 29px;
+        margin: 60px 0 16px;
+      }
+
+      @include respond-to-min($desktop) {
+        height: 36px;
+        margin: 140px 0 32px;
+      }
+    }
+  }
+
+  .cmp-text {
+    @include respond-to-min($tablet) {
+      width: 340px;
+    }
+
+    @include respond-to-min($desktop) {
+      width: 588px;
+    }
+
+    h4 {
+      @include respond-to-min($tablet) {
+        font-size: $font28;
+        line-height: 34px;
+        margin: 75px 0 16px;
+      }
+
+      @include respond-to-min($desktop) {
+        font-size: $font32;
+        line-height: 40px;
+        margin: 160px 0 32px;
+      }
+    }
+
+    p {
+      @include respond-to-min($tablet) {
+        font-size: $font14;
+        line-height: 20px;
+        margin-bottom: 16px;
+      }
+
+      @include respond-to-min($desktop) {
+        font-size: $font16;
+        margin-bottom: 24px;
+      }
+
+      .cmp-link__arrow_left {
         @include respond-to-min($tablet) {
-            margin-top: 16px;
-            width: 297px;
-            height: 371px;
-            margin-left: -30px;
+          padding-left: $padding-step-0;
+          padding-right: $padding-step-1;
         }
+
         @include respond-to-min($desktop) {
-            height: 479px;
-            width: 384px;
-            margin-top: 36px;
-            margin-left: 0;
+          font-size: $font14;
+          line-height: 20px;
+          padding-right: calc(#{$padding-step-1} + 4px);
         }
+      }
+
+      .cmp-button--secondary {
+        min-width: 280px;
+      }
+    }
+  }
+
+  .cmp-container {
+    margin: 0 auto;
+    padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
+    width: 100%;
+
+    @include respond-to-min($tablet) {
+      width: 756px;
     }
 
-    .cmp_btn {
-        margin: 0;
-
-        img {
-            @include respond-to-min($tablet) {
-                height: 29px;
-                margin: 60px 0 16px 0;
-            }
-            @include respond-to-min($desktop) {
-                height: 36px;
-                margin: 140px 0 32px 0;
-            }
-        }
+    @include respond-to-min($desktop) {
+      width: 1224px;
     }
-
-    .cmp-text {
-        @include respond-to-min($tablet) {
-            width: 340px;
-        }
-        @include respond-to-min($desktop) {
-            width: 588px;
-        }
-
-        h4 {
-            @include respond-to-min($tablet) {
-                font-size: $font28;
-                line-height: 34px;
-                margin: 75px 0 16px 0;
-            }
-            @include respond-to-min($desktop) {
-                font-size: $font32;
-                line-height: 40px;
-                margin: 160px 0 32px 0;
-            }
-        }
-        p {
-            @include respond-to-min($tablet) {
-                font-size: $font14;
-                line-height: 20px;
-                margin-bottom: 16px;
-            }
-            @include respond-to-min($desktop) {
-                margin-bottom: 24px;
-                font-size: $font16;
-            }
-
-            .cmp-link__arrow_left {
-                @include respond-to-min($tablet) {
-                    padding-right: $padding-step-1;
-                    padding-left: $padding-step-0;
-                }
-                @include respond-to-min($desktop) {
-                    font-size: $font14;
-                    line-height: 20px;
-                    padding-right: calc(#{$padding-step-1} + 4px);
-                }
-            }
-
-            .cmp-button--secondary {
-                min-width: 280px;
-            }
-        }
-    }
-
-    .cmp-container {
-        margin: 0 auto;
-        width: 100%;
-        padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
-
-        @include respond-to-min($tablet) {
-            width: 756px;
-        }
-        @include respond-to-min($desktop) {
-            width: 1224px;
-        }
-    }
+  }
 }
 
 @include respond-to-max($phone) {
-    .feature-watch-flipped {
-        padding-top: $padding-step-3 !important;
-        min-height: 374px;
-        max-height: 374px;
-        margin-bottom: 11rem !important;
-        .image {
-            .cmp-image__image {
-                height: 283px;
-                width: 240px;
-                margin-left: 1.5rem;
-            }
-        }
-
-        .cmp_btn {
-            margin: 0;
-
-            img {
-                height: 29px;
-                margin-bottom: 24px;
-            }
-        }
-
-        .cmp-text {
-            position: relative;
-
-            h4 {
-                font-size: 28px;
-                line-height: 34px;
-                margin: 0 0 24px 0;
-            }
-            p {
-                font-size: 14px;
-                margin-bottom: 16px;
-
-                .cmp-link__arrow_left {
-                    position: absolute;
-                    top: 400px;
-                    right: 70px;
-                }
-
-                .cmp-button--secondary {
-                    width: 100%;
-                    position: absolute;
-                    top: 460px;
-                }
-            }
-        }
-
-        .cmp-container {
-            margin: 0 auto;
-            width: 100%;
-            padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
-
-            .aem-Grid {
-                display: flex;
-                flex-direction: column-reverse;
-            }
-        }
-
-        .flipped {
-            .aem-Grid {
-                display: flex;
-                flex-direction: column;
-            }
-        }
+  .feature-watch-flipped {
+    margin-bottom: 11rem !important;
+    max-height: 374px;
+    min-height: 374px;
+    padding-top: $padding-step-3 !important;
+    
+    .image {
+      .cmp-image__image {
+        height: 283px;
+        margin-left: 1.5rem;
+        width: 240px;
+      }
     }
+
+    .cmp_btn {
+      margin: 0;
+
+      img {
+        height: 29px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .cmp-text {
+      position: relative;
+
+      h4 {
+        font-size: 28px;
+        line-height: 34px;
+        margin: 0 0 24px;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        .cmp-link__arrow_left {
+          position: absolute;
+          right: 70px;
+          top: 400px;
+        }
+
+        .cmp-button--secondary {
+          position: absolute;
+          top: 460px;
+          width: 100%;
+        }
+      }
+    }
+
+    .cmp-container {
+      margin: 0 auto;
+      padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
+      width: 100%;
+
+      .aem-Grid {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+
+    .flipped {
+      .aem-Grid {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }
 
 .text--overlap__image {
-    padding: $padding-step-2;
+  padding: $padding-step-2;
 }
 
 .gray--color {
-    color: $gray;
+  color: $gray;
 }
 
 //banner-full-bleed class name
 //Feature Banner Full Bleed aem authoring name
 .banner-full-bleed {
-    @include respond-to-min($desktop) {
-        height: 545px;
+  @include respond-to-min($desktop) {
+    min-height: toRem(523);
+  }
+
+  .cmp-text {
+    margin-bottom: toRem(0);
+    padding-bottom: toRem(44);
+    padding-top: toRem(64);
+    width: toRem(588);
+    
+    @include respond-to-max($tablet) {
+      margin-left: toRem(36);
+      padding-bottom: toRem(65);
+      padding-top: toRem(52);
     }
 
-    .cmp-text {
-        width: 588px;
-        padding-top: calc(#{$padding-step-5} + 24px);
+    @include respond-to-max($phone) {
+      margin-bottom: toRem(50);
+      margin-left: toRem(0);
+      padding-bottom: toRem(0);
+      padding-top: toRem(32);
+    }
+
+    h3 {
+      margin: toRem(0) toRem(0) toRem(40) toRem(0);
+
+      @include respond-to-max($tablet) {
+        margin: toRem(0) toRem(0) toRem(48) toRem(0);
+      }
+
+      @include respond-to-max($phone) {
+        margin: toRem(0) toRem(0) toRem(20) toRem(0);
+      }
+    }
+
+    .body-copy1 {
+      margin-bottom: toRem(16);
+
+      @include respond-to-max($tablet) {
+        margin-bottom: toRem(12);
+        width: toRem(360);
+      }
+
+      @include respond-to-max($phone) {
+        width: toRem(320);
+      }
+    }
+
+    .body-copy2 {
+      font-size: $font20;
+      line-height: toRem(28);
+      margin-bottom: toRem(16);
+
+      @include respond-to-max($tablet) {
+        font-size: $font16;
+        line-height: toRem(24);
+        margin-bottom: toRem(12);
+      }
+    }
+
+    .font--number {
+      @include font-family-Neotech;
+      line-height: toRem(32);
+      padding-right: toRem(8);
+
+      @include respond-to-max($tablet) {
+        font-size: $font28;
+      }
+    }
+
+    ul {
+      @include respond-to-min($desktop) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      li {
+        font-size: $font20;
+        margin-bottom: toRem(10);
+        padding: toRem(0);
+
+        @include respond-to-min($desktop) {
+          flex: 1 0 50%;
+        }
+
         @include respond-to-max($tablet) {
-            padding-top: calc(#{$padding-step-5} + 12px);
-            margin-left: 36px;
+          font-size: $font16;
+          margin-bottom: toRem(8);
         }
-        @include respond-to-max($phone) {
-            margin-bottom: 50px;
-            padding-top: $padding-step-4;
-            margin-left: 0;
-        }
-
-        pre {
-            font-size: $font12;
-            font-weight: 700;
-            @include font-family-lato;
-            letter-spacing: 4px;
-            line-height: 16px;
-            margin-bottom: 8px;
-        }
-
-        h4 {
-            font-size: $font32;
-            font-weight: 400;
-            line-height: 40px;
-            margin: 0 0 2.5rem 0;
-
-            @include respond-to-max($tablet) {
-                font-size: $font28;
-                line-height: 34px;
-                margin: 0 0 3rem 0;
-            }
-            @include respond-to-max($phone) {
-                margin: 0 0 1.25rem 0;
-            }
-        }
-
-        .body-copy1 {
-            font-size: $font32;
-            line-height: 40px;
-            @include font-family-Neotech;
-            padding-right: calc(#{$padding-step-1} - 4px);
-
-            @include respond-to-max($tablet) {
-                font-size: $font28;
-                line-height: 36px;
-                margin-bottom: 8px;
-            }
-        }
-
-        .body-copy2 {
-            font-size: $font20;
-            line-height: 28px;
-            margin-bottom: 1rem;
-
-            @include respond-to-max($tablet) {
-                font-size: $font16;
-                line-height: 24px;
-                margin-bottom: 0.75rem;
-            }
-        }
-
-        ul {
-            @include respond-to-min($desktop) {
-                display: flex;
-                flex-wrap: wrap;
-            }
-
-            li {
-                @include respond-to-min($desktop) {
-                    flex: 1 0 50%;
-                }
-                font-size: $font20;
-                margin-bottom: 10px;
-                padding: $padding-step-0;
-                @include respond-to-max($tablet) {
-                    font-size: $font16;
-                    margin-bottom: 8px;
-                }
-            }
-        }
-
-        sub {
-            font-size: $font12;
-        }
-
-        sup {
-            @include respond-to-max($tablet) {
-                top: -2.5rem;
-            }
-        }
-
-        .cmp-button--primary,.cmp-button--promo,.cmp-button--secondary {
-            width: 288px;
-            position: relative;
-            bottom: 20px;
-            left: 75px;
-
-            @include respond-to-max($tablet) {
-                margin: 24px 0 0;
-                left: -13rem;
-                top: 1rem;
-            }
-
-            @include respond-to-max($phone) {
-                margin: 24px 0 0;
-                left: -205px;
-                top: 16px;
-            }
-        }
+      }
     }
 
-    .text {
-        margin: 0 auto !important;
-        width: 1224px !important;
-        float: none !important;
-        padding: $padding-step-0 calc(#{$padding-step-1} + 4px) !important;
-        @include respond-to-max($phone) {
-            padding: $padding-step-0 $padding-step-2;
-        }
+    sup {
+      top: toRem(-12);
+
+      @include respond-to-max($tablet) {
+        top: toRem(-36);
+      }
     }
 
-    .cmp-container {
-        height: 100%;
-        min-height: 536px;
-        background-size: 100% auto;
-        background-position: top center;
-        @include respond-to-max($tablet) {
-            min-height: 685px;
-        }
-        @include respond-to-max($phone) {
-            min-height: 620px;
-        }
+    .cmp-button--primary,
+    .cmp-button--promo,
+    .cmp-button--secondary {
+      bottom: toRem(25);
+      left: toRem(75);
+      position: relative;
+      width: toRem(288);
+      
+      @include respond-to-max($tablet) {
+        left: toRem(-208);
+        margin: toRem(24) toRem(0) toRem(0);
+        top: toRem(20);
+      }
+
+      @include respond-to-max($phone) {
+        left: toRem(-205);
+      }
     }
+  }
+
+  .text {
+    float: none !important;
+    margin: 0 auto !important;
+    padding: toRem(0) toRem(12) !important;
+    width: 1224px !important;
+
+    @include respond-to-max($phone) {
+      padding: toRem(0) toRem(16);
+    }
+  }
+
+  .cmp-container {
+    background-position: top center;
+    background-size: 100% auto;
+    height: 100%;
+    min-height: toRem(523);
+
+    @include respond-to-max($tablet) {
+      min-height: toRem(685);
+    }
+
+    @include respond-to-max($phone) {
+      min-height: toRem(620);
+    }
+  }
 }
 
 .banner-full-bleed__right {
-   .cmp-text {
+  .cmp-text {
     float: right;
+
     @include respond-to-max($tablet) {
-        margin-right: 16rem;
+      margin-right: toRem(256);
     }
+
     @include respond-to-max($phone) {
-       float: left;
+      float: left;
     }
-   }
+  }
 }
 
 .direction-column {
-    height: 450px;
-    margin-bottom: 13rem;
+  height: 450px;
+  margin-bottom: 13rem;
 
-    .cmp-container {
-        > .aem-Grid {
-            flex-direction: column;
-        }
-
-        .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--phone--5 {
-            width: 70%;
-            margin-top: -3rem;
-
-            @include respond-to-min($desktop) {
-                width: 58.33333333%;
-                margin-top: 0;
-            }
-
-            img {
-                width: 70%;
-                margin-left: 0;
-
-                @include respond-to-max($tablet) {
-                    width: 100%;
-                }
-            }
-        }
-
-        .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--phone--7 {
-            width: 100%;
-        }
-
-        .cmp-text {
-            padding: $padding-step-4;
-            width: 100%;
-        }
+  .cmp-container {
+    > .aem-Grid {
+      flex-direction: column;
     }
+
+    .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--phone--5 {
+      margin-top: -3rem;
+      width: 70%;
+
+      @include respond-to-min($desktop) {
+        margin-top: 0;
+        width: 58.33333333%;
+      }
+
+      img {
+        margin-left: 0;
+        width: 70%;
+
+        @include respond-to-max($tablet) {
+          width: 100%;
+        }
+      }
+    }
+
+    .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--phone--7 {
+      width: 100%;
+    }
+
+    .cmp-text {
+      padding: $padding-step-4;
+      width: 100%;
+    }
+  }
 }
 
 //beigebg--pattern-bg teaser variation
 .beigebg--pattern-bg {
-    .cmp-image__image {
-        position: relative;
-        z-index: 4;
-    }
-    .cmp-container {
-        margin: 0 auto;
-        width: 1224px;
-    }
+  .cmp-image__image {
+    position: relative;
+    z-index: 4;
+  }
+
+  .cmp-container {
+    margin: 0 auto;
+    width: 1224px;
+  }
 }
