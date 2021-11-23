@@ -154,6 +154,9 @@
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
+        *[lang="ar"] *[dir="rtl"] & {
+          right: 0;
+        }
         position: absolute;
       }
 
@@ -170,6 +173,10 @@
     }
 
     .video-wrapper {
+      *[lang="ar"] *[dir="rtl"] & {
+        text-align: right;
+        right: 0;
+      }
       @include respond-to-min($desktop) {
         left: toRem(3);
         top: toRem(65);
@@ -280,6 +287,13 @@
 
   .replaced-svg,
   a.video_link svg {
+    *[lang="ar"] *[dir="rtl"] & {
+      right: 0;
+      float: right;
+      left: 0;
+      margin-left:0.75rem;
+      top: 0;
+    }
     @include respond-to-min($desktop) {
       left: toRem(6);
       position: relative;
@@ -335,6 +349,9 @@
     line-height: 22px;
     margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} - 3.5px) $margin-step-0;
     text-align: left;
+    *[lang="ar"] *[dir="rtl"] & {
+      text-align: right;
+    }
 
     @include respond-to-min($desktop) {
       color: $white;
