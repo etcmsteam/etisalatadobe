@@ -19,49 +19,7 @@
       }
     }
 
-    .cmp-text {
-      h4 {
-        @include ts-step-0;
-        margin-bottom: $margin-step-2;
-        margin-top: $margin-step-0;
-
-        @include respond-to-min($tablet) {
-          @include ts-step-2;
-        }
-
-        @include respond-to-min($desktop) {
-          @include ts-step-3;
-        }
-      }
-
-      .space-left {
-        margin-left: $margin-step-0;
-      }
-
-      p {
-        color: $almost-black;
-        line-height: 1.6;
-        margin-bottom: $margin-step-2;
-      }
-
-      .cmp-link__arrow {
-        @include ts-step-0;
-        letter-spacing: normal;
-        text-transform: capitalize;
-
-        &::before {
-          display: none;
-        }
-      }
-    }
-
-    .text,
-    .image {
-      padding: 0;
-    }
-
     .cmp-teaser {
-      align-items: center;
       border-bottom: $border-step-1 solid $light-sand-brown;
       display: flex;
       flex-direction: row-reverse;
@@ -73,9 +31,17 @@
       }
 
       &__title {
-        @include ts-step-3;
+        @include ts-step-0;
         @include font-family-Neotech;
-        margin: 0 toRem(16) 0;
+        margin: 0 0 toRem(16) 0;
+
+        @include respond-to-min($tablet) {
+          @include ts-step-2;
+        }
+
+        @include respond-to-min($desktop) {
+          @include ts-step-3;
+        }
       }
 
       &__description {
@@ -84,7 +50,6 @@
       }
 
       &__image {
-        margin-bottom: toRem(12);
         margin-left: toRem(10);
         max-width: toRem(160);
         min-width: toRem(160);
@@ -96,6 +61,12 @@
         .cmp-image__image {
           width: 100%;
         }
+      }
+
+      &__action-link {
+        @include ts-step-0;
+        display: inline-block;
+        margin-top: toRem(12.5);
       }
     }
   }
