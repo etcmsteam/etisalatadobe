@@ -652,23 +652,38 @@
   padding: 4px 16px;
   @include respond-to-min($desktop) {
     padding: 14px 12px;
-    
   }
-  .search-input{
+  .search-input {
     margin-bottom: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    @include respond-to-min($tablet) {
+      width: toRem(756);
+      padding-right: toRem(16);
+    }
+    @include respond-to-min($desktop) {
+      padding-left: toRem(12);
+      padding-right: toRem(12);
+      width: toRem(976);
+    }
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1224);
+    }
   }
   .elife-channel-list-header {
     margin-left: auto;
     margin-right: auto;
     @include respond-to-min($tablet) {
       width: 756px;
+      padding-right: toRem(22);
     }
     @include respond-to-min($desktop) {
-      
+      padding-left: toRem(12);
+      padding-right: toRem(12);
       width: 976px;
     }
     @include respond-to-min($desktop-wide) {
-      width: 1224px;
+      width: toRem(1224);
     }
 
     .logo-wrapper,
@@ -914,6 +929,9 @@
       }
     }
   }
+  @include respond-to-max($desktop - 1) {
+    margin-bottom: toRem(16);
+  }
 }
 
 .not-found {
@@ -930,20 +948,20 @@
 
   .icon-wrapp {
     svg {
-      width: 84px;
-      height: 84px;
+      width: toRem(84);
+      height: toRem(84);
       margin-bottom: 20px;
 
       @include respond-to-min($desktop) {
-        width: 120px;
-        height: 120px;
+        width: toRem(120);
+        height: toRem(120);
       }
     }
   }
   .btn {
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-top: 30px;
+    padding-left: toRem(16);
+    padding-right: toRem(16);
+    margin-top: toRem(30);
     @include respond-to-min($tablet) {
       width: auto;
     }
@@ -952,11 +970,11 @@
 
 .channel-list-tabs-wrapper {
   &.elife-channel-list {
-    margin-bottom: 8px;
+    margin-bottom: toRem(8);
     box-shadow: 0 3px 4px 0 #00000033;
 
     @include respond-to-min($desktop) {
-      margin-bottom: 19px;
+      margin-bottom: toRem(19);
       border-top: 1px solid $silver-white;
     }
 
@@ -971,8 +989,8 @@
 
     @include respond-to-max($tablet - 1) {
       .container {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: toRem(16);
+        padding-right: toRem(16);
       }
     }
   }
@@ -981,22 +999,22 @@
 *[lang="ar"] *[dir="rtl"] {
   .elife-channel-list-header .logo-wrapper .logo-link {
     margin-right: 0;
-    margin-left: 8px;
+    margin-left: toRem(8);
 
     @include respond-to-min($desktop) {
       margin-right: 0;
-      margin-left: 40px;
+      margin-left: toRem(40);
     }
   }
 
   .filters-wrapper .filters .filter-lable .icon,
   .filters-wrapper .filters .sort-label .icon {
     margin-right: 0;
-    margin-left: 4px;
+    margin-left: toRem(4);
 
     @include respond-to-min($desktop) {
       margin-right: 0;
-      margin-left: 8px;
+      margin-left: toRem(8);
     }
   }
 
@@ -1005,36 +1023,28 @@
   }
 
   .filter-tags .list-wrapper .clear-all {
-    margin-right: 8px;
+    margin-right: toRem(8);
     margin-left: 0;
 
     @include respond-to-min($desktop) {
-      margin-right: 16px;
+      margin-right: toRem(16);
       margin-left: 0;
     }
   }
 
   .elife-channel-list-header .head-wrapper .search-wrapper .search-close {
     right: auto;
-    left: 16px;
+    left: toRem(16);
   }
 
-  .elife-channel-list-header
-    .head-wrapper
-    .search-wrapper
-    .input-group
-    .input-icon {
+  .elife-channel-list-header .head-wrapper .search-wrapper .input-group .input-icon {
     left: auto;
-    right: 16px;
+    right: toRem(16);
   }
 
-  .elife-channel-list-header
-    .head-wrapper
-    .search-wrapper
-    .input-group
-    .form-control {
-    padding-left: 32px;
-    padding-right: 56px;
+  .elife-channel-list-header .head-wrapper .search-wrapper .input-group .form-control {
+    padding-left: toRem(32);
+    padding-right: toRem(56);
   }
 }
 *[lang="ar"] *[dir="rtl"] .nv-checkboxes-text {

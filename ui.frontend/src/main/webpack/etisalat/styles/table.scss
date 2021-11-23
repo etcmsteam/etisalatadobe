@@ -280,6 +280,10 @@
       .dataTables_wrapper {
         height: 480px;
         overflow: auto;
+        padding-right: 0;
+        @include respond-to-min($desktop) {
+          padding-right: toRem(16);
+        }
       }
     }
 
@@ -288,6 +292,9 @@
 
       @include respond-to-max($desktop - 1) {
         font-size: $font14;
+      }
+      &::before {
+        @include font-family-lato;
       }
     }
 
@@ -302,6 +309,11 @@
     }
 
     &.three-col {
+      .custom-datatable {
+        @include respond-to-max($tablet - 1) {
+          margin: 0px -12px;
+        }
+      }
       thead,
       tbody {
         tr {
@@ -337,27 +349,37 @@
             position: relative;
 
             &:first-child {
-              padding-left: 3.5rem;
+              padding-left: 2.4rem;
+              @include respond-to-min($desktop) {
+                padding-left: 3.5rem;
+              }
 
               &:before {
                 @include respond-to-max($desktop - 1) {
-                  margin-left: -40px;
+                  margin-left: -1.5rem;
                 }
               }
             }
 
             svg,
             img {
-              width: 24px;
-              height: 24px;
               position: absolute;
+              width: 16px;
+              height: 16px;
               left: 1rem;
-              top: 50%;
+              top: 2.75rem;
               min-height: 24px;
               transform: translateY(-50%);
-
+              @include respond-to-min($desktop) {
+                width: 24px;
+                height: 24px;
+                top: 50%;
+              }
+            }
+            &::before {
               @include respond-to-max($desktop - 1) {
-                top: 2.5rem;
+                line-height: 1.33;
+                margin-bottom: 0.5rem;
               }
             }
           }
@@ -391,7 +413,7 @@
       a {
         position: relative;
         color: $arrow-border-green;
-        font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+        @include font-family-lato;
         font-size: 0.875rem;
         line-height: 1.25rem;
         letter-spacing: 1.6px;
@@ -1539,6 +1561,10 @@ table {
 }
 
 .custom-datatable {
+  margin: 0 -4px;
+  @include respond-to-min($tablet) {
+    margin: 0 -12px;
+  }
   .dataTables_info {
     display: none;
     @media (min-width: 1247px) {
@@ -1557,6 +1583,8 @@ table {
     text-align: right;
     padding-top: 0.25em;
     cursor: pointer;
+    display: flex;
+    align-items: center;
     .paginate_button {
       margin: 0 20px;
       color: $steel-grey;
@@ -1578,8 +1606,7 @@ table {
       }
       .pagination-previous,
       .pagination-next {
-        position: absolute;
-        top: 30%;
+        padding-bottom: toRem(2);
       }
     }
   }
