@@ -2,11 +2,8 @@
 .cross-promotion-plain {
   border-radius: toRem(8);
   position: relative;
-  padding: 0;
-
   .cmp-teaser {
     border-radius: toRem(8);
-
     @include respond-to-min($desktop) {
       flex-direction: row;
       padding: toRem(48);
@@ -224,6 +221,7 @@
     @include respond-to-min($desktop-wide) {
       width: toRem(1224);
     }
+
     &__title {
       font-size: $font32;
       margin: 0 0 toRem(24) 0;
@@ -265,6 +263,7 @@
         min-width: toRem(690);
       }
     }
+
     &__content {
       position: relative;
       width: 100%;
@@ -295,81 +294,67 @@
           font-size: $font12;
         }
       }
-      &__description {
-        font-size: $font16;
-        line-height: toRem(26);
-        color: $white;
-        width: 100%;
-        a {
-          color: $white;
-          margin-bottom: 1.5rem;
-          margin-top: 0;
-          font-size: $font32;
-          line-height: toRem(40);
-          @include respond-to-max($tablet) {
-            font-size: $font28;
-            margin-bottom: 1rem;
-          }
-        }
-
-        p {
-          @include font-family-lato;
-          font-size: $font14;
-          line-height: 1.5rem;
-          margin-bottom: 0.75rem;
-          @include respond-to-max($desktop) {
-            font-size: $font16;
-          }
-        }
-
-        ul {
-          list-style-type: none;
-          padding: 2rem 0 1rem 2rem;
-
-          @include respond-to-min($desktop) {
-            padding: 1rem 0 1.25rem 2rem;
-          }
-
-          @include respond-to-max($tablet) {
-            padding: 0.75rem 1rem 1rem;
-          }
-
-          li {
-            color: $white;
-            font-size: $font16;
-            line-height: toRem(24);
-            padding-left: 1.5rem;
-            margin-bottom: toRem(4);
-            color: $white;
-            *[lang="ar"] *[dir="rtl"] & {
-              font-weight: 300;
-            }
-            @include font-family-lato;
-
-            @include respond-to-max($tablet) {
-              font-size: $font14;
-              line-height: toRem(20);
-            }
-          }
-        }
-      }
     }
 
     &__description {
+      font-size: $font16;
+      line-height: toRem(26);
+      color: $white;
+      width: 100%;
+      a {
+        color: $white;
+        margin-bottom: 1.5rem;
+        margin-top: 0;
+        font-size: $font32;
+        line-height: toRem(40);
+        @include respond-to-max($tablet) {
+          font-size: $font28;
+          margin-bottom: 1rem;
+        }
+      }
+
+      p {
+        @include font-family-lato;
+        font-size: $font14;
+        line-height: 1.5rem;
+        margin-bottom: 0.75rem;
+        @include respond-to-max($desktop) {
+          font-size: $font16;
+        }
+      }
+
       ul {
-        position: relative;
         list-style-type: none;
+        padding: 2rem 0 1rem 2rem;
+        position: relative;
+        @include respond-to-min($desktop) {
+          padding: 1rem 0 1.25rem 2rem;
+        }
+
+        @include respond-to-max($tablet) {
+          padding: 0.75rem 1rem 1rem;
+        }
+
         li {
-          padding-left: 1.5rem;
-          position: relative;
           color: $white;
-          font-size: toRem(14);
+          font-size: $font16;
           line-height: toRem(24);
-          margin: 0;
+          padding-left: 1.5rem;
           margin-bottom: toRem(4);
+          color: $white;
+          position: relative;
+
           *[lang="ar"] *[dir="rtl"] & {
+            font-weight: 300;
             padding-right: 1.5rem;
           }
+          @include font-family-lato;
+
+          @include respond-to-max($tablet) {
+            font-size: $font14;
+            line-height: toRem(20);
+          }
+
           &::before {
             content: "";
             width: toRem(4);
@@ -388,6 +373,7 @@
         }
       }
     }
+
     &__action-container {
       display: table;
       letter-spacing: toRem(2);
@@ -720,6 +706,7 @@ $prefix: "cmp-teaser";
     background: get-background-gredient(aqua-bg);
   }
   .cmp-teaser {
+    position: relative;
     @include respond-to-min($tablet) {
       padding: toRem(24) toRem(16) toRem(16) toRem(16);
     }
