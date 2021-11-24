@@ -28,11 +28,6 @@
 	margin-right: 0;
 	}
 }
-[lang="ar"] [dir="rtl"] .line-accordion .cmp-accordion__panel--expanded {
-  left: 0;
-  margin-left: 0;
-  width: 100%;
-}
 [lang="ar"] [dir="rtl"] .green-list {
   .cmp-list__item-title:after {
     margin-right: 10px;
@@ -144,6 +139,10 @@
         padding: 15px 1.5rem;
       }
     }
+	*[lang="ar"] *[dir="rtl"] & {
+		width: 100%;
+		padding-left: 5.5rem;
+	  }
   }
   .cmp-accordion__itemdesc {
     line-height: 1.5;
@@ -156,6 +155,12 @@
       font-size: $font20;
       padding: 5px 1.5rem;
     }
+	*[lang="ar"] *[dir="rtl"] & {
+		float: right;
+		text-align: right;
+		font-weight: get-font-weight("light");
+		padding-left: 6.5rem;
+	  }
   }
   button:focus {
     background-color: transparent;
@@ -198,6 +203,12 @@
     position: relative;
     width: 100vw;
     background-color: $sand-white-50;
+	*[lang="ar"] *[dir="rtl"] & {
+		right: 50%;
+    margin-right: -50vw;
+	left: 0;
+    margin-left: 0;
+	  }
   }
   .cmp-rte-text {
     padding-left: 0px;
@@ -383,6 +394,9 @@
 				justify-content: flex-end;
 				font-size: $font20;
 				@include font-family-Neotech-roboto();
+				*[lang="ar"] *[dir="rtl"] & {
+				@include font-family-Neotech-ge();
+				}
 				box-sizing: border-box;
 				cursor: pointer;
 				color: $almost-black;
