@@ -1,9 +1,134 @@
+%input-base {
+  background-color: transparent !important;
+  border: 0;
+  border-bottom: 1px solid $grey4;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  color: $almost-black;
+  font-size: $font20;
+  margin: 0;
+  min-height: 2.5rem;
+  outline: none;
+  padding: 0;
+  position: relative;
+  transition: border 0.3s;
+  transition: box-shadow 0.3s, border 0.3s;
+  width: 100%;
+
+  label {
+    content: '';
+    display: block;
+    font-size: $font20;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    transition: 0.2s opacity ease-out, 0.2s color ease-out;
+  }
+
+  &:focus {
+    border-bottom: 1px solid $main-green;
+    box-shadow: none;
+    transform-origin: 0 0;
+    z-index: 0;
+
+    ~ label {
+      @include font-family-lato;
+      color: $main-green;
+      font-size: $font16;
+      transform: translateY(-10px) scale(0.8);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+%label-style {
+  color: $steel-grey;
+  font-size: $font14;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 24px;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  transform: translateY(10px);
+  transform-origin: 0 100%;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
+  white-space: nowrap;
+
+  @include respond-to-min($tablet) {
+    font-size: $font20;
+  }
+}
+
+.cmp-form {
+  input {
+    @extend %input-base;
+  }
+
+  .has-error-fields {
+    .has-error ~ label {
+      font-size: $font16;
+      transform: translateY(-10px) scale(0.8);
+      transform-origin: 0 0;
+      z-index: 2;
+    }
+    .cmp-form-text__text {
+      color: $error-red;
+      -webkit-text-fill-color: $error-red;
+    }
+  }
+
+  .intl-error {
+    label {
+      font-size: $font16;
+      transform: translateY(-10px) scale(0.8);
+      transform-origin: 0 0;
+      z-index: 2;
+    }
+  }
+
+  .flag-container {
+    display: none;
+  }
+
+  .iti {
+    &__flag-container {
+      display: none;
+    }
+  }
+
+  .form-group {
+    margin-bottom: $margin-step-2;
+    margin-top: $margin-step-1;
+
+    @include respond-to-min($tablet) {
+      margin-bottom: $margin-step-6;
+    }
+  }
+}
+
 .cmp-form-text {
+  label {
+    @extend %label-style;
+  }
+
   &__text {
     color: $almost-black !important;
+
+    &.valid {
+      ~ label {
+        @include ts-step-0;
+        color: $almost-black;
+        transform: translateY(-10px) scale(0.8);
+        transform-origin: 0 0;
+      }
+    }
   }
 
   &__textarea {
+    outline: 0;
     .cmp-form .is-valid & {
       ~ label {
         transform: translateY(10px) scale(0.8) !important;
@@ -19,10 +144,68 @@
       }
     }
   }
+
+  .error-msg,
+  .valid-msg {
+    color: $error-red;
+    position: absolute;
+    top: toRem(48);
+    z-index: $form-error;
+  }
+
+  .valid-msg {
+    color: $almost-black;
+  }
+
+  .floating-label {
+    @include ts-step-0;
+    color: $almost-black;
+    transform: translateY(-10px) scale(0.8);
+    transform-origin: 0 0;
+  }
 }
 
 .cmp-form-options {
+  margin-bottom: $margin-step-4;
+
+  @include respond-to-min($tablet) {
+    margin-bottom: $margin-step-6;
+  }
+
   &__label {
-    color: $almost-black !important;
+    @extend %label-style;
+    top: toRem(10);
+    transform: none !important;
+
+    &.floating-label {
+      @include ts-step-0;
+      color: $almost-black;
+      transform: translateY(-20px) scale(0.8) !important;
+    }
+  }
+
+  &--drop-down {
+    border: 0;
+    border-bottom: toRem(1) solid $grey4;
+    bottom: 0;
+    font-size: $font14;
+    margin-top: toRem(6);
+    min-height: toRem(41);
+    padding: 0;
+    position: relative;
+    top: toRem(2);
+    width: 100%;
+
+    @include respond-to-min($desktop-min) {
+      font-size: $font20;
+    }
+
+    .select2-hidden-accessible {
+      display: block !important;
+    }
+  }
+
+  &--open {
+    border-color: $main-green !important;
   }
 }

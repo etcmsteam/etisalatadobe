@@ -1,9 +1,8 @@
 // Javascript or Typescript
 import { Initializer } from "./initializer.js";
-import intlTelInput from "intl-tel-input";
 
 import "./**/*.js";
-import "./site.js";
+import "./js/forms";
 // Stylesheets
 import "./main.scss";
 
