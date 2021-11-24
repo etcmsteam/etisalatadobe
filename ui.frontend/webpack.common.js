@@ -1,17 +1,16 @@
-'use strict'
+"use strict";
+const path = require("path");
+const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const path = require('path')
-const webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-//const StylelintPlugin = require('stylelint-webpack-plugin')
 
-const SOURCE_ROOT = __dirname + '/src/main/webpack'
+const SOURCE_ROOT = __dirname + "/src/main/webpack";
 
 const resolve = {
-  extensions: ['.js'],
-}
+  extensions: [".js"],
+};
 
 module.exports = {
   resolve: resolve,
@@ -34,13 +33,6 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           "babel-loader",
-          {
-            loader: "eslint-loader",
-            options: {
-              failOnError: false,
-              emitWarning: true,
-            },
-          },
           {
             loader: "glob-import-loader",
             options: {
@@ -84,15 +76,6 @@ module.exports = {
     ],
   },
   plugins: [
-    // new StylelintPlugin({
-    //   configFile: ".stylelintrc",
-    //   context: "src",
-    //   files: "**/*.scss",
-    //   failOnError: false,
-    //   outputReport: false,
-    //   quiet: false,
-    //   emitErrors: true, // by default this is to true to check the CSS lint errors
-    // }),
     new CleanWebpackPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
