@@ -31,3 +31,8 @@
 <sly data-sly-use.googleModelObj="com.etisalat.core.models.GoogleMapsModel">
   <script src="${googleModelObj.url}${googleModelObj.key}"></script>
 </sly>
+
+<!--/* Favicon */-->
+<sly data-sly-test="${inheritedPageProperties['cq:designPath']}"
+      data-sly-use.favResource="favicons.html"
+     data-sly-call="${favResource.favicons @ clientLibPath = inheritedPageProperties['cq:designPath']}"></sly>
