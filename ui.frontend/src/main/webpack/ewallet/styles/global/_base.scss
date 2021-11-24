@@ -18,6 +18,10 @@ body {
   font-weight: 500;
 }
 
+p {
+  font-family: Bariol, GE SS Two, Arial, sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -49,8 +53,6 @@ li {
   display: flex;
 }
 
-
-
 .container {
   width: 100%;
   max-width: 100% !important;
@@ -63,9 +65,17 @@ li {
   margin: 0 auto;
 }
 
-.wrapper{
-  width: 1240px;
+.wrapper {
   margin: 0 auto;
+  @include respond-to-min($tablet) {
+    width: 690px;
+  }
+  @include respond-to-min($desktop) {
+    width: 890px;
+  }
+  @include respond-to-min($desktop-wide) {
+    width: 1240px;
+  }
 }
 
 .container-center {
@@ -113,26 +123,24 @@ li {
   }
 }
 
+// Fixed width center div
+.container.responsivegrid.container-center.aem-GridColumn.aem-GridColumn--default--12 {
+  padding: 0 20px !important;
+  @include respond-to-min($tablet) {
+    margin: 0 auto !important;
+    float: none;
+    clear: both;
+    border: 1px solid red;
+  }
+  @include respond-to-min($tablet) {
+    width: 890px !important;
+  }
+  @include respond-to-min($desktop) {
+    width: 1240px !important;
+  }
+}
+
 .buttonstore {
   margin-top: 40px;
   margin-left: 12px;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .buttonstore {
-    margin-left: 44px;
-  }
-}
-
-.hero_banner {
-  z-index: 2;
-  position: relative;
-  .cmp-container{
-    position: relative;
-  }
-}
-
-.banner_content.container{
-  position: relative;
-  top: 0;
 }
