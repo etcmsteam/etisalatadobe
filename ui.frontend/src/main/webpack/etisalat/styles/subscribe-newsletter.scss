@@ -1,24 +1,28 @@
 .subscribe_newsletter {
-  padding: toRem(24);
-
-  @include respond-to-min($desktop) {
-    padding: 36px 2rem;
-  }
-
   .cmp-teaser {
-    padding: 0 !important;
+    padding: toRem(24);
+
+    @include respond-to-min($desktop) {
+      padding: toRem(36) toRem(32) 0;
+    }
 
     &__description {
       color: $gray-fill;
       font-size: $font18;
       line-height: 28px;
-      margin-bottom: 1.563rem;
-      width: 100%;
+      margin-bottom: toRem(24);
     }
 
     &__title {
-      margin: 0 !important;
+      font-size: toRem(28);
+      margin-bottom: toRem(24);
+      margin-top: 0;
     }
+  }
+
+  .cmp-form {
+    position: relative;
+    z-index: 1;
   }
 
   .cmp-form-button {
@@ -47,10 +51,10 @@
     margin-left: 1.5rem;
 
     &:hover {
-      box-shadow: none !important;
-      color: $main-green;
       background-color: transparent !important;
       border-color: $main-green;
+      box-shadow: none !important;
+      color: $main-green;
     }
 
     &:focus {
@@ -59,42 +63,38 @@
     }
   }
 
-  .cmp-form {
+  > .cmp-container {
+    background: $sand-white-50;
+    border-radius: $border-radius-step-1;
+    overflow: hidden;
     position: relative;
-    z-index: 1;
 
-    .form-group {
-      margin-bottom: 0;
+    &::before {
+      background: url("../resources/images/sectionbg.svg");
+      background-position: top left;
+      background-repeat: no-repeat;
+      background-size: contain;
+      bottom: 0;
+      content: "";
+      height: toRem(280);
+      opacity: 0.1;
+      position: absolute;
+      width: toRem(260);
     }
-  }
 
-  > .cmp-container::before {
-    background: url("../resources/images/sectionbg.svg");
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-size: contain;
-    bottom: 0;
-    content: "";
-    height: toRem(280);
-    opacity: 0.1;
-    position: absolute;
-    width: toRem(260);
-    z-index: 1;
-  }
-
-  > .cmp-container::after {
-    background: url("../resources/images/sectionbg.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    content: "";
-    height: toRem(280);
-    opacity: 0.1;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: rotate(180deg);
-    width: toRem(260);
-    z-index: 1;
+    &::after {
+      background: url("../resources/images/sectionbg.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: "";
+      height: toRem(280);
+      opacity: 0.1;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: rotate(180deg);
+      width: toRem(260);
+    }
   }
 }
 
