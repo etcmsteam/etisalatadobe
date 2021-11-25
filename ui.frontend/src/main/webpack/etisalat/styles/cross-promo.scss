@@ -150,7 +150,7 @@
   &.button--transparent {
     .cmp-teaser__action-container {
       @include respond-to-min($desktop) {
-        height:toRem(50);
+        height: toRem(50);
         margin-top: toRem(-25);
         top: 50%;
         width: 280px;
@@ -205,13 +205,13 @@
   left: 50%;
   .cmp-teaser {
     margin: 0 auto;
-    padding: 0;
+    padding: 0 16px;
     width: 100%;
     @include respond-to-min($tablet) {
       width: toRem(756);
-      padding: 0 16px 0 4px;
+      padding: 0 12px;
       *[lang="ar"] *[dir="rtl"] & {
-        padding: 0 4px 0 16px;
+        padding: 0 12px;
       }
     }
     @include respond-to-min($desktop) {
@@ -521,13 +521,68 @@
   }
 
   &.teaser--pattern__bg {
-    .cmp-image__image {
-      position: inherit;
-      top: inherit;
-      right: inherit;
-      left: inherit;
+    .cmp-teaser {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      @include respond-to-min($tablet) {
+        flex-direction: row-reverse;
+        align-items: flex-end;
+      }
+      @include respond-to-min($desktop) {
+        flex-direction: row-reverse;
+      }
+      &__image {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      p {
+        font-size: $font16;
+      }
+      .cmp-image__image {
+        position: inherit;
+        top: inherit;
+        right: inherit;
+        left: inherit;
+      }
+      &__title {
+        margin-top: 50px;
+        @include respond-to-max($tablet) {
+          font-size: $font26;
+        }
+      }
+
+      &__content {
+        padding-top: 0;
+        @include respond-to-min($tablet) {
+          width: 70%;
+          padding-bottom: 9rem;
+        }
+        @include respond-to-min($desktop) {
+          padding-bottom: 7rem;
+        }
+        @include respond-to-min($desktop-wide) {
+          padding-bottom: 12rem;
+        }
+      }
+
+      &__action-container {
+        @include respond-to-max($tablet) {
+          text-transform: inherit;
+          float: right;
+          font-weight: bold;
+          font-size: $font16;
+          letter-spacing: 0;
+          &:after {
+            border-width: 0 2px 2px 0;
+          }
+        }
+        @include respond-to-max($phone) {
+          margin-top: 0.8rem;
+          margin-bottom: 0;
+        }
+      }
     }
-    .cmp-teaser__title{ margin-top: 50px;}
   }
 }
 //cross promo full bleed en
