@@ -28,6 +28,7 @@
 .cmp_accordion___view {
   .cmp-teaser__action-link {
     font-size: $font12;
+    font-weight: get-font-weight("medium");
     line-height: 16px;
     letter-spacing: 1.6px;
     position: relative;
@@ -62,6 +63,39 @@
     // border-radius: 4px;
     // margin: 1rem 1rem 3rem 1rem;
     padding: 1rem;
+
+    @include respond-to-max($phone) {
+      background-color: $white-gray1;
+      padding: 0 1rem 1rem;
+    }
+  }
+
+  .cmp-teaser {
+    @include respond-to-max($phone) {
+      border-radius: 4px;
+      box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+    }
+   
+  }
+
+  .cmp-teaser__content {
+    @include respond-to-max($phone) {
+      background-color: $white;
+      padding: 1rem 1rem 2rem;
+    }
+  }
+
+  .cmp-teaser__action-container {
+    @include respond-to-max($phone) {
+      margin-top: 1rem;
+    }
+  }
+
+  svg {
+    @include respond-to-max($phone) {
+      height: 40px;
+      width: 35px;
+    }
   }
 
   .cmp_tabs__verticle_view_img {
@@ -80,6 +114,7 @@
   .cmp-teaser__description {
     h4 {
       margin-bottom: 1rem;
+      margin-top: 0;
       @include font-family-lato;
       font-weight: get-font-weight("bold");
       *[lang="ar"] *[dir="rtl"] & {
@@ -91,6 +126,7 @@
     p {
       color: $paracolor;
       font-size: $font14;
+      font-weight: get-font-weight("medium");
       line-height: 19px;
       @include font-family-lato;
     }
@@ -123,6 +159,8 @@
     color: $dark-gray;
   }
   .nav-view-wrapp.panel > :not(a.collapsed) {
+    @include font-family-lato;
+    font-size: $font14;
     font-weight: 900 !important;
   }
 
