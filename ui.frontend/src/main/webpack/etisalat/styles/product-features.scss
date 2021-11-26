@@ -1,7 +1,18 @@
+
 .product-features {
-  &__overview {
+  &--spacing {
+    padding: 0 16px !important;
+
     @include respond-to-min($tablet) {
-      margin-top: $margin-step-7 !important;
+      padding: 0 12px !important;
+    }
+  }
+
+  &__overview {
+    margin-top: $margin-step-7 !important;
+
+    @include respond-to-max($tablet) {
+      margin-top: $margin-step-0 !important;
     }
   }
 
@@ -12,6 +23,10 @@
 
   &__content {
     margin-top: $margin-step-3 !important;
+
+    @include respond-to-max($tablet) {
+      margin-top: $margin-step-2 !important;
+    }
 
     &:last-child {
       .cmp-teaser {
@@ -35,7 +50,7 @@
 
         @include ts-step-0;
         @include font-family-Neotech;
-      
+
         @include respond-to-min($tablet) {
           @include ts-step-2;
         }
@@ -51,6 +66,7 @@
       }
 
       &__image {
+        margin-bottom: toRem(12);
         margin-left: toRem(10);
         max-width: toRem(160);
         min-width: toRem(160);
@@ -70,7 +86,7 @@
       }
 
       &__action-link {
-        display: inline;
+        display: inline-block;
         margin-top: toRem(12.5);
 
         @include ts-step-0;
