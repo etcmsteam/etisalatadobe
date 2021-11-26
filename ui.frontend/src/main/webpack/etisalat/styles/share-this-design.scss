@@ -24,7 +24,7 @@
         align-items: center;
         margin-top: .25rem;
         & strong{
-          color:$almost-black;
+          color: $black;
           font-size: $font16;
           @include font-family-lato;
         }
@@ -149,12 +149,16 @@
       position: fixed;
       top: toRem(160);
       width: toRem(320);
-      padding: 0.75rem 0.75rem 0;   
+      padding: 0;   
       z-index: 5;
       right: 0;
       margin-left: toRem(-12);
       margin-right: toRem(-12);
       background-color: $white;
+      .panel-body {
+          padding: 0;
+          margin-right: toRem(30);
+      }
       &.copy-link {
         display: block;
       }
@@ -168,9 +172,8 @@
             color:$black;
             @include font-family-lato;
             font-size: toRem(12);
-            font-weight: bold;
-            letter-spacing: toRem(2);
-            line-height: toRem(16);
+            font-weight: 700;
+            line-height: 1.6;
             text-transform: uppercase;
             margin-bottom: toRem(5);
           }
@@ -305,8 +308,8 @@
     @include font-family-lato;
     font-size: toRem(12);
     font-weight: bold;
-    letter-spacing: toRem(2);
-    line-height: toRem(16);
+    letter-spacing: 0;
+    line-height: 1.6;
     text-transform: uppercase;
     margin-bottom: toRem(5);
   }
@@ -350,6 +353,9 @@
       font-size: $font12pt8;
       text-overflow: ellipsis;
       height: auto;
+      color: $gray;
+      line-height: 1.6;
+      @include font-family-lato;
 			&:focus {
 				border: toRem(1) solid $grey5;
 				box-shadow: none;
