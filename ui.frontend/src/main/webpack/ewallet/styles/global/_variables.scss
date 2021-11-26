@@ -97,6 +97,22 @@ $font48: 3rem;
   }
 }
 
+//font size PX into REM
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
+
 //sm
 $phone-xs: 380px;
 //sm

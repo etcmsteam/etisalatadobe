@@ -17,6 +17,9 @@
       line-height: 42px;
       margin: 10px 0 20px 0;
       font-size: 36px;
+      @include respond-to-min($tablet) {
+        font-size: toRem(45);
+      }
     }
     .offer-text {
       display: none;
@@ -51,7 +54,7 @@
 
 
 
-.return-link {
+.return-link a {
   color: #7da830;
   font-size: 24px;
   line-height: 26px;
@@ -87,11 +90,15 @@
       font-size: 20px;
       font-weight: 700;
       line-height: 20px;
-      padding: 29px 25px;
+      @include respond-to-min($phone) {
+        padding: 30px 25px;
+      }
     }
     .cmp-accordion__panel--expanded {
       border: none;
-      padding: 10px 25px;
+      @include respond-to-min($phone) {
+        padding: 10px 25px;
+      }
     }
   }
 }
@@ -112,6 +119,7 @@
       }
       &.active {
         display: block;
+        font-weight: bold;
       }
       h3 {
         display: none;

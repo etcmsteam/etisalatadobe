@@ -4,43 +4,51 @@ nav {
   background-color: $white;
   position: static;
   margin-top: 15px;
+  @include respond-to-min($tablet) {
+    background: none;
+  }
   ul {
     display: none;
-    @include respond-to-min($tablet) {
-      background: none;
+    @include respond-to-min($desktop) {
       float: left;
       display: block;
       margin-left: -120px;
     }
 
     &.main-nav__list {
-      @include respond-to-min($tablet) {
+      @include respond-to-min($desktop) {
         float: right;
         margin-left: 0;
-        a {
+        a, a:focus {
           font-size: 20px;
+          padding: 8px 0;
         }
 
         li.active-nav {
           a {
             font-weight: bold;
             border-bottom: 2px solid $white;
+            padding: 8px 0;
+            line-height: 28px;
           }
         }
       }
     }
     li {
-      @include respond-to-min($tablet) {
+      @include respond-to-min($desktop) {
         float: left;
-        padding: 0 15px;
+        margin: 0 15px;
       }
-      a {
+      a, a:focus {
         border: 0;
         color: $white;
         font-size: 24px;
         font-weight: 500;
-        line-height: 20px;
+        line-height: 30px;
+        padding: 8px 0;
         display: block;
+        outline: 0;
+        text-decoration: none;
         &:hover {
           border-bottom: 2px solid $white;
           color: $white;
@@ -57,6 +65,7 @@ nav {
           padding: 8px 15px;
           &:hover {
             text-decoration: none;
+            border: 1px solid $white;
           }
         }
       }
