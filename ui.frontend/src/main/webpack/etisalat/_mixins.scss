@@ -354,7 +354,21 @@ $screen-xxl-max: 1201px;
   width: 20px;
   height: 20px;
 }
-@mixin common-height-width {
-  width: 40px;
-  height: 40px;
+
+@mixin rtl($property, $ltr-value, $rtl-value) {
+  #{$property}: $ltr-value;
+
+  [dir="rtl"] & {
+    #{$property}: $rtl-value;
+  }
+}
+
+@mixin rtlProp($ltr, $rtl, $value) {
+  [dir="ltr"] & {
+    #{$ltr}: $value;
+  }
+
+  [dir="rtl"] & {
+    #{$rtl}: $value;
+  }
 }

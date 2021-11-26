@@ -12,12 +12,11 @@
   outline: none;
   padding: 0;
   position: relative;
-  transition: border 0.3s;
   transition: box-shadow 0.3s, border 0.3s;
   width: 100%;
 
   label {
-    content: '';
+    content: "";
     display: block;
     font-size: $font20;
     left: 0;
@@ -34,11 +33,12 @@
     z-index: 0;
 
     ~ label {
-      @include font-family-lato;
       color: $main-green;
       font-size: $font16;
       transform: translateY(-10px) scale(0.8);
       transform-origin: 0 0;
+
+      @include font-family-lato;
     }
   }
 }
@@ -68,16 +68,62 @@
   }
 
   .has-error-fields {
+    border-color: $error-red;
+
+    .icon-error,
+    .alert-icon {
+      display: block;
+      position: relative;
+
+      svg {
+        fill: $error-red;
+        height: 1.6rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1.6rem;
+        z-index: 2;
+      }
+    }
+
+    .alert-label {
+      top: auto;
+      bottom: toRem(-25);
+      color: $error-red;
+      font-size: $font12;
+      line-height: toRem(16);
+      height: 1rem;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .has-error ~ label {
       font-size: $font16;
       transform: translateY(-10px) scale(0.8);
       transform-origin: 0 0;
       z-index: 2;
     }
+
     .cmp-form-text__text {
       color: $error-red;
       -webkit-text-fill-color: $error-red;
     }
+
+    // .alert-icon {
+    //   height: toRem(25);
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    //   width: toRem(25);
+    //   z-index: 2;
+
+    //   svg {
+    //     fill: $error-red;
+    //   }
+    // }
   }
 
   .intl-error {
@@ -107,6 +153,20 @@
       margin-bottom: $margin-step-6;
     }
   }
+
+  .has-error {
+    color: $error-red;
+    font-size: $font14;
+    font-weight: get-font-weight("regular");
+    line-height: 1rem;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    top: toRem(48);
+    white-space: nowrap;
+    width: 100%;
+  }
 }
 
 .cmp-form-text {
@@ -119,16 +179,18 @@
 
     &.valid {
       ~ label {
-        @include ts-step-0;
         color: $almost-black;
         transform: translateY(-10px) scale(0.8);
         transform-origin: 0 0;
+
+        @include ts-step-0;
       }
     }
   }
 
   &__textarea {
     outline: 0;
+
     .cmp-form .is-valid & {
       ~ label {
         transform: translateY(10px) scale(0.8) !important;
@@ -158,10 +220,11 @@
   }
 
   .floating-label {
-    @include ts-step-0;
     color: $almost-black;
     transform: translateY(-10px) scale(0.8);
     transform-origin: 0 0;
+
+    @include ts-step-0;
   }
 }
 
@@ -173,14 +236,16 @@
   }
 
   &__label {
-    @extend %label-style;
     top: toRem(10);
     transform: none !important;
 
+    @extend %label-style;
+
     &.floating-label {
-      @include ts-step-0;
       color: $almost-black;
       transform: translateY(-20px) scale(0.8) !important;
+
+      @include ts-step-0;
     }
   }
 

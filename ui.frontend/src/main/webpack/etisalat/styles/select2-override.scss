@@ -1,23 +1,29 @@
 .cmp-form-options {
   .select2-container {
+    z-index: 1;
+
     &--default {
       background: transparent;
       border: $border-step-0;
 
       .select2-selection--single {
-        border: none;
+        border: 0;
         border-radius: $border-radius-step-0;
       }
+
       .select2-search--dropdown .select2-search__field {
         border-width: 0 0 1px;
+
         &:focus {
           border-color: $main-green;
         }
       }
     }
+
     &--focus {
       outline: 0;
     }
+
     &--open {
       .select2-dropdown {
         box-shadow: 0 0.0625rem 0.25rem 0 rgba(1, 1, 1, 0.3);
@@ -27,16 +33,18 @@
 
   .select2-selection {
     border: $border-step-0;
+    border-radius: $border-radius-step-0;
     height: toRem(40);
     outline: 0;
-    border-radius: $border-radius-step-0;
 
     &__rendered {
-      @include font-family-lato;
-      padding-left: $padding-step-0 !important;
       color: $almost-black;
       font-size: $font14;
       line-height: toRem(52) !important;
+      padding-left: $padding-step-0 !important;
+
+      @include font-family-lato;
+
       @include respond-to-min($desktop-min) {
         font-size: $font20;
       }
@@ -55,29 +63,31 @@
 }
 
 .select2-dropdown {
-  margin-left: $margin-step-0;
-  background-color: #fff;
-  box-shadow: 0 0.0625rem 0.25rem 0 rgba(1, 1, 1, 0.3);
+  background-color: $white;
   border: $border-step-0;
   border-radius: $border-radius-step-0;
+  box-shadow: 0 0.0625rem 0.25rem 0 rgba(1, 1, 1, 0.3);
+  margin-left: $margin-step-0;
 
   .select2-results {
     ul {
       padding: $padding-step-0 $padding-step-2;
+
       li {
-        @include font-family-lato;
-        font-size: $font14;
-        text-decoration: none;
-        border-bottom: $border-step-1 solid $sand-white;
         background-position: 100%;
-        padding: $padding-step-0;
+        border-bottom: $border-step-1 solid $sand-white;
+        font-size: $font14;
         letter-spacing: 0;
         line-height: toRem(52);
+        padding: $padding-step-0;
+        text-decoration: none;
+
+        @include font-family-lato;
 
         &:hover,
         &.select2-results__option--highlighted {
-          color: $main-green !important;
           background-color: transparent;
+          color: $main-green !important;
         }
       }
     }
