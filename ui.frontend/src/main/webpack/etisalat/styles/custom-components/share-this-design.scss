@@ -1,0 +1,435 @@
+.share {
+ .main-text-action-wrapper {
+  & .action.share.fix.true {
+    width:100%;   
+    @include respond-to-max($tablet) {
+    
+      z-index: 22;
+      top: toRem(55);
+      left: 0;
+      padding: 0 1rem;
+      margin: 0;
+      position: fixed;
+      background-color: $white;
+      & .copy-link {
+        display: none;
+      }
+    
+      & .panel-body {
+        padding: 0;
+      }
+     
+      & .share-link {
+        display: flex;        
+        align-items: center;
+        margin-top: .25rem;
+        & strong{
+          color: $black;
+          font-size: $font16;
+          @include font-family-lato;
+        }
+        & .link-label{
+          color:$black;
+          @include font-family-lato;
+          font-size: toRem(12);
+          font-weight: bold;
+          letter-spacing: toRem(2);
+          line-height: toRem(16);
+          text-transform: uppercase;
+          margin-bottom: toRem(5);
+        }
+      
+        &.icon-list {
+          @include respond-to-max($tablet) {
+            padding: 0 1rem
+          
+          }
+         & .links-item {
+              padding: 0 toRem(8);
+              display: inline-block;
+              padding: toRem(8) toRem(8); 
+              &:first-child{
+                padding-left:0;
+              }
+              & a {
+                min-width: toRem(180);
+                width: auto;
+              }
+              svg{
+                width: toRem(40);
+                height: toRem(40);
+              }
+             
+              @include respond-to-min($tablet) {
+                padding: toRem(15) toRem(10); 
+                }
+             
+          }
+        }
+      
+        &.form-share {
+          .input-group,
+          .form-group {
+            width: 100%;
+          }
+          &.form-control {      
+            border-right: toRem(1) solid $cust-select;
+            padding: toRem(10);
+            font-size: $font12pt8;
+            text-overflow: ellipsis;
+            height: auto;
+            &:focus {
+              border: toRem(1) solid $grey5;
+              box-shadow: none;
+            }
+            &:first-child {
+              border-bottom-right-radius: 0;
+              border-top-right-radius: 0;
+              border-bottom-left-radius: 0;
+              border-top-left-radius: 0;
+              border-right: none;
+            }
+          }
+          &.input-group-addon {
+            padding: toRem(5);
+            position: relative;
+            font-size: $font16;
+            font-weight: 400;
+            line-height: 1;
+            color: $gray;
+            text-align: center;
+            background-color: $white;
+            border: 1px solid $cust-select;
+            border-radius: 0;
+            white-space: nowrap;
+            vertical-align: middle;
+            &:before {
+              content: " ";
+              left: 0;
+              top: toRem(8);
+              width: toRem(1);
+              height: toRem(20);
+              background-color: $grey5;
+              position: absolute;
+              z-index: 2;
+            }
+            &:last-child {
+              border-bottom-left-radius: 0;
+              border-top-left-radius: 0;
+              border-left: none;
+            }
+            
+          }
+          &.copied-icon {
+            display: none;
+          }
+          &.copied {
+            &.form-control,
+            .input-group-addon {
+              border-color: $main-green;
+            }
+            &.form-control {
+              border-right: 0;
+            }
+            &.input-group-addon {
+              border-left: 0;
+            }
+            &.copy-icon {
+              display: none;
+            }
+            &.copied-icon {
+              display: block;
+            }
+          }
+        }
+  
+      }
+    }
+    @include respond-to-min($desktop) {
+      position: fixed;
+      top: toRem(160);
+      width: toRem(320);
+      padding: 0;   
+      z-index: 5;
+      right: 0;
+      margin-left: toRem(-12);
+      margin-right: toRem(-12);
+      background-color: $white;
+      .panel-body {
+          padding: 0;
+          margin-right: toRem(30);
+      }
+      &.copy-link {
+        display: block;
+      }
+        &.share-link {
+          & strong{
+            color:$almost-black;
+            font-size: $font16;
+            @include font-family-lato;
+          }
+          & .link-label{
+            color:$black;
+            @include font-family-lato;
+            font-size: toRem(12);
+            font-weight: get-font-weight("bold");
+            line-height: 1.6;
+            text-transform: uppercase;
+            margin-bottom: toRem(5);
+          }
+        
+          &.icon-list {
+            @include respond-to-max($tablet) {
+              padding: 0 1rem;
+              height: 56px;
+            }
+           &.links-item {
+                padding: 0 toRem(8);
+                display: inline-block;
+                padding: toRem(8) toRem(8); 
+                &:first-child{
+                  padding-left:0;
+                }
+                & a {
+                  min-width: toRem(180);
+                  width: auto;
+                }
+                svg{
+                  width: toRem(40);
+                  height: toRem(40);
+                }
+               
+                @include respond-to-min($tablet) {
+                  padding: toRem(15) toRem(10); 
+                  }
+               
+            }
+          }
+        
+          &.form-share {
+            .input-group,
+            .form-group {
+              width: 100%;
+            }
+            &.form-control {      
+              border-right: toRem(1) solid $cust-select;
+              padding: toRem(10);
+              font-size: $font12pt8;
+              text-overflow: ellipsis;
+              height: auto;
+              &:focus {
+                border: toRem(1) solid $grey5;
+                box-shadow: none;
+              }
+              &:first-child {
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+                border-right: none;
+              }
+            }
+            &.input-group-addon {
+              padding: toRem(5);
+              position: relative;
+              font-size: $font16;
+              font-weight: 400;
+              line-height: 1;
+              color: $gray;
+              text-align: center;
+              background-color: $white;
+              border: 1px solid $cust-select;
+              border-radius: 0;
+              white-space: nowrap;
+              vertical-align: middle;
+              &:before {
+                content: " ";
+                left: 0;
+                top: toRem(8);
+                width: toRem(1);
+                height: toRem(20);
+                background-color: $grey5;
+                position: absolute;
+                z-index: 2;
+              }
+              &:last-child {
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+                border-left: none;
+              }
+              
+            }
+            &.copied-icon {
+              display: none;
+            }
+            &.copied {
+              &.form-control,
+              .input-group-addon {
+                border-color: $main-green;
+              }
+              &.form-control {
+                border-right: 0;
+              }
+              &.input-group-addon {
+                border-left: 0;
+              }
+              &.copy-icon {
+                display: none;
+              }
+              &.copied-icon {
+                display: block;
+              }
+            }
+          }
+    
+        }
+      
+      }
+
+  
+  }
+ 
+
+ .open>.dropdown-menu {
+  display: block;
+  min-width: toRem(300);
+  left: auto;
+  right: 0;
+  min-width: toRem(300);
+  border: 0;
+}
+  strong{
+    color:$almost-black;
+    font-size: $font16;
+    @include font-family-lato;
+  }
+  .link-label{
+    color:$black;
+    @include font-family-lato;
+    font-size: toRem(12);
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 1.6;
+    text-transform: uppercase;
+    margin-bottom: toRem(5);
+  }
+
+  .icon-list {
+    @include respond-to-max($tablet) {
+      padding: 0 1rem;
+     
+    }
+    .links-item {
+        padding: 0 toRem(8);
+        display: inline-block;
+        padding: toRem(8) toRem(8); 
+        &:first-child{
+          padding-left:0;
+        }
+        & a {
+          min-width: toRem(180);
+          width: auto;
+        }
+        svg{
+          width: toRem(40);
+          height: toRem(40);
+        }
+       
+        @include respond-to-min($tablet) {
+          padding: toRem(15) toRem(10); 
+          }
+       
+    }
+  }
+
+	.form-share {
+		.input-group,
+		.form-group {
+			width: 100%;
+		}
+		.form-control {      
+      border-right: toRem(1) solid $cust-select;
+      padding: toRem(10);
+      font-size: $font12pt8;
+      text-overflow: ellipsis;
+      height: auto;
+      color: $gray;
+      line-height: 1.6;
+      @include font-family-lato;
+			&:focus {
+				border: toRem(1) solid $grey5;
+				box-shadow: none;
+			}
+      &:first-child {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-right: none;
+      }
+		}
+		.input-group-addon {
+			padding: toRem(5);
+			position: relative;
+      font-size: $font16;
+      font-weight: 400;
+      line-height: 1;
+      color: $gray;
+      text-align: center;
+      background-color: $white;
+      border: 1px solid $cust-select;
+      border-radius: 0;
+      white-space: nowrap;
+      vertical-align: middle;
+			&:before {
+				content: " ";
+				left: 0;
+				top: toRem(8);
+				width: toRem(1);
+				height: toRem(20);
+				background-color: $grey5;
+				position: absolute;
+				z-index: 2;
+			}
+      &:last-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left: none;
+      }
+      
+		}
+		.copied-icon {
+			display: none;
+		}
+		&.copied {
+			.form-control,
+			.input-group-addon {
+				border-color: $main-green;
+			}
+			.form-control {
+				border-right: 0;
+			}
+			.input-group-addon {
+				border-left: 0;
+			}
+			.copy-icon {
+				display: none;
+			}
+			.copied-icon {
+				display: block;
+			}
+		}
+	}
+
+	// .form-share {
+	// 	.form-control {
+		
+	// 		border-right: 1px solid $cust-select;
+	// 	}
+	
+	// }
+}
+}
+
+
+
