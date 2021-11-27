@@ -1,14 +1,14 @@
-import { FORM_VALIDATION_MESSAGES } from '../constant';
+import { FORM_VALIDATION_MESSAGES } from "../constant";
 
 (function () {
-  const $FORM = $('#proxyform');
-  const $SUBMIT_CTA = $('#proxyform .cmp-form-button');
+  const $FORM = $("#proxyform");
+  const $SUBMIT_CTA = $("#proxyform .cmp-form-button");
 
   if (!$FORM.length) {
     return false;
   }
 
-  $SUBMIT_CTA.on('click', function () {
+  $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
       return false;
     }
@@ -28,7 +28,7 @@ import { FORM_VALIDATION_MESSAGES } from '../constant';
     },
   };
 
-  if (document.documentElement.lang == 'ar') {
+  if (document.documentElement.lang == "ar") {
     messagelocal = validateMessage.ar;
   } else {
     messagelocal = validateMessage.en;
