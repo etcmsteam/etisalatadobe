@@ -1,0 +1,83 @@
+$imagePath: "../../resources/images/";
+.purpal--bg {
+  background: get-background-gredient(purpal-bg);
+}
+.green--bg {
+  background: get-background-gredient(green-bg);
+}
+.orange--bg {
+  background: get-background-gredient(orange-bg);
+}
+
+.aqua-green--bg {
+  background: get-background-gredient(aqua-green-bg);
+}
+.aqua--bg {
+  background: get-background-gredient(aqua-bg);
+}
+
+.default--bg {
+  background: get-background-gredient(default-bg);
+}
+
+.aqua-bg--bg,
+.aqua-green--bg,
+.orange--bg,
+.green--bg,
+.purpal--bg {
+  *,
+  a.cmp-teaser__pretitle {
+    color: $white;
+  }
+}
+
+.default-color .cmp-teaser {
+  background: #f7f8f4;
+  *,
+  a.cmp-teaser__title-link {
+    color: $dark-gray;
+  }
+}
+
+.beigebg--pattern-bg {
+  position: relative;
+}
+.beigebg--pattern-bg {
+  &::before {
+    background: url($imagePath + "sectionbg.svg");
+    content: "";
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 360px;
+    width: 340px;
+    position: absolute;
+    opacity: 0.1;
+    z-index: 1;
+    bottom: 0;
+    background-position: top left;
+
+    @include md {
+      background-image: none;
+    }
+  }
+  background: #f7f8f4;
+  &:after {
+    background: url($imagePath + "sectionbg.svg");
+    content: "";
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 360px;
+    position: absolute;
+    width: 340px;
+    opacity: 0.1;
+    z-index: 1;
+    right: 0;
+    transform: rotate(180deg);
+    top: 0;
+
+    @include md {
+      height: 145px;
+      width: 140px;
+    }
+  }
+}
