@@ -116,7 +116,7 @@
       &.five-col td{
         width: 20%;
       }
-      &.five-col td{
+      &.four-col td{
         width: 25%;
       }
       &.three-col td{
@@ -168,12 +168,10 @@
           &.price-col {
             text-align: right;
           }
-
-          @include respond-to-min($tablet) {
-            &:first-child {
-              padding-left: toRem(16) !important;
-             }
-          }
+          
+          &:first-child {
+            padding-left: 0;
+           }
 
           &:last-child {
             padding-right: 0;
@@ -377,9 +375,9 @@
             position: relative;
 
             &:first-child {
-              padding-left: 2.4rem;
+              padding-left: 2.4rem !important;
               @include respond-to-min($desktop) {
-                padding-left: 3.5rem;
+                padding-left: 3.5rem !important;
               }
 
               &:before {
@@ -713,6 +711,17 @@
     &.tableListItem {
       .custom-datatable {
         margin: 0;
+      }
+      table {
+        tr {
+          td {
+            @include respond-to-min($tablet) {
+              &:first-child {
+                padding-left: toRem(16) !important;
+               }
+            }
+          }
+        }
       }
       ul {
         li {
