@@ -58,6 +58,11 @@
 			top: 0;
 		}
 	}
+	@include respond-to-max($phone){
+		.page-nav{
+              height: toRem(80)!important;
+		}
+		}
 }
 // fix for spacing issue in case hero image has call to action and config section
 .hero-image-section {
@@ -114,14 +119,12 @@
 
 .links-wrapper {
 	position: absolute;
-	top: 25px;
-	right: 30px;
+	right: toRem(30);
 	z-index: 9;
 	@include respond-to-max($desktop) {
 		right: 0;
 		padding: 0 3rem;
 		width: 100%;
-		top: -134px;
 		position: relative;
 		padding: 0 43px;
 		&.fixed {
@@ -135,6 +138,12 @@
 		.hero-links-secton>.container-fluid>.row>.col-xs-12 {
 			padding: 0;
 		}
+	}
+	@include respond-to-min($desktop){
+		top: -toRem(134);
+	}
+	@include respond-to-min($tablet){
+		top: toRem(200);
 	}
 }
 
