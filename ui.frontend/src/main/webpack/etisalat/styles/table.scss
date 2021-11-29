@@ -55,7 +55,6 @@
     padding: 1rem 0;
     text-transform: uppercase;
   }
-
   &.table-without-title {
     > tfoot,
     > thead,
@@ -113,6 +112,20 @@
         }
       }
     }
+    @include respond-to-min($desktop) {
+      &.five-col td{
+        width: 20%;
+      }
+      &.five-col td{
+        width: 25%;
+      }
+      &.three-col td{
+        width: 33.33333%;
+      }
+      &.two-col td{
+        width: 50%;
+      }
+    }
   }
 
   .discount {
@@ -142,6 +155,10 @@
           word-break: break-word;
           @include font-family-lato;
 
+          p {
+            color: $steel-grey;
+          }
+
           .price {
             color: $almost-black;
             font-weight: 900;
@@ -152,8 +169,10 @@
             text-align: right;
           }
 
-          &:first-child {
-           // padding-left: 0;
+          @include respond-to-min($tablet) {
+            &:first-child {
+              padding-left: toRem(16) !important;
+             }
           }
 
           &:last-child {
@@ -310,8 +329,11 @@
 
     &.three-col {
       .custom-datatable {
-        @include respond-to-max($tablet - 1) {
-          margin: 0px -12px;
+        @include respond-to-max($tablet) {
+          margin: 0 ;
+        }
+        @include respond-to-min($desktop) {
+          margin: 0 -12px;
         }
       }
       thead,
@@ -321,6 +343,12 @@
           td {
             @include respond-to-min($desktop) {
               width: 33.33%;
+            }
+            &:first-child {
+              padding-left: 38px;
+              @include respond-to-min($desktop) {
+                padding-left: $padding-step-7;
+              }
             }
           }
         }
@@ -683,6 +711,9 @@
     }
 
     &.tableListItem {
+      .custom-datatable {
+        margin: 0;
+      }
       ul {
         li {
           list-style: none;
@@ -1564,6 +1595,9 @@ table {
 .custom-datatable {
   margin: 0 -4px;
   @include respond-to-min($tablet) {
+    margin: 0;
+  }
+  @include respond-to-min($desktop) {
     margin: 0 -12px;
   }
   .dataTables_info {
@@ -1623,6 +1657,20 @@ table {
     .search-input .check-availability-style .input-icon {
       @include font-family-lato;
       background-color: $sand-white-50 !important;
+    }
+  }
+}
+
+.table-with-pagination {
+  .ellipsis {
+    @include font-family-lato();
+  }
+  .paginate_button {
+    &.previous {
+      margin-left: 10px;
+    }
+    &.next {
+      margin-right: 10px;
     }
   }
 }
