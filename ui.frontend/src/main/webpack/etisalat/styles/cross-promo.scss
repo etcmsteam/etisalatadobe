@@ -78,6 +78,7 @@
         left: 6.375rem;
         right: auto;
         margin-right: 0;
+        font-weight: 300 !important;
         @include respond-to-max($tablet) {
           left: 0;
         }
@@ -203,6 +204,7 @@
   position: relative;
   margin-left: -50vw;
   left: 50%;
+  clear: both !important;
   .cmp-teaser {
     margin: 0 auto;
     padding: 0 16px;
@@ -398,9 +400,6 @@
         margin-right: 0;
         right: 0;
       }
-    }
-    a:hover {
-      text-decoration: underline;
     }
   }
 
@@ -651,7 +650,7 @@
   .cmp-teaser__action-container {
     text-align: center;
     align-items: flex-end;
-    display: grid!important;
+    display: grid !important;
     @include secondary-button;
     background-color: $main-green;
     border-color: $main-green;
@@ -682,7 +681,7 @@
     border-color: $white;
     border-style: solid;
     white-space: nowrap;
-    display: grid!important;
+    display: grid !important;
     a {
       color: $almost-black;
       font-weight: get-font-weight("bold");
@@ -706,7 +705,7 @@
     border-color: $white;
     border-style: solid;
     white-space: nowrap;
-    display:grid!important;
+    display: grid !important;
     a {
       color: $white;
       font-weight: get-font-weight("bold");
@@ -844,5 +843,18 @@ $prefix: "cmp-teaser";
     .cross-promotion-plain {
       padding: 0;
     }
+  }
+}
+
+.link__arrow {
+  a {
+    @include font-family-lato;
+    @mixin rtlBlock() {
+      font-weight: 300;
+    }
+  }
+
+  a.cmp-teaser__action-link:hover {
+    text-decoration: underline;
   }
 }
