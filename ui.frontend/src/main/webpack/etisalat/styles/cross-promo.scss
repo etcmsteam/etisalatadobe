@@ -847,12 +847,13 @@ $prefix: "cmp-teaser";
 }
 
 .link__arrow {
-  *[lang="ar"] *[dir="rtl"] & {
-    a {
+  a {
+    @include font-family-lato;
+    @mixin rtlBlock() {
       font-weight: 300;
-      @include font-family-lato;
     }
   }
+
   a.cmp-teaser__action-link:hover {
     text-decoration: underline;
   }
