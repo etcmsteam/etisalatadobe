@@ -1,25 +1,92 @@
 /* menu */
-
-nav {
-  background-color: $white;
-  position: static;
-  margin-top: 15px;
-  @include respond-to-min($tablet) {
-    background: none;
+@include respond-to-max($desktop) {
+  .fixednavigation {
+    position: absolute;
+    top: 0 !important;
+    width: 100% !important;
   }
-  ul {
-    display: none;
-    @include respond-to-min($desktop) {
-      float: left;
-      display: block;
-      margin-left: -120px;
+  nav {
+    background-color: $white;
+    position: static;
+    margin-top: 5px;
+    .menu__icon,
+    .menu__checkbox,
+    .hamburger {
+      display: none;
     }
+    .menu__icon {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      outline: none;
+      ::selection {
+        background: none;
+      }
+      .hamburger {
+        background: $white;
+        display: block;
+        height: 1px;
+        position: relative;
+        width: 30px;
+        margin-right: 17px;
+        margin-top: -13px;
+        &::before,
+        &::after {
+          background: $white;
+          content: "";
+          display: block;
+          height: 100%;
+          position: absolute;
+          // transition: all .5s ease-out;
+          width: 100%;
+        }
+        &:before {
+          top: 9px;
+        }
+        &:after {
+          top: -9px;
+        }
 
-    &.main-nav__list {
-      @include respond-to-min($desktop) {
+        @media (min-width: 768px) and (max-width: 991px) {
+          margin-right: 40px;
+        }
+      }
+    }
+    ul {
+      display: none;
+      max-height: 0;
+      transition: max-height 0.2s ease-out;
+      li {
+        border-top: 1px solid #ddd;
+        padding: 30px 0 30px 20px;
+        a {
+          color: #5a637c;
+          font-size: 24px;
+          letter-spacing: 0.02px;
+          line-height: 24px;
+          margin: 0;
+          padding: 10px 8px;
+          text-decoration: none !important;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-min($desktop) {
+  nav {
+    background: none;
+    .menu__checkbox {
+      opacity: 0;
+    }
+    ul {
+      &.main-nav__list {
         float: right;
         margin-left: 0;
-        a, a:focus {
+        a,
+        a:focus {
           font-size: toRem(20);
           padding: 8px 0;
         }
@@ -34,94 +101,45 @@ nav {
         }
       }
     }
-    li {
-      @include respond-to-min($desktop) {
+    ul {
+      margin-left: -120px;
+      float: left;
+      li {
         float: left;
         margin: 0 15px;
-      }
-      a, a:focus {
-        border: 0;
-        color: $white;
-        font-size: toRem(24);
-        font-weight: 500;
-        line-height: 30px;
-        padding: 8px 0;
-        display: block;
-        outline: 0;
-        text-decoration: none;
-        &:hover {
-          border-bottom: 2px solid $white;
+
+        a,
+        a:focus {
+          border: 0;
           color: $white;
-          padding-bottom: 5px;
+          font-size: toRem(24);
+          font-weight: 500;
+          line-height: 30px;
+          padding: 8px 0;
+          display: block;
+          outline: 0;
           text-decoration: none;
-        }
-      }
-      &.active {
-        border: none;
-        a {
-          border: 1px solid $white;
-          font-weight: bold;
-          border-radius: 4px;
-          padding: 8px 15px;
           &:hover {
+            border-bottom: 2px solid $white;
+            color: $white;
+            padding-bottom: 5px;
             text-decoration: none;
+          }
+        }
+        &.active {
+          border: none;
+          a {
             border: 1px solid $white;
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 8px 15px;
+            &:hover {
+              text-decoration: none;
+              border: 1px solid $white;
+            }
           }
         }
       }
     }
-  }
-}
-
-/* menu icon */
-
-.menu__icon {
-  cursor: pointer;
-  display: block;
-  float: right;
-  position: relative;
-  outline: none;
-  ::selection {
-    background: none;
-  }
-  .hamburger {
-    background: $white;
-    display: block;
-    height: 1px;
-    position: relative;
-    width: 30px;
-    margin-right: 17px;
-    margin-top: -13px;
-    &::before,
-    &::after {
-      background: $white;
-      content: "";
-      display: block;
-      height: 100%;
-      position: absolute;
-      // transition: all .5s ease-out;
-      width: 100%;
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
-      margin-right: 40px;
-    }
-  }
-}
-
-/* menu checkbox */
-
-.menu__checkbox {
-  opacity: 0;
-}
-
-//mobile view en
-
-// //desktop view
-@media (min-width: 49em) {
-  .menu__icon,
-  .menu__checkbox,
-  .hamburger {
-    display: none;
   }
 }

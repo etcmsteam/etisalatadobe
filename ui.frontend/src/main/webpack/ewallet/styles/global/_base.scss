@@ -38,6 +38,9 @@ h2 {
   margin: 0 0 20px 0;
   line-height: 54px;
   font-size: toRem(48);
+  @include respond-to-max($tablet) {
+    line-height: 40px;
+  }
 }
 
 h3 {
@@ -127,6 +130,32 @@ li {
   }
 }
 
+.btn {
+  font-size: toRem(16);
+  max-width: 162px;
+  margin-top: 10px;
+  box-shadow: none;
+  color: $link-color;
+  background-color: $white;
+  border: 1px solid $link-color;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 4px;
+  border-width: 1px;
+  width: 100%;
+  font-weight: 700;
+  display: block;
+  &:hover,
+  &:focus {
+    background-color: $green-btn;
+    border: 1px solid $green-btn;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
 // Fixed width center div
 .container.responsivegrid.container-center.aem-GridColumn.aem-GridColumn--default--12 {
   padding: 0 20px !important;
@@ -156,9 +185,9 @@ li {
   margin-left: 12px;
 }
 
-.ewallet_help_wrap {
+.ewallet_help_wrap .cmp-container {
   padding: 100px 15px;
-  margin: 50xp 0;
+  margin: 50px auto;
   p {
     margin-bottom: 0;
     font-size: toRem(24);
@@ -171,4 +200,8 @@ li {
     font-size: toRem(28);
     line-height: 34px;
   }
+}
+
+.ui-widget {
+  font-family: Bariol, GE SS Two, Arial, sans-serif;
 }

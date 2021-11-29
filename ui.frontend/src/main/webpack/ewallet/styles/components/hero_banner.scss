@@ -336,6 +336,9 @@
       .teaser {
         @extend .wrapper;
         color: $white;
+        @include respond-to-max($tablet) {
+          padding: 140px 15px 0 15px;
+        }
         @include respond-to-min($tablet) {
           padding-top: 180px;
         }
@@ -343,9 +346,19 @@
           @include respond-to-min($tablet) {
             width: 50%;
           }
+          h1 {
+            color: $white;
+            font-size: toRem(40);
+            margin-bottom: 15px;
+            @include respond-to-min($tablet) {
+              font-size: toRem(72);
+              line-height: 48px;
+            }
+          }
           h2 {
             color: $white;
             font-size: toRem(32);
+            margin-bottom: 15px;
             @include respond-to-min($tablet) {
               font-size: toRem(48);
             }
@@ -380,36 +393,6 @@
           }
         }
       }
-    }
-  }
-}
-
-.banner_teaser{ 
-  .cmp-teaser__description {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin: auto;
-    @include respond-to-min($tablet){
-      padding-left: 15px;
-    }
-  }
-  p {
-    font-weight: 500;
-    color: $white;
-    font-family: Bariol,GE SS Two,Arial,sans-serif;
-    font-size: toRem(16);
-    line-height: 24px;
-    padding-right: 10%;
-    @include respond-to-min($tablet){
-      font-size: toRem(20);
-      line-height: 26px;
-      padding-right: 15%;
-    }
-    @include respond-to-min($desktop){
-      font-size: toRem(24);
-      line-height: 30px;
-      font-weight: 500;
-      padding-right: 32%;
     }
   }
 }
