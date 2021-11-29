@@ -22,22 +22,6 @@
   width: 0.45em;
 }
 
-@mixin spacer-light-gray {
-  background-color: $light-gray;
-  opacity: 0.3;
-}
-@mixin spacer-color-sand-white {
-  .sand-white {
-    background-color: $sand-white-50;
-  }
-}
-
-@mixin spacer-color-white {
-  .white {
-    background-color: $white;
-  }
-}
-
 @mixin font-family-lato {
   font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
 }
@@ -354,7 +338,27 @@ $screen-xxl-max: 1201px;
   width: 20px;
   height: 20px;
 }
-@mixin common-height-width {
-  width: 40px;
-  height: 40px;
+
+@mixin rtl($property, $ltr-value, $rtl-value) {
+  #{$property}: $ltr-value;
+
+  [dir="rtl"] & {
+    #{$property}: $rtl-value;
+  }
+}
+
+@mixin rtlProp($ltr, $rtl, $value) {
+  [dir="ltr"] & {
+    #{$ltr}: $value;
+  }
+
+  [dir="rtl"] & {
+    #{$rtl}: $value;
+  }
+}
+
+@mixin rtlBlock() {
+  [dir="rtl"] & {
+    @content;
+  }
 }

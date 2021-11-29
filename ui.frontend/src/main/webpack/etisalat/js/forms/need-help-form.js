@@ -1,14 +1,14 @@
 import { DIAL_CODE_DATA } from "../constant";
 (function () {
   const $FORM = $("#cwsNeedHelp");
-  const $SUBMIT_CTA = $('#cwsNeedHelp .cmp-form-button');
+  const $SUBMIT_CTA = $("#cwsNeedHelp .cmp-form-button");
 
   if (!$FORM.length) {
     return false;
   }
 
   $SUBMIT_CTA.on("click", function () {
-    if ($FORM.valid() == false) {
+    if ($FORM.valid() === false) {
       return false;
     }
   });
@@ -48,7 +48,7 @@ import { DIAL_CODE_DATA } from "../constant";
       },
     },
 
-    submitHandler: function (form) {
+    submitHandler: function () {
       return false;
     },
   });

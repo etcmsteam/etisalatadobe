@@ -1,11 +1,11 @@
 .cws-form,
 .wst-form {
   // to manage col spacing
-  .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6 {
-    @include respond-to-min-max($desktop-min, $tablet) {
-      padding: 0 toRem(15);
-    }
-  }
+  // .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6 {
+  //   @include respond-to-min-max($desktop-min, $tablet) {
+  //     padding: 0 toRem(15);
+  //   }
+  // }
   //End
 
   .cmp-form-text {
@@ -14,28 +14,28 @@
     }
   }
 
-  padding: 0 toRem(12) !important; //Form default container responsive grid padding overrides
+
   @include font-family-lato;
   //margin-top: 5rem;
-  .is-valid {
-    &label {
-      color: $main-green;
-      transform: translateY(20px) scale(0.8);
-      transform-origin: 0 0;
-      font-size: $font16;
-      z-index: 2;
-    }
-    #description + label,
-    #justification + label {
-      color: $almost-black;
-      transform: translateY(10px) scale(0.8);
-      font-size: $font16;
-      z-index: 2;
-    }
-    .cmp-form-option-country-code & {
-      margin-top: 0;
-    }
-  }
+  // .is-valid {
+  //   &label {
+  //     color: $main-green;
+  //     transform: translateY(20px) scale(0.8);
+  //     transform-origin: 0 0;
+  //     font-size: $font16;
+  //     z-index: 2;
+  //   }
+  //   #description + label,
+  //   #justification + label {
+  //     color: $almost-black;
+  //     transform: translateY(10px) scale(0.8);
+  //     font-size: $font16;
+  //     z-index: 2;
+  //   }
+  //   .cmp-form-option-country-code & {
+  //     margin-top: 0;
+  //   }
+  // }
 
   // .cmp-form-options--drop-down {
   //   position: relative;
@@ -300,20 +300,20 @@
     }
   }
 
-  .cmp-form-options--radio {
-    border: 0;
-    margin: 0;
-    padding-bottom: 1.7rem;
-    padding-top: 0;
-    padding-left: 0;
-    & > label {
-      width: toRem(24);
-      height: toRem(24);
-      display: inline-flex;
-      background-size: toRem(24);
-      margin-right: 5rem;
-    }
-  }
+  // .cmp-form-options--radio {
+  //   border: 0;
+  //   margin: 0;
+  //   padding-bottom: 1.7rem;
+  //   padding-top: 0;
+  //   padding-left: 0;
+  //   & > label {
+  //     width: toRem(24);
+  //     height: toRem(24);
+  //     display: inline-flex;
+  //     background-size: toRem(24);
+  //     margin-right: 5rem;
+  //   }
+  // }
 
   //Extra class for input box width set
   .right-space-width {
@@ -329,8 +329,9 @@
     position: relative;
     .alert-icon {
       svg {
-        right: 0.5rem !important;
         top: 0.5rem !important;
+
+        @include rtlProp(right, left, 0.5rem);
       }
     }
     .alert-label {
@@ -434,24 +435,6 @@
     }
   }
 
-  .has-error {
-    display: block;
-    color: $error-red;
-    line-height: 1rem;
-    height: 1rem;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    position: absolute;
-    top: 3rem;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: $font14;
-    text-transform: capitalize;
-    font-weight: 400;
-  }
   .outside-icon {
     right: 0;
     top: 2.3rem;
@@ -520,29 +503,29 @@
     transform-origin: 0 0;
   }
 
-  textarea.cmp-form-text__textarea ~ label {
-    cursor: text;
-    transition: transform 0.2s ease-out, color 0.2s ease-out;
-    transform-origin: 0 100%;
-    text-align: initial;
-    transform: translateY(10px);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    z-index: 0;
-    font-size: $font14;
-    @include respond-to-min($tablet) {
-      font-size: $font20;
-    }
-  }
+  // textarea.cmp-form-text__textarea ~ label {
+  //   cursor: text;
+  //   transition: transform 0.2s ease-out, color 0.2s ease-out;
+  //   transform-origin: 0 100%;
+  //   text-align: initial;
+  //   transform: translateY(10px);
+  //   white-space: nowrap;
+  //   text-overflow: ellipsis;
+  //   overflow: hidden;
+  //   z-index: 0;
+  //   font-size: $font14;
+  //   @include respond-to-min($tablet) {
+  //     font-size: $font20;
+  //   }
+  // }
 
-  textarea.cmp-form-text__textarea:focus ~ label {
-    color: $main-green;
-    @include font-family-lato;
-    font-size: $font16;
-    transform: translateY(10px) scale(0.8);
-    transform-origin: 0 0;
-  }
+  // textarea.cmp-form-text__textarea:focus ~ label {
+  //   color: $main-green;
+  //   @include font-family-lato;
+  //   font-size: $font16;
+  //   transform: translateY(10px) scale(0.8);
+  //   transform-origin: 0 0;
+  // }
 
   .has-error-fields {
     textarea.cmp-form-text__textarea {
@@ -740,16 +723,16 @@
   //   transition: 0.2s opacity ease-out, 0.2s color ease-out;
   // }
 
-  textarea.cmp-form-text__textarea ~ label:after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    opacity: 0;
-    font-size: $font20;
-    transition: 0.2s opacity ease-out, 0.2s color ease-out;
-  }
+  // textarea.cmp-form-text__textarea ~ label:after {
+  //   display: block;
+  //   content: "";
+  //   position: absolute;
+  //   top: 100%;
+  //   left: 0;
+  //   opacity: 0;
+  //   font-size: $font20;
+  //   transition: 0.2s opacity ease-out, 0.2s color ease-out;
+  // }
 
   .select {
     label {
@@ -937,13 +920,13 @@
     //   line-height: 1.55rem;
     // }
 
-    &.has-error-fields {
-      .alert-icon {
-        svg {
-          top: 0;
-        }
-      }
-    }
+    // &.has-error-fields {
+    //   .alert-icon {
+    //     svg {
+    //       top: 0;
+    //     }
+    //   }
+    // }
   }
 
   // intl input for country name dropdown
@@ -1068,83 +1051,81 @@
     position: relative;
   }
 
-  margin-bottom: 3rem;
-
   .has-error-fields {
-    border-color: $error-red;
+    // border-color: $error-red;
 
-    .icon-error,
-    .alert-icon {
-      display: block;
-      position: relative;
-      svg {
-        fill: $pink;
-        height: 1.6rem;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 1.6rem;
-        z-index: 2;
-      }
-    }
+    // .icon-error,
+    // .alert-icon {
+    //   display: block;
+    //   position: relative;
+    //   svg {
+    //     fill: $pink;
+    //     height: 1.6rem;
+    //     position: absolute;
+    //     right: 0;
+    //     top: 0;
+    //     width: 1.6rem;
+    //     z-index: 2;
+    //   }
+    // }
 
-    input,
-    textarea {
-      border-bottom: 1px solid $error-red;
-      color: $error-red !important; //To use Important Form default AEM Control css overrides
-    }
-    label {
-      color: $error-red !important; //To use Important Form default AEM Control css overrides
-      transform: translateY(-10px) scale(0.8);
-      transform-origin: 0 0;
-      font-size: 1rem;
-      z-index: 2;
-    }
-    .has-error {
-      ~ label {
-        transform: translateY(-10px) scale(0.8);
-        transform-origin: 0 0;
-        font-size: $font16;
-        z-index: 2;
-      }
-    }
-    &.textarea {
-      .has-error {
-        ~ label {
-          transform: translateY(10px) scale(0.8);
-          font-size: $font16;
-        }
-      }
-      .alert-label {
-        bottom: toRem(-20);
-        top: auto;
-      }
-      .alert-icon {
-        svg {
-          right: 1.25rem;
-        }
-      }
-    }
-    .cmp-form-options--drop-down {
-      & > label {
-        transform: translateY(-10px) scale(0.8);
-        transform-origin: 0 0;
-        font-size: $font20;
-        z-index: 2;
-      }
-    }
+    // input,
+    // textarea {
+    //   border-bottom: 1px solid $error-red;
+    //   color: $error-red !important; //To use Important Form default AEM Control css overrides
+    // }
+    // label {
+    //   color: $error-red !important; //To use Important Form default AEM Control css overrides
+    //   transform: translateY(-10px) scale(0.8);
+    //   transform-origin: 0 0;
+    //   font-size: 1rem;
+    //   z-index: 2;
+    // }
+    // .has-error {
+    //   ~ label {
+    //     transform: translateY(-10px) scale(0.8);
+    //     transform-origin: 0 0;
+    //     font-size: $font16;
+    //     z-index: 2;
+    //   }
+    // }
+    // &.textarea {
+    //   .has-error {
+    //     ~ label {
+    //       transform: translateY(10px) scale(0.8);
+    //       font-size: $font16;
+    //     }
+    //   }
+    //   .alert-label {
+    //     bottom: toRem(-20);
+    //     top: auto;
+    //   }
+    //   .alert-icon {
+    //     svg {
+    //       right: 1.25rem;
+    //     }
+    //   }
+    // }
+    // .cmp-form-options--drop-down {
+    //   & > label {
+    //     transform: translateY(-10px) scale(0.8);
+    //     transform-origin: 0 0;
+    //     font-size: $font20;
+    //     z-index: 2;
+    //   }
+    // }
   }
-  .cmp-form-text__text {
-    & > input[readonly] {
-      & + label {
-        color: $almost-black;
-        transform: translateY(-10px) scale(0.8);
-        transform-origin: 0 0;
-        font-size: $font20;
-        z-index: 2;
-      }
-    }
-  }
+  // .cmp-form-text__text {
+  //   & > input[readonly] {
+  //     & + label {
+  //       color: $almost-black;
+  //       transform: translateY(-10px) scale(0.8);
+  //       transform-origin: 0 0;
+  //       font-size: $font20;
+  //       z-index: 2;
+  //     }
+  //   }
+  // }
 
   .hideBusiness {
     visibility: hidden;
@@ -1157,22 +1138,18 @@
     outline: 1px solid $select-focus;
   }
 
-  label {
-    //font-size:  75rem;
-    color: $dropdown-grey;
-  }
 
-  ::-moz-placeholder {
-    color: $cold-gray-2;
-  }
+  // ::-moz-placeholder {
+  //   color: $cold-gray-2;
+  // }
 
-  ::-ms-input-placeholder {
-    color: $cold-gray-2;
-  }
+  // ::-ms-input-placeholder {
+  //   color: $cold-gray-2;
+  // }
 
-  ::placeholder {
-    color: $cold-gray-2;
-  }
+  // ::placeholder {
+  //   color: $cold-gray-2;
+  // }
 }
 .smb-event {
   // to manage col spacing
@@ -1283,33 +1260,33 @@
   }
 }
 
-.cws-form .has-error-fields textarea ~ label {
-  transform: translateY(10px) scale(0.8);
-}
+// .cws-form .has-error-fields textarea ~ label {
+//   transform: translateY(10px) scale(0.8);
+// }
 
-#justification + label {
-  padding-left: toRem(15);
-}
+// #justification + label {
+//   padding-left: toRem(15);
+// }
 
-#description + label {
-  padding-left: toRem(15);
-  font-size: $font14;
-  @include respond-to-min($tablet) {
-    font-size: $font20;
-  }
-}
-.description > label {
-  transform: translateY(4px) scale(0.9);
-  margin-left: 1rem;
-}
-.desc-text {
-  .cmp-form-text label {
-    padding-left: toRem(15);
-  }
-  .cmp-form-text .alert-label {
-    top: 10.5rem;
-  }
-}
+// #description + label {
+//   padding-left: toRem(15);
+//   font-size: $font14;
+//   @include respond-to-min($tablet) {
+//     font-size: $font20;
+//   }
+// }
+// .description > label {
+//   transform: translateY(4px) scale(0.9);
+//   margin-left: 1rem;
+// }
+// .desc-text {
+//   .cmp-form-text label {
+//     padding-left: toRem(15);
+//   }
+//   .cmp-form-text .alert-label {
+//     top: 10.5rem;
+//   }
+// }
 
 .grecaptcha-badge {
   z-index: 1;

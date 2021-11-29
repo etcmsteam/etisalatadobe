@@ -1,16 +1,36 @@
-// override css for column spacing
+// overwriting AEM grid in few cases to achive same visual design
+
 $grid-spacing: 12px;
 
-.aem-GridColumn {
-  padding: 0 $grid-spacing;
-}
+.cmp-teaser--multicol,
+.product-features {
+  @include respond-to-max($tablet) {
+    .aem-GridColumn--phone--12.aem-GridColumn {
+      padding: 0 !important;
+    }
+  }
 
-.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 {
-  padding-left: 0;
-  padding-right: 0;
-}
+  .aem-GridColumn {
+    padding: 0 $grid-spacing;
+  }
 
-.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > .aem-GridColumn.aem-GridColumn--default--12 {
-  padding-left: 0;
-  padding-right: 0;
+  .aem-GridColumn--default--12.aem-GridColumn {
+    padding: 0;
+  }
+
+  .aem-GridColumn--default--12 .aem-GridColumn {
+    padding: 0;
+  }
+
+  .aem-GridColumn--phone--12 .aem-GridColumn {
+    padding: 0;
+  }
+
+  &.container {
+    padding: 0;
+  }
+
+  .aem-GridColumn--phone--12 .aem-GridColumn {
+    padding: 0 !important;
+  }
 }
