@@ -1,13 +1,13 @@
 import { FORM_VALIDATION_MESSAGES } from "../constant";
 (function () {
-  const $FORM = $("#eventRegisteration");
-  const $SUBMIT_CTA = $('#eventRegisteration .cmp-form-button');
+  const $FORM = $("#eventRegistration");
+  const $SUBMIT_CTA = $("#eventRegistration .cmp-form-button");
 
   if (!$FORM.length) {
     return false;
   }
 
-  $SUBMIT_CTA.on('click', function () {
+  $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
       return false;
     }
@@ -60,7 +60,7 @@ import { FORM_VALIDATION_MESSAGES } from "../constant";
         simplealphabeticlatinarabic: true,
         maxlength: 50,
       },
-      email: {
+      emailAddress: {
         required: true,
         email: true,
         maxlength: 50,
@@ -84,7 +84,7 @@ import { FORM_VALIDATION_MESSAGES } from "../constant";
     },
     messages: messagelocal,
     submitHandler: function (form) {
-      return true;
+      return false;
     },
   });
 })();
