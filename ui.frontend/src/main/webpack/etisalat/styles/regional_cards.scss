@@ -1,28 +1,28 @@
 .promo-card .promo-card-row.container {
-	margin-top: 2.188rem;
-	margin-bottom: 1.563rem;
+	margin-top: toRem(35);
+	margin-bottom: toRem(35);
 }
 
 .promo-card .promo-card-row .promo-card-section h2 {
-	margin-top: 0px;
-	margin-bottom: 1rem;
-	letter-spacing: 0.1rem;
-	line-height: 1.625rem;
-	font-size: 1.625rem;
+	margin-top: 0;
+	margin-bottom: toRem(16);
+	letter-spacing: toRem(1.6);
+	line-height: toRem(26);
+	font-size: toRem(26);
 }
 
 .promo-card .promo-card-row .promo-card-section h2 a {
-	font-size: 1.625rem;
-	color:$white;
+	font-size: toRem(26);
+	color: $white
 }
 
 .promo-card .promo-card-section .cmp-teaser__action-link:before {
 	-webkit-transform: translateY(-50%) rotate(45deg);
-	left: 139px;
-	margin-top: calc(#{$margin-step-1} + 1px);
-	border-top: 1px solid #fff;
-	border-right: 1px solid #fff;
-	padding: calc(#{$margin-step-1} + 1px);
+	left: toRem(139);
+	margin-top: toRem(12);
+	border-top: toRem(1) solid $white;
+	border-right: toRem(1) solid $white;
+	padding: toRem(4);
 	content: "";
 	position: absolute;
 }
@@ -30,8 +30,8 @@
 .promo-card .promo-card-section {
 	.cmp-teaser__action-container a {
 		color: $white;
-		letter-spacing: 0.125rem;
-		line-height: 1.25rem;
+		letter-spacing: toRem(2);
+		line-height: toRem(20);
 		font-size: .875rem;
 		font-weight: 500;
 		text-transform: uppercase;
@@ -43,33 +43,36 @@
 }
 
 .promo-card .promo-card-section {
-  .cmp-teaser__action-container a:hover {
-    text-decoration: underline;
-  }
+	.cmp-teaser__action-container a:hover {
+		text-decoration: underline;
+	}
 }
 
 //premium cards css
 
 .hero-card {
-  .cmp-container {
-    padding: 0px;
-  }
+	.cmp-container{
+        padding: 0;
+    }
 	.image-right {
 	margin-bottom: 1.5625rem;
-	padding-left: 0.938rem;
-	padding-right: 0.938rem;
+	padding: 0;
+	@include respond-to-min($desktop){
+		padding-left: toRem(15);
+		padding-right: toRem(15);
+	}
 	.cmp-teaser {
 		display: flex;
 		flex-direction: row-reverse;
 		position: relative;
 		height: 100%;
-		box-shadow: 0 0.313rem 0.938rem 0 rgb(0 0 0 / 15%);	
+		box-shadow: 0 toRem(5) toRem(15) 0 rgb(0 0 0 / 15%);	
 		overflow: hidden;
 	}
 	.cmp-teaser__image {
-		width: 48%;
+		width: 50%;
 		img {
-			border-radius: 4px;
+			border-radius: toRem(4);
 			max-width: 100%;
 			height: auto;
 		}
@@ -83,19 +86,11 @@
 		bottom: 0;
 		left: 0;
 		position: absolute;
-		@include respond-to-max($tablet){
-			padding:$padding-step-2;
-			h1{
-				font-size: $font22;
-				color: $black;
-				margin:$margin-step-0;
-			}
-		}
 	}
 	.cmp-teaser__image:after {
 		position: absolute;
 		content: "";
-		background: linear-gradient(0deg, #000, transparent);
+		background: linear-gradient(0deg, $black, transparent);
 		opacity: 0.3;
 		width: 100%;
 		height: 100%;
@@ -105,38 +100,26 @@
 	.cmp-teaser__content h2 {
 		font-size: 1.625rem;
 		line-height: 2.0625rem;
-		letter-spacing: 1.63px;
+		letter-spacing: toRem(1.63);
 		padding-top: 1.25rem;
 	}
 	.cmp-teaser__content h2 a {
-		color: #353738;
+		color: $almost-black;
 	}
-	.cmp-teaser__action-container{
-		@include respond-to-max($phone){
-			margin-bottom: calc(#{$margin-step-1} + 2px);
-		}
-		a {
-			font-size: toRem(14);
-			line-height: 1.25rem;
-			letter-spacing: toRem(2);
-		}
-	} 
-	.cmp-teaser__action-link:before {
-		-webkit-transform: translateY(-50%) rotate(45deg);
-		left: toRem(110);
-		margin-top: calc(#{$margin-step-2} - 1px);
-		border-top: 1px solid #719e19;
-		border-right: 1px solid #719e19;
-		padding: calc(#{$padding-step-0} + 4px);
 	.cmp-teaser__action-container a {
 		font-size: .875rem;
 		line-height: 1.25rem;
-		letter-spacing: 0.125rem
+		letter-spacing: toRem(2);
 	}
-		@include respond-to-max($phone){
-			left:toRem(130);
-			margin-top: calc(#{$margin-step-1} + 1px);
-		}
+	.cmp-teaser__action-link:before {
+		-webkit-transform: translateY(-50%) rotate(45deg);
+		left: toRem(139);
+		margin-top: toRem(12);
+		border-top: toRem(1) solid $main-green;
+		border-right: toRem(1) solid $main-green;
+		padding: toRem(4);
+		content: "";
+		position: absolute;
 	}
 }
 
@@ -152,23 +135,29 @@
 		left: 0;
 		padding: 2.25rem;
 	}
+	.cmp-teaser__image {
+		@include respond-to-max($tablet){
+			max-height: toRem(150); 
+			overflow: hidden;
+		}
+    }
 	.cmp-teaser__content h2 {
 		font-size: 1.625rem;
 		line-height: 2.0625rem;
-		letter-spacing: 1.63px;
+		letter-spacing: toRem(1.63);
 	}
 	.cmp-teaser__content{
-        h1{
-            color: $white;
-        }
-        h2 a {
-            color: $white;
-        }
-    }
+		h1{
+			color: $white;
+		}
+		h2 a {
+			color: $white
+		}
+	} 
 	.cmp-teaser__image:after {
 		position: absolute;
 		content: "";
-		background: linear-gradient(0deg, #000, transparent);
+		background: linear-gradient(0deg, $black, transparent);
 		opacity: 0.3;
 		width: 100%;
 		height: 100%;
@@ -178,89 +167,73 @@
 	.cmp-teaser {
 		position: relative;
 		overflow: hidden;
-		border-radius: 0.25rem;
+		border-radius: toRem(4);
 	}
-	.cmp-teaser__image{
-        @include respond-to-max($tablet){
-        max-height: toRem(150) !important;
-        overflow: hidden;
-        }
-        img {
-            border-radius: toRem(4);
-        }
-    }
-	.cmp-teaser__action-container{
-		@include respond-to-max($phone){
-			margin-bottom: calc(#{$margin-step-2} + 4px);
-		}
-		a {
-			font-size: toRem(14);
-			line-height: toRem(20);
-			letter-spacing: toRem(2);
-			color: $white;
-		}
-	} 
 	.cmp-teaser__image img {
-		border-radius: 0.25rem;
+		border-radius: toRem(4);
 	}
 	.cmp-teaser__action-container a {
 		font-size: .875rem;
 		line-height: 1.25rem;
-		letter-spacing: 0.125rem;
-		color:$white;
+		letter-spacing: toRem(2);
+		color: $white;
 	}
 	.cmp-teaser__action-container a:hover {
 		text-decoration: underline;
 	}
 	.cmp-teaser__action-link:before {
 		-webkit-transform: translateY(-50%) rotate(45deg);
-		left: 155px;
-		margin-top: 0.625rem;
-		border-top: 1px solid #fff;
-		border-right: 1px solid #fff;
-		padding: 3px;
+		left: toRem(140);
+		margin-top: toRem(10);
+		border-top: toRem(1) solid $white;
+		border-right: toRem(1) solid $white;
+		padding: toRem(3);
 		content: "";
 		position: absolute;
+		@include respond-to-min($desktop){
+			left: toRem(165);
+    		margin-top: toRem(10);
+		}
 	}
 }
 
 @media (min-width:768px) and (max-width:990px) {
 	.promo-card-rev,
 	.image-right {
-		margin-top: 0.625rem;
+		margin-top: toRem(10);
 		.cmp-teaser,
 		.cmp-teaser__image img {
-			border-radius: 0.25rem;
+			border-radius: toRem(4);
 		}
 		.cmp-teaser__content h2 {
 			font-size: 1.375rem;
-			margin-top: 0px;
+			margin-top: 0;
 		}
 	}
 }
 
-  @media (max-width: 767px) {
-    .promo-card-rev,
-    .image-right {
-      margin-top: 0.625rem;
-      .cmp-teaser__content h2 {
-        font-size: 1.375rem;
-        margin-top: 0px;
-        padding-top: 0px;
-        line-height: 1.5rem;
-      }
-    }
-    .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--offset--phone--0 {
-      width: 100% !important;
-    }
-  }
+@media (max-width: 767px) {
+	.promo-card-rev,
+	.image-right {
+		margin-top: toRem(10);
+		.cmp-teaser__content h2 {
+			font-size: 1.375rem;
+			margin-top: 0;
+			padding-top: 0;
+			line-height: 1.5rem;
+		}
+	}
+	.aem-Grid.aem-Grid--phone--12>.aem-GridColumn.aem-GridColumn--offset--phone--0 {
+		width: 100%!important;
+	}
+}
 }
 
 .gutter-padding-left {
-	padding-left: 0.75rem;
+	padding-left: toRem(12);
 }
 .gutter-padding-right {
-	padding-right: 0.75rem;
+	padding-right: toRem(12);
 }
 
 @include respond-to-min($desktop){
@@ -269,10 +242,8 @@
 			max-height: toRem(546);
 		}
 		.cmp-teaser__image {
-			max-height: toRem(536);
+			max-height: toRem(546);
 			border-radius: toRem(4);
-			max-height: 546px;
-			border-radius: 0.25rem;
     		overflow: hidden;
 		}
 		.cmp-teaser__title {
@@ -288,7 +259,7 @@
 				padding: $font24;
 			}
 			.cmp-teaser {
-				max-height: 262px;
+				max-height: toRem(262);
 				overflow: hidden;
 			}
 			.cmp-teaser__title {
@@ -307,33 +278,33 @@
 			padding: 1rem;
 			width: 100%;
 			bottom: 0;
-			padding-top: 64px;
-			padding-left: 1.188rem;
+			padding-top: toRem(64);
+			padding-left: toRem(19);
 			height: 100%;
-			min-height: 47px;
-			border-radius: 0.25rem;
+			min-height: toRem(47);
+			border-radius: toRem(4);
 			position: absolute;
 			z-index: 9;
-			background: linear-gradient(0deg, #000, transparent);
+			background: linear-gradient(0deg, $black, transparent);
 		}
 		.cmp-image__image {
-			border-radius: 0.25rem;
-			min-height: 546px;
+			border-radius: toRem(4);
+			min-height: toRem(546);
     		object-fit: cover;
 		}
 	}
 	.promo-card {
 		.promo-card-section .cmp-teaser__content {
 			bottom: 0;
-			padding-top: 135px;
-			padding-left: 1.25rem;
-			padding-right: 1.25rem;
+			padding-top: toRem(135);
+			padding-left: toRem(20);
+			padding-right: toRem(20);
 			height: 100%;
-			min-height: 47px;
-			border-radius: 0.25rem;
+			min-height: toRem(47);
+			border-radius: toRem(4);
 			position: absolute;
 			z-index: 9;
-			background: linear-gradient(0deg, #000, transparent);
+			background: linear-gradient(0deg, $black, transparent);
 			width: 100%;
 			.cmp-teaser__title {
 				font-size: $font26;
@@ -342,27 +313,27 @@
 		.promo-card-row .promo-card-section {
 			.cmp-teaser {
 				height: 100%;
-				min-height: 250px;
+				min-height: toRem(250);
 				position: relative;
 				overflow: hidden;
-				border-radius: 0.25rem;
+				border-radius: toRem(4);
 			}
 			.cmp-image__image {
-				border-radius: 0.25rem;
-				height: 250px;
+				border-radius: toRem(4);
+				height: toRem(250);
 			}
 		}
 		.promo-card-row.container {
 			.promo-card-section {
 				&:nth-of-type(1) {
-					padding-right: 1rem;
+					padding-right: toRem(16);
 				}
 				&:nth-of-type(2) {
-					padding-left: 0.5rem;
-					padding-right: 0.5rem;
+					padding-left: toRem(8);
+					padding-right: toRem(8);
 				}
 				&:nth-of-type(3) {
-					padding-left: 1rem;
+					padding-left: toRem(16);
 				}
 			}
 		}
@@ -393,25 +364,20 @@
 					}
 				}
 			}
-			.cmp-teaser__image {
-				border-radius: 0.25rem;
-				max-height: 546px;
-				object-fit: cover;
-			}
 		}
 	}
 	.promo-card {
 		.promo-card-section .cmp-teaser__content {
 			width: 100%;
 			bottom: 0;
-			padding-top: 4rem;
-			padding-left: 1.188rem;
+			padding-top: toRem(64);
+			padding-left: toRem(19);
 			height: 100%;
-			min-height: 2.938rem;
-			border-radius: 0.25rem;
+			min-height: toRem(47);
+			border-radius: toRem(4);
 			position: absolute;
 			z-index: 9;
-			background: linear-gradient(0deg, #000, transparent);
+			background: linear-gradient(0deg, $black, transparent);
 			.cmp-teaser__title {
 				font-size: $font20;
 				margin: 0 0 $font16 0;
@@ -421,20 +387,20 @@
 			.promo-card-section {
 				.cmp-teaser {
 					margin-bottom: $font24;
-					max-height: 148px;
+					max-height: toRem(148);
 					position: relative;
 					overflow: hidden
 				}
 				.cmp-image__image {
-					border-radius: 0.25rem;
+					border-radius: toRem(4);
 				}
 			}
 		}
 		.promo-card-row.container {
 			margin-top: 0;
-			margin-bottom: 0.938rem;
+			margin-bottom: toRem(15);
 			&:nth-of-type(1) {
-				margin-top: 2.188rem;
+				margin-top: toRem(35);
 			}
 		}
 	}
@@ -445,81 +411,11 @@
 	}
 }
 
-  @include respond-to-max($desktop) {
-    .hero-card {
-      .promo-card-rev {
-        margin-bottom: $font14;
-        .cmp-teaser__content {
-          padding: $font16;
-          h1 {
-            color: $white;
-          }
-          .cmp-teaser__title {
-            font-size: $font22;
-            margin: 0;
-            a,
-            a:hover {
-              color: $white;
-            }
-          }
-        }
-        .cmp-teaser__image {
-          border-radius: 4px;
-          max-height: 546px;
-          object-fit: cover;
-        }
-      }
-    }
-    .promo-card {
-      .promo-card-section .cmp-teaser__content {
-        width: 100%;
-        bottom: 0;
-        padding-top: 4rem;
-        padding-left: 1.188rem;
-        height: 100%;
-        min-height: 47px;
-        border-radius: 0.25rem;
-        position: absolute;
-        z-index: 9;
-        background: linear-gradient(0deg, #000, transparent);
-        .cmp-teaser__title {
-          font-size: $font20;
-          margin: 0 0 $font16 0;
-        }
-      }
-      .promo-card-row {
-        .promo-card-section {
-          .cmp-teaser {
-            margin-bottom: $font24;
-            max-height: 148px;
-            position: relative;
-            overflow: hidden;
-          }
-          .cmp-image__image {
-            border-radius: 0.25rem;
-          }
-        }
-      }
-      .promo-card-row.container {
-        margin-top: 0;
-        margin-bottom: 0.938rem;
-        &:nth-of-type(1) {
-          margin-top: 2.188rem;
-        }
-      }
-    }
-    .teaser {
-      .promo-card-section {
-        padding: 0;
-      }
-    }
-  }
-
-  @include respond-to-max($phone) {
-    .gutter-padding-left {
-      padding-left: 0;
-    }
-    .gutter-padding-right {
-      padding-right: 0;
-    }
-  }
+@include respond-to-max($phone){
+	.gutter-padding-left {
+		padding-left: 0;
+	}
+	.gutter-padding-right {
+		padding-right: 0;
+	}
+}
