@@ -11,7 +11,7 @@
             var filterPopupFooter = 0;
 
             if (window.innerWidth > 991) {
-                $('.tables-4-0').css('height', (availableHeight - 60) + 'px');
+                $('.tables-4-0').css('height', (availableHeight - 87) + 'px');
             } else {
                 $('.tables-4-0').css('height', (availableHeight + 32) + 'px');
             }
