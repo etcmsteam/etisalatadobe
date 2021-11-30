@@ -203,6 +203,7 @@
   position: relative;
   margin-left: -50vw;
   left: 50%;
+  clear: both !important;
   .cmp-teaser {
     margin: 0 auto;
     padding: 0 16px;
@@ -326,10 +327,10 @@
 
       ul {
         list-style-type: none;
-        padding: 2rem 0 1rem 2rem;
+        padding: 2rem 0 1rem 1rem;
         position: relative;
         @include respond-to-min($desktop) {
-          padding: 1rem 0 1.25rem 2rem;
+          padding: 1rem 0 1.25rem 1rem;
         }
 
         @include respond-to-max($tablet) {
@@ -398,9 +399,6 @@
         margin-right: 0;
         right: 0;
       }
-    }
-    a:hover {
-      text-decoration: underline;
     }
   }
 
@@ -651,7 +649,7 @@
   .cmp-teaser__action-container {
     text-align: center;
     align-items: flex-end;
-    display: grid!important;
+    display: grid !important;
     @include secondary-button;
     background-color: $main-green;
     border-color: $main-green;
@@ -682,7 +680,7 @@
     border-color: $white;
     border-style: solid;
     white-space: nowrap;
-    display: grid!important;
+    display: grid !important;
     a {
       color: $almost-black;
       font-weight: get-font-weight("bold");
@@ -706,7 +704,7 @@
     border-color: $white;
     border-style: solid;
     white-space: nowrap;
-    display:grid!important;
+    display: grid !important;
     a {
       color: $white;
       font-weight: get-font-weight("bold");
@@ -843,6 +841,27 @@ $prefix: "cmp-teaser";
   @include respond-to-max($tablet) {
     .cross-promotion-plain {
       padding: 0;
+    }
+  }
+}
+
+.link__arrow {
+  a {
+    @include font-family-lato;
+     *[lang="ar"] *[dir="rtl"] & {
+      font-weight: 300;
+    }
+  }
+
+  a.cmp-teaser__action-link:hover {
+    text-decoration: underline;
+  }
+}
+
+.teaser--pattern__bg.link__arrow {
+  a {
+    *[lang="ar"] *[dir="rtl"] & {
+      @include font-family-Neotech;
     }
   }
 }

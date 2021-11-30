@@ -72,8 +72,9 @@ import { DIAL_CODE_DATA } from "../constant";
   });
 
   const ERROR_ELEMENT = ` <span id="valid-msg" class="hide valid-msg">✓ Valid</span> <span id="error-msg" class="hide error-msg"></span>`;
+  const $PARENT_ELEMENT = $("#contactNumber").parents(".cmp-form-text");
 
-  $(ERROR_ELEMENT).insertBefore("#contactNumber");
+  $(ERROR_ELEMENT).insertAfter("#contactNumber");
 
   // //validation start
   var errorMsg = document.querySelector("#error-msg");
@@ -88,7 +89,7 @@ import { DIAL_CODE_DATA } from "../constant";
     errorMsg.classList.add("hide");
     validMsg.classList.add("hide");
     input2.parentElement.parentElement.classList.remove("has-error-fields");
-    $(".intl-tel-input .has-error.alert-label").css("display", "none");
+    $PARENT_ELEMENT.find(".has-error.alert-label").css("display", "none");
   }
   //
   // // on blur: validate

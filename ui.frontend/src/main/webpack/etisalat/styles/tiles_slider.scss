@@ -1,4 +1,4 @@
-/// tile boxes slider
+ /// tile boxes slider
 // *************************************
 
 // {
@@ -21,21 +21,21 @@
 .tilecontainer {
     .tile-boxes-image-wrapper {
         position: relative;
-        min-width: 212px;
-        height: 120px;
-        border-radius: 8px;
+        min-width: toRem(212);
+        height: toRem(120);
+        border-radius: toRem(8);
         overflow: hidden;
         @include respond-to-min($desktop) {
-            height: 225px;
+            height: toRem(225);
         }
         @media (min-width: 1248px) {
-            min-width: 282px;
+            min-width: toRem(282);
         }
     }
     .tile-boxes-title-wrap {
         h2 {
             margin: 0;
-            font-size: 26px;
+            font-size: $font26;
             line-height: normal;
 
             @include respond-to-min($desktop) {
@@ -70,15 +70,15 @@
     }
 
     .tile-boxes-section {
-        padding-top: 40px;
+        padding-top: toRem(40);
         @include font-family-lato;
         padding-bottom: $font32;
         &.with-bg {
             background-color: rgba(242, 242, 242, 0.33);
         }
         @include respond-to-min($desktop) {
-            padding-top: 80px;
-            padding-bottom: 75px;
+            padding-top: toRem(80);
+            padding-bottom: toRem(75);
         }
 
         .tile-boxes-title-wrap {
@@ -110,30 +110,30 @@
         }
         .learn-more-wrap {
             a {
-                line-height: 16px;
+                line-height: toRem(16);
                 font-size: $font12;
-                letter-spacing: 1.6px;
+                letter-spacing: toRem(1.6);
                 @include font-family-lato;
                 @include respond-to-min($desktop) {
-                    line-height: 20px;
+                    line-height: toRem(20);
                     font-size: $font14;
-                    letter-spacing: 2px;
+                    letter-spacing: toRem(2);
                 }
             }
             
         }
         .learn-more.btn-modal {
             &::before {
-                padding: 3.7px;
+                padding: toRem(3.7);
             }
             span.moreg {
                 font-size: $font12;
-                line-height: 16px;
-                letter-spacing: 1.6px;
+                line-height: toRem(16);
+                letter-spacing: toRem(1.6);
                 @include respond-to-min($desktop) {
                     font-size: $font14;
-                    line-height: 20px;
-                    letter-spacing: 2px;
+                    line-height: toRem(20);
+                    letter-spacing: toRem(2);
                 }
             }
         }
@@ -210,6 +210,12 @@
             .swiper-slide {
                 &:last-child {
                     margin-right: 0;
+                   @include respond-to-max($tablet) {
+                    margin-right: toRem(40);
+                  }
+                  @include respond-to-max($phone) {
+                    margin-right: 0;
+                  }
                 }
             }
             .scrollbar {
@@ -217,7 +223,8 @@
             }
         }
         &.four-plus-slides {
-            padding-bottom: 39px;
+            padding-bottom: toRem(39);
+            position: sticky;
             .swiper-container{
                 z-index: 99;
             }
@@ -262,21 +269,21 @@
     }
 
     .tile-box-tile .tile-box-body h2 {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: toRem(18);
+        line-height: toRem(24);
         margin: 0;
         margin-bottom: 0.5rem;
         color: $almost-black;
         @include respond-to-min($desktop) {
-            font-size: 28px;
-            line-height: 35px;
+            font-size: toRem(28);
+            line-height: toRem(35);
             margin-bottom: 1rem;
         }
     }
 
     .tile_card-shadow {
         .tile-boxes-image-wrapper {
-            height: 160px;
+            height: toRem(160);
         }
         .tile-boxes-image-wrapper img {
             max-width: inherit !important;
@@ -287,23 +294,23 @@
             text-align: left;
             padding: 1.5rem;
             background: #fff;
-            border-radius: 0 0 4px 4px;
-            box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+            border-radius: 0 0 toRem(4) toRem(4);
+            box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
             position: relative;
             width: 100%;
-            min-height: 210px;
-            max-height: 210px;
+            min-height: toRem(210);
+            max-height: toRem(210);
             *[lang="ar"] *[dir="rtl"] & {
                 text-align: right;
             }
         }
         .tile-boxes-image-wrapper {
-            border-radius: 4px 4px 0 0;
+            border-radius: toRem(4) toRem(4) 0 0;
             margin-bottom: 0;
         }
         .tile-boxes-title-small h2 {
-            font-size: 28px;
-            line-height: 35px;
+            font-size: toRem(28);
+            line-height: toRem(35);
             margin-bottom: 1rem;
             color: $almost-black;
         }
@@ -317,7 +324,7 @@
             }
         }
         .tile_card-shadow .tile-box-body {
-            top: -40px;
+            top: toRem(-40);
         }
     }
 
@@ -344,17 +351,17 @@
     }
     .category p {
         color: #fff;
-        font-size: 10px;
-        letter-spacing: 1px;
+        font-size: $font10;
+        letter-spacing: toRem(1);
         text-align: center;
         margin: 0;
         position: absolute;
         top: 0;
         left: 1.5rem;
         background: #719e19;
-        padding: 5px 10px;
+        padding: toRem(5) toRem(10);
         text-transform: uppercase;
-        border-radius: 0 0 4px 4px;
+        border-radius: 0 0 toRem(4) toRem(4);
         z-index: 1;
         *[lang="ar"] *[dir="rtl"] & {
             right: 1.5rem;
@@ -364,13 +371,13 @@
     .card_date {
         color: $steel-grey;
         font-size: $font10;
-        line-height: 16px;
+        line-height: toRem(16);
         margin: 0;
     }
 
     .tile_card-shadow .learn-more-wrap {
         position: absolute;
-        bottom: 20px;
+        bottom: toRem(20);
     }
 
     .tile-boxes-section a .learn-more-wrap {
@@ -379,7 +386,7 @@
     @media (min-width: 320px) and (max-width: 769px) {
         .no-swiper_card {
             .swiper-container {
-                margin-bottom: 20px;
+                margin-bottom: toRem(20);
             }
             .swiper-wrapper {
                 display: block !important;
@@ -398,7 +405,7 @@
             .swiper-slide {
                 width: 100% !important;
                 .swiper-slide {
-                    margin-bottom: 30px;
+                    margin-bottom: toRem(30);
                 }
             }
         }
