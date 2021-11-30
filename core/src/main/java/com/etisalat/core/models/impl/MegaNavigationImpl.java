@@ -191,9 +191,10 @@ public class MegaNavigationImpl implements MegaNavigation {
 				&& (path.startsWith(PageConstants.CONTENT)
 						&& !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
 			Resource subNavResource = resource.getResourceResolver().getResource(path);
-			if (null != subNavResource && StringUtils.isBlank(nav.getActive()))
-				nav.setActive(request.getPathInfo().contains(subNavResource.getName()) ? ACTIVE : StringUtils.EMPTY);
-
+			if (null != subNavResource && StringUtils.isBlank(nav.getActive())) {
+				nav.setActive(
+						request.getPathInfo().contains(subNavResource.getName()) ? ACTIVE : StringUtils.EMPTY);
+			}
 		}
 	}
 	
@@ -343,8 +344,9 @@ public class MegaNavigationImpl implements MegaNavigation {
 	private String getContainerStyleID(Resource resource) {
 		if (resource.getValueMap().containsKey(STYLE_ID)) {
 			String[] styleIds = resource.getValueMap().get(STYLE_ID, String[].class);
-			if (null != styleIds && styleIds.length > 0)
+			if (null != styleIds && styleIds.length > 0) {
 				return styleIds[0];
+			}
 		}
 		return StringUtils.EMPTY;
 	}

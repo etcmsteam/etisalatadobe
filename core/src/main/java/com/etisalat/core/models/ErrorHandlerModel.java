@@ -12,10 +12,11 @@ public class ErrorHandlerModel extends WCMUsePojo {
 
 	@Override
 	public void activate() throws Exception {
-		String errorCode = StringUtils.isNotBlank(get("errorCode", String.class)) ? get("errorCode", String.class)
-				: DEFAULT_STATUS_CODE;
+		String errorCode = DEFAULT_STATUS_CODE;
+		if(StringUtils.isNotBlank(get("errorCode", String.class))){
+			errorCode = get("errorCode", String.class);
+		}
 		String errorPageURL = "/content/etisalat/ae/en/error/" + errorCode;
-
 		getResponse().setStatus(Integer.parseInt(errorCode));
 		getResponse().setContentType("text/html");
 
