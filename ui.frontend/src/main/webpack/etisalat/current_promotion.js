@@ -1,5 +1,4 @@
-import { IsMediaQuery } from "../helpers";
-
+import { IsMediaQuery } from "./js/helpers";
 $(document).ready(function () {
   var initSwiper;
   initSwiper = function () {
