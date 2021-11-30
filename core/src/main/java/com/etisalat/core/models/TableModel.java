@@ -3,6 +3,12 @@ package com.etisalat.core.models;
 
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.Rendition;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -18,7 +24,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.*;
 
 @Model(adaptables = {Resource.class,
         SlingHttpServletRequest.class})
