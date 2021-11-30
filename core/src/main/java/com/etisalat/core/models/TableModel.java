@@ -90,8 +90,8 @@ public class TableModel {
                 }
 
             } catch (IOException e) {
-                LOGGER.error("The exception occurred in getting header while reading table csv {}",
-                        csvPath);
+                LOGGER.error("The exception occurred in getting header while reading table csv {} {}",
+                        csvPath, e.getMessage());
             }
         }
 
@@ -125,8 +125,8 @@ public class TableModel {
                     rows.add(row);
                 }
             } catch (IOException e) {
-                LOGGER.error("The exception occurred while reading table csv {}",
-                        csvPath);
+                LOGGER.error("The exception occurred while reading table csv {} {}",
+                        csvPath, e.getMessage());
             }
         }
         return rows;
@@ -153,8 +153,8 @@ public class TableModel {
                     break;
                 }
             } catch (IOException e) {
-                LOGGER.error("The exception occurred while reading filter csv {}",
-                        filterCsvPath);
+                LOGGER.error("The exception occurred while reading filter csv {} {}",
+                        filterCsvPath, e.getMessage());
             }
         }
 
@@ -179,8 +179,8 @@ public class TableModel {
                 }
 
             } catch (IOException e) {
-                LOGGER.error("The exception occurred in getting header while reading table csv {}",
-                        csvPath);
+                LOGGER.error("The exception occurred in getting header while reading table csv {} {}",
+                        csvPath, e.getMessage());
             }
         }
 
@@ -204,8 +204,8 @@ public class TableModel {
                 }
             }
         } catch (IOException e) {
-            LOGGER.error("The exception occurred while reading filter csv {}",
-                    filterCsvPath);
+            LOGGER.error("The exception occurred while reading filter csv {} {}",
+                    filterCsvPath, e.getMessage());
         }
         return row;
     }

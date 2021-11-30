@@ -114,16 +114,20 @@ public class GenericListModel {
 	private void storeListData(Resource childResource) {
 
 		Resource imageRes = request.getResourceResolver().getResource(childResource.getPath() + "/jcr:content/image");
-		String imagePath = null != imageRes && imageRes.getValueMap().containsKey(FILE_REFERENCE)
-				? imageRes.getValueMap().get(FILE_REFERENCE).toString()
-						: StringUtils.EMPTY;
+		String imagePath =   StringUtils.EMPTY;
+		if(null != imageRes && imageRes.getValueMap().containsKey(FILE_REFERENCE)) {
+			imagePath = imageRes.getValueMap().get(FILE_REFERENCE, StringUtils.EMPTY);
+		}
 
 		Page childPage = childResource.adaptTo(Page.class);
 
 		GenericListPageDetails detail = new GenericListPageDetails();
 		LOG.info("list of pages {}", childPage.getPageTitle());
-		detail.setTitle(
-				StringUtils.isNotBlank(childPage.getPageTitle()) ? childPage.getPageTitle() : childPage.getTitle());
+		String title= childPage.getPageTitle();
+		if (StringUtils.isBlank(title)) {
+			title= childPage.getTitle();
+		}
+		detail.setTitle(title);
 		detail.setDescription(childPage.getDescription());
 		detail.setOffTime(childPage.getOffTime());
 		detail.setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, childPage.getPath()));

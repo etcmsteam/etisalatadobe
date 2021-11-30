@@ -311,10 +311,10 @@ public class ArticleSearchImpl implements ArticleSearch {
 	@Override
 	public Resource getThumbnailPageResource() {
 		Resource imageResource = currentRes.getChild(IMAGE);
-		if (null != imageResource) {
-			return imageResource;
-		} else {
+		if (null == imageResource) {
 			return currentRes;
+		} else {
+			return imageResource;
 		}
 	}
 
