@@ -18,7 +18,6 @@ import com.etisalat.core.models.ProductDetails;
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
 		ProductDetails.class }, resourceType = { ProductDetailsImpl.RESOURCE_TYPE })
 public class ProductDetailsImpl implements ProductDetails {
-	private static final Logger LOG = LoggerFactory.getLogger(ProductDetailsImpl.class);
 	/**
 	 * The resource type.
 	 */
@@ -35,7 +34,8 @@ public class ProductDetailsImpl implements ProductDetails {
 	@Self
 	@Optional
     private Carousel carousel;
-	
+
+	@Override
 	public List<ListItem> getItems() {
         return carousel.getItems();
     }

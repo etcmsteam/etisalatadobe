@@ -191,9 +191,8 @@ public class MegaNavigationImpl implements MegaNavigation {
 				&& (path.startsWith(PageConstants.CONTENT)
 						&& !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
 			Resource subNavResource = resource.getResourceResolver().getResource(path);
-			if (null != subNavResource && StringUtils.isBlank(nav.getActive())) {
-				nav.setActive(
-						request.getPathInfo().contains(subNavResource.getName()) ? ACTIVE : StringUtils.EMPTY);
+			if (null != subNavResource && StringUtils.isBlank(nav.getActive()) && request.getPathInfo().contains(subNavResource.getName())) {
+						nav.setActive(ACTIVE );
 			}
 		}
 	}
@@ -325,9 +324,7 @@ public class MegaNavigationImpl implements MegaNavigation {
 			if (null != item) {
 				for (Resource itemRes : item.getChildren()) {
 					ValueMap vm = itemRes.getValueMap();
-					teaserModel.setLink(vm.containsKey(PROPERTY_LINK)
-							? CommonUtility.appendHtmlExtensionToPage(resourceResolver, vm.get(PROPERTY_LINK, String.class))
-							: StringUtils.EMPTY);
+					teaserModel.setLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver, vm.get(PROPERTY_LINK, StringUtils.EMPTY)));
 					teaserModel.setText(vm.get("text", String.class));
 				}
 
