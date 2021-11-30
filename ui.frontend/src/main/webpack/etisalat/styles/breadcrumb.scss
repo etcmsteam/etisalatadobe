@@ -1,5 +1,4 @@
 //breadcrumb
-
 .cmp-breadcrumb {
   &__item,
   &-link {
@@ -20,20 +19,19 @@
       &:after {
         height: 0.55em;
         width: 0.55em;
-        border:solid $arrow-border-green;
-        border-width:0 $border-step-1 $border-step-1 0;
+        border: solid $arrow-border-green;
+        border-width: 0 $border-step-1 $border-step-1 0;
         content: "";
         top: calc(#{$padding-step-5}-1px);
         display: inline-block;
         position: absolute;
-        transform: rotate(-45deg);
+        @include rtl(transform, rotate(-45deg), rotate(135deg));
       }
     }
   }
 }
 
 //starter-header
-
 .basicpage .container .starter-header {
   padding: $padding-step-3 $padding-step-2;
   @include respond-to-min($desktop) {
@@ -43,15 +41,23 @@
     background-color: transparent;
     padding: $padding-step-0;
     margin-bottom: $margin-step-2;
-    border-radius:$border-radius-step-0;
+    border-radius: $border-radius-step-0;
   }
   h3 {
-    margin-bottom:$margin-step-0;
+    margin-bottom: $margin-step-0;
   }
   .old-price {
     background-color: $orange;
   }
   .secondary-header1 {
     margin-top: $margin-step-1;
+  }
+}
+
+.starter-header {
+  @include rtlBlock() {
+    .float-right {
+      float: right !important;
+    }
   }
 }

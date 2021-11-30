@@ -8,6 +8,15 @@
   padding-right: 0.75rem;
   position: relative;
   text-transform: uppercase;
+  @include rtlBlock() {
+    padding-right: 0;
+    &:before {
+      left: toRem(-15);
+      right: auto;
+      transform: translateY(-50%) rotate(135deg);
+      -webkit-transform: translateY(-50%) rotate(135deg);
+    }
+  }
 }
 
 .cmp-link__arrow_left {
