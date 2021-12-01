@@ -89,19 +89,20 @@
     }
 
     .alert-label {
-      top: auto;
       bottom: toRem(-25);
       color: $error-red;
-      height: 1rem;
-      margin: 0;
-      width: 100%;
       font-size: $font16;
+      height: 1rem;
       line-height: toRem(16);
-      position: absolute;
-      white-space: nowrap;
+      margin: 0;
       overflow: hidden;
+      position: absolute;
       text-overflow: ellipsis;
+      top: auto;
+      white-space: nowrap;
+      width: 100%;
     }
+
     .has-error ~ label {
       font-size: $font16;
       transform: translateY(-10px) scale(0.8);
@@ -169,7 +170,8 @@
     width: 100%;
   }
 
-  .country-code {
+  .country-code,
+  .default-selected {
     @include rtlProp(padding-right, padding-left, 24px);
   }
 }
@@ -197,6 +199,7 @@
 
     & ~ label {
       @include rtlProp(padding-left, padding-right, 16px);
+      @include rtl(transform-origin, 0 0, 100% 0 !important);
     }
 
     &.valid {
