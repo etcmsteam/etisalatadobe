@@ -170,9 +170,16 @@
     width: 100%;
   }
 
-  .country-code,
+  .country-code {
+    padding-right: toRem(24);
+  }
+
   .default-selected {
-    @include rtlProp(padding-right, padding-left, 24px);
+    padding-right: toRem(24);
+
+    @include respond-to-max($phone) {
+      padding-right: 0;
+    }
   }
 }
 
@@ -264,6 +271,7 @@
       color: $almost-black;
       transform: translateY(-20px) scale(0.8) !important;
 
+      @include rtl(transform-origin, 0 0, 100% 0 !important);
       @include ts-step-0;
     }
   }
