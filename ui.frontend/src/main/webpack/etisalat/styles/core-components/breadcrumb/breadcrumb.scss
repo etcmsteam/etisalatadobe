@@ -1,0 +1,73 @@
+//breadcrumb
+.cmp-breadcrumb {
+  &__item,
+  &-link {
+    font-size: $font12;
+    letter-spacing: toRem(2);
+    line-height: toRem(15);
+    margin-right: calc(#{$margin - step-1}-5px);
+    padding-right: calc(#{$padding - step-1}-2px);
+    text-transform: uppercase;
+
+    @include font-family-lato();
+  }
+
+  &__item {
+    color: $gray-fill;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &-link {
+      &::after {
+        border: solid $arrow-border-green;
+        border-width: 0 $border-step-1 $border-step-1 0;
+        content: "";
+        display: inline-block;
+        height: 0.55em;
+        position: absolute;
+        top: toRem(39);
+        width: 0.55em;
+
+        @include rtl(transform, rotate(-45deg), rotate(135deg));
+      }
+    }
+  }
+}
+
+//starter-header
+.basicpage .container .starter-header {
+  padding: $padding-step-3 $padding-step-2;
+
+  @include respond-to-min($desktop) {
+    padding: calc(#{$padding-step-4} + 4px) $padding-step-5;
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+    border-radius: $border-radius-step-0;
+    margin-bottom: $margin-step-2;
+    padding: $padding-step-0;
+  }
+
+  h3 {
+    margin-bottom: $margin-step-0;
+  }
+
+  .old-price {
+    background-color: $orange;
+  }
+
+  .secondary-header1 {
+    margin-top: $margin-step-1;
+  }
+}
+
+.starter-header {
+  @include rtlBlock() {
+    .float-right {
+      float: right !important;
+    }
+  }
+}
