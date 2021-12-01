@@ -46,6 +46,11 @@
         if ($(element).hasClass("cmp-form-options__field--drop-down")) {
           error.addClass("alert-label").insertBefore($element);
           $(alertIcon).insertBefore(error);
+        } else if ($(element).parents().hasClass("iti--allow-dropdown")) {
+          const $parentElement = $($element).parents(".cmp-form-text");
+          error.addClass("alert-label").insertAfter($element);
+          $parentElement.append(alertIcon);
+          //$(alertIcon).insertBefore(error);
         } else {
           error.addClass("alert-label").insertAfter($element);
           $(alertIcon).insertAfter(error);

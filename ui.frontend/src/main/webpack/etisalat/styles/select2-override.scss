@@ -42,8 +42,10 @@
       font-size: $font14;
       line-height: toRem(52) !important;
       padding-left: $padding-step-0 !important;
+      padding-right: $padding-step-0 !important;
 
       @include font-family-lato;
+      @include rtl(text-align, left, right);
 
       @include respond-to-min($desktop-min) {
         font-size: $font20;
@@ -94,7 +96,17 @@
   }
 }
 
-//to remove background
+.select2-search--dropdown .select2-search__field {
+  border-width: 0 0 1px !important;
+  min-height: toRem(40);
+  outline: 0;
+
+  &:focus {
+    border-color: $main-green;
+  }
+}
+
+// to remove background
 .select2-container--default .select2-results__option--selected {
   background-color: transparent;
 }

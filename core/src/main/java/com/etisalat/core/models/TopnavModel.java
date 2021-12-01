@@ -6,13 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
- 
-
 import javax.annotation.PostConstruct;
-
- 
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -24,9 +18,6 @@ import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
- 
-
 import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.util.CommonUtility;
@@ -107,14 +98,14 @@ public class TopnavModel {
                 PageConstants.SLASH + languageCode + PageConstants.SLASH);
         Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
 		if (null != childRes) {
-			if (!currrentPath.equals(newPagePath)) {
+			if (currrentPath.equals(newPagePath)) {
+				setCurrentPageLanguageTitle(pageTitle);
+			} else {
 				LinkModel model = new LinkModel();
 				model.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(resourceResolver,childRes.getPath()));
 				model.setTitle(pageTitle);
 				model.setAltText(languageCode);
 				linkModelList.add(model);
-			} else {
-				setCurrentPageLanguageTitle(pageTitle);
 			}
 		}
     }

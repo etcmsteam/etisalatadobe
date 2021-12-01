@@ -58,9 +58,8 @@ public class FixedNavigationModel {
 	}
 
 	private void setExtensionToLink(FixedNavigtaionMultifieldModel modelObj) {
-		String cardLink = StringUtils.isNotBlank(modelObj.getNavigationLink()) ? modelObj.getNavigationLink()
-				: StringUtils.EMPTY;
-		if (cardLink.startsWith("/content/") && !StringUtils.contains(cardLink, HTML_EXTENSION)) {
+		String cardLink = modelObj.getNavigationLink();
+		if (StringUtils.isNotBlank(cardLink) && cardLink.startsWith("/content/") && !StringUtils.contains(cardLink, HTML_EXTENSION)) {
 			modelObj.setNavigationLink(cardLink + HTML_EXTENSION);
 		}
 

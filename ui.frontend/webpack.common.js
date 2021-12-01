@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const globImporter = require("node-sass-glob-importer");
 
 
 const SOURCE_ROOT = __dirname + "/src/main/webpack";
@@ -63,6 +64,7 @@ module.exports = {
             loader: "sass-loader",
             options: {
               url: false,
+              importer: globImporter(),
             },
           },
           {

@@ -78,7 +78,6 @@
         left: 6.375rem;
         right: auto;
         margin-right: 0;
-        font-weight: 300 !important;
         @include respond-to-max($tablet) {
           left: 0;
         }
@@ -328,10 +327,10 @@
 
       ul {
         list-style-type: none;
-        padding: 2rem 0 1rem 2rem;
+        padding: 2rem 0 1rem 1rem;
         position: relative;
         @include respond-to-min($desktop) {
-          padding: 1rem 0 1.25rem 2rem;
+          padding: 1rem 0 1.25rem 1rem;
         }
 
         @include respond-to-max($tablet) {
@@ -849,12 +848,20 @@ $prefix: "cmp-teaser";
 .link__arrow {
   a {
     @include font-family-lato;
-    @mixin rtlBlock() {
+     *[lang="ar"] *[dir="rtl"] & {
       font-weight: 300;
     }
   }
 
   a.cmp-teaser__action-link:hover {
     text-decoration: underline;
+  }
+}
+
+.teaser--pattern__bg.link__arrow {
+  a {
+    *[lang="ar"] *[dir="rtl"] & {
+      @include font-family-Neotech;
+    }
   }
 }

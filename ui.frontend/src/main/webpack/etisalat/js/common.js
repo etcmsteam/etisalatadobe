@@ -1,6 +1,5 @@
 (function () {
-  /*--Select dropdown Start--*/
-  //Class
+  // Class
   const FORM_OPTION_CLASS = ".cmp-form-options";
   const ERROR_FIELD_CLASS = "has-error-fields";
   const FLOATING_LABEL_CLASS = "floating-label";
@@ -9,10 +8,10 @@
   const SELECT_DROPDOWN_WRAP_CLASS = ".cmp-form-options--drop-down";
   const SELECT_DROPDOWN_OPEN_CLASS = "cmp-form-options--open";
 
-  //Selector
+  // Selector
   const SELECT_DROPDOWN = $("select.cmp-form-options__field");
 
-  //Element
+  // Element
   const EMPTY_OPTION = `<option></option>`;
 
   function initSelect2AndFixFormFloatingLabels() {
@@ -23,13 +22,19 @@
 
     SELECT_DROPDOWN.each(function () {
       const $SELECT = $(this);
-      $SELECT.val("");
-      $SELECT.prepend(EMPTY_OPTION);
+      const $IS__DEFAULT_SELECTED = $SELECT.parents().hasClass("default-selected");
+      const $IS_SEARCH_ENABLE = $SELECT.parents().hasClass("search-enable");
+      if ($IS__DEFAULT_SELECTED) {
+        $(this).closest(SELECT_DROPDOWN_WRAP_CLASS).find("label").addClass(FLOATING_LABEL_CLASS);
+      } else {
+        $SELECT.val("");
+        $SELECT.prepend(EMPTY_OPTION);
+      }
 
       $SELECT
         .select2({
           width: "100%",
-          minimumResultsForSearch: Infinity,
+          minimumResultsForSearch: $IS_SEARCH_ENABLE ? "" : Infinity,
         })
         .on("select2:opening", function () {
           $(this).closest(SELECT_DROPDOWN_WRAP_CLASS).addClass(SELECT_DROPDOWN_OPEN_CLASS);
@@ -41,7 +46,9 @@
         .on("select2:close", function () {
           $(this).closest(SELECT_DROPDOWN_WRAP_CLASS).removeClass(SELECT_DROPDOWN_OPEN_CLASS);
           if (!$(this).closest(SELECT_DROPDOWN_WRAP_CLASS).find("label").hasClass(FLOATING_LABEL_SELECTED_CLASS)) {
-            $(this).closest(SELECT_DROPDOWN_WRAP_CLASS).find("label").removeClass(FLOATING_LABEL_CLASS);
+            if (!$SELECT.val()) {
+              $(this).closest(SELECT_DROPDOWN_WRAP_CLASS).find("label").removeClass(FLOATING_LABEL_CLASS);
+            }
           }
         });
     });
@@ -55,5 +62,4 @@
       $(this).closest(FORM_OPTION_CLASS).find(ERROR_CLASS).remove();
     }
   });
-  /*--Select dropdown End--*/
 })();
