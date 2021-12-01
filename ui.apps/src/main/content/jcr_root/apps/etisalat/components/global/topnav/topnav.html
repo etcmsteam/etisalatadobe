@@ -22,13 +22,15 @@
                     <sly data-sly-list.itemList="${itemss.listChildren}" class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
 					   <li data-sly-test="${!itemList.openmodalwindow}">
 						  <a href="${itemList.navigationLink @ extension = 'html'}" data-sub-menu="sub-menu-mobile">
-						  <span class="text">${itemList.navigationTitle}</span><img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/></a>                         
+						    <span class="text">${itemList.navigationTitle}</span>
+                <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
+                     src="${itemList.navigationImage}"/></a>
 					   </li>
 					    <li data-sly-test="${itemList.openmodalwindow}">
 						  <a data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="btn-modal"
 							 title="${itemList.navigationTitle}">
 							<span class="text">${itemList.navigationTitle}</span>
-                            <img data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/>
+                            <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}" src="${itemList.navigationImage}"/>
 						  </a>
                          </li>                    
 						  <div   data-sly-test="${itemList.openmodalwindow}" id="${resource.name}" class="nv-modal fade  black-overlay-modal">

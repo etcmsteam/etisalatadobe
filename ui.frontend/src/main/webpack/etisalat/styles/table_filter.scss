@@ -123,6 +123,7 @@
 
     .nv-checkboxes-text {
       margin-left: 1rem;
+      padding-top: 2px;
       @include font-family-lato;
       &.gray-color {
         color: $steel-grey;
@@ -192,6 +193,7 @@
       svg {
         width: 16px;
         height: 16px;
+        right: 0;
       }
     }
   }
@@ -326,7 +328,7 @@
 
 .channel-list-page {
   .table-default-section {
-    overflow: hidden;
+    // overflow: hidden;
     height: auto;
   }
 }
@@ -472,7 +474,7 @@
         padding: 16px;
         border-radius: 4px;
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-        width: 100%;
+        width: toRem(282);
         border: none;
         top: 75%;
 
@@ -688,6 +690,11 @@
     // @include respond-to-min($desktop-wide) {
     //   width: toRem(1224);
     // }
+    .container {
+      @include respond-to-min($desktop-wide) {
+        width: 1200px;
+      }
+    }
 
     .logo-wrapper,
     .head-wrapper {
@@ -696,6 +703,14 @@
 
     .logo-wrapper {
       display: flex;
+
+      @include respond-to-max($desktop-wide) {
+        padding-left: 10px;
+      }
+
+      @include respond-to-max($tablet) {
+        padding-left: 0;
+      }
 
       .cmp-image {
         margin-right: 8px;
@@ -722,6 +737,7 @@
         padding-left: 4px 0;
         .back {
           margin-bottom: 4px;
+          @include font-family-lato();
           @include respond-to-min($desktop) {
             margin-bottom: 8px;
           }
@@ -861,6 +877,9 @@
             font-size: $font16;
             line-height: 1.6;
             @include font-family-lato;
+            @include respond-to-max($desktop - 1) {
+              font-size: $font14;
+            }
 
             &:focus {
               border: none;
@@ -933,8 +952,27 @@
       }
     }
   }
-  @include respond-to-max($desktop - 1) {
-    margin-bottom: toRem(16);
+  &.search-wrapper {
+    margin-bottom: 2px;
+    box-shadow: none;
+  }
+  &.search-full-width {
+    .search-input {
+      width: 100%;
+      padding: $padding-step-0 $padding-step-5;
+      @include respond-to-max($desktop-wide) {
+        padding: $padding-step-0 $padding-step-5 $padding-step-0 $padding-step-3;
+      }
+      @include respond-to-max($desktop-min) {
+        padding: $padding-step-0 $padding-step-3;
+      }
+      @include respond-to-max($tablet) {
+        padding: $padding-step-0 1px;
+      }
+      @include respond-to-max($phone) {
+        padding: $padding-step-0;
+      }
+    }
   }
 }
 

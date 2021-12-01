@@ -55,7 +55,6 @@
     padding: 1rem 0;
     text-transform: uppercase;
   }
-
   &.table-without-title {
     > tfoot,
     > thead,
@@ -113,6 +112,20 @@
         }
       }
     }
+    @include respond-to-min($desktop) {
+      &.five-col td{
+        width: 20%;
+      }
+      &.four-col td{
+        width: 25%;
+      }
+      &.three-col td{
+        width: 33.33333%;
+      }
+      &.two-col td{
+        width: 50%;
+      }
+    }
   }
 
   .discount {
@@ -142,6 +155,10 @@
           word-break: break-word;
           @include font-family-lato;
 
+          p {
+            color: $steel-grey;
+          }
+
           .price {
             color: $almost-black;
             font-weight: 900;
@@ -151,10 +168,10 @@
           &.price-col {
             text-align: right;
           }
-
+          
           &:first-child {
-           // padding-left: 0;
-          }
+            padding-left: 0;
+           }
 
           &:last-child {
             padding-right: 0;
@@ -310,17 +327,25 @@
 
     &.three-col {
       .custom-datatable {
-        @include respond-to-max($tablet - 1) {
-          margin: 0px -12px;
-        }
+        margin: 0;
       }
       thead,
       tbody {
         tr {
-          th,
+          th {
+            @include respond-to-min($desktop) {
+              width: 33.33%;
+            }
+          }
           td {
             @include respond-to-min($desktop) {
               width: 33.33%;
+            }
+            &:first-child {
+              padding-left: 38px;
+              @include respond-to-min($desktop) {
+                padding-left: $padding-step-7;
+              }
             }
           }
         }
@@ -349,9 +374,9 @@
             position: relative;
 
             &:first-child {
-              padding-left: 2.4rem;
+              padding-left: 2.4rem !important;
               @include respond-to-min($desktop) {
-                padding-left: 3.5rem;
+                padding-left: 3.5rem !important;
               }
 
               &:before {
@@ -368,7 +393,7 @@
               height: 16px;
               left: 1rem;
               top: 2.75rem;
-              min-height: 24px;
+              max-height: 24px;
               transform: translateY(-50%);
               @include respond-to-min($desktop) {
                 width: 24px;
@@ -683,6 +708,20 @@
     }
 
     &.tableListItem {
+      .custom-datatable {
+        margin: 0;
+      }
+      table {
+        tr {
+          td {
+            @include respond-to-min($tablet) {
+              &:first-child {
+                padding-left: toRem(16) !important;
+               }
+            }
+          }
+        }
+      }
       ul {
         li {
           list-style: none;
@@ -1267,10 +1306,6 @@ table {
 .tables-4-0 {
   padding: 0;
   margin: 0;
-  @include respond-to-min($desktop) {
-    margin-left: 1.625rem;
-  }
-
   &.has-bg {
     padding: 16px 0;
     background-color: $module-bg-color;
@@ -1564,7 +1599,7 @@ table {
 .custom-datatable {
   margin: 0 -4px;
   @include respond-to-min($tablet) {
-    margin: 0 -12px;
+    margin: 0;
   }
   .dataTables_info {
     display: none;
@@ -1576,6 +1611,7 @@ table {
       padding-top: 0.755em;
       color: $steel-grey;
       font-size: $font14;
+      @include font-family-lato();
       line-height: 17px;
     }
   }
@@ -1623,6 +1659,20 @@ table {
     .search-input .check-availability-style .input-icon {
       @include font-family-lato;
       background-color: $sand-white-50 !important;
+    }
+  }
+}
+
+.table-with-pagination {
+  .ellipsis {
+    @include font-family-lato();
+  }
+  .paginate_button {
+    &.previous {
+      margin-left: 10px;
+    }
+    &.next {
+      margin-right: 10px;
     }
   }
 }

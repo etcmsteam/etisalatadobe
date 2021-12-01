@@ -95,7 +95,7 @@
       height: 1rem;
       margin: 0;
       width: 100%;
-      font-size: $font12;
+      font-size: $font16;
       line-height: toRem(16);
       position: absolute;
       white-space: nowrap;
@@ -121,7 +121,7 @@
     label {
       color: $error-red;
       font-size: toRem(16);
-      transform: translateY(-10px) scale(0.8);
+      transform: translateY(-10px) scale(0.8) !important;
       z-index: 2;
 
       @include rtl(transform-origin, 0 0, 100% 0);
@@ -167,6 +167,10 @@
     top: toRem(48);
     white-space: nowrap;
     width: 100%;
+  }
+
+  .country-code {
+    @include rtlProp(padding-right, padding-left, 24px);
   }
 }
 
@@ -223,6 +227,8 @@
     position: absolute;
     top: toRem(48);
     z-index: $form-error;
+
+    @include rtlProp(left, right, 0);
   }
 
   .valid-msg {
@@ -296,6 +302,16 @@
       height: toRem(24);
       margin-right: 5rem;
       width: toRem(24);
+    }
+  }
+}
+
+.smb-event {
+  .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6 {
+    padding: 0 toRem(12);
+
+    @include respond-to-max($tablet) {
+      padding: 0;
     }
   }
 }
