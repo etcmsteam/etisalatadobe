@@ -1,0 +1,260 @@
+.nested-accordion {
+  .cmp-accordion__item {
+    border-bottom: 1px solid;
+    border-color: $white;
+  }
+
+  .cmp-viewall {
+    border-bottom: 1px solid $light-sand-brown;
+  }
+
+  .cmp-accordion__button {
+    background-color: $sand-white;
+    border-color: transparent;
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 25%);
+    display: flex;
+    font-size: $font18;
+    justify-content: center;
+    padding: 3rem 0;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+
+    @include respond-to-min($tablet) {
+      font-size: $font24;
+      padding: 2.8125rem 5rem;
+    }
+
+    @include respond-to-min($desktop) {
+      font-size: $font26;
+      justify-content: space-between;
+      padding: 1.8125rem 7.2rem;
+    }
+
+    *[lang="ar"] *[dir="rtl"] & {
+      text-align: right;
+    }
+  }
+
+  .cmp-accordion__icon {
+    border-left: 2px solid $cold-gray;
+    border-top: 2px solid $cold-gray;
+    color: $almost-black;
+    content: "";
+    display: block;
+    height: 15px;
+    position: relative;
+    transform: rotate(225deg);
+    width: 15px;
+
+    @include respond-to-max($tablet) {
+      left: 30px;
+    }
+  }
+
+  .cmp-accordion__button--expanded {
+    background-color: $white;
+  }
+
+  .cmp-accordion__button--expanded .cmp-accordion__icon {
+    border-left: 2px solid $almost-black;
+    border-top: 2px solid $almost-black;
+    content: "";
+    display: block;
+    height: 18px;
+    top: 10px;
+    transform: rotate(45deg);
+    width: 18px;
+
+    @include respond-to-max($phone) {
+      right: 5px;
+      top: 10px;
+    }
+  }
+
+  .cmp-accordion__title {
+    color: $almost-black;
+    font-size: $font18;
+    padding-top: 0;
+
+    @include font-family-Neotech();
+
+    @include respond-to-min($tablet) {
+      font-size: $font24;
+    }
+
+    @include respond-to-min($desktop) {
+      font-size: $font26;
+    }
+
+    *[lang="ar"] *[dir="rtl"] & {
+      margin-left: 2rem;
+    }
+  }
+
+  .font--small {
+    color: #848789;
+    font-size: $font16;
+    line-height: 25.6px;
+  }
+
+  .signifierNoIcon {
+    margin-top: 30px;
+
+    @include respond-to-min($desktop) {
+      width: 860px;
+    }
+
+    @include respond-to-min($desktop) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include respond-to-min($desktop) {
+      padding: 10px 30px 80px 8px;
+    }
+
+    .cmp-accordion__icon {
+      display: none;
+    }
+
+    .cmp-accordion__title {
+      font-size: $font16;
+      letter-spacing: 0.1rem;
+
+      @include font-family-lato();
+    }
+
+    .cmp-accordion__button {
+      background-color: $white;
+      border-color: transparent;
+      box-shadow: none;
+      display: block;
+      margin: 0;
+      padding-bottom: 10px;
+      padding-left: 4px;
+      padding-right: 0;
+      padding-top: 10px;
+
+      @include respond-to-min($desktop) {
+        box-shadow: none;
+        line-height: 22px;
+        padding-left: 2px;
+
+        *[lang="ar"] *[dir="rtl"] & {
+          padding-right: 1%;
+          text-align: right;
+        }
+      }
+
+      *[lang="ar"] *[dir="rtl"] & {
+        padding-right: 4%;
+        text-align: right;
+      }
+    }
+
+    .cmp-accordion__header {
+      border-top: 1px solid $light-sand-brown;
+      display: block;
+      font-size: $font16;
+      padding-bottom: 5px;
+    }
+
+    .cmp-accordion__button--expanded .cmp-accordion__title::before {
+      color: $almost-black;
+      content: " - ";
+      display: table-cell;
+      font-size: 61px;
+      font-weight: 200;
+      line-height: 12px;
+      padding: 5px;
+      position: relative;
+      right: 9px;
+      text-align: center;
+      vertical-align: top;
+
+      @include font-family-lato;
+
+      *[lang="ar"] *[dir="rtl"] & {
+        right: -9px;
+      }
+    }
+
+    .cmp-accordion__title::before {
+      color: $almost-black;
+      content: " + ";
+      display: table-cell;
+      font-family: "Lato";
+      font-size: $font28;
+      font-weight: get-font-weight("light");
+      line-height: 12px;
+      padding: 5px;
+      position: relative;
+      right: 9px;
+      text-align: center;
+      vertical-align: top;
+
+      *[lang="ar"] *[dir="rtl"] & {
+        right: -9px;
+      }
+    }
+
+    .cmp-text {
+      color: $steel-grey;
+      padding: 25px 5px 15px 43px;
+
+      @include font-family-Neotech();
+
+      ul li {
+        list-style-type: none;
+        padding-left: 0;
+
+        .space-bottom {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    table {
+      border: 2px solid grey;
+      height: 112px;
+      width: 729px;
+    }
+
+    th {
+      background-color: $main-green;
+      border-right: 1px solid $steel-grey;
+      color: $white;
+      padding: 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    td {
+      border-right: 1px solid $steel-grey;
+      border-top: 1px solid $steel-grey;
+      color: $steel-grey;
+      display: table-cell;
+      padding: 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    span.more,
+    span.less {
+      color: $almost-black;
+      cursor: pointer;
+      float: right;
+      font-size: $font14;
+      letter-spacing: 2px;
+      line-height: 18px;
+      margin-top: 10px;
+      text-align: right;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 100%;
+
+      @include font-family-lato();
+    }
+  }
+}
