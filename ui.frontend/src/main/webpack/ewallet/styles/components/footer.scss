@@ -1,5 +1,5 @@
 footer {
-  padding: 50px 0;
+  padding: 150px 0 50px 0;
   display: flex;
   justify-content: center;
   ul {
@@ -11,10 +11,13 @@ footer {
         border-right: none;
         border-left: none;
         color: $black-grey;
-        font-size: toRem(16);
+        font-size: toRem(14);
         line-height: 18px;
         padding: 0 14px;
         letter-spacing: 0;
+        @include respond-to-min($phone) {
+          font-size: toRem(16);
+        }
 
         &:hover {
           color: $pale-green;
@@ -23,6 +26,12 @@ footer {
       }
       &:last-child {
         font-size: toRem(18);
+        @include respond-to-max($phone) {
+        clear: both;
+        float: left;
+        text-align: center;
+        padding-top: 15px;
+        }
       }
     }
   }

@@ -1,0 +1,193 @@
+.cmp-form-options--drop-down .select-hide,
+.cmp-form-options--drop-down select {
+  display: none;
+}
+
+.form-section {
+  padding: 1rem;
+  .form-group {
+    margin-bottom: 0;
+    &.has-error-fields {
+        border-color: $error-red;
+        .alert-icon {
+          display: block;
+          svg {
+            width: toRem(20);
+            height: toRem(20);
+            fill: $error-red;
+            top: toRem(20);
+            right: toRem(15);
+            position: absolute;
+          }
+        }
+        .alert-label {
+          top: auto;
+          bottom: toRem(-25);
+          color: $error-red;
+          font-size: $font12;
+          line-height: toRem(16);
+          text-align: left;
+          padding: 0 toRem(18);
+          height: 1rem;
+          margin: 0;
+          width: 100%;
+          position: absolute;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+  }
+  .floating-label-input,
+  .floating-label-select {
+    height: toRem(60);
+    border: 1px solid $grey-secondary;
+    border-radius: toRem(4);
+    position: relative;
+    display: block;
+    width: 97%;
+    &.select-arrow-active {
+      font-weight: 500;
+    }
+
+    .floating-label {
+      top: toRem(6);
+      color: $nav-blue;
+      font-size: $font12;
+      line-height: toRem(13);
+      font-weight: 500;
+    }
+    label {
+      position: absolute;
+      display: block;
+      box-sizing: border-box;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+      margin: 0;
+      font-weight: 400;
+      pointer-events: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      background-color: transparent;
+      transition: 0.3s;
+      color: $gray-primary;
+      font-size: $font24;
+      line-height: toRem(59);
+      padding: 0 toRem(18) !important;
+      transition: 0.3s;
+    }
+    .cmp-form-text__text {
+      color: $black-grey;
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
+      border: none;
+      box-shadow: none;
+      outline: none;
+      background-color: transparent;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 59px;
+      padding: 6px 18px !important;
+      &:focus ~ label {
+        top: toRem(6);
+        color: $nav-blue;
+        font-size: $font12;
+        line-height: toRem(13);
+        font-weight: 500;
+      }
+    }
+  }
+  .cmp-form-options__field {
+    border: 1px solid $grey-select;
+    border-radius: 4px;
+    height: 60px;
+    margin: 0;
+    width: 97%;
+    color: $gray-primary;
+    font-size: $font24;
+    font-weight: 400;
+    line-height: toRem(59);
+    padding: 0 toRem(18) !important;
+    outline: none;
+  }
+}
+
+.select-selected {
+  font-size: $font20;
+  color: $almost-black;
+  text-decoration: none;
+  background-position: 100%;
+  letter-spacing: 0;
+  line-height: 1.8rem;
+  cursor: pointer;
+  width: 100%;
+  color: $gray-primary;
+  display: block;
+  font-size: $font24;
+  left: 0;
+  line-height: toRem(59);
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0 18px !important;
+  font-weight: 400;
+  .select-arrow-active:after {
+    background-color: transparent;
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    top: toRem(14);
+    right: toRem(10);
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+.cmp-form-options--drop-down {
+  .select-items {
+    background-position: 100%;
+    background-color: $white;
+    position: relative;
+    color: $dark-gray;
+    cursor: pointer;
+    font-size: $font16;
+    letter-spacing: 0;
+    line-height: 1.8rem;
+    overflow-x: hidden;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    border: 0;
+    border-radius: 0;
+    z-index: 5;
+    box-shadow: 0 0.0625rem 0.25rem 0 rgb(1 1 1 / 30%);
+    .selecteddiv {
+      font-size: toRem(23);
+      line-height: toRem(26);
+      padding: toRem(10) toRem(25);
+      font-weight: 400;
+      &:hover {
+        font-weight: 700;
+        text-decoration: none;
+        color: $gray-primary;
+      }
+    }
+    & div {
+      @media (max-width: 768px) {
+        padding: 0.3rem 0.3rem;
+      }
+    }
+
+    & > div:last-child .selecteddiv {
+      border: none;
+    }
+  }
+}
