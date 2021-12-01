@@ -78,14 +78,13 @@
       position: relative;
 
       svg {
+        @include rtlProp(right, left, 0);
         fill: $error-red;
         height: 1.6rem;
         position: absolute;
         top: 0;
         width: 1.6rem;
         z-index: $error-svg;
-
-        @include rtlProp(right, left, 0);
       }
     }
 
@@ -121,12 +120,11 @@
     }
 
     label {
+      @include rtl(transform-origin, 0 0, 100% 0);
       color: $error-red;
       font-size: toRem(16);
       transform: translateY(-10px) scale(0.8) !important;
       z-index: 2;
-
-      @include rtl(transform-origin, 0 0, 100% 0);
     }
   }
 
@@ -194,10 +192,9 @@
 
     &.valid {
       ~ label {
+        @include ts-step-0;
         color: $almost-black;
         transform: translateY(-10px) scale(0.8);
-
-        @include ts-step-0;
       }
     }
   }
@@ -234,12 +231,11 @@
 
   .error-msg,
   .valid-msg {
+    @include rtlProp(left, right, 0);
     color: $error-red;
     position: absolute;
     top: toRem(48);
     z-index: $form-error;
-
-    @include rtlProp(left, right, 0);
   }
 
   .valid-msg {
@@ -247,11 +243,10 @@
   }
 
   .floating-label {
+    @include ts-step-0;
     color: $almost-black;
     transform: translateY(-10px) scale(0.8);
     transform-origin: 0 0;
-
-    @include ts-step-0;
   }
 }
 
@@ -263,17 +258,15 @@
   }
 
   &__label {
+    @extend %label-style;
     top: toRem(10);
     transform: none !important;
 
-    @extend %label-style;
-
     &.floating-label {
-      color: $almost-black;
-      transform: translateY(-20px) scale(0.8) !important;
-
       @include rtl(transform-origin, 0 0, 100% 0 !important);
       @include ts-step-0;
+      color: $almost-black;
+      transform: translateY(-20px) scale(0.8) !important;
     }
   }
 
