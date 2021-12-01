@@ -334,10 +334,10 @@
 
 
    <div class="tables-4-0">
-      <table class="${sixcol? 'six-col':''} ${fivecol? 'five-col':''} ${fourcol? 'four-col':''} ${threecol? 'three-col':''} ${twocol? 'two-col':''}">
+      <table aria-label="error-table" class="${sixcol? 'six-col':''} ${fivecol? 'five-col':''} ${fourcol? 'four-col':''} ${threecol? 'three-col':''} ${twocol? 'two-col':''}">
          <thead>
          <tr data-sly-list="${tableModel.headerListForChannelsTable}">
-            <th data-sly-test="${item != 'data-filter'}">${item}</th>
+            <th id="${itemList.index}" data-sly-test="${item != 'data-filter'}">${item}</th>
          </tr>
          </thead>
          <tbody data-sly-list.allrows="${tableModel.allRowsForChannelsTable}">
