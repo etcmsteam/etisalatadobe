@@ -26,7 +26,7 @@ module.exports = (env) => {
       }),
       new StylelintPlugin({
         configFile: ".stylelintrc",
-        context: "src",
+        context: "src/main/webpack/etisalat",
         files: "**/*.scss",
         failOnError: false,
         formatter: stylelintReporter({
