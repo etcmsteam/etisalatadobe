@@ -23,55 +23,55 @@ public class LinkModel {
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String title;
 
-  @ValueMapValue(name = "fileReference" ,injectionStrategy = InjectionStrategy.OPTIONAL)
+  @ValueMapValue(name = "fileReference", injectionStrategy = InjectionStrategy.OPTIONAL)
   private String imgUrl;
 
-	public String getLinkText() {
-		return linkText;
-	}
+  public String getLinkText() {
+    return linkText;
+  }
 
-	public void setLinkText(String linkText) {
-		this.linkText = linkText;
-	}
+  public void setLinkText(String linkText) {
+    this.linkText = linkText;
+  }
 
-	public String getLinkUrl() {
-		return linkUrl;
-	}
+  public String getLinkUrl() {
+    return linkUrl;
+  }
 
-	public String getLinkUrlActive() {
-		return linkUrlActive;
-	}
+  public String getLinkUrlActive() {
+    return linkUrlActive;
+  }
 
-	public void setLinkUrl(String linkUrl) {
-		this.linkUrl = linkUrl;
-	}
-	
-	
-	public void setLinkUrlActive(String linkUrlActive) {
-		this.linkUrlActive = linkUrlActive;
-	}
+  public void setLinkUrl(String linkUrl) {
+    this.linkUrl = linkUrl;
+  }
 
-	public String getAltText() {
-		return altText;
-	}
 
-	public void setAltText(String altText) {
-		this.altText = altText;
-	}
+  public void setLinkUrlActive(String linkUrlActive) {
+    this.linkUrlActive = linkUrlActive;
+  }
 
-	public String getImgUrl() {
-		return imgUrl;
-	}
+  public String getAltText() {
+    return altText;
+  }
 
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
+  public void setAltText(String altText) {
+    this.altText = altText;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public String getImgUrl() {
+    return imgUrl;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public void setImgUrl(String imgUrl) {
+    this.imgUrl = imgUrl;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
 }

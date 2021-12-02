@@ -4,176 +4,177 @@ import java.util.Calendar;
 
 import org.apache.sling.api.resource.Resource;
 
-public class GenericListPageDetails{
-	private String title;
-	private String pageTitle;
-	private String description;
-	private String file;
-	private Calendar offTime;
-	private String path;
+public class GenericListPageDetails {
 
-	private String thumbnail;
-	
-	private String category;
-	private Calendar articleDate;
-	private String tileSize;
-	private Resource thumbnailResource;
-	private String youTubeUrl;
-	private String playIconText;
-	private String blogVideoID;
+  private String title;
+  private String pageTitle;
+  private String description;
+  private String file;
+  private Calendar offTime;
+  private String path;
 
-	public String getThumbnail() {
-		return thumbnail;
-	}
+  private String thumbnail;
 
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
-	}
+  private String category;
+  private Calendar articleDate;
+  private String tileSize;
+  private Resource thumbnailResource;
+  private String youTubeUrl;
+  private String playIconText;
+  private String blogVideoID;
 
-	public Calendar getOffTime() {
-		return offTime;
-	}
+  public String getThumbnail() {
+    return thumbnail;
+  }
 
-	public void setOffTime(Calendar calendar) {
-		this.offTime = calendar;
-	}
+  public void setThumbnail(String thumbnail) {
+    this.thumbnail = thumbnail;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public Calendar getOffTime() {
+    return offTime;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public void setOffTime(Calendar calendar) {
+    this.offTime = calendar;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public String getTitle() {
+    return title;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-	public String getFile() {
-		return file;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public void setFile(String file) {
-		this.file = file;
-	}
-	
-	public String getPageTitle() {
-		return pageTitle;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setPageTitle(String pageTitle) {
-		this.pageTitle = pageTitle;
-	}
-	
-	public String getPath() {
-		return path;
-	}
+  public String getFile() {
+    return file;
+  }
 
-	public void setPath(String path) {
-		this.path = path;
-	}
+  public void setFile(String file) {
+    this.file = file;
+  }
 
-	/**
-	 * @return the category
-	 */
-	public String getCategory() {
-		return category;
-	}
+  public String getPageTitle() {
+    return pageTitle;
+  }
 
-	/**
-	 * @param category the category to set
-	 */
-	public void setCategory(String category) {
-		this.category = category;
-	}
+  public void setPageTitle(String pageTitle) {
+    this.pageTitle = pageTitle;
+  }
 
-	/**
-	 * @return the articleDate
-	 */
-	public Calendar getArticleDate() {
-		return articleDate;
-	}
+  public String getPath() {
+    return path;
+  }
 
-	/**
-	 * @param articleDate the articleDate to set
-	 */
-	public void setArticleDate(Calendar articleDate) {
-		this.articleDate = articleDate;
-	}
+  public void setPath(String path) {
+    this.path = path;
+  }
 
-	/**
-	 * @return the tileSize
-	 */
-	public String getTileSize() {
-		return tileSize;
-	}
+  /**
+   * @return the category
+   */
+  public String getCategory() {
+    return category;
+  }
 
-	/**
-	 * @param tileSize the tileSize to set
-	 */
-	public void setTileSize(String tileSize) {
-		this.tileSize = tileSize;
-	}
+  /**
+   * @param category the category to set
+   */
+  public void setCategory(String category) {
+    this.category = category;
+  }
 
-	/**
-	 * @return the thumbnailResource
-	 */
-	public Resource getThumbnailResource() {
-		return thumbnailResource;
-	}
+  /**
+   * @return the articleDate
+   */
+  public Calendar getArticleDate() {
+    return articleDate;
+  }
 
-	/**
-	 * @param thumbnailResource the thumbnailResource to set
-	 */
-	public void setThumbnailResource(Resource thumbnailResource) {
-		this.thumbnailResource = thumbnailResource;
-	}
+  /**
+   * @param articleDate the articleDate to set
+   */
+  public void setArticleDate(Calendar articleDate) {
+    this.articleDate = articleDate;
+  }
 
-	/**
-	 * @return the youTubeUrl
-	 */
-	public String getYouTubeUrl() {
-		return youTubeUrl;
-	}
+  /**
+   * @return the tileSize
+   */
+  public String getTileSize() {
+    return tileSize;
+  }
 
-	/**
-	 * @param youTubeUrl the youTubeUrl to set
-	 */
-	public void setYouTubeUrl(String youTubeUrl) {
-		this.youTubeUrl = youTubeUrl;
-	}
+  /**
+   * @param tileSize the tileSize to set
+   */
+  public void setTileSize(String tileSize) {
+    this.tileSize = tileSize;
+  }
 
-	/**
-	 * @return the playIconText
-	 */
-	public String getPlayIconText() {
-		return playIconText;
-	}
+  /**
+   * @return the thumbnailResource
+   */
+  public Resource getThumbnailResource() {
+    return thumbnailResource;
+  }
 
-	/**
-	 * @param playIconText the playIconText to set
-	 */
-	public void setPlayIconText(String playIconText) {
-		this.playIconText = playIconText;
-	}
+  /**
+   * @param thumbnailResource the thumbnailResource to set
+   */
+  public void setThumbnailResource(Resource thumbnailResource) {
+    this.thumbnailResource = thumbnailResource;
+  }
 
-	/**
-	 * @return the blogVideoID
-	 */
-	public String getBlogVideoID() {
-		return blogVideoID;
-	}
+  /**
+   * @return the youTubeUrl
+   */
+  public String getYouTubeUrl() {
+    return youTubeUrl;
+  }
 
-	/**
-	 * @param blogVideoID the blogVideoID to set
-	 */
-	public void setBlogVideoID(String blogVideoID) {
-		this.blogVideoID = blogVideoID;
-	}
+  /**
+   * @param youTubeUrl the youTubeUrl to set
+   */
+  public void setYouTubeUrl(String youTubeUrl) {
+    this.youTubeUrl = youTubeUrl;
+  }
+
+  /**
+   * @return the playIconText
+   */
+  public String getPlayIconText() {
+    return playIconText;
+  }
+
+  /**
+   * @param playIconText the playIconText to set
+   */
+  public void setPlayIconText(String playIconText) {
+    this.playIconText = playIconText;
+  }
+
+  /**
+   * @return the blogVideoID
+   */
+  public String getBlogVideoID() {
+    return blogVideoID;
+  }
+
+  /**
+   * @param blogVideoID the blogVideoID to set
+   */
+  public void setBlogVideoID(String blogVideoID) {
+    this.blogVideoID = blogVideoID;
+  }
 
 }

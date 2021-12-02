@@ -20,124 +20,124 @@ import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
 
-@Model(adaptables = { Resource.class, SlingHttpServletRequest.class })
+@Model(adaptables = {Resource.class, SlingHttpServletRequest.class})
 public class GenericListModel {
 
-	private static final Logger LOG = LoggerFactory.getLogger(GenericListModel.class);
+  private static final Logger LOG = LoggerFactory.getLogger(GenericListModel.class);
 
-	@ValueMapValue
-	@Optional
-	private String rootPath;
+  @ValueMapValue
+  @Optional
+  private String rootPath;
 
-	@ValueMapValue
-	@Optional
-	private String pagelist;
-	
-	@SlingObject
-	private ResourceResolver resourceResolver;
+  @ValueMapValue
+  @Optional
+  private String pagelist;
 
-	@SlingObject
-	private SlingHttpServletRequest request;
+  @SlingObject
+  private ResourceResolver resourceResolver;
 
-	private List<GenericListPageDetails> genericListObj;
+  @SlingObject
+  private SlingHttpServletRequest request;
 
-	private static final String FIXEDLIST_NODE = "fixedlist";
-	private static final String FILE_REFERENCE="fileReference";
+  private List<GenericListPageDetails> genericListObj;
 
-	@SlingObject
-	@Optional
-	protected Resource currentResource;
+  private static final String FIXEDLIST_NODE = "fixedlist";
+  private static final String FILE_REFERENCE = "fileReference";
 
-	@PostConstruct
-	protected void init() {
-		LOG.info("In GenericListModel Init method");
-		genericListObj= new ArrayList<>();
-		if (currentResource.getChild("fixedpath") != null || StringUtils.isNotBlank(rootPath)) {
+  @SlingObject
+  @Optional
+  protected Resource currentResource;
 
-			if (StringUtils.isNotBlank("pagelist") && pagelist.equals(FIXEDLIST_NODE)) {
+  @PostConstruct
+  protected void init() {
+    LOG.info("In GenericListModel Init method");
+    genericListObj = new ArrayList<>();
+    if (currentResource.getChild("fixedpath") != null || StringUtils.isNotBlank(rootPath)) {
 
-				currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
+      if (StringUtils.isNotBlank("pagelist") && pagelist.equals(FIXEDLIST_NODE)) {
 
-					ValueMap properties = itemResource.getValueMap();
-					String itemPath = properties.get("link", StringUtils.EMPTY);
-					String authoredImage = properties.get(FILE_REFERENCE, StringUtils.EMPTY);
-					String authoredLabel = properties.get("label", StringUtils.EMPTY);
-					if(itemPath.contains("/content")) {					
-						Resource itemChildRes = request.getResourceResolver().getResource(itemPath);
-						Page childPage = itemChildRes.adaptTo(Page.class);
-						Resource imageRes = request.getResourceResolver().getResource(itemChildRes.getPath() + "/jcr:content/image");
-						if(StringUtils.isBlank(authoredImage) &&  null != imageRes && imageRes.getValueMap().containsKey(FILE_REFERENCE)) {
-							authoredImage = imageRes.getValueMap().get(FILE_REFERENCE).toString();
-						}
-						if(StringUtils.isBlank(authoredLabel) && StringUtils.isNotBlank(childPage.getPageTitle())){
-							authoredLabel =  childPage.getPageTitle();
-						}  else if (StringUtils.isBlank(authoredLabel) && StringUtils.isNotBlank(childPage.getTitle())){
-							authoredLabel =  childPage.getTitle();
-						}
-						GenericListPageDetails detail = new GenericListPageDetails();
-						LOG.info("list of pages {}", childPage.getPageTitle());
-						detail.setTitle(authoredLabel);
-						detail.setDescription(childPage.getDescription());
-						detail.setOffTime(childPage.getOffTime());
-						detail.setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, childPage.getPath()));
-						detail.setThumbnail(authoredImage);
-						genericListObj.add(detail);
-					}
-					else {
-						if(StringUtils.isNotEmpty(itemPath)) {
-							GenericListPageDetails detail = new GenericListPageDetails();			
-							detail.setTitle(authoredLabel);	
-							detail.setPath(itemPath);	
-							detail.setThumbnail(authoredImage);							
-							genericListObj.add(detail);
-						}
-					}
+        currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
 
+          final ValueMap properties = itemResource.getValueMap();
+          final String itemPath = properties.get("link", StringUtils.EMPTY);
+          String authoredImage = properties.get(FILE_REFERENCE, StringUtils.EMPTY);
+          String authoredLabel = properties.get("label", StringUtils.EMPTY);
+          if (itemPath.contains("/content")) {
+            final Resource itemChildRes = request.getResourceResolver().getResource(itemPath);
+            final Page childPage = itemChildRes.adaptTo(Page.class);
+            final Resource imageRes = request.getResourceResolver()
+                .getResource(itemChildRes.getPath() + "/jcr:content/image");
+            if (StringUtils.isBlank(authoredImage) && null != imageRes && imageRes.getValueMap()
+                .containsKey(FILE_REFERENCE)) {
+              authoredImage = imageRes.getValueMap().get(FILE_REFERENCE).toString();
+            }
+            if (StringUtils.isBlank(authoredLabel) && StringUtils
+                .isNotBlank(childPage.getPageTitle())) {
+              authoredLabel = childPage.getPageTitle();
+            } else if (StringUtils.isBlank(authoredLabel) && StringUtils
+                .isNotBlank(childPage.getTitle())) {
+              authoredLabel = childPage.getTitle();
+            }
+            final GenericListPageDetails detail = new GenericListPageDetails();
+            LOG.info("list of pages {}", childPage.getPageTitle());
+            detail.setTitle(authoredLabel);
+            detail.setDescription(childPage.getDescription());
+            detail.setOffTime(childPage.getOffTime());
+            detail.setPath(
+                CommonUtility.appendHtmlExtensionToPage(resourceResolver, childPage.getPath()));
+            detail.setThumbnail(authoredImage);
+            genericListObj.add(detail);
+          } else {
+            if (StringUtils.isNotEmpty(itemPath)) {
+              final GenericListPageDetails detail = new GenericListPageDetails();
+              detail.setTitle(authoredLabel);
+              detail.setPath(itemPath);
+              detail.setThumbnail(authoredImage);
+              genericListObj.add(detail);
+            }
+          }
+        });
+      } else {
+        final Resource res = request.getResourceResolver().getResource(rootPath);
+        if (null != res) {
+          res.listChildren().forEachRemaining(childResource -> {
+            if (!childResource.getPath().contains("/jcr:content")) {
+              storeListData(childResource);
+            }
+          });
+        }
+      }
+    }
+  }
 
-				});
+  private void storeListData(Resource childResource) {
 
-			} else {
-				Resource res = request.getResourceResolver().getResource(rootPath);
-				if (null != res) {
-					res.listChildren().forEachRemaining(childResource -> {
-						if (!childResource.getPath().contains("/jcr:content")) {
-							storeListData(childResource);
+    final Resource imageRes = request.getResourceResolver()
+        .getResource(childResource.getPath() + "/jcr:content/image");
+    String imagePath = StringUtils.EMPTY;
+    if (null != imageRes && imageRes.getValueMap().containsKey(FILE_REFERENCE)) {
+      imagePath = imageRes.getValueMap().get(FILE_REFERENCE, StringUtils.EMPTY);
+    }
 
-						}
-					});
-				}
-			}
-		}
+    final Page childPage = childResource.adaptTo(Page.class);
 
-	}
+    final GenericListPageDetails detail = new GenericListPageDetails();
+    LOG.info("list of pages {}", childPage.getPageTitle());
+    String title = childPage.getPageTitle();
+    if (StringUtils.isBlank(title)) {
+      title = childPage.getTitle();
+    }
+    detail.setTitle(title);
+    detail.setDescription(childPage.getDescription());
+    detail.setOffTime(childPage.getOffTime());
+    detail.setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, childPage.getPath()));
+    detail.setThumbnail(imagePath);
+    genericListObj.add(detail);
 
-	private void storeListData(Resource childResource) {
+  }
 
-		Resource imageRes = request.getResourceResolver().getResource(childResource.getPath() + "/jcr:content/image");
-		String imagePath =   StringUtils.EMPTY;
-		if(null != imageRes && imageRes.getValueMap().containsKey(FILE_REFERENCE)) {
-			imagePath = imageRes.getValueMap().get(FILE_REFERENCE, StringUtils.EMPTY);
-		}
-
-		Page childPage = childResource.adaptTo(Page.class);
-
-		GenericListPageDetails detail = new GenericListPageDetails();
-		LOG.info("list of pages {}", childPage.getPageTitle());
-		String title= childPage.getPageTitle();
-		if (StringUtils.isBlank(title)) {
-			title= childPage.getTitle();
-		}
-		detail.setTitle(title);
-		detail.setDescription(childPage.getDescription());
-		detail.setOffTime(childPage.getOffTime());
-		detail.setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, childPage.getPath()));
-		detail.setThumbnail(imagePath);
-		genericListObj.add(detail);
-
-	}
-
-	public List<GenericListPageDetails> getGenericListObj() {
-		return Collections.unmodifiableList(genericListObj);
-	}
+  public List<GenericListPageDetails> getGenericListObj() {
+    return Collections.unmodifiableList(genericListObj);
+  }
 
 }
