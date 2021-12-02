@@ -14,12 +14,13 @@ body {
   font-size: toRem(20);
   line-height: 1.3;
   color: $black-grey;
-  font-family: Bariol, GE SS Two, Arial, sans-serif;
+  font-family: $base-font;
   font-weight: 500;
 }
 
+.ui-widget,
 p {
-  font-family: Bariol, GE SS Two, Arial, sans-serif;
+  font-family: $base-font;
 }
 
 h1,
@@ -107,7 +108,7 @@ li {
     margin: 0 0 20px 0;
   }
   h3 {
-    color: $gray-primary;
+    color: $black-grey;
     line-height: 40px;
     margin: 0 0 20px 0;
     font-size: toRem(36);
@@ -124,13 +125,15 @@ li {
     margin-left: 20px;
     list-style: decimal;
     color: $gray-primary;
-    font-family: Bariol;
+    font-family: $base-font;
     font-size: toRem(18);
     line-height: 24px;
   }
 }
 
-.btn {
+.btn,
+.btn-default,
+.btn-default.active {
   font-size: toRem(16);
   max-width: 162px;
   margin-top: 10px;
@@ -149,10 +152,10 @@ li {
   display: block;
   &:hover,
   &:focus {
-    background-color: $green-btn;
-    border: 1px solid $green-btn;
-    color: $white;
-    text-decoration: none;
+    background-color: $green-btn !important;
+    border: 1px solid $green-btn !important;
+    color: $white !important;
+    text-decoration: none !important;
   }
 }
 
@@ -188,6 +191,9 @@ li {
 .ewallet_help_wrap .cmp-container {
   padding: 100px 15px;
   margin: 50px auto;
+  h3 {
+    color: $black-grey;
+  }
   p {
     margin-bottom: 0;
     font-size: toRem(24);
@@ -196,12 +202,46 @@ li {
 }
 
 .ewallet_about_wrap {
+  @include respond-to-min($desktop) {
+    padding-right: 15px;
+  }
+  h1 {
+    font-size: toRem(24);
+    @include respond-to-min($desktop) {
+      font-size: toRem(60);
+    }
+  }
   p {
-    font-size: toRem(28);
-    line-height: 34px;
+    font-size: toRem(24);
+    line-height: 30px;
+    @include respond-to-min($desktop) {
+      font-size: toRem(28);
+      line-height: 34px;
+    }
   }
 }
 
-.ui-widget {
-  font-family: Bariol, GE SS Two, Arial, sans-serif;
+
+.circle_list{
+  li{
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500;
+    padding-bottom: 28px;
+    &:before{
+      content: counter(a);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 20px;
+      border: 1.5px solid #2a5082;
+      box-sizing: border-box;
+      width: 31px;
+      height: 31px;
+      border-radius: 100%;
+      display: inline-block;
+      text-align: center;
+      padding-top: 4px;
+      margin-right: 10px;
+    }
+  }
 }

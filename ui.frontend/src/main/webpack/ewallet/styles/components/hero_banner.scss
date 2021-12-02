@@ -134,6 +134,27 @@
     @include respond-to-min($desktop-wide) {
       height: toRem(748);
     }
+    &.landing_page {
+      @include respond-to-max($phone) {
+        height: toRem(360);
+      }
+      @include respond-to-min($tablet) {
+        height: toRem(516);
+      }
+      @include respond-to-min($desktop) {
+        height: toRem(510);
+      }
+      @include respond-to-min($desktop-wide) {
+        height: toRem(860);
+        border: 2px dashed red;
+        .ewallet_cover {
+          &:after {
+            top: toRem(570);
+            border: 2px dashed green;
+          }
+        }
+      }
+    }
     .cmp-container {
       @include respond-to-max($phone) {
         height: toRem(600);
@@ -340,7 +361,7 @@
           padding: 140px 15px 0 15px;
         }
         @include respond-to-min($tablet) {
-          padding-top: 180px;
+          padding-top: 160px;
         }
         .cmp-teaser__description {
           @include respond-to-min($desktop) {
@@ -352,7 +373,7 @@
             margin-bottom: 15px;
             @include respond-to-min($tablet) {
               font-size: toRem(72);
-              line-height: 48px;
+              line-height: 66px;
             }
           }
           h2 {
@@ -395,7 +416,8 @@
             line-height: 18px;
             letter-spacing: 0;
           }
-          .cmp-teaser__action-link.active, .cmp-teaser__action-link:hover{
+          .cmp-teaser__action-link.active,
+          .cmp-teaser__action-link:hover {
             box-shadow: none !important;
             color: $white;
             background-color: $green-btn;
@@ -425,6 +447,53 @@
           }
         }
       }
+    }
+  }
+}
+
+.cmp_btn {
+  width: 150px;
+  .cmp_store_btn {
+    width: 150px;
+
+    cursor: pointer;
+
+    background: url("../resources/images/google-play.png") no-repeat;
+
+    height: 45px;
+
+    display: inline-block;
+
+    text-indent: -9999px;
+
+    background-position: 0;
+
+    border-radius: 5px;
+
+    background-size: cover;
+
+    p {
+      display: none;
+    }
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      margin-bottom: 5px;
+
+      padding: 2px 12px;
+    }
+
+    a {
+      display: flex;
+
+      color: $white;
+
+      text-decoration: none;
+    }
+
+    i {
+      -webkit-transition-duration: 0.5s;
+
+      transition-duration: 0.5s;
     }
   }
 }
