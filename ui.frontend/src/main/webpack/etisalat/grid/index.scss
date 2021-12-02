@@ -1,27 +1,4 @@
-//overwriting AEM grid in few cases to achive same visual design
-
-@mixin generate($prefix, $property) {
-  // List of sizes to generate for each
-  $sizes: [0, 12, 16, 24, 32];
-
-  // Spacing to multiply the sizes by
-  $spacing: 1px;
-
-  // Loop through all of the sizes(we use @for rather than @each, as we want access to the index)
-  @for $i from 1 through length($sizes) {
-    // Get the size for the current index
-    $size: nth($sizes, $i);
-
-    // Create the rule
-    .#{$prefix}-#{$i - 1} {
-      #{$property}: $spacing * $size;
-    }
-  }
-}
-
-@include generate(pl, padding-left);
-@include generate(pr, padding-right);
-
+// overwriting AEM grid in few cases to achive same visual design
 $grid-spacing: 12px;
 
 .cmp-teaser--multicol,
@@ -50,9 +27,5 @@ $grid-spacing: 12px;
 
   &.container {
     padding: 0;
-  }
-
-  .aem-GridColumn--phone--12 .aem-GridColumn {
-    padding: 0 !important;
   }
 }
