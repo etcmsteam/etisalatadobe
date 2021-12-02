@@ -1,6 +1,5 @@
 .cmp-link__arrow_left,
 .cmp-link__arrow {
-
   @include font-family-lato;
   color: $main-green;
   font-size: $font14;
@@ -17,24 +16,11 @@
       left: toRem(-15);
       right: auto;
       transform: translateY(-50%) rotate(135deg);
-      transform: translateY(-50%) rotate(135deg);
     }
   }
 }
 
-.cmp-link__arrow_left {
-  font-size: 12px;
-  line-height: 1.4;
-  padding-left: 7px;
-}
-
-.cmp-link__arrow_left::after {
-  margin-top: -2px;
-  transform: translateX(-50%) rotate(-45deg);
-}
-
-.cmp-link__arrow_left::after,
-.cmp-link__arrow::before {
+%green-arrow {
   border: solid $main-green;
   border-width: 0 1px 1px 0;
   color: $main-green;
@@ -44,9 +30,43 @@
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-50%) rotate(-45deg);
-  transform: translateY(-20%) rotate(-135deg);
   transition: all 0.3s ease-in-out;
+}
+
+.cmp-link__arrow_left {
+  font-size: 12px;
+  line-height: 1.4;
+  padding-left: 7px;
+  @include rtlBlock() {
+    padding-right: 0;
+    @include respond-to-max($phone) {
+      top: toRem(460);
+    }
+  }
+
+  &::after {
+    @extend %green-arrow;
+    margin-top: -2px;
+    transform: translateX(-50%) rotate(-45deg);
+    @include rtlBlock() {
+      border-width: 0;
+    }
+  }
+}
+
+.cmp-link__arrow::before {
+  @extend %green-arrow;
+}
+
+.cmp-link__arrow_left {
+  &::before {
+    @include rtlBlock() {
+      @extend %green-arrow;
+      left: toRem(-5);
+      right: auto;
+      transform: translateY(-50%) rotate(135deg);
+    }
+  }
 }
 
 //white link
@@ -59,7 +79,6 @@
 }
 
 .cmp-button--secondary {
-
   @include secondary-button;
   background-color: $white;
   border-color: $darkest-night;
@@ -100,7 +119,6 @@
 }
 
 .cmp-button--width_100 {
-
   @include secondary-button;
   background-color: $main-green;
   border-color: $main-green;
@@ -125,7 +143,6 @@
 }
 
 .cmp-button--primary {
-
   @include secondary-button;
   background-color: $main-green;
   border-color: $main-green;
@@ -149,7 +166,6 @@
 }
 
 .cmp-button--disabled {
-
   @include secondary-button;
   background-color: $lighty-gray;
   border-color: $lighty-gray;
@@ -163,7 +179,6 @@
 }
 
 .cmp-button--promo {
-
   @include secondary-button;
   background-color: $orange;
   border-color: $orange;
@@ -186,7 +201,6 @@
 }
 
 .cmp-unorder__list {
-
   @include font-family-lato;
   color: $dark-gray;
   font-size: $font18;
@@ -198,7 +212,6 @@
 }
 
 .cmp-normal__list {
-
   @include font-family-lato;
   color: $dark-gray;
   font-size: $font18;
@@ -215,7 +228,6 @@
     margin-left: 1.75rem;
 
     li {
-
       @include font-family-lato;
       font-size: $font18;
       line-height: 28px;
@@ -231,7 +243,6 @@
     list-style-type: disc;
 
     li {
-
       @include font-family-lato;
       font-size: $font18;
       line-height: 1.75rem;
@@ -243,7 +254,6 @@
 }
 
 .cmp-list__ordered {
-
   @include font-family-lato;
   font-size: $font18;
   line-height: 28px;
@@ -337,7 +347,6 @@
 }
 
 .font--productdesc {
-
   @include font-family-lato;
   color: $steel-grey;
   font-size: 0.875rem;
@@ -357,7 +366,6 @@
 
 //link arrow st
 .cmp-link__text {
-
   @include font-family-lato;
   color: $main-green;
   cursor: pointer;
@@ -402,7 +410,6 @@
 
 .cmp-text {
   p {
-
     @include font-family-lato;
     color: $dark-gray;
     line-height: 1.5rem;
@@ -514,7 +521,6 @@
   position: relative;
 
   &::before {
-
     @include background-icon;
     background-image: url('../resources/images/icon-checkbox-platinum.svg');
   }
@@ -526,7 +532,6 @@
   position: relative;
 
   &::before {
-
     @include background-icon;
     background-image: url('../resources/images/icon-checkbox-gold.svg');
   }
@@ -538,7 +543,6 @@
   position: relative;
 
   &::before {
-
     @include background-icon;
     background-image: url('../resources/images/icon-smiles.png');
   }
@@ -550,7 +554,6 @@
   position: relative;
 
   &::before {
-
     @include background-icon;
     background-image: url('../resources/images/icon-switch.png');
   }
@@ -562,20 +565,18 @@
   position: relative;
 
   &::before {
-
     @include background-icon;
     background-image: url('../resources/images/icon-goChat.png');
   }
 }
 
 .cmp-text ul li {
-  *[lang='ar'] *[dir='rtl'] & {
+  @include rtlBlock() {
     list-style: inside;
   }
 }
 
 .header-small {
-
   @include font-family-lato;
   font-size: $font20;
   font-weight: bold;
@@ -586,7 +587,6 @@
 }
 
 .header-xsmall {
-
   @include font-family-lato;
   font-size: $font16;
   font-weight: bold;
@@ -597,7 +597,6 @@
 }
 
 .body-copy1 {
-
   @include font-family-lato;
   font-size: $font20;
   line-height: 28px;
@@ -609,7 +608,6 @@
 }
 
 .body-copy2 {
-
   @include font-family-lato;
   font-size: $font16;
   line-height: 24px;
@@ -621,7 +619,6 @@
 }
 
 .body-copy3 {
-
   @include font-family-lato;
   font-size: $font14;
   line-height: 20px;
@@ -633,14 +630,12 @@
 }
 
 .body-copy4 {
-
   @include font-family-lato;
   font-size: $font12;
   line-height: 16px;
 }
 
 .secondary-header1 {
-
   @include font-family-lato;
   font-size: $font16;
   font-weight: bold;
@@ -653,7 +648,6 @@
 }
 
 .secondary-header2 {
-
   @include font-family-lato;
   font-size: $font14;
   font-weight: bold;
@@ -666,7 +660,6 @@
 }
 
 .secondary-header3 {
-
   @include font-family-lato;
   font-size: $font12;
   font-weight: bold;
@@ -676,7 +669,6 @@
 
 .secondary-header4 {
   @include respond-to-max($tablet) {
-
     @include font-family-lato;
     font-size: $font10;
     font-weight: bold;
@@ -686,7 +678,6 @@
 }
 
 .configurator-header {
-
   @include font-family-lato;
   font-size: $font12;
   font-weight: bold;
@@ -710,6 +701,6 @@ hr {
 }
 
 .hero-heading-small {
-  font-size: 32px;
+  font-size: $font32;
   line-height: 40px;
 }

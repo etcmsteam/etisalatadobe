@@ -438,6 +438,7 @@
     .font--number {
       @include font-family-Neotech;
       line-height: toRem(32);
+
       padding-right: toRem(8);
 
       @include respond-to-max($tablet) {
@@ -528,6 +529,9 @@
 
     @include respond-to-max($tablet) {
       margin-right: toRem(256);
+      @include rtlBlock() {
+        margin-right: 0;
+      }
     }
 
     @include respond-to-max($phone) {
@@ -600,9 +604,9 @@
   &.banner-full-bleed {
     .cmp-button--primary {
       @include rtlBlock() {
-        left: toRem(25);
-        @include respond-to-max($desktop-min) {
-          left: 0;
+        left: 0;
+        @include respond-to-max($tablet) {
+          right: 0;
         }
       }
     }
