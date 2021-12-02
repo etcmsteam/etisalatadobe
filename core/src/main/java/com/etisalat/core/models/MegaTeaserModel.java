@@ -9,123 +9,123 @@ import com.day.cq.commons.jcr.JcrConstants;
 
 @Model(adaptables = Resource.class)
 public class MegaTeaserModel {
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String pretitle;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL,name=JcrConstants.JCR_TITLE)
-	private String title;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String fileReference;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String actionsEnabled;
-	
-	private String link;
-	
-	private String text;
-	
-	private String brandTitle;
-	
 
-	/**
-	 * @return the pretitle
-	 */
-	public String getPretitle() {
-		return pretitle;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String pretitle;
 
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL, name = JcrConstants.JCR_TITLE)
+  private String title;
 
-	/**
-	 * @return the fileReference
-	 */
-	public String getFileReference() {
-		return fileReference;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String fileReference;
 
-	/**
-	 * @return the actionsEnabled
-	 */
-	public String getActionsEnabled() {
-		return actionsEnabled;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String actionsEnabled;
 
-	/**
-	 * @param pretitle the pretitle to set
-	 */
-	public void setPretitle(String pretitle) {
-		this.pretitle = pretitle;
-	}
+  private String link;
 
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  private String text;
 
-	/**
-	 * @param fileReference the fileReference to set
-	 */
-	public void setFileReference(String fileReference) {
-		this.fileReference = fileReference;
-	}
+  private String brandTitle;
 
-	/**
-	 * @param actionsEnabled the actionsEnabled to set
-	 */
-	public void setActionsEnabled(String actionsEnabled) {
-		this.actionsEnabled = actionsEnabled;
-	}
 
-	/**
-	 * @return the link
-	 */
-	public String getLink() {
-		return link;
-	}
+  /**
+   * @return the pretitle
+   */
+  public String getPretitle() {
+    return pretitle;
+  }
 
-	/**
-	 * @return the text
-	 */
-	public String getText() {
-		return text;
-	}
+  /**
+   * @return the title
+   */
+  public String getTitle() {
+    return title;
+  }
 
-	/**
-	 * @param link the link to set
-	 */
-	public void setLink(String link) {
-		this.link = link;
-	}
+  /**
+   * @return the fileReference
+   */
+  public String getFileReference() {
+    return fileReference;
+  }
 
-	/**
-	 * @param text the text to set
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
+  /**
+   * @return the actionsEnabled
+   */
+  public String getActionsEnabled() {
+    return actionsEnabled;
+  }
 
-	/**
-	 * @return the brandTitle
-	 */
-	public String getBrandTitle() {
-		return brandTitle;
-	}
+  /**
+   * @param pretitle the pretitle to set
+   */
+  public void setPretitle(String pretitle) {
+    this.pretitle = pretitle;
+  }
 
-	/**
-	 * @param brandTitle the brandTitle to set
-	 */
-	public void setBrandTitle(String brandTitle) {
-		this.brandTitle = brandTitle;
-	}
-	
+  /**
+   * @param title the title to set
+   */
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  /**
+   * @param fileReference the fileReference to set
+   */
+  public void setFileReference(String fileReference) {
+    this.fileReference = fileReference;
+  }
+
+  /**
+   * @param actionsEnabled the actionsEnabled to set
+   */
+  public void setActionsEnabled(String actionsEnabled) {
+    this.actionsEnabled = actionsEnabled;
+  }
+
+  /**
+   * @return the link
+   */
+  public String getLink() {
+    return link;
+  }
+
+  /**
+   * @return the text
+   */
+  public String getText() {
+    return text;
+  }
+
+  /**
+   * @param link the link to set
+   */
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+  /**
+   * @param text the text to set
+   */
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  /**
+   * @return the brandTitle
+   */
+  public String getBrandTitle() {
+    return brandTitle;
+  }
+
+  /**
+   * @param brandTitle the brandTitle to set
+   */
+  public void setBrandTitle(String brandTitle) {
+    this.brandTitle = brandTitle;
+  }
+
 
 }

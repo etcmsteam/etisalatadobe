@@ -14,101 +14,101 @@ import org.slf4j.LoggerFactory;
 import com.etisalat.core.services.GoogleMapsService;
 import com.etisalat.core.services.StoreLocatorService;
 
-@Model(adaptables = { Resource.class, SlingHttpServletRequest.class })
+@Model(adaptables = {Resource.class, SlingHttpServletRequest.class})
 
 public class GoogleMapsModel {
 
-	private static final Logger log = LoggerFactory.getLogger(GoogleMapsModel.class);
+  private static final Logger LOG = LoggerFactory.getLogger(GoogleMapsModel.class);
 
-	String url;
-	String key;
-	String storeLocatorUrl;
-	String googleContactUrl;
-	String captchaV2;
-	String captchaV3;
-	String captchaInvisible;
+  String url;
+  String key;
+  String storeLocatorUrl;
+  String googleContactUrl;
+  String captchaV2;
+  String captchaV3;
+  String captchaInvisible;
 
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String mapViewTitle;
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String mapViewTitle;
 
-	@OSGiService
-	GoogleMapsService googleService;
-	
-	@OSGiService
-	StoreLocatorService storeService;
+  @OSGiService
+  GoogleMapsService googleService;
 
-	@PostConstruct
-	protected void init() {
-		log.debug("In GoogleMapsModel init method");
+  @OSGiService
+  StoreLocatorService storeService;
 
-		url = googleService.getGoogleUrl();
-		key = googleService.getGoogleKey();
-		storeLocatorUrl = storeService.getStoreLocatorUrl();
-		googleContactUrl = googleService.getGoogleContactUsUrl();
-		
-		this.captchaV2 = googleService.getCaptchaV2SiteKey();
-		this.captchaV3 = googleService.getCaptchaV3SiteKey();
-		this.captchaInvisible = googleService.getCaptchaInvisibleSiteKey();
-	}
+  @PostConstruct
+  protected void init() {
+    LOG.debug("In GoogleMapsModel init method");
 
-	public String getUrl() {
-		return url;
-	}
+    url = googleService.getGoogleUrl();
+    key = googleService.getGoogleKey();
+    storeLocatorUrl = storeService.getStoreLocatorUrl();
+    googleContactUrl = googleService.getGoogleContactUsUrl();
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    this.captchaV2 = googleService.getCaptchaV2SiteKey();
+    this.captchaV3 = googleService.getCaptchaV3SiteKey();
+    this.captchaInvisible = googleService.getCaptchaInvisibleSiteKey();
+  }
 
-	public String getKey() {
-		return key;
-	}
+  public String getUrl() {
+    return url;
+  }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
-	
-	public String getStoreLocatorUrl() {
-		return storeLocatorUrl;
-	}
+  public void setUrl(String url) {
+    this.url = url;
+  }
 
-	public void setStoreLocatorUrl(String storeLocatorUrl) {
-		this.storeLocatorUrl = storeLocatorUrl;
-	}
+  public String getKey() {
+    return key;
+  }
 
-	/**
-	 * @return the googleContactUrl
-	 */
-	public String getGoogleContactUrl() {
-		return googleContactUrl;
-	}
+  public void setKey(String key) {
+    this.key = key;
+  }
 
-	/**
-	 * @param googleContactUrl the googleContactUrl to set
-	 */
-	public void setGoogleContactUrl(String googleContactUrl) {
-		this.googleContactUrl = googleContactUrl;
-	}
+  public String getStoreLocatorUrl() {
+    return storeLocatorUrl;
+  }
 
-	/**
-	 * @return the captchaV2
-	 */
-	public String getCaptchaV2() {
-		return captchaV2;
-	}
+  public void setStoreLocatorUrl(String storeLocatorUrl) {
+    this.storeLocatorUrl = storeLocatorUrl;
+  }
 
-	/**
-	 * @return the captchaV3
-	 */
-	public String getCaptchaV3() {
-		return captchaV3;
-	}
+  /**
+   * @return the googleContactUrl
+   */
+  public String getGoogleContactUrl() {
+    return googleContactUrl;
+  }
 
-	/**
-	 * @return the captchaInvisible
-	 */
-	public String getCaptchaInvisible() {
-		return captchaInvisible;
-	}
+  /**
+   * @param googleContactUrl the googleContactUrl to set
+   */
+  public void setGoogleContactUrl(String googleContactUrl) {
+    this.googleContactUrl = googleContactUrl;
+  }
+
+  /**
+   * @return the captchaV2
+   */
+  public String getCaptchaV2() {
+    return captchaV2;
+  }
+
+  /**
+   * @return the captchaV3
+   */
+  public String getCaptchaV3() {
+    return captchaV3;
+  }
+
+  /**
+   * @return the captchaInvisible
+   */
+  public String getCaptchaInvisible() {
+    return captchaInvisible;
+  }
 
 
 }

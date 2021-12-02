@@ -30,33 +30,34 @@ public class FooterImpl implements Footer {
   private static final String DOWNLOADS = "download";
   private static final String FOLLOW_US = "followus";
   private static final String PAYMENT = "payment";
-	private static final String PROMO = "promo";
+  private static final String PROMO = "promo";
   private static final String FOOTER_LINKS = "footerLinks";
 
   @SlingObject
   @Optional
   private Resource res;
 
-    @SlingObject
-    private ResourceResolver resourceResolver;
+  @SlingObject
+  private ResourceResolver resourceResolver;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String copyrightText;
+
   /**
    * Returns Quicklinks list for footer.
    *
-	 * @return List of QuickLinks
+   * @return List of QuickLinks
    */
   private List<QuickLinkModel> getQuickLinkItems() {
     Resource quickLinksRes = res.getChild(QUICKLINKS);
     List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
     if (null != quickLinksRes) {
-        quickLinksRes.listChildren().forEachRemaining(resource -> {
+      quickLinksRes.listChildren().forEachRemaining(resource -> {
         QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
-        if(quickLinkModel !=null){
-            setSubLinkItems( resource, quickLinkModel);
-					quickLinkModelList.add(quickLinkModel);
-				}
+        if (quickLinkModel != null) {
+          setSubLinkItems(resource, quickLinkModel);
+          quickLinkModelList.add(quickLinkModel);
+        }
       });
     }
     return quickLinkModelList;
@@ -65,18 +66,19 @@ public class FooterImpl implements Footer {
   /**
    * Sets the Quicklinks Sub link items list.
    *
-   * @param itemResource resource to read quicklinks
+   * @param itemResource   resource to read quicklinks
    * @param quickLinkModel model object for quicklinks
    */
   private void setSubLinkItems(Resource itemResource, QuickLinkModel quickLinkModel) {
     if (itemResource.hasChildren()) {
       Resource subItemRes = itemResource.getChild(QUICKLINKS);
       List<LinkModel> subItemList = new ArrayList<>();
-      if(subItemRes!=null){
+      if (subItemRes != null) {
         subItemRes.listChildren().forEachRemaining(resource -> {
           LinkModel linkModel = resource.adaptTo(LinkModel.class);
-          if(linkModel!=null) {
-            linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(resourceResolver,linkModel.getLinkUrl()));
+          if (linkModel != null) {
+            linkModel.setLinkUrl(
+                CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
           }
           subItemList.add(linkModel);
         });
@@ -86,17 +88,19 @@ public class FooterImpl implements Footer {
 
   }
 
-	private LinkModel getPromoItem() {
-		Resource promoRes = res.getChild(PROMO);
-		if(promoRes!=null){
-			LinkModel linkModel = promoRes.adaptTo(LinkModel.class);
-			if(linkModel!=null) {
-				linkModel.setLinkUrl(CommonUtility.appendHtmlExtensionToPage(resourceResolver,linkModel.getLinkUrl()));
-				return linkModel;
-			}
-		}
-		return null;
-	}
+  private LinkModel getPromoItem() {
+    Resource promoRes = res.getChild(PROMO);
+    if (promoRes != null) {
+      LinkModel linkModel = promoRes.adaptTo(LinkModel.class);
+      if (linkModel != null) {
+        linkModel.setLinkUrl(
+            CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
+        return linkModel;
+      }
+    }
+    return null;
+  }
+
   /**
    * @return a copy right text.
    */
@@ -110,7 +114,7 @@ public class FooterImpl implements Footer {
    */
   @Override
   public LinkModel getPromo() {
-		return getPromoItem();
+    return getPromoItem();
   }
 
   @Override
@@ -134,19 +138,19 @@ public class FooterImpl implements Footer {
     return Collections.unmodifiableList(CommonUtility.getLinkItems(FOLLOW_US, res));
   }
 
-	/**
-	 * @return a collection of objects representing the Payment items.
-	 */
-	@Override
-	public List<LinkModel> getPayment() {
-		return Collections.unmodifiableList(CommonUtility.getLinkItems(PAYMENT, res));
-	}
+  /**
+   * @return a collection of objects representing the Payment items.
+   */
+  @Override
+  public List<LinkModel> getPayment() {
+    return Collections.unmodifiableList(CommonUtility.getLinkItems(PAYMENT, res));
+  }
 
-	/**
+  /**
    * @return a collection of objects representing the footer links.
    */
   @Override
   public List<LinkModel> getFooterLinks() {
-		return Collections.unmodifiableList(CommonUtility.getLinkItems(FOOTER_LINKS, res));
+    return Collections.unmodifiableList(CommonUtility.getLinkItems(FOOTER_LINKS, res));
   }
 }
