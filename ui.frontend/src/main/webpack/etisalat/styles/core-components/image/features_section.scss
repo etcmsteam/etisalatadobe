@@ -124,7 +124,6 @@
 }
 
 @include respond-to-max($phone) {
-
   .feature-watch {
     margin-bottom: 11rem !important;
     max-height: 374px;
@@ -132,7 +131,6 @@
     padding-top: $padding-step-3 !important;
 
     .image {
-
       .cmp-image__image {
         height: 283px;
         margin-left: 1.5rem;
@@ -301,15 +299,13 @@
 }
 
 @include respond-to-max($phone) {
-
   .feature-watch-flipped {
     margin-bottom: 11rem !important;
     max-height: 374px;
     min-height: 374px;
     padding-top: $padding-step-3 !important;
-    
+
     .image {
-      
       .cmp-image__image {
         height: 283px;
         margin-left: 1.5rem;
@@ -394,7 +390,7 @@
     padding-top: toRem(64);
     position: relative;
     width: toRem(588);
-    
+
     @include respond-to-max($tablet) {
       margin-left: toRem(36);
       padding-bottom: toRem(65);
@@ -492,7 +488,7 @@
       left: toRem(294);
       position: absolute;
       width: toRem(288);
-      
+
       @include respond-to-max($tablet) {
         bottom: toRem(0);
         left: toRem(0);
@@ -533,7 +529,6 @@
 }
 
 .banner-full-bleed__right {
-
   .cmp-text {
     float: right;
 
@@ -552,7 +547,6 @@
   margin-bottom: 13rem;
 
   .cmp-container {
-
     > .aem-Grid {
       flex-direction: column;
     }
@@ -589,7 +583,6 @@
 
 //beigebg--pattern-bg teaser variation
 .beigebg--pattern-bg {
-
   .cmp-image__image {
     position: relative;
     z-index: 4;
@@ -601,36 +594,43 @@
   }
 }
 
-*[lang="ar"] {
-  *[dir="rtl"] {
-    .row-reverse {
-      & > .cmp-container {
-        & > :first-child {
-          display: flex;
+.row-reverse {
+  & > .cmp-container {
+    & > :first-child {
+      @include rtlBlock() {
+        display: flex;
+      }
+    }
+  }
+
+  &.banner-full-bleed {
+    .cmp-button--primary {
+      @include rtlBlock() {
+        left: toRem(25);
+        @include respond-to-max($desktop-min) {
+          left: 0;
         }
       }
-      &.banner-full-bleed {
-        .cmp-button--primary {
-          left: toRem(25);
-          @include respond-to-max($desktop-min) {
-            left: 0;
-          }
+    }
+  }
+
+  &.large--banner {
+    .cmp-button--primary {
+      @include rtlBlock() {
+        margin-right: $margin-step-3;
+        width: toRem(288);
+        @include respond-to-max($desktop-min) {
+          margin-right: $margin-step-0;
         }
       }
-      &.large--banner {
-        .cmp-button--primary {
-          margin-right: $margin-step-3;
-          width: toRem(288);
-          @include respond-to-max($desktop-min) {
-            margin-right: $margin-step-0;
-          }
-        }
-        .cmp-button--secondary {
-          margin-right: $margin-step-6;
-          width: toRem(288);
-          @include respond-to-max($desktop-min) {
-            margin-right: $margin-step-0;
-          }
+    }
+
+    .cmp-button--secondary {
+      @include rtlBlock() {
+        margin-right: $margin-step-6;
+        width: toRem(288);
+        @include respond-to-max($desktop-min) {
+          margin-right: $margin-step-0;
         }
       }
     }
