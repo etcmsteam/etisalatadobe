@@ -14,7 +14,7 @@
    <sly data-sly-test="${properties.actionsEnabled}"
           data-sly-use.ctaObj="${resource.path}"
           data-sly-list.actionItem="${ctaObj.listChildren}">
-       <ul data-sly-test="${actionItem.name == 'actions'}" data-sly-list.ctaitem="${actionItem.listChildren}" class="menu">
+       <ul data-sly-test="${actionItem.name == 'actions'}" data-sly-list.ctaitem="${actionItem.listChildren}" class="menu secondary-nav__list">
          <li id="${currentPage.path == ctaitem.link ? 'mobile-active' : 'mobile-non-active'}" class="${(currentPage.parent.name in ctaitem.link)|| currentPage.path == ctaitem.link ? 'active' : 'noactive'}"><a href="${ctaitem.link @ extension = 'html'}" class="account-type">${ctaitem.text}</a></li>
    </ul>                       
   </sly>
