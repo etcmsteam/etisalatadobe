@@ -1,0 +1,60 @@
+<div class="nv-card-wrapper">
+  <div class="nv-card nv-plan-card elife-plan products elite-plan">
+    <div class="nv-card-body p-0">
+      <div class="nv-plan-header elife">
+        <div data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+        <div class="elite-title">
+          <h5 class="nv-brand nv-mt-0">${properties.brandText}</h5>
+          <h2 class="nv-product-name nv-mb-3">${properties.productTitle}</h2>
+        </div>
+      </div>
+      <div class="nv-py-3 nv-px-4 d-flex flex-column flex-grow-1">
+
+        <div class="nv-package-warraper">
+          <div class="nv-package-details">
+            <div class="nv-package-detail">
+              <img data-sly-test="${properties['package/fileName']}" class="icon" src="${properties['package/fileName']}">
+              <span>${properties.speed} <small>${properties.speedunits}</small></span>
+              <p>
+                ${properties.speedtext}</p>
+            </div>
+            <div class="nv-package-detail">
+             <i class="icon"></i><p>${properties.subscriptionLabel}</p>          
+            </div>
+          </div>
+        </div>
+
+        <ul data-sly-test="${properties.featureDesc}" class="nv-feature-list small">
+         ${properties.featureDesc @ context = 'html'}
+        </ul>
+        <div class="nv-mt-auto">          
+          <div class="nv-price-wrapper p-0">
+
+           <div data-sly-test="${properties.fromText}" class="from">${properties.fromText}</div>
+
+
+            <div class="price">
+              <span data-sly-test="${properties.productPrice}" class="price-value">${properties.productPrice}</span>
+              <span data-sly-test="${properties.productCurrency}" class="price-currency">${properties.productCurrency}</span>
+            </div>
+            <div data-sly-test="${properties.vatInclude}" class="price-vat">
+
+               <span class="old-price">
+                                    was
+                                    <span data-sly-test="${properties.productOldPrice}" class="old-price-value"> ${properties.productOldPrice}</span>
+                 </span>
+             ${properties.vatInclude}
+            </div>
+          </div>
+        </div>
+      </div>
+	  <div class="nv-smile-points">
+	     ${properties.smilePointsLabel}
+	   </div>
+    </div>
+
+    <button role="button" class="btn btn-green ripple-effect btn-buy-now ">${properties.availabilityButtonText}
+    </button>
+
+  </div>
+</div>
