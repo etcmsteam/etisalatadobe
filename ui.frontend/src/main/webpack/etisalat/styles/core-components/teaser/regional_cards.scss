@@ -1,6 +1,10 @@
 .promo-card .promo-card-row.container {
-  margin-bottom: toRem(35);
-  margin-top: toRem(35);
+  margin-bottom: 0;
+  margin-top: 0;
+  @include respond-to-min($desktop) {
+    margin-bottom: toRem(50);
+    margin-top: toRem(35);
+  }
 }
 
 .promo-card .promo-card-row .promo-card-section h2 {
@@ -16,30 +20,39 @@
   font-size: toRem(26);
 }
 
-.promo-card .promo-card-section .cmp-teaser__action-link::before {
+.promo-card .promo-card-section .cmp-teaser__action-link::after {
   border-right: toRem(1) solid $white;
   border-top: toRem(1) solid $white;
-  content: "";
-  left: toRem(139);
-  margin-top: toRem(12);
+  content: '';
+  left: auto;
+  margin-left: 0.55rem;
+  margin-top: 0.55rem;
   padding: toRem(4);
   position: absolute;
-  -webkit-transform: translateY(-50%) rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
+  @include rtlBlock() {
+    margin-left: 0;
+    margin-right: 0.55rem;
+    transform: translateY(-50%) rotate(-135deg);
+  }
 }
 
 .promo-card .promo-card-section {
   .cmp-teaser__action-container a {
+    @include font-family-lato();
     color: $white;
-    font-size: .875rem;
+    font-size: $font14;
     font-weight: 500;
     letter-spacing: toRem(2);
     line-height: toRem(20);
     text-transform: uppercase;
-
-    @include font-family-lato;
+    @include rtlBlock() {
+      @include font-family-Neotech-ge();
+    }
   }
 
-  .cmp-teaser__title a, .cmp-teaser__title a:hover {
+  .cmp-teaser__title a,
+  .cmp-teaser__title a:hover {
     color: $white;
   }
 }
@@ -93,7 +106,7 @@
   }
 
   .image-right {
-    margin-bottom: 1.5625rem;
+    margin-bottom: toRem(5);
     padding: 0;
 
     @include respond-to-min($desktop) {
@@ -112,6 +125,10 @@
 
     .cmp-teaser__image {
       width: 50%;
+      @include respond-to-max($tablet) {
+        max-height: toRem(150);
+        overflow: hidden;
+      }
 
       img {
         border-radius: toRem(4);
@@ -129,11 +146,20 @@
       position: absolute;
       width: 48%;
       z-index: 3;
+      @include respond-to-max($tablet) {
+        padding: 1rem;
+
+        h1 {
+          font-size: $font22;
+          margin-top: toRem(10);
+          padding-top: 0;
+        }
+      }
     }
 
     .cmp-teaser__image::after {
       background: linear-gradient(0deg, $black, transparent);
-      content: "";
+      content: '';
       height: 100%;
       opacity: 0.3;
       position: absolute;
@@ -154,25 +180,41 @@
     }
 
     .cmp-teaser__action-container a {
-      font-size: .875rem;
+      font-size: $font14;
       letter-spacing: toRem(2);
       line-height: 1.25rem;
+      @include rtlBlock() {
+        @include font-family-Neotech-ge();
+      }
     }
 
-    .cmp-teaser__action-link::before {
+    .cmp-teaser__action-link::after {
       border-right: toRem(1) solid $main-green;
       border-top: toRem(1) solid $main-green;
-      content: "";
-      left: toRem(139);
+      content: '';
+      left: auto;
+      margin-left: 0.55rem;
       margin-top: toRem(12);
       padding: toRem(4);
       position: absolute;
-      -webkit-transform: translateY(-50%) rotate(45deg);
+      transform: translateY(-50%) rotate(45deg);
+      @include rtlBlock() {
+        margin-left: 0;
+        margin-right: 0.55rem;
+        transform: translateY(-50%) rotate(-135deg);
+      }
     }
   }
 
   .promo-card-rev {
-    margin-bottom: 3.125rem;
+    margin-bottom: 0;
+    padding: 0;
+    @include respond-to-min($tablet) {
+      margin: 0;
+    }
+    @include respond-to-min($desktop) {
+      margin-bottom: toRem(14);
+    }
 
     .cmp-teaser__content {
       bottom: 0;
@@ -210,7 +252,7 @@
 
     .cmp-teaser__image::after {
       background: linear-gradient(0deg, $black, transparent);
-      content: "";
+      content: '';
       height: 100%;
       opacity: 0.3;
       position: absolute;
@@ -231,7 +273,7 @@
 
     .cmp-teaser__action-container a {
       color: $white;
-      font-size: .875rem;
+      font-size: $font14;
       letter-spacing: toRem(2);
       line-height: 1.25rem;
     }
@@ -240,19 +282,24 @@
       text-decoration: underline;
     }
 
-    .cmp-teaser__action-link::before {
+    .cmp-teaser__action-link::after {
       border-right: toRem(1) solid $white;
       border-top: toRem(1) solid $white;
-      content: "";
-      left: toRem(140);
+      content: '';
+      left: auto;
+      margin-left: 0.55rem;
       margin-top: toRem(10);
       padding: toRem(3);
       position: absolute;
-      -webkit-transform: translateY(-50%) rotate(45deg);
+      transform: translateY(-50%) rotate(45deg);
 
       @include respond-to-min($desktop) {
-        left: toRem(165);
         margin-top: toRem(10);
+      }
+      @include rtlBlock() {
+        margin-left: 0;
+        margin-right: 0.55rem;
+        transform: translateY(-50%) rotate(-135deg);
       }
     }
   }
@@ -283,7 +330,8 @@
       margin: 0;
       padding-top: $font24;
 
-      a, a:hover {
+      a,
+      a:hover {
         color: $white;
       }
     }
@@ -348,6 +396,7 @@
       z-index: 9;
 
       .cmp-teaser__title {
+        color: $white;
         font-size: $font26;
       }
     }
@@ -410,7 +459,8 @@
           font-size: $font22;
           margin: 0;
 
-          a, a:hover {
+          a,
+          a:hover {
             color: $white;
           }
         }
@@ -432,8 +482,9 @@
       z-index: 9;
 
       .cmp-teaser__title {
+        color: $white;
         font-size: $font20;
-        margin: 0 0 $font16 0;
+        margin: 0 0 toRem(16) 0;
       }
     }
 
@@ -453,9 +504,6 @@
     }
 
     .promo-card-row.container {
-      margin-bottom: toRem(15);
-      margin-top: 0;
-
       &:nth-of-type(1) {
         margin-top: toRem(35);
       }

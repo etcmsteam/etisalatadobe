@@ -321,8 +321,20 @@
       ${properties.errorText @ context = 'html'}
    </div>
    <!-- [Error Message Starts] -->
+
+ <sly data-sly-test.sixcol="${tableModel.headerListForChannelsTable.size == 12}"></sly>
+
+ <sly data-sly-test.fivecol="${tableModel.headerListForChannelsTable.size == 10}"></sly>
+
+ <sly data-sly-test.fourcol="${tableModel.headerListForChannelsTable.size == 8}"></sly>
+
+ <sly data-sly-test.threecol="${tableModel.headerListForChannelsTable.size == 6}"></sly>
+
+ <sly data-sly-test.twocol="${tableModel.headerListForChannelsTable.size == 4}"></sly>
+
+
    <div class="tables-4-0">
-      <table aria-label="error-table" class="${properties.columnoptions}">
+      <table aria-label="error-table" class="${sixcol? 'six-col':''} ${fivecol? 'five-col':''} ${fourcol? 'four-col':''} ${threecol? 'three-col':''} ${twocol? 'two-col':''}">
          <thead>
          <tr data-sly-list="${tableModel.headerListForChannelsTable}">
             <th id="${itemList.index}" data-sly-test="${item != 'data-filter'}">${item}</th>
