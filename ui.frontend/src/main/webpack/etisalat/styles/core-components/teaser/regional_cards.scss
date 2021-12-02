@@ -1,6 +1,10 @@
 .promo-card .promo-card-row.container {
-  margin-bottom: toRem(35);
-  margin-top: toRem(35);
+  margin-bottom: 0;
+  margin-top: 0;
+  @include respond-to-min($desktop) {
+    margin-bottom: toRem(50);
+    margin-top: toRem(35);
+  }
 }
 
 .promo-card .promo-card-row .promo-card-section h2 {
@@ -37,7 +41,7 @@
   .cmp-teaser__action-container a {
     @include font-family-lato();
     color: $white;
-    font-size: 0.875rem;
+    font-size: $font14;
     font-weight: 500;
     letter-spacing: toRem(2);
     line-height: toRem(20);
@@ -102,7 +106,7 @@
   }
 
   .image-right {
-    margin-bottom: 1.5625rem;
+    margin-bottom: toRem(5);
     padding: 0;
 
     @include respond-to-min($desktop) {
@@ -121,6 +125,10 @@
 
     .cmp-teaser__image {
       width: 50%;
+      @include respond-to-max($tablet) {
+        max-height: toRem(150);
+        overflow: hidden;
+      }
 
       img {
         border-radius: toRem(4);
@@ -138,6 +146,15 @@
       position: absolute;
       width: 48%;
       z-index: 3;
+      @include respond-to-max($tablet) {
+        padding: 1rem;
+
+        h1 {
+          font-size: $font22;
+          margin-top: toRem(10);
+          padding-top: 0;
+        }
+      }
     }
 
     .cmp-teaser__image::after {
@@ -163,8 +180,7 @@
     }
 
     .cmp-teaser__action-container a {
-      @include font-family-lato();
-      font-size: 0.875rem;
+      font-size: $font14;
       letter-spacing: toRem(2);
       line-height: 1.25rem;
       @include rtlBlock() {
@@ -191,7 +207,14 @@
   }
 
   .promo-card-rev {
-    margin-bottom: 3.125rem;
+    margin-bottom: 0;
+    padding: 0;
+    @include respond-to-min($tablet) {
+      margin: 0;
+    }
+    @include respond-to-min($desktop) {
+      margin-bottom: toRem(14);
+    }
 
     .cmp-teaser__content {
       bottom: 0;
@@ -250,7 +273,7 @@
 
     .cmp-teaser__action-container a {
       color: $white;
-      font-size: 0.875rem;
+      font-size: $font14;
       letter-spacing: toRem(2);
       line-height: 1.25rem;
     }
@@ -373,6 +396,7 @@
       z-index: 9;
 
       .cmp-teaser__title {
+        color: $white;
         font-size: $font26;
       }
     }
@@ -458,8 +482,9 @@
       z-index: 9;
 
       .cmp-teaser__title {
+        color: $white;
         font-size: $font20;
-        margin: 0 0 $font16 0;
+        margin: 0 0 toRem(16) 0;
       }
     }
 
@@ -479,9 +504,6 @@
     }
 
     .promo-card-row.container {
-      margin-bottom: toRem(15);
-      margin-top: 0;
-
       &:nth-of-type(1) {
         margin-top: toRem(35);
       }
