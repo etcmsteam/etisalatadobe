@@ -286,7 +286,6 @@
   .cmp-container {
     margin: 0 auto;
     padding: $padding-step-0 calc(#{$padding-step-1} + 4px);
-
     // width: 100%;
 
     // @include respond-to-min($tablet) {
@@ -443,10 +442,9 @@
     }
 
     .font--number {
+      @include font-family-Neotech;
       line-height: toRem(32);
       padding-right: toRem(8);
-
-      @include font-family-Neotech;
 
       @include respond-to-max($tablet) {
         font-size: $font28;
@@ -593,5 +591,48 @@
   .cmp-container {
     margin: 0 auto;
     width: 1224px;
+  }
+}
+
+.row-reverse {
+  & > .cmp-container {
+    & > :first-child {
+      @include rtlBlock() {
+        display: flex;
+      }
+    }
+  }
+
+  &.banner-full-bleed {
+    .cmp-button--primary {
+      @include rtlBlock() {
+        left: toRem(25);
+        @include respond-to-max($desktop-min) {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  &.large--banner {
+    .cmp-button--primary {
+      @include rtlBlock() {
+        margin-right: $margin-step-3;
+        width: toRem(288);
+        @include respond-to-max($desktop-min) {
+          margin-right: $margin-step-0;
+        }
+      }
+    }
+
+    .cmp-button--secondary {
+      @include rtlBlock() {
+        margin-right: $margin-step-6;
+        width: toRem(288);
+        @include respond-to-max($desktop-min) {
+          margin-right: $margin-step-0;
+        }
+      }
+    }
   }
 }
