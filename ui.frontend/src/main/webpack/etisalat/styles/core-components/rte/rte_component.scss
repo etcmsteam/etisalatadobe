@@ -1,5 +1,7 @@
 .cmp-link__arrow_left,
 .cmp-link__arrow {
+
+  @include font-family-lato;
   color: $main-green;
   font-size: $font14;
   letter-spacing: 0.125rem;
@@ -8,45 +10,64 @@
   position: relative;
   text-transform: uppercase;
 
-  @include font-family-lato;
-
   @include rtlBlock() {
     padding-right: 0;
 
     &::before {
       left: toRem(-15);
       right: auto;
-      -webkit-transform: translateY(-50%) rotate(135deg);
       transform: translateY(-50%) rotate(135deg);
     }
   }
+}
+
+%green-arrow {
+  border: solid $main-green;
+  border-width: 0 1px 1px 0;
+  color: $main-green;
+  content: ' ';
+  line-height: 1;
+  padding: 0.203rem;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transition: all 0.3s ease-in-out;
 }
 
 .cmp-link__arrow_left {
   font-size: 12px;
   line-height: 1.4;
   padding-left: 7px;
+  @include rtlBlock() {
+    padding-right: 0;
+    @include respond-to-max($phone) {
+      top: toRem(460);
+    }
+  }
+
+  &::after {
+    @extend %green-arrow;
+    margin-top: -2px;
+    transform: translateX(-50%) rotate(-45deg);
+    @include rtlBlock() {
+      border-width: 0;
+    }
+  }
 }
 
-.cmp-link__arrow_left::after {
-  margin-top: -2px;
-  transform: translateX(-50%) rotate(-45deg);
-}
-
-.cmp-link__arrow_left::after,
 .cmp-link__arrow::before {
-  border: solid $main-green;
-  border-width: 0 1px 1px 0;
-  color: $main-green;
-  content: " ";
-  line-height: 1;
-  padding: 0.203rem;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%) rotate(-45deg);
-  transform: translateY(-20%) rotate(-135deg);
-  transition: all 0.3s ease-in-out;
+  @extend %green-arrow;
+}
+
+.cmp-link__arrow_left {
+  &::before {
+    @include rtlBlock() {
+      @extend %green-arrow;
+      left: toRem(-5);
+      right: auto;
+      transform: translateY(-50%) rotate(135deg);
+    }
+  }
 }
 
 //white link
@@ -59,13 +80,13 @@
 }
 
 .cmp-button--secondary {
+
+  @include secondary-button;
   background-color: $white;
   border-color: $darkest-night;
   border-style: solid;
   color: $almost-black;
   text-align: $white;
-
-  @include secondary-button;
 
   &:hover {
     background-color: $white;
@@ -100,13 +121,13 @@
 }
 
 .cmp-button--width_100 {
+
+  @include secondary-button;
   background-color: $main-green;
   border-color: $main-green;
   color: $white !important;
   font-size: 0.875rem;
   width: 100%;
-
-  @include secondary-button;
 
   &:hover {
     background-color: $green-btn;
@@ -125,12 +146,12 @@
 }
 
 .cmp-button--primary {
+
+  @include secondary-button;
   background-color: $main-green;
   border-color: $main-green;
   color: $white !important;
   font-size: 0.875rem;
-
-  @include secondary-button;
 
   &:hover {
     background-color: $green-btn;
@@ -149,12 +170,12 @@
 }
 
 .cmp-button--disabled {
+
+  @include secondary-button;
   background-color: $lighty-gray;
   border-color: $lighty-gray;
   color: $dark-gray !important;
   cursor: auto;
-
-  @include secondary-button;
 
   a {
     color: $dark-gray !important;
@@ -163,11 +184,11 @@
 }
 
 .cmp-button--promo {
+
+  @include secondary-button;
   background-color: $orange;
   border-color: $orange;
   color: $white !important;
-
-  @include secondary-button;
 
   &:hover {
     background-color: $orange;
@@ -186,6 +207,8 @@
 }
 
 .cmp-unorder__list {
+
+  @include font-family-lato;
   color: $dark-gray;
   font-size: $font18;
   font-size: $font18;
@@ -193,11 +216,11 @@
   list-style-type: disc;
   margin-bottom: 0.25rem;
   padding-left: 1.5rem;
-
-  @include font-family-lato;
 }
 
 .cmp-normal__list {
+
+  @include font-family-lato;
   color: $dark-gray;
   font-size: $font18;
   font-size: $font18;
@@ -205,8 +228,6 @@
   list-style-type: none;
   margin-bottom: 0.25rem;
   padding-left: 1.5rem;
-
-  @include font-family-lato;
 }
 
 .cmp-text {
@@ -215,13 +236,13 @@
     margin-left: 1.75rem;
 
     li {
+
+      @include font-family-lato;
       font-size: $font18;
       line-height: 28px;
       list-style-type: decimal;
       margin-bottom: 0.25rem;
       padding-left: 0.75rem;
-
-      @include font-family-lato;
     }
   }
 
@@ -231,26 +252,26 @@
     list-style-type: disc;
 
     li {
+
+      @include font-family-lato;
       font-size: $font18;
       line-height: 1.75rem;
       list-style-type: disc;
       margin-bottom: 0.25rem;
       padding-left: 40px;
-
-      @include font-family-lato;
     }
   }
 }
 
 .cmp-list__ordered {
+
+  @include font-family-lato;
   font-size: $font18;
   line-height: 28px;
   list-style: decimal;
   margin-bottom: 0.25rem;
   margin-left: 1.75rem;
   padding-left: 1.5rem;
-
-  @include font-family-lato;
 }
 
 .font--small {
@@ -277,8 +298,8 @@
 }
 
 .cmp-icon__arrow__list::before {
-  background: url("../resources/images/icon-list-tick.svg") no-repeat;
-  content: " - ";
+  background: url('../resources/images/icon-list-tick.svg') no-repeat;
+  content: ' - ';
   height: 24px;
   width: 24px;
 }
@@ -337,6 +358,8 @@
 }
 
 .font--productdesc {
+
+  @include font-family-lato;
   color: $steel-grey;
   font-size: 0.875rem;
   line-height: 1.43;
@@ -344,8 +367,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  @include font-family-lato;
 }
 
 .cmp-text {
@@ -357,6 +378,8 @@
 
 //link arrow st
 .cmp-link__text {
+
+  @include font-family-lato;
   color: $main-green;
   cursor: pointer;
   font-size: $font16;
@@ -366,8 +389,6 @@
   position: relative;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
-
-  @include font-family-lato;
 }
 
 .old-price-value {
@@ -391,7 +412,7 @@
 }
 
 .divider-line {
-  background-image: url(../resources/images/divider.png);
+  background-image: url('../resources/images/divider.png');
   background-repeat: repeat;
   height: 1px;
   margin-bottom: 12px;
@@ -402,10 +423,10 @@
 
 .cmp-text {
   p {
-    color: $dark-gray;
-    line-height: 1.5rem;
 
     @include font-family-lato;
+    color: $dark-gray;
+    line-height: 1.5rem;
   }
 
   img {
@@ -452,7 +473,7 @@
   li::before {
     background-color: #848789;
     border-radius: 50%;
-    content: "";
+    content: '';
     display: block;
     height: 4px;
     left: 0;
@@ -467,7 +488,7 @@
 
     li::before {
       background-color: #848789;
-      content: " ";
+      content: ' ';
       display: block;
       height: 1px;
       left: 0;
@@ -513,9 +534,9 @@
   position: relative;
 
   &::before {
-    background-image: url(../resources/images/icon-checkbox-platinum.svg);
 
     @include background-icon;
+    background-image: url('../resources/images/icon-checkbox-platinum.svg');
   }
 }
 
@@ -525,9 +546,9 @@
   position: relative;
 
   &::before {
-    background-image: url(../resources/images/icon-checkbox-gold.svg);
 
     @include background-icon;
+    background-image: url('../resources/images/icon-checkbox-gold.svg');
   }
 }
 
@@ -536,9 +557,9 @@
   position: relative;
 
   &::before {
-    background-image: url(../resources/images/icon-smiles.png);
 
     @include background-icon;
+    background-image: url('../resources/images/icon-smiles.png');
   }
 }
 
@@ -547,9 +568,9 @@
   position: relative;
 
   &::before {
-    background-image: url(../resources/images/icon-switch.png);
 
     @include background-icon;
+    background-image: url('../resources/images/icon-switch.png');
   }
 }
 
@@ -558,23 +579,23 @@
   position: relative;
 
   &::before {
-    background-image: url(../resources/images/icon-goChat.png);
 
     @include background-icon;
+    background-image: url('../resources/images/icon-goChat.png');
   }
 }
 
 .cmp-text ul li {
-  *[lang="ar"] *[dir="rtl"] & {
+  @include rtlBlock {
     list-style: inside;
   }
 }
 
 .header-small {
-  font-size: $font20;
-  font-weight: bold;
 
   @include font-family-lato;
+  font-size: $font20;
+  font-weight: bold;
 
   @include respond-to-max($tablet) {
     font-size: $font16;
@@ -582,10 +603,10 @@
 }
 
 .header-xsmall {
-  font-size: $font16;
-  font-weight: bold;
 
   @include font-family-lato;
+  font-size: $font16;
+  font-weight: bold;
 
   @include respond-to-max($tablet) {
     font-size: $font14;
@@ -593,10 +614,10 @@
 }
 
 .body-copy1 {
-  font-size: $font20;
-  line-height: 28px;
 
   @include font-family-lato;
+  font-size: $font20;
+  line-height: 28px;
 
   @include respond-to-max($tablet) {
     font-size: $font16;
@@ -605,10 +626,10 @@
 }
 
 .body-copy2 {
-  font-size: $font16;
-  line-height: 24px;
 
   @include font-family-lato;
+  font-size: $font16;
+  line-height: 24px;
 
   @include respond-to-max($tablet) {
     font-size: $font14;
@@ -617,10 +638,10 @@
 }
 
 .body-copy3 {
-  font-size: $font14;
-  line-height: 20px;
 
   @include font-family-lato;
+  font-size: $font14;
+  line-height: 20px;
 
   @include respond-to-max($tablet) {
     font-size: $font12;
@@ -629,19 +650,19 @@
 }
 
 .body-copy4 {
-  font-size: $font12;
-  line-height: 16px;
 
   @include font-family-lato;
+  font-size: $font12;
+  line-height: 16px;
 }
 
 .secondary-header1 {
+
+  @include font-family-lato;
   font-size: $font16;
   font-weight: bold;
   letter-spacing: 4px;
   text-transform: uppercase;
-
-  @include font-family-lato;
 
   @include respond-to-max($tablet) {
     font-size: $font14;
@@ -649,12 +670,12 @@
 }
 
 .secondary-header2 {
+
+  @include font-family-lato;
   font-size: $font14;
   font-weight: bold;
   letter-spacing: 4px;
   text-transform: uppercase;
-
-  @include font-family-lato;
 
   @include respond-to-max($tablet) {
     font-size: $font12;
@@ -662,32 +683,32 @@
 }
 
 .secondary-header3 {
+
+  @include font-family-lato;
   font-size: $font12;
   font-weight: bold;
   letter-spacing: 4px;
   text-transform: uppercase;
-
-  @include font-family-lato;
 }
 
 .secondary-header4 {
   @include respond-to-max($tablet) {
+
+    @include font-family-lato;
     font-size: $font10;
     font-weight: bold;
     letter-spacing: 4px;
     text-transform: uppercase;
-
-    @include font-family-lato;
   }
 }
 
 .configurator-header {
+
+  @include font-family-lato;
   font-size: $font12;
   font-weight: bold;
   letter-spacing: 4px;
   text-transform: uppercase;
-
-  @include font-family-lato;
 }
 
 hr {
