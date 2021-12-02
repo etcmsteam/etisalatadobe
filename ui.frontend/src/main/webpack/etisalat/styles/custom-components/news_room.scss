@@ -2,29 +2,20 @@
   .form.wst-form .form-group .select2-container.select2-container--open .select2-dropdown {
     margin-left: 3px;
   }
-
   .floating-label {
     margin-left: 3px;
   }
-
   .tile-boxes-section {
-    overflow: hidden;
-    padding-bottom: toRem(75);
     padding-top: toRem(80);
-    position: relative;
-
+    padding-bottom: toRem(75);
     @include font-family-lato;
 
     @include respond-to-min($tablet) {
-      padding-left: 0 !important;
+      padding-left: 0px !important;
     }
 
-    @media (max-width: 991px) {
-      .swiper-wrapper .swiper-slide {
-        padding-left: 0 !important;
-        padding-right: 0;
-      }
-    }
+    position: relative;
+    overflow: hidden;
 
     .swiper-scrollbar {
       bottom: 0 !important;
@@ -38,11 +29,17 @@
     .swiper-wrapper {
       display: block !important;
     }
-  }
 
+    @media (max-width: 991px) {
+      .swiper-wrapper .swiper-slide {
+        padding-left: 0rem !important;
+        padding-right: 0;
+      }
+    }
+  }
   .tile-boxes-section {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
   }
 
   .tile-boxes-section .swiper-scrollbar {
@@ -56,26 +53,26 @@
 
 .cmp-newsroom-search {
   .tile-box-tile {
+    min-height: 280px;
+    overflow: hidden;
     background: $white;
     border-radius: 4px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-    min-height: 280px;
-    overflow: hidden;
     position: relative;
     width: 100%;
+    margin-bottom: 2rem;
 
     // @media (min-width: @screen-md)
     @include respond-to-min($tablet) {
-      max-height: 440px;
       min-height: 440px;
+      max-height: 440px;
     }
 
     .img-cover {
-      border-radius: 4px 4px 0 0;
       height: 130px;
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
+      border-radius: 4px 4px 0 0;
 
       @include respond-to-min($tablet) {
         height: 225px;
@@ -83,23 +80,23 @@
     }
 
     .tile-box-body {
+      text-align: left;
       padding: 1.5rem;
       padding-bottom: 3rem;
-      text-align: left;
 
       @include respond-to-min($tablet) {
         padding-bottom: 1.5rem;
       }
 
       h2 {
-        color: $almost-black;
         font-size: $font18;
         line-height: 24px;
+        color: $almost-black;
         margin: 0;
         margin-bottom: 0.5rem;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
 
         @include respond-to-min($tablet) {
           font-size: $font28;
@@ -121,38 +118,36 @@
 
       .annoucements {
         color: #909090;
+        @include font-family-lato;
         font-size: $font12;
         letter-spacing: 4px;
         line-height: 12px;
+        text-transform: uppercase;
         margin-bottom: 0.5rem;
         margin-top: 0;
-        text-transform: uppercase;
-
-        @include font-family-lato;
       }
 
       .annoucement-date {
         color: $steel-grey;
-        display: block;
+        @include font-family-lato;
         font-size: $font14;
         line-height: 20px;
         margin-bottom: 1rem;
-
-        @include font-family-lato;
+        display: block;
       }
     }
 
     .btn-text {
+      position: absolute;
       bottom: 1.5rem;
-      font-size: $font12;
       left: 1.5rem;
       letter-spacing: 2px;
-      position: absolute;
+      font-size: $font12;
 
       @include respond-to-min($tablet) {
         font-size: $font14;
 
-        &::before {
+        &:before {
           padding: 3.5px;
           right: -20px;
         }
@@ -168,8 +163,8 @@
       .img-cover {
         img {
           &.cover {
-            height: auto;
             min-width: 70%;
+            height: auto;
           }
         }
       }
@@ -183,8 +178,8 @@
       .img-cover {
         img {
           &.cover {
-            height: auto;
             min-width: 80%;
+            height: auto;
           }
         }
       }
@@ -194,19 +189,16 @@
 
 //for Etisalat.com
 .tile-boxes-section-wrapper {
-  margin-bottom: 1.5625rem;
-  padding: 1.5rem;
-  position: relative;
-
   @include respond-to-min($desktop) {
     padding-top: 0;
   }
-
   @media (max-width: 991.98px) {
     .tile-boxes-section-wrapper {
       padding: 1.5rem !important;
     }
   }
+
+  padding: 1.5rem;
 
   @include respond-to-min($tablet) {
     padding: 1.5rem;
@@ -217,33 +209,22 @@
     padding-right: 1.5rem;
   }
 
-  @media (max-width: 991.98px) {
-    padding: 3.8rem 1rem 1.6rem;
-  }
-
-  @media (max-width: 767.98px) {
-    padding: 0.6rem 0.7rem 0.1rem;
-  }
-
-  @media (max-width: 991px) {
-    .tile-boxes-section {
-      padding: 1.5rem !important;
-    }
-  }
-
   .main-text-action-wrapper .wst-form {
     @include respond-to-max($tablet) {
       margin-bottom: 0;
-      margin-top: 0;
+      margin-top: 0rem;
     }
   }
 
   .wst-form {
     @include respond-to-min($phone) {
-      margin-bottom: 0;
+      margin-bottom: 0rem;
       margin-top: 1rem;
     }
   }
+
+  position: relative;
+  margin-bottom: 1.5625rem;
 
   &.has-bg {
     background-color: rgba(242, 242, 242, 0.3);
@@ -257,16 +238,16 @@
 
   &.tile-boxes-large {
     .tile-box-tile {
-      max-height: none;
       min-height: auto;
+      max-height: none;
 
       .tile-box-body {
         padding: 1.5rem;
 
         h2 {
-          color: $cart-count-black;
           height: 55px;
           overflow: hidden;
+          color: $cart-count-black;
         }
 
         p {
@@ -275,9 +256,9 @@
         }
 
         .btn-text {
-          bottom: 0;
-          left: 0;
           position: relative;
+          left: 0;
+          bottom: 0;
         }
       }
     }
@@ -285,27 +266,27 @@
 
   &.tile-boxes-medium {
     .tile-box-tile {
-      max-height: 400px;
       min-height: 400px;
+      max-height: 400px;
 
       @media (max-width: 1024px) {
-        max-height: 410px;
         min-height: 410px;
+        max-height: 410px;
       }
 
       @media (max-width: 992px) {
-        max-height: 250px;
         min-height: 250px;
+        max-height: 250px;
       }
 
       @media (max-width: 575px) {
-        max-height: 300px;
         min-height: 300px;
+        max-height: 300px;
       }
 
       @media (max-width: 320px) {
-        max-height: 350px;
         min-height: 350px;
+        max-height: 350px;
       }
     }
   }
@@ -318,12 +299,12 @@
     }
 
     .tile-box-tile {
-      margin-bottom: 1.5rem;
       min-height: 250px;
+      margin-bottom: 1.5rem;
 
       @include respond-to-min($tablet) {
-        max-height: 328px;
         min-height: 328px;
+        max-height: 328px;
       }
 
       .btn-text {
@@ -343,10 +324,18 @@
     }
   }
 
+  @media (max-width: 991.98px) {
+    padding: 3.8rem 1rem 1.6rem 1rem;
+  }
+
+  @media (max-width: 767.98px) {
+    padding: 0.6rem 0.7rem 0.1rem 0.7rem;
+  }
+
   h2 {
-    color: $almost-black;
     font-size: $font32;
     line-height: 54px;
+    color: $almost-black;
 
     @media (max-width: 767.98px) {
       font-size: $font28;
@@ -356,10 +345,10 @@
 
   &.tile-box-top-link {
     .btn-report-link {
-      position: absolute;
-      right: 2rem;
-      top: 2.9rem;
       z-index: 1;
+      position: absolute;
+      top: 2.9rem;
+      right: 2rem;
 
       @media (max-width: 991.98px) {
         position: static;
@@ -367,21 +356,16 @@
 
       .btn-text {
         color: $main-green !important;
-        display: inline-block;
         font-size: $font16;
         letter-spacing: 2px;
         line-height: 22px;
-
-        @media (max-width: 767.98px) {
-          font-size: $font12;
-          padding-right: 0.8rem;
-        }
+        display: inline-block;
 
         span {
-          display: block;
+          white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          white-space: nowrap;
+          display: block;
 
           @media (max-width: 1199.98px) {
             max-width: 360px;
@@ -392,13 +376,18 @@
           }
         }
 
-        &::before {
+        @media (max-width: 767.98px) {
+          font-size: $font12;
+          padding-right: 0.8rem;
+        }
+
+        &:before {
           border: solid $main-green;
           border-width: 0 1px 1px 0;
           padding: 3.7px;
 
           @media (max-width: 767.98px) {
-            right: 0;
+            right: 0px;
           }
         }
       }
@@ -409,14 +398,14 @@
         right: 1rem;
 
         .btn-text {
-          display: inline-block;
           padding-right: 1.2rem;
+          display: inline-block;
 
           span {
-            display: block;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
+            display: block;
 
             @media (max-width: 1199.98px) {
               max-width: 360px;
@@ -427,16 +416,16 @@
             }
           }
 
-          &::before {
+          &:before {
+            border: none;
             background: url("../img/svg-icons/download_green.svg") left top no-repeat;
             background-size: 100%;
-            border: none;
             display: block;
-            height: 14px;
-            left: auto;
-            right: 0;
-            transform: translateY(-50%) rotate(0deg);
             width: 14px;
+            height: 14px;
+            transform: translateY(-50%) rotate(0deg);
+            right: 0;
+            left: auto;
           }
         }
       }
@@ -446,28 +435,27 @@
   .tile-box-tile {
     .tile-box-body {
       h2 {
-        font-size: $font22;
-        line-height: 28px;
+        white-space: normal;
         overflow: visible;
         text-overflow: unset;
-        white-space: normal;
+        font-size: $font22;
+        line-height: 28px;
       }
     }
   }
 
   .display-date {
     color: $steel-grey;
-    display: block;
     font-size: $font14;
     line-height: 22px;
-
     //   @include font-family-lato;
     @include font-family-lato;
+    display: block;
   }
 
   .global-map-country-filter {
     .form-group {
-      margin-bottom: 0;
+      margin-bottom: 0px;
       margin-top: 26px;
 
       .select2-container {
@@ -475,6 +463,12 @@
           background-color: transparent;
         }
       }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .tile-boxes-section {
+      padding: 1.5rem !important;
     }
   }
 }
@@ -495,16 +489,13 @@
 
 .category-search {
   padding: 0 0.7rem;
-
   @include respond-to-min($tablet) {
     padding: 0 0.7rem;
   }
-
   @include respond-to-min($desktop) {
     padding: 0;
   }
 }
-
 .select2-dropdown__width {
   margin-left: 3px;
 }
@@ -528,11 +519,9 @@
     @include respond-to-min($desktop-wide) {
       width: 16.9rem;
     }
-
     .select2-results {
       .select2-results__options {
         direction: rtl;
-
         li {
           font-size: $font16;
         }
@@ -545,14 +534,14 @@
 //  display: none;
 //}
 .filter-news-results .f-news-room {
-  display: none !important;
   opacity: 0 !important;
+  display: none !important;
 
   &.active {
-    -webkit-animation: fadein 0.65s ease forwards;
-    animation: fadeIn 0.65s ease forwards;
-    display: block !important;
     opacity: 1 !important;
+    display: block !important;
+    -webkit-animation: fadeIn 0.65s ease forwards;
+    animation: fadeIn 0.65s ease forwards;
   }
 }
 
@@ -562,7 +551,6 @@
       .tile-box-body {
         text-align: right;
       }
-
       .btn-text {
         left: auto;
         right: 1.5rem;
@@ -575,28 +563,24 @@
           padding-right: 10px;
         }
       }
-
       &.tile-box-top-link {
         &.download-link {
           .btn-report-link {
-            left: 1rem;
             right: auto;
+            left: 1rem;
           }
         }
-
         .btn-report-link {
-          left: 1rem;
           right: auto;
-
+          left: 1rem;
           .btn-text {
-            &::before {
+            &:before {
               right: auto;
             }
           }
         }
       }
     }
-
     .cmp-newsroom-search {
       .form {
         &.wst-form {
@@ -604,23 +588,22 @@
             .select2-container {
               .select2-selection {
                 .select2-selection__rendered {
-                  padding-right: $padding-step-0;
                   text-align: right;
+                  padding-right: $padding-step-0;
                 }
-
                 .select2-selection__arrow {
-                  left: 1px;
                   right: auto;
+                  left: 1px;
                 }
               }
             }
-
             label {
               transform-origin: 100% 50% !important;
+              width: 94%;
+              right: 12px;
             }
           }
         }
-
         .input-field {
           & > label {
             margin-right: 3px;
@@ -630,3 +613,4 @@
     }
   }
 }
+

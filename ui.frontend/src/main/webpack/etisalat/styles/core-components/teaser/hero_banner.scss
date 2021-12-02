@@ -129,11 +129,10 @@
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
-        position: absolute;
-
         *[lang="ar"] *[dir="rtl"] & {
           right: 0;
         }
+        position: absolute;
       }
 
       @include respond-to-max($desktop) {
@@ -149,6 +148,10 @@
     }
 
     .video-wrapper {
+      *[lang="ar"] *[dir="rtl"] & {
+        text-align: right;
+        right: 0;
+      }
       @include respond-to-min($desktop) {
         left: toRem(3);
         top: toRem(65);
@@ -157,11 +160,6 @@
       @include respond-to-max($phone) {
         margin-bottom: $margin-step-0;
         margin-top: toRem(8);
-      }
-
-      *[lang="ar"] *[dir="rtl"] & {
-        right: 0;
-        text-align: right;
       }
     }
 
@@ -207,7 +205,7 @@
       @include respond-to-min($desktop) {
         margin: $margin-step-0 auto;
         position: absolute;
-        right: 0;
+        @include rtl(right, 0, toRem(110));
         top: 0;
         width: 1224px;
       }
@@ -215,6 +213,25 @@
       @include respond-to-min($desktop-wide) {
         left: 0;
         top: 0;
+        @include rtl(right, 0, toRem(28));
+      }
+
+      @include respond-to-max($desktop-min) {
+        @include rtlBlock() {
+          right: toRem(38);
+        }
+      }
+
+      @include respond-to-max($tablet) {
+        @include rtlBlock() {
+          right: toRem(16);
+        }
+      }
+
+      @include respond-to-max($phone) {
+        @include rtlBlock() {
+          right: toRem(13);
+        }
       }
 
       .btn-green {
@@ -230,7 +247,10 @@
           left: toRem(18);
           margin-top: calc(#{$margin-step-2} + 4px);
           top: toRem(336);
-          width: toRem(180);
+          width: toRem(180) !important;
+          @include rtlBlock() {
+            right: toRem(5);
+          }
         }
       }
 
@@ -264,18 +284,17 @@
 
   .replaced-svg,
   a.video_link svg {
+    *[lang="ar"] *[dir="rtl"] & {
+      right: 0;
+      float: right;
+      left: 0;
+      margin-left: 0.75rem;
+      top: 0;
+    }
     @include respond-to-min($desktop) {
       left: toRem(6);
       position: relative;
       top: toRem(3);
-    }
-
-    *[lang="ar"] *[dir="rtl"] & {
-      float: right;
-      left: 0;
-      margin-left: 0.75rem;
-      right: 0;
-      top: 0;
     }
 
     g g {
@@ -320,22 +339,20 @@
   }
 
   p {
+    @include font-family-lato();
     color: $black;
     font-size: $font16;
     letter-spacing: normal;
     line-height: 22px;
     margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} - 3.5px) $margin-step-0;
     text-align: left;
-
-    @include font-family-lato();
+    *[lang="ar"] *[dir="rtl"] & {
+      text-align: right;
+    }
 
     @include respond-to-min($desktop) {
       color: $white;
       font-size: $font18;
-    }
-
-    *[lang="ar"] *[dir="rtl"] & {
-      text-align: right;
     }
 
     a {
@@ -360,6 +377,9 @@
     &__description {
       @include respond-to-min($desktop) {
         width: 50%;
+        @include rtlBlock() {
+          width: 100%;
+        }
 
         p {
           position: relative;
@@ -405,7 +425,7 @@
       }
 
       @include respond-to-min($desktop) {
-        margin: $margin-step-0;
+        margin: $margin-step-0 calc(#{$margin-step-10} + #{$margin-step-4}) $margin-step-0 $margin-step-0;
         width: 50%;
       }
 
@@ -440,7 +460,7 @@
       line-height: 20px;
       margin-bottom: toRem(12);
       max-width: toRem(336);
-      padding: calc(#{$padding-step-1} -2px) calc(#{$padding-step-1} + 4px);
+      padding: calc(#{$padding-step-1} - 2px) calc(#{$padding-step-1} + 4px);
 
       @include respond-to-min($tablet) {
         margin-bottom: toRem(16);
@@ -467,6 +487,7 @@
       }
 
       a {
+        @include font-family-lato();
         background-color: $arrow-border-green;
         border-color: $arrow-border-green;
         border-radius: 4px;
@@ -486,8 +507,6 @@
         text-transform: uppercase;
         transition: all 0.3s ease-in-out;
         width: 100%;
-
-        @include font-family-lato();
 
         @include respond-to-min($desktop) {
           width: auto;
@@ -544,3 +563,4 @@
     }
   }
 }
+
