@@ -1,5 +1,5 @@
  <div class="product-card product-card--elife-lite">
-   <a href="${properties.availabilityButtonLink @ extension = 'html'}" alt="navigate to product details page">
+   <a href="${properties.availabilityButtonLink @ extension = 'html'}" alt="${properties.buyNowAltText}">
      <div class="product-card__header">
        <figure class="product-card__header__figure">
          <div class="product-card__image" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>         
@@ -14,7 +14,7 @@
          <sly data-sly-use.eliteObj="${resource.path}" data-sly-list.eLiteItems="${eliteObj.listChildren}">
            <div data-sly-test="${eLiteItems.name == 'packageItems'}" data-sly-repeat.packItem="${eLiteItems.listChildren}" class="package">
              <sly data-sly-list.imageRes="${packItem.listChildren}">
-               <img data-sly-test="${imageRes.fileReference}" class="icon" src="${imageRes.fileReference}" />
+               <img alt="${properties.buyNowAltText}" data-sly-test="${imageRes.fileReference}" class="icon" src="${imageRes.fileReference}" />
              </sly>
              <span>${packItem.packageText} <small>${packItem.packageUnit}</small>
              </span>
