@@ -77,8 +77,8 @@
 	    // hide the arrow if slides count is 2 or less
 	    var slidesCount = $slider.find('.swiper-slide').length;
 	    if (slidesCount < 3) {
-	        $slider.find('.next').addClass('hidden');
-	        $slider.find('.prev').addClass('hidden');
+	        $slider.find('.table-swiper-button-next').addClass('hidden');
+	        $slider.find('.table-swiper-button-prev').addClass('hidden');
 	    }
 	});
 
