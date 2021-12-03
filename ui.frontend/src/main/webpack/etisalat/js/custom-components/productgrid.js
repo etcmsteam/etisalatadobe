@@ -45,8 +45,10 @@
 	    var $slider = $(this);
 	    $slider.find('.table-swiper-button-next').addClass('plansRight' + index);
         $slider.find('.table-swiper-button-prev').addClass('plansLeft' + index);	
-	    $carouselSliderSmartHome = new Swiper('.slider' + index + ' .swiper-container-slider', {
+	    $carouselSliderSmartHome = new Swiper('.slider' + index + ' .swiper-container', {
 	        scrollbar: $(this).find('.table-swiper-scrollbar'),
+	        touchEventsTarget: "swiper-wrapper",
+            simulateTouch: true,
 	        nextButton: '.table-swiper-button-next.plansRight' + index,
             prevButton: '.table-swiper-button-prev.plansLeft' + index,
 	        scrollbarHide: false,
