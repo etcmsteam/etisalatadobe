@@ -54,24 +54,19 @@
 	        scrollbarHide: false,
 	        scrollbarDraggable: true,
 	        breakpoints: {
-	            540: {
-	                spaceBetween: 16,
+	            540: {	                
 	                slidesPerView: 1
 	            },
-	            768: {
-	                spaceBetween: 16,
+	            768: {	                
 	                slidesPerView: 2
 	            },
-	            1024: {
-	                spaceBetween: 24,
+	            1024: {	                
 	                slidesPerView: 2
 	            },
-	            1440: {
-	                spaceBetween: 24,
+	            1440: {	               
 	                slidesPerView: 2
 	            },
-	            9999: {
-	                spaceBetween: 24,
+	            9999: {	                
 	                centeredSlides: false,
 	                slidesPerView: 2
 	            }
