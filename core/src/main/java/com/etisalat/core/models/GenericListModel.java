@@ -62,7 +62,7 @@ public class GenericListModel {
           final String itemPath = properties.get("link", StringUtils.EMPTY);
           String authoredImage = properties.get(FILE_REFERENCE, StringUtils.EMPTY);
           String authoredLabel = properties.get("label", StringUtils.EMPTY);
-          if (itemPath.contains("/content")) {
+			if (itemPath.contains("/content") && null != request.getResourceResolver().getResource(itemPath)) {
             final Resource itemChildRes = request.getResourceResolver().getResource(itemPath);
             final Page childPage = itemChildRes.adaptTo(Page.class);
             final Resource imageRes = request.getResourceResolver()
