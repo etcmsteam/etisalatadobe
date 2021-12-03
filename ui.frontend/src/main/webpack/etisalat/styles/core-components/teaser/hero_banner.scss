@@ -108,7 +108,37 @@
       }
     }
   }
+  .hero-heading-big {
+    margin-top: $margin-step-3;
+    margin-bottom: $margin-step-1;
 
+    @include respond-to-min($desktop) {
+      left: toRem(15);
+      margin-top: toRem(60);
+      top: toRem(48);
+      position: absolute;
+    }
+
+    @include respond-to-max($desktop) {
+      top: auto;
+      position: relative;
+      .text--white {
+        color: $almost-black;
+
+        @include respond-to-min($desktop) {
+          color: $white;
+        }
+      }
+    }
+
+    h1 {
+      margin: $margin-step-0;
+      font-size: $font26;
+      @include respond-to-min($desktop) {
+        font-size: $font54;
+      }
+    }
+  }
   .hero-banner__right_text {
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
@@ -118,7 +148,7 @@
   }
 
   .video {
-    min-height: toRem(550);
+    // min-height: toRem(550);
 
     @include respond-to-min($desktop) {
       height: 100%;
@@ -152,8 +182,10 @@
         text-align: right;
         right: 0;
       }
+      position: relative;
       @include respond-to-min($desktop) {
         left: toRem(3);
+        position: absolute;
         top: toRem(65);
       }
 
@@ -199,84 +231,42 @@
     }
 
     .youtube-popup-container {
-      left: toRem(25);
-      top: toRem(250);
+      left: toRem(20);
+      right: toRem(10);
+      top: toRem(218);
 
-      @include respond-to-min($desktop) {
+      @include respond-to-min($tablet){
+        top: toRem(228);
+      }
+
+      @include respond-to-min($desktop){
         margin: $margin-step-0 auto;
         position: absolute;
-        @include rtl(right, 0, toRem(110));
+        right: 0;
         top: 0;
         width: 1224px;
       }
 
-      @include respond-to-min($desktop-wide) {
+      @include respond-to-min($desktop-wide){
         left: 0;
         top: 0;
-        @include rtl(right, 0, toRem(28));
-      }
-
-      @include respond-to-max($desktop-min) {
-        @include rtlBlock() {
-          right: toRem(38);
-        }
-      }
-
-      @include respond-to-max($tablet) {
-        @include rtlBlock() {
-          right: toRem(16);
-        }
-      }
-
-      @include respond-to-max($phone) {
-        @include rtlBlock() {
-          right: toRem(13);
-        }
       }
 
       .btn-green {
-        margin-top: toRem(10);
-        top: toRem(150);
-        width: toRem(350);
-
-        @include respond-to-min($tablet) {
-          margin-top: toRem(0);
-        }
-
+        top: auto;
+        margin-top: $margin-step-0;
+        max-width: 100%;
+        width: 100%;
+        
+          @include respond-to-min($tablet){
+            margin-top:toRem(30);
+          }
         @include respond-to-min($desktop) {
           left: toRem(18);
           margin-top: calc(#{$margin-step-2} + 4px);
           top: toRem(336);
-          width: toRem(180) !important;
-          @include rtlBlock() {
-            right: toRem(5);
-          }
-        }
-      }
-
-      .hero-heading-big {
-        margin-top: toRem(15);
-
-        @include respond-to-min($desktop) {
-          left: toRem(15);
-          margin-top: toRem(60);
-          top: toRem(48);
-        }
-
-        @include respond-to-max($desktop) {
-          top: toRem(25);
-
-          .text--white {
-            color: $almost-black;
-
-            @include respond-to-min($desktop) {
-              color: $white;
-            }
-          }
-        }
-
-        h1 {
-          margin: $margin-step-0;
+          min-width: toRem(180);
+          width: auto;
         }
       }
     }
@@ -377,9 +367,6 @@
     &__description {
       @include respond-to-min($desktop) {
         width: 50%;
-        @include rtlBlock() {
-          width: 100%;
-        }
 
         p {
           position: relative;
@@ -401,7 +388,7 @@
     }
 
     &__content {
-      align-items: flex-start;
+      align-items: start;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -413,7 +400,7 @@
       position: relative;
       position: absolute;
       right: 0;
-      top: toRem(60);
+      top: 0;
       width: 100%;
       width: 1224px;
       z-index: 1;
@@ -425,7 +412,7 @@
       }
 
       @include respond-to-min($desktop) {
-        margin: $margin-step-0 calc(#{$margin-step-10} + #{$margin-step-4}) $margin-step-0 $margin-step-0;
+        margin: $margin-step-0;
         width: 50%;
       }
 
@@ -522,6 +509,7 @@
     }
 
     &__title {
+       font-size: $font26;
       @include respond-to-min($desktop) {
         color: $white;
         font-size: $font54;
@@ -563,4 +551,3 @@
     }
   }
 }
-
