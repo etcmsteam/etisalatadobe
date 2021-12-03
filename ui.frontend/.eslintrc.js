@@ -5,7 +5,7 @@ module.exports = {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: "module", // Allows for the use of imports
   },
-  ignorePatterns: ["webpack.dev.js"],
+  ignorePatterns: ["webpack.dev.js", "custom-components/**/*.js", "forms/**/*.js"],
   rules: {
     curly: 1,
     "@typescript-eslint/explicit-function-return-type": [0],

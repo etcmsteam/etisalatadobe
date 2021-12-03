@@ -2,14 +2,14 @@
 %input-base {
   background-color: transparent;
   border: 0;
-  border-bottom: 1px solid $grey4;
+  border-bottom: $border-step-1 solid $grey4;
   border-radius: 0;
   box-shadow: none;
   box-sizing: content-box;
   color: $almost-black;
   font-size: $font20;
   margin: 0;
-  min-height: 2.5rem;
+  min-height: toRem(40);
   outline: none;
   padding: 0;
   position: relative;
@@ -28,7 +28,7 @@
   }
 
   &:focus {
-    border-bottom: 1px solid $main-green;
+    border-bottom: $border-step-1 solid $main-green;
     box-shadow: none;
     transform-origin: 0 0;
     z-index: 0;
@@ -47,7 +47,7 @@
   font-size: $font20;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 24px;
+  line-height: toRem(24);
   overflow: hidden;
   position: absolute;
   text-overflow: ellipsis;
@@ -58,6 +58,140 @@
 
   @include respond-to-max($tablet) {
     font-size: $font14;
+  }
+}
+
+.cmp-form-options {
+  margin-bottom: $margin-step-4;
+
+  @include respond-to-min($tablet) {
+    margin-bottom: $margin-step-6;
+  }
+
+  &__label {
+    @extend %label-style;
+
+    top: toRem(10);
+    transform: none !important;
+
+    &.floating-label {
+      @include rtl(transform-origin, 0 0, 100% 0 !important);
+      @include ts-step-0;
+
+      color: $almost-black;
+      transform: translateY(-20px) scale(0.8) !important;
+    }
+  }
+
+  &--drop-down {
+    border: 0;
+    border-bottom: toRem(1) solid $grey4;
+    bottom: 0;
+    font-size: $font14;
+    min-height: toRem(41);
+    padding: 0;
+    position: relative;
+    top: toRem(8);
+    width: 100%;
+
+    @include respond-to-min($desktop-min) {
+      font-size: $font20;
+    }
+
+    .select2-hidden-accessible {
+      display: block;
+    }
+  }
+
+  &--open {
+    border-color: $main-green;
+  }
+
+  &--radio {
+    border: 0;
+    margin: 0;
+    padding-bottom: toRem(27);
+    padding-left: 0;
+    padding-top: 0;
+
+    & > label {
+      background-size: toRem(24);
+      display: inline-flex;
+      height: toRem(24);
+      margin-right: toRem(80);
+      width: toRem(24);
+    }
+  }
+}
+
+.cmp-form-text {
+  label {
+    @extend %label-style;
+  }
+
+  &__textarea {
+    outline: 0;
+
+    & ~ label {
+      @include rtlProp(padding-left, padding-right, toRem(16));
+      @include rtl(transform-origin, 0 0, 100% 0 !important);
+    }
+
+    &.valid {
+      ~ label {
+        color: $almost-black;
+        font-size: toRem(16);
+        transform: translateY(10px) scale(0.8) !important;
+      }
+    }
+
+    &:focus {
+      ~ label {
+        transform: translateY(10px) scale(0.8) !important;
+      }
+    }
+
+    .is-valid,
+    .has-error-fields & {
+      ~ label {
+        transform: translateY(10px) scale(0.8) !important;
+      }
+    }
+  }
+
+  &__text {
+    color: $almost-black;
+
+    &.valid {
+      ~ label {
+        @include ts-step-0;
+
+        color: $almost-black;
+        transform: translateY(-10px) scale(0.8);
+      }
+    }
+  }
+
+  .error-msg,
+  .valid-msg {
+    @include rtlProp(left, right, 0);
+
+    color: $error-red;
+    position: absolute;
+    top: toRem(48);
+    z-index: $form-error;
+  }
+
+  .valid-msg {
+    color: $almost-black;
+  }
+
+  .floating-label {
+    @include ts-step-0;
+
+    color: $almost-black;
+    transform: translateY(-10px) scale(0.8);
+    transform-origin: 0 0;
   }
 }
 
@@ -79,11 +213,12 @@
 
       svg {
         @include rtlProp(right, left, 0);
+
         fill: $error-red;
-        height: 1.6rem;
+        height: toRem(25);
         position: absolute;
         top: 0;
-        width: 1.6rem;
+        width: toRem(25);
         z-index: $error-svg;
       }
     }
@@ -103,10 +238,25 @@
       width: 100%;
     }
 
+    label {
+      @include rtl(transform-origin, 0 0, 100% 0);
+
+      color: $error-red;
+      font-size: toRem(16);
+      transform: translateY(-10px) scale(0.8);
+      z-index: $form-label;
+    }
+
+    .intl-error {
+      label {
+        font-size: $font16;
+        transform: translateY(-10px) scale(0.8);
+      }
+    }
+
     .has-error ~ label {
       font-size: $font16;
       transform: translateY(-10px) scale(0.8);
-      z-index: 2;
     }
 
     .cmp-form-text__text {
@@ -117,22 +267,6 @@
     input,
     textarea {
       border-bottom: 1px solid $error-red;
-    }
-
-    label {
-      @include rtl(transform-origin, 0 0, 100% 0);
-      color: $error-red;
-      font-size: toRem(16);
-      transform: translateY(-10px) scale(0.8) !important;
-      z-index: 2;
-    }
-  }
-
-  .intl-error {
-    label {
-      font-size: $font16;
-      transform: translateY(-10px) scale(0.8);
-      z-index: 2;
     }
   }
 
@@ -178,137 +312,6 @@
 
     @include respond-to-max($phone) {
       padding-right: 0;
-    }
-  }
-}
-
-.cmp-form-text {
-  label {
-    @extend %label-style;
-  }
-
-  &__text {
-    color: $almost-black;
-
-    &.valid {
-      ~ label {
-        @include ts-step-0;
-        color: $almost-black;
-        transform: translateY(-10px) scale(0.8);
-      }
-    }
-  }
-
-  &__textarea {
-    outline: 0;
-
-    & ~ label {
-      @include rtlProp(padding-left, padding-right, 16px);
-      @include rtl(transform-origin, 0 0, 100% 0 !important);
-    }
-
-    &.valid {
-      ~ label {
-        color: $almost-black;
-        font-size: toRem(16);
-        transform: translateY(10px) scale(0.8) !important;
-      }
-    }
-
-    &:focus {
-      ~ label {
-        transform: translateY(10px) scale(0.8) !important;
-      }
-    }
-
-    .is-valid,
-    .has-error-fields & {
-      ~ label {
-        transform: translateY(10px) scale(0.8) !important;
-      }
-    }
-  }
-
-  .error-msg,
-  .valid-msg {
-    @include rtlProp(left, right, 0);
-    color: $error-red;
-    position: absolute;
-    top: toRem(48);
-
-    
-    z-index: $form-error;
-  }
-
-  .valid-msg {
-    color: $almost-black;
-  }
-
-  .floating-label {
-    @include ts-step-0;
-    color: $almost-black;
-    transform: translateY(-10px) scale(0.8);
-    transform-origin: 0 0;
-  }
-}
-
-.cmp-form-options {
-  margin-bottom: $margin-step-4;
-
-  @include respond-to-min($tablet) {
-    margin-bottom: $margin-step-6;
-  }
-
-  &__label {
-    @extend %label-style;
-    top: toRem(10);
-    transform: none !important;
-
-    &.floating-label {
-      @include rtl(transform-origin, 0 0, 100% 0 !important);
-      @include ts-step-0;
-      color: $almost-black;
-      transform: translateY(-20px) scale(0.8) !important;
-    }
-  }
-
-  &--drop-down {
-    border: 0;
-    border-bottom: toRem(1) solid $grey4;
-    bottom: 0;
-    font-size: $font14;
-    min-height: toRem(41);
-    padding: 0;
-    position: relative;
-    top: toRem(8);
-    width: 100%;
-
-    @include respond-to-min($desktop-min) {
-      font-size: $font20;
-    }
-
-    .select2-hidden-accessible {
-      display: block;
-    }
-  }
-
-  &--open {
-    border-color: $main-green;
-  }
-
-  &--radio {
-    border: 0;
-    margin: 0;
-    padding-bottom: 1.7rem;
-    padding-left: 0;
-    padding-top: 0;
-
-    & > label {
-      background-size: toRem(24);
-      display: inline-flex;
-      height: toRem(24);
-      margin-right: 5rem;
-      width: toRem(24);
     }
   }
 }
