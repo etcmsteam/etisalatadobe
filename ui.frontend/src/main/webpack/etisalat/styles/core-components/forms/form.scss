@@ -2,14 +2,14 @@
 %input-base {
   background-color: transparent;
   border: 0;
-  border-bottom: 1px solid $grey4;
+  border-bottom: $border-step-1 solid $grey4;
   border-radius: 0;
   box-shadow: none;
   box-sizing: content-box;
   color: $almost-black;
   font-size: $font20;
   margin: 0;
-  min-height: 2.5rem;
+  min-height: toRem(40);
   outline: none;
   padding: 0;
   position: relative;
@@ -28,7 +28,7 @@
   }
 
   &:focus {
-    border-bottom: 1px solid $main-green;
+    border-bottom: $border-step-1 solid $main-green;
     box-shadow: none;
     transform-origin: 0 0;
     z-index: 0;
@@ -47,7 +47,7 @@
   font-size: $font20;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 24px;
+  line-height: toRem(24);
   overflow: hidden;
   position: absolute;
   text-overflow: ellipsis;
@@ -110,7 +110,7 @@
   &--radio {
     border: 0;
     margin: 0;
-    padding-bottom: 1.7rem;
+    padding-bottom: toRem(27);
     padding-left: 0;
     padding-top: 0;
 
@@ -118,7 +118,7 @@
       background-size: toRem(24);
       display: inline-flex;
       height: toRem(24);
-      margin-right: 5rem;
+      margin-right: toRem(80);
       width: toRem(24);
     }
   }
@@ -133,7 +133,7 @@
     outline: 0;
 
     & ~ label {
-      @include rtlProp(padding-left, padding-right, 16px);
+      @include rtlProp(padding-left, padding-right, toRem(16));
       @include rtl(transform-origin, 0 0, 100% 0 !important);
     }
 
@@ -215,10 +215,10 @@
         @include rtlProp(right, left, 0);
 
         fill: $error-red;
-        height: 1.6rem;
+        height: toRem(25);
         position: absolute;
         top: 0;
-        width: 1.6rem;
+        width: toRem(25);
         z-index: $error-svg;
       }
     }
@@ -244,21 +244,19 @@
       color: $error-red;
       font-size: toRem(16);
       transform: translateY(-10px) scale(0.8);
-      z-index: 2;
+      z-index: $form-label;
     }
 
     .intl-error {
       label {
         font-size: $font16;
         transform: translateY(-10px) scale(0.8);
-        z-index: 2;
       }
     }
 
     .has-error ~ label {
       font-size: $font16;
       transform: translateY(-10px) scale(0.8);
-      z-index: 2;
     }
 
     .cmp-form-text__text {
