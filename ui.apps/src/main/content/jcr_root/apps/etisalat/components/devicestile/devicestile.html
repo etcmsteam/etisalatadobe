@@ -1,4 +1,4 @@
- <div class="product-card product-card--device product-card--offer"> 
+ <div class="product-card product-card--device ${properties.offerText ? 'product-card--offer' :''}"> 
       <a href="${properties.buyNowButtonLink @ extension = 'html'}" alt="navigate to product details page">
         <div class="product-card__header">
           <figure class="product-card__header__figure">
@@ -6,10 +6,10 @@
           </figure>
         </div>
         <div class="product-card__body d-flex flex-column py-3 px-4">
-          <div class="product-card__special-offer">${properties.offerText}</div>
+          <div data-sly-test="${properties.offerText}" class="product-card__special-offer">${properties.offerText}</div>
           <div class="product-card__header__title d-flex flex-column mb-3">
-            <span class="product-card__header__title__primary">${properties.categoryText}</span>
-            <span class="product-card__header__title__secondary" dir="ltr">${properties.categorySubTitle}</span>
+            <span data-sly-test="${properties.categoryText}" class="product-card__header__title__primary">${properties.categoryText}</span>
+            <span data-sly-test="${properties.categorySubTitle}" class="product-card__header__title__secondary" dir="ltr">${properties.categorySubTitle}</span>
           </div>
           <div  data-sly-test="${properties.colorList}" class="product-card__feature-list product-card__color-list my-1">
             <ul data-sly-list="${properties.colorList}">
