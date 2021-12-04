@@ -1,4 +1,4 @@
-[lang="ar"] [dir="rtl"] .main-carousel {
+[lang="ar"] [dir="rtl"] .cmp-carousel--herobanner {
   .hero-heading-big {
     right: 0;
   }
@@ -7,18 +7,8 @@
     right: 0;
   }
 }
-
-[lang="ar"] [dir="rtl"] .main-carousel {
-  .hero-heading-big {
-    right: 0;
-  }
-
-  .btn-green {
-    right: 0;
-  }
-}
-
-.main-carousel {
+/* stylelint-disable-next-line no-descending-specificity */
+.cmp-carousel--herobanner {
   .cmp-carousel {
     &__actions {
       display: none;
@@ -36,7 +26,7 @@
         &--previous {
           align-items: center;
           background: rgba(0, 0, 0, 0.42);
-          border: 0;
+          border: $border-step-0;
           border-color: none;
           border-radius: 50%;
           cursor: pointer;
@@ -51,8 +41,8 @@
           z-index: 2;
 
           &::after {
-            border-left: 1px solid $white;
-            border-top: 1px solid $white;
+            border-left: $border-step-1 solid $white;
+            border-top: $border-step-1 solid $white;
             content: "";
             display: block;
             height: toRem(11);
@@ -116,11 +106,13 @@
       left: toRem(15);
       margin-top: toRem(60);
       top: toRem(48);
+      /* stylelint-disable-next-line order/properties-alphabetical-order */
       position: absolute;
     }
 
     @include respond-to-max($desktop) {
       top: auto;
+      /* stylelint-disable-next-line order/properties-alphabetical-order */
       position: relative;
       .text--white {
         color: $almost-black;
@@ -132,8 +124,9 @@
     }
 
     h1 {
-      margin: $margin-step-0;
       font-size: $font26;
+      margin: $margin-step-0;
+
       @include respond-to-min($desktop) {
         font-size: $font54;
       }
@@ -159,7 +152,7 @@
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
-        *[lang="ar"] *[dir="rtl"] & {
+        @include rtlBlock() {
           right: 0;
         }
         position: absolute;
@@ -213,7 +206,7 @@
     .video_ctn {
       @include respond-to-max($phone) {
         background: $white-grey;
-        padding: calc(#{$padding-step-5} + 10px) $padding-step-0;
+        padding: calc(#{$padding-step-5} +10px) $padding-step-0;
       }
 
       @include respond-to-min($tablet) {
@@ -244,12 +237,31 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 1224px;
+        width: toRem(1224);
       }
 
-      @include respond-to-min($desktop-wide){
+      @include respond-to-min($desktop-wide) {
         left: 0;
         top: 0;
+        @include rtl(right, 0, toRem(28));
+      }
+
+      @include respond-to-max($desktop-min) {
+        @include rtlBlock() {
+          right: toRem(38);
+        }
+      }
+
+      @include respond-to-max($tablet) {
+        @include rtlBlock() {
+          right: toRem(16);
+        }
+      }
+
+      @include respond-to-max($phone) {
+        @include rtlBlock() {
+          right: toRem(13);
+        }
       }
 
       .btn-green {
@@ -267,6 +279,9 @@
           top: toRem(336);
           min-width: toRem(180);
           width: auto;
+		   @include rtlBlock() {
+            right: toRem(5);
+          }
         }
       }
     }
@@ -312,7 +327,7 @@
   }
 }
 
-.hero-banner-section {
+.cmp-teaser--herobanner {
   max-height: toRem(500);
   overflow: hidden;
   position: relative;
@@ -333,8 +348,8 @@
     color: $black;
     font-size: $font16;
     letter-spacing: normal;
-    line-height: 22px;
-    margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} - 3.5px) $margin-step-0;
+    line-height: toRem(22);
+    margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} -3.5px) $margin-step-0;
     text-align: left;
     *[lang="ar"] *[dir="rtl"] & {
       text-align: right;
@@ -367,6 +382,9 @@
     &__description {
       @include respond-to-min($desktop) {
         width: 50%;
+        @include rtlBlock() {
+          width: 100%;
+        }
 
         p {
           position: relative;
@@ -395,19 +413,19 @@
       justify-content: center;
       left: 0;
       margin: auto;
-      padding-left: calc(#{$padding-step-1} + 2px);
-      padding-right: calc(#{$padding-step-1} + 4px);
+      padding-left: calc(#{$padding-step-1} +2px);
+      padding-right: calc(#{$padding-step-1} +4px);
       position: relative;
       position: absolute;
       right: 0;
       top: 0;
       width: 100%;
-      width: 1224px;
+      width: toRem(1224);
       z-index: 1;
 
       @include respond-to-max($tablet) {
         font-size: $font26;
-        line-height: 33px;
+        line-height: toRem(33);
         z-index: 2;
       }
 
@@ -419,7 +437,7 @@
       @include respond-to-max($desktop) {
         font-size: $font26;
         left: 0;
-        line-height: 33px;
+        line-height: toRem(33);
         position: relative;
         top: 0;
         width: 100%;
@@ -432,30 +450,30 @@
         margin: auto;
         right: 0;
         top: 0;
-        width: 1224px;
+        width: toRem(1224);
       }
     }
 
     &__pretitle {
       background-image: linear-gradient(83deg, $bright-sun, $pumpkin);
-      border-radius: 100px;
+      border-radius: toRem(100);
       color: $white;
       display: flex;
       font-size: $font14;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      line-height: 20px;
+      font-weight: get-font-weight("bold");
+      letter-spacing: toRem(0.4);
+      line-height: toRem(20);
       margin-bottom: toRem(12);
       max-width: toRem(336);
-      padding: calc(#{$padding-step-1} - 2px) calc(#{$padding-step-1} + 4px);
+      padding: calc(#{$padding-step-1} -2px) calc(#{$padding-step-1} +4px);
 
       @include respond-to-min($tablet) {
-        margin-bottom: toRem(16);
+        margin-bottom: $margin-step-2;
       }
 
       @include respond-to-min($desktop) {
         font-size: $font16;
-        line-height: 24px;
+        line-height: toRem(24);
         max-width: toRem(426);
       }
     }
@@ -477,13 +495,13 @@
         @include font-family-lato();
         background-color: $arrow-border-green;
         border-color: $arrow-border-green;
-        border-radius: 4px;
-        border-width: 1px;
+        border-radius: $border-radius-step-1;
+        border-width: $border-step-1;
         box-shadow: none !important;
         color: $white;
         display: inline-block;
         font-size: $font14;
-        font-weight: 700;
+        font-weight: get-font-weight("bold");
         height: toRem(48);
         letter-spacing: 0.14285714em;
         line-height: 48px;
@@ -513,8 +531,8 @@
       @include respond-to-min($desktop) {
         color: $white;
         font-size: $font54;
-        line-height: 64px;
-        margin: $margin-step-0 $margin-step-0 12.5px $margin-step-0;
+        line-height: toRem(64);
+        margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
 
         a {
           color: $white;
@@ -551,3 +569,4 @@
     }
   }
 }
+
