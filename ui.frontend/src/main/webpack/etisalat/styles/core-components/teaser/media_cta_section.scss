@@ -1,86 +1,144 @@
 .cmp-teaser--mediacta {
-  //cmp-teaser--mediacta
-  //no-padding-container
   margin: 1rem 0;
+ 
   .cmp-teaser {
-    @include media-box-shadow();
+    @include media-box-shadow;
+
     border-radius: $border-radius-step-1;
-    flex-wrap: wrap;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
     display: flex;
     width: 100%;
 
     &__image {
       width: 100%;
+
+      @include respond-to-max($tablet) {
+        height: 242px;
+      }
+
       .cmp-image {
         display: block;
-        height: auto;
+        height: 100%;
         position: relative;
         top: 0;
         left: 0;
         overflow: hidden;
         width: 100%;
         border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
+
         @include respond-to-min($desktop) {
           height: toRem(250);
         }
       }
+
+      img {
+        @include img-cover;
+      }
     }
 
     &__content {
-      padding: 1rem 1.5rem 4rem 1.5rem;
+      padding: 1rem 1rem 4rem;
       width: 100%;
       position: relative;
+
       @include respond-to-min($desktop) {
-        padding: 2rem 1rem 5rem 1rem;
+        padding: 1rem 1.5rem 3rem 2rem;
       }
     }
     &__description {
-      p {
-        color: $paracolor;
-        font-size: $font14;
-        line-height: toRem(19);
-        @include font-family-lato;
-      }
-      h4 {
-        font-size: $font24;
-        @include respond-to-max($tablet) {
-          @include font-family-lato;
+      p,
+      li {
+        color: $dark-gray;
 
-          font-weight: get-font-weight("bold");
-          font-size: $font18;
-          margin: 0 0 1rem;
+        @include ts-step--1;
+
+        line-height: toRem(19);
+
+        @include font-family-lato;
+
+        @include respond-to-min($desktop) {
+          @include ts-step-0;
         }
+      }
+
+      ol {
+        list-style: decimal;
+        list-style-position: inside;
+      }
+
+      ul {
+        list-style-position: none;
+        margin-bottom: 1rem;
+        list-style-position: inside;
+      }
+
+      li {
+        padding-left: 0.75rem;
+        position: relative;
+
+        margin: 0 0 0.875rem;
+
+        @include rtlBlock {
+          padding-right: 0.75rem;
+        }
+
+        @include respond-to-max($tablet) {
+          margin: 0 0 1rem;
+          padding-left: 0;
+        }
+      }
+    }
+
+    &__title,
+    h4 {
+      @include ts-step-3;
+
+      @include respond-to-min($tablet) {
+        @include step-lg;
+
+        margin: 0 0 1rem;
+        color: $almost-black;
       }
     }
 
     &__action-container {
       position: absolute;
+
       bottom: toRem(22);
       left: (20);
-      margin-top: 0rem;
+      margin-top: 0;
+
+      @include rtlBlock {
+        left: auto;
+      }
       @include respond-to-min($tablet) {
         margin-top: 2rem;
       }
     }
 
     &__action-link {
+      font-size: $font12;
       letter-spacing: toRem(2);
       position: relative;
-      font-size: $font14;
       padding-right: toRem(12);
       text-transform: uppercase;
+
+      @include rtlBlock {
+        padding-right: 0;
+      }
 
       @include font-family-lato;
 
       @include respond-to-min($tablet) {
-        font-size: $font12;
+        @include ts-step--1;
       }
+
       &:hover {
         text-decoration: underline;
       }
 
-      &:before {
+      &::before {
         @include link-arrow;
         border: solid $arrow-border-green;
         top: toRem(3);
@@ -91,6 +149,13 @@
         position: absolute;
         padding: toRem(3.5);
         left: auto;
+
+        @include rtlBlock {
+          transform: translateY(-50%) rotate(135deg);
+          left: -1rem;
+          right: auto;
+          top: 0.4rem;
+        }
       }
     }
   }
@@ -98,8 +163,13 @@
   &.image-left {
     .cmp-image {
       border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
+
       @include respond-to-min($desktop) {
         border-radius: $border-radius-step-1 0 0 $border-radius-step-1;
+
+        @include rtlBlock {
+          border-radius: 0 $border-radius-step-1 $border-radius-step-1 0;
+        }
       }
     }
   }
@@ -107,42 +177,78 @@
   &.image-right {
     .cmp-image {
       border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
+
       @include respond-to-min($desktop) {
         border-radius: 0 $border-radius-step-1 $border-radius-step-1 0;
+
+        @include rtlBlock() {
+          border-radius: $border-radius-step-1 0 0 $border-radius-step-1;
+        }
       }
     }
   }
 
   &.cmp-teaser--horizontal {
     .cmp-teaser {
+      padding-bottom: 2rem;
+      max-width: 100%;
+
+      @include respond-to-min($tablet) {
+        padding-bottom: 0;
+      }
+
       &__image {
-        @include respond-to-min($tablet) {
+        @include respond-to-min($desktop) {
           max-width: 33.3%;
+
           img {
             height: auto;
           }
         }
       }
+
       .cmp-image__image {
-        border-radius: 0px 4px 4px 0;
+        border-radius: 0 $border-radius-step-1 $border-radius-step-1 0;
+
+        @include respond-to-max($tablet) {
+          border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
+        }
       }
+
       &__content {
-        @include respond-to-min($tablet) {
+        padding-bottom: 4rem;
+
+        @include respond-to-min($desktop) {
           width: 100%;
-          padding: 2rem 1.5rem 4rem 1.5rem;
           display: flex;
           flex: 2;
         }
       }
+
       &__action-container {
-        bottom: toRem(40);
-        left: 49%;
+        left: 1rem;
         position: absolute;
-        
+
+        @include rtlBlock {
+          left: auto;
+        }
+
+        @include respond-to-min($desktop) {
+          bottom: toRem(40);
+          left:50.2%;
+
+          @include rtlBlock {
+            right: 49%;
+            left: auto;
+          }
+        }
       }
+
       &__description {
-        height: 0px;
-        width: 50%;
+        @include respond-to-min($desktop) {
+          width: 50%;
+        }
+
         p {
           font-size: $font16;
           line-height: 1.5rem;
@@ -151,7 +257,10 @@
 
       &__title {
         margin-top: 0;
-        width: 50%;
+
+        @include respond-to-min($desktop) {
+          width: 50%;
+        }
       }
     }
   }
@@ -165,15 +274,18 @@
     margin: toRem(10);
     position: relative;
     margin: 0;
+
     &__image {
       .cmp-image {
         max-height: toRem(250);
         min-height: toRem(250);
         height: toRem(250);
+
         @include respond-to-min($desktop) {
           max-height: toRem(428);
           min-height: toRem(428);
           height: toRem(428);
+
           img {
             @include img-cover();
           }
@@ -181,62 +293,8 @@
       }
     }
 
-    &__title {
-      h4 {
-        margin-bottom: 1.4rem;
-        font-size: $font26;
-        line-height: 1.3;
-        a {
-          color: #fff;
-        }
-      }
-    }
-
     &__content {
-      padding: 1rem 1rem 4rem;
       min-height: 150px;
-    }
-    &__description {
-      p {
-        font-size: $font14;
-        line-height: 19px;
-      }
-      ol {
-        color: $dark-gray;
-        @include font-family-lato();
-        font-weight: get-font-weight("regular");
-        position: relative;
-        margin-left: 1rem;
-        list-style: decimal;
-        li {
-          padding-left: 0.75rem;
-          font-size: $font14;
-          line-height: 20px;
-        }
-      }
-    }
-
-    &__action-container {
-      margin: 0;
-      position: absolute;
-      padding-top: 1rem;
-
-      a {
-        letter-spacing: 2px;
-        font-size: $font14;
-        padding: 0px !important;
-        :hover {
-          text-decoration: underline;
-        }
-        &:before {
-          @include link-arrow();
-          left: auto;
-          position: absolute;
-          right: -20px;
-          padding: 3.5px;
-          top: 5px;
-        }
-      }
     }
   }
 
@@ -252,9 +310,10 @@
     }
   }
   @include respond-to-max($tablet) {
-    .cmp-teaser--multicol_media .aem-GridColumn {
-      padding: 0;
+    .aem-GridColumn {
+      padding: 0 !important;
     }
   }
 }
+
 //media multicol en
