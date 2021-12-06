@@ -1,4 +1,9 @@
 /* menu */
+@include respond-to-max($phone) {
+  .menu__icon {
+    top: 50px;
+  }
+}
 @include respond-to-max($desktop) {
   .fixednavigation {
     position: absolute;
@@ -16,8 +21,8 @@
       cursor: pointer;
       display: block;
       position: absolute;
-      top: 50px;
-      right: 20px;
+      top: 60px;
+      right: 0;
       outline: none;
       ::selection {
         background: none;
@@ -125,7 +130,7 @@
 
         a,
         a:focus {
-          border: 0;
+          border-width: 0;
           color: $white;
           font-size: toRem(24);
           font-weight: 500;
@@ -137,12 +142,10 @@
           &:hover {
             border-bottom: 2px solid $white;
             color: $white;
-            padding-bottom: 5px;
             text-decoration: none;
           }
         }
         &.active {
-          border: none;
           a {
             border: 1px solid $white;
             font-weight: bold;
@@ -150,6 +153,7 @@
             padding: 8px 15px;
             &:hover {
               text-decoration: none;
+              border: 1px solid $white;
             }
           }
         }
