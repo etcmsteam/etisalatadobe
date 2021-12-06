@@ -24,17 +24,12 @@
   background-color: #f7f8f4;
 }
 
-a:focus {
-  outline: none;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  touch-action: manipulation;
   touch-action: manipulation;
 }
 
@@ -74,11 +69,26 @@ template {
 
 a {
   background-color: transparent;
-}
+  color: #719e19;
+  text-decoration: none;
 
-a:active,
-a:hover {
-  outline: 0;
+  &:hover {
+    color: #618816;
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:focus {
+    color: #618816;
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+    text-decoration: none;
+  }
+
+  &:active {
+    outline: 0;
+  }
 }
 
 abbr[title] {
@@ -124,22 +134,8 @@ sub {
   bottom: -0.25em;
 }
 
-img {
-  border: 0;
-}
-
 svg:not(:root) {
   overflow: hidden;
-}
-
-figure {
-  margin: 1em 40px;
-}
-
-hr {
-  box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
 }
 
 pre {
@@ -150,7 +146,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
+  font-family: monospace;
   font-size: 1em;
 }
 
@@ -186,19 +182,31 @@ html input[disabled] {
   cursor: default;
 }
 
+input {
+  line-height: normal;
+
+  @include rtlBlock {
+    @include font-family-lato;
+  }
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-input {
-  line-height: normal;
-}
-
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box;
   box-sizing: border-box;
   padding: 0;
 }
@@ -210,7 +218,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="search"] {
   appearance: textfield;
-  box-sizing: content-box;
   box-sizing: content-box;
 }
 
@@ -253,7 +260,6 @@ th {
   *::before,
   *::after {
     background: transparent !important;
-    box-shadow: none !important;
     box-shadow: none !important;
     color: #000 !important;
     text-shadow: none !important;
@@ -336,41 +342,9 @@ th {
   }
 }
 
-* {
-  box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 *::before,
 *::after {
   box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-a {
-  color: #719e19;
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  color: #618816;
-  text-decoration: none;
-}
-
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
 }
 
 figure {
@@ -400,10 +374,6 @@ img {
   line-height: 1.6;
   max-width: 100%;
   padding: 4px;
-  transition: all all 0.2s ease-in-out ease-in-out;
-  transition: all all 0.2s ease-in-out ease-in-out;
-  transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
   transition: all all 0.2s ease-in-out ease-in-out;
   transition: all 0.2s ease-in-out;
 }
@@ -457,8 +427,9 @@ hr {
 .wst-main-headings h5,
 .wst-main-headings h6 {
   color: #353738;
-  font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
   margin: 0;
+
+  @include font-family-Neotech;
 }
 
 // below code is only to remove crome autofil background color from all input elements
@@ -475,22 +446,32 @@ input:-webkit-autofill:active {
   width: 100%;
 }
 
-.sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
 .fieldset {
   margin: 0;
 }
 
-[dir=rtl] * {
-    font-weight: 300;
-    letter-spacing: 0;
+.input-field {
+  & > label {
+    color: $steel-grey;
+    cursor: text;
+    font-size: $font20;
+    font-weight: 400;
+    left: toRem(15);
+    line-height: 24px;
+    overflow: hidden;
+    position: absolute;
+    text-align: initial;
+    text-overflow: ellipsis;
+    top: 0;
+    transform: translateY(10px);
+    transform-origin: 0 100%;
+    transition: transform 0.2s ease-out, color 0.2s ease-out;
+    white-space: nowrap;
+    z-index: 0;
+  }
+}
+
+[dir="rtl"] * {
+  font-weight: 300;
+  letter-spacing: 0;
 }
