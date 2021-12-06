@@ -1,3 +1,4 @@
+import {isMobile, IsMediaQuery} from '../helpers'
 if ($(".globalfootprintcontainer").length > 0) {
   var galleryTop = new Swiper('.swiper-gallery-slide', {
     spaceBetween: 10,
@@ -46,16 +47,16 @@ if ($(".globalfootprintcontainer").length > 0) {
   galleryThumbs.controller.control = galleryTop;
 }
 
-if ($(window).width() <= 768) {
+if (!IsMediaQuery.md.matches) {
   const ANDRIOD_CTA = $(".download1");
   const APPLE_CTA = $(".download2");
 
-  if (navigator.userAgent.indexOf("Android") !== -1) {
+  if (isMobile.Android()) {
     ANDRIOD_CTA.show();
     APPLE_CTA.hide();
   }
 
-  if (navigator.userAgent.indexOf("iPhone") !== -1 || navigator.userAgent.indexOf("iPad") !== -1) {
+  if (isMobile.iOS()) {
     ANDRIOD_CTA.hide();
     APPLE_CTA.show();
   }
