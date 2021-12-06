@@ -1,9 +1,9 @@
 .product-card {
   $parent: &;
   @include font-family-lato;
-  border: 1px solid transparent;
-  border-radius: 0.5rem;
-  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+  border: toRem(1) solid transparent;
+  border-radius: $border-radius-step-2;
+  box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
   cursor: pointer;
   position: relative;
   transition: 0.3s;
@@ -24,10 +24,10 @@
 
     &__figure {
       height: inherit;
-      margin-bottom: 0;
+      margin-bottom: $margin-step-0;
 
       img {
-        border-radius: 0.5rem 0.5rem 0 0;
+        border-radius: $border-radius-step-2 $border-radius-step-2 0 0;
         height: 100%;
         object-fit: cover;
         width: 100%;
@@ -35,7 +35,7 @@
 
         &::before {
           background-color: $grey-secondary;
-          border-radius: 0.5rem 0.5rem 0 0;
+          border-radius: $border-radius-step-2 $border-radius-step-2 0 0;
           content: "";
           height: 100%;
           left: 0;
@@ -49,7 +49,7 @@
     &__title {
       bottom: 0;
       color: $white;
-      padding: 1rem 1rem 0;
+      padding: $padding-step-2 $padding-step-2 0;
       position: absolute;
       width: 100%;
 
@@ -57,20 +57,20 @@
         @include font-family-lato;  
         font-size: $font12;
         font-weight: get-font-weight("bold");
-        letter-spacing: 3px;
-        line-height: .75rem;
+        letter-spacing: toRem(3);
+        line-height: toRem(12);
         text-transform: uppercase;
         color: $white;
         opacity: .8;
-        margin-bottom: 0.5rem;
+        margin-bottom: $margin-step-1;
       }
 
       &__secondary {
         @include font-family-Neotech-ge;
         font-size: $font28;
         line-height: toRem(35);
-        margin: 0;
-        margin-bottom: 1rem;
+        margin: $margin-step-0;
+        margin-bottom: $margin-step-2;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -80,25 +80,25 @@
 
   &__special-offer {
     background-color: $dark-orange;
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 $border-radius-step-1 $border-radius-step-1;
     color: $white;
     display: none;
     @include font-family-Neotech-ge;
     font-size: $font12;
     font-weight: get-font-weight("medium");
-    left: 0.875rem;
-    letter-spacing: 0.25px;
-    line-height: 0.75rem;
-    padding: 8px 10px;
+    left: toRem(14);
+    letter-spacing: toRem(0.25);
+    line-height: toRem(12);
+    padding: $padding-step-1 toRem(10);
     position: absolute;
     top: 0;
   }
 
   &__item-top {
-    border-bottom: 1px dashed $light-sand-brown;
+    border-bottom: toRem(1) dashed $light-sand-brown;
     border-top: 0;
-    margin-bottom: 1.5rem;
-    padding: 0 0 1.5rem;
+    margin-bottom: $margin-step-3;
+    padding: 0 0 $padding-step-3;
 
     .package {
       color: $grey1;
@@ -109,7 +109,7 @@
 
       img {
         height: toRem(32);
-        margin-right: 0.5rem;
+        margin-right: $margin-step-1;
         min-height: auto;
         position: relative;
         vertical-align: text-bottom;
@@ -125,7 +125,7 @@
           background-color: $cust-select;
           border-radius: toRem(5);
           content: "";
-          left: -2px;
+          left: toRem(-2);
           top: 50%;
           transform: translateY(-50%);
         }
@@ -156,8 +156,8 @@
         color: $grey1;
         font-size: $font16;
         line-height: toRem(20);
-        margin-bottom: 0;
-        margin-top: 0.75rem;
+        margin-bottom: $margin-step-0;
+        margin-top: toRem(12);
         max-height: toRem(40);
         overflow: hidden;
       }
@@ -166,20 +166,20 @@
 
   &__feature-list,
   &__color-list {
-    margin-bottom: 2.75rem;
+    margin-bottom: toRem(44);
     overflow: hidden;
     position: relative;
 
     ul {
       list-style: none;
-      margin-top: 0;
-      padding: 0;
+      margin-top: $margin-step-0;
+      padding: $padding-step-0;
 
       li {
         color: $steel-grey;
         font-size: $font20;
-        line-height: 1.5rem;
-        margin-bottom: 1.125rem;
+        line-height: toRem(24);
+        margin-bottom: toRem(18);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -191,13 +191,13 @@
         li {
           font-size: $font16;
           line-height: 1.43;
-          margin-bottom: 0.25rem;
+          margin-bottom: toRem(4);
         }
       }
     }
   }
   &__feature-list {
-    margin-bottom: 2.2rem;
+    margin-bottom: toRem(35.2);
   }
 
   &__price-wrapper {
@@ -216,14 +216,14 @@
     .price-currency {
       display: inline-block;
       font-size: $font14;
-      margin-left: 0.25rem;
+      margin-left: toRem(4);
     }
   }
 
   &__price-from {
     display: block;
     @include font-family-lato;
-    padding-bottom: 0.1rem;
+    padding-bottom: toRem(1.6);
   }
 
   &__price-from,
@@ -233,18 +233,18 @@
     line-height: inherit;
   }
   &__price-vat {
-    margin-top: .5rem;
+    margin-top: $margin-step-1;
   }
 
   &__old-price {
     background-color: $main-green;
-    border-radius: 0.625rem;
+    border-radius: toRem(10);
     color: $white;
     font-size: $font12;
     font-weight: get-font-weight("bold");
-    line-height: 0.938rem;
-    margin-right: 0.5rem;
-    padding: 3px 7px;
+    line-height: toRem(15);
+    margin-right: $margin-step-1;
+    padding: toRem(3) toRem(7);
 
     .old-price-value {
       text-decoration: line-through;
@@ -256,24 +256,24 @@
     color: $main-green;
     font-size: $font14;
     font-weight: get-font-weight("bold");
-    letter-spacing: 0.5px;
-    line-height: 0.875rem;
+    letter-spacing: toRem(.5);
+    line-height: toRem(14);
     overflow: hidden;
-    padding: 0.75rem 1.5rem;
+    padding: toRem(12) $padding-step-3;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   &__cta {
     background-color: $main-green;
-    border: 1px solid transparent;
+    border: toRem(1) solid transparent;
     border-bottom: none;
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0 0 $border-radius-step-2 $border-radius-step-2;
     color: $white;
     font-size: $font16;
     font-weight: get-font-weight("bold");
-    letter-spacing: 4px;
-    padding: 1.1rem 1rem;
+    letter-spacing: toRem(4);
+    padding: toRem(17.6) $padding-step-2;
     text-align: center;
     text-transform: uppercase;
     transition: 0.3s;
@@ -292,9 +292,9 @@
     display: inline-block;
     @include font-family-lato;
     font-size: $font16;
-    letter-spacing: 1.6px;
-    line-height: 21px;
-    padding-right: 1rem;
+    letter-spacing: toRem(1.6);
+    line-height: toRem(21);
+    padding-right: $padding-step-2;
     position: relative;
     text-transform: uppercase;
 
@@ -305,11 +305,11 @@
     &::before {
       border: solid $almost-black;
       border-color: $main-green !important;
-      border-width: 1px 1px 0 0;
+      border-width: toRem(1) toRem(1) 0 0;
       content: "";
       padding: toRem(3);
       position: absolute;
-      right: 1px;
+      right: toRem(1);
       top: 55%;
       transform:
         translateY(-50%) rotate(
@@ -327,7 +327,7 @@
     font-size: $font14;
     font-weight: get-font-weight("bold");
     line-height: 1.43;
-    padding: 1px 0.5rem;
+    padding: toRem(1) $padding-step-1;
   }
 
   &--offer {
@@ -406,47 +406,47 @@
           list-style: none;
           margin-right: toRem(5);
           overflow: hidden;
-          text-indent: -999999px;
+          text-indent: toRem(-999999);
           text-overflow: ellipsis;
           white-space: nowrap;
           width: toRem(16);
         }
       }
       &__gold {
-        background-color:#fdeed7;
+        background-color: $gold;
       }
       &__graphite {
-        background-color:#4e4d49;
+        background-color:$graphite;
       }
       &__sierra-blue {
-        background-color:#acc6db
+        background-color:$blue-sierra;
       }
       &__pacific-blue {
-        background-color: #27424d;
+        background-color: $blue-pacific;
       }
       &__silver {
-        background-color:#f2f3ed;
+        background-color: $silver-light;
       }
       &__red {
-        background-color:#c72132;
+        background-color:$red-light;
       }
       &__blue {
-        background-color:#154a6e;
+        background-color:$blue-dark;
       }
       &__midnight {
-        background-color:#41454b;
+        background-color:$grey-midnight;
       }
       &__pink {
-        background-color:#e8d1cf;
+        background-color:$pink-light;
       }
       &__starlight {
-        background-color:#e5dfd5;
+        background-color:$grey-starlight;
       }
     }
     #{$parent}__price-from,#{$parent}__price-vat {
       color: $grey1;
       font-size: $font12;
-      margin-bottom: 0;
+      margin-bottom: $margin-step-0;
     }
   }
 
@@ -459,9 +459,9 @@
         $main-green,
         $almost-black
       );
-      border-radius: 0.5rem 0.5rem 0 0;
+      border-radius: $border-radius-step-2 $border-radius-step-2 0 0;
       height: 8.75rem;
-      padding: 1.5rem;
+      padding: $padding-step-3;
 
       &__title {
         color: $white;
@@ -470,7 +470,7 @@
 
         &__primary {
             display: block;
-            margin-top: 0.5rem;
+            margin-top: $margin-step-1;
           }
 
           &__secondary {
@@ -484,15 +484,15 @@
     }
     #{$parent}__item-top {
       border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
+      margin-bottom: $margin-step-0;
+      padding-bottom: $padding-step-0;
 
       .top-text {
         color: $almost-black;
         font-size: $font20;
         font-weight: get-font-weight("bold");
-        line-height: 28px;
-        margin: 0;
+        line-height: toRem(28);
+        margin: $margin-step-0;
 
         &.small {
           font-size: $font16;
@@ -503,28 +503,28 @@
       .bottom-text {
         color: $steel-grey;
         font-size: $font14;
-        line-height: 20px;
+        line-height: toRem(20);
 
         &.small {
           font-size: $font12;
-          letter-spacing: 0.15px;
+          letter-spacing: toRem(2.4);
           line-height: 1.42;
         }
       }
 
       .icons {
-        margin-right: toRem(8);
+        margin-right: $margin-step-1;
         width: toRem(32);
       }
     }
     #{$parent}__brand-name {
-      color: #3c343f;
+      color: $grey-dark;
       @include font-family-lato;
       font-size: $font12;
       font-weight: get-font-weight("bold");
-      letter-spacing: 2px;
-      line-height: 0.75rem;
-      margin-bottom: 0.5rem;
+      letter-spacing: toRem(2);
+      line-height: toRem(12);
+      margin-bottom: $margin-step-1;
       text-transform: uppercase;
     }
 
@@ -551,25 +551,25 @@
     }
   }
   .my-1 {
-    margin-top: .25rem;
-    margin-bottom: .25rem;
+    margin-top: toRem(4);
+    margin-bottom: toRem(4);
   }
   .mt-auto {
     margin-top: auto;
   }
   .py-3 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: $padding-step-2;
+    padding-bottom: $padding-step-2;
   }
   .px-4 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: $padding-step-3;
+    padding-right: $padding-step-3;
   }
   
 hr.dashed {
     background: url("/b2c/eshopApp/assets/img/nv-etisalat/SVG/divider.png") 0 0 repeat;
     border: 0;
-    height: 1px;
+    height: toRem(1);
     width: 100%;
   }
 }
@@ -577,53 +577,53 @@ hr.dashed {
   &.plans {
     .table-swiper-button-next,
     .table-swiper-button-prev { 
-      margin-right: 1.5rem;
-      width: 44px !important;
+      margin-right: $margin-step-3;
+      width: toRem(44) !important;
       background-image: none;
     }
   }
   .table-swiper-button-next,
   .table-swiper-button-prev {
-    background: #719e19;
-    left: 68px;
+    background: $main-green;
+    left: toRem(68);
     cursor: pointer;
     position: absolute;
     top: 0;
     display: flex;
     align-items: center;
     border-radius: 100%;
-    line-height: 44px;
-    box-shadow: 0 2px 6px 2px rgb(0 0 0 / 8%);
+    line-height: toRem(44);
+    box-shadow: 0 toRem(2) toRem(6) toRem(2) rgb(0 0 0 / 8%);
     &:after {
       transform: rotate( -224deg);
-      border: solid #719e19;
-      left: 15px;
+      border: solid $main-green;
+      left: toRem(15);
       content: "";
     display: block;
-    width: 12px;
-    border: solid #fff;
-    border-width: 0 2px 2px 0!important;
-    padding: 7px;
+    width: toRem(12);
+    border: solid $white;
+    border-width: 0 toRem(2) toRem(2) 0!important;
+    padding: toRem(7);
     position: absolute;
     line-height: 1;
     transition: all .3s ease-in-out;
-    margin: 0;
+    margin: $margin-step-0;
     }
     &.swiper-button-disabled {
-      background: #fff;
+      background: $white;
       pointer-events: auto;
       cursor: not-allowed;
       opacity: 1;
       &:after {
         content: "";
         display: block;
-        border-width: 0 2px 2px 0!important;
-        padding: 7px;
+        border-width: 0 toRem(2) toRem(2) 0!important;
+        padding: toRem(7);
         position: absolute;
         line-height: 1;
         transition: all .3s ease-in-out;
-        margin: 0;
-        border: solid #719e19;
+        margin: $margin-step-0;
+        border: solid $main-green;
       }
   }
   @media (max-width: 991px) {
@@ -633,14 +633,14 @@ hr.dashed {
 
   .table-swiper-button-next {
     &:after {
-      border: solid #fff;
+      border: solid $white;
       transform: rotate(-45deg);
-      left: 9px;
+      left: toRem(9);
     }
     &.swiper-button-disabled  {
       &:after {
         transform: rotate(-45deg);
-        left: 9px;
+        left: toRem(9);
       }
     }
   }
