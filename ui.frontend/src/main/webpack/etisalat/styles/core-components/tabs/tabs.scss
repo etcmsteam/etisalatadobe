@@ -819,6 +819,11 @@
     .cmp-teaser__action-container {
       margin-top: toRem(40);
     }
+    h2 {
+      a {
+        line-height: 1.3;
+      }
+    }
   }
 
   //2nd horiznatal with view  varition st
@@ -881,7 +886,8 @@
     }
 
     .cmp-tabs__tab {
-      svg, img {
+      svg,
+      img {
         height: toRem(40);
         margin-right: calc(#{$margin-step-1} + 2px);
         width: toRem(35);
@@ -909,7 +915,7 @@
         }
 
         .cmp-tabs__default-icon {
-          display: none !important;  //due to css overriding
+          display: none !important; //due to css overriding
         }
       }
     }
@@ -1059,7 +1065,7 @@
   list-style-type: disc;
   padding-left: toRem(30);
 
-  *[lang="ar"] *[dir="rtl"] & {
+  @include rtlBlock() {
     padding-left: 0;
     padding-right: toRem(30);
   }
@@ -1104,7 +1110,8 @@
 
 .cmp_tabs__vertical_view_whbg {
   .cmp-tabs__tab {
-    svg, img {
+    svg,
+    img {
       height: toRem(40);
       margin-right: calc(#{$margin-step-1} + 2px);
       width: toRem(35);
@@ -1132,7 +1139,7 @@
       }
 
       .cmp-tabs__default-icon {
-        display: none !important;  //due to css overriding
+        display: none !important; //due to css overriding
       }
     }
   }
@@ -1196,8 +1203,7 @@
 .cmp_tabs__verticle_view_img {
   .cmp-tabs {
     display: flex;
-    padding: $padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px)
-      $padding-step-2;
+    padding: $padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px) $padding-step-2;
   }
 }
 
@@ -1219,4 +1225,3 @@
 [lang="ar"] [dir="rtl"] .cmp_tabs__verticle_view_img .cmp-teaser__content {
   padding: 1.5rem 24px 4rem 2.5rem;
 }
-

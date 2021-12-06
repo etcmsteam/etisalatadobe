@@ -53,9 +53,6 @@
   }
 
   .tile-box-blogbody {
-    padding: 1rem;
-    padding-top: toRem(12);
-
     @include respond-to-min($desktop) {
       max-height: 175px;
     }
@@ -191,7 +188,7 @@
   }
 
   .tile-box-blogtile .tile-box-blogbody {
-    padding: calc(#{$padding-step-1} + 4px) calc(#{$padding-step-1} + 4px) $padding-step-2 $padding-step-2;
+    padding: calc(#{$padding-step-1} + 4px) $padding-step-2 $padding-step-2 $padding-step-2 $padding-step-2;
     @include rtl(text-align, left, right);
   }
 }
@@ -241,10 +238,59 @@
   .video {
     min-height: 0;
   }
-
   .action {
     .btn {
       max-width: toRem(335) !important;
+    }
+  }
+  .blogtile {
+    .item {
+      padding: $padding-step-0;
+      @include respond-to-min($desktop) {
+        margin-left: $margin-step-2;
+        margin-right: $margin-step-1;
+        width: calc((25% - 30px));
+        @include rtlBlock() {
+          margin-left: $margin-step-1;
+          margin-right: $margin-step-2;
+        }
+      }
+      @include respond-to-min($desktop-wide) {
+        margin-left: $margin-step-0;
+        margin-right: $margin-step-3;
+        width: calc((25% - 18px));
+        @include rtlBlock() {
+          margin-left: $margin-step-3;
+          margin-right: $margin-step-0;
+        }
+      }
+      @include respond-to-max($desktop-min) {
+        padding: $padding-step-0 calc(#{$padding-step-4} + 1px) $padding-step-0 calc(#{$padding-step-2} - 1px);
+        @include rtlBlock() {
+          padding: $padding-step-0 calc(#{$padding-step-2} - 1px) $padding-step-0 calc(#{$padding-step-4} + 1px);
+        }
+      }
+      @include respond-to-max($phone) {
+        padding: $padding-step-0 $padding-step-2;
+        @include rtlBlock() {
+          padding: $padding-step-0 $padding-step-2;
+        }
+      }
+    }
+    &:nth-child(4n) {
+      .item {
+        margin-right: $margin-step-0;
+        @include rtlBlock() {
+          margin-left: $margin-step-0;
+          margin-right: $margin-step-2;
+          @include respond-to-min($desktop-wide) {
+            margin-right: $margin-step-0;
+          }
+          @include respond-to-max($desktop-min) {
+            margin-right: $margin-step-0;
+          }
+        }
+      }
     }
   }
 }
@@ -822,10 +868,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
     padding: toRem(40) 0;
   }
 
-  .main-text-section {
-    padding: 1.5rem 0;
-  }
-
   .mb-20 {
     margin-bottom: 5rem !important;
   }
@@ -924,6 +966,19 @@ textarea.materialize-textarea:focus:not([readonly]) {
       }
     }
   }
+  .main-text-section {
+    padding: $padding-step-6 $padding-step-0 $padding-step-9;
+    @include respond-to-max($desktop-min) {
+      padding: $padding-step-3 $padding-step-0 $padding-step-5;
+    }
+    &.center-align {
+      h3 {
+        @include rtlBlock() {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 
 .row-context-nav .cmp-icon-card-three-item .context-nav-box-wrap .context-nav-box a h5 {
@@ -931,4 +986,3 @@ textarea.materialize-textarea:focus:not([readonly]) {
     text-align: center;
   }
 }
-
