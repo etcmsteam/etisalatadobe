@@ -7,6 +7,7 @@ if ($(".globalfootprintcontainer").length > 0) {
       prevEl: '.swiper-button-prev',
     },
     loop: true,
+    
     loopedSlides: 16,
     breakpoints: {
       991: {
