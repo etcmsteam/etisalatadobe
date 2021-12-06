@@ -39,6 +39,48 @@
 
       });
       // plans table slider for CMS modules ends
+      
+   $(document).find('.smart-home-elife-slider').each(function(index) {
+	    $(this).addClass('slider' + index);
+	    var $slider = $(this);
+	    $slider.find('.table-swiper-button-next').addClass('plansRight' + index);
+        $slider.find('.table-swiper-button-prev').addClass('plansLeft' + index);	
+	    $carouselSliderSmartHome = new Swiper('.slider' + index + ' .swiper-container', {
+	        scrollbar: $(this).find('.table-swiper-scrollbar'),
+	        touchEventsTarget: "swiper-wrapper",
+            simulateTouch: true,
+	        nextButton: '.table-swiper-button-next.plansRight' + index,
+            prevButton: '.table-swiper-button-prev.plansLeft' + index,
+	        scrollbarHide: false,
+	        scrollbarDraggable: true,
+	        breakpoints: {
+	            540: {	                
+	                slidesPerView: 1
+	            },
+	            768: {	                
+	                slidesPerView: 2
+	            },
+	            1024: {	                
+	                slidesPerView: 2
+	            },
+	            1440: {	               
+	                slidesPerView: 2
+	            },
+	            9999: {	                
+	                centeredSlides: false,
+	                slidesPerView: 2
+	            }
+	        }
+	
+	    });
+	
+	    // hide the arrow if slides count is 2 or less
+	    var slidesCount = $slider.find('.swiper-slide').length;
+	    if (slidesCount < 3) {
+	        $slider.find('.table-swiper-button-next').addClass('hidden');
+	        $slider.find('.table-swiper-button-prev').addClass('hidden');
+	    }
+	});
 
 
 
