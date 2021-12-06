@@ -2,7 +2,7 @@
   .swiper-wrapper {
     margin-left: -$margin-step-3;
     .swiper-slide {
-      margin-left: $margin-step-3;
+      margin-left: $margin-step-3 !important;
       @include respond-to-min-max($desktop-wide, $tablet) {
         width: 50% !important;
       }
@@ -16,7 +16,7 @@
         margin-right: $margin-step-0;
       }
     }
-    @include respond-to-min-max($desktop-wide, $desktop) {
+    @include respond-to-min-max($desktop-wide - 1, $desktop) {
       width: toRem(952);
       @include rtlBlock() {
         margin-right: calc(#{$margin-step-2} - 4px);
@@ -41,9 +41,16 @@
         right: toRem(-6);
       }
 
-      @include respond-to-min($desktop) {
+      @include respond-to-min($desktop-wide) {
         margin-top: -9.5em;
         right: toRem(-100);
+        @include rtlBlock() {
+          right: toRem(-100) !important;
+        }
+      }
+      @include respond-to-max($desktop-wide) {
+        margin-top: -9.5em;
+        right: toRem(-16);
         @include rtlBlock() {
           right: toRem(-100) !important;
         }
@@ -60,9 +67,17 @@
         left: toRem(-6);
       }
 
-      @include respond-to-min($desktop) {
+      @include respond-to-min($desktop-wide) {
         margin-top: -9.5em;
         left: toRem(-95);
+      }
+
+      @include respond-to-max($desktop-wide) {
+        margin-top: -9.5em;
+        right: toRem(-16);
+        @include rtlBlock() {
+          right: toRem(-100) !important;
+        }
       }
     }
 
