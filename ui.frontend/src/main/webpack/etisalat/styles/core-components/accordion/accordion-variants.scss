@@ -1,54 +1,14 @@
-[lang="ar"] [dir="rtl"] .cmp-accordion__title {
-  float: right;
-  text-align: right;
-}
-
-[lang="ar"] [dir="rtl"] .strip-accordion {
-  .cmp-accordion__title {
-    font-weight: get-font-weight("light");
-
-    &::after {
-      @include respond-to-max($tablet) {
-        float: left;
-      }
-
-      @include respond-to-min($desktop) {
-        margin-left: 0.5rem;
-      }
-    }
+.cmp-accordion__title {
+  @include rtlBlock {
+    float: right;
+    text-align: right;
   }
 }
 
-[lang="ar"] [dir="rtl"] .line-accordion {
-  .cmp-accordion__icon {
-    left: 0;
-    margin-left: 36px;
-    margin-right: 0;
-    right: auto;
-
-    @include respond-to-max($tablet) {
-      margin-left: 0;
-    }
-  }
-}
-
-[lang="ar"] [dir="rtl"] .green-list {
-  .cmp-list__item-title::after {
-    margin-right: 10px;
-    transform: translateY(-50%) rotate(-135deg);
-  }
-
-  span.more,
-  span.less {
-    float: left;
-    text-align: left;
-  }
-}
-
-.strip-accordion {
+.cmp-accordion--faqsection {
   h3 {
-    padding: 0;
     vertical-align: middle;
+    padding: 0;
   }
 
   .cmp-accordion__item {
@@ -56,77 +16,85 @@
     border: 0;
     box-shadow: none;
     padding: 1rem 1.5rem;
-  }
 
-  .cmp-accordion__item:nth-child(2n) {
-    background-color: $white;
-    margin-top: 5px;
+    &:nth-child(2n) {
+      background-color: $white;
+      margin-top: toRem(5);
+    }
   }
 
   .cmp-accordion__title {
-    color: $almost-black;
+    @include font-family-lato;
+
     font-size: $font16;
-    font-weight: 700;
+    font-weight: get-font-weight("bold");
     line-height: 1.5;
+    color: $almost-black;
 
-    @include font-family-lato();
-
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock {
       font-weight: get-font-weight("light");
+    }
+
+    &::after {
+      content: " + ";
+      display: table-cell;
+      padding: toRem(5);
+      position: relative;
+      vertical-align: top;
+      font-size: $font30;
+      text-align: center;
+      line-height: toRem(12);
+      font-weight: get-font-weight("light");
+      color: $almost-black;
+      float: right;
+
+      @include rtlBlock {
+        @include respond-to-max($tablet) {
+          float: left;
+        }
+
+        @include respond-to-min($desktop) {
+          margin-left: 0.5rem;
+        }
+      }
     }
   }
 
   .cmp-rte-text {
-    padding-left: 0;
+    padding-left: toRem(0);
   }
 
   .cmp-text {
     color: $steel-grey;
-    font-size: $font14;
-    line-height: 20px;
-    margin-bottom: 0.8rem;
     margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
 
-    @include font-family-lato();
-
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock {
       margin-bottom: 0;
     }
+    font-size: $font14;
+    line-height: toRem(20);
+
+    @include font-family-lato;
   }
 
   button:focus {
     background-color: transparent;
   }
 
-  .cmp-accordion__title {
-    &::after {
-      color: $almost-black;
-      content: " + ";
-      display: table-cell;
-      float: right;
-      font-size: $font30;
-      font-weight: 300;
-      line-height: 12px;
-      padding: 5px;
-      position: relative;
-      text-align: center;
-      vertical-align: top;
-    }
-  }
-
   .cmp-accordion__button--expanded .cmp-accordion__title {
     &::after {
-      color: $almost-black;
       content: " - ";
+      color: $almost-black;
       display: table-cell;
-      float: right;
-      font-size: $font64;
-      font-weight: 200;
-      line-height: 12px;
-      padding: 5px;
+      padding: toRem(5);
       position: relative;
-      text-align: center;
       vertical-align: top;
+      font-size: $font64;
+      text-align: center;
+      line-height: toRem(12);
+      font-weight: get-font-weight("normal");
+      float: right;
     }
   }
 
@@ -137,132 +105,133 @@
 
 //Simple line accordion
 
-.line-accordion {
+.cmp-accordion--text {
   .cmp-accordion__item {
-    border-bottom: 0;
     display: block;
+    border-bottom: 0;
   }
-
   .cmp-accordion__title {
-    color: $black;
-    display: inline-block;
-    font-size: $font16;
-    font-weight: 700;
     line-height: 1.5;
+    font-size: $font16;
+    display: inline-block;
+    color: $black;
+    @include font-family-lato;
     padding-right: 5.5rem;
-
-    @include font-family-lato();
-
+    font-weight: get-font-weight("bold");
     @include respond-to-min($desktop) {
-      font-size: $font20;
       line-height: 1.4;
-      padding: 15px 1.5rem;
+      font-size: $font20;
+      padding: toRem(15) 1.5rem;
     }
-
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock {
+      width: 100%;
       padding-left: 5.5rem;
       padding-right: 0;
-      width: 100%;
     }
   }
 
   .cmp-accordion__itemdesc {
-    color: $dark-gray;
-    font-size: $font16;
-    font-weight: normal;
     line-height: 1.5;
+    font-size: $font16;
+    color: $dark-gray;
+    @include font-family-lato;
     padding-right: 6.5rem;
-
-    @include font-family-lato();
-
+    font-weight: normal;
     @include respond-to-min($desktop) {
       font-size: $font20;
-      padding: 5px 1.5rem;
+      padding: toRem(5) 1.5rem;
     }
-
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock {
       float: right;
+      text-align: right;
       font-weight: get-font-weight("light");
       padding-left: 6.5rem;
       padding-right: 0;
-      text-align: right;
     }
   }
-
   button:focus {
     background-color: transparent;
   }
-
   .cmp-accordion__icon {
-    border: solid $almost-black;
-    border-width: 0 2px 2px 0;
     content: "";
     display: block;
-    line-height: 1;
-    margin-right: 2px;
-    padding: 5px;
+    width: toRem(11);
+    right: toRem(3);
+    border: solid $almost-black;
+    border-width: 0 toRem(2) toRem(2) 0;
+    padding: toRem(5);
     position: absolute;
-    right: 3px;
-    top: 50%;
+    line-height: 1;
     transform: translateY(-80%) rotate(45deg);
+    top: 50%;
     transition: all 0.3s ease-in-out;
-    width: 11px;
+    margin-right: toRem(2);
 
     @include respond-to-min($desktop) {
-      margin-right: 36px;
+      margin-right: toRem(36);
+    }
+
+    @include rtlBlock {
+      left: 0;
+      right: auto;
+
+      @include respond-to-max($tablet) {
+        margin-left: 0;
+      }
+
+      margin-left: toRem(36);
+      margin-right: 0;
     }
   }
 
   .cmp-accordion {
     &__button {
-      border-bottom: 1px solid $light-sand-brown;
+      border-bottom: toRem(1) solid $light-sand-brown;
 
       &--expanded {
-        border-bottom: 1px solid $sand-white-50;
+        border-bottom: toRem(1) solid $sand-white-50;
       }
     }
   }
 
   .cmp-accordion__button--expanded .cmp-accordion__icon {
-    -webkit-transform: translateY(-20%) rotate(-135deg);
     transform: translateY(-20%) rotate(-135deg);
   }
 
   .cmp-accordion__panel--expanded {
-    background-color: $sand-white-50;
     left: 50%;
     margin-left: -50vw;
     position: relative;
     width: 100vw;
+    background-color: $sand-white-50;
 
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock {
+      right: 50%;
+      margin-right: -50vw;
       left: 0;
       margin-left: 0;
-      margin-right: -50vw;
-      right: 50%;
     }
   }
 
   .cmp-rte-text {
-    padding-left: 0;
+    padding-left: 0px;
   }
 
   .cmp-text {
-    color: $dark-gray;
     display: block;
+    padding: 1.5rem 1.375rem 1rem 1.375rem;
     font-size: $font16;
-    line-height: 28px;
-    margin-bottom: 0;
+    line-height: toRem(28);
+    color: $dark-gray;
+    @include font-family-lato;
+    margin-bottom: toRem(0);
     margin-left: auto;
     margin-right: auto;
-    max-width: 1224px;
-    padding: 1.5rem 1.375rem 1rem;
-
-    @include font-family-lato();
+    max-width: toRem(1224);
 
     @include respond-to-min($desktop) {
-      font-size: $font20;
       padding: 1.5rem 6.5rem;
+      font-size: $font20;
     }
 
     ol {
@@ -275,62 +244,155 @@
 
 //tab with accordion
 .cmp-accordion--tab {
-  @include font-family-Neotech-roboto();
+  @include font-family-Neotech-roboto;
+
+  .cmp-title {
+    padding: 1.5rem 1rem;
+
+    @include respond-to-min($desktop) {
+      padding: 0;
+      margin-top: toRem(45);
+    }
+  }
+
+  .cmp-accordion__item {
+    display: block;
+    border-bottom: toRem(1) solid $light-sand-brown;
+  }
+
+  .cmp-accordion__button {
+    padding: 0;
+  }
+
+  .cmp-accordion__title {
+    line-height: 1.5;
+    font-size: $font12;
+    display: inline-block;
+    color: $almost-black;
+
+    @include font-family-lato;
+    padding: 1.25rem toRem(25);
+
+    @include respond-to-min($desktop) {
+      line-height: 1.4;
+      font-size: $font16;
+      padding: 1.5rem toRem(25);
+    }
+  }
+
+  button:focus {
+    background-color: transparent;
+  }
+  .cmp-accordion__icon {
+    content: "";
+    display: block;
+    width: toRem(11);
+    right: toRem(3);
+    border: solid $almost-black;
+    border-width: 0 toRem(1) toRem(1) 0;
+    padding: toRem(5);
+    position: absolute;
+    line-height: 1;
+    transform: translateY(-80%) rotate(45deg);
+    top: 50%;
+    transition: all 0.3s ease-in-out;
+    margin-right: toRem(3);
+
+    @include respond-to-min($desktop) {
+      border-width: 0 toRem(2) toRem(2) 0;
+    }
+
+    @include rtlBlock {
+      left: 0;
+      right: auto;
+
+      @include respond-to-max($tablet) {
+        margin-left: 0;
+      }
+      margin-left: toRem(36);
+      margin-right: 0;
+    }
+  }
+
+  .cmp-accordion__button--expanded .cmp-accordion__icon {
+    transform: translateY(-20%) rotate(-135deg);
+  }
+
+  .cmp-rte-text {
+    padding-left: toRem(0);
+  }
+
+  .cmp-text {
+    background-color: $sand-white-50;
+    border-top-color: transparent;
+    padding: 1rem;
+    font-size: $font12;
+
+    @include font-family-lato;
+
+    line-height: toRem(20);
+    color: $steel-grey;
+    margin-bottom: 0px;
+
+    @include respond-to-min($desktop) {
+      padding: 1.3rem 1.5rem;
+    }
+  }
 
   @include respond-to-max($tablet) {
     .nav-view-wrapp.panel > a,
     .nav-view-wrapp.panel > a.collapsed {
-      align-items: center;
-      border-bottom: 1px solid $light-sand-brown;
+      line-height: 1.5;
+      letter-spacing: normal;
+      padding: 1.5rem;
       display: flex;
+      align-items: center;
+      position: relative;
       flex-direction: row-reverse;
       justify-content: flex-end;
-      letter-spacing: normal;
-      line-height: 1.5;
-      padding: 1.5rem;
-      position: relative;
+      border-bottom: toRem(1) solid $light-sand-brown;
     }
 
     .nav-view-wrapp.panel > a.collapsed {
       color: $almost-black;
     }
 
-    .nav-view-wrapp.panel > a::before {
-      border-left: 4px solid $main-green;
-      color: $main-green;
+    .nav-view-wrapp.panel > a:before {
       content: "";
+      border-left: toRem(4) solid $main-green;
       display: block;
-      font-size: $font16;
-      height: 100%;
-      left: -12px;
       position: absolute;
+      height: 100%;
+      left: toRem(-12);
       top: 0;
+      font-size: $font16;
 
-      @include font-family-Neotech-roboto();
+      @include font-family-Neotech-roboto;
+      color: $main-green;
     }
 
-    .nav-view-wrapp.panel > a.collapsed::before {
+    .nav-view-wrapp.panel > a.collapsed:before {
       display: none;
     }
 
-    .nav-view-wrapp.panel > a::after {
+    .nav-view-wrapp.panel > a:after {
       border: solid $main-green;
-      border-width: 0 1px 1px 0;
+      border-width: 0 toRem(1) toRem(1) 0;
+      padding: toRem(5);
       content: "";
-      line-height: 1;
-      padding: 5px;
       position: absolute;
-      right: 3px;
-      top: 50%;
+      line-height: 1;
       transform: translateY(-30%) rotate(-135deg);
       transition: all 0.3s ease-in-out;
+      right: toRem(3);
       z-index: 1;
+      top: 50%;
     }
 
-    .nav-view-wrapp.panel > a.collapsed::after {
-      border: solid $almost-black;
-      border-width: 0 1px 1px 0;
+    .nav-view-wrapp.panel > a.collapsed:after {
       transform: translateY(-70%) rotate(45deg);
+      border: solid $almost-black;
+      border-width: 0 toRem(1) toRem(1) 0;
     }
 
     .nav-view-wrapp.panel > a {
@@ -339,11 +401,11 @@
 
     .panel {
       background-color: $white;
-      margin: 28px;
+      margin: toRem(28);
     }
 
     .nav-view-wrapp.panel > a::before {
-      padding: 5px;
+      padding: toRem(5);
     }
 
     .nav-view-wrapp.panel .cmp-title__text {
@@ -353,60 +415,57 @@
 
   @include respond-to-min($desktop) {
     h3 {
-      margin: 0;
+      margin: toRem(0);
     }
 
     .cmp-tabs {
       display: flex;
 
       .cmp-tabs__tab {
-        border-bottom: 0;
-        box-sizing: border-box;
-        color: $almost-black;
-        cursor: pointer;
         flex-direction: row-reverse;
-        font-size: $font20;
         justify-content: flex-end;
-        line-height: 90px;
-        padding: 0 0 0 30px;
+        font-size: $font20;
+        @include font-family-Neotech-roboto;
+        box-sizing: border-box;
+        cursor: pointer;
+        color: $almost-black;
+        line-height: toRem(90);
+        border-bottom: 0;
+        padding: 0 0 0 toRem(30);
 
-        @include font-family-Neotech-roboto();
+        @include rtlBlock {
+          padding: 0 toRem(30) 0 0;
 
-        *[lang="ar"] *[dir="rtl"] & {
-          @include font-family-Neotech-ge();
-        }
-
-        *[lang="ar"] *[dir="rtl"] & {
-          padding: 0 30px 0 0;
+          @include font-family-Neotech-ge;
         }
 
         &--active {
-          border-left: 4px solid $main-green;
+          border-left: toRem(4) solid $main-green;
+
+          @include rtlBlock {
+            border-right: toRem(4) solid $main-green;
+            border-left: 0;
+            padding: 0 toRem(26) 0 0;
+          }
           color: $main-green;
           display: block;
-          line-height: 90px;
-          padding: 0 0 0 26px;
-
-          *[lang="ar"] *[dir="rtl"] & {
-            border-left: 0;
-            border-right: 4px solid $main-green;
-            padding: 0 26px 0 0;
-          }
+          line-height: toRem(90);
+          padding: 0 0 0 toRem(26);
         }
       }
     }
 
     .cmp-tabs__tablist {
+      margin-left: 9%;
+
+      @include rtlBlock {
+        margin-left: 0;
+      }
       display: block;
       flex-wrap: wrap;
       list-style: none;
-      margin-left: 9%;
       padding-left: 0;
       width: 30%;
-
-      *[lang="ar"] *[dir="rtl"] & {
-        margin-left: 0;
-      }
     }
 
     .cmp-tabs__tabpanel--active {
@@ -414,172 +473,80 @@
       width: 60%;
     }
   }
-
-  .cmp-title {
-    padding: 1.5rem 1rem;
-
-    @include respond-to-min($desktop) {
-      margin-top: 45px;
-      padding: 0;
-    }
-  }
-
-  .cmp-accordion {
-    &__item {
-      border-bottom: 1px solid $light-sand-brown;
-      display: block;
-    }
-  }
-
-  .cmp-accordion__button {
-    padding: 0;
-  }
-
-  .cmp-accordion__title {
-    color: $almost-black;
-    display: inline-block;
-    font-size: $font12;
-    line-height: 1.5;
-    padding: 1.25rem 25px;
-
-    @include font-family-lato();
-
-    @include respond-to-min($desktop) {
-      font-size: $font16;
-      line-height: 1.4;
-      padding: 1.5rem 25px;
-    }
-  }
-
-  button:focus {
-    background-color: transparent;
-  }
-
-  .cmp-accordion__icon {
-    border: solid $almost-black;
-    border-width: 0 1px 1px 0;
-    content: "";
-    display: block;
-    line-height: 1;
-    margin-right: 3px;
-    padding: 5px;
-    position: absolute;
-    right: 3px;
-    top: 50%;
-    transform: translateY(-80%) rotate(45deg);
-    transition: all 0.3s ease-in-out;
-    width: 11px;
-
-    @include respond-to-min($desktop) {
-      border-width: 0 2px 2px 0;
-    }
-
-    *[lang="ar"] *[dir="rtl"] & {
-      left: 0;
-      margin-left: 36px;
-      margin-right: 0;
-      right: auto;
-
-      @include respond-to-max($tablet) {
-        margin-left: 0;
-      }
-    }
-  }
-
-  .cmp-accordion__button--expanded .cmp-accordion__icon {
-    -webkit-transform: translateY(-20%) rotate(-135deg);
-    transform: translateY(-20%) rotate(-135deg);
-  }
-
-  .cmp-rte-text {
-    padding-left: 0;
-  }
-
-  .cmp-text {
-    background-color: $sand-white-50;
-    border-top-color: transparent;
-    color: $steel-grey;
-    font-size: $font12;
-    line-height: 20px;
-    margin-bottom: 0;
-    padding: 1rem;
-
-    @include font-family-lato();
-
-    @include respond-to-min($desktop) {
-      padding: 1.3rem 1.5rem;
-    }
-  }
 }
 
 //accordion with child accordion as list
 
-.green-list {
+.cmp-accordion--list {
   width: 100%;
-
   @include respond-to-min($desktop) {
     margin-left: auto;
     margin-right: auto;
-    width: 860px;
+    width: toRem(860);
   }
 
   .cmp-list {
-    margin-top: 65px;
+    margin-top: toRem(65);
   }
-
   article {
-    border-top: 1px solid $light-sand-brown;
     display: flex;
     flex-direction: row;
+    border-top: toRem(1) solid $light-sand-brown;
   }
-
   a {
     display: block;
-    position: relative;
     width: 100%;
+    position: relative;
   }
-
   .cmp-list__item-title {
-    color: $main-green;
     cursor: pointer;
     display: block;
+    color: $main-green;
+
+    @include font-family-lato;
     font-size: $font16;
-    line-height: 22px;
+    line-height: toRem(22);
     margin: 0;
-    padding: 15px 0;
-
-    @include font-family-lato();
-
-    &::after {
-      border-right: 1.5px solid $main-green;
-      border-top: 1.5px solid $main-green;
+    padding: toRem(15) 0;
+    &:after {
+      border-right: toRem(1.5) solid $main-green;
+      border-top: toRem(1.5) solid $main-green;
       color: $almost-black;
       content: "";
       display: inline;
-      height: 12px;
-      margin-left: 10px;
-      margin-top: 10px;
-      position: absolute;
       right: inherit;
+      height: toRem(12);
+      margin-left: toRem(10);
+      margin-top: toRem(10);
+      position: absolute;
       top: inherit;
       transform: translateY(-50%) rotate(45deg);
-      width: 12px;
+      width: toRem(12);
+
+      @include rtlBlock {
+        margin-right: toRem(10);
+        transform: translateY(-50%) rotate(-135deg);
+      }
     }
   }
 
   span.more,
   span.less {
     color: $almost-black;
-    float: right;
+    @include font-family-lato;
     font-size: $font14;
-    letter-spacing: 2px;
-    line-height: 18px;
-    margin-top: 10px;
-    text-align: right;
+    letter-spacing: toRem(2);
+    line-height: toRem(18);
     text-decoration: none;
     text-transform: uppercase;
+    margin-top: toRem(10);
     width: 100%;
+    text-align: right;
+    float: right;
 
-    @include font-family-lato();
+    @include rtlBlock {
+      float: left;
+      text-align: left;
+    }
   }
 }
