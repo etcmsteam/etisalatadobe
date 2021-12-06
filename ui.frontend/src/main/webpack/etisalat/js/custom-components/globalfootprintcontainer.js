@@ -45,3 +45,18 @@ if ($(".globalfootprintcontainer").length > 0) {
   galleryTop.controller.control = galleryThumbs;
   galleryThumbs.controller.control = galleryTop;
 }
+
+if ($(window).width() <= 768) {
+  const ANDRIOD_CTA = $(".download1");
+  const APPLE_CTA = $(".download2");
+
+  if (navigator.userAgent.indexOf("Android") !== -1) {
+    ANDRIOD_CTA.show();
+    APPLE_CTA.hide();
+  }
+
+  if (navigator.userAgent.indexOf("iPhone") !== -1 || navigator.userAgent.indexOf("iPad") !== -1) {
+    ANDRIOD_CTA.hide();
+    APPLE_CTA.show();
+  }
+}
