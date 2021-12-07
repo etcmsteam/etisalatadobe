@@ -39,7 +39,7 @@
 
       });
       // plans table slider for CMS modules ends
-      
+      if ($( ".smart-home-elife-slider" ).length) {
    $(document).find('.smart-home-elife-slider').each(function(index) {
 	    $(this).addClass('slider' + index);
 	    var $slider = $(this);
@@ -81,6 +81,7 @@
 	        $slider.find('.table-swiper-button-prev').addClass('hidden');
 	    }
 	});
+}
 
 
 
