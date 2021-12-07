@@ -1,24 +1,13 @@
-[lang="ar"] [dir="rtl"] .main-carousel {
+[lang="ar"] [dir="rtl"] .cmp-carousel--herobanner {
   .hero-heading-big {
     right: 0;
   }
-
   .btn-green {
     right: 0;
   }
 }
-
-[lang="ar"] [dir="rtl"] .main-carousel {
-  .hero-heading-big {
-    right: 0;
-  }
-
-  .btn-green {
-    right: 0;
-  }
-}
-
-.main-carousel {
+/* stylelint-disable-next-line no-descending-specificity */
+.cmp-carousel--herobanner {
   .cmp-carousel {
     &__actions {
       display: none;
@@ -36,7 +25,7 @@
         &--previous {
           align-items: center;
           background: rgba(0, 0, 0, 0.42);
-          border: 0;
+          border: $border-step-0;
           border-color: none;
           border-radius: 50%;
           cursor: pointer;
@@ -51,8 +40,8 @@
           z-index: 2;
 
           &::after {
-            border-left: 1px solid $white;
-            border-top: 1px solid $white;
+            border-left: $border-step-1 solid $white;
+            border-top: $border-step-1 solid $white;
             content: "";
             display: block;
             height: toRem(11);
@@ -108,7 +97,40 @@
       }
     }
   }
+  .hero-heading-big {
+    margin-top: $margin-step-3;
+    margin-bottom: $margin-step-1;
 
+    @include respond-to-min($desktop) {
+      left: toRem(15);
+      margin-top: toRem(60);
+      top: toRem(48);
+      /* stylelint-disable-next-line order/properties-alphabetical-order */
+      position: absolute;
+    }
+
+    @include respond-to-max($desktop) {
+      top: auto;
+      /* stylelint-disable-next-line order/properties-alphabetical-order */
+      position: relative;
+      .text--white {
+        color: $almost-black;
+
+        @include respond-to-min($desktop) {
+          color: $white;
+        }
+      }
+    }
+
+    h1 {
+      font-size: $font26;
+      margin: $margin-step-0;
+
+      @include respond-to-min($desktop) {
+        font-size: $font54;
+      }
+    }
+  }
   .hero-banner__right_text {
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
@@ -118,7 +140,7 @@
   }
 
   .video {
-    min-height: toRem(550);
+    // min-height: toRem(550);
 
     @include respond-to-min($desktop) {
       height: 100%;
@@ -129,7 +151,7 @@
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
-        *[lang="ar"] *[dir="rtl"] & {
+        @include rtlBlock() {
           right: 0;
         }
         position: absolute;
@@ -152,8 +174,10 @@
         text-align: right;
         right: 0;
       }
+      position: relative;
       @include respond-to-min($desktop) {
         left: toRem(3);
+        position: absolute;
         top: toRem(65);
       }
 
@@ -181,7 +205,7 @@
     .video_ctn {
       @include respond-to-max($phone) {
         background: $white-grey;
-        padding: calc(#{$padding-step-5} + 10px) $padding-step-0;
+        padding: calc(#{$padding-step-5} +10px) $padding-step-0;
       }
 
       @include respond-to-min($tablet) {
@@ -199,15 +223,20 @@
     }
 
     .youtube-popup-container {
-      left: toRem(25);
-      top: toRem(250);
+      left: toRem(20);
+      right: toRem(10);
+      top: toRem(218);
 
-      @include respond-to-min($desktop) {
+      @include respond-to-min($tablet){
+        top: toRem(228);
+      }
+
+      @include respond-to-min($desktop){
         margin: $margin-step-0 auto;
         position: absolute;
-        @include rtl(right, 0, toRem(110));
+        right: 0;
         top: 0;
-        width: 1224px;
+        width: toRem(1224);
       }
 
       @include respond-to-min($desktop-wide) {
@@ -235,48 +264,23 @@
       }
 
       .btn-green {
-        margin-top: toRem(10);
-        top: toRem(150);
-        width: toRem(350);
-
-        @include respond-to-min($tablet) {
-          margin-top: toRem(0);
-        }
-
+        top: auto;
+        margin-top: $margin-step-0;
+        max-width: 100%;
+        width: 100%;
+        
+          @include respond-to-min($tablet){
+            margin-top:toRem(30);
+          }
         @include respond-to-min($desktop) {
           left: toRem(18);
           margin-top: calc(#{$margin-step-2} + 4px);
           top: toRem(336);
-          width: toRem(180) !important;
-          @include rtlBlock() {
+          min-width: toRem(180);
+          width: auto;
+		   @include rtlBlock() {
             right: toRem(5);
           }
-        }
-      }
-
-      .hero-heading-big {
-        margin-top: toRem(15);
-
-        @include respond-to-min($desktop) {
-          left: toRem(15);
-          margin-top: toRem(60);
-          top: toRem(48);
-        }
-
-        @include respond-to-max($desktop) {
-          top: toRem(25);
-
-          .text--white {
-            color: $almost-black;
-
-            @include respond-to-min($desktop) {
-              color: $white;
-            }
-          }
-        }
-
-        h1 {
-          margin: $margin-step-0;
         }
       }
     }
@@ -322,7 +326,7 @@
   }
 }
 
-.hero-banner-section {
+.cmp-teaser--herobanner {
   max-height: toRem(500);
   overflow: hidden;
   position: relative;
@@ -343,8 +347,8 @@
     color: $black;
     font-size: $font16;
     letter-spacing: normal;
-    line-height: 22px;
-    margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} - 3.5px) $margin-step-0;
+    line-height: toRem(22);
+    margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} -3.5px) $margin-step-0;
     text-align: left;
     *[lang="ar"] *[dir="rtl"] & {
       text-align: right;
@@ -401,38 +405,38 @@
     }
 
     &__content {
-      align-items: flex-start;
+      align-items: start;
       display: flex;
       flex-direction: column;
       height: 100%;
       justify-content: center;
       left: 0;
       margin: auto;
-      padding-left: calc(#{$padding-step-1} + 2px);
-      padding-right: calc(#{$padding-step-1} + 4px);
+      padding-left: calc(#{$padding-step-1} +2px);
+      padding-right: calc(#{$padding-step-1} +4px);
       position: relative;
       position: absolute;
       right: 0;
-      top: toRem(60);
+      top: 0;
       width: 100%;
-      width: 1224px;
+      width: toRem(1224);
       z-index: 1;
 
       @include respond-to-max($tablet) {
         font-size: $font26;
-        line-height: 33px;
+        line-height: toRem(33);
         z-index: 2;
       }
 
       @include respond-to-min($desktop) {
-        margin: $margin-step-0 calc(#{$margin-step-10} + #{$margin-step-4}) $margin-step-0 $margin-step-0;
+        margin: $margin-step-0;
         width: 50%;
       }
 
       @include respond-to-max($desktop) {
         font-size: $font26;
         left: 0;
-        line-height: 33px;
+        line-height: toRem(33);
         position: relative;
         top: 0;
         width: 100%;
@@ -445,30 +449,30 @@
         margin: auto;
         right: 0;
         top: 0;
-        width: 1224px;
+        width: toRem(1224);
       }
     }
 
     &__pretitle {
       background-image: linear-gradient(83deg, $bright-sun, $pumpkin);
-      border-radius: 100px;
+      border-radius: toRem(100);
       color: $white;
       display: flex;
       font-size: $font14;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      line-height: 20px;
+      font-weight: get-font-weight("bold");
+      letter-spacing: toRem(0.4);
+      line-height: toRem(20);
       margin-bottom: toRem(12);
       max-width: toRem(336);
-      padding: calc(#{$padding-step-1} - 2px) calc(#{$padding-step-1} + 4px);
+      padding: calc(#{$padding-step-1} -2px) calc(#{$padding-step-1} +4px);
 
       @include respond-to-min($tablet) {
-        margin-bottom: toRem(16);
+        margin-bottom: $margin-step-2;
       }
 
       @include respond-to-min($desktop) {
         font-size: $font16;
-        line-height: 24px;
+        line-height: toRem(24);
         max-width: toRem(426);
       }
     }
@@ -490,13 +494,13 @@
         @include font-family-lato();
         background-color: $arrow-border-green;
         border-color: $arrow-border-green;
-        border-radius: 4px;
-        border-width: 1px;
+        border-radius: $border-radius-step-1;
+        border-width: $border-step-1;
         box-shadow: none !important;
         color: $white;
         display: inline-block;
         font-size: $font14;
-        font-weight: 700;
+        font-weight: get-font-weight("bold");
         height: toRem(48);
         letter-spacing: 0.14285714em;
         line-height: 48px;
@@ -522,11 +526,12 @@
     }
 
     &__title {
+       font-size: $font26;
       @include respond-to-min($desktop) {
         color: $white;
         font-size: $font54;
-        line-height: 64px;
-        margin: $margin-step-0 $margin-step-0 12.5px $margin-step-0;
+        line-height: toRem(64);
+        margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
 
         a {
           color: $white;

@@ -1,4 +1,5 @@
-(function () {
+/* eslint-disable no-undef */
+(function ($) {
   // Class
   const FORM_OPTION_CLASS = ".cmp-form-options";
   const ERROR_FIELD_CLASS = "has-error-fields";
@@ -62,4 +63,19 @@
       $(this).closest(FORM_OPTION_CLASS).find(ERROR_CLASS).remove();
     }
   });
-})();
+
+  // For Country Dropdown
+  const $COUNTRY_NAME = $("#countryName");
+  if ($COUNTRY_NAME.length) {
+    const COUNTRY_DATA = window.intlTelInputGlobals.getCountryData();
+    const COUNTRY = COUNTRY_DATA.map((item) => {
+      return { id: item.name, text: item.name };
+    });
+
+    $COUNTRY_NAME.select2({
+      data: COUNTRY,
+      dropdownParent: $COUNTRY_NAME.parent(".cmp-form-options")
+    });
+  }
+
+})(jQuery);
