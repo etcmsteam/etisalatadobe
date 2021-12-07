@@ -1,11 +1,18 @@
 .cmp-accordion__title {
-  @include rtlBlock {
+  @include rtlBlock() {
     float: right;
     text-align: right;
   }
 }
 
 .cmp-accordion--faqsection {
+  .container {
+    @include clearFix();
+
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
   h3 {
     vertical-align: middle;
     padding: 0;
@@ -31,7 +38,7 @@
     line-height: 1.5;
     color: $almost-black;
 
-    @include rtlBlock {
+    @include rtlBlock() {
       font-weight: get-font-weight("light");
     }
 
@@ -48,7 +55,7 @@
       color: $almost-black;
       float: right;
 
-      @include rtlBlock {
+      @include rtlBlock() {
         @include respond-to-max($tablet) {
           float: left;
         }
@@ -69,7 +76,7 @@
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
 
-    @include rtlBlock {
+    @include rtlBlock() {
       margin-bottom: 0;
     }
     font-size: $font14;
@@ -103,9 +110,16 @@
   }
 }
 
-//Simple line accordion
+// Simple line accordion
 
 .cmp-accordion--text {
+  .container {
+    @include clearFix();
+
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
   .cmp-accordion__item {
     display: block;
     border-bottom: 0;
@@ -123,7 +137,7 @@
       font-size: $font20;
       padding: toRem(15) 1.5rem;
     }
-    @include rtlBlock {
+    @include rtlBlock() {
       width: 100%;
       padding-left: 5.5rem;
       padding-right: 0;
@@ -141,7 +155,7 @@
       font-size: $font20;
       padding: toRem(5) 1.5rem;
     }
-    @include rtlBlock {
+    @include rtlBlock() {
       float: right;
       text-align: right;
       font-weight: get-font-weight("light");
@@ -171,7 +185,7 @@
       margin-right: toRem(36);
     }
 
-    @include rtlBlock {
+    @include rtlBlock() {
       left: 0;
       right: auto;
 
@@ -205,7 +219,7 @@
     width: 100vw;
     background-color: $sand-white-50;
 
-    @include rtlBlock {
+    @include rtlBlock() {
       right: 50%;
       margin-right: -50vw;
       left: 0;
@@ -214,12 +228,12 @@
   }
 
   .cmp-rte-text {
-    padding-left: 0px;
+    padding-left: 0;
   }
 
   .cmp-text {
     display: block;
-    padding: 1.5rem 1.375rem 1rem 1.375rem;
+    padding: 1.5rem 1.375rem 1rem;
     font-size: $font16;
     line-height: toRem(28);
     color: $dark-gray;
@@ -242,9 +256,16 @@
   }
 }
 
-//tab with accordion
+// tab with accordion
 .cmp-accordion--tab {
   @include font-family-Neotech-roboto;
+
+  .container {
+    @include clearFix();
+
+    padding: 0 !important;
+    width: 100% !important;
+  }
 
   .cmp-title {
     padding: 1.5rem 1rem;
@@ -302,7 +323,7 @@
       border-width: 0 toRem(2) toRem(2) 0;
     }
 
-    @include rtlBlock {
+    @include rtlBlock() {
       left: 0;
       right: auto;
 
@@ -433,7 +454,7 @@
         border-bottom: 0;
         padding: 0 0 0 toRem(30);
 
-        @include rtlBlock {
+        @include rtlBlock() {
           padding: 0 toRem(30) 0 0;
 
           @include font-family-Neotech-ge;
@@ -442,7 +463,7 @@
         &--active {
           border-left: toRem(4) solid $main-green;
 
-          @include rtlBlock {
+          @include rtlBlock() {
             border-right: toRem(4) solid $main-green;
             border-left: 0;
             padding: 0 toRem(26) 0 0;
@@ -458,7 +479,7 @@
     .cmp-tabs__tablist {
       margin-left: 9%;
 
-      @include rtlBlock {
+      @include rtlBlock() {
         margin-left: 0;
       }
       display: block;
@@ -475,10 +496,11 @@
   }
 }
 
-//accordion with child accordion as list
+// accordion with child accordion as list
 
 .cmp-accordion--list {
   width: 100%;
+
   @include respond-to-min($desktop) {
     margin-left: auto;
     margin-right: auto;
@@ -523,7 +545,7 @@
       transform: translateY(-50%) rotate(45deg);
       width: toRem(12);
 
-      @include rtlBlock {
+      @include rtlBlock() {
         margin-right: toRem(10);
         transform: translateY(-50%) rotate(-135deg);
       }
@@ -544,7 +566,7 @@
     text-align: right;
     float: right;
 
-    @include rtlBlock {
+    @include rtlBlock() {
       float: left;
       text-align: left;
     }

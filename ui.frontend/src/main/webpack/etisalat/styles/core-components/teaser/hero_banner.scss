@@ -1,13 +1,10 @@
-[lang="ar"] [dir="rtl"] .cmp-carousel--herobanner {
-  .hero-heading-big {
-    right: 0;
-  }
-  .btn-green {
-    right: 0;
-  }
-}
-/* stylelint-disable-next-line no-descending-specificity */
 .cmp-carousel--herobanner {
+  .btn-green {
+    @include rtlBlock() {
+      right: 0;
+    }
+  }
+
   .cmp-carousel {
     &__actions {
       display: none;
@@ -97,7 +94,12 @@
       }
     }
   }
+
   .hero-heading-big {
+    @include rtlBlock() {
+      right: 0;
+    }
+
     margin-top: $margin-step-3;
     margin-bottom: $margin-step-1;
 
@@ -105,14 +107,13 @@
       left: toRem(15);
       margin-top: toRem(60);
       top: toRem(48);
-      /* stylelint-disable-next-line order/properties-alphabetical-order */
       position: absolute;
     }
 
     @include respond-to-max($desktop) {
       top: auto;
-      /* stylelint-disable-next-line order/properties-alphabetical-order */
       position: relative;
+
       .text--white {
         color: $almost-black;
 
@@ -131,6 +132,7 @@
       }
     }
   }
+
   .hero-banner__right_text {
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
@@ -151,9 +153,11 @@
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
+
         @include rtlBlock() {
           right: 0;
         }
+
         position: absolute;
       }
 
@@ -170,11 +174,13 @@
     }
 
     .video-wrapper {
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock() {
         text-align: right;
         right: 0;
       }
+
       position: relative;
+
       @include respond-to-min($desktop) {
         left: toRem(3);
         position: absolute;
@@ -227,11 +233,11 @@
       right: toRem(10);
       top: toRem(218);
 
-      @include respond-to-min($tablet){
+      @include respond-to-min($tablet) {
         top: toRem(228);
       }
 
-      @include respond-to-min($desktop){
+      @include respond-to-min($desktop) {
         margin: $margin-step-0 auto;
         position: absolute;
         right: 0;
@@ -268,17 +274,19 @@
         margin-top: $margin-step-0;
         max-width: 100%;
         width: 100%;
-        
-          @include respond-to-min($tablet){
-            margin-top:toRem(30);
-          }
+
+        @include respond-to-min($tablet) {
+          margin-top: toRem(30);
+        }
+
         @include respond-to-min($desktop) {
           left: toRem(18);
           margin-top: calc(#{$margin-step-2} + 4px);
           top: toRem(336);
           min-width: toRem(180);
           width: auto;
-		   @include rtlBlock() {
+
+          @include rtlBlock() {
             right: toRem(5);
           }
         }
@@ -288,13 +296,14 @@
 
   .replaced-svg,
   a.video_link svg {
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock() {
       right: 0;
       float: right;
       left: 0;
       margin-left: 0.75rem;
       top: 0;
     }
+
     @include respond-to-min($desktop) {
       left: toRem(6);
       position: relative;
@@ -343,6 +352,10 @@
   }
 
   p {
+    @include rtlBlock() {
+      text-align: right;
+    }
+
     @include font-family-lato();
     color: $black;
     font-size: $font16;
@@ -350,9 +363,6 @@
     line-height: toRem(22);
     margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} -3.5px) $margin-step-0;
     text-align: left;
-    *[lang="ar"] *[dir="rtl"] & {
-      text-align: right;
-    }
 
     @include respond-to-min($desktop) {
       color: $white;
@@ -381,6 +391,7 @@
     &__description {
       @include respond-to-min($desktop) {
         width: 50%;
+
         @include rtlBlock() {
           width: 100%;
         }
@@ -492,6 +503,7 @@
 
       a {
         @include font-family-lato();
+
         background-color: $arrow-border-green;
         border-color: $arrow-border-green;
         border-radius: $border-radius-step-1;
@@ -502,7 +514,7 @@
         font-size: $font14;
         font-weight: get-font-weight("bold");
         height: toRem(48);
-        letter-spacing: 0.14285714em;
+        letter-spacing: toRem(2.28);
         line-height: 48px;
         min-width: toRem(180);
         outline: 0;
@@ -526,7 +538,8 @@
     }
 
     &__title {
-       font-size: $font26;
+      font-size: $font26;
+
       @include respond-to-min($desktop) {
         color: $white;
         font-size: $font54;
@@ -568,4 +581,3 @@
     }
   }
 }
-
