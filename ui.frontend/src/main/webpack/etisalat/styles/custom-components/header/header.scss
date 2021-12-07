@@ -55,17 +55,7 @@
     height: 47px;
 }
 
-@media (max-width: 1280px) and (min-width: 992px) {
-    .top-nav-section .links li a {
-        padding: 0 .5rem;
-    }
-}
-
-@media (min-width: 992px) and (max-width: 1280px) {
-    .top-nav-section .links li a {
-        padding: 0 .5rem;
-    }
-
+@include respond-to-min-max($desktop-wide, $desktop) {
     .top-nav-section .links li a {
         padding: 0 1rem;
     }
@@ -88,15 +78,6 @@
     justify-content: center;
 }
 
-
-
-
-
-@media (min-width:992px) and (max-width:1280px) {
-    .top-nav-section .links li a {
-        padding: 0 .5rem
-    }
-}
 
 .top-nav-section .links li a svg {
     stroke: #353738
@@ -140,9 +121,9 @@
     cursor: pointer
 }
 
-@media (min-width:992px) and (max-width:1366px) {
-    .top-nav-section .top-nav-right .links li a {
-        padding: 0 .5rem
+@include respond-to-min-max($desktop-wide, $desktop) {
+   .top-nav-section .top-nav-right .links li a {
+        padding: 0 toRem(24px);
     }
 }
 
@@ -306,6 +287,10 @@ html[lang=ar] [dir=rtl] .top-nav-section .top-nav-left .link-icon-wrapper .link-
     height: auto;
     margin-left: 3.7rem;
     margin-top: -5px;
+
+    @include respond-to-max($phone) {
+      margin-left: toRem(27);
+    }
 }
 
 @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
@@ -652,6 +637,18 @@ a:hover {
     }
 }
 
+@include respond-to-max($tablet) {
+      .main-menu-mobile .panel-group {
+        width: toRem(735);
+    }
+}
+
+@include respond-to-max($phone) {
+      .main-menu-mobile .panel-group {
+        width: toRem(335);
+    }
+}
+
 .main-menu-mobile .panel-group .panel {
     border: 0;
     box-shadow: none;
@@ -692,7 +689,7 @@ a:hover {
 
 .main-menu-mobile .panel-group .panel-heading {
     background-color: #fff;
-    padding: 0 1rem
+    padding: 0 toRem(10);
 }
 
 .main-menu-mobile .panel-group .panel-heading .panel-title {
@@ -837,7 +834,16 @@ a:hover {
 
 .hamburger {
     float: left;
-    margin-left: 20px;
+    margin-left: toRem(20);
+
+    @include respond-to-max($tablet) {
+      margin-left: toRem(4);
+    }
+
+    @include respond-to-max($phone) {
+      margin-left: toRem(14);
+    }
+
 }
 
 
@@ -1234,6 +1240,7 @@ a:hover {
     letter-spacing: 2px;
     color: #353738;
     padding: 1.25rem 1rem;
+    line-height: toRem(17);
 }
 
 .hamburger.is-active .line:nth-child(3) {
@@ -1394,11 +1401,6 @@ html[lang=ar] [dir=rtl] .top-nav-section .top-nav-right {
 	padding: 0 1rem
 }
 
-@media (min-width:992px) and (max-width:1280px) {
-	.top-nav-section .links li a {
-		padding: 0 .5rem
-	}
-}
 
 .top-nav-section .links li a svg {
 	stroke: #353738
@@ -1442,9 +1444,9 @@ html[lang=ar] [dir=rtl] .top-nav-section .top-nav-right {
 	cursor: pointer
 }
 
-@media (min-width:992px) and (max-width:1366px) {
+@include respond-to-min-max($desktop-wide, $desktop) {
 	.top-nav-section .top-nav-right .links li a {
-		padding: 0 .5rem
+		padding: 0  toRem(24);
 	}
 }
 

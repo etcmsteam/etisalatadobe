@@ -1,10 +1,25 @@
 .top-carousel {
+  .swiper-wrapper {
+    margin-left: -$margin-step-3;
+    .swiper-slide {
+      margin-left: $margin-step-3 !important;
+      @include respond-to-min-max($desktop-wide, $tablet) {
+        width: 50% !important;
+      }
+    }
+  }
   .swiper-container {
     max-width: 100%;
     padding: 0;
-    @include respond-to-min($tablet) {
+    @include respond-to-min($desktop-wide) {
       @include rtlBlock() {
-        margin-right: $margin-step-6;
+        margin-right: $margin-step-0;
+      }
+    }
+    @include respond-to-min-max($desktop-wide - 1, $desktop) {
+      width: toRem(952);
+      @include rtlBlock() {
+        margin-right: calc(#{$margin-step-2} - 4px);
       }
     }
   }
@@ -26,9 +41,19 @@
         right: toRem(-6);
       }
 
-      @include respond-to-min($desktop) {
+      @include respond-to-min($desktop-wide) {
         margin-top: -9.5em;
-        right: toRem(-56);
+        right: toRem(-100);
+        @include rtlBlock() {
+          right: toRem(-100) !important;
+        }
+      }
+      @include respond-to-max($desktop-wide) {
+        margin-top: -9.5em;
+        right: toRem(-16);
+        @include rtlBlock() {
+          right: toRem(-100) !important;
+        }
       }
     }
 
@@ -42,9 +67,17 @@
         left: toRem(-6);
       }
 
-      @include respond-to-min($desktop) {
+      @include respond-to-min($desktop-wide) {
         margin-top: -9.5em;
-        left: toRem(-56);
+        left: toRem(-95);
+      }
+
+      @include respond-to-max($desktop-wide) {
+        margin-top: -9.5em;
+        right: toRem(-16);
+        @include rtlBlock() {
+          right: toRem(-100) !important;
+        }
       }
     }
 
@@ -61,7 +94,7 @@
     .current-promotions-box {
       background: none;
       box-shadow: none;
-      padding: $padding-step-2;
+      padding: $padding-step-0;
     }
 
     .title-wrap {
@@ -83,6 +116,11 @@
       }
       p {
         @include font-family-lato();
+        .font--big {
+          @include rtlBlock() {
+            font-weight: get-font-weight("regular");
+          }
+        }
       }
     }
 
@@ -179,7 +217,7 @@
     .title-wrap {
       margin-top: 0;
       margin-bottom: toRem(16);
-      height: toRem(30);
+      height: toRem(56);
       @include truncate(16rem);
 
       @include rtlBlock() {
@@ -196,7 +234,7 @@
 
     .description {
       @include respond-to-min($tablet) {
-        height: toRem(54);
+        height: toRem(140);
       }
       margin-bottom: 1rem;
       margin: 0;
@@ -255,4 +293,3 @@
 .slider-fnt_small .description {
   font-size: $font16;
 }
-

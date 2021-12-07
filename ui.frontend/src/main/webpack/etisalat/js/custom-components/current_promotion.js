@@ -10,50 +10,38 @@ $(document).ready(function () {
         var $slider = $(this);
         $slider.find(".next").addClass("right" + index);
         $slider.find(".prev").addClass("left" + index);
-        var $carouselSliderCurrentPromotions = new Swiper(
-          ".c-p-slider" + index + " .swiper-container",
-          {
-            //clickable: true,
-            scrollbar: $(this).find(".scrollbar"),
-            nextButton: ".next.right" + index,
-            prevButton: ".prev.left" + index,
-            scrollbarHide: false,
-            scrollbarDraggable: true,
-            breakpoints: {
-              540: {
-                spaceBetween: 16,
-                slidesPerView: $slider.parent().hasClass("top-carousel")
-                  ? 1
-                  : 1.68,
-              },
-              768: {
-                spaceBetween: $slider.parent().hasClass("top-carousel")
-                  ? 0
-                  : 16,
-                slidesPerView: $slider.parent().hasClass("top-carousel")
-                  ? 2
-                  : 2.5,
-              },
-              1024: {
-                spaceBetween: 24,
-                slidesPerView: 3,
-              },
-              1440: {
-                spaceBetween: $slider.parent().hasClass("top-carousel")
-                  ? 16
-                  : 24,
-                slidesPerView: 3,
-              },
-              9999: {
-                spaceBetween: $slider.parent().hasClass("top-carousel")
-                  ? 16
-                  : 24,
-                centeredSlides: false,
-                slidesPerView: 3,
-              },
+        var $carouselSliderCurrentPromotions = new Swiper(".c-p-slider" + index + " .swiper-container", {
+          //clickable: true,
+          scrollbar: $(this).find(".scrollbar"),
+          nextButton: ".next.right" + index,
+          prevButton: ".prev.left" + index,
+          scrollbarHide: false,
+          scrollbarDraggable: true,
+          loop: $slider.parents(".swiper-loop").length,
+          breakpoints: {
+            540: {
+              spaceBetween: 16,
+              slidesPerView: $slider.parent().hasClass("top-carousel") ? 1 : 1.68,
             },
-          }
-        );
+            768: {
+              spaceBetween: $slider.parent().hasClass("top-carousel") ? 0 : 16,
+              slidesPerView: $slider.parent().hasClass("top-carousel") ? 2 : 2.5,
+            },
+            1024: {
+              spaceBetween: 24,
+              slidesPerView: 3,
+            },
+            1440: {
+              spaceBetween: $slider.parent().hasClass("top-carousel") ? 16 : 24,
+              slidesPerView: 3,
+            },
+            9999: {
+              spaceBetween: $slider.parent().hasClass("top-carousel") ? 16 : 24,
+              centeredSlides: false,
+              slidesPerView: 3,
+            },
+          },
+        });
         // Below check is to destroy slider if parent have slider-destroy class name 
         if (
           !IsMediaQuery.sm.matches &&

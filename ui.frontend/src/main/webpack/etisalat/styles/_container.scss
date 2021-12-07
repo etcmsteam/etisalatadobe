@@ -20,6 +20,14 @@
   }
 }
 
+.container {
+  @include clearFix();
+
+  .column {
+    float: left;
+  }
+}
+
 .container-center {
   @extend %container;
 
@@ -27,18 +35,7 @@
   max-width: 100% !important;
 }
 
-.root {
-  &.container {
-    padding: 0 !important;
-    width: 100% !important;
-  }
-
-  .container:not(.aem-GridColumn) {
-    padding: 0;
-  }
-}
-
-//Header
+// Header
 .main-mega-menu-desktop {
   .container {
     @extend %container;
@@ -53,9 +50,9 @@
   }
 }
 
-//Header End
+// Header End
 
-//Footer
+// Footer
 
 .quick-links-section {
   background-color: #f7f8f4;
@@ -71,16 +68,25 @@
   }
 }
 
-//Footer End
+// Footer End
+
+.root {
+  &.container {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .container:not(.aem-GridColumn) {
+    padding: 0;
+  }
+}
 
 .container-fix__fluid {
   left: 50% !important;
   margin-left: -50vw !important;
   position: relative !important;
   width: 100vw !important;
-}
 
-.container-fix__fluid {
   .cmp-container {
     margin: 0 auto;
     max-width: 100%;
@@ -94,12 +100,4 @@
   max-width: inherit !important;
   position: relative !important;
   width: 100vw !important;
-}
-
-.container {
-  @include clearFix();
-
-  .column {
-    float: left;
-  }
 }
