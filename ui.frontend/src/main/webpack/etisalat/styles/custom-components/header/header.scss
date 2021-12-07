@@ -643,6 +643,12 @@ a:hover {
     }
 }
 
+@include respond-to-max($phone) {
+      .main-menu-mobile .panel-group {
+        width: toRem(335);
+    }
+}
+
 .main-menu-mobile .panel-group .panel {
     border: 0;
     box-shadow: none;
@@ -683,7 +689,7 @@ a:hover {
 
 .main-menu-mobile .panel-group .panel-heading {
     background-color: #fff;
-    padding: 0 1rem
+    padding: 0 toRem(10);
 }
 
 .main-menu-mobile .panel-group .panel-heading .panel-title {
@@ -1438,7 +1444,7 @@ html[lang=ar] [dir=rtl] .top-nav-section .top-nav-right {
 	cursor: pointer
 }
 
-@media (min-width:992px) and (max-width:1366px) {
+@include respond-to-min-max($desktop-wide, $desktop) {
 	.top-nav-section .top-nav-right .links li a {
 		padding: 0 toRem(24);
 	}
