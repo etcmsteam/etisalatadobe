@@ -17,19 +17,24 @@ function initTileBoxesSlider() {
         breakpoints: {
           540: {
             slidesPerView: 1.35,
+            spaceBetween: 16,
           },
           768: {
             slidesPerView: 2.35,
+            spaceBetween: 16,
           },
           1024: {
             slidesPerView: 4,
+            spaceBetween: 24,
           },
           1440: {
             slidesPerView: 4,
+            spaceBetween: 24,
           },
           9999: {
             centeredSlides: false,
             slidesPerView: 4,
+            spaceBetween: 24,
           },
         },
       });
