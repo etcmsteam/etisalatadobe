@@ -1,4 +1,149 @@
 // media multicol st
+// image and text vartions st
+.cmp-teaser--mediacta-section,
+.whitebg-container {
+  @include rtlBlock() {
+    font-weight: font-weight get-font-weight("light");
+    letter-spacing: 0;
+  }
+
+  clear: both !important;
+  left: 50%;
+  margin-left: -50vw;
+  position: relative;
+  width: 100vw !important;
+  padding-top: 2rem;
+
+  .cmp-teaser {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 toRem(12);
+    width: 100%;
+
+    @include respond-to-min($tablet) {
+      width: toRem(756);
+    }
+
+    @include respond-to-min($desktop) {
+      width: toRem(976);
+    }
+
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1224);
+    }
+
+    h4 {
+      @include font-family-Neotech;
+
+      color: $almost-black;
+      font-weight: get-font-weight("regular");
+      margin-bottom: 1rem;
+      font-size: $font28;
+    }
+
+    &__pretitle {
+      font-weight: get-font-weight("bold");
+      margin-bottom: toRem(6);
+      letter-spacing: toRem(4);
+      color: $gray;
+      line-height: toRem(26);
+      font-size: $font12;
+      text-transform: uppercase;
+
+      @include font-family-lato;
+    }
+
+    &__description {
+      ul {
+        list-style-position: none;
+        margin-bottom: 1rem;
+        color: $warm-gray;
+
+        li {
+          padding-left: 1rem;
+          position: relative;
+          margin: 0 0 toRem(4) 0;
+          font-size: $font16;
+          color: $gray;
+          line-height: toRem(26);
+
+          @include font-family-lato;
+        }
+      }
+
+      p {
+        font-size: $font16;
+        color: $gray;
+        line-height: toRem(26);
+        margin-bottom: toRem(8);
+
+        @include font-family-lato;
+
+        p + p {
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    &__content {
+      width: 100%;
+      padding-bottom: toRem(40);
+
+      @include respond-to-min($desktop) {
+        width: 50%;
+        padding-right: 2rem;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      position: relative;
+
+      @include respond-to-min($desktop) {
+        width: 50%;
+      }
+    }
+  }
+
+  .image-right {
+    .cmp-teaser__image {
+      @include respond-to-min($desktop) {
+        margin-left: toRem(24);
+
+        @include rtlBlock() {
+          margin-left: 0;
+          margin-right: toRem(24);
+        }
+      }
+    }
+
+    .cmp-teaser {
+      @include respond-to-max($desktop) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
+  .image-left {
+    .cmp-teaser__image {
+      @include respond-to-min($desktop) {
+        margin-right: toRem(24);
+
+        @include rtlBlock() {
+          margin-left: toRem(24);
+          margin-right: 0;
+        }
+      }
+    }
+
+    .cmp-teaser {
+      @include respond-to-max($desktop) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+}
+
 .cmp-teaser--multicol_media {
   .cmp-teaser {
     flex-direction: row;
@@ -28,9 +173,11 @@
       min-height: 150px;
     }
 
-    &__action-container {
-      @include respond-to-min($desktop) {
-        max-width: 230px;
+    .cmp-teaser__action-container {
+      @include respond-to-min($tablet) {
+        max-width: 245px;
+        min-width: 245px;
+        width: 245px;
       }
     }
   }
@@ -38,7 +185,7 @@
   @include respond-to-min($desktop) {
     .aem-Grid .aem-GridColumn {
       &:first-child {
-        padding-left: 0;
+        padding-left: 0 !important;
       }
 
       &:last-child {
@@ -100,7 +247,7 @@
       position: relative;
 
       @include respond-to-min($desktop) {
-        padding: 2rem 1.5rem 5rem 2rem;
+        padding: 2rem 1.5rem 6rem;
       }
     }
 
@@ -122,20 +269,31 @@
 
       ol {
         list-style: decimal;
-        list-style-position: inside;
+        padding-left: 20px;
+        margin-left: 0.5rem;
+
+        @include rtlBlock() {
+          padding-right: 20px;
+          margin-right: 0.5rem;
+        }
       }
 
       ul {
         margin-bottom: 1rem;
-        list-style-position: inside;
+        margin-left: 0.5rem;
+
+        @include rtlBlock() {
+          margin-right: 0.5rem;
+        }
       }
 
       li {
-        padding-left: 0.75rem;
+        padding-left: 0.4rem;
         position: relative;
-        margin: 0 0 0.875rem;
+        margin: 0 0 0.5rem;
+        line-height: 20px;
 
-        @include rtlBlock {
+        @include rtlBlock() {
           padding-right: 0.75rem;
         }
 
@@ -146,7 +304,6 @@
       }
     }
 
-    &__title,
     h4 {
       @include ts-step-3;
 
@@ -160,17 +317,64 @@
 
     &__action-container {
       position: inherit;
-      margin: 20px auto 0;
+      margin: toRem(20) 0;
 
-      @include rtlBlock {
+      @include rtlBlock() {
         left: auto;
+        right: 0;
       }
 
       @include respond-to-min($desktop) {
-        margin-top: 2rem;
+        left: toRem(20);
+        right: auto;
         position: absolute;
-        bottom: toRem(22);
-        left: (20);
+        bottom: toRem(4);
+
+        @include rtlBlock() {
+          right: 20px;
+        }
+      }
+    }
+
+    &__action-link {
+      font-size: $font12;
+      letter-spacing: toRem(2);
+      position: relative;
+      padding-right: toRem(12);
+      text-transform: uppercase;
+
+      @include rtlBlock {
+        padding-right: 0;
+      }
+
+      @include font-family-lato;
+
+      @include respond-to-min($tablet) {
+        font-size: $font14;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &::after {
+        @include link-arrow;
+        border: solid $arrow-border-green;
+        top: toRem(3);
+        border-width: 0 1px 1px 0;
+        height: toRem(7);
+        width: toRem(7);
+        right: 0;
+        position: absolute;
+        padding: toRem(3.5);
+        left: auto;
+
+        @include rtlBlock {
+          transform: translateY(-50%) rotate(135deg);
+          left: -1rem;
+          right: auto;
+          top: 0.4rem;
+        }
       }
     }
   }
@@ -182,7 +386,7 @@
       @include respond-to-min($desktop) {
         border-radius: $border-radius-step-1 0 0 $border-radius-step-1;
 
-        @include rtlBlock {
+        @include rtlBlock() {
           border-radius: 0 $border-radius-step-1 $border-radius-step-1 0;
         }
       }
@@ -196,7 +400,7 @@
       @include respond-to-min($desktop) {
         border-radius: 0 $border-radius-step-1 $border-radius-step-1 0;
 
-        @include rtlBlock {
+        @include rtlBlock() {
           border-radius: $border-radius-step-1 0 0 $border-radius-step-1;
         }
       }
@@ -245,15 +449,16 @@
         left: 1rem;
         position: absolute;
 
-        @include rtlBlock {
+        @include rtlBlock() {
           left: auto;
+          right: 20px;
         }
 
         @include respond-to-min($desktop) {
           bottom: toRem(40);
           left: 50.2%;
 
-          @include rtlBlock {
+          @include rtlBlock() {
             right: 49%;
             left: auto;
           }
@@ -280,18 +485,46 @@
       }
     }
   }
+
+  &.button--secondary {
+    .cmp-teaser__action-container {
+      border-color: #b2b2b2;
+    }
+  }
 }
 
-// .link__arrow_green {
-//   a {
-//     @include font-family-lato;
+@include respond-to-min($desktop) {
+  .cmp-teaser::after {
+    content: "";
+    left: 0;
+    right: auto;
+    transform: rotate(180deg);
+  }
+}
 
-//     *[lang="ar"] *[dir="rtl"] & {
-//       font-weight: 300;
-//     }
-//   }
+@include respond-to-max($tablet) {
+  .cmp-center-card {
+    .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--offset--phone--0 {
+      width: 100% !important;
+    }
+  }
+}
 
-//   a.cmp-teaser__action-link:hover {
-//     text-decoration: underline;
-//   }
-// }
+@include respond-to-max($tablet) {
+  .cmp-center-card {
+    .cmp-teaser__action-container a {
+      position: relative;
+    }
+  }
+}
+
+.whitebg-container {
+  .cmp-container {
+    margin: toRem(40);
+    padding: 2rem;
+
+    @include media-box-shadow;
+  }
+}
+
+// image and text vartions en
