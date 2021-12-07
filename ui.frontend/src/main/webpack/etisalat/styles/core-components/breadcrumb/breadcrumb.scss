@@ -36,11 +36,11 @@
 }
 
 // starter-header
-.basicpage .container .starter-header {
-  padding: $padding-step-3 $padding-step-2;
+.starter-header {
+  padding: $padding-step-3 !important;
 
   @include respond-to-min($desktop) {
-    padding: calc(#{$padding-step-4} + 4px) $padding-step-5;
+    padding: calc(#{$padding-step-4} + 4px) $padding-step-5 !important;
   }
 
   .breadcrumb {
@@ -56,14 +56,53 @@
 
   .old-price {
     background-color: $orange;
+
+    @include respond-to-min($desktop) {
+      margin-left: toRem(22);
+      margin-right: 0;
+    }
   }
 
   .secondary-header1 {
     margin-top: $margin-step-1;
   }
-}
 
-.starter-header {
+  @include respond-to-min($desktop) {
+    .cmp-text {
+      h3 {
+        .text--orange_tag,
+        .text--green {
+          font-size: $font32;
+          line-height: toRem(40);
+          margin-left: toRem(22);
+          margin-top: toRem(8);
+
+          .body-copy4 {
+            margin-left: toRem(-15);
+          }
+        }
+      }
+
+      p {
+        .font--small {
+          float: right;
+          font-size: $font14;
+          margin-top: toRem(2);
+        }
+      }
+    }
+  }
+
+  .cmp-button--width_100 {
+    margin-top: toRem(18);
+    min-width: toRem(180);
+    width: auto;
+
+    @include respond-to-min($desktop) {
+      margin-left: toRem(28);
+    }
+  }
+
   @include rtlBlock {
     .float-right {
       float: right !important;
