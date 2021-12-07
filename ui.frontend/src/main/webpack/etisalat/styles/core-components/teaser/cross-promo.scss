@@ -33,7 +33,7 @@
       padding: toRem(48);
     }
 
-    @include respond-to-max($tablet) {
+    @include respond-to-max($desktop) {
       padding: toRem(24) toRem(16);
     }
 
@@ -112,7 +112,7 @@
         width: 100%;
       }
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         left: 6.375rem;
         margin-right: 0;
         right: auto;
@@ -258,7 +258,7 @@
       padding: 0 12px;
       width: toRem(756);
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         padding: 0 12px;
       }
     }
@@ -396,7 +396,6 @@
 
         li {
           color: $white;
-          color: $white;
           font-size: $font16;
           line-height: toRem(24);
           margin-bottom: toRem(4);
@@ -410,7 +409,7 @@
             line-height: toRem(20);
           }
 
-          *[lang="ar"] *[dir="rtl"] & {
+          @include rtlBlock {
             font-weight: 300;
             padding-right: 1.5rem;
           }
@@ -426,7 +425,7 @@
             top: toRem(10);
             width: toRem(4);
 
-            *[lang="ar"] *[dir="rtl"] & {
+            @include rtlBlock {
               left: auto;
               right: 0;
             }
@@ -456,7 +455,7 @@
         color: $white;
       }
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         left: auto;
         margin-right: 0;
         right: 0;
@@ -642,7 +641,7 @@
         @include respond-to-max($tablet) {
           float: right;
           font-size: $font16;
-          font-weight: bold;
+          font-weight: get-font-weight("bold");
           letter-spacing: 0;
           text-transform: inherit;
 
@@ -707,7 +706,7 @@
     .cmp-teaser__image {
       margin-left: toRem(24);
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         margin-left: 0;
         margin-right: toRem(24);
       }
@@ -718,7 +717,7 @@
     .cmp-teaser__image {
       margin-right: toRem(24);
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         margin-left: toRem(24);
         margin-right: 0;
       }
@@ -797,7 +796,7 @@ $prefix: "cmp-teaser";
     &__content {
       width: 100%;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         width: 100%;
       }
     }

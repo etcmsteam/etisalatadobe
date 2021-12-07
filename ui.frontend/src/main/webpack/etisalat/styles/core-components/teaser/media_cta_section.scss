@@ -29,7 +29,9 @@
     }
 
     &__action-container {
-      max-width: 240px;
+      @include respond-to-min($desktop) {
+        max-width: 230px;
+      }
     }
   }
 
@@ -93,12 +95,12 @@
     }
 
     &__content {
-      padding: 1rem 1rem 4rem;
+      padding: 1rem 1rem 2rem;
       width: 100%;
       position: relative;
 
       @include respond-to-min($desktop) {
-        padding: 2rem 1.5rem 4rem 2rem;
+        padding: 2rem 1.5rem 5rem 2rem;
       }
     }
 
@@ -124,7 +126,6 @@
       }
 
       ul {
-        list-style-position: none;
         margin-bottom: 1rem;
         list-style-position: inside;
       }
@@ -158,23 +159,19 @@
     }
 
     &__action-container {
-      position: absolute;
-      bottom: toRem(22);
-      left: (20);
-      margin-top: 0;
+      position: inherit;
+      margin: 20px auto 0;
 
       @include rtlBlock {
         left: auto;
       }
 
-      @include respond-to-min($tablet) {
+      @include respond-to-min($desktop) {
         margin-top: 2rem;
+        position: absolute;
+        bottom: toRem(22);
+        left: (20);
       }
-    }
-
-    &__action-link {
-      color: red;
-      color: red;
     }
   }
 

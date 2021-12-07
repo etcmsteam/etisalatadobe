@@ -1,118 +1,3 @@
-.cmp-teaser {
-  &--purpal-bg {
-    background: get-background-gredient(purpal-bg);
-  }
-
-  &--green-bg {
-    background: get-background-gredient(green-bg);
-  }
-
-  &--orange-bg {
-    background: get-background-gredient(orange-bg);
-  }
-
-  &--aqua-green-bg {
-    background: get-background-gredient(aqua-green-bg);
-  }
-
-  &--aqua-bg {
-    background: get-background-gredient(aqua-bg);
-  }
-
-  &--background-pattern & {
-    &::before,
-    &::after {
-      background: url($resource-path + "promo_pattern_top.svg") left 0 no-repeat;
-      background-size: contain;
-      content: "";
-      height: 100%;
-      left: 0;
-      opacity: 0.7;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-
-    &::after {
-      content: "";
-      left: 0;
-      right: auto;
-      transform: rotate(180deg);
-    }
-  }
-}
-
-// teaser image align left and right st
-@include respond-to-min($desktop) {
-  .image-right {
-    .cmp-teaser {
-      display: flex;
-      flex-direction: row-reverse;
-    }
-    .cmp-teaser__image {
-      max-width: 50%;
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-    }
-    .cmp-teaser__content {
-      width: 50%;
-    }
-  }
-
-  .image-left {
-    .cmp-teaser {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .cmp-teaser__image {
-      max-width: 50%;
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-    }
-    .cmp-teaser__content {
-      width: 50%;
-    }
-  }
-}
-// teaser image align left and right en
-
-// Buttons css
-.button--primary {
-  .cmp-teaser__action-container {
-    align-items: flex-end;
-    background-color: $main-green;
-    border-color: $main-green;
-    display: grid !important;
-    text-align: center;
-    white-space: nowrap;
-    max-width: 280px;
-    min-width: 280px;
-    width: 100%;
-
-    @include secondary-button;
-
-    @include respond-to-max($phone) {
-      min-width: 100%;
-      width: 100%;
-    }
-
-    a {
-      color: $white;
-      font-weight: get-font-weight("bold");
-    }
-
-    &:hover {
-      background-color: $green-btn;
-      border-color: $green-btn;
-    }
-  }
-}
-
 .button--secondary {
   .cmp-teaser__action-container {
     align-items: flex-end;
@@ -126,6 +11,7 @@
     max-width: 280px;
     min-width: 280px;
     width: 100%;
+
     @include secondary-button;
 
     @include respond-to-max($phone) {
@@ -184,7 +70,7 @@
     a {
       color: $white;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         padding-left: toRem(10);
       }
     }
@@ -200,7 +86,7 @@
 
       @include link-arrow;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         left: -1rem;
         right: auto !important;
         top: toRem(10);
@@ -225,27 +111,163 @@
     a {
       color: $main-green;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         padding-left: toRem(10);
       }
     }
 
     &::after {
-      border: solid $white;
+      border-color: $main-green !important;
       border-width: 0 1px 1px 0;
       left: auto !important;
       padding: toRem(3.25);
       position: absolute;
       right: 0 !important;
-      top: toRem(6);
+      top: toRem(6) !important;
 
       @include link-arrow;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         left: -1rem;
         right: auto !important;
         top: toRem(10);
         transform: translateY(-50%) rotate(135deg);
+      }
+    }
+  }
+}
+
+.cmp-teaser {
+  &--purpal-bg {
+    background: get-background-gredient(purpal-bg);
+  }
+
+  &--green-bg {
+    background: get-background-gredient(green-bg);
+  }
+
+  &--orange-bg {
+    background: get-background-gredient(orange-bg);
+  }
+
+  &--aqua-green-bg {
+    background: get-background-gredient(aqua-green-bg);
+  }
+
+  &--aqua-bg {
+    background: get-background-gredient(aqua-bg);
+  }
+
+  &--background-pattern & {
+    &::before,
+    &::after {
+      background: url($resource-path + "promo_pattern_top.svg") left 0 no-repeat;
+      background-size: contain;
+      content: "";
+      height: 100%;
+      left: 0;
+      opacity: 0.7;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &::after {
+      content: "";
+      left: 0;
+      right: auto;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// teaser image align left and right st
+@include respond-to-min($desktop) {
+  .image-right {
+    .cmp-teaser {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    .cmp-teaser__image {
+      max-width: 50%;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .cmp-teaser__content {
+      width: 50%;
+    }
+  }
+
+  .image-left {
+    .cmp-teaser {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .cmp-teaser__image {
+      max-width: 50%;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .cmp-teaser__content {
+      width: 50%;
+    }
+  }
+}
+
+// teaser image align left and right en
+
+// Buttons css
+.button--primary {
+  .cmp-teaser__action-container {
+    align-items: flex-end;
+    background-color: $main-green;
+    border-color: $main-green;
+    display: grid !important;
+    text-align: center;
+    white-space: nowrap;
+    max-width: 280px;
+    min-width: 280px;
+    width: 100%;
+
+    @include secondary-button;
+
+    @include respond-to-max($phone) {
+      min-width: 100%;
+      width: 100%;
+    }
+
+    a {
+      color: $white;
+      font-weight: get-font-weight("bold");
+    }
+
+    &:hover {
+      background-color: $green-btn;
+      border-color: $green-btn;
+    }
+  }
+}
+
+.default--bg {
+  .button--transparent {
+    .cmp-teaser__action-container {
+      border: 1px solid $dark-gray;
+      width: toRem(282) !important;
+
+      @include secondary-button;
+
+      a {
+        color: $dark-gray;
       }
     }
   }
