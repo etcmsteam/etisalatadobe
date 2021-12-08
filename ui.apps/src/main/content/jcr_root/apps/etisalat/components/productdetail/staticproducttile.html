@@ -1,5 +1,5 @@
 <template  data-sly-template.productTile="${ @ carousel,properties}">
-       <div class="product-grid-text-section plans more-info-wrapper plansTable0">
+       <div class="product-grid-text-section plans more-info-wrapper plansTable0 ${properties.tileBoxLayout == 'devicetile' ? 'product-device-text' : ''}">
         <div class="container">
           <div class="row">
             <div data-sly-test="${properties.mainProductTitle}" class="col-xs-12 col-md-${carousel.items.size > 2 ? '3' : '6'}">
@@ -8,7 +8,7 @@
                   <span> ${properties.productCTATitle} </span>
                 </a>
                 <div class="wst-main-headings">
-                  <h4>${properties.mainProductTitle}</h4>
+                  <h4 data-sly-element="${properties.mainTitleStyle}">${properties.mainProductTitle}</h4>
                 </div>
                 <div class="main-text-content-wrapper">
                   <div class="paragraph-styling ul-list-cms ${carousel.items.size > 2 ? '' : 'paragraph-styling-width55'}">
