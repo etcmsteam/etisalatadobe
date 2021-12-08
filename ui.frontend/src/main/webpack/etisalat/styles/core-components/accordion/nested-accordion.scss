@@ -9,18 +9,18 @@
   }
 
   .cmp-accordion__button {
-    box-shadow: 0 0 toRem(6) 0 rgb(0 0 0 / 25%);
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    transition: all 0.3s ease-in-out;
-    padding: 3rem 0rem;
-    font-size: $font18;
     background-color: $sand-white;
     border-color: transparent;
+    box-shadow: 0 0 toRem(6) 0 rgb(0 0 0 / 25%);
+    display: flex;
+    font-size: $font18;
+    justify-content: center;
+    padding: 3rem 0;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
 
-    @include rtlBlock {
+    @include rtlBlock() {
       text-align: right;
     }
 
@@ -30,22 +30,22 @@
     }
 
     @include respond-to-min($desktop) {
-      padding: 1.8125rem 7.2rem;
-      justify-content: space-between;
       font-size: $font26;
+      justify-content: space-between;
+      padding: 1.8125rem 7.2rem;
     }
   }
 
   .cmp-accordion__icon {
+    border-left: toRem(2) solid $cold-gray;
+    border-top: toRem(2) solid $cold-gray;
+    color: $almost-black;
     content: "";
+    display: block;
+    height: toRem(15);
     position: relative;
     transform: rotate(225deg);
-    color: $almost-black;
-    display: block;
     width: toRem(15);
-    height: toRem(15);
-    border-top: toRem(2) solid $cold-gray;
-    border-left: toRem(2) solid $cold-gray;
 
     @include respond-to-max($tablet) {
       left: toRem(30);
@@ -57,20 +57,21 @@
   }
 
   .cmp-accordion__button--expanded .cmp-accordion__icon {
+    border-left: toRem(2) solid $almost-black;
+    border-top: toRem(2) solid $almost-black;
     content: "";
-    transform: rotate(45deg);
     display: block;
-    width: toRem(18);
     height: toRem(18);
     top: toRem(10);
-    border-top: toRem(2) solid $almost-black;
-    border-left: toRem(2) solid $almost-black;
+    transform: rotate(45deg);
+    width: toRem(18);
 
     @include respond-to-max($phone) {
-      top: toRem(10);
       right: toRem(5);
+      top: toRem(10);
     }
   }
+
   .cmp-accordion__title {
     color: $almost-black;
     font-size: $font18;
@@ -85,15 +86,16 @@
     @include respond-to-min($desktop) {
       font-size: $font26;
     }
-    @include rtlBlock {
+
+    @include rtlBlock() {
       margin-left: 2rem;
     }
   }
 
   .font--small {
-    font-size: $font16;
-    //color: #848789;
+    // color: #848789;
     color: $steel-grey;
+    font-size: $font16;
     line-height: toRem(25.6);
   }
 
@@ -103,6 +105,7 @@
     @include respond-to-min($desktop) {
       width: toRem(860);
     }
+
     .cmp-accordion__icon {
       display: none;
     }
@@ -111,34 +114,33 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .cmp-accordion__title {
       font-size: $font16;
+      letter-spacing: 0.1rem;
 
       @include font-family-lato;
-      letter-spacing: 0.1rem;
     }
+
     .cmp-accordion__button {
-      box-shadow: none;
-      padding-left: toRem(4);
-      padding-right: toRem(0);
-      display: block;
       background-color: $white;
       border-color: transparent;
+      box-shadow: none;
+      display: block;
       margin: toRem(0);
-      padding-top: toRem(10);
-      padding-bottom: toRem(10);
+      padding: toRem(10) 0 toRem(10) toRem(4);
 
-      @include rtlBlock {
+      @include rtlBlock() {
         padding-right: 4%;
         text-align: right;
       }
 
       @include respond-to-min($desktop) {
         box-shadow: none;
-        padding-left: toRem(2);
         line-height: toRem(22);
+        padding-left: toRem(2);
 
-        @include rtlBlock {
+        @include rtlBlock() {
           padding-right: 1%;
           text-align: right;
         }
@@ -157,42 +159,41 @@
         color: $almost-black;
         content: " - ";
         display: table-cell;
+        font-size: toRem(61);
+        font-weight: get-font-weight("normal");
+        line-height: toRem(12);
         padding: toRem(5);
+        position: relative;
+        text-align: center;
+        vertical-align: top;
 
         @include rtl(right, toRem(9), toRem(-9));
-
-        position: relative;
-        vertical-align: top;
-        font-size: toRem(61);
-
         @include font-family-lato;
-        text-align: center;
-        line-height: toRem(12);
-        font-weight: get-font-weight("normal");
       }
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     .cmp-accordion__title::before {
       color: $almost-black;
       content: " + ";
       display: table-cell;
+      font-size: $font28;
+      font-weight: get-font-weight("light");
+      line-height: toRem(12);
       padding: toRem(5);
+      position: relative;
+      text-align: center;
+      vertical-align: top;
 
       @include rtl(right, toRem(9), toRem(-9));
-      position: relative;
-      vertical-align: top;
-      font-size: $font28;
-      text-align: center;
-      line-height: toRem(12);
-      font-weight: get-font-weight("light");
-
       @include font-family-lato();
     }
 
     .cmp-text {
-      padding: toRem(25) toRem(5) toRem(15) toRem(43);
-      @include font-family-Neotech;
       color: $steel-grey;
+      padding: toRem(25) toRem(5) toRem(15) toRem(43);
+
+      @include font-family-Neotech;
 
       ul li {
         list-style-type: none;
@@ -203,50 +204,51 @@
         }
       }
     }
+
     @include respond-to-min($desktop) {
       padding: toRem(10) toRem(30) toRem(80) toRem(8);
     }
 
     table {
+      border: toRem(2) solid $gray;
       height: toRem(112);
       width: toRem(729);
-      border: toRem(2) solid $gray;
     }
 
     th {
       background-color: $main-green;
-      color: $white;
-      vertical-align: middle;
-      text-align: center;
-      padding: toRem(12);
       border-right: toRem(1) solid $steel-grey;
+      color: $white;
+      padding: toRem(12);
+      text-align: center;
+      vertical-align: middle;
     }
 
     td {
-      text-align: center;
-      display: table-cell;
-      vertical-align: middle;
-      color: $steel-grey;
-      padding: toRem(12);
-      border-top: toRem(1) solid $steel-grey;
       border-right: toRem(1) solid $steel-grey;
+      border-top: toRem(1) solid $steel-grey;
+      color: $steel-grey;
+      display: table-cell;
+      padding: toRem(12);
+      text-align: center;
+      vertical-align: middle;
     }
 
     span.more,
     span.less {
       color: $almost-black;
-
-      @include font-family-lato;
+      cursor: pointer;
+      float: right;
       font-size: $font14;
       letter-spacing: toRem(2);
       line-height: toRem(18);
+      margin-top: toRem(10);
+      text-align: right;
       text-decoration: none;
       text-transform: uppercase;
-      margin-top: toRem(10);
       width: 100%;
-      text-align: right;
-      float: right;
-      cursor: pointer;
+
+      @include font-family-lato;
     }
   }
 }

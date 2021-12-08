@@ -164,6 +164,10 @@
 
         @include font-family-lato;
 
+        @include rtlBlock() {
+          @include font-family-Neotech-ge();
+        }
+
         @include respond-to-min($desktop) {
           font-size: $font14;
           letter-spacing: toRem(2);
@@ -476,6 +480,16 @@
   .card-no_label {
     .category {
       display: none;
+    }
+  }
+  .btn-text {
+    &::before {
+      
+      @include rtlBlock() {
+        transform: translateY(-50%) rotate(135deg);
+        left: -15px;
+        right: auto;
+      }
     }
   }
 }
