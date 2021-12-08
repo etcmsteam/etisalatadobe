@@ -1,5 +1,4 @@
-// media multicol st
-// image and text vartions st
+/* stylelint-disable no-descending-specificity */
 .cmp-teaser--mediacta-section,
 .whitebg-container {
   @include rtlBlock() {
@@ -10,9 +9,9 @@
   clear: both !important;
   left: 50%;
   margin-left: -50vw;
+  padding-top: 2rem;
   position: relative;
   width: 100vw !important;
-  padding-top: 2rem;
 
   .cmp-teaser {
     display: flex;
@@ -36,18 +35,18 @@
       @include font-family-Neotech;
 
       color: $almost-black;
+      font-size: $font28;
       font-weight: get-font-weight("regular");
       margin-bottom: 1rem;
-      font-size: $font28;
     }
 
     &__pretitle {
-      font-weight: get-font-weight("bold");
-      margin-bottom: toRem(6);
-      letter-spacing: toRem(4);
       color: $gray;
-      line-height: toRem(26);
       font-size: $font12;
+      font-weight: get-font-weight("bold");
+      letter-spacing: toRem(4);
+      line-height: toRem(26);
+      margin-bottom: toRem(6);
       text-transform: uppercase;
 
       @include font-family-lato;
@@ -55,25 +54,25 @@
 
     &__description {
       ul {
+        color: $warm-gray;
         list-style-position: none;
         margin-bottom: 1rem;
-        color: $warm-gray;
 
         li {
+          color: $gray;
+          font-size: $font16;
+          line-height: toRem(26);
+          margin: 0 0 toRem(4) 0;
           padding-left: 1rem;
           position: relative;
-          margin: 0 0 toRem(4) 0;
-          font-size: $font16;
-          color: $gray;
-          line-height: toRem(26);
 
           @include font-family-lato;
         }
       }
 
       p {
-        font-size: $font16;
         color: $gray;
+        font-size: $font16;
         line-height: toRem(26);
         margin-bottom: toRem(8);
 
@@ -86,18 +85,18 @@
     }
 
     &__content {
-      width: 100%;
       padding-bottom: toRem(40);
+      width: 100%;
 
       @include respond-to-min($desktop) {
-        width: 50%;
         padding-right: 2rem;
+        width: 50%;
       }
     }
 
     &__image {
-      width: 100%;
       position: relative;
+      width: 100%;
 
       @include respond-to-min($desktop) {
         width: 50%;
@@ -109,6 +108,7 @@
         @include respond-to-min($tablet) {
           height: 240px;
         }
+
         @include respond-to-min($desktop) {
           height: 270px;
         }
@@ -158,20 +158,20 @@
 .cmp-teaser--multicol_media {
   .cmp-teaser {
     flex-direction: row;
-    width: auto;
-    position: relative;
     margin: 0;
+    position: relative;
+    width: auto;
 
     &__image {
       .cmp-image {
+        height: toRem(250);
         max-height: toRem(250);
         min-height: toRem(250);
-        height: toRem(250);
 
         @include respond-to-min($desktop) {
+          height: toRem(428);
           max-height: toRem(428);
           min-height: toRem(428);
-          height: toRem(428);
 
           img {
             @include img-cover;
@@ -221,8 +221,8 @@
 
     border-radius: $border-radius-step-1;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
     width: 100%;
 
     &__image {
@@ -233,14 +233,14 @@
       }
 
       .cmp-image {
+        border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
         display: block;
         height: 100%;
         left: 0;
-        top: 0;
-        position: relative;
         overflow: hidden;
+        position: relative;
+        top: 0;
         width: 100%;
-        border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
 
         @include respond-to-min($desktop) {
           height: toRem(250);
@@ -254,8 +254,8 @@
 
     &__content {
       padding: 1rem 1rem 0;
-      width: 100%;
       position: relative;
+      width: 100%;
 
       @include respond-to-min($desktop) {
         padding: 2rem 1.5rem 6rem;
@@ -266,11 +266,9 @@
       p,
       li {
         color: $dark-gray;
-
-        @include ts-step--1;
-
         line-height: toRem(19);
 
+        @include ts-step--1;
         @include font-family-lato;
 
         @include respond-to-min($desktop) {
@@ -280,12 +278,12 @@
 
       ol {
         list-style: decimal;
-        padding-left: 20px;
         margin-left: 0.5rem;
+        padding-left: 20px;
 
         @include rtlBlock() {
-          padding-right: 20px;
           margin-right: 0.5rem;
+          padding-right: 20px;
         }
       }
 
@@ -299,10 +297,10 @@
       }
 
       li {
+        line-height: 20px;
+        margin: 0 0 0.5rem;
         padding-left: 0.4rem;
         position: relative;
-        margin: 0 0 0.5rem;
-        line-height: 20px;
 
         @include rtlBlock() {
           padding-right: 0.75rem;
@@ -321,14 +319,14 @@
       @include respond-to-min($tablet) {
         @include step-lg;
 
-        margin: 0 0 1rem;
         color: $almost-black;
+        margin: 0 0 1rem;
       }
     }
 
     &__action-container {
-      position: inherit;
       margin: toRem(20) 0;
+      position: inherit;
 
       @include rtlBlock() {
         left: auto;
@@ -336,10 +334,10 @@
       }
 
       @include respond-to-min($desktop) {
-        left: toRem(20);
-        right: auto;
-        position: absolute;
         bottom: toRem(4);
+        left: toRem(20);
+        position: absolute;
+        right: auto;
 
         @include rtlBlock() {
           right: 20px;
@@ -350,8 +348,8 @@
     &__action-link {
       font-size: $font12;
       letter-spacing: toRem(2);
-      position: relative;
       padding-right: toRem(12);
+      position: relative;
       text-transform: uppercase;
 
       @include rtlBlock {
@@ -370,21 +368,22 @@
 
       &::after {
         @include link-arrow;
+
         border: solid $arrow-border-green;
-        top: toRem(3);
         border-width: 0 1px 1px 0;
         height: toRem(7);
-        width: toRem(7);
-        right: 0;
-        position: absolute;
-        padding: toRem(3.5);
         left: auto;
+        padding: toRem(3.5);
+        position: absolute;
+        right: 0;
+        top: toRem(3);
+        width: toRem(7);
 
         @include rtlBlock {
-          transform: translateY(-50%) rotate(135deg);
           left: -1rem;
           right: auto;
           top: 0.4rem;
+          transform: translateY(-50%) rotate(135deg);
         }
       }
     }
@@ -420,8 +419,8 @@
 
   &.cmp-teaser--horizontal {
     .cmp-teaser {
-      padding-bottom: 2rem;
       max-width: 100%;
+      padding-bottom: 2rem;
 
       @include respond-to-min($tablet) {
         padding-bottom: 0;
@@ -449,18 +448,19 @@
         padding-bottom: 4rem;
 
         @include respond-to-min($desktop) {
-          padding-bottom: 0;
-          width: 100%;
           display: flex;
           flex: 2;
+          padding-bottom: 0;
+          width: 100%;
         }
       }
 
       &__action-container {
-        left: 1rem;
-        position: absolute;
-        margin: 0;
         bottom: 0;
+        left: 1rem;
+        margin: 0;
+        position: absolute;
+
         @include rtlBlock() {
           left: auto;
           right: 20px;
@@ -471,8 +471,8 @@
           left: 50.2%;
 
           @include rtlBlock() {
-            right: 49%;
             left: auto;
+            right: 49%;
           }
         }
       }
