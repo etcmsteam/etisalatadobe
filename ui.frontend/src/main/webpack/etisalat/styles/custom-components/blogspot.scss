@@ -82,6 +82,7 @@
         }
         @include rtlBlock() {
           text-align: right;
+          font-weight: get-font-weight("regular");
         }
       }
     }
@@ -106,6 +107,9 @@
         font-size: $font10;
         line-height: toRem(16);
         margin: 0;
+        @include rtlBlock() {
+          font-weight: get-font-weight("regular");
+        }
       }
     }
 
@@ -126,6 +130,9 @@
     .tile-box-title {
       .date p {
         @include font-family-lato();
+        @include rtlBlock() {
+          font-weight: get-font-weight("regular");
+        }
       }
     }
     .tile-box-blogtile {
@@ -180,6 +187,7 @@
           p {
             @include rtlBlock() {
               text-align: right;
+              font-weight: get-font-weight("regular");
             }
           }
         }
@@ -209,6 +217,7 @@
   }
 
   a {
+    @include font-family-lato();
     color: $grey1;
     font-size: $font14;
     line-height: toRem(20);
@@ -216,6 +225,7 @@
   }
 
   .no-result-found {
+    @include font-family-lato();
     color: $grey1;
     font-size: $font14;
     line-height: toRem(20);
@@ -290,6 +300,16 @@
             margin-right: $margin-step-0;
           }
         }
+      }
+    }
+  }
+  .col-sm-offset-4 {
+    @include respond-to-max($desktop-min) {
+      margin-left: $margin-step-0;
+    }
+    @include respond-to-min($desktop) {
+      @include rtlBlock() {
+        margin-right: 33.3333%;
       }
     }
   }
@@ -583,13 +603,8 @@
 .search-wrapper {
   .search-icon {
     position: absolute;
-    right: 0.4rem;
-
-    @include respond-to-min(992px) {
-      right: 0.2rem !important;
-      top: toRem(12);
-    }
-
+    right: toRem(14);
+    top: toRem(12);
     svg {
       stroke-width: toRem(4);
 
@@ -602,7 +617,6 @@
 
   .input-field .intl-tel-input > label,
   .input-field > label {
-    left: toRem(1);
     @include font-family-lato();
   }
 }
@@ -624,11 +638,13 @@
 }
 
 .with-search-field {
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
-
   .paragraph-styling {
     padding-right: 15%;
+    .p2 {
+      p {
+        @include font-family-lato();
+      }
+    }
   }
 }
 
@@ -669,7 +685,7 @@
 
     .with-search-field {
       .search-wrapper .search-icon {
-        left: 0;
+        left: toRem(15);
         right: auto !important;
       }
 
@@ -957,7 +973,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
         transform-origin: 100% 0;
         width: 94%;
         margin-right: 0;
-        right: 0;
+        right: toRem(15) !important;
       }
     }
     &.textarea {
@@ -977,6 +993,54 @@ textarea.materialize-textarea:focus:not([readonly]) {
           text-align: center;
         }
       }
+    }
+    & > .container {
+      & + .container {
+        margin-top: $margin-step-3;
+        margin-bottom: calc(#{$margin-step-4} + 4px);
+        @include respond-to-max($tablet) {
+          margin-bottom: calc($margin-step-2);
+        }
+      }
+    }
+  }
+  .container {
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1200);
+    }
+    @include respond-to-min-max($desktop-wide, $desktop-min) {
+      width: toRem(952);
+    }
+    @include respond-to-min-max($desktop-min, $tablet) {
+      width: toRem(732);
+      .input-field {
+        & > label {
+          font-size: $font14;
+        }
+      }
+    }
+    @include respond-to-max($phone) {
+      width: toRem(343);
+    }
+  }
+  .input-field {
+    & > label {
+      color: $steel-grey;
+      cursor: text;
+      font-size: $font20;
+      font-weight: 400;
+      left: toRem(15);
+      line-height: 24px;
+      overflow: hidden;
+      position: absolute;
+      text-align: initial;
+      text-overflow: ellipsis;
+      top: 0;
+      transform: translateY(10px);
+      transform-origin: 0 100%;
+      transition: transform 0.2s ease-out, color 0.2s ease-out;
+      white-space: nowrap;
+      z-index: 0;
     }
   }
 }

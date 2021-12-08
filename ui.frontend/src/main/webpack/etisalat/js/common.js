@@ -13,7 +13,7 @@
   const SELECT_DROPDOWN = $("select.cmp-form-options__field");
 
   // Element
-  const EMPTY_OPTION = `<option></option>`;
+  const EMPTY_OPTION = `<option style="display: none"></option>`;
 
   function initSelect2AndFixFormFloatingLabels() {
     /**
@@ -21,15 +21,16 @@
      */
     // initialize select 2
 
-    SELECT_DROPDOWN.each(function () {
+    SELECT_DROPDOWN.each(function (index, element) {
       const $SELECT = $(this);
       const $IS__DEFAULT_SELECTED = $SELECT.parents().hasClass("default-selected");
       const $IS_SEARCH_ENABLE = $SELECT.parents().hasClass("search-enable");
       if ($IS__DEFAULT_SELECTED) {
         $(this).closest(SELECT_DROPDOWN_WRAP_CLASS).find("label").addClass(FLOATING_LABEL_CLASS);
       } else {
-        $SELECT.val("");
-        $SELECT.prepend(EMPTY_OPTION);
+        $(element).find("option").get(0).remove();
+        $(element).val("");
+        $(element).prepend(EMPTY_OPTION);
       }
 
       $SELECT
@@ -69,13 +70,13 @@
   if ($COUNTRY_NAME.length) {
     const COUNTRY_DATA = window.intlTelInputGlobals.getCountryData();
     const COUNTRY = COUNTRY_DATA.map((item) => {
-      return { id: item.name, text: item.name };
+      let $item = item.name.indexOf("(") !== -1 ? item.name.split("(")[0].trim() : item.name;
+      return { id: $item, text: $item };
     });
 
     $COUNTRY_NAME.select2({
       data: COUNTRY,
-      dropdownParent: $COUNTRY_NAME.parent(".cmp-form-options")
+      dropdownParent: $COUNTRY_NAME.parent(".cmp-form-options"),
     });
   }
-
 })(jQuery);

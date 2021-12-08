@@ -1,3 +1,4 @@
+import {isMobile, IsMediaQuery} from '../helpers'
 if ($(".globalfootprintcontainer").length > 0) {
   var galleryTop = new Swiper('.swiper-gallery-slide', {
     spaceBetween: 10,
@@ -44,4 +45,19 @@ if ($(".globalfootprintcontainer").length > 0) {
   });
   galleryTop.controller.control = galleryThumbs;
   galleryThumbs.controller.control = galleryTop;
+}
+
+if (!IsMediaQuery.md.matches) {
+  const ANDRIOD_CTA = $(".download1");
+  const APPLE_CTA = $(".download2");
+
+  if (isMobile.Android()) {
+    ANDRIOD_CTA.show();
+    APPLE_CTA.hide();
+  }
+
+  if (isMobile.iOS()) {
+    ANDRIOD_CTA.hide();
+    APPLE_CTA.show();
+  }
 }
