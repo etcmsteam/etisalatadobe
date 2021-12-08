@@ -367,11 +367,15 @@
         @include respond-to-min($tablet) {
           padding-top: 160px;
         }
-        .cmp-teaser__description {
+        .cmp-teaser__content {
+          width: 100%;
           @include respond-to-min($tablet) {
             width: 50%;
           }
-          @include respond-to-max($tablet) {
+        }
+        .cmp-teaser__description {
+          width: 100%;
+          @include respond-to-min($tablet) {
             width: 100%;
           }
           h1 {
@@ -441,8 +445,10 @@
         @extend .wrapper;
         .cmp_btn {
           width: 150px;
+          display: content;
           .cmp_store_btn {
             cursor: pointer;
+            background: url("../resources/images/google-play.png") no-repeat;
             height: 45px;
             display: inline-block;
             text-indent: -9999px;
@@ -450,11 +456,7 @@
             background-size: cover;
             width: 100%;
             max-width: 150px;
-            &:first-child{
-              background: url("../resources/images/google-play.png") 0 0 no-repeat;
-              margin-right: 10px;
-            }
-            &:nth-child(2){
+            &:last-child{
               background: url("../resources/images/icon-stores.png") no-repeat;
             }
             p {
@@ -542,6 +544,7 @@
       padding: 0 0 15px 0;
       margin: 0;
       list-style: none;
+      color: $black-grey;
       counter-increment: my-awesome-counter;
       @include respond-to-min($desktop) {
         font-size: 24px;

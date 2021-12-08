@@ -47,7 +47,6 @@
   display: inline-block;
   border-radius: 100%;
   background: $blue-grey;
-  border: 2px solid #4E58A4;
   opacity: 1;
   &--active {
     height: 14px;
@@ -60,6 +59,9 @@
 // Home page Header banner image
 .teaser_img_right {
   padding: 100px 10px 0 10px;
+  @include respond-to-min($desktop) {
+    height: 500px;
+  }
   .cmp-teaser {
     display: flex;
     align-items: center;
@@ -69,7 +71,7 @@
     }
     @include respond-to-min($desktop) {
       .cmp-teaser__description {
-        padding-right: 190px;
+        padding-right: 0;
       }
     }
     .cmp-image {
@@ -104,6 +106,13 @@
     padding-bottom: 45px;
     @include respond-to-min($desktop) {
       width: 50%;
+      padding-left: 12px;
+      padding-bottom: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 110px;
+      bottom: 0;
     }
     .cmp-teaser__description {
       h3 {
@@ -124,9 +133,52 @@
   }
 }
 
-.cmp-teaser__image {
-  width: 50%;
-  @include respond-to-max($tablet) {
-    width: 100%;
+.teaser_left_align {
+  .cmp-carousel__content {
+    .cmp-carousel__actions {
+      display: none;
+    }
+    ol {
+      display: flex;
+      justify-content: left;
+      padding-left: 12px;
+    }
+    .cmp-carousel__indicator {
+      padding: 0;
+      margin: 0 5px 0 0;
+      height: 14px;
+      width: 14px;
+      box-sizing: border-box;
+      border-radius: 100%;
+      background: $blue-grey;
+      opacity: 1;
+      float: left;
+      &--active {
+        height: 14px;
+        width: 14px;
+        outline: 2px solid $main-green;
+        background-color: $white;
+        margin-bottom: -2px;
+      }
+    }
+  }
+  .cmp-text {
+    h3 {
+      font-size: 36px;
+      line-height: 42px;
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 24px;
+      line-height: 30px;
+      margin-bottom: 0;
+    }
   }
 }
+
+// .cmp-teaser__image {
+//   width: 50%;
+//   @include respond-to-max($tablet) {
+//     width: 100%;
+//   }
+// }
