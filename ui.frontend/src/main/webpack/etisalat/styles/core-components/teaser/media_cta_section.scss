@@ -1,13 +1,228 @@
+// media multicol st
+// image and text vartions st
+.cmp-teaser--mediacta-section,
+.whitebg-container {
+  @include rtlBlock() {
+    font-weight: font-weight get-font-weight("light");
+    letter-spacing: 0;
+  }
+
+  clear: both !important;
+  left: 50%;
+  margin-left: -50vw;
+  position: relative;
+  width: 100vw !important;
+  padding-top: 2rem;
+
+  .cmp-teaser {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 toRem(12);
+    width: 100%;
+
+    @include respond-to-min($tablet) {
+      width: toRem(756);
+    }
+
+    @include respond-to-min($desktop) {
+      width: toRem(976);
+    }
+
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1224);
+    }
+
+    h4 {
+      @include font-family-Neotech;
+
+      color: $almost-black;
+      font-weight: get-font-weight("regular");
+      margin-bottom: 1rem;
+      font-size: $font28;
+    }
+
+    &__pretitle {
+      font-weight: get-font-weight("bold");
+      margin-bottom: toRem(6);
+      letter-spacing: toRem(4);
+      color: $gray;
+      line-height: toRem(26);
+      font-size: $font12;
+      text-transform: uppercase;
+
+      @include font-family-lato;
+    }
+
+    &__description {
+      ul {
+        list-style-position: none;
+        margin-bottom: 1rem;
+        color: $warm-gray;
+
+        li {
+          padding-left: 1rem;
+          position: relative;
+          margin: 0 0 toRem(4) 0;
+          font-size: $font16;
+          color: $gray;
+          line-height: toRem(26);
+
+          @include font-family-lato;
+        }
+      }
+
+      p {
+        font-size: $font16;
+        color: $gray;
+        line-height: toRem(26);
+        margin-bottom: toRem(8);
+
+        @include font-family-lato;
+
+        p + p {
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    &__content {
+      width: 100%;
+      padding-bottom: toRem(40);
+
+      @include respond-to-min($desktop) {
+        width: 50%;
+        padding-right: 2rem;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      position: relative;
+
+      @include respond-to-min($desktop) {
+        width: 50%;
+      }
+
+      .cmp-image__image {
+        height: 132px;
+
+        @include respond-to-min($tablet) {
+          height: 240px;
+        }
+        @include respond-to-min($desktop) {
+          height: 270px;
+        }
+      }
+    }
+  }
+
+  .image-right {
+    .cmp-teaser__image {
+      @include respond-to-min($desktop) {
+        margin-left: toRem(24);
+
+        @include rtlBlock() {
+          margin-left: 0;
+          margin-right: toRem(24);
+        }
+      }
+    }
+
+    .cmp-teaser {
+      @include respond-to-max($desktop) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
+  .image-left {
+    .cmp-teaser__image {
+      @include respond-to-min($desktop) {
+        margin-right: toRem(24);
+
+        @include rtlBlock() {
+          margin-left: toRem(24);
+          margin-right: 0;
+        }
+      }
+    }
+
+    .cmp-teaser {
+      @include respond-to-max($desktop) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+}
+
+.cmp-teaser--multicol_media {
+  .cmp-teaser {
+    flex-direction: row;
+    width: auto;
+    position: relative;
+    margin: 0;
+
+    &__image {
+      .cmp-image {
+        max-height: toRem(250);
+        min-height: toRem(250);
+        height: toRem(250);
+
+        @include respond-to-min($desktop) {
+          max-height: toRem(428);
+          min-height: toRem(428);
+          height: toRem(428);
+
+          img {
+            @include img-cover;
+          }
+        }
+      }
+    }
+
+    &__content {
+      min-height: 150px;
+    }
+
+    .cmp-teaser__action-container {
+      @include respond-to-min($tablet) {
+        max-width: 245px;
+        min-width: 245px;
+        width: 245px;
+      }
+    }
+  }
+
+  @include respond-to-min($desktop) {
+    .aem-Grid .aem-GridColumn {
+      &:first-child {
+        padding-left: 0 !important;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  @include respond-to-max($tablet) {
+    .aem-GridColumn {
+      padding: 0 !important;
+    }
+  }
+}
+
+// media multicol en
 .cmp-teaser--mediacta {
   margin: 1rem 0;
- 
+
   .cmp-teaser {
     @include media-box-shadow;
 
     border-radius: $border-radius-step-1;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
     width: 100%;
 
     &__image {
@@ -20,9 +235,9 @@
       .cmp-image {
         display: block;
         height: 100%;
-        position: relative;
-        top: 0;
         left: 0;
+        top: 0;
+        position: relative;
         overflow: hidden;
         width: 100%;
         border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
@@ -38,14 +253,15 @@
     }
 
     &__content {
-      padding: 1rem 1rem 4rem;
+      padding: 1rem 1rem 0;
       width: 100%;
       position: relative;
 
       @include respond-to-min($desktop) {
-        padding: 1rem 1.5rem 3rem 2rem;
+        padding: 2rem 1.5rem 6rem;
       }
     }
+
     &__description {
       p,
       li {
@@ -64,22 +280,31 @@
 
       ol {
         list-style: decimal;
-        list-style-position: inside;
+        padding-left: 20px;
+        margin-left: 0.5rem;
+
+        @include rtlBlock() {
+          padding-right: 20px;
+          margin-right: 0.5rem;
+        }
       }
 
       ul {
-        list-style-position: none;
         margin-bottom: 1rem;
-        list-style-position: inside;
+        margin-left: 0.5rem;
+
+        @include rtlBlock() {
+          margin-right: 0.5rem;
+        }
       }
 
       li {
-        padding-left: 0.75rem;
+        padding-left: 0.4rem;
         position: relative;
+        margin: 0 0 0.5rem;
+        line-height: 20px;
 
-        margin: 0 0 0.875rem;
-
-        @include rtlBlock {
+        @include rtlBlock() {
           padding-right: 0.75rem;
         }
 
@@ -90,7 +315,6 @@
       }
     }
 
-    &__title,
     h4 {
       @include ts-step-3;
 
@@ -103,17 +327,23 @@
     }
 
     &__action-container {
-      position: absolute;
+      position: inherit;
+      margin: toRem(20) 0;
 
-      bottom: toRem(22);
-      left: (20);
-      margin-top: 0;
-
-      @include rtlBlock {
+      @include rtlBlock() {
         left: auto;
+        right: 0;
       }
-      @include respond-to-min($tablet) {
-        margin-top: 2rem;
+
+      @include respond-to-min($desktop) {
+        left: toRem(20);
+        right: auto;
+        position: absolute;
+        bottom: toRem(4);
+
+        @include rtlBlock() {
+          right: 20px;
+        }
       }
     }
 
@@ -131,14 +361,14 @@
       @include font-family-lato;
 
       @include respond-to-min($tablet) {
-        @include ts-step--1;
+        font-size: $font14;
       }
 
       &:hover {
         text-decoration: underline;
       }
 
-      &::before {
+      &::after {
         @include link-arrow;
         border: solid $arrow-border-green;
         top: toRem(3);
@@ -167,7 +397,7 @@
       @include respond-to-min($desktop) {
         border-radius: $border-radius-step-1 0 0 $border-radius-step-1;
 
-        @include rtlBlock {
+        @include rtlBlock() {
           border-radius: 0 $border-radius-step-1 $border-radius-step-1 0;
         }
       }
@@ -219,6 +449,7 @@
         padding-bottom: 4rem;
 
         @include respond-to-min($desktop) {
+          padding-bottom: 0;
           width: 100%;
           display: flex;
           flex: 2;
@@ -228,16 +459,18 @@
       &__action-container {
         left: 1rem;
         position: absolute;
-
-        @include rtlBlock {
+        margin: 0;
+        bottom: 0;
+        @include rtlBlock() {
           left: auto;
+          right: 20px;
         }
 
         @include respond-to-min($desktop) {
-          bottom: toRem(40);
-          left:50.2%;
+          bottom: 20px;
+          left: 50.2%;
 
-          @include rtlBlock {
+          @include rtlBlock() {
             right: 49%;
             left: auto;
           }
@@ -264,56 +497,46 @@
       }
     }
   }
-}
 
-//media multicol st
-.cmp-teaser--multicol_media {
-  .cmp-teaser {
-    flex-direction: row;
-    width: auto;
-    margin: toRem(10);
-    position: relative;
-    margin: 0;
-
-    &__image {
-      .cmp-image {
-        max-height: toRem(250);
-        min-height: toRem(250);
-        height: toRem(250);
-
-        @include respond-to-min($desktop) {
-          max-height: toRem(428);
-          min-height: toRem(428);
-          height: toRem(428);
-
-          img {
-            @include img-cover();
-          }
-        }
-      }
-    }
-
-    &__content {
-      min-height: 150px;
-    }
-  }
-
-  @include respond-to-min($desktop) {
-    .aem-Grid .aem-GridColumn {
-      &:first-child {
-        padding-left: 0;
-      }
-
-      &:last-child {
-        padding-right: 0;
-      }
-    }
-  }
-  @include respond-to-max($tablet) {
-    .aem-GridColumn {
-      padding: 0 !important;
+  &.button--secondary {
+    .cmp-teaser__action-container {
+      border-color: #b2b2b2;
     }
   }
 }
 
-//media multicol en
+@include respond-to-min($desktop) {
+  .cmp-teaser::after {
+    content: "";
+    left: 0;
+    right: auto;
+    transform: rotate(180deg);
+  }
+}
+
+@include respond-to-max($tablet) {
+  .cmp-center-card {
+    .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--offset--phone--0 {
+      width: 100% !important;
+    }
+  }
+}
+
+@include respond-to-max($tablet) {
+  .cmp-center-card {
+    .cmp-teaser__action-container a {
+      position: relative;
+    }
+  }
+}
+
+.whitebg-container {
+  .cmp-container {
+    margin: toRem(40);
+    padding: 2rem;
+
+    @include media-box-shadow;
+  }
+}
+
+// image and text vartions en

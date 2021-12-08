@@ -1,53 +1,66 @@
-.promo-card .promo-card-row.container {
-  margin-bottom: 0;
-  margin-top: 0;
-  @include respond-to-min($desktop) {
-    margin-bottom: toRem(50);
-    margin-top: toRem(35);
+.promo-card {
+  .promo-card-row.container {
+    margin-bottom: 0;
+    margin-top: 0;
+
+    @include respond-to-min($desktop) {
+      margin-bottom: toRem(50);
+      margin-top: toRem(35);
+    }
   }
 }
 
-.promo-card .promo-card-row .promo-card-section h2 {
-  font-size: toRem(26);
-  letter-spacing: toRem(1.6);
-  line-height: toRem(26);
-  margin-bottom: toRem(16);
-  margin-top: 0;
-}
+.promo-card {
+  .promo-card-row {
+    .promo-card-section {
+      h2 {
+        font-size: $font26;
+        letter-spacing: toRem(1.6);
+        line-height: toRem(26);
+        margin-bottom: toRem(16);
+        margin-top: 0;
 
-.promo-card .promo-card-row .promo-card-section h2 a {
-  color: $white;
-  font-size: toRem(26);
-}
-
-.promo-card .promo-card-section .cmp-teaser__action-link::after {
-  border-right: toRem(1) solid $white;
-  border-top: toRem(1) solid $white;
-  content: '';
-  left: auto;
-  margin-left: toRem(8.8);
-  margin-top: toRem(10.4);
-  padding: toRem(4);
-  position: absolute;
-  transform: translateY(-50%) rotate(45deg);
-  @include rtlBlock() {
-    margin-left: 0;
-    margin-right: toRem(8.8);
-    transform: translateY(-50%) rotate(-135deg);
+        a {
+          color: $white;
+          font-size: $font26;
+        }
+      }
+      .cmp-teaser__action-link::after {
+        border-right: toRem(1) solid $white;
+        border-top: toRem(1) solid $white;
+        content: "";
+        left: auto;
+        margin-left: toRem(8.8);
+        margin-top: toRem(10.4);
+        padding: toRem(4);
+        position: absolute;
+        transform: translateY(-50%) rotate(45deg);
+        @include rtlBlock() {
+          margin-left: 0;
+          margin-right: toRem(8.8);
+          transform: translateY(-50%) rotate(-135deg);
+        }
+      }
+    }
   }
 }
 
 .promo-card .promo-card-section {
-  .cmp-teaser__action-container a {
-    @include font-family-lato();
-    color: $white;
-    font-size: $font14;
-    font-weight: 500;
-    letter-spacing: toRem(2);
-    line-height: toRem(20);
-    text-transform: uppercase;
-    @include rtlBlock() {
-      @include font-family-Neotech-ge();
+  .cmp-teaser__action-container {
+    a {
+      @include font-family-lato();
+      color: $white;
+      font-size: $font14;
+      font-weight: get-font-weight("bold");
+      letter-spacing: toRem(2);
+      line-height: toRem(20);
+      text-transform: uppercase;
+      @include rtlBlock() {
+        @include font-family-Neotech-ge();
+      }
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -57,16 +70,10 @@
   }
 }
 
-.promo-card .promo-card-section {
-  .cmp-teaser__action-container a:hover {
-    text-decoration: underline;
-  }
-}
-
 //premium cards css
 
 .hero-card {
-  @media (min-width: 768px) and (max-width: 990px) {
+  @include respond-to-max($tablet) {
     .promo-card-rev,
     .image-right {
       margin-top: toRem(10);
@@ -77,19 +84,19 @@
       }
 
       .cmp-teaser__content h2 {
-        font-size: 1.375rem;
+        font-size: $font22;
         margin-top: 0;
       }
     }
   }
 
-  @media (max-width: 767px) {
+  @include respond-to-max($tablet) {
     .promo-card-rev,
     .image-right {
       margin-top: toRem(10);
 
       .cmp-teaser__content h2 {
-        font-size: 1.375rem;
+        font-size: $font22;
         line-height: 1.5rem;
         margin-top: 0;
         padding-top: 0;
@@ -159,7 +166,7 @@
 
     .cmp-teaser__image::after {
       background: linear-gradient(0deg, $black, transparent);
-      content: '';
+      content: "";
       height: 100%;
       opacity: 0.3;
       position: absolute;
@@ -169,7 +176,7 @@
     }
 
     .cmp-teaser__content h2 {
-      font-size: 1.625rem;
+      font-size: $font26;
       letter-spacing: toRem(1.63);
       line-height: 2.0625rem;
       padding-top: 1.25rem;
@@ -181,7 +188,7 @@
 
     .cmp-teaser__action-container a {
       font-size: $font14;
-        @include font-family-lato();
+      @include font-family-lato();
       letter-spacing: toRem(2);
       line-height: 1.25rem;
       @include rtlBlock() {
@@ -192,7 +199,7 @@
     .cmp-teaser__action-link::after {
       border-right: toRem(1) solid $main-green;
       border-top: toRem(1) solid $main-green;
-      content: '';
+      content: "";
       left: auto;
       margin-left: toRem(8.8);
       margin-top: toRem(12);
@@ -201,7 +208,7 @@
       transform: translateY(-50%) rotate(45deg);
       @include rtlBlock() {
         margin-left: 0;
-        margin-right:toRem(8.8);
+        margin-right: toRem(8.8);
         transform: translateY(-50%) rotate(-135deg);
       }
     }
@@ -253,7 +260,7 @@
 
     .cmp-teaser__image::after {
       background: linear-gradient(0deg, $black, transparent);
-      content: '';
+      content: "";
       height: 100%;
       opacity: 0.3;
       position: absolute;
@@ -273,14 +280,14 @@
     }
 
     .cmp-teaser__action-container a {
-        @include font-family-lato();
+      @include font-family-lato();
       color: $white;
       font-size: $font14;
       letter-spacing: toRem(2);
       line-height: 1.25rem;
-       @include rtlBlock() {
-      @include font-family-Neotech-ge();
-    }
+      @include rtlBlock() {
+        @include font-family-Neotech-ge();
+      }
     }
 
     .cmp-teaser__action-container a:hover {
@@ -290,7 +297,7 @@
     .cmp-teaser__action-link::after {
       border-right: toRem(1) solid $white;
       border-top: toRem(1) solid $white;
-      content: '';
+      content: "";
       left: auto;
       margin-left: toRem(8.8);
       margin-top: toRem(10);

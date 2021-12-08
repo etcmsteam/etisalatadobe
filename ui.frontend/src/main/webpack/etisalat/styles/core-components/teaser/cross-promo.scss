@@ -1,4 +1,26 @@
-//cross promo banner st
+// .link__arrow {
+//   a {
+//     @include font-family-lato;
+
+//     @include rtlBlock {
+//       font-weight: 300;
+//     }
+//   }
+
+//   a.cmp-teaser__action-link:hover {
+//     text-decoration: underline;
+//   }
+// }
+
+.teaser--pattern__bg.link__arrow {
+  a {
+    @include rtlBlock {
+      @include font-family-Neotech;
+    }
+  }
+}
+
+// cross promo banner st
 .cross-promotion-plain {
   border-radius: toRem(8);
   position: relative;
@@ -11,7 +33,7 @@
       padding: toRem(48);
     }
 
-    @include respond-to-max($tablet) {
+    @include respond-to-max($desktop) {
       padding: toRem(24) toRem(16);
     }
 
@@ -42,14 +64,14 @@
       }
 
       p {
-        font-size: 1rem;
+        font-size: $font16;
         line-height: 1.5;
-        margin-bottom: 1.5rem;
 
         @include font-family-lato;
 
         @include respond-to-max($tablet) {
           font-size: $font14;
+          margin-bottom: 1.5rem;
         }
       }
 
@@ -90,7 +112,7 @@
         width: 100%;
       }
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         left: 6.375rem;
         margin-right: 0;
         right: auto;
@@ -215,28 +237,11 @@
       }
     }
   }
-
-  &__pretitle {
-        color: $white;
-        display: inline-block;
-        font-size: $font14;
-        font-weight: 700;
-        letter-spacing: toRem(4);
-        line-height: toRem(20);
-        margin-bottom: toRem(4);
-        text-transform: uppercase;
-
-        @include font-family-lato;
-
-        @include respond-to-max($tablet) {
-          font-size: $font12;
-        }
-      }
 }
 
-//cross-promo en
+// cross-promo en
 
-//cross promo full bleed st
+// cross promo full bleed st
 .tile-teaser {
   clear: both !important;
   left: 50%;
@@ -253,7 +258,7 @@
       padding: 0 12px;
       width: toRem(756);
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         padding: 0 12px;
       }
     }
@@ -391,7 +396,6 @@
 
         li {
           color: $white;
-          color: $white;
           font-size: $font16;
           line-height: toRem(24);
           margin-bottom: toRem(4);
@@ -405,7 +409,7 @@
             line-height: toRem(20);
           }
 
-          *[lang="ar"] *[dir="rtl"] & {
+          @include rtlBlock {
             font-weight: 300;
             padding-right: 1.5rem;
           }
@@ -421,7 +425,7 @@
             top: toRem(10);
             width: toRem(4);
 
-            *[lang="ar"] *[dir="rtl"] & {
+            @include rtlBlock {
               left: auto;
               right: 0;
             }
@@ -451,7 +455,7 @@
         color: $white;
       }
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         left: auto;
         margin-right: 0;
         right: 0;
@@ -637,7 +641,7 @@
         @include respond-to-max($tablet) {
           float: right;
           font-size: $font16;
-          font-weight: bold;
+          font-weight: get-font-weight("bold");
           letter-spacing: 0;
           text-transform: inherit;
 
@@ -653,29 +657,12 @@
       }
     }
   }
-  &__pretitle {
-        color: $white;
-        display: inline-block;
-        font-size: $font14;
-        font-weight: 700;
-        letter-spacing: toRem(4);
-        line-height: toRem(20);
-        margin-bottom: toRem(4);
-        text-transform: uppercase;
-
-        @include font-family-lato;
-
-        @include respond-to-max($tablet) {
-          font-size: $font12;
-        }
-      }
 }
 
-//cross promo full bleed en
+// cross promo full bleed en
 
-//teaser background pattern
+// teaser background pattern
 .teaser--pattern__bg {
-  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   position: relative;
 
@@ -699,22 +686,6 @@
     right: auto;
     transform: scaleX(-1);
   }
-  &__pretitle {
-        color: $white;
-        display: inline-block;
-        font-size: $font14;
-        font-weight: 700;
-        letter-spacing: toRem(4);
-        line-height: toRem(20);
-        margin-bottom: toRem(4);
-        text-transform: uppercase;
-
-        @include font-family-lato;
-
-        @include respond-to-max($tablet) {
-          font-size: $font12;
-        }
-      }
 }
 
 .cmp-teaser--default-bg.cross-promotion-plain {
@@ -735,7 +706,7 @@
     .cmp-teaser__image {
       margin-left: toRem(24);
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         margin-left: 0;
         margin-right: toRem(24);
       }
@@ -746,129 +717,9 @@
     .cmp-teaser__image {
       margin-right: toRem(24);
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         margin-left: toRem(24);
         margin-right: 0;
-      }
-    }
-  }
-}
-
-.button--primary {
-  .cmp-teaser__action-container {
-    align-items: flex-end;
-    background-color: $main-green;
-    border-color: $main-green;
-    display: grid !important;
-    text-align: center;
-    white-space: nowrap;
-
-    @include secondary-button;
-
-    @include respond-to-max($phone) {
-      min-width: 100%;
-      width: 100%;
-    }
-
-    a {
-      color: $white;
-      font-weight: get-font-weight("bold");
-    }
-
-    &:hover {
-      background-color: $green-btn;
-      border-color: $green-btn;
-    }
-  }
-}
-
-.button--secondary {
-  .cmp-teaser__action-container {
-    align-items: flex-end;
-    background-color: $white;
-    border-color: $white;
-    border-style: solid;
-    display: grid !important;
-    text-align: center;
-    text-align: $white;
-    white-space: nowrap;
-
-    @include secondary-button;
-
-    @include respond-to-max($phone) {
-      min-width: 100%;
-      width: 100%;
-    }
-
-    a {
-      color: $almost-black;
-      font-weight: get-font-weight("bold");
-    }
-  }
-}
-
-.button--transparent {
-  .cmp-teaser__action-container {
-    align-items: flex-end;
-    background-color: transparent;
-    border-color: $white;
-    border-style: solid;
-    display: grid !important;
-    text-align: center;
-    text-align: $white;
-    white-space: nowrap;
-    width: toRem(282);
-
-    @include secondary-button;
-
-    @include respond-to-max($phone) {
-      min-width: 100%;
-      width: 100%;
-    }
-
-    a {
-      color: $white;
-      font-weight: get-font-weight("bold");
-    }
-  }
-}
-
-.link__arrow {
-  .cmp-teaser__action-container {
-    align-items: flex-end;
-    border: 0;
-    display: inline-block;
-    font-size: $font14;
-    letter-spacing: 0.125rem;
-    line-height: 1.25rem;
-    padding-left: 0;
-    padding-right: 0.75rem;
-    text-transform: uppercase;
-
-    a {
-      color: $white;
-
-      *[lang="ar"] *[dir="rtl"] & {
-        padding-left: toRem(10);
-      }
-    }
-
-    &::after {
-      border: solid $white;
-      border-width: 0 1px 1px 0;
-      left: auto !important;
-      padding: toRem(3.25);
-      position: absolute;
-      right: 0 !important;
-      top: toRem(6);
-
-      @include link-arrow;
-
-      *[lang="ar"] *[dir="rtl"] & {
-        left: -1rem;
-        right: auto !important;
-        top: toRem(10);
-        transform: translateY(-50%) rotate(135deg);
       }
     }
   }
@@ -945,7 +796,7 @@ $prefix: "cmp-teaser";
     &__content {
       width: 100%;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         width: 100%;
       }
     }
@@ -957,7 +808,7 @@ $prefix: "cmp-teaser";
       right: 0;
       top: auto !important;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         left: 0;
         margin-right: 0;
         position: relative;
@@ -971,28 +822,6 @@ $prefix: "cmp-teaser";
 
     &::before {
       display: none;
-    }
-  }
-}
-
-.link__arrow {
-  a {
-    @include font-family-lato;
-
-    *[lang="ar"] *[dir="rtl"] & {
-      font-weight: 300;
-    }
-  }
-
-  a.cmp-teaser__action-link:hover {
-    text-decoration: underline;
-  }
-}
-
-.teaser--pattern__bg.link__arrow {
-  a {
-    *[lang="ar"] *[dir="rtl"] & {
-      @include font-family-Neotech;
     }
   }
 }
