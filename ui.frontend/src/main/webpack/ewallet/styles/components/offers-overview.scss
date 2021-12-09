@@ -158,28 +158,41 @@
 }
 
 .bgoffers_blurb {
-  top: 165px;
-  left: 25px;
+  top: 155px;
   position: relative;
   .cmp-container {
-    background: url("https://ewallet.ae/en/system/assets/images/img-oval_tcm451-117037.png") 0 0 no-repeat;
+    background: url("../resources/images/img-oval_tcm451-117037.png") 0 0 no-repeat;
     background-size: contain;
     position: absolute;
-    width: 450px !important;
+    
     height: 460px;
     right: 40px;
-    top: 100px;
-    z-index: 1;
+    z-index: 10;
+    @include respond-to-max($desktop) {
+      width: 420px !important;
+      height: 460px;
+    }
+    @include respond-to-max($phone) {
+      top: 100px;
+      right: 0;
+      left: 20px;
+      width: 316px !important;
+    }
+    @include respond-to-min($desktop-wide) {
+      width: 450px !important;
+    }
     .text {
       position: relative;
       width: 500px;
       height: 460px;
       .cmp-text {
         position: absolute;
-        top: 150px;
-        right: 20px;
-        width: 400px;
         color: $white;
+        @include respond-to-min($desktop) {
+          top: 140px;
+          left: 50px;
+          width: 400px;
+        }
         h3 {
           font-size: toRem(40);
           color: $white !important;
