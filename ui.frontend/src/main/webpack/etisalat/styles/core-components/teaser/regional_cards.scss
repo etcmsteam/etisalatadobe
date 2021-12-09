@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .promo-card {
   .promo-card-row {
     .promo-card-section {
@@ -50,22 +51,27 @@
     &__action-container {
       a {
         @include font-family-lato();
+
         color: $white;
         font-size: $font14;
         font-weight: get-font-weight("bold");
         letter-spacing: toRem(2);
         line-height: toRem(20);
         text-transform: uppercase;
+
         @include rtlBlock() {
           @include font-family-Neotech-ge();
         }
+
         &:hover {
           text-decoration: underline;
         }
       }
     }
+
     &__title a {
       color: $white;
+
       &:hover {
         color: $white;
       }
@@ -88,6 +94,7 @@
 
       .cmp-teaser {
         border-radius: toRem(4);
+
         &__content h2 {
           font-size: $font22;
           line-height: 1.5rem;
@@ -100,6 +107,7 @@
         }
       }
     }
+
     .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--offset--phone--0 {
       width: 100% !important;
     }
@@ -119,7 +127,6 @@
     }
 
     .cmp-teaser {
-      border: 1px solid red;
       box-shadow: 0 toRem(5) toRem(15) 0 rgb(0 0 0 / 15%);
       display: flex;
       flex-direction: row-reverse;
@@ -171,11 +178,13 @@
             margin-top: toRem(10);
             padding-top: 0;
           }
+
           h2 {
             font-size: $font26;
             letter-spacing: toRem(1.63);
             line-height: 2.0625rem;
             padding-top: 1.25rem;
+
             a {
               color: $almost-black;
             }
@@ -187,8 +196,8 @@
         font-size: $font14;
 
         @include font-family-lato();
-        letter-spacing: toRem(2);
 
+        letter-spacing: toRem(2);
         line-height: 1.25rem;
 
         @include rtlBlock() {
@@ -205,6 +214,7 @@
           padding: toRem(4);
           position: absolute;
           transform: translateY(-50%) rotate(45deg);
+
           @include rtlBlock() {
             margin-left: 0;
             margin-right: toRem(8.8);
@@ -218,6 +228,7 @@
   .promo-card-rev {
     margin-bottom: 0;
     padding: 0;
+
     @include respond-to-min($tablet) {
       margin: 0;
     }
@@ -235,6 +246,14 @@
       position: absolute;
       width: 100%;
       z-index: 3;
+
+      h1 {
+        color: $white;
+      }
+
+      h2 a {
+        color: $white;
+      }
     }
 
     .cmp-teaser__image {
@@ -248,16 +267,6 @@
       font-size: 1.625rem;
       letter-spacing: toRem(1.63);
       line-height: 2.0625rem;
-    }
-
-    .cmp-teaser__content {
-      h1 {
-        color: $white;
-      }
-
-      h2 a {
-        color: $white;
-      }
     }
 
     .cmp-teaser__image::after {
@@ -283,10 +292,12 @@
 
     .cmp-teaser__action-container a {
       @include font-family-lato();
+
       color: $white;
       font-size: $font14;
       letter-spacing: toRem(2);
       line-height: 1.25rem;
+
       @include rtlBlock() {
         @include font-family-Neotech-ge();
       }
@@ -310,6 +321,7 @@
       @include respond-to-min($desktop) {
         margin-top: toRem(10);
       }
+
       @include rtlBlock() {
         margin-left: 0;
         margin-right: toRem(8.8);
@@ -323,13 +335,14 @@
   .hero-card {
     .promo-card-rev .cmp-teaser {
       padding-left: 0;
+
       // max-height: toRem(546);
       padding-right: 0;
     }
 
     .cmp-teaser__image {
       border-radius: toRem(4);
-      max-height: toRem(522);
+      max-height: toRem(525) !important;
       overflow: hidden;
     }
 
@@ -337,6 +350,7 @@
       font-size: $font26;
       margin: 0;
       padding-top: 5rem;
+      color: $white;
 
       a,
       a:hover {
@@ -513,6 +527,7 @@
           border-radius: toRem(4);
         }
       }
+
       &.container {
         &:nth-of-type(1) {
           margin-top: toRem(35);
@@ -534,6 +549,14 @@
   @include respond-to-min($desktop) {
     padding-left: toRem(12) !important;
   }
+
+  @include rtlBlock() {
+    padding-right: 0 !important;
+
+    @include respond-to-min($desktop) {
+      padding-right: toRem(12) !important;
+    }
+  }
 }
 
 .gutter-padding-right {
@@ -541,5 +564,13 @@
 
   @include respond-to-max($desktop) {
     padding-right: toRem(12) !important;
+  }
+
+  @include rtlBlock() {
+    padding-left: 0 !important;
+
+    @include respond-to-max($desktop) {
+      padding-left: toRem(12) !important;
+    }
   }
 }
