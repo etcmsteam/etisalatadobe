@@ -1,7 +1,15 @@
 // elife table filter popups module
 .e-life-modal {
-  @include respond-to-max($desktop - 1) {
-    .nv-modal-close {
+  .nv-modal-close {
+    @include rtlBlock() {
+      margin-left: $margin-step-0;
+      left: 0;
+      @include respond-to-max($tablet) {
+        left: toRem(30);
+      }
+    }
+
+    @include respond-to-max($desktop - 1) {
       height: 16px;
       width: 16px;
 
@@ -202,6 +210,11 @@
 
     @include respond-to-min($desktop) {
       padding: 48px 0 !important;
+    }
+    strong {
+      @include rtlBlock() {
+        font-weight: get-font-weight("bold");
+      }
     }
   }
 
@@ -743,6 +756,10 @@
 
       .cmp-image {
         margin-right: 8px;
+        
+        @include rtlBlock() {
+          margin-right: $margin-step-0;
+        }
 
         @include respond-to-min($desktop) {
           margin-right: 40px;
@@ -1322,9 +1339,8 @@
   border: 0;
 }
 
-  th {
-    
-    @include rtlBlock() {
+th {
+  @include rtlBlock() {
     text-align: right;
   }
 }
