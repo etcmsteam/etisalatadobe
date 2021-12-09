@@ -1,69 +1,50 @@
+/* eslint-disable no-undef */
+(function ($) {
+  // Class
+  const SHOW_CLASS = "show";
+  const HIDE_CLASS = "hidden";
 
-// Nested Accordion View All, View Less Script
-$(".accordion-view").click(function () {
-    if (!$(".more").hasClass('hidden') &&
-        $(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function (index) {
-            var numberOfItems = $('.cmp-viewall').attr('data-items-show');
-            if ($(this).hasClass('hidden')) {
-                $(this).addClass('show');
-                $(this).removeClass('hidden');
-                $(".less").removeClass('hidden');
-                $(".more").addClass('hidden');
-            }
-        });
+  // Selector
+  const MORE_CLASS = $(".more");
+  const LESS_CLASS = $(".less");
+  const ACCORDION_VIEW_CLASS = $(".accordion-view");
+  const LIST_ITEM_VIEW_CLASS = $(".listitems-view");
+  const CMP_VIEWALL_CLASS = $(".cmp-viewall");
 
-
-
-    } else if ($(".more").hasClass('hidden') &&
-        !$(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function (index) {
-            var numberOfItems = $('.cmp-viewall').attr('data-items-show');
-            if ((index + 1) > numberOfItems) {
-                $(this).addClass('hidden');
-                $(this).removeClass('show');
-                $(".accordion-view").addClass('show');
-                $(".accordion-view").removeClass('hidden');
-                $(".more").removeClass('hidden');
-                $(".less").addClass('hidden');
-            }
-        });
-
+  function accordionView(param) {
+    if (!MORE_CLASS.hasClass(HIDE_CLASS) && LESS_CLASS.hasClass(HIDE_CLASS)) {
+      CMP_VIEWALL_CLASS.children().each(function () {
+        if ($(this).hasClass(HIDE_CLASS)) {
+          $(this).addClass(SHOW_CLASS);
+          $(this).removeClass(HIDE_CLASS);
+          LESS_CLASS.removeClass(HIDE_CLASS);
+          MORE_CLASS.addClass(HIDE_CLASS);
+        }
+      });
+    } else if (MORE_CLASS.hasClass(HIDE_CLASS) && !LESS_CLASS.hasClass(HIDE_CLASS)) {
+      CMP_VIEWALL_CLASS.children().each(function (index) {
+        var numberOfItems = CMP_VIEWALL_CLASS.attr("data-items-show");
+        if (index + 1 > numberOfItems) {
+          $(this).addClass(HIDE_CLASS);
+          $(this).removeClass(SHOW_CLASS);
+          if (param === "accordion") {
+            ACCORDION_VIEW_CLASS.addClass(SHOW_CLASS);
+            ACCORDION_VIEW_CLASS.removeClass(HIDE_CLASS);
+          } else if (param === "list") {
+            LIST_ITEM_VIEW_CLASS.addClass(SHOW_CLASS);
+            LIST_ITEM_VIEW_CLASS.removeClass(HIDE_CLASS);
+          }
+          MORE_CLASS.removeClass(HIDE_CLASS);
+          LESS_CLASS.addClass(HIDE_CLASS);
+        }
+      });
     }
+  }
 
-});
-
-
-//accordion inside list
-$(".listitems-view").click(function () {
-    if (!$(".more").hasClass('hidden') &&
-        $(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function (index) {
-            var numberOfItems = $('.cmp-viewall').attr('data-items-show');
-            if ($(this).hasClass('hidden')) {
-                $(this).addClass('show');
-                $(this).removeClass('hidden');
-                $(".less").removeClass('hidden');
-                $(".more").addClass('hidden');
-            }
-        });
-
-
-
-    } else if ($(".more").hasClass('hidden') &&
-        !$(".less").hasClass('hidden')) {
-        $(".cmp-viewall").children().each(function (index) {
-            var numberOfItems = $('.cmp-viewall').attr('data-items-show');
-            if ((index + 1) > numberOfItems) {
-                $(this).addClass('hidden');
-                $(this).removeClass('show');
-                $(".listitems-view").addClass('show');
-                $(".listitems-view").removeClass('hidden');
-                $(".more").removeClass('hidden');
-                $(".less").addClass('hidden');
-            }
-        });
-
-    }
-
-});
+  ACCORDION_VIEW_CLASS.on("click", function () {
+    accordionView("accordion");
+  });
+  LIST_ITEM_VIEW_CLASS.on("click", function () {
+    accordionView("list");
+  });
+})(jQuery);
