@@ -121,6 +121,13 @@
 .success-message {
   .cmp-container {
     overflow: hidden;
+    position: relative;
+
+    @include respond-to-max($tablet) {
+      padding: 0 toRem(16);
+      width: toRem(756);
+      margin: 0 auto;
+    }
   }
 
   .cmp-text {
@@ -176,6 +183,7 @@
           padding-left: 1.5rem;
           padding-right: 1.5rem;
           width: 100% !important;
+          @include font-family-lato;
 
           p {
             color: $gray-fill;
@@ -200,6 +208,7 @@
   background: $white;
   height: 100%;
   left: 0;
+  overflow: auto;
   padding: 0;
   position: fixed;
   top: 0;
@@ -225,7 +234,6 @@
 // ============= CLOSE BTN =============
 .form-close {
   height: toRem(32);
-  opacity: 0.3;
   position: absolute;
   right: toRem(32);
   top: toRem(32);
