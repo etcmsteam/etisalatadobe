@@ -2,6 +2,14 @@
   z-index: 2;
   position: relative;
 
+  .ewallet_cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: toRem(870);
+  }
+
   // News
   &.ewallet_news {
     overflow: hidden;
@@ -121,61 +129,43 @@
 
   // Faq
   &.ewallet_faq {
-    overflow: hidden;
-    @include respond-to-max($tablet) {
-      height: toRem(360);
-    }
-    @include respond-to-min($tablet) {
-      height: toRem(516);
-    }
-    @include respond-to-min($desktop) {
-      height: toRem(505);
-    }
-    @include respond-to-min($desktop-wide) {
-      height: toRem(748);
-    }
+    height: toRem(748);
+    // Personal Page
     &.landing_page {
+      height: toRem(870);
       @include respond-to-max($tablet) {
-        height: toRem(360);
-        .cmp-container {
-          height: toRem(360);
-        }
-      }
-      @include respond-to-min($tablet) {
-        height: toRem(516);
-      }
-      @include respond-to-min($desktop) {
-        height: toRem(510);
-      }
-      @include respond-to-min($desktop-wide) {
-        height: toRem(860);
-        .ewallet_cover {
-          &:after {
-            top: toRem(460) !important;
-          }
-        }
-        .teaser {
-          padding-top: 220px !important;
-        }
-      }
-    }
-    .cmp-container {
-      @include respond-to-max($tablet) {
-        height: toRem(600);
-        top: toRem(-15);
-      }
-      @include respond-to-min($tablet) {
-        height: toRem(755);
-      }
-      @include respond-to-min($desktop) {
-        height: toRem(735);
-        top: toRem(-6);
-      }
-      @include respond-to-min($desktop-wide) {
-        height: toRem(1000);
-        top: toRem(-4);
+        height: auto;
       }
       .ewallet_cover {
+        @include respond-to-max($tablet) {
+          height: toRem(360);
+        }
+        @include respond-to-min($tablet) {
+          height: toRem(516);
+        }
+        @include respond-to-min($desktop) {
+          height: toRem(505);
+        }
+        @include respond-to-min($desktop-wide) {
+          height: toRem(860);
+        }
+        .cmp-container {
+          @include respond-to-max($tablet) {
+            height: toRem(600);
+            top: toRem(-15);
+          }
+          @include respond-to-min($tablet) {
+            height: toRem(755);
+          }
+          @include respond-to-min($desktop) {
+            height: toRem(735);
+            top: toRem(-6);
+          }
+          @include respond-to-min($desktop-wide) {
+            height: toRem(1000);
+            top: toRem(-4);
+          }
+        }
         &:after {
           background-image: url("../resources/images/img-main-lx.png");
           top: toRem(110);
@@ -197,9 +187,71 @@
           @include respond-to-min($desktop-wide) {
             width: 100%;
             height: toRem(460);
-            top: toRem(293);
+            top: toRem(400);
             left: toRem(0);
           }
+        }
+      }
+      .banner_content .cmp-container .teaser{
+        @include respond-to-max($tablet) {
+          padding-top: 90px 15px 0 15px;
+          border: 2px solid teal;
+        }
+      }
+    }
+    .ewallet_cover {
+      @include respond-to-max($tablet) {
+        height: toRem(360);
+      }
+      @include respond-to-min($tablet) {
+        height: toRem(516);
+      }
+      @include respond-to-min($desktop) {
+        height: toRem(505);
+      }
+      @include respond-to-min($desktop-wide) {
+        height: toRem(748);
+      }
+      &:after {
+        background-image: url("../resources/images/img-main-lx.png");
+        bottom: toRem(0);
+        @include respond-to-max($tablet) {
+          height: toRem(174);
+          left: toRem(59);
+          bottom: toRem(0);
+        }
+        @include respond-to-min($tablet) {
+          width: 120%;
+          height: toRem(406);
+          left: toRem(-78);
+        }
+        @include respond-to-min($desktop) {
+          height: toRem(402);
+          width: 100%;
+          left: toRem(0);
+        }
+        @include respond-to-min($desktop-wide) {
+          width: 100%;
+          height: toRem(460);
+          bottom: toRem(0);
+          left: toRem(0);
+        }
+      }
+      .cmp-container {
+        @include respond-to-max($tablet) {
+          height: toRem(600);
+          top: toRem(-15);
+        }
+        @include respond-to-min($tablet) {
+          height: toRem(755);
+        }
+        @include respond-to-min($desktop) {
+          height: toRem(735);
+          top: toRem(-6);
+        }
+        @include respond-to-min($desktop-wide) {
+          height: toRem(1000);
+          top: toRem(-4);
         }
       }
     }
@@ -221,7 +273,7 @@
       height: toRem(675);
     }
     .cmp-container {
-      @include respond-to-max($phone) {
+      @include respond-to-max($tablet) {
         height: toRem(390);
         top: toRem(-15);
       }
@@ -302,6 +354,7 @@
         top: toRem(-4);
       }
       .ewallet_cover {
+        height: toRem(870);
         &:after {
           background-image: url("../resources/images/img-location-contact-us-lx.png");
           top: toRem(110);
@@ -338,13 +391,11 @@
   .cmp-container {
     position: relative;
     .ewallet_cover {
-      position: relative;
       &:after {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: bottom;
         position: absolute;
-        left: toRem(0);
         content: "";
         z-index: 1;
         min-width: 100%;
@@ -361,7 +412,7 @@
       .teaser {
         @extend .wrapper;
         color: $white;
-        @include respond-to-max($tablet) {
+        @include respond-to-max($desktop) {
           padding: 140px 15px 0 15px;
         }
         @include respond-to-min($tablet) {
@@ -401,7 +452,6 @@
             padding-right: 20px;
             font-weight: 700;
             color: $white;
-            margin-bottom: 40px;
             @include respond-to-min($tablet) {
               font-size: 20px;
             }
@@ -421,7 +471,6 @@
             font-weight: 700;
             position: relative;
             overflow: hidden;
-            -webkit-transform: translateZ(0);
             color: $white;
             background-color: $link-color;
             border-color: $link-color;
@@ -438,42 +487,29 @@
             color: $white;
             background-color: $green-btn;
             border-color: $green-btn;
+            text-decoration: none;
           }
         }
       }
       .buttonstore {
         @extend .wrapper;
         .cmp_btn {
-          width: 150px;
           display: content;
+          margin-top: 20px;
           .cmp_store_btn {
             cursor: pointer;
-            background: url("../resources/images/google-play.png") no-repeat;
-            height: 45px;
             display: inline-block;
-            text-indent: -9999px;
             border-radius: 5px;
             background-size: cover;
-            width: 100%;
-            max-width: 150px;
-            &:last-child{
-              background: url("../resources/images/icon-stores.png") no-repeat;
-            }
-            p {
-              display: none;
-            }
+            width: 150px;
             @include respond-to-max($tablet) {
               margin-bottom: 5px;
               padding: 2px 12px;
             }
             a {
-              display: flex;
-              color: $white;
-              text-decoration: none;
-            }
-            i {
-              -webkit-transition-duration: 0.5s;
-              transition-duration: 0.5s;
+              img{
+                width: 100%;
+              }
             }
           }
         }
@@ -504,8 +540,6 @@
   }
 }
 
-
-
 .cmp-embedded-video {
   margin: 20px 0;
 }
@@ -514,7 +548,7 @@
     width: 100% !important;
     margin: 0 10px;
   }
-  .cmp-text{
+  .cmp-text {
     @include respond-to-min($desktop) {
       margin: 70px 10px 25px 80px;
       padding: 0;
@@ -523,7 +557,6 @@
       margin: 0 15px;
       padding: 0;
     }
-
   }
   h2 {
     margin: 15px 0 20px;
