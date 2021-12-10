@@ -10,6 +10,11 @@
     height: toRem(870);
   }
 
+  .banner_content .banner_teaser {
+    @include respond-to-max($phone) {
+      min-height: 350px;
+    }
+  }
     // Hotels Blurb
     &.ewallet_hotels {
       overflow: hidden;
@@ -17,25 +22,27 @@
         height: toRem(288);
       }
       @include respond-to-min($tablet) {
-        height: toRem(330);
+        height: toRem(490);
       }
       @include respond-to-min($desktop) {
-        height: toRem(423);
+        height: toRem(519);
       }
       @include respond-to-min($desktop-wide) {
         height: toRem(745);
       }
       .cmp-container {
+        border: 2px solid yellow;
         @include respond-to-max($tablet) {
           height: toRem(288);
           top: toRem(-15);
         }
         @include respond-to-min($tablet) {
-          height: toRem(330);
+          height: toRem(440);
           top: toRem(-1);
+          
         }
         @include respond-to-min($desktop) {
-          height: toRem(735);
+          height: toRem(437);
           top: toRem(-7);
         }
         @include respond-to-min($desktop-wide) {
@@ -47,7 +54,7 @@
             background-image: url("../resources/images/img-location-contact-us-rx.png");
             top: toRem(110);
             @include respond-to-max($tablet) {
-              width: 191%;
+              // width: 191%;
               height: toRem(173);
               left: toRem(-171);
               top: toRem(102);
@@ -59,7 +66,7 @@
               height: toRem(320);
             }
             @include respond-to-min($desktop-wide) {
-              width: 111%;
+              //width: 111%;
               height: toRem(642);
             }
           }
@@ -67,7 +74,6 @@
         .banner-content .teaser{
           h1{
             margin-top: 30px;
-            border: 2px dashed red;
           }
         }
       }
@@ -198,12 +204,13 @@
   // Faq
   &.ewallet_faq {
     height: toRem(748);
+    @include respond-to-max($tablet) {
+      height: auto;
+    }
     // Personal Page
     &.landing_page {
       height: toRem(870);
-      @include respond-to-max($tablet) {
-        height: auto;
-      }
+      
       .ewallet_cover {
         @include respond-to-max($tablet) {
           height: toRem(360);
@@ -260,7 +267,8 @@
           }
         }
       }
-      .banner_content .cmp-container .teaser{
+      
+      .teaser{
         @include respond-to-max($tablet) {
           padding: 90px 15px 0 15px;
         }
@@ -454,7 +462,19 @@
       }
     }
   }
-
+  &.ewallet_hotels{
+    .teaser {
+      @include respond-to-min($desktop-wide) {
+        border: 2px dashed yellow;
+        padding-top: 210px !important;
+      }
+      .cmp-teaser__content{
+        @include respond-to-max($desktop) {
+          width: 70%;
+        }
+      }
+    }
+  }
   .cmp-container {
     position: relative;
     .ewallet_cover {
@@ -547,6 +567,10 @@
             font-size: 16px;
             line-height: 18px;
             letter-spacing: 0;
+            @include respond-to-max($phone) {
+              display: block;
+              width: 100%;
+            }
           }
           .cmp-teaser__action-link.active,
           .cmp-teaser__action-link:hover {
@@ -561,8 +585,6 @@
       .buttonstore {
         @extend .wrapper;
         .cmp_btn {
-          display: content;
-          margin-top: 20px;
           .cmp_store_btn {
             cursor: pointer;
             display: inline-block;
@@ -630,7 +652,7 @@
     font-size: 32px;
     color: $black-grey;
     line-height: 54px;
-    @include respond-to-min($desktop) {
+    @include respond-to-min($tablet) {
       font-size: 48px;
     }
   }

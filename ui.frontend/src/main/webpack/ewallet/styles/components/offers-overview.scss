@@ -164,7 +164,6 @@
     background: url("../resources/images/img-oval_tcm451-117037.png") 0 0 no-repeat;
     background-size: contain;
     position: absolute;
-    
     height: 460px;
     right: 40px;
     z-index: 10;
@@ -178,17 +177,27 @@
       left: 20px;
       width: 316px !important;
     }
+    @include respond-to-min($desktop) {
+      width: 420px !important;
+      right: 40px;
+    }
     @include respond-to-min($desktop-wide) {
       width: 450px !important;
+      right: 240px;
     }
     .text {
       position: relative;
-      width: 500px;
+      width: 450px;
       height: 460px;
       .cmp-text {
         position: absolute;
         color: $white;
         @include respond-to-min($desktop) {
+          top: 110px;
+          left: 30px;
+          width: 320px;
+        }
+        @include respond-to-min($desktop-wide) {
           top: 140px;
           left: 50px;
           width: 400px;
