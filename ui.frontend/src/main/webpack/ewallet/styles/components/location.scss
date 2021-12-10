@@ -214,7 +214,7 @@
   float: left;
   width: 100%;
   @include respond-to-max($desktop) {
-      margin-top: 50px;
+    margin-top: 50px;
   }
   @include respond-to-max($tablet) {
     padding: 25px;
@@ -420,21 +420,40 @@
     }
   }
 }
+
+.locateus-autocomplete .ui-widget-content {
+  border: 1px solid $border-white;
+  &:hover {
+    border: 1px solid $border-white;
+  }
+}
 .locateus-autocomplete .ui-menu-item-wrapper {
   padding: 0.3rem 0.5rem;
-  border-top: 1px solid $grey-bottom !important;
-
-  &:hover{
-    background-color: $gray-base;
+  border: none;
+  background-color: $white;
+  border-bottom: 1px solid $grey-bottom !important;
+  &:hover {
+    padding: 0.3rem 0.5rem;
+    background-color: $light-grey;
+    border-bottom: none;
+    border: 1px solid $border-white;
   }
-  .ui-menu-item-title{
-    font-weight: 700;
-    font-size: .9rem;
+  .ui-menu-item {
+    padding: 6px 10px;
   }
-  .ui-menu-item-desc{
+  .ui-menu-item-title {
     font-weight: 700;
-    font-size: .8rem;
-    color: #999;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 23.4px;
+    color: $black2;
+  }
+  .ui-menu-item-desc {
+    font-weight: 500;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 20.8px;
+    color: $dropdown-grey;
   }
 }
 .mapview-wrap {
@@ -585,8 +604,8 @@
     }
   }
   .map-wrap {
-   padding: 0 !important;
-   height: 760px;
+    padding: 0 !important;
+    height: 760px;
 
     iframe {
       width: 100%;
