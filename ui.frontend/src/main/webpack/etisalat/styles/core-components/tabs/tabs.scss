@@ -9,18 +9,18 @@
 }
 
 .panel-collapse {
-  font-size: 1rem !important;
+  font-size: $font16 !important;
   line-height: 1.8rem !important;
 }
 
 .cmp-teaser__description {
   ul li {
     color: $dark-gray;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    @include font-family-lato;
     font-size: $font20;
     font-weight: get-font-weight("regular");
     line-height: toRem(20);
-    margin: 0 0 0.5rem;
+    margin: 0 0 toRem(8);
     position: relative;
   }
 }
@@ -47,7 +47,7 @@
     transform: translateY(-50%) rotate(-45deg);
     transition: all 0.3s ease-in-out;
 
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock() {
       left: toRem(-13);
       right: auto;
       transform: translateY(-50%) rotate(135deg);
@@ -62,16 +62,17 @@
   }
 
   .panel-collapse {
-    background: rgb(255, 255, 255);
-    padding: 1rem;
+    background: $white;
+    padding: toRem(16);
 
     @include respond-to-max($phone) {
       background-color: $white-gray1;
-      padding: 0 1rem 1rem;
+      padding: 0 toRem(16) toRem(16);
     }
   }
 
   .cmp-teaser {
+    border: 1px solid red;
     @include respond-to-max($phone) {
       border-radius: toRem(4);
       box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
@@ -79,15 +80,17 @@
   }
 
   .cmp-teaser__content {
+    border: 1px solid green;
     @include respond-to-max($phone) {
       background-color: $white;
-      padding: 1rem 1rem 2rem;
+      padding: toRem(16) toRem(16) 2rem;
     }
   }
 
   .cmp-teaser__action-container {
+    border: 1px solid blue;
     @include respond-to-max($phone) {
-      margin-top: 1rem;
+      margin-top: toRem(16);
     }
   }
 
@@ -100,14 +103,12 @@
 
   .cmp_tabs__verticle_view_img {
     .panel-collapse {
-      background: rgb(255, 255, 255);
-      border-radius: toRem(4);
-      box-shadow: rgb(0 0 0 / 10%) 0 5px 10px 0;
-      margin: 1rem 1rem 3rem;
-      padding: 1rem;
+      @include box-shadow;
+      margin: toRem(16) toRem(16) 3rem;
+      padding: toRem(16);
 
       .cmp-teaser__action-container {
-        margin: 1rem 0;
+        margin: toRem(16) 0;
       }
     }
   }
@@ -117,14 +118,13 @@
       color: $almost-black;
       font-size: $font18;
       font-weight: get-font-weight("bold");
-      margin-bottom: 1rem;
+      margin-bottom: toRem(16);
       margin-top: 0;
-
-      @include font-family-lato;
-
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock {
         font-weight: get-font-weight("light");
       }
+
+      @include font-family-lato;
     }
 
     p {
@@ -151,11 +151,11 @@
   }
 
   .get-more-section .desktop-body .get-more-details .get-more-title-small {
-    margin-bottom: 1rem;
+    margin-bottom: toRem(16);
   }
 
   .nav-view-wrapp.panel > a {
-    font-size: toRem(16);
+    font-size: $font16;
   }
 
   .nav-view-wrapp span {
@@ -170,8 +170,7 @@
 
   .nav-view-wrapp.panel > :not(a.collapsed) {
     font-size: $font14;
-    font-weight: 900 !important;
-
+    font-weight: get-font-weight("heavy");
     @include font-family-lato;
   }
 
@@ -179,7 +178,7 @@
     &.panel {
       & > a {
         &::before {
-          border: solid #b2b2b2;
+          border: solid $grey4;
           border-width: 0 toRem(1) toRem(1) 0;
           content: "";
           line-height: 1;
@@ -201,22 +200,22 @@
 
   .cmp_accordion___view {
     .nav-view-wrapp.panel > a {
-      background: #fff;
-      border-bottom: 1px solid #d8d8d8;
+      background: $white;
+      border-bottom: 1px solid $grey5;
       font-size: toRem(16);
     }
   }
 
   .cmp_tabs__verticle_view_img {
     .panel-collapse {
-      background: rgb(255, 255, 255);
+      background: $white;
       border-radius: toRem(4);
       box-shadow: rgb(0 0 0 / 10%) 0 5px 10px 0;
-      margin: 1rem 1rem 3rem;
-      padding: 1rem;
+      margin: toRem(16) toRem(16) 3rem;
+      padding: toRem(16);
 
       .cmp-teaser__action-container {
-        margin: 1rem 0;
+        margin: toRem(16) 0;
       }
     }
   }
@@ -224,9 +223,7 @@
   .nav-view-wrapp.panel > a,
   .nav-view-wrapp.panel > a.collapsed {
     align-items: center;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
     flex-direction: row-reverse;
     justify-content: flex-end;
     letter-spacing: normal;
@@ -238,7 +235,7 @@
 
   .nav-view-wrapp.panel > a.collapsed {
     color: $steel-grey;
-    font-weight: 900;
+    font-weight: get-font-weight("heavy");
   }
 
   .nav-view-wrapp.panel > a.collapsed::before {
@@ -246,7 +243,7 @@
   }
 
   .nav-view-wrapp.panel > a::before {
-    border: solid #b2b2b2;
+    border: solid $grey4;
     border-width: 0 toRem(1) toRem(1) 0;
     content: "";
     line-height: 1;
@@ -264,18 +261,16 @@
   }
 
   .get-more-section .desktop-body {
-    background-color: #f7f8f4;
+    background-color: $sand-white-50;
   }
 
   .get-more-section .desktop-body {
-    background-color: #f7f8f4;
-    display: -ms-flexbox;
+    background-color: $sand-white-50;
     display: flex;
-    -ms-flex-direction: column;
     flex-direction: column;
     padding: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: toRem(16);
+    padding-right: toRem(16);
   }
 
   .get-more-section .desktop-body .get-more-details {
@@ -358,7 +353,7 @@
       display: flex;
       flex-direction: row-reverse;
       justify-content: flex-end;
-      padding: 1rem;
+      padding: toRem(16);
       text-align: left;
 
       @include font-family-Neotech;
@@ -471,7 +466,7 @@
   }
 
   .cmp-teaser__content {
-    padding: 0 1rem 0 0;
+    padding: 0torem (16) 0 0;
     width: 100%;
   }
 
@@ -566,7 +561,7 @@
 
     p {
       color: $gray !important;
-      font-size: 1rem;
+      font-size: toRem(16);
       line-height: 1.625rem;
       margin: toRem(20) 0;
 
@@ -686,7 +681,7 @@
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-end;
-        padding: 1rem;
+        padding: toRem(16);
         text-align: left;
 
         @include font-family-lato;
@@ -716,7 +711,7 @@
       cursor: pointer;
       font-size: 1.125rem;
       line-height: 1.4;
-      padding: 1rem;
+      padding: toRem(16);
 
       &--active {
         // border-color: inherit;
@@ -727,7 +722,7 @@
         // border-left: 4px solid #719e19;
         font-weight: 700;
         line-height: 1.4;
-        padding: 1rem 1rem 1rem 0.7rem !important;
+        padding: toRem(16) toRem(16) toRem(16) 0.7rem !important;
         position: relative;
 
         @include font-family-lato;
@@ -766,7 +761,7 @@
     }
 
     .cmp-teaser__content {
-      padding: 0 1rem 0 0;
+      padding: 0 toRem(16) 0 0;
       width: 100%;
     }
 
@@ -846,7 +841,7 @@
         color: $almost-black;
         font-size: $font26;
         font-weight: 400;
-        margin-bottom: 1rem;
+        margin-bottom: toRem(16);
 
         @include font-family-Neotech;
       }
@@ -859,7 +854,7 @@
       font-size: toRem(32);
       margin-left: 2rem;
       position: relative;
-      top: 1rem;
+      top: toRem(16);
 
       @include font-family-Neotech;
     }
@@ -962,7 +957,7 @@
       font-size: $font14;
       line-height: toRem(19);
       min-height: toRem(428);
-      padding: 1.5rem 1rem 0 1.5rem;
+      padding: 1.5rem toRem(16) 0 1.5rem;
       position: relative;
       width: 50%;
 
@@ -1160,14 +1155,14 @@
     margin: 2rem 0 4rem 2rem;
 
     @include md {
-      margin: 1rem;
+      margin: toRem(16);
     }
   }
 }
 
 @media (max-width: 770px) {
   h3 {
-    // margin: 1rem;
+    // margin: toRem(16);
     // padding-top:20px;
     font: $font20;
   }
@@ -1185,7 +1180,7 @@
   margin: 2rem 0 4rem 2rem;
 
   @include md {
-    margin: 1rem;
+    margin: toRem(16);
   }
 }
 
@@ -1218,7 +1213,7 @@
   ul li {
     font-weight: get-font-weight("light");
     padding-left: 0;
-    padding-right: 1rem;
+    padding-right: toRem(16);
   }
 }
 

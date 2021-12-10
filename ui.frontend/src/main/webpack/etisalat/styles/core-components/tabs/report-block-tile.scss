@@ -1,23 +1,42 @@
+// arabic
+.report-block-tile {
+  p {
+    @include rtlBlock() {
+      text-align: left;
+    }
+  }
+
+  &.bgpattern {
+    background: linear-gradient(225deg, $white 0%, $white 100%);
+
+    &::after,
+    &::before {
+      left: 0;
+      right: auto;
+      transform: rotate(180deg);
+    }
+  }
+}
+
 .basicpage .report-block-tile {
   border-radius: toRem(8);
   box-shadow: 0 toRem(5) toRem(10) 0 rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
-  padding: 3.2375rem 3.2375rem 2.2175rem;
+  margin-bottom: toRem(16);
+  padding: toRem(51.8) toRem(51.8) toRem(35.48) !important;
   position: relative;
 
   @include respond-to-max($desktop) {
-    padding: 1.8rem;
+    padding: toRem(28.8);
   }
 
   @include respond-to-max($tablet) {
-    padding: 1;
+    padding: toRem(1);
   }
 
   h2 {
     color: $almost-black;
     font-size: $font20;
     line-height: toRem(28);
-    margin-bottom: 10;
     margin-top: toRem(5);
 
     @include respond-to-min($desktop) {
@@ -35,7 +54,7 @@
   }
 
   h6 {
-    color: #909090;
+    color: $grey-bg;
     font-size: $font12;
     letter-spacing: toRem(4);
     line-height: toRem(12);
@@ -126,25 +145,7 @@
   }
 }
 
-//arabic
-[lang="ar"] [dir="rtl"] .report-block-tile {
-  p {
-    text-align: left;
-  }
-
-  &.bgpattern {
-    background: linear-gradient(225deg, $white 0%, $white 100%);
-
-    &::after,
-    &::before {
-      left: 0;
-      right: auto;
-      transform: rotate(180deg);
-    }
-  }
-}
-
-///tab with carosol on desktop
+// tab with carosol on desktop
 .product-grid-single {
   padding: 1.5rem 0;
 
@@ -228,7 +229,7 @@
   }
 }
 
-//tab content where tab with alphabets
+// tab content where tab with alphabets
 .cmp_tabs__horizontal_with_target {
   padding: $padding-step-0;
 
