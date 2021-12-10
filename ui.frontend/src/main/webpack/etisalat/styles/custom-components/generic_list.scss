@@ -92,7 +92,7 @@
           right: 0;
           top: 50%;
           -webkit-transform: translateY(-50%) rotate(-45deg);
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
         }
 
         &:hover {
@@ -104,82 +104,92 @@
   }
 }
 
-.cmp_genric__list_etisalat_variation1 {
-  ul {
-    align-items: flex-start;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: start;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding-left: 12px;
-    padding-right: 12px;
-    text-align: center;
-    width: 100%;
-    //font-family:Lato,GE SS Two,Roboto,Arial,sans-serif;
-    @include font-family-lato();
-
-    li {
-      align-items: center;
-      flex: 0 0 24.333333%;
-      justify-content: center;
-      padding-bottom: 50px;
-      padding-top: 0;
-
-      @include respond-to-min($desktop) {
-        padding-top: calc(#{$padding-step-3} + 1px);
+.cmp_genric__list_quick-call {
+  .text {
+    .cmp-text {
+      h3 {
+        margin-bottom: toRem(26);
       }
+    }
 
-      @include respond-to-max($desktop) {
-        flex: 0 0 48.333333%;
-        margin-bottom: 40px;
-      }
+    *[lang="ar"] *[dir="rtl"] & {
+      float: right;
+    }
+  }
 
-      *[lang="ar"] *[dir="rtl"] & {
-        text-align: right;
-      }
+  .cmp_genric__list_etisalat_variation1 {
+    ul {
+      align-items: flex-start;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: start;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding-left: toRem(12);
+      padding-right: toRem(12);
+      text-align: center;
+      width: 100%;
+      @include font-family-lato();
 
-      h5 {
-        color: $steel-grey;
-        display: block;
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: 1.75px;
-        line-height: 1.4rem;
-        margin-bottom: 16px;
-        min-height: 46px;
-        text-transform: uppercase;
-      }
+      li {
+        align-items: center;
+        flex: 0 0 24.333333%;
+        justify-content: center;
+        padding-bottom: toRem(50);
+        padding-top: 0;
 
-      .left-menu-title a {
-        color: $steel-grey;
-        display: block;
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: 1.75px;
-        letter-spacing: 2px;
-        line-height: 1.4rem;
-        min-height: 46px;
-        text-transform: uppercase;
-        width: 87%;
-      }
+        @include respond-to-max($desktop) {
+          flex: 0 0 48.333333%;
+          margin-bottom: toRem(40);
+        }
 
-      p {
-        display: none;
-      }
+        *[lang="ar"] *[dir="rtl"] & {
+          text-align: right;
+        }
 
-      img, svg {
-        display: -webkit-inline-box;
-        height: 45px;
-        margin-bottom: calc(#{$margin-step-2});
-        position: relative;
-        right: 4px;
-        width: 45px;
+        h5 {
+          color: $steel-grey;
+          display: block;
+          font-size: $font16;
+          font-weight: 700;
+          letter-spacing: toRem(1.75);
+          line-height: 1.4rem;
+          margin-bottom: toRem(16);
+          min-height: toRem(46);
+          text-transform: uppercase;
+        }
 
-        @include respond-to-min($desktop) {
-          height: 64px;
-          margin-bottom: calc(#{$margin-step-2} + 4px);
-          width: 64px;
+        .left-menu-title a {
+          color: $steel-grey;
+          display: block;
+          font-size: $font16;
+          font-weight: 700;
+          letter-spacing: toRem(1.75);
+          letter-spacing: toRem(2);
+          line-height: 1.4rem;
+          min-height: toRem(46);
+          text-transform: uppercase;
+          width: 87%;
+        }
+
+        p {
+          display: none;
+        }
+
+        img,
+        svg {
+          display: -webkit-inline-box;
+          height: toRem(45);
+          margin-bottom: calc(#{$margin-step-2});
+          position: relative;
+          right: toRem(4);
+          width: toRem(45);
+
+          @include respond-to-min($desktop) {
+            height: toRem(64);
+            margin-bottom: calc(#{$margin-step-2} + 4px);
+            width: toRem(64);
+          }
         }
       }
     }
@@ -193,4 +203,3 @@
     }
   }
 }
-
