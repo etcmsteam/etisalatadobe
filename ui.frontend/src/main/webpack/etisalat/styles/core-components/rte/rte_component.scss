@@ -1,16 +1,17 @@
 .cmp-link__arrow_left,
 .cmp-link__arrow {
   @include font-family-lato;
+
   color: $main-green;
   font-size: $font14;
-  letter-spacing: 0.125rem;
-  line-height: 1.25rem;
-  padding-right: 0.75rem;
+  letter-spacing: toRem(2);
+  line-height: toRem(20);
+  padding-right: toRem(12);
   position: relative;
   text-transform: uppercase;
 
   @include rtlBlock() {
-    padding-right: 0;
+    padding-right: $padding-step-0;
 
     &::before {
       left: toRem(-15);
@@ -22,11 +23,11 @@
 
 %green-arrow {
   border: solid $main-green;
-  border-width: 0 1px 1px 0;
+  border-width: $border-step-0 $border-step-1 $border-step-1 $border-step-0;
   color: $main-green;
-  content: ' ';
+  content: " ";
   line-height: 1;
-  padding: 0.203rem;
+  padding: toRem(3.248);
   position: absolute;
   right: 0;
   top: 50%;
@@ -34,11 +35,13 @@
 }
 
 .cmp-link__arrow_left {
-  font-size: 12px;
+  font-size: $font12;
   line-height: 1.4;
-  padding-left: 7px;
+  padding-left: toRem(7);
+
   @include rtlBlock() {
-    padding-right: 0;
+    padding-right: $padding-step-0;
+
     @include respond-to-max($phone) {
       top: toRem(460);
     }
@@ -46,22 +49,19 @@
 
   &::after {
     @extend %green-arrow;
-    margin-top: -2px;
+
+    margin-top: toRem(-2);
     transform: translateX(-50%) rotate(-45deg);
+
     @include rtlBlock() {
-      border-width: 0;
+      border-width: $border-step-0;
     }
   }
-}
 
-.cmp-link__arrow::before {
-  @extend %green-arrow;
-}
-
-.cmp-link__arrow_left {
   &::before {
     @include rtlBlock() {
       @extend %green-arrow;
+
       left: toRem(-5);
       right: auto;
       transform: translateY(-50%) rotate(135deg);
@@ -69,7 +69,13 @@
   }
 }
 
-//white link
+.cmp-link__arrow::before {
+  @extend %green-arrow;
+
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+// white link
 .cmp-link__arrow--white {
   color: $white;
 
@@ -78,8 +84,33 @@
   }
 }
 
+.cmp-button--primary {
+  @include secondary-button;
+
+  background-color: $main-green;
+  border-color: $main-green;
+  color: $white !important;
+  font-size: $font14;
+
+  &:hover {
+    background-color: $green-btn;
+    border-color: $green-btn;
+    box-shadow: none !important;
+    color: $white;
+  }
+
+  a {
+    color: $white !important;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
 .cmp-button--secondary {
   @include secondary-button;
+
   background-color: $white;
   border-color: $darkest-night;
   border-style: solid;
@@ -100,10 +131,11 @@
     text-align: $white;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $almost-black;
     display: inline-block;
-    margin: $margin-step-0 -$margin-step-1;
+    margin: $margin-step-0 -toRem(8);
     padding: $padding-step-0 $padding-step-1;
 
     &:hover {
@@ -120,10 +152,11 @@
 
 .cmp-button--width_100 {
   @include secondary-button;
+
   background-color: $main-green;
   border-color: $main-green;
   color: $white !important;
-  font-size: 0.875rem;
+  font-size: $font14;
   width: 100%;
 
   &:hover {
@@ -133,29 +166,7 @@
     color: $white;
   }
 
-  a {
-    color: $white !important;
-
-    &:hover {
-      color: $white;
-    }
-  }
-}
-
-.cmp-button--primary {
-  @include secondary-button;
-  background-color: $main-green;
-  border-color: $main-green;
-  color: $white !important;
-  font-size: 0.875rem;
-
-  &:hover {
-    background-color: $green-btn;
-    border-color: $green-btn;
-    box-shadow: none !important;
-    color: $white;
-  }
-
+  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $white !important;
 
@@ -167,11 +178,13 @@
 
 .cmp-button--disabled {
   @include secondary-button;
+
   background-color: $lighty-gray;
   border-color: $lighty-gray;
   color: $dark-gray !important;
   cursor: auto;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $dark-gray !important;
     cursor: auto;
@@ -180,6 +193,7 @@
 
 .cmp-button--promo {
   @include secondary-button;
+
   background-color: $orange;
   border-color: $orange;
   color: $white !important;
@@ -191,6 +205,7 @@
     color: $white;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $white !important;
 
@@ -202,38 +217,39 @@
 
 .cmp-unorder__list {
   @include font-family-lato;
+
   color: $dark-gray;
   font-size: $font18;
-  font-size: $font18;
-  line-height: 1.75rem;
+  line-height: toRem(28);
   list-style-type: disc;
-  margin-bottom: 0.25rem;
-  padding-left: 1.5rem;
+  margin-bottom: toRem(4);
+  padding-left: toRem(24);
 }
 
 .cmp-normal__list {
   @include font-family-lato;
+
   color: $dark-gray;
   font-size: $font18;
-  font-size: $font18;
-  font-weight: 700;
+  font-weight: get-font-weight("bold");
   list-style-type: none;
-  margin-bottom: 0.25rem;
-  padding-left: 1.5rem;
+  margin-bottom: toRem(4);
+  padding-left: toRem(24);
 }
 
 .cmp-text {
   ol {
     list-style: decimal;
-    margin-left: 1.75rem;
+    margin-left: toRem(28);
 
     li {
       @include font-family-lato;
+
       font-size: $font18;
-      line-height: 28px;
+      line-height: toRem(28);
       list-style-type: decimal;
-      margin-bottom: 0.25rem;
-      padding-left: 0.75rem;
+      margin-bottom: toRem(4);
+      padding-left: toRem(12);
     }
   }
 
@@ -244,23 +260,51 @@
 
     li {
       @include font-family-lato;
+
       font-size: $font18;
-      line-height: 1.75rem;
+      line-height: toRem(28);
       list-style-type: disc;
-      margin-bottom: 0.25rem;
-      padding-left: 40px;
+      margin-bottom: toRem(4);
+      padding-left: toRem(40);
+
+      @include rtlBlock() {
+        list-style: inside;
+      }
     }
+  }
+
+  p {
+    @include font-family-lato;
+
+    color: $dark-gray;
+    line-height: toRem(24);
+  }
+
+  img {
+    // height: toRem(30);
+    // width: toRem(30);
+    height: toRem(24);
+    width: toRem(24);
+  }
+
+  h3 {
+    margin-left: 0;
+  }
+
+  span {
+    display: inline-block;
   }
 }
 
 .cmp-list__ordered {
   @include font-family-lato;
+
   font-size: $font18;
-  line-height: 28px;
+  line-height: toRem(28);
   list-style: decimal;
-  margin-bottom: 0.25rem;
-  margin-left: 1.75rem;
-  padding-left: 1.5rem;
+  margin-bottom: toRem(4);
+  margin-left: toRem(28);
+  padding-left: toRem(24);
 }
 
 .font--small {
@@ -276,26 +320,26 @@
 }
 
 .cmp-icon__arrow__list {
-  color: #6f6c70;
+  color: $dark-gray;
   font-size: $font14;
-  line-height: 1.5rem;
+  line-height: toRem(24);
   margin: 0;
-  margin-bottom: 0.25rem;
-  margin-left: 1.75rem;
-  padding-left: 1.5rem;
+  margin-bottom: toRem(4);
+  margin-left: toRem(28);
+  padding-left: toRem(24);
   position: relative;
 }
 
 .cmp-icon__arrow__list::before {
-  background: url('../resources/images/icon-list-tick.svg') no-repeat;
-  content: ' - ';
-  height: 24px;
-  width: 24px;
+  background: url("../resources/images/icon-list-tick.svg") no-repeat;
+  content: " - ";
+  height: toRem(24);
+  width: toRem(24);
 }
 
 .font--xsmall {
   font-size: $font12;
-  letter-spacing: 0.25rem;
+  letter-spacing: toRem(4);
 }
 
 .font--number {
@@ -348,30 +392,25 @@
 
 .font--productdesc {
   @include font-family-lato;
+
   color: $steel-grey;
-  font-size: 0.875rem;
+  font-size: $font14;
   line-height: 1.43;
-  margin-bottom: 0.25rem;
+  margin-bottom: toRem(4);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.cmp-text {
-  img {
-    height: 30px;
-    width: 30px;
-  }
-}
-
-//link arrow st
+// link arrow st
 .cmp-link__text {
   @include font-family-lato;
+
   color: $main-green;
   cursor: pointer;
   font-size: $font16;
-  font-weight: 500;
-  letter-spacing: 0.125rem;
+  font-weight: get-font-weight("medium");
+  letter-spacing: toRem(2);
   line-height: 1.38;
   position: relative;
   text-transform: uppercase;
@@ -384,14 +423,13 @@
 
 .old-price {
   background-color: $main-green;
-  border-radius: 0.625rem;
+  border-radius: toRem(10);
   color: $white;
   font-size: $font12;
-  font-weight: 700;
-  line-height: 0.938rem;
-  line-height: 0.938rem;
-  margin-right: 0.5rem;
-  padding: 3px 7px;
+  font-weight: get-font-weight("bold");
+  line-height: toRem(15.008);
+  margin-right: toRem(8);
+  padding: toRem(3) toRem(7);
 
   &--orange {
     background-color: $dark-orange;
@@ -399,88 +437,71 @@
 }
 
 .divider-line {
-  background-image: url('../resources/images/divider.png');
+  background-image: url("../resources/images/divider.png");
   background-repeat: repeat;
-  height: 1px;
-  margin-bottom: 12px;
-  margin-top: 12px;
+  height: toRem(1);
+  margin-bottom: toRem(12);
+  margin-top: toRem(12);
   position: absolute;
   width: 100%;
-}
-
-.cmp-text {
-  p {
-    @include font-family-lato;
-    color: $dark-gray;
-    line-height: 1.5rem;
-  }
-
-  img {
-    height: 24px;
-    width: 24px;
-  }
-}
-
-.ul-list-cms {
-  font-size: 1.25rem;
-  line-height: 28px;
-
-  ul {
-    li {
-      color: #6f6c70;
-      font-size: 1.25rem;
-      line-height: 28px;
-      list-style-type: none;
-      margin-left: 0;
-      padding-left: 1.5rem;
-    }
-  }
 }
 
 .ul-list-cms ol {
   list-style: decimal;
   margin-bottom: 0;
-  margin-left: 1.75rem;
+  margin-left: toRem(28);
   margin-top: 0;
 }
 
-.ul-list-cms ul {
-  color: #6f6c70;
-  font-size: 14px;
-  line-height: 24px;
-  list-style-type: none;
-  margin: 0;
-  margin-bottom: 0;
-  margin-bottom: 4px;
-  padding-left: 1.5rem;
-  padding-left: 1.5rem;
-  position: relative;
-
-  li::before {
-    background-color: #848789;
-    border-radius: 50%;
-    content: '';
-    display: block;
-    height: 4px;
-    left: 0;
-    position: absolute;
-    top: 10px;
-    width: 4px;
-  }
+.ul-list-cms {
+  font-size: $font20;
+  line-height: toRem(28);
 
   ul {
+    color: $dark-gray;
+    font-size: $font14;
+    line-height: toRem(24);
     list-style-type: none;
-    margin-left: 0;
+    margin: 0;
+    margin-bottom: toRem(4);
+    padding-left: toRem(24);
+    position: relative;
+
+    li {
+      color: $dark-gray;
+      font-size: $font20;
+      line-height: toRem(28);
+      list-style-type: none;
+      margin-left: 0;
+      padding-left: toRem(24);
+    }
 
     li::before {
-      background-color: #848789;
-      content: ' ';
+      background-color: $steel-grey;
+      border-radius: 50%;
+      content: "";
       display: block;
-      height: 1px;
+      height: toRem(4);
       left: 0;
       position: absolute;
-      top: 14px;
-      width: 4px;
+      top: toRem(10);
+      width: toRem(4);
+    }
+
+    ul {
+      list-style-type: none;
+      margin-left: 0;
+
+      li::before {
+        background-color: $steel-grey;
+        content: " ";
+        display: block;
+        height: toRem(1);
+        left: 0;
+        position: absolute;
+        top: toRem(14);
+        width: toRem(4);
+      }
     }
   }
 }
@@ -489,45 +510,37 @@
   color: $white;
 }
 
-.cmp-text {
-  h3 {
-    margin-left: 0;
-  }
-
-  span {
-    display: inline-block;
-  }
-}
-
 .space-bottom {
-  margin-bottom: 1rem;
+  margin-bottom: toRem(16);
 }
 
 .space-top {
-  margin-top: 1rem;
+  margin-top: toRem(16);
 }
 
 .space-right {
-  margin-right: 1rem;
+  margin-right: toRem(16);
 }
 
 .space-left {
-  margin-left: 1rem;
+  margin-left: toRem(16);
 }
 
 .icon-smiles {
-  margin-right: 1.575rem;
   padding-left: toRem(28);
   position: relative;
 
   &::before {
     @include background-icon;
-    background-image: url('../resources/images/icon-smiles.png');
-    @include rtlBlock(){
+
+    background-image: url("../resources/images/icon-smiles.png");
+
+    @include rtlBlock() {
       left: auto;
     }
   }
 }
+
 .icon-checkbox-platinum {
   margin-right: 1.575rem;
   padding-left: toRem(24);
@@ -535,16 +548,18 @@
 
   &::before {
     @include background-icon;
-    background-image: url('../resources/images/icon-checkbox-platinum.svg');
- @include rtlBlock(){
+
+    background-image: url("../resources/images/icon-checkbox-platinum.svg");
+
+    @include rtlBlock() {
       left: auto;
+    }
+  }
+
+  @include rtlBlock() {
+    margin-right: 0;
   }
 }
-   @include rtlBlock(){
-      margin-right: 0;
-   }
-}
-
 
 .icon-checkbox-gold {
   margin-right: 1.575rem;
@@ -553,55 +568,54 @@
 
   &::before {
     @include background-icon;
-    background-image: url('../resources/images/icon-checkbox-gold.svg');
-    @include rtlBlock(){
-      left:auto;
+
+    background-image: url("../resources/images/icon-checkbox-gold.svg");
+
+    @include rtlBlock() {
+      left: auto;
     }
   }
-  @include rtlBlock(){
+
+  @include rtlBlock() {
     margin-right: 0;
   }
 }
 
-
 .icon-switch {
-  margin-right: 1.575rem;
   padding-left: toRem(28);
   position: relative;
 
   &::before {
     @include background-icon;
-    background-image: url('../resources/images/icon-switch.png');
-    @include rtlBlock(){
-      left:auto;
-    }
-  }
-}
 
-.icon-unlimited {
-  margin-right: 1.575rem;
-  padding-left: toRem(28);
-  position: relative;
+    background-image: url("../resources/images/icon-switch.png");
 
-  &::before {
-    @include background-icon;
-    background-image: url('../resources/images/icon-goChat.png');
-    @include rtlBlock(){
+    @include rtlBlock() {
       left: auto;
     }
   }
 }
 
-.cmp-text ul li {
-  @include rtlBlock() {
-    list-style: inside;
+.icon-unlimited {
+  padding-left: toRem(28);
+  position: relative;
+
+  &::before {
+    @include background-icon;
+
+    background-image: url("../resources/images/icon-goChat.png");
+
+    @include rtlBlock() {
+      left: auto;
+    }
   }
 }
 
 .header-small {
   @include font-family-lato;
+
   font-size: $font20;
-  font-weight: bold;
+  font-weight: get-font-weight("bold");
 
   @include respond-to-max($tablet) {
     font-size: $font16;
@@ -610,8 +624,9 @@
 
 .header-xsmall {
   @include font-family-lato;
+
   font-size: $font16;
-  font-weight: bold;
+  font-weight: get-font-weight("bold");
 
   @include respond-to-max($tablet) {
     font-size: $font14;
@@ -620,48 +635,53 @@
 
 .body-copy1 {
   @include font-family-lato;
+
   font-size: $font20;
-  line-height: 28px;
+  line-height: toRem(28);
 
   @include respond-to-max($tablet) {
     font-size: $font16;
-    line-height: 24px;
+    line-height: toRem(24);
   }
 }
 
 .body-copy2 {
   @include font-family-lato;
+
   font-size: $font16;
-  line-height: 24px;
+  line-height: toRem(24);
 
   @include respond-to-max($tablet) {
     font-size: $font14;
-    line-height: 20px;
+    line-height: toRem(20);
   }
 }
 
 .body-copy3 {
   @include font-family-lato;
+
   font-size: $font14;
-  line-height: 20px;
+  line-height: toRem(20);
 
   @include respond-to-max($tablet) {
     font-size: $font12;
-    line-height: 16px;
+    line-height: toRem(16);
   }
 }
 
 .body-copy4 {
   @include font-family-lato;
+
   font-size: $font12;
-  line-height: 16px;
+  line-height: toRem(16);
 }
 
 .secondary-header1 {
   @include font-family-lato;
+
   font-size: $font16;
-  font-weight: bold;
-  letter-spacing: 4px;
+  font-weight: get-font-weight("bold");
+  letter-spacing: toRem(4);
   text-transform: uppercase;
 
   @include respond-to-max($tablet) {
@@ -671,9 +691,10 @@
 
 .secondary-header2 {
   @include font-family-lato;
+
   font-size: $font14;
-  font-weight: bold;
-  letter-spacing: 4px;
+  font-weight: get-font-weight("bold");
+  letter-spacing: toRem(4);
   text-transform: uppercase;
 
   @include respond-to-max($tablet) {
@@ -683,27 +704,30 @@
 
 .secondary-header3 {
   @include font-family-lato;
+
   font-size: $font12;
   font-weight: bold;
-  letter-spacing: 4px;
+  letter-spacing: toRem(4);
   text-transform: uppercase;
 }
 
 .secondary-header4 {
   @include respond-to-max($tablet) {
     @include font-family-lato;
+
     font-size: $font10;
-    font-weight: bold;
-    letter-spacing: 4px;
+    font-weight: get-font-weight("bold");
+    letter-spacing: toRem(4);
     text-transform: uppercase;
   }
 }
 
 .configurator-header {
   @include font-family-lato;
+
   font-size: $font12;
-  font-weight: bold;
-  letter-spacing: 4px;
+  font-weight: get-font-weight("bold");
+  letter-spacing: toRem(4);
   text-transform: uppercase;
 }
 
@@ -718,11 +742,11 @@ hr {
 }
 
 .hero-heading-big {
-  font-size: 54px;
-  line-height: 64px;
+  font-size: $font54;
+  line-height: toRem(64);
 }
 
 .hero-heading-small {
   font-size: $font32;
-  line-height: 40px;
+  line-height: toRem(40);
 }
