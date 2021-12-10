@@ -252,6 +252,16 @@
 
       .context-nav-box {
         background-color: $white;
+        min-height: toRem(205);
+
+        @include respond-to-max($tablet) {
+          min-height: toRem(190);
+          width: 100%;
+        }
+
+        @include respond-to-max($phone) {
+          min-height: toRem(210);
+        }
 
         &.content {
           display: flex;
@@ -383,6 +393,10 @@
       .icon-area {
         img, svg {
           height: 2.4rem !important;
+          
+          @include respond-to-max($phone) {
+            height: toRem(54) !important;
+          }
         }
       }
     }
