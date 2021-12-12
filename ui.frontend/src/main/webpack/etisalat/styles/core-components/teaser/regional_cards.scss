@@ -1,216 +1,68 @@
-/* stylelint-disable no-descending-specificity */
-.promo-card {
-  .promo-card-row {
-    .promo-card-section {
-      h2 {
+.promo-card-row {
+  .cmp-teaser {
+    border-radius: toRem(4);
+    height: 100%;
+    min-height: toRem(148);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: toRem(40);
+
+    @include respond-to-min($desktop) {
+      min-height: toRem(250);
+    }
+
+    &__content {
+      background: linear-gradient(0deg, $black, transparent);
+      border-radius: toRem(4);
+      bottom: 0;
+      height: 100%;
+      min-height: toRem(47);
+      padding: toRem(54) toRem(24) 0 toRem(24);
+      position: absolute;
+      width: 100%;
+      z-index: 9;
+
+      @include respond-to-min($tablet) {
+        padding: toRem(54) toRem(24) 0 toRem(24);
+      }
+
+      @include respond-to-min($desktop) {
+        padding: toRem(150) toRem(24) 0 toRem(24);
+      }
+
+      h1 {
         font-size: $font26;
         letter-spacing: toRem(1.6);
         line-height: toRem(26);
         margin-bottom: toRem(16);
         margin-top: 0;
-
-        a {
-          color: $white;
-          font-size: $font26;
-        }
-      }
-
-      .cmp-teaser__action-link::after {
-        border-right: toRem(1) solid $white;
-        border-top: toRem(1) solid $white;
-        content: "";
-        left: auto;
-        margin-left: toRem(8.8);
-        margin-top: toRem(10.4);
-        padding: toRem(4);
-        position: absolute;
-        transform: translateY(-50%) rotate(45deg);
-
-        @include rtlBlock() {
-          margin-left: 0;
-          margin-right: toRem(8.8);
-          transform: translateY(-50%) rotate(-135deg);
-        }
+        color: $white;
       }
     }
 
-    &.container {
-      margin-bottom: 0;
-      margin-top: 0;
-
-      @include respond-to-min($desktop) {
-        margin-bottom: toRem(50);
-        margin-top: toRem(35);
-      }
-    }
-  }
-}
-
-.promo-card .promo-card-section {
-  .cmp-teaser {
     &__action-container {
       a {
-        @include font-family-lato();
-
+        font-size: $font14;
         color: $white;
         font-size: $font14;
         font-weight: get-font-weight("bold");
         letter-spacing: toRem(2);
-        line-height: toRem(20);
+        line-height: 1.25rem;
         text-transform: uppercase;
-
-        @include rtlBlock() {
-          @include font-family-Neotech-ge();
-        }
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    &__title a {
-      color: $white;
-
-      &:hover {
-        color: $white;
-      }
-    }
-  }
-
-  .cmp-teaser__title a,
-  .cmp-teaser__title a:hover {
-    color: $white;
-  }
-}
-
-// premium cards css
-
-.hero-card {
-  @include respond-to-max($tablet) {
-    .promo-card-rev,
-    .image-right {
-      margin-top: toRem(10);
-
-      .cmp-teaser {
-        border-radius: toRem(4);
-
-        &__content h2 {
-          font-size: $font22;
-          line-height: 1.5rem;
-          margin-top: 0;
-          padding-top: 0;
-        }
-
-        &__image img {
-          border-radius: toRem(4);
-        }
-      }
-    }
-
-    .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--offset--phone--0 {
-      width: 100% !important;
-    }
-  }
-
-  .cmp-container {
-    padding: 0;
-  }
-
-  .image-right {
-    margin-bottom: toRem(5);
-    padding: 0;
-
-    @include respond-to-min($desktop) {
-      padding-left: toRem(15) !important;
-      padding-right: toRem(15) !important;
-    }
-
-    .cmp-teaser {
-      box-shadow: 0 toRem(5) toRem(15) 0 rgb(0 0 0 / 15%);
-      display: flex;
-      flex-direction: row-reverse;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-
-      &__image {
-        width: 50%;
-
-        @include respond-to-max($tablet) {
-          max-height: toRem(150);
-          overflow: hidden;
-        }
-
-        &::after {
-          background: linear-gradient(0deg, $black, transparent);
-          content: "";
-          height: 100%;
-          opacity: 0.3;
-          position: absolute;
-          top: 0;
-          width: 100%;
-          z-index: 2;
-        }
-
-        img {
-          border-radius: toRem(4);
-          height: auto;
-          max-width: 100%;
-        }
-      }
-
-      &___content {
-        bottom: 0;
-        display: flex;
-        flex-direction: column-reverse;
-        left: 0;
-        padding: 1.5rem;
-        position: absolute;
-        width: 48%;
-        z-index: 3;
-
-        @include respond-to-max($tablet) {
-          padding: 1rem;
-
-          h1 {
-            font-size: $font22;
-            margin-top: toRem(10);
-            padding-top: 0;
-          }
-
-          h2 {
-            font-size: $font26;
-            letter-spacing: toRem(1.63);
-            line-height: 2.0625rem;
-            padding-top: 1.25rem;
-
-            a {
-              color: $almost-black;
-            }
-          }
-        }
-      }
-
-      &__action-container a {
-        font-size: $font14;
 
         @include font-family-lato();
 
-        letter-spacing: toRem(2);
-        line-height: 1.25rem;
-
         @include rtlBlock() {
           @include font-family-Neotech-ge();
         }
 
         &::after {
-          border-right: toRem(1) solid $main-green;
-          border-top: toRem(1) solid $main-green;
+          border-right: toRem(1) solid $white;
+          border-top: toRem(1) solid $white;
           content: "";
           left: auto;
           margin-left: toRem(8.8);
-          margin-top: toRem(12);
+          margin-top: toRem(10.4);
           padding: toRem(4);
           position: absolute;
           transform: translateY(-50%) rotate(45deg);
@@ -221,328 +73,205 @@
             transform: translateY(-50%) rotate(-135deg);
           }
         }
-      }
-    }
-  }
 
-  .promo-card-rev {
-    margin-bottom: 0;
-    padding: 0;
-
-    @include respond-to-min($tablet) {
-      margin: 0;
-    }
-
-    @include respond-to-min($desktop) {
-      margin-bottom: toRem(14);
-    }
-
-    .cmp-teaser__content {
-      bottom: 0;
-      display: flex;
-      flex-direction: column-reverse;
-      left: 0;
-      padding: 2.25rem;
-      position: absolute;
-      width: 100%;
-      z-index: 3;
-
-      h1 {
-        color: $white;
-      }
-
-      h2 a {
-        color: $white;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
 
-    .cmp-teaser__image {
-      @include respond-to-max($tablet) {
-        max-height: toRem(150);
-        overflow: hidden;
-      }
-    }
-
-    .cmp-teaser__content h2 {
-      font-size: 1.625rem;
-      letter-spacing: toRem(1.63);
-      line-height: 2.0625rem;
-    }
-
-    .cmp-teaser__image::after {
-      background: linear-gradient(0deg, $black, transparent);
-      content: "";
-      height: 100%;
-      opacity: 0.3;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 2;
-    }
-
-    .cmp-teaser {
+    &__image {
       border-radius: toRem(4);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .cmp-teaser__image img {
-      border-radius: toRem(4);
-    }
-
-    .cmp-teaser__action-container a {
-      @include font-family-lato();
-
-      color: $white;
-      font-size: $font14;
-      letter-spacing: toRem(2);
-      line-height: 1.25rem;
-
-      @include rtlBlock() {
-        @include font-family-Neotech-ge();
-      }
-    }
-
-    .cmp-teaser__action-container a:hover {
-      text-decoration: underline;
-    }
-
-    .cmp-teaser__action-link::after {
-      border-right: toRem(1) solid $white;
-      border-top: toRem(1) solid $white;
-      content: "";
-      left: auto;
-      margin-left: toRem(8.8);
-      margin-top: toRem(10);
-      padding: toRem(3);
-      position: absolute;
-      transform: translateY(-50%) rotate(45deg);
+      height: toRem(148);
 
       @include respond-to-min($desktop) {
-        margin-top: toRem(10);
-      }
-
-      @include rtlBlock() {
-        margin-left: 0;
-        margin-right: toRem(8.8);
-        transform: translateY(-50%) rotate(-135deg);
-      }
-    }
-  }
-}
-
-@include respond-to-min($desktop) {
-  .hero-card {
-    .promo-card-rev .cmp-teaser {
-      padding-left: 0;
-
-      // max-height: toRem(546);
-      padding-right: 0;
-    }
-
-    .cmp-teaser__image {
-      border-radius: toRem(4);
-      max-height: toRem(525) !important;
-      overflow: hidden;
-    }
-
-    .cmp-teaser__title {
-      font-size: $font26;
-      margin: 0;
-      padding-top: 3rem;
-      color: $white;
-
-      a,
-      a:hover {
-        color: $white;
-      }
-    }
-
-    .aem-GridColumn--default--3 {
-      .cmp-teaser__content {
-        padding: $font24;
-      }
-
-      .cmp-teaser {
-        max-height: toRem(262);
-        overflow: hidden;
-      }
-
-      .cmp-teaser__title {
-        font-size: $font26;
-        padding-top: $font16;
-      }
-    }
-  }
-
-  .promo-card-rev {
-    .cmp-teaser {
-      position: relative;
-    }
-
-    .cmp-teaser__content {
-      background: rgba(000, 000, 000, 0.2);
-      border-radius: toRem(4);
-      bottom: 0;
-      display: flex;
-      flex-direction: column-reverse;
-      height: 100%;
-      min-height: toRem(47);
-      padding: 1rem;
-      padding-left: toRem(19);
-      padding-top: toRem(64);
-      position: absolute;
-      width: 100%;
-      z-index: 9;
-    }
-
-    .cmp-image__image {
-      border-radius: toRem(4);
-      min-height: toRem(546);
-      object-fit: cover;
-    }
-  }
-
-  .promo-card {
-    .promo-card-section .cmp-teaser__content {
-      background: linear-gradient(0deg, $black, transparent);
-      border-radius: toRem(4);
-      bottom: 0;
-      height: 100%;
-      min-height: toRem(47);
-      padding-left: toRem(20);
-      padding-right: toRem(20);
-      padding-top: toRem(135);
-      position: absolute;
-      width: 100%;
-      z-index: 9;
-
-      .cmp-teaser__title {
-        color: $white;
-        font-size: $font26;
-      }
-    }
-
-    .promo-card-row .promo-card-section {
-      .cmp-teaser {
-        border-radius: toRem(4);
-        height: 100%;
-        min-height: toRem(250);
-        overflow: hidden;
-        position: relative;
+        height: toRem(250);
       }
 
       .cmp-image__image {
-        border-radius: toRem(4);
-        height: toRem(250);
+        height: 100%;
+        min-height: 250px;
       }
-    }
 
-    .promo-card-row.container {
-      .promo-card-section {
-        &:nth-of-type(1) {
-          padding-right: toRem(16);
-        }
+      .cmp-image {
+        height: 148px;
 
-        &:nth-of-type(2) {
-          padding-left: toRem(8);
-          padding-right: toRem(8);
-        }
-
-        &:nth-of-type(3) {
-          padding-left: toRem(16);
+        @include respond-to-min($desktop) {
+          height: toRem(250);
         }
       }
     }
   }
 
-  .promo-card-rev.aem-GridColumn--medium--none {
-    margin-bottom: 0.65rem;
+  &.container {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 
-    .cmp-image__image {
-      min-height: auto;
+  @include respond-to-min($desktop) {
+    .aem-Grid .aem-GridColumn {
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+// new hero card css st
+.hero-card {
+  @include respond-to-max($tablet) {
+    margin-bottom: 10px;
+  }
+
+  .cmp-teaser {
+    box-shadow: 0 toRem(5) toRem(15) 0 rgb(0 0 0 / 15%);
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+    margin-bottom: toRem(26);
+
+    &__image {
+      &::after {
+        background: #000;
+        content: "";
+        height: 100%;
+        opacity: 0.2;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+        border-radius: toRem(4);
+      }
+
+      .cmp-image {
+        max-height: toRem(160);
+
+        @include respond-to-min($desktop) {
+          max-height: toRem(572);
+        }
+      }
+
+      img {
+        border-radius: toRem(4);
+        max-width: 100%;
+
+        // height: toRem(150);
+
+        @include respond-to-min($desktop) {
+          height: 100%;
+        }
+      }
+    }
+
+    &__content {
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+      padding: toRem(16);
+      width: 100%;
+
+      h1 {
+        font-size: $font26;
+        color: $white;
+      }
+
+      @include respond-to-min($desktop) {
+        padding: toRem(36);
+
+        h1 {
+          font-size: $font36;
+          padding-top: 0;
+          margin: 0;
+        }
+      }
+    }
+
+    &__action-container {
+      @extend %teaser-link;
+
+      bottom: toRem(70);
+
+      @include respond-to-min($tablet) {
+        bottom: toRem(110);
+      }
+
+      @include respond-to-min($desktop) {
+        bottom: toRem(140);
+      }
+
+      a {
+        color: $white;
+      }
+
+      &::after {
+        border-color: $white;
+      }
+    }
+  }
+
+  .image-right {
+    margin-bottom: toRem(10);
+    padding: 0;
+
+    @include respond-to-min($desktop) {
+      padding-left: 12px;
+      padding-right: 12px;
     }
 
     .cmp-teaser {
-      overflow: hidden;
-    }
-  }
-}
+      margin-bottom: teRem(24);
+      display: flex;
+      flex-direction: row-reverse;
 
-@include respond-to-max($desktop) {
-  .hero-card {
-    .promo-card-rev {
-      margin-bottom: $font14;
+      &__content {
+        bottom: 0;
+        left: 0;
+        width: 50%;
 
-      .cmp-teaser__content {
-        padding: $font16;
+        h1 {
+          color: $almost-black;
+        }
 
-        .cmp-teaser__title {
-          font-size: $font22;
-          margin: 0;
+        @include respond-to-min($desktop) {
+          padding: toRem(24);
 
-          a,
-          a:hover {
-            color: $white;
+          h1 {
+            padding-top: 0;
+            margin: 0;
           }
         }
       }
-    }
 
-    &.cmp-teaser {
-      max-height: toRem(407);
-    }
-  }
+      &__action-container {
+        bottom: toRem(150);
 
-  .promo-card {
-    .promo-card-section .cmp-teaser__content {
-      background: linear-gradient(0deg, $black, transparent);
-      border-radius: toRem(4);
-      bottom: 0;
-      height: 100%;
-      min-height: toRem(47);
-      padding-left: toRem(19);
-      padding-top: toRem(64);
-      position: absolute;
-      width: 100%;
-      z-index: 9;
-
-      .cmp-teaser__title {
-        color: $white;
-        font-size: $font20;
-        margin: 0 0 toRem(16) 0;
-      }
-    }
-
-    .promo-card-row {
-      .promo-card-section {
-        .cmp-teaser {
-          margin-bottom: $font24;
-          max-height: toRem(148);
-          overflow: hidden;
-          position: relative;
-        }
-
-        .cmp-image__image {
-          border-radius: toRem(4);
+        a {
+          color: $main-green;
         }
       }
 
-      &.container {
-        &:nth-of-type(1) {
-          margin-top: toRem(35);
-        }
+      &__image {
+        width: 50%;
       }
     }
   }
 
-  .teaser {
-    .promo-card-section {
-      padding: 0;
+  &.promo-card {
+    .cmp-image {
+      max-height: toRem(160);
+
+      @include respond-to-min($desktop) {
+        max-height: toRem(549);
+      }
     }
   }
 }
 
+// new hero card css en
 .gutter-padding-left {
   padding-left: 0 !important;
 
@@ -562,14 +291,14 @@
 .gutter-padding-right {
   padding-right: 0 !important;
 
-  @include respond-to-max($desktop) {
+  @include respond-to-min($desktop) {
     padding-right: toRem(12) !important;
   }
 
   @include rtlBlock() {
     padding-left: 0 !important;
 
-    @include respond-to-max($desktop) {
+    @include respond-to-min($desktop) {
       padding-left: toRem(12) !important;
     }
   }
