@@ -76,7 +76,6 @@
         function loadRecentSearch() {
           try {
             var stroreRecentSearch = JSON.parse(localStorage.getItem("eti_recentSearch"));
-            console.log("stroreRecentSearch", stroreRecentSearch);
             var recentItemMarkup = "";
             if (stroreRecentSearch !== null) {
               recentSearch = stroreRecentSearch;
@@ -85,7 +84,6 @@
               }
               doc.querySelectorAll(".search-items-wrapper-4-0 .search-items-wrapper")[0].classList.add("recent-wrapper");
               doc.querySelectorAll(".list.recent")[instannceNum].classList.remove("d-none");
-              console.log("markup-", recentItemMarkup);
               doc.querySelectorAll(".recentItemList")[instannceNum].innerHTML = recentItemMarkup;
               var listItems = doc.querySelectorAll(".recentItemList")[instannceNum].children;
               for (var i = 0; i < listItems.length; i++) {
@@ -116,7 +114,6 @@
         }
         //seach for suggession
         var searchTerm = function (searchText) {
-          console.log("search term", searchText);
           //google analyticss starts
           if (typeof window.dataLayer !== "undefined") {
             window.dataLayer.push({
@@ -498,10 +495,8 @@
 
         // clear search
         function clearSearch() {
-          console.log('clear started');
           var doc = document;
           if (doc.querySelectorAll(".search-input")[instannceNum].value.length > 0) {
-            console.log("clear smoe text", doc.querySelectorAll(".search-input")[instannceNum].value);
             doc.querySelectorAll(".search-input")[instannceNum].value = "";
             doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
