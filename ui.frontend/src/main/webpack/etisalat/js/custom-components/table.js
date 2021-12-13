@@ -7,6 +7,10 @@ const CUSTOM_TABLE_COMPONENT = ".custom-datatable";
 const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".cmp-text.custom-datatable table");
 
 $(function () {
+  $(".see-more-table").on("click", function () {
+    $(this).closest(".table-default-section").find(".custom-datatable").toggleClass("show-more-less");
+  });
+
   if (CMP_TEXT_CUSTOM_TABLE_CLASS.find("thead").length === 0) {
     CMP_TEXT_CUSTOM_TABLE_CLASS.each(function (index, element) {
       const APPEND_THEAD = $("<thead></thead>");
@@ -22,6 +26,7 @@ $(function () {
 
       FIRST_TR.remove();
     });
+    // console.log(CMP_TEXT_CUSTOM_TABLE_CLASS.length);
     newCustomDataTable();
   } else {
     newCustomDataTable();
@@ -43,7 +48,6 @@ $(function () {
 });
 
 function newCustomDataTable() {
-  CMP_TEXT_CUSTOM_TABLE_CLASS.show();
   function addDataAttributes(table) {
     $("tr", table).each(function (index) {
       $(this).attr("role", "row");
