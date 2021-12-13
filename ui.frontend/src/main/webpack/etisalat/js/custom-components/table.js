@@ -23,11 +23,12 @@ $(function () {
 
       APPEND_THEAD.html(APPEND_TR);
       APPEND_THEAD.prependTo(element);
-
       FIRST_TR.remove();
+
+      if (CMP_TEXT_CUSTOM_TABLE_CLASS.length === index + 1) {
+        newCustomDataTable();
+      }
     });
-    // console.log(CMP_TEXT_CUSTOM_TABLE_CLASS.length);
-    newCustomDataTable();
   } else {
     newCustomDataTable();
   }
