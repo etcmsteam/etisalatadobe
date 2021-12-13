@@ -1,20 +1,20 @@
 .beigebg-container {
-  //padding-left: 2rem!important;
-  //padding-right: 2rem !important;
+  // padding-left: 2rem!important;
+  // padding-right: 2rem !important;
   padding: 2rem 0 !important;
 
-  @include md {
-    padding: 1rem !important;
+  @include respond-to-max($tablet) {
+    padding: toRem(16) !important;
   }
 
-  @include sm {
-    padding: 0.6rem !important;
+  @include respond-to-max($phone) {
+    padding: toRem(9.6) !important;
   }
 
-  @include md {
+  @include respond-to-max($tablet) {
     h3 {
       font-size: $font16;
-      margin-top: 0.25rem;
+      margin-top: toRem(4);
 
       @include font-family-lato();
     }
@@ -31,16 +31,17 @@
 
     @include font-family-lato();
 
-    @include sm {
+    @include respond-to-max($phone) {
       color: $dark-gray;
       font-size: $font16;
-      margin-bottom: 3rem;
+      margin-bottom: toRem(48);
     }
   }
 
   h3 {
     color: $almost-black;
-    //margin-top: 1rem;
+
+    // margin-top: 1rem;
     @include font-family-Neotech;
   }
 
@@ -48,290 +49,280 @@
     h3 {
       font-size: $font20;
 
-      @include sm {
-        line-height: 27px;
+      @include respond-to-max($phone) {
+        line-height: toRem(27);
       }
 
-      @include md {
+      @include respond-to-max($tablet) {
         font-size: $font16;
       }
     }
 
     p {
       font-size: $font14;
-      margin: 0 0 12.5px;
-      margin-bottom: 1.5rem;
+      margin: 0 0 toRem(12.5);
+      margin-bottom: toRem(24);
     }
-  }
-
-  .cmp-teaser__content {
-    .cmp-teaser__title {
-      float: left;
-      width: 51%;
-
-      @include md {
-        float: none;
-        width: 100%;
-      }
-    }
-
-    .cmp-teaser__description {
-      float: left;
-      margin-top: 0.5rem;
-      width: 50%;
-
-      @include md {
-        float: none;
-        margin-top: 1.8rem;
-        width: 100%;
-      }
-    }
-  }
-
-  .cmp-beigebg_teaser {
-    background: $sand-white-50;
-    border-radius: 4px;
-    margin-bottom: 1.5rem;
-    min-height: 140px;
-    overflow: hidden;
-    position: relative;
-
-    @include md {
-      min-height: 117px;
-    }
-  }
-
-  .cmp-teaser__action-container {
-    float: right;
-    margin-top: -3rem;
   }
 
   .cmp-teaser {
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: toRem(36);
+    padding-right: toRem(36);
 
-    @include md {
-      padding-left: 17px;
-      padding-right: 17px;
+    @include respond-to-max($tablet) {
+      padding-left: toRem(17);
+      padding-right: toRem(17);
     }
 
-    .cmp-teaser__title {
+    &__title {
       color: $almost-black;
       font-size: $font28;
-      letter-spacing: .5px;
+      letter-spacing: toRem(0.5);
 
-      @include sm {
+      @include respond-to-max($phone) {
         font-size: $font20;
-        margin: 1rem 0;
+        margin: toRem(16) 0;
       }
 
-      @include md {
+      @include respond-to-max($tablet) {
         font-size: $font28;
-        margin: 1rem 0;
+        margin: toRem(16) 0;
       }
 
-      //margin: 1.2rem 0.5rem;
+      // margin: 1.2rem 0.5rem;
 
       a {
         color: $almost-black;
       }
 
       h3 {
-        @include sm {
+        @include respond-to-max($phone) {
           font-size: $font20;
-          font-weight: 400;
+          font-weight: get-font-weight("regular");
           line-height: 1.3;
 
           @include font-family-Neotech;
         }
       }
     }
-  }
 
-  ul li {
-    color: $dark-gray;
-    line-height: 24px;
-    list-style-type: disc;
-    margin-bottom: 4px;
-    margin-left: 2rem;
-    padding-left: 0.5rem;
-    position: relative;
+    &__content {
+      &__title {
+        float: left;
+        width: 51%;
 
-    @include font-family-lato();
-  }
+        @include respond-to-max($tablet) {
+          float: none;
+          width: 100%;
+        }
+      }
 
-  .beigebg-wrapper {
-    background: $sand-white-50;
-    padding-bottom: 2rem;
-    padding-top: .4rem;
+      &__description {
+        float: left;
+        margin-top: toRem(8);
+        width: 50%;
 
-    .rte-bullets {
-      ol {
-        padding: 2rem 2rem 0;
+        @include respond-to-max($tablet) {
+          float: none;
+          margin-top: toRem(28.8);
+          width: 100%;
+        }
       }
     }
   }
 
   .cmp-beigebg_teaser {
-    margin-bottom: -1.7rem;
-  }
+    background: $sand-white-50;
+    border-radius: $border-radius-step-1;
+    margin-bottom: toRem(-27.2);
+    min-height: toRem(140);
+    overflow: hidden;
+    position: relative;
 
-  .aem-GridColumn.aem-GridColumn--default--6 {
-    padding-left: 0;
-    padding-right: 2rem;
-
-    @include sm {
-      padding-left: 0;
-      padding-right: 1rem;
-    }
-
-    @include md {
-      padding-left: 0;
-      padding-right: 1rem;
+    @include respond-to-max($tablet) {
+      min-height: toRem(117);
     }
   }
 
-  .beige-table {
-    margin-top: -1rem;
-    padding-left: 1rem;
+  .cmp-teaser__action-container {
+    float: right;
+    margin-top: toRem(-48);
+  }
 
-    @include sm {
-      padding-left: 1rem;
-      padding-right: 2rem;
-    }
+  ul li {
+    color: $dark-gray;
+    line-height: toRem(24);
+    list-style-type: disc;
+    margin-bottom: toRem(4);
+    margin-left: toRem(32);
+    padding-left: toRem(8);
+    position: relative;
 
-    @include md {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    .cmp-text {
-      margin-bottom: 0;
-    }
-
-
-    td {
-      border-bottom: 1px solid $white-2;
-      border-collapse: separate !important;
-      border-spacing: 2rem 0;
-
-      //margin: 0 -2rem;
-      color: $steel-grey;
-      font-size: $font20 !important;
-      font-weight: 400;
-      line-height: 56px;
-      vertical-align: bottom;
-      width: 50%;
-
-      @include font-family-lato();
-
-      @include sm {
-        border-bottom: none;
-        font-size: $font14 !important;
-      }
-
-      @include md {
-        padding: 0 1rem !important;
-      }
-
-      p {
-        font-size: $font20;
-        line-height: 56px;
-        margin: 0;
-
-        @include font-family-lato();
-
-        @include md {
-
-        }
-
-        @include sm {
-          color: $almost-black;
-          font-size: $font14;
-          line-height: 28px;
-          width: 13rem;
-        }
-      }
-    }
-
-
-    table {
-      border-collapse: separate;
-      border-spacing: 2rem 0;
-      margin: 0 -2rem 2rem 0;
-
-      @include md {
-        border-collapse: separate;
-        border-spacing: 2rem 0;
-        margin: 0 -2rem;
-      }
-
-      @include sm {
-        border-spacing: 0;
-        margin: 0;
-      }
-
-      tbody td {
-        color: $steel-grey;
-        line-height: 56px;
-        padding: 0 1rem !important;
-
-        @include sm {
-          color: $steel-grey;
-          font-size: $font14 !important;
-          line-height: 2rem;
-          padding: 0 !important;
-          padding: .75rem 2rem 0.65rem 0 !important;
-        }
-      }
-    }
-
-    table th {
-      border-bottom: 1px solid $white-2;
-      color: $almost-black;
-      font-size: $font20;
-      font-weight: 400;
-      line-height: 56px;
-      padding: 0;
-      vertical-align: bottom;
-
-      @include font-family-lato();
-
-      @include sm {
-        border-bottom: none;
-        font-size: $font14;
-      }
-    }
+    @include font-family-lato();
   }
 
   .rte-bullets {
     ol,
     ul {
       font-size: $font14;
-      line-height: 24px;
+      line-height: toRem(24);
       list-style: decimal;
-      margin: 0;
-      margin-bottom: 12.5px;
-      margin-top: 0;
-      padding: 0;
+      margin: $margin-step-0;
+      margin-bottom: toRem(12.5);
+      margin-top: $margin-step-0;
+      padding: $padding-step-0;
 
       @include font-family-lato();
     }
 
     ol {
-      padding: 2rem 2rem 0;
+      padding: toRem(32) toRem(32) 0;
+    }
+  }
+
+  .beigebg-wrapper {
+    background: $sand-white-50;
+    padding-bottom: toRem(32);
+    padding-top: toRem(6.4) !important;
+
+    .rte-bullets {
+      ol {
+        padding: toRem(32) toRem(32) 0;
+      }
+    }
+  }
+
+  .aem-GridColumn.aem-GridColumn--default--6 {
+    padding-left: 0;
+    padding-right: toRem(32);
+
+    @include respond-to-max($phone) {
+      padding-left: 0;
+      padding-right: toRem(16);
+    }
+
+    @include respond-to-max($tablet) {
+      padding-left: $padding-step-0;
+      padding-right: toRem(16);
+    }
+  }
+
+  .beige-table {
+    margin-top: toRem(-16);
+    padding-left: toRem(16);
+
+    @include respond-to-max($phone) {
+      padding-left: toRem(16);
+      padding-right: toRem(32);
+    }
+
+    @include respond-to-max($tablet) {
+      padding-left: $padding-step-0;
+      padding-right: $padding-step-0;
+    }
+
+    .cmp-text {
+      margin-bottom: $margin-step-0;
+    }
+
+    td {
+      border-bottom: $border-step-1 solid $white-2;
+      border-collapse: separate !important;
+      border-spacing: toRem(32) 0;
+
+      // margin: 0 -2rem;
+      color: $steel-grey;
+      font-size: $font20 !important;
+      font-weight: get-font-weight("regular");
+      line-height: toRem(56);
+      vertical-align: bottom;
+      width: 50%;
+
+      @include font-family-lato();
+
+      @include respond-to-max($phone) {
+        border-bottom: none;
+        font-size: $font14 !important;
+      }
+
+      @include respond-to-max($tablet) {
+        padding: 0 toRem(16) !important;
+      }
+
+      p {
+        font-size: $font20;
+        line-height: toRem(56);
+        margin: $margin-step-0;
+
+        @include font-family-lato();
+
+        @include respond-to-max($phone) {
+          color: $almost-black;
+          font-size: $font14;
+          line-height: toRem(28);
+          width: toRem(208);
+        }
+      }
+    }
+
+    table {
+      border-collapse: separate;
+      border-spacing: toRem(32) 0;
+      margin: $margin-step-0 toRem(-32) toRem(32) $margin-step-0;
+
+      @include respond-to-max($tablet) {
+        border-collapse: separate;
+        border-spacing: toRem(32) 0;
+        margin: $margin-step-0 toRem(-32);
+      }
+
+      @include respond-to-max($phone) {
+        border-spacing: 0;
+        margin: $margin-step-0;
+      }
+
+      tbody td {
+        color: $steel-grey;
+        line-height: toRem(56);
+        padding: 0 toRem(16) !important;
+
+        @include respond-to-max($phone) {
+          color: $steel-grey;
+          font-size: $font14 !important;
+          line-height: toRem(32);
+          padding: 0 !important;
+          padding: toRem(12) toRem(32) toRem(10.4) 0 !important;
+        }
+      }
+    }
+
+    table th {
+      border-bottom: toRem(1) solid $white-2;
+      color: $almost-black;
+      font-size: $font20;
+      font-weight: get-font-weight("regular");
+      line-height: toRem(56);
+      padding: $padding-step-0;
+      vertical-align: bottom;
+
+      @include font-family-lato();
+
+      @include respond-to-max($phone) {
+        border-bottom: none;
+        font-size: $font14;
+      }
     }
   }
 
   table tbody td:last-child {
     color: $almost-black;
 
-    @include sm {
+    @include respond-to-max($phone) {
       color: $almost-black !important;
-      font-weight: 700;
+      font-weight: get-font-weight("bold");
     }
 
-    @include md {
+    @include respond-to-max($tablet) {
       color: $steel-grey;
     }
   }
@@ -341,115 +332,114 @@
     cursor: pointer;
     float: right;
     font-size: $font14;
-    font-weight: 500;
-    letter-spacing: 2px;
-    line-height: 1.25rem;
-    margin-top: -3rem;
+    font-weight: get-font-weight("medium");
+    letter-spacing: toRem(2);
+    line-height: toRem(20);
+    margin-top: toRem(-48);
     position: relative;
     text-transform: uppercase;
     z-index: 3;
 
     @include font-family-lato();
 
-    @include md {
+    @include respond-to-max($tablet) {
       float: right;
-      margin-top: -6rem;
+      margin-top: toRem(-96);
     }
 
-    @include sm {
+    @include respond-to-max($phone) {
       float: right;
-      margin-top: -8.4rem;
+      margin-top: toRem(-134.4);
     }
   }
 
-
-  >.cmp-container {
+  > .cmp-container {
     background: $sand-white-50;
-    border-radius: 4px;
-    margin-bottom: 1.5rem;
-    min-height: 140px;
+    border-radius: $border-radius-step-1;
+    margin-bottom: toRem(24);
+    min-height: toRem(140);
     overflow: hidden;
     position: relative;
 
-    @include sm {
+    @include respond-to-max($phone) {
       margin-bottom: 0;
     }
 
-    @include md {
+    @include respond-to-max($tablet) {
       margin-bottom: 0;
     }
   }
 
-  >.cmp-container::before {
+  > .cmp-container::before {
     background: url("../resources/images/sectionbackground.svg");
     background-size: contain;
-    height: 280px;
-    opacity: .1;
+    height: toRem(280);
+    opacity: 0.1;
     position: absolute;
     right: 0;
     top: 0;
-    width: 260px;
+    width: toRem(260);
     z-index: 0;
 
-    @include sm {
+    @include respond-to-max($phone) {
       display: block;
     }
 
-    @include md {
+    @include respond-to-max($tablet) {
       display: block;
     }
   }
 
-  >.cmp-container::after {
+  > .cmp-container::after {
     background: url("../resources/images/sectionbackground.svg");
     background-size: contain;
     content: "";
-    height: 280px;
-    left: -2px;
-    opacity: .1;
+    height: toRem(280);
+    left: -toRem(2);
+    opacity: 0.1;
     position: absolute;
     top: 0;
     transform: rotate(180deg);
-    width: 260px;
+    width: toRem(260);
     z-index: 0;
 
-    @include md {
-      height: 145px;
-      width: 140px;
+    @include respond-to-max($tablet) {
+      height: toRem(145);
+      width: toRem(140);
     }
 
-    @include sm {
-      height: 145px;
-      width: 140px;
+    @include respond-to-max($phone) {
+      height: toRem(145);
+      width: toRem(140);
     }
   }
 
   .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6 {
-    @include sm {
+    @include respond-to-max($phone) {
       width: 100%;
     }
 
-    @include md {
+    @include respond-to-max($tablet) {
       width: 100%;
     }
   }
 
   .accordion {
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: toRem(25);
+    padding-right: toRem(25);
 
-    @include sm {
-      padding-left: 12px;
-      padding-right: 12px;
+    @include respond-to-max($phone) {
+      padding-left: toRem(12);
+      padding-right: toRem(12);
 
       .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--5 {
         width: 100%;
       }
     }
 
-    @include md {
-      padding-left: 12px;
-      padding-right: 12px;
+    @include respond-to-max($tablet) {
+      padding-left: toRem(12);
+      padding-right: toRem(12);
 
       .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--5 {
         width: 100%;
@@ -462,30 +452,30 @@
     outline: none;
   }
 
-  .cmp-accordion {
-    background-color: transparent;
-  }
+  // .cmp-accordion {
+  //   background-color: transparent;
+  // }
 
   .accordion-top-view {
     color: $almost-black !important;
     cursor: pointer;
     float: right;
-    font-size: .875rem;
-    letter-spacing: 2px;
-    line-height: 1.25rem;
-    margin-right: 1rem;
+    font-size: $font14;
+    letter-spacing: toRem(2);
+    line-height: toRem(20);
+    margin-right: toRem(16);
     margin-top: 0;
     text-transform: uppercase;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     z-index: 1;
 
     @include font-family-lato();
 
-    @include md {
+    @include respond-to-max($tablet) {
       display: none;
     }
 
-    @include sm {
+    @include respond-to-max($phone) {
       display: none;
     }
 
@@ -494,92 +484,126 @@
     }
   }
 
-  .cmp-accordion__item {
-    border-bottom: none;
+  .cmp-accordion {
+    background-color: transparent;
 
-    .cmp-accordion__header {
-      padding-top: 6px;
-    }
-  }
+    &__item {
+      border-bottom: none;
 
-  // .cmp-accordion__button {
-  //     width: auto;
-  // }
-
-  .cmp-accordion__title {
-    color: $almost-black;
-    font-size: 28px;
-    letter-spacing: .5px;
-    margin: 2.2rem 0 1.5rem;
-
-    @include font-family-Neotech;
-
-    @include sm {
-      font-size: 20px;
+      &__header {
+        padding-top: toRem(6);
+      }
     }
 
-    @include md {
-      font-size: 20px;
+    // .cmp-accordion__button {
+    //     width: auto;
+    // }
+
+    &__title {
+      color: $almost-black;
+      font-size: $font28;
+      letter-spacing: toRem(0.5);
+      margin: toRem(35.2) 0 toRem(24);
+
+      @include font-family-Neotech;
+
+      @include respond-to-max($phone) {
+        font-size: toRem(20);
+      }
+
+      @include respond-to-max($tablet) {
+        font-size: toRem(20);
+      }
     }
-  }
 
-  .cmp-accordion__icon {
-    border-left: 1px solid $almost-black;
-    border-top: 1px solid $almost-black;
-    color: $nav-item-black;
-    content: "";
-    display: block;
-    float: right;
+    &__icon {
+      border-left: $border-step-1 solid $almost-black;
+      border-top: $border-step-1 solid $almost-black;
+      color: $nav-item-black;
+      content: "";
+      display: block;
+      float: right;
 
-    //width: 10px;
-    //height: 10px;
-    padding: 3.7px;
-    position: relative;
-    right: 5px;
-    top: 3px;
-    transform: rotate(225deg);
-    z-index: 10;
+      // width: 10px;
+      // height: 10px;
+      padding: toRem(3.7);
+      position: relative;
+      right: toRem(5);
+      top: toRem(3);
+      transform: rotate(225deg);
+      z-index: 10;
 
-    //margin-top: 1rem;
-    @include sm {
-      margin-right: 0.5rem !important;
-      margin-top: 0.5rem;
+      // margin-top: 1rem;
+      @include respond-to-max($phone) {
+        margin-right: toRem(8) !important;
+        margin-top: toRem(8);
+        z-index: 10;
+      }
+
+      @include respond-to-max($tablet) {
+        height: toRem(10);
+        margin-right: toRem(8);
+        margin-top: toRem(8);
+        width: toRem(10);
+      }
+    }
+
+    &__button--expanded {
+      background-color: transparent !important;
       z-index: 10;
     }
 
-    @include md {
-      height: 10px;
-      margin-right: 0.5rem;
-      margin-top: .5rem;
-      width: 10px;
+    &__button--expanded .cmp-accordion__icon {
+      border-left: $border-step-1 solid $almost-black;
+      border-top: $border-step-1 solid $almost-black;
+      content: "";
+      display: block;
+      float: right;
+      padding: toRem(3.7);
+      right: toRem(5);
+
+      // width: 10px;
+      // height: 10px;
+      top: toRem(5);
+      transform: rotate(45deg);
     }
-  }
 
-  .cmp-accordion__button--expanded {
-    background-color: transparent !important;
-    z-index: 10;
-  }
+    &__button {
+      margin-left: toRem(10);
+      margin-top: toRem(5);
+      padding: 0;
+      z-index: 10;
+    }
 
-  .cmp-accordion__button--expanded .cmp-accordion__icon {
-    border-left: 1px solid $almost-black;
-    border-top: 1px solid $almost-black;
-    content: "";
-    display: block;
-    float: right;
-    padding: 3.7px;
-    right: 5px;
+    &__itemdesc {
+      font-size: $font18;
+      margin-bottom: toRem(24);
+      margin-top: toRem(24);
 
-    //width: 10px;
-    //height: 10px;
-    top: 5px;
-    transform: rotate(45deg);
-  }
+      @include respond-to-max($phone) {
+        font-size: $font16;
+        margin-bottom: toRem(32);
+        margin-top: toRem(32);
+      }
 
-  .cmp-accordion__button {
-    margin-left: 10px;
-    margin-top: 5px;
-    padding: 0;
-    z-index: 10;
+      @include respond-to-max($tablet) {
+        font-size: $font16;
+        margin-bottom: toRem(32);
+        margin-top: toRem(16);
+      }
+    }
+
+    &__panel--expanded {
+      margin-top: toRem(20);
+
+      @include respond-to-max($phone) {
+        margin-top: toRem(-48);
+      }
+
+      @include respond-to-max($tablet) {
+        margin-top: toRem(-32);
+      }
+    }
   }
 
   .visiblityhidden {
@@ -590,52 +614,22 @@
   .displaynone {
     display: none;
   }
-
-  .cmp-accordion__itemdesc {
-    font-size: 18px;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-
-    @include sm {
-      font-size: 16px;
-      margin-bottom: 2rem;
-      margin-top: 2rem;
-    }
-
-    @include md {
-      font-size: 16px;
-      margin-bottom: 2rem;
-      margin-top: 1rem;
-    }
-  }
-
-  .cmp-accordion__panel--expanded {
-    margin-top: 1.25rem;
-
-    @include sm {
-      margin-top: -3rem;
-    }
-
-    @include md {
-      margin-top: -2rem;
-    }
-  }
 }
 
 .sort_asc {
   background-image: url("../resources/images/sort_asc.png");
-  background-position: right 1px;
+  background-position: right toRem(1);
   background-repeat: no-repeat;
   display: inline-block;
-  padding-left: 13px;
-  width: 138px;
+  padding-left: toRem(13);
+  width: toRem(138);
 }
 
 .sort_desc {
   background-image: url("../resources/images/sort_desc.png");
-  background-position: right -3px;
+  background-position: right -toRem(3);
   background-repeat: no-repeat;
   display: inline-block;
-  padding-left: 13px;
-  width: 138px;
+  padding-left: toRem(13);
+  width: toRem(138);
 }
