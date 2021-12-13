@@ -1397,10 +1397,7 @@ table {
             padding: 12px 0;
             padding-right: 24px;
             width: 33.2%;
-            
-            @include rtlBlock() {
-              padding-right: $padding-step-0;
-            }
+
             &::before {
               color: $blue2;
               content: attr(data-label);
@@ -1419,6 +1416,9 @@ table {
               padding: 0;
               position: absolute;
               top: 36px;
+              @include rtlBlock() {
+                padding-right: $padding-step-0;
+              }
 
               &::before {
                 display: none;
@@ -1487,6 +1487,7 @@ table {
         border-bottom: 1px solid $silver-white;
 
         th {
+          padding-top: 15px;
           padding-bottom: 15px;
 
           @include font-family-lato;
@@ -1507,8 +1508,16 @@ table {
           padding-right: 24px;
           padding-top: 17px;
           vertical-align: baseline;
-
           @include font-family-lato;
+
+          @include rtlBlock() {
+            padding-right: $padding-step-0;
+            font-weight: get-font-weight("regular");
+            @include respond-to-max($phone) {
+              padding-right: 4px;
+              padding-left: 0;
+            }
+          }
 
           &:first-child {
             color: $blue2;
@@ -1527,6 +1536,7 @@ table {
     }
   }
 
+  &.six-col,
   .six-col {
     @media screen and (min-width: 1248px) {
       tbody {
@@ -1543,6 +1553,7 @@ table {
     }
   }
 
+  &.five-col,
   .five-col {
     @media screen and (min-width: 1248px) {
       tbody {
@@ -1566,6 +1577,7 @@ table {
     }
   }
 
+  &.four-col,
   .four-col {
     @media screen and (min-width: 1248px) {
       tbody {
@@ -1584,6 +1596,7 @@ table {
     }
   }
 
+  &.three-col,
   .three-col {
     @media screen and (min-width: 1248px) {
       tbody {
@@ -1602,6 +1615,7 @@ table {
     }
   }
 
+  &.two-col,
   .two-col {
     @media screen and (min-width: 1248px) {
       tbody {
@@ -1610,6 +1624,18 @@ table {
             width: 50%;
           }
         }
+      }
+    }
+  }
+  &.two-col,
+  &.three-col,
+  &.four-col,
+  &.five-col,
+  &.six-col {
+    @include respond-to-max($phone) {
+      table thead tr th,
+      table tbody tr td {
+        padding-left: 4px;
       }
     }
   }

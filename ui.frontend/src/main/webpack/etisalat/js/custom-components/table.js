@@ -4,13 +4,23 @@ import $ from "jquery";
 window.dt = require("datatables.net");
 
 const CUSTOM_TABLE_COMPONENT = ".custom-datatable";
+const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".cmp-text.custom-datatable table");
 
 $(function () {
-  if ($(".cmp-text.custom-datatable table thead").length === 0) {
-    $(".cmp-text.custom-datatable table").prepend("<thead></thead>"); // Add thead
-    $(".cmp-text.custom-datatable table tr:eq(0)").prependTo("table thead"); // move first tr to thead
-    $(".cmp-text.custom-datatable table thead").html(function (id, html) {
-      return html.replace(/td>/g, "th>"); // replace td by th, use regExp to replace all
+  if (CMP_TEXT_CUSTOM_TABLE_CLASS.find("thead").length === 0) {
+    CMP_TEXT_CUSTOM_TABLE_CLASS.each(function (index, element) {
+      const APPEND_THEAD = $("<thead></thead>");
+      const APPEND_TR = $("<tr></tr>");
+      let FIRST_TR = $("tr:first", this);
+
+      $("td", FIRST_TR).each(function (i, e) {
+        APPEND_TR.append($("<th>").html(e.textContent).get(0));
+      });
+
+      APPEND_THEAD.html(APPEND_TR);
+      APPEND_THEAD.prependTo(element);
+
+      FIRST_TR.remove();
     });
     newCustomDataTable();
   } else {
@@ -33,7 +43,7 @@ $(function () {
 });
 
 function newCustomDataTable() {
-  $(".cmp-text.custom-datatable table").show();
+  CMP_TEXT_CUSTOM_TABLE_CLASS.show();
   function addDataAttributes(table) {
     $("tr", table).each(function (index) {
       $(this).attr("role", "row");
