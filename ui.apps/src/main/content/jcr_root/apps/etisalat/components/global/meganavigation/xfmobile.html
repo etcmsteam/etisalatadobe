@@ -36,11 +36,18 @@
   <!-- For MyAccount Menu: ends -->
   
  <ul data-sly-test="${properties.search}"  class="nav-items nav-level-1">
-        <li class="nav-item">
+        <li class="nav-item nav-expand">
             <a class="nav-link search-link" href="#">                
-                <img alt="${properties.searchLabel}"  class="nav-link-icon" src="${properties.searchIconImage}"/> ${properties.searchLabel}
-                <sly data-sly-resource="${'search1' @ resourceType='etisalat/components/search'}"></sly>
-            </a>      
+                <img alt="${properties.searchLabel}"  class="nav-link-icon" src="${properties.searchIconImage}"/> ${properties.searchLabel}                
+            </a>
+            <ul class="nav-items nav-expand-content">
+                <li class="nav-item">
+                    <a class="nav-link nav-back-link" href="#">${properties.menuBack}</a>
+                </li>
+                <li>
+                   <sly data-sly-resource="${'search1' @ resourceType='etisalat/components/search'}"></sly>
+                </li>
+            </ul>     
         </li>
   </ul>
 
