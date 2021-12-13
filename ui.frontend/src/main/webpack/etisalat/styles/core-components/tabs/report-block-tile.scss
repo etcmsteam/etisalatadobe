@@ -20,7 +20,7 @@
 
 .basicpage .report-block-tile {
   border-radius: toRem(8);
-  box-shadow: 0 toRem(5) toRem(10) 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
   margin-bottom: toRem(16);
   padding: toRem(51.8) toRem(51.8) toRem(35.48) !important;
   position: relative;
@@ -112,25 +112,6 @@
       position: static;
       text-align: left;
     }
-
-    .cmp-link__text {
-      color: $main-green;
-      display: inline-block;
-      font-size: $font14;
-      letter-spacing: toRem(2);
-      line-height: toRem(20);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      @include respond-to-min($desktop) {
-        margin-top: toRem(10);
-      }
-
-      @include respond-to-max($tablet) {
-        font-size: $font12;
-      }
-    }
   }
 
   svg {
@@ -147,7 +128,7 @@
 
 // tab with carosol on desktop
 .product-grid-single {
-  padding: 1.5rem 0;
+  padding: toRem(1.5) 0;
 
   @include respond-to-min($desktop) {
     padding: toRem(40) toRem(16);
@@ -166,7 +147,16 @@
   }
 
   h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: toRem(24);
+  }
+
+  .product-grid-single .next,
+  .product-grid-single .prev {
+    cursor: pointer;
+    float: left;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    width: toRem(54) !important;
   }
 
   .controls {
@@ -211,15 +201,6 @@
   stroke: $gray;
 }
 
-.product-grid-single .next,
-.product-grid-single .prev {
-  cursor: pointer;
-  float: left;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  width: toRem(54) !important;
-}
-
 @include respond-to-max($tablet) {
   .product-promotions-wrraper {
     .swiper-slide {
@@ -236,22 +217,18 @@
   .edc-tabs-wrapper {
     .cmp-tabs__tabpanel {
       &--active {
-        padding: 1.5rem 0;
+        padding: toRem(24) 0;
 
         @include respond-to-min($desktop) {
-          padding-top: 3rem 0;
+          padding-top: toRem(48) 0;
         }
 
-        .ul-list-cms {
-          ul {
-            li {
-              font-size: $font14;
-              line-height: toRem(20);
+        .ul-list-cms ul li {
+          font-size: $font14;
+          line-height: toRem(20);
 
-              @include respond-to-min($desktop) {
-                line-height: 1.5rem;
-              }
-            }
+          @include respond-to-min($desktop) {
+            line-height: toRem(24);
           }
         }
       }
