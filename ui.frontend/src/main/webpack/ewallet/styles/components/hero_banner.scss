@@ -15,69 +15,66 @@
       min-height: 350px;
     }
   }
-    // Hotels Blurb
-    &.ewallet_hotels {
-      overflow: hidden;
+  // Hotels Blurb
+  &.ewallet_hotels {
+    overflow: hidden;
+    @include respond-to-max($tablet) {
+      height: toRem(288);
+    }
+    @include respond-to-max($phone) {
+      height: toRem(450);
+    }
+    @include respond-to-min($tablet) {
+      height: toRem(490);
+    }
+    @include respond-to-min($desktop) {
+      height: toRem(545);
+    }
+    @include respond-to-min($desktop-wide) {
+      height: toRem(745);
+    }
+    .cmp-container {
       @include respond-to-max($tablet) {
         height: toRem(288);
+        top: toRem(-15);
       }
       @include respond-to-min($tablet) {
-        height: toRem(490);
+        height: toRem(380);
+        top: toRem(0);
       }
       @include respond-to-min($desktop) {
-        height: toRem(519);
+        height: toRem(437);
+        top: toRem(-7);
       }
       @include respond-to-min($desktop-wide) {
-        height: toRem(745);
+        height: toRem(1000);
+        top: toRem(-5);
       }
-      .cmp-container {
-        border: 2px solid yellow;
-        @include respond-to-max($tablet) {
-          height: toRem(288);
-          top: toRem(-15);
-        }
-        @include respond-to-min($tablet) {
-          height: toRem(440);
-          top: toRem(-1);
-          
-        }
-        @include respond-to-min($desktop) {
-          height: toRem(437);
-          top: toRem(-7);
-        }
-        @include respond-to-min($desktop-wide) {
-          height: toRem(1000);
-          top: toRem(-5);
-        }
-        .ewallet_cover {
-          &:after {
-            background-image: url("../resources/images/img-location-contact-us-rx.png");
-            top: toRem(110);
-            @include respond-to-max($tablet) {
-              // width: 191%;
-              height: toRem(173);
-              left: toRem(-171);
-              top: toRem(102);
-            }
-            @include respond-to-min($tablet) {
-              height: toRem(220);
-            }
-            @include respond-to-min($desktop) {
-              height: toRem(320);
-            }
-            @include respond-to-min($desktop-wide) {
-              //width: 111%;
-              height: toRem(642);
-            }
+      .ewallet_cover {
+        &:after {
+          background-image: url("../resources/images/img-location-contact-us-rx.png");
+          top: toRem(110);
+          @include respond-to-max($phone) {
+            height: toRem(163);
+          }
+          @include respond-to-min($tablet) {
+            height: toRem(270);
+          }
+          @include respond-to-min($desktop) {
+            height: toRem(321);
+          }
+          @include respond-to-min($desktop-wide) {
+            height: toRem(642);
           }
         }
-        .banner-content .teaser{
-          h1{
-            margin-top: 30px;
-          }
+      }
+      .banner-content .teaser {
+        h1 {
+          margin-top: 30px;
         }
       }
     }
+  }
   // News
   &.ewallet_news {
     overflow: hidden;
@@ -132,10 +129,9 @@
           }
         }
       }
-      .banner-content .teaser{
-        h1{
+      .banner-content .teaser {
+        h1 {
           margin-top: 30px;
-          border: 2px dashed red;
         }
       }
     }
@@ -210,7 +206,10 @@
     // Personal Page
     &.landing_page {
       height: toRem(870);
-      
+      @include respond-to-max($tablet) {
+        height: auto;
+      }
+
       .ewallet_cover {
         @include respond-to-max($tablet) {
           height: toRem(360);
@@ -267,8 +266,8 @@
           }
         }
       }
-      
-      .teaser{
+
+      .teaser {
         @include respond-to-max($tablet) {
           padding: 90px 15px 0 15px;
         }
@@ -462,14 +461,17 @@
       }
     }
   }
-  &.ewallet_hotels{
+  &.ewallet_hotels {
     .teaser {
       @include respond-to-min($desktop-wide) {
         padding-top: 210px !important;
       }
-      .cmp-teaser__content{
-        @include respond-to-max($desktop) {
-          width: 70%;
+      .cmp-teaser__content {
+        @include respond-to-min($tablet) {
+          width: 50% !important;
+        }
+        @include respond-to-max($phone) {
+          width: 100% !important;
         }
       }
     }
@@ -584,7 +586,7 @@
       .buttonstore {
         @extend .wrapper;
         @include respond-to-min($tablet) {
-          margin-top: 20px
+          margin-top: 20px;
         }
         .cmp_btn {
           .cmp_store_btn {
@@ -598,7 +600,7 @@
               padding: 2px 12px;
             }
             a {
-              img{
+              img {
                 width: 100%;
               }
             }

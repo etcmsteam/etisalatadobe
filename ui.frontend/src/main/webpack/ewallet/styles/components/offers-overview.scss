@@ -158,8 +158,11 @@
 }
 
 .bgoffers_blurb {
-  top: 155px;
+  top: 205px;
   position: relative;
+  @include respond-to-min($tablet) {
+    top: 155px;
+  }
   .cmp-container {
     background: url("../resources/images/img-oval_tcm451-117037.png") 0 0 no-repeat;
     background-size: contain;
@@ -167,15 +170,11 @@
     height: 460px;
     right: 40px;
     z-index: 10;
-    @include respond-to-max($desktop) {
-      width: 420px !important;
-      height: 460px;
-    }
+    width: 316px !important;
     @include respond-to-max($phone) {
-      top: 100px;
+      top: 215px;
       right: 0;
       left: 20px;
-      width: 316px !important;
     }
     @include respond-to-min($desktop) {
       width: 420px !important;
@@ -189,9 +188,22 @@
       position: relative;
       width: 450px;
       height: 460px;
+      @include respond-to-max($phone) {
+        width: 315px;
+      }
       .cmp-text {
         position: absolute;
         color: $white;
+        @include respond-to-max($phone) {
+          top: 55px;
+          left: 20px;
+          width: 290px;
+        }
+        @include respond-to-min($tablet) {
+          top: 60px;
+          left: 30px;
+          width: 290px;
+        }
         @include respond-to-min($desktop) {
           top: 110px;
           left: 30px;
@@ -203,11 +215,14 @@
           width: 400px;
         }
         h3 {
-          font-size: toRem(40);
+          font-size: toRem(32);
           color: $white !important;
           line-height: toRem(44);
           font-weight: 500;
           font-family: Bariol, GE SS Two, Arial, sans-serif;
+          @include respond-to-min($desktop) {
+            font-size: toRem(40);
+          }
         }
         p {
           font-family: Bariol, GE SS Two, Arial, sans-serif;
