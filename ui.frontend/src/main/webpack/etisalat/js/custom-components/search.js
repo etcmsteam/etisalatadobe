@@ -16,7 +16,6 @@
       }
       // register the event handlers
       $(document).ready(function () {
-        console.log("dom is ready...");
         var instannceNum = 0;
         var doc = document;
         var searchInput = doc.querySelectorAll(".search-input");
@@ -76,22 +75,22 @@
         //render Recent Search
         function loadRecentSearch() {
           try {
-            console.log("load recent search");
             var stroreRecentSearch = JSON.parse(localStorage.getItem("eti_recentSearch"));
+            console.log("stroreRecentSearch", stroreRecentSearch);
             var recentItemMarkup = "";
             if (stroreRecentSearch !== null) {
               recentSearch = stroreRecentSearch;
-              //console.log(recentSearch);
               for (var i = 0; i < recentSearch.length; i++) {
                 recentItemMarkup += '<li class="list-item"><a href="#">' + recentSearch[i] + "</a></li>";
               }
               doc.querySelectorAll(".search-items-wrapper-4-0 .search-items-wrapper")[0].classList.add("recent-wrapper");
               doc.querySelectorAll(".list.recent")[instannceNum].classList.remove("d-none");
+              console.log("markup-", recentItemMarkup);
               doc.querySelectorAll(".recentItemList")[instannceNum].innerHTML = recentItemMarkup;
               var listItems = doc.querySelectorAll(".recentItemList")[instannceNum].children;
               for (var i = 0; i < listItems.length; i++) {
                 listItems[i].addEventListener("click", function (e) {
-                  event.preventDefault();
+                  e.preventDefault();
                   doc.querySelectorAll(".search-input")[instannceNum].value = this.innerText.trim();
                   searchTerm(this.innerText.trim());
                 });
@@ -103,7 +102,6 @@
         }
         //update Recent Search
         function updateRecentSearch(searchText) {
-          console.log("update recent search");
           if (recentSearch.indexOf(searchText) === -1) {
             recentSearch.unshift(searchText);
           } else {
@@ -118,7 +116,7 @@
         }
         //seach for suggession
         var searchTerm = function (searchText) {
-          console.log("search term..");
+          console.log("search term", searchText);
           //google analyticss starts
           if (typeof window.dataLayer !== "undefined") {
             window.dataLayer.push({
@@ -168,7 +166,6 @@
 
         // guided seach once click on suggession links
         var guidedSearch = function (searchText, target) {
-          console.log("guided search..");
           var loadertemplate =
             '<div class="search-result-loader-4-0 sr-right">' +
             //item
@@ -250,7 +247,6 @@
 
         //Check search list item dataType
         var checkType = function (item, required) {
-          console.log("Check search list item dataType");
           if (item.attributes["record.source"][0] === "ProductCatalog") {
             if (
               item.attributes["sku.type"] !== undefined &&
@@ -286,7 +282,6 @@
 
         //Check search list item and return redirect URL
         var getURL = function (item) {
-          console.log("get url");
           var deviceConfigUrl = {
             postpaid: "https://www.etisalat.ae/b2c/eshop/postpaidLine?productId=",
             prepaid: "https://www.etisalat.ae/b2c/eshop/prepaidLine?productId=",
@@ -323,7 +318,6 @@
 
         //Render Tabs items
         var renderTabItems = function (json, statusText, xhr) {
-          console.log("render table");
           var tabsBodyItemData = "";
           var tabsBodyItemHTML = "";
           if (json.success === true && statusText === "success" && json.response !== undefined) {
@@ -421,7 +415,6 @@
          * Callback for successfull ajax submit
          */
         var submitSuccessResponse = function (json, statusText, xhr) {
-          console.log("submit success resp");
           var tabsHeadHTML = "";
           var tabsBodyHTML = "";
           var tabHeadData = "";
@@ -499,16 +492,16 @@
          */
         var submitErrorResponse = function (jqXHR, textStatus, error) {
           var errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
-          console.log(errorText);
         };
 
         document.querySelectorAll(".clearSearch")[instannceNum].addEventListener("click", clearSearch);
 
         // clear search
         function clearSearch() {
-          console.log("clear search");
+          console.log('clear started');
           var doc = document;
-          if (doc.querySelectorAll(".search-input")[instannceNum].length > 0) {
+          if (doc.querySelectorAll(".search-input")[instannceNum].value.length > 0) {
+            console.log("clear smoe text", doc.querySelectorAll(".search-input")[instannceNum].value);
             doc.querySelectorAll(".search-input")[instannceNum].value = "";
             doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
@@ -517,11 +510,9 @@
           }
         }
 
-        console.log("above seach click");
         $(".search-link-cms .mega-menu-link")
           .off("click")
           .on("click", function (e) {
-            console.log("click triggered for search button ");
             var target = $(this).next(".mega-dropdown");
             if ($(target).hasClass("open")) {
               $(".main-mega-menu-desktop").removeClass("backdrop-search-4-0");
@@ -551,7 +542,6 @@
                 }
               });
           });
-        console.log("below search click");
 
         //quick liks google analytics
         var quickLinks = doc.querySelectorAll(".search-items .list.quick-links ul")[instannceNum].children || "";
