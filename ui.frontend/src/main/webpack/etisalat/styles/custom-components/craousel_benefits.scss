@@ -50,38 +50,38 @@
       flex-direction: row-reverse;
       .next.next-with--topcarousel,
       .prev.prev-with--topcarousel {
-        position: relative;
+        position: absolute;
       }
 
     .next-with--topcarousel {
-      // right: -3rem;
       margin-top: -7.5em;
-      // left: auto;
-      z-index: 10;
-      // margin-right: 1rem;
-      left: 3.2%;
+      left: auto;
+      
+      @include rtlBlock {
+        right: -2rem;
+      }
       @include respond-to-min-max($desktop-min, $tablet) {
         margin-top: -7.5em;
         // right: toRem(-12);
-        @include rtlBlock() {
-          right: toRem(-44) !important;
-        }
+        // @include rtlBlock() {
+        //   right: toRem(-44) !important;
+        // }
       }
 
       @include respond-to-min-max($desktop-wide, $desktop) {
         margin-top: -9.5em;
         // right: toRem(-20);
-        @include rtlBlock() {
-          right: toRem(-34) !important;
-        }
+        // @include rtlBlock() {
+        //   right: toRem(-34) !important;
+        // }
       }
 
       @include respond-to-min($desktop-wide) {
         margin-top: -9.5em;
         // right: toRem(-100);
-        @include rtlBlock() {
-          right: toRem(-100) !important;
-        }
+        // @include rtlBlock() {
+        //   right: toRem(-100) !important;
+        // }
       }
     }
 
@@ -94,7 +94,7 @@
         margin-top: -7.5em;
         // left: toRem(-36);
         @include rtlBlock() {
-          margin-left: calc(#{$margin-step-5} + 4px);
+          // margin-left: calc(#{$margin-step-5} + 4px);
         }
       }
 
@@ -102,7 +102,7 @@
         margin-top: -9.5em;
         // margin-left: calc(2px - #{$margin-step-3});
         @include rtlBlock() {
-          margin-left: $margin-step-0;
+          // margin-left: $margin-step-0;
         }
       }
 
@@ -116,9 +116,9 @@
       background: $cream-brown;
       border-radius: 50px;
     }
-    .prev {
-      @include rtl(right, torem(60), auto !important);
-    }
+    // .prev {
+    //   @include rtl(right, torem(60), auto !important);
+    // }
   }
 
   .swiper-slide--tiles {
@@ -159,7 +159,7 @@
             font-size: $font16;
           }
           @include rtlBlock() {
-            font-weight: get-font-weight("regular");
+            font-weight: get-font-weight("light");
           }
         }
       }
