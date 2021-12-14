@@ -373,8 +373,8 @@
   }
 
   &.table-striped {
-    .custom-datatable {
-      &.scroll {
+    &.scroll {
+      .custom-datatable {
         height: 480px;
         overflow: auto;
         padding-right: 0;
@@ -479,10 +479,10 @@
 
               &::before {
                 @include respond-to-max($desktop-min) {
-                  margin-left: toRem(22);
+                  margin-left: toRem(-22);
                   @include rtlBlock() {
                     margin-left: 0;
-                    margin-right: toRem(24);
+                    margin-right: toRem(-24);
                   }
                 }
               }
@@ -1220,6 +1220,9 @@ table {
           cursor: pointer;
           *cursor: hand;
           padding-right: 20px;
+          @include rtlBlock() {
+            padding-right: 0;
+          }
         }
       }
     }
