@@ -1,26 +1,29 @@
-//mobile view st
+/* stylelint-disable no-descending-specificity */
+// mobile view st
 
 .cmp-title {
   color: $almost-black;
   font-size: $font28;
   letter-spacing: normal;
-  line-height: 1.21;
+  line-height: toRem(19.36);
   margin: 0;
 }
 
 .panel-collapse {
-  font-size: 1rem !important;
-  line-height: 1.8rem !important;
+  font-size: $font16 !important;
+  line-height: toRem(28.8) !important;
 }
 
 .cmp-teaser__description {
   ul li {
     color: $dark-gray;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+
+    @include font-family-lato;
+
     font-size: $font20;
     font-weight: get-font-weight("regular");
     line-height: toRem(20);
-    margin: 0 0 0.5rem;
+    margin: 0 0 toRem(8);
     position: relative;
   }
 }
@@ -33,24 +36,24 @@
     line-height: toRem(16);
     position: relative;
     text-transform: uppercase;
-  }
 
-  .cmp-teaser__action-link::before {
-    border: solid $main-green;
-    border-width: 0 toRem(1) toRem(1) 0;
-    content: "";
-    line-height: 1;
-    padding: toRem(3.5);
-    position: absolute;
-    right: toRem(-13);
-    top: 50%;
-    transform: translateY(-50%) rotate(-45deg);
-    transition: all 0.3s ease-in-out;
+    &::before {
+      border: solid $main-green;
+      border-width: 0 toRem(1) toRem(1) 0;
+      content: "";
+      line-height: 1;
+      padding: toRem(3.5);
+      position: absolute;
+      right: toRem(-13);
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+      transition: all 0.3s ease-in-out;
 
-    *[lang="ar"] *[dir="rtl"] & {
-      left: toRem(-13);
-      right: auto;
-      transform: translateY(-50%) rotate(135deg);
+      @include rtlBlock() {
+        left: toRem(-13);
+        right: auto;
+        transform: translateY(-50%) rotate(135deg);
+      }
     }
   }
 
@@ -62,12 +65,12 @@
   }
 
   .panel-collapse {
-    background: rgb(255, 255, 255);
-    padding: 1rem;
+    background: $white;
+    padding: toRem(16);
 
     @include respond-to-max($phone) {
       background-color: $white-gray1;
-      padding: 0 1rem 1rem;
+      padding: 0 toRem(16) toRem(16);
     }
   }
 
@@ -76,18 +79,48 @@
       border-radius: toRem(4);
       box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
     }
-  }
 
-  .cmp-teaser__content {
-    @include respond-to-max($phone) {
-      background-color: $white;
-      padding: 1rem 1rem 2rem;
+    &__content {
+      @include respond-to-max($phone) {
+        background-color: $white;
+        padding: toRem(16) toRem(16) toRem(32);
+      }
     }
-  }
 
-  .cmp-teaser__action-container {
-    @include respond-to-max($phone) {
-      margin-top: 1rem;
+    &__action-container {
+      @include respond-to-max($phone) {
+        margin-top: toRem(16);
+      }
+    }
+
+    &__description {
+      h4 {
+        color: $almost-black;
+        font-size: $font18;
+        font-weight: get-font-weight("bold");
+        margin-bottom: toRem(16);
+        margin-top: 0;
+
+        @include rtlBlock {
+          font-weight: get-font-weight("light");
+        }
+
+        @include font-family-lato;
+      }
+
+      p {
+        color: $paracolor;
+        font-size: $font14;
+        font-weight: get-font-weight("medium");
+        line-height: toRem(19);
+
+        @include font-family-lato;
+      }
+
+      .cmp-teaser__action-link {
+        padding: toRem(2.85);
+        position: relative;
+      }
     }
   }
 
@@ -95,50 +128,6 @@
     @include respond-to-max($phone) {
       height: toRem(40);
       width: toRem(35);
-    }
-  }
-
-  .cmp_tabs__verticle_view_img {
-    .panel-collapse {
-      background: rgb(255, 255, 255);
-      border-radius: toRem(4);
-      box-shadow: rgb(0 0 0 / 10%) 0 5px 10px 0;
-      margin: 1rem 1rem 3rem;
-      padding: 1rem;
-
-      .cmp-teaser__action-container {
-        margin: 1rem 0;
-      }
-    }
-  }
-
-  .cmp-teaser__description {
-    h4 {
-      color: $almost-black;
-      font-size: $font18;
-      font-weight: get-font-weight("bold");
-      margin-bottom: 1rem;
-      margin-top: 0;
-
-      @include font-family-lato;
-
-      *[lang="ar"] *[dir="rtl"] & {
-        font-weight: get-font-weight("light");
-      }
-    }
-
-    p {
-      color: $paracolor;
-      font-size: $font14;
-      font-weight: get-font-weight("medium");
-      line-height: toRem(19);
-
-      @include font-family-lato;
-    }
-
-    .cmp-teaser__action-link {
-      padding: toRem(2.85);
-      position: relative;
     }
   }
 
@@ -150,27 +139,18 @@
     margin: 0;
   }
 
-  .get-more-section .desktop-body .get-more-details .get-more-title-small {
-    margin-bottom: 1rem;
-  }
-
-  .nav-view-wrapp.panel > a {
-    font-size: toRem(16);
-  }
-
-  .nav-view-wrapp span {
-    display: inline-block;
-    margin-right: toRem(15);
-  }
-
   .nav-view-wrapp.panel > a.collapsed {
     color: $dark-gray;
-    font-weight: 400 !important;
+    font-weight: get-font-weight("regular");
+
+    &::before {
+      transform: translateY(-70%) rotate(45deg);
+    }
   }
 
   .nav-view-wrapp.panel > :not(a.collapsed) {
     font-size: $font14;
-    font-weight: 900 !important;
+    font-weight: get-font-weight("heavy");
 
     @include font-family-lato;
   }
@@ -178,8 +158,11 @@
   .nav-view-wrapp {
     &.panel {
       & > a {
+        font-size: $font16;
+        color: $main-green;
+
         &::before {
-          border: solid #b2b2b2;
+          border: solid $grey4;
           border-width: 0 toRem(1) toRem(1) 0;
           content: "";
           line-height: 1;
@@ -193,40 +176,25 @@
         }
       }
     }
-  }
 
-  .nav-view-wrapp.panel > a {
-    color: $main-green;
+    span {
+      display: inline-block;
+      margin-right: toRem(15);
+    }
   }
 
   .cmp_accordion___view {
     .nav-view-wrapp.panel > a {
-      background: #fff;
-      border-bottom: 1px solid #d8d8d8;
+      background: $white;
+      border-bottom: 1px solid $grey5;
       font-size: toRem(16);
-    }
-  }
-
-  .cmp_tabs__verticle_view_img {
-    .panel-collapse {
-      background: rgb(255, 255, 255);
-      border-radius: toRem(4);
-      box-shadow: rgb(0 0 0 / 10%) 0 5px 10px 0;
-      margin: 1rem 1rem 3rem;
-      padding: 1rem;
-
-      .cmp-teaser__action-container {
-        margin: 1rem 0;
-      }
     }
   }
 
   .nav-view-wrapp.panel > a,
   .nav-view-wrapp.panel > a.collapsed {
     align-items: center;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
     flex-direction: row-reverse;
     justify-content: flex-end;
     letter-spacing: normal;
@@ -236,51 +204,22 @@
     position: relative;
   }
 
-  .nav-view-wrapp.panel > a.collapsed {
-    color: $steel-grey;
-    font-weight: 900;
-  }
+  .get-more-section {
+    .desktop-body {
+      background-color: $sand-white-50;
+      display: flex;
+      flex-direction: column;
+      padding: 0 toRem(16);
 
-  .nav-view-wrapp.panel > a.collapsed::before {
-    transform: translateY(-70%) rotate(45deg);
-  }
+      .get-more-details {
+        -ms-flex-order: 2;
+        order: 2;
 
-  .nav-view-wrapp.panel > a::before {
-    border: solid #b2b2b2;
-    border-width: 0 toRem(1) toRem(1) 0;
-    content: "";
-    line-height: 1;
-    padding: toRem(3.5);
-    position: absolute;
-    right: toRem(18);
-    top: 50%;
-    transform: translateY(-30%) rotate(-135deg);
-    transition: all 0.3s ease-in-out;
-    z-index: 1;
-  }
-
-  .nav-view-wrapp.panel > a.collapsed::before {
-    transform: translateY(-70%) rotate(45deg);
-  }
-
-  .get-more-section .desktop-body {
-    background-color: #f7f8f4;
-  }
-
-  .get-more-section .desktop-body {
-    background-color: #f7f8f4;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .get-more-section .desktop-body .get-more-details {
-    -ms-flex-order: 2;
-    order: 2;
+        .get-more-title-small {
+          margin-bottom: toRem(16);
+        }
+      }
+    }
   }
 
   .learn-more-wrap {
@@ -303,33 +242,7 @@
   }
 }
 
-.cmp_tabs__vertical_view--active-full-bdr {
-  .nav-view-wrapp.panel > a.collapsed {
-    border-bottom: toRem(1) solid $light-sand-brown;
-    border-left: toRem(4) solid transparent;
-    color: $almost-black;
-
-    *[lang="ar"] *[dir="rtl"] & {
-      border-right: toRem(4) solid transparent;
-    }
-  }
-}
-
-.cmp_tabs__vertical_view--active-full-bdr {
-  .nav-view-wrapp.panel > a {
-    border-left: toRem(4) solid $main-green;
-
-    @include font-family-Neotech;
-
-    *[lang="ar"] *[dir="rtl"] & {
-      border-left: toRem(4) solid transparent;
-      border-right: toRem(4) solid $main-green;
-      padding: toRem(24) toRem(15) toRem(24) toRem(15) !important;
-    }
-  }
-}
-
-//mobile en
+// mobile en
 .benefits-section .benefits-mobile.collapsed .icon circle,
 .benefits-section .benefits-mobile.collapsed .icon path,
 .benefits-section .benefits-mobile.collapsed .icon polygon,
@@ -339,6 +252,28 @@
 }
 
 .cmp_tabs__vertical_view--active-full-bdr {
+  .nav-view-wrapp.panel > a {
+    border-left: toRem(4) solid $main-green;
+
+    @include font-family-Neotech;
+
+    @include rtlBlock() {
+      border-left: toRem(4) solid transparent;
+      border-right: toRem(4) solid $main-green;
+      padding: toRem(24) toRem(15) toRem(24) toRem(15) !important;
+    }
+  }
+
+  .nav-view-wrapp.panel > a.collapsed {
+    border-bottom: toRem(1) solid $light-sand-brown;
+    border-left: toRem(4) solid transparent;
+    color: $almost-black;
+
+    @include rtlBlock() {
+      border-right: toRem(4) solid transparent;
+    }
+  }
+
   .cmp-teaser {
     display: flex;
     flex-direction: row-reverse;
@@ -358,7 +293,7 @@
       display: flex;
       flex-direction: row-reverse;
       justify-content: flex-end;
-      padding: 1rem;
+      padding: toRem(16);
       text-align: left;
 
       @include font-family-Neotech;
@@ -396,7 +331,7 @@
 
     @include font-family-Neotech;
 
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock() {
       border-right: toRem(4) solid transparent;
       padding: 0 toRem(22) 0 0 !important;
     }
@@ -411,7 +346,7 @@
       line-height: toRem(25);
       padding: 0 0 0 toRem(22) !important;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock() {
         border-left: toRem(4) solid transparent;
         border-right: toRem(4) solid $main-green;
         padding: 0 toRem(22) 0 0 !important;
@@ -438,24 +373,21 @@
     padding-top: toRem(40);
     width: 70%;
 
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock() {
       font-weight: get-font-weight("light");
     }
   }
 
   .cmp-teaser__description {
     h3 {
-      font-size: toRem(24);
+      font-size: $font24;
       line-height: 1.33;
-      margin-bottom: 1.5rem;
-      margin-left: 0;
-      margin-top: 0;
-      margin-top: 0;
+      margin: 0 0 toRem(24) 0;
     }
 
     p {
       color: $gray;
-      font-size: toRem(16);
+      font-size: $font16;
       line-height: toRem(26);
       margin-bottom: toRem(20);
       margin-top: toRem(20);
@@ -471,7 +403,7 @@
   }
 
   .cmp-teaser__content {
-    padding: 0 1rem 0 0;
+    padding: 0 toRem(16) 0 0;
     width: 100%;
   }
 
@@ -483,10 +415,10 @@
   .cmp-image__image {
     border-radius: toRem(4);
     height: auto;
-    width: 19rem;
+    width: toRem(304);
 
     @include respond-to-min($tablet) {
-      width: 10.3rem;
+      width: toRem(164.8);
     }
   }
 
@@ -494,7 +426,7 @@
     color: $main-green;
     cursor: pointer;
     font-size: toRem(14);
-    font-size: 0.875rem;
+    font-size: $font14;
     font-weight: 500;
     letter-spacing: toRem(2);
     letter-spacing: toRem(2);
@@ -566,7 +498,7 @@
 
     p {
       color: $gray !important;
-      font-size: 1rem;
+      font-size: toRem(16);
       line-height: 1.625rem;
       margin: toRem(20) 0;
 
@@ -600,7 +532,7 @@
   }
 
   .panel {
-    background-color: #fff !important;
+    background-color: $white !important;
   }
 
   .panel-collapse {
@@ -629,7 +561,7 @@
     transition: all 0.3s ease-in-out;
     z-index: 1;
 
-    *[lang="ar"] *[dir="rtl"] & {
+    @include rtlBlock() {
       left: toRem(18);
       right: auto;
     }
@@ -649,11 +581,12 @@
   }
 }
 
-//desktop view st
+// desktop view st
+
 @media (min-width: 48em) {
   .cmp_tabs__vertical_view {
     .cmp-tabs__tab--active::after {
-      border: solid #719e19;
+      border: solid $main-green;
       border-radius: toRem(4);
       border-width: toRem(2);
       content: "";
@@ -686,7 +619,7 @@
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-end;
-        padding: 1rem;
+        padding: toRem(16);
         text-align: left;
 
         @include font-family-lato;
@@ -716,25 +649,25 @@
       cursor: pointer;
       font-size: 1.125rem;
       line-height: 1.4;
-      padding: 1rem;
+      padding: toRem(16);
 
       &--active {
         // border-color: inherit;
-        background: #fafaf4;
+        background: $white-gray1;
         color: $main-green;
         font-size: $font18;
 
         // border-left: 4px solid #719e19;
         font-weight: 700;
         line-height: 1.4;
-        padding: 1rem 1rem 1rem 0.7rem !important;
+        padding: toRem(16) toRem(16) toRem(16) 0.7rem !important;
         position: relative;
 
         @include font-family-lato;
 
         span {
           img {
-            color: #719e20;
+            color: $main-green;
             margin: 0 toRem(10) 0 0 !important;
           }
         }
@@ -766,7 +699,7 @@
     }
 
     .cmp-teaser__content {
-      padding: 0 1rem 0 0;
+      padding: 0 toRem(16) 0 0;
       width: 100%;
     }
 
@@ -777,7 +710,7 @@
 
     .cmp-image__image {
       border-radius: toRem(4);
-      height: 230px;
+      height: toRem(230);
     }
 
     .cmp-teaser__action-link {
@@ -826,8 +759,20 @@
     }
   }
 
-  //2nd horiznatal with view  varition st
+  // 2nd horiznatal with view  varition st
   .cmp_tabs__verticle_view_img {
+    h3 {
+      color: $almost-black;
+      display: flex;
+      font-size: toRem(26);
+      font-size: toRem(32);
+      margin-left: 2rem;
+      position: relative;
+      top: toRem(16);
+
+      @include font-family-Neotech;
+    }
+
     a:hover {
       text-decoration: underline !important;
     }
@@ -836,32 +781,15 @@
       width: 49%;
     }
 
-    .cmp-tabs__tab {
-      font-size: $font18;
-      margin-top: $margin-step-2;
-    }
-
     .cmp-teaser__description {
       h4 {
         color: $almost-black;
         font-size: $font26;
         font-weight: 400;
-        margin-bottom: 1rem;
+        margin-bottom: toRem(16);
 
         @include font-family-Neotech;
       }
-    }
-
-    h3 {
-      color: $almost-black;
-      display: flex;
-      font-size: toRem(26);
-      font-size: toRem(32);
-      margin-left: 2rem;
-      position: relative;
-      top: 1rem;
-
-      @include font-family-Neotech;
     }
 
     p {
@@ -875,7 +803,7 @@
     .cmp-tabs__tab--active .cmp-tabs__default-icon {
       display: inline-block !important;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock() {
         margin-left: toRem(30);
         margin-right: 0;
       }
@@ -886,17 +814,32 @@
     }
 
     .cmp-tabs__tab {
+      font-size: $font18;
+      margin-top: $margin-step-2;
+      align-items: center;
+      border: 0;
+      color: $gray-fill;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      line-height: toRem(18);
+      margin: auto 0;
+      padding: $padding-step-2 0;
+      text-align: left;
+
+      @include font-family-lato;
+
       svg,
       img {
         height: toRem(40);
-        margin-right: calc(#{$margin-step-1} + 2px);
+        margin-right: calc(#{$margin-step-1} + 2px);
         width: toRem(35);
 
         @include respond-to-min($tablet) {
           fill: inherit;
           float: left;
           height: toRem(30);
-          margin-right: calc(#{$margin-step-4} + 4px);
+          margin-right: calc(#{$margin-step-4} + 4px);
           width: toRem(32);
         }
       }
@@ -936,17 +879,32 @@
       flex-wrap: wrap;
       list-style: none;
       padding-left: 0;
-      width: 50%;
-    }
-
-    .cmp-tabs__tablist {
       padding-left: calc(#{$padding-step-2} + 4px);
       width: 50%;
     }
 
-    .cmp-teaser__image {
-      height: toRem(428);
-      width: 50%;
+    .cmp-teaser {
+      display: flex;
+      width: 100%;
+
+      &__image {
+        height: toRem(428);
+        width: 50%;
+      }
+
+      &__content {
+        background: $white;
+        border-radius: 0 toRem(5) toRem(5) 0;
+        color: $paracolor;
+        font-size: $font14;
+        line-height: toRem(19);
+        min-height: toRem(428);
+        padding: 1.5rem toRem(16) 0 1.5rem;
+        position: relative;
+        width: 50%;
+
+        @include font-family-lato;
+      }
     }
 
     .cmp-image__image {
@@ -955,66 +913,51 @@
       width: 100%;
     }
 
-    .cmp-teaser__content {
-      background: #fff;
-      border-radius: 0 toRem(5) toRem(5) 0;
-      color: $paracolor;
-      font-size: $font14;
-      line-height: toRem(19);
-      min-height: toRem(428);
-      padding: 1.5rem 1rem 0 1.5rem;
-      position: relative;
-      width: 50%;
-
-      @include font-family-lato;
-    }
-
-    .cmp-teaser {
-      display: flex;
-      width: 100%;
-    }
-
-    .cmp-tabs__tab {
-      align-items: center;
-      border: 0;
-      color: $gray-fill;
-      display: flex;
-      flex-direction: row-reverse;
-      font-size: $font18;
-      justify-content: flex-end;
-      line-height: 1.125rem;
-      margin: auto 0;
-      padding: $padding-step-2 0;
-      text-align: left;
-
-      @include font-family-lato;
-    }
-
     .cmp-tabs__tab--active {
       color: $main-green;
       font-weight: get-font-weight("bold");
-      ont-size: $font18 !important;
+      font-size: $font18 !important;
       position: relative;
 
       @include font-family-lato;
 
-      *[lang="ar"] *[dir="rtl"] & {
+      @include rtlBlock() {
         font-weight: get-font-weight("light");
+      }
+    }
+
+    .panel-collapse {
+      @include box-shadow;
+
+      background: $white;
+      border-radius: toRem(4);
+      box-shadow: rgb(0 0 0 / 10%) 0 5px 10px 0;
+      margin: toRem(16) toRem(16) toRem(48);
+      padding: toRem(16);
+
+      .cmp-teaser__action-container {
+        margin: toRem(16) 0;
+      }
+    }
+
+    .cmp-teaser__content {
+      @include rtlBlock() {
+        padding: toRem(24) toRem(24) toRem(64) toRem(40);
       }
     }
   }
 
-  //2nd vartion en
+  // 2nd vartion en
 }
 
-//3rd varition
+// 3rd varition
 
-//desktop view en
+// desktop view en
 
-//cmp-without bg
+// cmp-without bg
 .cmp_tabs__vertical_view_nobg {
   .cmp-tabs__tab--active::after {
-    border: solid #719e19;
+    border: solid $main-green;
     border-radius: toRem(4);
     border-width: toRem(2);
     content: "";
@@ -1041,7 +984,8 @@
 
   .cmp-text p {
     color: $gray;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+
+    @include font-family-lato;
     font-size: toRem(16);
     line-height: toRem(26);
     margin-bottom: toRem(20);
@@ -1125,11 +1069,11 @@
       }
     }
 
-    .cmp-tabs__default-icon {
+    &__default-icon {
       display: block;
     }
 
-    .cmp-tabs__active-icon {
+    &__active-icon {
       display: none;
     }
 
@@ -1139,8 +1083,12 @@
       }
 
       .cmp-tabs__default-icon {
-        display: none !important; //due to css overriding
+        display: none !important; // due to css overriding
       }
+    }
+
+    &--active {
+      background: $white;
     }
   }
 
@@ -1149,26 +1097,18 @@
   }
 }
 
-.cmp_tabs__vertical_view_whbg {
-  .cmp-tabs__tab--active {
-    background: $white;
-  }
-}
-
 .tabs-container__panal {
   .cmp-text {
     margin: 2rem 0 4rem 2rem;
 
-    @include md {
-      margin: 1rem;
+    @include respond-to-max($tablet) {
+      margin: toRem(16);
     }
   }
 }
 
-@media (max-width: 770px) {
+@include respond-to-max($tablet) {
   h3 {
-    // margin: 1rem;
-    // padding-top:20px;
     font: $font20;
   }
 
@@ -1184,8 +1124,8 @@
 .cmp-text_link {
   margin: 2rem 0 4rem 2rem;
 
-  @include md {
-    margin: 1rem;
+  @include respond-to-max($tablet) {
+    margin: toRem(16);
   }
 }
 
@@ -1200,6 +1140,7 @@
 }
 
 //  commenting this as of now it is causing regression pls add it under proper parent class
+
 .cmp_tabs__verticle_view_img {
   .cmp-tabs {
     display: flex;
@@ -1207,21 +1148,21 @@
   }
 }
 
-//arabic
+// arabic
 
-[lang="ar"] [dir="rtl"] .cmp_tabs__vertical_view .cmp-tabs__tab--active::after {
-  left: auto;
-  right: 0;
-}
-
-[lang="ar"] [dir="rtl"] .cmp-teaser__description {
-  ul li {
-    font-weight: get-font-weight("light");
-    padding-left: 0;
-    padding-right: 1rem;
+.cmp_tabs__vertical_view .cmp-tabs__tab--active::after {
+  @include rtlBlock() {
+    left: auto;
+    right: 0;
   }
 }
 
-[lang="ar"] [dir="rtl"] .cmp_tabs__verticle_view_img .cmp-teaser__content {
-  padding: 1.5rem 24px 4rem 2.5rem;
+.cmp-teaser__description {
+  @include rtlBlock() {
+    ul li {
+      font-weight: get-font-weight("light");
+      padding-left: 0;
+      padding-right: toRem(16);
+    }
+  }
 }
