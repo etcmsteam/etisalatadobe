@@ -462,6 +462,12 @@
             &:first-child {
               padding-left: 2.4rem !important;
 
+              @include respond-to-max($desktop-min) {
+                padding-left: $padding-step-2 !important;
+                padding-top: $padding-step-3;
+                padding-bottom: $padding-step-0;
+              }
+
               @include rtlBlock() {
                 padding-left: 0;
                 padding-right: 2.4rem !important;
@@ -492,15 +498,21 @@
               transform: translateY(-50%);
               width: 16px;
 
-              @include rtlBlock() {
-                right: 1rem;
-                left: 0;
-              }
-
               @include respond-to-min($desktop) {
                 height: 24px;
                 top: 50%;
                 width: 24px;
+              }
+
+              @include respond-to-max($desktop-min) {
+                height: 24px;
+                top: 23%;
+                width: 24px;
+              }
+
+              @include rtlBlock() {
+                right: 1rem;
+                left: 0;
               }
             }
 
@@ -893,6 +905,51 @@
   }
 }
 
+.channel-lists-section {
+  table {
+    td {
+      padding: $padding-step-2 $padding-step-0;
+      border-bottom: $border-step-1 solid $light-sand-brown;
+      text-align: left;
+      @include respond-to-max($desktop-min) {
+        width: 100% !important;
+        display: block;
+        padding: toRem(4) $padding-step-0;
+        border-bottom: $border-step-0;
+      }
+      &:first-child {
+        width: toRem(140);
+        @include respond-to-max($desktop-min) {
+          padding-top: $padding-step-2;
+        }
+        img {
+          width: auto;
+          min-height: toRem(30);
+          height: toRem(30);
+        }
+      }
+      &:nth-child(2) {
+        @include font-family-lato();
+        width: toRem(100);
+        font-size: $font14;
+        color: $steel-grey;
+        font-weight: get-font-weight("bold");
+        letter-spacing: 1.75px;
+      }
+      &:nth-child(3) {
+        @include font-family-Neotech();
+        width: auto;
+        font-size: $font16;
+        letter-spacing: 0.5px;
+        @include respond-to-max($desktop-min) {
+          padding-bottom: $padding-step-2;
+          border-bottom: $border-step-1 solid $light-sand-brown;
+        }
+      }
+    }
+  }
+}
+
 // arabic language
 *[lang="ar"] {
   *[dir="rtl"] {
@@ -1023,10 +1080,6 @@
             color: $almost-black;
             font-weight: bold;
           }
-        }
-
-        &:first-child {
-          //min-width: 400px;
         }
       }
     }
@@ -1533,7 +1586,7 @@ table {
               position: absolute;
               top: 36px;
               @include rtlBlock() {
-                padding-right: $padding-step-0;
+                padding-right: toRem(4);
               }
 
               &::before {
@@ -1754,7 +1807,11 @@ table {
     @include respond-to-max($phone) {
       table thead tr th,
       table tbody tr td {
-        padding-left: 4px;
+        padding-left: toRem(4);
+        @include rtlBlock() {
+          padding-left: 0;
+          padding-right: toRem(4);
+        }
       }
     }
   }
@@ -1772,6 +1829,7 @@ table {
       width: 25%;
 
       .advanced-table-search {
+        @include font-family-lato();
         background-color: transparent;
         border: none;
         border-bottom: 1px solid $grey4;
