@@ -45,6 +45,7 @@
   }
 
   .see-more-table {
+    margin-top: $margin-step-3;
     float: right;
     .see-less,
     .see-more {
@@ -372,8 +373,8 @@
   }
 
   &.table-striped {
-    .custom-datatable:not(.table-with-pagination) {
-      .dataTables_wrapper {
+    .custom-datatable {
+      &.scroll {
         height: 480px;
         overflow: auto;
         padding-right: 0;
@@ -407,24 +408,23 @@
     }
 
     &.three-col {
+      thead {
+        tr th {
+          @include respond-to-max($desktop - 1) {
+            width: 33.33%;
+          }
+        }
+      }
+    }
+
+    &.img-col {
       .custom-datatable {
         margin: 0;
       }
-
       thead,
       tbody {
         tr {
-          th {
-            @include respond-to-min($desktop) {
-              width: 33.33%;
-            }
-          }
-
           td {
-            @include respond-to-min($desktop) {
-              width: 33.33%;
-            }
-
             &:first-child {
               padding-left: 38px;
 
@@ -446,25 +446,21 @@
         }
       }
 
-      thead {
-        tr th {
-          @include respond-to-max($desktop - 1) {
-            width: 33.33%;
-          }
-        }
-      }
-
       tbody {
         tr {
           td {
             position: relative;
 
+            @include respond-to-max($desktop-min) {
+              padding-top: toRem(10) !important;
+              padding-bottom: toRem(10) !important;
+              font-size: $font14;
+            }
+
             &:first-child {
               padding-left: 2.4rem !important;
 
               @include respond-to-max($desktop-min) {
-                padding-left: $padding-step-2 !important;
-                padding-top: $padding-step-3;
                 padding-bottom: $padding-step-0;
               }
 
@@ -482,8 +478,12 @@
               }
 
               &::before {
-                @include respond-to-max($desktop - 1) {
-                  margin-left: -1.5rem;
+                @include respond-to-max($desktop-min) {
+                  margin-left: toRem(22);
+                  @include rtlBlock() {
+                    margin-left: 0;
+                    margin-right: toRem(24);
+                  }
                 }
               }
             }
@@ -505,9 +505,9 @@
               }
 
               @include respond-to-max($desktop-min) {
-                height: 24px;
-                top: 23%;
-                width: 24px;
+                height: toRem(16);
+                top: toRem(44);
+                width: toRem(16);
               }
 
               @include rtlBlock() {
@@ -517,9 +517,12 @@
             }
 
             &::before {
-              @include respond-to-max($desktop - 1) {
+              @include respond-to-max($desktop-min) {
                 line-height: 1.33;
                 margin-bottom: 0.5rem;
+                @include rtlBlock() {
+                  margin-right: toRem(-2);
+                }
               }
             }
           }
@@ -1681,6 +1684,11 @@ table {
           padding-top: 17px;
           vertical-align: baseline;
           @include font-family-lato;
+
+          @include respond-to-max($phone) {
+            padding-bottom: 8px;
+            padding-top: 8px;
+          }
 
           @include rtlBlock() {
             padding-right: $padding-step-0;
