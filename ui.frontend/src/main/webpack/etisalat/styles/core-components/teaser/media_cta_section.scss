@@ -9,9 +9,10 @@
   clear: both !important;
   left: 50%;
   margin-left: -50vw;
-  padding-top: 2rem;
+  padding-top: toRem(16);
   position: relative;
   width: 100vw !important;
+  padding-bottom: 2rem;
 
   .cmp-teaser {
     display: flex;
@@ -97,20 +98,21 @@
     &__image {
       position: relative;
       width: 100%;
+      margin-bottom: 2rem;
 
       @include respond-to-min($desktop) {
         width: 50%;
       }
 
       .cmp-image__image {
-        height: 132px;
+        height: toRem(132);
 
         @include respond-to-min($tablet) {
-          height: 240px;
+          height: toRem(240);
         }
 
         @include respond-to-min($desktop) {
-          height: 270px;
+          height: toRem(270);
         }
       }
     }
@@ -155,64 +157,8 @@
   }
 }
 
-.cmp-teaser--multicol_media {
-  .cmp-teaser {
-    flex-direction: row;
-    margin: 0;
-    position: relative;
-    width: auto;
+// media cts st
 
-    &__image {
-      .cmp-image {
-        height: toRem(250);
-        max-height: toRem(250);
-        min-height: toRem(250);
-
-        @include respond-to-min($desktop) {
-          height: toRem(428);
-          max-height: toRem(428);
-          min-height: toRem(428);
-
-          img {
-            @include img-cover;
-          }
-        }
-      }
-    }
-
-    &__content {
-      min-height: 150px;
-    }
-
-    .cmp-teaser__action-container {
-      @include respond-to-min($tablet) {
-        max-width: 245px;
-        min-width: 245px;
-        width: 245px;
-      }
-    }
-  }
-
-  @include respond-to-min($desktop) {
-    .aem-Grid .aem-GridColumn {
-      &:first-child {
-        padding-left: 0 !important;
-      }
-
-      &:last-child {
-        padding-right: 0;
-      }
-    }
-  }
-
-  @include respond-to-max($tablet) {
-    .aem-GridColumn {
-      padding: 0 !important;
-    }
-  }
-}
-
-// media multicol en
 .cmp-teaser--mediacta {
   margin: 1rem 0;
 
@@ -283,7 +229,7 @@
 
         @include rtlBlock() {
           margin-right: 0.5rem;
-          padding-right: 20px;
+          padding-right: toRem(20);
         }
       }
 
@@ -297,7 +243,7 @@
       }
 
       li {
-        line-height: 20px;
+        line-height: toRem(20);
         margin: 0 0 0.5rem;
         padding-left: 0.4rem;
         position: relative;
@@ -376,7 +322,7 @@
         padding: toRem(3.5);
         position: absolute;
         right: 0;
-        top: toRem(3);
+        top: toRem(2);
         width: toRem(7);
 
         @include rtlBlock {
@@ -420,7 +366,6 @@
   &.cmp-teaser--horizontal {
     .cmp-teaser {
       max-width: 100%;
-      padding-bottom: 2rem;
 
       @include respond-to-min($tablet) {
         padding-bottom: 0;
@@ -445,8 +390,6 @@
       }
 
       &__content {
-        padding-bottom: 4rem;
-
         @include respond-to-min($desktop) {
           display: flex;
           flex: 2;
@@ -456,19 +399,14 @@
       }
 
       &__action-container {
-        bottom: 0;
-        left: 1rem;
-        margin: 0;
-        position: absolute;
-
         @include rtlBlock() {
           left: auto;
-          right: 20px;
+          right: toRem(20);
         }
 
         @include respond-to-min($desktop) {
-          bottom: 20px;
           left: 50.2%;
+          position: absolute;
 
           @include rtlBlock() {
             left: auto;
@@ -500,10 +438,104 @@
 
   &.button--secondary {
     .cmp-teaser__action-container {
-      border-color: #b2b2b2;
+      border-color: $grey4;
+    }
+  }
+
+  .cmp-teaser__pretitle {
+    color: $gray;
+    font-size: $font12;
+    font-weight: get-font-weight("bold");
+    letter-spacing: toRem(4);
+    line-height: toRem(26);
+    margin-bottom: toRem(6);
+    text-transform: uppercase;
+
+    @include font-family-lato;
+  }
+}
+
+// media cts en
+
+// media cts multicol  st
+.cmp-teaser--multicol_media {
+  .cmp-teaser {
+    flex-direction: row;
+    margin: 0;
+    position: relative;
+    width: auto;
+
+    @include respond-to-min($desktop) {
+      height: toRem(428);
+      max-height: toRem(428);
+      min-height: toRem(428);
+    }
+
+    &__image {
+      .cmp-image {
+        height: toRem(250);
+        max-height: toRem(250);
+        min-height: toRem(250);
+
+        @include respond-to-min($desktop) {
+          height: toRem(428);
+          max-height: toRem(428);
+          min-height: toRem(428);
+
+          img {
+            @include img-cover;
+          }
+        }
+      }
+    }
+
+    &__content {
+      min-height: toRem(150);
+
+      @include respond-to-min($desktop) {
+        position: initial;
+      }
+    }
+
+    .cmp-teaser__action-container {
+      @include respond-to-min($tablet) {
+        max-width: toRem(245);
+        min-width: toRem(245);
+        width: toRem(245);
+      }
+
+      @include respond-to-min($desktop) {
+        right: auto;
+        left: auto;
+      }
+    }
+  }
+
+  @include respond-to-min($desktop) {
+    .aem-Grid .aem-GridColumn {
+      &:first-child {
+        padding-left: 0 !important;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  @include respond-to-max($tablet) {
+    .aem-GridColumn {
+      padding: 0 !important;
+    }
+  }
+  .aem-Grid.aem-Grid--large--12 > .aem-GridColumn.aem-GridColumn--large--12 {
+    @include respond-to-min($desktop) {
+      width: 50%;
     }
   }
 }
+
+// media cts multicol  en
 
 @include respond-to-min($desktop) {
   .cmp-teaser::after {

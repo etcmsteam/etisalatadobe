@@ -2,15 +2,7 @@
   @include font-family-lato;
 
   @include respond-to-max($tablet) {
-    & a {
-      display: block;
-      float: left;
-      height: toRem(32);
-      padding: .5rem;
-      right: 1rem;
-      width: toRem(130);
-    }
-
+      
     svg {
       display: block;
       float: left;
@@ -49,6 +41,20 @@
     width: toRem(82);
     z-index: 1000;
 
+    @include respond-to-max($tablet) {
+      display: block;
+      float: left;
+      height: toRem(32);
+      padding: .5rem;
+      right: 1rem;
+      width: toRem(130);
+    }
+
+    @include rtlBlock() {
+      left:toRem(16);
+      right: auto;
+    } 
+
     &.show {
       opacity: 1;
       visibility: visible;
@@ -72,7 +78,6 @@
 
     & .space-top {
       font-weight: get-font-weight("regular");
-      margin-top: .2rem;
     }
 
     &:hover, &:focus {
