@@ -1,9 +1,8 @@
 .config-section-wrap {
 	background: $white;
-	min-height: 56px;
-	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 toRem(5) toRem(10) 0 rgba(0, 0, 0, 0.1);
 	transition: all 0.25s ease-in-out;
-	max-height: 78px;
+	max-height: toRem(55); 
 	position: relative;
 	z-index: 10;
 	@include respond-to-min($desktop) {
@@ -57,6 +56,10 @@
 			margin: 0;
 			top: 0;
 		}
+		@include respond-to-min($desktop){	
+			margin: 0;
+			padding: 0;
+		}
 	}
 }
 // fix for spacing issue in case hero image has call to action and config section
@@ -105,9 +108,9 @@
 		right: 0;
 		padding: 0 3rem;
 		width: 100%;
-		top: -134px;
-		position: relative;
-		padding: 0 43px;
+		top: toRem(-103);
+		position: absolute;
+		padding: 0 toRem(15);
 		&.fixed {
 			position: fixed;
 			top: auto !important;
@@ -118,6 +121,13 @@
 		}
 		.hero-links-secton>.container-fluid>.row>.col-xs-12 {
 			padding: 0;
+		}
+	}
+	.hero-links-secton{
+		@include respond-to-min($desktop){
+			max-width: toRem(486);
+			min-height: toRem(96);
+			min-width: toRem(450);
 		}
 	}
 }
@@ -244,12 +254,12 @@
 			a {
 				p {
 					line-height: 1.5;
-					margin-top: 10px;
+					margin-top: toRem(10);
 					display: block;
 					width: 66%;
-					letter-spacing: 0.8px;
-					@include respond-to-max($desktop) {
-						width: 73%;
+					letter-spacing: toRem(0.8);
+					@include respond-to-min($desktop) {
+						width: 85%;
 					}
 					*[lang="ar"] *[dir=rtl] & {
 						width: 54%;
