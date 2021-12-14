@@ -25,32 +25,32 @@ import com.etisalat.core.services.SendNotificationService;
 @Designate(ocd = SendNotificationConfiguration.class)
 public class SendNotificationServiceImpl implements SendNotificationService {
 
-  private static final Logger LOG = LoggerFactory.getLogger(SendNotificationServiceImpl.class);
-  private static final String NO_CONFIG_FOUND = "No config found";
-  private static final String POST_METHOD = "POST";
-  private static final String REQUEST_PROPERTY = "application/json";
-  private static final String CONTENT_TYPE = "Content-Type";
-  private static final String UTF = "UTF-8";
-  
-  @Reference
-  private ConfigurationAdmin configAdmin;
-  private String url;
-  
-  @Activate
-  @Modified
-  protected void activate(final SendNotificationConfiguration config) {
-    this.url = PropertiesUtil.toString(config.getApiUrl(), NO_CONFIG_FOUND);
-    
-  }
+	private static final Logger LOG = LoggerFactory.getLogger(SendNotificationServiceImpl.class);
+	private static final String NO_CONFIG_FOUND = "No config found";
+	private static final String POST_METHOD = "POST";
+	private static final String REQUEST_PROPERTY = "application/json";
+	private static final String CONTENT_TYPE = "Content-Type";
+	private static final String UTF = "UTF-8";
 
-  @Override
-  public String getUrl() {
-    return this.url;
-  }
-  
-  @Override
-  public int postFormData(String json) throws IOException {
-	  
+	@Reference
+	private ConfigurationAdmin configAdmin;
+	private String url;
+
+	@Activate
+	@Modified
+	protected void activate(final SendNotificationConfiguration config) {
+		this.url = PropertiesUtil.toString(config.getApiUrl(), NO_CONFIG_FOUND);
+
+	}
+
+	@Override
+	public String getUrl() {
+		return this.url;
+	}
+
+	@Override
+	public int postFormData(String json) throws IOException {
+
 		URL postUrl = new URL(getUrl());		
 		HttpURLConnection connection = (HttpURLConnection) postUrl.openConnection();        
 		connection.setRequestMethod(POST_METHOD);
@@ -73,14 +73,14 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 			}		
 			bufferedReader.close();
 			LOG.info(jsonResponseData.toString());
-         
+
 		} 
 		else if(responseCode == 417) {			
-			LOG.info("In 417 Almost Success"+responseCode);
+			LOG.info("Error in Third Party API for forms"+responseCode);
 		}
 		else {
-			LOG.info("In Post Else Some Other Response Code"+responseCode);
-			 
+			LOG.info("Request Failed for Send Notification Service"+responseCode);
+
 		}
 		return responseCode;
 

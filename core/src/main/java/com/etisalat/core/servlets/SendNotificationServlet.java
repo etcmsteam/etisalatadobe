@@ -1,12 +1,9 @@
 package com.etisalat.core.servlets;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.http.HttpResponse;
+
 import javax.servlet.Servlet;
 
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -25,6 +22,7 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SendNotificationServlet.class);
 	private static final long serialVersionUID = 1L;
+	private static final int RESPONSE_OK = 200;
 
 	@Reference
 	private transient SendNotificationService sendNotificationService; 
@@ -42,14 +40,17 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 			if(!StringUtils.isEmpty(json)) {
 				status = sendNotificationService.postFormData(json);
 			}
-			LOG.info("Json"+json);
-			LOG.info("Status"+status);
+			String url = request.getRequestURL().toString();
+			if(status == RESPONSE_OK) {
+				response.sendRedirect(url+"?"+"success=success");
+				LOG.info("Status"+status);
+			}
+
 		}
 		catch(Exception e)
 		{
 			LOG.error("Send Notification Servlet Error",e.getMessage());
 		}
 	}
-
 
 }
