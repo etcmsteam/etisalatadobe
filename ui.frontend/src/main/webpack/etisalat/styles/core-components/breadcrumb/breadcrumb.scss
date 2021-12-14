@@ -163,7 +163,10 @@
 
       p {
         .font--small {
-          float: right;
+          @include respond-to-min($desktop-wide) {
+            float: right;
+          }
+
           font-size: $font14;
           margin-top: toRem(2);
         }
@@ -173,11 +176,11 @@
 
   .cmp-button--width_100 {
     margin-top: toRem(18);
-    min-width: toRem(180);
-    width: auto;
 
-    @include respond-to-min($desktop) {
+    @include respond-to-min($desktop-wide) {
       margin-left: toRem(28);
+      min-width: toRem(180);
+      width: auto;
     }
   }
 
