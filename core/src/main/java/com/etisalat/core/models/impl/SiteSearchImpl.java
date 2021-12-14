@@ -27,6 +27,11 @@ public class SiteSearchImpl implements SiteSearch {
 	@Optional
 	private Resource currentRes;
 
+	/**
+	 * 
+	 * @param itemRes
+	 * @return the items list for quick links and brand items
+	 */
 	private List<LinkModel> getItems(String itemRes) {
 		List<LinkModel> subItemList = new ArrayList<>();
 		Resource subItemRes = currentRes.getChild(itemRes);
