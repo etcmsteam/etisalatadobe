@@ -8,7 +8,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface SendNotificationConfiguration {
 
   @AttributeDefinition(name = "api url", description = "Send Notification Form Url")
-  String getApiUrl() default "https://azspringcloudsvc-etisalat-emailapp.azuremicroservices.io/azure/message";
+  String getApiUrl() default "https://azspringcloudsvc-etisalat-emailapp.azuremicroservices.io/azure/sendNotification";
     
 }
 
