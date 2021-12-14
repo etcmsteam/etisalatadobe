@@ -34,8 +34,10 @@ $(document).ready(function () {
 var c = [].slice.call(document.querySelectorAll(".nav-expand"));
 c.forEach(function (a) {
     a.querySelector(".nav-link").addEventListener("click", function () {
-            a.classList.add("active"),
-                this.classList.contains("search-link") && e(".nav-drill").addClass("search-nav-drill")
+            a.classList.add("active");
+               if (this.classList.contains("search-link")) {
+                 $(".nav-drill").addClass("search-nav-drill");
+               }
         })
         //Added condition causing errors and stop here when null
         if(a.querySelector(".nav-back-link") != null){

@@ -1,3 +1,9 @@
+.breadcrumb {
+  background-color: $sand-white-50;
+  margin-bottom: $margin-step-0;
+  padding: toRem(4) toRem(15);
+}
+
 .cmp-breadcrumb {
   &__item {
     background-color: transparent;
@@ -163,7 +169,10 @@
 
       p {
         .font--small {
-          float: right;
+          @include respond-to-min($desktop-wide) {
+            float: right;
+          }
+
           font-size: $font14;
           margin-top: toRem(2);
         }
@@ -173,11 +182,11 @@
 
   .cmp-button--width_100 {
     margin-top: toRem(18);
-    min-width: toRem(180);
-    width: auto;
 
-    @include respond-to-min($desktop) {
+    @include respond-to-min($desktop-wide) {
       margin-left: toRem(28);
+      min-width: toRem(180);
+      width: auto;
     }
   }
 
