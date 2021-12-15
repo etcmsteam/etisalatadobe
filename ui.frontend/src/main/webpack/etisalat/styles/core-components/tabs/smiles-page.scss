@@ -46,118 +46,116 @@
     @include respond-to-min($desktop) {
       padding: 0 toRem(32);
     }
-  }
 
-  .cmp-tabs__tablist {
-    position: absolute;
-    top: toRem(32);
-    z-index: 7;
+    .cmp-tabs__tablist {
+      position: absolute;
+      top: toRem(32);
+      z-index: 7;
 
-    @include respond-to-min($desktop) {
-      top: toRem(64);
-    }
+      @include respond-to-min($desktop) {
+        top: toRem(64);
+      }
 
-    li {
-      color: $gray;
-      display: block;
-      font-size: $font12;
-      font-weight: get-font-weight("bold");
-      letter-spacing: toRem(2.18);
-      margin-right: toRem(24);
-      padding: 0 toRem(33.6) toRem(17.6);
-      position: relative;
-      text-transform: uppercase;
+      li {
+        color: $gray;
+        display: block;
+        font-size: $font12;
+        font-weight: get-font-weight("bold");
+        letter-spacing: toRem(2.18);
+        margin-right: toRem(24);
+        padding: 0 toRem(33.6) toRem(17.6);
+        position: relative;
+        text-transform: uppercase;
 
-      @include font-family-lato;
+        @include font-family-lato;
 
-      &.cmp-tabs__tab {
-        &--active {
-          background: transparent;
-          border-bottom: toRem(2) solid $main-green;
-          color: $main-green;
+        &.cmp-tabs__tab {
+          &--active {
+            background: transparent;
+            border-bottom: toRem(2) solid $main-green;
+            color: $main-green;
+          }
         }
       }
     }
-  }
 
-  .cmp-text {
-    padding-top: toRem(51.2);
-    position: relative;
-
-    @include respond-to-min($desktop) {
-      padding-top: toRem(102);
-    }
-
-    h3 {
-      color: $almost-black;
-      font-size: $font26;
-      line-height: toRem(33);
-      margin: 0;
-      margin-bottom: toRem(24);
-      margin-top: toRem(17);
+    .cmp-text {
+      padding-top: toRem(51.2);
+      position: relative;
 
       @include respond-to-min($desktop) {
-        font-size: $font40;
-        line-height: toRem(50);
-        margin-bottom: toRem(51.2);
+        padding-top: toRem(102);
+      }
+
+      h3 {
+        color: $almost-black;
+        font-size: $font26;
+        line-height: toRem(33);
+        margin: toRem(17) 0 toRem(24);
+
+        @include respond-to-min($desktop) {
+          font-size: $font40;
+          line-height: toRem(50);
+          margin-bottom: toRem(51.2);
+        }
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
       }
     }
 
-    img {
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  .cmp_btn {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 0;
-
-    @include respond-to-min($desktop) {
-      margin-bottom: toRem(32);
-    }
-
-    img {
-      margin-bottom: toRem(32);
-      max-width: toRem(132);
-      padding-right: toRem(16);
+    .cmp_btn {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 0;
 
       @include respond-to-min($desktop) {
-        margin-bottom: 0;
+        margin-bottom: toRem(32);
+      }
+
+      img {
+        margin-bottom: toRem(32);
+        max-width: toRem(132);
+        padding-right: toRem(16);
+
+        @include respond-to-min($desktop) {
+          margin-bottom: 0;
+        }
       }
     }
-  }
 
-  .cmp-image {
-    align-items: center;
-    display: flex;
-    -ms-flex-align: center;
-    -ms-flex-pack: center;
-    height: toRem(290);
-    justify-content: center;
-    overflow: hidden;
+    .cmp-image {
+      align-items: center;
+      display: flex;
+      -ms-flex-align: center;
+      -ms-flex-pack: center;
+      height: toRem(290);
+      justify-content: center;
+      overflow: hidden;
 
-    @include respond-to-min($desktop) {
-      height: toRem(460);
-      margin-top: -$margin-step-4;
-    }
-
-    @include respond-to-max($tablet) {
-      margin-top: $margin-step-0;
-    }
-
-    @include respond-to-max($phone) {
-      margin-top: $margin-step-4;
-    }
-
-    img {
-      width: auto;
-      z-index: 11;
+      @include respond-to-min($desktop) {
+        height: toRem(460);
+        margin-top: -$margin-step-4;
+      }
 
       @include respond-to-max($tablet) {
-        height: 100%;
+        margin-top: $margin-step-0;
+      }
+
+      @include respond-to-max($phone) {
+        margin-top: $margin-step-4;
+      }
+
+      img {
+        width: auto;
+        z-index: 11;
+
+        @include respond-to-max($tablet) {
+          height: 100%;
+        }
       }
     }
   }
