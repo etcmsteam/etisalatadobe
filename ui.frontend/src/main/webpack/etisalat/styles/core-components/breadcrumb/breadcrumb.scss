@@ -1,7 +1,7 @@
 .breadcrumb {
   background-color: $sand-white-50;
   margin-bottom: $margin-step-0;
-  padding: toRem(4) toRem(15);
+  padding: toRem(4) toRem(84);
 }
 
 .cmp-breadcrumb {
@@ -45,6 +45,10 @@
 
   &__item--active {
     font-weight: get-font-weight("semibold");
+
+    @include rtlBlock {
+      font-weight: get-font-weight("semibold");
+    }
   }
 }
 
@@ -143,7 +147,12 @@
 
     @include respond-to-min($desktop) {
       margin-left: toRem(22);
-      margin-right: 0;
+      margin-right: $margin-step-0;
+
+      @include rtlBlock {
+        margin-left: $margin-step-0;
+        margin-right: torem (22);
+      }
     }
   }
 
