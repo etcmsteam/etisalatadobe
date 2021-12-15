@@ -71,7 +71,8 @@
   &::after {
     @include link-arrow;
 
-    border: solid $arrow-border-green;
+    border-style: solid;
+    border-color: $arrow-border-green;
     border-width: 0 1px 1px 0;
     height: toRem(7);
     left: auto;
@@ -82,11 +83,15 @@
     width: toRem(7);
 
     @include rtlBlock {
-      left: -1rem;
+      left: toRem(-8);
       right: auto;
-      top: 0.4rem;
+      top: toRem(8);
       transform: translateY(-50%) rotate(135deg);
     }
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 
