@@ -155,15 +155,13 @@
         max-height: toRem(160);
 
         @include respond-to-min($desktop) {
-          max-height: toRem(559);
+          max-height: toRem(551);
         }
       }
 
       img {
         border-radius: toRem(4);
         max-width: 100%;
-
-        // height: toRem(150);
 
         @include respond-to-min($desktop) {
           height: 100%;
@@ -194,17 +192,20 @@
       }
     }
 
-    &__action-container {
+    &__title {
+      margin-bottom: 0;
+      color: $white;
+    }
+
+    &__action-link {
+      bottom: toRem(60);
+
       @extend %teaser-link;
 
-      bottom: toRem(70);
+      color: $white;
 
       @include respond-to-min($desktop) {
-        bottom: toRem(110);
-      }
-
-      a {
-        color: $white;
+        bottom: toRem(120);
       }
 
       &::after {
@@ -215,6 +216,11 @@
 
   .image-right {
     padding: 0;
+
+    @include respond-to-min($tablet) {
+      padding-left: toRem(12);
+      padding-right: 0;
+    }
 
     @include respond-to-min($desktop) {
       padding-left: toRem(12);
@@ -231,6 +237,11 @@
         left: 0;
         width: 50%;
 
+        @include rtlBlock() {
+          right: 0;
+          left: auto;
+        }
+
         h1 {
           color: $almost-black;
         }
@@ -245,15 +256,16 @@
         }
       }
 
-      &__action-container {
-        bottom: toRem(150);
+      &__action-link {
+        bottom: toRem(110);
+        color: $main-green;
 
-        @include respond-to-min($tablet) {
-          bottom: 113px;
+        @include respond-to-min($desktop) {
+          bottom: toRem(165);
         }
 
-        a {
-          color: $main-green;
+        &::after {
+          border-color: $arrow-border-green !important;
         }
       }
 
@@ -286,39 +298,46 @@
 
 // new hero card css en
 .gutter-padding-left {
-  padding-left: 0 !important;
+  padding-left: 0;
 
-  @include respond-to-min($tablet) {
-    padding-left: toRem(12) !important;
+  @include respond-to-min($desktop) {
+    padding-left: toRem(12);
   }
 
   @include rtlBlock() {
-    padding-right: 0 !important;
+    padding-right: 0;
 
-    @include respond-to-min($tablet) {
-      padding-right: toRem(12) !important;
+    @include respond-to-min($desktop) {
+      padding-right: toRem(12);
     }
   }
 }
 
 .gutter-padding-right {
-  padding-right: 0 !important;
+  padding-right: 0;
 
   @include respond-to-min($tablet) {
-    padding-right: toRem(12) !important;
+    padding-right: toRem(12);
   }
 
   @include rtlBlock() {
-    padding-left: 0 !important;
+    padding-left: 0;
 
-    @include respond-to-min($tablet) {
-      padding-left: toRem(12) !important;
+    @include respond-to-min($desktop) {
+      padding-left: toRem(12);
     }
   }
 }
 
 .cmp_small_tile {
-  .cmp-teaser__action-container {
+  .cmp-teaser__action-link {
     bottom: toRem(70);
+  }
+}
+
+@include respond-to-max($desktop) {
+  .cmp_small_tile:last-child {
+    padding-right: 0;
+    padding-left: 12px;
   }
 }
