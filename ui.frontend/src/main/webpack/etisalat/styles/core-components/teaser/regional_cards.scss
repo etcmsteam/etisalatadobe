@@ -1,4 +1,4 @@
-.promo-card-row {
+.cmp-teaser--promo-card-row {
   .cmp-teaser {
     border-radius: toRem(4);
     height: 100%;
@@ -35,8 +35,12 @@
         font-size: $font26;
         letter-spacing: toRem(1.6);
         line-height: toRem(26);
-        margin-bottom: toRem(16);
+        margin-bottom: 0;
         margin-top: 0;
+
+        @include respond-to-min($tablet) {
+          margin-bottom: toRem(16);
+        }
       }
     }
 
@@ -122,7 +126,7 @@
 }
 
 // new hero card css st
-.hero-card {
+.cmp-teaser--hero-card {
   @include respond-to-max($tablet) {
     margin-bottom: toRem(10);
   }
@@ -151,7 +155,7 @@
         max-height: toRem(160);
 
         @include respond-to-min($desktop) {
-          max-height: toRem(572);
+          max-height: toRem(559);
         }
       }
 
@@ -195,12 +199,8 @@
 
       bottom: toRem(70);
 
-      @include respond-to-min($tablet) {
-        bottom: toRem(110);
-      }
-
       @include respond-to-min($desktop) {
-        bottom: toRem(140);
+        bottom: toRem(110);
       }
 
       a {
@@ -208,13 +208,12 @@
       }
 
       &::after {
-        border-color: $white;
+        border-color: $white !important;
       }
     }
   }
 
   .image-right {
-    margin-bottom: toRem(10);
     padding: 0;
 
     @include respond-to-min($desktop) {
@@ -249,6 +248,10 @@
       &__action-container {
         bottom: toRem(150);
 
+        @include respond-to-min($tablet) {
+          bottom: 113px;
+        }
+
         a {
           color: $main-green;
         }
@@ -260,12 +263,22 @@
     }
   }
 
-  &.promo-card {
+  &.cmp-teaser--promo-card {
     .cmp-image {
       max-height: toRem(160);
 
       @include respond-to-min($desktop) {
-        max-height: toRem(549);
+        max-height: toRem(435);
+      }
+
+      @include respond-to-min($desktop-wide) {
+        max-height: toRem(547);
+      }
+    }
+
+    .cmp_small_tile {
+      .cmp-teaser__content {
+        padding: 1rem;
       }
     }
   }
@@ -275,14 +288,14 @@
 .gutter-padding-left {
   padding-left: 0 !important;
 
-  @include respond-to-min($desktop) {
+  @include respond-to-min($tablet) {
     padding-left: toRem(12) !important;
   }
 
   @include rtlBlock() {
     padding-right: 0 !important;
 
-    @include respond-to-min($desktop) {
+    @include respond-to-min($tablet) {
       padding-right: toRem(12) !important;
     }
   }
@@ -291,15 +304,21 @@
 .gutter-padding-right {
   padding-right: 0 !important;
 
-  @include respond-to-min($desktop) {
+  @include respond-to-min($tablet) {
     padding-right: toRem(12) !important;
   }
 
   @include rtlBlock() {
     padding-left: 0 !important;
 
-    @include respond-to-min($desktop) {
+    @include respond-to-min($tablet) {
       padding-left: toRem(12) !important;
     }
+  }
+}
+
+.cmp_small_tile {
+  .cmp-teaser__action-container {
+    bottom: toRem(70);
   }
 }
