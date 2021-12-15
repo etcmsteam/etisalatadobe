@@ -20,7 +20,9 @@
         var doc = document;
         var searchInput = doc.querySelectorAll(".search-input");
         var searchCallUrl = doc.getElementById("searchForm").action;
+        // https://www.etisalat.ae/b2c/autoSuggest.service?locale=en-AE
         var guidedSearchCall = doc.getElementById("searchForm").getAttribute("data-secondary-search");
+        // https://qacms-uat.etisalat.ae/b2c/guidedSearchRequest.service?locale=en-AE
         var guidedSearchText = "";
         var guidedSearchWraper = "";
         var resultPageURL = window.location.origin + "/" + document.documentElement.lang + "/system/wst/search-results.jsp";
@@ -28,6 +30,9 @@
         var learMoreText = "LEARN MORE";
         var viewAll = "view all results";
         var recentSearch = [];
+        const searchCookieKey =
+           '_fbp=fb.1.1569735054625.157762004; RTVisitorGuid=b7dede7c-a6f2-45e6-907a-13256bb7d062; _scid=56f7bdd3-3cd4-4dd8-bcc7-aaae00561581; _hjid=b5e10904-89d4-4892-9748-89d7e0249e24; _ga_J3ZF3NC5CP=GS1.1.1598864737.2.1.1598865538.0; eventQueue=undefined; requestQueue=undefined; activeCampaign=[]; userNotificationConsent=undefined; did=undefined; browserPush=undefined; _ga_85PWSDVDF7=GS1.1.1614160467.6.0.1614160467.0; CoreID6=71809247743216147703348&ci=90413877; _gcl_au=1.1.1691611894.1617252022; RTAppTime=Tue May 04 2021 12:23:58 GMT+0400 (Gulf Standard Time); RTVersionNumber=10; _gcl_aw=GCL.1621853589.Cj0KCQjwna2FBhDPARIsACAEc_Wrcktzu2-yRzrwPzanl8H4p-1OLqvRYLS70WggiHrzwYexkCPvwdYaAt7sEALw_wcB; _gcl_dc=GCL.1621853589.Cj0KCQjwna2FBhDPARIsACAEc_Wrcktzu2-yRzrwPzanl8H4p-1OLqvRYLS70WggiHrzwYexkCPvwdYaAt7sEALw_wcB; _gac_UA-138425541-4=1.1621853590.Cj0KCQjwna2FBhDPARIsACAEc_Wrcktzu2-yRzrwPzanl8H4p-1OLqvRYLS70WggiHrzwYexkCPvwdYaAt7sEALw_wcB; userProfile=undefined; mmapi.store.p.0=%7B%22mmparams.d%22%3A%7B%7D%2C%22mmparams.p%22%3A%7B%22pd%22%3A%221655197591438%7C%5C%22Ne8tdDftnFgidSB01-eQac0Gri5ORVBu5GD41ZoF5Yw%3D%7CLAAAAApDH4sIAAAAAAAEAGNhuBIzqVND5KAxA3NBRgWjEAOjE8Ndz4DdkgwC68o2C-vf9HBU2PjL8dINDwYg-A8FDPzl5eV6qSWZxYk5iSV6ialM80QYgfJMIEVwVSDFYAEGBkZXAJ4efrZqAAAA%5C%22%22%2C%22bid%22%3A%221623662191058%7C%5C%22prodphxcgeu04%5C%22%22%2C%22srv%22%3A%221655197591448%7C%5C%22prodphxcgeu04%5C%22%22%7D%7D; _gaexp=GAX1.2._AJEGFqmQjSAB9DwyZD-VQ.18881.1; CMS-cookie=!5BHt1vWiuMnwy9gxoj7/E5h0ZWiW940xt9cq5Dn4D7NG/eiDfeZ9RMJ/DM3Wuk7aI4EeybtAouPx+Y0=; _hjTLDTest=1; ADRUM=s=1623901845111&r=https%3A%2F%2Fwww.etisalat.ae%2Fen%2Findex.jsp%3F0; _gid=GA1.2.575971874.1624167671; sid=undefined; hiddenFlag=undefined; _sctr=1|1624132800000; session_timestamp=1624167681; userPrefLanguage=en_AE; ADRUM_BT2=R:24|i:720; SameSite=None; ADRUM_BTa=R:24|g:b974ddd3-55be-4aeb-8ac7-b8d90d43f8b5; ADRUM_BT1=R:24|i:720; BIGipServerb2cprod_443_pool=449065738.26395.0000; userData={\\"userProfile\\":[],\\"competingApps\\":[],\\"InboxData\\":[],\\"activeTransCampaigns\\":\\"\\",\\"activeCampaigns\\":[{\\"_id\\":\\"xxxxx\\",\\"tid\\":\\"xxxxx\\",\\"t\\":\\"FEEDBACK\\",\\"sd\\":1624173070000000,\\"ed\\":1626765070929,\\"st\\":1624172890929}],\\"getConfigUrl\\":\\"https://gccapi.appice.io/i/v1/getConfig\\",\\"result\\":[{\\"v\\":\\"1.0.1\\"},{\\"v\\":\\"1.0.11\\"}]}; XJSESSIONID=AhsoRsvOHrg6KkrZQmPbBlfvRgwsG8LKUijzyen8gk0F4S7VlFRG!1570160687; SameSite=None; myAppLocaleCookie=en; B2CJSESSIONID=M_ooXfno_FDO2eXAv8d2F8sBMsnBNZJJHNKIElmwPYugGcQARGBS!1197876252; TS0196bc3e=012b7f183cc6bdfd0817807e5f36dc61c694550a0b6496efb61318d359afe11e52157e462468b138c06bb202603738546b6fc6c536; _ga=GA1.1.1674731765.1613022195; JSESSIONID=arsoXgD-3LgGAbhfjovExTd7I_O781MZba7o1u7Qd2ZEmudInPeq!-804075655; TS0144ff4c=012b7f183c0c51952b48c15cf1664971aa7ebb59367722a14ee9b028d43d3ba14b3dc32a11e0853152154584a7c7430519c5ec4228f570ac4fdc5b1d0fd4851cbe80ca6008e9d48549b28921f3ddd649bf5434b0063d33f29c93e021f4cd9218525d35c8a75857e7de1ad32af0f40a4d1deb8591e3a1119e304cb4e4a7a2d2e1e4019a14ad55503b2e8d551267eda24d1f3a241343; _ga_BPWBRZB9JK=GS1.1.1624174886.79.0.1624174909.0';
+    
         // switch js between mobile and desktop UI
         if (window.outerWidth <= 991) {
           instannceNum = 1;
@@ -54,7 +59,7 @@
             doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".mobile-head").classList.add("d-none");
-            //doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none');
+            doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none'); // refactor
           }
         }, 500);
         doc.querySelectorAll("form[name=searchForm]")[instannceNum].addEventListener(
@@ -114,6 +119,7 @@
         }
         //seach for suggession
         var searchTerm = function (searchText) {
+          console.log('On typeahead api call');
           //google analyticss starts
           if (typeof window.dataLayer !== "undefined") {
             window.dataLayer.push({
@@ -134,35 +140,37 @@
             '<div class="row"><div class="col-xs-12"><div class="ph-fill ph-big"></div></div></div>' +
             "</div>" +
             "</div>";
-          //doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none');
+          doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none'); // refactor
           doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.add("d-none");
           doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").innerHTML = loadertemplate;
           doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.remove("d-none");
           var dataWithPayload = { Ntt: searchText };
 
           var dataObjJSON = JSON.stringify(dataWithPayload, null, 2);
-
+          console.log("send request data on debounce-normal-", dataObjJSON);  
           $.ajax({
             type: "POST",
             url: searchCallUrl,
             data: dataObjJSON,
             dataType: "json",
+            xhrFields: { withCredentials: true },
             // xhrFields: {
             //      withCredentials: true
             // },
             crossDomain: true,
             headers: {
               "content-type": "application/json",
-              cookie: searchCookieKey,
+              Cookie: searchCookieKey,
             },
             encode: true,
           })
-            .done(submitSuccessResponse)
-            .fail(submitErrorResponse);
+            .done(successResponseHandler)
+            .fail(errorResponseHandler);
         };
 
         // guided seach once click on suggession links
         var guidedSearch = function (searchText, target) {
+          console.log('on enter click search...');
           var loadertemplate =
             '<div class="search-result-loader-4-0 sr-right">' +
             //item
@@ -222,24 +230,25 @@
           var dataWithPayload = { Ntt: searchText, N: "", No: "0", Nrpp: "4" };
 
           var dataObjJSON = JSON.stringify(dataWithPayload, null, 2);
-
+console.log('send request data', dataObjJSON);
           $.ajax({
             type: "POST",
             url: guidedSearchCall,
             data: dataObjJSON,
             dataType: "json",
+            xhrFields: { withCredentials: true },
             // xhrFields: {
             //      withCredentials: true
             // },
             crossDomain: true,
             headers: {
               "content-type": "application/json",
-              cookie: searchCookieKey,
+              Cookie: searchCookieKey,
             },
             encode: true,
           })
             .done(renderTabItems)
-            .fail(submitErrorResponse);
+            .fail(errorResponseHandler);
         };
 
         //Check search list item dataType
@@ -411,14 +420,15 @@
         /**
          * Callback for successfull ajax submit
          */
-        var submitSuccessResponse = function (json, statusText, xhr) {
+        var successResponseHandler = function (json, statusText, xhr) {
           var tabsHeadHTML = "";
           var tabsBodyHTML = "";
           var tabHeadData = "";
           var doc = document;
+           console.log("successResponseHandler init");
+            console.log("successResponseHandler init", json.success, statusText, json.response.contents[0].autoSuggest[0].dimensionSearchGroups.length);
           if (json.success === true && statusText === "success" && json.response.contents[0].autoSuggest[0].dimensionSearchGroups.length > 0) {
-            //doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none');
-
+            doc.querySelectorAll(".search-not-found-4-0")[instannceNum].classList.add("d-none"); // refactor
             tabHeadData = json.response.contents[0].autoSuggest[0].dimensionSearchGroups[0].dimensionSearchValues;
             //for(var i=0; i<tabHeadData.length; i++){
             for (var i = 0; i < tabHeadData.length && i < 5; i++) {
@@ -466,11 +476,12 @@
               });
             return true;
           } else {
+            console.log("error in api call - not found.");
             doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
             //doc.querySelectorAll('.notFoundTerm')[instannceNum].innerText = searchInput[instannceNum].value;
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".mobile-head").classList.add("d-none");
-            //doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.remove('d-none');
+            doc.querySelectorAll(".search-not-found-4-0")[instannceNum].classList.remove("d-none"); // refactor
           }
 
           // in case of failure show a message
@@ -487,10 +498,18 @@
          * @param textStatus
          * @param error
          */
-        var submitErrorResponse = function (jqXHR, textStatus, error) {
-          var errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
+        var errorResponseHandler = function (jqXHR, textStatus, error) {
+          var doc = document;
+          var errorText = ((jqXHR?.responseJSON && jqXHR?.responseJSON?.message) || error ) || 'Something Went wrong!';
+          console.log("err responseJSON is-", jqXHR?.responseJSON, "err jqXHR text is-", jqXHR?.responseJSON?.message, "-Error is-", error);
+          // refactor. search component only need to test on search-result-page
+          //doc.querySelectorAll('.notFoundTerm')[instannceNum].innerText = searchInput[instannceNum].value;
+          doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
+          doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
+          doc.querySelectorAll(".getMore")[instannceNum].querySelector(".mobile-head").classList.add("d-none");
+          doc.querySelectorAll(".search-not-found-4-0")[instannceNum].classList.remove("d-none");
+          doc.querySelectorAll(".search-not-found-4-0 .text")[instannceNum].innerHTML = errorText; // refactor-testing
         };
-
         document.querySelectorAll(".clearSearch")[instannceNum].addEventListener("click", clearSearch);
 
         // clear search
@@ -501,7 +520,7 @@
             doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
             doc.querySelectorAll(".getMore")[instannceNum].querySelector(".mobile-head").classList.add("d-none");
-            //doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none');
+            doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none'); // refactor
           }
         }
 
@@ -584,6 +603,3 @@
           return currentText;
         }
       });
-      const searchCookieKey =
-        '_fbp=fb.1.1569735054625.157762004; RTVisitorGuid=b7dede7c-a6f2-45e6-907a-13256bb7d062; _scid=56f7bdd3-3cd4-4dd8-bcc7-aaae00561581; _hjid=b5e10904-89d4-4892-9748-89d7e0249e24; _ga_J3ZF3NC5CP=GS1.1.1598864737.2.1.1598865538.0; eventQueue=undefined; requestQueue=undefined; activeCampaign=[]; userNotificationConsent=undefined; did=undefined; browserPush=undefined; _ga_85PWSDVDF7=GS1.1.1614160467.6.0.1614160467.0; CoreID6=71809247743216147703348&ci=90413877; _gcl_au=1.1.1691611894.1617252022; RTAppTime=Tue May 04 2021 12:23:58 GMT+0400 (Gulf Standard Time); RTVersionNumber=10; _gcl_aw=GCL.1621853589.Cj0KCQjwna2FBhDPARIsACAEc_Wrcktzu2-yRzrwPzanl8H4p-1OLqvRYLS70WggiHrzwYexkCPvwdYaAt7sEALw_wcB; _gcl_dc=GCL.1621853589.Cj0KCQjwna2FBhDPARIsACAEc_Wrcktzu2-yRzrwPzanl8H4p-1OLqvRYLS70WggiHrzwYexkCPvwdYaAt7sEALw_wcB; _gac_UA-138425541-4=1.1621853590.Cj0KCQjwna2FBhDPARIsACAEc_Wrcktzu2-yRzrwPzanl8H4p-1OLqvRYLS70WggiHrzwYexkCPvwdYaAt7sEALw_wcB; userProfile=undefined; mmapi.store.p.0=%7B%22mmparams.d%22%3A%7B%7D%2C%22mmparams.p%22%3A%7B%22pd%22%3A%221655197591438%7C%5C%22Ne8tdDftnFgidSB01-eQac0Gri5ORVBu5GD41ZoF5Yw%3D%7CLAAAAApDH4sIAAAAAAAEAGNhuBIzqVND5KAxA3NBRgWjEAOjE8Ndz4DdkgwC68o2C-vf9HBU2PjL8dINDwYg-A8FDPzl5eV6qSWZxYk5iSV6ialM80QYgfJMIEVwVSDFYAEGBkZXAJ4efrZqAAAA%5C%22%22%2C%22bid%22%3A%221623662191058%7C%5C%22prodphxcgeu04%5C%22%22%2C%22srv%22%3A%221655197591448%7C%5C%22prodphxcgeu04%5C%22%22%7D%7D; _gaexp=GAX1.2._AJEGFqmQjSAB9DwyZD-VQ.18881.1; CMS-cookie=!5BHt1vWiuMnwy9gxoj7/E5h0ZWiW940xt9cq5Dn4D7NG/eiDfeZ9RMJ/DM3Wuk7aI4EeybtAouPx+Y0=; _hjTLDTest=1; ADRUM=s=1623901845111&r=https%3A%2F%2Fwww.etisalat.ae%2Fen%2Findex.jsp%3F0; _gid=GA1.2.575971874.1624167671; sid=undefined; hiddenFlag=undefined; _sctr=1|1624132800000; session_timestamp=1624167681; userPrefLanguage=en_AE; ADRUM_BT2=R:24|i:720; SameSite=None; ADRUM_BTa=R:24|g:b974ddd3-55be-4aeb-8ac7-b8d90d43f8b5; ADRUM_BT1=R:24|i:720; BIGipServerb2cprod_443_pool=449065738.26395.0000; userData={\\"userProfile\\":[],\\"competingApps\\":[],\\"InboxData\\":[],\\"activeTransCampaigns\\":\\"\\",\\"activeCampaigns\\":[{\\"_id\\":\\"xxxxx\\",\\"tid\\":\\"xxxxx\\",\\"t\\":\\"FEEDBACK\\",\\"sd\\":1624173070000000,\\"ed\\":1626765070929,\\"st\\":1624172890929}],\\"getConfigUrl\\":\\"https://gccapi.appice.io/i/v1/getConfig\\",\\"result\\":[{\\"v\\":\\"1.0.1\\"},{\\"v\\":\\"1.0.11\\"}]}; XJSESSIONID=AhsoRsvOHrg6KkrZQmPbBlfvRgwsG8LKUijzyen8gk0F4S7VlFRG!1570160687; SameSite=None; myAppLocaleCookie=en; B2CJSESSIONID=M_ooXfno_FDO2eXAv8d2F8sBMsnBNZJJHNKIElmwPYugGcQARGBS!1197876252; TS0196bc3e=012b7f183cc6bdfd0817807e5f36dc61c694550a0b6496efb61318d359afe11e52157e462468b138c06bb202603738546b6fc6c536; _ga=GA1.1.1674731765.1613022195; JSESSIONID=arsoXgD-3LgGAbhfjovExTd7I_O781MZba7o1u7Qd2ZEmudInPeq!-804075655; TS0144ff4c=012b7f183c0c51952b48c15cf1664971aa7ebb59367722a14ee9b028d43d3ba14b3dc32a11e0853152154584a7c7430519c5ec4228f570ac4fdc5b1d0fd4851cbe80ca6008e9d48549b28921f3ddd649bf5434b0063d33f29c93e021f4cd9218525d35c8a75857e7de1ad32af0f40a4d1deb8591e3a1119e304cb4e4a7a2d2e1e4019a14ad55503b2e8d551267eda24d1f3a241343; _ga_BPWBRZB9JK=GS1.1.1624174886.79.0.1624174909.0';
-    
