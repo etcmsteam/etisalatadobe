@@ -2,6 +2,7 @@ package com.etisalat.core.models;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -25,6 +26,9 @@ public class LinkModel {
 
   @ValueMapValue(name = "fileReference", injectionStrategy = InjectionStrategy.OPTIONAL)
   private String imgUrl;
+  
+  @ChildResource(name = "image", injectionStrategy = InjectionStrategy.OPTIONAL)
+  private Resource imageResource;
 
   public String getLinkText() {
     return linkText;
@@ -73,5 +77,13 @@ public class LinkModel {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+  
+  public Resource getImageResource() {
+	return imageResource;
+  }
+
+  public void setImageResource(Resource imageResource) {
+	this.imageResource = imageResource;
   }
 }

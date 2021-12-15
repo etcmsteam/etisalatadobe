@@ -1,70 +1,68 @@
 .cmp_tabs__vertical_view_nobg {
   .cmp-text {
     h2 {
-      font-size: 34px;
-      line-height: 42px;
+      font-size: $font34;
+      line-height: toRem(42);
     }
 
     h3 {
-      font-size: 2rem;
-      line-height: 40px;
+      font-size: $font32;
+      line-height: toRem(40);
     }
 
     p {
-      color: #848789;
-      font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-      font-size: 0.875rem;
+      color: $steel-grey;
+
+      @include font-family-lato;
+
+      font-size: $font14;
       font-weight: normal;
-      line-height: 1.5rem;
+      line-height: toRem(24);
     }
   }
 }
 
 /* text in Teaser start */
 .cmp-rte-text {
-  padding-left: 30px;
+  padding-left: toRem(30);
 
   .cmp-text h3 {
-    color: #353738;
-    font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+    color: $almost-black;
+
+    @include font-family-Neotech;
+
     margin: 0;
   }
 
   .cmp-text p {
     color: $steel-grey;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-    font-size: 14px !important;
-    line-height: 20px !important;
-    margin-bottom: .75rem;
-  }
-}
 
-@media (min-width: 320px) and (max-width: 990px) {
-  .cmp-rte-text {
+    @include font-family-lato;
+
+    font-size: $font14 !important;
+    line-height: toRem(20) !important;
+    margin-bottom: toRem(12);
+  }
+
+  @include respond-to-max($desktop-min) {
     padding-left: 0;
-  }
-}
 
-@media (min-width: 375px) and (max-width: 990px) {
-  .cmp-rte-text {
     .cmp-text p {
-      margin-top: 1rem;
+      margin-top: toRem(16);
     }
   }
-}
 
-@media (min-width: 992px) {
-  .cmp-rte-text {
+  @include respond-to-min($desktop) {
     .cmp-text h3 {
-      font-size: 2rem;
-      line-height: 40px;
+      font-size: $font32;
+      line-height: toRem(40);
     }
 
     .cmp-text p {
-      font-size: 1rem !important;
-      line-height: 1.5rem;
-      margin-bottom: 1rem;
-      margin-top: 1.5rem;
+      font-size: $font16 !important;
+      line-height: toRem(24);
+      margin-bottom: toRem(16);
+      margin-top: toRem(24);
       width: 100%;
     }
   }
@@ -76,12 +74,10 @@
   .cmp-button--secondary {
     width: 100%;
   }
-}
 
-@media (min-width: $tablet) {
-  .cmp-right-rte {
-    margin-top: 6.375rem;
-    padding-right: 2.1875rem;
+  @include respond-to-min($tablet) {
+    margin-top: toRem(102);
+    padding-right: toRem(35);
 
     .cmp-button--secondary {
       float: $floatR;
@@ -89,4 +85,3 @@
     }
   }
 }
-
