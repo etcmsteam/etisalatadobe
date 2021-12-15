@@ -870,11 +870,18 @@
 
 .cmp-table-default {
   table {
-    tr {
-      &:first-child {
-        td {
-          border-top: 0;
-        }
+    th {
+      @include font-family-lato();
+      font-size: $font12;
+      color: $almost-black;
+      line-height: 12px;
+      font-weight: get-font-weight("heavy");
+      text-transform: uppercase;
+      text-align: left;
+      padding: $padding-step-2 $padding-step-0;
+      border-top: $border-step-1 solid $light-sand-brown;
+      @include rtlBlock() {
+        text-align: right;
       }
     }
     td {
@@ -893,13 +900,6 @@
       @include rtlBlock() {
         text-align: left;
       }
-      .font--small {
-        font-size: $font12;
-        color: $almost-black;
-        line-height: 12px;
-        font-weight: get-font-weight("heavy");
-        text-transform: uppercase;
-      }
       .price {
         font-weight: get-font-weight("heavy");
         padding-right: 4px;
@@ -914,6 +914,9 @@
       padding: $padding-step-2 $padding-step-0;
       border-bottom: $border-step-1 solid $light-sand-brown;
       text-align: left;
+      @include rtlBlock() {
+        text-align: right;
+      }
       @include respond-to-max($desktop-min) {
         width: 100% !important;
         display: block;
