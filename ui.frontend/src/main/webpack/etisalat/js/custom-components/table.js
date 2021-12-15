@@ -11,8 +11,22 @@ $(function () {
     $(this).closest(".table-default-section").find(".custom-datatable").toggleClass("show-more-less");
   });
 
-  if (CMP_TEXT_CUSTOM_TABLE_CLASS.find("thead").length === 0) {
-    CMP_TEXT_CUSTOM_TABLE_CLASS.each(function (index, element) {
+  if ($(".search-input").length > 0) {
+    $("#searchInput").on("keyup", function () {
+      const value = $(this).val().toLowerCase();
+      let searchTarget = $("table tbody tr");
+      const targetID = $(this).attr("data-search-target");
+      if (targetID && targetID != null) {
+        searchTarget = $("#" + targetID).find("table tbody tr");
+      }
+      searchTarget.filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+  }
+
+  CMP_TEXT_CUSTOM_TABLE_CLASS.each(function (index, element) {
+    if ($(element).find("thead").length === 0) {
       const APPEND_THEAD = $("<thead></thead>");
       const APPEND_TR = $("<tr></tr>");
       let FIRST_TR = $("tr:first", this);
@@ -28,24 +42,10 @@ $(function () {
       if (CMP_TEXT_CUSTOM_TABLE_CLASS.length === index + 1) {
         newCustomDataTable();
       }
-    });
-  } else {
-    newCustomDataTable();
-  }
-
-  if ($(".search-input").length > 0) {
-    $("#searchInput").on("keyup", function () {
-      const value = $(this).val().toLowerCase();
-      let searchTarget = $("table tbody tr");
-      const targetID = $(this).attr("data-search-target");
-      if (targetID && targetID != null) {
-        searchTarget = $("#" + targetID).find("table tbody tr");
-      }
-      searchTarget.filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-      });
-    });
-  }
+    } else {
+      newCustomDataTable();
+    }
+  });
 });
 
 function newCustomDataTable() {
