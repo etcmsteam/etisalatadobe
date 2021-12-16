@@ -3,7 +3,18 @@
 .cmp-center-card {
   .cmp-teaser {
     margin-bottom: toRem(40);
+    padding: 0;
     text-align: center;
+
+    @include respond-to-min($tablet) {
+      padding: 0 toRem(12);
+    }
+
+    @include respond-to-min($desktop) {
+      margin-left: toRem(45);
+      margin-right: toRem(45);
+      max-width: toRem(310);
+    }
 
     &__image img,
     svg {
@@ -36,7 +47,6 @@
         font-size: $font14;
         line-height: toRem(24);
         margin: 0;
-        padding: 0 toRem(45);
       }
     }
 
