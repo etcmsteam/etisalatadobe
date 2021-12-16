@@ -154,23 +154,20 @@
   }
 
   &.link__arrow {
+    @include respond-to-max($tablet) {
+      position: relative;
+      right: 0;
+    }
+
     .cmp-teaser__action-container {
       @include respond-to-min($desktop) {
         height: toRem(20) !important;
         margin-top: toRem(-10) !important;
         top: 50%;
-        position: absolute;
-      }
-
-      @include respond-to-max($desktop) {
-        position: relative;
-        right: 0;
-        width: 100%;
-        top: 10px;
       }
 
       &::after {
-        @include respond-to-max($desktop) {
+        @include respond-to-max($tablet) {
           right: auto !important;
         }
       }
@@ -186,7 +183,7 @@
         width: 280px;
       }
 
-      @include respond-to-max($desktop) {
+      @include respond-to-max($tablet) {
         position: relative;
         right: 0;
         width: 100%;
@@ -203,7 +200,7 @@
         width: 280px;
       }
 
-      @include respond-to-max($desktop) {
+      @include respond-to-max($tablet) {
         position: relative;
         right: 0;
         width: 100%;
@@ -220,7 +217,7 @@
         width: 280px;
       }
 
-      @include respond-to-max($desktop) {
+      @include respond-to-max($tablet) {
         position: relative;
         right: 0;
         width: 100%;
@@ -798,6 +795,7 @@ $prefix: "cmp-teaser";
       position: relative;
       right: 0;
       top: auto !important;
+
       @include rtlBlock {
         left: 0;
         margin-right: 0;
@@ -812,29 +810,6 @@ $prefix: "cmp-teaser";
 
     &::before {
       display: none;
-    }
-  }
-
-  .button--primary .cmp-teaser__action-container,
-  .button--secondary .cmp-teaser__action-container,
-  .button--transparent .cmp-teaser__action-container {
-    max-width: 250px;
-    min-width: 250px;
-    width: 250px;
-  }
-
-  // .button--secondary {
-  // .cmp-teaser__action-container {
-
-  // }
-  // .button--transparent {
-  // .cmp-teaser__action-container {
-
-  // }
-
-  .link__arrow {
-    .cmp-teaser__action-container {
-      position: relative;
     }
   }
 }
