@@ -1,6 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 // mobile view st
 
+// common css st
 .cmp-title {
   color: $almost-black;
   font-size: $font28;
@@ -16,6 +17,7 @@
 
 .cmp-teaser__description {
   ul li {
+    padding-left: 20px;
     color: $dark-gray;
 
     @include font-family-lato;
@@ -28,13 +30,16 @@
   }
 }
 
-.cmp_accordion___view {
+// common css en
+
+.cmp_tabs--mobile {
   .cmp-teaser__action-link {
     font-size: $font12;
     font-weight: get-font-weight("medium");
     letter-spacing: toRem(1.6);
     line-height: toRem(16);
     position: relative;
+    padding: toRem(2.85);
     text-transform: uppercase;
 
     &::before {
@@ -58,7 +63,6 @@
   }
 
   .panel {
-    background-color: $white-gray1;
     border-radius: 0;
     margin: 0;
     width: 100%;
@@ -93,19 +97,23 @@
       }
     }
 
+    &__title {
+      color: $almost-black;
+      border: 1px solid red;
+      font-weight: get-font-weight("bold");
+      margin-bottom: toRem(16);
+      margin-top: 0;
+
+      @include font-family-lato;
+
+      @include rtlBlock {
+        font-weight: get-font-weight("light");
+      }
+    }
+
     &__description {
-      h4 {
-        color: $almost-black;
-        font-size: $font18;
-        font-weight: get-font-weight("bold");
-        margin-bottom: toRem(16);
-        margin-top: 0;
-
-        @include rtlBlock {
-          font-weight: get-font-weight("light");
-        }
-
-        @include font-family-lato;
+      ol {
+        padding-left: 20px;
       }
 
       p {
@@ -115,11 +123,6 @@
         line-height: toRem(19);
 
         @include font-family-lato;
-      }
-
-      .cmp-teaser__action-link {
-        padding: toRem(2.85);
-        position: relative;
       }
     }
   }
@@ -183,7 +186,7 @@
     }
   }
 
-  .cmp_accordion___view {
+  .cmp_tabs--mobile {
     .nav-view-wrapp.panel > a {
       background: $white;
       border-bottom: 1px solid $grey5;
@@ -243,6 +246,7 @@
 }
 
 // mobile en
+
 .benefits-section .benefits-mobile.collapsed .icon circle,
 .benefits-section .benefits-mobile.collapsed .icon path,
 .benefits-section .benefits-mobile.collapsed .icon polygon,
@@ -251,7 +255,8 @@
   stroke-width: toRem(1);
 }
 
-.cmp_tabs__vertical_view--active-full-bdr {
+.cmp_tabs--vertical-fullbdr {
+  border: 1px solid green;
   .nav-view-wrapp.panel > a {
     border-left: toRem(4) solid $main-green;
 
@@ -576,7 +581,7 @@
     box-shadow: none;
   }
 
-  .cmp_accordion___view .nav-view-wrapp.panel > a.collapsed::before {
+  .cmp_tabs--mobile .nav-view-wrapp.panel > a.collapsed::before {
     border-color: $almost-black;
   }
 }
@@ -584,7 +589,10 @@
 // desktop view st
 
 @media (min-width: 48em) {
-  .cmp_tabs__vertical_view {
+  //.cmp_tabs__vertical_view {
+
+  .cmp_tabs--vertical {
+    border: 1px solid blue;
     .cmp-tabs__tab--active::after {
       border: solid $main-green;
       border-radius: toRem(4);
@@ -675,6 +683,7 @@
     }
 
     .cmp-tabs__tabpanel--active {
+      background: $white-gray1;
       display: block;
       font-weight: 700;
       width: 70%;
@@ -760,7 +769,8 @@
   }
 
   // 2nd horiznatal with view  varition st
-  .cmp_tabs__verticle_view_img {
+  .cmp_tabs--vertical-img {
+    border: 1px solid pink;
     h3 {
       color: $almost-black;
       display: flex;
@@ -955,7 +965,8 @@
 // desktop view en
 
 // cmp-without bg
-.cmp_tabs__vertical_view_nobg {
+.cmp_tabs--vertical-nobg {
+  border: 1px solid black;
   .cmp-tabs__tab--active::after {
     border: solid $main-green;
     border-radius: toRem(4);
@@ -994,7 +1005,7 @@
 }
 
 .no-bg {
-  .cmp_tabs__vertical_view .cmp-tabs__tabpanel--active {
+  .cmp_tabs--vertical .cmp-tabs__tabpanel--active {
     background: transparent;
   }
 
@@ -1047,17 +1058,18 @@
 }
 
 .cmp-tabs_noteaser_img {
-  .cmp_tabs__vertical_view .cmp-teaser__content {
+  .cmp_tabs--vertical .cmp-teaser__content {
     width: 100%;
   }
 }
 
-.cmp_tabs__vertical_view_whbg {
+.cmp_tabs--vertical-whitebg {
+  border: 1px solid purple;
   .cmp-tabs__tab {
     svg,
     img {
       height: toRem(40);
-      margin-right: calc(#{$margin-step-1} + 2px);
+      // margin-right: calc(#{$margin-step-1} + 2px);
       width: toRem(35);
 
       @include respond-to-min($tablet) {
@@ -1129,19 +1141,19 @@
   }
 }
 
-.cmp_tabs__verticle_view_img .cmp-tabs__tab--active::after {
+.cmp_tabs--vertical-img .cmp-tabs__tab--active::after {
   border: none;
 }
 
 @include respond-to-max($tablet) {
-  .cmp_tabs__verticle_view_img .nav-view-wrapp span img {
+  .cmp_tabs--vertical-img .nav-view-wrapp span img {
     width: toRem(35);
   }
 }
 
 //  commenting this as of now it is causing regression pls add it under proper parent class
 
-.cmp_tabs__verticle_view_img {
+.cmp_tabs--vertical-img {
   .cmp-tabs {
     display: flex;
     padding: $padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px) $padding-step-2;
@@ -1150,7 +1162,7 @@
 
 // arabic
 
-.cmp_tabs__vertical_view .cmp-tabs__tab--active::after {
+.cmp_tabs--vertical .cmp-tabs__tab--active::after {
   @include rtlBlock() {
     left: auto;
     right: 0;

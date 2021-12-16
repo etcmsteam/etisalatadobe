@@ -5,7 +5,7 @@
   }
 }
 
-.edc-tabs-wrapper {
+.cmp_tabs-swipper {
   background: $white;
   box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
   max-height: toRem(78);
@@ -243,7 +243,7 @@
   }
 
   .config-section-wrap .page-nav li,
-  .edc-tabs-wrapper .page-nav li {
+  .cmp_tabs-swipper .page-nav li {
     padding-right: toRem(22.4);
   }
 
@@ -255,10 +255,10 @@
 }
 
 // with years
-.cmp_tabs__horizontal_with_years {
+.cmp_tabs--horizontal {
   padding: $padding-step-0;
 
-  .edc-tabs-wrapper {
+  .cmp_tabs-swipper {
     @include respond-to-min($desktop) {
       max-height: toRem(68);
       min-height: toRem(68);
@@ -328,7 +328,7 @@
     }
   }
 
-  .edc-tabs-wrapper .page-nav li {
+  .cmp_tabs-swipper .page-nav li {
     @include respond-to-max($tablet) {
       margin-right: $margin-step-0;
     }
@@ -389,5 +389,35 @@
       right: toRem(19.2);
       transform: rotate(135deg);
     }
+  }
+}
+
+// tab content where tab with alphabets
+.cmp_tabs--horizontal-title {
+  padding: $padding-step-0;
+
+  .cmp_tabs-swipper {
+    .cmp-tabs__tabpanel {
+      &--active {
+        padding: toRem(24) 0;
+
+        @include respond-to-min($desktop) {
+          padding-top: toRem(48) 0;
+        }
+
+        .ul-list-cms ul li {
+          font-size: $font14;
+          line-height: toRem(20);
+
+          @include respond-to-min($desktop) {
+            line-height: toRem(24);
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    padding: 0 !important;
   }
 }
