@@ -70,20 +70,7 @@
 				                                                fieldLabel="ID"
 				                                                name="./id"/>                                                 
 		                                                </items>
-		                                            </form>
-		                                            <searchnotfound
-		                                                jcr:primaryType="nt:unstructured"
-		                                                jcr:title="Search Not Found Message"
-		                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
-		                                                <items jcr:primaryType="nt:unstructured">                                                                                                       
-		                                                     <searchnotfound
-				                                                jcr:primaryType="nt:unstructured"
-				                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
-				                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"		                                                	                                               
-				                                                name="./searchNotFoundMsg"
-				                                                useFixedInlineToolbar="{Boolean}true"/>                                                    
-		                                                </items>
-		                                            </searchnotfound>                                                    
+		                                            </form>		                                                                                             
                                                     <recentlabel
 		                                                jcr:primaryType="nt:unstructured"
 		                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -242,7 +229,47 @@
                                 </items>
                             </columns>
                         </items>
-                    </brand>                    
+                    </brand>  
+                    <searchnotfound
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search Not Found"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <container
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <searchnotfound
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"		                                                	                                               
+                                                name="./searchNotFoundMsg"
+                                                fieldLabel="Not Found Message"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                            <didyoumean
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Did you mean text"
+                                                fieldLabel="Did You Mean Text"
+                                                name="./didYouMeanText"/>
+                                            <relatedtext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Did you mean text"
+                                                fieldLabel="Related Keywords Text"
+                                                name="./relatedText"/>                                            
+                                        </items>
+                                    </container>
+                                </items>
+                            </columns>
+                        </items>
+                    </searchnotfound>                         
                 </items>
             </tabs>
         </items>
