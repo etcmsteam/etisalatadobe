@@ -1,0 +1,14 @@
+<div data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
+     class="${properties.bannerLayout}">
+	<sly data-sly-set.coverStyle="${properties.bannerLayout == 'hero-heaer-01 news-header contact-us-header' ||
+	properties.bannerLayout == 'hero-heaer-01 faq-header no-content no-offer-head no-illustration' ? 'cover-style3' : ''}" />
+  	<div class="cover ${coverStyle}">
+  	  	<sly data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
+ 	 </div>
+  <sly data-sly-test="${properties.columnOptions == 'one-column'}" data-sly-use.oneColTemplate="onecolumncomponents.html" 
+       data-sly-call="${oneColTemplate.oneColumn @ properties=properties,resource=resource}"></sly>
+  <sly data-sly-test="${properties.columnOptions == 'two-column'}" data-sly-use.twoColTemplate="twocolumncomponents.html" 
+       data-sly-call="${twoColTemplate.twoColumn @ properties=properties,resource=resource}"></sly>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties['leftColComponent']}"></sly>
