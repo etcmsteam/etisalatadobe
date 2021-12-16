@@ -1,7 +1,7 @@
 .ewallet_mobile_view_carousal {
   @include respond-to-min($tablet) {
     position: absolute;
-    top: 100px;
+    top: 0;
     right: 5%;
   }
 
@@ -10,7 +10,11 @@
   }
 
   @include respond-to-min($desktop-wide) {
-    right: 260px;
+    right: 300px;
+  }
+
+  @include respond-to-max($phone) {
+    top: 60px;
   }
 
   .cmp-carousel__actions {
@@ -29,14 +33,17 @@
     margin-top: 20px;
     position: relative;
     
-    @include respond-to-min($desktop-wide) {
-      
+    @include respond-to-max($tablet) {
+      height: 560px;
+      width: 290px;
+      background-size: contain;
     }
     @include respond-to-max($desktop-wide) {
       top: 0;
       right: 0;
       margin: 0 auto;
     }
+    
     .cmp-image__image {
       max-width: 230px;
       height: auto;
@@ -108,12 +115,13 @@
       }
     }
     .cmp-image__image {
-      margin-top: 20px;
-      margin-bottom: 60px;
+      margin: 0 0 10px 0;
+      margin: 5px 0;
       width: 100%;
       max-width: 100%;
-      margin-left: 0px;
-      margin-right: 0px;
+      @include respond-to-min($desktop) {
+        margin: 20px 0 60px;
+      }
     }
   }
   .cmp-teaser__content {
