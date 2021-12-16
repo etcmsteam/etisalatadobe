@@ -23,15 +23,54 @@
     <body class="${page.cssClassNames} ${pageProperties.hideMegaMenu ? 'topnav--margin' : 'meganavigation--margin'}"
           dir="${page.language == 'ar' ? 'rtl' : 'ltr' }"
           id="${page.id}"
-          data-cmp-data-layer-enabled="${page.data ? true : false}">
+          data-cmp-data-layer-enabled="${page.data ? true : false}"
+          data-page-title="${currentPage.title}">
         <script data-sly-test.dataLayerEnabled="${page.data}">
+          const dataLayerEle = document.querySelector('body'),
+              pageTitle = dataLayerEle.dataset.pageTitle,
+              serverName = window.location.hostname,
+              siteSectionArr = JSON.parse(sessionStorage.getItem('siteSection')),
+              url = window.location.href;
+          if(!siteSectionArr) {
+            let pagesArr = [];
+            pagesArr.push(pageTitle);
+            sessionStorage.setItem('siteSection', JSON.stringify(pagesArr));
+          } else {
+            siteSectionArr.push(pageTitle);
+            sessionStorage.setItem('siteSection', JSON.stringify(siteSectionArr));
+          }
+          let siteSectionVal = JSON.parse(sessionStorage.getItem('siteSection'));
+          if (siteSectionVal.length > 1) {
+            siteSectionVal = siteSectionVal.join('/')
+          } else {
+            siteSectionVal = siteSectionVal[0];
+          }
+          function urlExists(url) {
+            var http = new XMLHttpRequest();
+            http.open('HEAD', url, false);
+            http.send();
+            if (http.status != 404)
+              return false;
+            else
+              return true;
+          }; 
+          const isErrorFlg = urlExists(url);
           window.adobeDataLayer = window.adobeDataLayer || [];
           adobeDataLayer.push({
-              page: JSON.parse("${page.data.json @ context='scriptString'}"),
-              event:'cmp:show',
-              eventInfo: {
-                  path: 'page.${page.id @ context="scriptString"}'
+            "event": "pageLoaded",
+            "xdmPageLoad": {
+              "web": {
+                "webPageDetails": {
+                  "name": pageTitle,
+                  "server": serverName,
+                  "siteSection": siteSectionVal,
+                  "isErrorPage": isErrorFlg,
+                  "pageViews": {
+                    "value": 1
+                  }
+                }
               }
+            }
           });
         </script>
         <sly data-sly-test.isRedirectPage="${page.redirectTarget && (wcmmode.edit || wcmmode.preview)}"
