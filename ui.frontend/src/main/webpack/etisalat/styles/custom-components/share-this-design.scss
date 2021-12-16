@@ -21,8 +21,7 @@
       width: 100%;
 
       @include rtlBlock() {
-        left: 0;
-        right: unset;
+        left: unset;
       }
 
       @include respond-to-max($phone){
@@ -30,7 +29,7 @@
       }
 
       @include respond-to-min($tablet){
-        padding: 0 1rem 1rem;
+        padding: 0;
       }
 
       @include respond-to-max($tablet) {
@@ -197,9 +196,9 @@
         margin-left: toRem(-12);
         margin-right: toRem(-12);
         padding: 0;
-        position: absolute;
-        right: 0;
-        top: toRem(-64);
+        position: fixed;
+        right: auto;
+        top: toRem(370);
         width: toRem(320);
         z-index: 5;
 
@@ -404,6 +403,11 @@
         &:first-child {
           @include respond-to-min($desktop){
             padding-left: 0;
+            
+            @include rtlBlock(){
+              padding-left: 0.625rem !important;
+              padding-right: 0;
+            }
           }
         }
 
