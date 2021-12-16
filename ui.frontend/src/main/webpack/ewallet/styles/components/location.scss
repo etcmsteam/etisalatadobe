@@ -1,5 +1,4 @@
 //Start for location
-
 .help-wrap {
   padding: 100px 0px;
   text-align: center;
@@ -29,7 +28,6 @@
   h1 {
     line-height: 66px;
     margin-bottom: 30px;
-    //@media (max-width: 767px) {
     @include respond-to-max($tablet) {
       font-size: toRem(40);
       line-height: 48px;
@@ -39,7 +37,6 @@
     line-height: 20px;
     text-transform: uppercase;
     font-weight: 500;
-    //@media (max-width: 767px) {
     @include respond-to-max($tablet) {
       font-size: toRem(16);
     }
@@ -57,11 +54,9 @@
       padding-right: 15%;
     }
 
-    //@media (max-width: 1024px) {
     @include respond-to-max($desktop-wide) {
       padding-right: 5%;
     }
-    //@media (max-width: 991px) {
     @include respond-to-max($desktop) {
       padding-right: 0;
     }
@@ -69,7 +64,6 @@
       font-size: toRem(40);
       font-style: italic;
       line-height: 48px;
-      //@media (max-width: 767px) {
       @include respond-to-max($tablet) {
         font-size: toRem(24);
         line-height: 32px;
@@ -86,14 +80,12 @@
 }
 .offer-detail {
   padding-top: 45px;
-  //@media (max-width: 1024px)
   @include respond-to-max($desktop) {
     padding-top: 0px;
   }
   h1 {
     line-height: 66px;
     margin-bottom: 30px;
-    //@media (max-width: 768px) {
     @include respond-to-max($phone) {
       font-size: toRem(40);
       line-height: 48px;
@@ -104,7 +96,6 @@
     text-transform: uppercase;
     font-weight: 500;
     margin-bottom: 35px;
-    //@media (max-width: 767px) {
     @include respond-to-max($tablet) {
       font-size: toRem(16);
     }
@@ -121,7 +112,6 @@
   .terms {
     padding: 35px 0px 20px 0px;
     padding-right: 15%;
-    //@media (max-width: 736px) {
     @include respond-to-max($tablet) {
       padding: 0;
       padding-top: 10px;
@@ -146,27 +136,32 @@
     }
   }
 }
-@media (min-width: 768px) and (max-width: 800px) {
-  .contact-us-wrap {
-    padding: 0 !important;
-    width: 690px;
-    margin: 0 auto !important;
-  }
-}
-//@media (min-width: 992px) {
-@include respond-to-min($desktop) {
-  .contact-us-wrap {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-}
+
 .contact-us-wrap {
   padding-top: 40px !important;
   padding-bottom: 100px !important;
 
+  @include respond-to-min($desktop-wide) {
+    min-width: toRem(1240);
+    margin-left: -20px !important;
+  }
+
+  @include respond-to-min-max($desktop-wide, $desktop) {
+    width: toRem(890);
+    margin: 0 auto !important;
+  }
+
+  @include respond-to-min-max($desktop, $tablet) {
+    padding: 0 !important;
+    width: toRem(690);
+    margin: 0 auto !important;
+  }
+
   .contactus-text {
+    @include respond-to-max($phone) {
+      padding: 0 !important;
+    }
     ul {
-      //@media (max-width: 736px) {
       @include respond-to-max($tablet) {
         margin-bottom: 10px;
       }
@@ -175,15 +170,16 @@
         font-size: toRem(20);
         line-height: 26px;
         padding-bottom: 30px;
-        //@media (max-width: 1024px) {
+
         @include respond-to-max($desktop-wide) {
           padding-bottom: 20px;
         }
-        //@media (max-width: 991px) {
+
         @include respond-to-max($desktop) {
           padding-bottom: 15px;
         }
-        b {
+        b,
+        strong {
           display: inline-block;
           width: 100%;
           clear: both;
@@ -191,11 +187,10 @@
         }
         span {
           br {
-            //@media (max-width: 991px) {
             @include respond-to-max($desktop) {
               display: none;
             }
-            //@media (max-width: 736px) {
+
             @include respond-to-max($tablet) {
               display: block;
             }
@@ -204,9 +199,25 @@
       }
     }
   }
+
+  .contactus-map {
+    @include respond-to-max($phone) {
+      padding: 0 !important;
+    }
+  }
 }
 
 // Locations
+.store-locator-wrap {
+  @include respond-to-min-max($desktop-wide, $desktop) {
+    width: toRem(860);
+    margin: 0 auto;
+  }
+  @include respond-to-min-max($desktop, $tablet) {
+    width: toRem(660);
+    margin: 0 auto;
+  }
+}
 
 .locateus-filters {
   background: $white9;
@@ -216,7 +227,7 @@
   @include respond-to-max($desktop) {
     margin-top: 50px;
   }
-  @include respond-to-max($tablet) {
+  @include respond-to-max($phone) {
     padding: 25px;
     margin-bottom: 0;
   }
@@ -275,7 +286,6 @@
     background-position: left 28px center;
     margin: 25px 0px 0px 0px;
 
-    //@media (max-width: 768px) {
     @include respond-to-max($tablet) {
       padding-right: 20px !important;
       padding-left: 50px;
@@ -292,7 +302,6 @@
   }
   .currentlocation {
     float: right;
-    //@media (max-width: 1180px) {
     @include respond-to-max($desktop-wide) {
       margin-bottom: 15px;
     }
@@ -328,10 +337,10 @@
       }
 
       @include respond-to-max($desktop) {
-        width: 178px;
+        width: toRem(178);
         margin-right: 18px;
       }
-      //@media (max-width: 736px) {
+
       @include respond-to-max($phone) {
         width: 100%;
         margin-right: 0px;
@@ -509,11 +518,9 @@
   .address-list {
     padding: 20px;
     padding-bottom: 10px;
-    //@media (max-width: 1024px) {
     @include respond-to-max($desktop-wide) {
       padding-right: 0;
     }
-    //@media (max-width: 991px) {
     @include respond-to-max($desktop) {
       padding-right: 20px;
     }
@@ -618,7 +625,6 @@
 }
 
 .hidden-sm {
-  //@media (max-width: 991px) {
   @include respond-to-max($desktop) {
     display: none !important;
   }
@@ -681,8 +687,8 @@
 .loader-disable-screen .loader svg {
   width: 100%;
 }
+
 //mobile
-//@media (max-width: 768px) {
 @include respond-to-max($tablet) {
   .locateus-filters {
     .searchlocation {
