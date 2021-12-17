@@ -40,10 +40,13 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 			if(!StringUtils.isEmpty(json)) {
 				status = sendNotificationService.postFormData(json);
 			}
-			String url = request.getRequestURL().toString();
+
 			if(status == RESPONSE_OK) {
-				response.sendRedirect(url+"?"+"success=success");
-				LOG.info("Status"+status);
+				response.setStatus(status);
+			}
+			else {
+				response.setStatus(status);
+				LOG.error("Send Notification Service Failed and API response is"+ status);
 			}
 
 		}

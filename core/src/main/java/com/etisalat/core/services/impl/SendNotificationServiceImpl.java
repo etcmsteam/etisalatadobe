@@ -72,14 +72,13 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 				jsonResponseData.append(readLine + "\n");
 			}		
 			bufferedReader.close();
-			LOG.info(jsonResponseData.toString());
-
+			LOG.debug("Send Notification API Request Created and response code is "+ responseCode);
 		} 
 		else if(responseCode == 417) {			
-			LOG.info("Error in Third Party API for forms"+responseCode);
+			LOG.error("Error in Third Party API for forms and response code is "+responseCode);
 		}
 		else {
-			LOG.info("Request Failed for Send Notification Service"+responseCode);
+			LOG.error("Request Failed for Send Notification Service and response code is "+responseCode);
 
 		}
 		return responseCode;
