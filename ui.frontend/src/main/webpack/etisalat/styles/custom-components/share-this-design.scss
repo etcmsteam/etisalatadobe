@@ -1,20 +1,43 @@
 .share {
+  +.text{
+    margin-top: toRem(50);
+
+    @include respond-to-min($tablet){
+      margin-top: toRem(75);
+    }
+
+    @include respond-to-min($desktop){
+      margin-top: 0;
+    }
+  }
+  
   .main-text-action-wrapper {
+     float: right;
+
+      @include rtlBlock(){
+        float: left;
+      }
     & .action.share.fix.true {
       width: 100%;
 
       @include rtlBlock() {
-        left: toRem(20);
-        right: unset;
+        left: unset;
+      }
+
+      @include respond-to-max($phone){
+        padding: 0;
+      }
+
+      @include respond-to-min($tablet){
+        padding: 0;
       }
 
       @include respond-to-max($tablet) {
         background-color: $white;
         left: 0;
         margin: 0;
-        padding: 0 1rem;
-        position: fixed;
-        top: toRem(55);
+        position: absolute;
+        top: 0;
         z-index: 22;
 
         & .copy-link {
@@ -174,14 +197,20 @@
         margin-right: toRem(-12);
         padding: 0;
         position: fixed;
-        right: 0;
-        top: toRem(160);
+        right: auto;
+        top: toRem(370);
         width: toRem(320);
         z-index: 5;
 
         .panel-body {
-          margin-right: toRem(30);
+          margin-right: auto;
+          margin-left: toRem(20);
           padding: 0;
+
+          @include rtlBlock(){
+            margin-left: auto;
+            margin-right: toRem(20);
+          }
         }
 
         &.copy-link {
@@ -372,7 +401,14 @@
         }
 
         &:first-child {
-          padding-left: 0;
+          @include respond-to-min($desktop){
+            padding-left: 0;
+            
+            @include rtlBlock(){
+              padding-left: 0.625rem !important;
+              padding-right: 0;
+            }
+          }
         }
 
         & a {
@@ -396,12 +432,10 @@
       .form-control {
         border-left: toRem(1) solid $cust-select;
         border-radius: 0;
-        border-bottom-left-radius: toRem(4);
         border-right: none;
-        border-top-left-radius: toRem(4);
         color: $gray;
         font-size: $font12pt8;
-        height: auto;
+        height: toRem(39);
         line-height: 1.6;
         padding: toRem(10);
         text-overflow: ellipsis;
@@ -409,10 +443,8 @@
         @include font-family-lato;
 
         @include rtlBlock() {
-          border-bottom-right-radius: toRem(4);
           border-left: 0;
           border-right: toRem(1) solid $cust-select;
-          border-top-right-radius: toRem(4);
         }
 
         &:focus {
@@ -426,9 +458,7 @@
         background-color: $white;
         border-left: none;
         border-radius: 0;
-        border-bottom-right-radius: toRem(4);
         border-right: toRem(1) solid $cust-select;
-        border-top-right-radius: toRem(4);
         color: $gray;
         font-size: $font16;
         font-weight: 400;
@@ -440,12 +470,8 @@
         white-space: nowrap;
 
         @include rtlBlock() {
-          border-bottom-left-radius: toRem(4);
-          border-bottom-right-radius: 0;
           border-left: 1px solid $cust-select;
           border-right: none;
-          border-top-left-radius: toRem(4);
-          border-top-right-radius: 0;
         }
 
         &::before {
@@ -457,6 +483,10 @@
           top: toRem(8);
           width: toRem(1);
           z-index: 2;
+
+          @include rtlBlock(){
+            left: toRem(50);
+          }
         }
       }
 

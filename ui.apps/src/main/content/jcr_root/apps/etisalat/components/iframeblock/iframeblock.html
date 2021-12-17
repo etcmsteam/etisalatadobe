@@ -5,9 +5,10 @@
      id="${component.id}">
     <sly data-sly-test="${properties.iframeSrcURL}">
         <iframe src="${properties.iframeSrcURL}"
+                id= "${properties.iframeId ? properties.iframeId : 'iframe-item'}"
                 scrolling="${!properties.hideiframeScrollbar || properties.hideiframeScrollbar == 'false' ? 'yes' : 'no'}"
-                width="${properties.iframeWidth!=null ? properties.iframeWidth : 100}%"
-                height="${properties.iframeHeight!=null ? properties.iframeHeight :1500}px"
+                width="${properties.iframeWidth ? properties.iframeWidth : 100}%"
+                height="${properties.iframeHeight ? properties.iframeHeight :1500}px"
                 border="0"
                 aria-label="Iframe">
         </iframe>

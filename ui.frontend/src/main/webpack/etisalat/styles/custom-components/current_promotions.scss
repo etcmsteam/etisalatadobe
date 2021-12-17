@@ -303,10 +303,11 @@
   }
 
   .title-wrap {
-    margin-bottom: $font14;
+    margin-bottom: toRem(14);
 
-    @media (min-width: 992px) {
-      margin-bottom: 1.5rem;
+    @include respond-to-min($desktop) {
+      margin-bottom: toRem(24);
+      height: toRem(56);
     }
   }
 
@@ -333,9 +334,11 @@
     }
   }
 
-  .scrollbar {
-    margin-top: 24px;
-    position: relative;
+  .swiper-container-horizontal {
+    .scrollbar {
+      margin-top: toRem(24);
+      position: relative !important;
+    }
   }
 
   .swiper-slide {
@@ -449,38 +452,38 @@
   }
 }
 .light {
- .current-promotions-wrraper {
+  .current-promotions-wrraper {
     .content-detail {
-        .lbl,
-        .promotions-title-wrap h2,
-        .paragraph-styling,
-         p{
-          color: $almost-black;
-        }
+      .lbl,
+      .promotions-title-wrap h2,
+      .paragraph-styling,
+      p {
+        color: $almost-black;
+      }
     }
- } 
+  }
 }
 .swiper-no-nav-end {
-    .controls {
-      .swiper-button-prev.swiper-button-disabled,
-      .swiper-button-next.swiper-button-disabled,
-      .prev.swiper-button-disabled,
-      .next.swiper-button-disabled {
-        display: none;
-      }
+  .controls {
+    .swiper-button-prev.swiper-button-disabled,
+    .swiper-button-next.swiper-button-disabled,
+    .prev.swiper-button-disabled,
+    .next.swiper-button-disabled {
+      display: none;
     }
+  }
 }
 .swiper-loop {
-    .controls {
-      .swiper-button-prev.swiper-button-disabled,
-      .swiper-button-next.swiper-button-disabled,
-      .prev.swiper-button-disabled,
-      .next.swiper-button-disabled {
-        cursor: pointer;
-        opacity: 1;
-        pointer-events: inherit;
-      }
+  .controls {
+    .swiper-button-prev.swiper-button-disabled,
+    .swiper-button-next.swiper-button-disabled,
+    .prev.swiper-button-disabled,
+    .next.swiper-button-disabled {
+      cursor: pointer;
+      opacity: 1;
+      pointer-events: inherit;
     }
+  }
 }
 
 // *************************************
@@ -500,16 +503,7 @@
     .learn-more-wrap {
       text-align: right;
     }
-
-    .current-promotions-wrraper .controls .next,
-    .current-promotions-wrraper .controls .prev {
-      right: 60px;
-    }
-
-    .current-promotions-wrraper .controls .next {
-      right: 0;
-    }
-
+    
     .current-promotions-wrraper.one-only .swiper-slide:last-child {
       margin-left: 0 !important;
       margin-right: auto;

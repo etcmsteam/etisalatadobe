@@ -1,86 +1,47 @@
-// with years
-.cmp_tabs__horizontal_with_years {
-  padding: $padding-step-0;
-
-  .edc-tabs-wrapper {
-    @include respond-to-min($desktop) {
-      max-height: toRem(68);
-      min-height: toRem(68);
-      padding: 0 $padding-step-2;
-
-      .page-nav {
-        .swiper-slide,
-        li {
-          font-size: $font16;
-          height: toRem(68);
-          letter-spacing: 0.6px;
-          line-height: toRem(68);
-          min-height: toRem(68);
-          position: relative;
-
-          &.cmp-tabs__tab--active {
-            border-bottom: toRem(4) solid $main-green !important;
-            color: $main-green;
-
-            &::after {
-              display: none !important;
-            }
-          }
-        }
-      }
-
-      .swiper-button-next, .swiper-button-prev {
-        top: 65%;
-      }
-    }
-
-    li {
-      &.cmp-tabs__tab--active {
-        border: 0 !important;
-        color: $main-green;
-
-        &::after {
-          border-bottom: toRem(2) solid  $main-green;
-          bottom: 0;
-          color: $main-green;
-          content: "";
-          content: "";
-          display: block;
-          left: 0;
-          margin: 0 auto;
-          position: absolute;
-          right: 0;
-          width: toRem(72);
-        }
-      }
-    }
-  }
-
-  //tab-panel content
-  .media-cta-wrapper {
-    .font--xsmall {
-      letter-spacing: toRem(4);
-    }
-
-    .cmp-text p {
-      margin-bottom: 0;
-    }
-
-    p + p {
-      margin-top: .55rem;
-    }
-  }
-
-  .edc-tabs-wrapper .page-nav li {
-    @include respond-to-max($tablet) {
-      margin-right: $margin-step-0;
-    }
+// arabic
+.ul-list-cms ul li::before {
+  @include rtlBlock() {
+    display: none;
   }
 }
 
-
-.edc-tabs-wrapper {
+.cmp_tabs-swipper {
+  background: $white;
+  box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
+  max-height: toRem(78);
+  min-height: toRem(56);
   position: relative;
+  transition: all 0.25s ease-in-out;
+  z-index: 8;
+
+  @include font-family-lato;
+
+  @include respond-to-min($desktop) {
+    max-height: toRem(90);
+    min-height: toRem(90);
+
+    @include font-family-Neotech;
+
+    &.tabs {
+      // max-height: none;
+      background: $white;
+      box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
+      max-height: toRem(78);
+      min-height: toRem(56);
+      position: relative;
+      transition: all 0.25s ease-in-out;
+      z-index: 8;
+
+      @include respond-to-min($desktop) {
+        max-height: toRem(90);
+        min-height: toRem(90);
+
+        &.tabs {
+          max-height: none;
+        }
+      }
+    }
+  }
 
   @include respond-to-max($desktop) {
     .page-nav {
@@ -102,10 +63,10 @@
   }
 
   .tabs-title {
-    padding-left: 2rem;
+    padding-left: toRem(32);
 
     @include respond-to-min($desktop) {
-      padding-left: 3rem;
+      padding-left: toRem(48);
     }
   }
 
@@ -122,9 +83,89 @@
     }
   }
 
+  .nav-tabs {
+    border: 0;
+
+    > li {
+      border: 0;
+      border-bottom: toRem(4) solid transparent;
+    }
+
+    &:hover {
+      border-color: $white;
+    }
+  }
+
   .page-nav {
-    .swiper-slide a,
+    align-items: flex-end;
+    display: flex;
+    height: toRem(56);
+    margin-bottom: 0;
+    min-height: toRem(56);
+
+    // overflow-x: auto;
+    white-space: nowrap;
+
+    @include respond-to-min($desktop) {
+      // display: block;
+      height: auto;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
     li {
+      padding-left: toRem(22.4);
+      padding-right: toRem(22.4);
+    }
+
+    .swiper-slide,
+    li {
+      color: $almost-black;
+      cursor: pointer;
+      font-size: $font12;
+      letter-spacing: toRem(0.25);
+      margin-right: toRem(24);
+      padding: 0 1rem toRem(10);
+      text-transform: uppercase;
+      width: auto;
+
+      // min-height: 56px;
+      @include respond-to-min($tablet) {
+        min-height: toRem(90);
+      }
+
+      @include respond-to-min($desktop) {
+        font-size: $font20;
+        height: toRem(90);
+        line-height: toRem(90);
+        margin-right: toRem(24);
+        padding: 0 toRem(24);
+        text-transform: none;
+
+        @include font-family-Neotech;
+      }
+
+      &:hover {
+        color: $main-green;
+      }
+
+      &.cmp-tabs__tab--active {
+        border-bottom: toRem(2) solid $main-green;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        color: $main-green;
+
+        @include respond-to-min($tablet) {
+          border-bottom: toRem(4) solid $main-green;
+          color: $main-green;
+        }
+      }
+    }
+
+    .swiper-slide a {
       text-transform: uppercase;
     }
   }
@@ -146,7 +187,8 @@
       height: toRem(24);
       width: toRem(24);
 
-      g, path {
+      g,
+      path {
         stroke-width: toRem(3);
       }
     }
@@ -175,148 +217,6 @@
       transform: translateY(0) rotate(90deg);
     }
   }
-}
-
-.basicpage .container .media-cta-wrapper {
-  @include respond-to-max($tablet) {
-    padding: 0 1rem;
-  }
-}
-
-
-//arabic
-*[lang="ar"] *[dir="rtl"] .ul-list-cms ul li::before {
-  display: none;
-}
-
-.edc-tabs-wrapper {
-  .page-nav li {
-    padding-left: 1.4rem;
-  }
-}
-
-
-.edc-tabs-wrapper {
-  background: $white;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  max-height: toRem(78);
-  min-height: toRem(56);
-  position: relative;
-  transition: all 0.25s ease-in-out;
-  z-index: 8;
-
-  @include font-family-lato;
-
-  @include respond-to-min($desktop) {
-    max-height: toRem(90);
-    min-height: toRem(90);
-
-    @include font-family-Neotech;
-
-    &.tabs {
-      //max-height: none;
-      background: $white;
-      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-      max-height: toRem(78);
-      min-height: toRem(56);
-      position: relative;
-      transition: all .25s ease-in-out;
-      z-index: 8;
-
-      @include respond-to-min($desktop) {
-        max-height: toRem(90);
-        min-height: toRem(90);
-
-        &.tabs {
-          max-height: none;
-        }
-      }
-    }
-  }
-
-  .nav-tabs {
-    border: 0;
-
-    > li {
-      border: 0;
-      border-bottom: 4px solid transparent;
-    }
-
-    &:hover {
-      border-color: #fff;
-    }
-  }
-
-  .page-nav {
-    align-items: flex-end;
-    display: flex;
-    height: toRem(56);
-    margin-bottom: 0;
-    min-height: toRem(56);
-
-    //overflow-x: auto;
-    white-space: nowrap;
-
-    @include respond-to-min($desktop) {
-      // display: block;
-      height: auto;
-    }
-
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-
-    .swiper-slide,
-    li {
-      color: $almost-black;
-      cursor: pointer;
-      font-size: $font12;
-      letter-spacing: toRem(0.25);
-      margin-right: 1.5rem;
-      padding: 0 1rem toRem(10);
-      text-transform: uppercase;
-      width: auto;
-
-      //min-height: 56px;
-      @include respond-to-min($tablet) {
-        min-height: toRem(90);
-      }
-
-      @include respond-to-min($desktop) {
-        font-size: $font20;
-        height: toRem(90);
-        line-height: toRem(90);
-        margin-right: 1.5rem;
-        padding: 0 1.5rem;
-        text-transform: none;
-
-        @include font-family-Neotech;
-      }
-
-      &:hover {
-        color: $main-green;
-      }
-
-
-      &.cmp-tabs__tab--active {
-        border-bottom: 2px solid  $main-green;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
-        color: $main-green;
-
-        @include respond-to-min($tablet) {
-          border-bottom: 4px solid $main-green;
-          color: $main-green;
-        }
-      }
-    }
-
-    li {
-      padding-right: 1.4rem;
-    }
-  }
 
   .config-section-main-label-top {
     color: $gray;
@@ -342,15 +242,112 @@
     }
   }
 
-  .config-section-wrap .page-nav li, .edc-tabs-wrapper .page-nav li {
-    padding-right: 1.4rem;
+  .config-section-wrap .page-nav li,
+  .cmp_tabs-swipper .page-nav li {
+    padding-right: toRem(22.4);
+  }
+
+  .ul-list-cms ul li::before {
+    @include rtlBlock() {
+      display: none;
+    }
   }
 }
 
+// with years
+.cmp_tabs--horizontal {
+  padding: $padding-step-0;
 
-//tab panel with carosal
+  .cmp_tabs-swipper {
+    @include respond-to-min($desktop) {
+      max-height: toRem(68);
+      min-height: toRem(68);
+      padding: 0 $padding-step-2;
+
+      .page-nav {
+        .swiper-slide,
+        li {
+          font-size: $font16;
+          height: toRem(68);
+          letter-spacing: toRem(0.6);
+          line-height: toRem(68);
+          min-height: toRem(68);
+          position: relative;
+
+          &.cmp-tabs__tab--active {
+            border-bottom: toRem(4) solid $main-green !important;
+            color: $main-green;
+          }
+        }
+      }
+
+      .page-nav::after {
+        display: none !important;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        top: 65%;
+      }
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    li {
+      &.cmp-tabs__tab--active {
+        border: 0 !important;
+        color: $main-green;
+
+        &::after {
+          border-bottom: toRem(2) solid $main-green;
+          bottom: 0;
+          color: $main-green;
+          content: "";
+          display: block;
+          left: 0;
+          margin: 0 auto;
+          position: absolute;
+          right: 0;
+          width: toRem(72);
+        }
+      }
+    }
+  }
+
+  // tab-panel content
+  .media-cta-wrapper {
+    .font--xsmall {
+      letter-spacing: toRem(4);
+    }
+
+    p + p {
+      margin-top: toRem(8.8);
+    }
+
+    .cmp-text p {
+      margin-bottom: 0;
+    }
+  }
+
+  .cmp_tabs-swipper .page-nav li {
+    @include respond-to-max($tablet) {
+      margin-right: $margin-step-0;
+    }
+  }
+}
+
+.basicpage .container .media-cta-wrapper {
+  @include respond-to-max($tablet) {
+    padding: 0 toRem(16);
+  }
+}
+
+// tab panel with carosal
 .cmp-tabs__tabpanel {
   .cmp-carousel__actions {
+    bottom: toRem(192);
+    position: absolute;
+    right: toRem(1136);
+
     button {
       background-color: transparent;
       border: 0 solid transparent;
@@ -359,12 +356,6 @@
         background-color: transparent;
       }
     }
-  }
-
-  .cmp-carousel__actions {
-    bottom: 12rem;
-    position: absolute;
-    right: 71rem;
   }
 
   .cmp-carousel__action-text {
@@ -378,8 +369,8 @@
   .cmp-carousel__action {
     &--previous::after,
     &--next::after {
-      border-bottom: toRem(1) solid  $grey4;
-      border-right: toRem(1) solid  $grey4;
+      border-bottom: toRem(1) solid $grey4;
+      border-right: toRem(1) solid $grey4;
       content: "";
       display: block;
       height: toRem(11);
@@ -390,23 +381,43 @@
     }
 
     &--previous::after {
-      left: 2rem;
+      left: toRem(32);
       transform: rotate(-45deg);
     }
 
     &--next::after {
-      right: 1.2rem;
+      right: toRem(19.2);
       transform: rotate(135deg);
     }
   }
 }
 
-*[lang="ar"] {
-  *[dir="rtl"] {
-    .edc-tabs-wrapper {
-      .ul-list-cms ul li::before {
-        display: none;
+// tab content where tab with alphabets
+.cmp_tabs--horizontal-title {
+  padding: $padding-step-0;
+
+  .cmp_tabs-swipper {
+    .cmp-tabs__tabpanel {
+      &--active {
+        padding: toRem(24) 0;
+
+        @include respond-to-min($desktop) {
+          padding-top: toRem(48) 0;
+        }
+
+        .ul-list-cms ul li {
+          font-size: $font14;
+          line-height: toRem(20);
+
+          @include respond-to-min($desktop) {
+            line-height: toRem(24);
+          }
+        }
       }
     }
+  }
+
+  .container {
+    padding: 0 !important;
   }
 }

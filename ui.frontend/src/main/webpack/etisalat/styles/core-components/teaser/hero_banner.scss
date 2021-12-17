@@ -341,17 +341,6 @@
   overflow: hidden;
   position: relative;
 
-  h2 {
-    text-align: center;
-
-    a {
-      color: $white;
-      font-size: $font32;
-      letter-spacing: normal;
-      margin-bottom: toRem(12);
-    }
-  }
-
   p {
     @include rtlBlock() {
       text-align: right;
@@ -539,12 +528,17 @@
       }
     }
 
-    &__title {
+    h1 {
       font-size: $font26;
 
       @include respond-to-min($desktop) {
-        color: $white;
         font-size: $font54;
+      }
+    }
+
+    &__title {
+      @include respond-to-min($desktop) {
+        color: $white;
         line-height: toRem(64);
         margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
 

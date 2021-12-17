@@ -2,29 +2,40 @@
 // center card teaser variant st
 .cmp-center-card {
   .cmp-teaser {
-    text-align: center;
     margin-bottom: toRem(40);
+    text-align: center;
+
+    @include respond-to-min($tablet) {
+      padding: 0 toRem(12);
+    }
+
+    @include respond-to-min($desktop) {
+      margin-left: toRem(45);
+      margin-right: toRem(45);
+      max-width: toRem(310);
+      padding: 0;
+    }
 
     &__image img,
     svg {
-      width: 4.4375rem;
       height: 4.4375rem;
       margin-bottom: 2.2rem;
+      width: 4.4375rem;
     }
 
     &__content h2 a {
       color: $almost-black;
-      font-size: $font24;
       cursor: auto;
+      font-size: $font24;
     }
 
     &__title {
       font-size: $font24;
+      height: toRem(32);
       margin-bottom: 0.65rem;
       margin-top: 0;
-      white-space: nowrap;
       text-overflow: ellipsis;
-      height: toRem(32);
+      white-space: nowrap;
     }
 
     &__description {
@@ -40,10 +51,10 @@
     }
 
     &__action-container {
-      position: absolute;
       bottom: toRem(22);
       left: (20);
       margin-top: 0;
+      position: absolute;
 
       @include rtlBlock() {
         left: auto;
@@ -79,20 +90,20 @@
         @include link-arrow;
 
         border: solid $arrow-border-green;
-        top: toRem(3);
         border-width: 0 1px 1px 0;
         height: toRem(7);
-        width: toRem(7);
-        right: 0;
         left: auto;
-        position: absolute;
         padding: toRem(3.5);
+        position: absolute;
+        right: 0;
+        top: toRem(3);
+        width: toRem(7);
 
         @include rtlBlock() {
-          transform: translateY(-50%) rotate(135deg);
           left: -1rem;
           right: auto;
           top: 0.4rem;
+          transform: translateY(-50%) rotate(135deg);
         }
       }
     }

@@ -4,18 +4,12 @@ import $ from "jquery";
 window.dt = require("datatables.net");
 
 const CUSTOM_TABLE_COMPONENT = ".custom-datatable";
+const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".cmp-text.custom-datatable table");
 
 $(function () {
-  if ($(".cmp-text.custom-datatable table thead").length === 0) {
-    $(".cmp-text.custom-datatable table").prepend("<thead></thead>"); // Add thead
-    $(".cmp-text.custom-datatable table tr:eq(0)").prependTo("table thead"); // move first tr to thead
-    $(".cmp-text.custom-datatable table thead").html(function (id, html) {
-      return html.replace(/td>/g, "th>"); // replace td by th, use regExp to replace all
-    });
-    newCustomDataTable();
-  } else {
-    newCustomDataTable();
-  }
+  $(".see-more-table").on("click", function () {
+    $(this).closest(".table-default-section").find(".custom-datatable").toggleClass("show-more-less");
+  });
 
   if ($(".search-input").length > 0) {
     $("#searchInput").on("keyup", function () {
@@ -30,10 +24,27 @@ $(function () {
       });
     });
   }
+
+  CMP_TEXT_CUSTOM_TABLE_CLASS.each(function (index, element) {
+    if ($(element).find("thead").length === 0) {
+      const APPEND_THEAD = $("<thead></thead>");
+      const APPEND_TR = $("<tr></tr>");
+      let FIRST_TR = $("tr:first", this);
+
+      $("td", FIRST_TR).each(function (i, e) {
+        APPEND_TR.append($("<th>").html(e.textContent).get(0));
+      });
+
+      APPEND_THEAD.html(APPEND_TR);
+      APPEND_THEAD.prependTo(element);
+      FIRST_TR.remove();
+
+    }
+  });
+   newCustomDataTable();
 });
 
 function newCustomDataTable() {
-  $(".cmp-text.custom-datatable table").show();
   function addDataAttributes(table) {
     $("tr", table).each(function (index) {
       $(this).attr("role", "row");
