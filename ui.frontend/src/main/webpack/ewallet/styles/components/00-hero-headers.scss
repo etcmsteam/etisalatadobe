@@ -22,36 +22,39 @@
     @media (min-width: 737px) and (max-width: 991px) {
       top: -105px;
     }
-    img {
-      min-width: 100%;
-      max-height: 735px;
-      @media (min-width: 1440px) {
-        max-height: 1000px;
+    .cmp-image {
+      border: 2px dashed green;
+      img {
+        min-width: 100%;
+        max-height: 735px;
+        @media (min-width: 1440px) {
+          max-height: 1000px;
+        }
+        @media (max-width: 991px) {
+          max-height: 755px;
+        }
+        @media (max-width: 767px) {
+          max-height: 600px;
+        }
       }
-      @media (max-width: 991px) {
-        max-height: 755px;
-      }
-      @media (max-width: 767px) {
-        max-height: 600px;
-      }
-    }
-    &:after {
-      background: url(../resources/images/img-main-lx.png) no-repeat;
-      background-size: cover;
-      position: absolute;
-      top: 1px;
-      left: 0;
-      content: "";
-      height: 100%;
-      z-index: 1;
-      min-width: 100%;
-      @media (max-width: 991px) {
-        background-size: 120%;
-        background-position: bottom;
-      }
-      @media (max-width: 767px) {
-        background-size: contain;
-        background-position: bottom;
+      &:after {
+        background: url(../resources/images/img-main-lx.png) no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 1px;
+        left: 0;
+        content: "";
+        height: 100%;
+        z-index: 1;
+        min-width: 100%;
+        @media (max-width: 991px) {
+          background-size: 120%;
+          background-position: bottom;
+        }
+        @media (max-width: 767px) {
+          background-size: contain;
+          background-position: bottom;
+        }
       }
     }
   }
@@ -323,7 +326,9 @@
           max-height: 445px;
         }
       }
-      &:after {
+     .cmp-image{
+       border: 2px dashed red;
+      &::after {
         @media (min-width: 1024px) {
           background: url(../resources/images/img-location-contact-us-lx.png)
             no-repeat;
@@ -336,6 +341,7 @@
           background-size: cover;
         }
       }
+     }
       &.back-sm {
         &:after {
           @media (min-width: 768px) {
