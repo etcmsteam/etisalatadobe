@@ -50,7 +50,7 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 
 	@Override
 	public int postFormData(String json) throws IOException {
-
+ 
 		URL postUrl = new URL(getUrl());		
 		HttpURLConnection connection = (HttpURLConnection) postUrl.openConnection();        
 		connection.setRequestMethod(POST_METHOD);
@@ -81,6 +81,8 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 			LOG.error("Request Failed for Send Notification Service and response code is "+responseCode);
 
 		}
+	
+		connection.disconnect();
 		return responseCode;
 
 	}

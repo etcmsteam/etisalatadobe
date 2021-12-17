@@ -1,6 +1,7 @@
 package com.etisalat.core.servlets;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.http.HttpResponse;
 
@@ -50,9 +51,9 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 			}
 
 		}
-		catch(Exception e)
+		catch(IOException e)
 		{
-			LOG.error("Send Notification Servlet Error",e.getMessage());
+			LOG.error("Send Notification Service Input Stream Parsing Error",e.getMessage());
 		}
 	}
 
