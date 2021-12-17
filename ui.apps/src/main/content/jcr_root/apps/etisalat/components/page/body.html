@@ -2,5 +2,7 @@
      data-sly-repeat.child="${templatedContainer.structureResources}"
      data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}">
 </sly>
-
+<sly data-sly-test="${properties.showsharefeedback && properties.showsharefeedback == 'true'}">
+    <sly data-sly-include="sharefeedback-section/sharefeedback.html"></sly>
+</sly>
 <div class="modal-popup-wrapper"></div>
