@@ -1,0 +1,14 @@
+<div class="cover" data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+  <picture data-sly-use.viewPortObj="${resource.path}">
+    <sly data-sly-list="${viewPortObj.listChildren}">
+      <source data-sly-test="${item.fileReference}" srcset="${item.fileReference}" media="(max-width: ${item.media})">
+    </sly>
+    <sly data-sly-list="${viewPortObj.listChildren}">
+      <sly data-sly-test="${item.media == '1920px'}">
+        <img src="${item.fileReference}" class="cover lazyloaded" alt="${item.altText}">
+        <div class="bg-filter" style="background-color:#000; opacity:;">&nbsp;</div>
+      </sly>
+    </sly>
+  </picture>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !resource.hasChildren}"></sly>
