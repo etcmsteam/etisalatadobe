@@ -30,7 +30,7 @@ public class SendNotificationImplTest {
 	    HttpURLConnection con = Mockito.mock(HttpURLConnection.class); 
 	    Mockito.when(con.getInputStream()).thenReturn(inputStream); 
 	    Mockito.when(con.getResponseCode()).thenReturn(200); 	    
-	    Mockito.when(sendNotificationImpl.postFormData(json)).thenReturn(200);	    
-	    
+	    Mockito.when(sendNotificationImpl.postFormData(json)).thenReturn(200);	  
+	    assertEquals(con.getResponseCode(),sendNotificationImpl.postFormData(json));	    
 	}
 };
