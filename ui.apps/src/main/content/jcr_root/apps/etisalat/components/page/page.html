@@ -27,24 +27,32 @@
           data-page-title="${currentPage.title}">
         <script data-sly-test.dataLayerEnabled="${page.data}">
           const dataLayerEle = document.querySelector('body'),
-              pageTitle = dataLayerEle.dataset.pageTitle,
+              siteLangElement = document.querySelector('html'),
               serverName = window.location.hostname,
-              siteSectionArr = JSON.parse(sessionStorage.getItem('siteSection')),
-              url = window.location.href;
-          if(!siteSectionArr) {
-            let pagesArr = [];
-            pagesArr.push(pageTitle);
-            sessionStorage.setItem('siteSection', JSON.stringify(pagesArr));
-          } else {
-            siteSectionArr.push(pageTitle);
-            sessionStorage.setItem('siteSection', JSON.stringify(siteSectionArr));
+              dataLayerUrl = window.location.href
+              dataLayerPathName = window.location.pathname;
+
+          let siteLang = siteLangElement.getAttribute('lang'),
+              pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
+              pageName;
+
+          if (dataLayerPathName.includes('/ewallet/')) {
+              if (dataLayerPathName.includes('/personal/')) {
+                pageTitle = "personal:home"
+              } else if (dataLayerPathName.includes('/business/')) {
+                pageTitle = "business:home"
+              }
+          } else if (pageTitle === 'index') {
+              pageTitle = 'home';
           }
-          let siteSectionVal = JSON.parse(sessionStorage.getItem('siteSection'));
-          if (siteSectionVal.length > 1) {
-            siteSectionVal = siteSectionVal.join('/')
-          } else {
-            siteSectionVal = siteSectionVal[0];
+          
+          if (siteLang.includes("-")) {
+              let langArr = [];
+              langArr = siteLang.split("-");
+              siteLang = langArr[0];
           }
+          pageName = siteLang + '-ae:' + pageTitle;
+
           function urlExists(url) {
             var http = new XMLHttpRequest();
             http.open('HEAD', url, false);
@@ -53,17 +61,19 @@
               return false;
             else
               return true;
-          }; 
-          const isErrorFlg = urlExists(url);
+          };
+
+          const isErrorFlg = urlExists(dataLayerUrl);
+
           window.adobeDataLayer = window.adobeDataLayer || [];
           adobeDataLayer.push({
             "event": "pageLoaded",
             "xdmPageLoad": {
               "web": {
                 "webPageDetails": {
-                  "name": pageTitle,
+                  "name": pageName,
                   "server": serverName,
-                  "siteSection": siteSectionVal,
+                  "siteSection": pageTitle,
                   "isErrorPage": isErrorFlg,
                   "pageViews": {
                     "value": 1
