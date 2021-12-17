@@ -1,12 +1,13 @@
+/* eslint-disable */
 (function () {
-  const $FORM = $('#leadOrder');
-  const $SUBMIT_CTA = $('#leadOrder .cmp-form-button');
+  const $FORM = $("#leadOrder");
+  const $SUBMIT_CTA = $("#leadOrder .cmp-form-button");
 
   if (!$FORM.length) {
     return false;
   }
 
-  $SUBMIT_CTA.on('click', function () {
+  $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
       return false;
     }
@@ -48,5 +49,13 @@
       //var formData = $FORM.serialize();
       return false;
     },
+  });
+
+  $(".cmp-form").on("change", "input[name=existingAccount]", function () {
+    if (this.value == "yes") {
+      $(".account-number").removeClass("hide");
+    } else {
+      $(".account-number").addClass("hide");
+    }
   });
 })();
