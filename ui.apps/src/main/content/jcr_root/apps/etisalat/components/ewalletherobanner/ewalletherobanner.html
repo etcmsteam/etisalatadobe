@@ -1,9 +1,13 @@
 <div data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
      class="${properties.bannerLayout}">
-	<sly data-sly-set.coverStyle="${properties.bannerLayout == 'hero-heaer-01 news-header contact-us-header' ||
-	properties.bannerLayout == 'hero-heaer-01 faq-header no-content no-offer-head no-illustration' ? 'cover-style3' : ''}" />
-  	<div class="cover ${coverStyle}">
+
+<sly data-sly-set.coverStyle3Offers="${properties.bannerLayout == 'hero-heaer-01 faq-header no-content no-offer-head no-illustration'? 'cover-style3 back-sm' : ''}" />
+<sly data-sly-set.coverStyle3="${properties.bannerLayout == 'hero-heaer-01 news-header contact-us-header' ? 'cover-style3' : ''}" />
+<sly data-sly-set.coverStyle1="${properties.bannerLayout == 'hero-heaer-01 faq-header offers-head no-illustration'? 'cover-style1' : ''}" />
+<sly data-sly-set.coverStyle2="${properties.bannerLayout == 'hero-heaer-01 faq-header about-us' ? 'cover-style2' : ''}" />
+
+<div class="cover ${coverStyle3Offers} ${coverStyle3} ${coverStyle2} ${coverStyle1}">
   	  	<sly data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
  	 </div>
   <sly data-sly-test="${properties.columnOptions == 'one-column'}" data-sly-use.oneColTemplate="onecolumncomponents.html" 
