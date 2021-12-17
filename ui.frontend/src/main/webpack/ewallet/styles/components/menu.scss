@@ -1,5 +1,5 @@
 /* menu */
-.FullWidth{
+.FullWidth {
   width: 100% !important;
 }
 
@@ -21,7 +21,7 @@
       display: block;
       position: absolute;
       top: 60px;
-      right: 20px;
+      right: 0;
       outline: none;
       ::selection {
         background: none;
@@ -70,34 +70,58 @@
     }
     .MenuWrapper {
       display: none;
-    }
-
-    ul.secondary-nav__list {
-      padding-top: 40px;
-      li {
-        display: none;
-        &.active {
-          display: block;
-        }
-        a {
-          border: 1px solid $gray-primary;
-          font-weight: bold;
-          border-radius: 4px;
-          padding: 8px 15px;
-        }
+      @include respond-to-min-max($desktop, $tablet) {
+        background-color: $white;
+        margin-left: -10%;
+        margin-right: -10%;
       }
     }
 
     ul {
       background-color: $white;
       transition: max-height 0.2s ease-out;
+      @include respond-to-min-max($desktop, $tablet) {
+        width: toRem(650);
+        margin: 0 auto;
+      }
+
       &.main-nav__list {
         padding-top: 60px;
+        @include respond-to-max($phone) {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        li {
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+
+      &.secondary-nav__list {
+        padding-top: 40px;
+        @include respond-to-max($phone) {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        li {
+          display: none;
+          border-bottom: 0;
+          &.active {
+            display: block;
+          }
+          a {
+            border: 1px solid $gray-primary;
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 8px 15px;
+          }
+        }
       }
 
       li {
         border-bottom: 1px solid $white2;
-        padding: 30px 0 30px 20px;
+        padding: 30px 0;
         &.active a {
           font-weight: bold;
         }
@@ -107,7 +131,7 @@
           letter-spacing: 0.02px;
           line-height: 24px;
           margin: 0;
-          padding: 10px 8px;
+          padding: 10px 0;
           text-decoration: none !important;
         }
       }
@@ -117,7 +141,7 @@
 
 @include respond-to-max($phone) {
   .menu__icon {
-    top: 50px !important;
+    top: 48px !important;
     right: 0 !important;
   }
 }
