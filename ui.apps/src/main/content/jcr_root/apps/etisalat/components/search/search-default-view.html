@@ -8,7 +8,8 @@
 	         <div class="list quick-links">
 	             <div class="list-item-heading">${properties.quickLinkTitle}</div>
 	             <ul data-sly-test="${!siteSearch.quickLinksItems.isEmpty}" class="m-0">
-				     <li data-sly-repeat.linkItem="${siteSearch.quickLinksItems}" class="list-item"><a href="${linkItem.linkUrl}">${linkItem.linkText}</a></li>			 
+				     <li data-sly-repeat.linkItem="${siteSearch.quickLinksItems}" class="list-item">
+				     <a target="${linkItem.linkBehavior == 'opennewwindow' ?'_blank':'_self'}" href="${linkItem.linkUrl}">${linkItem.linkText}</a></li>			 
 				 </ul> 
 	         </div>
 	         <div class="list trends">
@@ -23,7 +24,8 @@
 	                             <div class="tile-content-wrapp">
 	                                 <div class="content">
 	                                     <h4>${brandItem.title}</h4>
-	                                     <a href="${brandItem.linkUrl}" class="btn-text learn-more">
+	                                     <a target="${brandItem.linkBehavior == 'opennewwindow' ?'_blank':'_self'}"  
+	                                        href="${brandItem.linkUrl}" class="btn-text learn-more">
 	                                         <span class=""> ${brandItem.linkText} </span>
 	                                     </a>
 	                                 </div>
