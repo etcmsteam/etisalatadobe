@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 // btn with border around
 .btn-wit-border {
   border: $border-step-1 solid $white;
@@ -473,8 +474,6 @@
     }
 
     sup {
-      // top: toRem(-12);
-
       @include respond-to-max($tablet) {
         top: 0;
       }
@@ -525,22 +524,57 @@
       min-height: toRem(620);
     }
   }
+
+  @include rtlBlock {
+    .cmp-button--primary {
+      left: toRem(6);
+
+      @include respond-to-max($tablet) {
+        right: 0;
+      }
+    }
+
+    .cmp-text {
+      ul {
+        li {
+          list-style-type: none;
+        }
+      }
+
+      .font--number {
+        padding: 0;
+      }
+    }
+
+    .old-price {
+      margin: 0;
+    }
+  }
 }
 
 .cmp_banner--full-bleed-right {
   .cmp-text {
     float: right;
 
+    @include rtlBlock() {
+      float: left;
+    }
+
     @include respond-to-max($tablet) {
       margin-right: toRem(256);
 
       @include rtlBlock() {
-        margin-right: 0;
+        margin-left: toRem(256);
       }
     }
 
     @include respond-to-max($phone) {
       float: left;
+
+      @include rtlBlock() {
+        float: right;
+        margin-right: 0;
+      }
     }
   }
 }
@@ -597,48 +631,23 @@
   }
 }
 
-.cmp_row-reverse {
-  & > .cmp-container {
-    & > :first-child {
-      @include rtlBlock() {
-        display: flex;
-      }
-    }
-  }
-
-  &.cmp_banner--full-bleed {
+.large--banner {
+  @include rtlBlock {
     .cmp-button--primary {
-      @include rtlBlock() {
-        left: 0;
+      margin-right: $margin-step-3;
+      width: toRem(288);
 
-        @include respond-to-max($tablet) {
-          right: 0;
-        }
-      }
-    }
-  }
-
-  &.large--banner {
-    .cmp-button--primary {
-      @include rtlBlock() {
-        margin-right: $margin-step-3;
-        width: toRem(288);
-
-        @include respond-to-max($desktop-min) {
-          margin-right: $margin-step-0;
-        }
+      @include respond-to-max($desktop-min) {
+        margin-right: $margin-step-0;
       }
     }
 
-    /* stylelint-disable-next-line no-descending-specificity */
     .cmp-button--secondary {
-      @include rtlBlock() {
-        margin-right: $margin-step-6;
-        width: toRem(288);
+      margin-right: $margin-step-6;
+      width: toRem(288);
 
-        @include respond-to-max($desktop-min) {
-          margin-right: $margin-step-0;
-        }
+      @include respond-to-max($desktop-min) {
+        margin-right: $margin-step-0;
       }
     }
   }
