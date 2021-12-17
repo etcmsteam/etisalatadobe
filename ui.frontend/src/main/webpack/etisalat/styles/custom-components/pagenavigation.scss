@@ -135,7 +135,7 @@
 }
 
 .config-section-wrap .page-nav {
-  margin: 0 20px;
+  margin: 0 toRem(10);
 
   li { padding-right: 1.4rem;}
 }
@@ -162,7 +162,7 @@
     font-size: $font18;
     height: toRem(90);
     line-height: toRem(20);
-    margin: 0;
+    margin: 0 0 toRem(10) toRem(20);
     top: 0;
   }
 
@@ -184,4 +184,28 @@
 .deeplink-tab.active {
   display: inherit;
   transition: all .3s ease;
+}
+
+.pagenavigation{
+  @include respond-to-min($desktop-wide){
+    .config-section-wrap >.container{
+      margin: auto;
+      position: relative;
+      width: toRem(1224);
+    }
+  }
+}
+
+.title {
+  .cmp-title__text{
+    margin-bottom: toRem(100);
+
+    @include respond-to-min($tablet){
+      margin-bottom: toRem(120);
+    }
+
+    @include respond-to-min($desktop){
+      margin-bottom: 0;
+    }
+  }
 }
