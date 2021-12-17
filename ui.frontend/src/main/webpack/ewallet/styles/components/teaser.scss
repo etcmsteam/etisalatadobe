@@ -1,4 +1,4 @@
-.landing_page .teaser{
+.landing_page .teaser {
   padding-top: 120px;
   @include respond-to-max($desktop) {
     padding-top: 25px;
@@ -12,87 +12,93 @@
 }
 
 .teaser {
-    @extend .wrapper;
-    color: $white;
-    position: relative;
-    z-index: 1;
-    @include respond-to-max($desktop) {
-      padding: 140px 15px 0 15px;
+  @extend .wrapper;
+  color: $white;
+  position: relative;
+  z-index: 1;
+  @include respond-to-max($desktop) {
+    padding: 140px 0 0;
+    width: 660px;
+  }
+  @include respond-to-min($tablet) {
+    padding-top: 55px;
+  }
+  @include respond-to-max($phone) {
+    padding: 15px 0 0;
+  }
+  @include respond-to-min-max($tablet, $tablet) {
+    &.teaser_img_right {
+      padding: 0;
     }
+  }
+  .cmp-teaser__description {
+    width: 100%;
     @include respond-to-min($tablet) {
-      padding-top: 55px;
-    }
-    @include respond-to-max($phone) {
-      padding: 15px 15px 0 15px;
-    }
-    .cmp-teaser__description {
       width: 100%;
-      @include respond-to-min($tablet) {
-        width: 100%;
-      }
-      h1 {
-        color: $white;
-        font-size: toRem(40);
-        margin-bottom: 15px;
-        @include respond-to-min($desktop) {
-          font-size: toRem(72);
-          line-height: 66px;
-        }
-      }
-      h2 {
-        color: $white;
-        font-size: 32px;
-        margin-bottom: 15px;
-        @include respond-to-min($tablet) {
-          font-size: 48px;
-        }
-      }
-      p {
-        font-size: 16px;
-        line-height: 24px;
-        padding-right: 20px;
-        font-weight: 700;
-        color: $white;
-        @include respond-to-min($tablet) {
-          font-size: 20px;
-        }
+    }
+    h1 {
+      color: $white;
+      font-size: toRem(40);
+      margin-bottom: 15px;
+      @include respond-to-min($desktop) {
+        font-size: toRem(72);
+        line-height: 66px;
       }
     }
-    &.ewallet_btn_green .cmp-teaser__action-container {
-      margin-top: 50px;
-      position: relative;
-      .cmp-teaser__action-link {
-        text-transform: uppercase;
-        transition: all 0.3s ease-in-out;
-        text-align: center;
-        padding: 0.75rem 0.5rem;
-        border-radius: 4px;
-        border-width: 1px;
-        outline: 0;
-        font-weight: 700;
-        position: relative;
-        overflow: hidden;
-        color: $white;
-        background-color: $link-color;
-        border-color: $link-color;
-        width: auto;
-        min-width: 180px;
-        height: 49px;
-        font-size: 16px;
-        line-height: 18px;
-        letter-spacing: 0;
-        @include respond-to-max($phone) {
-          display: block;
-          width: 100%;
-        }
+    h2 {
+      color: $white;
+      font-size: 32px;
+      margin-bottom: 15px;
+      @include respond-to-min($tablet) {
+        font-size: 48px;
       }
-      .cmp-teaser__action-link.active,
-      .cmp-teaser__action-link:hover {
-        box-shadow: none !important;
-        color: $white;
-        background-color: $green-btn;
-        border-color: $green-btn;
-        text-decoration: none;
+    }
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      padding-right: 20px;
+      font-weight: 700;
+      color: $white;
+      @include respond-to-min($tablet) {
+        font-size: 20px;
       }
     }
   }
+  &.ewallet_btn_green .cmp-teaser__action-container {
+    margin-top: 50px;
+    position: relative;
+    .cmp-teaser__action-link {
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+      text-align: center;
+      padding: 0.75rem 0.5rem;
+      border-radius: 4px;
+      border-width: 1px;
+      outline: 0;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      color: $white;
+      background-color: $link-color;
+      border-color: $link-color;
+      width: auto;
+      min-width: 180px;
+      height: 49px;
+      font-size: 16px;
+      line-height: 18px;
+      letter-spacing: 0;
+      @include respond-to-max($phone) {
+        display: block;
+        width: 100%;
+      }
+    }
+    .cmp-teaser__action-link.active,
+    .cmp-teaser__action-link:hover {
+      box-shadow: none !important;
+      color: $white;
+      background-color: $green-btn;
+      border-color: $green-btn;
+      text-decoration: none;
+    }
+  }
+}
