@@ -1,16 +1,6 @@
 /* Download map button start */
 
-.action-button {
-  @media (min-width: $screen-lg-max) {
-    .cmp-button {
-      float: left;
-      margin-left: toRem(15);
-      min-width: toRem(180);
-      padding: 0 0.5rem;
-      width: auto;
-    }
-  }
-
+.cmp-button--action {
   .cmp-button {
     border: toRem(1) solid $darkest-night;
     border-radius: toRem(4);
@@ -24,6 +14,8 @@
     @include respond-to-max($tablet) {
       line-height: toRem(48);
       width: 100%;
+      margin-left: 0;
+      padding: 0 toRem(8);
     }
 
     @include respond-to-min-max($desktop, $phone) {
@@ -31,49 +23,42 @@
       padding: 0;
       width: 100%;
     }
-  }
 
-  .cmp-button:hover {
-    border: toRem(1) solid $main-green;
+    &:hover {
+      border: toRem(1) solid $main-green;
+    }
+
+    &__text {
+      color: $almost-black;
+      font-size: $font14;
+      font-weight: get-font-weight("bold");
+      letter-spacing: toRem(2);
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: $main-green;
+      }
+    }
   }
 
   a {
     color: $almost-black;
   }
 
-  .cmp-button__text {
-    color: $almost-black;
-    font-size: $font14;
-    font-weight: get-font-weight("bold");
-    letter-spacing: toRem(2);
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
+  &:active {
+    background-color: $main-green;
+    border: 1px solid $main-green;
+    color: $white;
   }
 
-  .cmp-button__text:hover {
-    color: $main-green;
-  }
-}
-
-.action-button .cmp-button:active {
-  background-color: $main-green;
-  border: 1px solid $main-green;
-  color: $white;
-}
-
-@include respond-to-max($tablet) {
-  .action-button {
+  @include respond-to-max($tablet) {
     .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--12 {
       width: 100%;
     }
 
     a {
       display: inline-block;
-    }
-
-    .cmp-button {
-      margin-left: 0;
-      padding: 0 toRem(8);
     }
   }
 }

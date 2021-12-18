@@ -214,29 +214,6 @@
     }
   }
 }
-
-.cmp-unorder__list {
-  @include font-family-lato;
-
-  color: $dark-gray;
-  font-size: $font18;
-  line-height: toRem(28);
-  list-style-type: disc;
-  margin-bottom: toRem(4);
-  padding-left: toRem(24);
-}
-
-.cmp-normal__list {
-  @include font-family-lato;
-
-  color: $dark-gray;
-  font-size: $font18;
-  font-weight: get-font-weight("bold");
-  list-style-type: none;
-  margin-bottom: toRem(4);
-  padding-left: toRem(24);
-}
-
 .cmp-text {
   ol {
     list-style: decimal;
@@ -281,8 +258,6 @@
   }
 
   img {
-    // height: toRem(30);
-    // width: toRem(30);
     height: toRem(24);
     width: toRem(24);
   }
@@ -296,30 +271,19 @@
   }
 }
 
-.cmp-list__ordered {
-  @include font-family-lato;
-
-  font-size: $font18;
-  line-height: toRem(28);
-  list-style: decimal;
-  margin-bottom: toRem(4);
-  margin-left: toRem(28);
-  padding-left: toRem(24);
-}
-
-.font--small {
+.font-size--14 {
   font-size: $font14;
 }
 
-.font--big {
+.font-size--20 {
   font-size: $font20;
 }
 
-.font--med {
+.font-size--16 {
   font-size: $font16;
 }
 
-.cmp-icon__arrow__list {
+.cmp-text--arrow {
   color: $dark-gray;
   font-size: $font14;
   line-height: toRem(24);
@@ -328,16 +292,15 @@
   margin-left: toRem(28);
   padding-left: toRem(24);
   position: relative;
+  &::before {
+    background: url("../resources/images/icon-list-tick.svg") no-repeat;
+    content: " - ";
+    height: toRem(24);
+    width: toRem(24);
+  }
 }
 
-.cmp-icon__arrow__list::before {
-  background: url("../resources/images/icon-list-tick.svg") no-repeat;
-  content: " - ";
-  height: toRem(24);
-  width: toRem(24);
-}
-
-.font--xsmall {
+.font-size--12 {
   font-size: $font12;
   letter-spacing: toRem(4);
 }
@@ -446,14 +409,14 @@
   width: 100%;
 }
 
-.ul-list-cms ol {
+.cmp-text--list ol {
   list-style: decimal;
   margin-bottom: 0;
   margin-left: toRem(28);
   margin-top: 0;
 }
 
-.ul-list-cms {
+.cmp-text--list {
   font-size: $font20;
   line-height: toRem(28);
 
@@ -735,7 +698,7 @@ hr {
   border-color: $almost-black;
 }
 
-.ul-list-no-bullet {
+.cmp-text-list-no-bullet {
   ul li {
     list-style-type: none;
   }

@@ -68,10 +68,6 @@
     }
   }
 
-  .cmp-rte-text {
-    padding-left: toRem(0);
-  }
-
   .cmp-text {
     color: $steel-grey;
     font-size: $font14;
@@ -114,11 +110,13 @@
 // Simple line accordion
 
 .cmp-accordion--text {
+  width: 70% !important;
+
   .container {
     @include clearFix();
 
     padding: 0 !important;
-    width: 100% !important;
+    width: auto !important;
   }
 
   .cmp-accordion__item {
@@ -223,10 +221,6 @@
 
   .cmp-accordion__panel--expanded {
     background-color: $sand-white-50;
-    left: 50%;
-    margin-left: -50vw;
-    position: relative;
-    width: 100vw;
 
     @include rtlBlock() {
       left: 0;
@@ -235,11 +229,6 @@
       right: 50%;
     }
   }
-
-  .cmp-rte-text {
-    padding-left: 0;
-  }
-
   .cmp-text {
     color: $dark-gray;
     display: block;
@@ -255,7 +244,7 @@
 
     @include respond-to-min($desktop) {
       font-size: $font20;
-      padding: 1.5rem 6.5rem;
+      padding: toRem(24) toRem(50) toRem(24) toRem(32);
     }
 
     ol {
@@ -348,10 +337,6 @@
 
   .cmp-accordion__button--expanded .cmp-accordion__icon {
     transform: translateY(-20%) rotate(-135deg);
-  }
-
-  .cmp-rte-text {
-    padding-left: toRem(0);
   }
 
   .cmp-text {
