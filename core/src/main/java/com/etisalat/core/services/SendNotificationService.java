@@ -10,7 +10,14 @@ public interface SendNotificationService {
    * @return
    */
   public String getUrl();
-
+  
+  /**
+   * Returns a set timeout value.
+   *
+   * @return
+   */
+  public int getTimeOut();
+  
   /**
    * Process request and returns response code.
    *
