@@ -1,4 +1,5 @@
 .ewallet_mobile_view_carousal {
+  z-index: 22;
   @include respond-to-min($tablet) {
     position: absolute;
     top: 0;
@@ -14,7 +15,8 @@
   }
 
   @include respond-to-max($phone) {
-    top: 60px;
+    top: 15px;
+    z-index: 10;
     margin-bottom: 50px;
   }
 
@@ -34,7 +36,7 @@
     margin-top: 20px;
     position: relative;
 
-    @include respond-to-max($tablet) {
+    @include respond-to-max($tablet -1px) {
       height: 560px;
       width: 290px;
       background-size: contain;
@@ -50,7 +52,14 @@
       height: auto;
     }
     .cmp-carousel__indicators {
-      margin-top: 90px;
+      margin-top: 40px;
+      @include respond-to-min($desktop-wide) {
+        margin-top: 90px;
+      }
+      @include respond-to-min-max($desktop, $tablet) {
+        border: 2px solid red;
+        margin-top: 140px;
+      }
     }
   }
 }
@@ -75,9 +84,8 @@
 }
 // Home page Header banner image
 .teaser_img_right {
-  padding: 100px 10px 0 10px;
-  @include respond-to-min($desktop) {
-    height: 500px;
+  @include respond-to-min($desktop-wide) {
+    height: 380px;
   }
 
   .cmp-teaser {
@@ -136,7 +144,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: 110px;
+      top: 10px;
       bottom: 0;
     }
     @include respond-to-max($desktop) {
@@ -176,6 +184,9 @@
         padding-left: 0;
         margin: 0 auto;
       }
+      @include respond-to-min($desktop) {
+        margin: -30px 0 0 0;
+      }
     }
     .cmp-carousel__indicator {
       padding: 0;
@@ -212,10 +223,3 @@
     }
   }
 }
-
-// .cmp-teaser__image {
-//   width: 50%;
-//   @include respond-to-max($tablet) {
-//     width: 100%;
-//   }
-// }
