@@ -1,11 +1,8 @@
 
       $(document).ready(function () {
         var doc = document;
-        console.log("Dom ready init search page 1");
         if (window.location.hostname !== "www.etisalat.ae") {
           document.querySelectorAll("#searchForm").forEach(function (item, index) {
-            console.log("what is the lang-", document.documentElement.lang);
-            // testing uat.etisalat
             item.dataset.secondarySearch = "https://www.etisalat.ae/b2c/guidedSearchRequest.service?locale=" + document.documentElement.lang + "-AE";
           });
         }
@@ -23,8 +20,6 @@
           instannceNum = 1;
           MaxTextLimit = 70;
         }
-        console.log('guidedSearchCall URL',guidedSearchCall);
-        console.log("searchCallUrl URL", searchCallUrl);
         if (document.documentElement.lang === "ar") {
           learMoreText = "اعرف المزيد";
         }
@@ -59,13 +54,8 @@
           // "</div>" +
           // "</div>";
 
-          // testing
-          // if (data.response.SecondaryContent[0].navigation.length >= 1) {
-          //   var refinements = data.response.SecondaryContent[0].navigation[0].refinements;
-          // testing
-           if (data.SecondaryContent[0].navigation.length >= 1) {
-             var refinements = data.SecondaryContent[0].navigation[0].refinements;
-             console.log("data result on  search-", refinements);
+          if (data.response.SecondaryContent[0].navigation.length >= 1) {
+            var refinements = data.response.SecondaryContent[0].navigation[0].refinements;
              for (var i = 0; i < refinements.length; i++) {
                filterCheck +=
                  '<div class="selector-toggle-item swiper-slide">' +
@@ -107,7 +97,6 @@
           var childrenTotalWidth = 0;
           $(".selector-toggle-carousel .selector-toggle-item").each(function () {
             childrenTotalWidth += $(this).outerWidth(true);
-            //console.log(childrenTotalWidth);
           });
 
           if (childrenTotalWidth < ParentWidth) {
@@ -167,13 +156,8 @@
                 } else {
                   count = 1;
                   return true;
-                  //console.log(count);
                 }
-
-                // count = !$(item).children('input[type="checkbox"]').prop("checked") ? 0 : 1;
-                //console.log(count);
               });
-              //console.log(count);
               if (count) {
                 $(".search-filter-wrap .selector-toggle-item.all").children('input[type="checkbox"]').prop("checked", true);
                 $(".search-filter-wrap .selector-toggle-item.all").siblings().children('input[type="checkbox"]').prop("checked", false);
@@ -186,9 +170,7 @@
         var guidedSearch = function (searchText, navigationState, start, end,isPagination) {
           console.log("guided search start..", searchText, navigationState, start, end);
           var doc = document;
-          //querySelector(".not-found-wrapper-4-0").classList.add("d-none")
           $(".not-found-wrapper-4-0").addClass("d-none");
-          //  doc.querySelector(".search-items-wrapper-4-0.result-default-view").classList.add("d-none");
           $(".search-items-wrapper-4-0.result-default-view").addClass("d-none");
           var loadertemplate =
             '<div class="search-result-loader-4-0 sr-right">' +
@@ -286,7 +268,7 @@
           var dataObjJSON = JSON.stringify(dataWithPayload, null, 2);
           console.log("dataObjJSON", dataObjJSON);
           // testing
-          const localUrl = navigationState.length > 0  ? "http://localhost:8000/response" : "http://localhost:3000/response";
+          const localUrl = navigationState.length > 0  ? "http://localhost:8000/data" : "http://localhost:3000/data";
               $.getJSON(localUrl, function (data) {
                   renderTabItems(data);
                 }); // testing
@@ -393,11 +375,9 @@
           var doc = document;
           // testing
           // if (json.success === true && statusText === "success" && json.response !== undefined && json.response.MainContent[0].totalNumRecs !== 0) {
-            if (json?.MainContent[0].totalNumRecs !== 0) {
-              console.log("if json loaded-", json?.MainContent); // testing
+            if (json?.response?.MainContent[0].totalNumRecs !== 0) {
               loadFilters(json);
-              // tabsBodyItemData = json.response.MainContent[0].records; // testing
-               tabsBodyItemData = json.MainContent[0].records;
+              tabsBodyItemData = json.response.MainContent[0].records;
               for (var i = 0; i < tabsBodyItemData.length; i++) {
                 if (
                   tabsBodyItemData[i].attributes["record.source"][0].toLowerCase() === "support" ||
@@ -465,30 +445,19 @@
               }
               console.log("created tabsBodyItemHTML--", tabsBodyItemHTML);
               document.querySelector(".search-results-wrapper-4-0 .search-4-0-component .container").innerHTML = tabsBodyItemHTML;
-              // testing
-              // firstRecord = json.response.MainContent[0].firstRecNum !== undefined ? json.response.MainContent[0].firstRecNum : 0;
-              // lastRecord = json.response.MainContent[0].lastRecNum !== undefined ? json.response.MainContent[0].lastRecNum : 0;
-              // totalRecords = json.response.MainContent[0].totalNumRecs;
-              // testing
-               firstRecord = json.MainContent[0].firstRecNum !== undefined ? json.MainContent[0].firstRecNum : 0;
-               lastRecord = json.MainContent[0].lastRecNum !== undefined ? json.MainContent[0].lastRecNum : 0;
-               totalRecords = json.MainContent[0].totalNumRecs;
+              firstRecord = json.response.MainContent[0].firstRecNum !== undefined ? json.response.MainContent[0].firstRecNum : 0;
+              lastRecord = json.response.MainContent[0].lastRecNum !== undefined ? json.response.MainContent[0].lastRecNum : 0;
+              totalRecords = json.response.MainContent[0].totalNumRecs;
               renderPagination(firstRecord, lastRecord, totalRecords, recordsNum);
-
               paragraphTextLimit();
               return true;
             } else {
               console.log('else suggestions no record!');
               var suggestions = {};
-              // testing
-              // if (typeof json.response.MainContent[1] !== "undefined" && typeof json.response.MainContent[1].suggestedSearches !== "undefined") {
-              //   suggestions = json.response.MainContent[1].suggestedSearches[guidedSearchText][0];
-               if (typeof json.MainContent[1] !== "undefined" && typeof json.MainContent[1].suggestedSearches !== "undefined") {
-                 suggestions = json.MainContent[1].suggestedSearches[guidedSearchText][0];
-                 console.log("suggestions if no-data", suggestions);
+              if (typeof json.response.MainContent[1] !== "undefined" && typeof json.response.MainContent[1].suggestedSearches !== "undefined") {
+                suggestions = json.response.MainContent[1].suggestedSearches[guidedSearchText][0];
                } else {
                  suggestions.label = guidedSearchText;
-
                  doc.querySelector(".search-filter-wrap").classList.add("d-none");
                  doc.querySelector(".search-no-result-suggession-4-0").classList.add("d-none");
                  doc.querySelector(".not-found-wrapper-4-0 .notFoundTerm").innerText = guidedSearchText;
@@ -500,7 +469,6 @@
                  console.log("guidedSearchText on else no data-", guidedSearchText);
                  return false;
                }
-               console.log("suggestions.label", suggestions.label);
               searchRelatedKeywords(suggestions.label);
               //doc.querySelector('.search-no-result-suggession-4-0').classList.remove('d-none');
               doc.querySelector(".not-found-wrapper-4-0 .notFoundTerm").innerText = guidedSearchText;
@@ -557,7 +525,6 @@
          * Callback for successfull ajax related keywords
          */
         var relatedKeywordsSuccess = function (json, statusText, xhr) {
-          console.log("relatedKeywordsSuccess", json, statusText, xhr);
           var relatedKeywordsHTML = "";
           var relatedKeywordsData = "";
           var doc = document;
@@ -570,7 +537,6 @@
                 guidedSearchText = e.target.innerText;
                 updateRecentSearch(guidedSearchText);
                 guidedSearch(guidedSearchText, navigationStateString, "0", recordsNum);
-                //console.log(e.target.innerText);
               });
 
             relatedKeywordsData = json.response.contents[0].autoSuggest[0].dimensionSearchGroups[0].dimensionSearchValues;
