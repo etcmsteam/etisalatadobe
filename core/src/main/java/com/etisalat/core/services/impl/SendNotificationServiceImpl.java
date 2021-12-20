@@ -42,7 +42,7 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 	@Modified
 	protected void activate(final SendNotificationConfiguration config) {
 		this.url = PropertiesUtil.toString(config.getApiUrl(), NO_CONFIG_FOUND);
-		this.timeOut = PropertiesUtil.toInteger(config.getSetTimeout(), 6000);
+		this.timeOut = PropertiesUtil.toInteger(config.getSetTimeout(), 5000);
 	}
 
 	@Override
@@ -64,9 +64,9 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 			connection.setRequestProperty(CONTENT_TYPE,REQUEST_PROPERTY);
 			connection.setUseCaches(false);
 			connection.setDoOutput(true);
-			if(getTimeOut() > 0) {
-				connection.setConnectTimeout(getTimeOut());
-			}
+			connection.setConnectTimeout(getTimeOut());
+			connection.setReadTimeout(getTimeOut());
+			
 			BufferedWriter wr = new BufferedWriter(
 					new OutputStreamWriter(connection.getOutputStream(), UTF));
 			wr.write(json);
@@ -82,7 +82,7 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 					jsonResponseData.append(readLine + "\n");
 				}		
 				bufferedReader.close();
-				LOG.debug("Send Notification API Request Created and response code is "+ responseCode);
+				LOG.debug("Send Notification API Request Created and response code is {}", responseCode);
 			} 
 			else {
 				LOG.error("Request Failed for Send Notification Service and response code is "+responseCode);

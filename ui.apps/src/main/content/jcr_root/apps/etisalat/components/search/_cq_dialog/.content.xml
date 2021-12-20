@@ -83,7 +83,7 @@
 				                                                name="./searchNotFoundMsg"
 				                                                useFixedInlineToolbar="{Boolean}true"/>                                                    
 		                                                </items>
-		                                            </searchnotfound>                                                    
+		                                            </searchnotfound> 	                                                                                             
                                                     <recentlabel
 		                                                jcr:primaryType="nt:unstructured"
 		                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -151,6 +151,22 @@
                                                             name="./linkUrl"
                                                             required="{Boolean}true"
                                                             rootPath="/content"/>
+                                                        <quickLinkBehavior			                                               
+			                                                jcr:primaryType="nt:unstructured"
+			                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+			                                                fieldLabel="Link Behavior"
+			                                                name="./linkBehavior">
+			                                                <items jcr:primaryType="nt:unstructured">
+			                                                    <opensamewindow
+			                                                        jcr:primaryType="nt:unstructured"
+			                                                        text="Open in Same Window"
+			                                                        value="opensamewindow"/>  
+			                                                    <opennewwindow
+			                                                        jcr:primaryType="nt:unstructured"
+			                                                        text="Open In New Window"
+			                                                        value="opennewwindow"/>			                                                                                            
+			                                                </items>			                                                
+			                                            </quickLinkBehavior>
                                                     </items>
                                                 </field>
                                             </linksection>
@@ -198,7 +214,7 @@
                                                             allowUpload="{Boolean}false"
                                                             autoStart="{Boolean}false"
                                                             class="cq-droptarget"
-                                                            fieldLabel="Cover Image"
+                                                            fieldLabel="Trend Cover Image"
                                                             fileNameParameter="./image/fileName"
                                                             fileReferenceParameter="./image/fileReference"
                                                             mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
@@ -216,24 +232,40 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="Title"
-                                                            fieldLabel="Title"
+                                                            fieldLabel="Trend Title"
                                                             name="./title"
                                                             required="{Boolean}true"/>
                                                         <linktext
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="Add Tile Link Label"
-                                                            fieldLabel="CTA Label"
+                                                            fieldLabel="Trend CTA Label"
                                                             name="./linkText"
                                                             required="{Boolean}true"/>
                                                         <linkurl
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                             fieldDescription="Target URL for when the link is clicked."
-                                                            fieldLabel="CTA link"
+                                                            fieldLabel="Trend CTA link"
                                                             name="./linkUrl"
                                                             required="{Boolean}true"
                                                             rootPath="/content"/>
+                                                        <brandLinkBehavior			                                               
+			                                                jcr:primaryType="nt:unstructured"
+			                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+			                                                fieldLabel="Link Behavior"
+			                                                name="./linkBehavior">
+			                                                <items jcr:primaryType="nt:unstructured">
+			                                                    <opensamewindow
+			                                                        jcr:primaryType="nt:unstructured"
+			                                                        text="Open in Same Window"
+			                                                        value="opensamewindow"/> 
+			                                                    <opennewwindow
+			                                                        jcr:primaryType="nt:unstructured"
+			                                                        text="Open In New Window"
+			                                                        value="opennewwindow"/>			                                                                                            
+			                                                </items>			                                                
+			                                            </brandLinkBehavior>
                                                     </items>
                                                 </field>
                                             </brandection>
@@ -242,7 +274,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </brand>                    
+                    </brand>                                     
                 </items>
             </tabs>
         </items>

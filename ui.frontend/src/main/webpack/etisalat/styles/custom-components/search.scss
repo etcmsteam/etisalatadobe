@@ -312,10 +312,12 @@
         font-size: toRem(12);
         line-height: 1.33;
         letter-spacing: toRem(1.6);
+        @include font-family-lato;
         @media (min-width: 992px) {
           font-size: toRem(16);
           line-height: 1.38;
           letter-spacing: toRem(2);
+          @include font-family-lato;
         }
       }
     }
@@ -538,6 +540,7 @@
         font-weight: get-font-weight("heavy");
         letter-spacing: toRem(2);
         margin-bottom: $margin-step-0;
+        @include font-family-lato; 
       }
 
       .recent {
@@ -700,6 +703,7 @@
       font-size: toRem(20);
       font-weight: get-font-weight("bold");
       margin-bottom: toRem(20);
+      @include font-family-lato;
     }
 
     .list-item {
@@ -715,6 +719,7 @@
       a {
         color: $almost-black;
         justify-content: flex-start !important;
+        @include font-family-lato;
       }
     }
   }
@@ -1015,7 +1020,8 @@
 
       span {
         font-size: toRem(16);
-        font-weight: get-font-weight("normal");
+        font-weight: get-font-weight("regular");
+         @include font-family-lato;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.5;
@@ -1198,6 +1204,7 @@
     padding: $padding-step-2 $padding-step-0;
     color: $steel-grey;
     font-size: toRem(14);
+    @include font-family-lato;
     .current-page {
       padding-left: toRem(5);
       padding-right: toRem(5);
@@ -1225,6 +1232,26 @@
     }
   }
 
+  .pagination-btn {
+    opacity: .35;
+    height: toRem(14);
+    width: toRem(14);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: contain;
+    vertical-align: middle;
+    &.arrow-prev {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0 22L22 0l2.1 2.1L4.2 22l19.9 19.9L22 44 0 22z'/%3E%3C/svg%3E");
+    }
+    &.arrow-next {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27 22L5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0l22 22z'/%3E%3C/svg%3E");
+    }
+    &.swiper-button-black {
+      height: toRem(14);
+      width: toRem(14);
+      background-size: contain;
+    }
+  }
   .pagination-list {
     display: inline-block;
     vertical-align: middle;
@@ -1234,6 +1261,7 @@
       display: inline-block;
       padding: $padding-step-2 $padding-step-3;
       font-size: toRem(16);
+      @include font-family-lato;
 
       &.active,
       &:hover {
@@ -1317,7 +1345,7 @@
       color: $almost-black;
       margin-bottom: $margin-step-1;
       margin-top: $margin-step-0;
-
+      @include font-family-lato;
       @media (max-width: 767px) {
         font-size: toRem(16);
         line-height: 1.5;
@@ -1326,14 +1354,14 @@
 
     p {
       font-size: toRem(16);
-      font-weight: get-font-weight("normal");
+      font-weight: get-font-weight("regular");
       font-stretch: normal;
       font-style: normal;
       line-height: 1.5;
       letter-spacing: normal;
       color: $gray-text-color;
       margin-bottom: $margin-step-2;
-
+      @include font-family-lato;
       @media (max-width: 767px) {
         font-size: toRem(14);
         line-height: 1.43;
@@ -1562,6 +1590,8 @@
 
   .media-heading {
     font-weight: get-font-weight("bold");
+    @include font-family-lato;
+    font-size: toRem(20);
     margin-bottom: toRem(12);
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -1570,11 +1600,14 @@
   }
   .media-description {
     color: $gray-text-color;
+   @include font-family-lato;
+    font-size: toRem(16);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     margin-bottom: $margin-step-0;
     height: toRem(25.2);
+    line-height: 1.6;
     > p,
     li {
       color: $gray-text-color;
@@ -1863,11 +1896,11 @@
   width: toRem(160);
   margin-right: toRem(15);
   text-align: right;
-
   @media (max-width: $screen-md-max) {
     position: absolute;
     height: toRem(19.2);
     bottom: toRem(10);
+    text-align: left;
   }
 }
 
@@ -2086,6 +2119,7 @@
           font-size: toRem(14);
           line-height: 1.43;
           letter-spacing: toRem(2);
+          @include font-family-lato;
         }
       }
     }
@@ -2112,6 +2146,7 @@
               a {
                 padding-right: $padding-step-0 !important;
                 font-weight: get-font-weight("light");
+                @include font-family-lato;
               }
             }
             .recent {
@@ -2136,6 +2171,7 @@
                   &.learn-more {
                     padding-right: $padding-step-0;
                     padding-left: $padding-step-0;
+                    @include font-family-Neotech;
                     &::before {
                       left: toRem(-33);
                       right: auto;
@@ -2247,8 +2283,32 @@
         }
       }
     }
-  }
-}
+     .learn-more-wrap {
+      .btn-text { 
+        @include font-family-Neotech;
+        &.learn-more.btn-green {
+          &:before {
+            transform: translateY(-50%) rotate(135deg);
+            left: toRem(-15);
+            right: auto;
+          }
+        }
+      }
+    }
+    .search-pagination-4-0 .pagination-btn {
+      transform: rotate(180deg);
+    }
+    .search-items-wrapper-4-0 {
+      .tiles-wrapper {
+        .btn-text:before {
+          transform: translateY(-50%) rotate(135deg);
+          float: left;
+          left: toRem(-35);
+        } 
+      } 
+    }
+  } // rtl ends
+}// ar ends
 
 // Style: for Loader
 .search-result-loader-4-0 {
@@ -3010,6 +3070,8 @@
     line-height: 1.5;
     letter-spacing: toRem(4);
     color: $almost-black;
+    margin-top: toRem(25);
+    margin-bottom: toRem(12.5);
     @media (max-width: 991px) {
       font-size: toRem(12);
       letter-spacing: toRem(2);
@@ -3091,3 +3153,10 @@
   }
 }
 /* filter block css end */
+.search-results-wrapper-4-0 {
+   .learn-more-wrap {
+      .btn-text { 
+        @include font-family-lato;
+      }
+    }
+}
