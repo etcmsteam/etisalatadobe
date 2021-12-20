@@ -2,20 +2,22 @@
   z-index: 22;
   @include respond-to-min($tablet) {
     position: absolute;
-    top: 0;
-    right: 5%;
+    top: toRem(25);
+    right: 2.5%;
   }
 
   @include respond-to-min($desktop) {
-    right: 8%;
+    right: 11.9%;
+    top: toRem(25);
   }
 
   @include respond-to-min($desktop-wide) {
-    right: 300px;
+    right: toRem(331);
+    top: toRem(10);
   }
 
   @include respond-to-max($phone) {
-    top: 15px;
+    top: toRem(28);
     z-index: 10;
     margin-bottom: 50px;
   }
@@ -36,11 +38,18 @@
     margin-top: 20px;
     position: relative;
 
-    @include respond-to-max($tablet -1px) {
-      height: 560px;
-      width: 290px;
+    @include respond-to-max($tablet) {
+      height: toRem(560);
+      width: toRem(290);
       background-size: contain;
     }
+
+    @include respond-to-max($phone) {
+      height: toRem(600);
+      width: toRem(330);
+      background-size: contain;
+    }
+
     @include respond-to-max($desktop-wide) {
       top: 0;
       right: 0;
@@ -50,6 +59,18 @@
     .cmp-image__image {
       max-width: 230px;
       height: auto;
+    }
+    .cmp-carousel__item {
+      height: toRem(460);
+      margin-top: toRem(10);
+      @include respond-to-max($tablet) {
+        height: toRem(300);
+        margin: -16px 9px 0;
+      }
+      @include respond-to-max($phone) {
+        height: toRem(470);
+        margin-top: 6px;
+      }
     }
     .cmp-carousel__indicators {
       margin-top: 40px;
@@ -73,12 +94,24 @@
   border-radius: 100%;
   background: $blue-grey;
   opacity: 1;
+  @include respond-to-max($tablet) {
+    margin: 0 10px;
+  }
   &--active {
     height: 14px;
     width: 14px;
     outline: 2px solid $main-green;
     background-color: $white;
     margin-bottom: -2px;
+    @include respond-to-max($tablet) {
+      margin-top: -5px;
+    }
+    @include respond-to-max($phone) {
+      height: 24px;
+      width: 24px;
+      margin-bottom: auto;
+      margin-top: -10px;
+    }
   }
 }
 // Home page Header banner image
