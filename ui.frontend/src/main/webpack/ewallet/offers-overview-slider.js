@@ -6,7 +6,7 @@ $(document).ready(function () {
     noSwipingClass: "no-swap-desktop-new",
     breakpoints: {
       991: {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 20,
         noSwiping: true,
       },
