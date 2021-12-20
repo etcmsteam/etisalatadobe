@@ -19,6 +19,13 @@ public interface SendNotificationService {
   public int getTimeOut();
   
   /**
+   * Returns Captcha Response Value.
+   *
+   * @return
+   */
+  public String getCaptchaResponse(String Json);
+  
+  /**
    * Process request and returns response code.
    *
    * @return
