@@ -35,8 +35,8 @@
       }
       .btn-text {
         display: inline-block;
+        margin-bottom: toRem(20);
       }
-      .btn-text,
       .wst-main-headings {
         margin-bottom: $margin-step-3;
       }
@@ -388,6 +388,8 @@
   .bg-cards .product-home-multi-card-selection.tile-table .tile-card .tiles-box,
   .bg-cards .product-home-single-card-selection.tile-table .tile-card .tiles-box {
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .bg-cards .device-card.tile-table .tile-card .tiles-box-title,
   .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title,
@@ -2905,6 +2907,11 @@
           @include font-family-lato;
           cursor: pointer;
 
+          @include rtlBlock() {
+              display: flex;
+              padding: 0;
+            }
+
           &::before {
             content: "";
             line-height: 1;
@@ -2918,7 +2925,7 @@
             border-width: $border-step-0 $border-step-1 $border-step-1 $border-step-0;
             @include rtlBlock() {
               right: auto;
-              left: -13px;
+              left: toRem(60);
               transform: translateY(-50%) rotate(135deg);
             }
           }
@@ -3528,7 +3535,6 @@
 [lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-next,
 [lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-prev {
   left: auto;
-  position: absolute;
 }
 
 [lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-prev {
