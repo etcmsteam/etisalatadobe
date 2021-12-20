@@ -1,5 +1,5 @@
 <template  data-sly-template.notFound="${ @ properties}">
-	<div class="search-not-found-4-0 d-none">
+	<div class="search-not-found-4-0">
 	      <div class="icon">
 	          <svg width="48" height="48" viewBox="0 0 48 48">
 	              <g fill="none" fill-rule="evenodd">
@@ -20,5 +20,19 @@
 	      <div class="text">
 	          ${properties.searchNotFoundMsg @ context = 'html'}
 	      </div>
-	  </div>	    
+	  </div>
+	  <div class="search-no-result-suggession-4-0 d-none">
+          <div class="did-you-mean">
+              <div class="did-you-mean-text">
+                  ${properties.didYouMeanText}<a href="#" class="did-you-mean-result"></a>?
+              </div>
+          </div>
+          <div class="search-related-keywords">
+              <div class="search-related-keywords-label">
+                  ${properties.relatedText}
+              </div>
+              <ul class="search-related-keywords-list">                       
+              </ul>
+          </div>
+      </div>	  
 </template>
