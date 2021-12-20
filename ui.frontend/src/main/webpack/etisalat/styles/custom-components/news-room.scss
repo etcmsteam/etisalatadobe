@@ -1,7 +1,12 @@
 .cmp-newsroom-search {
-  .form.wst-form .form-group .select2-container.select2-container--open .select2-dropdown {
-    margin-left: 3px;
+  .form.wst-form .form-group .select2-container.select2-container--open {
+    &.select2-container--open {
+      .select2-dropdown {
+        margin-left: 3px;
+      }
+    }
   }
+
   .floating-label {
     margin-left: 3px;
   }
@@ -22,8 +27,8 @@
     }
 
     .swiper-scrollbar-drag {
-      //   background: @brand-primary;
-      background-color: $grey-brass;
+      //background-color: $grey-brass;
+      background: #719e19;
     }
 
     .swiper-wrapper {
@@ -35,23 +40,13 @@
         padding-left: 0rem !important;
         padding-right: 0;
       }
+
+      .tile-boxes-section {
+        padding: 1.5rem !important;
+      }
     }
   }
-  .tile-boxes-section {
-    position: relative;
-    overflow: hidden;
-  }
 
-  .tile-boxes-section .swiper-scrollbar {
-    bottom: 0 !important;
-  }
-
-  .tile-boxes-section .swiper-scrollbar-drag {
-    background: #719e19;
-  }
-}
-
-.cmp-newsroom-search {
   .tile-box-tile {
     min-height: 280px;
     overflow: hidden;
@@ -150,6 +145,34 @@
         &:before {
           padding: 3.5px;
           right: -20px;
+        }
+      }
+    }
+  }
+
+  .select2-dropdown {
+    width: 18.6rem;
+
+    @include respond-to-min($tablet) {
+      width: 45.5rem;
+    }
+
+    @media only screen and (min-width: 375px) and (max-width: 812px) and (orientation: landscape) {
+      width: 45.3rem;
+    }
+
+    @media screen and (min-width: 993px) {
+      width: 13.8rem;
+    }
+
+    @include respond-to-min($desktop-wide) {
+      width: 16.9rem;
+    }
+    .select2-results {
+      .select2-results__options {
+        direction: rtl;
+        li {
+          font-size: $font16;
         }
       }
     }
@@ -465,12 +488,6 @@
       }
     }
   }
-
-  @media (max-width: 991px) {
-    .tile-boxes-section {
-      padding: 1.5rem !important;
-    }
-  }
 }
 
 .set-heading__title {
@@ -498,36 +515,6 @@
 }
 .select2-dropdown__width {
   margin-left: 3px;
-}
-
-.cmp-newsroom-search {
-  .select2-dropdown {
-    width: 18.6rem;
-
-    @include respond-to-min($tablet) {
-      width: 45.5rem;
-    }
-
-    @media only screen and (min-width: 375px) and (max-width: 812px) and (orientation: landscape) {
-      width: 45.3rem;
-    }
-
-    @media screen and (min-width: 993px) {
-      width: 13.8rem;
-    }
-
-    @include respond-to-min($desktop-wide) {
-      width: 16.9rem;
-    }
-    .select2-results {
-      .select2-results__options {
-        direction: rtl;
-        li {
-          font-size: $font16;
-        }
-      }
-    }
-  }
 }
 
 //.loading-tile{
@@ -613,4 +600,3 @@
     }
   }
 }
-
