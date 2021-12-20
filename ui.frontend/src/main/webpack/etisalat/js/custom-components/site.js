@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     $('.hamburger').on('click', function () {
         $(".hamburger").toggleClass("is-active");
+        $("html").toggleClass("freeze nav-is-toggled");
         $(".main-menu-mobile").toggleClass("mob-visible");
         $(".nav-drill").toggleClass("main-menu-slide");
     });
@@ -42,8 +43,10 @@ c.forEach(function (a) {
         //Added condition causing errors and stop here when null
         if(a.querySelector(".nav-back-link") != null){
             a.querySelector(".nav-back-link").addEventListener("click", function () {
-                a.classList.remove("active"),
-                    e(".nav-drill").hasClass("search-nav-drill") && e(".nav-drill").removeClass("search-nav-drill")
+                a.classList.remove("active");
+                if ($(".nav-drill").hasClass("search-nav-drill")) {
+                  $(".nav-drill").removeClass("search-nav-drill");
+                }
             })
         }
         

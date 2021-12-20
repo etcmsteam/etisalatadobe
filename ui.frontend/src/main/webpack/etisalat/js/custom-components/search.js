@@ -23,9 +23,10 @@
         // https://www.etisalat.ae/b2c/autoSuggest.service?locale=en-AE
         var guidedSearchCall = doc.getElementById("searchForm").getAttribute("data-secondary-search");
         // https://qacms-uat.etisalat.ae/b2c/guidedSearchRequest.service?locale=en-AE
+        var resultPageRedirect = doc.getElementById("searchForm").getAttribute("data-redirect-url");
         var guidedSearchText = "";
         var guidedSearchWraper = "";
-        var resultPageURL = window.location.origin + "/" + document.documentElement.lang + "/system/wst/search-results.jsp";
+        var resultPageURL = window.location.origin + "/" + document.documentElement.lang + resultPageRedirect;
         var topResult = "Top results";
         var learMoreText = "LEARN MORE";
         var viewAll = "view all results";
@@ -504,11 +505,12 @@
           console.log("err responseJSON is-", jqXHR?.responseJSON, "err jqXHR text is-", jqXHR?.responseJSON?.message, "-Error is-", error);
           // refactor. search component only need to test on search-result-page
           //doc.querySelectorAll('.notFoundTerm')[instannceNum].innerText = searchInput[instannceNum].value;
-          doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
-          doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
-          doc.querySelectorAll(".getMore")[instannceNum].querySelector(".mobile-head").classList.add("d-none");
-          doc.querySelectorAll(".search-not-found-4-0")[instannceNum].classList.remove("d-none");
-          doc.querySelectorAll(".search-not-found-4-0 .text")[instannceNum].innerHTML = errorText; // refactor-testing
+          // to display error message 
+          // doc.querySelectorAll(".search-items-wrapper")[instannceNum].classList.remove("d-none");
+          // doc.querySelectorAll(".getMore")[instannceNum].querySelector(".desktop-head").classList.add("d-none");
+          // doc.querySelectorAll(".getMore")[instannceNum].querySelector(".mobile-head").classList.add("d-none");
+          // doc.querySelectorAll(".search-not-found-4-0")[instannceNum].classList.remove("d-none");
+          // doc.querySelectorAll(".search-not-found-4-0 .text")[instannceNum].innerHTML = errorText;
         };
         document.querySelectorAll(".clearSearch")[instannceNum].addEventListener("click", clearSearch);
 
