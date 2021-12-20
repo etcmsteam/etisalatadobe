@@ -1,49 +1,54 @@
 .beigebg-container {
-  padding: 2rem !important;
+  .rte-bullets {
+    ol,
+    ul {
+      @include font-family-lato;
 
-  @include md {
-    padding: 1rem !important;
+      font-size: $font14;
+      line-height: toRem(24);
+      list-style: decimal;
+      margin: 0;
+      margin-bottom: toRem(12.5);
+      margin-top: 0;
+      padding: 0;
+    }
   }
 
-  @include sm {
-    padding: 0.6rem !important;
+  padding: toRem(32);
+
+  @include respond-to-max($tablet) {
+    padding: toRem(16);
   }
 
-  @include md {
-    h3 {
-      font-size: 16px;
-      margin-top: 20px;
-    }
-
-    h2 {
-      font-size: 20px;
-    }
+  @include respond-to-max($phone) {
+    padding: toRem(9.6);
   }
 
   p {
-    color: #000;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    color: $black;
 
-    @include sm {
-      color: #6f6c70;
-      font-size: 16px;
+    @include font-family-lato;
+
+    @include respond-to-max($phone) {
+      color: $gray-text-color;
+      font-size: $font16;
     }
   }
 
   h3 {
-    margin-top: 20px;
+    margin-top: toRem(20);
   }
 
   .cmp-text {
     h3 {
-      font-size: 20px;
+      font-size: toRem(20);
 
-      @include sm {
+      @include respond-to-max($phone) {
         line-height: 27px;
       }
 
-      @include md {
-        font-size: 16px;
+      @include respond-to-max($tablet) {
+        font-size: $font16;
       }
     }
 
@@ -59,7 +64,7 @@
       float: left;
       width: 51%;
 
-      @include md {
+      @include respond-to-max($tablet) {
         float: none;
         width: 100%;
       }
@@ -70,7 +75,7 @@
       margin-top: 0.5rem;
       width: 50%;
 
-      @include md {
+      @include respond-to-max($tablet) {
         float: none;
         margin-top: 1.8rem;
         width: 100%;
@@ -81,12 +86,12 @@
   .cmp-beigebg_teaser {
     background: $sand-white-50;
     border-radius: 4px;
-    margin-bottom: 1.5rem;
     min-height: 140px;
     overflow: hidden;
     position: relative;
+    margin-bottom: -2rem;
 
-    @include md {
+    @include respond-to-max($tablet) {
       min-height: 117px;
     }
   }
@@ -100,35 +105,37 @@
     padding-left: 36px;
     padding-right: 36px;
 
-    @include md {
+    @include respond-to-max($tablet) {
       padding-left: 17px;
       padding-right: 17px;
     }
 
     .cmp-teaser__title {
-      color: #353738;
-      font-size: 28px;
+      color: $almost-black;
+      font-size: $font28;
       letter-spacing: 0.5px;
       margin: 2.2rem 0 1.5rem;
 
-      @include sm {
+      @include respond-to-max($phone) {
         margin: 1rem 0;
       }
 
-      @include md {
+      @include respond-to-max($tablet) {
         font-size: $font28;
         margin: 1rem 0;
       }
 
       a {
-        color: #353738;
+        color: $almost-black;
       }
     }
   }
 
   ul li {
-    color: #6f6c70;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    color: $gray-text-color;
+
+    @include font-family-lato;
+
     line-height: 24px;
     list-style-type: disc;
     margin-bottom: 4px;
@@ -149,15 +156,11 @@
     }
   }
 
-  .cmp-beigebg_teaser {
-    margin-bottom: -2rem;
-  }
-
   .aem-GridColumn.aem-GridColumn--default--6 {
     padding-left: 2.5rem;
     padding-right: 2rem;
 
-    @include md {
+    @include respond-to-max($tablet) {
       padding-left: 1rem;
       padding-right: 1rem;
     }
@@ -168,115 +171,107 @@
     padding-left: 3rem;
     padding-right: 6rem;
 
-    @include sm {
+    @include respond-to-max($phone) {
       padding-left: 2rem;
       padding-right: 2rem;
     }
 
-    @include md {
+    @include respond-to-max($tablet) {
       padding-left: 2rem;
       padding-right: 2rem;
     }
 
     td {
-      border-bottom: 2px solid #e5e5e5;
-      border-collapse: separate !important;
+      border-bottom: 2px solid $white-2;
+      border-collapse: separate;
       border-spacing: 2rem 0;
-      color: #848789;
-      font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-      font-size: 20px !important;
-      font-weight: 400;
+      color: $steel-grey;
+
+      @include font-family-lato;
+
+      font-size: $font20;
+      font-weight: get-font-weight("regular");
       line-height: 56px;
       margin: 0 -2rem;
       width: 50%;
 
-      @include sm {
+      @include respond-to-max($phone) {
         border-bottom: none;
-        font-size: 14 !important;
+        font-size: $font14;
       }
 
-      @include md {
-        padding: 0 1rem !important;
+      @include respond-to-max($tablet) {
+        padding: 0 1rem;
       }
 
       p {
-        font-size: 20px !important;
-        line-height: 56px !important;
+        font-size: $font20;
+        line-height: 56px;
 
-        @include sm {
-          color: #000;
-          font-size: 14px !important;
-          line-height: 28px !important;
+        @include respond-to-max($phone) {
+          color: $black;
+          font-size: $font14;
+          line-height: 28px;
         }
       }
     }
 
     table tbody td {
-      color: #848789;
-      line-height: 56px;
-      padding: 0 1rem !important;
+      color: $steel-grey;
+      line-height: toRem(56);
+      padding: 0 1rem;
 
-      @include sm {
-        color: #848789;
-        font-size: 14px !important;
-        line-height: 2rem;
-        padding: 0 !important;
+      @include respond-to-max($phone) {
+        color: $steel-grey;
+        font-size: $font14;
+        line-height: toRem(32);
+        padding: 0;
       }
     }
 
     table th {
-      border-bottom: 2px solid #e5e5e5;
-      color: #353738;
-      font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 56px;
+      border-bottom: 2px solid $white-2;
+      color: $almost-black;
+
+      @include font-family-lato;
+
+      font-size: $font20;
+      font-weight: get-font-weight("regular");
+      line-height: toRem(56);
       padding: 0;
       vertical-align: bottom;
 
-      @include sm {
+      @include respond-to-max($phone) {
         border-bottom: none;
-        font-size: 14px;
+        font-size: $font14;
       }
     }
   }
 
-  .rte-bullets {
-    ol,
-    ul {
-      font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 24px;
-      list-style: decimal;
-      margin: 0;
-      margin-bottom: 12.5px;
-      margin-top: 0;
-      padding: 0;
-    }
-  }
-
   .teaser-viewall {
-    color: #353738;
+    color: $almost-black;
     cursor: pointer;
     float: right;
-    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    line-height: 1.25rem;
-    margin-top: -3rem;
+
+    @include font-family-lato;
+
+    font-size: $font14;
+    font-weight: get-font-weight("medium");
+    letter-spacing: toRem(2);
+    line-height: toRem(20);
+    margin-top: toRem(-48);
     position: relative;
     text-transform: uppercase;
     z-index: 3;
 
-    @include md {
+    @include respond-to-max($tablet) {
       float: right;
-      margin-top: -4rem;
+      margin-top: toRem(-64);
     }
 
-    @include sm {
+    @include respond-to-max($phone) {
       float: right;
-      margin-top: -5.4rem;
+      margin-top: toRem(-86.4);
     }
   }
 }
@@ -286,8 +281,8 @@
   background-position: right 1px;
   background-repeat: no-repeat;
   display: inline-block;
-  padding-left: 13px;
-  width: 138px;
+  padding-left: toRem(13);
+  width: toRem(138);
 }
 
 .sort_desc {
@@ -295,15 +290,15 @@
   background-position: right -3px;
   background-repeat: no-repeat;
   display: inline-block;
-  padding-left: 13px;
-  width: 138px;
+  padding-left: toRem(13);
+  width: toRem(138);
 }
 
 .cmp-teaser-accordion {
-  background: #f7f8f4;
-  border-radius: 4px;
-  margin-bottom: 1.5rem;
-  min-height: 140px;
+  background: $sand-white-50;
+  border-radius: toRem(4);
+  margin-bottom: toRem(24);
+  min-height: toRem(140);
   overflow: hidden;
   position: relative;
 }
@@ -315,13 +310,13 @@
   background-size: contain;
   bottom: 0;
   content: "";
-  height: 360px;
+  height: toRem(360);
   opacity: 0.1;
   position: absolute;
-  width: 340px;
+  width: toRem(340);
   z-index: 1;
 
-  @include md {
+  @include respond-to-max($tablet) {
     background-image: none;
   }
 }
@@ -331,22 +326,22 @@
   background-repeat: no-repeat;
   background-size: contain;
   content: "";
-  height: 360px;
+  height: toRem(360);
   opacity: 0.1;
   position: absolute;
   right: 0;
   top: 0;
   transform: rotate(180deg);
-  width: 340px;
+  width: toRem(340);
   z-index: 1;
 
-  @include md {
-    height: 145px;
-    width: 140px;
+  @include respond-to-max($tablet) {
+    height: toRem(145);
+    width: toRem(140);
   }
 
-  @include sm {
-    height: 145px;
-    width: 140px;
+  @include respond-to-max($phone) {
+    height: toRem(145);
+    width: toRem(140);
   }
 }
