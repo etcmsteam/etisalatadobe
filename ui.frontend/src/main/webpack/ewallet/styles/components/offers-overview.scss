@@ -1,7 +1,14 @@
 .offers-main-wrap {
   margin-top: 65px;
+  @include respond-to-min-max($desktop-wide, $desktop) {
+    width: toRem(860);
+    margin: 65px auto 0;
+  }
   @include respond-to-max($tablet) {
     margin-top: 45px;
+  }
+  @include respond-to-max($phone) {
+    margin-top: 120px;
   }
   .offer-content {
     img {
@@ -179,30 +186,35 @@
   @include respond-to-min($tablet) {
     top: 30px;
   }
-  @include respond-to-max($phone) {
-    top: -70px;
-  }
   .cmp-container {
     background: url("../resources/images/img-oval_tcm451-117037.png") 0 0
       no-repeat;
     background-size: contain;
     position: absolute;
-    height: 460px;
+    height: 444px;
     right: 40px;
     z-index: 10;
-    width: 316px !important;
-    @include respond-to-max($phone) {
-      top: 0;
-      right: 0;
-      left: 20px;
+    width: 453px;
+    @include respond-to-max($desktop) {
+      top: toRem(-65);
+      height: toRem(309);
+      width: toRem(316);
+      right: toRem(38);
     }
-    @include respond-to-min($desktop) {
-      width: 420px !important;
-      right: 40px;
+    @include respond-to-max($phone) {
+      top: toRem(180);
+      right: 0;
+      left: 0;
+    }
+    @include respond-to-min-max($desktop-wide, $desktop) {
+      right: toRem(66);
+      height: toRem(413);
+      width: toRem(422);
+      top: toRem(10);
     }
     @include respond-to-min($desktop-wide) {
-      width: 450px !important;
-      right: 240px;
+      right: toRem(260);
+      top: toRem(-30);
     }
     .text {
       position: relative;
@@ -214,25 +226,19 @@
       .cmp-text {
         position: absolute;
         color: $white;
-        @include respond-to-max($phone) {
-          top: 55px;
-          left: 20px;
-          width: 290px;
-        }
-        @include respond-to-min($tablet) {
-          top: 60px;
-          left: 30px;
-          width: 290px;
+        @include respond-to-max($tablet) {
+          top: toRem(62);
+          left: toRem(40);
+          width: toRem(250);
         }
         @include respond-to-min($desktop) {
-          top: 110px;
-          left: 30px;
-          width: 320px;
+          top: toRem(125);
+          left: toRem(50);
         }
         @include respond-to-min($desktop-wide) {
           top: 140px;
-          left: 50px;
-          width: 400px;
+          left: 60px;
+          width: 350px;
         }
         h3 {
           font-size: toRem(32);
@@ -240,8 +246,13 @@
           line-height: toRem(44);
           font-weight: 500;
           font-family: Bariol, GE SS Two, Arial, sans-serif;
-          @include respond-to-min($desktop) {
+          @include respond-to-min-max($desktop-wide, $desktop) {
             font-size: toRem(40);
+            margin-bottom: toRem(10);
+          }
+          @include respond-to-max($tablet) {
+            line-height: toRem(35);
+            margin-bottom: toRem(13);
           }
         }
         p {
@@ -250,6 +261,9 @@
           font-size: toRem(24);
           line-height: toRem(34);
           font-weight: 500;
+          @include respond-to-max($tablet) {
+            font-size: $font20;
+          }
         }
       }
     }
