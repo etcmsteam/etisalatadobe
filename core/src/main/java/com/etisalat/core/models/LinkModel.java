@@ -1,10 +1,14 @@
 package com.etisalat.core.models;
 
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = Resource.class)
 public class LinkModel {
@@ -29,7 +33,13 @@ public class LinkModel {
   
   @ChildResource(name = "image", injectionStrategy = InjectionStrategy.OPTIONAL)
   private Resource imageResource;
+  
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String linkBehavior;
 
+  @SlingObject
+  private ResourceResolver resourceResolver;
+  
   public String getLinkText() {
     return linkText;
   }
@@ -39,7 +49,7 @@ public class LinkModel {
   }
 
   public String getLinkUrl() {
-    return linkUrl;
+    return CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkUrl);
   }
 
   public String getLinkUrlActive() {
@@ -85,5 +95,13 @@ public class LinkModel {
 
   public void setImageResource(Resource imageResource) {
 	this.imageResource = imageResource;
+  }
+
+  public String getLinkBehavior() {
+	return linkBehavior;
+  }
+
+  public void setLinkBehavior(String linkBehavior) {
+	this.linkBehavior = linkBehavior;
   }
 }

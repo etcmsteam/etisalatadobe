@@ -6,12 +6,16 @@ import java.util.List;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.etisalat.core.models.LinkModel;
 import com.etisalat.core.models.SiteSearch;
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = { SiteSearch.class }, resourceType = {
 		SiteSearchImpl.RESOURCE_TYPE })
@@ -26,6 +30,12 @@ public class SiteSearchImpl implements SiteSearch {
 	@SlingObject
 	@Optional
 	private Resource currentRes;
+	
+	@SlingObject
+	private ResourceResolver resourceResolver;
+	
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String redirectPage;
 
 	/**
 	 * 
@@ -52,6 +62,10 @@ public class SiteSearchImpl implements SiteSearch {
 	@Override
 	public List<LinkModel> getBrandItems() {
 		return Collections.unmodifiableList(getItems(BRAND_ITEMS));
+	}
+
+	public String getRedirectPage() {
+		return CommonUtility.appendHtmlExtensionToPage(resourceResolver, redirectPage);
 	}
 
 }

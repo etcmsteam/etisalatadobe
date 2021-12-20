@@ -131,6 +131,7 @@
 
 // tabs-expansion module css
 .search-4-0{
+    @include font-family-lato;
     .d-none {
         display: none;
     }
@@ -311,10 +312,12 @@
         font-size: toRem(12);
         line-height: 1.33;
         letter-spacing: toRem(1.6);
+        @include font-family-lato;
         @media (min-width: 992px) {
           font-size: toRem(16);
           line-height: 1.38;
           letter-spacing: toRem(2);
+          @include font-family-lato;
         }
       }
     }
@@ -442,7 +445,7 @@
     background-image: none !important;
   }
   .search-form {
-    padding: $padding-step-5 $padding-step-5 $padding-step-0 $padding-step-5;
+    padding: toRem(45) $padding-step-5 $padding-step-0 $padding-step-5;
   }
 
   .form {
@@ -469,7 +472,7 @@
         content: " ";
         position: absolute;
         // /b2c/eshopApp/assets/img/
-        background-image: url("https://www.etisalat.ae/en/system/wst/assets/img/fr-icons/icon-search-dualtone.svg") !important;
+        background-image: url("../resources/images/icon-search-dualtone.svg") !important;
         background-repeat: no-repeat;
         background-position: right center !important;
         background-size: toRem(24) toRem(24) !important;
@@ -483,11 +486,11 @@
         text-indent: toRem(40);
         height: toRem(48);
         font-size: toRem(16);
+        box-shadow:none !important;
       }
       .clearSearch {
         position: absolute;
-        // /b2c/eshopApp/assets/img/
-        background-image: url("https://www.etisalat.ae/en/system/wst/assets/img/fr-icons/icon-close-dualtone.svg") !important;
+        background-image: url("../resources/images/icon-close-dualtone.svg") !important;
         background-repeat: no-repeat;
         background-position: right center !important;
         background-size: toRem(24) toRem(24) !important;
@@ -505,6 +508,7 @@
     padding: $padding-step-2;
     display: block;
     box-shadow: none;
+    margin-top: toRem(6);
 
     .wst-form,
     .search-form,
@@ -523,6 +527,7 @@
       }
       .search-input {
         height: toRem(44.8);
+        font-size: toRem(14);
       }
     }
 
@@ -535,10 +540,11 @@
         font-weight: get-font-weight("heavy");
         letter-spacing: toRem(2);
         margin-bottom: $margin-step-0;
+        @include font-family-lato; 
       }
 
       .recent {
-        margin-top: toRem(11.2);
+        // margin-top: toRem(11.2);
         margin-bottom: $margin-step-0;
         .list-item {
           padding: $padding-step-2 $padding-step-0;
@@ -550,14 +556,13 @@
           &:after {
             content: " ";
             position: absolute;
-            // /b2c/eshopApp/assets/img/
-            // background-image: url("/icon-arrow-goto.svg") !important;
+            background-image: url("../resources/images/icon-arrow-goto.svg") !important;
             background-repeat: no-repeat;
             background-position: right center !important;
             background-size: toRem(12) toRem(12) !important;
             width: toRem(12);
             height: toRem(12);
-            top: toRem(24);
+            // top: toRem(24);
             right: toRem(18);
           }
         }
@@ -565,7 +570,7 @@
 
       .quick-links {
         @media (max-width: 991px) {
-          margin-top: $margin-step-2;
+          margin-top: toRem(20);
         }
         ul {
           white-space: nowrap;
@@ -668,7 +673,7 @@
   .search-items-wrapper {
     padding: $padding-step-1 $padding-step-5 toRem(9.6);
     &.recent-wrapper {
-      padding: $padding-step-1 $padding-step-5 $padding-step-3;
+      padding: $padding-step-1 $padding-step-5 toRem(28);
     }
   }
 
@@ -697,21 +702,24 @@
       color: $almost-black;
       font-size: toRem(20);
       font-weight: get-font-weight("bold");
-      margin-bottom: $margin-step-2;
+      margin-bottom: toRem(20);
+      @include font-family-lato;
     }
 
     .list-item {
-      margin-bottom: $margin-step-2;
+      margin-bottom: toRem(20);
       max-width: toRem(320);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size:toRem(16);
       @media screen and (max-width: 1240px) and (min-width: 992px) {
         max-width: toRem(250);
       }
       a {
         color: $almost-black;
         justify-content: flex-start !important;
+        @include font-family-lato;
       }
     }
   }
@@ -771,11 +779,11 @@
           padding: 0 toRem(12);
           h4 {
             color: $white;
-            @include font-family-lato;
             line-height: 1.25;
             font-size: toRem(16);
             font-weight: get-font-weight("bold");
-            margin-bottom: 0 0 toRem(4);
+            margin-bottom: toRem(8);
+            @include font-family-lato;
           }
 
           .btn-text {
@@ -784,6 +792,7 @@
             line-height: toRem(20);
             font-size: toRem(12);
             justify-content: flex-start !important;
+            @include font-family-lato;
             &.learn-more {
               display: initial;
             }
@@ -806,7 +815,6 @@
     .search-items-wrapper {
       padding: $padding-step-0;
     }
-
     .form {
       .search-field {
         margin-bottom: $margin-step-0;
@@ -834,28 +842,26 @@
       }
 
       .recent {
-        margin-top: toRem(11.2);
+        // margin-top: toRem(11.2);
         margin-bottom: $margin-step-0;
         .list-item {
-          padding: $padding-step-2 $padding-step-0;
           margin-bottom: $margin-step-0;
           border-bottom: solid toRem(1) $grey5;
           position: relative;
           font-size: toRem(14);
           max-width: 100%;
-          padding-right: $padding-step-5;
+          padding: $padding-step-3 $padding-step-5 $padding-step-3 $padding-step-0;
 
           &:after {
             content: " ";
             position: absolute;
-            // /b2c/eshopApp/assets/img/
-            // background-image: url("/icon-arrow-goto.svg") !important;
+            background-image: url("../resources/images/icon-arrow-goto.svg") !important;
             background-repeat: no-repeat;
             background-position: right center !important;
             background-size: toRem(12) toRem(12) !important;
             width: toRem(12);
             height: toRem(12);
-            top: toRem(24);
+            // top: toRem(24);
             right: toRem(18);
           }
         }
@@ -889,7 +895,7 @@
       }
 
       .trends {
-        margin-top: $margin-step-1;
+        margin-top: toRem(12);
         padding-top: $padding-step-2;
         border-top: solid toRem(1) $cust-select;
       }
@@ -953,7 +959,12 @@
     }
   }
 }
-
+// @media screen and (max-width: 1240px) and (min-width: 992px) {
+//   .search-items-wrapper-4-0 .search-items .list-item {
+//     font-size: toRem(16);
+//     line-height: toRem(25);
+//   }
+// }
 //Style: Search Result Header
 .search-result-header-4-0 {
   overflow: hidden;
@@ -1009,7 +1020,8 @@
 
       span {
         font-size: toRem(16);
-        font-weight: get-font-weight("normal");
+        font-weight: get-font-weight("regular");
+         @include font-family-lato;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.5;
@@ -1192,6 +1204,7 @@
     padding: $padding-step-2 $padding-step-0;
     color: $steel-grey;
     font-size: toRem(14);
+    @include font-family-lato;
     .current-page {
       padding-left: toRem(5);
       padding-right: toRem(5);
@@ -1219,6 +1232,26 @@
     }
   }
 
+  .pagination-btn {
+    opacity: .35;
+    height: toRem(14);
+    width: toRem(14);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: contain;
+    vertical-align: middle;
+    &.arrow-prev {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0 22L22 0l2.1 2.1L4.2 22l19.9 19.9L22 44 0 22z'/%3E%3C/svg%3E");
+    }
+    &.arrow-next {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27 22L5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0l22 22z'/%3E%3C/svg%3E");
+    }
+    &.swiper-button-black {
+      height: toRem(14);
+      width: toRem(14);
+      background-size: contain;
+    }
+  }
   .pagination-list {
     display: inline-block;
     vertical-align: middle;
@@ -1228,6 +1261,7 @@
       display: inline-block;
       padding: $padding-step-2 $padding-step-3;
       font-size: toRem(16);
+      @include font-family-lato;
 
       &.active,
       &:hover {
@@ -1311,7 +1345,7 @@
       color: $almost-black;
       margin-bottom: $margin-step-1;
       margin-top: $margin-step-0;
-
+      @include font-family-lato;
       @media (max-width: 767px) {
         font-size: toRem(16);
         line-height: 1.5;
@@ -1320,14 +1354,14 @@
 
     p {
       font-size: toRem(16);
-      font-weight: get-font-weight("normal");
+      font-weight: get-font-weight("regular");
       font-stretch: normal;
       font-style: normal;
       line-height: 1.5;
       letter-spacing: normal;
       color: $gray-text-color;
       margin-bottom: $margin-step-2;
-
+      @include font-family-lato;
       @media (max-width: 767px) {
         font-size: toRem(14);
         line-height: 1.43;
@@ -1556,6 +1590,8 @@
 
   .media-heading {
     font-weight: get-font-weight("bold");
+    @include font-family-lato;
+    font-size: toRem(20);
     margin-bottom: toRem(12);
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -1564,11 +1600,14 @@
   }
   .media-description {
     color: $gray-text-color;
+   @include font-family-lato;
+    font-size: toRem(16);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     margin-bottom: $margin-step-0;
     height: toRem(25.2);
+    line-height: 1.6;
     > p,
     li {
       color: $gray-text-color;
@@ -1750,13 +1789,12 @@
           &:before {
             content: " ";
             position: absolute;
-            // /b2c/eshopApp/assets/img/
-            //background-image: url("/icon-arrow-goto.svg") !important;
+            background-image: url("../resources/images/icon-arrow-goto.svg") !important;
             background-repeat: no-repeat;
             background-position: 100% !important;
-            background-size: 1toRem(2) 1toRem(2) !important;
-            width: 1toRem(2);
-            height: 1toRem(2);
+            background-size: toRem(12) toRem(12) !important;
+            width: toRem(12);
+            height: toRem(12);
             top: toRem(24);
             right: 0;
             transform: none !important;
@@ -1769,7 +1807,7 @@
 }
 
 .search-results-wrapper-4-0 {
-  padding-top: 1toRem(2);
+  padding-top: toRem(12);
   .search-4-0-component .results-media .media-description {
     white-space: normal;
     padding-right: $padding-step-0;
@@ -1805,7 +1843,7 @@
         text-align: right;
         font-size: toRem(16);
         line-height: toRem(16);
-        margin-right: 1toRem(5);
+        margin-right: toRem(15);
         .media-action {
           cursor: pointer;
           text-transform: uppercase;
@@ -1817,7 +1855,7 @@
           line-height: 1.43;
           letter-spacing: toRem(2);
           &:before {
-            right: -toRem(5);
+            right: toRem(-5);
             border: solid $main-green;
             border-width: 0 toRem(1) toRem(1) 0;
             padding: toRem(2.7);
@@ -1858,11 +1896,11 @@
   width: toRem(160);
   margin-right: toRem(15);
   text-align: right;
-
   @media (max-width: $screen-md-max) {
     position: absolute;
     height: toRem(19.2);
     bottom: toRem(10);
+    text-align: left;
   }
 }
 
@@ -1897,7 +1935,7 @@
         flex-grow: 1;
         border-radius: 0 0 0 toRem(8);
         .limited-offer-4-0 {
-          font-size: 1toRem(2);
+          font-size: toRem(12);
           font-weight: get-font-weight("bold");
           font-stretch: normal;
           font-style: normal;
@@ -2081,6 +2119,7 @@
           font-size: toRem(14);
           line-height: 1.43;
           letter-spacing: toRem(2);
+          @include font-family-lato;
         }
       }
     }
@@ -2107,6 +2146,7 @@
               a {
                 padding-right: $padding-step-0 !important;
                 font-weight: get-font-weight("light");
+                @include font-family-lato;
               }
             }
             .recent {
@@ -2131,9 +2171,11 @@
                   &.learn-more {
                     padding-right: $padding-step-0;
                     padding-left: $padding-step-0;
+                    @include font-family-Neotech;
                     &::before {
                       left: toRem(-33);
                       right: auto;
+                      transform: translateY(-50%) rotate(135deg);
                     }
                   }
                 }
@@ -2241,8 +2283,32 @@
         }
       }
     }
-  }
-}
+     .learn-more-wrap {
+      .btn-text { 
+        @include font-family-Neotech;
+        &.learn-more.btn-green {
+          &:before {
+            transform: translateY(-50%) rotate(135deg);
+            left: toRem(-15);
+            right: auto;
+          }
+        }
+      }
+    }
+    .search-pagination-4-0 .pagination-btn {
+      transform: rotate(180deg);
+    }
+    .search-items-wrapper-4-0 {
+      .tiles-wrapper {
+        .btn-text:before {
+          transform: translateY(-50%) rotate(135deg);
+          float: left;
+          left: toRem(-35);
+        } 
+      } 
+    }
+  } // rtl ends
+}// ar ends
 
 // Style: for Loader
 .search-result-loader-4-0 {
@@ -3004,6 +3070,8 @@
     line-height: 1.5;
     letter-spacing: toRem(4);
     color: $almost-black;
+    margin-top: toRem(25);
+    margin-bottom: toRem(12.5);
     @media (max-width: 991px) {
       font-size: toRem(12);
       letter-spacing: toRem(2);
@@ -3085,3 +3153,10 @@
   }
 }
 /* filter block css end */
+.search-results-wrapper-4-0 {
+   .learn-more-wrap {
+      .btn-text { 
+        @include font-family-lato;
+      }
+    }
+}
