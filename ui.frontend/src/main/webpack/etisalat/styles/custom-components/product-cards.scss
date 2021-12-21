@@ -703,23 +703,10 @@ hr.dashed {
   
 }
 [lang="ar"] [dir="rtl"]  {
- 
-    // .product-card--device {
-    //   .product-card__price-vat {
-    //   display: flex;
-    //   justify-content: flex-start;
-    //   align-items: center;
-    //   .product-card__old-price {
-    //     float: right;
-    //     margin-left: toRem(4);
-    //     margin-right: $margin-step-0;
-    //     width: 100%;
-    //   }
-    // }
-    // }
-    .smart-home-elife-slider,
-    .product-card--device,
-    .product-device-text{
+ .product-grid-text-section {
+    &.smart-home-elife-slider,
+    &.product-device-text,
+    .product-card--device {
       .product-card__price-vat {
         display: flex;
         align-items: center;
@@ -733,14 +720,16 @@ hr.dashed {
           p {
             margin-right: $margin-step-0;
           }
-        }
-    }
-    .product-card--device {
-      .product-card__price-vat {
-        display: block;
       }
-    }
-  .product-grid-text-section {
+      // nav arrow buttons
+      .table-swiper-button-next,
+      .table-swiper-button-prev { 
+        float: right !important;
+      } 
+      .table-swiper-button-next {
+        right: toRem(-70) !important;
+        margin-right: 0 !important;
+      }
       .btn-text:before { 
         left:toRem(-15);
         transform: translateY(-50%) rotate(135deg);
@@ -748,5 +737,18 @@ hr.dashed {
       .product-card__price {
         @include font-family-Neotech;
       }
+    }
+    // nav arrow
+    &.plans.product-device-text{
+       .table-swiper-button-next {
+        background-position-x: 100% !important;
+        right: toRem(-54) !important;
+      }   
+    }
+    &.product-card--device {
+      .product-card__price-vat {
+        display: block;
+      }
+    }
   }
 }
