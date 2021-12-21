@@ -108,9 +108,10 @@
       width: 50%;
       top: 110px;
     }
-    @include respond-to-max($tablet) {
+    @include respond-to-min-max($desktop, $tablet) {
       top: 30px;
-      font-size: toRem(40);
+      font-size: toRem(48);
+      line-height: toRem(48);
       width: 50%;
     }
     @include respond-to-max($phone) {
@@ -121,7 +122,12 @@
 }
 
 .hotels-blurb {
-  .hero-heaer-01.faq-header.offers-head{
-    min-height: 400px;
+  .hero-heaer-01.faq-header.offers-head {
+    @include respond-to-max($tablet - 1) {
+      min-height: 425px;
+    }
+    @include respond-to-min-max($desktop, $tablet) {
+      min-height: 340px;
+    }
   }
 }
