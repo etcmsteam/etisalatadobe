@@ -26,7 +26,7 @@
         var resultPageRedirect = doc.getElementById("searchForm").getAttribute("data-redirect-url");
         var guidedSearchText = "";
         var guidedSearchWraper = "";
-        var resultPageURL = window.location.origin + "/" + resultPageRedirect;
+        var resultPageURL = window.location.origin + resultPageRedirect;
         var topResult = "Top results";
         var learMoreText = "LEARN MORE";
         var viewAll = "view all results";
