@@ -234,6 +234,7 @@
   }
   &__price-vat {
     margin-top: $margin-step-1;
+    line-height: 1.4;
   }
 
   &__old-price {
@@ -481,6 +482,11 @@
       font-size: $font12;
       margin-bottom: $margin-step-0;
     }
+    #{$parent}__price-vat {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   &--plan {
@@ -698,20 +704,36 @@ hr.dashed {
 }
 [lang="ar"] [dir="rtl"]  {
  
-    .product-card--device {
+    // .product-card--device {
+    //   .product-card__price-vat {
+    //   display: flex;
+    //   justify-content: flex-start;
+    //   align-items: center;
+    //   .product-card__old-price {
+    //     float: right;
+    //     margin-left: toRem(4);
+    //     margin-right: $margin-step-0;
+    //     width: 100%;
+    //   }
+    // }
+    // }
+    .smart-home-elife-slider,
+    .product-card--device{
       .product-card__price-vat {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      .product-card__old-price {
-        float: right;
-        margin-left: toRem(4);
-        margin-right: $margin-step-0;
-        width: 100%;
+        display: flex;
+        align-items: center;
+        .product-card__old-price {
+          float: right;
+          margin-left: $margin-step-1;
+          margin-right: $margin-step-0;
+        }
       }
     }
+    .product-card--device {
+      .product-card__price-vat {
+        display: block;
+      }
     }
-  
   .product-grid-text-section {
       .btn-text:before { 
         left:toRem(-15);
