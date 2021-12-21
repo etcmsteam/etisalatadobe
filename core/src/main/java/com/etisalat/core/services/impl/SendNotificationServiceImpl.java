@@ -23,7 +23,9 @@ import com.etisalat.core.services.SendNotificationConfiguration;
 import com.etisalat.core.services.SendNotificationService;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 @Component(service = SendNotificationService.class, immediate = true)
 @Designate(ocd = SendNotificationConfiguration.class)
@@ -108,10 +110,18 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 	@Override
 	public String getCaptchaResponse(String json) {
 		String captchaValue = CAPTCHA_NULL;
-		if(null != json) {
-			JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();		
-			JsonElement captchaElement = jsonObject.get(CAPTCHA_NAME);
-			captchaValue = captchaElement.getAsString();
+		try {
+			if(null != json) {
+				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();		
+				JsonElement captchaElement = jsonObject.get(CAPTCHA_NAME);
+				captchaValue = captchaElement.getAsString();
+			}
+		}
+		catch (JsonSyntaxException e) {
+			LOG.error("Send notification service Json Syntax error {}", e.getMessage());
+		}
+		catch (JsonParseException e) {
+			LOG.error("Send notification service json parse error {}", e.getMessage());
 		}
 		return captchaValue;
 	}

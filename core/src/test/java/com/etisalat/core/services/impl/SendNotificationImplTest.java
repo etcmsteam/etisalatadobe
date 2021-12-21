@@ -16,7 +16,9 @@ import org.mockito.MockitoAnnotations;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 
 public class SendNotificationImplTest {
@@ -57,7 +59,7 @@ public class SendNotificationImplTest {
 	}
 	
 	@Test
-	void testCaptchaResponse() throws NoSuchFieldException {
+	void testCaptchaResponse() throws JsonSyntaxException, JsonParseException {
 		String captchaValue = "No Captcha Value Found";
 		if(null != json) {
 			JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();		
