@@ -6,7 +6,7 @@
     position: relative;
     min-height: 1px;
     padding: 30px;
-    
+
     @include respond-to-min($tablet) {
       width: 50%;
       float: left;
@@ -29,9 +29,6 @@
   }
 }
 
-
-
-
 .return-link a {
   color: $link-color;
   font-size: toRem(24);
@@ -43,12 +40,11 @@
     margin: 50px 0 30px;
   }
 }
-.ewallet-accordion{
-
+.ewallet-accordion {
   .cmp-accordion__item {
     border-bottom: 1px solid $light-white;
-    &:last-child{
-      border-width: 0;;
+    &:last-child {
+      border-width: 0;
     }
     .cmp-accordion__title {
       width: 100%;
@@ -64,8 +60,9 @@
     .cmp-text {
       font-family: $base-font;
       font-size: toRem(20);
-      padding-top: 0px;
+      padding-top: 0;
       padding-left: 0;
+      padding-right: 0;
     }
 
     .cmp-accordion__button {
@@ -75,22 +72,27 @@
       font-size: toRem(20);
       font-weight: 700;
       line-height: 20px;
-      @include respond-to-min($phone) {
+      @include respond-to-min($desktop) {
         padding: 30px 25px;
       }
+      @include respond-to-max($tablet) {
+        padding: 30px 0;
+      }
       @include respond-to-max($phone) {
-        padding: 15px 7px;
+        padding: 15px 0;
       }
     }
     .cmp-accordion__panel--expanded {
       border: none;
-      @include respond-to-min($phone) {
+      @include respond-to-min($desktop) {
         padding: 10px 25px;
+      }
+      @include respond-to-max($tablet) {
+        padding: 10px 0;
       }
     }
   }
 }
-
 
 .faq-left-menu {
   position: relative;
