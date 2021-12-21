@@ -3,6 +3,10 @@
   min-height: toRem(525);
   position: relative;
 
+  .container {
+    max-width: toRem(1224);
+  }
+
   @include respond-to-max($phone) {
     height: toRem(528);
     margin-bottom: toRem(48);
@@ -50,10 +54,6 @@
 
     @include respond-to-max($tablet) {
       width: 100%;
-    }
-
-    @include respond-to-min($desktop) {
-      padding: 0 toRem(32);
     }
 
     .cmp-tabs__tablist {
@@ -167,5 +167,9 @@
         }
       }
     }
+  }
+
+  .cmp-tabs__tabpanel--active {
+    margin-left: -24px;
   }
 }

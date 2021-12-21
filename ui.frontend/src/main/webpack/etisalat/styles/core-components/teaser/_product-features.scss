@@ -1,9 +1,9 @@
 .product-features {
   &--spacing {
-    padding: 0 16px !important;
+    padding: 0 toRem(16) !important;
 
     @include respond-to-min($tablet) {
-      padding: 0 12px !important;
+      padding: 0 toRem(12) !important;
     }
   }
 
@@ -22,16 +22,6 @@
 
   &__content {
     margin-top: $margin-step-3 !important;
-
-    @include respond-to-max($tablet) {
-      margin-top: $margin-step-2 !important;
-    }
-
-    &:last-child {
-      .cmp-teaser {
-        border-bottom: $border-step-0;
-      }
-    }
 
     .cmp-teaser {
       border-bottom: $border-step-1 solid $light-sand-brown;
@@ -75,7 +65,7 @@
           min-width: toRem(104);
         }
 
-        *[lang="ar"] *[dir="rtl"] & {
+        @include rtlBlock {
           margin-right: toRem(10);
         }
 
@@ -90,6 +80,16 @@
 
         @include ts-step-0;
         @include font-family-lato;
+      }
+    }
+
+    @include respond-to-max($tablet) {
+      margin-top: $margin-step-2 !important;
+    }
+
+    &:last-child {
+      .cmp-teaser {
+        border-bottom: $border-step-0;
       }
     }
   }

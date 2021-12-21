@@ -2,7 +2,6 @@
   background: $white;
   border-radius: 4px;
   box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-  
 }
 
 @mixin media-box-shadow {
@@ -26,7 +25,7 @@
 }
 
 @mixin font-family-lato {
-  font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+  font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
 }
 
 @mixin font-family-lato-withoutge {
@@ -34,7 +33,7 @@
 }
 
 @mixin font-family-Neotech {
-  font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+  font-family: Neotech-medium, "GE SS Two", Roboto, Arial, sans-serif;
 }
 
 @mixin font-family-Neotech-ge {
@@ -46,34 +45,39 @@
 }
 
 @mixin font-family-Bariol {
-  font-family: Bariol, GE SS Two, Arial, sans-serif;
+  font-family: Bariol, "GE SS Two", Arial, sans-serif;
 }
 
-//*Break Points
+// *Break Points
 
-// 320px — 480px: Mobile devices
 @media (max-width: 480px) {
+  // 320px — 480px: Mobile devices
 }
+
 $screen-sm-max: 480px;
 
-// 481px — 768px: iPads, Tablets
 @media (max-width: 768) {
+  // 481px — 768px: iPads, Tablets
 }
+
 $screen-md-max: 768px;
 
-// 769px — 1024px: Small screens, laptops
 @media (max-width: 1024px) {
+  // 769px — 1024px: Small screens, laptops
 }
+
 $screen-lg-max: 992px;
 
-// 1025px — 1200px: Desktops, large screens
 @media (max-width: 1200px) {
+  // 1025px — 1200px: Desktops, large screens
 }
+
 $screen-xl-max: 1200px;
 
-// 1201px and more —  Extra large screens, TV
 @media (max-width: 1201px) {
+  // 1201px and more —  Extra large screens, TV
 }
+
 $screen-xxl-max: 1201px;
 
 // 320px — 480px: Mobile devices
@@ -110,7 +114,7 @@ $screen-xxl-max: 1201px;
   }
 }
 
-//common property for image
+// common property for image
 @mixin context-nav-img {
   background-repeat: no-repeat;
   display: block;
@@ -134,41 +138,12 @@ $screen-xxl-max: 1201px;
   width: 0.45em;
 }
 
-@mixin font-family-lato {
-  font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-}
-
-@mixin font-family-Neotech {
-  font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
-}
-
-@mixin font-family-Neotech-ge {
-  font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
-}
-
-@mixin font-family-Neotech-roboto {
-  font-family: Neotech, Roboto, Arial, sans-serif;
-}
-
-@mixin font-family-Bariol {
-  font-family: Bariol, GE SS Two, Arial, sans-serif;
-}
-
 @mixin font-family-Helvetica {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-//common property for image
-@mixin context-nav-img {
-  background-repeat: no-repeat;
-  display: block;
-  height: 4rem;
-  margin: auto;
-  margin-top: 15px;
-  width: 4rem;
-}
+// common css for btn
 
-//common css for btn
 @mixin primary-btn {
   background-color: $white;
   border-color: $darkest-night;
@@ -196,7 +171,7 @@ $screen-xxl-max: 1201px;
   display: inline-block;
   font-size: $font14;
   font-weight: 700;
-  letter-spacing: 0.14285714em;
+  letter-spacing: toRem(2);
   line-height: 3rem;
   outline: 0;
   padding: 0 0.5rem;
@@ -215,13 +190,7 @@ $screen-xxl-max: 1201px;
   white-space: nowrap;
 }
 
-/* @inculde
-.test{
-    @include truncate(40px);
- }
- */
-
-//media query
+// media query
 @mixin respond-to-max($width) {
   @media screen and (max-width: $width) {
     @content;
@@ -239,9 +208,6 @@ $screen-xxl-max: 1201px;
     @content;
   }
 }
-
-//@include respond-to-min($tablet){ }
-//@include respond-to-max($tablet){ }
 
 // Clearfix
 
@@ -281,25 +247,8 @@ $screen-xxl-max: 1201px;
 }
 
 /* @include pseudo() */
-
 @mixin input-placeholder {
   &.placeholder {
-    @content;
-  }
-
-  &:-moz-placeholder {
-    @content;
-  }
-
-  &::-moz-placeholder {
-    @content;
-  }
-
-  &:-ms-input-placeholder {
-    @content;
-  }
-
-  &::-webkit-input-placeholder {
     @content;
   }
 }
@@ -314,7 +263,7 @@ $screen-xxl-max: 1201px;
 
 /* @include align-image() */
 
-//font size PX into REM
+// font size PX into REM
 @function calculateRem($size) {
   $remSize: $size / 16px;
 
@@ -322,7 +271,7 @@ $screen-xxl-max: 1201px;
 }
 
 @mixin fontSize($size) {
-  font-size: $size; //Fallback in px
+  font-size: $size; // Fallback in px
   font-size: calculateRem($size);
 }
 
@@ -333,11 +282,6 @@ $screen-xxl-max: 1201px;
 
   @return $remValue;
 }
-
-// .box {
-//     width: toRem(400);
-//     height: toRem(400);
-// }
 
 @mixin background-icon() {
   background-repeat: no-repeat;
@@ -375,12 +319,12 @@ $screen-xxl-max: 1201px;
 }
 
 @mixin img-cover {
-  position: absolute;
+  bottom: -9999px;
   left: -9999px;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
   right: -9999px;
   top: -9999px;
-  bottom: -9999px;
-  margin: auto;
-  min-width: 100%;
-  min-height:100%;
 }

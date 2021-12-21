@@ -17,16 +17,15 @@
 
 .cmp-teaser__description {
   ul li {
-    padding-left: 20px;
     color: $dark-gray;
-
-    @include font-family-lato;
-
     font-size: $font20;
     font-weight: get-font-weight("regular");
     line-height: toRem(20);
     margin: 0 0 toRem(8);
+    padding-left: 20px;
     position: relative;
+
+    @include font-family-lato;
   }
 
   li {
@@ -50,8 +49,8 @@
     font-weight: get-font-weight("medium");
     letter-spacing: toRem(1.6);
     line-height: toRem(16);
-    position: relative;
     padding: toRem(2.85);
+    position: relative;
     text-transform: uppercase;
 
     &::before {
@@ -172,8 +171,8 @@
   .nav-view-wrapp {
     &.panel {
       & > a {
-        font-size: $font16;
         color: $main-green;
+        font-size: $font16;
 
         &::before {
           border: solid $grey4;
@@ -334,12 +333,12 @@
 
   .cmp-tabs__tab {
     align-items: center;
+    border-bottom: none;
     border-left: none;
     border-left: toRem(4) solid transparent;
     display: flex;
     font-size: toRem(20);
     height: toRem(90);
-    border-bottom: none;
 
     // color: $steel-grey;
     line-height: toRem(25);
@@ -808,26 +807,17 @@
       @include font-family-lato;
     }
 
-    .cmp-tabs__tab--active .cmp-tabs__default-icon {
-      display: inline-block !important;
-
-      @include rtlBlock() {
-        margin-left: toRem(30);
-        margin-right: 0;
-      }
-    }
-
     .cmp-tabs__tab--active img.cmp-tabs__active-icon {
       display: none;
     }
 
     .cmp-tabs__tab {
-      font-size: $font18;
       align-items: center;
       border: 0;
       color: $gray-fill;
       display: flex;
       flex-direction: row-reverse;
+      font-size: $font18;
       justify-content: flex-end;
       line-height: toRem(18);
       margin: auto 0;
@@ -860,12 +850,28 @@
       }
 
       &--active {
+        color: $main-green;
+        font-size: $font18 !important;
+        font-weight: get-font-weight("bold");
+        position: relative;
+
+        @include font-family-lato;
+
+        @include rtlBlock() {
+          font-weight: get-font-weight("light");
+        }
+
         .cmp-tabs__active-icon {
           display: block;
         }
 
         .cmp-tabs__default-icon {
           display: none !important;
+
+          @include rtlBlock() {
+            margin-left: toRem(30);
+            margin-right: 0;
+          }
         }
       }
     }
@@ -909,6 +915,10 @@
         position: relative;
         width: 50%;
 
+        @include rtlBlock() {
+          padding: toRem(24) toRem(24) toRem(64) toRem(40);
+        }
+
         @include font-family-lato;
       }
     }
@@ -917,19 +927,6 @@
       border-radius: toRem(5) 0 0 toRem(5);
       height: toRem(428);
       width: 100%;
-    }
-
-    .cmp-tabs__tab--active {
-      color: $main-green;
-      font-weight: get-font-weight("bold");
-      font-size: $font18 !important;
-      position: relative;
-
-      @include font-family-lato;
-
-      @include rtlBlock() {
-        font-weight: get-font-weight("light");
-      }
     }
 
     .panel-collapse {
@@ -943,12 +940,6 @@
 
       .cmp-teaser__action-container {
         margin: toRem(16) 0;
-      }
-    }
-
-    .cmp-teaser__content {
-      @include rtlBlock() {
-        padding: toRem(24) toRem(24) toRem(64) toRem(40);
       }
     }
   }
@@ -990,13 +981,12 @@
 
   .cmp-text p {
     color: $gray;
-
-    @include font-family-lato;
-
     font-size: toRem(16);
     line-height: toRem(26);
     margin-bottom: toRem(20);
     margin-top: toRem(20);
+
+    @include font-family-lato;
   }
 }
 
@@ -1021,7 +1011,7 @@
     padding-right: toRem(30);
   }
 
-  ul:nth-type(1) {
+  ul:nth-of-type(1) {
     margin-top: 2rem;
   }
 }
@@ -1060,7 +1050,6 @@
     svg,
     img {
       height: toRem(40);
-
       width: toRem(35);
 
       @include respond-to-min($tablet) {
@@ -1072,12 +1061,12 @@
       }
     }
 
-    &__default-icon {
+    .cmp-tabs__active-icon {
       display: block;
     }
 
-    &__active-icon {
-      display: none;
+    .cmp-tabs__default-icon {
+      display: none; // due to css overriding
     }
 
     &--active {
@@ -1088,7 +1077,7 @@
       }
 
       .cmp-tabs__default-icon {
-        display: none !important; // due to css overriding
+        display: none; // due to css overriding
       }
     }
   }
