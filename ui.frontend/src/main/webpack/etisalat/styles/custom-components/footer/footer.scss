@@ -227,6 +227,10 @@
 	@include respond-to-min($desktop) {
       margin-bottom: 1rem;
       text-align: left;
+
+	  @include rtlBlock(){
+		  text-align: right;
+	  }
     }
 }
 
@@ -264,6 +268,10 @@
   .footer-links-logo-section .copyright.desktop {
     display: block;
     text-align: left;
+
+	@include rtlBlock(){
+		text-align: right;
+	}
   }
 }
 
@@ -1163,13 +1171,24 @@
 	margin-bottom: 1.5rem
 }
 
-[lang=ar] [dir=rtl] .footer-links-logo-section .footer-links-nav li a {
-	padding-right: 0;
-	margin-right: 0;
-	padding-left: 1.5rem;
-	margin-left: 1.5rem;
-	border-right: 0;
-	border-left: 1px solid #e5e5e5
+.footer-links-logo-section .footer-links-nav li {
+  @include rtlBlock() {
+    &:first-child {
+      a {
+        padding-right: 0;
+        margin-right: 0;
+        border-right: 0;
+      }
+    }
+
+    &:last-child {
+      a {
+        padding-right: toRem(24);
+        margin-right: toRem(24);
+        border-right: toRem(1) solid $white-2;
+      }
+    }
+  }
 }
 
 [lang=ar] [dir=rtl] .footer-links-logo-section li:last-child a {

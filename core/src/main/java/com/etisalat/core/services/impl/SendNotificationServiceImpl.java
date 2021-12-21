@@ -21,6 +21,11 @@ import org.slf4j.LoggerFactory;
 
 import com.etisalat.core.services.SendNotificationConfiguration;
 import com.etisalat.core.services.SendNotificationService;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 @Component(service = SendNotificationService.class, immediate = true)
 @Designate(ocd = SendNotificationConfiguration.class)
@@ -32,6 +37,9 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 	private static final String REQUEST_PROPERTY = "application/json";
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String UTF = "UTF-8";
+	private static final String CAPTCHA_NAME = "g-recaptcha-response";
+	private static final String CAPTCHA_NULL = "No captcha response found";
+	private static final String CLIENT_CAPTCHA_VALUE = "HDR-GOOGLE-CLIENT-TOKEN-KEY";
 
 	@Reference
 	private ConfigurationAdmin configAdmin;
@@ -62,11 +70,12 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 			HttpURLConnection connection = (HttpURLConnection) postUrl.openConnection();        
 			connection.setRequestMethod(POST_METHOD);
 			connection.setRequestProperty(CONTENT_TYPE,REQUEST_PROPERTY);
+			connection.setRequestProperty(CLIENT_CAPTCHA_VALUE,getCaptchaResponse(json));
 			connection.setUseCaches(false);
 			connection.setDoOutput(true);
 			connection.setConnectTimeout(getTimeOut());
 			connection.setReadTimeout(getTimeOut());
-			
+
 			BufferedWriter wr = new BufferedWriter(
 					new OutputStreamWriter(connection.getOutputStream(), UTF));
 			wr.write(json);
@@ -83,25 +92,38 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 				}		
 				bufferedReader.close();
 				LOG.debug("Send Notification API Request Created and response code is {}", responseCode);
-			} 
-			else {
-				LOG.error("Request Failed for Send Notification Service and response code is "+responseCode);
-
 			}
-
+			LOG.debug("Send Notification API Request response code is  {}", responseCode);
 			connection.disconnect();
 			return responseCode;
-
 		}
-
 		catch(SocketTimeoutException e) {
-			LOG.error("Send Notification Service Time Out " + e.getMessage());
+			LOG.error("Send Notification Service Time Out {} ",e.getMessage());
 			return HttpURLConnection.HTTP_CLIENT_TIMEOUT ;
 		}
 		catch(IOException e) {
-			LOG.error("Send Notification Service Connection Failed " + e.getMessage());
+			LOG.error("Send Notification Service Connection Failed {}", e.getMessage());
 			return HttpURLConnection.HTTP_NOT_FOUND;
 		}
+	}
+
+	@Override
+	public String getCaptchaResponse(String json) {
+		String captchaValue = CAPTCHA_NULL;
+		try {
+			if(null != json) {
+				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();		
+				JsonElement captchaElement = jsonObject.get(CAPTCHA_NAME);
+				captchaValue = captchaElement.getAsString();
+			}
+		}
+		catch (JsonSyntaxException e) {
+			LOG.error("Send notification service Json Syntax error {}", e.getMessage());
+		}
+		catch (JsonParseException e) {
+			LOG.error("Send notification service json parse error {}", e.getMessage());
+		}
+		return captchaValue;
 	}
 
 }
