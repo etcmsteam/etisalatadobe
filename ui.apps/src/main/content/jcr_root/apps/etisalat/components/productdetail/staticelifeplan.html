@@ -29,11 +29,11 @@
             </sly>
             <div class="cmp__bg-cards_product-grid">
               <div class="row">
-                <div class="${carousel.items.size > 2 ? 'col-xs-12' : ''}">
+                <div class="${carousel.items.size >= 2 ? 'col-xs-12' : ''}">
                   <div class="bg-cards related-products">
                     <div class="row row-tiles-table ">
-                      <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 2 ? 'swiper-container swiper-container-horizontal' : ''}">
-                        <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 2 ? 'swiper-wrapper' : ''}" id="product">
+                      <div class="${!wcmmode.edit && properties.slider && carousel.items.size >= 2 ? 'swiper-container swiper-container-horizontal' : ''}">
+                        <div class="${!wcmmode.edit && properties.slider && carousel.items.size >= 2 ? 'swiper-wrapper' : ''}" id="product">
                           <sly data-sly-test="${properties.mainProductTitle}">
                             <div data-sly-repeat.item="${carousel.items}" class="swiper-slide col-lg-6 col-md-4 col-xs-12 col-sm-6 mb-3" data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
                           </sly>
