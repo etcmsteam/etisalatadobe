@@ -51,19 +51,18 @@
       flex-direction: row-reverse;
       .next.next-with--topcarousel,
       .prev.prev-with--topcarousel {
+        @include respond-to-min-max($desktop-min, $tablet) {
+          margin-top: toRem(-168);
+          right: 0;
+        }
         position: absolute;
-        margin-top: toRem(-112);
+        margin-top: toRem(-152);
       }
 
     .next-with--topcarousel {
-      margin-top: -7.5em;
+      margin-top: toRem(-112);
       left: auto;
       right: toRem(-32);
-
-      @include respond-to-min-max($desktop-min, $tablet) {
-        margin-top: toRem(-120);
-        right: 0;
-      }
 
       @include respond-to-min-max($desktop-wide, $desktop) {
         margin-top: -9.5em;
@@ -81,7 +80,7 @@
     }
 
     .prev-with--topcarousel {
-      margin-top: -7.5em;
+      margin-top: toRem(-168);
       z-index: 10;
       left: -3.1%;
       @include respond-to-min-max($desktop-min, $tablet) {
@@ -218,12 +217,13 @@
 
     .title-wrap {
       height: auto;
-      margin-bottom: 1.65rem;
+      margin-bottom: toRem(16);
       font-size: toRem(24) !important;
     }
 
     .description {
       margin-bottom: 1.3rem;
+      padding-left: toRem(20);
     }
   }
 
@@ -231,7 +231,7 @@
     text-align: left;
 
     @include respond-to-max($tablet) {
-      margin-left: 2.5rem;
+      margin-left: 0;
     }
 
     .title-wrap,
@@ -316,6 +316,11 @@
 
   .learn-more-wrap:hover {
     border-color: #719e19;
+  }
+  @include respond-to-max($tablet){
+    .promotionaltile p{
+      padding-right: 15px;
+    }
   }
 }
 
