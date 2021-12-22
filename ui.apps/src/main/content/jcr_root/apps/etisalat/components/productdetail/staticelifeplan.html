@@ -1,6 +1,5 @@
 <template  data-sly-template.elifePlan="${ @ carousel,properties}">
        <div class="smart-home-elife-slider plans more-info-wrapper product-grid-text-section">
-        <div class="container">
           <div class="row">
             <div data-sly-test="${properties.mainProductTitle}" class="col-xs-12 col-md-${carousel.items.size >= 2 ? '3' : '6'}">
               <div class="main-text-section">
@@ -29,11 +28,11 @@
             </sly>
             <div class="cmp__bg-cards_product-grid">
               <div class="row">
-                <div class="${carousel.items.size > 2 ? 'col-xs-12' : ''}">
+                <div class="${carousel.items.size >= 2 ? 'col-xs-12' : ''}">
                   <div class="bg-cards related-products">
                     <div class="row row-tiles-table ">
-                      <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 2 ? 'swiper-container swiper-container-horizontal' : ''}">
-                        <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 2 ? 'swiper-wrapper' : ''}" id="product">
+                      <div class="${!wcmmode.edit && properties.slider && carousel.items.size >= 2 ? 'swiper-container swiper-container-horizontal' : ''}">
+                        <div class="${!wcmmode.edit && properties.slider && carousel.items.size >= 2 ? 'swiper-wrapper' : ''}" id="product">
                           <sly data-sly-test="${properties.mainProductTitle}">
                             <div data-sly-repeat.item="${carousel.items}" class="swiper-slide col-lg-6 col-md-4 col-xs-12 col-sm-6 mb-3" data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
                           </sly>
@@ -52,11 +51,9 @@
                   <a href="#" class="btn btn-default showNoContract" data-sly-test="${properties.enableButton}"> ${properties.hideShowLabel}</a>
                 </div>
               </div>
-            </div>
-            <!-- / .container -->
+            </div>           
           </div>
           <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar',
             appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}" data-sly-test="${wcmmode.edit || wcmmode.preview}"></sly>
-        </div>
       </div>
 </template>

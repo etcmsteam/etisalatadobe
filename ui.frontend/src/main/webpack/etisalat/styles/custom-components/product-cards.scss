@@ -234,6 +234,7 @@
   }
   &__price-vat {
     margin-top: $margin-step-1;
+    line-height: 1.4;
   }
 
   &__old-price {
@@ -481,6 +482,11 @@
       font-size: $font12;
       margin-bottom: $margin-step-0;
     }
+    #{$parent}__price-vat {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   &--plan {
@@ -686,31 +692,44 @@ hr.dashed {
 }
 
 .product-grid-text-section {
-  &.product-device-text{
+  &.product-device-text,
+  &.smart-home-elife-slider{
     .main-text-section {
       padding-left: $padding-step-0 !important;
       padding-right: $padding-step-0 !important;
-      
+      padding-bottom: $padding-step-3;
     }
   }
+  
 }
 [lang="ar"] [dir="rtl"]  {
- 
+ .product-grid-text-section {
+    &.smart-home-elife-slider,
+    &.product-device-text,
     .product-card--device {
       .product-card__price-vat {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      .product-card__old-price {
-        float: right;
-        margin-left: toRem(4);
-        margin-right: $margin-step-0;
-        width: 100%;
+        display: flex;
+        align-items: center;
+        .product-card__old-price {
+          float: right;
+          margin-left: $margin-step-1;
+          margin-right: $margin-step-0;
+        }
       }
-    }
-    }
-  
-  .product-grid-text-section {
+      .p2 {
+          p {
+            margin-right: $margin-step-0;
+          }
+      }
+      // nav arrow buttons
+      .table-swiper-button-next,
+      .table-swiper-button-prev { 
+        float: right !important;
+      } 
+      .table-swiper-button-next {
+        right: toRem(-70) !important;
+        margin-right: 0 !important;
+      }
       .btn-text:before { 
         left:toRem(-15);
         transform: translateY(-50%) rotate(135deg);
@@ -718,5 +737,18 @@ hr.dashed {
       .product-card__price {
         @include font-family-Neotech;
       }
+    }
+    // nav arrow
+    &.plans.product-device-text{
+       .table-swiper-button-next {
+        background-position-x: 100% !important;
+        right: toRem(-54) !important;
+      }   
+    }
+    &.product-card--device {
+      .product-card__price-vat {
+        display: block;
+      }
+    }
   }
 }
