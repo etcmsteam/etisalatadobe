@@ -25,10 +25,6 @@
         margin-bottom: toRem(20);
       }
 
-      .swiper-wrapper {
-        display: block !important;
-      }
-
       .scrollbar {
         display: none;
       }
@@ -335,31 +331,32 @@
       padding: 1.5rem;
       padding-bottom: 3rem;
       text-align: left;
-    }
-  }
+      h2 {
+        color: $almost-black;
+        font-size: toRem(18);
+        line-height: toRem(24);
+        margin: 0;
+        margin-bottom: 0.5rem;
 
-  .tile-box-tile .tile-box-body h2 {
-    color: $almost-black;
-    font-size: toRem(18);
-    line-height: toRem(24);
-    margin: 0;
-    margin-bottom: 0.5rem;
-
-    @include respond-to-min($desktop) {
-      font-size: toRem(28);
-      line-height: toRem(35);
-      margin-bottom: 1rem;
+        @include respond-to-min($desktop) {
+          font-size: toRem(28);
+          line-height: toRem(35);
+          margin-bottom: 1rem;
+        }
+      }
     }
   }
 
   .tile_card-shadow {
     .tile-boxes-image-wrapper {
       height: toRem(160);
-    }
+      border-radius: toRem(4) toRem(4) 0 0;
+      margin-bottom: 0;
 
-    .tile-boxes-image-wrapper img {
-      max-width: inherit !important;
-      width: auto;
+      img {
+        max-width: inherit !important;
+        width: auto;
+      }
     }
 
     .tile-box-body {
@@ -376,11 +373,6 @@
       *[lang="ar"] *[dir="rtl"] & {
         text-align: right;
       }
-    }
-
-    .tile-boxes-image-wrapper {
-      border-radius: toRem(4) toRem(4) 0 0;
-      margin-bottom: 0;
     }
 
     .tile-boxes-title-small h2 {
@@ -487,7 +479,6 @@
   }
   .btn-text {
     &::before {
-      
       @include rtlBlock() {
         transform: translateY(-50%) rotate(135deg);
         left: -15px;
