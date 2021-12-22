@@ -39,7 +39,7 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 	private static final String UTF = "UTF-8";
 	private static final String CAPTCHA_NAME = "g-recaptcha-response";
 	private static final String CAPTCHA_NULL = "No captcha response found";
-	private static final String CLIENT_CAPTCHA_VALUE = "HDR-GOOGLE-CLIENT-TOKEN-KEY";
+	private static final String CLIENT_CAPTCHA_VALUE = "hdr-google-client-token-key";
 
 	@Reference
 	private ConfigurationAdmin configAdmin;
