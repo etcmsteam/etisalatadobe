@@ -54,8 +54,8 @@ public class CareerGreetingsImpl implements CareerGreetings {
   protected void init() {
     LOG.info("current resource is {}", currentResource.getPath());
     if (currentResource.hasChildren()) {
-      Resource coverNode = currentResource.getChild(COVER_NODE);
-      Resource imageNode = currentResource.getChild(IMAGE_NODE);
+      final Resource coverNode = currentResource.getChild(COVER_NODE);
+      final Resource imageNode = currentResource.getChild(IMAGE_NODE);
       if (null != coverNode) {
         coverImage = coverNode.adaptTo(LinkModel.class);
       }

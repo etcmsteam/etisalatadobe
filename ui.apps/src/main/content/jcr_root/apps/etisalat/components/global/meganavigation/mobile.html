@@ -33,11 +33,11 @@
              <div data-sly-test="${!meganavigation.topNavIconMenuItems.isEmpty 
                  && meganavigation.topNavIconMenuItems.size > 0}" data-sly-list.topRightItems="${meganavigation.topNavIconMenuItems}" class="col-xs-12">
                  <a data-sly-test="${!topRightItems.openmodalwindow}" class="menu-account-link global-overlay" href="${topRightItems.navigationLink}">
-                    <img data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
+                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
                     <span> ${topRightItems.navigationTitle}</span>       
                  </a>                 
                   <a data-label="${meganavigation.topNavResource.name}" data-sly-test="${topRightItems.openmodalwindow}" class="menu-account-link global-overlay btn-modal">
-                    <img data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
+                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
                     <span> ${topRightItems.navigationTitle}</span>       
                  </a>
                  <!-- Modal content start-->                      
@@ -86,8 +86,10 @@
                data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size > 1}" 
                class="nav-items nav-level-1 mega-lang-dropdown-mob">
                  <li class="nav-item-heading white-bg mega-dropdown-mob open">
-                     <a class="${page.language == 'ar' ? 'arabic-lang-content' :''}" href="#"> ${properties.langMobileLabel}</a>  <img class="nav-link-arrow" src="${properties.linkArrowImage}"/>                      
-                  </li>
+                   <a class="${page.language == 'ar' ? 'arabic-lang-content' :''}"
+                      href="#"> ${properties.langMobileLabel}</a>
+                   <img alt="${properties.langMobileLabel}" class="nav-link-arrow" src="${properties.linkArrowImage}"/>
+                 </li>
                  <li class="mega-dropdown-mob-menu" style="display: list-item;">
                    <ul data-sly-list.langItem="${meganavigation.languageItems}" role="menu">
                          <li class="nav-item">

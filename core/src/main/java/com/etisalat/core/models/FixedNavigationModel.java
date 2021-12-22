@@ -16,53 +16,54 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Model(adaptables = { Resource.class,
-		SlingHttpServletRequest.class })
+@Model(adaptables = {Resource.class,
+    SlingHttpServletRequest.class})
 public class FixedNavigationModel {
 
-	private static final Logger LOG = LoggerFactory.getLogger(FixedNavigationModel.class);
+  private static final Logger LOG = LoggerFactory.getLogger(FixedNavigationModel.class);
 
-	@SlingObject
-	private SlingHttpServletRequest request;
+  @SlingObject
+  private SlingHttpServletRequest request;
 
-	public static final String HTML_EXTENSION = ".html";
+  public static final String HTML_EXTENSION = ".html";
 
-	private static final String MULTIFIELD_NODE = "fixedItems";
+  private static final String MULTIFIELD_NODE = "fixedItems";
 
-	@SlingObject
-	@Optional
-	protected Resource currentResource;
+  @SlingObject
+  @Optional
+  protected Resource currentResource;
 
-	private List<FixedNavigtaionMultifieldModel> fixedNav;
+  private List<FixedNavigtaionMultifieldModel> fixedNav;
 
-	@PostConstruct
-	protected void init() {
-		fixedNav = new ArrayList<>();
-			LOG.info("current resource is {}", currentResource.getPath());
-			if (currentResource.hasChildren()) {
-				Resource multifieldChild = currentResource.getChild(MULTIFIELD_NODE);	
-				if(null != multifieldChild) {
-					Iterator<Resource> multiItr = multifieldChild.listChildren();
-					while (multiItr.hasNext()) {
-						Resource res = multiItr.next();
-						FixedNavigtaionMultifieldModel modelObj = res.adaptTo(FixedNavigtaionMultifieldModel.class);
-						setExtensionToLink(modelObj);
-						fixedNav.add(modelObj);
-					}
-				}
-			}		
-	}
+  @PostConstruct
+  protected void init() {
+    fixedNav = new ArrayList<>();
+    LOG.info("current resource is {}", currentResource.getPath());
+    if (currentResource.hasChildren()) {
+      final Resource multiFieldChild = currentResource.getChild(MULTIFIELD_NODE);
+      if (null != multiFieldChild) {
+        final Iterator<Resource> multiItr = multiFieldChild.listChildren();
+        while (multiItr.hasNext()) {
+          Resource res = multiItr.next();
+          FixedNavigtaionMultifieldModel modelObj = res
+              .adaptTo(FixedNavigtaionMultifieldModel.class);
+          setExtensionToLink(modelObj);
+          fixedNav.add(modelObj);
+        }
+      }
+    }
+  }
 
-	public List<FixedNavigtaionMultifieldModel> getFixedNav() {
-		return Collections.unmodifiableList(fixedNav);
-	}
+  public List<FixedNavigtaionMultifieldModel> getFixedNav() {
+    return Collections.unmodifiableList(fixedNav);
+  }
 
-	private void setExtensionToLink(FixedNavigtaionMultifieldModel modelObj) {
-		String cardLink = StringUtils.isNotBlank(modelObj.getNavigationLink()) ? modelObj.getNavigationLink()
-				: StringUtils.EMPTY;
-		if (cardLink.startsWith("/content/") && !StringUtils.contains(cardLink, HTML_EXTENSION)) {
-			modelObj.setNavigationLink(cardLink + HTML_EXTENSION);
-		}
+  private void setExtensionToLink(FixedNavigtaionMultifieldModel modelObj) {
+    String cardLink = modelObj.getNavigationLink();
+    if (StringUtils.isNotBlank(cardLink) && cardLink.startsWith("/content/") && !StringUtils
+        .contains(cardLink, HTML_EXTENSION)) {
+      modelObj.setNavigationLink(cardLink + HTML_EXTENSION);
+    }
 
-	}
+  }
 }

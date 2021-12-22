@@ -1,3 +1,7 @@
+$(document).ready(function () {
+   //footer copyright year in dynamic
+   $(".footer-copyright-year").text(new Date().getFullYear());
+});
 (function () {
   define(["lodash", "select2", "swiper"], function (_) {
     const position = "{lat: 25.208549, lng: 55.271945}";
@@ -1565,8 +1569,7 @@
         positionOnMyLocation();
       }, 1000);
 
-      //footer copyright year in dynamic
-      $(".footer-copyright-year").html(new Date().getFullYear());
+     
     });
 
     //};

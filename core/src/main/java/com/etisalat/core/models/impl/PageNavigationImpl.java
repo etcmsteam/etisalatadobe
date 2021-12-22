@@ -15,40 +15,41 @@ import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
 import com.etisalat.core.models.PageNavigation;
 import com.etisalat.core.util.CommonUtility;
 
-@Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = {
-		PageNavigation.class }, resourceType = { PageNavigationImpl.RESOURCE_TYPE })
+@Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
+    PageNavigation.class}, resourceType = {PageNavigationImpl.RESOURCE_TYPE})
 public class PageNavigationImpl implements PageNavigation {
-	
-	/**
-	 * The resource type.
-	 */
-	protected static final String RESOURCE_TYPE = "etisalat/components/pagenavigation";
-	
-	private static final String PAGE_CHILD_ITEMS = "pageItems";
-	
-	/**
-	 * The current currentRes.
-	 */
-	@SlingObject
-	protected Resource currentRes;
 
-	@SlingObject
-	private ResourceResolver resourceResolver;
+  /**
+   * The resource type.
+   */
+  protected static final String RESOURCE_TYPE = "etisalat/components/pagenavigation";
 
-	@Override
-	public List<FixedNavigtaionMultifieldModel> getPageNavItems() {
-		Resource pageItemRes = currentRes.getChild(PAGE_CHILD_ITEMS);
-		List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
-		if (null != pageItemRes) {
-			pageItemRes.listChildren().forEachRemaining(resource -> {
-				FixedNavigtaionMultifieldModel pageModel = resource.adaptTo(FixedNavigtaionMultifieldModel.class);
-				if (StringUtils.isNotBlank(pageModel.getNavigationLink())) {
-					pageModel.setNavigationLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
-				}
-				pageItemList.add(pageModel);
-			});
-		}
-		return Collections.unmodifiableList(pageItemList);
-	}
+  private static final String PAGE_CHILD_ITEMS = "pageItems";
 
+  /**
+   * The current currentRes.
+   */
+  @SlingObject
+  protected Resource currentRes;
+
+  @SlingObject
+  private ResourceResolver resourceResolver;
+
+  @Override
+  public List<FixedNavigtaionMultifieldModel> getPageNavItems() {
+    Resource pageItemRes = currentRes.getChild(PAGE_CHILD_ITEMS);
+    List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
+    if (null != pageItemRes) {
+      pageItemRes.listChildren().forEachRemaining(resource -> {
+        FixedNavigtaionMultifieldModel pageModel = resource
+            .adaptTo(FixedNavigtaionMultifieldModel.class);
+        if (StringUtils.isNotBlank(pageModel.getNavigationLink())) {
+          pageModel.setNavigationLink(CommonUtility
+              .appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
+        }
+        pageItemList.add(pageModel);
+      });
+    }
+    return Collections.unmodifiableList(pageItemList);
+  }
 }
