@@ -63,7 +63,7 @@ $(function () {
   const DESKTOP_HW = FOOTER_TOP - (FOOTER_LINKS.height() - 230);
 
   $(window).scroll(function () {
-    let WINDOW_POS = $(window).scrollTop();
+    let WINDOW_POS = $(window).debounce();
       if (MOBILE_VIEW ? WINDOW_POS >= MOBILE_HW : WINDOW_POS >= DESKTOP_HW) {
         PANELS.removeClass(TRUE_CLS);
       } 
