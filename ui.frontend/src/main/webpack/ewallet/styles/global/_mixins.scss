@@ -1,25 +1,26 @@
 @mixin box-shadow {
   background: $white;
-  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
   border-radius: 4px;
+  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
 }
 
 // Clearfix
 
 @mixin clearFix() {
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: " ";
     display: table;
   }
 
-  &:after {
-    display: block;
+  &::after {
     clear: both;
+    display: block;
     height: 1px;
     margin-top: -1px;
     visibility: hidden;
   }
+
   & {
     *zoom: 1;
   }
@@ -39,6 +40,7 @@
   display: $display;
   position: $pos;
 }
+
 /* @include pseudo() */
 
 @mixin input-placeholder {
@@ -46,22 +48,23 @@
     @content;
   }
 
-  &:-moz-placeholder {
+  &:placeholder {
     @content;
   }
 
-  &::-moz-placeholder {
+  &::placeholder {
     @content;
   }
 
-  &:-ms-input-placeholder {
+  &:input-placeholder {
     @content;
   }
 
-  &::-webkit-input-placeholder {
+  &::input-placeholder {
     @content;
   }
 }
+
 /* @include input-placeholder() */
 
 @mixin align-image($position) {
@@ -69,11 +72,13 @@
     object-position: $position;
   }
 }
+
 /* @include align-image() */
 
 //font size PX into REM
 @function calculateRem($size) {
   $remSize: $size / 16px;
+
   @return #{$remSize}rem;
 }
 
@@ -81,10 +86,12 @@
   font-size: $size; //Fallback in px
   font-size: calculateRem($size);
 }
-/*h1 { @include fontSize(32px); } */
+
+/* h1 { @include fontSize(32px); } */
 
 @function toRem($value) {
   $remValue: ($value / 16) + rem;
+
   @return $remValue;
 }
 
@@ -94,18 +101,19 @@
 // }
 
 @mixin background-icon() {
-  content: "";
   background-repeat: no-repeat;
   background-size: 20px 20px;
-  position: absolute;
+  content: "";
+  height: 20px;
   left: 0;
+  position: absolute;
   top: 0;
   width: 20px;
-  height: 20px;
 }
+
 @mixin common-height-width {
-  width: 40px;
   height: 40px;
+  width: 40px;
 }
 
 //media query

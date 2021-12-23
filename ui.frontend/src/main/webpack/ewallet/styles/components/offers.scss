@@ -1,56 +1,65 @@
-/*Offer CSS start*/
+/* Offer CSS start */
 .offers-main-page {
+  margin-bottom: 20px;
+
+  h2 {
+    float: left;
+    line-height: 54px;
     margin-bottom: 20px;
-    h2 {
-      float: left;
+  }
+
+  a.button {
+    float: right;
+
+    @extend .btn;
+  }
+
+  li {
+    float: left;
+    margin-bottom: 40px;
+    margin-right: 2%;
+    width: 30%;
+
+    @mixin respond-to-min($tablet) {
+      margin-right: 0;
+      width: 100%;
+    }
+
+    h3 {
+      color: $link-color;
+      display: inline-block;
+      font-size: toRem(23);
+      font-weight: 700;
+      line-height: 26px;
+      width: 100%;
+    }
+
+    a.offer-text {
+      color: $link-color;
+      display: inline-block;
+      font-size: toRem(23);
+      font-weight: 700;
+      line-height: 26px;
+      width: 100%;
+    }
+
+    img {
+      border-radius: 8px 8px 0 0;
+      display: block;
       margin-bottom: 20px;
-      line-height: 54px;
+      max-width: 384px;
+      width: 100%;
     }
-    a.button {
-      float: right;
-      @extend .btn;
-    }
-    li {
-      float: left;
-      width: 30%;
-      margin-right: 2%;
-      margin-bottom: 40px;
-      @mixin respond-to-min($tablet) {
-        width: 100%;
-        margin-right: 0;
-      }
-      h3 {
-        color: $link-color;
-        font-size: toRem(23);
-        font-weight: 700;
-        line-height: 26px;
-        display: inline-block;
-        width: 100%;
-      }
-      a.offer-text {
-        font-size: toRem(23);
-        font-weight: 700;
-        line-height: 26px;
-        display: inline-block;
-        width: 100%;
-        color: $link-color;
-      }
-      img {
-        max-width: 384px;
-        border-radius: 8px 8px 0 0;
-        margin-bottom: 20px;
-        width: 100%;
-        display: block;
-      }
-      .date {
-        font-size: toRem(14);
-        line-height: 15px;
-        color: $gray-primary;
-        text-transform: uppercase;
-        display: block;
-        font-weight: 500;
-        margin-bottom: 0;
-        margin-top: 15px;
-      }
+
+    .date {
+      color: $gray-primary;
+      display: block;
+      font-size: toRem(14);
+      font-weight: 500;
+      line-height: 15px;
+      margin-bottom: 0;
+      margin-top: 15px;
+      text-transform: uppercase;
     }
   }
+}
