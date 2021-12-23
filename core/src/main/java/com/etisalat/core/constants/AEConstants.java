@@ -67,5 +67,12 @@ public final class AEConstants {
  public static final String CAPTCHA_NAME = "g-recaptcha-response";
  public static final String CAPTCHA_NULL = "No captcha response found";
  public static final String CLIENT_CAPTCHA_VALUE = "hdr-google-client-token-key";
+ 
+ /**
+  * private constructor to prevent instantiation of class.
+  */
+ private AEConstants() {
+
+ }
 
 }
