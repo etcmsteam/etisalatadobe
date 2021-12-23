@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.etisalat.core.constants.AEConstants;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -23,9 +24,7 @@ public class SiteSearchImpl implements SiteSearch {
 
 	public static final String RESOURCE_TYPE = "etisalat/components/search";
 
-	private static final String QUICKLINK_ITEMS = "quicklinks";
 
-	private static final String BRAND_ITEMS = "brandItems";
 
 	@SlingObject
 	@Optional
@@ -56,12 +55,12 @@ public class SiteSearchImpl implements SiteSearch {
 
 	@Override
 	public List<LinkModel> getQuickLinksItems() {
-		return Collections.unmodifiableList(getItems(QUICKLINK_ITEMS));
+		return Collections.unmodifiableList(getItems(AEConstants.QUICKLINKS));
 	}
 
 	@Override
 	public List<LinkModel> getBrandItems() {
-		return Collections.unmodifiableList(getItems(BRAND_ITEMS));
+		return Collections.unmodifiableList(getItems(AEConstants.BRAND_ITEMS));
 	}
 
 	public String getRedirectPage() {

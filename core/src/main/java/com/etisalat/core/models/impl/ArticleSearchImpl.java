@@ -25,6 +25,7 @@ import java.util.HashMap;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
+import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
@@ -39,30 +40,6 @@ public class ArticleSearchImpl implements ArticleSearch {
    * The resource type.
    */
   protected static final String RESOURCE_TYPE = "etisalat/components/articlelist";
-
-  private static final String PN_BUSINESS_BLOG_TAG = "businessBlogTag";
-
-  private static final String PN_ARTICLE_DATE = "articleDate";
-
-  private static final String PN_BLOG_SIZE = "blogsize";
-
-  private static final String PN_YOUTUBE_URL = "youTubeUrl";
-
-  private static final String PN_PLAYICON_TEXT = "playIconText";
-
-  private static final String PN_BLOGPOST = "blogpost";
-
-  private static final String PN_NEWSROOM = "newsroom";
-
-  private static final String PN_ARTICLE_TYPE = "articleType";
-
-  private static final String IMAGE = "image";
-
-  private static final String PN_BACK_TO_HOMELINK = "backToBusinessLink";
-
-  private static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-article-page-template";
-
-  private static final String PARENT_PAGE = "parentPage";
 
 
   /**
@@ -123,7 +100,7 @@ public class ArticleSearchImpl implements ArticleSearch {
       String articlePageType) {
     final Page page = res.adaptTo(Page.class);
     if (null != page && page.getProperties().get(NameConstants.PN_TEMPLATE, StringUtils.EMPTY)
-        .equals(BUSINESS_BLOG_TEMPLATE)) {
+        .equals(PageConstants.BUSINESS_BLOG_TEMPLATE)) {
       setChildPageDetails(res, page, pageDetailsList, articlePageType);
     }
 
@@ -143,7 +120,7 @@ public class ArticleSearchImpl implements ArticleSearch {
    */
   private void setChildPageDetails(Resource res, Page page,
       List<GenericListPageDetails> pageDetailsList, String articlePageType) {
-    if (!page.isHideInNav() && page.getProperties().get(PN_ARTICLE_TYPE, StringUtils.EMPTY)
+    if (!page.isHideInNav() && page.getProperties().get(AEConstants.PN_ARTICLE_TYPE, StringUtils.EMPTY)
         .equals(articlePageType)) {
       GenericListPageDetails pageDetails = new GenericListPageDetails();
       pageDetails.setThumbnailResource(res.getChild(PageConstants.JCR_CONTENT_IMAGE));
@@ -151,9 +128,9 @@ public class ArticleSearchImpl implements ArticleSearch {
       pageDetails.setDescription(page.getDescription());
       pageDetails
           .setPath(CommonUtility.appendHtmlExtensionToPage(resourceResolver, page.getPath()));
-      pageDetails.setTileSize(page.getProperties().get(PN_BLOG_SIZE, "3"));
-      pageDetails.setYouTubeUrl(page.getProperties().get(PN_YOUTUBE_URL, String.class));
-      pageDetails.setPlayIconText(page.getProperties().get(PN_PLAYICON_TEXT, String.class));
+      pageDetails.setTileSize(page.getProperties().get(AEConstants.PN_BLOG_SIZE, "3"));
+      pageDetails.setYouTubeUrl(page.getProperties().get(AEConstants.PN_YOUTUBE_URL, String.class));
+      pageDetails.setPlayIconText(page.getProperties().get(AEConstants.PN_PLAYICON_TEXT, String.class));
       setBusinessCategory(page, res, pageDetails);
       setBlogArticleDate(page, pageDetails);
       setBlogTileVideoID(res, pageDetails);
@@ -181,9 +158,9 @@ public class ArticleSearchImpl implements ArticleSearch {
    * @param pageDetails
    */
   private void setBlogArticleDate(Page page, GenericListPageDetails pageDetails) {
-    if (page.getProperties().containsKey(PN_ARTICLE_DATE) &&
-        null != page.getProperties().get(PN_ARTICLE_DATE, Calendar.class)) {
-      pageDetails.setArticleDate(page.getProperties().get(PN_ARTICLE_DATE, Calendar.class));
+    if (page.getProperties().containsKey(AEConstants.PN_ARTICLE_DATE) &&
+        null != page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class)) {
+      pageDetails.setArticleDate(page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class));
     }
   }
 
@@ -197,7 +174,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void setBusinessCategory(Page page, Resource resource,
       GenericListPageDetails pageDetails) {
     final TagManager tagManager = resource.getResourceResolver().adaptTo(TagManager.class);
-    String businessCatg = page.getProperties().get(PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
+    String businessCatg = page.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
     if (StringUtils.isNotBlank(businessCatg)) {
       final Tag tag = tagManager.resolve(businessCatg);
       if (null != tag) {
@@ -229,7 +206,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private List<GenericListPageDetails> getItems(String articlePageType) {
     List<GenericListPageDetails> pageDetailsList = new LinkedList<>();
     if (StringUtils.isNotBlank(articleListFrom)) {
-      if (articleListFrom.equals(PARENT_PAGE)) {
+      if (articleListFrom.equals(AEConstants.PARENT_PAGE)) {
         getRootPageItems(pageDetailsList, articlePageType);
       } else {
         getStaticPageItems(pageDetailsList, articlePageType);
@@ -279,12 +256,12 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public List<GenericListPageDetails> getBlogPageItems() {
-    return Collections.unmodifiableList(getItems(PN_BLOGPOST));
+    return Collections.unmodifiableList(getItems(AEConstants.PN_BLOGPOST));
   }
 
   @Override
   public List<GenericListPageDetails> getNewsPageItems() {
-    List<GenericListPageDetails> newsPageList = getItems(PN_NEWSROOM);
+    List<GenericListPageDetails> newsPageList = getItems(AEConstants.PN_NEWSROOM);
     categoryMap = new HashMap<>();
     if (!newsPageList.isEmpty()) {
       categoryMap = newsPageList.stream().filter(p -> StringUtils.isNotBlank(p.getCategory()))
@@ -298,7 +275,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public String getBusinessCategoryTag() {
-    String category = currentPage.getProperties().get(PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
+    String category = currentPage.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
     final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
     if (StringUtils.isNotBlank(category) && null != tagManager) {
       final Tag tag = tagManager.resolve(category);
@@ -311,7 +288,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public String getBackToHomeLink() {
-    String backToLink = currentPage.getProperties().get(PN_BACK_TO_HOMELINK,
+    String backToLink = currentPage.getProperties().get(AEConstants.PN_BACK_TO_HOMELINK,
         currentPage.getAbsoluteParent(3).getPath());
 
     return CommonUtility.appendHtmlExtensionToPage(resourceResolver, backToLink);
@@ -324,7 +301,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public Resource getThumbnailPageResource() {
-    Resource imageResource = currentRes.getChild(IMAGE);
+    Resource imageResource = currentRes.getChild(AEConstants.IMAGE);
     if (null == imageResource) {
       return currentRes;
     } else {

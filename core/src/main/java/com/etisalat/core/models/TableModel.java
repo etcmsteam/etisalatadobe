@@ -9,6 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import com.etisalat.core.constants.AEConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -29,12 +31,6 @@ import java.io.InputStreamReader;
     SlingHttpServletRequest.class})
 
 public class TableModel {
-
-  private static final String RTE = "rte";
-  private static final String ALL = "_all";
-  private static final String TRUE = "true";
-  private static final String EQUAL_DELIMITER = "=";
-  private static final String COMMA_DELIMITER = ",";
 
   private static final Logger LOGGER = LoggerFactory.getLogger(TableModel.class);
 
@@ -66,8 +62,8 @@ public class TableModel {
    * @return the sorting
    */
   public String getSorting() {
-    if (tableSource.equals(RTE) && doSorting.equals(TRUE)) {
-      return ALL;
+    if (tableSource.equals(AEConstants.RTE) && doSorting.equals(AEConstants.TRUE)) {
+      return AEConstants.ALL;
     }
     return "[]";
   }
@@ -85,8 +81,8 @@ public class TableModel {
       try (BufferedReader br = new BufferedReader(
           new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
         String line;
-        while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-          String[] values = line.split(COMMA_DELIMITER);
+        while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
+          String[] values = line.split(AEConstants.COMMA_DELIMITER);
           headerList = Arrays.asList(values);
           break;
         }
@@ -113,8 +109,8 @@ public class TableModel {
         String line;
         line = br.readLine(); // this will read the first line (to ignore csv header)
         while ((line = br.readLine()) != null && line
-            .contains(COMMA_DELIMITER)) {//loop will run from 2nd line
-          String[] values = line.split(COMMA_DELIMITER);
+            .contains(AEConstants.COMMA_DELIMITER)) {//loop will run from 2nd line
+          String[] values = line.split(AEConstants.COMMA_DELIMITER);
           LinkedHashMap<String, String> row = new LinkedHashMap<>();
           for (int i = 0; i < values.length; i = i + 2) {
             String key = values[i];
@@ -148,8 +144,8 @@ public class TableModel {
       try (BufferedReader br = new BufferedReader(
           new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
         String line;
-        while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-          String[] cols = line.split(COMMA_DELIMITER);
+        while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
+          String[] cols = line.split(AEConstants.COMMA_DELIMITER);
           for (int index = 0; index < cols.length; index++) {
             map.put(getRadioButtonProperty(cols[index]), getFilters(index, rendition));
           }
@@ -177,8 +173,8 @@ public class TableModel {
       try (BufferedReader br = new BufferedReader(
           new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
         String line;
-        while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-          String[] values = line.split(COMMA_DELIMITER);
+        while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
+          String[] values = line.split(AEConstants.COMMA_DELIMITER);
           headerList.add(Arrays.asList(values));
         }
 
@@ -196,16 +192,16 @@ public class TableModel {
     try (BufferedReader br = new BufferedReader(
         new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
       String line;
-      while ((line = br.readLine()) != null && line.contains(COMMA_DELIMITER)) {
-        String[] cols = line.split(COMMA_DELIMITER);
+      while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
+        String[] cols = line.split(AEConstants.COMMA_DELIMITER);
         if (cols.length > index && StringUtils.isNotBlank(cols[index]) && cols[index]
-            .contains(EQUAL_DELIMITER)) {
+            .contains(AEConstants.EQUAL_DELIMITER)) {
           String item = cols[index];
-          String[] string = item.split(EQUAL_DELIMITER);
+          String[] string = item.split(AEConstants.EQUAL_DELIMITER);
           row.put(string[0], string[1]);
 
         } else if (cols.length > index && StringUtils.isNotBlank(cols[index]) && !cols[index]
-            .contains(EQUAL_DELIMITER)) {
+            .contains(AEConstants.EQUAL_DELIMITER)) {
           row.put(cols[index], StringUtils.EMPTY);
         }
       }
@@ -218,8 +214,8 @@ public class TableModel {
 
 
   private String getRadioButtonProperty(String string) {
-    if (string.contains(EQUAL_DELIMITER)) {
-      return string.split(EQUAL_DELIMITER)[1];
+    if (string.contains(AEConstants.EQUAL_DELIMITER)) {
+      return string.split(AEConstants.EQUAL_DELIMITER)[1];
     }
     return string;
   }

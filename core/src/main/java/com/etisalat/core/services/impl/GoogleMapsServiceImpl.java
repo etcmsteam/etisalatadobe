@@ -1,5 +1,6 @@
 package com.etisalat.core.services.impl;
 
+import com.etisalat.core.constants.AEConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jackrabbit.oak.commons.PropertiesUtil;
 import org.osgi.service.cm.ConfigurationAdmin;
@@ -28,15 +29,15 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
   private String captchaV3;
   private String captchaInvisible;
 
-  private static final String NO_CONFIG_FOUND = "No config found";
+
 
 
   @Activate
   @Modified
   protected void activate(final GoogleMapsConfiguration config) {
-    this.url = PropertiesUtil.toString(config.getGoogleUrl(), NO_CONFIG_FOUND);
-    this.key = PropertiesUtil.toString(config.getGoogleKey(), NO_CONFIG_FOUND);
-    this.contactMap = PropertiesUtil.toString(config.getGoogleContactUsUrl(), NO_CONFIG_FOUND);
+    this.url = PropertiesUtil.toString(config.getGoogleUrl(), AEConstants.NO_CONFIG_FOUND);
+    this.key = PropertiesUtil.toString(config.getGoogleKey(), AEConstants.NO_CONFIG_FOUND);
+    this.contactMap = PropertiesUtil.toString(config.getGoogleContactUsUrl(), AEConstants.NO_CONFIG_FOUND);
     this.captchaV2 = PropertiesUtil.toString(config.getGoogleCaptchaV2(), StringUtils.EMPTY);
     this.captchaV3 = PropertiesUtil.toString(config.getGoogleCaptchaV3(), StringUtils.EMPTY);
     this.captchaInvisible = PropertiesUtil

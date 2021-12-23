@@ -30,6 +30,58 @@ public final class PageConstants {
    */
   public static final String JCR_CONTENT_IMAGE = "jcr:content/image";
 
+  /**
+   * Constant for TOP_NAVIGATION Resource Type
+   */
+  public static final String TOP_NAVIGATION_RESOURCE_TYPE = "etisalat/components/global/topnav";
+
+  /**
+   * Constant for FIXED_NAVIGATION Resource Type
+   */
+  public static final String FIXED_NAVIGATION_RESOURCE_TYPE = "etisalat/components/fixednavigation";
+
+  /**
+   * Constant for TEASER Resource Type
+   */
+ public static final String TEASER_RESOURCE_TYPE = "etisalat/components/teaser";
+
+  /**
+   * Constant for TITLE Resource Type
+   */
+ public static final String TITLE_RESOURCE_TYPE = "etisalat/components/title";
+
+  /**
+   * Constant for BUSINESS_BLOG Template
+   */
+ public static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-article-page-template";
+  /**
+   * Constant for TILE_CONTAINER Resource Type
+   */
+ public static final String TILE_CONTAINER_RESOURCETYPE = "etisalat/components/tilecontainer";
+
+  /**
+   * Constant for SWIPER_CONTAINER Resource Type
+   */
+ public static final String SWIPER_CONTAINER_RESOURCETYPE = "etisalat/components/swipercontainer";
+  /**
+   * Constant for DEFAULT status code
+   */
+ public static final String DEFAULT_STATUS_CODE = "404";
+  /**
+   * Constant for FILE REFERENCE
+   */
+ public static final String FILE_REFERENCE = "fileReference";
+
+  /**
+   * Constant for UTF_8
+   */
+ public static final String UTF_8 = "UTF-8";
+
+  /**
+   * Constant for APPLICATION_JSON
+   */
+ public static final String APPLICATION_JSON = "application/json";
+
 
   /**
    * private constructor to prevent instantiation of class.

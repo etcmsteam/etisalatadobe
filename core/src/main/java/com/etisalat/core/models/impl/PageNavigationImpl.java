@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.etisalat.core.constants.AEConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -24,8 +25,6 @@ public class PageNavigationImpl implements PageNavigation {
    */
   protected static final String RESOURCE_TYPE = "etisalat/components/pagenavigation";
 
-  private static final String PAGE_CHILD_ITEMS = "pageItems";
-
   /**
    * The current currentRes.
    */
@@ -37,7 +36,7 @@ public class PageNavigationImpl implements PageNavigation {
 
   @Override
   public List<FixedNavigtaionMultifieldModel> getPageNavItems() {
-    Resource pageItemRes = currentRes.getChild(PAGE_CHILD_ITEMS);
+    Resource pageItemRes = currentRes.getChild(AEConstants.PAGE_CHILD_ITEMS);
     List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
     if (null != pageItemRes) {
       pageItemRes.listChildren().forEachRemaining(resource -> {

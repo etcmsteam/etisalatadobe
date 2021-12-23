@@ -9,6 +9,8 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
+import com.etisalat.core.constants.AEConstants;
+import com.etisalat.core.constants.PageConstants;
 import org.apache.jackrabbit.oak.commons.PropertiesUtil;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.component.annotations.Activate;
@@ -32,14 +34,6 @@ import com.google.gson.JsonSyntaxException;
 public class SendNotificationServiceImpl implements SendNotificationService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SendNotificationServiceImpl.class);
-	private static final String NO_CONFIG_FOUND = "No config found";
-	private static final String POST_METHOD = "POST";
-	private static final String REQUEST_PROPERTY = "application/json";
-	private static final String CONTENT_TYPE = "Content-Type";
-	private static final String UTF = "UTF-8";
-	private static final String CAPTCHA_NAME = "g-recaptcha-response";
-	private static final String CAPTCHA_NULL = "No captcha response found";
-	private static final String CLIENT_CAPTCHA_VALUE = "HDR_GOOGLE_CLIENT_TOKEN_KEY";
 
 	@Reference
 	private ConfigurationAdmin configAdmin;
@@ -49,7 +43,7 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 	@Activate
 	@Modified
 	protected void activate(final SendNotificationConfiguration config) {
-		this.url = PropertiesUtil.toString(config.getApiUrl(), NO_CONFIG_FOUND);
+		this.url = PropertiesUtil.toString(config.getApiUrl(), AEConstants.NO_CONFIG_FOUND);
 		this.timeOut = PropertiesUtil.toInteger(config.getSetTimeout(), 5000);
 	}
 
@@ -68,16 +62,16 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 		try {
 			URL postUrl = new URL(getUrl());		
 			HttpURLConnection connection = (HttpURLConnection) postUrl.openConnection();        
-			connection.setRequestMethod(POST_METHOD);
-			connection.setRequestProperty(CONTENT_TYPE,REQUEST_PROPERTY);
-			connection.setRequestProperty(CLIENT_CAPTCHA_VALUE,getCaptchaResponse(json));
+			connection.setRequestMethod(AEConstants.POST_METHOD);
+			connection.setRequestProperty(AEConstants.CONTENT_TYPE, PageConstants.APPLICATION_JSON);
+			connection.setRequestProperty(AEConstants.CLIENT_CAPTCHA_VALUE,getCaptchaResponse(json));
 			connection.setUseCaches(false);
 			connection.setDoOutput(true);
 			connection.setConnectTimeout(getTimeOut());
 			connection.setReadTimeout(getTimeOut());
 
 			BufferedWriter wr = new BufferedWriter(
-					new OutputStreamWriter(connection.getOutputStream(), UTF));
+					new OutputStreamWriter(connection.getOutputStream(), PageConstants.UTF_8));
 			wr.write(json);
 			wr.close();
 			connection.connect();
@@ -109,11 +103,11 @@ public class SendNotificationServiceImpl implements SendNotificationService {
 
 	@Override
 	public String getCaptchaResponse(String json) {
-		String captchaValue = CAPTCHA_NULL;
+		String captchaValue = AEConstants.CAPTCHA_NULL;
 		try {
 			if(null != json) {
 				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();		
-				JsonElement captchaElement = jsonObject.get(CAPTCHA_NAME);
+				JsonElement captchaElement = jsonObject.get(AEConstants.CAPTCHA_NAME);
 				captchaValue = captchaElement.getAsString();
 			}
 		}
