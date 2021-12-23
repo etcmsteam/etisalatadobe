@@ -17,7 +17,7 @@
       @include rtlBlock(){
         float: left;
       }
-    & .action.share.fix.true {
+    & .action.share.fix {
       width: 100%;
 
       @include rtlBlock() {
@@ -192,15 +192,9 @@
       }
 
       @include respond-to-min($desktop) {
-        background-color: $white;
-        margin-left: toRem(-12);
-        margin-right: toRem(-12);
-        padding: 0;
-        position: fixed;
-        right: auto;
-        top: toRem(370);
-        width: toRem(320);
-        z-index: 5;
+        position: absolute;
+        top: toRem(-50);
+        bottom: 0;
 
         .panel-body {
           margin-right: auto;
@@ -357,7 +351,27 @@
       }
     }
 
+    .action.share.fix.true{
+      width: 100%;
+      background: $white;
+      z-index: 22;
+      top: toRem(55);
+      left: 0;
+      padding: 0 1rem;
+      margin: 0;
+      position: fixed;
 
+      @include respond-to-min($desktop){
+        top: toRem(160);
+        width: toRem(320);
+        height: toRem(188);
+        padding: toRem(12) toRem(12) 0;
+        left: auto;
+        z-index: 5;
+        margin-left: toRem(-12);
+        margin-right: toRem(-12);
+      }
+    }
     .open > .dropdown-menu {
       border: 0;
       display: block;
