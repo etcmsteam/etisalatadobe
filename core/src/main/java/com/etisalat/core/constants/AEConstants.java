@@ -66,6 +66,6 @@ public final class AEConstants {
  public static final String CONTENT_TYPE = "Content-Type";
  public static final String CAPTCHA_NAME = "g-recaptcha-response";
  public static final String CAPTCHA_NULL = "No captcha response found";
- public static final String CLIENT_CAPTCHA_VALUE = "HDR_GOOGLE_CLIENT_TOKEN_KEY";
+ public static final String CLIENT_CAPTCHA_VALUE = "hdr-google-client-token-key";
 
 }
