@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import com.etisalat.core.constants.AEConstants;
+import com.etisalat.core.constants.PageConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -25,10 +27,6 @@ public class FixedNavigationModel {
   @SlingObject
   private SlingHttpServletRequest request;
 
-  public static final String HTML_EXTENSION = ".html";
-
-  private static final String MULTIFIELD_NODE = "fixedItems";
-
   @SlingObject
   @Optional
   protected Resource currentResource;
@@ -40,7 +38,7 @@ public class FixedNavigationModel {
     fixedNav = new ArrayList<>();
     LOG.info("current resource is {}", currentResource.getPath());
     if (currentResource.hasChildren()) {
-      final Resource multiFieldChild = currentResource.getChild(MULTIFIELD_NODE);
+      final Resource multiFieldChild = currentResource.getChild(AEConstants.MULTIFIELD_NODE);
       if (null != multiFieldChild) {
         final Iterator<Resource> multiItr = multiFieldChild.listChildren();
         while (multiItr.hasNext()) {
@@ -61,8 +59,8 @@ public class FixedNavigationModel {
   private void setExtensionToLink(FixedNavigtaionMultifieldModel modelObj) {
     String cardLink = modelObj.getNavigationLink();
     if (StringUtils.isNotBlank(cardLink) && cardLink.startsWith("/content/") && !StringUtils
-        .contains(cardLink, HTML_EXTENSION)) {
-      modelObj.setNavigationLink(cardLink + HTML_EXTENSION);
+        .contains(cardLink, PageConstants.HTML_EXTENSION)) {
+      modelObj.setNavigationLink(cardLink + PageConstants.HTML_EXTENSION);
     }
 
   }

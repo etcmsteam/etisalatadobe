@@ -1,5 +1,6 @@
 package com.etisalat.core.models;
 
+import com.etisalat.core.constants.PageConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -52,10 +53,6 @@ public class TileModel {
 
   @SlingObject
   private ResourceResolver resourceResolver;
-
-  private static final String TILE_CONTAINER_RESOURCETYPE = "etisalat/components/tilecontainer";
-
-  private static final String SWIPER_CONTAINER_RESOURCETYPE = "etisalat/components/swipercontainer";
 
   /**
    * The current request.
@@ -180,8 +177,8 @@ public class TileModel {
   public String getTileBoxContainerLayout() {
     final Resource tileContainerResource = currentResource.getParent();
     if (null != tileContainerResource
-        && (tileContainerResource.getResourceType().equals(TILE_CONTAINER_RESOURCETYPE) ||
-        tileContainerResource.getResourceType().equals(SWIPER_CONTAINER_RESOURCETYPE))) {
+        && (tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE) ||
+        tileContainerResource.getResourceType().equals(PageConstants.SWIPER_CONTAINER_RESOURCETYPE))) {
       return tileContainerResource.getValueMap().get("tileBoxLayout", StringUtils.EMPTY);
     }
     return StringUtils.EMPTY;

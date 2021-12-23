@@ -87,7 +87,7 @@ public class TopnavModel {
         PageConstants.SLASH + languageCode + PageConstants.SLASH);
     Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
     if (null != childRes) {
-      if (currrentPath.equals(newPagePath)) {
+      if (StringUtils.isNotBlank(currrentPath) && currrentPath.equals(newPagePath)) {
         setCurrentPageLanguageTitle(pageTitle);
       } else {
         LinkModel model = new LinkModel();

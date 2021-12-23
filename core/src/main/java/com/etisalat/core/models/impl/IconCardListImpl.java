@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.util.CommonUtility;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -21,11 +23,6 @@ import com.etisalat.core.models.IconCardVO;
 public class IconCardListImpl implements IconCardList {
 
   public static final String RESOURCE_TYPE = "etisalat/components/iconcardlist";
-  public static final String NAV_ITEMS = "iconCardList";
-  public static final String CARD_TITLE = "cardTitle";
-  public static final String CARD_ICON = "cardIcon";
-  public static final String CARD_LINK = "cardLink";
-  public static final String LINK_BEHAVIOR = "linkBehavior";
 
   @SlingObject
   @Optional
@@ -41,18 +38,18 @@ public class IconCardListImpl implements IconCardList {
 
   @Override
   public List<IconCardVO> getIconCardListItems() {
-    final Resource iconCardList = res.getChild(NAV_ITEMS);
+    final Resource iconCardList = res.getChild(AEConstants.NAV_ITEMS);
 		List<IconCardVO> iconCardListItem = new ArrayList<>();
     if (iconCardList != null && iconCardList.hasChildren()) {
       Iterator<Resource> list = iconCardList.listChildren();
       while (list.hasNext()) {
         Resource childResource = list.next();
         IconCardVO cardList = new IconCardVO();
-        cardList.setCardIcon(childResource.getValueMap().get(CARD_ICON, String.class));
-        cardList.setCardTitle(childResource.getValueMap().get(CARD_TITLE, String.class));
-        cardList.setLinkBehavior(childResource.getValueMap().get(LINK_BEHAVIOR, String.class));
+        cardList.setCardIcon(childResource.getValueMap().get(AEConstants.CARD_ICON, String.class));
+        cardList.setCardTitle(childResource.getValueMap().get(AEConstants.CARD_TITLE, String.class));
+        cardList.setLinkBehavior(childResource.getValueMap().get(AEConstants.LINK_BEHAVIOR, String.class));
         cardList.setCardLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,
-						childResource.getValueMap().get(CARD_LINK, String.class)));
+						childResource.getValueMap().get(AEConstants.CARD_LINK, String.class)));
         iconCardListItem.add(cardList);
       }
 

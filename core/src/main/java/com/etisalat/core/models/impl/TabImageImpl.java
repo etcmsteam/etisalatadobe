@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.etisalat.core.constants.AEConstants;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -22,8 +23,6 @@ public class TabImageImpl implements TabImage {
    */
   protected static final String RESOURCE_TYPE = "etisalat/components/tabs";
 
-  private static final String IMAGE_TAB = "imagetab";
-
   @SlingObject
   @Optional
   private Resource res;
@@ -35,7 +34,7 @@ public class TabImageImpl implements TabImage {
    * @return
    */
   private List<LinkModel> getItems() {
-    Resource imageRes = res.getChild(IMAGE_TAB);
+    Resource imageRes = res.getChild(AEConstants.IMAGE_TAB);
     List<LinkModel> itemsList = new ArrayList<>();
     if (null != imageRes) {
       imageRes.listChildren().forEachRemaining(resource -> {
