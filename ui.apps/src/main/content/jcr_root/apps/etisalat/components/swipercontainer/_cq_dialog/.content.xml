@@ -13,7 +13,7 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
-                <items 
+                <items
                     jcr:primaryType="nt:unstructured"
                     sling:hideChildren="[image,text,actions]">
                     <swiperproperties
@@ -41,8 +41,8 @@
                                                 name="./layoutTitle"
                                                 value=""/>
                                             <gridlayout
-                                                jcr:primaryType="nt:unstructured"
                                                 granite:class="cq-dialog-dropdown-showhide swiper-container-content-displaylayout"
+                                                jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 defaultValue="default"
                                                 fieldLabel="Display layout as a"
@@ -56,15 +56,19 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Ewallet Offer"
                                                         value="ewallet-offer"/>
-                                                     <ewalletfeature
+                                                    <ewalletalloffer
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Ewallet All Offers"
+                                                        value="ewallet-all-offer"/>
+                                                    <ewalletfeature
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Ewallet Offer Feature Content"
-                                                        value="ewallet-feature"/>                                                                                                
+                                                        value="ewallet-feature"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
                                                     cq-dialog-dropdown-showhide-target=".swipergridlayout-showhide-target"/>
-                                            </gridlayout>      
+                                            </gridlayout>
                                             <offerviewall
                                                 granite:class="swipergridlayout-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
@@ -73,13 +77,13 @@
                                                     <viewall
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="View All Label"                                                        
+                                                        fieldDescription="View All Label"
                                                         fieldLabel="View All Label"
                                                         name="./offerViewAll"/>
                                                     <viewalllink
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Target URL for when the link is clicked."                                                        
+                                                        fieldDescription="Target URL for when the link is clicked."
                                                         fieldLabel="View All Link"
                                                         name="./offerViewAllLink"
                                                         rootPath="/content"/>
@@ -88,6 +92,29 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="ewallet-offer"/>
                                             </offerviewall>
+                                            <offerall
+                                                granite:class="swipergridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <viewall
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="View All Label"
+                                                        fieldLabel="View All Label"
+                                                        name="./offerAllLabel"/>
+                                                    <viewalllink
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Target URL for when the link is clicked."
+                                                        fieldLabel="View All Link"
+                                                        name="./offerAllLink"
+                                                        rootPath="/content"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="ewallet-all-offer"/>
+                                            </offerall>
                                             <offerfeatureviewall
                                                 granite:class="swipergridlayout-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
@@ -96,13 +123,13 @@
                                                     <viewall
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="View All Label"                                                        
+                                                        fieldDescription="View All Label"
                                                         fieldLabel="View All Label"
                                                         name="./offerFeatureViewAll"/>
                                                     <viewalllink
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Target URL for when the link is clicked."                                                        
+                                                        fieldDescription="Target URL for when the link is clicked."
                                                         fieldLabel="View All Link"
                                                         name="./offerFeatureViewAllLink"
                                                         rootPath="/content"/>
@@ -110,7 +137,7 @@
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="ewallet-feature"/>
-                                            </offerfeatureviewall>                                      
+                                            </offerfeatureviewall>
                                             <noswapdesktop
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -135,8 +162,8 @@
                                                         text="Show"
                                                         value="true"/>
                                                 </items>
-                                            </swiperdisplaybehavior>                                                                                                                                                                   
-                                             <id
+                                            </swiperdisplaybehavior>
+                                            <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="HTML ID attribute to apply to the component."
@@ -149,8 +176,8 @@
                         </items>
                     </swiperproperties>
                     <featureimage
-                        jcr:primaryType="nt:unstructured"
                         granite:class="swiper-container-image-tab"
+                        jcr:primaryType="nt:unstructured"
                         jcr:title="Image"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
@@ -171,12 +198,12 @@
                                                 autoStart="{Boolean}false"
                                                 class="cq-droptarget"
                                                 fieldLabel="Image Asset"
-                                                required="{Boolean}true"  
                                                 fileNameParameter="./fileName"
                                                 fileReferenceParameter="./fileReference"
                                                 mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
                                                 multiple="{Boolean}false"
                                                 name="./file"
+                                                required="{Boolean}true"
                                                 title="Upload Image Asset"
                                                 uploadUrl="${suffix.path}"
                                                 useHTML5="{Boolean}true"/>
@@ -187,9 +214,9 @@
                         </items>
                     </featureimage>
                     <featurecontent
+                        granite:class="swiper-container-featurecontent-tab"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Feature Offer Content"
-                        granite:class="swiper-container-featurecontent-tab"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -201,14 +228,14 @@
                                     <column
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">                                                                                                                                                              
+                                        <items jcr:primaryType="nt:unstructured">
                                             <offerlinklabel
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"                                                
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Add Offer Link Label"
-                                                required="{Boolean}true"  
                                                 fieldLabel="Offer CTA Label"
-                                                name="./ctatext"/>
+                                                name="./ctatext"
+                                                required="{Boolean}true"/>
                                             <offerLinkBehavior
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
@@ -223,12 +250,12 @@
                                                     <opensamewindow
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Open in Same Window"
-                                                        value="opensamewindow"/>                                          
+                                                        value="opensamewindow"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
                                                     cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
-                                            </offerLinkBehavior>                                            
+                                            </offerLinkBehavior>
                                             <offerlinknewwindow
                                                 granite:class="linkbehavior-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
@@ -266,17 +293,17 @@
                                             <validdate
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
-                                                fieldDescription="Offer Valid Date"    
-                                                required="{Boolean}true"                                              
+                                                fieldDescription="Offer Valid Date"
                                                 fieldLabel="Offer Valid Date"
-                                                name="./articleDate"/>
+                                                name="./articleDate"
+                                                required="{Boolean}true"/>
                                             <validdatetext
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Offer Valid Text" 
-                                                required="{Boolean}true"                                                                                              
+                                                fieldDescription="Offer Valid Text"
                                                 fieldLabel="Offer Valid Text"
-                                                name="./validDateText"/>  
+                                                name="./validDateText"
+                                                required="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
