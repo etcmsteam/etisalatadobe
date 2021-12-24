@@ -3,11 +3,11 @@ $(document).ready(function () {
   initSwiper = function () {
     //edc-tabs-wrapper
     $(document)
-      .find(".edc-tabs-wrapper")
+      .find(".cmp_tabs-swipper")
       .each(function (index) {
         $(this).addClass("edc-swiper-tabs" + index);
         var $swiperTabsParent = $(this);
-        const istabs = $swiperTabsParent.parents().hasClass("cmp_tabs__horizontal_with_target");
+        const istabs = $swiperTabsParent.parents().hasClass("cmp_tabs--horizontal-title");
         $swiperTabsParent.find(".swiper-button-next").addClass("r" + index);
         $swiperTabsParent.find(".swiper-button-prev").addClass("l" + index);
         var edcSwiperWithArrows = new Swiper(".edc-swiper-tabs" + index + " .swiper-container", {
