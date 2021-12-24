@@ -286,6 +286,7 @@ import intlTelInput from 'intl-tel-input';
                         var inputVal = $('#phoneNumber').val();
                         iti.telInput.value = inputVal;
                         if (phonevalid(inputVal) && inputVal.length == 10) {
+                            $("#phoneNumber").parent().parent().find("label").addClass("floating-label");
                             $("#phoneNumber").parent().parent().removeClass("has-error-fields").addClass('is-valid');
                             $("#phoneNumber").parent().find(".alert-label").remove();
                             $("#phoneNumber").parent().find(".alert-icon").remove();
