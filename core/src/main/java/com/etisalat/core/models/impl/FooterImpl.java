@@ -25,7 +25,7 @@ public class FooterImpl implements Footer {
   /**
    * The resource type.
    */
-  protected static final String RESOURCE_TYPE = "etisalat/components/global/meganavigation";
+  protected static final String RESOURCE_TYPE = "etisalat/components/global/footer";
 
   @SlingObject
   @Optional
