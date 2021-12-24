@@ -83,7 +83,6 @@
       text-overflow: ellipsis;
       top: 0;
       transition: 0.3s;
-      transition: 0.3s;
       white-space: nowrap;
     }
 
@@ -96,12 +95,11 @@
       display: block;
       font-size: 24px;
       font-weight: 400;
-      line-height: 59px;
+      line-height: 45px;
       margin: 0;
       outline: none;
       padding: 6px 18px !important;
       position: relative;
-      width: 100%;
       width: 100%;
       z-index: 1;
 
@@ -209,26 +207,38 @@
 }
 
 .cmp-form {
-  .cmp-form-button {
-    background-color: $chatboatbg;
-    border: 1px solid $link-color;
-    border-radius: 4px;
-    color: $white;
-    cursor: pointer;
-    font-family: $base-font;
-    font-size: $font16;
-    font-weight: 700;
-    height: toRem(56);
-    letter-spacing: 0;
-    line-height: 18px;
-    margin-top: 15px;
-    outline: 0;
-    overflow: hidden;
-    padding: 0.75rem 0.5rem;
-    position: relative;
+  .googlecaptcha {
+    margin-bottom: 30px;
+  }
+
+  .button {
     text-align: center;
-    text-transform: uppercase;
-    vertical-align: middle;
-    width: toRem(317);
+
+    .cmp-form-button {
+      background-color: $chatboatbg;
+      border: 1px solid $link-color;
+      border-radius: 4px;
+      color: $white;
+      cursor: pointer;
+      font-family: $base-font;
+      font-size: $font16;
+      font-weight: 700;
+      height: toRem(56);
+      letter-spacing: 0;
+      line-height: 18px;
+      margin-top: 15px;
+      outline: 0;
+      overflow: hidden;
+      padding: 0.75rem 0.5rem;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      vertical-align: middle;
+      width: toRem(317);
+
+      @include respond-to-max($phone) {
+        width: 100%;
+      }
+    }
   }
 }
