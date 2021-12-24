@@ -217,7 +217,7 @@
     justify-content: flex-end;
     letter-spacing: normal;
     line-height: 1.5;
-    padding: toRem(24) 0 toRem(24) toRem(15) !important;
+    padding: toRem(10) 0 toRem(10) toRem(15) !important;
     padding-left: toRem(15);
     position: relative;
   }
@@ -1093,30 +1093,28 @@
         width: toRem(32);
       }
     }
+  }
 
-    // .cmp-tabs__active-icon {
-    //   display: block;
-    // }
-
-    // .cmp-tabs__default-icon {
-    //   display: none; // due to css overriding
-    // }
-
-    // &--active {
-    //   background: $white;
-
-    //   .cmp-tabs__active-icon {
-    //     display: block;
-    //   }
-
-    //   .cmp-tabs__default-icon {
-    //     display: none !important; // due to css overriding
-    //   }
-    // }
+  .cmp-tabs__tab--active {
+    background: $white;
   }
 
   .cmp-tabs__tabpanel--active {
     background: $white;
+  }
+
+  @include respond-to-max($tablet) {
+    margin: 0 -16px;
+  }
+
+  &.cmp_tabs--mobile {
+    .nav-view-wrapp.panel > :not(a.collapsed) {
+      background: $white;
+    }
+  }
+
+  .cmp-teaser {
+    box-shadow: none;
   }
 }
 
