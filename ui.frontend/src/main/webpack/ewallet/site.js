@@ -46,7 +46,6 @@ $(document).ready(function () {
 
     const checkURL = "https://ewallet.ae" + checkIconURL(lang, locationHref);
     const currentUrlPath = checkURL;
-    console.log(checkURL);
     debugger;
     var $mapFilter = $("#mapFilter");
     var $mapFiltersLinks = $(".map-filter-topnav .nav a");
@@ -84,7 +83,7 @@ $(document).ready(function () {
               val.color
             }" data-storeid= "${val.id}" 
                     data-type="store">
-                   <h5>${val.name} <label>${val.distance}</label></h5><b>${
+                   <h5>${val.name} <label>${val.distance === "NaN KM" ? "0 KM" : val.distance}</label></h5><b>${
               val.address ? val.address : ""
             }</b>
                    <span class="num">${
