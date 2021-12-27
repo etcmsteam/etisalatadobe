@@ -54,16 +54,16 @@
 //JS for Share this Design 
 $(function () {
   const PANELS = $(".action.share.fix");
-  const FOOTER_LINKS = $(".footer");
+  const FOOTER_LINKS = $(".quick-links-section");
   const TRUE_CLS = "true";
   const POS = PANELS.offset().top;
   const FOOTER_TOP = FOOTER_LINKS.offset().top;
   const MOBILE_VIEW = $(window).width() <= 768;
   const MOBILE_HW = FOOTER_TOP - (FOOTER_LINKS.height() - 450)
-  const DESKTOP_HW = FOOTER_TOP - (FOOTER_LINKS.height() - 230);
+  const DESKTOP_HW = FOOTER_TOP - (FOOTER_LINKS.height());
 
   $(window).scroll(function () {
-    let WINDOW_POS = $(window).debounce();
+    let WINDOW_POS = $(window).scrollTop();
       if (MOBILE_VIEW ? WINDOW_POS >= MOBILE_HW : WINDOW_POS >= DESKTOP_HW) {
         PANELS.removeClass(TRUE_CLS);
       } 
