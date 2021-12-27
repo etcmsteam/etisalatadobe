@@ -173,7 +173,7 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     letter-spacing: normal;
-    padding: toRem(10) 0 toRem(10) toRem(32) !important;
+    padding: toRem(10) 0 toRem(10) toRem(16) !important;
     padding-left: toRem(15);
     position: relative;
   }
@@ -608,10 +608,6 @@
       z-index: 1;
     }
 
-    a:hover {
-      text-decoration: underline !important;
-    }
-
     .cmp-teaser {
       display: flex;
       flex-direction: row-reverse;
@@ -629,6 +625,10 @@
 
     .cmp-tabs {
       display: flex;
+
+      li:hover {
+        background: #fff;
+      }
 
       li.cmp-tabs__tab {
         display: flex;
@@ -698,7 +698,7 @@
         // border-left: 4px solid #719e19;
         font-weight: 700;
         line-height: 1.4;
-        padding: 1rem 1rem 1rem 0.7rem !important;
+        padding: 1.5rem 1rem 1.5rem 0.7rem !important;
         position: relative;
 
         @include font-family-lato;
@@ -810,10 +810,6 @@
       top: toRem(16);
 
       @include font-family-Neotech;
-    }
-
-    a:hover {
-      text-decoration: underline !important;
     }
 
     .cmp-tabs__tabpanel {
@@ -1115,16 +1111,22 @@
       padding: 0;
     }
 
+    .nav-view-wrapp.panel > a {
+      background: $white;
+
+      @include respond-to-max($tablet) {
+        padding-left: 1.5rem;
+      }
+    }
+
     .nav-view-wrapp.panel > a.collapsed {
       background: $sand-white-50;
     }
 
-    .nav-view-wrapp.panel > a {
-      background: $white;
-    }
-
     .panel {
       background-color: $white !important;
+      border: 0;
+      box-shadow: none;
     }
   }
 
@@ -1191,4 +1193,8 @@
     left: auto;
     right: 0;
   }
+}
+
+.tabs + .text {
+  padding: 1rem 0;
 }
