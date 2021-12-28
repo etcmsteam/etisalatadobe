@@ -89,7 +89,7 @@
     padding: toRem(16);
 
     @include respond-to-max($phone) {
-      background-color: $white-gray1;
+      // background-color: $white-gray1;
       padding: 0 toRem(16) toRem(16);
     }
   }
@@ -664,7 +664,7 @@
       cursor: pointer;
       font-size: 1.125rem;
       line-height: 1.4;
-      padding: 1rem;
+      padding: 1.5rem;
 
       svg,
       img {
@@ -1098,35 +1098,35 @@
     background: $white;
   }
 
-  @include respond-to-max($tablet) {
-    margin: 0 -16px;
-  }
-
   &.cmp_tabs--mobile {
+    .nav-view-wrapp.panel > a {
+      background: $sand-white-50;
+      color: $dark-gray;
+      font-weight: get-font-weight("regular");
+      padding-left: 1.5rem;
+    }
+
     .nav-view-wrapp.panel > :not(a.collapsed) {
       background: $white;
+      color: $main-green;
+      font-weight: get-font-weight("heavy");
     }
 
     .panel-collapse {
       padding: 0;
     }
 
-    .nav-view-wrapp.panel > a {
-      background: $white;
-
-      @include respond-to-max($tablet) {
-        padding-left: 1.5rem;
-      }
-    }
-
-    .nav-view-wrapp.panel > a.collapsed {
-      background: $sand-white-50;
-    }
-
     .panel {
-      background-color: $white !important;
       border: 0;
       box-shadow: none;
+    }
+
+    .cmp-tabs__tab--active {
+      background: $white;
+    }
+
+    .cmp-tabs__tabpanel--active {
+      background: $white;
     }
   }
 
