@@ -1,6 +1,6 @@
 $(document).ready(function () {
-   //footer copyright year in dynamic
-   $(".footer-copyright-year").text(new Date().getFullYear());
+  //footer copyright year in dynamic
+  $(".footer-copyright-year").text(new Date().getFullYear());
 });
 (function () {
   define(["lodash", "select2", "swiper"], function (_) {
@@ -57,18 +57,9 @@ $(document).ready(function () {
       suppressInfoWindows: true,
       map: map,
     };
-    var kml2g = new google.maps.KmlLayer(
-        "https://sites.google.com/site/etisalatkml/home/kml/2g.kml",
-        options
-      ),
-      kml3g = new google.maps.KmlLayer(
-        "https://sites.google.com/site/etkmlz/kml/3gM2.kml",
-        options
-      ),
-      kml4g = new google.maps.KmlLayer(
-        "https://sites.google.com/site/etkmlz/kml/4gM7.kml",
-        options
-      );
+    var kml2g = new google.maps.KmlLayer("https://sites.google.com/site/etisalatkml/home/kml/2g.kml", options),
+      kml3g = new google.maps.KmlLayer("https://sites.google.com/site/etkmlz/kml/3gM2.kml", options),
+      kml4g = new google.maps.KmlLayer("https://sites.google.com/site/etkmlz/kml/4gM7.kml", options);
 
     function resultItemTemplateList(resultData) {
       var items = [];
@@ -79,16 +70,10 @@ $(document).ready(function () {
         $.each(items, function (key, val) {
           if (val != null) {
             listItems += `<div class="result-item-container swiper-slide">
-                    <li class="active desc-short ${val.type} ${
-              val.color
-            }" data-storeid= "${val.id}" 
+                    <li class="active desc-short ${val.type} ${val.color}" data-storeid= "${val.id}" 
                     data-type="store">
-                   <h5>${val.name} <label>${val.distance === "NaN KM" ? "0 KM" : val.distance}</label></h5><b>${
-              val.address ? val.address : ""
-            }</b>
-                   <span class="num">${
-                     val.phoneNumber ? val.phoneNumber : ""
-                   } </span>
+                   <h5>${val.name} <label>${val.distance === "NaN KM" ? "0 KM" : val.distance}</label></h5><b>${val.address ? val.address : ""}</b>
+                   <span class="num">${val.phoneNumber ? val.phoneNumber : ""} </span>
                    <p> ${val.information ? val.information : ""} </p>
                    <p> ${val.storeTiming} </p><p> 
                    <span class="closed"> Fridays closed</span></p></li></div>`;
@@ -215,22 +200,15 @@ $(document).ready(function () {
           return n.id !== listFilterid;
         });
 
-        $(".swiper-pagination-list").html(
-          '<li class="active backtoList swiper-pagination-bullet">Back</li>'
-        );
+        $(".swiper-pagination-list").html('<li class="active backtoList swiper-pagination-bullet">Back</li>');
       } else {
         //var storeLocatorData = (isJson(storeLocator.data) === false) ? storeLocator.data : JSON.parse(storeLocator.data); // enable this for cms
 
-        storeLocatorData =
-          isJson(storeLocatorData.data) === false
-            ? storeLocatorData.data
-            : JSON.parse(storeLocatorData.data); // enable this for cms
+        storeLocatorData = isJson(storeLocatorData.data) === false ? storeLocatorData.data : JSON.parse(storeLocatorData.data); // enable this for cms
         // filter stores
         if (currentFilter !== "all") {
           _.remove(storeLocatorData, function (n) {
-            return (
-              n.storeType.replace(/\s+/g, "") !== categoryMap[currentFilter]
-            );
+            return n.storeType.replace(/\s+/g, "") !== categoryMap[currentFilter];
           });
         }
       }
@@ -256,8 +234,8 @@ $(document).ready(function () {
           Math.round(
             google.maps.geometry.spherical.computeDistanceBetween(
               new google.maps.LatLng(item.latitude, item.longitude),
-              new google.maps.LatLng(currentLocation.lat, currentLocation.lng)
-            ) * 0.001
+              new google.maps.LatLng(currentLocation.lat, currentLocation.lng),
+            ) * 0.001,
           ) + " KM";
       });
       temp.items.sort(function (a, b) {
@@ -292,24 +270,18 @@ $(document).ready(function () {
           paginationClickable: true,
           pagination: ".swiper-pagination-list",
 
-          paginationBulletRender: function (index, className) {
+          paginationBulletRender: function (className, index) {
+            let NEW_SWIPER_CLS = "swiper-pagination-bullet";
             if (index < activeIndex + 7 && index >= activeIndex - 7) {
-              className =
-                index == activeIndex
-                  ? className + " swiper-pagination-bullet-active"
-                  : className;
-              return '<li class="' + className + '">' + (index + 1) + "</li>";
+              NEW_SWIPER_CLS = index === activeIndex ? NEW_SWIPER_CLS + " swiper-pagination-bullet-active" : NEW_SWIPER_CLS;
+              return '<li class="' + NEW_SWIPER_CLS + '">' + (index + 1) + "</li>";
             } else {
-              return (
-                '<li class="' + className + ' hidden">' + (index + 1) + "</li>"
-              );
+              return '<li class="' + NEW_SWIPER_CLS + ' hidden">' + (index + 1) + "</li>";
             }
           },
+
           onSlideChangeEnd: function (swiper) {
-            if (
-              swiper.activeIndex > activeIndex + 3 ||
-              swiper.activeIndex < activeIndex - 3
-            ) {
+            if (swiper.activeIndex > activeIndex + 3 || swiper.activeIndex < activeIndex - 3) {
               activeIndex = swiper.activeIndex;
               swiper.updatePagination();
             }
@@ -335,7 +307,7 @@ $(document).ready(function () {
               {
                 scrollTop: target.offset().top,
               },
-              1000
+              1000,
             );
           }
         } else {
@@ -390,12 +362,8 @@ $(document).ready(function () {
             // console.log('closing swiper:' + storeid)
             actualWrapper.removeClass("open-detail");
           } else {
-            var containerHeight =
-              actualWrapper.parent(".result-slide").height() -
-              pressedButton.height();
-            actualWrapper
-              .find(".desc-long")
-              .css("height", containerHeight + "px");
+            var containerHeight = actualWrapper.parent(".result-slide").height() - pressedButton.height();
+            actualWrapper.find(".desc-long").css("height", containerHeight + "px");
 
             actualWrapper.find(".desc-long").slideDown(300);
             // console.log('opening swiper:' + storeid)
@@ -409,11 +377,7 @@ $(document).ready(function () {
 
           $(".details-desc .more-details").click(function (e) {
             e.preventDefault();
-            $(
-              ".store-locator-wrap .result-main-container > .swiper-container-map"
-            )
-              .removeClass("hidden")
-              .addClass("hidden-xs hidden-ms");
+            $(".store-locator-wrap .result-main-container > .swiper-container-map").removeClass("hidden").addClass("hidden-xs hidden-ms");
             // myStoreClick($('.result-item-container .desc-short').data('storeid'));
             myStoreClick(storeid);
           });
@@ -437,9 +401,7 @@ $(document).ready(function () {
       });
 
       // ------------------ open result More details
-      var moreDetailsAccordion = $(
-        ".result-item-container .desc-long .details-desc a.more-details"
-      );
+      var moreDetailsAccordion = $(".result-item-container .desc-long .details-desc a.more-details");
       moreDetailsAccordion.click(function (e) {
         e.preventDefault();
         var pressedButton = $(this);
@@ -756,34 +718,21 @@ $(document).ready(function () {
               listFilterid = "";
             }
 
-            console.log(
-              ui.item
-                ? "Selected: " + ui.item.value + ", geonameId: " + ui.item.id
-                : "Nothing selected, input was " + this.value
-            );
+            console.log(ui.item ? "Selected: " + ui.item.value + ", geonameId: " + ui.item.id : "Nothing selected, input was " + this.value);
           },
         })
         .autocomplete("instance")._renderItem = function (ul, item) {
         ul.addClass("locateus-autocomplete");
         return $("<li>")
           .addClass("store-location")
-          .append(
-            "<div> <div class='ui-menu-item-title'>" +
-              item.label +
-              "</div><div class='ui-menu-item-desc'>" +
-              item.address +
-              "</div></div>"
-          )
+          .append("<div> <div class='ui-menu-item-title'>" + item.label + "</div><div class='ui-menu-item-desc'>" + item.address + "</div></div>")
           .appendTo(ul);
       };
     }
 
     function renderStores(storeLocator) {
       var storeLocatorData = JSON.parse(JSON.stringify(storeLocator));
-      storeLocatorData =
-        isJson(storeLocatorData.data) === false
-          ? storeLocatorData.data
-          : JSON.parse(storeLocatorData.data);
+      storeLocatorData = isJson(storeLocatorData.data) === false ? storeLocatorData.data : JSON.parse(storeLocatorData.data);
       // enable this for cms
 
       // filter stores
@@ -803,8 +752,8 @@ $(document).ready(function () {
           Math.round(
             google.maps.geometry.spherical.computeDistanceBetween(
               new google.maps.LatLng(item.latitude, item.longitude),
-              new google.maps.LatLng(currentLocation.lat, currentLocation.lng)
-            ) * 0.001
+              new google.maps.LatLng(currentLocation.lat, currentLocation.lng),
+            ) * 0.001,
           ) + " KM";
       });
       temp.items.sort(function (a, b) {
@@ -855,13 +804,7 @@ $(document).ready(function () {
           //  ' <p class="dynamic-value">' + data.city + ' - ' + data.country + '</p> ' +
           " </div> " +
           ' <div class="box-section-footer"> ' +
-          (data.phoneNumber
-            ? ' <div class="contact-info-no"> ' +
-              ' <p><span class="dynamic-value">' +
-              data.phoneNumber +
-              "</span></p> " +
-              " </div> "
-            : "") +
+          (data.phoneNumber ? ' <div class="contact-info-no"> ' + ' <p><span class="dynamic-value">' + data.phoneNumber + "</span></p> " + " </div> " : "") +
           " </div> " +
           " </div> " +
           " </div> " +
@@ -943,9 +886,7 @@ $(document).ready(function () {
 
           var oldstoreid;
           if (infowindowprec) {
-            if (
-              marker.storeid.toString() === localStorage.getItem("oldstoreid")
-            ) {
+            if (marker.storeid.toString() === localStorage.getItem("oldstoreid")) {
               localStorage.removeItem("oldstoreid");
               infowindowprec.close(); // close the previous infowindow
               return;
@@ -984,7 +925,7 @@ $(document).ready(function () {
               {
                 scrollTop: target.offset().top,
               },
-              1000
+              1000,
             );
           }
         } else {
@@ -1054,9 +995,7 @@ $(document).ready(function () {
       });
 
       // ------------------ open result More details
-      var moreDetailsAccordion = $(
-        ".result-item-container .desc-long .details-desc a.more-details"
-      );
+      var moreDetailsAccordion = $(".result-item-container .desc-long .details-desc a.more-details");
       moreDetailsAccordion.click(function (e) {
         e.preventDefault();
         var pressedButton = $(this);
@@ -1175,17 +1114,11 @@ $(document).ready(function () {
       // if the store are not yet loaded, then load them, expand the map and show the results
       if (!storesLoaded) {
         // expand the map
-        $(".map-container > .background-map")
-          .removeClass("closed")
-          .addClass("opened");
+        $(".map-container > .background-map").removeClass("closed").addClass("opened");
 
         // show the results and navbar
-        $(".store-locator-wrap .result-main-container > .swiper-container-map")
-          .removeClass("hidden")
-          .addClass("hidden-xs hidden-ms");
-        $(".store-locator-wrap .result-main-container > .result-pager")
-          .removeClass("hidden")
-          .addClass("hidden-xs hidden-ms");
+        $(".store-locator-wrap .result-main-container > .swiper-container-map").removeClass("hidden").addClass("hidden-xs hidden-ms");
+        $(".store-locator-wrap .result-main-container > .result-pager").removeClass("hidden").addClass("hidden-xs hidden-ms");
         $(".store-locator-wrap .map-filter-topnav").removeClass("hidden");
 
         $(".store-locator-wrap .switch-store-locator").removeClass("hidden");
@@ -1243,7 +1176,7 @@ $(document).ready(function () {
           } else {
             window.alert("Geocoder failed due to: " + status);
           }
-        }
+        },
       );
     }
 
@@ -1254,17 +1187,11 @@ $(document).ready(function () {
     function positionOnMyLocation() {
       myInfoWindow.close(map, myMarker);
 
-      $(".map-container > .background-map")
-        .removeClass("closed")
-        .addClass("opened");
+      $(".map-container > .background-map").removeClass("closed").addClass("opened");
 
       // show the results and navbar
-      $(".store-locator-wrap .result-main-container > .swiper-container-map")
-        .removeClass("hidden")
-        .addClass("hidden-xs hidden-ms");
-      $(".store-locator-wrap .result-main-container > .result-pager")
-        .removeClass("hidden")
-        .addClass("hidden-xs hidden-ms");
+      $(".store-locator-wrap .result-main-container > .swiper-container-map").removeClass("hidden").addClass("hidden-xs hidden-ms");
+      $(".store-locator-wrap .result-main-container > .result-pager").removeClass("hidden").addClass("hidden-xs hidden-ms");
       $(".store-locator-wrap .map-filter-topnav").removeClass("hidden");
 
       map.center = currentLocation;
@@ -1294,7 +1221,7 @@ $(document).ready(function () {
 
             // handleLocationError(true, myInfoWindow, map.getCenter());
           },
-          {}
+          {},
         );
       } else {
         // position to the configured center
@@ -1473,16 +1400,12 @@ $(document).ready(function () {
        */
       $("#sl-MapView-link").click(function (e) {
         e.preventDefault();
-        $(".store-locator-wrap .result-main-container > .swiper-container-map")
-          .removeClass("hidden")
-          .addClass("hidden-xs hidden-ms");
+        $(".store-locator-wrap .result-main-container > .swiper-container-map").removeClass("hidden").addClass("hidden-xs hidden-ms");
       });
 
       $("#sl-ListView-link").click(function (e) {
         e.preventDefault();
-        $(".store-locator-wrap .result-main-container > .swiper-container-map")
-          .removeClass("hidden")
-          .removeClass("hidden-xs hidden-ms");
+        $(".store-locator-wrap .result-main-container > .swiper-container-map").removeClass("hidden").removeClass("hidden-xs hidden-ms");
       });
 
       $('a[data-toggle="tab"]').click("shown.bs.tab", function (e) {
@@ -1567,8 +1490,6 @@ $(document).ready(function () {
       setTimeout(function () {
         positionOnMyLocation();
       }, 1000);
-
-     
     });
 
     //};
