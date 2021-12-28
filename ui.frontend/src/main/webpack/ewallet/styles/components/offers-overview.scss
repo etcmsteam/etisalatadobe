@@ -55,6 +55,11 @@
     .small-tiles {
       .row {
         display: block;
+        @include respond-to-min($desktop-wide-xl) {
+          .cmp-image__image {
+            max-height: toRem(150);
+          }
+        }
       }
     }
   }
@@ -223,9 +228,7 @@
   }
 
   .cmp-container {
-    background:
-      url("../resources/images/img-oval_tcm451-117037.png") 0 0
-      no-repeat;
+    background: url("../resources/images/img-oval_tcm451-117037.png") 0 0 no-repeat;
     background-size: contain;
     height: 444px;
     position: absolute;
