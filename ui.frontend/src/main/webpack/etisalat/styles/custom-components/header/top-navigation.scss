@@ -208,7 +208,8 @@ html[lang="ar"] {
   }
   .links {
     li {
-      display: inline-block;
+      display: block;
+      float: left;
       a {
         padding: 0 1rem;
         @media (min-width: 992px) and (max-width: 1280px) {
@@ -250,6 +251,8 @@ html[lang="ar"] {
     }
   }
   .top-nav-right {
+    display: flex;
+    justify-content: right;
     text-align: right;
     .links {
       li {
@@ -262,6 +265,11 @@ html[lang="ar"] {
           }
           .nav-link-icon {
             padding-right: 0;
+          }
+          .text {
+            @include respond-to-max($desktop-wide) {
+              display: none;
+            }
           }
         }
         &:last-child {
