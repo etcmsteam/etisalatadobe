@@ -18,7 +18,7 @@
       bottom: 0;
       height: 100%;
       min-height: toRem(47);
-      padding: toRem(54) toRem(24) 0 toRem(24);
+      padding: toRem(54) toRem(24) 0 toRem(15);
       position: absolute;
       width: 100%;
       z-index: 9;
@@ -52,7 +52,9 @@
         font-weight: get-font-weight("bold");
         letter-spacing: toRem(2);
         line-height: 1.25rem;
+        position: absolute;
         text-transform: uppercase;
+        top: toRem(100);
 
         @include font-family-lato();
 
@@ -239,6 +241,11 @@
         left: 0;
         width: 50%;
 
+        @include rtlBlock {
+          left: auto;
+          right: 0;
+        }
+
         h1 {
           color: $almost-black;
         }
@@ -254,19 +261,28 @@
       }
 
       &__action-container {
-        bottom: toRem(150);
+        bottom: toRem(100);
 
-        @include respond-to-min($tablet) {
-          bottom: 113px;
+        @include respond-to-min($desktop) {
+          bottom: toRem(130);
         }
 
         a {
           color: $main-green;
         }
+
+        &::after {
+          border-color: $main-green !important;
+          top: toRem(5);
+        }
       }
 
       &__image {
         width: 50%;
+      }
+
+      &__title {
+        color: $black !important;
       }
     }
   }
