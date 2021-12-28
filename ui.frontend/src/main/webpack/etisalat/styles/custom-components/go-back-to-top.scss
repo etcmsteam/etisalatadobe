@@ -51,7 +51,7 @@
     }
 
     @include rtlBlock() {
-      left:toRem(16);
+      left: toRem(26);
       right: auto;
     } 
 
@@ -76,9 +76,15 @@
     line-height: 1rem;
     padding: 0;
 
-    & .space-top {
-      font-weight: get-font-weight("regular");
-      margin-top: 0;
+    .space-top {
+      margin-top: toRem(4);
+      color: $white;
+      font-size: toRem(12.08);
+      line-height: toRem(16);
+
+      @include respond-to-max($tablet){
+        margin-top: toRem(1);
+      }
     }
 
     &:hover, &:focus {
