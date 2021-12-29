@@ -82,10 +82,10 @@
     border-radius: 0;
     margin: 0;
     width: 100%;
+    background-color: $sand-white-50;
   }
 
   .panel-collapse {
-    background: $white;
     padding: toRem(16);
 
     @include respond-to-max($phone) {
@@ -104,6 +104,7 @@
       @include respond-to-max($phone) {
         background-color: $white;
         padding: toRem(16) toRem(16) toRem(32);
+        border-radius: 4px;
       }
     }
 
@@ -115,11 +116,15 @@
 
     &__title {
       color: $almost-black;
-      font-weight: get-font-weight("bold");
       margin-bottom: toRem(16);
       margin-top: 0;
+      font-size: $font20;
+      line-height: 1.6;
 
-      @include font-family-lato;
+      @include respond-to-min($desktop) {
+          font-size: $font24;
+           line-height: 1.33;
+      }
 
       @include rtlBlock {
         font-weight: get-font-weight("light");
@@ -152,9 +157,9 @@
   }
 
   svg {
-    @include respond-to-max($phone) {
-      height: toRem(40);
-      width: toRem(35);
+    @include respond-to-max($desktop) {
+      height: toRem(24);
+      width: toRem(24);
     }
   }
 
@@ -216,7 +221,7 @@
   }
 
   .nav-view-wrapp.panel > :not(a.collapsed) {
-    font-size: $font14;
+    font-size: $font16;
     font-weight: get-font-weight("heavy");
 
     @include font-family-lato;
@@ -627,7 +632,7 @@
       display: flex;
 
       li:hover {
-        background: #fff;
+        background: $white;
       }
 
       li.cmp-tabs__tab {
@@ -696,9 +701,9 @@
         font-size: $font18;
 
         // border-left: 4px solid #719e19;
-        font-weight: 700;
-        line-height: 1.4;
-        padding: 1.5rem 1rem 1.5rem 0.7rem !important;
+        font-weight: get-font-weight("bold");
+        line-height: toRem(29);
+        padding: 1.5rem 1rem 1.5rem 1.2rem !important;
         position: relative;
 
         @include font-family-lato;
@@ -781,9 +786,10 @@
         position: absolute;
         right: toRem(18);
         top: 50%;
-        transform: translateY(-30%) rotate(-135deg);
+        transform: translateY(-50%) rotate(-45deg);
         transition: all 0.3s ease-in-out;
         z-index: 1;
+        border-style: solid;
       }
     }
 
@@ -800,6 +806,8 @@
 
   // 2nd horiznatal with view  varition st
   .cmp_tabs--vertical-img {
+    padding: toRem(48) 0 toRem(64);
+
     h3 {
       color: $almost-black;
       display: flex;
@@ -849,7 +857,6 @@
       justify-content: flex-end;
       line-height: toRem(18);
       margin: auto 0;
-      padding: $padding-step-2 0;
       text-align: left;
 
       @include font-family-lato;
@@ -918,8 +925,6 @@
       display: block;
       flex-wrap: wrap;
       list-style: none;
-      padding-left: 0;
-      padding-left: calc(#{$padding-step-2} + 4px);
       width: 50%;
     }
 
@@ -1121,12 +1126,8 @@
       box-shadow: none;
     }
 
-    .cmp-tabs__tab--active {
-      background: $white;
-    }
-
-    .cmp-tabs__tabpanel--active {
-      background: $white;
+    .cmp-teaser {
+      padding: 0 2rem 2rem;
     }
   }
 
@@ -1182,7 +1183,7 @@
 .cmp_tabs--vertical-img {
   .cmp-tabs {
     display: flex;
-    padding: $padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px) $padding-step-2;
+    // padding: $padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px) $padding-step-2;
   }
 }
 
@@ -1196,5 +1197,5 @@
 }
 
 .tabs + .text {
-  padding: 1rem 0;
+  padding: 1rem 1rem 1rem 1.4rem;
 }
