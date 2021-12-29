@@ -115,11 +115,15 @@
 
     &__title {
       color: $almost-black;
-      font-weight: get-font-weight("bold");
       margin-bottom: toRem(16);
       margin-top: 0;
+      font-size: $font20;
+      line-height: 1.6;
 
-      @include font-family-lato;
+      @include respond-to-min($desktop) {
+          font-size: $font24;
+           line-height: 1.33;
+      }
 
       @include rtlBlock {
         font-weight: get-font-weight("light");
@@ -153,8 +157,8 @@
 
   svg {
     @include respond-to-max($desktop) {
-      height: toRem(40);
-      width: toRem(35);
+      height: toRem(24);
+      width: toRem(24);
     }
   }
 
@@ -216,7 +220,7 @@
   }
 
   .nav-view-wrapp.panel > :not(a.collapsed) {
-    font-size: $font14;
+    font-size: $font16;
     font-weight: get-font-weight("heavy");
 
     @include font-family-lato;
