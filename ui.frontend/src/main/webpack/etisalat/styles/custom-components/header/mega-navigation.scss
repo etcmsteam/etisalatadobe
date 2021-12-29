@@ -843,7 +843,6 @@
     content: "";
     position: fixed;
     z-index: 10;
-    background-color: rgba(150, 150, 150, 0.2);
     height: 100vh;
     width: 100vw;
     transition: 0.4s;
@@ -1999,3 +1998,256 @@ div.cover {
 //     border-bottom: 2px solid transparent;
 //   }
 // }
+
+.meganavigation .main-menu-desktop {
+  .navbar-default {
+    top: 0;
+    position: fixed;
+    height: toRem(56);
+    width: 100%;
+    background-color: $white;
+    text-transform: uppercase;
+    border: none;
+    box-shadow: 0 toRem(1) toRem(8) 0 rgb(0 0 0 / 15%);
+    transition: all 0.25s ease-in-out;
+    z-index: 12;
+
+    @include respond-to-min($desktop) {
+      height: toRem(90);
+      top: toRem(48);
+    }
+    .navbar {
+      border: 0;
+      margin-bottom: 0;
+      height: auto;
+      max-height: 90px;
+      position: relative;
+      min-height: 50px;
+    }
+    .logo-container {
+      width: 100%;
+      display: block;
+      @include respond-to-min($desktop) {
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .navbar-header {
+        height: toRem(56);
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-align: center;
+        align-items: center;
+        float: none;
+        transition: all 0.25s ease-in-out;
+
+        @include respond-to-min($desktop) {
+          height: toRem(90);
+          float: left;
+        }
+        a {
+          width: 86px;
+          transition: all 0.25s ease-in-out;
+          margin-bottom: -5px;
+
+          @include respond-to-min($desktop) {
+            width: 150px;
+            transition: all 0.25s ease-in-out;
+          }
+          img {
+            width: 86px;
+            height: auto;
+            margin-left: -15px;
+            margin-top: -11px;
+            @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+              margin-left: 1.7rem;
+            }
+            @media only screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+              margin-left: 1.7rem;
+            }
+            @include respond-to-max($phone) {
+              margin-left: toRem(27);
+            }
+          
+            @include respond-to-min($desktop) {
+              width: 140px;
+              transition: all 0.25s ease-in-out;
+            }
+          }
+          svg {
+            width: 86px;
+            height: auto;
+            @include respond-to-min($desktop) {
+              width: 140px;
+              transition: all 0.25s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+    .navbar-links {
+      font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+      .nav.navbar-nav > li {
+        a {
+          height: 90px;
+          line-height: 90px;
+          padding: 0;
+          padding-right: 23px;
+          transition: all 0.25s ease-in-out;
+          color: #6b6b6b;
+          cursor: pointer;
+          font-size: 1rem;
+          @media (min-width: 1248px) {
+            padding-right: 1.5rem;
+            @include rtlBlock() {
+              padding-left: 1.5rem;
+            }
+          }
+          @media (-ms-high-contrast: none) {
+            font-size: 14px;
+            padding-right: 1rem;
+          }
+          @media (-ms-high-contrast: none) and (min-width: 1248px) {
+            font-size: 16px;
+            padding-right: 23px;
+          }
+
+          @include rtlBlock() {
+            padding-right: 0;
+            padding-left: 23px;
+          }
+          &:hover {
+            color: #6b6b6b;
+          }
+          &:-ms-backdrop {
+            @media (-ms-high-contrast: none) {
+              font-size: 14px;
+              padding-right: 1rem;
+            }
+          }
+        }
+        &.active > a {
+          color: #719e19;
+          background-color: transparent;
+        }
+        &:last-child a {
+          padding-right: 0;
+        }
+      }
+    }
+    .user-loged-in {
+      font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+      & ul.navbar-right {
+        width: 100%;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        margin: 0;
+        @include respond-to-min($desktop) {
+          -ms-flex-pack: end;
+          justify-content: flex-end;
+          margin-right: -12px;
+        }
+
+        & li {
+          a {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-item-align: center;
+            align-self: center;
+            color: #6b6b6b;
+            line-height: 90px;
+            transition: all 0.25s ease-in-out;
+            padding: 0 12px;
+            @media (min-width: 1248px) {
+              padding: 0 1.5rem;
+              &:after {
+                right: -5px;
+              }
+            }
+            @include respond-to-min($desktop) {
+              @include rtlBlock() {
+                padding-left: 0;
+                padding-right: 1.5rem;
+              }
+            }
+          }
+
+          &:last-child > a {
+            @include respond-to-min($desktop) {
+              padding-right: 12px;
+            }
+          }
+        }
+        .search-link a {
+          @include respond-to-min($desktop) {
+            border-left: 1px solid #f1f1eb;
+            @include rtlBlock() {
+              border-right: 1px solid #f1f1eb;
+            }
+          }
+          @include rtlBlock() {
+            border-left: unset;
+          }
+
+          svg {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
+      }
+    }
+    .fixedNav {
+      height: 56px;
+      .navbar-links .nav.navbar-nav {
+        li a {
+          height: 56px;
+          line-height: 56px;
+        }
+      }
+      .user-loged-in ul.navbar-right > li > a {
+        line-height: 56px;
+      }
+      .logo-container .navbar-header {
+        height: 56px;
+        a,
+        a svg {
+          width: 86px;
+          transition: all 0.25s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .nav-wrap {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .hamburger {
+    .line {
+      width: 24px;
+      height: 1px;
+      background-color: #2b2e2c;
+      display: block;
+      margin: 6px auto;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+    :hover {
+      cursor: pointer;
+    }
+  }
+}
