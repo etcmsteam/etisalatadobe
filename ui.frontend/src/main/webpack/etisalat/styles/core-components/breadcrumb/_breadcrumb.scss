@@ -1,14 +1,26 @@
 .breadcrumb {
   background-color: $sand-white-50;
   margin-bottom: $margin-step-0;
-  padding: toRem(4) toRem(84);
+
+  @include respond-to-max($phone) {
+    display: none;
+  }
 }
 
 .cmp-breadcrumb {
+  display: block;
+  margin: 0 auto;
+  padding: 0 toRem(12);
+  width: toRem(1224);
+
+  @include respond-to-min-max($desktop-wide, $desktop + 1) {
+    width: toRem(976);
+  }
+
   &__item {
     background-color: transparent;
     color: $gray-fill;
-    font-size: 12px;
+    font-size: $font12;
     letter-spacing: 0;
     list-style: none;
     margin: 0;
