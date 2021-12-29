@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $('.hamburger').on('click', function () {
         $(".hamburger").toggleClass("is-active");
-        $("html").toggleClass("freeze nav-is-toggled");
+        $("body").toggleClass("freeze nav-is-toggled");
         $(".main-menu-mobile").toggleClass("mob-visible");
         $(".nav-drill").toggleClass("main-menu-slide");
     });
