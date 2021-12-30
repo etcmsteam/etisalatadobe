@@ -60,6 +60,7 @@
     text-transform: uppercase;
 
     &::before {
+      border-style: solid;
       border-width: 0 toRem(1) toRem(1) 0;
       content: "";
       line-height: 1;
@@ -67,7 +68,7 @@
       position: absolute;
       right: toRem(-13);
       top: 50%;
-      transform: translateY(-50%) rotate(135deg);
+      transform: translateY(-50%) rotate(-45deg);
       transition: all 0.3s ease-in-out;
 
       @include rtlBlock() {
@@ -458,8 +459,6 @@
     font-size: $font14;
     font-weight: 500;
     letter-spacing: toRem(2);
-    letter-spacing: toRem(2);
-    line-height: 1.43;
     line-height: 1.25rem;
     position: relative;
     text-transform: uppercase;
@@ -473,6 +472,7 @@
 
     .cmp-teaser__action-link::before {
       border: solid $arrow-border;
+      border-style: solid;
       border-width: 0 toRem(1) toRem(1) 0;
       content: "";
       line-height: 1;
@@ -615,6 +615,11 @@
       line-height: 1;
       position: absolute;
       z-index: 1;
+
+      @include rtlBlock() {
+        left: auto;
+        right: 0;
+      }
     }
 
     .cmp-teaser {
@@ -634,10 +639,6 @@
 
     .cmp-tabs {
       display: flex;
-
-      li:hover {
-        background: transparent;
-      }
 
       li.cmp-tabs__tab {
         display: flex;
@@ -664,6 +665,10 @@
       list-style: none;
       padding-left: 0;
       width: 30%;
+
+      li:hover {
+        background: $white-gray1;
+      }
     }
 
     .cmp-tabs__tab {
@@ -686,10 +691,12 @@
           float: left;
           height: toRem(30);
           margin-right: calc(#{$margin-step-4} + 4px);
+
           @include rtlBlock() {
             margin-left: calc(#{$margin-step-4} + 4px);
             margin-right: 0;
           }
+
           width: toRem(32);
         }
       }
@@ -786,7 +793,7 @@
       }
 
       .cmp-teaser__action-link::before {
-        border: solid #b2b2b2;
+        border: solid $grey4;
         border-style: solid;
         border-width: 0 toRem(1) toRem(1) 0;
         content: "";
@@ -983,6 +990,10 @@
         margin: toRem(16) 0;
       }
     }
+
+    .cmp-tabs {
+      display: flex;
+    }
   }
 
   // 2nd vartion en
@@ -1028,6 +1039,12 @@
     margin-top: toRem(20);
 
     @include font-family-lato;
+  }
+
+  .cmp-tabs__tablist {
+    li:hover {
+      background: transparent;
+    }
   }
 }
 
@@ -1087,6 +1104,12 @@
 }
 
 .cmp_tabs--vertical-whitebg {
+  .cmp-tabs__tablist {
+    li:hover {
+      background: $white;
+    }
+  }
+
   .cmp-tabs__tab {
     svg,
     img {
@@ -1187,23 +1210,6 @@
 }
 
 //  commenting this as of now it is causing regression pls add it under proper parent class
-
-.cmp_tabs--vertical-img {
-  .cmp-tabs {
-    display: flex;
-
-    // padding: $padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px) $padding-step-2;
-  }
-}
-
-// arabic
-
-.cmp_tabs--vertical .cmp-tabs__tab--active::after {
-  @include rtlBlock() {
-    left: 0;
-    right: auto;
-  }
-}
 
 .tabs + .text {
   padding: 1rem 1rem 1rem 1.4rem;
