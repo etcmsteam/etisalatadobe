@@ -368,7 +368,9 @@ html[lang="ar"] {
         li {
           text-transform: uppercase;
           display: inline-block;
+          float: left;
           padding: 10px;
+          text-align: left;
           width: calc(100% - 45px);
           a {
             color: $almost-black;
@@ -426,7 +428,6 @@ html[lang="ar"] {
   }
 }
 
-
 .main-menu-mobile {
   display: none;
   top: -100%;
@@ -439,19 +440,34 @@ html[lang="ar"] {
   background-color: #000000bd;
   &.sticky {
     background: $white;
+    padding-bottom: toRem(148);
     .visible_menu {
       > .panel-group:first-child {
         margin-bottom: 4rem;
       }
     }
   }
+  .menu-account-link {
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+    padding: 1rem 4px;
+    color: #353738;
+    letter-spacing: 2px;
+    span {
+      margin-left: toRem(10);
+    }
+  }
   .panel-group {
     margin-bottom: 0;
     @include respond-to-max($tablet) {
-      width: toRem(735);
+      width: toRem(755);
     }
     @include respond-to-max($phone) {
-      width: toRem(335);
+      width: toRem(367);
     }
     .panel {
       border: 0;
@@ -464,7 +480,7 @@ html[lang="ar"] {
     }
     .panel-heading {
       background-color: #fff;
-      padding: 0 toRem(10);
+      padding: 0 toRem(10) 0 toRem(22);
       .panel-title {
         height: 3.5rem;
         display: -ms-flexbox;
@@ -525,13 +541,13 @@ html[lang="ar"] {
       }
     }
     .panel-collapse .panel-body {
-      padding: 0 0 0 2rem;
+      padding: 0 0 0 1.7rem;
       .item_sub-menu {
         display: block;
         text-transform: uppercase;
         font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
         color: $gray-fill;
-        padding: 1.5rem 0;
+        padding: 1rem 0;
         font-size: 0.875rem;
         &.active {
           color: $main-green;
@@ -1002,7 +1018,6 @@ html[lang="ar"] {
 .hamburger.is-active .line:nth-child(2) {
   opacity: 0;
 }
-
 
 *[lang="ar"] *[dir="rtl"] .top-nav span.language-switch-content {
   font-size: 0.6875rem;
