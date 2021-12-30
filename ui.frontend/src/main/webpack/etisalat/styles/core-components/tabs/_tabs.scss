@@ -79,10 +79,10 @@
   }
 
   .panel {
+    background-color: $sand-white-50;
     border-radius: 0;
     margin: 0;
     width: 100%;
-    background-color: $sand-white-50;
   }
 
   .panel-collapse {
@@ -103,8 +103,8 @@
     &__content {
       @include respond-to-max($phone) {
         background-color: $white;
-        padding: toRem(16) toRem(16) toRem(32);
         border-radius: 4px;
+        padding: toRem(16) toRem(16) toRem(32);
       }
     }
 
@@ -116,14 +116,14 @@
 
     &__title {
       color: $almost-black;
-      margin-bottom: toRem(16);
-      margin-top: 0;
       font-size: $font20;
       line-height: 1.6;
+      margin-bottom: toRem(16);
+      margin-top: 0;
 
       @include respond-to-min($desktop) {
-          font-size: $font24;
-           line-height: 1.33;
+        font-size: $font24;
+        line-height: 1.33;
       }
 
       @include rtlBlock {
@@ -208,6 +208,10 @@
     span {
       display: inline-block;
       margin-right: toRem(15);
+
+      @include respond-to-max($tablet) {
+        padding-right: toRem(12);
+      }
     }
   }
 
@@ -221,7 +225,7 @@
   }
 
   .nav-view-wrapp.panel > :not(a.collapsed) {
-    font-size: $font16;
+    font-size: $font14;
     font-weight: get-font-weight("heavy");
 
     @include font-family-lato;
@@ -703,7 +707,7 @@
         // border-left: 4px solid #719e19;
         font-weight: get-font-weight("bold");
         line-height: toRem(29);
-        padding: 1.5rem 1rem 1.5rem 1.2rem !important;
+        padding: 1rem 1rem 1rem 1.2rem !important;
         position: relative;
 
         @include font-family-lato;
@@ -779,6 +783,7 @@
 
       .cmp-teaser__action-link::before {
         border: solid #b2b2b2;
+        border-style: solid;
         border-width: 0 toRem(1) toRem(1) 0;
         content: "";
         line-height: 1;
@@ -789,7 +794,6 @@
         transform: translateY(-50%) rotate(-45deg);
         transition: all 0.3s ease-in-out;
         z-index: 1;
-        border-style: solid;
       }
     }
 
@@ -1183,6 +1187,7 @@
 .cmp_tabs--vertical-img {
   .cmp-tabs {
     display: flex;
+
     // padding: $padding-step-2 $padding-step-2 calc(#{$padding-step-5} + 24px) $padding-step-2;
   }
 }
