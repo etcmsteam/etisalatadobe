@@ -636,7 +636,7 @@
       display: flex;
 
       li:hover {
-        background: $white;
+        background: transparent;
       }
 
       li.cmp-tabs__tab {
@@ -686,6 +686,10 @@
           float: left;
           height: toRem(30);
           margin-right: calc(#{$margin-step-4} + 4px);
+          @include rtlBlock() {
+            margin-left: calc(#{$margin-step-4} + 4px);
+            margin-right: 0;
+          }
           width: toRem(32);
         }
       }
@@ -1196,8 +1200,8 @@
 
 .cmp_tabs--vertical .cmp-tabs__tab--active::after {
   @include rtlBlock() {
-    left: auto;
-    right: 0;
+    left: 0;
+    right: auto;
   }
 }
 
