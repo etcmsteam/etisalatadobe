@@ -1,5 +1,17 @@
 .config-section-wrap {
-  &.page-nav {
+    background: #fff;
+    min-height: toRem(56);
+    box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
+    transition: all .25s ease-in-out;
+    height: toRem(56);
+    max-height: toRem(78);
+    position: relative;
+    z-index: 10;
+    @include respond-to-min($desktop){
+      max-height: toRem(90);
+      height: toRem(90);
+    }
+  & .page-nav {
     align-items: flex-end;
     display: flex;
     -ms-flex-align: end;
@@ -142,6 +154,12 @@
 }
 
 .pagenavigation {
+  padding-bottom: toRem(20);
+
+  @include respond-to-min($desktop){
+    padding: 0;
+  }
+
   @include respond-to-min($desktop-wide) {
     .config-section-wrap > .container {
       margin: auto;
