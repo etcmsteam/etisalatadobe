@@ -244,10 +244,6 @@
       list-style-type: disc;
       margin-bottom: toRem(4);
       padding-left: toRem(40);
-
-      @include rtlBlock() {
-        list-style: inside;
-      }
     }
   }
 
@@ -441,7 +437,7 @@
       padding-left: toRem(24);
     }
 
-    li::before {
+    li::after {
       background-color: $steel-grey;
       border-radius: 50%;
       content: "";
@@ -451,23 +447,28 @@
       position: absolute;
       top: toRem(10);
       width: toRem(4);
-    }
 
-    ul {
-      list-style-type: none;
-      margin-left: 0;
-
-      li::before {
-        background-color: $steel-grey;
-        content: " ";
-        display: block;
-        height: toRem(1);
-        left: 0;
-        position: absolute;
-        top: toRem(14);
-        width: toRem(4);
+      @include rtlBlock() {
+        left: auto;
+        right: 0;
       }
     }
+
+    // ul {
+    //   list-style-type: none;
+    //   margin-left: 0;
+
+    //   li::before {
+    //     background-color: $steel-grey;
+    //     content: " ";
+    //     display: block;
+    //     height: toRem(1);
+    //     left: 0;
+    //     position: absolute;
+    //     top: toRem(14);
+    //     width: toRem(4);
+    //   }
+    // }
   }
 }
 
