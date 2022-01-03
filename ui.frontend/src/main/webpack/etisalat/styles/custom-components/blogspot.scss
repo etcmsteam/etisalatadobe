@@ -968,6 +968,18 @@ textarea.materialize-textarea:focus:not([readonly]) {
       @include respond-to-min-max($desktop-wide, $desktop) {
         margin-right: -15px;
       }
+      .cmp-form {
+        .form-group {
+          margin-top: 0;
+          input:valid ~ label {
+            color: $almost-black;
+            font-size: $font16;
+            transform: translateY(-10px) scale(0.8);
+            transform-origin: 0 0;
+            z-index: 2;
+          }
+        }
+      }
     }
   }
   .input-field {
@@ -1006,6 +1018,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
           margin-bottom: calc($margin-step-2);
         }
       }
+    }
+  }
+  .search-target {
+    h3 {
+      font-size: $font20;
+      line-height: toRem(25);
+      padding-bottom: toRem(4);
     }
   }
   .container {
