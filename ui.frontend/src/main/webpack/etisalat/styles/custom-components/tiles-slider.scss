@@ -139,6 +139,9 @@
       }
     }
 
+    .swiper-scrollbar-drag {
+      background: $main-green;
+    }
     .tile-boxes-title-small {
       margin-bottom: 0.5rem;
 
@@ -208,6 +211,9 @@
         background-color: transparent;
         flex-direction: column;
         float: left;
+        @include respond-to-max($tablet) {
+          padding: 0;
+        }
       }
     }
 
@@ -228,7 +234,32 @@
     }
 
     &.one-slides {
+      .swiper-wrapper {
+        @include respond-to-max($tablet) {
+          padding: 0;
+        }
+      }
+      .cover {
+        height: 130px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px 4px 0 0;
+        width: 100%;
+        .cmp-image__image {
+          position: absolute;
+          left: -9999px;
+          right: -9999px;
+          top: -9999px;
+          bottom: -9999px;
+          margin: auto;
+          min-width: 100%;
+        }
+      }
       .swiper-slide {
+        @include respond-to-max($phone) {
+          margin-right: 0 !important;
+        }
+
         @include respond-to-max($desktop - 1) {
           flex-basis: 100%;
           flex-grow: 0;
