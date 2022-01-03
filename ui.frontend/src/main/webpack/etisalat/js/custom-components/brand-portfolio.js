@@ -12,11 +12,11 @@ $(document).find('.brand-portfolio').each(function (index) {
 
         320: {
           spaceBetween: 16,
-          slidesPerView: 1.64
+          slidesPerView: 1.6
         },
         475: {
           spaceBetween: 16,
-          slidesPerView: 1.64
+          slidesPerView: 1.6
         },
         767: {
           spaceBetween: 16,
