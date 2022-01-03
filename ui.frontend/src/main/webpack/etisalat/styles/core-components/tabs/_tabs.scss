@@ -74,7 +74,7 @@
       @include rtlBlock() {
         left: toRem(-13);
         right: auto;
-        transform: translateY(-50%) rotate(-45deg);
+        transform: translateY(-50%) rotate(135deg);
       }
     }
   }
@@ -202,6 +202,11 @@
           transform: translateY(-70%) rotate(45deg);
           transition: all 0.3s ease-in-out;
           z-index: 1;
+
+          @include rtlBlock() {
+            left: toRem(30);
+            right: auto;
+          }
         }
       }
     }
@@ -210,8 +215,18 @@
       display: inline-block;
       margin-right: toRem(15);
 
+      @include rtlBlock() {
+        margin-left: toRem(15);
+        margin-right: initial;
+      }
+
       @include respond-to-max($tablet) {
         padding-right: toRem(12);
+
+        @include rtlBlock() {
+          padding-left: toRem(12);
+          padding-right: auto;
+        }
       }
     }
   }
@@ -483,6 +498,12 @@
       transform: translateY(-30%) rotate(-135deg);
       transition: all 0.3s ease-in-out;
       z-index: 1;
+
+      @include rtlBlock() {
+        left: toRem(-13);
+        right: auto;
+        transform: translateY(-50%) rotate(135deg);
+      }
     }
   }
 
@@ -805,6 +826,12 @@
         transform: translateY(-50%) rotate(-45deg);
         transition: all 0.3s ease-in-out;
         z-index: 1;
+
+        @include rtlBlock() {
+          left: toRem(-13);
+          right: auto;
+          transform: translateY(-50%) rotate(135deg);
+        }
       }
     }
 
