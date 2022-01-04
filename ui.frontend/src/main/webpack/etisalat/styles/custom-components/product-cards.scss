@@ -751,3 +751,118 @@ hr.dashed {
     }
   }
 }
+// A11y
+.acc-blue,
+.acc-black,
+.acc-yellow {
+  .product-card,
+  .product-card--offer {
+    $parent: &;
+    border: toRem(1) solid $white;
+    box-shadow: none;
+    &:hover {
+      border-color: $white;
+       .product-card__header,
+       .product-card__footer,
+       .product-card__body {
+         border-color: transparent;
+       }
+    }
+    &__special-offer {
+      color:  $blue4;
+      border: toRem(1) solid $blue4;
+      border-top: 0;
+      background-color: $white;
+    }
+    &__header__title__primary,
+    &__header__title__secondary,
+    &__price-from,
+    &__price,
+    &__old-price,
+    &__price-vat,
+    &__color-list--small ul li,
+    &__feature-list--small ul li,
+    &__item-top .package p,
+    &__item-top .package span,
+    &__item-top .package span small {
+      color: $white;
+    }
+    &__old-price {
+      background-color: $white;
+      color: $blue4;
+    }
+    &__smile-points,
+    &__cta {
+      color: $white;
+      background-color: transparent;
+      border-top: toRem(1) solid;
+    }
+     &__cta {
+      border-left: 0;
+      border-right: 0;
+     }
+    
+    &__cta:hover{
+      background-color: transparent;
+      border-color: inherit;
+      border-left: 0;
+      border-right: 0;
+      border-top: toRem(1) solid;
+    }
+  }
+}
+.acc-yellow { 
+  .product-card,
+  .product-card--offer {
+    $parent: &;
+    border: toRem(1) solid $yellow-light;
+      &:hover {
+      border-color: $yellow-light;
+      }
+     &__special-offer {
+      background: $yellow-light;
+      color: $black;
+      border: toRem(1) solid $black;
+      border-top: 0;
+    }
+    &__header__title__primary,
+    &__header__title__secondary,
+    &__price-from,
+    &__price,
+    &__old-price,
+    &__price-vat,
+    &__color-list--small ul li,
+    &__feature-list--small ul li,
+    &__item-top .package p,
+    &__item-top .package span,
+    &__item-top .package span small,
+    &__smile-points {
+      color: $yellow-light;
+    }
+    &__old-price {
+      background-color: $yellow-light;
+      color: $black;
+    }
+    &__cta {
+      color: $white;
+      border-top-color: $yellow-light;
+       &:hover {
+          border-top-color: $yellow-light;
+       }
+    }
+  }
+}
+.acc-black {
+  .product-card,
+  .product-card--offer {
+    $parent: &;
+    &__special-offer {
+      color: $black;
+      border: toRem(1) solid $black;
+      border-top: 0;
+    }
+    &__old-price {
+      color: $black;
+    }
+  }
+}
