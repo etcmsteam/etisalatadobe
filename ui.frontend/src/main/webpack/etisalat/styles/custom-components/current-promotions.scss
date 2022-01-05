@@ -1058,6 +1058,42 @@
     .nv-modal-dialog {
       height: 100%;
       width: 100%;
+      .nv-modal-content {
+        .container {
+          @include respond-to-max($phone) {
+            width: 100%;
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .nv-modal-close svg {
+      right: 0;
+    }
+
+    .modal-popup {
+      .offer-details-wrapper {
+          max-height: 100%;
+      }
+
+    .nv-modal-body {
+      overflow: hidden;
+      overflow-y: auto;
+      @include respond-to-max($tablet) {
+        max-height: 80vh;
+      }
+      @include respond-to-min-max($desktop-min, $tablet + 1) {
+        max-height: 60vh;
+      }
+      @include respond-to-min-max($desktop-wide, $desktop) {
+        max-height: 75vh;
+      }
+    }
+
+      .nv-modal-body::-webkit-scrollbar-thumb {
+        background-color: $grey5 !important;
+      }
     }
   }
 }
@@ -1605,6 +1641,26 @@
       }
     }
   }
+
+  .modal-popup {
+    .nv-modal-body {
+      overflow: hidden;
+      overflow-y: auto;
+      @include respond-to-max($tablet) {
+        max-height: 80vh;
+      }
+      @include respond-to-min-max($desktop-min, $tablet + 1) {
+        max-height: 55vh;
+      }
+      @include respond-to-min-max($desktop-wide, $desktop) {
+        max-height: 70vh;
+      }
+    }
+  }
+
+  .nv-modal-body::-webkit-scrollbar-thumb {
+    background-color: $grey5 !important;
+  }
 }
 
 .left-modal {
@@ -1891,6 +1947,7 @@
     .nv-py-5 {
       height: 100vh !important;
       overflow: scroll !important;
+      padding-top: toRem(32);
     }
 
     .nv-modal__doublemin {
