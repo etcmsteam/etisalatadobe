@@ -1,4 +1,5 @@
-//language dropdown
+/* eslint-disable no-undef */
+// language dropdown
 $(document).ready( function(){
     $(".language a").click( function(event){
         $(".language a").toggleClass( 'open' );
