@@ -114,14 +114,25 @@
                                                             fieldLabel="Image"
                                                             name="./navigationImage"
                                                             rootPath="/content/dam"/>
-                                                        <modalpopup
+                                                        <modalBehavior
                                                             jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                            fieldLabel="Open In Modal window"
-                                                            name="./openmodalwindow"
-                                                            text="Open In Modal window"
-                                                            uncheckedValue="false"
-                                                            value="true"/>
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Modal Popup Behavior "
+                                                            name="./modalBehavior">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <selectmodalbehavior
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Select Modal Behavior"/>
+                                                                <opennewwindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Modal Popup"
+                                                                    value="modalwindow"/>
+                                                                <accessibilityoverlay
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Accessibility Overlay"
+                                                                    value="accessibilityoverlay"/>
+                                                            </items>
+                                                        </modalBehavior>
                                                         <fragmentVariationPath
                                                             granite:id="xfPicker"
                                                             jcr:primaryType="nt:unstructured"
