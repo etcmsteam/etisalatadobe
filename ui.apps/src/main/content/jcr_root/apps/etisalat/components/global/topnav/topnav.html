@@ -22,14 +22,14 @@
                      <sly data-sly-list.itemList="${itemss.listChildren}"
                         class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
                         <li data-sly-test="${!itemList.openmodalwindow}">
-                           <a class="open-accessibility-popup" href="${itemList.navigationLink @ extension = 'html'}"
+                           <a href="${itemList.navigationLink @ extension = 'html'}"
                               data-sub-menu="sub-menu-mobile">
                               <span class="text">${itemList.navigationTitle}</span>
                               <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
                                  src="${itemList.navigationImage}" /></a>
                         </li>
-                        <li data-sly-test="${itemList.openmodalwindow}">
-                           <a data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="btn-modal"
+                        <li data-sly-test="${itemList.openmodalwindow == 'true'}">
+                           <a class="open-accessibility-popup" data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="btn-modal"
                               title="${itemList.navigationTitle}">
                               <span class="text">${itemList.navigationTitle}</span>
                               <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
