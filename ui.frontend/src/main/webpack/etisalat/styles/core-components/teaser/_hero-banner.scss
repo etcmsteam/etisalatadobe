@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cmp-carousel--herobanner {
   .btn-green {
     @include rtlBlock() {
@@ -95,6 +96,50 @@
     }
   }
 
+  .cmp-teaser--herobanner {
+    height: toRem(500);
+    position: relative;
+    width: auto;
+
+    .cmp-teaser__image {
+      max-height: toRem(250);
+
+      @include respond-to-min($desktop) {
+        max-height: toRem(500);
+      }
+    }
+  }
+
+  .cmp-teaser__image {
+    height: toRem(500);
+    max-height: toRem(250);
+    position: relative;
+    width: auto;
+
+    @include respond-to-min($desktop) {
+      max-height: toRem(500);
+    }
+  }
+
+  .cmp-image__image {
+    bottom: toRem(-9999);
+    height: 100%;
+    left: toRem(-9999);
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    right: toRem(-9999);
+    top: toRem(-9999);
+    vertical-align: middle;
+    width: 100%;
+    z-index: 1;
+
+    @include respond-to-min($desktop) {
+      height: auto;
+    }
+  }
+
   .hero-heading-big {
     @include rtlBlock() {
       right: 0;
@@ -139,17 +184,7 @@
     }
   }
 
-  .hero-banner__right_text {
-    @include respond-to-min($desktop) {
-      .cmp-teaser__content {
-        left: 50%;
-      }
-    }
-  }
-
   .video {
-    // min-height: toRem(550);
-
     @include respond-to-min($desktop) {
       height: 100%;
       min-height: toRem(550);
@@ -159,7 +194,6 @@
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
-        position: absolute;
 
         @include rtlBlock() {
           right: 0;
@@ -185,11 +219,12 @@
       }
 
       position: relative;
+      width: 100%;
 
       @include respond-to-min($desktop) {
         left: toRem(3);
-        position: absolute;
         top: toRem(65);
+        width: toRem(200);
       }
 
       @include respond-to-max($phone) {
@@ -244,7 +279,7 @@
 
       @include respond-to-min($desktop) {
         margin: $margin-step-0 auto;
-        position: absolute;
+        position: relative;
         right: 0;
         top: 0;
         width: toRem(1224);
@@ -290,7 +325,7 @@
           margin-top: calc(#{$margin-step-2} + 4px);
           min-width: toRem(180);
           top: toRem(336);
-          width: auto;
+          width: toRem(180);
 
           @include rtlBlock() {
             right: toRem(5);
@@ -377,11 +412,13 @@
 
   .cmp-teaser {
     &__image {
-      height: 100%;
-      width: 100%;
+      height: toRem(500);
+      max-height: toRem(200);
+      position: relative;
+      width: auto;
 
-      @include respond-to-max($tablet) {
-        height: 100%;
+      @include respond-to-min($desktop) {
+        max-height: toRem(363);
       }
     }
 
@@ -433,12 +470,19 @@
       @include respond-to-max($tablet) {
         font-size: $font26;
         line-height: toRem(33);
+        padding: 0 toRem(10);
         z-index: 2;
       }
 
       @include respond-to-min($desktop) {
         margin: $margin-step-0;
-        width: 50%;
+
+        @include rtlBlock() {
+          left: auto;
+          padding-right: toRem(40);
+          right: 0;
+          width: 50%;
+        }
       }
 
       @include respond-to-max($desktop) {
@@ -457,7 +501,6 @@
         margin: auto;
         right: 0;
         top: 0;
-        width: toRem(1224);
       }
     }
 
@@ -538,6 +581,7 @@
       font-size: $font26;
 
       @include respond-to-min($desktop) {
+        color: $white;
         font-size: $font54;
       }
     }
@@ -547,14 +591,11 @@
         color: $white;
         line-height: toRem(64);
         margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
+        width: 50%;
 
         a {
           color: $white;
         }
-      }
-
-      @include respond-to-min($desktop-wide) {
-        width: 50%;
       }
 
       @include respond-to-max($desktop) {
@@ -574,12 +615,86 @@
   }
 
   .cmp-image__image {
-    height: 100% !important;
+    bottom: toRem(-9999);
+    height: 100%;
+    left: toRem(-9999);
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    right: toRem(-9999);
+    top: toRem(-9999);
+    vertical-align: middle;
     width: 100%;
     z-index: 1;
 
     @include respond-to-min($desktop) {
       height: auto;
+    }
+  }
+}
+
+.hero-banner {
+  &__right_text {
+    @include respond-to-min($desktop) {
+      .cmp-teaser__content {
+        left: 50%;
+        width: 50%;
+
+        .cmp-teaser__title {
+          width: 100%;
+        }
+
+        .cmp-teaser__description p {
+          color: $white;
+        }
+      }
+
+      .hero-heading-big {
+        left: 50%;
+        width: 50%;
+      }
+
+      .youtube-popup-container .btn-green {
+        left: 50% !important;
+      }
+
+      .video-wrapper {
+        left: 50% !important;
+      }
+    }
+  }
+
+  &__center_text {
+    @include respond-to-min($desktop) {
+      .cmp-teaser__content {
+        align-items: center;
+        width: 100%;
+      }
+
+      .cmp-teaser__action-container {
+        text-align: center;
+      }
+
+      .hero-heading-big {
+        left: 0;
+        margin: auto;
+        right: 0;
+        top: toRem(110);
+      }
+
+      .youtube-popup-container .btn-green {
+        left: 0;
+        margin: auto;
+        right: 0;
+        width: toRem(180);
+      }
+
+      .video-wrapper {
+        left: 0;
+        margin: auto;
+        right: 0;
+      }
     }
   }
 }
