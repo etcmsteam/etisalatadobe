@@ -21,22 +21,30 @@
                   <ul data-sly-test="${itemss.name == 'linkswithicons'}" class="links">
                      <sly data-sly-list.itemList="${itemss.listChildren}"
                         class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
-                        <li data-sly-test="${!itemList.openmodalwindow}">
+                        <li data-sly-test="${!(itemList.modalBehavior == 'modalwindow') && !(itemList.modalBehavior == 'accessibilityoverlay')}">
                            <a href="${itemList.navigationLink @ extension = 'html'}"
                               data-sub-menu="sub-menu-mobile">
-                              <span class="text">${itemList.navigationTitle}</span>
-                              <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
-                                 src="${itemList.navigationImage}" /></a>
+                           <span class="text">${itemList.navigationTitle}</span>
+                           <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
+                              src="${itemList.navigationImage}" /></a>
                         </li>
-                        <li data-sly-test="${itemList.openmodalwindow == 'true'}">
-                           <a class="open-accessibility-popup" data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="btn-modal"
+                        <li data-sly-test="${itemList.modalBehavior == 'modalwindow'}">
+                           <a  data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="btn-modal"
                               title="${itemList.navigationTitle}">
-                              <span class="text">${itemList.navigationTitle}</span>
-                              <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
-                                 src="${itemList.navigationImage}" />
+                           <span class="text">${itemList.navigationTitle}</span>
+                           <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
+                              src="${itemList.navigationImage}" />
                            </a>
                         </li>
-                        <div data-sly-test="${itemList.openmodalwindow}" id="${resource.name}"
+                        <li data-sly-test="${itemList.modalBehavior == 'accessibilityoverlay'}">
+                           <a class="open-accessibility-popup" data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="open-accessibility-popup"
+                              title="${itemList.navigationTitle}">
+                           <span class="text">${itemList.navigationTitle}</span>
+                           <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
+                              src="${itemList.navigationImage}" />
+                           </a>
+                        </li>
+                        <div data-sly-test="${itemList.modalBehavior == 'modalwindow'}" id="${resource.name}"
                            class="nv-modal fade  black-overlay-modal">
                            <div class="nv-modal-dialog">
                               <div class="nv-modal-content nv-py-5">
@@ -54,6 +62,13 @@
                               </div>
                            </div>
                         </div>
+                        <div data-sly-test="${itemList.modalBehavior == 'accessibilityoverlay'}" id="${resource.name}"
+                           class="modal accessibility-overlay">
+                           <div class="" role="document">
+                              <sly
+                                 data-sly-resource="${itemList @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}"></sly>
+                           </div>
+                        </div>
                      </sly>
                      <li data-sly-test="${topnavModel.languageSize > 1}">
                         <ul>
@@ -62,7 +77,7 @@
                                  href="#">${topnavModel.currentPageLanguageTitle}</a>
                               <ul class="language-menu" data-sly-list.langItem="${topnavModel.localeList}">
                                  <li><a class="${langItem.altText == 'ar' ? 'arabic-lang-content' :''}"
-                                       href="${langItem.linkUrl}">${langItem.title}</a></li>
+                                    href="${langItem.linkUrl}">${langItem.title}</a></li>
                               </ul>
                            </li>
                         </ul>
@@ -70,7 +85,7 @@
                      <li data-sly-test="${topnavModel.languageSize == 1}"
                         data-sly-list.langItem="${topnavModel.localeList}">
                         <a href="${langItem.linkUrl}" data-sub-menu="sub-menu-help">
-                           <span class="language-switch-content"> ${langItem.title}</span>
+                        <span class="language-switch-content"> ${langItem.title}</span>
                         </a>
                      </li>
                   </ul>
