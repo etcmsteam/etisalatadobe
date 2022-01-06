@@ -12,12 +12,11 @@
 
     p {
       color: $steel-grey;
-
-      @include font-family-lato;
-
       font-size: $font14;
       font-weight: normal;
       line-height: toRem(24);
+
+      @include font-family-lato;
     }
   }
 }
@@ -28,20 +27,18 @@
 
   .cmp-text h3 {
     color: $almost-black;
+    margin: 0;
 
     @include font-family-Neotech;
-
-    margin: 0;
   }
 
   .cmp-text p {
     color: $steel-grey;
-
-    @include font-family-lato;
-
     font-size: $font14 !important;
     line-height: toRem(20) !important;
     margin-bottom: toRem(12);
+
+    @include font-family-lato;
   }
 
   @include respond-to-max($desktop-min) {
@@ -82,6 +79,42 @@
     .cmp-button--secondary {
       float: $floatR;
       width: 25%;
+    }
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .cmp-rte-text {
+    .cmp-text {
+      p,
+      h3 {
+        color: $white;
+      }
+    }
+  }
+
+  .cmp-accordion--text {
+    .cmp-text li {
+      color: $white;
+    }
+  }
+}
+
+.acc-yellow {
+  .cmp-rte-text {
+    .cmp-text {
+      p,
+      h3 {
+        color: $yellow-light;
+      }
+    }
+  }
+
+  .cmp-accordion--text {
+    .cmp-text li {
+      color: $yellow-light;
     }
   }
 }
