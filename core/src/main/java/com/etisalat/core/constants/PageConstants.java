@@ -82,7 +82,10 @@ public final class PageConstants {
    */
  public static final String APPLICATION_JSON = "application/json";
 
-
+    /**
+     * Constant for ACCESSORIES_CONTAINER Resource Type
+     */
+    public static final String ACCESSORIES_CONTAINER_RESOURCETYPE = "etisalat/components/accessoriescardcontainer";
   /**
    * private constructor to prevent instantiation of class.
    */

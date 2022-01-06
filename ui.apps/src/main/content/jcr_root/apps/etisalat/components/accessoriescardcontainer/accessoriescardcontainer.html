@@ -1,56 +1,40 @@
-<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
-<sly data-sly-test="${wcmmode.edit}" data-sly-use.allowed="com.day.cq.wcm.foundation.AllowedComponentList"></sly>
-<div data-sly-test="${wcmmode.edit}" data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     id="${container.id}"
-     class="cmp-container${wcmmode.edit ? ' {0}': '' @ format=[allowed.cssClass]}"
-     aria-label="${container.accessibilityLabel}"
-     role="${container.roleAttribute}"
-     data-placeholder-text="${wcmmode.edit && 'Please add Accessories Card Tile items here' @ i18n}"
-     style="${container.backgroundStyle @ context='styleString'}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
-    <sly data-sly-test.isAllowedApplicable="${allowed.isApplicable}"
-         data-sly-test="${isAllowedApplicable}"
-         data-sly-use.allowedTemplate="allowedcomponents.html"
-         data-sly-call="${allowedTemplate.allowedcomponents @ title=allowed.title, components=allowed.components}"></sly>
-    <sly data-sly-test="${!isAllowedApplicable}"
-         data-sly-repeat="${container.items}" data-sly-resource="${item.path @ decoration=true}"></sly>
-    <sly data-sly-test="${!isAllowedApplicable && !wcmmode.disabled}"
-         data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-placeholder-text="${wcmmode.edit && 'Drag Accessory Card components here' @ i18n}" >
 
-</div>
+    <sly data-sly-test.accessoryCard="${properties.tileBoxLayout == 'accessoriesCard' ? 'accessories-wrapper with-slider has-bg' : ''}"></sly>
+    <sly data-sly-test.brandlogoCard="${properties.tileBoxLayout == 'brandLogoCard' ? 'brands-logo with-slider with-slider has-bg' : ''}"></sly>
+    <sly data-sly-test.recommbigCard="${properties.tileBoxLayout == 'recommBigCard' ? 'eti-recommendation-big-card with-slider has-bg' : ''}"></sly>
+    <sly data-sly-test.recommCard="${properties.tileBoxLayout == 'recommCard' ? 'eti-recommendation-wrapper with-slider has-bg' : ''}"></sly>
 
-
-
-<div data-sly-test="${wcmmode.preview || wcmmode.disabled}"
-     id="${container.id}"
-     class="cmp-container${wcmmode.edit ? ' {0}': '' @ format=[allowed.cssClass]}"
-     aria-label="${container.accessibilityLabel}"
-     role="${container.roleAttribute}"
-     style="${container.backgroundStyle @ context='styleString'}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
-<sly data-sly-test="${properties.accessoryCardType == 'accessoriesCard'}"
-     data-sly-use.accessorycardTemplate="/apps/etisalat/components/accessoriescardcontainer/accessorycard.html"
-     data-sly-call="${accessorycardTemplate.accessoriesCard @ container=container,properties=properties}">
-
-</sly>
-
-<sly data-sly-test="${properties.accessoryCardType == 'brandLogoCard'}"
-     data-sly-use.brandlogocardTemplate="brandlogocard.html"
-     data-sly-call="${brandlogocardTemplate.brandLogoCard @ container=container,properties=properties}">
-
-</sly>
-
-<sly data-sly-test="${properties.accessoryCardType == 'recommBigCard'}"
-     data-sly-use.recommendedbigcardTemplate="recommendedbigcard.html"
-     data-sly-call="${recommendedbigcardTemplate.recommBigCard @ container=container,properties=properties}">
-
-</sly>
-
-<sly data-sly-test="${properties.accessoryCardType == 'recommCard'}"
-     data-sly-use.recommendedcardTemplate="recommendedbigcard.html"
-     data-sly-call="${recommendedcardTemplate.recommCard @ container=container,properties=properties}">
-
-</sly>
-
-</div>
+    <div class="${accessoryCard}${brandlogoCard}${recommbigCard}${recommCard}">
+        <div class="container">
+            <div class="wst-main-headings">
+                <h4 data-sly-element="${properties.titleType}">${properties.accessoriescardPreTitle}</h4>
+            </div>
+            <div class="row">
+                <div class="card-list-wrapper">
+                    <div  class="${!wcmmode.edit ? 'swiper-container' : ''}">
+                        <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">
+                            <!-- Slides Start-->
+                            <div class="swiper-slide" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
+                            <!-- Slides End-->
+                        </div>
+                    </div>
+                    <div class="prev">
+                    </div>
+                    <div class="next">
+                    </div>
+                </div>
+                <div class="scrollbar"></div>
+            </div>
+            <div data-sly-test="${properties.tileBoxLayout && properties.tileBoxLayout == 'recommBigCard'}" class="third-action-wrapper text-center action-btn-default">
+                <sly data-sly-test.customLink="${properties.containerViewAllLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+                <a data-sly-test="${properties.containerViewAllTitle}" class="btn btn-default ripple-effect"
+                   href="${commonlinkmodel.link}"
+                   target="${properties.linktarget?'_blank':'_self'}">${properties.containerViewAllTitle}</a>
+            </div>
+        </div>
+        <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+    </div>
 </sly>
