@@ -28,7 +28,7 @@ class EtisalatBreadcrumbImplTest {
 
 	@BeforeEach
 	public void setup() throws Exception {
-		context.addModelsForClasses(IconCardListImpl.class);
+		context.addModelsForClasses(EtisalatBreadcrumbImpl.class);
 		context.load().json("/com/etisalat/core/models/EtisalatBreadcrumbTest.json", CONTENT_ROOT);		
 	}
 
