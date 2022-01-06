@@ -79,36 +79,14 @@
                   <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" class="nav-link-icon" src="${topRightItems.navigationImage}" /> ${topRightItems.navigationTitle} </a>
                </sly>
                <sly data-sly-test="${topRightItems.openmodalwindow == 'accessibilityoverlay'}">
-                  <a class="nav-link open-accessibility-popup" >
+                  <a class="nav-link open-accessibility-popup mobile-accessibility-popup" >
                   <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" class="nav-link-icon" src="${topRightItems.navigationImage}" /> ${topRightItems.navigationTitle} </a>
-               </sly>
-               <sly data-sly-test="${topRightItems.openmodalwindow == 'modalwindow'}">
-                  <a class="nav-link btn-modal" >
-                  <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" class="nav-link-icon" src="${topRightItems.navigationImage}" /> ${topRightItems.navigationTitle} </a>
-               </sly>
+               </sly>              
                <div data-sly-test="${topRightItems.openmodalwindow == 'accessibilityoverlay'}" id="${resource.name}"
-                  class="modal accessibility-overlay">
+                  class="modal accessibility-overlay mobile-accessibility-popup">
                   <div class="" role="document">
                      <sly
                         data-sly-resource="${topRightItems.topNavigationXFResource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}"></sly>
-                  </div>
-               </div>
-               <div data-sly-test="${topRightItems.openmodalwindow == 'modalwindow'}" id="${resource.name}"
-                  class="nv-modal fade  black-overlay-modal">
-                  <div class="nv-modal-dialog">
-                     <div class="nv-modal-content nv-py-5">
-                        <div class="container">
-                           <div class="modal-popup">
-                              <sly
-                                 data-sly-use.closebuttonTemplate="/apps/etisalat/components/button/closebutton.html"
-                                 data-sly-call="${closebuttonTemplate.close}">
-                              </sly>
-                              <sly
-                                 data-sly-resource="${itemList @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
-                              </sly>
-                           </div>
-                        </div>
-                     </div>
                   </div>
                </div>
             </li>
