@@ -78,7 +78,7 @@
     }
 
     &__indicators {
-      margin-top: $margin-step-2;
+      margin: $margin-step-2 0;
 
       @include respond-to-min($desktop) {
         display: none;
@@ -188,6 +188,10 @@
     @include respond-to-min($desktop) {
       height: 100%;
       min-height: toRem(550);
+    }
+
+    @include respond-to-max($tablet) {
+      min-height: toRem(500);
     }
 
     .video_link {
@@ -377,7 +381,8 @@
   }
 }
 
-.cmp-teaser--herobanner {
+.cmp-teaser--herobanner,
+.plain-hero--banner {
   max-height: toRem(500);
   overflow: hidden;
   position: relative;
@@ -470,6 +475,7 @@
       @include respond-to-max($tablet) {
         font-size: $font26;
         line-height: toRem(33);
+        margin-top: toRem(20);
         padding: 0 toRem(10);
         z-index: 2;
       }
@@ -596,6 +602,10 @@
         a {
           color: $white;
         }
+
+        @include rtlBlock() {
+          width: 100%;
+        }
       }
 
       @include respond-to-max($desktop) {
@@ -641,26 +651,50 @@
         left: 50%;
         width: 50%;
 
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
+
         .cmp-teaser__title {
           width: 100%;
         }
 
-        .cmp-teaser__description p {
-          color: $white;
+        .cmp-teaser__description {
+          width: 100%;
+
+          p {
+            color: $white;
+          }
         }
       }
 
       .hero-heading-big {
         left: 50%;
         width: 50%;
+
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
       }
 
       .youtube-popup-container .btn-green {
         left: 50% !important;
+
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
       }
 
       .video-wrapper {
         left: 50% !important;
+
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
       }
     }
   }
@@ -670,6 +704,31 @@
       .cmp-teaser__content {
         align-items: center;
         width: 100%;
+
+        @include rtlBlock() {
+          align-items: center;
+          width: 100%;
+        }
+
+        .cmp-teaser__title {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+
+          @include rtlBlock() {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+          }
+        }
+
+        .cmp-teaser__description p {
+          text-align: center;
+
+          @include rtlBlock() {
+            text-align: center;
+          }
+        }
       }
 
       .cmp-teaser__action-container {
@@ -680,7 +739,14 @@
         left: 0;
         margin: auto;
         right: 0;
+        text-align: center;
         top: toRem(110);
+
+        h1 {
+          @include rtlBlock() {
+            text-align: center;
+          }
+        }
       }
 
       .youtube-popup-container .btn-green {
@@ -696,5 +762,16 @@
         right: 0;
       }
     }
+  }
+}
+
+.plain-hero--banner {
+  height: toRem(500);
+  max-height: toRem(200);
+  position: relative;
+  width: auto;
+
+  @include respond-to-min($desktop) {
+    max-height: toRem(363);
   }
 }
