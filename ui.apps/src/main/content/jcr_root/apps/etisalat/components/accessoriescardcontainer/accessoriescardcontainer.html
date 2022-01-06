@@ -7,13 +7,18 @@
     <sly data-sly-test.recommbigCard="${properties.tileBoxLayout == 'recommBigCard' ? 'eti-recommendation-big-card with-slider has-bg' : ''}"></sly>
     <sly data-sly-test.recommCard="${properties.tileBoxLayout == 'recommCard' ? 'eti-recommendation-wrapper with-slider has-bg' : ''}"></sly>
 
+    <sly data-sly-test.accessoryConCard="${properties.tileBoxLayout == 'accessoriesCard' ? 'card-list-wrapper' : ''}"></sly>
+    <sly data-sly-test.brandlogoConCard="${properties.tileBoxLayout == 'brandLogoCard' ? 'logo-list' : ''}"></sly>
+    <sly data-sly-test.recommbigConCard="${properties.tileBoxLayout == 'recommBigCard' ? 'eti-big-card-list' : ''}"></sly>
+    <sly data-sly-test.recommConCard="${properties.tileBoxLayout == 'recommCard' ? 'eti-card-list-wrapper' : ''}"></sly>
+
     <div class="${accessoryCard}${brandlogoCard}${recommbigCard}${recommCard}">
         <div class="container">
             <div class="wst-main-headings">
                 <h4 data-sly-element="${properties.titleType}">${properties.accessoriescardPreTitle}</h4>
             </div>
             <div class="row">
-                <div class="card-list-wrapper">
+                <div class="${accessoryConCard}${brandlogoConCard}${recommbigConCard}${recommConCard}">
                     <div  class="${!wcmmode.edit ? 'swiper-container' : ''}">
                         <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">
                             <!-- Slides Start-->
