@@ -116,7 +116,7 @@
   }
 
   .hamburger .line {
-    background-color: $acc-forground;
+    background-color: $acc-forground !important;
   }
   .main-menu-mobile {
     .panel-group .panel-heading {
@@ -258,7 +258,22 @@
         }
       }
     }
-
+    .sub-account-menu-wrap {
+      .sub-account-menu {
+        border: 1px solid;
+        border-color: $acc-forground;
+        background: $acc-background;
+        border-top: 3px solid;
+        li a {
+          color: $acc-forground;
+        }
+        li.active a,
+        a:focus,
+        a:hover {
+          color: $acc-forground;
+        }
+      }
+    }
   }
 
   .menu-promotion-wrapper{
@@ -295,8 +310,12 @@
   .nav-link{
     background: $acc-background;
     color: $acc-forground;
-    .nav-link-arrow path{
-      fill: $acc-forground;
+    .nav-link-arrow {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: $acc-forground;
+      }
     }
   }
   .nav-quick-links{
@@ -309,13 +328,20 @@
   }
   .nav-site-switch.active,
   .nav-site-switch, .nav-lang{
-    color: $acc-forground;
+    color: $acc-forground !important;
+  }
+  .nav-site-switch.active {
+    border-left: 4px solid $acc-forground;
   }
   .nav-expand{
      .nav-expand-content{
        background-color: $acc-background;
        .nav-back-link{
           background-color: $acc-background !important;
+          &:before {
+            border: solid $acc-forground;
+            border-width: 0 toRem(1.5) toRem(1.5) 0;
+          }
        }
        .nav-link{
          background-color: $acc-background !important;
@@ -372,6 +398,7 @@
        color: $acc-forground;
        border: 1px solid $acc-forground;
      }
+
   }
 
 
@@ -407,6 +434,12 @@
       }
       .link-title-mob {
         color: $acc-forground;
+      }
+    }
+    .arrow_accordion {
+      &:after {
+        border: solid $acc-forground;
+        border-width: 0 toRem(1) toRem(1) 0;
       }
     }
   }
