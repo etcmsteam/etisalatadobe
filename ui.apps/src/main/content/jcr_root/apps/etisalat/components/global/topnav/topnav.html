@@ -21,14 +21,14 @@
                   <ul data-sly-test="${itemss.name == 'linkswithicons'}" class="links">
                      <sly data-sly-list.itemList="${itemss.listChildren}"
                         class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
-                        <li data-sly-test="${!(itemList.modalBehavior == 'modalwindow') && !(itemList.modalBehavior == 'accessibilityoverlay')}">
+                        <li data-sly-test="${!(itemList.openmodalwindow == 'modalwindow') && !(itemList.openmodalwindow == 'accessibilityoverlay')}">
                            <a href="${itemList.navigationLink @ extension = 'html'}"
                               data-sub-menu="sub-menu-mobile">
                            <span class="text">${itemList.navigationTitle}</span>
                            <img alt="${itemList.navigationTitle}" data-sly-test="${itemList.navigationImage}"
                               src="${itemList.navigationImage}" /></a>
                         </li>
-                        <li data-sly-test="${itemList.modalBehavior == 'modalwindow'}">
+                        <li data-sly-test="${itemList.openmodalwindow == 'modalwindow'}">
                            <a  data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="btn-modal"
                               title="${itemList.navigationTitle}">
                            <span class="text">${itemList.navigationTitle}</span>
@@ -36,7 +36,7 @@
                               src="${itemList.navigationImage}" />
                            </a>
                         </li>
-                        <li data-sly-test="${itemList.modalBehavior == 'accessibilityoverlay'}">
+                        <li data-sly-test="${itemList.openmodalwindow == 'accessibilityoverlay'}">
                            <a class="open-accessibility-popup" data-label="${resource.name}" data-sub-menu="sub-menu-mobile" class="open-accessibility-popup"
                               title="${itemList.navigationTitle}">
                            <span class="text">${itemList.navigationTitle}</span>
@@ -44,7 +44,7 @@
                               src="${itemList.navigationImage}" />
                            </a>
                         </li>
-                        <div data-sly-test="${itemList.modalBehavior == 'modalwindow'}" id="${resource.name}"
+                        <div data-sly-test="${itemList.openmodalwindow == 'modalwindow'}" id="${resource.name}"
                            class="nv-modal fade  black-overlay-modal">
                            <div class="nv-modal-dialog">
                               <div class="nv-modal-content nv-py-5">
@@ -62,7 +62,7 @@
                               </div>
                            </div>
                         </div>
-                        <div data-sly-test="${itemList.modalBehavior == 'accessibilityoverlay'}" id="${resource.name}"
+                        <div data-sly-test="${itemList.openmodalwindow == 'accessibilityoverlay'}" id="${resource.name}"
                            class="modal accessibility-overlay">
                            <div class="" role="document">
                               <sly
