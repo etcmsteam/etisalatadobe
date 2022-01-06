@@ -1,3 +1,4 @@
+/* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable no-descending-specificity */
 .cmp-teaser--promo-card-row {
   .cmp-teaser {
@@ -142,39 +143,47 @@
     margin-bottom: toRem(20);
 
     .gutter-padding-right {
-      height: toRem(561);
-
-      &:first-child {
-        height: toRem(549);
-
-        .cmp-teaser__image {
-          height: toRem(549);
-
-          .cmp-image__image {
-            height: toRem(549);
-          }
-        }
-      }
+      height: toRem(533);
 
       .cmp-teaser__image {
-        height: toRem(561);
+        height: toRem(554);
 
         .cmp-image__image {
-          height: toRem(561);
+          height: toRem(554);
+        }
+      }
+    }
+
+    .gutter-padding-left {
+      .cmp-teaser__image {
+        height: toRem(553);
+
+        .cmp-image__image {
+          height: toRem(553);
+        }
+      }
+    }
+
+    .image-right {
+      .cmp-teaser__image {
+        height: toRem(264);
+
+        .cmp-image__image {
+          height: toRem(264);
         }
       }
     }
 
     .cmp_small_tile {
       &.gutter-padding-right {
-        height: toRem(267);
+        height: toRem(264);
       }
 
       .cmp-teaser__image {
-        height: toRem(267);
+        height: toRem(264);
 
         .cmp-image__image {
-          height: toRem(267) !important;
+          height: toRem(264) !important;
         }
       }
     }
@@ -391,5 +400,16 @@
 .cmp_small_tile {
   .cmp-teaser__action-container {
     bottom: toRem(70);
+  }
+}
+
+.cmp-teaser--hero-card {
+  @include rtlBlock() {
+    .cmp-teaser__action-container {
+      &::after {
+        left: -0.2rem !important;
+        top: 0.6rem !important;
+      }
+    }
   }
 }
