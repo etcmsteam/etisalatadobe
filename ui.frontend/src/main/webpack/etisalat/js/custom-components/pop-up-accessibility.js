@@ -25,7 +25,10 @@ $(document).ready(function () {
       if ($(this).hasClass("mobile-accessibility-popup")){
         const accessibilityOverlay = $(".accessibility-overlay");
         $("body").append(accessibilityOverlay);
-      } 
+      }
+      setTimeout(function(){
+        $(".modal-backdrop").hide();
+      },10) 
       $(".accessibility-overlay").modal("show");
       $("body").addClass("freeze");
     });
