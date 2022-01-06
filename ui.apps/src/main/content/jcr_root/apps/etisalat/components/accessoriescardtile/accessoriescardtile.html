@@ -7,14 +7,14 @@
     <sly data-sly-test.brandlogoCard="${tileModel.tileBoxContainerLayout == 'brandLogoCard' ? 'logo-li' : ''}"></sly>
     <sly data-sly-test.recommbigCard="${tileModel.tileBoxContainerLayout == 'recommBigCard' ? 'eti-big-card-li' : ''}"></sly>
     <sly data-sly-test.recommCard="${tileModel.tileBoxContainerLayout == 'recommCard' ? 'eti-card-li' : ''}"></sly>
+    <sly data-sly-test.customLink="${properties.viewAllLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
 
     <div class ="${accessoryCard}${brandlogoCard}${recommbigCard}${recommCard}">
-        <sly data-sly-test.customLink="${properties.viewAllLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
         <a href="${commonlinkmodel.link}" class="clickable-tile"></a>
         <div data-sly-test="${properties.accessoriescardproductTitle}" class="title">
             <p>${properties.accessoriescardproductTitle}</p>
         </div>
-        <div data-sly-test="${properties.accessoriescardproductTitle}" class="third-action-wrapper action-link">
+        <div data-sly-test="${properties.accessoriescardproductTitle}" class="${!wcmmode.edit ? 'third-action-wrapper' :''}  action-link">
             <a class="link"
                href="${commonlinkmodel.link}"
                target="${properties.linktarget?'_blank':'_self'}"
