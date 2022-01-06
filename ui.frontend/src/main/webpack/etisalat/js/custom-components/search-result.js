@@ -254,8 +254,9 @@
             '<div class="ph-separator"></div>' +
             "</div>" +
             "</div>";
-
-          document.querySelector(".search-results-wrapper-4-0 .container").innerHTML = loadertemplate;
+          if($(".search-results-wrapper-4-0 .container").length > 0) {
+            document.querySelector(".search-results-wrapper-4-0 .container").innerHTML = loadertemplate;
+          }
           //{"Ntt":"Prepaid & Postpaid Play OnDemand - T&Cs","N":"","No":"3","Nrpp":"8"}
           var dataWithPayload = {
             Ntt: searchText,
@@ -685,9 +686,11 @@
         }
         var stroreRecentSearch = JSON.parse(localStorage.getItem("eti_recentSearch"));
         //var guidedSearchText = getParameterByName("term", window.location.href);
-        var guidedSearchText = stroreRecentSearch[0];
+        if(stroreRecentSearch){
+          var guidedSearchText = stroreRecentSearch[0];
+          guidedSearch(guidedSearchText, navigationStateString, "0", recordsNum);
+        }
 
-        guidedSearch(guidedSearchText, navigationStateString, "0", recordsNum);
 
         function paragraphTextLimit() {
           // Paragraph Character Text Limit on Search Result
@@ -702,21 +705,24 @@
         }
 
         //quick liks google analytics
-          var quickLinks = $(".result-default-view .list.quick-links ul").children;
-          for (var i = 0; i < quickLinks.length; i++) {
-            quickLinks[i].addEventListener("click", function (e) {
-              //google analyticss starts
-              if (typeof window.dataLayer !== "undefined") {
-                window.dataLayer.push({
-                  event: "navigation",
-                  eventCategory: "navigation",
-                  eventAction: "left",
-                  eventLabel: "need_assistance", // replace space with "_"
-                  Link: this.innerText.trim().replace(/ /g, "_"), // replace space with "_"
-                });
-              }
-              //google analyticss ends
-            });
+          var quickLinks = $(".result-default-view .list.quick-links ul");
+          if (quickLinks.length > 0) {
+            quickLinks = quickLinks.children;
+            for (var i = 0; i < quickLinks.length; i++) {
+              quickLinks[i].addEventListener("click", function (e) {
+                //google analyticss starts
+                if (typeof window.dataLayer !== "undefined") {
+                  window.dataLayer.push({
+                    event: "navigation",
+                    eventCategory: "navigation",
+                    eventAction: "left",
+                    eventLabel: "need_assistance", // replace space with "_"
+                    Link: this.innerText.trim().replace(/ /g, "_"), // replace space with "_"
+                  });
+                }
+                //google analyticss ends
+              });
+            }
           }
       });
    

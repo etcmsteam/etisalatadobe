@@ -1,0 +1,78 @@
+.error-section {
+  .cmp-teaser {
+    height: toRem(200);
+    position: relative;
+
+    @include respond-to-min($tablet) {
+      height: toRem(300);
+    }
+
+    @include respond-to-min($desktop) {
+      height: toRem(340);
+    }
+  }
+
+  .cmp-teaser__image {
+    height: toRem(356);
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+
+    @include respond-to-min($tablet) {
+      height: toRem(236);
+    }
+
+    @include respond-to-min($desktop) {
+      height: toRem(356);
+    }
+  }
+
+  .cmp-teaser__description {
+    color: $white;
+    left: toRem(25);
+    margin: 0 auto;
+    position: absolute;
+    right: auto;
+    top: 70%;
+    width: toRem(300);
+    z-index: 3;
+
+    @include respond-to-min($tablet) {
+      top: 80%;
+    }
+
+    @include respond-to-min($desktop) {
+      left: 0;
+      right: 0;
+      text-align: center;
+      top: 17%;
+    }
+
+    h1 {
+      color: $almost-black;
+      font-size: $font22;
+
+      @include respond-to-min($desktop) {
+        color: $white;
+        font-size: $font54;
+        line-height: toRem(64);
+        margin-bottom: 1rem;
+      }
+    }
+
+    p {
+      color: $gray;
+      font-size: $font14;
+
+      @include font-family-lato;
+
+      @include respond-to-min($desktop) {
+        color: $white;
+        font-size: $font18;
+        line-height: toRem(26);
+      }
+    }
+  }
+}
