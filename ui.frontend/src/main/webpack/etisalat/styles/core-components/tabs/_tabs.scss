@@ -85,6 +85,12 @@
       background-color: $white;
     }
 
+    .cmp-teaser__image {
+      @include respond-to-max($phone) {
+        padding: 0 toRem(16);
+      }
+    }
+
     .cmp-teaser__content {
       background-color: $sand-white-50;
     }
@@ -95,15 +101,6 @@
     border-radius: 0;
     margin: 0;
     width: 100%;
-  }
-
-  .panel-collapse {
-    padding: toRem(16);
-
-    @include respond-to-max($phone) {
-      // background-color: $white-gray1;
-      padding: 0 toRem(16) toRem(16);
-    }
   }
 
   .cmp-teaser {
@@ -184,7 +181,7 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     letter-spacing: normal;
-    padding: toRem(16) 0 toRem(16) toRem(12) !important;
+    padding: toRem(18) 0 toRem(18) toRem(16);
     position: relative;
   }
 
@@ -243,7 +240,8 @@
   }
 
   .nav-view-wrapp.panel > :not(a.collapsed) {
-    font-size: $font14;
+    background-color: $sand-white-50;
+    font-size: $font16;
     font-weight: get-font-weight("heavy");
 
     @include font-family-lato;
@@ -671,7 +669,7 @@
       width: 100%;
 
       @include respond-to-max($tablet) {
-        padding: 0;
+        padding: 0 toRem(16) toRem(24);
       }
 
       @include respond-to-max($desktop) {
@@ -683,10 +681,11 @@
       display: flex;
 
       li.cmp-tabs__tab {
+        align-items: center;
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-end;
-        padding: toRem(16);
+        padding: toRem(24);
         text-align: left;
 
         @include font-family-lato;
@@ -706,7 +705,7 @@
       flex-wrap: wrap;
       list-style: none;
       padding-left: 0;
-      width: 30%;
+      width: 37%;
 
       li:hover {
         background: $white-gray1;
@@ -718,7 +717,7 @@
       box-sizing: border-box;
       color: $steel-grey;
       cursor: pointer;
-      font-size: 1.125rem;
+      font-size: $font20;
       line-height: 1.4;
       padding: 1.5rem;
 
@@ -751,22 +750,19 @@
       }
 
       &--active {
-        // border-color: inherit;
         background: $white-gray1;
         color: $main-green;
-        font-size: $font18;
-
-        // border-left: 4px solid #719e19;
+        font-size: $font20;
         font-weight: get-font-weight("bold");
         line-height: toRem(29);
-        padding: 1rem 1rem 1rem 1.2rem !important;
+        padding: 1rem 1rem 1rem 1.2rem;
         position: relative;
 
         @include font-family-lato;
 
         .cmp-tabs__active-icon {
           display: block;
-          margin-right: toRem(16);
+          margin-right: toRem(24);
         }
 
         .cmp-tabs__default-icon {
@@ -881,18 +877,12 @@
       .nav-view-wrapp.panel > a {
         color: $dark-gray;
         font-weight: get-font-weight("regular");
-        padding-left: 1.5rem;
       }
 
       .nav-view-wrapp.panel > :not(a.collapsed) {
         background: $sand-white-50;
         color: $main-green;
         font-weight: get-font-weight("heavy");
-        margin: 0 toRem(-12);
-      }
-
-      .panel-collapse {
-        padding: 0;
       }
 
       .panel {
@@ -902,6 +892,14 @@
 
       .cmp-teaser__content {
         background-color: $sand-white-50;
+      }
+    }
+
+    &.cmp_tabs--vertical-whitebg {
+      .cmp-teaser {
+        @include respond-to-max($tablet) {
+          padding: 0;
+        }
       }
     }
   }
@@ -1084,19 +1082,8 @@
 
     .cmp-tabs {
       display: flex;
+      justify-content: space-between;
     }
-
-    // &.cmp_tabs--mobile {
-    //   .cmp-teaser {
-    //     border: 2px solid;
-    //     border-radius: toRem(4);
-    //     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%) !important;
-
-    //     &__content {
-    //       background-color: $white;
-    //     }
-    //   }
-    // }
   }
 
   // 2nd vartion en
@@ -1223,7 +1210,7 @@
         fill: inherit;
         float: left;
         height: toRem(30);
-        margin-right: calc(#{$margin-step-4} + 4px);
+        margin-right: toRem(24);
         width: toRem(32);
       }
     }
@@ -1242,9 +1229,11 @@
       background: $sand-white-50;
       color: $dark-gray;
       font-weight: get-font-weight("regular");
+    }
 
+    .nav-view-wrapp.panel > a.collapsed {
       @include respond-to-max($phone) {
-        padding-left: 0 !important;
+        padding-left: 0;
       }
     }
 
@@ -1252,7 +1241,10 @@
       background: $white;
       color: $main-green;
       font-weight: get-font-weight("heavy");
-      margin: 0 toRem(-12);
+
+      @include respond-to-max($phone) {
+        margin: 0 toRem(-16);
+      }
     }
 
     .panel-collapse {
@@ -1268,18 +1260,34 @@
       background-color: $white;
 
       @include respond-to-max($tablet) {
-        padding: 0 toRem(16);
+        padding: toRem(16) toRem(16) toRem(24);
       }
     }
   }
 
   .cmp-teaser {
     box-shadow: none;
+
+    &__description {
+      ol li,
+      ul li {
+        font-size: $font20;
+        margin-bottom: toRem(4);
+
+        @include respond-to-max($tablet) {
+          font-size: $font16;
+        }
+      }
+    }
   }
 
   h3 {
     @include respond-to-max($tablet) {
-      padding: 0 toRem(12);
+      padding: 0 toRem(18);
+    }
+
+    @include respond-to-max($phone) {
+      padding: 0;
     }
   }
 }
