@@ -208,12 +208,21 @@
   display: inline-block;
   font-size: toRem(16);
   font-weight: 700;
-  height: 48px;
+  height: 45px;
   line-height: 18px;
   opacity: 0.5;
-  padding-top: 17px;
+  padding: 17px 0 0;
+  margin: 0 5px;
   text-align: center;
-  width: 48px;
+  width: 45px;
+  @include respond-to-max($phone) {
+    margin: 0 2px;
+    padding: 14px 0 0;
+  }
+  &--active {
+    background: $white10;
+    opacity: 1;
+  }
 }
 
 //   button.swiper-pagination-bullet {
@@ -654,23 +663,7 @@
   padding-top: 5px;
 }
 
-.swiper-pagination-bullet {
-  background: $white;
-  border-radius: 100%;
-  color: $dark-green1;
-  display: inline-block;
-  height: 48px;
-  margin: 0 7px;
-  padding: 17px 0 0;
-  width: 48px;
-  &--active {
-    background: $white;
-  }
-  &:hover {
-    background-color: $white1;
-    color: $gray-primary;
-  }
-}
+
 
 button.swiper-pagination-bullet {
   appearance: none;
