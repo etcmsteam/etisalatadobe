@@ -178,8 +178,8 @@ public class TileModel {
     final Resource tileContainerResource = currentResource.getParent();
     if (null != tileContainerResource
         && (tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE) ||
-        tileContainerResource.getResourceType().equals(PageConstants.SWIPER_CONTAINER_RESOURCETYPE))  ||
-            (tileContainerResource.getResourceType().equals(PageConstants.ACCESSORIES_CONTAINER_RESOURCETYPE))){
+        tileContainerResource.getResourceType().equals(PageConstants.SWIPER_CONTAINER_RESOURCETYPE)  ||
+            (tileContainerResource.getResourceType().equals(PageConstants.ACCESSORIES_CONTAINER_RESOURCETYPE)))){
       return tileContainerResource.getValueMap().get("tileBoxLayout", StringUtils.EMPTY);
     }
     return StringUtils.EMPTY;
