@@ -1344,6 +1344,7 @@ th {
 .acc-black,
 .acc-blue,
 .acc-yellow {
+  &.channel-list-page {
     .channellistheader {
       background-color: $black;
       border-bottom: toRem(1) solid;
@@ -1429,17 +1430,47 @@ th {
           background-color: $white !important;
         }
     }
-    .e-life-modal.nv-modal .nv-checkboxes-wrap.sm input[type=radio]:checked~label:after,
-    .e-life-modal.nv-modal .nv-radio-wrap.sm input[type=radio]:checked~label:after {
-      border-color: $black;
+    .e-life-modal .nv-modal-header {
+      border-bottom-color: $white;
+    }
+    .e-life-modal.nv-modal .nv-checkboxes-wrap,
+    .e-life-modal.nv-modal .nv-radio-wrap {
+      background-color: transparent;
+      &.sm {
+        input[type=radio]:checked~label:after {
+           border-color: $white !important;
+        }
+      }
+      label {
+        border-color: $white !important;
+      }
     }
     .not-found {
       p {
         color: $white;
       }
     }
+     
+      .search-group .input-group, .search-group select,
+      .search-group .check-availability-style,
+      .search-input .check-availability-style .form-control,
+      .search-input .check-availability-style .input-icon {
+        background-color: transparent !important;
+      }
+      .search-input .check-availability-style .form-control {
+        border: toRem(1) solid $white;
+        color: $white !important;
+         &::placeholder {
+          color: $white !important;
+        }
+      }
+      .search-input .check-availability-style .input-icon svg g path {
+        fill: $white;
+      }
+    }
 }
 .acc-blue {
+  &.channel-list-page {
     .channellistheader {
         background-color: $blue4;
         .elife-channel-list-header {
@@ -1459,12 +1490,10 @@ th {
         }
       }
     }
-    .e-life-modal.nv-modal .nv-checkboxes-wrap.sm input[type=radio]:checked~label:after,
-    .e-life-modal.nv-modal .nv-radio-wrap.sm input[type=radio]:checked~label:after {
-      border-color: $blue4;
-    }
+  }
 }
 .acc-yellow {
+  &.channel-list-page {
     .channellistheader {
       .elife-channel-list-header {
         .logo-wrapper {
@@ -1506,6 +1535,9 @@ th {
         .sub-label {
           color: $yellow-light !important;
         }
+        .filter-lable {
+          border-right-color: $yellow-light !important;
+        }
         .dropdown {
           .dropdown-menu {
               background: $black;
@@ -1526,12 +1558,13 @@ th {
           thead th {
             color: $yellow-light;
             tr {
-              border-bottom-color: $yellow-light;
+              border-bottom-color: $yellow-light !important;
             }
           }
           tbody {
             tr {
-              border-bottom-color: $yellow-light;
+              border-bottom-color: $yellow-light !important;
+              border-top-color: $yellow-light !important;
               td,
               td:before,
               td:after {
@@ -1544,16 +1577,43 @@ th {
     .tables-4-0,
       .nv-modal-body {
       &::-webkit-scrollbar-thumb {
-        background-color: $white !important;
+        background-color: $yellow-light !important;
       }
     }
-    .e-life-modal.nv-modal .nv-checkboxes-wrap.sm input[type=radio]:checked~label:after,
-    .e-life-modal.nv-modal .nv-radio-wrap.sm input[type=radio]:checked~label:after {
-      border-color: $yellow-light;
+    .nv-modal-close {
+      svg {
+       filter: sepia(100%) contrast(100%) saturate(1000%) hue-rotate(347deg);
+      }
+    }
+    .e-life-modal  .nv-modal-header {
+      border-bottom-color: $yellow-light;
+    }
+   .e-life-modal.nv-modal .nv-checkboxes-wrap,
+    .e-life-modal.nv-modal .nv-radio-wrap {
+      &.sm {
+        input[type=radio]:checked~label:after {
+           border-color: $yellow-light !important;
+        }
+      }
+      label {
+        border-color: $yellow-light !important;
+      }
     }
     .not-found {
       p {
         color: $yellow-light;
       }
     }
+      
+      .search-input .check-availability-style .form-control {
+        border-color: $yellow-light;
+        color: $yellow-light !important;
+         &::placeholder {
+          color: $yellow-light !important;
+        }
+      }
+      .search-input .check-availability-style .input-icon svg g path {
+        fill: $yellow-light;
+      }
+  }
 }
