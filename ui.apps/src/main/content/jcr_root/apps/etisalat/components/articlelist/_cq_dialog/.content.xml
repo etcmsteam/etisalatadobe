@@ -2,11 +2,10 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Article List"
-    extraClientlibs="[cmp.articlelist.search.editor]"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
-        granite:class="cmp-articlelist__editor"
+        granite:class="cmp-tab-dialog-content__editor"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
             <tabs
@@ -199,7 +198,7 @@
                                                 uncheckedValue="{Boolean}false"
                                                 value="{Boolean}true"/>                                               
                                             <searchtype
-                                                granite:class="cq-dialog-dropdown-showhide articlelist-searchtype-displaylayout"
+                                                granite:class="cq-dialog-dropdown-showhide cq-dialog-editor-dropdown-tab-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldDescription="Please choose &quot;Free Text Search&quot; to search blog post and &quot;Search with Category&quot; to&#xa;search newsroom results"
@@ -299,7 +298,7 @@
                     <searchresults
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Search Results"
-                        granite:class="articlelist-searchresult-tab"
+                        granite:class="cq-dialog-editor-showhide-target-tab"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -339,5 +338,9 @@
                 </items>
             </tabs>
         </items>
+        <granite:data
+	        jcr:primaryType="nt:unstructured"
+	        tab-dropdown-selector-name="searchType"
+	        tab-target-dropdown-value="freetextsearch"/>
     </content>
 </jcr:root>
