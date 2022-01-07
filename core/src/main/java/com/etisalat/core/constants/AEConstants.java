@@ -69,6 +69,10 @@ public final class AEConstants {
  public static final String CAPTCHA_NULL = "No captcha response found";
  public static final String CLIENT_CAPTCHA_VALUE = "hdr-google-client-token-key";
  
+ public static final String BREADCRUMB_ITEMS = "etisalatBreadcrumb";
+ public static final String ETISALAT_BREADCRUMB_TITLE = "breadcrumbTitle";
+ public static final String ETISALAT_BREADCRUMB_LINK = "breadcrumbLink";
+ 
  /**
   * private constructor to prevent instantiation of class.
   */

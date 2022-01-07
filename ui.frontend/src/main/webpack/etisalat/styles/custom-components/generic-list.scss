@@ -14,7 +14,7 @@
       padding-bottom: toRem(50);
       padding-top: 0;
 
-      @include respond-to-max ($tablet) {
+      @include respond-to-max($tablet) {
         flex: 0 0 100%;
       }
 
@@ -33,7 +33,7 @@
         line-height: toRem(32);
         margin-bottom: toRem(16);
 
-        @include respond-to-min ($desktop) {
+        @include respond-to-min($desktop) {
           margin-top: toRem(38);
           width: 80%;
         }
@@ -46,7 +46,6 @@
         line-height: toRem(32);
         margin-bottom: toRem(16);
 
-        
         @include font-family-Neotech-ge;
       }
 
@@ -166,7 +165,7 @@
 
         img,
         svg {
-          display:inline-box;
+          display: inline-box;
           height: toRem(45);
           margin-bottom: calc(#{$margin-step-2});
           position: relative;
@@ -188,6 +187,60 @@
   .text {
     *[lang="ar"] *[dir="rtl"] & {
       float: right;
+    }
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .cmp_genric__list_quick-call {
+    h2 {
+      color: $white;
+    }
+    p {
+      color: $white;
+    }
+    a.offer-text {
+      color: $white !important;
+    }
+  }
+  .cmp_genric__list_etisalat {
+    .left-menu-title {
+      a.offer-text {
+        color: $white;
+      }
+    }
+    a.button {
+      &::before {
+        border-color: $white;
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .cmp_genric__list_quick-call {
+    h2 {
+      color: $yellow-light;
+    }
+    p {
+      color: $yellow-light;
+    }
+    a.offer-text {
+      color: $yellow-light !important;
+    }
+  }
+  .cmp_genric__list_etisalat {
+    .left-menu-title {
+      a.offer-text {
+        color: $yellow-light;
+      }
+    }
+    a.button {
+      &::before {
+        border-color: $yellow-light;
+      }
     }
   }
 }

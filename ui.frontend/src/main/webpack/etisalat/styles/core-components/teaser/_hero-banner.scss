@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cmp-carousel--herobanner {
   .btn-green {
     @include rtlBlock() {
@@ -77,7 +78,7 @@
     }
 
     &__indicators {
-      margin-top: $margin-step-2;
+      margin: $margin-step-2 0;
 
       @include respond-to-min($desktop) {
         display: none;
@@ -103,6 +104,10 @@
     margin-bottom: $margin-step-1;
     margin-top: $margin-step-3;
     width: 100%;
+
+    @include respond-to-max($phone) {
+      padding: 0 toRem(5);
+    }
 
     @include respond-to-min($desktop) {
       left: toRem(15);
@@ -135,17 +140,7 @@
     }
   }
 
-  .hero-banner__right_text {
-    @include respond-to-min($desktop) {
-      .cmp-teaser__content {
-        left: 50%;
-      }
-    }
-  }
-
   .video {
-    // min-height: toRem(550);
-
     @include respond-to-min($desktop) {
       height: 100%;
       min-height: toRem(550);
@@ -155,7 +150,6 @@
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
-        position: absolute;
 
         @include rtlBlock() {
           right: 0;
@@ -181,11 +175,12 @@
       }
 
       position: relative;
+      width: 100%;
 
       @include respond-to-min($desktop) {
         left: toRem(3);
-        position: absolute;
         top: toRem(65);
+        width: toRem(200);
       }
 
       @include respond-to-max($phone) {
@@ -240,7 +235,7 @@
 
       @include respond-to-min($desktop) {
         margin: $margin-step-0 auto;
-        position: absolute;
+        position: relative;
         right: 0;
         top: 0;
         width: toRem(1224);
@@ -286,7 +281,7 @@
           margin-top: calc(#{$margin-step-2} + 4px);
           min-width: toRem(180);
           top: toRem(336);
-          width: auto;
+          width: toRem(180);
 
           @include rtlBlock() {
             right: toRem(5);
@@ -338,7 +333,8 @@
   }
 }
 
-.cmp-teaser--herobanner {
+.cmp-teaser--herobanner,
+.plain-hero--banner {
   max-height: toRem(500);
   overflow: hidden;
   position: relative;
@@ -429,18 +425,27 @@
       @include respond-to-max($tablet) {
         font-size: $font26;
         line-height: toRem(33);
+        margin-top: toRem(20);
+        padding: 0 toRem(10);
         z-index: 2;
       }
 
       @include respond-to-min($desktop) {
         margin: $margin-step-0;
-        width: 50%;
+
+        @include rtlBlock() {
+          left: auto;
+          padding-right: toRem(40);
+          right: 0;
+          width: 50%;
+        }
       }
 
       @include respond-to-max($desktop) {
         font-size: $font26;
         left: 0;
         line-height: toRem(33);
+        padding: 0 toRem(12);
         position: relative;
         top: 0;
         width: 100%;
@@ -451,9 +456,9 @@
         bottom: 0;
         left: 0;
         margin: auto;
+        padding: 0 toRem(12);
         right: 0;
         top: 0;
-        width: toRem(1224);
       }
     }
 
@@ -534,6 +539,7 @@
       font-size: $font26;
 
       @include respond-to-min($desktop) {
+        color: $white;
         font-size: $font54;
       }
     }
@@ -541,16 +547,18 @@
     &__title {
       @include respond-to-min($desktop) {
         color: $white;
+        font-size: toRem(54);
         line-height: toRem(64);
         margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
+        width: 50%;
 
         a {
           color: $white;
         }
-      }
 
-      @include respond-to-min($desktop-wide) {
-        width: 50%;
+        @include rtlBlock() {
+          width: 100%;
+        }
       }
 
       @include respond-to-max($desktop) {
@@ -576,6 +584,307 @@
 
     @include respond-to-min($desktop) {
       height: auto;
+    }
+  }
+}
+
+.hero-banner {
+  &__right_text {
+    @include respond-to-min($desktop) {
+      .cmp-teaser__content {
+        left: 50%;
+        width: 50%;
+
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
+
+        .cmp-teaser__title {
+          width: 100%;
+        }
+
+        .cmp-teaser__description {
+          width: 100%;
+
+          p {
+            color: $white;
+          }
+        }
+      }
+
+      .hero-heading-big {
+        left: 50%;
+        width: 50%;
+
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
+      }
+
+      .youtube-popup-container .btn-green {
+        left: 50% !important;
+
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
+      }
+
+      .video-wrapper {
+        left: 50% !important;
+
+        @include rtlBlock() {
+          left: auto;
+          right: 50%;
+        }
+      }
+    }
+  }
+
+  &__center_text {
+    @include respond-to-min($desktop) {
+      .cmp-teaser__content {
+        align-items: center;
+        width: 100%;
+
+        @include rtlBlock() {
+          align-items: center;
+          width: 100%;
+        }
+
+        .cmp-teaser__title {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+
+          @include rtlBlock() {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+          }
+        }
+
+        .cmp-teaser__description p {
+          text-align: center;
+
+          @include rtlBlock() {
+            text-align: center;
+          }
+        }
+      }
+
+      .cmp-teaser__action-container {
+        text-align: center;
+      }
+
+      .hero-heading-big {
+        left: 0;
+        margin: auto;
+        right: 0;
+        text-align: center;
+        top: toRem(110);
+
+        h1 {
+          @include rtlBlock() {
+            text-align: center;
+          }
+        }
+      }
+
+      .youtube-popup-container .btn-green {
+        left: 0;
+        margin: auto;
+        right: 0;
+        width: toRem(180);
+      }
+
+      .video-wrapper {
+        left: 0;
+        margin: auto;
+        right: 0;
+      }
+    }
+  }
+}
+
+.plain-hero--banner {
+  height: toRem(500);
+  max-height: toRem(200);
+  position: relative;
+  width: auto;
+
+  @include respond-to-min($desktop) {
+    max-height: toRem(363);
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .text--white {
+    color: $white;
+  }
+
+  .cmp-carousel--herobanner {
+    .cmp-carousel__action--previous,
+    .cmp-carousel__action--next {
+      &::after {
+        border-left-color: $white;
+        border-top-color: $white;
+        color: $white;
+      }
+    }
+
+    .video {
+      .video_link {
+        color: $white;
+      }
+    }
+
+    .cmp-teaser__action-container {
+      a {
+        background-color: $black;
+        border: toRem(1) solid $white;
+      }
+    }
+
+    .hero-heading-big {
+      .text--white {
+        color: $white;
+      }
+    }
+  }
+
+  .youtube-popup-container {
+    .btn-green {
+      border-color: $white !important;
+      color: $white;
+    }
+  }
+
+  .cmp-teaser--herobanner {
+    p {
+      color: $white;
+    }
+
+    .cmp-teaser {
+      &__title {
+        a {
+          color: $white;
+        }
+      }
+
+      &__action-container {
+        a {
+          background-color: $black;
+          color: $white;
+        }
+      }
+
+      &__description {
+        h4,
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .cmp-carousel--herobanner {
+    .cmp-teaser__action-container {
+      a {
+        background-color: $blue4;
+        border: toRem(1) solid $white;
+      }
+    }
+  }
+
+  .cmp-teaser--herobanner {
+    .cmp-teaser {
+      &__action-container {
+        a {
+          background-color: $blue4;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .text--white {
+    color: $yellow-light;
+  }
+
+  .cmp-carousel--herobanner {
+    .cmp-carousel__action--previous,
+    .cmp-carousel__action--next {
+      &::after {
+        border-left-color: $yellow-light;
+        border-top-color: $yellow-light;
+        color: $yellow-light;
+      }
+    }
+
+    .video {
+      .video_link {
+        color: $yellow-light;
+      }
+    }
+
+    .cmp-teaser__action-container {
+      a {
+        background-color: $black;
+        border: toRem(1) solid $yellow-light;
+      }
+    }
+
+    .hero-heading-big {
+      .text--white {
+        color: $yellow-light;
+      }
+    }
+
+    .cmp-carousel__indicator {
+      background-color: $yellow-light;
+    }
+  }
+
+  .youtube-popup-container {
+    .btn-green {
+      border-color: $yellow-light !important;
+      color: $yellow-light;
+    }
+  }
+
+  .cmp-teaser--herobanner {
+    p {
+      color: $yellow-light;
+    }
+
+    .cmp-teaser {
+      &__title {
+        a {
+          color: $yellow-light;
+        }
+      }
+
+      &__action-container {
+        a {
+          background-color: $black;
+          color: $yellow-light;
+        }
+      }
+
+      &__description {
+        h4,
+        a {
+          color: $yellow-light;
+        }
+      }
     }
   }
 }

@@ -10,7 +10,7 @@
 
   @include respond-to-max($phone) {
     height: toRem(528);
-    margin-bottom: toRem(48);
+    margin-bottom: toRem(96);
   }
 
   @include respond-to-min($desktop) {
@@ -23,6 +23,7 @@
       background-size: contain;
       content: "";
       height: toRem(420);
+      left: 0;
       opacity: 0.15;
       position: absolute;
       top: 0;
@@ -108,10 +109,15 @@
         line-height: toRem(33);
         margin: toRem(17) 0 toRem(24);
 
+        @include respond-to-max($tablet) {
+          margin-right: toRem(22);
+        }
+
         @include respond-to-min($desktop) {
           font-size: $font40;
           line-height: toRem(50);
           margin-bottom: toRem(51.2);
+          margin-right: toRem(20);
         }
       }
 
@@ -126,6 +132,10 @@
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0;
+
+      @include respond-to-max($tablet) {
+        margin-right: toRem(5);
+      }
 
       @include respond-to-min($desktop) {
         margin-bottom: toRem(32);
