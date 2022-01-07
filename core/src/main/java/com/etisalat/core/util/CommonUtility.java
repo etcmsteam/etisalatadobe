@@ -3,12 +3,16 @@ package com.etisalat.core.util;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.LinkModel;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
 
 /**
@@ -75,6 +79,24 @@ public final class CommonUtility {
    */
   public static LinkModel getLinkItem(Resource res) {
     return res.adaptTo(LinkModel.class);
+  }
+  
+  /**
+   * Returns Category Tag Title.
+   *
+   * @param request SlingHttpServletRequest 
+   * @param category Category tag name
+   * @return Category Tag Title
+   */
+  public static String getCategoryTagTitle(SlingHttpServletRequest request, String category) {
+	final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+	  if (StringUtils.isNotBlank(category) && null != tagManager) {
+	    final Tag tag = tagManager.resolve(category);
+	     if (null != tag) {
+	        category = tag.getTitle();
+	     }
+	  }
+	return category;
   }
 
   /**
