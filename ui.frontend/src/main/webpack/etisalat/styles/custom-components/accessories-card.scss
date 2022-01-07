@@ -48,6 +48,10 @@
         font-size: $font16;
         line-height: 1.5;
       }
+      @include rtlBlock() {
+      @include font-family-lato();
+          letter-spacing: 0 !important;
+      }
     }
   }
 
@@ -118,6 +122,11 @@
         margin-bottom: $margin-step-1;
       }
     }
+     @include rtlBlock() {
+        h4{
+        font-weight: get-font-weight("light");
+        }
+        }
   }
 
   .card-list-wrapper {
@@ -133,6 +142,7 @@
     .swiper-slide {
       background-color: transparent !important;
       padding-left: toRem(4);
+      text-align: center;
       padding-right: toRem(4);
       @include respond-to-min($desktop) {
         padding-left: toRem(12);
@@ -269,6 +279,10 @@
         line-height: 1.25;
         letter-spacing: 0.31px;
       }
+      @include rtlBlock() {
+            @include font-family-lato();
+                letter-spacing: 0 !important;
+            }
     }
   }
 
@@ -491,6 +505,10 @@
         letter-spacing: 0.44px;
         margin-bottom: $margin-step-1;
       }
+      @include rtlBlock() {
+            @include font-family-lato();
+                letter-spacing: 0 !important;
+            }
     }
   }
 
@@ -560,6 +578,11 @@
        @include respond-to-min($desktop) {
         margin-bottom: $margin-step-1;
       }
+    }
+    @include rtlBlock() {
+    h4{
+    font-weight: get-font-weight("light");
+    }
     }
   }
   .eti-big-card-list {
@@ -749,6 +772,11 @@
         margin-bottom: toRem(20);
       }
     }
+     @include rtlBlock() {
+        h4{
+        font-weight: get-font-weight("light");
+        }
+        }
   }
 
   .logo-list {
@@ -828,7 +856,7 @@
     height: toRem(4);
     margin-top: toRem(20);
     margin-bottom: $margin-step-2;
-    @include respond-to-min($desktop) {
+    @include respond-to-max($desktop) {
       display: none;
     }
     .swiper-scrollbar-drag {
@@ -877,7 +905,11 @@ general third action link
         padding-right: toRem(12);
         line-height: toRem(20);
       }
-
+   @include rtlBlock() {
+   font-weight: get-font-weight("light");
+       @include font-family-lato();
+       letter-spacing: 0 !important;
+   }
       &:hover {
         text-decoration: underline;
         color: $main-green;
@@ -930,6 +962,11 @@ general third action link
   &.action-btn-default {
     .btn {
       height: toRem(50);
+
+      @include rtlBlock() {
+      @include font-family-lato();
+          letter-spacing: 0 !important;
+      }
     }
   }
 }
