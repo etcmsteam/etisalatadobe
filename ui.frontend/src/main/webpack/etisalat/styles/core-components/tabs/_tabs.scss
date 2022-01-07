@@ -107,7 +107,7 @@
     &__content {
       @include respond-to-max($phone) {
         border-radius: 4px;
-        padding: toRem(16) toRem(16) toRem(32);
+        padding: 0 toRem(16) toRem(32);
       }
     }
 
@@ -123,6 +123,10 @@
       line-height: 1.6;
       margin-bottom: toRem(16);
       margin-top: 0;
+
+      @include respond-to-max($tablet) {
+        margin-top: toRem(16);
+      }
 
       @include respond-to-min($desktop) {
         font-size: $font24;
@@ -198,7 +202,7 @@
           line-height: 1;
           padding: 4px !important;
           position: absolute;
-          right: toRem(30);
+          right: toRem(20);
           top: 50%;
           transform: translateY(-20%) rotate(-135deg);
           transition: all 0.3s ease-in-out;
@@ -233,8 +237,10 @@
   .nav-view-wrapp.panel > a.collapsed {
     color: $dark-gray;
     font-weight: get-font-weight("regular");
+    padding-left: 0;
 
     &::before {
+      right: toRem(3);
       transform: translateY(-80%) rotate(45deg);
     }
   }
@@ -243,6 +249,7 @@
     background-color: $sand-white-50;
     font-size: $font16;
     font-weight: get-font-weight("heavy");
+    margin: 0 toRem(-17);
 
     @include font-family-lato;
   }
@@ -289,8 +296,20 @@
       padding: 0;
     }
 
-    .nav-view-wrapp.panel > a {
+    .nav-view-wrapp.panel > a,
+    .nav-view-wrapp.panel > a.collapsed,
+    .nav-view-wrapp.panel > :not(a.collapsed) {
       font-size: $font14;
+
+      &::before {
+        right: toRem(3);
+      }
+    }
+
+    .nav-view-wrapp.panel > :not(a.collapsed) {
+      font-size: $font14;
+      margin: 0;
+      padding-left: 0;
     }
 
     .cmp-teaser {
@@ -299,6 +318,20 @@
 
       &__content {
         background-color: $white;
+      }
+    }
+  }
+
+  &.cmp_tabs--vertical-whitebg {
+    .nav-view-wrapp.panel > a.collapsed {
+      &::before {
+        @include respond-to-max($tablet) {
+          right: toRem(20);
+        }
+
+        @include respond-to-max($phone) {
+          right: toRem(3);
+        }
       }
     }
   }
@@ -883,6 +916,10 @@
         background: $sand-white-50;
         color: $main-green;
         font-weight: get-font-weight("heavy");
+
+        @include respond-to-max($tablet) {
+          margin: 0 toRem(-17);
+        }
       }
 
       .panel {
@@ -958,10 +995,18 @@
       justify-content: flex-end;
       line-height: toRem(18);
       margin: auto 0;
-      padding: toRem(8) 0;
+      padding: toRem(16) 0;
       text-align: left;
 
       @include font-family-lato;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
 
       svg,
       img {
@@ -988,7 +1033,8 @@
 
       &--active {
         color: $main-green;
-        font-size: $font18 !important;
+
+        // font-size: $font18 !important;
         font-weight: get-font-weight("bold");
         position: relative;
 
@@ -1027,7 +1073,7 @@
       display: block;
       flex-wrap: wrap;
       list-style: none;
-      margin-top: toRem(64);
+      margin-top: toRem(78);
       width: 50%;
     }
 
@@ -1048,7 +1094,7 @@
         height: toRem(428);
         line-height: toRem(19);
         overflow: hidden;
-        padding: 1.5rem toRem(16) 0 1.5rem;
+        padding: toRem(24) toRem(46) toRem(40) toRem(24);
         position: relative;
         width: 50%;
 
@@ -1232,6 +1278,10 @@
     }
 
     .nav-view-wrapp.panel > a.collapsed {
+      @include respond-to-max($tablet) {
+        padding-left: toRem(16);
+      }
+
       @include respond-to-max($phone) {
         padding-left: 0;
       }
@@ -1241,6 +1291,7 @@
       background: $white;
       color: $main-green;
       font-weight: get-font-weight("heavy");
+      margin: 0;
 
       @include respond-to-max($phone) {
         margin: 0 toRem(-16);
