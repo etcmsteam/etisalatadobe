@@ -54,6 +54,11 @@
 //JS for Share this Design 
 $(function () {
   const PANELS = $(".action.share.fix");
+
+  if(!PANELS.length) {
+    return false
+  }
+  
   const FOOTER_LINKS = $(".quick-links-section");
   const TRUE_CLS = "true";
   const POS = PANELS.offset().top;
