@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cmp-link__arrow_left,
 .cmp-link__arrow {
   @include font-family-lato;
@@ -131,7 +132,6 @@
     text-align: $white;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $almost-black;
     display: inline-block;
@@ -166,7 +166,6 @@
     color: $white;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $white !important;
 
@@ -184,7 +183,6 @@
   color: $dark-gray !important;
   cursor: auto;
 
-  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $dark-gray !important;
     cursor: auto;
@@ -205,7 +203,6 @@
     color: $white;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
   a {
     color: $white !important;
 
@@ -733,4 +730,83 @@ hr {
 .hero-heading-small {
   font-size: $font32;
   line-height: toRem(40);
+}
+
+// accessbility
+.acc-black,
+.acc-blue {
+  a,
+  a:hover {
+    color: $white;
+  }
+
+  .cmp-link__text,
+  .cmp-text p,
+  .cmp-button--primary {
+    background-color: transparent;
+    border-color: $white;
+    color: $white;
+  }
+
+  .cmp-button--width_100 {
+    background-color: transparent;
+    border-color: transparent;
+    color: $white;
+  }
+
+  .cmp-button--secondary {
+    &:hover {
+      background-color: transparent;
+      border-color: $white;
+      box-shadow: none !important;
+      color: $white;
+    }
+  }
+
+  .cmp-button--promo,
+  .cmp-button--promo :hover {
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+.acc-yellow {
+  .cmp-link__text,
+  .cmp-text p,
+  /* stylelint-disable-next-line no-descending-specificity */
+  a,
+  a:hover {
+    color: $yellow-light;
+  }
+
+  .cmp-button--secondary {
+    border-color: $yellow-light;
+
+    &:hover {
+      background-color: transparent;
+      border-color: $yellow-light;
+      box-shadow: none !important;
+      color: $yellow-light;
+    }
+  }
+
+  .cmp-button--primary {
+    background-color: $black;
+    border-color: $yellow-light;
+    color: $yellow-light !important;
+  }
+
+  .cmp-button--width_100 {
+    background-color: transparent;
+    border-color: transparent;
+    color: $yellow-light;
+  }
+
+  .cmp-button--promo {
+    .cmp-button--promo :hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: $yellow-light;
+    }
+  }
 }
