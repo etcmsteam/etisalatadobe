@@ -347,9 +347,9 @@
     @include font-family-lato();
 
     color: $black;
-    font-size: $font16;
+    font-size: $font18;
     letter-spacing: normal;
-    line-height: toRem(22);
+    line-height: toRem(28.8);
     margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} -3.5px) $margin-step-0;
     text-align: left;
 
@@ -359,6 +359,7 @@
     }
 
     a {
+      color: $lemon-green;
       font-size: $font16;
 
       @include respond-to-min($desktop) {
@@ -396,6 +397,21 @@
           &:first-child {
             line-height: 1.6;
           }
+        }
+
+        .hero-heading-big {
+          font-size: toRem(26);
+          line-height: toRem(33);
+
+          @include respond-to-min($desktop) {
+            color: $white;
+            font-size: toRem(54);
+            line-height: toRem(64);
+          }
+        }
+
+        h2 {
+          color: $almost-black;
         }
 
         a {
@@ -541,10 +557,15 @@
       @include respond-to-min($desktop) {
         color: $white;
         font-size: $font54;
+        margin-bottom: toRem(16);
+        margin-top: 0;
       }
     }
 
     &__title {
+      font-size: toRem(26);
+      line-height: toRem(33);
+
       @include respond-to-min($desktop) {
         color: $white;
         font-size: toRem(54);
@@ -601,6 +622,7 @@
         }
 
         .cmp-teaser__title {
+          padding-right: toRem(12);
           width: 100%;
         }
 
@@ -628,7 +650,7 @@
 
         @include rtlBlock() {
           left: auto;
-          right: 50%;
+          right: 50% !important;
         }
       }
 
@@ -637,7 +659,8 @@
 
         @include rtlBlock() {
           left: auto;
-          right: 50%;
+          right: 50% !important;
+          text-align: right;
         }
       }
     }

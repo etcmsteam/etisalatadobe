@@ -70,6 +70,10 @@
 
       @include respond-to-min($desktop) {
         top: toRem(64);
+
+        @include rtlBlock() {
+          margin-right: toRem(-20);
+        }
       }
 
       li {
@@ -106,8 +110,13 @@
       h3 {
         color: $almost-black;
         font-size: $font26;
+        font-weight: light;
         line-height: toRem(33);
         margin: toRem(17) 0 toRem(24);
+
+        @include rtlBlock() {
+          font-weight: 300;
+        }
 
         @include respond-to-max($tablet) {
           margin-right: toRem(22);
@@ -118,6 +127,10 @@
           line-height: toRem(50);
           margin-bottom: toRem(51.2);
           margin-right: toRem(20);
+
+          @include rtlBlock() {
+            margin-right: 0;
+          }
         }
       }
 
@@ -132,6 +145,10 @@
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0;
+
+      @include rtlBlock() {
+        margin-right: toRem(-8);
+      }
 
       @include respond-to-max($tablet) {
         margin-right: toRem(5);
