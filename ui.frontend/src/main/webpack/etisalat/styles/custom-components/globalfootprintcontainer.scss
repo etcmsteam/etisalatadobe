@@ -39,13 +39,14 @@
     position: absolute;
     width: 100%;
 
-    img {
-      height: toRem(484);
-      width: 100%;
+    @include rtlBlock() {
+      transform: scaleX(-1);
+    }
 
-      @include respond-to-min($desktop) {
-        object-fit: cover;
-      }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 
