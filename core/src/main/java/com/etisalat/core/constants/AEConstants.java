@@ -72,6 +72,11 @@ public final class AEConstants {
  public static final String ETISALAT_BREADCRUMB_TITLE = "breadcrumbTitle";
  public static final String ETISALAT_BREADCRUMB_LINK = "breadcrumbLink";
  
+ public static final String PN_EXPLAINER_TAB_ITEMS = "stepItems";
+ public static final String PN_EXPLAINER_TAB_TITLE = "title";
+ public static final String PN_EXPLAINER_TAB_CONTENT = "content";
+ public static final String PN_EXPLAINER_TAB_PLACEMENT = "placement";
+ 
  /**
   * private constructor to prevent instantiation of class.
   */
