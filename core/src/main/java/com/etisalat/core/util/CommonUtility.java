@@ -1,19 +1,21 @@
 package com.etisalat.core.util;
 
-import com.etisalat.core.constants.PageConstants;
-import com.etisalat.core.models.LinkModel;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
+import com.etisalat.core.constants.PageConstants;
+import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
+import com.etisalat.core.models.LinkModel;
 
 /**
  * Util Class
@@ -99,6 +101,31 @@ public final class CommonUtility {
 	return category;
   }
 
+  /**
+   * Returns generic Fixed Navigation list for multifield for different purpose
+   *
+   * @param childItem Child node name
+   * @param res       Parent Resource
+   * @param resourceReolver ResourceResolver
+   * @return List of LinkModel
+   */
+  public static List<FixedNavigtaionMultifieldModel> getFixedNavigationItems(String childItem, Resource res,ResourceResolver resourceResolver) {
+	Resource pageItemRes = res.getChild(childItem);
+    List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
+    if (null != pageItemRes) {
+      pageItemRes.listChildren().forEachRemaining(resource -> {
+        FixedNavigtaionMultifieldModel pageModel = resource
+            .adaptTo(FixedNavigtaionMultifieldModel.class);
+        if (StringUtils.isNotBlank(pageModel.getNavigationLink())) {
+          pageModel.setNavigationLink(CommonUtility
+              .appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
+        }
+        pageItemList.add(pageModel);
+      });
+    }
+    return Collections.unmodifiableList(pageItemList);
+  }
+  
   /**
    * private constructor to prevent instantiation of class.
    */
