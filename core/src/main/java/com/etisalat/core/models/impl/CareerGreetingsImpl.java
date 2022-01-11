@@ -56,10 +56,14 @@ public class CareerGreetingsImpl implements CareerGreetings {
       final Resource imageNode = currentResource.getChild(AEConstants.IMAGE_NODE);
       if (null != coverNode) {
         coverImage = coverNode.adaptTo(LinkModel.class);
+      }else {
+    	  LOG.warn("Cover child node does not exist");
       }
 
       if (null != imageNode) {
         image = imageNode.adaptTo(LinkModel.class);
+      }else {
+    	  LOG.warn("Image child node does not exist");
       }
     }
   }
