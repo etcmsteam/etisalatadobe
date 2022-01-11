@@ -11,31 +11,31 @@
             var slidesCount = $slider.find('.swiper-slide').length;
             $slider.addClass('remove-controls');
             $slider.removeClass('remove-controls'); 
-                var $accessoriesSlider = new Swiper('.card-slider'+index+' .swiper-container', {
-                    slidesPerView: 2.2,
-                    scrollbar: $(this).find('.scrollbar'),
-                    nextButton: '.next.right'+index,
-                    prevButton: '.prev.left'+index,
-                    scrollbarHide: false,
-                    scrollbarDraggable: true,
-                    breakpoints: {
-                      540: {
-                          slidesPerView: 2.2
-                      },
-                      768: {
-                          slidesPerView: 4
-                      },
-                      1200: {
-                          slidesPerView: 4
-                      },
-                      1439: {
-                          slidesPerView: 6
-                      },
-                      9999: {
-                        slidesPerView: 7
-                      }
-                    }
-                  });
+                var $accessoriesSlider = new Swiper(".card-slider" + index + " .swiper-container", {
+                  slidesPerView: 2.2,
+                  scrollbar: $(this).find(".scrollbar"),
+                  nextButton: ".next.right" + index,
+                  prevButton: ".prev.left" + index,
+                  scrollbarHide: false,
+                  scrollbarDraggable: true,
+                  breakpoints: {
+                    540: {
+                      slidesPerView: 2.2,
+                    },
+                    768: {
+                      slidesPerView: 4,
+                    },
+                    1200: {
+                      slidesPerView: 4,
+                    },
+                    1439: {
+                      slidesPerView: 6,
+                    },
+                    9999: {
+                      slidesPerView: 7,
+                    },
+                  },
+                });
 
 
             if (slidesCount > 7) {
@@ -313,13 +313,4 @@
   
      
     
-        // register the event handlers
-        $(document).ready(function() {
-            initAccessorySwiper();
-            initRecommendationSwiper();
-            initBigRecommendationSwiper();
-            initBrandsLogo()
-        });
-  
-  
- 
+     
