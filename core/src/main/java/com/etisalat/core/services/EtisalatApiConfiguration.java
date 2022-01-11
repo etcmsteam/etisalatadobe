@@ -4,7 +4,7 @@ package com.etisalat.core.services;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-@ObjectClassDefinition(name = "Send Notification Form Configuration", description = "Configurations details for Key and Url")
+@ObjectClassDefinition(name = "Etisalat API's Form Configuration", description = "Configurations details for Key and Url")
 public @interface EtisalatApiConfiguration {
 	
    int TIMEOUT = 7000;

@@ -5,7 +5,6 @@ import java.net.SocketTimeoutException;
 import java.util.HashMap;
 import java.util.Map;
 import com.etisalat.core.util.CommonUtility;
-import com.adobe.cq.wcm.core.components.models.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.etisalat.core.constants.AEConstants;
 
@@ -25,11 +24,6 @@ import org.slf4j.LoggerFactory;
 import com.etisalat.core.services.CustomFormHandlingService;
 import com.etisalat.core.services.EtisalatApiService;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 
 @Component(service = { Servlet.class })
 @SlingServletResourceTypes(resourceTypes = "etisalat/components/page", methods = HttpConstants.METHOD_POST, selectors = "sendnotification", extensions = "html")

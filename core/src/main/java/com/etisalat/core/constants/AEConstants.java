@@ -79,9 +79,7 @@ public final class AEConstants {
  public static final String HTML_CONSTANT = ".html";
  public static final String JSP_CONSTANT = ".jsp";
  public static final String CONTACT_US_OPERATION_ID_KEY = "OPERATIONID";
- public static final String NEWS_LETTER_ARTICLE_NAME_KEY = "ArticleName";
  public static final String CONTACT_US_OPERATION_ID_VALUE = "CONTACTUS";
- public static final String NEWS_LETTER_ARTICLE_NAME_VALUE = "EtisalatSMBNewsletter";
  
  /**
   * private constructor to prevent instantiation of class.

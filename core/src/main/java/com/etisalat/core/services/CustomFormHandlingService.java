@@ -1,7 +1,5 @@
 package com.etisalat.core.services;
 
-import java.io.IOException;
-
 public interface CustomFormHandlingService {
 
   /**
