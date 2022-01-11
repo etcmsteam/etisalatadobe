@@ -48,6 +48,7 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 	private transient CustomFormHandlingService customFormhandlingService;
 
 	PageManager pageManager;
+	
 
 	@Override
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) {
@@ -68,9 +69,9 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 			PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
 			com.day.cq.wcm.api.Page currentPage = pageManager.getContainingPage(request.getResource());
 			String pagePath = currentPage.getPath();
-			apiUrl = getSendNotificationApiUrl(json.toString());
+			apiUrl = getSendNotificationApiUrl();
 			redirectUrl = CommonUtility.getRedirectUrl(pagePath,json.toString());
-			headerParamValue = CommonUtility.getCaptchaResponse(json.toString());
+			headerParamValue = CommonUtility.getCaptchaResponse(json.toString());			
 			if (!StringUtils.isEmpty(json)) {
 				status = customFormhandlingService.postFormData(json.toString(), apiUrl, headerParam, headerParamValue, timeOutvalue, FORM_NAME);
 			}
@@ -92,30 +93,8 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 		}
 	}
 
-	public String getSendNotificationApiUrl(String json) {
-		String apiUrl = "";
-		try {
-			if(null != json) {
-				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
-				if(jsonObject.has(AEConstants.NEWS_LETTER_ARTICLE_NAME_KEY)) {
-					JsonElement contactUsElement = jsonObject.get(AEConstants.NEWS_LETTER_ARTICLE_NAME_KEY);				
-					if(null != contactUsElement) {
-						apiUrl = etisalatApiService.getNewsLetterApiUrl();
-					}
-				}
-				else {
-					apiUrl = etisalatApiService.getContactUsApiUrl();
-				}
-			}
-		}
-		catch (JsonSyntaxException e) {
-			LOG.error("Json Syntax error {}", e.getMessage());
-		}
-		catch (JsonParseException e) {
-			LOG.error("Json parse error {}", e.getMessage());
-		}
-
-		return apiUrl;
-	}
+	public String getSendNotificationApiUrl() {		
+			return etisalatApiService.getContactUsApiUrl();			
+		}		
 
 }
