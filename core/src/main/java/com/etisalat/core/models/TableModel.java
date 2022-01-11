@@ -111,16 +111,7 @@ public class TableModel {
         while ((line = br.readLine()) != null && line
             .contains(AEConstants.COMMA_DELIMITER)) {//loop will run from 2nd line
           final String[] values = line.split(AEConstants.COMMA_DELIMITER);
-          final LinkedHashMap<String, String> row = new LinkedHashMap<>();
-          for (int i = 0; i < values.length; i = i + 2) {
-            final String key = values[i];
-            String value = StringUtils.EMPTY;
-            if (values.length > i + 1) {
-              value = values[i + 1];
-            }
-            row.put(key, value);
-          }
-          rows.add(row);
+          setRowsDataForChannelsTable(values, rows);
         }
       } catch (IOException e) {
         LOGGER.error("The exception occurred while reading table csv {} {}",
@@ -130,6 +121,23 @@ public class TableModel {
     return rows;
   }
 
+  /**
+   * Sets Rows Data for channels table.
+   * @param values
+   * @param rows
+   */
+  private void setRowsDataForChannelsTable(String[] values, List<LinkedHashMap<String, String>> rows) {
+    final LinkedHashMap<String, String> row = new LinkedHashMap<>();
+    for (int i = 0; i < values.length; i = i + 2) {
+      final String key = values[i];
+      String value = StringUtils.EMPTY;
+      if (values.length > i + 1) {
+        value = values[i + 1];
+      }
+      row.put(key, value);
+    }
+    rows.add(row);
+  }
 
   /**
    * Read the filters csv for channels table
@@ -145,10 +153,7 @@ public class TableModel {
           new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
         String line;
         while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
-          final String[] cols = line.split(AEConstants.COMMA_DELIMITER);
-          for (int index = 0; index < cols.length; index++) {
-            map.put(getRadioButtonProperty(cols[index]), getFilters(index, rendition));
-          }
+          setFiltersChannelsTableData(line, map, rendition);
           break;
         }
       } catch (IOException e) {
@@ -158,6 +163,20 @@ public class TableModel {
     }
 
     return map;
+  }
+  
+  /**
+   * Sets filters channel table data.
+   * @param line
+   * @param map
+   * @param rendition
+   */
+  private void setFiltersChannelsTableData(String line, LinkedHashMap<String, Map<String, String>> map,
+      Rendition rendition) {
+    final String[] cols = line.split(AEConstants.COMMA_DELIMITER);
+    for (int index = 0; index < cols.length; index++) {
+      map.put(getRadioButtonProperty(cols[index]), getFilters(index, rendition));
+    }
   }
 
   /**

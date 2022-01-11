@@ -16,12 +16,16 @@ import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     Footer.class}, resourceType = {FooterImpl.RESOURCE_TYPE})
 public class FooterImpl implements Footer {
 
+  private static final Logger LOG = LoggerFactory.getLogger(FooterImpl.class);
+  
   /**
    * The resource type.
    */
@@ -53,6 +57,8 @@ public class FooterImpl implements Footer {
           quickLinkModelList.add(quickLinkModel);
         }
       });
+    } else {
+      LOG.error("Quick Link Model List is empty {}", res.getPath());
     }
     return quickLinkModelList;
   }
@@ -76,6 +82,8 @@ public class FooterImpl implements Footer {
           }
           subItemList.add(linkModel);
         });
+      } else {
+        LOG.error("Sub link items list is empty {} {}", res.getPath(),AEConstants.QUICKLINKS);
       }
       quickLinkModel.setLinks(subItemList);
     }
@@ -91,6 +99,8 @@ public class FooterImpl implements Footer {
             CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
         return linkModel;
       }
+    }else {
+      LOG.error("Promo items list is empty {} {}", res.getPath(),AEConstants.PROMO);
     }
     return null;
   }
