@@ -199,27 +199,23 @@ public class MegaNavigationImpl implements MegaNavigation {
     if (null != rootRes) {
       rootRes.listChildren().forEachRemaining(resource -> {
         String styleID = getContainerStyleID(resource);
+        LOG.info("Mega Menu Style ID {}",styleID);
         switch (styleID) {
-          case "1626427188774": {
-            List<MegaFixedNavigationItem> subMenuList = new ArrayList<>();
-            setContainerSubMenuList(subMenuList, resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE);
-            navModel.setContainerSubMenuList(subMenuList);
-            break;
-          }
-          case "1626427211199": {
-            List<MegaFixedNavigationItem> footerMenuList = new ArrayList<>();
-            setContainerSubMenuList(footerMenuList, resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE);
-            navModel.setContainerFooterMenuList(footerMenuList);
-            break;
-          }
-          case "1626428057855": {
-            List<MegaTeaserModel> tilesList = new ArrayList<>();
-            setContainerTilesItemList(tilesList, resource, PageConstants.TEASER_RESOURCE_TYPE);
-            navModel.setContainerPromotionList(tilesList);
-            break;
-          }
-          default:
-
+        case "1626427188774": {
+          navModel.setContainerSubMenuList(getMegaSubMenuList(resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE));
+          break;
+        }
+        case "1626427211199": {
+          navModel
+              .setContainerFooterMenuList(getMegaSubMenuList(resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE));
+          break;
+        }
+        case "1626428057855": {                   
+          navModel.setContainerPromotionList(getMegaPromotionalTilesList(resource, PageConstants.TEASER_RESOURCE_TYPE));
+          break;
+        }
+        default:
+          LOG.error("Style ID is empty or didn't match the mega meu style id {}",styleID);
         }
 
       });
@@ -227,14 +223,12 @@ public class MegaNavigationImpl implements MegaNavigation {
   }
 
   /**
-   * Sets Container sub menu and footer menu items to list.
-   *
-   * @param subMenuList
+   * Gets Container sub menu and footer menu items to list.
    * @param item
    * @param resourceType
    */
-  private void setContainerSubMenuList(List<MegaFixedNavigationItem> subMenuList, Resource item,
-      String resourceType) {
+  private List<MegaFixedNavigationItem> getMegaSubMenuList(Resource item, String resourceType) {
+    List<MegaFixedNavigationItem> subMenuList = new ArrayList<>();
     for (Resource childRes : item.getChildren()) {
       String styleID = getContainerStyleID(childRes);
       if (childRes.getResourceType().equals(resourceType)) {
@@ -242,16 +236,24 @@ public class MegaNavigationImpl implements MegaNavigation {
         if (null != fixedNavModel) {
           subMenuList.add(fixedNavModel);
         }
-      } else if (("etisalat/components/container").equals(childRes.getResourceType())
-          && StringUtils.isNotBlank(styleID) && ("1628780873955").equals(styleID)) {
+      } else if (("etisalat/components/container").equals(childRes.getResourceType()) && StringUtils.isNotBlank(styleID)
+          && ("1628780873955").equals(styleID)) {
         MegaFixedNavigationItem fixedNavModel = childRes.adaptTo(MegaFixedNavigationItem.class);
         fixedNavModel.setFeatureItemExist(true);
         setContainerBrandMenuList(childRes, fixedNavModel, subMenuList);
       }
     }
 
+    return subMenuList;
   }
 
+  /**
+   * Sets Mega menu brand item list.
+   * 
+   * @param itemResource
+   * @param fixedNavModel
+   * @param subMenuList
+   */
   private void setContainerBrandMenuList(Resource itemResource,
       MegaFixedNavigationItem fixedNavModel, List<MegaFixedNavigationItem> subMenuList) {
     List<MegaTeaserModel> brandMenuList = new ArrayList<>();
@@ -270,15 +272,15 @@ public class MegaNavigationImpl implements MegaNavigation {
     subMenuList.add(fixedNavModel);
   }
 
-  /**
-   * Sets container promotional and cover tiles items to list.
-   *
-   * @param tilesList
-   * @param childResource
-   * @param resourceType
-   */
-  private void setContainerTilesItemList(List<MegaTeaserModel> tilesList, Resource childResource,
+ /**
+  * Gets container promotional and cover tiles items to list.
+  * @param childResource
+  * @param resourceType
+  * @return
+  */
+  private List<MegaTeaserModel> getMegaPromotionalTilesList(Resource childResource,
       String resourceType) {
+    List<MegaTeaserModel> tilesList = new ArrayList<>();
     childResource.listChildren().forEachRemaining(resource -> {
       if (!resource.getName().equals(AEConstants.CQ_RESPONSIVE_NODE) && resource.getResourceType()
           .equals(resourceType)) {
@@ -289,6 +291,7 @@ public class MegaNavigationImpl implements MegaNavigation {
         }
       }
     });
+    return tilesList;
   }
 
   /**
