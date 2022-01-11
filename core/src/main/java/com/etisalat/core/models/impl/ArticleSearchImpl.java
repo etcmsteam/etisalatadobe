@@ -3,11 +3,12 @@ package com.etisalat.core.models.impl;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -19,18 +20,16 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import java.util.Comparator;
-import java.util.HashMap;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 import com.etisalat.core.util.CommonUtility;
-import com.day.cq.wcm.api.NameConstants;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     ArticleSearch.class}, resourceType = {ArticleSearchImpl.RESOURCE_TYPE})
@@ -99,8 +98,8 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void setArticlePages(Resource res, List<GenericListPageDetails> pageDetailsList,
       String articlePageType) {
     final Page page = res.adaptTo(Page.class);
-    if (null != page && page.getProperties().get(NameConstants.PN_TEMPLATE, StringUtils.EMPTY)
-        .equals(PageConstants.BUSINESS_BLOG_TEMPLATE)) {
+    if (null != page && page.getProperties().get("sling:resourceType", StringUtils.EMPTY)
+        .equals(PageConstants.ARTICLE_RESOURCETYPE)) {
       setChildPageDetails(res, page, pageDetailsList, articlePageType);
     }
 
@@ -271,19 +270,17 @@ public class ArticleSearchImpl implements ArticleSearch {
 
     return Collections.unmodifiableList(newsPageList);
   }
+  
+  @Override
+  public List<GenericListPageDetails> getEwalletNewsSectionItems() {
+    return Collections.unmodifiableList(getItems(AEConstants.PN_NEWS_SECTION));
+  }
 
 
   @Override
   public String getBusinessCategoryTag() {
     String category = currentPage.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
-    final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
-    if (StringUtils.isNotBlank(category) && null != tagManager) {
-      final Tag tag = tagManager.resolve(category);
-      if (null != tag) {
-        category = tag.getTitle();
-      }
-    }
-    return category;
+    return CommonUtility.getCategoryTagTitle(request, category);
   }
 
   @Override

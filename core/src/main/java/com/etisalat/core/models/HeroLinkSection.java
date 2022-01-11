@@ -25,12 +25,12 @@ public class HeroLinkSection {
     ResourceResolver resourceResolver;
 
     public List<HeroLinkSectionVO> getHeroLinkSectionList() {
-        List<HeroLinkSectionVO> linkSectionPojoList = new ArrayList<>();
-        Resource heroLinksSection = resource.getChild(AEConstants.HERO_LINKS_SECTION);
-        Iterator<Resource> iterator = heroLinksSection.listChildren();
+        final List<HeroLinkSectionVO> linkSectionPojoList = new ArrayList<>();
+        final Resource heroLinksSection = resource.getChild(AEConstants.HERO_LINKS_SECTION);
+        final Iterator<Resource> iterator = heroLinksSection.listChildren();
         while (iterator.hasNext()) {
-            Resource item = iterator.next();
-            HeroLinkSectionVO heroLinkSectionVO = new HeroLinkSectionVO();
+            final Resource item = iterator.next();
+            final HeroLinkSectionVO heroLinkSectionVO = new HeroLinkSectionVO();
             heroLinkSectionVO.setIconImage(item.getValueMap().get(AEConstants.ICON_IMAGE, String.class));
             heroLinkSectionVO.setIconText(item.getValueMap().get(AEConstants.ICON_TEXT, String.class));
             heroLinkSectionVO.setLinkTarget(item.getValueMap().get(AEConstants.LINK_TARGET, String.class));

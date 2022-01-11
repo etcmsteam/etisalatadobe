@@ -24,9 +24,14 @@ public interface ArticleSearch {
   String getBackToHomeLink();
 
   /**
-   * @return a collection of objects representing the news article items that compose the list.
+   * @return a collection of objects representing the news room article items that compose the list.
    */
   List<GenericListPageDetails> getNewsPageItems();
+  
+  /**
+   * @return a collection of objects representing the news section article items that compose the list.
+   */
+  List<GenericListPageDetails> getEwalletNewsSectionItems();
 
 
   /**

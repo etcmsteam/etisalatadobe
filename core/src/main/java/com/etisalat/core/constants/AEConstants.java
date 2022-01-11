@@ -22,6 +22,7 @@ public final class AEConstants {
  public static final String PN_PLAYICON_TEXT = "playIconText";
  public static final String PN_BLOGPOST = "blogpost";
  public static final String PN_NEWSROOM = "newsroom";
+ public static final String PN_NEWS_SECTION = "newssection";
  public static final String PN_ARTICLE_TYPE = "articleType";
  public static final String IMAGE = "image";
  public static final String PN_BACK_TO_HOMELINK = "backToBusinessLink";

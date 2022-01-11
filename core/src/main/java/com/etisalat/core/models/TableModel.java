@@ -82,7 +82,7 @@ public class TableModel {
           new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
         String line;
         while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
-          String[] values = line.split(AEConstants.COMMA_DELIMITER);
+          final String[] values = line.split(AEConstants.COMMA_DELIMITER);
           headerList = Arrays.asList(values);
           break;
         }
@@ -101,7 +101,7 @@ public class TableModel {
    * @return the all rows
    */
   public List<LinkedHashMap<String, String>> getAllRowsForChannelsTable() {
-    List<LinkedHashMap<String, String>> rows = new ArrayList<>();
+    final List<LinkedHashMap<String, String>> rows = new ArrayList<>();
     final Rendition rendition = getAsset(csvPath);
     if (rendition != null) {
       try (BufferedReader br = new BufferedReader(
@@ -110,10 +110,10 @@ public class TableModel {
         line = br.readLine(); // this will read the first line (to ignore csv header)
         while ((line = br.readLine()) != null && line
             .contains(AEConstants.COMMA_DELIMITER)) {//loop will run from 2nd line
-          String[] values = line.split(AEConstants.COMMA_DELIMITER);
-          LinkedHashMap<String, String> row = new LinkedHashMap<>();
+          final String[] values = line.split(AEConstants.COMMA_DELIMITER);
+          final LinkedHashMap<String, String> row = new LinkedHashMap<>();
           for (int i = 0; i < values.length; i = i + 2) {
-            String key = values[i];
+            final String key = values[i];
             String value = StringUtils.EMPTY;
             if (values.length > i + 1) {
               value = values[i + 1];
@@ -138,14 +138,14 @@ public class TableModel {
    */
 
   public Map<String, Map<String, String>> getAllFiltersForChannelsTable() {
-    LinkedHashMap<String, Map<String, String>> map = new LinkedHashMap<>();
-    Rendition rendition = getAsset(filterCsvPath);
+    final LinkedHashMap<String, Map<String, String>> map = new LinkedHashMap<>();
+    final Rendition rendition = getAsset(filterCsvPath);
     if (rendition != null) {
       try (BufferedReader br = new BufferedReader(
           new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
         String line;
         while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
-          String[] cols = line.split(AEConstants.COMMA_DELIMITER);
+          final String[] cols = line.split(AEConstants.COMMA_DELIMITER);
           for (int index = 0; index < cols.length; index++) {
             map.put(getRadioButtonProperty(cols[index]), getFilters(index, rendition));
           }
@@ -167,14 +167,14 @@ public class TableModel {
    * @return the all rows simple csv
    */
   public List<List<String>> getAllRowsSimpleCSV() {
-    List<List<String>> headerList = new ArrayList<>();
-    Rendition rendition = getAsset(simplecsvPath);
+    final List<List<String>> headerList = new ArrayList<>();
+    final Rendition rendition = getAsset(simplecsvPath);
     if (rendition != null) {
       try (BufferedReader br = new BufferedReader(
           new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
         String line;
         while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
-          String[] values = line.split(AEConstants.COMMA_DELIMITER);
+          final String[] values = line.split(AEConstants.COMMA_DELIMITER);
           headerList.add(Arrays.asList(values));
         }
 
@@ -188,16 +188,16 @@ public class TableModel {
   }
 
   private LinkedHashMap<String, String> getFilters(int index, Rendition rendition) {
-    LinkedHashMap<String, String> row = new LinkedHashMap<>();
+    final LinkedHashMap<String, String> row = new LinkedHashMap<>();
     try (BufferedReader br = new BufferedReader(
         new InputStreamReader(rendition.adaptTo(InputStream.class)))) {
       String line;
       while ((line = br.readLine()) != null && line.contains(AEConstants.COMMA_DELIMITER)) {
-        String[] cols = line.split(AEConstants.COMMA_DELIMITER);
+        final String[] cols = line.split(AEConstants.COMMA_DELIMITER);
         if (cols.length > index && StringUtils.isNotBlank(cols[index]) && cols[index]
             .contains(AEConstants.EQUAL_DELIMITER)) {
-          String item = cols[index];
-          String[] string = item.split(AEConstants.EQUAL_DELIMITER);
+          final String item = cols[index];
+          final String[] string = item.split(AEConstants.EQUAL_DELIMITER);
           row.put(string[0], string[1]);
 
         } else if (cols.length > index && StringUtils.isNotBlank(cols[index]) && !cols[index]
@@ -224,7 +224,7 @@ public class TableModel {
     Rendition rendition = null;
     final Optional<Resource> resource = Optional.ofNullable(resourceResolver.getResource(csvPath));
     if (resource.isPresent()) { // if the resource exists
-      Asset asset = resource.get().adaptTo(Asset.class);
+      final Asset asset = resource.get().adaptTo(Asset.class);
       rendition = asset.getOriginal();
     } else { // if the resource doesn't exist
       LOGGER.error("The resource doesn't exists at the path {}", csvPath);

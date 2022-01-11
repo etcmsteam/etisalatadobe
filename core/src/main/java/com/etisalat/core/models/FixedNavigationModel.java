@@ -42,8 +42,8 @@ public class FixedNavigationModel {
       if (null != multiFieldChild) {
         final Iterator<Resource> multiItr = multiFieldChild.listChildren();
         while (multiItr.hasNext()) {
-          Resource res = multiItr.next();
-          FixedNavigtaionMultifieldModel modelObj = res
+          final Resource res = multiItr.next();
+          final FixedNavigtaionMultifieldModel modelObj = res
               .adaptTo(FixedNavigtaionMultifieldModel.class);
           setExtensionToLink(modelObj);
           fixedNav.add(modelObj);
@@ -57,7 +57,7 @@ public class FixedNavigationModel {
   }
 
   private void setExtensionToLink(FixedNavigtaionMultifieldModel modelObj) {
-    String cardLink = modelObj.getNavigationLink();
+    final String cardLink = modelObj.getNavigationLink();
     if (StringUtils.isNotBlank(cardLink) && cardLink.startsWith("/content/") && !StringUtils
         .contains(cardLink, PageConstants.HTML_EXTENSION)) {
       modelObj.setNavigationLink(cardLink + PageConstants.HTML_EXTENSION);
