@@ -1,5 +1,5 @@
 <sly data-sly-use.articleObj="com.etisalat.core.models.ArticleSearch">	
-    <sly data-sly-test="${!pageProperties.articleType || pageProperties.articleType == 'blogpost'}" 
+    <sly data-sly-test="${pageProperties.articleType && pageProperties.articleType == 'blogpost'}" 
 	       data-sly-use.blogSearchTemplate="blogpost.html"
 	       data-sly-call="${blogSearchTemplate.blogpost @ pageProperties=pageProperties,articleObj=articleObj}">
     </sly>
