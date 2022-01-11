@@ -1,11 +1,7 @@
-// author cap40317
 .etisalatbreadcrumb {
   display: block;
   margin: 0 auto;
   margin-bottom: $margin-step-0;
-  padding: toRem(4) toRem(15);
-  padding: 0 toRem(12);
-  width: toRem(1224);
 
   @include respond-to-max($phone) {
     display: none;
@@ -66,10 +62,10 @@
 
 // starter-header
 .starter-header {
-  padding: $padding-step-3 !important;
+  padding: toRem(24) toRem(20) !important;
 
   @include respond-to-min($desktop) {
-    padding: calc(#{$padding-step-3} + 1px) calc(#{$padding-step-4} - 2px) !important;
+    padding: toRem(24) toRem(14) !important;
   }
 
   // breadcrumb
@@ -159,10 +155,6 @@
 
       p {
         .font--small {
-          @include respond-to-min($desktop-wide) {
-            float: right;
-          }
-
           font-size: $font14;
           margin-top: toRem(2);
         }
@@ -187,6 +179,45 @@
   @include rtlBlock {
     .text {
       float: right !important;
+    }
+  }
+}
+
+// accessbility
+.acc-black,
+.acc-blue {
+  .etisalatbreadcrumb {
+    li {
+      color: $white;
+
+      a {
+        color: $white;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .etisalatbreadcrumb {
+    li {
+      color: $yellow-light;
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      a {
+        color: $yellow-light;
+
+        &:hover {
+          color: $yellow-light;
+        }
+      }
+
+      &::after {
+        color: $yellow-light;
+      }
     }
   }
 }

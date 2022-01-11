@@ -46,24 +46,25 @@
   }
 
   .current-promotions-wrraper .controls {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row-reverse;
-      .next.next-with--topcarousel,
-      .prev.prev-with--topcarousel {
-        @include respond-to-min-max($desktop-min, $tablet) {
-          margin-top: toRem(-168);
-          right: toRem(8);
-          @include rtlBlock(){
-            margin-top: toRem(-80);
-          }
-        }
-        position: absolute;
-        margin-top: toRem(-152);
-        @include rtlBlock(){
-          margin-top: toRem(-168);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    .next.next-with--topcarousel,
+    .prev.prev-with--topcarousel {
+      @include respond-to-min-max($desktop-min, $tablet) {
+        margin-top: toRem(-168);
+        right: toRem(8);
+        @include rtlBlock() {
+          margin-top: toRem(-80);
         }
       }
+      position: absolute;
+      margin-top: toRem(-152);
+      z-index: 1;
+      @include rtlBlock() {
+        margin-top: toRem(-168);
+      }
+    }
 
     .next-with--topcarousel {
       margin-top: toRem(-112);
@@ -89,7 +90,7 @@
       margin-top: toRem(-168);
       z-index: 10;
       left: -2%;
-      @include rtlBlock(){
+      @include rtlBlock() {
         left: -3%;
       }
       @include respond-to-min-max($desktop-min, $tablet) {
@@ -327,8 +328,8 @@
   .learn-more-wrap:hover {
     border-color: #719e19;
   }
-  @include respond-to-max($tablet){
-    .promotionaltile p{
+  @include respond-to-max($tablet) {
+    .promotionaltile p {
       padding-right: 15px;
     }
   }
@@ -336,4 +337,26 @@
 
 .slider-fnt_small .description {
   font-size: $font16;
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .top-carousel {
+    .swiper-slide--tiles {
+      .title-wrap {
+        color: $white;
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .top-carousel {
+    .swiper-slide--tiles {
+      .title-wrap {
+        color: $yellow-light;
+      }
+    }
+  }
 }

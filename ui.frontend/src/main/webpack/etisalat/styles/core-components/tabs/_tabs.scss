@@ -107,7 +107,7 @@
     &__content {
       @include respond-to-max($phone) {
         border-radius: 4px;
-        padding: toRem(16) toRem(16) toRem(32);
+        padding: 0 toRem(16) toRem(32);
       }
     }
 
@@ -124,6 +124,10 @@
       margin-bottom: toRem(16);
       margin-top: 0;
 
+      @include respond-to-max($tablet) {
+        margin-top: toRem(16);
+      }
+
       @include respond-to-min($desktop) {
         font-size: $font24;
         line-height: 1.33;
@@ -136,10 +140,10 @@
 
     &__description {
       ol {
-        padding-left: toRem(35);
+        padding: 0 toRem(35);
 
         li {
-          padding-left: toRem(10);
+          padding: 0 toRem(10);
         }
       }
 
@@ -181,7 +185,7 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     letter-spacing: normal;
-    padding: toRem(18) 0 toRem(18) toRem(16);
+    padding: toRem(18) toRem(16) toRem(18) toRem(16);
     position: relative;
   }
 
@@ -198,14 +202,14 @@
           line-height: 1;
           padding: 4px !important;
           position: absolute;
-          right: toRem(30);
+          right: toRem(20);
           top: 50%;
           transform: translateY(-20%) rotate(-135deg);
           transition: all 0.3s ease-in-out;
           z-index: 1;
 
           @include rtlBlock() {
-            left: toRem(30);
+            left: toRem(18);
             right: auto;
           }
         }
@@ -223,7 +227,6 @@
 
       @include respond-to-max($tablet) {
         @include rtlBlock() {
-          padding-left: toRem(12);
           padding-right: auto;
         }
       }
@@ -233,9 +236,16 @@
   .nav-view-wrapp.panel > a.collapsed {
     color: $dark-gray;
     font-weight: get-font-weight("regular");
+    padding: toRem(18) 0;
 
     &::before {
+      right: toRem(3);
       transform: translateY(-80%) rotate(45deg);
+
+      @include rtlBlock() {
+        left: 0;
+        right: auto;
+      }
     }
   }
 
@@ -243,6 +253,7 @@
     background-color: $sand-white-50;
     font-size: $font16;
     font-weight: get-font-weight("heavy");
+    margin: 0 toRem(-17);
 
     @include font-family-lato;
   }
@@ -289,8 +300,26 @@
       padding: 0;
     }
 
-    .nav-view-wrapp.panel > a {
+    .nav-view-wrapp.panel > a,
+    .nav-view-wrapp.panel > a.collapsed,
+    .nav-view-wrapp.panel > :not(a.collapsed) {
       font-size: $font14;
+
+      &::before {
+        right: toRem(3);
+
+        @include rtlBlock() {
+          left: 0;
+          right: auto;
+        }
+      }
+    }
+
+    .nav-view-wrapp.panel > :not(a.collapsed) {
+      font-size: $font14;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .cmp-teaser {
@@ -300,6 +329,35 @@
       &__content {
         background-color: $white;
       }
+    }
+  }
+
+  &.cmp_tabs--vertical-whitebg {
+    .nav-view-wrapp.panel > a.collapsed {
+      &::before {
+        @include respond-to-max($tablet) {
+          right: toRem(20);
+
+          @include rtlBlock() {
+            left: toRem(16);
+            right: auto;
+          }
+        }
+
+        @include respond-to-max($phone) {
+          right: toRem(3);
+
+          @include rtlBlock() {
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @include rtlBlock() {
+    .nav-link-icon {
+      padding-left: 0 !important;
     }
   }
 }
@@ -388,8 +446,6 @@
     display: flex;
     font-size: toRem(20);
     height: toRem(90);
-
-    // color: $steel-grey;
     line-height: toRem(25);
     padding: toRem(0) toRem(0) toRem(0) toRem(22) !important;
 
@@ -430,8 +486,6 @@
 
   .cmp-tabs__tabpanel--active {
     display: block;
-
-    // background: $white-gray1;
     font-weight: get-font-weight("bold");
     padding-left: toRem(37);
     padding-top: toRem(40);
@@ -883,6 +937,10 @@
         background: $sand-white-50;
         color: $main-green;
         font-weight: get-font-weight("heavy");
+
+        @include respond-to-max($tablet) {
+          margin: 0 toRem(-17);
+        }
       }
 
       .panel {
@@ -958,10 +1016,18 @@
       justify-content: flex-end;
       line-height: toRem(18);
       margin: auto 0;
-      padding: toRem(8) 0;
+      padding: toRem(16) 0;
       text-align: left;
 
       @include font-family-lato;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
 
       svg,
       img {
@@ -973,8 +1039,13 @@
           fill: inherit;
           float: left;
           height: toRem(30);
-          margin-right: calc(#{$margin-step-4} + 4px);
+          margin-right: toRem(36);
           width: toRem(32);
+
+          @include rtlBlock() {
+            margin-left: toRem(36);
+            margin-right: 0;
+          }
         }
       }
 
@@ -988,7 +1059,6 @@
 
       &--active {
         color: $main-green;
-        font-size: $font18 !important;
         font-weight: get-font-weight("bold");
         position: relative;
 
@@ -1027,7 +1097,7 @@
       display: block;
       flex-wrap: wrap;
       list-style: none;
-      margin-top: toRem(64);
+      margin-top: toRem(78);
       width: 50%;
     }
 
@@ -1048,7 +1118,7 @@
         height: toRem(428);
         line-height: toRem(19);
         overflow: hidden;
-        padding: 1.5rem toRem(16) 0 1.5rem;
+        padding: toRem(24) toRem(46) toRem(40) toRem(24);
         position: relative;
         width: 50%;
 
@@ -1232,8 +1302,12 @@
     }
 
     .nav-view-wrapp.panel > a.collapsed {
+      @include respond-to-max($tablet) {
+        padding: toRem(18) toRem(16);
+      }
+
       @include respond-to-max($phone) {
-        padding-left: 0;
+        padding: toRem(18) 0;
       }
     }
 
@@ -1241,6 +1315,7 @@
       background: $white;
       color: $main-green;
       font-weight: get-font-weight("heavy");
+      margin: 0;
 
       @include respond-to-max($phone) {
         margin: 0 toRem(-16);
@@ -1343,6 +1418,13 @@
 // Accessibility
 .acc-black,
 .acc-blue {
+  h2,
+  h3,
+  p,
+  span {
+    color: $white;
+  }
+
   .cmp_tabs--vertical-img {
     .cmp-tabs__tab {
       color: $white;
@@ -1360,10 +1442,17 @@
       }
 
       &__description {
-        h4,
         li,
         p {
           color: $white !important;
+        }
+      }
+
+      &__action-link {
+        color: $white;
+
+        &::before {
+          border-color: $white;
         }
       }
     }
@@ -1410,10 +1499,15 @@
       }
 
       &__description {
+        h3 {
+          color: $white;
+        }
+
         li {
           color: $white;
 
           a {
+            color: $white;
             text-decoration: underline;
           }
         }
@@ -1430,6 +1524,67 @@
           border-color: $white;
         }
       }
+    }
+
+    &.cmp_tabs--mobile {
+      .nav-view-wrapp.panel {
+        & > :not(a.collapsed) {
+          background: $black;
+          color: $white;
+        }
+
+        a {
+          background-color: $black;
+          color: $white;
+
+          &::before {
+            border-color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .cmp_tabs--mobile {
+    .panel {
+      background-color: $black;
+    }
+
+    .nav-view-wrapp {
+      &.panel {
+        & > :not(a.collapsed) {
+          background-color: $black;
+        }
+
+        & > a {
+          color: $white;
+
+          &.collapsed {
+            color: $white;
+          }
+        }
+
+        a::before {
+          border-color: $white;
+        }
+      }
+    }
+  }
+
+  .cmp_tabs--vertical-fullbdr {
+    .text--gray {
+      color: $white;
+    }
+
+    li {
+      &.cmp-tabs__tab {
+        color: $white;
+      }
+    }
+
+    .cmp-tabs__tab--active {
+      border-left-color: $white !important;
+      color: $white !important;
     }
   }
 }
@@ -1465,10 +1620,58 @@
         background: $blue4;
       }
     }
+
+    &.cmp_tabs--mobile {
+      .nav-view-wrapp.panel {
+        & > :not(a.collapsed) {
+          background: $blue4;
+          color: $white;
+        }
+
+        a {
+          background-color: $blue4;
+          color: $white;
+
+          &::before {
+            border-color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .cmp_tabs--mobile {
+    .panel {
+      background-color: $blue4;
+    }
+
+    .nav-view-wrapp {
+      &.panel {
+        & > :not(a.collapsed) {
+          background-color: $blue4;
+        }
+
+        & > a {
+          color: $white;
+
+          &.collapsed {
+            color: $white;
+          }
+        }
+
+        a::before {
+          border-color: $white;
+        }
+      }
+    }
   }
 }
 
 .acc-yellow {
+  span {
+    color: $yellow-light;
+  }
+
   .cmp_tabs--vertical-img {
     .cmp-tabs__tab {
       color: $yellow-light;
@@ -1486,10 +1689,17 @@
       }
 
       &__description {
-        h4,
         li,
         p {
           color: $yellow-light !important;
+        }
+      }
+
+      &__action-link {
+        color: $yellow-light;
+
+        &::before {
+          border-color: $yellow-light;
         }
       }
     }
@@ -1536,6 +1746,10 @@
       }
 
       &__description {
+        h3 {
+          color: $yellow-light;
+        }
+
         li {
           color: $yellow-light;
 
@@ -1556,6 +1770,67 @@
           border-color: $yellow-light;
         }
       }
+    }
+
+    &.cmp_tabs--mobile {
+      .nav-view-wrapp.panel {
+        & > :not(a.collapsed) {
+          background: $black;
+          color: $yellow-light;
+        }
+
+        a {
+          background-color: $black;
+          color: $yellow-light;
+
+          &::before {
+            border-color: $yellow-light;
+          }
+        }
+      }
+    }
+  }
+
+  .cmp_tabs--mobile {
+    .panel {
+      background-color: $black;
+    }
+
+    .nav-view-wrapp {
+      &.panel {
+        & > :not(a.collapsed) {
+          background-color: $black;
+        }
+
+        & > a {
+          color: $yellow-light;
+
+          &.collapsed {
+            color: $yellow-light;
+          }
+        }
+
+        a::before {
+          border-color: $yellow-light;
+        }
+      }
+    }
+  }
+
+  .cmp_tabs--vertical-fullbdr {
+    .text--gray {
+      color: $yellow-light;
+    }
+
+    li {
+      &.cmp-tabs__tab {
+        color: $yellow-light;
+      }
+    }
+
+    .cmp-tabs__tab--active {
+      border-left-color: $yellow-light !important;
+      color: $yellow-light !important;
     }
   }
 }

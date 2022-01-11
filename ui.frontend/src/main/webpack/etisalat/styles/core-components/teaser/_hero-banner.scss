@@ -347,9 +347,9 @@
     @include font-family-lato();
 
     color: $black;
-    font-size: $font16;
+    font-size: $font18;
     letter-spacing: normal;
-    line-height: toRem(22);
+    line-height: toRem(28.8);
     margin: $margin-step-0 $margin-step-0 calc(#{$margin-step-2} -3.5px) $margin-step-0;
     text-align: left;
 
@@ -359,6 +359,7 @@
     }
 
     a {
+      color: $lemon-green;
       font-size: $font16;
 
       @include respond-to-min($desktop) {
@@ -398,6 +399,21 @@
           }
         }
 
+        .hero-heading-big {
+          font-size: toRem(26);
+          line-height: toRem(33);
+
+          @include respond-to-min($desktop) {
+            color: $white;
+            font-size: toRem(54);
+            line-height: toRem(64);
+          }
+        }
+
+        h2 {
+          color: $almost-black;
+        }
+
         a {
           color: $lemon-green;
         }
@@ -434,10 +450,13 @@
         margin: $margin-step-0;
 
         @include rtlBlock() {
-          left: auto;
-          padding-right: toRem(40);
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          padding: 0 0.75rem;
           right: 0;
-          width: 50%;
+          top: 0;
+          width: toRem(1224);
         }
       }
 
@@ -456,13 +475,14 @@
         bottom: 0;
         left: 0;
         margin: auto;
+        padding: 0 toRem(12);
         right: 0;
         top: 0;
       }
     }
 
     &__pretitle {
-      background-image: linear-gradient(83deg, $bright-sun, $pumpkin);
+      background-image: linear-gradient(270deg, $light-sun, $light-pumpkin);
       border-radius: toRem(100);
       color: $white;
       display: flex;
@@ -540,12 +560,19 @@
       @include respond-to-min($desktop) {
         color: $white;
         font-size: $font54;
+        margin-bottom: toRem(16);
+        margin-top: 0;
       }
     }
 
     &__title {
+      font-size: toRem(26);
+      line-height: toRem(33);
+      padding: 0 toRem(5);
+
       @include respond-to-min($desktop) {
         color: $white;
+        font-size: toRem(54);
         line-height: toRem(64);
         margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
         width: 50%;
@@ -591,7 +618,7 @@
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
         left: 50%;
-        width: 50%;
+        right: auto;
 
         @include rtlBlock() {
           left: auto;
@@ -599,7 +626,7 @@
         }
 
         .cmp-teaser__title {
-          width: 100%;
+          width: 50%;
         }
 
         .cmp-teaser__description {
@@ -626,7 +653,7 @@
 
         @include rtlBlock() {
           left: auto;
-          right: 50%;
+          right: 50% !important;
         }
       }
 
@@ -635,7 +662,8 @@
 
         @include rtlBlock() {
           left: auto;
-          right: 50%;
+          right: 50% !important;
+          text-align: right;
         }
       }
     }
@@ -715,5 +743,174 @@
 
   @include respond-to-min($desktop) {
     max-height: toRem(363);
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .text--white {
+    color: $white;
+  }
+
+  .cmp-carousel--herobanner {
+    .cmp-carousel__action--previous,
+    .cmp-carousel__action--next {
+      &::after {
+        border-left-color: $white;
+        border-top-color: $white;
+        color: $white;
+      }
+    }
+
+    .video {
+      .video_link {
+        color: $white;
+      }
+    }
+
+    .cmp-teaser__action-container {
+      a {
+        background-color: $black;
+        border: toRem(1) solid $white;
+      }
+    }
+
+    .hero-heading-big {
+      .text--white {
+        color: $white;
+      }
+    }
+  }
+
+  .youtube-popup-container {
+    .btn-green {
+      border-color: $white !important;
+      color: $white;
+    }
+  }
+
+  .cmp-teaser--herobanner {
+    p {
+      color: $white;
+    }
+
+    .cmp-teaser {
+      &__title {
+        a {
+          color: $white;
+        }
+      }
+
+      &__action-container {
+        a {
+          background-color: $black;
+          color: $white;
+        }
+      }
+
+      &__description {
+        h4,
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .cmp-carousel--herobanner {
+    .cmp-teaser__action-container {
+      a {
+        background-color: $blue4;
+        border: toRem(1) solid $white;
+      }
+    }
+  }
+
+  .cmp-teaser--herobanner {
+    .cmp-teaser {
+      &__action-container {
+        a {
+          background-color: $blue4;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .text--white {
+    color: $yellow-light;
+  }
+
+  .cmp-carousel--herobanner {
+    .cmp-carousel__action--previous,
+    .cmp-carousel__action--next {
+      &::after {
+        border-left-color: $yellow-light;
+        border-top-color: $yellow-light;
+        color: $yellow-light;
+      }
+    }
+
+    .video {
+      .video_link {
+        color: $yellow-light;
+      }
+    }
+
+    .cmp-teaser__action-container {
+      a {
+        background-color: $black;
+        border: toRem(1) solid $yellow-light;
+      }
+    }
+
+    .hero-heading-big {
+      .text--white {
+        color: $yellow-light;
+      }
+    }
+
+    .cmp-carousel__indicator {
+      background-color: $yellow-light;
+    }
+  }
+
+  .youtube-popup-container {
+    .btn-green {
+      border-color: $yellow-light !important;
+      color: $yellow-light;
+    }
+  }
+
+  .cmp-teaser--herobanner {
+    p {
+      color: $yellow-light;
+    }
+
+    .cmp-teaser {
+      &__title {
+        a {
+          color: $yellow-light;
+        }
+      }
+
+      &__action-container {
+        a {
+          background-color: $black;
+          color: $yellow-light;
+        }
+      }
+
+      &__description {
+        h4,
+        a {
+          color: $yellow-light;
+        }
+      }
+    }
   }
 }
