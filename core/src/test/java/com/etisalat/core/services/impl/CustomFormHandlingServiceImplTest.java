@@ -40,7 +40,7 @@ public class CustomFormHandlingServiceImplTest {
 	void testPostFormData() throws SocketTimeoutException,IOException{			 		  
 		when(con.getInputStream()).thenReturn(inputStream); 
 		when(con.getResponseCode()).thenReturn(200); 	    
-		when(customFormHandlingServiceImpl.postFormData(json, API_URL,"captchaResponse","test",TIMEOUT_VALUE,"newform")).thenReturn(200);	 
-		assertNotNull(customFormHandlingServiceImpl.postFormData(json, API_URL,"captchaResponse","test",TIMEOUT_VALUE,"newform"));
+		when(customFormHandlingServiceImpl.postFormData(json, API_URL,TIMEOUT_VALUE,"newform")).thenReturn(200);	 
+		assertNotNull(customFormHandlingServiceImpl.postFormData(json, API_URL,TIMEOUT_VALUE,"newform"));
 	}
 };

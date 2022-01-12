@@ -5,6 +5,7 @@ import java.net.SocketTimeoutException;
 import java.util.HashMap;
 import java.util.Map;
 import com.etisalat.core.util.CommonUtility;
+import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.etisalat.core.constants.AEConstants;
 
@@ -37,36 +38,26 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 
 	@Reference
 	private transient EtisalatApiService etisalatApiService;
+	
 	@Reference
 	private transient CustomFormHandlingService customFormhandlingService;
-
-
-	private transient PageManager pageManager;
-
 
 	@Override
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) {
 		try {
 			int status = AEConstants.BAD_REQUEST;
-			String apiUrl = StringUtils.EMPTY;
-			String headerParamValue = StringUtils.EMPTY;
-			String redirectUrl = StringUtils.EMPTY;
-			String headerParam = AEConstants.CLIENT_CAPTCHA_VALUE;
+
 			int timeOutvalue = etisalatApiService.getTimeOut();
 			Map<String, String> params = new HashMap<>();
 			Map<String, String[]> parameterMap = request.getParameterMap();
 			parameterMap.forEach((key,value) -> { params.put(key, value[0]); });			
 			Gson gson = new Gson(); 
 			String json = gson.toJson(params); 
-			pageManager = request.getResourceResolver().adaptTo(PageManager.class);
-			com.day.cq.wcm.api.Page currentPage = pageManager.getContainingPage(request.getResource());
-			String pagePath = currentPage.getPath();
-			apiUrl = getSendNotificationApiUrl();
-
-			if (StringUtils.isNotEmpty(json)) {
-				redirectUrl = CommonUtility.getRedirectUrl(pagePath,json.toString());
-				headerParamValue = CommonUtility.getCaptchaResponse(json.toString());
-				status = customFormhandlingService.postFormData(json.toString(), apiUrl, headerParam, headerParamValue, timeOutvalue, FORM_NAME);
+			PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
+			Page currentPage = pageManager.getContainingPage(request.getResource());	
+			String redirectUrl = CommonUtility.getRedirectUrl(currentPage.getPath(),json.toString());
+			if (StringUtils.isNotEmpty(json)) {				
+				status = customFormhandlingService.postFormData(json.toString(), getSendNotificationApiUrl(), timeOutvalue, FORM_NAME);
 			}
 
 			if (status == AEConstants.RESPONSE_OK) {
