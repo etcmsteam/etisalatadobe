@@ -4,9 +4,11 @@
     padding: 0.6rem;
   }
   p{
+    @include font-family-lato;
     &.paragraph{
       letter-spacing: .2px;
       font-size: 16px;
+      color: inherit;
     }
   }
   a{
@@ -483,8 +485,9 @@
     border: none;
     background-color: transparent;
     border-radius: 0;
-    margin-top: 2rem;
-    font-size: 28px;
+    font-family: inherit;
+    // margin-top: 2rem;
+    font-size: 22px;
     span{
       &::before{
         bottom: 100%;
@@ -519,6 +522,7 @@
     font-size: 14px;
     line-height: 24px;
     color: $steel-grey;
+    @include font-family-lato;
     img{
       max-width: 100%;
     }
@@ -560,8 +564,8 @@
     }
     .tour-pager{
       position: absolute;
-      bottom: 16px;
-      right: 53px;
+      bottom: 25px;
+      right: 62px;
       font-size: 16px;
     }
   }
@@ -620,6 +624,11 @@
       border-radius: 0px;
       font-size: 18px;
       background-color: transparent;
+      height: auto;
+      padding:0;
+      :focus {
+        background-color: transparent;
+      }
       svg{
         width: 16px;
         height: 16px;
@@ -698,6 +707,28 @@
         }
         .swiper-container{
           margin-bottom: 2rem;  
+        }
+      }
+    }
+  }
+}
+.billexplainertab {
+  .btn-text.btn-green {
+    width: 100%;
+    @include font-family-lato;
+    font-size: 14px;
+  }
+}
+// arabic language
+*[lang="ar"] {
+  *[dir="rtl"] {
+    .billexplainertab {
+      .btn-text.btn-green{
+        float: right;
+        &:before {
+          // left: -2.0625rem;
+          // right: auto;
+            transform: translateY(-50%) rotate(316deg);
         }
       }
     }
