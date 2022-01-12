@@ -33,7 +33,6 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 	private static final Logger LOG = LoggerFactory.getLogger(SendNotificationServlet.class);
 	private static final long serialVersionUID = 1L;
 
-	private static final String JSON_STRING = "";
 	private static final String FORM_NAME = "SendNotification";
 
 	@Reference
@@ -41,32 +40,32 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 	@Reference
 	private transient CustomFormHandlingService customFormhandlingService;
 
-	PageManager pageManager;
-	
+
+	private transient PageManager pageManager;
+
 
 	@Override
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) {
 		try {
-			String json = JSON_STRING;
 			int status = AEConstants.BAD_REQUEST;
-			String apiUrl = "";
+			String apiUrl = StringUtils.EMPTY;
+			String headerParamValue = StringUtils.EMPTY;
+			String redirectUrl = StringUtils.EMPTY;
 			String headerParam = AEConstants.CLIENT_CAPTCHA_VALUE;
-			String headerParamValue = "";
 			int timeOutvalue = etisalatApiService.getTimeOut();
-			String redirectUrl = "";
-
 			Map<String, String> params = new HashMap<>();
 			Map<String, String[]> parameterMap = request.getParameterMap();
 			parameterMap.forEach((key,value) -> { params.put(key, value[0]); });			
 			Gson gson = new Gson(); 
-			json = gson.toJson(params); 
-			PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
+			String json = gson.toJson(params); 
+			pageManager = request.getResourceResolver().adaptTo(PageManager.class);
 			com.day.cq.wcm.api.Page currentPage = pageManager.getContainingPage(request.getResource());
 			String pagePath = currentPage.getPath();
 			apiUrl = getSendNotificationApiUrl();
-			redirectUrl = CommonUtility.getRedirectUrl(pagePath,json.toString());
-			headerParamValue = CommonUtility.getCaptchaResponse(json.toString());			
-			if (!StringUtils.isEmpty(json)) {
+
+			if (StringUtils.isNotEmpty(json)) {
+				redirectUrl = CommonUtility.getRedirectUrl(pagePath,json.toString());
+				headerParamValue = CommonUtility.getCaptchaResponse(json.toString());
 				status = customFormhandlingService.postFormData(json.toString(), apiUrl, headerParam, headerParamValue, timeOutvalue, FORM_NAME);
 			}
 
@@ -88,7 +87,7 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 	}
 
 	public String getSendNotificationApiUrl() {		
-			return etisalatApiService.getContactUsApiUrl();			
-		}		
+		return etisalatApiService.getContactUsApiUrl();			
+	}		
 
 }
