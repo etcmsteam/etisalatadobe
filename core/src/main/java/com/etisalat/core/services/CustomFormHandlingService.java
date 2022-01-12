@@ -7,5 +7,5 @@ public interface CustomFormHandlingService {
    *
    * @return
    */
-int postFormData(String json, String url, String headerParam, String headerValue, int timeOut, String formName);
+int postFormData(String json, String url, int timeOut, String formName);
 }

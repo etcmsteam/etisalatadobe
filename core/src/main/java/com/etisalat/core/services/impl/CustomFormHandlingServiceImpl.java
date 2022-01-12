@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.etisalat.core.services.CustomFormHandlingService;
+import com.etisalat.core.util.CommonUtility;
 
 @Component(service = CustomFormHandlingService.class, immediate = true)
 public class CustomFormHandlingServiceImpl implements CustomFormHandlingService {
@@ -25,15 +26,13 @@ public class CustomFormHandlingServiceImpl implements CustomFormHandlingService 
 
 	
 	@Override
-	public int postFormData(String json ,String url, String headerParam, String headerValue, int timeOut, String formName) {
+	public int postFormData(String json ,String url, int timeOut, String formName) {
 		try {
 			URL postUrl = new URL(url);		
 			HttpURLConnection connection = (HttpURLConnection) postUrl.openConnection();        
 			connection.setRequestMethod(AEConstants.POST_METHOD);
-			connection.setRequestProperty(AEConstants.CONTENT_TYPE, PageConstants.APPLICATION_JSON);
-			if(null != headerParam) {
-			connection.setRequestProperty(headerParam,headerValue);
-			}
+			connection.setRequestProperty(AEConstants.CONTENT_TYPE, PageConstants.APPLICATION_JSON);			
+			connection.setRequestProperty(AEConstants.CLIENT_CAPTCHA_VALUE,CommonUtility.getCaptchaResponse(json));			
 			connection.setUseCaches(false);
 			connection.setDoOutput(true);
 			connection.setConnectTimeout(timeOut);
