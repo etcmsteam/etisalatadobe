@@ -47,11 +47,11 @@ public class FooterImpl implements Footer {
    * @return List of QuickLinks
    */
   private List<QuickLinkModel> getQuickLinkItems() {
-    Resource quickLinksRes = res.getChild(AEConstants.QUICKLINKS);
+    final Resource quickLinksRes = res.getChild(AEConstants.QUICKLINKS);
     List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
     if (null != quickLinksRes) {
       quickLinksRes.listChildren().forEachRemaining(resource -> {
-        QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
+        final QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
         if (quickLinkModel != null) {
           setSubLinkItems(resource, quickLinkModel);
           quickLinkModelList.add(quickLinkModel);
@@ -71,11 +71,11 @@ public class FooterImpl implements Footer {
    */
   private void setSubLinkItems(Resource itemResource, QuickLinkModel quickLinkModel) {
     if (itemResource.hasChildren()) {
-      Resource subItemRes = itemResource.getChild(AEConstants.QUICKLINKS);
-      List<LinkModel> subItemList = new ArrayList<>();
+      final Resource subItemRes = itemResource.getChild(AEConstants.QUICKLINKS);
+      final List<LinkModel> subItemList = new ArrayList<>();
       if (subItemRes != null) {
         subItemRes.listChildren().forEachRemaining(resource -> {
-          LinkModel linkModel = resource.adaptTo(LinkModel.class);
+          final LinkModel linkModel = resource.adaptTo(LinkModel.class);
           if (linkModel != null) {
             linkModel.setLinkUrl(
                 CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
@@ -91,7 +91,7 @@ public class FooterImpl implements Footer {
   }
 
   private LinkModel getPromoItem() {
-    Resource promoRes = res.getChild(AEConstants.PROMO);
+    final Resource promoRes = res.getChild(AEConstants.PROMO);
     if (promoRes != null) {
       LinkModel linkModel = promoRes.adaptTo(LinkModel.class);
       if (linkModel != null) {
