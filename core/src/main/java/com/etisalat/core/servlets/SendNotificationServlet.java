@@ -33,7 +33,6 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 	private static final Logger LOG = LoggerFactory.getLogger(SendNotificationServlet.class);
 	private static final long serialVersionUID = 1L;
 
-	private static final String JSON_STRING = "";
 	private static final String FORM_NAME = "SendNotification";
 
 	@Reference
