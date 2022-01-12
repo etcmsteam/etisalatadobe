@@ -36,7 +36,7 @@ public class FixedNavigationModel {
    */
   public List<FixedNavigtaionMultifieldModel> getFixedNav() {
     LOG.info("current resource is {}", currentResource.getPath());
-    List<FixedNavigtaionMultifieldModel> pageItemList = CommonUtility
+    final List<FixedNavigtaionMultifieldModel> pageItemList = CommonUtility
         .getFixedNavigationItems(AEConstants.MULTIFIELD_NODE, currentResource, resourceResolver);
     if (pageItemList.isEmpty()) {
       LOG.error("Fixed Navigation List is empty {}", currentResource.getPath());

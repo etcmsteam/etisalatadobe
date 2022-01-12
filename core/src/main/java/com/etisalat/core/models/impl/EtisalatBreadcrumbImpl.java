@@ -46,10 +46,10 @@ public class EtisalatBreadcrumbImpl implements EtisalatBreadcrumb {
     final Resource etisalatBreadcrumb = res.getChild(AEConstants.BREADCRUMB_ITEMS);
     List<EtisalatBreadcrumbVO> etisalatBreadcrumbItem = new ArrayList<>();
     if (etisalatBreadcrumb != null && etisalatBreadcrumb.hasChildren()) {
-      Iterator<Resource> list = etisalatBreadcrumb.listChildren();
+      final Iterator<Resource> list = etisalatBreadcrumb.listChildren();
       while (list.hasNext()) {
-        Resource childResource = list.next();
-        EtisalatBreadcrumbVO breadCrumVO = new EtisalatBreadcrumbVO();
+        final Resource childResource = list.next();
+        final EtisalatBreadcrumbVO breadCrumVO = new EtisalatBreadcrumbVO();
         breadCrumVO.setBreadcrumbTitle(
             childResource.getValueMap().get(AEConstants.ETISALAT_BREADCRUMB_TITLE, StringUtils.EMPTY));
         breadCrumVO.setLinkBehavior(childResource.getValueMap().get(AEConstants.LINK_BEHAVIOR, StringUtils.EMPTY));

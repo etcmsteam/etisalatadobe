@@ -47,10 +47,10 @@ public class IconCardListImpl implements IconCardList {
     final Resource iconCardList = res.getChild(AEConstants.NAV_ITEMS);
 		List<IconCardVO> iconCardListItem = new ArrayList<>();
     if (iconCardList != null && iconCardList.hasChildren()) {
-      Iterator<Resource> list = iconCardList.listChildren();
+      final Iterator<Resource> list = iconCardList.listChildren();
       while (list.hasNext()) {
-        Resource childResource = list.next();
-        IconCardVO cardList = new IconCardVO();
+        final Resource childResource = list.next();
+        final IconCardVO cardList = new IconCardVO();
         cardList.setCardIcon(childResource.getValueMap().get(AEConstants.CARD_ICON, StringUtils.EMPTY));
         cardList.setCardTitle(childResource.getValueMap().get(AEConstants.CARD_TITLE, StringUtils.EMPTY));
         cardList.setLinkBehavior(childResource.getValueMap().get(AEConstants.LINK_BEHAVIOR, StringUtils.EMPTY));
