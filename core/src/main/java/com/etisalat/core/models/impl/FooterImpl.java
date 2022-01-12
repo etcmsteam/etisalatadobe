@@ -57,9 +57,9 @@ public class FooterImpl implements Footer {
           quickLinkModelList.add(quickLinkModel);
         }
       });
-    } else {
-      LOG.error("Quick Link Model List is empty {}", res.getPath());
-    }
+    } 
+    LOG.debug("Quick Link Model List: {} Path:{} Child Node Name: {}", quickLinkModelList, res.getPath(),
+        AEConstants.QUICKLINKS);    
     return quickLinkModelList;
   }
 
@@ -82,9 +82,10 @@ public class FooterImpl implements Footer {
           }
           subItemList.add(linkModel);
         });
-      } else {
-        LOG.error("Sub link items list is empty {} {}", res.getPath(),AEConstants.QUICKLINKS);
-      }
+      } 
+      LOG.debug("Sub link items List: {} Path:{} Child Node Name: {}", subItemList, res.getPath(),
+          AEConstants.QUICKLINKS);
+      
       quickLinkModel.setLinks(subItemList);
     }
 
@@ -99,9 +100,8 @@ public class FooterImpl implements Footer {
             CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
         return linkModel;
       }
-    }else {
-      LOG.error("Promo items list is empty {} {}", res.getPath(),AEConstants.PROMO);
     }
+    
     return null;
   }
 
