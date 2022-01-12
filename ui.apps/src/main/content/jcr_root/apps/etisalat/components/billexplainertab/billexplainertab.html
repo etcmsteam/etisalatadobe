@@ -63,11 +63,11 @@
                         data-toggle="collapse" data-parent="#tabBoxes-${tabs.id}" 
                         href="#tabBoxes-${component.id}-${tabList.count}">${tab.title}</a>
                      <div id="tabBoxes-${component.id}-${tabList.count}"
-                             class="section-exp-${tabList.count} collapse ${tabList.first ? 'in' :''}" aria-expanded="false">
-                         <div data-sly-test="${tabList.first}" data-sly-resource="${tab.name @ decorationTagName='div'}" class="billing-report-section">
-                         </div>  
-                         <div  data-sly-test="${!tabList.first}" class="billing-report-section">
-                           <iframe src="${'{0}/{1}.html' @ format=[resource.path, tab.name]}" frameborder="0" height="100%" width="100%"></iframe>
+                             class="section-exp-${tabList.count} collapse ${tabList.first ? 'in' :''}" aria-expanded="false">                         
+                         <div class="billing-report-section">
+                           <div class="billing-report-card">
+                             <iframe src="${'{0}/{1}.html' @ format=[resource.path, tab.name]}" frameborder="0" height="100%" width="100%"></iframe>
+                           </div>
                          </div>        
                      </div>
 

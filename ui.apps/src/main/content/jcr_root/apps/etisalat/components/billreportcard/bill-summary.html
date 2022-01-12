@@ -1,6 +1,10 @@
-<template  data-sly-template.billSummaryReport>
- <!-- bill summary -->
-<div class="billing-report-card-preview">
+<template  data-sly-template.billSummaryReport="${ @ billModel,properties}">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+  <sly data-sly-call="${clientlib.all @ categories='cmp.crx.billing.explainer'}" />
+ </sly>
+<div class="billing-report-card-preview" data-bill-explainer="${billModel.stepsData}">
   <div class="exp-report-wrapper exp-bill-summary zooming">
     <div class="exp-logo-report">
       <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/etisalat_eng_logo.png" alt="">
