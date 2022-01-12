@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.util.CommonUtility;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -14,6 +16,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.etisalat.core.models.IconCardList;
 import com.etisalat.core.models.IconCardVO;
@@ -22,6 +26,8 @@ import com.etisalat.core.models.IconCardVO;
     IconCardList.class}, resourceType = {IconCardListImpl.RESOURCE_TYPE})
 public class IconCardListImpl implements IconCardList {
 
+  private static final Logger LOG = LoggerFactory.getLogger(IconCardListImpl.class);
+  
   public static final String RESOURCE_TYPE = "etisalat/components/iconcardlist";
 
   @SlingObject
@@ -45,14 +51,16 @@ public class IconCardListImpl implements IconCardList {
       while (list.hasNext()) {
         Resource childResource = list.next();
         IconCardVO cardList = new IconCardVO();
-        cardList.setCardIcon(childResource.getValueMap().get(AEConstants.CARD_ICON, String.class));
-        cardList.setCardTitle(childResource.getValueMap().get(AEConstants.CARD_TITLE, String.class));
-        cardList.setLinkBehavior(childResource.getValueMap().get(AEConstants.LINK_BEHAVIOR, String.class));
+        cardList.setCardIcon(childResource.getValueMap().get(AEConstants.CARD_ICON, StringUtils.EMPTY));
+        cardList.setCardTitle(childResource.getValueMap().get(AEConstants.CARD_TITLE, StringUtils.EMPTY));
+        cardList.setLinkBehavior(childResource.getValueMap().get(AEConstants.LINK_BEHAVIOR, StringUtils.EMPTY));
         cardList.setCardLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,
 						childResource.getValueMap().get(AEConstants.CARD_LINK, String.class)));
         iconCardListItem.add(cardList);
       }
 
+    } else {
+    	LOG.error("Icon Card list is empty {}",res.getPath());
     }
     return Collections.unmodifiableList(iconCardListItem);
   }
