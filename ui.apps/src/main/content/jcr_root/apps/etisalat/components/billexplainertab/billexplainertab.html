@@ -64,9 +64,11 @@
                         href="#tabBoxes-${component.id}-${tabList.count}">${tab.title}</a>
                      <div id="tabBoxes-${component.id}-${tabList.count}"
                              class="section-exp-${tabList.count} collapse ${tabList.first ? 'in' :''}" aria-expanded="false">                         
-                         <div class="billing-report-section">
+                         <div data-sly-set.reportIframePath="${'{0}/{1}' @ format=[resource.path, tab.name]}" 
+                              data-sly-use.reportCard="${reportIframePath}" class="billing-report-section">
+                          <p class="paragraph" data-sly-test="${reportCard['sectionTitle']}">${reportCard['sectionTitle']}</p>
                            <div class="billing-report-card">
-                             <iframe src="${'{0}/{1}.html' @ format=[resource.path, tab.name]}" frameborder="0" height="100%" width="100%"></iframe>
+                             <iframe src="${reportIframePath @ extension='html'}" frameborder="0" height="100%" width="100%"></iframe>
                            </div>
                          </div>        
                      </div>
