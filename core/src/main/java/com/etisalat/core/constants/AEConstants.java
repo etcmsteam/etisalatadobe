@@ -78,6 +78,15 @@ public final class AEConstants {
  public static final String PN_EXPLAINER_TAB_CONTENT = "content";
  public static final String PN_EXPLAINER_TAB_PLACEMENT = "placement";
  
+ public static final int RESPONSE_OK = 200;
+ public static final int BAD_REQUEST = 400;
+ public static final String REDIRECT_NAME = ":redirect";
+ public static final String CONTENT = "/content";
+ public static final String HTML_CONSTANT = ".html";
+ public static final String JSP_CONSTANT = ".jsp";
+ public static final String CONTACT_US_OPERATION_ID_KEY = "OPERATIONID";
+ public static final String CONTACT_US_OPERATION_ID_VALUE = "CONTACTUS";
+ 
  /**
   * private constructor to prevent instantiation of class.
   */
