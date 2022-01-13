@@ -101,8 +101,7 @@ import { FORM_VALIDATION_MESSAGES } from "../constant";
 
         headers: {
           "content-type": "application/json",
-          "x-calling-application": "cms",
-          "CSRF-Token": formData[":cq_csrf_token"],
+          "x-calling-application": "cms"
         },
 
         encode: true,
