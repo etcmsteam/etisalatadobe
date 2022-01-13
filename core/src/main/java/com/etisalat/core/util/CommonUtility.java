@@ -10,12 +10,20 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
+import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
 import com.etisalat.core.models.LinkModel;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 /**
  * Util Class
@@ -28,6 +36,8 @@ import com.etisalat.core.models.LinkModel;
  * @since 2021-07-31
  */
 public final class CommonUtility {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(CommonUtility.class);
 
   /**
    * Appends the HTML extension to page
@@ -125,6 +135,75 @@ public final class CommonUtility {
     }
     return Collections.unmodifiableList(pageItemList);
   }
+  
+	public static String getCaptchaResponse(String json) {
+		String captchaValue = AEConstants.CAPTCHA_NULL;
+		try {
+			if(null != json) {
+				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
+				if(jsonObject.has(AEConstants.CAPTCHA_NAME)) {
+					JsonElement captchaElement = jsonObject.get(AEConstants.CAPTCHA_NAME);				
+					captchaValue = captchaElement.getAsString();
+				}
+			}
+		}
+		catch (JsonSyntaxException e) {
+			LOG.error("Json Syntax error {}", e.getMessage());
+		}
+		catch (JsonParseException e) {
+			LOG.error("Json parse error {}", e.getMessage());
+		}
+		return captchaValue;
+	}
+
+	public static String getRedirectUrl(String resourcePath, String json) {
+		String redirectURL = "";
+		if(!StringUtils.isEmpty(getRedirectURLFromForm(json))){
+			redirectURL = getRedirectURLFromForm(json);
+			if(redirectURL.contains(AEConstants.HTML_CONSTANT) || redirectURL.contains(AEConstants.JSP_CONSTANT)) {
+				return redirectURL;
+			}
+			else if(redirectURL.contains(AEConstants.CONTENT)) {
+				return redirectURL.concat(AEConstants.HTML_CONSTANT);
+			}
+			else {
+				if(resourcePath != null) {
+					if(resourcePath.contains(AEConstants.CONTENT)) {
+						return resourcePath.concat(AEConstants.HTML_CONSTANT);
+					}
+				}				
+			}					
+		}
+		else {
+			if(resourcePath != null) {
+				if(resourcePath.contains(AEConstants.CONTENT)) {
+					return resourcePath.concat(AEConstants.HTML_CONSTANT);
+				}
+			}				
+		}	
+		return redirectURL;
+	}
+
+	private static String getRedirectURLFromForm(String json) {
+		String redirectValue = "";
+		try {
+			if(null != json) {
+				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
+				if(jsonObject.has(AEConstants.REDIRECT_NAME)) {
+					JsonElement captchaElement = jsonObject.get(AEConstants.REDIRECT_NAME);				
+					redirectValue = captchaElement.getAsString();
+				}
+			}
+		}
+		catch (JsonSyntaxException e) {
+			LOG.error("Json Syntax error {}", e.getMessage());
+		}
+		catch (JsonParseException e) {
+			LOG.error("Json parse error {}", e.getMessage());
+		}
+		return redirectValue;
+	}
+
   
   /**
    * private constructor to prevent instantiation of class.

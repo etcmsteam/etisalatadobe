@@ -88,8 +88,8 @@ public class MegaNavigationImpl implements MegaNavigation {
       final Resource navItemRes = currentRes.getChild(childItem);
       if (null != navItemRes) {
         navItemRes.listChildren().forEachRemaining(resource -> {
-          MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
-          String variationPath = navModel.getXfVariationPath();
+          final MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
+          final String variationPath = navModel.getXfVariationPath();
           setXFContainerMenuListItems(resource, variationPath, navModel);
           containerXFMenuList.add(navModel);
         });
@@ -107,18 +107,18 @@ public class MegaNavigationImpl implements MegaNavigation {
    * @return
    */
   private List<MegaNavigationItem> getNavigationItems(String childItem) {
-    Resource navItemRes = currentRes.getChild(childItem);
+    final Resource navItemRes = currentRes.getChild(childItem);
     List<MegaNavigationItem> navigationItemsList = new ArrayList<>();
     if (null != navItemRes) {
       navItemRes.listChildren().forEachRemaining(resource -> {
-        MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
+        final MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
         navModel.setNavigationLinkTo(CommonUtility
             .appendHtmlExtensionToPage(resourceResolver, navModel.getNavigationLinkTo()));
         if (StringUtils.isBlank(navModel.getUtilityMenuLayout())
             || ("fixedmenulist").equals(navModel.getUtilityMenuLayout())) {
           setSubNavigationItems(resource, navModel);
         } else {
-          String variationPath = navModel.getXfVariationPath();
+          final String variationPath = navModel.getXfVariationPath();
           setXFContainerMenuListItems(resource, variationPath, navModel);
         }
         navigationItemsList.add(navModel);
@@ -137,10 +137,10 @@ public class MegaNavigationImpl implements MegaNavigation {
    */
   private void setSubNavigationItems(Resource itemResource, MegaNavigationItem navModel) {
     if (itemResource.hasChildren()) {
-      Resource subItemRes = itemResource.getChild(AEConstants.SUB_NAVIGATION_ITEMS);
+      final Resource subItemRes = itemResource.getChild(AEConstants.SUB_NAVIGATION_ITEMS);
       List<MegaSubNavigationItem> subItemList = new ArrayList<>();
       subItemRes.listChildren().forEachRemaining(resource -> {
-        MegaSubNavigationItem subNavModel = resource.adaptTo(MegaSubNavigationItem.class);
+        final MegaSubNavigationItem subNavModel = resource.adaptTo(MegaSubNavigationItem.class);
         setNavMenuActive(resource, subNavModel.getSubNavLinkTo(), navModel);
         subNavModel.setSubNavLinkTo(CommonUtility
             .appendHtmlExtensionToPage(resourceResolver, subNavModel.getSubNavLinkTo()));
@@ -161,7 +161,7 @@ public class MegaNavigationImpl implements MegaNavigation {
     if (StringUtils.isNotEmpty(path) && !path.contains(PageConstants.HTTPS)
         && (path.startsWith(PageConstants.CONTENT)
         && !StringUtils.contains(path, PageConstants.HTML_EXTENSION))) {
-      Resource subNavResource = resource.getResourceResolver().getResource(path);
+      final Resource subNavResource = resource.getResourceResolver().getResource(path);
       if (null != subNavResource && StringUtils.isBlank(nav.getActive()) && request.getPathInfo()
           .contains(subNavResource.getName())) {
         nav.setActive(AEConstants.ACTIVE);
@@ -181,8 +181,8 @@ public class MegaNavigationImpl implements MegaNavigation {
       MegaNavigationItem navModel) {
     if (StringUtils.isNotBlank(variationPath)
         && null != resource.getResourceResolver().getResource(variationPath)) {
-      Resource variationRes = resource.getResourceResolver().getResource(variationPath);
-      Resource rootRes = variationRes.getChild(AEConstants.JCR_CONTENT_ROOT);
+      final Resource variationRes = resource.getResourceResolver().getResource(variationPath);
+      final Resource rootRes = variationRes.getChild(AEConstants.JCR_CONTENT_ROOT);
       setMenuItems(rootRes, navModel);
     } else {
       LOG.warn("Invalid experience fragment variation path");
@@ -198,7 +198,7 @@ public class MegaNavigationImpl implements MegaNavigation {
   private void setMenuItems(Resource rootRes, MegaNavigationItem navModel) {
     if (null != rootRes) {
       rootRes.listChildren().forEachRemaining(resource -> {
-        String styleID = getContainerStyleID(resource);
+        final String styleID = getContainerStyleID(resource);
         LOG.info("Mega Menu Style ID {}", styleID);
         switch (styleID) {
         case "1626427188774": {
@@ -233,9 +233,9 @@ public class MegaNavigationImpl implements MegaNavigation {
   private List<MegaFixedNavigationItem> getMegaSubMenuList(Resource item, String resourceType) {
     List<MegaFixedNavigationItem> subMenuList = new ArrayList<>();
     for (Resource childRes : item.getChildren()) {
-      String styleID = getContainerStyleID(childRes);
+      final String styleID = getContainerStyleID(childRes);
       if (childRes.getResourceType().equals(resourceType)) {
-        MegaFixedNavigationItem fixedNavModel = childRes.adaptTo(MegaFixedNavigationItem.class);
+        final MegaFixedNavigationItem fixedNavModel = childRes.adaptTo(MegaFixedNavigationItem.class);
         if (null != fixedNavModel) {
           subMenuList.add(fixedNavModel);
         }

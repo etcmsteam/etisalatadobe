@@ -66,6 +66,7 @@ module.exports = {
         ...libsBaseConfig,
         name: 'clientlib-dependencies',
         categories: ['etisalat.dependencies'],
+        dependencies: ['granite.csrf.standalone'],
         assets: {
           // Copy entrypoint scripts and stylesheets into the respective ClientLib
           // directories

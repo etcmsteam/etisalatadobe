@@ -47,19 +47,19 @@ public class FooterImpl implements Footer {
    * @return List of QuickLinks
    */
   private List<QuickLinkModel> getQuickLinkItems() {
-    Resource quickLinksRes = res.getChild(AEConstants.QUICKLINKS);
+    final Resource quickLinksRes = res.getChild(AEConstants.QUICKLINKS);
     List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
     if (null != quickLinksRes) {
       quickLinksRes.listChildren().forEachRemaining(resource -> {
-        QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
+        final QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
         if (quickLinkModel != null) {
           setSubLinkItems(resource, quickLinkModel);
           quickLinkModelList.add(quickLinkModel);
         }
       });
-    } else {
-      LOG.error("Quick Link Model List is empty {}", res.getPath());
-    }
+    } 
+    LOG.debug("Quick Link Model List: {} Path:{} Child Node Name: {}", quickLinkModelList, res.getPath(),
+        AEConstants.QUICKLINKS);    
     return quickLinkModelList;
   }
 
@@ -71,27 +71,28 @@ public class FooterImpl implements Footer {
    */
   private void setSubLinkItems(Resource itemResource, QuickLinkModel quickLinkModel) {
     if (itemResource.hasChildren()) {
-      Resource subItemRes = itemResource.getChild(AEConstants.QUICKLINKS);
-      List<LinkModel> subItemList = new ArrayList<>();
+      final Resource subItemRes = itemResource.getChild(AEConstants.QUICKLINKS);
+      final List<LinkModel> subItemList = new ArrayList<>();
       if (subItemRes != null) {
         subItemRes.listChildren().forEachRemaining(resource -> {
-          LinkModel linkModel = resource.adaptTo(LinkModel.class);
+          final LinkModel linkModel = resource.adaptTo(LinkModel.class);
           if (linkModel != null) {
             linkModel.setLinkUrl(
                 CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
           }
           subItemList.add(linkModel);
         });
-      } else {
-        LOG.error("Sub link items list is empty {} {}", res.getPath(),AEConstants.QUICKLINKS);
-      }
+      } 
+      LOG.debug("Sub link items List: {} Path:{} Child Node Name: {}", subItemList, res.getPath(),
+          AEConstants.QUICKLINKS);
+      
       quickLinkModel.setLinks(subItemList);
     }
 
   }
 
   private LinkModel getPromoItem() {
-    Resource promoRes = res.getChild(AEConstants.PROMO);
+    final Resource promoRes = res.getChild(AEConstants.PROMO);
     if (promoRes != null) {
       LinkModel linkModel = promoRes.adaptTo(LinkModel.class);
       if (linkModel != null) {
@@ -99,9 +100,8 @@ public class FooterImpl implements Footer {
             CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
         return linkModel;
       }
-    }else {
-      LOG.error("Promo items list is empty {} {}", res.getPath(),AEConstants.PROMO);
     }
+    
     return null;
   }
 

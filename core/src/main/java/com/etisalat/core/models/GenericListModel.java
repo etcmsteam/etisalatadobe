@@ -82,8 +82,8 @@ public class GenericListModel {
     currentResource.getChild("fixedpath").listChildren().forEachRemaining(itemResource -> {
       final ValueMap properties = itemResource.getValueMap();
       final String itemPath = properties.get("link", StringUtils.EMPTY);
-      String authoredImage = properties.get(PageConstants.FILE_REFERENCE, StringUtils.EMPTY);
-      String authoredLabel = properties.get("label", StringUtils.EMPTY);
+      final String authoredImage = properties.get(PageConstants.FILE_REFERENCE, StringUtils.EMPTY);
+      final String authoredLabel = properties.get("label", StringUtils.EMPTY);
       if (itemPath.contains("/content") && null != request.getResourceResolver().getResource(itemPath)) {
         final GenericListPageDetails detail = new GenericListPageDetails();
         setGenericPageDetails(itemPath, authoredImage, authoredLabel, detail);
