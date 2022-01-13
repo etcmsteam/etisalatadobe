@@ -29,7 +29,7 @@ public class CustomFormHandlingServiceImpl implements CustomFormHandlingService 
 	@Override
 	public int postFormData(String json ,String url, int timeOut, String formName) {
 		try {
-			URL postUrl = new URL(url);		
+			final URL postUrl = new URL(url);		
 			HttpURLConnection connection = (HttpURLConnection) postUrl.openConnection();        
 			connection.setRequestMethod(AEConstants.POST_METHOD);
 			connection.setRequestProperty(AEConstants.CONTENT_TYPE, PageConstants.APPLICATION_JSON);			
@@ -44,7 +44,7 @@ public class CustomFormHandlingServiceImpl implements CustomFormHandlingService 
 			wr.write(json);
 			wr.close();
 			connection.connect();
-			int responseCode = connection.getResponseCode();
+			final int responseCode = connection.getResponseCode();
 			if (responseCode == HttpURLConnection.HTTP_CREATED) {       
 				StringBuilder jsonResponseData = new StringBuilder();
 				String readLine;
