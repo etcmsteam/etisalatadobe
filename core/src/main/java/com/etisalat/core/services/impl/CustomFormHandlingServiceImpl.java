@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
@@ -39,18 +40,18 @@ public class CustomFormHandlingServiceImpl implements CustomFormHandlingService 
 			connection.setReadTimeout(timeOut);
 
 			BufferedWriter wr = new BufferedWriter(
-					new OutputStreamWriter(connection.getOutputStream(), PageConstants.UTF_8));
+					new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8));
 			wr.write(json);
 			wr.close();
 			connection.connect();
 			int responseCode = connection.getResponseCode();
 			if (responseCode == HttpURLConnection.HTTP_CREATED) {       
-				StringBuffer jsonResponseData = new StringBuffer();
-				String readLine = null;
+				StringBuilder jsonResponseData = new StringBuilder();
+				String readLine;
 				BufferedReader bufferedReader = new BufferedReader(
 						new InputStreamReader(connection.getInputStream()));		
 				while ((readLine = bufferedReader.readLine()) != null) {
-					jsonResponseData.append(readLine + "\n");
+					jsonResponseData.append(readLine).append("\n");
 				}		
 				bufferedReader.close();
 				LOG.debug("Custom Form Handling API Request Created for form {} and response code is {}",formName, responseCode);

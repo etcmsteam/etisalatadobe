@@ -92,7 +92,7 @@ public final class CommonUtility {
   public static LinkModel getLinkItem(Resource res) {
     return res.adaptTo(LinkModel.class);
   }
-  
+
   /**
    * Returns Category Tag Title.
    *
@@ -116,7 +116,7 @@ public final class CommonUtility {
    *
    * @param childItem Child node name
    * @param res       Parent Resource
-   * @param resourceReolver ResourceResolver
+   * @param resourceResolver ResourceResolver
    * @return List of LinkModel
    */
   public static List<FixedNavigtaionMultifieldModel> getFixedNavigationItems(String childItem, Resource res,ResourceResolver resourceResolver) {
@@ -126,7 +126,7 @@ public final class CommonUtility {
       pageItemRes.listChildren().forEachRemaining(resource -> {
         FixedNavigtaionMultifieldModel pageModel = resource
             .adaptTo(FixedNavigtaionMultifieldModel.class);
-        if (StringUtils.isNotBlank(pageModel.getNavigationLink())) {
+        if (null!= pageModel && StringUtils.isNotEmpty(pageModel.getNavigationLink())) {
           pageModel.setNavigationLink(CommonUtility
               .appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
         }
@@ -160,28 +160,30 @@ public final class CommonUtility {
 		String redirectURL = "";
 		if(!StringUtils.isEmpty(getRedirectURLFromForm(json))){
 			redirectURL = getRedirectURLFromForm(json);
-			if(redirectURL.contains(AEConstants.HTML_CONSTANT) || redirectURL.contains(AEConstants.JSP_CONSTANT)) {
-				return redirectURL;
-			}
-			else if(redirectURL.contains(AEConstants.CONTENT)) {
-				return redirectURL.concat(AEConstants.HTML_CONSTANT);
-			}
-			else {
-				if(resourcePath != null) {
-					if(resourcePath.contains(AEConstants.CONTENT)) {
-						return resourcePath.concat(AEConstants.HTML_CONSTANT);
-					}
-				}				
-			}					
+			String redirectURL1 = getRedirectUrlString(resourcePath, redirectURL);
+			if (redirectURL1 != null) return redirectURL1;
 		}
 		else {
-			if(resourcePath != null) {
-				if(resourcePath.contains(AEConstants.CONTENT)) {
+			if(resourcePath != null && resourcePath.contains(AEConstants.CONTENT)) {
 					return resourcePath.concat(AEConstants.HTML_CONSTANT);
-				}
 			}				
 		}	
 		return redirectURL;
+	}
+
+	private static String getRedirectUrlString(String resourcePath, String redirectURL) {
+		if(redirectURL.contains(AEConstants.HTML_CONSTANT) || redirectURL.contains(AEConstants.JSP_CONSTANT)) {
+			return redirectURL;
+		}
+		else if(redirectURL.contains(AEConstants.CONTENT)) {
+			return redirectURL.concat(AEConstants.HTML_CONSTANT);
+		}
+		else {
+			if(resourcePath != null && resourcePath.contains(AEConstants.CONTENT)) {
+				return resourcePath.concat(AEConstants.HTML_CONSTANT);
+			}
+		}
+		return null;
 	}
 
 	private static String getRedirectURLFromForm(String json) {
