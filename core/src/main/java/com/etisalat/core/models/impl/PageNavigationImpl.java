@@ -36,11 +36,12 @@ public class PageNavigationImpl implements PageNavigation {
   private ResourceResolver resourceResolver;
 
   @Override
-  public List<FixedNavigtaionMultifieldModel> getPageNavItems() { 
-    List<FixedNavigtaionMultifieldModel> pageItemList =  CommonUtility.getFixedNavigationItems(AEConstants.PAGE_CHILD_ITEMS, currentRes,resourceResolver);    
-    if(pageItemList.isEmpty()) {
-    	LOG.error("Page Navigation List is empty {}",currentRes);
-    }
-    return CommonUtility.getFixedNavigationItems(AEConstants.PAGE_CHILD_ITEMS, currentRes,resourceResolver);
+  public List<FixedNavigtaionMultifieldModel> getPageNavItems() {
+	List<FixedNavigtaionMultifieldModel> pageItemList = CommonUtility
+				.getFixedNavigationItems(AEConstants.PAGE_CHILD_ITEMS, currentRes, resourceResolver);
+	if (pageItemList.isEmpty()) {
+	  LOG.error("Page Navigation List is empty {}", currentRes);
+	}
+	return CommonUtility.getFixedNavigationItems(AEConstants.PAGE_CHILD_ITEMS, currentRes, resourceResolver);
   }
 }

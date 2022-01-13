@@ -67,13 +67,13 @@
       line-height: 1;
       padding: toRem(4);
       position: absolute;
-      right: toRem(-13);
+      right: toRem(-25);
       top: 50%;
       transform: translateY(-50%) rotate(-45deg);
       transition: all 0.3s ease-in-out;
 
       @include rtlBlock() {
-        left: toRem(-13);
+        left: toRem(-25);
         right: auto;
         transform: translateY(-50%) rotate(135deg);
       }
@@ -99,6 +99,7 @@
   .panel {
     background-color: $sand-white-50;
     border-radius: 0;
+    box-shadow: none;
     margin: 0;
     width: 100%;
   }
@@ -159,6 +160,16 @@
         line-height: toRem(19);
 
         @include font-family-lato;
+
+        @include rtlBlock() {
+          font-weight: get-font-weight("light");
+        }
+      }
+
+      ul {
+        &:first-of-type {
+          margin-top: 0;
+        }
       }
     }
   }
@@ -854,8 +865,8 @@
       }
 
       ul {
-        ul:first-of-type {
-          margin-top: toRem(16);
+        &:first-of-type {
+          margin-top: 0;
         }
       }
     }
@@ -959,18 +970,31 @@
           padding: 0;
         }
       }
+
+      .cmp-tabs {
+        align-items: flex-start;
+        display: flex;
+      }
     }
   }
 
   // 2nd horiznatal with view  varition st
   .cmp_tabs--vertical-img {
-    padding: toRem(64) 0;
     position: relative;
+
+    @include respond-to-min($desktop) {
+      height: toRem(430);
+      margin: toRem(64) 0;
+    }
 
     h3 {
       color: $almost-black;
-      display: flex;
-      position: absolute;
+      margin-bottom: toRem(32);
+      width: 30.5%;
+
+      @include respond-to-max($desktop-min) {
+        width: 100%;
+      }
 
       @include font-family-Neotech;
 
@@ -980,6 +1004,9 @@
     }
 
     .cmp-tabs__tabpanel {
+      position: absolute;
+      right: 0;
+      top: 0;
       width: 49%;
     }
 
@@ -1020,6 +1047,10 @@
       text-align: left;
 
       @include font-family-lato;
+
+      @include rtlBlock() {
+        font-weight: get-font-weight("light");
+      }
 
       &:first-child {
         padding-top: 0;
@@ -1094,10 +1125,10 @@
     }
 
     .cmp-tabs__tablist {
-      display: block;
+      display: flex;
+      flex-direction: column;
       flex-wrap: wrap;
       list-style: none;
-      margin-top: toRem(78);
       width: 50%;
     }
 

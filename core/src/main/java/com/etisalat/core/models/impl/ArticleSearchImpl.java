@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
@@ -98,7 +99,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void setArticlePages(Resource res, List<GenericListPageDetails> pageDetailsList,
       String articlePageType) {
     final Page page = res.adaptTo(Page.class);
-    if (null != page && page.getProperties().get("sling:resourceType", StringUtils.EMPTY)
+    if (null != page && page.getProperties().get(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY, StringUtils.EMPTY)
         .equals(PageConstants.ARTICLE_RESOURCETYPE)) {
       setChildPageDetails(res, page, pageDetailsList, articlePageType);
     }
@@ -121,7 +122,7 @@ public class ArticleSearchImpl implements ArticleSearch {
       List<GenericListPageDetails> pageDetailsList, String articlePageType) {
     if (!page.isHideInNav() && page.getProperties().get(AEConstants.PN_ARTICLE_TYPE, StringUtils.EMPTY)
         .equals(articlePageType)) {
-      GenericListPageDetails pageDetails = new GenericListPageDetails();
+      final GenericListPageDetails pageDetails = new GenericListPageDetails();
       pageDetails.setThumbnailResource(res.getChild(PageConstants.JCR_CONTENT_IMAGE));
       pageDetails.setTitle(page.getPageTitle());
       pageDetails.setDescription(page.getDescription());
@@ -173,7 +174,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void setBusinessCategory(Page page, Resource resource,
       GenericListPageDetails pageDetails) {
     final TagManager tagManager = resource.getResourceResolver().adaptTo(TagManager.class);
-    String businessCatg = page.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
+    final String businessCatg = page.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
     if (StringUtils.isNotBlank(businessCatg)) {
       final Tag tag = tagManager.resolve(businessCatg);
       if (null != tag) {
@@ -225,7 +226,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void getRootPageItems(List<GenericListPageDetails> pageDetailsList,
       String articlePageType) {
     if (StringUtils.isNotBlank(parentPath)) {
-      Resource res = request.getResourceResolver().getResource(parentPath);
+      final Resource res = request.getResourceResolver().getResource(parentPath);
       if (null != res && res.hasChildren()) {
         res.listChildren()
             .forEachRemaining(
@@ -244,7 +245,7 @@ public class ArticleSearchImpl implements ArticleSearch {
       String articlePageType) {
     if (null != pages && pages.length > 0) {
       Arrays.asList(pages).forEach(path -> {
-        Resource saticPageResource = resourceResolver.getResource(path);
+        final Resource saticPageResource = resourceResolver.getResource(path);
         if (null != saticPageResource && resourceResolver.resolve(path)
             .isResourceType(NameConstants.NT_PAGE)) {
           setArticlePages(saticPageResource, pageDetailsList, articlePageType);
@@ -260,7 +261,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public List<GenericListPageDetails> getNewsPageItems() {
-    List<GenericListPageDetails> newsPageList = getItems(AEConstants.PN_NEWSROOM);
+    final List<GenericListPageDetails> newsPageList = getItems(AEConstants.PN_NEWSROOM);
     categoryMap = new HashMap<>();
     if (!newsPageList.isEmpty()) {
       categoryMap = newsPageList.stream().filter(p -> StringUtils.isNotBlank(p.getCategory()))
@@ -279,13 +280,13 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public String getBusinessCategoryTag() {
-    String category = currentPage.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
+    final String category = currentPage.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
     return CommonUtility.getCategoryTagTitle(request, category);
   }
 
   @Override
   public String getBackToHomeLink() {
-    String backToLink = currentPage.getProperties().get(AEConstants.PN_BACK_TO_HOMELINK,
+    final String backToLink = currentPage.getProperties().get(AEConstants.PN_BACK_TO_HOMELINK,
         currentPage.getAbsoluteParent(3).getPath());
 
     return CommonUtility.appendHtmlExtensionToPage(resourceResolver, backToLink);
@@ -298,7 +299,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public Resource getThumbnailPageResource() {
-    Resource imageResource = currentRes.getChild(AEConstants.IMAGE);
+    final Resource imageResource = currentRes.getChild(AEConstants.IMAGE);
     if (null == imageResource) {
       return currentRes;
     } else {
