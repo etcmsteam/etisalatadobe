@@ -47,15 +47,15 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 		try {
 			int status = AEConstants.BAD_REQUEST;
 
-			int timeOutvalue = etisalatApiService.getTimeOut();
-			Map<String, String> params = new HashMap<>();
-			Map<String, String[]> parameterMap = request.getParameterMap();
+			final int timeOutvalue = etisalatApiService.getTimeOut();
+			final Map<String, String> params = new HashMap<>();
+			final Map<String, String[]> parameterMap = request.getParameterMap();
 			parameterMap.forEach((key,value) -> params.put(key, value[0]));
-			Gson gson = new Gson(); 
-			String json = gson.toJson(params); 
-			PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
-			Page currentPage = pageManager.getContainingPage(request.getResource());	
-			String redirectUrl = CommonUtility.getRedirectUrl(currentPage.getPath(),json);
+			final Gson gson = new Gson(); 
+			final String json = gson.toJson(params); 
+			final PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
+			final Page currentPage = pageManager.getContainingPage(request.getResource());	
+			final String redirectUrl = CommonUtility.getRedirectUrl(currentPage.getPath(),json);
 			if (StringUtils.isNotEmpty(json)) {				
 				status = customFormhandlingService.postFormData(json, getSendNotificationApiUrl(), timeOutvalue, FORM_NAME);
 			}
