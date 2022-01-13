@@ -103,18 +103,37 @@
 
     margin-bottom: $margin-step-1;
     margin-top: $margin-step-3;
-    width: 100%;
 
     @include respond-to-max($phone) {
       padding: 0 toRem(5);
     }
 
     @include respond-to-min($desktop) {
-      left: toRem(15);
-      margin-top: toRem(60);
-      position: absolute;
-      top: toRem(48);
-      width: 50%;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: 0 toRem(12);
+      right: auto;
+      width: toRem(388);
+
+      @include rtlBlock() {
+        left: auto;
+        right: 0;
+      }
+    }
+
+    @include respond-to-min($desktop-wide) {
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: 0 toRem(12);
+      right: auto;
+      width: toRem(560);
+
+      @include rtlBlock() {
+        left: auto;
+        right: toRem(-13);
+      }
     }
 
     @include respond-to-max($desktop) {
@@ -147,9 +166,12 @@
     }
 
     .video_link {
+      margin-left: toRem(5);
+
       @include respond-to-min($desktop) {
         color: $white;
         left: toRem(10);
+        margin-left: 0;
 
         @include rtlBlock() {
           right: 0;
@@ -178,7 +200,7 @@
       width: 100%;
 
       @include respond-to-min($desktop) {
-        left: toRem(3);
+        left: toRem(10);
         top: toRem(65);
         width: toRem(200);
       }
@@ -267,13 +289,15 @@
       }
 
       .btn-green {
-        margin-top: $margin-step-0;
+        left: 0;
+        margin: 0 toRem(5);
         max-width: 100%;
         top: auto;
-        width: 100%;
+        width: toRem(351);
 
         @include respond-to-min($tablet) {
-          margin-top: toRem(30);
+          margin: toRem(10) 0 0;
+          width: 100%;
         }
 
         @include respond-to-min($desktop) {
@@ -297,7 +321,7 @@
     @include rtlBlock() {
       float: right;
       left: 0;
-      margin-left: 0.75rem;
+      margin-left: toRem(12);
       right: 0;
       top: 0;
     }
@@ -380,12 +404,6 @@
 
     &__description {
       @include respond-to-min($desktop) {
-        width: 50%;
-
-        @include rtlBlock() {
-          width: 100%;
-        }
-
         p {
           position: relative;
           top: toRem(5);
@@ -410,6 +428,12 @@
           }
         }
 
+        h3 {
+          @include rtlBlock() {
+            font-weight: light;
+          }
+        }
+
         h2 {
           color: $almost-black;
         }
@@ -422,12 +446,13 @@
 
     &__content {
       align-items: start;
+      bottom: 0;
       display: flex;
       flex-direction: column;
       height: 100%;
       justify-content: center;
       left: 0;
-      margin: auto;
+      margin-top: toRem(30);
       padding-left: calc(#{$padding-step-1} +2px);
       padding-right: calc(#{$padding-step-1} +4px);
       position: relative;
@@ -435,28 +460,43 @@
       right: 0;
       top: 0;
       width: 100%;
-      width: toRem(1224);
       z-index: 1;
 
       @include respond-to-max($tablet) {
         font-size: $font26;
         line-height: toRem(33);
-        margin-top: toRem(20);
         padding: 0 toRem(10);
         z-index: 2;
       }
 
       @include respond-to-min($desktop) {
-        margin: $margin-step-0;
+        bottom: 0;
+        left: 0;
+        padding: 0 toRem(12);
+        right: auto;
+        top: 0;
+        width: toRem(388);
 
         @include rtlBlock() {
-          bottom: 0;
-          left: 0;
-          margin: auto;
-          padding: 0 0.75rem;
+          left: auto;
           right: 0;
-          top: 0;
-          width: toRem(1224);
+        }
+      }
+
+      @include respond-to-min($desktop-wide) {
+        bottom: 0;
+        left: 0;
+        margin-left: toRem(30);
+        margin-top: 0;
+        padding: 0 toRem(12);
+        right: auto;
+        top: 0;
+        width: toRem(560);
+
+        @include rtlBlock() {
+          left: auto;
+          margin-right: toRem(30);
+          right: 0;
         }
       }
 
@@ -467,17 +507,7 @@
         padding: 0 toRem(12);
         position: relative;
         top: 0;
-        width: 100%;
         z-index: 2;
-      }
-
-      @include respond-to-min($desktop-wide) {
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        padding: 0 toRem(12);
-        right: 0;
-        top: 0;
       }
     }
 
@@ -488,11 +518,13 @@
       display: flex;
       font-size: $font14;
       font-weight: get-font-weight("bold");
-      letter-spacing: toRem(0.4);
+      letter-spacing: normal;
       line-height: toRem(20);
       margin-bottom: toRem(12);
       max-width: toRem(336);
       padding: calc(#{$padding-step-1} -2px) calc(#{$padding-step-1} +4px);
+
+      @include font-family-lato();
 
       @include respond-to-min($tablet) {
         margin-bottom: $margin-step-2;
@@ -541,6 +573,10 @@
         transition: all 0.3s ease-in-out;
         width: 100%;
 
+        @include rtlBlock() {
+          letter-spacing: normal;
+        }
+
         @include respond-to-min($desktop) {
           width: auto;
         }
@@ -568,36 +604,55 @@
     &__title {
       font-size: toRem(26);
       line-height: toRem(33);
-      padding: 0 toRem(5);
+      padding: 0;
 
       @include respond-to-min($desktop) {
         color: $white;
         font-size: toRem(54);
         line-height: toRem(64);
         margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
-        width: 50%;
 
         a {
           color: $white;
-        }
-
-        @include rtlBlock() {
-          width: 100%;
         }
       }
 
       @include respond-to-max($desktop) {
         a {
           color: $almost-black;
+
+          @include rtlBlock() {
+            color: $almost-black;
+          }
         }
       }
 
       &-link {
-        color: $white;
+        color: $black;
+
+        @include respond-to-min($desktop) {
+          color: $white;
+        }
 
         @include respond-to-max($desktop) {
-          color: $main-green;
+          color: $white;
         }
+      }
+    }
+  }
+
+  .text--white {
+    color: $almost-black;
+
+    @include rtlBlock() {
+      color: $almost-black;
+    }
+
+    @include respond-to-min($desktop) {
+      color: $white;
+
+      @include rtlBlock() {
+        color: $white;
       }
     }
   }
@@ -617,21 +672,20 @@
   &__right_text {
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
-        left: 50%;
-        right: auto;
+        left: auto;
+        margin-left: 0;
+        margin-right: toRem(30);
+        margin-top: 0;
+        right: 0;
 
         @include rtlBlock() {
-          left: auto;
-          right: 50%;
-        }
-
-        .cmp-teaser__title {
-          width: 50%;
+          left: 0;
+          margin-left: toRem(30);
+          margin-right: 0;
+          right: auto;
         }
 
         .cmp-teaser__description {
-          width: 100%;
-
           p {
             color: $white;
           }
@@ -640,7 +694,6 @@
 
       .hero-heading-big {
         left: 50%;
-        width: 50%;
 
         @include rtlBlock() {
           left: auto;
@@ -673,11 +726,9 @@
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
         align-items: center;
-        width: 100%;
 
         @include rtlBlock() {
           align-items: center;
-          width: 100%;
         }
 
         .cmp-teaser__title {
@@ -707,7 +758,6 @@
 
       .hero-heading-big {
         left: 0;
-        margin: auto;
         right: 0;
         text-align: center;
         top: toRem(110);
