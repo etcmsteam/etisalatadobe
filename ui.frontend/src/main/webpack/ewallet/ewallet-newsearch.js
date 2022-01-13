@@ -30,15 +30,15 @@
     $("#page_navigation").html(navigation_html);
 
     $("#page_navigation .page_link:first").addClass("active");
-    $(".ewalletnews").children().css("display", "none");
-    $(".ewalletnews").children().slice(0, show_per_page).css("display", "block");
+    $(".ewalletnews").css("display", "none");
+    $(".ewalletnews").slice(0, show_per_page).css("display", "block");
 
     $(document).on("click", ".page_link", function () {
       var curid = parseInt($(this).data("id"));
       var show_per_page = parseInt($("#show_per_page").val());
       var start_from = curid * show_per_page;
       var end_on = start_from + show_per_page;
-      $(".ewalletnews").children().css("display", "none").slice(start_from, end_on).css("display", "block");
+      $(".ewalletnews").css("display", "none").slice(start_from, end_on).css("display", "block");
 
       $(".page_link").removeClass("active");
       $(".page_link[longdesc=" + curid + "]")
