@@ -37,7 +37,7 @@ public class PageNavigationImpl implements PageNavigation {
 
   @Override
   public List<FixedNavigtaionMultifieldModel> getPageNavItems() {
-	List<FixedNavigtaionMultifieldModel> pageItemList = CommonUtility
+	  final List<FixedNavigtaionMultifieldModel> pageItemList = CommonUtility
 				.getFixedNavigationItems(AEConstants.PAGE_CHILD_ITEMS, currentRes, resourceResolver);
 	if (pageItemList.isEmpty()) {
 	  LOG.error("Page Navigation List is empty {}", currentRes);

@@ -68,11 +68,11 @@ public final class CommonUtility {
    * @return List of LinkModel
    */
   public static List<LinkModel> getLinkItems(String childItem, Resource res) {
-    Resource linkParentRes = res.getChild(childItem);
+	  final Resource linkParentRes = res.getChild(childItem);
     List<LinkModel> linkModelList = new ArrayList<>();
     if (null != linkParentRes) {
       linkParentRes.listChildren().forEachRemaining(childResource -> {
-        LinkModel linkModel = childResource.adaptTo(LinkModel.class);
+    	  final LinkModel linkModel = childResource.adaptTo(LinkModel.class);
         if (null != linkModel) {
           linkModel.setLinkUrl(CommonUtility
               .appendHtmlExtensionToPage(res.getResourceResolver(), linkModel.getLinkUrl()));
@@ -120,11 +120,11 @@ public final class CommonUtility {
    * @return List of LinkModel
    */
   public static List<FixedNavigtaionMultifieldModel> getFixedNavigationItems(String childItem, Resource res,ResourceResolver resourceResolver) {
-	Resource pageItemRes = res.getChild(childItem);
+	  final Resource pageItemRes = res.getChild(childItem);
     List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
     if (null != pageItemRes) {
       pageItemRes.listChildren().forEachRemaining(resource -> {
-        FixedNavigtaionMultifieldModel pageModel = resource
+    	  final FixedNavigtaionMultifieldModel pageModel = resource
             .adaptTo(FixedNavigtaionMultifieldModel.class);
         if (null!= pageModel && StringUtils.isNotEmpty(pageModel.getNavigationLink())) {
           pageModel.setNavigationLink(CommonUtility
@@ -140,9 +140,9 @@ public final class CommonUtility {
 		String captchaValue = AEConstants.CAPTCHA_NULL;
 		try {
 			if(null != json) {
-				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
+				final JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
 				if(jsonObject.has(AEConstants.CAPTCHA_NAME)) {
-					JsonElement captchaElement = jsonObject.get(AEConstants.CAPTCHA_NAME);				
+					final JsonElement captchaElement = jsonObject.get(AEConstants.CAPTCHA_NAME);				
 					captchaValue = captchaElement.getAsString();
 				}
 			}
@@ -190,9 +190,9 @@ public final class CommonUtility {
 		String redirectValue = "";
 		try {
 			if(null != json) {
-				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
+				final JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
 				if(jsonObject.has(AEConstants.REDIRECT_NAME)) {
-					JsonElement captchaElement = jsonObject.get(AEConstants.REDIRECT_NAME);				
+					final JsonElement captchaElement = jsonObject.get(AEConstants.REDIRECT_NAME);				
 					redirectValue = captchaElement.getAsString();
 				}
 			}

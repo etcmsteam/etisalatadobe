@@ -54,9 +54,9 @@ public class TopnavModel {
   @PostConstruct
   protected void init() {
     if (StringUtils.isNotBlank(navigationRoot)) {
-      Resource res = request.getResourceResolver().getResource(navigationRoot);
+      final Resource res = request.getResourceResolver().getResource(navigationRoot);
       if (null != res && null != res.adaptTo(Page.class)) {
-        Page page = res.adaptTo(Page.class);
+        final Page page = res.adaptTo(Page.class);
         final Iterator<Page> childPage = page.listChildren();
         while (childPage.hasNext()) {
           final Page languagePage = childPage.next();
