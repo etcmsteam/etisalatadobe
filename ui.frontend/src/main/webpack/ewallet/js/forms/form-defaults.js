@@ -70,17 +70,6 @@
       "Capital letters, space and special character are not allowed",
     );
 
-    //test st
-    $.validator.addMethod("onlyletters", function (value, element) {
-      // return this.optional(element) || /^[a-z]+[0-9a-z]*$/g.test(value);
-      console.log(value, element);
-      //return this.optional(element).replace(/[0-9@]+/, "") || /^[a-zA-Z]*$/g.test(value);
-      return /^[a-z]*$/i.test(value);
-      //return this.optional(element) || /^[a-z]*$/i.test(value);
-    });
-
-    //test en
-
     /**
      * Additional Validation Rules (extracted from additional-methods.js)
      */
