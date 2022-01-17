@@ -44,7 +44,7 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
     rules: {
       firstName: {
         required: true,
-        realalphabeticlatinarabic: true,
+        onlyletters: true,
         maxlength: 248,
       },
       lastName: {
