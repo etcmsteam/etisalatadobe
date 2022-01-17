@@ -1,3 +1,5 @@
+import { swiperInit } from "../swiperInitialize";
+
 $( document ).ready(function() {
 
 // get height of slide and assign it to container
@@ -92,7 +94,7 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
     $(this).closest('.digital-notifications-wrapper.expand-collapse').find('.notifications-body').toggleClass('expanded');
 });
 
-var notificationsswiper = new Swiper('.digital-notification-swiper-container .swiper-container', {
+var notificationsswiper = swiperInit('.digital-notification-swiper-container .swiper-container', {
     direction: 'vertical',
     slidesPerView: 1,
     effect: 'fade',
