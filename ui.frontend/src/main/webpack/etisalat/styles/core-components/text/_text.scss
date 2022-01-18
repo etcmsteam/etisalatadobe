@@ -12,6 +12,7 @@
   text-transform: uppercase;
 
   @include rtlBlock() {
+    letter-spacing: 0;
     padding-right: $padding-step-0;
 
     &::before {
@@ -19,6 +20,10 @@
       right: auto;
       transform: translateY(-50%) rotate(135deg);
     }
+  }
+
+  a:hover {
+    text-decoration: underline !important;
   }
 }
 
@@ -394,6 +399,11 @@
 
   &--orange {
     background-color: $dark-orange;
+  }
+
+  &--white {
+    background-color: $white;
+    color: $gray-text-color;
   }
 }
 
@@ -811,7 +821,7 @@ hr {
 
   .cmp-button--primary {
     background-color: $black;
-    border-color: $yellow-light;
+    border: toRem(1) solid $yellow-light;
     color: $yellow-light !important;
   }
 

@@ -16,6 +16,12 @@
       position: relative;
       top: 0;
 
+      @include rtlBlock() {
+        left: auto;
+        margin-right: toRem(15);
+        right: 0;
+      }
+
       @include respond-to-min($desktop) {
         left: 0;
         margin-top: 0;
@@ -38,6 +44,18 @@
         line-height: toRem(64);
         margin-bottom: 1rem;
         margin-top: 0;
+
+        @include rtlBlock() {
+          text-align: center;
+        }
+      }
+
+      &-link {
+        color: $almost-black;
+
+        @include respond-to-min($desktop) {
+          color: $white;
+        }
       }
     }
 
