@@ -1,5 +1,3 @@
-import { swiperInit } from "../swiperInitialize";
-
 $(document).ready(function () {
 
     $('body').addClass('channel-list-page');
@@ -19,40 +17,6 @@ $(document).ready(function () {
     }
     if ($(".not-found").length > 0) { 
         $(".not-found").find("a").addClass("btn btn-default ripple-effect");
-    }
-
-
-    function initSwiper() {
-        $(document).find('.channel-list-tabs-wrapper').each(function (index) {
-            $(this).addClass('s' + index);
-            var $swiperTabsParent = $(this);
-            $swiperTabsParent.find('.swiper-button-next').addClass('r' + index);
-            $swiperTabsParent.find('.swiper-button-prev').addClass('l' + index);
-            var channelListTabs = swiperInit('.s' + index + ' .clist-swiper-tabs', {
-                slidesPerView: 'auto',
-                preventClicks: false,
-                slideToClickedSlide: true,
-                nextButton: '.swiper-button-next.r' + index,
-                prevButton: '.swiper-button-prev.l' + index,
-                breakpoints: {
-                    540: {
-                        slidesPerView: 'auto'
-                    },
-                    768: {
-                        slidesPerView: 'auto'
-                    },
-                    1024: {
-                        slidesPerView: 'auto'
-                    },
-                    1440: {
-                        slidesPerView: 'auto'
-                    },
-                    9999: {
-                        slidesPerView: 'auto'
-                    }
-                }
-            });
-        });
     }
 
     // search expand for mobile view 
@@ -119,7 +83,6 @@ $(document).ready(function () {
         }).appendTo($tbody);
     }
 
-
     $('.sorting-filter-wrapper').on('click', '.dropdown .dropdown-menu a', function (e) {
         e.preventDefault();
         $(this).closest('.dropdown-menu').find('a').removeClass('active');
@@ -138,8 +101,6 @@ $(document).ready(function () {
         $(this).closest('.dropdown-menu').hide();
         $(this).closest('.desktop-view').find('.sub-label').text($(this).text().trim());
     });
-
-
 
     $('.e-life-modal .nv-plan-details-modal .apply-sorting-filter').off().on('click', function () {
         // var id =  $(this).closest('.e-life-modal').attr('data-id')
@@ -160,12 +121,6 @@ $(document).ready(function () {
         $('body').removeClass('freeze');
 
     });
-
-
-
-
-
-    
 
     function applyFilters(self, removeTag) {
         var selectedRadios = [];
@@ -370,6 +325,5 @@ popupHeight(this);
         $(currentOpendPopUp).css('display', 'none');
         $('body').removeClass('freeze');
     });
-    initSwiper();
 
 });
