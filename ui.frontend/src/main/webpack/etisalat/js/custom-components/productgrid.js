@@ -47,10 +47,10 @@ import { swiperInit } from "../swiperInitialize";
    $(document).find('.smart-home-elife-slider').each(function(index) {
 	    $(this).addClass('slider' + index);
 	    var $slider = $(this);
-	    $slider.find('.table-swiper-button-next').addClass('plansRight' + index);
-        $slider.find('.table-swiper-button-prev').addClass('plansLeft' + index);
+	    $slider.find('.table-swiper-button-next').addClass('plansRightElife' + index);
+        $slider.find('.table-swiper-button-prev').addClass('plansLeftElife' + index);
       
-      var $carouselSliderSmartHome = swiperInit('.slider' + index + ' .swiper-container', swiperOptions($slider, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, 1, 2, 2, 2, 2));
+      var $carouselSliderSmartHome = swiperInit('.slider' + index + ' .swiper-container', swiperOptions($slider, '.table-swiper-button-next.plansRightElife' + index, '.table-swiper-button-prev.plansLeftElife' + index, 1, 2, 2, 2, 2));
 
 	    // hide the arrow if slides count is 2 or less
 	    var slidesCount = $slider.find('.swiper-slide').length;

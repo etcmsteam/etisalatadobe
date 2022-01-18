@@ -1,6 +1,8 @@
 import {isMobile, IsMediaQuery} from '../helpers'
+import { swiperInit } from "../swiperInitialize";
+
 if ($(".globalfootprintcontainer").length > 0) {
-  var galleryTop = new Swiper('.swiper-gallery-slide', {
+  var galleryTop = swiperInit('.swiper-gallery-slide', {
     spaceBetween: 10,
     effect: 'fade',
     navigation: {
@@ -20,7 +22,7 @@ if ($(".globalfootprintcontainer").length > 0) {
         }
     }
   });
-  var galleryThumbs = new Swiper('.swiper-gallery-thumbs', {
+  var galleryThumbs = swiperInit('.swiper-gallery-thumbs', {
     spaceBetween: 10,
     speed:900,
     centeredSlides: false,
