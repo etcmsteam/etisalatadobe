@@ -108,7 +108,7 @@ public class MegaNavigationImpl implements MegaNavigation {
    */
   private List<MegaNavigationItem> getNavigationItems(String childItem) {
     final Resource navItemRes = currentRes.getChild(childItem);
-    List<MegaNavigationItem> navigationItemsList = new ArrayList<>();
+    final List<MegaNavigationItem> navigationItemsList = new ArrayList<>();
     if (null != navItemRes) {
       navItemRes.listChildren().forEachRemaining(resource -> {
         final MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
@@ -231,7 +231,7 @@ public class MegaNavigationImpl implements MegaNavigation {
    * @param resourceType
    */
   private List<MegaFixedNavigationItem> getMegaSubMenuList(Resource item, String resourceType) {
-    List<MegaFixedNavigationItem> subMenuList = new ArrayList<>();
+    final List<MegaFixedNavigationItem> subMenuList = new ArrayList<>();
     for (Resource childRes : item.getChildren()) {
       final String styleID = getContainerStyleID(childRes);
       if (childRes.getResourceType().equals(resourceType)) {
@@ -259,7 +259,7 @@ public class MegaNavigationImpl implements MegaNavigation {
    */
   private void setContainerBrandMenuList(Resource itemResource,
       MegaFixedNavigationItem fixedNavModel, List<MegaFixedNavigationItem> subMenuList) {
-    List<MegaTeaserModel> brandMenuList = new ArrayList<>();
+    final List<MegaTeaserModel> brandMenuList = new ArrayList<>();
     for (Resource childRes : itemResource.getChildren()) {
       if (childRes.getResourceType().equals(PageConstants.TITLE_RESOURCE_TYPE)) {
         fixedNavModel
@@ -284,7 +284,7 @@ public class MegaNavigationImpl implements MegaNavigation {
   */
   private List<MegaTeaserModel> getMegaPromotionalTilesList(Resource childResource,
       String resourceType) {
-    List<MegaTeaserModel> tilesList = new ArrayList<>();
+    final List<MegaTeaserModel> tilesList = new ArrayList<>();
     childResource.listChildren().forEachRemaining(resource -> {
       if (!resource.getName().equals(AEConstants.CQ_RESPONSIVE_NODE) && resource.getResourceType()
           .equals(resourceType)) {
