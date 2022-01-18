@@ -69,7 +69,7 @@ public final class CommonUtility {
    */
   public static List<LinkModel> getLinkItems(String childItem, Resource res) {
     Resource linkParentRes = res.getChild(childItem);
-    List<LinkModel> linkModelList = new ArrayList<>();
+    final List<LinkModel> linkModelList = new ArrayList<>();
     if (null != linkParentRes) {
       linkParentRes.listChildren().forEachRemaining(childResource -> {
         LinkModel linkModel = childResource.adaptTo(LinkModel.class);
@@ -121,7 +121,7 @@ public final class CommonUtility {
    */
   public static List<FixedNavigtaionMultifieldModel> getFixedNavigationItems(String childItem, Resource res,ResourceResolver resourceResolver) {
 	Resource pageItemRes = res.getChild(childItem);
-    List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
+    final List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
     if (null != pageItemRes) {
       pageItemRes.listChildren().forEachRemaining(resource -> {
         FixedNavigtaionMultifieldModel pageModel = resource
