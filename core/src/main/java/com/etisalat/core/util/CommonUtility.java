@@ -72,7 +72,7 @@ public final class CommonUtility {
     final List<LinkModel> linkModelList = new ArrayList<>();
     if (null != linkParentRes) {
       linkParentRes.listChildren().forEachRemaining(childResource -> {
-        LinkModel linkModel = childResource.adaptTo(LinkModel.class);
+    	  final LinkModel linkModel = childResource.adaptTo(LinkModel.class);
         if (null != linkModel) {
           linkModel.setLinkUrl(CommonUtility
               .appendHtmlExtensionToPage(res.getResourceResolver(), linkModel.getLinkUrl()));
@@ -92,7 +92,7 @@ public final class CommonUtility {
   public static LinkModel getLinkItem(Resource res) {
     return res.adaptTo(LinkModel.class);
   }
-  
+
   /**
    * Returns Category Tag Title.
    *
@@ -116,17 +116,17 @@ public final class CommonUtility {
    *
    * @param childItem Child node name
    * @param res       Parent Resource
-   * @param resourceReolver ResourceResolver
+   * @param resourceResolver ResourceResolver
    * @return List of LinkModel
    */
   public static List<FixedNavigtaionMultifieldModel> getFixedNavigationItems(String childItem, Resource res,ResourceResolver resourceResolver) {
-	Resource pageItemRes = res.getChild(childItem);
+	  Resource pageItemRes = res.getChild(childItem);
     final List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
     if (null != pageItemRes) {
       pageItemRes.listChildren().forEachRemaining(resource -> {
-        FixedNavigtaionMultifieldModel pageModel = resource
+    	  final FixedNavigtaionMultifieldModel pageModel = resource
             .adaptTo(FixedNavigtaionMultifieldModel.class);
-        if (StringUtils.isNotBlank(pageModel.getNavigationLink())) {
+        if (null!= pageModel && StringUtils.isNotEmpty(pageModel.getNavigationLink())) {
           pageModel.setNavigationLink(CommonUtility
               .appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
         }
@@ -140,9 +140,9 @@ public final class CommonUtility {
 		String captchaValue = AEConstants.CAPTCHA_NULL;
 		try {
 			if(null != json) {
-				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
+				final JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
 				if(jsonObject.has(AEConstants.CAPTCHA_NAME)) {
-					JsonElement captchaElement = jsonObject.get(AEConstants.CAPTCHA_NAME);				
+					final JsonElement captchaElement = jsonObject.get(AEConstants.CAPTCHA_NAME);				
 					captchaValue = captchaElement.getAsString();
 				}
 			}
@@ -160,37 +160,39 @@ public final class CommonUtility {
 		String redirectURL = "";
 		if(!StringUtils.isEmpty(getRedirectURLFromForm(json))){
 			redirectURL = getRedirectURLFromForm(json);
-			if(redirectURL.contains(AEConstants.HTML_CONSTANT) || redirectURL.contains(AEConstants.JSP_CONSTANT)) {
-				return redirectURL;
-			}
-			else if(redirectURL.contains(AEConstants.CONTENT)) {
-				return redirectURL.concat(AEConstants.HTML_CONSTANT);
-			}
-			else {
-				if(resourcePath != null) {
-					if(resourcePath.contains(AEConstants.CONTENT)) {
-						return resourcePath.concat(AEConstants.HTML_CONSTANT);
-					}
-				}				
-			}					
+			String redirectURL1 = getRedirectUrlString(resourcePath, redirectURL);
+			if (redirectURL1 != null) return redirectURL1;
 		}
 		else {
-			if(resourcePath != null) {
-				if(resourcePath.contains(AEConstants.CONTENT)) {
+			if(resourcePath != null && resourcePath.contains(AEConstants.CONTENT)) {
 					return resourcePath.concat(AEConstants.HTML_CONSTANT);
-				}
 			}				
 		}	
 		return redirectURL;
+	}
+
+	private static String getRedirectUrlString(String resourcePath, String redirectURL) {
+		if(redirectURL.contains(AEConstants.HTML_CONSTANT) || redirectURL.contains(AEConstants.JSP_CONSTANT)) {
+			return redirectURL;
+		}
+		else if(redirectURL.contains(AEConstants.CONTENT)) {
+			return redirectURL.concat(AEConstants.HTML_CONSTANT);
+		}
+		else {
+			if(resourcePath != null && resourcePath.contains(AEConstants.CONTENT)) {
+				return resourcePath.concat(AEConstants.HTML_CONSTANT);
+			}
+		}
+		return null;
 	}
 
 	private static String getRedirectURLFromForm(String json) {
 		String redirectValue = "";
 		try {
 			if(null != json) {
-				JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
+				final JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();	
 				if(jsonObject.has(AEConstants.REDIRECT_NAME)) {
-					JsonElement captchaElement = jsonObject.get(AEConstants.REDIRECT_NAME);				
+					final JsonElement captchaElement = jsonObject.get(AEConstants.REDIRECT_NAME);				
 					redirectValue = captchaElement.getAsString();
 				}
 			}
