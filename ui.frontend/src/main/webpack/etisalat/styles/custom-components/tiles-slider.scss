@@ -259,7 +259,13 @@
         }
       }
       .swiper-slide {
-        margin-right: 0 !important;
+        @include respond-to-max($phone) {
+          margin-right: 0 !important;
+        }
+
+        @include respond-to-min($desktop-wide) {
+          margin-right: 0 !important;
+        }
 
         @include respond-to-max($desktop - 1) {
           flex-basis: 100%;
