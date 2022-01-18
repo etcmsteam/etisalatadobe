@@ -62,7 +62,7 @@
       margin-top: toRem(-152);
       z-index: 1;
       @include rtlBlock() {
-        margin-top: toRem(-168);
+        margin-top: toRem(-104);
       }
     }
 
@@ -84,6 +84,16 @@
         margin-top: toRem(-227) !important;
         right: 0;
       }
+
+      @include rtlBlock() {
+        right: toRem(-40);
+        @include respond-to-min-max($desktop-min, $tablet) {
+          right: toRem(-24);
+        }
+        @include respond-to-max($phone) {
+          right: toRem(-20);
+        }
+      }
     }
 
     .prev-with--topcarousel {
@@ -92,6 +102,15 @@
       left: -2%;
       @include rtlBlock() {
         left: -3%;
+
+        @include respond-to-min-max($desktop-min, $tablet) {
+          left: 1%;
+          right: auto;
+        }
+
+        @include respond-to-min($desktop-wide) {
+          left: -3%;
+        }
       }
       @include respond-to-min-max($desktop-min, $tablet) {
         margin-top: -7.5em;

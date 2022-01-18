@@ -8,10 +8,10 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface EtisalatApiConfiguration {
 	
    int TIMEOUT = 7000;
-   String contactUsFormApiUrl = "https://azspringcloudsvc-etisalat-email-sender.azuremicroservices.io/emailapp/sendNotification";
+   String CONTACTUSFORMAPIURL = "https://azspringcloudsvc-etisalat-email-sender.azuremicroservices.io/emailapp/sendNotification";
    
    @AttributeDefinition(name = "Contact Us Api url", description = "Contact Us  Form Url")
-   String getContactUsApiUrl() default contactUsFormApiUrl;
+   String getContactUsApiUrl() default CONTACTUSFORMAPIURL;
    
    @AttributeDefinition(name = "set time out", description = "Set Time out")
    int getSetTimeout() default TIMEOUT;

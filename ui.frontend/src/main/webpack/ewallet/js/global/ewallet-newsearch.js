@@ -4,6 +4,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable camelcase */
 /* eslint-disable no-undef */
+
 (function ($) {
   $(document).ready(function () {
     var show_per_page = $("#show_per_page").val();
@@ -13,7 +14,7 @@
     var current_link = 0;
 
     $("#current_page").val(0);
-    
+
     while (number_of_pages > current_link) {
       navigation_html +=
         '<li><a class="page_link" data-id="' +
@@ -61,8 +62,7 @@
       }
     });
     setTimeout(function () {
-       $(".consumerload").hide();
-      $(".ewalletnews").css("visibility", "visible");
+      $(".consumerload").hide();
       $("#page_navigation").css("visibility", "visible");
     }, 4000);
   });

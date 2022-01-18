@@ -1,4 +1,4 @@
-
+import { swiperInit } from "../swiperInitialize";
       $(document).ready(function () {
         var doc = document;
         if (window.location.hostname !== "www.etisalat.ae") {
@@ -103,7 +103,7 @@
             $(this).find(".selector-toggle-carousel").addClass("destroyed");
           } else {
           }
-          var $carouselSlider = new Swiper(".selector-toggle-carousel", {
+          var $carouselSlider = swiperInit(".selector-toggle-carousel", {
             loop: false,
             autoplay: false,
             slidesPerView: "auto",
