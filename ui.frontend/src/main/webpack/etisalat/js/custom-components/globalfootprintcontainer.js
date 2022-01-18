@@ -2,13 +2,12 @@ import {isMobile, IsMediaQuery} from '../helpers'
 import { swiperInit } from "../swiperInitialize";
 
 if ($(".globalfootprintcontainer").length > 0) {
+  var $slider = $(".globalfootprintcontainer").find('.swiper-gallery-slide');
   var galleryTop = swiperInit('.swiper-gallery-slide', {
     spaceBetween: 10,
     effect: 'fade',
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    nextButton: $slider.find('.swiper-button-next'),
+    prevButton: $slider.find('.swiper-button-prev'),
     loop: true,
     loopedSlides: 16,
     breakpoints: {
@@ -45,8 +44,8 @@ if ($(".globalfootprintcontainer").length > 0) {
         }
     }
   });
-  galleryTop.controller.control = galleryThumbs;
-  galleryThumbs.controller.control = galleryTop;
+  galleryTop.params.control = galleryThumbs;
+  galleryThumbs.params.control = galleryTop;
 }
 
 if (!IsMediaQuery.md.matches) {
