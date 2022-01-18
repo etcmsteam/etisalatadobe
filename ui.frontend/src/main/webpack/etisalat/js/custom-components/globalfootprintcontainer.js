@@ -1,4 +1,4 @@
-import {isMobile, IsMediaQuery} from '../helpers'
+import {isMobile, IsMediaQuery} from '../helpers';
 import { swiperInit } from "../swiperInitialize";
 
 if ($(".globalfootprintcontainer").length > 0) {
