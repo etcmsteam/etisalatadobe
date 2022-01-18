@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cmp-form-options--drop-down .select-hide,
 .cmp-form-options--drop-down select {
   visibility: hidden;
@@ -231,6 +232,40 @@
 
     & > div:last-child .selecteddiv {
       border: none;
+    }
+  }
+
+  &.has-error-fields {
+    border-color: $error-red;
+
+    .alert-icon {
+      display: block;
+
+      svg {
+        fill: $error-red;
+        height: toRem(20);
+        position: absolute;
+        right: toRem(15);
+        top: toRem(20);
+        width: toRem(20);
+      }
+    }
+
+    .alert-label {
+      bottom: toRem(-25);
+      color: $error-red;
+      font-size: $font12;
+      height: 1rem;
+      line-height: toRem(16);
+      margin: 0;
+      overflow: hidden;
+      padding: 0 toRem(18);
+      position: absolute;
+      text-align: left;
+      text-overflow: ellipsis;
+      top: auto;
+      white-space: nowrap;
+      width: 100%;
     }
   }
 }

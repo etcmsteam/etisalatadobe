@@ -69,6 +69,7 @@
       },
       "Capital letters, space and special character are not allowed",
     );
+
     /**
      * Additional Validation Rules (extracted from additional-methods.js)
      */
@@ -470,5 +471,20 @@
     }
   }
 
+  const checkForLetters = (event) => {
+    const inputValue = event.which;
+    const inputValueForArabic = event.key;
+    const isArabic = /^[\u0600-\u06ff\u0750-\u077f\ufb50-\ufbc1\ufbd3-\ufd3f\ufd50-\ufd8f\ufd92-\ufdc7\ufe70-\ufefc\uFDF0-\uFDFD\s]/;
+
+    // allow letters, whitespaces and arabic characters only.
+    if (!(inputValue >= 65 && inputValue <= 122) && inputValue !== 32 && inputValue !== 0 && !isArabic.test(inputValueForArabic)) {
+      event.preventDefault();
+    }
+  };
+  const EWALLET_FIRST_NAME = $("#ewallet_firstName");
+  const EWALLET_LAST_NAME = $("#ewallet_lastName");
+
   setValidationDefaults();
+  EWALLET_FIRST_NAME.keypress(checkForLetters);
+  EWALLET_LAST_NAME.keypress(checkForLetters);
 })(jQuery);
