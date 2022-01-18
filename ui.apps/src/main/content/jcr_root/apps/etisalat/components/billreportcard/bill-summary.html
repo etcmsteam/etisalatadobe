@@ -1,233 +1,330 @@
 <template  data-sly-template.billSummaryReport="${ @ billModel,properties}">
- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <div class="billing-report-card-preview">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="dns-prefetch" href="fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.all @ categories='cmp.crx.billing.explainer'}" />
+    </sly>
+    <div class="exp-report-wrapper exp-bill-summary zooming" id="${properties.reportCard}" data-bill-explainer="${billModel.stepsData}">
+      <div class="exp-logo-report">
+        <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/etisalat_eng_logo.png" alt="">
+      </div>
+      <div class="exp-report-header">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-2">
+            <h2>Abdelaziz Muhammd Hejaziss</h2>
+            <div class="row ptb-10" id="Step-1">
+              <div class="exp-focus-step">
+                <span>1</span>
+              </div>
+              <div class="col-xs-6">
+                <p>Mobile number <span>056831740</span></p>
+              </div>
+              <div class="col-xs-6">
+                <p>Bill issue date <span>01 Nov 2018 </span></p>
+              </div>
+            </div>
+            <div class="row ptb-10" id="Step-2">
+              <div class="exp-focus-step">
+                <span>2</span>
+              </div>
+              <div class="col-xs-6">
+                <p>Bill number <span>INV124567890</span></p>
+              </div>
+              <div class="col-xs-6">
+                <p>Bill Period <span>01 Oct 2018 - 31 Oct 2018 </span></p>
+              </div>
+            </div>
 
- <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
-  <sly data-sly-call="${clientlib.all @ categories='cmp.crx.billing.explainer'}" />
- </sly>
-<div id="${properties.reportCard}" class="billing-report-card-preview" data-bill-explainer="${billModel.stepsData}">
-  <div class="exp-report-wrapper exp-bill-summary zooming">
-    <div class="exp-logo-report">
-      <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/etisalat_eng_logo.png" alt="">
-    </div>
-
-    <div class="exp-report-header">
-      <div class="row">
-        <div class="col-xs-10 col-xs-offset-2">
-          <h2>Abdelaziz Muhammd Hejaziss</h2>
-          <div class="row ptb-10" id="Step-1">
-            <div class="exp-focus-step">
-              <span>1</span>
-            </div>
-            <div class="col-xs-6">
-              <p>Mobile number <span>056831740</span></p>
-            </div>
-            <div class="col-xs-6">
-              <p>Bill issue date <span>01 Nov 2018 </span></p>
-            </div>
           </div>
-          <div class="row ptb-10" id="Step-2">
-            <div class="exp-focus-step">
-              <span>2</span>
-            </div>
-            <div class="col-xs-6">
-              <p>Bill number <span>INV124567890</span></p>
-            </div>
-            <div class="col-xs-6">
-              <p>Bill Period <span>01 Oct 2018 - 31 Oct 2018 </span></p>
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
+      <div class="promo-small-02 exp-report-invoice">
+        <div class="row no-gutter">
+          <div class="content-section">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="row" id="Step-3">
+                <div class="exp-focus-step">
+                  <span>3</span>
+                </div>
+                <span class="lbl">Tax INVOICE</span>
+                <div class="detail-info-wrap detail-info-wrap-pricetag">
+                  <div class="detail-price-new">
+                    <div class="main-part">
+                      <div dir="ltr" class="price">2,803,02 </div>
+                      <small>AED
+                        <i>incl 5% VAT</i>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <h5>PAY BEFORE 15 NOV 2018</h5>
 
-    <div class="promo-small-02 exp-report-invoice">
-      <div class="row no-gutter">
-        <div class="content-section">
-          <div class="col-xs-12 col-md-12 col-lg-12">
-            <div class="row" id="Step-3">
-              <div class="exp-focus-step">
-                <span>3</span>
               </div>
-              <span class="lbl">Tax INVOICE</span>
-              <div class="detail-info-wrap detail-info-wrap-pricetag">
-                <div class="detail-price-new">
-                  <div class="main-part">
-                    <div dir="ltr" class="price">2,803,02 </div>
-                    <small>AED
-                      <i>incl 5% VAT</i>
-                    </small>
+
+              <div class="row" id="Step-5">
+                <div class="exp-focus-step">
+                  <span>5</span>
+                </div>
+                <div class="exp-autopay-info">
+                  <div class="exp-autopay-icon">
+                    <span>
+                      <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ac-autopay-card"></use>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="exp-autopay-text">
+                    <p>This account has autopay
+                      <span>(card ending ****8889 expiry 10/21).</span>
+                    </p>
                   </div>
                 </div>
               </div>
-              <h5>PAY BEFORE 15 NOV 2018</h5>
-
-            </div>
-
-            <div class="row" id="Step-5">
-              <div class="exp-focus-step">
-                <span>5</span>
-              </div>
-              <div class="exp-autopay-info">
-                <div class="exp-autopay-icon">
-                  <span>
-                    <svg>
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ac-autopay-card"></use>
-                    </svg>
-                  </span>
-                </div>
-                <div class="exp-autopay-text">
-                  <p>This account has autopay
-                    <span>(card ending ****8889 expiry 10/21).</span>
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
 
-        <div class="exp-pay-online" id="Step-4">
-          <div class="exp-focus-step">
-            <span>4</span>
-          </div>
-          <h4>PAY ONLINE</h4>
-          <a href="#">www.etisalat.ae/quickpay</a>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="exp-premium-postpaid">
-      <div class="relative" id="Step-6">
-        <div class="exp-focus-step" id="startHereBtn">
-          <span>6</span>
-        </div>
-        <h2>Premium Postpaid Flexi 500
-
-        </h2>
-        <h5>Contract Period: 07 Aug 2017 - 07 Aug 2019</h5>
-      </div>
-
-
-      <div class="exp-premium-postpaid-summary">
-        <h3>Bill Summary</h3>
-        <div class="list" id="Step-7">
-          <div class="exp-focus-step">
-            <span>7</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-
-        <div class="list" id="Step-8">
-          <div class="exp-focus-step">
-            <span>8</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-
-        <div class="list" id="Step-9">
-          <div class="exp-focus-step">
-            <span>9</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-
-        <div class="list" id="Step-10">
-          <div class="exp-focus-step">
-            <span>10</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-
-        <div class="list" id="Step-11">
-          <div class="exp-focus-step">
-            <span>11</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-        <div class="list" id="Step-12">
-          <div class="exp-focus-step">
-            <span>12</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-
-        <div class="list exp-current-month-summary">
-          <h4>Current month charges (including VAT)</h4>
-          <span>2.783.02<small>AED</small></span>
-
-        </div>
-
-        <div class="list" id="Step-13">
-          <div class="exp-focus-step">
-            <span>13</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-
-        <div class="list" id="Step-14">
-          <div class="exp-focus-step">
-            <span>14</span>
-          </div>
-          <p>Plan, Add-ons & Device rentals</p>
-          <span>880.00 <small>AED</small></span>
-
-        </div>
-
-
-        <div class="list exp-current-month-summary" id="Step-15">
-
-          <h4>Remaining amount from your pevious bills (including VAT 5%)
+          <div class="exp-pay-online" id="Step-4">
             <div class="exp-focus-step">
-              <span>15</span>
+              <span>4</span>
             </div>
-
-          </h4>
-          <span>2.783.02<small>AED</small></span>
-
-        </div>
-
-        <div class="list exp-grand-month-summary" id="Step-16">
-
-          <h3>Grand Total <div class="exp-focus-step">
-              <span>16</span>
-            </div>
-          </h3>
-          <div class="detail-info-wrap detail-info-wrap-pricetag">
-            <div class="detail-price-new">
-              <div class="main-part">
-                <div dir="ltr" class="price">2,803.02</div>
-                <small>AED
-                  <i>incl 5% VAT</i>
-                </small>
-              </div>
-            </div>
+            <h4>PAY ONLINE</h4>
+            <a href="#">www.etisalat.ae/quickpay</a>
           </div>
 
         </div>
       </div>
+      <div class="exp-premium-postpaid">
+        <div class="relative" id="Step-6">
+          <div class="exp-focus-step" id="startHereBtn">
+            <span>6</span>
+          </div>
+          <h2>Premium Postpaid Flexi 500
+
+          </h2>
+          <h5>Contract Period: 07 Aug 2017 - 07 Aug 2019</h5>
+        </div>
+
+
+        <div class="exp-premium-postpaid-summary">
+          <h3>Bill Summary</h3>
+          <div class="list" id="Step-7">
+            <div class="exp-focus-step">
+              <span>7</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+
+          <div class="list" id="Step-8">
+            <div class="exp-focus-step">
+              <span>8</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+
+          <div class="list" id="Step-9">
+            <div class="exp-focus-step">
+              <span>9</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+
+          <div class="list" id="Step-10">
+            <div class="exp-focus-step">
+              <span>10</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+
+          <div class="list" id="Step-11">
+            <div class="exp-focus-step">
+              <span>11</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+          <div class="list" id="Step-12">
+            <div class="exp-focus-step">
+              <span>12</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+
+          <div class="list exp-current-month-summary">
+            <h4>Current month charges (including VAT)</h4>
+            <span>2.783.02<small>AED</small></span>
+
+          </div>
+
+          <div class="list" id="Step-13">
+            <div class="exp-focus-step">
+              <span>13</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+
+          <div class="list" id="Step-14">
+            <div class="exp-focus-step">
+              <span>14</span>
+            </div>
+            <p>Plan, Add-ons & Device rentals</p>
+            <span>880.00 <small>AED</small></span>
+
+          </div>
+
+
+          <div class="list exp-current-month-summary" id="Step-15">
+
+            <h4>Remaining amount from your pevious bills (including VAT 5%)
+              <div class="exp-focus-step">
+                <span>15</span>
+              </div>
+
+            </h4>
+            <span>2.783.02<small>AED</small></span>
+
+          </div>
+
+          <div class="list exp-grand-month-summary" id="Step-16">
+
+            <h3>Grand Total <div class="exp-focus-step">
+                <span>16</span>
+              </div>
+            </h3>
+            <div class="detail-info-wrap detail-info-wrap-pricetag">
+              <div class="detail-price-new">
+                <div class="main-part">
+                  <div dir="ltr" class="price">2,803.02</div>
+                  <small>AED
+                    <i>incl 5% VAT</i>
+                  </small>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="exp-footer">
+        <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/exp-report-footer.png" alt="">
+      </div>
     </div>
-
-
-    <div class="exp-footer">
-      <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/exp-report-footer.png" alt="">
-    </div>
-
   </div>
+  <script>
+    var tour_steps = $("#bill-summary").data("bill-explainer");
+    console.log("Page1 bill summary --", tour_steps);
 
-</div>
+    var jq = $.noConflict(true);
+    jq(function () {
+      jq.each(tour_steps, function (i, step) {
+        step['content'] += '<span class="tour-pager">' + (i + 1) + '/' + tour_steps.length + '</span>';
+        var percent = parseInt(((i + 1) / tour_steps.length) * 100);
+      });
+      var tourEnd = false;
+      var tour = new Tour({
+        backdrop: true,
+        storage: false,
+        steps: tour_steps,
+        template: "<div class='exp-popover popover tour'><h3 class='popover-title'></h3><div class='popover-content'></div><nav class='popover-navigation'><div class='btn-group'><button class='btn btn-default prev' data-role='prev'></button><button class='btn btn-default next' data-role='next'> </button></div><button class='btn btn-default btn-end' data-role='end'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#cross'></use></svg></button></nav></div>",
+        onShow: function () {
+          setTimeout(function () {
+            jq(".popover").append("<div class='zooming-contorls'><button type='button' id='zoom-in'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#zoomplus'></use></svg></button><button type='button' id='zoom-out'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#zoomminus'></use></svg></button></div>");
+            jq('#zoom-in').click(function () {
+              updateZoom(0.1);
+            });
+            jq('#zoom-out').click(function () {
+              updateZoom(-0.1);
+            });
+          }, 1000);
+
+        },
+        onEnd: function (tour) {
+          tourEnd = true;
+        }
+      });
+
+      zoomLevel = 0.5;
+      var updateZoom = function (zoom) {
+        zoomLevel += zoom;
+        jq('.zooming').css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+      }
+
+      tour.init();
+      jq('#Step-1').click(function () {
+        gotoSlide(0);
+      });
+      jq('#Step-2').click(function () {
+        gotoSlide(1);
+      });
+      jq('#Step-3').click(function () {
+        gotoSlide(2);
+      });
+      jq('#Step-4').click(function () {
+        gotoSlide(3);
+      });
+      jq('#Step-5').click(function () {
+        gotoSlide(4);
+      });
+      jq('#Step-6').click(function () {
+        gotoSlide(5);
+      });
+      jq('#Step-7').click(function () {
+        gotoSlide(6);
+      });
+      jq('#Step-8').click(function () {
+        gotoSlide(7);
+      });
+      jq('#Step-9').click(function () {
+        gotoSlide(8);
+      });
+      jq('#Step-10').click(function () {
+        gotoSlide(9);
+      });
+      jq('#Step-11').click(function () {
+        tour._options.steps[10].placement = "top";
+        gotoSlide(10);
+      });
+      jq('#Step-12').click(function () {
+        gotoSlide(11);
+      });
+      jq('#Step-13').click(function () {
+        gotoSlide(12);
+      });
+      jq('#Step-14').click(function () {
+        gotoSlide(13);
+      });
+      jq('#Step-15').click(function () {
+        gotoSlide(14);
+      });
+      jq('#Step-16').click(function () {
+        tour._options.steps[15].placement = "top";
+        gotoSlide(15);
+      });
+
+
+
+      var gotoSlide = function (slideNum) {
+        if (tourEnd == true) {
+          tour.restart();
+          tourEnd = false;
+        }
+        tour.goTo(slideNum);
+      }
+    });
+  </script>
 </template>
