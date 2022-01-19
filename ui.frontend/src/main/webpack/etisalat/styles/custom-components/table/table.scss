@@ -995,6 +995,12 @@
               td {
                 &:first-child {
                   padding-left: 0;
+                  @include respond-to-max($tablet){
+                    padding-right: toRem(15);
+                  }
+                  @include respond-to-max($desktop){
+                    padding-right: toRem(15);
+                  }
                   padding-right: 3.5rem;
                 }
 
@@ -1911,6 +1917,9 @@ table {
 
       @include font-family-lato();
     }
+    @include rtlBlock(){
+      float: right;
+    }
   }
 
   .dataTables_paginate {
@@ -1920,6 +1929,9 @@ table {
     float: right;
     padding-top: 0.25em;
     text-align: right;
+    @include rtlBlock(){
+      float: left;
+    }
 
     .paginate_button {
       color: $steel-grey;
