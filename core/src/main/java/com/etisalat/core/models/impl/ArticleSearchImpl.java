@@ -120,7 +120,7 @@ public class ArticleSearchImpl implements ArticleSearch {
    * @param articlePageType
    */
   private void setChildPageDetails(Resource res, Page page,
-      List<GenericListPageDetails> pageDetailsList, String articlePageType) {
+    final List<GenericListPageDetails> pageDetailsList, String articlePageType) {
     if (!page.isHideInNav() && page.getProperties().get(AEConstants.PN_ARTICLE_TYPE, StringUtils.EMPTY)
         .equals(articlePageType)) {
       final GenericListPageDetails pageDetails = new GenericListPageDetails();

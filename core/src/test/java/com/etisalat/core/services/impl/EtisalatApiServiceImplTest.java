@@ -1,13 +1,10 @@
 package com.etisalat.core.services.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import junitx.util.PrivateAccessor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import junitx.util.PrivateAccessor;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class EtisalatApiServiceImplTest {
@@ -29,12 +26,12 @@ public class EtisalatApiServiceImplTest {
 	@Test
 	void testGetUrl() throws NoSuchFieldException {
 		String getUrl = etisalatApiServiceImpl.getContactUsApiUrl();
-		assertEquals(getUrl,API_URL);
+		assertEquals(API_URL, getUrl);
 	}	
 	
 	@Test
 	void testGetTimeOut() throws NoSuchFieldException {
 		int getTimeOut = etisalatApiServiceImpl.getTimeOut();
-		assertEquals(getTimeOut,TIMEOUT_VALUE);
+		assertEquals(TIMEOUT_VALUE, getTimeOut);
 	}
-};
+}

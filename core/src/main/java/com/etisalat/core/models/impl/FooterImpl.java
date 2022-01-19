@@ -48,7 +48,7 @@ public class FooterImpl implements Footer {
    */
   private List<QuickLinkModel> getQuickLinkItems() {
     final Resource quickLinksRes = res.getChild(AEConstants.QUICKLINKS);
-    List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
+    final List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
     if (null != quickLinksRes) {
       quickLinksRes.listChildren().forEachRemaining(resource -> {
         final QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
