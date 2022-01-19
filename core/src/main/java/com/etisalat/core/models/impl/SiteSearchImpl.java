@@ -18,42 +18,42 @@ import com.etisalat.core.models.SiteSearch;
 import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = { SiteSearch.class }, resourceType = {
-		SiteSearchImpl.RESOURCE_TYPE })
+        SiteSearchImpl.RESOURCE_TYPE })
 public class SiteSearchImpl implements SiteSearch {
 
-	public static final String RESOURCE_TYPE = "etisalat/components/search";
+    public static final String RESOURCE_TYPE = "etisalat/components/search";
 
-	@SlingObject
-	@Optional
-	private Resource currentRes;
-	
-	@SlingObject
-	private ResourceResolver resourceResolver;
-	
-  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-  private String redirectPage;
+    @SlingObject
+    @Optional
+    private Resource currentRes;
 
-	/**
-	 * 
-	 * @param itemRes
-	 * @return the items list for quick links and brand items
-	 */
-  private List<LinkModel> getItems(String itemRes) {
-    return CommonUtility.getLinkItems(itemRes, currentRes);
-  }
+    @SlingObject
+    private ResourceResolver resourceResolver;
 
-	@Override
-	public List<LinkModel> getQuickLinksItems() {
-		return Collections.unmodifiableList(getItems(AEConstants.QUICKLINKS));
-	}
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String redirectPage;
 
-	@Override
-	public List<LinkModel> getBrandItems() {
-		return Collections.unmodifiableList(getItems(AEConstants.BRAND_ITEMS));
-	}
+    /**
+     *
+     * @param itemRes
+     * @return the items list for quick links and brand items
+     */
+    private List<LinkModel> getItems(String itemRes) {
+        return CommonUtility.getLinkItems(itemRes, currentRes);
+    }
 
-	public String getRedirectPage() {
-		return CommonUtility.appendHtmlExtensionToPage(resourceResolver, redirectPage);
-	}
+    @Override
+    public List<LinkModel> getQuickLinksItems() {
+        return Collections.unmodifiableList(getItems(AEConstants.QUICKLINKS));
+    }
+
+    @Override
+    public List<LinkModel> getBrandItems() {
+        return Collections.unmodifiableList(getItems(AEConstants.BRAND_ITEMS));
+    }
+
+    public String getRedirectPage() {
+        return CommonUtility.appendHtmlExtensionToPage(resourceResolver, redirectPage);
+    }
 
 }

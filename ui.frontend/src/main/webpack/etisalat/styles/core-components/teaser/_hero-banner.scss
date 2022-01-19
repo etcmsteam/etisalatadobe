@@ -215,10 +215,9 @@
     .video_cover {
       @include respond-to-min($desktop) {
         bottom: -9999px;
-        height: toRem(500);
+        height: auto;
         left: -9999px;
         margin: auto;
-        max-width: unset;
         min-height: 100%;
         min-width: 100%;
         position: absolute;
@@ -428,6 +427,10 @@
           &:first-child {
             line-height: 1.6;
           }
+
+          @include rtlBlock() {
+            font-weight: get-font-weight("light");
+          }
         }
 
         @include respond-to-min($desktop-wide) {
@@ -452,7 +455,7 @@
 
         h3 {
           @include rtlBlock() {
-            font-weight: light;
+            font-weight: get-font-weight("light");
           }
         }
 
@@ -711,9 +714,11 @@
 
       .hero-heading-big {
         left: 50%;
+        margin-left: toRem(-12);
 
         @include rtlBlock() {
           left: auto;
+          margin-right: toRem(-12);
           right: 50%;
         }
       }
@@ -784,7 +789,13 @@
         margin: auto;
         right: 0;
         text-align: center;
-        top: toRem(110);
+        top: toRem(190);
+
+        @include rtlBlock() {
+          left: 0;
+          margin: auto;
+          right: 0;
+        }
 
         h1 {
           @include rtlBlock() {
@@ -794,8 +805,8 @@
       }
 
       .youtube-popup-container .btn-green {
-        left: 0;
-        margin: auto;
+        left: 0 !important;
+        margin: auto !important;
         right: 0;
         width: toRem(180);
       }

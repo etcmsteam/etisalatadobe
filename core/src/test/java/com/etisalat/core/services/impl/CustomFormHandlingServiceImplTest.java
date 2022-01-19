@@ -1,17 +1,17 @@
 package com.etisalat.core.services.impl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class CustomFormHandlingServiceImplTest {
 
@@ -41,6 +41,6 @@ public class CustomFormHandlingServiceImplTest {
 		when(con.getInputStream()).thenReturn(inputStream); 
 		when(con.getResponseCode()).thenReturn(200); 	    
 		when(customFormHandlingServiceImpl.postFormData(json, API_URL,TIMEOUT_VALUE,"newform")).thenReturn(200);	 
-		assertNotNull(customFormHandlingServiceImpl.postFormData(json, API_URL,TIMEOUT_VALUE,"newform"));
+		assertEquals(200 , customFormHandlingServiceImpl.postFormData(json, API_URL,TIMEOUT_VALUE,"newform"));
 	}
-};
+}

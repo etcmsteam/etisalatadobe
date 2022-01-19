@@ -14,7 +14,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,13 +33,8 @@ public class IconCardListImpl implements IconCardList {
   @Optional
   private Resource res;
 
-  @Self
-  @Optional
-  private SlingHttpServletRequest request;
-
   @SlingObject
   ResourceResolver resourceResolver;
-
 
   @Override
   public List<IconCardVO> getIconCardListItems() {
