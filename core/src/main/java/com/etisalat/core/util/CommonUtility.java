@@ -161,13 +161,12 @@ public final class CommonUtility {
 		if(!StringUtils.isEmpty(getRedirectURLFromForm(json))){
 			redirectURL = getRedirectURLFromForm(json);
 			String redirectURL1 = getRedirectUrlString(resourcePath, redirectURL);
-			if (redirectURL1 != null) return redirectURL1;
+			if (redirectURL1 != null)
+			{return redirectURL1;}
 		}
-		else {
-			if(resourcePath != null && resourcePath.contains(AEConstants.CONTENT)) {
+		else if(resourcePath != null && resourcePath.contains(AEConstants.CONTENT)) {
 					return resourcePath.concat(AEConstants.HTML_CONSTANT);
-			}				
-		}	
+			}
 		return redirectURL;
 	}
 

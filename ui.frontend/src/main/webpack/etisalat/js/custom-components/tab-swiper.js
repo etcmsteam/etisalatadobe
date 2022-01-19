@@ -1,3 +1,5 @@
+import { swiperInit } from "../swiperInitialize";
+
 $(document).ready(function () {
   var initSwiper;
   initSwiper = function () {
@@ -10,7 +12,7 @@ $(document).ready(function () {
         const istabs = $swiperTabsParent.parents().hasClass("cmp_tabs--horizontal-title");
         $swiperTabsParent.find(".swiper-button-next").addClass("r" + index);
         $swiperTabsParent.find(".swiper-button-prev").addClass("l" + index);
-        var edcSwiperWithArrows = new Swiper(".edc-swiper-tabs" + index + " .swiper-container", {
+        var edcSwiperWithArrows = swiperInit(".edc-swiper-tabs" + index + " .swiper-container", {
           preventClicks: false,
           slideToClickedSlide: true,
           nextButton: ".swiper-button-next.r" + index,
