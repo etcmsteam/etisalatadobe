@@ -442,7 +442,9 @@ tbody.collapse.in {
     z-index: 12;
     background-color: #000;
     opacity: .8;
-    filter: alpha(opacity=80)
+    filter: alpha(opacity=80);
+    overflow: hidden !important;
+    
 }
 
 .tour-step-backdrop,
@@ -810,7 +812,7 @@ html {
 }
 
 body {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    /* font-family: Helvetica Neue, Helvetica, Arial, sans-serif; */
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
@@ -3437,8 +3439,11 @@ input[type=submit].btn-block {
 
 @font-face {
     font-family: Glyphicons Halflings;
-    src: url(../fonts/glyphicons-halflings-regular.eot);
-    src: url(../fonts/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"), url(../fonts/glyphicons-halflings-regular.woff) format("woff"), url(../fonts/glyphicons-halflings-regular.ttf) format("truetype"), url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg")
+    src: url(../resources/fonts/glyphicons-halflings-regular.eot);
+    src: url(../resources/fonts/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"),
+    url(../resources/fonts/glyphicons-halflings-regular.woff) format("woff"),
+    url(../resources/fonts/glyphicons-halflings-regular.ttf) format("truetype"),
+    url(../resources/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg")
 }
 
 .glyphicon {
@@ -6348,7 +6353,7 @@ a.list-group-item-danger.active:hover {
 .panel {
     margin-bottom: 20px;
     background-color: #fff;
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
 }
@@ -7263,7 +7268,7 @@ button.close {
     background-color: #000\9;
     background-color: transparent;
     border: 1px solid #fff;
-    border-radius: 10px
+    border-radius: 10px;
 }
 
 .carousel-indicators .active {
@@ -7288,6 +7293,9 @@ button.close {
 
 .carousel-caption .btn {
     text-shadow: none
+}
+.exp-popover .popover-content .tour-pager {
+    z-index: 1;
 }
 
 @media screen and (min-width:768px) {
@@ -7598,5 +7606,13 @@ button.close {
 .tour-step-background {
     display: none !important
 }
-
+.btn-end.close {
+    background: url("../resources/images/icon-close-dualtone.svg") no-repeat;
+    background-size: contain;
+    padding-left: 5px;
+    width: 25px !important;
+    height: 25px !important;
+    right: 12px !important;
+    opacity: 1;
+}
 /*# sourceMappingURL=explainer.min.css.map */

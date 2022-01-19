@@ -7,64 +7,69 @@
       <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
       <sly data-sly-call="${clientlib.all @ categories='cmp.crx.billing.explainer'}" />
       </sly>
-      <div id="${properties.reportCard}" class="exp-report-wrapper exp-bill-summary zooming" data-bill-explainer="${billModel.stepsData}">
-         <div class="exp-report-wrapper exp-bill-usage zooming">
-            <table id="Table_01" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-               <tr>
-                  <td colspan="2">
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_01.png" alt="" />
-                  </td>
-               </tr>
-               <tr>
-                  <td colspan="2" id="Step-1">
-                     <div class="exp-focus-step">
-                        <span>1</span>
-                     </div>
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_02.png" alt="" />
-                  </td>
-               </tr>
-               <tr>
-                  <td colspan="2">
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_03.png" alt="" />
-                  </td>
-               </tr>
-               <tr>
-                  <td colspan="2">
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_04.png" alt="" />
-                  </td>
-               </tr>
-               <tr>
-                  <td colspan="2">
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_05.png" alt="" />
-                  </td>
-               </tr>
-               <tr>
-                  <td colspan="2">
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_06.png" alt="" />
-                  </td>
-               </tr>
-               <tr>
-                  <td id="Step-2">
-                     <div class="exp-focus-step">
-                        <span>2</span>
-                     </div>
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_07.png" alt="" />
-                  </td>
 
-                  <td id="Step-3">
-                     <div class="exp-focus-step">
-                        <span>3</span>
-                     </div>
-                     <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_08.png" alt="" />
-                  </td>
-               </tr>
-            </table>
-         </div>
-      </div>
-   </div>
+<div class="exp-report-wrapper exp-bill-usage zooming" id="${properties.reportCard}" data-bill-explainer="${billModel.stepsData}">
+   <table id="Table_01" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+         <td colspan="2">
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_01.png" alt="">
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2" id="Step-1">
+            <div class="exp-focus-step">
+               <span>1</span>
+            </div>
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_02.png" alt="">
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2">
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_03.png" alt="">
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2">
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_04.png" alt="">
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2">
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_05.png" alt="">
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2">
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_06.png" alt="">
+         </td>
+      </tr>
+      <tr>
+         <td id="Step-2">
+            <div class="exp-focus-step">
+               <span>2</span>
+            </div>
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_07.png" alt="">
+         </td>
+         <td id="Step-3">
+            <div class="exp-focus-step">
+               <span>3</span>
+            </div>
+            <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/281723634_08.png" alt="">
+         </td>
+      </tr>
+   </table>
+</div>
+</div>
+   <style>
+      .billing-report-card-preview .row {
+         position: relative;
+      }
+      table{
+         background-color: #f7f8f4;
+      }
+   </style>
    <script>
          var tour_stepsUsageSummary = $("#total-usage-summary").data("bill-explainer");
-         console.log("usage summary --", tour_stepsUsageSummary);
             var jq = $.noConflict(true);
             jq(function () {
                jq.each(tour_stepsUsageSummary, function (i, step) {
@@ -87,7 +92,7 @@
                      tour._options.steps[2].placement = "top";
                   },
 
-                  template: "<div class='exp-popover popover tour'><h3 class='popover-title'></h3><div class='popover-content'></div><nav class='popover-navigation'><div class='btn-group'><button class='btn btn-default prev' data-role='prev'></button><button class='btn btn-default next' data-role='next'> </button></div><button class='btn btn-default btn-end' data-role='end'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#cross'></use></svg></button></nav></div>",
+                  template: `<div class='exp-popover popover tour'><h3 class='popover-title'></h3><div class='popover-content'></div><nav class='popover-navigation'><div class='btn-group'><button class='btn btn-default prev' data-role='prev'></button><button class='btn btn-default next' data-role='next'> </button></div><button class='btn-end close' data-role='end'></button></nav></div>`,
                   onShow: function () {
                      setTimeout(function () {
                         jq(".popover").append("<div class='zooming-contorls'><button type='button' id='zoom-in'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#zoomplus'></use></svg></button><button type='button' id='zoom-out'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#zoomminus'></use></svg></button></div>");
