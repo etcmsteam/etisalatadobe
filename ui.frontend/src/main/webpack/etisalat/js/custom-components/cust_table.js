@@ -19,40 +19,6 @@
                 $(".not-found").find("a").addClass("btn btn-default ripple-effect");
             }
 
-
-            function initSwiper() {
-                $(document).find('.channel-list-tabs-wrapper').each(function (index) {
-                    $(this).addClass('s' + index);
-                    var $swiperTabsParent = $(this);
-                    $swiperTabsParent.find('.swiper-button-next').addClass('r' + index);
-                    $swiperTabsParent.find('.swiper-button-prev').addClass('l' + index);
-                    var channelListTabs = new Swiper('.s' + index + ' .clist-swiper-tabs', {
-                        slidesPerView: 'auto',
-                        preventClicks: false,
-                        slideToClickedSlide: true,
-                        nextButton: '.swiper-button-next.r' + index,
-                        prevButton: '.swiper-button-prev.l' + index,
-                        breakpoints: {
-                            540: {
-                                slidesPerView: 'auto'
-                            },
-                            768: {
-                                slidesPerView: 'auto'
-                            },
-                            1024: {
-                                slidesPerView: 'auto'
-                            },
-                            1440: {
-                                slidesPerView: 'auto'
-                            },
-                            9999: {
-                                slidesPerView: 'auto'
-                            }
-                        }
-                    });
-                });
-            }
-
             // search expand for mobile view 
             $('.head-wrapper .input-group .input-icon').off().on('click', function(e) {
                 e.preventDefault();
@@ -368,6 +334,5 @@ $('.sort-label.mobile-view').off('click').on('click', function (e) {
                 $(currentOpendPopUp).css('display', 'none');
                 $('body').removeClass('freeze');
             });
-            initSwiper();
 
         });

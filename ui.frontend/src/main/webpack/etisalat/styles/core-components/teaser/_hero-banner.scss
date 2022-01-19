@@ -208,16 +208,16 @@
       @include respond-to-max($phone) {
         margin-bottom: $margin-step-0;
         margin-top: toRem(8);
+        padding-left: toRem(2);
       }
     }
 
     .video_cover {
       @include respond-to-min($desktop) {
         bottom: -9999px;
-        height: toRem(500);
+        height: auto;
         left: -9999px;
         margin: auto;
-        max-width: unset;
         min-height: 100%;
         min-width: 100%;
         position: absolute;
@@ -229,7 +229,7 @@
     .video_ctn {
       @include respond-to-max($phone) {
         background: $white-grey;
-        padding: calc(#{$padding-step-5} +10px) $padding-step-0;
+        padding: toRem(70) 0;
       }
 
       @include respond-to-min($tablet) {
@@ -249,10 +249,10 @@
     .youtube-popup-container {
       left: toRem(20);
       right: toRem(10);
-      top: toRem(218);
+      top: toRem(250);
 
       @include respond-to-min($tablet) {
-        top: toRem(228);
+        top: toRem(240);
       }
 
       @include respond-to-min($desktop) {
@@ -404,6 +404,18 @@
 
     &__description {
       @include respond-to-min($desktop) {
+        bottom: 0;
+        left: 0;
+        padding: 0 toRem(12);
+        right: auto;
+        top: 0;
+        width: toRem(388);
+
+        @include rtlBlock() {
+          left: auto;
+          right: 0;
+        }
+
         p {
           position: relative;
           top: toRem(5);
@@ -415,6 +427,19 @@
           &:first-child {
             line-height: 1.6;
           }
+
+          @include rtlBlock() {
+            font-weight: get-font-weight("light");
+          }
+        }
+
+        @include respond-to-min($desktop-wide) {
+          bottom: 0;
+          left: 0;
+          padding: 0;
+          right: 0;
+          top: 0;
+          width: toRem(560);
         }
 
         .hero-heading-big {
@@ -430,7 +455,7 @@
 
         h3 {
           @include rtlBlock() {
-            font-weight: light;
+            font-weight: get-font-weight("light");
           }
         }
 
@@ -472,32 +497,21 @@
       @include respond-to-min($desktop) {
         bottom: 0;
         left: 0;
+        margin: auto;
         padding: 0 toRem(12);
-        right: auto;
+        right: 0;
         top: 0;
-        width: toRem(388);
-
-        @include rtlBlock() {
-          left: auto;
-          right: 0;
-        }
+        width: toRem(1224);
       }
 
       @include respond-to-min($desktop-wide) {
         bottom: 0;
         left: 0;
-        margin-left: toRem(30);
-        margin-top: 0;
+        margin: auto;
         padding: 0 toRem(12);
-        right: auto;
+        right: 0;
         top: 0;
-        width: toRem(560);
-
-        @include rtlBlock() {
-          left: auto;
-          margin-right: toRem(30);
-          right: 0;
-        }
+        width: toRem(1224);
       }
 
       @include respond-to-max($desktop) {
@@ -522,7 +536,7 @@
       line-height: toRem(20);
       margin-bottom: toRem(12);
       max-width: toRem(336);
-      padding: calc(#{$padding-step-1} -2px) calc(#{$padding-step-1} +4px);
+      padding: toRem(6) toRem(16);
 
       @include font-family-lato();
 
@@ -607,14 +621,34 @@
       padding: 0;
 
       @include respond-to-min($desktop) {
+        bottom: 0;
         color: $white;
         font-size: toRem(54);
+        left: 0;
         line-height: toRem(64);
         margin: $margin-step-0 $margin-step-0 toRem(12.5) $margin-step-0;
+        padding: 0 toRem(12);
+        right: auto;
+        top: 0;
+        width: toRem(388);
+
+        @include rtlBlock() {
+          left: auto;
+          right: 0;
+        }
 
         a {
           color: $white;
         }
+      }
+
+      @include respond-to-min($desktop-wide) {
+        bottom: 0;
+        left: 0;
+        padding: 0;
+        right: 0;
+        top: 0;
+        width: toRem(560);
       }
 
       @include respond-to-max($desktop) {
@@ -628,15 +662,7 @@
       }
 
       &-link {
-        color: $black;
-
-        @include respond-to-min($desktop) {
-          color: $white;
-        }
-
-        @include respond-to-max($desktop) {
-          color: $white;
-        }
+        color: $white;
       }
     }
   }
@@ -672,17 +698,11 @@
   &__right_text {
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
-        left: auto;
-        margin-left: 0;
-        margin-right: toRem(30);
-        margin-top: 0;
-        right: 0;
+        margin-left: 50%;
+        width: 50%;
 
         @include rtlBlock() {
-          left: 0;
-          margin-left: toRem(30);
-          margin-right: 0;
-          right: auto;
+          margin-right: 50%;
         }
 
         .cmp-teaser__description {
@@ -694,9 +714,11 @@
 
       .hero-heading-big {
         left: 50%;
+        margin-left: toRem(-12);
 
         @include rtlBlock() {
           left: auto;
+          margin-right: toRem(-12);
           right: 50%;
         }
       }
@@ -726,6 +748,7 @@
     @include respond-to-min($desktop) {
       .cmp-teaser__content {
         align-items: center;
+        width: toRem(1020);
 
         @include rtlBlock() {
           align-items: center;
@@ -735,6 +758,7 @@
           display: flex;
           justify-content: center;
           text-align: center;
+          width: 100%;
 
           @include rtlBlock() {
             display: flex;
@@ -743,11 +767,15 @@
           }
         }
 
-        .cmp-teaser__description p {
-          text-align: center;
+        .cmp-teaser__description {
+          width: 100%;
 
-          @include rtlBlock() {
+          p {
             text-align: center;
+
+            @include rtlBlock() {
+              text-align: center;
+            }
           }
         }
       }
@@ -758,9 +786,16 @@
 
       .hero-heading-big {
         left: 0;
+        margin: auto;
         right: 0;
         text-align: center;
-        top: toRem(110);
+        top: toRem(190);
+
+        @include rtlBlock() {
+          left: 0;
+          margin: auto;
+          right: 0;
+        }
 
         h1 {
           @include rtlBlock() {
@@ -770,8 +805,8 @@
       }
 
       .youtube-popup-container .btn-green {
-        left: 0;
-        margin: auto;
+        left: 0 !important;
+        margin: auto !important;
         right: 0;
         width: toRem(180);
       }
@@ -781,18 +816,38 @@
         margin: auto;
         right: 0;
       }
+
+      &.plain-hero--banner {
+        .cmp-teaser {
+          &__content {
+            align-items: center;
+            margin: auto;
+            width: toRem(422);
+          }
+
+          &__title {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }
 
 .plain-hero--banner {
-  height: toRem(500);
-  max-height: toRem(200);
+  height: toRem(554);
+  max-height: toRem(554);
   position: relative;
   width: auto;
 
   @include respond-to-min($desktop) {
-    max-height: toRem(363);
+    max-height: toRem(500);
+  }
+
+  .cmp-teaser__title a {
+    @include respond-to-max($tablet) {
+      color: $white;
+    }
   }
 }
 

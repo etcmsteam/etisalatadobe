@@ -44,7 +44,7 @@ public class EtisalatBreadcrumbImpl implements EtisalatBreadcrumb {
   @Override
   public List<EtisalatBreadcrumbVO> getEtisalatBreadcrumbItems() {
     final Resource etisalatBreadcrumb = res.getChild(AEConstants.BREADCRUMB_ITEMS);
-    List<EtisalatBreadcrumbVO> etisalatBreadcrumbItem = new ArrayList<>();
+    final List<EtisalatBreadcrumbVO> etisalatBreadcrumbItem = new ArrayList<>();
     if (etisalatBreadcrumb != null && etisalatBreadcrumb.hasChildren()) {
       final Iterator<Resource> list = etisalatBreadcrumb.listChildren();
       while (list.hasNext()) {

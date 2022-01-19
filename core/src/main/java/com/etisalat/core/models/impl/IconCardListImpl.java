@@ -45,7 +45,7 @@ public class IconCardListImpl implements IconCardList {
   @Override
   public List<IconCardVO> getIconCardListItems() {
     final Resource iconCardList = res.getChild(AEConstants.NAV_ITEMS);
-		List<IconCardVO> iconCardListItem = new ArrayList<>();
+	final List<IconCardVO> iconCardListItem = new ArrayList<>();
     if (iconCardList != null && iconCardList.hasChildren()) {
       final Iterator<Resource> list = iconCardList.listChildren();
       while (list.hasNext()) {

@@ -108,7 +108,7 @@ public class MegaNavigationImpl implements MegaNavigation {
    */
   private List<MegaNavigationItem> getNavigationItems(String childItem) {
     final Resource navItemRes = currentRes.getChild(childItem);
-    List<MegaNavigationItem> navigationItemsList = new ArrayList<>();
+    final List<MegaNavigationItem> navigationItemsList = new ArrayList<>();
     if (null != navItemRes) {
       navItemRes.listChildren().forEachRemaining(resource -> {
         final MegaNavigationItem navModel = resource.adaptTo(MegaNavigationItem.class);
@@ -138,7 +138,7 @@ public class MegaNavigationImpl implements MegaNavigation {
   private void setSubNavigationItems(Resource itemResource, MegaNavigationItem navModel) {
     if (itemResource.hasChildren()) {
       final Resource subItemRes = itemResource.getChild(AEConstants.SUB_NAVIGATION_ITEMS);
-      List<MegaSubNavigationItem> subItemList = new ArrayList<>();
+      final List<MegaSubNavigationItem> subItemList = new ArrayList<>();
       subItemRes.listChildren().forEachRemaining(resource -> {
         final MegaSubNavigationItem subNavModel = resource.adaptTo(MegaSubNavigationItem.class);
         setNavMenuActive(resource, subNavModel.getSubNavLinkTo(), navModel);
@@ -231,7 +231,7 @@ public class MegaNavigationImpl implements MegaNavigation {
    * @param resourceType
    */
   private List<MegaFixedNavigationItem> getMegaSubMenuList(Resource item, String resourceType) {
-    List<MegaFixedNavigationItem> subMenuList = new ArrayList<>();
+    final List<MegaFixedNavigationItem> subMenuList = new ArrayList<>();
     for (Resource childRes : item.getChildren()) {
       final String styleID = getContainerStyleID(childRes);
       if (childRes.getResourceType().equals(resourceType)) {
@@ -259,13 +259,13 @@ public class MegaNavigationImpl implements MegaNavigation {
    */
   private void setContainerBrandMenuList(Resource itemResource,
       MegaFixedNavigationItem fixedNavModel, List<MegaFixedNavigationItem> subMenuList) {
-    List<MegaTeaserModel> brandMenuList = new ArrayList<>();
+    final List<MegaTeaserModel> brandMenuList = new ArrayList<>();
     for (Resource childRes : itemResource.getChildren()) {
       if (childRes.getResourceType().equals(PageConstants.TITLE_RESOURCE_TYPE)) {
         fixedNavModel
             .setTitle(childRes.getValueMap().get(JcrConstants.JCR_TITLE, StringUtils.EMPTY));
       } else if (childRes.getResourceType().equals(PageConstants.TEASER_RESOURCE_TYPE)) {
-        MegaTeaserModel teaserModel = childRes.adaptTo(MegaTeaserModel.class);
+        final MegaTeaserModel teaserModel = childRes.adaptTo(MegaTeaserModel.class);
         if (null != teaserModel && StringUtils.isNotBlank(teaserModel.getFileReference())) {
           brandMenuList.add(teaserModel);
         }
@@ -284,11 +284,11 @@ public class MegaNavigationImpl implements MegaNavigation {
   */
   private List<MegaTeaserModel> getMegaPromotionalTilesList(Resource childResource,
       String resourceType) {
-    List<MegaTeaserModel> tilesList = new ArrayList<>();
+    final List<MegaTeaserModel> tilesList = new ArrayList<>();
     childResource.listChildren().forEachRemaining(resource -> {
       if (!resource.getName().equals(AEConstants.CQ_RESPONSIVE_NODE) && resource.getResourceType()
           .equals(resourceType)) {
-        MegaTeaserModel teaserModel = resource.adaptTo(MegaTeaserModel.class);
+    	  final MegaTeaserModel teaserModel = resource.adaptTo(MegaTeaserModel.class);
         if (null != teaserModel && StringUtils.isNotBlank(teaserModel.getFileReference())) {
           setTeaserCTADetails(teaserModel, resource);
           tilesList.add(teaserModel);
@@ -308,10 +308,10 @@ public class MegaNavigationImpl implements MegaNavigation {
   private void setTeaserCTADetails(MegaTeaserModel teaserModel, Resource actionResource) {
     if (StringUtils.isNotBlank(teaserModel.getActionsEnabled()) && ("true")
         .equals(teaserModel.getActionsEnabled())) {
-      Resource item = actionResource.getChild("actions");
+    	final  Resource item = actionResource.getChild("actions");
       if (null != item) {
         for (Resource itemRes : item.getChildren()) {
-          ValueMap vm = itemRes.getValueMap();
+        	final ValueMap vm = itemRes.getValueMap();
           teaserModel.setLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,
               vm.get(AEConstants.PROPERTY_LINK, StringUtils.EMPTY)));
           teaserModel.setText(vm.get("text", String.class));
@@ -329,7 +329,7 @@ public class MegaNavigationImpl implements MegaNavigation {
    */
   private String getContainerStyleID(Resource resource) {
     if (resource.getValueMap().containsKey(AEConstants.STYLE_ID)) {
-      String[] styleIds = resource.getValueMap().get(AEConstants.STYLE_ID, String[].class);
+    	final String[] styleIds = resource.getValueMap().get(AEConstants.STYLE_ID, String[].class);
       if (null != styleIds && styleIds.length > 0) {
         return styleIds[0];
       }
@@ -344,12 +344,12 @@ public class MegaNavigationImpl implements MegaNavigation {
    * @return
    */
   private List<FixedNavigtaionMultifieldModel> getTopNavigationItems(String childItem) {
-    List<FixedNavigtaionMultifieldModel> topNavItemsList = new ArrayList<>();
+	  final List<FixedNavigtaionMultifieldModel> topNavItemsList = new ArrayList<>();
     Resource rootRes = null;
     if (StringUtils.isNotBlank(topNavMenuPath) && currentRes.getPath().contains(topNavMenuPath)) {
       rootRes = currentRes.getParent();
     } else if (StringUtils.isNotBlank(topNavMenuPath)) {
-      Resource topNavRes = currentRes.getResourceResolver().getResource(topNavMenuPath);
+    	final Resource topNavRes = currentRes.getResourceResolver().getResource(topNavMenuPath);
       if (null != topNavRes) {
         rootRes = topNavRes.getChild(AEConstants.JCR_CONTENT_ROOT);
       }
@@ -372,11 +372,11 @@ public class MegaNavigationImpl implements MegaNavigation {
       String childItem) {
     if (null != rootRes) {
       for (Resource childRes : rootRes.getChildren()) {
-        String resourceType = childRes.getResourceType();
+    	  final String resourceType = childRes.getResourceType();
         if (resourceType.equals(PageConstants.TOP_NAVIGATION_RESOURCE_TYPE) && null != childRes
             .getChild(childItem)) {
           childRes.getChild(childItem).listChildren().forEachRemaining(resource -> {
-            FixedNavigtaionMultifieldModel navModel = resource
+        	  final FixedNavigtaionMultifieldModel navModel = resource
                 .adaptTo(FixedNavigtaionMultifieldModel.class);
             navModel.setTopNavigationXFResource(resource);
             navModel.setNavigationLink(
@@ -439,7 +439,7 @@ public class MegaNavigationImpl implements MegaNavigation {
   public List<LinkModel> getLanguageItems() {
     List<LinkModel> langList = new ArrayList<>();
     if (null != getTopNavResource()) {
-      TopnavModel topNavModel = this.modelFactory
+    	final TopnavModel topNavModel = this.modelFactory
           .getModelFromWrappedRequest(this.request, getTopNavResource(),
               TopnavModel.class);
       if (null != topNavModel) {

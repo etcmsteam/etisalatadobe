@@ -77,6 +77,6 @@ public class SendNotificationServletTest {
 	@Test
 	void testSendApiUrl() throws NoSuchFieldException,JsonSyntaxException, JsonParseException {		
 		when(etisalatApiService.getContactUsApiUrl()).thenReturn("test/api");
-		assertEquals(sendNotificationServlet.getSendNotificationApiUrl(),"test/api");
+		assertEquals("test/api", sendNotificationServlet.getSendNotificationApiUrl());
 	} 
 }
