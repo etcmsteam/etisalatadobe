@@ -9,6 +9,4 @@ public interface EtisalatBreadcrumb {
    */
   List<EtisalatBreadcrumbVO> getEtisalatBreadcrumbItems();
 
-  int getEtisalatBreadcrumbSize();
-
 }
