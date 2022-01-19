@@ -39,16 +39,13 @@ class EtisalatBreadcrumbImplTest {
 		final String expectedBreadcrumbTitle = "title1";
 		final String expectedBreadcrumbLink = "/content/etisalat/ae-qa/en/c";
 		final String expectedLinkBehavior ="opennewwindow";
-		int expectedBreadcrumbSize = 2;
 		EtisalatBreadcrumb breadcrumbList = context.request().adaptTo(EtisalatBreadcrumb.class);
 		EtisalatBreadcrumbVO breadcrumbListItem = breadcrumbList.getEtisalatBreadcrumbItems().get(0);
 		String actualBreadcrumbTitle = breadcrumbListItem.getBreadcrumbTitle();
 		String actualBreadcrumbLink = breadcrumbListItem.getBreadcrumbLink();
 		String actualLinkBehavior = breadcrumbListItem.getLinkBehavior();
-		int actualBreadcrumbSize = breadcrumbList.getEtisalatBreadcrumbSize();
 		assertEquals(expectedBreadcrumbTitle, actualBreadcrumbTitle);
 		assertEquals(expectedBreadcrumbLink, actualBreadcrumbLink);
-		assertEquals(expectedBreadcrumbSize, actualBreadcrumbSize);
 		assertEquals(expectedLinkBehavior, actualLinkBehavior);
 
 	}		
