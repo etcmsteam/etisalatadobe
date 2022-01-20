@@ -67,4 +67,8 @@ public class BillExplainerModel {
 	stepDetails.add(stepDataMap);  
   }
 
+  public String getBillExplainerDAMPath() {
+  	return AEConstants.BILL_EXPLAINER_DAM_PATH;
+  }
+
 }
