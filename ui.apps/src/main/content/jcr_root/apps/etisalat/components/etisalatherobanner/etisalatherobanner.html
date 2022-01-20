@@ -38,7 +38,7 @@
 					</svg>
 				</div>
 			</div>
-	      <div data-sly-test="${properties.pretitle}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
+	      <div data-sly-test="${properties.pretitle && properties.tagAlignment == 'beforetitle'}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
 		      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
 		         <sly data-sly-test="${tagItems.name == 'tagline'}">
 		               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
@@ -53,6 +53,14 @@
 			</div>
 	      <div data-sly-test="${properties.heroTitle}" class="ele-margin hero-title ${properties.titleFontStyle}">
 	        <h2>${properties.heroTitle}</h2>
+	      </div>
+	      <div data-sly-test="${properties.pretitle && properties.tagAlignment == 'aftertitle'}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
+		      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
+		         <sly data-sly-test="${tagItems.name == 'tagline'}">
+		               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
+		         </sly>	      
+		      </sly>	      	        
+	        <div class="text"> ${properties.pretitle}</div>
 	      </div>
 		  <div class="ele-margin hero-thumbnails">
 		  <sly data-sly-use.thumbnailObj="${resource.path}" data-sly-list.thumbnailItems="${thumbnailObj.listChildren}">
@@ -71,29 +79,9 @@
 	        <sly data-sly-test.heroCTALink="${properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink}" 
                data-sly-use.heroModelLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}"/>
 	        <a href="${heroModelLink.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn ${properties.ctaColor} ripple-effect"> ${properties.bannerCTATitle} </a>
-	      </div>
-	      <div data-sly-test="${properties.linkBehavior == 'openmodalwindow' && properties.bannerCTATitle}" class="ele-margin hero-cta">
-	          <a data-label="${component.id}" class="btn ${properties.ctaColor} btn-modal ripple-effect"
-			       title="${properties.bannerCTATitle}">${properties.bannerCTATitle} </a>			      			    
-		      <div id="${component.id}"
-	             class="nv-modal fade  ${properties.modalBehavior}-modal">	             
-	             <div class="nv-modal-dialog">
-	                <div class="nv-modal-content nv-py-5">
-	                   <div class="container">
-	                      <div class="modal-popup">
-	                         <sly
-	                            data-sly-use.closebuttonTemplate="/apps/etisalat/components/button/closebutton.html"
-	                            data-sly-call="${closebuttonTemplate.close}">
-	                         </sly>
-	                         <sly
-	                            data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
-	                         </sly>
-	                      </div>
-	                   </div>
-	                </div>
-	             </div>
-	          </div>
-          </div>
+	      </div>	      
+		   <sly data-sly-use.heroCTAModelTemplate="modalpopup.html"
+			             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
 	    </div>
 	  </div>
 	</div>
