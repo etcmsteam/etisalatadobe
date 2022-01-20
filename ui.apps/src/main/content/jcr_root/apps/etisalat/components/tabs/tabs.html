@@ -19,7 +19,7 @@
 	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	     data-panelcontainer="${wcmmode.edit && 'tabs'}"
 	     id="${tabs.id}"
-	     class="cmp-tabs ${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'accordionView') ? 'hidden-sm hidden-xs' : ''}"
+	     class="cmp-tabs ${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'accordionView') ? 'hidden-sm hidden-xs' : ''}${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'notTabAccordionView') ? 'hidden-xs' : ''}"
 	     data-cmp-is="tabs"
 	     data-cmp-data-layer="${tabs.data.json}"
 	     data-placeholder-text="${wcmmode.edit && 'Please drag Tab components here' @ i18n}">
@@ -47,8 +47,8 @@
                    </sly>
                  </li>
             </ol>
-          </sly> 
-         <sly data-sly-test="${properties.tabsMobileLayout && properties.tabsMobileLayout == 'swiperView'}" 
+          </sly>
+         <sly data-sly-test="${properties.tabsMobileLayout && properties.tabsMobileLayout == 'swiperView'}"
              data-sly-use.tabSwiperTemplate="swiperview.html"
              data-sly-call="${tabSwiperTemplate.swiper @ tabs=tabs,properties=properties}"></sly>
 
@@ -68,12 +68,12 @@
 <!--mobile view start-->
 
 <sly data-sly-test="${wcmmode.preview || wcmmode.disabled}">
-<div id="Mobile-${tabs.id}" 
-     data-sly-use.accord="com.adobe.cq.wcm.core.components.models.Tabs" 
+<div id="Mobile-${tabs.id}"
+     data-sly-use.accord="com.adobe.cq.wcm.core.components.models.Tabs"
      data-sly-test="${properties.tabsMobileLayout && properties.tabsMobileLayout == 'accordionView'}"
      class="hidden-md hidden-lg">
 
-  <sly data-sly-test="${properties.tabsMobileLayout && properties.tabsMobileLayout == 'accordionView'}" 
+  <sly data-sly-test="${properties.tabsMobileLayout && properties.tabsMobileLayout == 'accordionView'}"
         data-sly-use.tabAccordionTemplate="accordionview.html"
        data-sly-call="${tabAccordionTemplate.accordion @ accord=accord,tabs=tabs}">
   </sly>
