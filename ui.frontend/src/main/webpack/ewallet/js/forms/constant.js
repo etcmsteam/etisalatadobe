@@ -2,11 +2,11 @@ export const MY_CONST_OBJECT = {};
 
 export const FORM_VALIDATION_MESSAGES = {
   EN: {
-    firstName: {
+    ewalletFirstName: {
       required: "This field is required.",
       simplealphabeticlatinarabic: "Letters, And Spaces Only Please",
     },
-    lastName: {
+    ewalletLastName: {
       required: "This field is required.",
       simplealphabeticlatinarabic: "Letters, And Spaces Only Please",
     },
@@ -26,11 +26,11 @@ export const FORM_VALIDATION_MESSAGES = {
     },
   },
   AR: {
-    firstName: {
+    ewalletFirstName: {
       required: "هذا الحقل إلزامي",
       simplealphabeticlatinarabic: "الرجاء استخدام الأحرف الأبجدية فقط",
     },
-    lastName: {
+    ewalletLastName: {
       required: "هذا الحقل إلزامي",
       simplealphabeticlatinarabic: "الرجاء استخدام الأحرف الأبجدية فقط",
     },
