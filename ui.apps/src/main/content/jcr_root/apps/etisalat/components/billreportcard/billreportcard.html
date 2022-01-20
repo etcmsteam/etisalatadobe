@@ -1,0 +1,18 @@
+<sly data-sly-use.billModel="com.etisalat.core.models.BillExplainerModel" 
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"> 
+  <div data-report-type="${properties.reportCard}">
+     <sly data-sly-test="${properties.reportCard && properties.reportCard == 'total-usage-summary'}"
+	        data-sly-use.totalUsageTemplate="total-usage-summary.html"
+	        data-sly-call="${totalUsageTemplate.totalUsageReport @ billModel=billModel,properties=properties}">      
+	 </sly>
+	 <sly data-sly-test="${properties.reportCard && properties.reportCard == 'bill-history'}"
+	        data-sly-use.billHistoryTemplate="bill-history.html"
+	        data-sly-call="${billHistoryTemplate.billHistoryReport @ billModel=billModel,properties=properties}">      
+	 </sly>  
+	 <sly data-sly-test="${properties.reportCard && properties.reportCard == 'bill-summary'}"
+	        data-sly-use.billSummaryTemplate="bill-summary.html"
+	        data-sly-call="${billSummaryTemplate.billSummaryReport @ billModel=billModel,properties=properties}">      
+	 </sly>    
+  </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.reportCard}"></sly>

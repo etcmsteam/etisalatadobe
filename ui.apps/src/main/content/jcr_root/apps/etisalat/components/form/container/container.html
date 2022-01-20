@@ -34,12 +34,12 @@
       </form>
    </sly>
    <sly data-sly-test="${!properties.ootbformType}">
-      <form 
+      <form data-sly-use.customForm="com.etisalat.core.models.CustomForm"
          data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
-         method="POST" action="${currentPage.path}/_jcr_content${properties.formSubmissionOptions ? properties.formSubmissionOptions : ''}.html" id="${properties.customFormId ? properties.customFormId : 'new_form'}" name="${properties.customFormId ? properties.customFormId : 'new_form'}"
+         method="POST" action="${customForm.formAction}" id="${customForm.formId}" name="${customForm.formId}"
          enctype="multipart/form-data"
          class="cmp-form ${grid.cssClass}">
-         <input type="hidden" name=":redirect" value="${(properties.customFormRedirect ? properties.customFormRedirect : currentPage.path)  @ extension='html'}"/>
+         <input type="hidden" name=":redirect" value="${customForm.redirectUrl  @ extension='html'}"/>
          <sly data-sly-repeat.paragraph="${grid.paragraphs}"
             data-sly-resource="${paragraph.path @ resourceType=paragraph.resourceType, decorationTagName='div', cssClassName=paragraph.cssClass}"></sly>
          <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/responsivegrid/new'

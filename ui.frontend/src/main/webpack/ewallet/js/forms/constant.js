@@ -3,11 +3,11 @@ export const MY_CONST_OBJECT = {};
 export const FORM_VALIDATION_MESSAGES = {
   EN: {
     firstName: {
-      required: "First Name is required",
+      required: "This field is required.",
       simplealphabeticlatinarabic: "Letters, And Spaces Only Please",
     },
     lastName: {
-      required: "Last Name is required",
+      required: "This field is required.",
       simplealphabeticlatinarabic: "Letters, And Spaces Only Please",
     },
     companyName: {
@@ -18,10 +18,10 @@ export const FORM_VALIDATION_MESSAGES = {
       required: "This field is Required.",
     },
     phoneNumber: {
-      required: "Phone Number is required",
+      required: "This field is required.",
     },
     emailAddress: {
-      required: "Email is required",
+      required: "This field is required.",
       email: "Invalid email address. Please enter again.",
     },
   },

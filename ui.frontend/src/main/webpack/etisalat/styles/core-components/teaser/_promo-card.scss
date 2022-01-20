@@ -259,6 +259,10 @@
 
       bottom: toRem(70);
 
+      @include rtlBlock() {
+        padding-right: 0;
+      }
+
       @include respond-to-min($desktop) {
         bottom: toRem(110);
       }
@@ -288,7 +292,6 @@
     .cmp-teaser {
       display: flex;
       flex-direction: row-reverse;
-      margin-bottom: teRem(24);
 
       &__content {
         bottom: 0;
@@ -315,7 +318,11 @@
       }
 
       &__action-container {
-        bottom: toRem(100);
+        bottom: toRem(90);
+
+        @include rtlBlock() {
+          padding-right: 0;
+        }
 
         @include respond-to-min($desktop) {
           bottom: toRem(130);
@@ -332,11 +339,32 @@
       }
 
       &__image {
+        height: toRem(160);
         width: 48%;
+
+        img {
+          height: toRem(160);
+        }
+
+        @include respond-to-min($desktop) {
+          height: toRem(264);
+
+          img {
+            height: toRem(264);
+          }
+        }
       }
 
       &__title {
         color: $black !important;
+        font-size: toRem(22);
+        line-height: toRem(33);
+        margin-bottom: 0;
+
+        @include respond-to-min($desktop) {
+          font-size: toRem(26);
+          margin-bottom: toRem(12.5);
+        }
       }
     }
   }
@@ -417,17 +445,19 @@
 }
 
 .cmp-teaser--hero-card {
-  .gutter-padding-left:last-child {
+  .gutter-padding-left {
+    padding: 0;
+
     @include respond-to-min($tablet) {
-      padding-left: 0 !important;
-
-      @include rtlBlock() {
-        padding-left: 0.75rem !important;
-      }
+      padding: 0 toRem(12) !important;
     }
+  }
 
-    @include respond-to-min($desktop) {
-      padding-left: 0.75rem !important;
+  .gutter-padding-right {
+    padding: 0;
+
+    @include respond-to-min($tablet) {
+      padding: 0 toRem(12) !important;
     }
   }
 }

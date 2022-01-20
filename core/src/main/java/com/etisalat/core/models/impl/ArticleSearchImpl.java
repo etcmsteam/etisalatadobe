@@ -32,6 +32,7 @@ import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 import com.etisalat.core.util.CommonUtility;
 
+
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     ArticleSearch.class}, resourceType = {ArticleSearchImpl.RESOURCE_TYPE})
 public class ArticleSearchImpl implements ArticleSearch {
