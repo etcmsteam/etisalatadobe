@@ -1,5 +1,5 @@
 <template data-sly-template.hero="${ @ carousel,properties}">
-<div id="${carousel.id}" class="${!wcmmode.edit ? 'hero-banner-section' : ''} ${carousel.items.size > 1 ? 'multi-slides' : 'single-slide'}">
+<div id="${carousel.id}" class="${!wcmmode.edit ? 'hero-banner-section' : ''} ${carousel.items.size > 1 ? 'multi-slides' : 'single-slide-only'}">
     <div class="${!wcmmode.edit ? 'swiper-hero-container' : ''}">
         <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">
             <div role="tabpanel"
@@ -13,7 +13,7 @@
             </div>
         </div>
 		<div class="swiper-pagination hidden-md hidden-lg"></div>
-        <div class="hero-prev">
+        <div class="hero-prev" data-sly-test="${carousel.items.size > 1}">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
                 <g fill="none" fill-rule="evenodd">
                     <rect width="48" height="48" fill="#FFF" fill-rule="nonzero" opacity=".2" rx="24" />
@@ -22,7 +22,7 @@
                 </g>
             </svg>
         </div>
-        <div class="hero-next">
+        <div class="hero-next" data-sly-test="${carousel.items.size > 1}">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
                 <g fill="none" fill-rule="evenodd">
                     <rect width="48" height="48" fill="#FFF" fill-rule="nonzero" opacity=".2" rx="24" />
