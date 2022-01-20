@@ -75,7 +75,7 @@
         font-size: $font12;
         height: 1rem;
         line-height: toRem(16);
-        margin: 0;
+        margin: 0 0 6px;
         overflow: hidden;
         padding: 0 toRem(18);
         position: absolute;
@@ -98,6 +98,10 @@
     position: relative;
     width: 97%;
 
+    @include respond-to-min($desktop) {
+      width: 100%;
+    }
+
     &.select-arrow-active {
       font-weight: 500;
     }
@@ -112,6 +116,7 @@
 
     .cmp-form-text__text {
       background-color: transparent;
+      border-radius: toRem(5);
       border: none;
       box-shadow: none;
       box-sizing: border-box;
@@ -141,6 +146,10 @@
         color: $gray-primary;
       }
     }
+
+    @include respond-to-max($phone) {
+      width: 100%;
+    }
   }
 
   .cmp-form-options__field {
@@ -155,6 +164,10 @@
     outline: none;
     padding: 0 toRem(18) !important;
     width: 97%;
+
+    @include respond-to-min($desktop) {
+      width: 100%;
+    }
   }
 }
 
@@ -257,7 +270,7 @@
       font-size: $font12;
       height: 1rem;
       line-height: toRem(16);
-      margin: 0;
+      margin: 0 0 6px;
       overflow: hidden;
       padding: 0 toRem(18);
       position: absolute;
@@ -271,11 +284,15 @@
 }
 
 .cmp-form {
+  margin: 30px auto 0;
+  padding: 0;
+  width: 1024px;
+
   .googlecaptcha {
     margin-bottom: 30px;
 
     .g-recaptcha {
-      margin: 0 auto;
+      margin: 20px auto;
       width: toRem(304);
 
       iframe {
@@ -317,6 +334,13 @@
       @include respond-to-max($phone) {
         width: 100%;
       }
+    }
+  }
+
+  .text,
+  .options {
+    @include respond-to-max($phone) {
+      padding: 1rem 0;
     }
   }
 }
@@ -393,5 +417,18 @@
         }
       }
     }
+  }
+}
+
+.alert-icon {
+  display: block;
+
+  svg {
+    fill: $error-red;
+    height: toRem(20);
+    position: absolute;
+    right: toRem(15);
+    top: toRem(20);
+    width: toRem(20);
   }
 }

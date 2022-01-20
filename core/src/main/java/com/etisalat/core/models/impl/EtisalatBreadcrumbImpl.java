@@ -1,26 +1,23 @@
 package com.etisalat.core.models.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
 import com.etisalat.core.constants.AEConstants;
+import com.etisalat.core.models.EtisalatBreadcrumb;
+import com.etisalat.core.models.EtisalatBreadcrumbVO;
 import com.etisalat.core.util.CommonUtility;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.etisalat.core.models.EtisalatBreadcrumb;
-import com.etisalat.core.models.EtisalatBreadcrumbVO;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     EtisalatBreadcrumb.class}, resourceType = {EtisalatBreadcrumbImpl.RESOURCE_TYPE})
@@ -31,11 +28,7 @@ public class EtisalatBreadcrumbImpl implements EtisalatBreadcrumb {
 
   @SlingObject
   @Optional
-  private Resource res;
-
-  @Self
-  @Optional
-  private SlingHttpServletRequest request;
+  private Resource resource;
 
   @SlingObject
   ResourceResolver resourceResolver;
@@ -43,7 +36,7 @@ public class EtisalatBreadcrumbImpl implements EtisalatBreadcrumb {
 
   @Override
   public List<EtisalatBreadcrumbVO> getEtisalatBreadcrumbItems() {
-    final Resource etisalatBreadcrumb = res.getChild(AEConstants.BREADCRUMB_ITEMS);
+    final Resource etisalatBreadcrumb = resource.getChild(AEConstants.BREADCRUMB_ITEMS);
     final List<EtisalatBreadcrumbVO> etisalatBreadcrumbItem = new ArrayList<>();
     if (etisalatBreadcrumb != null && etisalatBreadcrumb.hasChildren()) {
       final Iterator<Resource> list = etisalatBreadcrumb.listChildren();
@@ -59,18 +52,9 @@ public class EtisalatBreadcrumbImpl implements EtisalatBreadcrumb {
       }
 
     } else {
-      LOG.error("Breadcurmb List is empty {}", res.getPath());
+      LOG.error("Breadcurmb List is empty {}", resource.getPath());
     }
     return Collections.unmodifiableList(etisalatBreadcrumbItem);
-  }
-
-  @Override
-  public int getEtisalatBreadcrumbSize() {
-    final int defaultSize = 0;
-    if (getEtisalatBreadcrumbItems() != null) {
-      return getEtisalatBreadcrumbItems().size();
-    }
-    return defaultSize;
   }
 
 }
