@@ -30,9 +30,9 @@ public class BillExplainerModel {
    * @return
    */
   public String getStepsData() {
-   Resource stepItem = currentResource.getChild(AEConstants.PN_EXPLAINER_TAB_ITEMS);
+   final Resource stepItem = currentResource.getChild(AEConstants.PN_EXPLAINER_TAB_ITEMS);
    List<Object> stepDetails = new ArrayList<>();
-   Gson gsonObj = new Gson();
+   final Gson gsonObj = new Gson();
     if(null != stepItem) {
 	  int count = 1;
 	  for(Resource resource : stepItem.getChildren()) {		
@@ -51,7 +51,7 @@ public class BillExplainerModel {
    * @param stepDetails
    */
   private void setStepDataValues(Resource resource,int resChildCount,List<Object> stepDetails) {
-	ValueMap vm = resource.getValueMap();
+	final ValueMap vm = resource.getValueMap();
 	Map<String,String> stepDataMap = new HashMap<>();
     String stepCount = new StringBuilder().append("#Step-").append(resChildCount).toString();
 	String stepTitle = new StringBuilder().append("<span>").append(resChildCount)
