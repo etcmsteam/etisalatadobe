@@ -36,10 +36,6 @@ public class CustomFormImpl implements CustomForm {
 	@ScriptVariable(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private Page currentPage;
 
-	@SlingObject
-	@Optional
-	private Resource resource;
-
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	@Default(values = "new_form")	
 	private String customFormId;
