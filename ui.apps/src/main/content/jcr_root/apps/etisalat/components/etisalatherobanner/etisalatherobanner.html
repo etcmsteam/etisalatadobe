@@ -11,41 +11,37 @@
 	    <!-- hero details div contains -> video link - headings - description - thumbnails - offers etc in below container  -->
 	    <div class="hero-details">
 	      <div class="hero-bg-cta" data-label=""></div>
-	      <div class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
-	      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
-	         <sly data-sly-test="${tagItems.name == 'tagline'}">
-	               <img class="icon" src="${tagItems.fileReference}" alt=""/>
-	         </sly>	      
-	      </sly>	      	        
-	        <div data-sly-test="${properties.pretitle}" class="text"> ${properties.pretitle}</div>
+	      <div data-sly-test="${properties.pretitle}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
+		      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
+		         <sly data-sly-test="${tagItems.name == 'tagline'}">
+		               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
+		         </sly>	      
+		      </sly>	      	        
+	        <div class="text"> ${properties.pretitle}</div>
 	      </div>
-			<div class="go-back">
+			<div data-sly-test="${properties.backToLinkLbl}" class="go-back">
 				<div class="third-action-wrapper action-link">
-					<a href="#" class="link">GO BACK</a>
+					<a href="${properties.backToLinkURL}" class="link">${properties.backToLinkLbl}</a>
 				</div>
 			</div>
 	      <div data-sly-test="${properties.heroTitle}" class="ele-margin hero-title ${properties.titleFontStyle}">
 	        <h2>${properties.heroTitle}</h2>
 	      </div>
 		  <div class="ele-margin hero-thumbnails">
-			<div class="thumbnail-icon">
-			  <img src="assets/img/current-promotions/icon-sim-sandy.svg" />
-			</div>
-			<div class="thumbnail-icon">
-			  <img src="assets/img/current-promotions/icon-sim-sandy.svg" />
-			</div>
-			<div class="thumbnail-icon">
-			  <img src="assets/img/current-promotions/icon-sim-sandy.svg" />
-			</div>
-			<div class="thumbnail-text">
-			  + 2 more
+		  <sly data-sly-use.thumbnailObj="${resource.path}" data-sly-list.thumbnailItems="${thumbnailObj.listChildren}">
+		     <div data-sly-test="${thumbnailItems.name == 'thumbnailItems'}" data-sly-repeat.thumbItem="${thumbnailItems.listChildren}" class="thumbnail-icon">
+		       <img data-sly-test="${thumbItem.fileReference}" src="${thumbItem.fileReference}" alt=""/>		    
+		     </div>
+		  </sly>			
+			<div data-sly-test="${properties.thumbnailText}" class="thumbnail-text">
+			  ${properties.thumbnailText}
 			</div>
 		  </div>
 	      <div data-sly-test="${properties.jcr:description}" class="ele-margin hero-description">
                 ${properties.jcr:description @ context = 'html'}
           </div>
 	      <div data-sly-test="${properties.bannerCTATitle}" class="ele-margin hero-cta">
-	        <a href="https://www.linkedin.com/feed/" class="btn btn-green ripple-effect"> ${properties.bannerCTATitle} </a>
+	        <a href="https://www.linkedin.com/feed/" class="btn ${properties.ctaColor} ripple-effect"> ${properties.bannerCTATitle} </a>
 	      </div>
 	    </div>
 	  </div>
