@@ -41,8 +41,10 @@
 	        <div class="text"> ${properties.pretitle}</div>
 	      </div>
 			<div data-sly-test="${properties.backToLinkLbl}" class="go-back">
+			<sly data-sly-test.customLink="${properties.backToLinkURL}" 
+                data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
 				<div class="third-action-wrapper action-link">
-					<a href="${properties.backToLinkURL}" class="link">${properties.backToLinkLbl}</a>
+					<a data-sly-test="${commonlinkmodel.link}" href="${commonlinkmodel.link}" class="link">${properties.backToLinkLbl}</a>
 				</div>
 			</div>
 	      <div data-sly-test="${properties.heroTitle}" class="ele-margin hero-title ${properties.titleFontStyle}">
