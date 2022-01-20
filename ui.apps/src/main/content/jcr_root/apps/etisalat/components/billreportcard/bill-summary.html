@@ -1,4 +1,4 @@
-<template  data-sly-template.billSummaryReport="${ @ billModel,properties}">
+<template  data-sly-template.billSummaryReport="${ @ billModel,properties,page}">
   <div class="billing-report-card-preview">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="dns-prefetch" href="fonts.googleapis.com">
@@ -11,7 +11,7 @@
   <!--
           <button id="startTourBtn" class="btn btn-primary">Start</button> -->
   <div class="exp-logo-report">
-    <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/etisalat_eng_logo.png" alt="">
+    <img src="${billModel.billExplainerDAMPath}/etisalat_eng_logo.png" alt="">
   </div>
   <div class="exp-report-header">
     <div class="row">
@@ -218,7 +218,7 @@
     </div>
   </div>
   <div class="exp-footer">
-    <img src="/content/dam/etisalat/cx-billing/assets/img/explainer/exp-report-footer.png" alt="">
+    <img src="${billModel.billExplainerDAMPath}/exp-report-footer${page.language && page.language == 'ar' ? '-ar' : ''}.png" alt="">
   </div>
 </div>
   </div>
