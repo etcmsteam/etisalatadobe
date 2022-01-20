@@ -11,10 +11,10 @@
           <div data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
                data-sly-use.tabs="com.adobe.cq.wcm.core.components.models.Tabs"
                id="tabBoxes-${tabs.id}">
-               <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-sm-4 head-desktop panel hidden-xs hidden-ms">                    
+               <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-md-4 head-desktop panel hidden-xs hidden-ms">                    
   					<a class="${tabList.first ? '' :'collapsed'}" data-toggle="collapse" data-parent="#tabBoxes-${tabs.id}" href="#tabBoxes-${component.id}-${tabList.count}"> ${tab.title}</a>  					
   				</div>
-                <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-sm-8 body-desktop panel">                     
+                <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-md-8 body-desktop panel">                     
                      <a class="${tabList.first ? '' :'collapsed'} head-mobile hidden-sm hidden-md hidden-lg" 
                         data-toggle="collapse" data-parent="#tabBoxes-${tabs.id}" 
                         href="#tabBoxes-${component.id}-${tabList.count}">${tab.title}</a>
@@ -23,7 +23,7 @@
                          <div data-sly-set.reportIframePath="${'{0}/{1}' @ format=[resource.path, tab.name]}" 
                               data-sly-use.reportCard="${reportIframePath}" class="billing-report-section">
                           <p class="paragraph" data-sly-test="${reportCard['sectionTitle']}">${reportCard['sectionTitle']}</p>
-                           <div class="billing-report-card">
+                           <div class="billing-report-card billing-report-card-usage col-xs-12">
                              <iframe src="${reportIframePath @ extension='html'}" frameborder="0" height="100%" width="100%"></iframe>
                            </div>
                          </div>        

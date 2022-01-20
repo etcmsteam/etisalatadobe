@@ -53,7 +53,6 @@
 }
 
 * {
-    font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
@@ -3781,7 +3780,6 @@ tbody.collapse.in {
 
 .swiper-slide {
     -webkit-flex-shrink: 0;
-    -ms-flex: 0 0 auto;
     -ms-flex-negative: 0;
     flex-shrink: 0;
     width: 100%;
@@ -11899,7 +11897,7 @@ input::-ms-clear {
 
 #passwordUpdateForm input:-webkit-autofill,#passwordUpdateForm select:-webkit-autofill,#passwordUpdateForm textarea:-webkit-autofill {
     background-color: #f1f1eb!important;
-    -webkit-box-shadow: 0 0 0 1000px #f1f1eb inset!important
+    box-shadow: 0 0 0 1000px #f1f1eb inset!important
 }
 
 @media (max-width: 992px) {
@@ -12343,8 +12341,8 @@ bdo[dir=rtl] {
 }
 
 .bg-dark .btn.btn-red .ink,.btn.btn-red .ink {
-    background-color: #a60b11);
-    border-color: #a60b11
+    background-color: #a60b11;
+    border-color: #a60b11;
 }
 
 .bg-dark .btn.btn-primary,.btn.btn-primary {
@@ -19408,13 +19406,13 @@ html[lang=ar] [dir=rtl] .top-nav-section .top-nav-right {
     }
 }
 
-@media (min-width: 992px) and (-ms-high-contrast:none),(min-width:992px) and screen and (-ms-high-contrast:active) {
+@media (min-width: 992px) and (-ms-high-contrast:none),(min-width:992px) and (screen) and (-ms-high-contrast:active) {
     .business .main-menu .mega-dropdown .sub-menu h5 a svg {
         position:absolute
     }
 }
 
-@media (min-width: 992px) and (-ms-high-contrast:none),(min-width:992px) and screen and (-ms-high-contrast:active) {
+@media (min-width: 992px) and (-ms-high-contrast:none),(min-width:992px) and (screen) and (-ms-high-contrast:active) {
     .business .main-menu .mega-dropdown .sub-menu h5 a {
         display:block;
         max-width: 120px
@@ -46303,7 +46301,7 @@ table.dataTable tbody td {
     }
 }
 
-@media screen and (max-width: 991px) and screen and (max-width:767px) {
+@media screen and (max-width: 991px) and (screen) and (max-width:767px) {
     .account-services-list-view table.dataTable .listing-row .listing-col .your-plan .listing-icon-txt {
         top:7px
     }
@@ -57947,7 +57945,7 @@ html[lang=ar] [dir=rtl] .consumer-register-form .form .form-submit button {
     margin-right: 8.33%
 }
 
-@media screen (min-width: 768px) and (max-width:992px) {
+@media (min-width: 768px) and (max-width:992px) {
     [lang=ar] [dir=rtl] .forms-default-settings .profile-setting-mask-wrapper {
         margin-right:0
     }
@@ -63106,7 +63104,7 @@ html[lang=ar] [dir=rtl] .consumer-register-form .form .form-submit button {
     min-width: 340px
 }
 
-@media only screen (max-width: 1025px) {
+@media  (max-width: 1025px) {
     .table-payment-methods-row .table-responsive table.table-payment-methods tbody tr td[data-label="ENTER OR SELECT A RECHARGE AMOUNT"] {
         min-width:200px
     }
@@ -63605,12 +63603,12 @@ html[lang=ar] [dir=rtl] .consumer-register-form .form .form-submit button {
     }
 }
 
-@media (min-width: 993px) (max-width:1339px) {
+@media (min-width: 993px) and (max-width:1339px) {
     .as-dataTiles {
         padding-left:10px;
         padding-right: 10px;
         padding-bottom: 20px;
-        padding-right: 20px
+        padding-right: 20px;
     }
 
     .as-dataTiles:nth-child(3n) {
@@ -69705,7 +69703,7 @@ html[lang=ar] [dir=rtl] .consumer-register-form .form .form-submit button {
     }
 }
 
-@media (min-width: 768px) (max-width:992px) {
+@media (min-width: 768px) and (max-width:992px) {
     .dashboard-pattern {
         background-size:75% auto;
         background-position-x: -100px!important
@@ -72027,7 +72025,7 @@ a.renewEIDclick:after {
     }
 }
 
-@media (min-width: 768px) (max-width:992px) {
+@media (min-width: 768px) and (max-width:992px) {
     .bills-payments .news-section li .limit-check-box input[type=radio]+label {
         width:94px;
         padding: 7px 6px
@@ -88500,7 +88498,9 @@ input[type=checkbox],input[type=radio] {
     height: 1315px;
     width: 100%;
     display: block;
-    overflow: hidden
+    overflow: hidden;
+    z-index:9;
+    background: #FFF;
 }
 
 @media (max-width: 1024px) {
@@ -89486,7 +89486,13 @@ input[type=checkbox],input[type=radio] {
     margin-bottom: 0;
     perspective: 1px
 }
+@media (max-width: 1440px) {
 
+    .billing-report-card-preview .exp-report-wrapper.exp-bill-usage,
+    .billing-report-card-preview .exp-report-wrapper.exp-bill-summary {
+        transform: scale(1) translate(0);
+    }
+}
 @media (max-width: 800px) {
     .billing-report-card body {
         transform:scale(.84) translate(-80px,-80px)
@@ -89556,121 +89562,141 @@ input[type=checkbox],input[type=radio] {
 }
 
 @media (max-width: 1440px) {
-    .section-exp-1 .billing-report-section .billing-report-card {
+    .section-exp-1 .billing-report-section .billing-report-card,
+    .billing-report-section .billing-report-card {
         height:1180px
     }
 }
 
 @media (max-width: 768px) {
-    .section-exp-1 .billing-report-section .billing-report-card {
+    .section-exp-1 .billing-report-section .billing-report-card,
+    .billing-report-section .billing-report-card {
         height:1115px
     }
 }
 
 @media (max-width: 767px) {
-    .section-exp-1 .billing-report-section .billing-report-card {
+    .section-exp-1 .billing-report-section .billing-report-card,
+    .billing-report-section .billing-report-card {
         height:775px
     }
 }
 
 @media (max-width: 420px) {
-    .section-exp-1 .billing-report-section .billing-report-card {
+    .section-exp-1 .billing-report-section .billing-report-card,
+    .billing-report-section .billing-report-card {
         height:490px
     }
 }
 
 @media (max-width: 375px) {
-    .section-exp-1 .billing-report-section .billing-report-card {
+    .section-exp-1 .billing-report-section .billing-report-card,
+    .billing-report-section .billing-report-card {
         height:430px
     }
 }
 
 @media (max-width: 1440px) {
-    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:1180px
     }
 }
 
 @media (max-width: 768px) {
-    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:1115px
     }
 }
 
 @media (max-width: 767px) {
-    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:775px
     }
 }
 
 @media (max-width: 420px) {
-    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:490px
     }
 }
 
 @media (max-width: 375px) {
-    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-1 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:430px
     }
 }
 
 @media (max-width: 1440px) {
-    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:1115px
     }
 }
 
 @media (max-width: 768px) {
-    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:890px
     }
 }
 
 @media (max-width: 767px) {
-    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:775px
     }
 }
 
 @media (max-width: 420px) {
-    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:467px
     }
 }
 
 @media (max-width: 375px) {
-    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-2 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:420px
     }
 }
 
 @media (max-width: 1440px) {
-    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:1115px
     }
 }
 
 @media (max-width: 768px) {
-    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:890px
     }
 }
 
 @media (max-width: 767px) {
-    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:775px
     }
 }
 
 @media (max-width: 420px) {
-    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:467px
     }
 }
 
 @media (max-width: 375px) {
-    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage {
+    .section-exp-3 .billing-report-section .billing-report-card.billing-report-card-usage,
+    .billing-report-section .billing-report-card.billing-report-card-usage {
         height:420px
     }
 }
@@ -95034,9 +95060,9 @@ p.exactLocErr {
     }
 }
 
-@media (min-width 993px) {
-    .limitBtnContainer button: last-child {
-        float:left!important
+@media (min-width: 993px) {
+    .limitBtnContainer button:last-child {
+        float:left!important;
     }
 }
 
@@ -95095,8 +95121,8 @@ p.exactLocErr {
     }
 }
 
-@media (min-width 993px) {
-    [lang=ar] [dir=rtl] .limitBtnContainer button: last-child {
+@media (min-width: 993px) {
+    [lang=ar] [dir=rtl] .limitBtnContainer button:last-child {
         float:right!important
     }
 }
@@ -106417,7 +106443,7 @@ hr.dashed {
     border-top: 1px solid #ff8000
 }
 
-@media (min-width: 768px) (max-width:992px) {
+@media (min-width: 768px) and (max-width:992px) {
     .caramel-bg-cards.prod-variant .device-card.tile-table .tile-card .smile-points {
         margin-left:.75rem!important
     }
@@ -106840,7 +106866,7 @@ hr.dashed {
     }
 }
 
-@media (min-width: 768px) (max-width:992px) {
+@media (min-width: 768px) and (max-width:992px) {
     [lang=ar] [dir=rtl] .caramel-bg-cards.prod-variant .device-card.tile-table .tile-card .smile-points {
         margin-left:.75rem
     }
