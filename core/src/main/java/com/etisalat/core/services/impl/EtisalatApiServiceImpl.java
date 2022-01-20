@@ -19,18 +19,25 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 	@Reference
 	private ConfigurationAdmin configAdmin;
 	private String contactUsApiUrl;
+	private String proxyApiUrl;
 	private int timeOut;
 
 	@Activate
 	@Modified
 	protected void activate(final EtisalatApiConfiguration config) {
 		this.contactUsApiUrl = PropertiesUtil.toString(config.getContactUsApiUrl(), AEConstants.NO_CONFIG_FOUND);
+		this.proxyApiUrl = PropertiesUtil.toString(config.getProxyApiUrl(), AEConstants.NO_CONFIG_FOUND);
 		this.timeOut = PropertiesUtil.toInteger(config.getSetTimeout(), 6000);
 	}
 	
 	@Override
 	public String getContactUsApiUrl() {
 		return this.contactUsApiUrl;
+	}
+	
+	@Override
+	public String getProxyApiUrl() {
+		return this.proxyApiUrl;
 	}
 	
 	@Override
