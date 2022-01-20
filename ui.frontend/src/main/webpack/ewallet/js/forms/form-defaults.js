@@ -458,7 +458,7 @@
         digits: "رجاء إدخال أرقام فقط",
         creditcard: "رجاء إدخال رقم بطاقة ائتمان صحيح",
         equalTo: "رجاء إدخال نفس القيمة",
-        realalphabeticlatinarabic: " الرجاء ادخال احرف و مسافة فقط ",
+        simplealphabeticlatinarabic: " الرجاء ادخال احرف و مسافة فقط ",
         alphanumeric: "الحروف والأرقام والشرط فقط من فضلك",
         extension: "رجاء إدخال ملف بامتداد موافق عليه",
         maxlength: $.validator.format("الحد الأقصى لعدد الحروف هو {0}"),
@@ -481,8 +481,8 @@
       event.preventDefault();
     }
   };
-  const EWALLET_FIRST_NAME = $("#ewallet_firstName");
-  const EWALLET_LAST_NAME = $("#ewallet_lastName");
+  const EWALLET_FIRST_NAME = $("#ewalletFirstName");
+  const EWALLET_LAST_NAME = $("#ewalletLastName");
 
   setValidationDefaults();
   EWALLET_FIRST_NAME.keypress(checkForLetters);
