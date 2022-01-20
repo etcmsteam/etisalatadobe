@@ -1,24 +1,11 @@
-<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ~ Copyright 2018 Adobe
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <div data-sly-use.carousel="com.adobe.cq.wcm.core.components.models.Carousel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-use.controlsTemplate="controls.html"
      data-panelcontainer="${wcmmode.edit && 'carousel'}"
      id="${carousel.id}"
-     class="cmp-carousel"
+     class="cmp-carousel"     
+     data-sly-set.defaultLayout="${!properties.carouselLayout || properties.carouselLayout == 'default'}"     
+     data-sly-test="${defaultLayout || (properties.carouselLayout == 'etisalat-hero-banner' &&  wcmmode.edit)}"     
      role="group"
      aria-label="${carousel.accessibilityLabel}"
      aria-live="polite"
@@ -70,3 +57,8 @@
     <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
          data-sly-test="${(wcmmode.edit || wcmmode.preview) && carousel.items.size < 1}"></sly>
 </div>
+
+<sly data-sly-test="${properties.carouselLayout == 'etisalat-hero-banner' && (wcmmode.preview || wcmmode.disabled)}">        
+<sly data-sly-use.heroBannerTemplate="etisalat-herobanner.html"
+             data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/>          
+</sly>
