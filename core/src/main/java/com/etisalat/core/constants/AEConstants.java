@@ -89,6 +89,10 @@ public final class AEConstants {
  public static final String CONTACT_US_OPERATION_ID_KEY = "OPERATIONID";
  public static final String CONTACT_US_OPERATION_ID_VALUE = "CONTACTUS";
  public static final String JCR_CONSTANT = "/_jcr_content";
+
+
+ public static final String ENGLISH = "en";
+ public static final String ARABIC = "ar";
  
  /**
   * private constructor to prevent instantiation of class.
