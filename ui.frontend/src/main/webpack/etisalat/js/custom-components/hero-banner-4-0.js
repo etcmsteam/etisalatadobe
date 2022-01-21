@@ -31,6 +31,7 @@ import { swiperInit } from "../swiperInitialize";
             }
           },
         });
+        appendHeroModelPopup($(this), "h-b-slider-multi" + index);
       });
   }
 
@@ -56,8 +57,19 @@ import { swiperInit } from "../swiperInitialize";
             }
           },
         });
+        appendHeroModelPopup($(this), ".h-b-slider" + index);
       });
   }
+
+  function appendHeroModelPopup(elm, className) {
+    if (elm.find(".hero-banner-modal").length > 0) {
+      elm.find(".hero-banner-modal").each(function () {
+        var heroModel = $(this).clone();
+        $(this).remove();
+        heroModel.insertAfter(className);
+      });
+    }
+  };
 
   // register the event handlers
   $(document).ready(function () {
