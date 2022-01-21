@@ -1,30 +1,66 @@
 <template data-sly-template.contextNav="${ @ container,properties}">
-<div class="context-navigation-4-0 with-slider">
-   <div class="container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper all-tiles align-middle"> 
-         <div class="context-tile swiper-slide" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
-      </div>
+   <sly data-sly-set.oneTile="${container.items.size == 1 ? 'single-tile' : ''}"></sly>
+   <sly data-sly-test.twoTile="${container.items.size == 2 ? 'two-tiles' : ''}"></sly>
+   <sly data-sly-test.threeTile="${container.items.size == 3 ? 'three-tiles' : ''}"></sly>
+   <sly data-sly-test.threeTilePlus="${container.items.size > 3 ? 'three-plus-tiles' : ''}"></sly>   
+   <sly data-sly-set.withSlider="with-slider ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus}"></sly>
+   
+	<div class="context-navigation-4-0 ${properties.mainContextTitle ? 'with-main-text' : withSlider}">
+	  <div class="container">
+	    <div data-sly-test="${!properties.mainContextTitle}" class="${!wcmmode.edit ? 'swiper-container' : ''}">
+	      <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''} all-tiles ${properties.contextNavAlignment}">
+	        <div class="context-tile swiper-slide" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
+	      </div>
+	    </div>
+	    
+	    <div data-sly-test="${properties.mainContextTitle}" class="row">
+	      <div class="content col-xs-12 col-md-3">
+	        <div class="wst-main-headings">
+	          <h3>${properties.mainContextTitle}</h3>
+	        </div>
+	        <div data-sly-test="${properties.mainContextDesc}" class="paragraph-styling ul-list-cms">
+	          <div class="p2"> ${properties.mainContextDesc @ context="html"} </div>
+	        </div>
+	      </div>
+	      <div class="all-tiles col-xs-12 col-md-9">
+	        <div class="context-tile" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
+	      </div>
+	    </div>
+	    
+	    <sly data-sly-test="${!properties.mainContextTitle}">
+	      <div class="prev">
+	        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+				 width="24.000000pt" height="24.000000pt" viewBox="0 0 24.000000 24.000000"
+				 preserveAspectRatio="xMidYMid meet">
+				
+				<g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+				fill="#000000" stroke="none">
+				<path d="M115 180 l-59 -60 59 -60 c32 -33 61 -57 64 -54 3 2 -20 29 -49 59
+				l-54 55 54 55 c29 30 52 57 49 59 -3 3 -32 -21 -64 -54z"/>
+				</g>
+		     </svg>
+	      </div>
+	      <div class="next">
+	        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+				 width="32.000000pt" height="32.000000pt" viewBox="0 0 32.000000 32.000000"
+				 preserveAspectRatio="xMidYMid meet">
+				
+				<g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
+				fill="#000000" stroke="none">
+				<path d="M80 315 c0 -5 33 -42 72 -82 l72 -73 -74 -75 c-41 -41 -72 -77 -69
+				-79 3 -3 41 31 84 74 l80 80 -83 83 c-45 45 -82 77 -82 72z"/>
+				</g>
+			</svg>
+	      </div>
+	      <div class="${!wcmmode.edit ? 'scrollbar swiper-scrollbar' : ''}"></div>
+	      <div class="hidden-md hidden-lg hidden-sm">
+	    </sly>
+	    
+	    <div data-sly-test="${properties.contextNavLoadMore}" class="load-more">
+	      <div class="action">
+	        <a href="#" class="btn btn-default ripple-effect">${properties.contextNavLoadMore}</a>
+	      </div>
+	    </div>
+	  </div>
 	</div>
-
-
-        <div class="prev">
-            <img src="/content/dam/etisalat/header/arrow.svg" />
-        </div>
-        <div class="next">
-            <img src="/content/dam/etisalat/header/arrow.svg" />
-        </div>
-        <div class="scrollbar swiper-scrollbar"></div>
-
-        <div class="hidden-md hidden-lg hidden-sm">
-            <div class="load-more">
-                <div class="action">
-                    <a href="${properties.contextNavLoadMoreLink}" class="btn btn-default ripple-effect">${properties.contextNavLoadMore}</a>
-                </div>
-            </div>
-        </div>
-
-   </div>
-</div>
-
 </template>
