@@ -2,7 +2,7 @@
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
 
    <div class="icon" data-sly-test="${properties['image/fileReference']}">
-     <div class="cover lazyloaded" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+     <div class="lazyloaded" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
    </div>
    <div class="wst-main-headings">
      <h2 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h2>
@@ -11,8 +11,9 @@
      <div class="p2">${tileModel.text @ context='html'}</div>
    </div>
    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
-     <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
-       <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+     <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper ${properties.displayCTABehaviour == 'button' ? 'action-btn-default' : 'action-link'}">
+       <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" 
+class="${properties.displayCTABehaviour == 'button' ? 'btn btn-default ripple-effect' : 'link'}" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
      </div>
    </sly>
    <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}" 
