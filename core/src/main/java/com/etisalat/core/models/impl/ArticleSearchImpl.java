@@ -166,7 +166,7 @@ public class ArticleSearchImpl implements ArticleSearch {
     if (StringUtils.isNotBlank(businessCatg)) {
       final Tag tag = tagManager.resolve(businessCatg);
       if (null != tag) {
-        pageDetails.setCategory(page.getLanguage().toString().equals("en") ? tag.getTitle() : tag.getTitle(Locale.forLanguageTag("ar")) );
+        pageDetails.setCategory(page.getLanguage().toString().equals("en") ? tag.getTitle(Locale.forLanguageTag("en")) : tag.getTitle(Locale.forLanguageTag("ar")) );
       }
     }
   }
