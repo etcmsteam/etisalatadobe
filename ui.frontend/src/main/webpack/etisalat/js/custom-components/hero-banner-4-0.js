@@ -31,7 +31,7 @@ import { swiperInit } from "../swiperInitialize";
             }
           },
         });
-        appendHeroModelPopup($(this), "h-b-slider-multi" + index);
+        appendHeroModelPopup($(this), ".h-b-slider-multi" + index);
       });
   }
 
