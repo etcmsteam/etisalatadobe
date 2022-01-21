@@ -98,7 +98,7 @@
     position: relative;
     width: 97%;
 
-    @include respond-to-min($desktop) {
+    @include respond-to-min($tablet) {
       width: 100%;
     }
 
@@ -116,8 +116,8 @@
 
     .cmp-form-text__text {
       background-color: transparent;
-      border-radius: toRem(5);
       border: none;
+      border-radius: toRem(5);
       box-shadow: none;
       box-sizing: border-box;
       color: $gray-primary;
@@ -286,7 +286,10 @@
 .cmp-form {
   margin: 30px auto 0;
   padding: 0;
-  width: 1024px;
+
+  @include respond-to-min($desktop-wide) {
+    width: toRem(1024);
+  }
 
   .googlecaptcha {
     margin-bottom: 30px;
