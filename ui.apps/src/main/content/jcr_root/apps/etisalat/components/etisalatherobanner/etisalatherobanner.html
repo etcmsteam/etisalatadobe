@@ -2,7 +2,7 @@
   <sly data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" data-sly-test="${properties.fileReference}">
      <!-- background images -->
 	<div class="hero-bg-images">
-	  <div class="cover">
+	  <div class="${!wcmmode.edit ? 'cover' : ''}">
 	     <sly data-sly-test="${properties.heroDisplayBehavior == 'image'}">
 			 <div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
 	         <sly data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
