@@ -1,6 +1,6 @@
 <template  data-sly-template.explainerTab="${ @ properties}">
  <div class="tab-boxes-section">
-    <div class="container">
+    <div class="md-p-lr">
          <!-- add spacer if needed here. -->
          <sly data-sly-test.customLink="${properties.billingCTALink}" 
               data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
@@ -11,11 +11,11 @@
           <div data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
                data-sly-use.tabs="com.adobe.cq.wcm.core.components.models.Tabs"
                id="tabBoxes-${tabs.id}">
-               <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-md-4 head-desktop panel hidden-xs hidden-ms">                    
+               <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-md-4 head-desktop panel hidden-xs hidden-ms hidden-sm">                    
   					<a class="${tabList.first ? '' :'collapsed'}" data-toggle="collapse" data-parent="#tabBoxes-${tabs.id}" href="#tabBoxes-${component.id}-${tabList.count}"> ${tab.title}</a>  					
   				</div>
-                <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-md-8 body-desktop panel">                     
-                     <a class="${tabList.first ? '' :'collapsed'} head-mobile hidden-sm hidden-md hidden-lg" 
+                <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-md-8 body-desktop panel no-padding-top billing-explainer">                     
+                     <a class="${tabList.first ? '' :'collapsed'} head-mobile hidden-md hidden-lg" 
                         data-toggle="collapse" data-parent="#tabBoxes-${tabs.id}" 
                         href="#tabBoxes-${component.id}-${tabList.count}">${tab.title}</a>
                      <div id="tabBoxes-${component.id}-${tabList.count}"
