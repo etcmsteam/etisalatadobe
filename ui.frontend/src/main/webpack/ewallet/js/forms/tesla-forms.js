@@ -16,17 +16,16 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
   let messagelocal;
   const validateMessage = {
     en: {
-      firstName: FORM_VALIDATION_MESSAGES.EN.firstName,
-      lastName: FORM_VALIDATION_MESSAGES.EN.lastName,
+      ewalletFirstName: FORM_VALIDATION_MESSAGES.EN.ewalletFirstName,
+      ewalletLastName: FORM_VALIDATION_MESSAGES.EN.ewalletLastName,
       companyName: FORM_VALIDATION_MESSAGES.EN.companyName,
       emirate: FORM_VALIDATION_MESSAGES.EN.emirate,
       phoneNumber: FORM_VALIDATION_MESSAGES.EN.phoneNumber,
       emailAddress: FORM_VALIDATION_MESSAGES.EN.emailAddress,
     },
     ar: {
-      number: FORM_VALIDATION_MESSAGES.AR.number,
-      firstName: FORM_VALIDATION_MESSAGES.AR.firstName,
-      lastName: FORM_VALIDATION_MESSAGES.AR.lastName,
+      ewalletFirstName: FORM_VALIDATION_MESSAGES.AR.ewalletFirstName,
+      ewalletLastName: FORM_VALIDATION_MESSAGES.AR.ewalletLastName,
       companyName: FORM_VALIDATION_MESSAGES.AR.companyName,
       emirate: FORM_VALIDATION_MESSAGES.EN.emirate,
       phoneNumber: FORM_VALIDATION_MESSAGES.AR.phoneNumber,
@@ -42,19 +41,19 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
 
   $FORM.validate({
     rules: {
-      firstName: {
+      ewalletFirstName: {
         required: true,
-        onlyletters: true,
+        simplealphabeticlatinarabic: true,
         maxlength: 248,
       },
-      lastName: {
+      ewalletLastName: {
         required: true,
-        realalphabeticlatinarabic: true,
+        simplealphabeticlatinarabic: true,
         maxlength: 248,
       },
       companyName: {
         required: true,
-        realalphabeticlatinarabic: true,
+        simplealphabeticlatinarabic: true,
         maxlength: 248,
       },
       emirate: {

@@ -73,6 +73,13 @@ public final class AEConstants {
  public static final String ETISALAT_BREADCRUMB_TITLE = "breadcrumbTitle";
  public static final String ETISALAT_BREADCRUMB_LINK = "breadcrumbLink";
  
+ public static final String PN_EXPLAINER_TAB_ITEMS = "stepItems";
+ public static final String PN_EXPLAINER_TAB_TITLE = "title";
+ public static final String PN_EXPLAINER_TAB_CONTENT = "content";
+ public static final String PN_EXPLAINER_TAB_PLACEMENT = "placement";
+
+ public static final String BILL_EXPLAINER_DAM_PATH = "/content/dam/etisalat/cx-billing/assets/img/explainer";
+ 
  public static final int RESPONSE_OK = 200;
  public static final int BAD_REQUEST = 400;
  public static final String REDIRECT_NAME = ":redirect";
@@ -81,6 +88,7 @@ public final class AEConstants {
  public static final String JSP_CONSTANT = ".jsp";
  public static final String CONTACT_US_OPERATION_ID_KEY = "OPERATIONID";
  public static final String CONTACT_US_OPERATION_ID_VALUE = "CONTACTUS";
+ public static final String JCR_CONSTANT = "/_jcr_content";
  
  /**
   * private constructor to prevent instantiation of class.
