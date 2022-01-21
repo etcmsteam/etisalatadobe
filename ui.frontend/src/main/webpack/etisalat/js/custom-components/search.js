@@ -19,11 +19,11 @@
         var instannceNum = 0;
         var doc = document;
         var searchInput = doc.querySelectorAll(".search-input");
-        var searchCallUrl = doc.getElementById("searchForm").action;
+        var searchCallUrl = doc.getElementById("searchForm") &&  doc.getElementById("searchForm").action;
         // https://www.etisalat.ae/b2c/autoSuggest.service?locale=en-AE
-        var guidedSearchCall = doc.getElementById("searchForm").getAttribute("data-secondary-search");
+        var guidedSearchCall = doc.getElementById("searchForm") && doc.getElementById("searchForm").getAttribute("data-secondary-search");
         // https://qacms-uat.etisalat.ae/b2c/guidedSearchRequest.service?locale=en-AE
-        var resultPageRedirect = doc.getElementById("searchForm").getAttribute("data-redirect-url");
+        var resultPageRedirect = doc.getElementById("searchForm") && doc.getElementById("searchForm").getAttribute("data-redirect-url");
         var guidedSearchText = "";
         var guidedSearchWraper = "";
         var resultPageURL = window.location.origin + resultPageRedirect;
