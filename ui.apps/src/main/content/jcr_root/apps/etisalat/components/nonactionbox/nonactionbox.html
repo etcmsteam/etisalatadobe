@@ -1,0 +1,19 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-panelcontainer="${wcmmode.edit && 'Non Action Box Tile'}"
+     data-placeholder-text="${wcmmode.edit && 'Please update Non Action Box Tile' @ i18n}">
+
+    <div class="current-promotions-box ${properties.textAlignment}">
+        <div  data-sly-test="${properties.fileReference}" class="icon-wrap">
+         <span class="icon-with-bg">
+            <div
+                    data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
+            </div>
+         </span>
+        </div>
+        <div data-sly-test="${properties.title}" class="title-wrap" data-sly-element="${properties.titleType}">
+            ${properties.title}
+        </div>
+        <div class="description" data-sly-test="${properties.description}">${properties.description @ context='html'}</div>
+    </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty =  !properties.fileReference && !properties.title && !properties.preTitle}"></sly>
