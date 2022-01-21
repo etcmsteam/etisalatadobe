@@ -36,7 +36,7 @@ public class BillExplainerModelTest {
   
   @Test
   void testTotalUsageSummary() {
-    final String expectedJsonData = "[{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e1.\\u003c/span\\u003e Total usage summary\",\"content\":\"\\u003cp\\u003eTotal usage summary\\u003c/p\\u003e\",\"element\":\"#Step-1\"},{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e2.\\u003c/span\\u003e Contact information\",\"content\":\"\\u003cp\\u003eContact information\\u003c/p\\u003e\",\"element\":\"#Step-2\"},{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e3.\\u003c/span\\u003e Account information\",\"content\":\"\\u003cp\\u003eAccount information\\u003c/p\\u003e\",\"element\":\"#Step-3\"}]";
+    final String expectedJsonData = "[{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e1.\\u003c/span\\u003e Total usage summary\",\"content\":\"\\u003cp\\u003eYour total consumption throughout the month\\u003c/p\\u003e\",\"element\":\"#Step-1\"},{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e2.\\u003c/span\\u003e Contact information\",\"content\":\"\\u003cp\\u003eYour contact details registered with Etisalat\\u003c/p\\u003e\",\"element\":\"#Step-2\"},{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e3.\\u003c/span\\u003e Account information\",\"content\":\"\\u003cp\\u003eDetails of the selected account\\u003c/p\\u003e\",\"element\":\"#Step-3\"}]";
 
     Resource resource = context.resourceResolver().getResource(TOTAL_SUMMARY_DATA);
     BillExplainerModel item = resource.adaptTo(BillExplainerModel.class);
@@ -47,7 +47,7 @@ public class BillExplainerModelTest {
   
   @Test
   void testBillHistory() {
-    final String expectedJsonData = "[{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e1.\\u003c/span\\u003e Bill history\",\"content\":\"\\u003cp\\u003eBill history\\u003c/p\\u003e\",\"element\":\"#Step-1\"},{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e2.\\u003c/span\\u003e Contact information\",\"content\":\"\\u003cp\\u003eContact information\\u003c/p\\u003e\",\"element\":\"#Step-2\"}]";
+    final String expectedJsonData = "[{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e1.\\u003c/span\\u003e Bill history\",\"content\":\"\\u003cp\\u003eYour billing trend for the past six months\\u003c/p\\u003e\",\"element\":\"#Step-1\"},{\"placement\":\"bottom\",\"title\":\"\\u003cspan\\u003e2.\\u003c/span\\u003e Contact information\",\"content\":\"\\u003cp\\u003eYour contact details registered with Etisalat\\u003c/p\\u003e\",\"element\":\"#Step-2\"}]";
 
     Resource resource = context.resourceResolver().getResource(BILL_HISTORY_DATA);
     BillExplainerModel item = resource.adaptTo(BillExplainerModel.class);

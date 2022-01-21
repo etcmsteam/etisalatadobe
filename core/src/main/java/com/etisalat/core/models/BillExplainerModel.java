@@ -56,7 +56,7 @@ public class BillExplainerModel {
     String stepCount = new StringBuilder().append("#Step-").append(resChildCount).toString();
 	String stepTitle = new StringBuilder().append("<span>").append(resChildCount)
 	    		         .append(".</span> ").append(vm.get(AEConstants.PN_EXPLAINER_TAB_TITLE, StringUtils.EMPTY)).toString();
-	String stepContent = new StringBuilder().append("<p>").append(vm.get(AEConstants.PN_EXPLAINER_TAB_TITLE, StringUtils.EMPTY))
+	String stepContent = new StringBuilder().append("<p>").append(vm.get(AEConstants.PN_EXPLAINER_TAB_CONTENT, StringUtils.EMPTY))
 		         .append("</p>").toString();
 	stepDataMap.put("element", stepCount);
 	stepDataMap.put(AEConstants.PN_EXPLAINER_TAB_TITLE,stepTitle);
