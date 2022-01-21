@@ -4,6 +4,7 @@
 	<div class="hero-bg-images">
 	  <div class="cover">
 	     <sly data-sly-test="${properties.heroDisplayBehavior == 'image'}">
+			 <div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
 	         <sly data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
 	     </sly>	     
          <div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.videoLink}" class="video_ctn">
