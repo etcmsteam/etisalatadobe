@@ -1,0 +1,18 @@
+<template  data-sly-template.swiperView="${ @ reportCard,properties}">
+ <div class="bill-breakdown">
+  <div class="row row-tiles-table">
+    <div class="swiper-container swiper-container-horizontal">
+      <div class="swiper-wrapper">
+        <div data-sly-list.reportCardItems="${reportCard.listChildren}" class="billing-report-card billing-report-card-usage">
+          <sly data-sly-set.reportResource="${reportCard.path}/${reportCardItems.name}" />
+          <sly data-sly-use.reportItem="${reportResource}" data-sly-test="${reportItem && reportItem.sling:resourceType == 'etisalat/components/billreportcard'}">
+            <div class="swiper-slide col-xs-12">
+              <iframe src="${reportItem.path @ extension='html'}" frameborder="0" height="100%" width="100%"></iframe>
+            </div>
+          </sly>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
