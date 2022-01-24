@@ -1,6 +1,6 @@
 .cmp-experiencefragment--header {
   left: 0;
-  padding: 32px 15px 20px;
+  padding: toRem(32) toRem(15) toRem(20);
   position: fixed;
   top: 0;
   transition: all 0.4s ease-out;
@@ -8,10 +8,10 @@
   z-index: 99;
 
   &.cmp-experiencefragment--sticky {
-    padding-top: 20px;
+    padding-top: toRem(20);
     &::before {
       background: $white-color;
-      box-shadow: 0 23px 38px 0 rgba(0, 0, 0, 0.09);
+      box-shadow: 0 toRem(23) toRem(38) 0 rgba(0, 0, 0, 0.09);
     }
 
     nav {
@@ -23,7 +23,17 @@
 
       .menu__icon {
         .hamburger {
-            background: $hamburger-blue;
+          background: $hamburger-blue;
+
+          &.hamburger--close {
+            background: transparent;
+
+            &::before,
+            &::after {
+              background: rgba(0,0,0,0.15);
+              top: toRem(20);
+            }
+          }
           
           &::before,
           &::after {
@@ -34,11 +44,11 @@
     }
 
     @include respond-to-max($tablet) {
-      padding-bottom: 10px;
-      padding-top: 10px;
+      padding-bottom: toRem(10);
+      padding-top: toRem(10);
 
       .logo--sticky {
-        max-width: 42px;
+        max-width: toRem(42);
       }
     }
   }
@@ -61,21 +71,21 @@
   }
   .cmp-container {
     margin: 0 auto;
-    max-width: 1140px;
+    max-width: toRem(1140);
     padding: 0;
   }
 
   .logo {
     position: relative;
-    max-width: 108px;
+    max-width: toRem(108);
 
     @include respond-to-max($tablet) {
-      max-width: 50px;
+      max-width: toRem(50);
     }
 
     &--sticky {
       display: none !important;
-      max-width: 77px;
+      max-width: toRem(77);
       position: relative;
     }
   }

@@ -1,7 +1,6 @@
 
 //header sticky on scroll
-$(document).ready(function () {
-
+function StickyHeader () {
     $(window).scroll(function(){
         let sticky = $('.cmp-experiencefragment--header');
         let scroll = $(window).scrollTop();
@@ -17,16 +16,18 @@ $(document).ready(function () {
             $('.logo').show();
         }
     });
+}
 
-    //toggle mobile menu on hamburger click
+//toggle mobile menu on hamburger click
+function menuToggle () {
     $('.hamburger').click(function() {
-        // if ($(this).hasClass('hamburger--close')) {
-        //     $('nav .menu').removeClass('active');
-        // }
-        // else {
-        // }
         $('nav').toggleClass('nav--overlay');
         $('nav .menu').toggleClass('active');
         $(this).toggleClass('hamburger--close');
     });
+}
+
+$(document).ready(function () {
+    StickyHeader();
+    menuToggle();
 });
