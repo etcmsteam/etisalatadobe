@@ -2,26 +2,73 @@
  <div class="bill-breakdown">
   <div class="row row-tiles-table">
     <div class="swiper-container swiper-container-horizontal">
-      <div class="swiper-wrapper">
-        <div data-sly-list.reportCardItems="${reportCard.listChildren}" class="billing-report-card billing-report-card-usage">
+      <div class="swiper-wrapper" data-sly-list.reportCardItems="${reportCard.listChildren}">
           <sly data-sly-set.reportResource="${reportCard.path}/${reportCardItems.name}" />
           <sly data-sly-use.reportItem="${reportResource}" data-sly-test="${reportItem && reportItem.sling:resourceType == 'etisalat/components/billreportcard'}">
             <div class="swiper-slide col-xs-12">
-              <iframe src="${reportItem.path @ extension='html'}" frameborder="0" height="100%" width="100%"></iframe>
+              <div class="billing-report-card billing-report-card-usage">
+                <iframe src="${reportItem.path @ extension='html'}" frameborder="0" height="100%" width="100%"></iframe>
+              </div>
             </div>
           </sly>
-        </div>
       </div>
     </div>
-    <div class="table-swiper-button-prev mt-15">
-      <svg><use xlink:href="#hero-image-arrow-left" /></svg> Previous
+    <div class="table-swiper-button-prev">Previous
+      <!-- <svg><use xlink:href="#hero-image-arrow-left" /></svg> Previous -->
     </div>
     <!-- Add Pagination -->
-    <div class="swiper-pagination mt-15"></div>
+    <div class="swiper-pagination"></div>
     <!-- End - swiper-pagination-custom -->
-    <div class="table-swiper-button-next mt-15">
-      Next <svg><use xlink:href="#hero-image-arrow" /></svg>
+    <div class="table-swiper-button-next">Next
+      <!--  <svg><use xlink:href="#hero-image-arrow" /></svg> -->
     </div>
   </div>
 </div>
+<script>
+
+
+  function initSwiper() {
+    var plansTableSliders = [];
+    var $carousel = new Swiper(".bill-breakdown .swiper-container", {
+      loop: false,
+      autoplay: false,
+      touchEventsTarget: "swiper-wrapper",
+      simulateTouch: true,
+      pagination: '.bill-breakdown .swiper-pagination',
+      paginationType: 'bullets',
+      paginationClickable: true,
+      nextButton: ".bill-breakdown .table-swiper-button-next",
+      prevButton: ".bill-breakdown .table-swiper-button-prev",
+      slidesPerView: "1"
+    });
+
+    var $carouselUsage = new Swiper(".bill-breakdown-usage .swiper-container", {
+      loop: false,
+      autoplay: false,
+      touchEventsTarget: "swiper-wrapper",
+      simulateTouch: true,
+      pagination: '.bill-breakdown-usage .swiper-pagination',
+      paginationType: 'bullets',
+      paginationClickable: true,
+      nextButton: ".bill-breakdown-usage .table-swiper-button-next",
+      prevButton: ".bill-breakdown-usage .table-swiper-button-prev",
+      slidesPerView: "1"
+    });
+
+  }
+
+
+
+  // register the event handlers
+  $(document).ready(function () {
+    initSwiper();
+  });
+  $(".collapsed").click(function () {
+    setTimeout(function () { initSwiper(); }, 300);
+  });
+
+
+
+
+</script>
 </template>
