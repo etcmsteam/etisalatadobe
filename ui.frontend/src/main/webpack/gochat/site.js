@@ -1,5 +1,5 @@
 
-//header sticky on scroll
+// header sticky on scroll
 function StickyHeader () {
     $(window).scroll(function(){
         let sticky = $('.cmp-experiencefragment--header');
@@ -18,7 +18,7 @@ function StickyHeader () {
     });
 }
 
-//toggle mobile menu on hamburger click
+// toggle mobile menu on hamburger click
 function menuToggle () {
     $('.hamburger').click(function() {
         $('nav').toggleClass('nav--overlay');
