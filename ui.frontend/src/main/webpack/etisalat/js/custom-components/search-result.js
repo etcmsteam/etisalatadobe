@@ -1,5 +1,8 @@
 import { swiperInit } from "../swiperInitialize";
       $(document).ready(function () {
+          if ($(".search-input").length <= 0) {
+            return false;
+          }
         var doc = document;
         if (window.location.hostname !== "www.etisalat.ae") {
           document.querySelectorAll("#searchForm").forEach(function (item, index) {
