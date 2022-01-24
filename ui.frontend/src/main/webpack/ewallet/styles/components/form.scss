@@ -75,7 +75,7 @@
         font-size: $font12;
         height: 1rem;
         line-height: toRem(16);
-        margin: 0;
+        margin: 0 0 6px;
         overflow: hidden;
         padding: 0 toRem(18);
         position: absolute;
@@ -98,13 +98,17 @@
     position: relative;
     width: 97%;
 
+    @include respond-to-min($tablet) {
+      width: 100%;
+    }
+
     &.select-arrow-active {
       font-weight: 500;
     }
 
     .floating-label {
-      color: $nav-blue;
-      font-size: $font12;
+      color: $gray-primary;
+      font-size: $font14;
       font-weight: 500;
       line-height: toRem(13);
       top: toRem(6);
@@ -113,6 +117,7 @@
     .cmp-form-text__text {
       background-color: transparent;
       border: none;
+      border-radius: toRem(5);
       box-shadow: none;
       box-sizing: border-box;
       color: $gray-primary;
@@ -141,6 +146,10 @@
         color: $gray-primary;
       }
     }
+
+    @include respond-to-max($phone) {
+      width: 100%;
+    }
   }
 
   .cmp-form-options__field {
@@ -155,6 +164,10 @@
     outline: none;
     padding: 0 toRem(18) !important;
     width: 97%;
+
+    @include respond-to-min($desktop) {
+      width: 100%;
+    }
   }
 }
 
@@ -235,6 +248,10 @@
     }
   }
 
+  .alert-icon {
+    display: none;
+  }
+
   &.has-error-fields {
     border-color: $error-red;
 
@@ -257,7 +274,7 @@
       font-size: $font12;
       height: 1rem;
       line-height: toRem(16);
-      margin: 0;
+      margin: 0 0 6px;
       overflow: hidden;
       padding: 0 toRem(18);
       position: absolute;
@@ -271,11 +288,18 @@
 }
 
 .cmp-form {
+  margin: 30px auto 0;
+  padding: 0;
+
+  @include respond-to-min($desktop-wide) {
+    width: toRem(1024);
+  }
+
   .googlecaptcha {
     margin-bottom: 30px;
 
     .g-recaptcha {
-      margin: 0 auto;
+      margin: 20px auto;
       width: toRem(304);
 
       iframe {
@@ -319,6 +343,13 @@
       }
     }
   }
+
+  .text,
+  .options {
+    @include respond-to-max($phone) {
+      padding: 1rem 0;
+    }
+  }
 }
 
 .select2-container--default,
@@ -338,6 +369,7 @@
 
   &__rendered {
     color: $gray-primary !important;
+    line-height: toRem(40) !important;
   }
 }
 

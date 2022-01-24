@@ -9,6 +9,13 @@ public interface EtisalatApiService {
      * @return
      */
     String getContactUsApiUrl();
+    
+    /**
+     * Returns a Proxy Api url.
+     *
+     * @return
+     */
+    String getProxyApiUrl();
 
     int getTimeOut();
 

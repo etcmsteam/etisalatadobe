@@ -50,9 +50,9 @@
       a {
         color: $white;
         font-size: $font14;
-        font-weight: 500;
+        font-weight: get-font-weight("medium");
         letter-spacing: toRem(2);
-        line-height: 1.25rem;
+        line-height: toRem(20);
         position: absolute;
         text-transform: uppercase;
 
@@ -63,12 +63,13 @@
         @include rtlBlock() {
           @include font-family-Neotech-ge();
 
-          font-weight: 500;
+          font-weight: get-font-weight("light");
+          letter-spacing: 0;
         }
 
         &::after {
-          border-right: toRem(2) solid $white;
-          border-top: toRem(2) solid $white;
+          border-right: toRem(1) solid $white;
+          border-top: toRem(1) solid $white;
           content: "";
           left: auto;
           margin-left: toRem(8.8);
@@ -200,7 +201,7 @@
 
     &__image {
       &::after {
-        background: #000;
+        background: $black;
         border-radius: toRem(4);
         content: "";
         height: 100%;
@@ -259,12 +260,23 @@
 
       bottom: toRem(70);
 
+      @include rtlBlock() {
+        padding-right: 0;
+      }
+
       @include respond-to-min($desktop) {
         bottom: toRem(110);
       }
 
       a {
         color: $white;
+
+        @include rtlBlock() {
+          @include font-family-Neotech-ge();
+
+          font-weight: get-font-weight("light");
+          letter-spacing: 0;
+        }
       }
 
       &::after {
@@ -288,7 +300,6 @@
     .cmp-teaser {
       display: flex;
       flex-direction: row-reverse;
-      margin-bottom: teRem(24);
 
       &__content {
         bottom: 0;
@@ -315,7 +326,11 @@
       }
 
       &__action-container {
-        bottom: toRem(100);
+        bottom: toRem(90);
+
+        @include rtlBlock() {
+          padding-right: 0;
+        }
 
         @include respond-to-min($desktop) {
           bottom: toRem(130);
@@ -323,6 +338,13 @@
 
         a {
           color: $main-green;
+
+          @include rtlBlock() {
+            @include font-family-Neotech-ge();
+
+            font-weight: get-font-weight("light");
+            letter-spacing: 0;
+          }
         }
 
         &::after {
@@ -332,11 +354,32 @@
       }
 
       &__image {
+        height: toRem(160);
         width: 48%;
+
+        img {
+          height: toRem(160);
+        }
+
+        @include respond-to-min($desktop) {
+          height: toRem(264);
+
+          img {
+            height: toRem(264);
+          }
+        }
       }
 
       &__title {
         color: $black !important;
+        font-size: toRem(22);
+        line-height: toRem(33);
+        margin-bottom: 0;
+
+        @include respond-to-min($desktop) {
+          font-size: toRem(26);
+          margin-bottom: toRem(12.5);
+        }
       }
     }
   }
@@ -417,17 +460,19 @@
 }
 
 .cmp-teaser--hero-card {
-  .gutter-padding-left:last-child {
+  .gutter-padding-left {
+    padding: 0;
+
     @include respond-to-min($tablet) {
-      padding-left: 0 !important;
-
-      @include rtlBlock() {
-        padding-left: 0.75rem !important;
-      }
+      padding: 0 toRem(12) !important;
     }
+  }
 
-    @include respond-to-min($desktop) {
-      padding-left: 0.75rem !important;
+  .gutter-padding-right {
+    padding: 0;
+
+    @include respond-to-min($tablet) {
+      padding: 0 toRem(12) !important;
     }
   }
 }

@@ -386,8 +386,22 @@
 
   &.cmp_tabs--vertical-fullbdr {
     .nav-view-wrapp.panel > :not(a.collapsed) {
+      @include font-family-Neotech;
+
+      font-weight: get-font-weight("light");
       margin: 0;
       padding: toRem(24) toRem(16);
+    }
+
+    .cmp-text {
+      @include respond-to-min-max($desktop, $tablet) {
+        padding-right: toRem(18);
+
+        @include rtlBlock() {
+          padding-left: toRem(18);
+          padding-right: 0;
+        }
+      }
     }
   }
 }
@@ -419,7 +433,7 @@
     border-bottom: toRem(1) solid $light-sand-brown;
     border-left: toRem(4) solid transparent;
     color: $almost-black;
-    padding: toRem(24) 0;
+    padding: toRem(24) toRem(16);
 
     @include rtlBlock() {
       border-right: toRem(4) solid transparent;
@@ -722,7 +736,7 @@
     border-width: 0 toRem(1) toRem(1) 0;
     content: "";
     line-height: 1;
-    padding: toRem(4);
+    padding: toRem(5) !important;
     position: absolute;
     right: toRem(2);
     top: 50%;
@@ -738,6 +752,7 @@
 
   .nav-view-wrapp.panel > a.collapsed::before {
     border-color: $almost-black;
+    padding: toRem(5) !important;
   }
 
   .cmp_tabs--mobile .nav-view-wrapp.panel > a.collapsed::before {

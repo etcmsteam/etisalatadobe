@@ -11,10 +11,20 @@
 // class name feature-watch
 // aem authoring name Feature Watch
 .cmp_text--feature-watch {
+  @include respond-to-min($desktop) {
+    &.green--bg {
+      padding-top: 0;
+
+      .cmp-image__image {
+        margin-top: 0;
+      }
+    }
+  }
+
   @include respond-to-min($tablet) {
     margin-bottom: toRem(112) !important;
-    max-height: toRem(293);
-    min-height: toRem(293);
+    max-height: toRem(304);
+    min-height: toRem(304);
   }
 
   @include respond-to-min($desktop) {
@@ -40,18 +50,23 @@
   }
 
   .cmp_btn {
+    display: flex;
     margin: 0;
 
     img {
       @include respond-to-min($tablet) {
         height: toRem(29);
-        margin: toRem(60) 0 toRem(16);
+        margin: toRem(12) 0 toRem(16);
       }
 
       @include respond-to-min($desktop) {
         height: toRem(36);
         margin: toRem(140) 0 toRem(32);
       }
+    }
+
+    .cmp_store_btn {
+      margin-right: toRem(20);
     }
   }
 
@@ -125,9 +140,9 @@
 
 @include respond-to-max($phone) {
   .cmp_text--feature-watch {
-    margin-bottom: toRem(176) !important;
-    max-height: toRem(374);
-    min-height: toRem(374);
+    margin-bottom: toRem(208) !important;
+    max-height: toRem(502);
+    min-height: toRem(502);
     padding-top: $padding-step-3 !important;
 
     .image {
@@ -163,7 +178,7 @@
         .cmp-link__arrow_left {
           position: absolute;
           right: toRem(70);
-          top: toRem(400);
+          top: toRem(140);
         }
 
         .cmp-button--secondary {
@@ -187,8 +202,8 @@
 .cmp_text--feature-watch-flipped {
   @include respond-to-min($tablet) {
     margin-bottom: toRem(112) !important;
-    max-height: toRem(293);
-    min-height: toRem(293);
+    max-height: toRem(304);
+    min-height: toRem(304);
   }
 
   @include respond-to-min($desktop) {
@@ -300,13 +315,29 @@
       width: toRem(1224);
     }
   }
+
+  &.aqua-green--bg {
+    .text {
+      margin-top: 0;
+
+      @include respond-to-min($desktop) {
+        margin-top: toRem(150);
+      }
+    }
+
+    .cmp_store_btn {
+      img {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 @include respond-to-max($phone) {
   .cmp_text--feature-watch-flipped {
-    margin-bottom: toRem(176) !important;
-    max-height: toRem(374);
-    min-height: toRem(374);
+    margin-bottom: toRem(208) !important;
+    max-height: toRem(502);
+    min-height: toRem(502);
     padding-top: $padding-step-3 !important;
 
     .image {
@@ -763,6 +794,64 @@
 
       &::after {
         border-color: $yellow-light;
+      }
+    }
+  }
+}
+
+.cmp_text--feature-4-0 {
+  @include respond-to-min($tablet) {
+    padding-top: 0 !important;
+
+    .container {
+      margin-left: 0;
+    }
+
+    &.aqua-green--bg {
+      .text {
+        margin-top: toRem(120);
+      }
+    }
+
+    .cmp_btn {
+      img {
+        margin: toRem(28) 0 toRem(32);
+      }
+    }
+
+    .image {
+      .cmp-image__image {
+        margin-top: 0;
+        top: toRem(-30);
+      }
+    }
+  }
+
+  @include respond-to-min($desktop) {
+    max-height: toRem(420);
+    min-height: toRem(420);
+    padding-top: 0 !important;
+
+    .container {
+      margin-left: 0;
+    }
+
+    &.aqua-green--bg {
+      .text {
+        margin-top: toRem(120);
+      }
+    }
+
+    .cmp_btn {
+      img {
+        margin-top: toRem(108);
+      }
+    }
+
+    .image {
+      .cmp-image__image {
+        margin-top: 0;
+        top: toRem(-30);
       }
     }
   }
