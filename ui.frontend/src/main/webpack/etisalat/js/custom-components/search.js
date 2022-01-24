@@ -16,9 +16,13 @@
       }
       // register the event handlers
       $(document).ready(function () {
+        if( $(".search-input").length <= 0 ){
+          return false;
+        }
         var instannceNum = 0;
         var doc = document;
         var searchInput = doc.querySelectorAll(".search-input");
+
         var searchCallUrl = doc.getElementById("searchForm") &&  doc.getElementById("searchForm").action;
         // https://www.etisalat.ae/b2c/autoSuggest.service?locale=en-AE
         var guidedSearchCall = doc.getElementById("searchForm") && doc.getElementById("searchForm").getAttribute("data-secondary-search");

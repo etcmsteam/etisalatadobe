@@ -20,6 +20,10 @@
            data-sly-use.blogPostTemplate="blogpost.html"
            data-sly-call="${blogPostTemplate.blogTile @ container=container,properties=properties}">      
       </sly>
+	  <sly data-sly-test="${properties.tileBoxLayout == 'context-navigation'}" 
+           data-sly-use.contextNavTemplate="context-navigation.html"
+           data-sly-call="${contextNavTemplate.contextNav @ container=container,properties=properties}">      
+      </sly>
       <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
    </div>
 </sly>

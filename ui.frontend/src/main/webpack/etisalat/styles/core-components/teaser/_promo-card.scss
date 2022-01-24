@@ -50,9 +50,9 @@
       a {
         color: $white;
         font-size: $font14;
-        font-weight: 500;
+        font-weight: get-font-weight("medium");
         letter-spacing: toRem(2);
-        line-height: 1.25rem;
+        line-height: toRem(20);
         position: absolute;
         text-transform: uppercase;
 
@@ -63,12 +63,13 @@
         @include rtlBlock() {
           @include font-family-Neotech-ge();
 
-          font-weight: 500;
+          font-weight: get-font-weight("light");
+          letter-spacing: 0;
         }
 
         &::after {
-          border-right: toRem(2) solid $white;
-          border-top: toRem(2) solid $white;
+          border-right: toRem(1) solid $white;
+          border-top: toRem(1) solid $white;
           content: "";
           left: auto;
           margin-left: toRem(8.8);
@@ -200,7 +201,7 @@
 
     &__image {
       &::after {
-        background: #000;
+        background: $black;
         border-radius: toRem(4);
         content: "";
         height: 100%;
