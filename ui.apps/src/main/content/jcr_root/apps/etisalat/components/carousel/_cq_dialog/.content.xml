@@ -31,15 +31,46 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <swipercheckbox
+                                           <carousellayout
+                                                granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                checked="{Boolean}false"
-                                                fieldDescription="When checked, carousel will have swiper view"
-                                                name="./carouselswiper"
-                                                text="Check to Enable the slider"
-                                                uncheckedValue="{Boolean}false"
-                                                value="{Boolean}true"/>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                defaultValue="default"
+                                                fieldLabel="Display layout as a"
+                                                name="./carouselLayout">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <default
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Default"
+                                                        value="default"/>
+                                                    <etisalatherobanner
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Etisalat Hero Banner"
+                                                        value="etisalat-hero-banner"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".carousellayout-showhide-target"/>
+                                            </carousellayout>
+                                            <swiperaction
+                                                granite:class="carousellayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <swipercheckbox
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                                checked="{Boolean}false"
+		                                                fieldDescription="When checked, carousel will have swiper view"
+		                                                name="./carouselswiper"
+		                                                text="Check to Enable the slider"
+		                                                uncheckedValue="{Boolean}false"
+		                                                value="{Boolean}true"/>
+                                                 </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="default"/>
+                                            </swiperaction>                                                                                            
                                         </items>
                                     </column>
                                 </items>

@@ -43,7 +43,7 @@ if ($(".related-jobs").length <= 0) {
           '">' +
           '<div class="related-jobs-card">' +
           '<div class="related-jobs-card-detail">' +
-          '<span class="bookmark"><img src="/etc.clientlibs/etisalat/clientlibs/clientlib-etisalat/resources/images/bookmark-green.svg" alt=""></span>' +
+          '<span class="bookmark"></span>' +
           "<h5>" +
           jcard.postedDaysAgo +
           " days ago</h5>" +
