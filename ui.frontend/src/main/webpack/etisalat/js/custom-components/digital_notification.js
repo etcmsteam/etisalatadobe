@@ -3,8 +3,7 @@ import { swiperInit } from "../swiperInitialize";
 $( document ).ready(function() {
 
 // get height of slide and assign it to container
-var getSwiperSlideHeight
-getSwiperSlideHeight = function () {
+var getSwiperSlideHeight = function () {
     var height = $('.digital-notifications-wrapper.multi-notifications').find('.swiper-slide');
     var max = -1;
     $(height).each(function () {
@@ -17,8 +16,7 @@ $('.digital-notifications-wrapper.multi-notifications').find('.swiper-container'
 
 
 // get height of bottom notification and add padding to body bottom
-var getBottomNotificationHeight
-getBottomNotificationHeight = function () {
+var getBottomNotificationHeight = function () {
     return $('.digital-notifications-wrapper.bottom').height();
 };
 if ($('.digital-notifications-wrapper').hasClass('bottom') && getBottomNotificationHeight() > 0) {
@@ -95,11 +93,10 @@ $('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
 });
 
 var notificationsswiper = swiperInit('.digital-notification-swiper-container .swiper-container', {
+    autoHeight: true,
     direction: 'vertical',
     slidesPerView: 1,
-    effect: 'fade',
-    autoplay: 5000,
-   
+    autoplay: 5000
 });
  
 // close popup
