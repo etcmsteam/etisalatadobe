@@ -42,8 +42,8 @@ class TilesModelTest {
 		String expectedTileTitle = "Mobility";
 		String expectedFileReference = "/content/dam/etisalat/elife-tv-gaming-desktop_tcm313-225320.jpg";
 		String expectedTileDesc = "<p>Keep your workforce connected anytime, anywhere. Ensure constant business accessibility with our bespoke mobility solutions.</p>";
-		Resource resource = context.resourceResolver().getResource(TILE_DATA);
-		TileModel tileModel = resource.adaptTo(TileModel.class);
+		context.currentResource(TILE_DATA);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setTiletitle(expectedTileTitle);
 		assertEquals(expectedTileTitle, tileModel.getTiletitle());		
 		tileModel.setText(expectedTileDesc);
@@ -59,8 +59,8 @@ class TilesModelTest {
 		String expectedTileCTALinkNewWindow = "/content/etisalat/ae/en/connectivity.html";
 		String expectedTileCTALinkSameWindow = "/content/etisalat/ae/en/connectivity.html";
 
-		Resource resource = context.resourceResolver().getResource(TILE_DATA1);
-		TileModel tileModel = resource.adaptTo(TileModel.class);
+		context.currentResource(TILE_DATA1);		
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setTileCTALinkNewWindow(expectedTileCTALinkNewWindow);
 		tileModel.setTileCTALinkSameWindow(expectedTileCTALinkNewWindow);
 		assertEquals(expectedTileCTALinkNewWindow, tileModel.getTileCTALinkNewWindow());
@@ -73,8 +73,8 @@ class TilesModelTest {
 	void testTileContianerLayout() {
 		String expectedLayout = "threeTileBox";
 
-		Resource resource = context.resourceResolver().getResource(TILE_DATA2);
-		TileModel tileModel = resource.adaptTo(TileModel.class);
+		context.currentResource(TILE_DATA2);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
 
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
@@ -82,8 +82,8 @@ class TilesModelTest {
 	@Test
 	void testTileContianerEmptyLayout() {
 		String expectedLayout = "";
-		Resource resource = context.resourceResolver().getResource(TILE_DATA3);
-		TileModel tileModel = resource.adaptTo(TileModel.class);
+		context.currentResource(TILE_DATA3);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
 
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}

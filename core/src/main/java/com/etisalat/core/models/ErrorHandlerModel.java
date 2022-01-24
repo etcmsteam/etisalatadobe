@@ -1,39 +1,48 @@
 package com.etisalat.core.models;
 
-import org.apache.commons.lang3.StringUtils;
+import javax.inject.Inject;
 
-import com.adobe.cq.sightly.WCMUsePojo;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.Default;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class ErrorHandlerModel extends WCMUsePojo {
+import com.etisalat.core.constants.PageConstants;
 
-	private String errorPage;
+@Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ErrorHandlerModel {
+  private static final Logger LOGGER = LoggerFactory.getLogger(ErrorHandlerModel.class);
+  private String errorPage;
+  
+  @Inject
+  @Default(values = {PageConstants.DEFAULT_STATUS_CODE})
+  private String errorCode;
+  
+  /**
+   * The current request.
+   */
+  @ScriptVariable
+  private SlingHttpServletResponse response;
 
-	private static final String DEFAULT_STATUS_CODE = "404";
+  /**
+   * @return the errorPage
+   */
+  public String getErrorPage() {
+   final String errorPageURL = "/content/etisalat/ae/en/error/" + errorCode;
+   LOGGER.debug("Error Page path - init method {}", this.errorPage);
+	    
+   response.setStatus(Integer.parseInt(errorCode));
+   response.setContentType("text/html");
+   response.setCharacterEncoding(PageConstants.UTF_8);
+   
+   return errorPageURL;
+  }
 
-	@Override
-	public void activate() throws Exception {
-		String errorCode = StringUtils.isNotBlank(get("errorCode", String.class)) ? get("errorCode", String.class)
-				: DEFAULT_STATUS_CODE;
-		String errorPageURL = "/content/etisalat/ae/en/error/" + errorCode;
 
-		getResponse().setStatus(Integer.parseInt(errorCode));
-		getResponse().setContentType("text/html");
-
-		setErrorPage(errorPageURL);
-	}
-
-	/**
-	 * @return the errorPage
-	 */
-	public String getErrorPage() {
-		return errorPage;
-	}
-
-	/**
-	 * @param errorPage the errorPage to set
-	 */
-	public void setErrorPage(String errorPage) {
-		this.errorPage = errorPage;
-	}
 
 }

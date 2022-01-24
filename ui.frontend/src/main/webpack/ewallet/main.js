@@ -2,8 +2,5 @@
 import "./main.scss";
 
 // Javascript
-import "./**/*.js";
-import "./site.js";
-import $ from 'jquery';
-
-
+import "./js/forms";
+import "./js/global";

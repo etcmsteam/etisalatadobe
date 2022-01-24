@@ -14,21 +14,21 @@ public class QuickLinkModel {
   private String quickLinkTitle;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-  private List<LinkModel> links = Collections.emptyList();;
+  private List<LinkModel> links = Collections.emptyList();
 
-	public String getQuickLinkTitle() {
-		return quickLinkTitle;
-	}
+  public String getQuickLinkTitle() {
+    return quickLinkTitle;
+  }
 
-	public void setQuickLinkTitle(String quickLinkTitle) {
-		this.quickLinkTitle = quickLinkTitle;
-	}
+  public void setQuickLinkTitle(String quickLinkTitle) {
+    this.quickLinkTitle = quickLinkTitle;
+  }
 
-	public List<LinkModel> getLinks() {
-		return Collections.unmodifiableList(links);
-	}
+  public List<LinkModel> getLinks() {
+    return Collections.unmodifiableList(links);
+  }
 
-	public void setLinks(List<LinkModel> links) {
-		this.links = Collections.unmodifiableList(links);
-	}
+  public void setLinks(List<LinkModel> links) {
+    this.links = Collections.unmodifiableList(links);
+  }
 }

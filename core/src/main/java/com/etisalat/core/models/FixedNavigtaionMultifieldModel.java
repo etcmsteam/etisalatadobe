@@ -11,136 +11,136 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.etisalat.core.util.CommonUtility;
 
-@Model(adaptables = { Resource.class,
-		SlingHttpServletRequest.class })
+@Model(adaptables = {Resource.class,
+    SlingHttpServletRequest.class})
 public class FixedNavigtaionMultifieldModel {
 
-	@SlingObject
-	private ResourceResolver resourceResolver;
+  @SlingObject
+  private ResourceResolver resourceResolver;
 
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String navigationTitle;
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String navigationTitle;
 
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String navigationLink;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String navigationDesc;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String navigationImage;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	private String active;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	@Default(values = "false")
-	private String hideDesktopLink;
-	
-	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-	@Default(values = "false")
-	private String openmodalwindow;
-	
-	private Resource topNavigationXFResource;
-	
-	public void setNavigationTitle(String navigationTitle) {
-		this.navigationTitle = navigationTitle;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String navigationLink;
 
-	public void setNavigationLink(String navigationLink) {
-		this.navigationLink = navigationLink;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String navigationDesc;
 
-	public String getNavigationTitle() {
-		return navigationTitle;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String navigationImage;
 
-	public String getNavigationLink() {
-		return CommonUtility.appendHtmlExtensionToPage(resourceResolver, navigationLink);
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String active;
 
-	/**
-	 * @return the navigationDesc
-	 */
-	public String getNavigationDesc() {
-		return navigationDesc;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  @Default(values = "false")
+  private String hideDesktopLink;
 
-	/**
-	 * @param navigationDesc the navigationDesc to set
-	 */
-	public void setNavigationDesc(String navigationDesc) {
-		this.navigationDesc = navigationDesc;
-	}
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  @Default(values = "false")
+  private String openmodalwindow;
 
-	/**
-	 * @return the active
-	 */
-	public String getActive() {
-		return active;
-	}
+  private Resource topNavigationXFResource;
 
-	/**
-	 * @param active the active to set
-	 */
-	public void setActive(String active) {
-		this.active = active;
-	}
+  public void setNavigationTitle(String navigationTitle) {
+    this.navigationTitle = navigationTitle;
+  }
 
-	/**
-	 * @return the navigationImage
-	 */
-	public String getNavigationImage() {
-		return navigationImage;
-	}
+  public void setNavigationLink(String navigationLink) {
+    this.navigationLink = navigationLink;
+  }
 
-	/**
-	 * @param navigationImage the navigationImage to set
-	 */
-	public void setNavigationImage(String navigationImage) {
-		this.navigationImage = navigationImage;
-	}
+  public String getNavigationTitle() {
+    return navigationTitle;
+  }
 
-	/**
-	 * @return the hideDesktopLink
-	 */
-	public String getHideDesktopLink() {
-		return hideDesktopLink;
-	}
+  public String getNavigationLink() {
+    return CommonUtility.appendHtmlExtensionToPage(resourceResolver, navigationLink);
+  }
 
-	/**
-	 * @param hideDesktopLink the hideDesktopLink to set
-	 */
-	public void setHideDesktopLink(String hideDesktopLink) {
-		this.hideDesktopLink = hideDesktopLink;
-	}
+  /**
+   * @return the navigationDesc
+   */
+  public String getNavigationDesc() {
+    return navigationDesc;
+  }
 
-	/**
-	 * @return the openmodalwindow
-	 */
-	public String getOpenmodalwindow() {
-		return openmodalwindow;
-	}
+  /**
+   * @param navigationDesc the navigationDesc to set
+   */
+  public void setNavigationDesc(String navigationDesc) {
+    this.navigationDesc = navigationDesc;
+  }
 
-	/**
-	 * @return the topNavigationXFResource
-	 */
-	public Resource getTopNavigationXFResource() {
-		return topNavigationXFResource;
-	}
+  /**
+   * @return the active
+   */
+  public String getActive() {
+    return active;
+  }
 
-	/**
-	 * @param openmodalwindow the openmodalwindow to set
-	 */
-	public void setOpenmodalwindow(String openmodalwindow) {
-		this.openmodalwindow = openmodalwindow;
-	}
+  /**
+   * @param active the active to set
+   */
+  public void setActive(String active) {
+    this.active = active;
+  }
 
-	/**
-	 * @param topNavigationXFResource the topNavigationXFResource to set
-	 */
-	public void setTopNavigationXFResource(Resource topNavigationXFResource) {
-		this.topNavigationXFResource = topNavigationXFResource;
-	}
+  /**
+   * @return the navigationImage
+   */
+  public String getNavigationImage() {
+    return navigationImage;
+  }
+
+  /**
+   * @param navigationImage the navigationImage to set
+   */
+  public void setNavigationImage(String navigationImage) {
+    this.navigationImage = navigationImage;
+  }
+
+  /**
+   * @return the hideDesktopLink
+   */
+  public String getHideDesktopLink() {
+    return hideDesktopLink;
+  }
+
+  /**
+   * @param hideDesktopLink the hideDesktopLink to set
+   */
+  public void setHideDesktopLink(String hideDesktopLink) {
+    this.hideDesktopLink = hideDesktopLink;
+  }
+
+  /**
+   * @return the openmodalwindow
+   */
+  public String getOpenmodalwindow() {
+    return openmodalwindow;
+  }
+
+  /**
+   * @return the topNavigationXFResource
+   */
+  public Resource getTopNavigationXFResource() {
+    return topNavigationXFResource;
+  }
+
+  /**
+   * @param openmodalwindow the openmodalwindow to set
+   */
+  public void setOpenmodalwindow(String openmodalwindow) {
+    this.openmodalwindow = openmodalwindow;
+  }
+
+  /**
+   * @param topNavigationXFResource the topNavigationXFResource to set
+   */
+  public void setTopNavigationXFResource(Resource topNavigationXFResource) {
+    this.topNavigationXFResource = topNavigationXFResource;
+  }
 
 }

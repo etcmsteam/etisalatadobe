@@ -1,5 +1,6 @@
 package com.etisalat.core.models.impl;
 
+import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.models.CareerGreetings;
 import com.etisalat.core.models.LinkModel;
 import javax.annotation.PostConstruct;
@@ -43,9 +44,6 @@ public class CareerGreetingsImpl implements CareerGreetings {
 
   private LinkModel image;
 
-  private static final String COVER_NODE = "cover";
-  private static final String IMAGE_NODE = "image";
-
   @SlingObject
   @Optional
   protected Resource currentResource;
@@ -54,15 +52,17 @@ public class CareerGreetingsImpl implements CareerGreetings {
   protected void init() {
     LOG.info("current resource is {}", currentResource.getPath());
     if (currentResource.hasChildren()) {
-      Resource coverNode = currentResource.getChild(COVER_NODE);
-      Resource imageNode = currentResource.getChild(IMAGE_NODE);
+      final Resource coverNode = currentResource.getChild(AEConstants.COVER_NODE);
+      final Resource imageNode = currentResource.getChild(AEConstants.IMAGE_NODE);
       if (null != coverNode) {
         coverImage = coverNode.adaptTo(LinkModel.class);
       }
+      LOG.info("Cover child node resource {}", coverNode);
 
       if (null != imageNode) {
         image = imageNode.adaptTo(LinkModel.class);
       }
+      LOG.info("Image child node resource {}", imageNode);
     }
   }
 

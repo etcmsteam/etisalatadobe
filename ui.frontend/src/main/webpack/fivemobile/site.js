@@ -23,6 +23,8 @@ $(document).ready(function () {
     $(".ShowMenu").slideToggle("slow");
     $(".main-nav__list").removeClass("ShowMenu");
   });
+  //dynamic year
+  $('.footer-copyright-year').text(new Date().getFullYear());
 });
 
 $(document).on('click', '.main-nav__item a[href^="#"]', function (event) {

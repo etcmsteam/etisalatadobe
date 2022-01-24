@@ -1,5 +1,6 @@
 package com.etisalat.core.models;
 
+import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.util.CommonUtility;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -23,23 +24,17 @@ public class HeroLinkSection {
     @SlingObject
     ResourceResolver resourceResolver;
 
-    public static final String HERO_LINKS_SECTION = "heroLinksSection";
-    public static final String ICON_IMAGE = "iconImage";
-    public static final String ICON_LINK = "iconLink";
-    public static final String ICON_TEXT = "iconText";
-    public static final String LINK_TARGET = "linkTarget";
-
     public List<HeroLinkSectionVO> getHeroLinkSectionList() {
-        List<HeroLinkSectionVO> linkSectionPojoList = new ArrayList<>();
-        Resource heroLinksSection = resource.getChild(HERO_LINKS_SECTION);
-        Iterator<Resource> iterator = heroLinksSection.listChildren();
+        final List<HeroLinkSectionVO> linkSectionPojoList = new ArrayList<>();
+        final Resource heroLinksSection = resource.getChild(AEConstants.HERO_LINKS_SECTION);
+        final Iterator<Resource> iterator = heroLinksSection.listChildren();
         while (iterator.hasNext()) {
-            Resource item = iterator.next();
-            HeroLinkSectionVO heroLinkSectionVO = new HeroLinkSectionVO();
-            heroLinkSectionVO.setIconImage(item.getValueMap().get(ICON_IMAGE, String.class));
-            heroLinkSectionVO.setIconText(item.getValueMap().get(ICON_TEXT, String.class));
-            heroLinkSectionVO.setLinkTarget(item.getValueMap().get(LINK_TARGET, String.class));
-            heroLinkSectionVO.setIconLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver, item.getValueMap().get(ICON_LINK, String.class)));
+            final Resource item = iterator.next();
+            final HeroLinkSectionVO heroLinkSectionVO = new HeroLinkSectionVO();
+            heroLinkSectionVO.setIconImage(item.getValueMap().get(AEConstants.ICON_IMAGE, String.class));
+            heroLinkSectionVO.setIconText(item.getValueMap().get(AEConstants.ICON_TEXT, String.class));
+            heroLinkSectionVO.setLinkTarget(item.getValueMap().get(AEConstants.LINK_TARGET, String.class));
+            heroLinkSectionVO.setIconLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver, item.getValueMap().get(AEConstants.ICON_LINK, String.class)));
             linkSectionPojoList.add(heroLinkSectionVO);
         }
         return linkSectionPojoList;

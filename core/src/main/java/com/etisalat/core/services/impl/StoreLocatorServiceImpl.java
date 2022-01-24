@@ -1,5 +1,5 @@
 package com.etisalat.core.services.impl;
-        
+
 import org.apache.jackrabbit.oak.commons.PropertiesUtil;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.component.annotations.Activate;
@@ -15,22 +15,22 @@ import com.etisalat.core.services.StoreLocatorService;
 @Designate(ocd = StoreLocatorConfiguration.class)
 public class StoreLocatorServiceImpl implements StoreLocatorService {
 
-	@Reference
-	private ConfigurationAdmin configAdmin;
+  @Reference
+  private ConfigurationAdmin configAdmin;
 
-	private String storeLocatorUrl;
+  private String storeLocatorUrl;
 
-	@Override
-	public String getStoreLocatorUrl() {
-		return this.storeLocatorUrl;
-	}
+  @Override
+  public String getStoreLocatorUrl() {
+    return this.storeLocatorUrl;
+  }
 
-	@Activate
-	@Modified
-	protected void activate(final StoreLocatorConfiguration config) {
-		this.storeLocatorUrl = PropertiesUtil.toString(config.getStoreLocatorUrl(),
-				"No config store locator url found");
+  @Activate
+  @Modified
+  protected void activate(final StoreLocatorConfiguration config) {
+    this.storeLocatorUrl = PropertiesUtil.toString(config.getStoreLocatorUrl(),
+        "No config store locator url found");
 
-	}
+  }
 
 }
