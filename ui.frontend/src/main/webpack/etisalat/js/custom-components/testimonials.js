@@ -18,7 +18,6 @@ function initSwiper() {
         prevButton: ".prev.slider" + index,
         scrollbarHide: false,
         scrollbarDraggable: true,
-        spaceBetween: 24,
         breakpoints: {
           540: {
             slidesPerView: 1.2,
@@ -30,13 +29,16 @@ function initSwiper() {
           },
           1024: {
             slidesPerView: 2,
+            spaceBetween: 24,
           },
           1440: {
             slidesPerView: 2,
+            spaceBetween: 24,
           },
           9999: {
             centeredSlides: false,
             slidesPerView: 2,
+            spaceBetween: 24,
           },
         },
       });

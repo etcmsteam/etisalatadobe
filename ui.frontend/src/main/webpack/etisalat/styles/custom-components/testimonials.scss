@@ -199,10 +199,47 @@
   }
 }
 
+// tile with image banner and single card
+.single-tile {
+  .with-image-banner {
+    @include respond-to-min($desktop) {
+      border-radius: toRem(8);
+      display: flex;
+      .img-banner {
+        order: 2;
+        flex: 1;
+      }
+
+      .testimonial-tile {
+        order: 1;
+        flex: 1;
+      }
+    }
+  }
+
+  .controls,
+  .swiper-scrollbar {
+    display: none !important;
+  }
+
+  .col-md-8 {
+    @include respond-to-max($desktop-min) {
+      padding-right: toRem(12);
+    }
+  }
+}
+
 // arabic language
 *[lang="ar"] *[dir="rtl"] {
   .testimonial-module .swiper-slide {
     text-align: right;
+    margin-right: 0 !important;
+    margin-left: toRem(24);
+
+    @include respond-to-min($tablet) {
+      margin-right: 0 !important;
+      margin-left: toRem(16);
+    }
   }
 
   .testimonial-module .controls .next,
