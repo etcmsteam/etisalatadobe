@@ -5,6 +5,9 @@
         margin-left: 3px;
       }
     }
+    .select2-selection{
+      border-bottom: 1px solid $arrow-border-green;
+    }
   }
 
   .floating-label {
@@ -14,6 +17,12 @@
     padding-top: toRem(80);
     padding-bottom: toRem(75);
     @include font-family-lato;
+    margin-right: toRem(-15);
+    margin-left: toRem(-10);
+    @include rtlBlock(){
+      margin-right: toRem(-20);
+    }
+
 
     @include respond-to-min($tablet) {
       padding-left: 0px !important;
@@ -178,6 +187,7 @@
         direction: rtl;
         li {
           font-size: $font16;
+          font-weight: get-font-weight("light")!important;
         }
       }
     }
@@ -205,6 +215,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-weight: get-font-weight("light")!important;
   }
   .select2-selection__arrow {
     width: toRem(20);
@@ -653,6 +664,7 @@
               transform-origin: 100% 50% !important;
               width: 94%;
               right: 12px;
+              @include font-family-lato;
             }
           }
         }
