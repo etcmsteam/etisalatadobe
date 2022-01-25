@@ -22,7 +22,11 @@
 		              src="${properties.videoLink}">
 		      <track label="" kind="" srclang="" src="">
 		   </video>
-		</div>	          
+		</div>	  
+		<div data-sly-test="${properties.heroDisplayBehavior == 'image-viewports'}">
+		   <sly data-sly-test="${wcmmode.edit}"> Edit Image Viewport component </sly>
+		  <sly data-sly-resource="${'imageetisalatview' @ resourceType='etisalat/components/imageetisalatviewport', decorationTagName=wcmmode.edit ? 'div' : ''}"></sly>
+		</div>	         
 	  </div>	  
 	</div>
 	<!-- all hero content -->
@@ -84,7 +88,7 @@
 			             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
 	    </div>
 		<!--hero call to action sign in start -->
-		<div data-sly-test="${properties.heroImageTitle}" class="hero-images-call-to-action-section">
+		<div data-sly-test="${properties.heroImageTitle || properties.heroImageDesc}" class="hero-images-call-to-action-section">
 			<div class="container">
 				<div class="call-to-action-box">
 					<h3 data-sly-test="${properties.heroImageTitle}" class="heading">${properties.heroImageTitle} </h3>
