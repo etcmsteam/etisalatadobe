@@ -1,27 +1,5 @@
 package com.etisalat.core.models.impl;
 
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.jcr.resource.api.JcrResourceConstants;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
@@ -31,6 +9,16 @@ import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 import com.etisalat.core.util.CommonUtility;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.*;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
@@ -41,7 +29,6 @@ public class ArticleSearchImpl implements ArticleSearch {
    * The resource type.
    */
   protected static final String RESOURCE_TYPE = "etisalat/components/articlelist";
-
 
   /**
    * The current request.
@@ -179,7 +166,7 @@ public class ArticleSearchImpl implements ArticleSearch {
     if (StringUtils.isNotBlank(businessCatg)) {
       final Tag tag = tagManager.resolve(businessCatg);
       if (null != tag) {
-        pageDetails.setCategory(tag.getTitle());
+        pageDetails.setCategory(page.getLanguage().toString().equals(AEConstants.ENGLISH) ? tag.getTitle(Locale.forLanguageTag(AEConstants.ENGLISH)) : tag.getTitle(Locale.forLanguageTag(AEConstants.ARABIC)) );
       }
     }
   }

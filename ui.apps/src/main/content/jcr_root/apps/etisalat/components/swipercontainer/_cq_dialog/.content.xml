@@ -52,6 +52,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Default"
                                                         value="default"/>
+                                                     <billexplainer
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Bill Explainer"
+                                                        value="bill-explainer"/>
                                                     <ewalletoffer
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Ewallet Offer"
@@ -69,6 +73,45 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     cq-dialog-dropdown-showhide-target=".swipergridlayout-showhide-target"/>
                                             </gridlayout>
+                                            <billExplainerGroup
+                                                granite:class="swipergridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                     <reportcard
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+		                                                defaultValue="default"		                                               
+		                                                fieldLabel="Report Card Type"
+		                                                name="./swiperReportCardType">
+		                                                <items jcr:primaryType="nt:unstructured">		                                                    
+		                                                    <billbreakdown
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        text="Bill Breakdown"
+		                                                        value="bill-breakdown"/>
+		                                                    <usageservicesbreakdown
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        text="Usage and Services Breakdown"
+		                                                        value="usage-and-services-breakdown"/>
+		                                                </items>		                                               
+		                                            </reportcard>
+                                                    <previous
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Previous Link Label"
+                                                        fieldLabel="Previous Link Label"
+                                                        name="./prevLinkLbl"/>
+                                                    <next
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Next Link Label"
+                                                        fieldLabel="Next Link Label"
+                                                        name="./nextLinkLbl"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="bill-explainer"/>
+                                            </billExplainerGroup>
                                             <offerviewall
                                                 granite:class="swipergridlayout-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
