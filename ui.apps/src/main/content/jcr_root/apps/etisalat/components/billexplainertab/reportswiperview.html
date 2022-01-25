@@ -1,5 +1,5 @@
 <template  data-sly-template.swiperView="${ @ reportCard,properties}">
- <div class="${properties.swiperReportCardType == 'bill-breakdown' ? 'bill-breakdown' : 'bill-breakdown-usage.bill-breakdown-usage-service'}">
+ <div class="${reportCard['swiperReportCardType'] == 'bill-breakdown' ? 'bill-breakdown' : 'bill-breakdown-usage bill-breakdown-usage-service'}">
   <div class="row row-tiles-table">
     <div class="swiper-container swiper-container-horizontal">
       <div class="swiper-wrapper" data-sly-list.reportCardItems="${reportCard.listChildren}">
@@ -13,12 +13,12 @@
           </sly>
       </div>
     </div>
-    <div class="table-swiper-button-prev">${properties.prevLinkLbl}
+    <div class="table-swiper-button-prev">${reportCard['prevLinkLbl']}
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
     <!-- End - swiper-pagination-custom -->
-    <div class="table-swiper-button-next">${properties.nextLinkLbl}
+    <div class="table-swiper-button-next">${reportCard['nextLinkLbl']}
     </div>
   </div>
 </div>
