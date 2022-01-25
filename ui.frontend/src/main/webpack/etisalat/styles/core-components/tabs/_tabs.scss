@@ -249,6 +249,10 @@
     font-weight: get-font-weight("regular");
     padding: toRem(18) 0;
 
+    @include rtlBlock() {
+      font-weight: get-font-weight("light");
+    }
+
     &::before {
       right: toRem(3);
       transform: translateY(-80%) rotate(45deg);
@@ -1298,6 +1302,12 @@
   }
 
   // 2nd vartion en
+}
+
+.cmp_tabs--vertical .cmp-teaser__action-link {
+  @include rtlBlock() {
+    letter-spacing: 0;
+  }
 }
 
 // 3rd varition
