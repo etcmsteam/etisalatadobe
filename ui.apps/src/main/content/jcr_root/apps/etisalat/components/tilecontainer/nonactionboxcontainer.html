@@ -1,5 +1,9 @@
 <template data-sly-template.contextNav="${ @ container,properties}">
 
+
+
+    <sly data-sly-set.oneTileCheck="${container.items.size == 1 ? 'single-tile' : 'testimonialSlider'}"></sly>
+
     <sly data-sly-test.withquotes="${properties.nonactionboxbehavior == 'with-quotes' ? 'testimonial-module testimonialSlider' : ''}"></sly>
     <sly data-sly-test.withpretitle="${properties.nonactionboxbehavior == 'with-pretitle' ? 'non-action-boxes-two-cols-4-0' : ''}"></sly>
     <sly data-sly-test.withtitle="${properties.nonactionboxbehavior == 'with-title' ? 'cta-with-main-text-4-0 with-two-cols' : ''}"></sly>
@@ -20,7 +24,8 @@
                 </div>
                 <div class="${properties.nonactionboxbehavior == 'with-title' ? 'cta' :'' } ${properties.nonactionboxbehavior == 'with-pretitle' ? 'two-cols-wrapper' :'' }">
                     <!-- boxes Start-->
-                    <div class="${properties.nonactionboxbehavior == 'with-title' ? 'media-cta-text-4-0 with-up-down' :'' } ${properties.nonactionboxbehavior == 'with-pretitle' ? 'non-action-boxes-4-0' :'' }"  data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
+                    <div class="nonactionboxtile ${properties.nonactionboxbehavior == 'with-title' ? 'media-cta-text-4-0 with-up-down' :'' } ${properties.nonactionboxbehavior == 'with-pretitle' ? 'non-action-boxes-4-0' :'' }"  data-sly-repeat="${container.items}"
+                         data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
                     <!-- boxes End-->
                 </div>
             </div>
@@ -31,7 +36,7 @@
 
     <!--testimonials container-->
     <sly data-sly-test="${properties.nonactionboxbehavior == 'with-quotes'}">
-        <div class="testimonial-module testimonialSlider">
+        <div class="testimonial-module ${oneTileCheck}">
             <div class="testimonial-box">
                 <div class="pattern-wrapper">
                     <!--?xml version="1.0" encoding="UTF-8"?-->
@@ -93,7 +98,8 @@
                         <div class="col-xs-12 col-md-8">
                             <div class="${!wcmmode.edit ? 'swiper-container swiper-container-horizontal' : ''}">
                                 <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">
-                                    <div class="swiper-slide" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
+                                    <div class="nonactionboxtile swiper-slide" data-sly-repeat="${container.items}"
+                                         data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
                                 </div>
                             </div>
                             <div class="${!wcmmode.edit ? 'swiper-scrollbar' : ''}"></div>
