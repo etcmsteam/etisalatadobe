@@ -106,6 +106,17 @@
   @include respond-to-min($desktop) {
     padding: toRem(66) 0;
   }
+
+  .container {
+    @include respond-to-max($desktop-min) {
+      width: toRem(702);
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      width: 100%;
+    }
+  }
+
   .pattern-wrapper {
     width: toRem(96);
     height: toRem(104);
@@ -183,6 +194,12 @@
     background-color: transparent;
     height: auto;
     width: 100%;
+
+    @include respond-to-max($custom-width-tab) {
+      &:last-child() {
+        margin-right: 0 !important;
+      }
+    }
   }
 
   .swiper-scrollbar {

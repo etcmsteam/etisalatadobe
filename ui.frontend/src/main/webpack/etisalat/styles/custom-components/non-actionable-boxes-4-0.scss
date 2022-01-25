@@ -6,8 +6,20 @@
     background-color: $module-bg-color;
   }
 
-  @include respond-to-max($custom-width-tab) {
-    .container {
+  .container {
+    @include respond-to-max($desktop-wide) {
+      width: toRem(952);
+    }
+
+    @include respond-to-max($desktop-min) {
+      width: toRem(732);
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      width: 100%;
+    }
+
+    @include respond-to-max($custom-width-tab) {
       padding-left: toRem(16);
       padding-right: toRem(16);
     }
@@ -75,16 +87,26 @@
 
             @include respond-to-min($tablet) {
               margin-bottom: toRem(24);
-              height: toRem(258);
-            }
-
-            @include respond-to-min($desktop) {
-              margin-bottom: toRem(24);
-              height: toRem(224);
+              height: toRem(244);
             }
 
             .cover {
               border-radius: toRem(4);
+              width: toRem(370);
+              max-height: toRem(244);
+
+              @include respond-to-max($desktop-min) {
+                width: toRem(358);
+              }
+
+              @include respond-to-min-max($desktop-wide, $desktop) {
+                width: toRem(304);
+              }
+
+              @include respond-to-max($custom-width-tab) {
+                width: 91.4%;
+                max-height: toRem(218);
+              }
             }
           }
 
