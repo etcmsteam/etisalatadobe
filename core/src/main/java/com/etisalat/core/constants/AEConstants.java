@@ -95,7 +95,7 @@ public final class AEConstants {
  public static final String ARABIC = "ar";
  public static final String ETISALAT_CONTENT_PAGE = "/content/etisalat";
  public static final String HIU_APP_CONTENT_PAGE = "/content/hiuapp";
- public static final String EWALLET_CONTENT_PAGE = "/content/hiuapp";
+ public static final String EWALLET_CONTENT_PAGE = "/content/ewallet";
  
  /**
   * private constructor to prevent instantiation of class.
