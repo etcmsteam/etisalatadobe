@@ -213,7 +213,7 @@ public final class CommonUtility {
 	/**
 	  * Get Formatted Article Date for Page resource
 	*/
-	 public static String useArticleDateUtil(Page currentPage) throws ParseException{
+	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
 		  DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", currentPage.getLanguage(true));
 		  String articleDate = outputFormat.format(articleCalender.getTime());

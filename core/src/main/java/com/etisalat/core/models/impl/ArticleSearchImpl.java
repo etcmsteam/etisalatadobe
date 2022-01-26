@@ -155,7 +155,7 @@ public class ArticleSearchImpl implements ArticleSearch {
         null != page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class)) {
       pageDetails.setArticleDate(page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class));
       try {
-		pageDetails.setArticleDateDisplayString(CommonUtility.useArticleDateUtil(page));
+		pageDetails.setArticleDateDisplayString(CommonUtility.useFormattedArticleDate(page));
 	  } catch (ParseException e) {
 		  LOG.error("Exception in parsing article date {}", e.getMessage());
 	  }
@@ -292,7 +292,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   
   @Override
   public String getArticleDate() throws ParseException {	  
-	    return CommonUtility.useArticleDateUtil(currentPage);
+	    return CommonUtility.useFormattedArticleDate(currentPage);
   } 
   
   @Override
