@@ -16,6 +16,8 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.util.*;
@@ -25,6 +27,8 @@ import java.util.stream.Collectors;
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     ArticleSearch.class}, resourceType = {ArticleSearchImpl.RESOURCE_TYPE})
 public class ArticleSearchImpl implements ArticleSearch {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ArticleSearchImpl.class);
 
   /**
    * The resource type.
@@ -153,8 +157,7 @@ public class ArticleSearchImpl implements ArticleSearch {
       try {
 		pageDetails.setArticleDateDisplayString(CommonUtility.useArticleDateUtil(page));
 	  } catch (ParseException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		  LOG.error("Exception in parsing article date {}", e.getMessage());
 	  }
     }
   }

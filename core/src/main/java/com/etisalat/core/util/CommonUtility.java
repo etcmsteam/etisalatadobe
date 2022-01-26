@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
+import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
