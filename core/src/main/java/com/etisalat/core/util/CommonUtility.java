@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
+import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
@@ -204,7 +205,28 @@ public final class CommonUtility {
 		}
 		return redirectValue;
 	}
-
+	
+	/**
+	  * Returns true if a valid Hiu App content page
+	 */
+	public static boolean isHiuAppPage(Page currentPage) {
+		return null != currentPage && currentPage.getPath().contains(AEConstants.HIU_APP_CONTENT_PAGE);
+	}
+	
+	/**
+	  * Returns true if a valid Ewallet content page
+	 */
+	
+	public static boolean isEwalletAppPage(Page currentPage) {
+		return null != currentPage && currentPage.getPath().contains(AEConstants.EWALLET_CONTENT_PAGE);
+	}
+	
+	/**
+	  * Returns true if a valid Etisalat content page
+	 */
+	public static boolean isEtisalatAppPage(Page currentPage) {
+		return null != currentPage && currentPage.getPath().contains(AEConstants.ETISALAT_CONTENT_PAGE);
+	}
   
   /**
    * private constructor to prevent instantiation of class.
