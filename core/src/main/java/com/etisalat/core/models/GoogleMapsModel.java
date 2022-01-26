@@ -102,13 +102,13 @@ public class GoogleMapsModel {
    * @return the captchaV2
    */
   public String getCaptchaV2() {	 
-		if(null != currentPage && CommonUtility.isHiuAppPage(currentPage)) {
-			return hiuAppCaptchaV2;
-		}
-		else if(null != currentPage && CommonUtility.isEwalletAppPage(currentPage)) {
-			return ewalletAppCaptchaV2;
-		}	
-    return etisalatAppCaptchaV2;
+	  if(null != currentPage && CommonUtility.isHiuAppPage(currentPage)) {
+		  return hiuAppCaptchaV2;
+	  }
+	  else if(null != currentPage && CommonUtility.isEwalletAppPage(currentPage)) {
+		  return ewalletAppCaptchaV2;
+	  }	
+	  return etisalatAppCaptchaV2;
   }
 
   /**
