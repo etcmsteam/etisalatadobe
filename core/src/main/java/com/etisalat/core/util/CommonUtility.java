@@ -1,6 +1,10 @@
 package com.etisalat.core.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -204,7 +208,16 @@ public final class CommonUtility {
 		}
 		return redirectValue;
 	}
-
+	
+	/**
+	  * Get Formatted Article Date for Page resource
+	*/
+	 public static String useArticleDateUtil(Page currentPage) throws ParseException{
+		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
+		  DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", currentPage.getLanguage(true));
+		  String articleDate = outputFormat.format(articleCalender.getTime());
+		  return StringUtils.isNotBlank(articleDate) ? articleDate : StringUtils.EMPTY ;
+	  }
   
   /**
    * private constructor to prevent instantiation of class.

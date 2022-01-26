@@ -17,6 +17,7 @@ import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 
+import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -55,7 +56,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private String parentPath;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-  private String articleListFrom;
+  private String articleListFrom;  
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String[] pages;
@@ -149,6 +150,12 @@ public class ArticleSearchImpl implements ArticleSearch {
     if (page.getProperties().containsKey(AEConstants.PN_ARTICLE_DATE) &&
         null != page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class)) {
       pageDetails.setArticleDate(page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class));
+      try {
+		pageDetails.setArticleDateDisplayString(CommonUtility.useArticleDateUtil(page));
+	  } catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	  }
     }
   }
 
@@ -279,7 +286,12 @@ public class ArticleSearchImpl implements ArticleSearch {
 
     return CommonUtility.appendHtmlExtensionToPage(resourceResolver, backToLink);
   }
-
+  
+  @Override
+  public String getArticleDate() throws ParseException {	  
+	    return CommonUtility.useArticleDateUtil(currentPage);
+  } 
+  
   @Override
   public Map<String, Long> getSearchCategories() {
     return Collections.unmodifiableMap(categoryMap);
