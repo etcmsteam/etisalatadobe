@@ -1,4 +1,4 @@
-.cmp-experiencefragment--header {
+header {
   left: 0;
   padding: toRem(32) toRem(15) toRem(20);
   position: fixed;
@@ -7,11 +7,12 @@
   width: 100%;
   z-index: 99;
 
-  &.cmp-experiencefragment--sticky {
+  &.header--sticky {
     padding-top: toRem(20);
+
     &::before {
       background: $white-color;
-      box-shadow: 0 toRem(23) toRem(38) 0 rgba(0, 0, 0, 0.09);
+      box-shadow: 0 toRem(23) toRem(38) 0 rgb(0 0 0 / 0.9%);
     }
 
     nav {
@@ -27,14 +28,14 @@
 
           &.hamburger--close {
             background: transparent;
-
-            &::before,
-            &::after {
-              background: rgba(0,0,0,0.15);
-              top: toRem(20);
-            }
           }
-          
+
+          &.hamburger--close::before,
+          &.hamburger--close::after {
+            background: rgba(0 0 0 / 15%);
+            top: toRem(20);
+          }
+
           &::before,
           &::after {
             background: $hamburger-blue;
@@ -54,8 +55,7 @@
   }
 
   &::before {
-    background: $blue-gradient;
-    content: '';
+    content: "";
     display: block;
     height: 100%;
     left: 50%;
@@ -69,6 +69,7 @@
   .container {
     padding: 0;
   }
+
   .cmp-container {
     margin: 0 auto;
     max-width: toRem(1140);
@@ -76,8 +77,8 @@
   }
 
   .logo {
-    position: relative;
     max-width: toRem(108);
+    position: relative;
 
     @include respond-to-max($tablet) {
       max-width: toRem(50);
@@ -90,4 +91,3 @@
     }
   }
 }
-
