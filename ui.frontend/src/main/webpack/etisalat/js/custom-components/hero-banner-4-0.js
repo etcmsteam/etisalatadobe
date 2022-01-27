@@ -71,7 +71,7 @@ import { swiperInit } from "../swiperInitialize";
     }
   };
 
-  //Hero banner call to action initialiastion
+  //Hero banner call to action initialization
 
   function initHeroBannerCallToAction() {
     $(document)
