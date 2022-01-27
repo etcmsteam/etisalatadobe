@@ -91,7 +91,7 @@ module.exports = {
       { from: path.resolve(__dirname, SOURCE_ROOT + "/gochat/resources"), to: "./clientlib-gochat/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/etisalat/resources"), to: "./clientlib-etisalat/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/careers/resources"), to: "./clientlib-careers/" },
-      { from: path.resolve(__dirname, SOURCE_ROOT + "/global/resources"), to: "./clientlib-careers/" },
+      { from: path.resolve(__dirname, SOURCE_ROOT + "/global/resources"), to: "./clientlib-global/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/fivemobile/resources"), to: "./clientlib-fivemobile/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/hiuapp/resources"), to: "./clientlib-hiuapp/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/ewallet/resources"), to: "./clientlib-ewallet/" },
