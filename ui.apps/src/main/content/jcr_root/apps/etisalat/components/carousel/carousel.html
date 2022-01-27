@@ -3,7 +3,7 @@
      data-sly-use.controlsTemplate="controls.html"
      data-panelcontainer="${wcmmode.edit && 'carousel'}"
      id="${carousel.id}"
-     class="cmp-carousel"     
+     class="cmp-carousel ${properties.carouselswiper && properties.carouselswiper == 'true' ? 'swiper-enabled' : '' }"     
      data-sly-set.defaultLayout="${!properties.carouselLayout || properties.carouselLayout == 'default'}"     
      data-sly-test="${defaultLayout || (properties.carouselLayout == 'etisalat-hero-banner' &&  wcmmode.edit)}"     
      role="group"
@@ -22,7 +22,6 @@
          class="cmp-carousel__content"
          aria-atomic="false"
          aria-live="${carousel.autoplay ? 'off' : 'polite'}">
-        <sly data-sly-test="${!properties.carouselswiper || properties.carouselswiper == 'false'}">
             <div data-sly-repeat.item="${carousel.items}"
                  data-sly-resource="${item.name @ decorationTagName='div'}"
                  id="${item.id}-tabpanel"
@@ -33,11 +32,6 @@
                  aria-label="${'Slide {0} of {1}' @ format=[itemList.count, carousel.items.size], i18n}"
                  data-cmp-data-layer="${item.data.json}"
                  data-cmp-hook-carousel="item"></div>
-        </sly>
-        <sly data-sly-test="${properties.carouselswiper && properties.carouselswiper == 'true'}"
-             data-sly-use.carouselSwiperTemplate="swiperview.html"
-             data-sly-call="${carouselSwiperTemplate.swiper @ carousel=carousel,properties=properties}">
-        </sly>
         <sly data-sly-call="${controlsTemplate.controls @ carousel=carousel}" data-sly-test="${!carousel.controlsPrepended}"></sly>
 
         <ol class="cmp-carousel__indicators"
@@ -55,7 +49,8 @@
     </div>
 
     <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
-         data-sly-test="${(wcmmode.edit || wcmmode.preview) && carousel.items.size < 1}"></sly>
+         data-sly-test="${(wcmmode.edit || wcmmode.preview) && carousel.items.size < 1}">
+     </sly>
 </div>
 
 <sly data-sly-test="${properties.carouselLayout == 'etisalat-hero-banner' && (wcmmode.preview || wcmmode.disabled)}">        
