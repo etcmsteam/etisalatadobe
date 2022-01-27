@@ -384,6 +384,27 @@
           }
         }
 
+        &__title {
+          @include respond-to-max($desktop - 1) {
+            font-size: $font18;
+            font-weight: 700;
+            margin-top: 0;
+
+            @include font-family-lato;
+          }
+        }
+
+        &__action-link {
+          &:hover {
+            text-decoration: underline;
+          }
+
+          @include respond-to-max($desktop - 1) {
+            bottom: toRem(24);
+            font-size: $font12;
+          }
+        }
+
         @include respond-to-min($desktop) {
           display: flex;
         }
@@ -1225,6 +1246,10 @@
             margin-right: 0;
           }
         }
+      }
+
+      @include respond-to-max($desktop - 1) {
+        margin: 0;
       }
     }
 
