@@ -211,7 +211,28 @@ public final class CommonUtility {
 	}
 	
 	/**
-	  * Get Formatted Article Date for Page resource
+	  * Returns true if a valid Hiu App content page
+	 */
+	public static boolean isHiuAppPage(Page currentPage) {
+		return null != currentPage && currentPage.getPath().contains(AEConstants.HIU_APP_CONTENT_PAGE);
+	}
+	
+	/**
+	  * Returns true if a valid Ewallet content page
+	 */
+	
+	public static boolean isEwalletAppPage(Page currentPage) {
+		return null != currentPage && currentPage.getPath().contains(AEConstants.EWALLET_CONTENT_PAGE);
+	}
+	
+	/**
+	  * Returns true if a valid Etisalat content page
+	 */
+	public static boolean isEtisalatAppPage(Page currentPage) {
+		return null != currentPage && currentPage.getPath().contains(AEConstants.ETISALAT_CONTENT_PAGE);
+	}
+	/*
+	 * Get Formatted Article Date for Page resource
 	*/
 	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
