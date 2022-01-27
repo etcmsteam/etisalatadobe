@@ -71,10 +71,23 @@ import { swiperInit } from "../swiperInitialize";
     }
   };
 
+  //Hero banner call to action initialization
+
+  function initHeroBannerCallToAction() {
+    $(document)
+      .find(".hero-images-call-to-action-section")
+      .each(function () {
+        if(!$(this).closest('.carousel').hasClass('hero-banner-image-section')) {
+          $(this).closest(".carousel").addClass("hero-banner-image-section hero-banner-image-add medium has-action dynamic-content");
+        }
+      });
+  }
+
   // register the event handlers
   $(document).ready(function () {
     initHeroSwiper();
     initHeroSwiperSingleSlide();
+    initHeroBannerCallToAction();
 
     const limitText = function (title, limit) {
       const newTitle = [];
