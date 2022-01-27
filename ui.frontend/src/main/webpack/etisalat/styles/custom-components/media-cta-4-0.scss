@@ -9,8 +9,12 @@
     background-color: $module-bg-color;
   }
 
-  @include respond-to-max($custom-width-tab) {
-    .container {
+  .container {
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1200);
+    }
+
+    @include respond-to-max($custom-width-tab) {
       padding-left: toRem(16);
       padding-right: toRem(16);
     }
@@ -94,6 +98,10 @@
   }
 
   .container {
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1200);
+    }
+
     @include respond-to-max($desktop-wide) {
       width: toRem(952);
     }
