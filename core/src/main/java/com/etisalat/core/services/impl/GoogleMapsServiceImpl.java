@@ -25,11 +25,11 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
   private String key;
   private String contactMap;
 
-  private String captchaV2;
+  private String captchaV2HiuAppKey;
+  private String captchaV2EwalletAppKey;
+  private String captchaV2EtisalatAppKey;
   private String captchaV3;
-  private String captchaInvisible;
-
-
+  private String captchaInvisibleEtisalatAppkey;
 
 
   @Activate
@@ -38,10 +38,12 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
     this.url = PropertiesUtil.toString(config.getGoogleUrl(), AEConstants.NO_CONFIG_FOUND);
     this.key = PropertiesUtil.toString(config.getGoogleKey(), AEConstants.NO_CONFIG_FOUND);
     this.contactMap = PropertiesUtil.toString(config.getGoogleContactUsUrl(), AEConstants.NO_CONFIG_FOUND);
-    this.captchaV2 = PropertiesUtil.toString(config.getGoogleCaptchaV2(), StringUtils.EMPTY);
+    this.captchaV2HiuAppKey = PropertiesUtil.toString(config.getGoogleCaptchaV2HiuAppKey(), StringUtils.EMPTY);
+    this.captchaV2EwalletAppKey = PropertiesUtil.toString(config.getGoogleCaptchaV2EwalletAppKey(), StringUtils.EMPTY);
+    this.captchaV2EtisalatAppKey = PropertiesUtil.toString(config.getGoogleCaptchaV2EtisalatAppKey(), StringUtils.EMPTY);
     this.captchaV3 = PropertiesUtil.toString(config.getGoogleCaptchaV3(), StringUtils.EMPTY);
-    this.captchaInvisible = PropertiesUtil
-        .toString(config.getGoogleCaptchaInvisible(), StringUtils.EMPTY);
+    this.captchaInvisibleEtisalatAppkey = PropertiesUtil
+        .toString(config.getGoogleCaptchaInvisibleEtisalatAppKey(), StringUtils.EMPTY);
   }
 
 
@@ -60,9 +62,21 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
     return this.contactMap;
   }
 
+  
   @Override
-  public String getCaptchaV2SiteKey() {
-    return captchaV2;
+  public String getCaptchaV2HiuAppKey() {
+    return this.captchaV2HiuAppKey;
+  }
+  
+  
+  @Override
+  public String getCaptchaV2EwalletAppKey() {
+    return this.captchaV2EwalletAppKey;
+  }
+  
+  @Override
+  public String getCaptchaV2EtisalatAppKey() {
+    return this.captchaV2EtisalatAppKey;
   }
 
   @Override
@@ -71,8 +85,8 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
   }
 
   @Override
-  public String getCaptchaInvisibleSiteKey() {
-    return captchaInvisible;
+  public String getCaptchaInvisibleEtisalatAppKey() {
+    return captchaInvisibleEtisalatAppkey;
   }
 
 }

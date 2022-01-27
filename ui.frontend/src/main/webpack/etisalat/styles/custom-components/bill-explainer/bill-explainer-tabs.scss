@@ -98,7 +98,8 @@
   }
   .row-tiles-table{
     .table-swiper-button-next,  .table-swiper-button-prev {
-      width: 6.5rem;
+      @include font-family-lato-withoutge;
+      // width: 6.5rem;
       height: 1.3rem;
       cursor: pointer;
       position: absolute;
@@ -113,13 +114,46 @@
         height: 70%;
         width: 20%;
       }
+      &:hover {
+        text-decoration: none;
+      }
     }
     .table-swiper-button-next {
-      right: 0.6rem!important;
+      right: 1.6rem!important;
       justify-content: flex-end;
-    }
+      &:before {
+        border: solid $main-green;;
+        border-width: 0 1px 1px 0;
+        content: "";
+        line-height: 1;
+        padding: 3.6px;
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%) rotate(
+        -45deg
+        );
+        transition: all .3s ease-in-out;
+        }
+      }
+    
     .table-swiper-button-prev {
-      left: 0.6rem!important;
+      left: 1.6rem!important;
+      &:before {
+        border: solid $main-green;;
+        border-width: 0 1px 1px 0;
+        content: "";
+        line-height: 1;
+        padding: 3.6px;
+        position: absolute;
+        left: -10px;
+        right: auto;
+        top: 50%;
+       transform: translateY(-50%) rotate(
+        135deg
+        );
+        transition: all .3s ease-in-out;
+      }
     }
     .swiper-pagination{
       left: calc(50% - 50px);
@@ -129,6 +163,7 @@
         margin: 2px 5px;
         width: 15px;
         height: 15px;
+        padding: inherit;
       }
       .swiper-pagination-bullet-active {
         background: $grey6;
@@ -293,7 +328,24 @@
     line-height: 1.25rem;
   }
 }
-//mobile
+// mobile
+@media (max-width: 420px) {
+  .tab-boxes-section .billing-report-section .row-tiles-table .table-swiper-button-prev {
+    left: 3rem !important;
+  }
+  .tab-boxes-section .billing-report-section .row-tiles-table .table-swiper-button-next {
+    right: 3rem !important;
+  }
+}
+@media (max-width: 768px){
+   .tab-boxes-section .billing-report-section .row-tiles-table .table-swiper-button-prev {
+      left: 3rem !important;
+  }
+  .tab-boxes-section .billing-report-section .row-tiles-table .table-swiper-button-next {
+     right: 3rem !important;
+  }
+}
+
 @media (max-width: 480px) {
   .tab-boxes-section{
     margin: 0;
@@ -397,6 +449,39 @@
         right: 0;
       }
     }
+  .billing-report-section {
+      .table-swiper-button-prev,
+      .table-swiper-button-next {
+        @include  font-family-Neotech;
+        font-weight: 300;
+        letter-spacing: 0!important;
+      }
+  }
+.tab-boxes-section .row-tiles-table .table-swiper-button-next {
+    left: 1.6rem !important;
+    right: auto !important;
+  &:before {
+      transform: translateY(-50%) rotate(
+        135deg
+        );
+        right: auto;
+        left:-10px;
+  }
+}
+.tab-boxes-section .row-tiles-table .table-swiper-button-prev {
+    right: 1.6rem!important;
+    left: auto!important;
+    &:before {
+        transform: translateY(-50%) rotate( 
+316deg
+ );
+ left: auto;
+    right: -10px;
+    }
+
+}
+
+
 
   }
 }

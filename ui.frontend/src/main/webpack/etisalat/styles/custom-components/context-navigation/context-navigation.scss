@@ -1,12 +1,16 @@
 // context-navigation-4-0 as module styling
-.context-navigation-4-0 {
-  &.has-bg {
-    background-color: $module-bg-color;
-
+.default--bg {
+  .context-navigation-4-0 {
     @include respond-to-min($desktop) {
       padding-top: toRem(16);
       padding-bottom: toRem(16);
     }
+  }
+}
+
+.context-navigation-4-0 {
+  &.has-bg {
+    background-color: $module-bg-color;
   }
 
   @include respond-to-max($custom-width-tab) {
@@ -52,6 +56,12 @@
   .all-tiles {
     display: flex;
     flex-wrap: wrap;
+
+    &-cq-editable {
+      @include respond-to-min($desktop) {
+        flex-wrap: wrap !important;
+      }
+    }
 
     @include respond-to-min($desktop) {
       flex-wrap: nowrap;
