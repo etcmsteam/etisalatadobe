@@ -2,9 +2,6 @@ package com.etisalat.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
@@ -176,13 +173,4 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	void testArticleDate() throws ParseException {
-		final String expected = "14 Sep 2021";
-		context.currentResource(BLOG_SEARCH_2);
-		ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
-		String actual = articleModel.getArticleDate();
-		assertEquals(expected, actual);
-	}
-
 }
