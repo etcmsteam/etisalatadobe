@@ -71,7 +71,10 @@
 					<h3 data-sly-test="${properties.heroImageTitle}" class="heading">${properties.heroImageTitle} </h3>
 					<div data-sly-test="${properties.heroImageDesc}" class="description"> ${properties.heroImageDesc @ context =
 						'html'}</div>
-				    <a href="#plans" data-sly-test="${properties.heroImageCTATitle}" class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
+				    <sly data-sly-test.heroImageCTALink="${properties.heroImageLinkURL}" 
+               data-sly-use.heroImageLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroImageCTALink}"/>
+				    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}" 
+				         class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
 				      ${properties.heroImageCTATitle}</a>                                                           
 				</div>
 			</div>
