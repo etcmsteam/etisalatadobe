@@ -1,16 +1,30 @@
 // context-navigation-4-0 as module styling
-.context-navigation-4-0 {
-  &.has-bg {
-    background-color: $module-bg-color;
-
+.default--bg {
+  .context-navigation-4-0 {
     @include respond-to-min($desktop) {
       padding-top: toRem(16);
       padding-bottom: toRem(16);
     }
   }
+}
 
-  @include respond-to-max($custom-width-tab) {
-    .container {
+.context-navigation-4-0 {
+  @include respond-to-max($desktop-min) {
+    padding: toRem(16) 0;
+  }
+
+  &.has-bg {
+    background-color: $module-bg-color;
+  }
+
+  .container {
+    @include respond-to-min($desktop-wide) {
+      margin: 0;
+      padding: 0;
+      width: toRem(1224);
+    }
+
+    @include respond-to-max($custom-width-tab) {
       padding-left: toRem(16);
       padding-right: toRem(16);
     }
@@ -52,6 +66,12 @@
   .all-tiles {
     display: flex;
     flex-wrap: wrap;
+
+    &-cq-editable {
+      @include respond-to-min($desktop) {
+        flex-wrap: wrap !important;
+      }
+    }
 
     @include respond-to-min($desktop) {
       flex-wrap: nowrap;
@@ -247,6 +267,10 @@
         column-gap: toRem(24);
         row-gap: toRem(52);
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      }
+
+      @include respond-to-max($desktop-min) {
+        margin-top: toRem(20);
       }
 
       @include respond-to-min($desktop-wide) {

@@ -2,7 +2,7 @@
      data-sly-use.notification="com.etisalat.core.models.DigitalNotification" 
     data-sly-set.notiAlignment="${properties.alignment == 'top' || properties.alignment == 'bottom'}" 
    class="digital-notifications-wrapper ${wcmmode.edit && notiAlignment ? '': properties.alignment} ${properties.themeColor} ${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'viewmore' ? 'expand-collapse' : ''}">
-   <div>
+   <div class="container">
       <div class="noti-icon-dismis">
          <a href="#">
            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">                        
@@ -53,8 +53,8 @@
          </div>
          <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'viewmore'}" class="more-notifications">
             <a data-sly-test="${properties.viewMoreItems && properties.viewLesstems}" href="#"> 
-            <span class="more ">${properties.viewMoreItems}</span>
-            <span class="less hidden">${properties.viewLesstems}</span>
+            <span class="more hidden">${properties.viewMoreItems}</span>
+            <span class="less">${properties.viewLesstems}</span>
             </a>
          </div>
       </div>
