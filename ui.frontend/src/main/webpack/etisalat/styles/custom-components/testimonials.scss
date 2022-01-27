@@ -108,12 +108,18 @@
   }
 
   .container {
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1200);
+    }
+
     @include respond-to-max($desktop-min) {
-      width: toRem(702);
+      width: toRem(732);
+      overflow: hidden;
     }
 
     @include respond-to-max($custom-width-tab) {
       width: 100%;
+      padding: 0 toRem(16) !important;
     }
   }
 
