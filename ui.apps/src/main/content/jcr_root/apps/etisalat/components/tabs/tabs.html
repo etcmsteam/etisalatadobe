@@ -71,7 +71,7 @@
 <div id="Mobile-${tabs.id}"
      data-sly-use.accord="com.adobe.cq.wcm.core.components.models.Tabs"
      data-sly-test="${properties.tabsMobileLayout && ( properties.tabsMobileLayout == 'accordionView' || properties.tabsMobileLayout == 'notTabAccordionView')}"
-     class="hidden-md hidden-lg">
+     class="${properties.tabsMobileLayout == 'accordionView' ? 'hidden-md hidden-lg' : ''} ${properties.tabsMobileLayout == 'notTabAccordionView' ? 'hidden-sm hidden-md hidden-lg' : ''}">
 
   <sly data-sly-test="${properties.tabsMobileLayout && (properties.tabsMobileLayout == 'accordionView' || properties.tabsMobileLayout == 'notTabAccordionView')}"
         data-sly-use.tabAccordionTemplate="accordionview.html"
