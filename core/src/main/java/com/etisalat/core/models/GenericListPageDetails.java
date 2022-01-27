@@ -12,9 +12,8 @@ public class GenericListPageDetails {
   private String file;
   private Calendar offTime;
   private String path;
-
+  private String articleDateDisplayString;
   private String thumbnail;
-
   private String category;
   private Calendar articleDate;
   private String tileSize;
@@ -175,6 +174,17 @@ public class GenericListPageDetails {
    */
   public void setBlogVideoID(String blogVideoID) {
     this.blogVideoID = blogVideoID;
+  }
+  
+  
+  public String getArticleDateDisplayString() {
+	return articleDateDisplayString;
+  }
+  /**
+   * @param article Date String to display
+   */
+  public void setArticleDateDisplayString(String articleDateDisplayString) {
+	this.articleDateDisplayString = articleDateDisplayString;
   }
 
 }
