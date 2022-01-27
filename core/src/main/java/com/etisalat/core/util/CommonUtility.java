@@ -231,7 +231,8 @@ public final class CommonUtility {
 	public static boolean isEtisalatAppPage(Page currentPage) {
 		return null != currentPage && currentPage.getPath().contains(AEConstants.ETISALAT_CONTENT_PAGE);
 	}
-	  * Get Formatted Article Date for Page resource
+	/*
+	 * Get Formatted Article Date for Page resource
 	*/
 	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
