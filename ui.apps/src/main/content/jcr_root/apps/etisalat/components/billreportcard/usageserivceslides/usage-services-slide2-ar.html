@@ -1,50 +1,54 @@
 <template  data-sly-template.usageSlideTwo="${ @ billModel,properties}">
- <div class="billing-report-card-preview">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="dns-prefetch" href="fonts.googleapis.com">
+ <html lang="ar">
+<body dir="rtl" class="business">
+<div class="billing-report-card-preview">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="dns-prefetch" href="fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
   <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
      <sly data-sly-call="${clientlib.all @ categories='cmp.crx.billing.explainer'}" />
   </sly>
-	<style>
-		.billing-report-card-preview .row{
-		position:relative;
-		}
-	</style>
+<style>
+.billing-report-card-preview .row{
+position:relative;
+}
+</style>
 <div class="exp-report-wrapper exp-bill-breakdown zooming" id="${properties.usageServiceSlideType}" data-bill-explainer="${billModel.stepsData}">
-      <table id="Table_01" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+      <table id="Table_01" class="h40" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
           <tbody><tr>
               <td>
-                <img src="${billModel.billExplainerDAMPath}/report-billbreakdown-logo.png" width="97" style="height:97px;" alt=""></td>
-              <td>
-                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-heading.png" style="height:97px;" alt=""></td>
-              <td colspan="2">
-                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-bg.png" style="height: 97px;" alt=""></td>
-            </tr>
-            <tr>
+                  <img src="${billModel.billExplainerDAMPath}/report-billbreakdown-logo_ar.png" alt=""></td>
+            <td>
+            <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-heading_ar.png" alt=""></td>
+            <td><img src="${billModel.billExplainerDAMPath}/report-billbreakdown-bg_ar.png" style="height: 106px;" alt=""></td>
+          </tr>
+        </tbody></table>
+      <table id="Table_01" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
                 <td colspan="5">
-                  <img src="${billModel.billExplainerDAMPath}/report-billbreakdown-step2.png" height="45" alt=""></td>
+                  <img src="${billModel.billExplainerDAMPath}/report-billbreakdown-step2_ar.png" height="45" alt=""></td>
               </tr>
             <tr>
               <td colspan="4">
-                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-slide2-report1.png" alt=""></td>
+                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-slide2-report1_ar.png" alt=""></td>
             </tr>
             <tr>
               <td colspan="4" id="Step-1">
                   <div class="exp-focus-step">
                       <span>1</span>
                     </div>
-                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-slide2-step1.png" alt=""></td>
+                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-slide2-step1_ar.png" alt=""></td>
             </tr>
             <tr>
               <td colspan="4">
-                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-slide2-report2.png" alt=""></td>
-            </tr>
+                <img src="${billModel.billExplainerDAMPath}/report-usagebreakdown-slide2-report2_ar.png" alt=""></td>
+            </tr>          
         </tbody></table>
   </div>
+</div>
 <script>
-    var tour_stepsbillBreakUsageServiceSlide2 = $("#usage-service-slide2").data("bill-explainer");
+  var tour_stepsbillBreakUsageServiceSlide2 = $("#usage-service-slide2").data("bill-explainer");
       var jq = $.noConflict(true);
       jq(function(){
         jq.each(tour_stepsbillBreakUsageServiceSlide2, function (i, step) {
@@ -56,7 +60,7 @@
           backdrop: true,
           storage: false,
           steps: tour_stepsbillBreakUsageServiceSlide2,
-         template: `<div class='exp-popover popover tour'><h3 class='popover-title'></h3><div class='popover-content'></div><nav class='popover-navigation'><div class='btn-group'><button class='btn btn-default prev' data-role='prev'></button><button class='btn btn-default next' data-role='next'> </button></div><button class='btn-end close' data-role='end'></button></nav></div>`,
+          template: `<div class='exp-popover popover tour'><h3 class='popover-title'></h3><div class='popover-content'></div><nav class='popover-navigation'><div class='btn-group'><button class='btn btn-default prev' data-role='prev'></button><button class='btn btn-default next' data-role='next'> </button></div><button class='btn-end close' data-role='end'></button></nav></div>`,
           onShow:function(){
             setTimeout(function(){
               jq(".popover").append("<div class='zooming-contorls'><button type='button' id='zoom-in'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#zoomplus'></use></svg></button><button type='button' id='zoom-out'><svg><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#zoomminus'></use></svg></button></div>");
@@ -105,5 +109,7 @@
           tour.goTo(slideNum);
         }
       });
-</script></div>
+</script>
+</body>
+</html>
 </template>
