@@ -130,4 +130,8 @@ public class TopnavModel {
   public void setCurrentPageLanguageTitle(String currentPageLanguageTitle) {
     this.currentPageLanguageTitle = currentPageLanguageTitle;
   }
+  
+  public List<FixedNavigtaionMultifieldModel> getTopNavIconsList() {
+    return CommonUtility.getFixedNavigationItems("linkswithicons", currentResource, resourceResolver);
+  }
 }

@@ -16,11 +16,10 @@
             </div>
          </div>
          <div class="col-md-6 col-lg-6">
-            <div class="top-nav-right">
-               <sly data-sly-use.iconsObject="${resource.path}" data-sly-list.itemss="${iconsObject.listChildren}">
-                  <ul data-sly-test="${itemss.name == 'linkswithicons'}" class="links">
-                     <sly data-sly-list.itemList="${itemss.listChildren}"
-                        class="${currentPage.path == topItemsList.navigationLink ? 'active' : ''}">
+            <div class="top-nav-right">              
+                  <ul class="links"> 
+                       <sly data-sly-test="${!topnavModel.topNavIconsList.isEmpty}" 
+                               data-sly-list.itemList="${topnavModel.topNavIconsList}">                    
                         <li data-sly-test="${!(itemList.openmodalwindow == 'modalwindow') && !(itemList.openmodalwindow == 'accessibilityoverlay')}">
                            <a href="${itemList.navigationLink @ extension = 'html'}"
                               data-sub-menu="sub-menu-mobile">
@@ -68,28 +67,27 @@
                               <sly
                                  data-sly-resource="${itemList @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}"></sly>
                            </div>
-                        </div>
-                     </sly>
-                     <li data-sly-test="${topnavModel.languageSize > 1}">
-                        <ul>
-                           <li class="language" data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page">
-                              <a class="${page.language == 'ar' ? 'arabic-lang-content' :''}"
-                                 href="#">${topnavModel.currentPageLanguageTitle}</a>
-                              <ul class="language-menu" data-sly-list.langItem="${topnavModel.localeList}">
-                                 <li><a class="${langItem.altText == 'ar' ? 'arabic-lang-content' :''}"
-                                    href="${langItem.linkUrl}">${langItem.title}</a></li>
-                              </ul>
-                           </li>
-                        </ul>
-                     </li>
-                     <li data-sly-test="${topnavModel.languageSize == 1}"
-                        data-sly-list.langItem="${topnavModel.localeList}">
-                        <a href="${langItem.linkUrl}" data-sub-menu="sub-menu-help">
-                        <span class="language-switch-content"> ${langItem.title}</span>
-                        </a>
-                     </li>
-                  </ul>
-               </sly>
+                        </div> 
+                      </sly>   
+                       <li data-sly-test="${topnavModel.languageSize > 1}">
+	                     <ul>
+	                        <li class="language" data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page">
+	                           <a class="${page.language == 'ar' ? 'arabic-lang-content' :''}"
+	                              href="#">${topnavModel.currentPageLanguageTitle}</a>
+	                           <ul class="language-menu" data-sly-list.langItem="${topnavModel.localeList}">
+	                              <li><a class="${langItem.altText == 'ar' ? 'arabic-lang-content' :''}"
+	                                 href="${langItem.linkUrl}">${langItem.title}</a></li>
+	                           </ul>
+	                        </li>
+	                     </ul>
+	                  </li>
+	                  <li data-sly-test="${topnavModel.languageSize == 1}"
+	                     data-sly-list.langItem="${topnavModel.localeList}">
+	                     <a href="${langItem.linkUrl}" data-sub-menu="sub-menu-help">
+	                     <span class="language-switch-content"> ${langItem.title}</span>
+	                     </a>
+	                  </li>                                        
+                  </ul>                 
             </div>
          </div>
       </div>

@@ -12,7 +12,9 @@
 	  <div class="container">
 	    <!-- hero details div contains -> video link - headings - description - thumbnails - offers etc in below container  -->
 	    <div class="hero-details">
-	      	<div class="hero-bg-cta" data-label=""></div>
+	       <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}" 
+               data-sly-use.heroBannerLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerCTALink}"/>
+	      	<div class="hero-bg-cta" data-label="${heroBannerLink.link}"></div>
 			<div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.youTubeUrl}" class="ele-margin hero-play-video">
 				<sly data-sly-use.heroVideoModelTemplate="herovideo.html"
 			             data-sly-call="${heroVideoModelTemplate.heroVideoModel @ component=component,properties=properties}"/>
@@ -71,7 +73,10 @@
 					<h3 data-sly-test="${properties.heroImageTitle}" class="heading">${properties.heroImageTitle} </h3>
 					<div data-sly-test="${properties.heroImageDesc}" class="description"> ${properties.heroImageDesc @ context =
 						'html'}</div>
-				    <a href="#plans" data-sly-test="${properties.heroImageCTATitle}" class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
+				    <sly data-sly-test.heroImageCTALink="${properties.heroImageLinkURL}" 
+               data-sly-use.heroImageLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroImageCTALink}"/>
+				    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}" 
+				         class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
 				      ${properties.heroImageCTATitle}</a>                                                           
 				</div>
 			</div>
