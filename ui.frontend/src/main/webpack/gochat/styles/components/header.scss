@@ -53,7 +53,7 @@ header {
         color: rgb(0 0 0 / 50%);
       }
 
-      .logo--sticky {
+      .logo--sticky .cmp-image {
         max-width: toRem(42);
       }
     }
@@ -86,17 +86,23 @@ header {
   }
 
   .logo {
-    max-width: toRem(108);
     position: relative;
 
-    @include respond-to-max($desktop) {
-      max-width: toRem(50);
+    .cmp-image {
+      max-width: toRem(108);
+
+      @include respond-to-max($desktop) {
+        max-width: toRem(50);
+      }
     }
 
     &--sticky {
       display: none !important;
-      max-width: toRem(77);
       position: relative;
+
+      .cmp-image {
+        max-width: toRem(77);
+      }
     }
   }
 }
