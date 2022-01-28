@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
@@ -34,7 +35,6 @@ class TilesModelTest {
 	public void setup() throws Exception {
 		context.addModelsForClasses(TileModel.class);
 		context.load().json("/com/etisalat/core/models/TilesModel.json", CONTENT_ROOT);		
-		context.registerService(ImplementationPicker.class, new ResourceTypeBasedResourcePicker());
 	}
 
 	@Test
@@ -58,7 +58,6 @@ class TilesModelTest {
 		String expectedCTAText = "Learn More";
 		String expectedTileCTALinkNewWindow = "/content/etisalat/ae/en/connectivity.html";
 		String expectedTileCTALinkSameWindow = "/content/etisalat/ae/en/connectivity.html";
-
 		context.currentResource(TILE_DATA1);		
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setTileCTALinkNewWindow(expectedTileCTALinkNewWindow);
@@ -72,10 +71,8 @@ class TilesModelTest {
 	@Test
 	void testTileContianerLayout() {
 		String expectedLayout = "threeTileBox";
-
 		context.currentResource(TILE_DATA2);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
-
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
 
@@ -86,5 +83,37 @@ class TilesModelTest {
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
+	}
+	
+	@Test
+	void testTileTagTitle() {
+		context.currentResource(TILE_DATA1);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+	    assertNotNull(tileModel.getCategoryTagTitle());
+	}
+	
+	@Test
+	void testTileTag() {
+		String expected = "ETISALAT:BUSINESS/SMB/CATEGORY/PRODUCT-RELATED";
+		context.currentResource(TILE_DATA1);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expected, tileModel.getCategoryTag());
+	}
+	
+	@Test
+	void testTileLinkUrl() {
+		String expected = "/content/etisalat/en/tile";
+		context.currentResource(TILE_DATA1);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expected, tileModel.getLinkURL());
+	}
+	
+	@Test
+	void testTileValidDate() {
+		String expected = "22 Dec 2021";
+		context.currentResource(TILE_DATA1);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		tileModel.setValidDateText(expected);
+		assertEquals(expected, tileModel.getValidDateText());
 	}
 }
