@@ -9,12 +9,22 @@
 }
 
 .context-navigation-4-0 {
+  @include respond-to-max($desktop-min) {
+    padding: toRem(16) 0;
+  }
+
   &.has-bg {
     background-color: $module-bg-color;
   }
 
-  @include respond-to-max($custom-width-tab) {
-    .container {
+  .container {
+    @include respond-to-min($desktop-wide) {
+      margin: 0;
+      padding: 0;
+      width: toRem(1224);
+    }
+
+    @include respond-to-max($custom-width-tab) {
       padding-left: toRem(16);
       padding-right: toRem(16);
     }
@@ -257,6 +267,10 @@
         column-gap: toRem(24);
         row-gap: toRem(52);
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      }
+
+      @include respond-to-max($desktop-min) {
+        margin-top: toRem(20);
       }
 
       @include respond-to-min($desktop-wide) {

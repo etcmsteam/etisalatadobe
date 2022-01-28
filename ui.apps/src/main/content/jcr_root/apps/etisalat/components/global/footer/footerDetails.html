@@ -68,6 +68,22 @@
 
           <!-- end: footer - quick links -->
 
+		  <ul class="footer-social-nav">
+			<li>${properties.quickAccessTitle}</li>
+				<sly data-sly-list.multifieldObj="${resource.getChildren}">
+       				<sly data-sly-test="${multifieldObj.name == 'quickaccess'}">
+          				<sly data-sly-list.qaItems="${multifieldObj.getChildren}">
+							<li class="links-item">
+								<a href="${qaItems.quickaccesslinkUrl}" title="${qaItems.qatitle}" target="_blank">
+  									<img data-sly-test="${qaItems.fileReference}" alt="${qaItems.qatitle}" title="${qaItems.qatitle}" src="${qaItems.fileReference}"/>
+  								</a>
+                			</li>
+
+						</sly>
+          			</sly>
+       			</sly>
+			</ul>
+
           <ul class="footer-links-nav" data-sly-list.items="${footer.footerLinks}">
             <li><a style="padding-left: 0; border-left: 0" href="${items.linkUrl}" title="${items.linkText}">${items.linkText}</a>
             </li>

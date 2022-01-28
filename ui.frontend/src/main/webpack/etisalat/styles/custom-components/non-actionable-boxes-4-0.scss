@@ -7,6 +7,10 @@
   }
 
   .container {
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1200);
+    }
+
     @include respond-to-max($desktop-wide) {
       width: toRem(952);
     }
@@ -92,7 +96,7 @@
 
             .cover {
               border-radius: toRem(4);
-              width: toRem(370);
+              width: toRem(385);
               max-height: toRem(244);
 
               @include respond-to-max($desktop-min) {
@@ -123,7 +127,9 @@
 /************************************************
 guidelines for main headings h1 to h6
 *************************************************/
+.context-navigation-4-0,
 .non-action-boxes-two-cols-4-0,
+.cta-with-main-text-4-0,
 .media-cta-text-4-0,
 .testimonial-module {
   .wst-main-headings {
@@ -136,6 +142,10 @@ guidelines for main headings h1 to h6
       color: $almost-black;
       margin: 0;
       @include font-family-Neotech();
+
+      @include rtlBlock() {
+        font-weight: 300;
+      }
     }
 
     h1,
@@ -310,6 +320,7 @@ guidelines for sub headings h7 to h8
 
 .context-navigation-4-0,
 .non-action-boxes-two-cols-4-0,
+.cta-with-main-text-4-0,
 .media-cta-text-4-0,
 .testimonial-module {
   .paragraph-styling {
@@ -320,6 +331,10 @@ guidelines for sub headings h7 to h8
       p {
         color: $gray-text-color;
         @include font-family-lato();
+
+        @include rtlBlock() {
+          font-weight: 300;
+        }
       }
     }
   }

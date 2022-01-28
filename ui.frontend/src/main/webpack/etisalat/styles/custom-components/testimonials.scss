@@ -108,12 +108,17 @@
   }
 
   .container {
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1200);
+    }
+
     @include respond-to-max($desktop-min) {
-      width: toRem(702);
+      width: toRem(732);
     }
 
     @include respond-to-max($custom-width-tab) {
       width: 100%;
+      padding: 0 toRem(16) !important;
     }
   }
 
@@ -250,13 +255,6 @@
 *[lang="ar"] *[dir="rtl"] {
   .testimonial-module .swiper-slide {
     text-align: right;
-    margin-right: 0 !important;
-    margin-left: toRem(24);
-
-    @include respond-to-min($tablet) {
-      margin-right: 0 !important;
-      margin-left: toRem(16);
-    }
   }
 
   .testimonial-module .controls .next,

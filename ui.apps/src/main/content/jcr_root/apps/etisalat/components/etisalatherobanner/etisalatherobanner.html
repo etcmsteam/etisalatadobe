@@ -1,29 +1,13 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
-  <sly data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" data-sly-test="${properties.fileReference}">
+  <sly data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
+       data-sly-test="${properties.heroDisplayBehavior}">
      <!-- background images -->
 	<div class="hero-bg-images">
-	  <div class="${!wcmmode.edit ? 'cover' : ''}">
-	     <sly data-sly-test="${properties.heroDisplayBehavior == 'image'}">
-			 <div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
-	         <sly data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
-	     </sly>	     
-         <div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.videoLink}" class="${!wcmmode.edit ? 'video_ctn' : ''}">
-		   <video muted="muted" loop="" playsinline="" class="video_cover"
-		          autoplay="" tabindex="0" autobuffer="autobuffer" preload="preload"
-		          poster="" >
-		      <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"
-		              src="${properties.videoLink}">
-		      <source type="video/webm; codecs=&quot;vp8, vorbis&quot;"
-		              src="${properties.videoLink}">
-		      <source type="video/ogg; codecs=&quot;theora, vorbis&quot;"
-		              src="${properties.videoLink}">
-		      <track label="" kind="" srclang="" src="">
-		   </video>
-		</div>	          
-	  </div>	  
+	    <sly data-sly-use.heroImagesTemplate="heroimages.html"
+			             data-sly-call="${heroImagesTemplate.heroImages @ properties=properties}"/>
 	</div>
 	<!-- all hero content -->
-	<div class="hero-content-wrapper ${properties.heroAlignment}">
+	<div class="hero-content-wrapper ${properties.heroAlignment} ${properties.titleFontColor == 'light-color' ? 'light-color' : ''}">
 	  <!-- banner click area  -->
 	  <div class="container">
 	    <!-- hero details div contains -> video link - headings - description - thumbnails - offers etc in below container  -->
@@ -59,7 +43,7 @@
 		      </sly>	      	        
 	        <div class="text"> ${properties.pretitle}</div>
 	      </div>
-		  <div class="ele-margin hero-thumbnails">
+		  <div class="ele-margin hero-thumbnails" data-sly-test="${properties.thumbnailText}">
 		  <sly data-sly-use.thumbnailObj="${resource.path}" data-sly-list.thumbnailItems="${thumbnailObj.listChildren}">
 		     <div data-sly-test="${thumbnailItems.name == 'thumbnailItems'}" data-sly-repeat.thumbItem="${thumbnailItems.listChildren}" class="thumbnail-icon">
 		       <img data-sly-test="${thumbItem.fileReference}" src="${thumbItem.fileReference}" alt=""/>		    
@@ -80,9 +64,26 @@
 		   <sly data-sly-use.heroCTAModelTemplate="modalpopup.html"
 			             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
 	    </div>
+		<!--hero call to action sign in start -->
+		<div data-sly-test="${properties.heroImageTitle || properties.heroImageDesc}" class="hero-images-call-to-action-section">
+			<div class="container">
+				<div class="call-to-action-box">
+					<h3 data-sly-test="${properties.heroImageTitle}" class="heading">${properties.heroImageTitle} </h3>
+					<div data-sly-test="${properties.heroImageDesc}" class="description"> ${properties.heroImageDesc @ context =
+						'html'}</div>
+				    <sly data-sly-test.heroImageCTALink="${properties.heroImageLinkURL}" 
+               data-sly-use.heroImageLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroImageCTALink}"/>
+				    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}" 
+				         class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
+				      ${properties.heroImageCTATitle}</a>                                                           
+				</div>
+			</div>
+		</div>
+		<!--hero call to action sign in ends -->
 	  </div>
 	</div>
+	
    </sly>     
 </sly>
 
-<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.heroDisplayBehavior}"></sly>
