@@ -1,38 +1,44 @@
 nav {
+  left: 0;
   position: absolute;
   width: 100%;
   z-index: 3;
-  width: 100%;
-  left: 0;
+
   .menu__icon {
+    background: transparent;
     cursor: pointer;
     display: block;
     float: right;
-    position: relative;
-    margin: toRem(10) toRem(​20) 0 0;
-    user-select: none;
+    margin-top: toRem(10);
     outline: none;
-    background: transparent;
+    position: relative;
+    right: toRem(15);
     top: toRem(10);
-    right: toRem(10);
+    user-select: none;
+
     @include respond-to-min($desktop) {
       display: none;
     }
+
     ::selection {
       background: none;
     }
+
     .hamburger {
       background: $white-color;
       display: block;
-      height: toRem(2);
+      height: toRem(1);
+
+      // margin-right: toRem(10);
       position: absolute;
+      right: 0;
       top: 50%;
       transform: translateY(-50%);
-      right: 0;
       width: toRem(30);
-      margin-right: toRem(10);
       z-index: 1;
-      // margin-top: toRem(19);
+
+      /* margin-top: toRem(19); */
+
       &::before,
       &::after {
         background: $white-color;
@@ -42,9 +48,11 @@ nav {
         position: absolute;
         width: 100%;
       }
+
       &::before {
         top: toRem(8);
       }
+
       &::after {
         top: toRem(-8);
       }
@@ -52,17 +60,19 @@ nav {
       &.hamburger--close {
         background: transparent;
         height: toRem(30);
+        top: toRem(8);
         width: toRem(30);
 
-        &::before{
-          background: rgba(0,0,0,0.15);
+        &::before {
+          background: rgb(0 0 0 / 15%);
           border-radius: toRem(50);
           height: toRem(4);
           top: 0;
           transform: rotate(-45deg);
         }
+
         &::after {
-          background: rgba(0,0,0,0.15);
+          background: rgba(0 0 0 / 15%);
           border-radius: toRem(50);
           height: toRem(4);
           top: 0;
@@ -71,45 +81,48 @@ nav {
       }
     }
   }
+
   .menu {
-    display: none;
     background-color: $white-color;
+    display: none;
+    position: relative;
     text-align: center;
     top: toRem(45);
-    position: relative;
 
     @include respond-to-max($desktop) {
-      width: 100%;
       padding: toRem(15);
+      width: 100%;
     }
 
     li a {
       color: $white-color;
+      display: block;
       font-family: $font-Quicksand;
       font-size: toRem(18);
       font-weight: 500;
-      opacity: 0.6;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: normal;
-      padding-right: toRem(5);
-      padding-left: toRem(5);
       letter-spacing: 0.47px;
+      line-height: normal;
+      opacity: 0.6;
+      padding-left: toRem(5);
+      padding-right: toRem(5);
       text-align: right;
       text-decoration: none;
-      display: block;
+
       &:hover {
         color: $blue-color;
         transition-duration: 500ms;
       }
     }
 
-    
-    @include respond-to-max($tablet) {
+    li.active a {
+      opacity: 1;
+    }
+
+    @include respond-to-max($desktop) {
       display: block;
       height: 100%;
-      right: -100%;
       position: fixed;
+      right: -100%;
       top: 0;
       transition: all 0.4s ease-out;
       width: toRem(300);
@@ -123,10 +136,10 @@ nav {
         margin-left: toRem(20);
 
         a {
-          font-size: toRem(23);
           color: $black-color;
-          padding: 0.5rem 0 !important;
+          font-size: toRem(23);
           font-weight: 800 !important;
+          padding: 0.5rem 0 !important;
           text-align: left;
         }
       }
@@ -135,8 +148,8 @@ nav {
 
   &.nav--overlay {
     &::before {
-      background: rgba(0,0,0, 0.5);
-      content: '';
+      background: rgb(0 0 0 / 50%);
+      content: "";
       display: block;
       height: 100%;
       left: 0;
@@ -148,38 +161,41 @@ nav {
 }
 
 .menu__checkbox {
-  opacity: 0;
   display: none;
+  opacity: 0;
 }
 
 @include respond-to-min($desktop) {
   nav a:hover {
     color: $white-color;
   }
+
   nav {
     position: static;
+
     .menu {
-      display: block;
       background: none;
       clear: none;
-      max-height: none;
+      display: block;
+      float: right;
       margin-right: toRem(15);
       margin-top: toRem(15);
-      float: right;
+      max-height: none;
       padding: 0;
       top: 0;
+
       li {
         float: left;
         margin-left: toRem(20);
 
         a {
-          padding: toRem(8) toRem(5);
-          border: 0;
-          font-size: toRem(18);
-          color: $white-color;
           background-color: transparent;
+          border: 0;
           border: none;
+          color: $white-color;
           display: block;
+          font-size: toRem(18);
+          padding: toRem(8) toRem(5);
         }
       }
     }
