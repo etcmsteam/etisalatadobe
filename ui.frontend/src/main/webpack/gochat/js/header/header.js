@@ -1,5 +1,8 @@
-const header = document.querySelector(".cmp-experiencefragment--header");
-const pageWrap = document.querySelector("body");
+const header = document.querySelector('header');
+const doc = document.documentElement;
+const logo = document.querySelector('.logo');
+const logoSticky = document.querySelector('.logo--sticky');
+
 var lastScrollTop = 0;
 
 function debounce(func, wait) {
@@ -12,27 +15,20 @@ function debounce(func, wait) {
 }
 
 function onScroll() {
-  let currScrollTop = pageWrap.scrollTop;
-  let isScrollingDown = currScrollTop > lastScrollTop;
-  let isHeaderVisible = currScrollTop < header.height;
+  let currScrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+  // let isScrollingDown = currScrollTop > lastScrollTop;
+  // let isHeaderVisible = currScrollTop < header.height;
 
-  header.classList.toggle("cmp-experiencefragment--sticky", isScrollingDown && !isHeaderVisible);
+  if (currScrollTop >= 100) {
+    header.classList.add('header--sticky');
+    logoSticky.setAttribute("style", "display: block !important");
+    logo.style.display = "none";
+  } else {
+    header.classList.remove("header--sticky");
+    logoSticky.setAttribute("style", "display: none !important");
+    logo.style.display = "block";
+  }
   lastScrollTop = currScrollTop;
 }
 
-pageWrap.addEventListener("scroll", debounce(onScroll, 16));
-
-// $(window).scroll(function () {
-//   let sticky = $(".cmp-experiencefragment--header");
-//   let scroll = $(window).scrollTop();
-
-//   if (scroll >= 100) {
-//     sticky.addClass("cmp-experiencefragment--sticky");
-//     $(".logo--sticky").attr("style", "display: block !important");
-//     $(".logo").hide();
-//   } else {
-//     sticky.removeClass("cmp-experiencefragment--sticky");
-//     $(".logo--sticky").attr("style", "display: none !important");
-//     $(".logo").show();
-//   }
-// });
+window.addEventListener('scroll', debounce(onScroll, 16));

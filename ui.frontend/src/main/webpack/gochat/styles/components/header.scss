@@ -28,6 +28,7 @@ header {
 
           &.hamburger--close {
             background: transparent;
+            top: 0;
           }
 
           &.hamburger--close::before,
@@ -44,9 +45,13 @@ header {
       }
     }
 
-    @include respond-to-max($tablet) {
+    @include respond-to-max($desktop) {
       padding-bottom: toRem(10);
       padding-top: toRem(10);
+
+      nav .menu li a {
+        color: rgb(0 0 0 / 50%);
+      }
 
       .logo--sticky {
         max-width: toRem(42);
@@ -66,6 +71,10 @@ header {
     width: 100vw;
   }
 
+  @include respond-to-max($desktop) {
+    padding: toRem(16) toRem(15) toRem(5);
+  }
+
   .container {
     padding: 0;
   }
@@ -80,7 +89,7 @@ header {
     max-width: toRem(108);
     position: relative;
 
-    @include respond-to-max($tablet) {
+    @include respond-to-max($desktop) {
       max-width: toRem(50);
     }
 
