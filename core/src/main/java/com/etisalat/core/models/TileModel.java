@@ -92,6 +92,13 @@ public class TileModel {
   }
 
   /**
+   * @param tileImageResource the tileImageResource to set
+   */
+  public void setTileImageResource(Resource tileImageResource) {
+    this.tileImageResource = tileImageResource;
+  }
+
+  /**
    * @return the tileCTALinkNewWindow
    */
   public String getTileCTALinkNewWindow() {
@@ -127,11 +134,26 @@ public class TileModel {
   }
 
   /**
+   * @param categoryTag the categoryTag to set
+   */
+  public void setCategoryTag(String categoryTag) {
+    this.categoryTag = categoryTag;
+  }
+
+  /**
    * @return the linkURL
    */
   public String getLinkURL() {
     return CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkURL);
   }
+
+  /**
+   * @param linkURL the linkURL to set
+   */
+  public void setLinkURL(String linkURL) {
+    this.linkURL = linkURL;
+  }
+
 
   /**
    * @return the validDateText

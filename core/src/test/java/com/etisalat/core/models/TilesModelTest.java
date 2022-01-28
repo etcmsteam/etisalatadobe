@@ -101,10 +101,28 @@ class TilesModelTest {
 	}
 	
 	@Test
+	void testTileTagCase2() {
+		String expected = "ETISALAT:BUSINESS/SMB/CATEGORY/PRODUCT-RELATED";
+		context.currentResource(TILE_DATA2);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		tileModel.setCategoryTag(expected);
+		assertEquals(expected, tileModel.getCategoryTag());
+	}
+	
+	@Test
 	void testTileLinkUrl() {
 		String expected = "/content/etisalat/en/tile";
 		context.currentResource(TILE_DATA1);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expected, tileModel.getLinkURL());
+	}
+	
+	@Test
+	void testTileLinkUrlCase2() {
+		String expected = "/content/etisalat/en/tile";
+		context.currentResource(TILE_DATA2);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		tileModel.setLinkURL(expected);
 		assertEquals(expected, tileModel.getLinkURL());
 	}
 	
