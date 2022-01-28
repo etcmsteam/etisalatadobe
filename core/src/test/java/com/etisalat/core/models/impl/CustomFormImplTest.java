@@ -33,7 +33,9 @@ class CustomFormImplTest {
 	public void setup() throws Exception {
 		context.addModelsForClasses(CustomFormImpl.class);
 		context.load().json("/com/etisalat/core/models/CustomFormImplTest.json", CONTENT_ROOT);	
-		context.registerService(EtisalatApiService.class, new EtisalatApiServiceImpl());
+		context.registerInjectActivateService( new EtisalatApiServiceImpl(), "getContactUsApiUrl","testservice",
+				  "getProxyApiUrl","testservice",
+				  "getSetTimeout","7000"); 
 	}
 
 	@Test

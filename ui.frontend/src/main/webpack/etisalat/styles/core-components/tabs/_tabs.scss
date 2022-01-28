@@ -327,6 +327,36 @@
       padding: 0;
     }
 
+    &.cmp_tabs--mobile {
+      @include respond-to-max($desktop-min) {
+        margin-top: toRem(16);
+      }
+
+      .teaser {
+        .cmp-teaser__content {
+          @include respond-to-max($tablet) {
+            padding-top: toRem(16);
+          }
+        }
+
+        .cmp-teaser__title {
+          @include respond-to-max($tablet) {
+            margin-top: 0;
+          }
+
+          @include respond-to-max($desktop-min) {
+            font-size: $font18;
+          }
+        }
+      }
+
+      h3 {
+        @include respond-to-max($desktop-min) {
+          font-size: $font20;
+        }
+      }
+    }
+
     .nav-view-wrapp.panel > a,
     .nav-view-wrapp.panel > a.collapsed,
     .nav-view-wrapp.panel > :not(a.collapsed) {
@@ -351,8 +381,10 @@
 
     .cmp-tabs--accordion-view-2 {
       .cmp-tabs__tabpanel {
-        @include respond-to-max($desktop - 1) {
-          position: relative;
+        &--active {
+          @include respond-to-min-max($desktop-min, $tablet) {
+            position: absolute;
+          }
         }
       }
 
@@ -1112,6 +1144,10 @@
   .cmp_tabs--vertical-img {
     position: relative;
 
+    @include respond-to-min-max($desktop-min, $tablet) {
+      margin-bottom: toRem(16);
+    }
+
     @include respond-to-min($desktop) {
       height: toRem(430);
       margin: toRem(64) 0;
@@ -1407,6 +1443,38 @@
 
   ul:nth-of-type(1) {
     margin-top: 2rem;
+  }
+}
+
+.teaser {
+  &.teaser_list {
+    &.list-font-size--12 {
+      ol li,
+      ul li {
+        font-size: $font12;
+      }
+    }
+
+    &.list-font-size--14 {
+      ol li,
+      ul li {
+        font-size: $font14;
+      }
+    }
+
+    &.list-font-size--16 {
+      ol li,
+      ul li {
+        font-size: $font16;
+      }
+    }
+
+    &.list-font-size--20 {
+      ol li,
+      ul li {
+        font-size: $font20;
+      }
+    }
   }
 }
 
