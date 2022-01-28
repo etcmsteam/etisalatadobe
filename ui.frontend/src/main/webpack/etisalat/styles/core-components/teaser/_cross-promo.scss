@@ -4,6 +4,11 @@
 /* stylelint-disable order/properties-alphabetical-order */
 /* stylelint-disable no-descending-specificity */
 .carrers-feature {
+   .image-right .cmp-teaser__content {
+      @include respond-to-min($desktop) {
+        padding-left: 0;
+      }
+    }
   .tile-teaser {
     @include respond-to-min($desktop-wide) {
       .cmp-teaser__image {
@@ -11,19 +16,15 @@
         width: 43.125rem;
       }
     }
-
+  
     .cmp-teaser__content {
       @include respond-to-min($tablet) {
         padding-bottom: 9rem !important;
         padding-right: 4rem;
+        @include rtlBlock() {
+          padding-right: 0;
+        }
       }
-    }
-  }
-}
-.teaser--pattern__bg.link__arrow {
-  a {
-    @include rtlBlock {
-      @include font-family-Neotech;
     }
   }
 }
