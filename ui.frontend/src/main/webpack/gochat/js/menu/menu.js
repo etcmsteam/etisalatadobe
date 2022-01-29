@@ -6,9 +6,11 @@ var topMenu = $("header");
 var topMenuHeight = topMenu.outerHeight() + 15;
 var menuItems = topMenu.find(".menu li a");
 var scrollItems = menuItems.map(function () {
-  var item = $($(this).attr("href"));
-  if (item.length) {
-    return item;
+  if ($(this).attr("href").indexOf("/") === -1) {
+    let item = $($(this).attr("href"));
+    if (item.length) {
+      return item;
+    }
   }
 });
 
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 menuItems.click(function (e) {
   e.preventDefault();
   let href = $(this).attr("href");
-  if (href.indexOf("#") > -1) {
+  if (href.indexOf("/") === -1) {
     let offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
     $("html, body").stop().animate(
       {
