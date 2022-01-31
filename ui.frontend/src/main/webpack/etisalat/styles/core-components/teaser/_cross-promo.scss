@@ -11,14 +11,14 @@
   }
 
   .tile-teaser {
-    .cmp-image__image {
-      min-height: auto;
-    }
-
-    @include respond-to-min($desktop-wide) {
-      .cmp-teaser__image {
+    .cmp-teaser__image {
+      @include respond-to-min($desktop-wide) {
         min-width: 37.5rem;
         width: 43.125rem;
+      }
+
+      .cmp-image__image {
+        min-height: auto;
       }
     }
 
@@ -35,11 +35,11 @@
 
     .cmp-teaser__action-container {
       @include respond-to-max($phone) {
-        margin-left: 4rem;
+        margin-left: toRem(64);
       }
 
       @include respond-to-max($tablet) {
-        margin-left: 9rem;
+        margin-left: toRem(144);
       }
     }
   }
