@@ -86,7 +86,7 @@ module.exports = {
           ...libsBaseConfig,
           name: 'clientlib-etisalat',
           categories: ['etisalat.etisalat'],
-          dependencies: ['etisalat.dependencies'],
+          dependencies: ['etisalat.dependencies','etisalat.global'],
 		  embed: ['etisalat.custom.grid'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
@@ -105,6 +105,62 @@ module.exports = {
             // Copy all other files into the `resources` ClientLib directory
             resources: {
               cwd: 'clientlib-etisalat',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
+        },
+    {
+          ...libsBaseConfig,
+          name: 'clientlib-careers',
+          categories: ['etisalat.careers'],
+          dependencies: ['etisalat.dependencies','etisalat.global','etisalat.etisalat'],
+		  embed: ['etisalat.custom.grid'],
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-careers',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-careers',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-careers',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
+        },
+    {
+          ...libsBaseConfig,
+          name: 'clientlib-global',
+          categories: ['etisalat.global'],
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-global',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-global',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-global',
               files: ['**/*.*'],
               flatten: false,
               ignore: ['**/*.js', '**/*.css']

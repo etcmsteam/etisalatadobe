@@ -1,4 +1,4 @@
-import { swiperInit } from "../swiperInitialize";
+import { swiperInit } from "../../swiperInitialize";
 
 (function (window) {
   "use strict";

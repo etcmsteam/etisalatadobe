@@ -1,4 +1,4 @@
-import { swiperInit } from "../swiperInitialize";
+import { swiperInit } from "../../swiperInitialize";
       $(document).ready(function () {
           if ($(".search-input").length <= 0) {
             return false;
