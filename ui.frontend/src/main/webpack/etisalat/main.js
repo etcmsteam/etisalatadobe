@@ -1,10 +1,12 @@
 // Javascript or Typescript
-import { Initializer } from "./initializer.js";
+import { Initializer } from "../global/initializer.js";
 
 
 import "./js/forms";
 import "./js/core-components/*.js";
 import "./js/custom-components/*.js";
+import "../global/js/components/**/*.js";
+
 
 // Stylesheets
 import "./main.scss";

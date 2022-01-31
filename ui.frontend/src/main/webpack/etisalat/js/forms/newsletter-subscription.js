@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FORM_VALIDATION_MESSAGES } from "../constant";
+import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
 
 (function () {
   const NO_SCROLL_CLASS = "no-scroll";

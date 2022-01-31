@@ -1,5 +1,5 @@
-import { swiperInit } from "../swiperInitialize";
-import { IsMediaQuery } from "../helpers";
+import { swiperInit } from "../../../global/js/swiperInitialize";
+import { IsMediaQuery } from "../../../global/js/helpers";
 
 $(document).ready(function () {
   var initSwiper;

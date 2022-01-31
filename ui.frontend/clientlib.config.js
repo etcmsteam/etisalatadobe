@@ -115,7 +115,7 @@ module.exports = {
           ...libsBaseConfig,
           name: 'clientlib-careers',
           categories: ['etisalat.careers'],
-          dependencies: ['etisalat.dependencies','etisalat.global'],
+          dependencies: ['etisalat.dependencies','etisalat.global','etisalat.etisalat'],
 		  embed: ['etisalat.custom.grid'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib

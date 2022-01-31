@@ -2,8 +2,7 @@
 import { Initializer } from "./initializer.js";
 
 
-import "./js/core-components/*.js";
-import "./js/custom-components/*.js";
+import "./js/components/**/*.js";
 
 // Stylesheets
 import "./main.scss";

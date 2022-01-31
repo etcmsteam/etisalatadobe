@@ -1,4 +1,4 @@
-import { swiperInit } from "../swiperInitialize";
+import { swiperInit } from "../../../global/js/swiperInitialize";
 
 function initSwiper() {
   // plans table slider for CMS modules start

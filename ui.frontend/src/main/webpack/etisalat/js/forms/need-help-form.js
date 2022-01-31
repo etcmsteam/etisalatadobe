@@ -1,4 +1,4 @@
-import { DIAL_CODE_DATA } from "../constant";
+import { DIAL_CODE_DATA } from "../../../global/js/constant";
 (function () {
   const $FORM = $("#cwsNeedHelp");
   const $SUBMIT_CTA = $("#cwsNeedHelp .cmp-form-button");

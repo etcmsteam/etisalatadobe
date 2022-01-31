@@ -1,4 +1,4 @@
-import { swiperInit } from "../swiperInitialize";
+import { swiperInit } from "../../../global/js/swiperInitialize";
 
 //function to pass swiper options collectively
 const swiperOptions = (elem, next, prev, brPoint1, brPoint2, brPoint3, brPoint4, brPoint5) => {
