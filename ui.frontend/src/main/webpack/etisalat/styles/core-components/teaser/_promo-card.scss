@@ -4,10 +4,14 @@
   .cmp-teaser {
     border-radius: toRem(4);
     height: 100%;
-    margin-bottom: toRem(40);
+    margin-bottom: toRem(30);
     min-height: toRem(148);
     overflow: hidden;
     position: relative;
+
+    @include respond-to-min($tablet) {
+      min-height: toRem(250);
+    }
 
     @include respond-to-min($desktop) {
       min-height: toRem(250);
@@ -25,11 +29,11 @@
       z-index: 9;
 
       @include respond-to-min($tablet) {
-        padding: toRem(54) toRem(24) 0 toRem(24);
+        padding: toRem(144) toRem(24) 0 toRem(24);
       }
 
       @include respond-to-min($desktop) {
-        padding: toRem(150) toRem(24) 0 toRem(24);
+        padding: toRem(144) toRem(24) 0 toRem(24);
       }
 
       h1 {
@@ -44,6 +48,15 @@
           margin-bottom: toRem(25);
         }
       }
+
+      .cont {
+        bottom: toRem(24);
+        position: absolute;
+
+        a.cmp-teaser__action-link {
+          position: relative;
+        }
+      }
     }
 
     &__action-container {
@@ -54,7 +67,11 @@
         letter-spacing: toRem(2);
         line-height: toRem(20);
         position: absolute;
-        text-transform: uppercase;
+        text-transform: capitalize;
+
+        @include respond-to-min($desktop-min) {
+          text-transform: uppercase;
+        }
 
         // top: toRem(100);
 
@@ -115,6 +132,13 @@
 
     &__title {
       color: $white;
+      font-size: $font20;
+      margin-bottom: toRem(18);
+
+      @include respond-to-min($desktop-min) {
+        font-size: $font26;
+        margin-bottom: toRem(16);
+      }
     }
   }
 
