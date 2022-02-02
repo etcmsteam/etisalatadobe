@@ -3,7 +3,7 @@
       <div class="container">
          <div class="default-section-title">
             <h3 class="pull-left ng-binding"> ${properties.tableTitle}</h3>
-            <a data-sly-test="${properties.viewMoreText}" class="btn-text btn-green view-more" href="#${properties.id ? properties.id : benefitsViewMore}" role="button">
+            <a data-sly-test="${properties.viewMoreText}" class="btn-text btn-green view-more" href="#${properties.id ? properties.id : 'benefitsViewMore'}" role="button">
             <span class="show-more">${properties.viewMoreText}</span>
             <span class="show-less">${properties.viewLessText}</span>
             </a>
@@ -19,7 +19,7 @@
       </div>
    </div>
 </sly>
-<sly data-sly-test="${!properties.tableType}">
+<sly data-sly-test="${properties.tableType == 'default'}">
    <sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer"
       data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
       data-placeholder-text="${wcmmode.edit && 'Drag Table Card components here' @ i18n}" >
