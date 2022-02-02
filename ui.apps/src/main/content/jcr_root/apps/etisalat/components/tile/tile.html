@@ -1,11 +1,11 @@
 <sly data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
   <sly data-sly-test="${tileModel.tiletitle}">
-	   <sly data-sly-test="${tileModel.tileBoxContainerLayout == 'fourTileBox'}"
+	   <sly data-sly-test="${tileModel.tileBoxContainerLayout == '4-tile-boxes'}"
 	        data-sly-use.fourTileTemplate="4-tile.html"
 	        data-sly-call="${fourTileTemplate.fourTile @ tileModel=tileModel,properties=properties}">      
 	   </sly>    
-	   <sly data-sly-test="${!tileModel.tileBoxContainerLayout || tileModel.tileBoxContainerLayout == 'threeTileBox'}"
+	   <sly data-sly-test="${!tileModel.tileBoxContainerLayout || tileModel.tileBoxContainerLayout == '3-tile-boxes'}"
 	        data-sly-use.threeTileTemplate="3-tile.html"
 	        data-sly-call="${threeTileTemplate.threeTile @ tileModel=tileModel,properties=properties}">      
 	   </sly>   
