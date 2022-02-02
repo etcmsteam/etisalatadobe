@@ -1,14 +1,11 @@
-<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer"
-   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-   data-placeholder-text="${wcmmode.edit && 'Drag Table Card components here' @ i18n}" >
 <sly data-sly-test="${properties.tableType == 'specifications'}">
    <div class="table-default-section table-collapsed">
       <div class="container">
          <div class="default-section-title">
             <h3 class="pull-left ng-binding"> ${properties.tableTitle}</h3>
-            <a class="btn-text btn-green view-more" href="#${properties.id ? properties.id : benefitsViewMore}" role="button">
+            <a data-sly-test="${properties.viewMoreText}" class="btn-text btn-green view-more" href="#${properties.id ? properties.id : benefitsViewMore}" role="button">
             <span class="show-more">${properties.viewMoreText}</span>
-            <span class="show-less">${properties.viewMoreText}</span>
+            <span class="show-less">${properties.viewLessText}</span>
             </a>
          </div>
          <div class="row">
@@ -23,6 +20,10 @@
    </div>
 </sly>
 <sly data-sly-test="${!properties.tableType}">
-   <div data-sly-repeat="${container.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></div>
-   <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+   <sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer"
+      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+      data-placeholder-text="${wcmmode.edit && 'Drag Table Card components here' @ i18n}" >
+      <div data-sly-repeat="${container.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></div>
+      <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+   </sly>
 </sly>
