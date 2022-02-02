@@ -12,7 +12,7 @@ header {
 
     &::before {
       background: $white-color;
-      box-shadow: 0 toRem(23) toRem(38) 0 rgb(0 0 0 / 0.9%);
+      box-shadow: 0 toRem(23) toRem(38) 0 rgb(0 0 0 / 9%);
     }
 
     nav {
@@ -90,13 +90,20 @@ header {
   }
 
   .logo {
+    margin: toRem(5) 0;
     position: relative;
 
     .cmp-image {
+      margin-left: toRem(7);
       max-width: toRem(108);
 
       @include respond-to-max($desktop) {
+        margin-left: toRem(16);
         max-width: toRem(50);
+      }
+
+      @include respond-to-max($phone) {
+        margin-left: 0;
       }
     }
 
@@ -105,7 +112,16 @@ header {
       position: relative;
 
       .cmp-image {
+        margin-left: toRem(16);
         max-width: toRem(77);
+
+        @include respond-to-max($phone) {
+          margin-left: 0;
+        }
+
+        @include respond-to-min($desktop) {
+          margin-left: toRem(7);
+        }
       }
     }
   }
