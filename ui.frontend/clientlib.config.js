@@ -104,7 +104,7 @@ module.exports = {
 
             // Copy all other files into the `resources` ClientLib directory
             resources: {
-              cwd: 'clientlib-etisalat',
+              cwd: 'clientlib-global',
               files: ['**/*.*'],
               flatten: false,
               ignore: ['**/*.js', '**/*.css']
@@ -133,7 +133,7 @@ module.exports = {
 
             // Copy all other files into the `resources` ClientLib directory
             resources: {
-              cwd: 'clientlib-careers',
+              cwd: 'clientlib-global',
               files: ['**/*.*'],
               flatten: false,
               ignore: ['**/*.js', '**/*.css']

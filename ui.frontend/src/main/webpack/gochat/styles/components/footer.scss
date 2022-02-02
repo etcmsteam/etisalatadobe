@@ -1,6 +1,11 @@
 .cmp-experiencefragment--footer-2 {
   // padding: toRem(128) 0 0;
 
+  @include respond-to-max($desktop) {
+    padding-left: toRem(24);
+    padding-right: toRem(24);
+  }
+
   @include respond-to-max($tablet) {
     padding-left: toRem(15);
     padding-right: toRem(15);
@@ -68,6 +73,11 @@
     position: absolute;
     transform: translateX(-50%);
     width: 100vw;
+  }
+
+  @include respond-to-max($desktop) {
+    padding-left: toRem(24);
+    padding-right: toRem(24);
   }
 
   @include respond-to-max($tablet) {
@@ -163,18 +173,20 @@
             line-height: normal;
             text-align: right;
           }
+
+          @include respond-to-max($tablet) {
+            ul {
+              justify-content: flex-start;
+            }
+
+            ul li {
+              margin: 0 toRem(32) 0 0;
+            }
+          }
         }
 
         @include respond-to-max($tablet) {
           padding: toRem(48) 0 toRem(16);
-
-          ul {
-            justify-content: flex-start;
-          }
-
-          ul li {
-            margin: 0 toRem(32) 0 0;
-          }
         }
       }
     }
