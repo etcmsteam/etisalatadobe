@@ -1,4 +1,9 @@
 <template  data-sly-template.gridtile="${ @ tileModel,properties}">
+    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+        <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+           class="link-cover"
+           target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
+    </sly>
     <div class="box-img" data-sly-test="${properties['image/fileReference']}">
         <div class="cover">
             <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
