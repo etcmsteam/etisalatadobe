@@ -15,7 +15,9 @@
 		  <div class="container">
 		    <!-- hero details div contains -> video link - headings - description - thumbnails - offers etc in below container  -->
 		    <div class="hero-details">
-		       <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}" 
+		      <sly data-sly-set.imageBannerCTALink = "${properties.heroDisplayBehavior == 'image' ? properties.heroBannerImageLinkURL : ''}" />
+              <sly data-sly-set.imageViewPortBannerCTALink = "${properties.heroDisplayBehavior == 'image-viewports' ? heroViewPortImageLinkURL : ''}" />
+		       <sly data-sly-test.heroBannerCTALink="${imageBannerCTALink || imageViewPortBannerCTALink}" 
 	               data-sly-use.heroBannerLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerCTALink}"/>
 		      	<div class="hero-bg-cta" data-label="${heroBannerLink.link}"></div>
 				<div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.youTubeUrl}" class="ele-margin hero-play-video">
