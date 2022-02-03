@@ -107,6 +107,101 @@
   }
 }
 
+.faqsection-no-icon {
+  .cmp-rte-text {
+    padding-left: 0;
+    padding-right: toRem(12);
+
+    @include respond-to-max($desktop) {
+      margin-bottom: toRem(12);
+      padding-right: 0;
+    }
+
+    .cmp-text {
+      h1 {
+        font-size: $font28;
+
+        @include respond-to-max($desktop) {
+          font-size: $font20;
+        }
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-bottom: toRem(36);
+        margin-top: 0;
+
+        @include respond-to-max($desktop) {
+          margin-bottom: toRem(16);
+        }
+      }
+    }
+  }
+
+  .cmp-accordion--faqsection {
+    padding-left: toRem(12);
+
+    @include respond-to-max($desktop) {
+      padding-left: 0;
+    }
+
+    .cmp-rte-text {
+      margin-bottom: 0;
+      padding-right: 0;
+
+      .cmp-text {
+        color: $gray1;
+        margin-bottom: 0;
+        margin-top: toRem(24);
+
+        @include respond-to-max($desktop) {
+          margin-top: toRem(12);
+        }
+      }
+    }
+
+    .cmp-accordion {
+      &__item {
+        padding: toRem(24);
+
+        @include respond-to-max($desktop) {
+          padding: toRem(16);
+        }
+      }
+
+      &__button {
+        padding: 0;
+      }
+    }
+
+    .cmp-container {
+      padding: 0 !important;
+    }
+
+    .cmp-accordion__button--expanded {
+      .cmp-accordion__title {
+        &::after {
+          content: " ";
+        }
+      }
+    }
+
+    .cmp-accordion__title {
+      @include respond-to-max($desktop) {
+        font-size: $font14;
+      }
+
+      &::after {
+        content: " ";
+      }
+    }
+  }
+}
+
 // Simple line accordion
 
 .cmp-accordion--text {
@@ -596,7 +691,7 @@
     }
 
     .cmp-text {
-      color: $white;
+      color: $white !important;
     }
   }
 
@@ -686,7 +781,7 @@
     }
 
     .cmp-text {
-      color: $yellow-light;
+      color: $yellow-light !important;
     }
   }
 
