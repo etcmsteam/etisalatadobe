@@ -59,31 +59,4 @@ $(document).ready(function () {
     $(this).closest(".context-navigation-4-0").find(".all-tiles .context-tile").css("display", "flex");
     $(this).closest(".load-more").css("display", "none");
   });
-
-  var $input = $(".tilecontainer  .context-tile .progress input");
-
-  $input.each(function () {
-    var maxTime = 1000;
-    maxTime = maxTime * $(this).val();
-    progressBar(maxTime, this);
-  });
-
-  function progressBar(maxTime, self) {
-    var start = new Date();
-    var maxTimeAvailable = maxTime;
-    var timeoutVal = Math.floor(maxTimeAvailable / 100);
-
-    var updateprogress = $(self).parent().find(".progress-bar");
-    animateUpdate();
-    function animateUpdate() {
-      var now = new Date();
-      var timeDiff = now.getTime() - start.getTime();
-      var perc = Math.round((timeDiff / maxTimeAvailable) * 100);
-
-      if (perc <= 101) {
-        $(updateprogress).css("width", perc + "%");
-        setTimeout(animateUpdate, timeoutVal);
-      }
-    }
-  }
 });
