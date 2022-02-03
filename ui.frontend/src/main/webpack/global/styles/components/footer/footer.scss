@@ -177,14 +177,22 @@
   background: #fff;
   font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
   min-height: 100px;
+
+  @include respond-to-max($tablet) {
+    margin-bottom: toRem(24);
+  }
 }
 
 .footer-social-nav {
   padding: 15px 0;
   text-align: center;
 
+  @include respond-to-max($tablet) {
+    padding-top: 0;
+  }
+
   @include respond-to-min($desktop) {
-    padding: 0 0 15px;
+    padding: 0;
     text-align: left;
   }
 
@@ -200,10 +208,16 @@
       font-weight: 700;
       letter-spacing: 2.4px;
       line-height: 1.5rem;
+      margin-right: toRem(24);
       text-transform: uppercase;
 
       @include respond-to-max($desktop) {
         display: none;
+      }
+
+      @include rtlBlock() {
+        margin-right: 0;
+        margin-left: toRem(8);
       }
     }
 
@@ -219,7 +233,7 @@
   margin-bottom: 2rem;
 
   @include respond-to-max($tablet) {
-    padding: 0 toRem(8);
+    padding: toRem(10) toRem(8) 0 !important;
   }
 
   @include respond-to-min($desktop) {
@@ -1010,7 +1024,7 @@
 
 .footer-links-logo-section .flex-container {
   display: block;
-  margin-bottom: toRem(48);
+  margin-bottom: toRem(32);
 }
 
 .footer-links-logo-section .flex-container .footer-links-nav {
@@ -1038,7 +1052,7 @@
     display: flexbox;
     display: flex;
     -ms-flex-align: center;
-    margin-top: toRem(64);
+    margin-top: toRem(32);
   }
 
   .footer-links-logo-section .flex-container .footer-links-nav {
@@ -1136,8 +1150,8 @@
   }
 
   .footer-links-logo-section .flex-container .footer-links-nav {
-    margin-bottom: toRem(20);
-    margin-top: toRem(52);
+    margin-bottom: toRem(36);
+    margin-top: toRem(8);
   }
 }
 
