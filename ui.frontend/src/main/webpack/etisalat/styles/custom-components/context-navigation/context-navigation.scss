@@ -375,6 +375,109 @@
   }
 }
 
+// context navigation mdoule with TV packs
+.tv-pack-tile {
+  display: flex;
+
+  .icon {
+    width: toRem(48);
+    height: toRem(48);
+    margin-right: toRem(16);
+    border-radius: toRem(6);
+
+    svg,
+    img {
+      width: toRem(48);
+      height: toRem(48);
+    }
+
+    @include respond-to-min($desktop) {
+      margin-right: toRem(24);
+      width: toRem(80);
+      height: toRem(80);
+      border-radius: toRem(8);
+
+      svg,
+      img {
+        width: toRem(80);
+        height: toRem(80);
+      }
+    }
+  }
+}
+
+.context-navigation-4-0.with-tv-pakcs {
+  .tv-pack-wrapper {
+    .wst-secondary-headings {
+      h2,
+      h3,
+      h4,
+      h5 {
+        letter-spacing: toRem(3);
+        margin-bottom: toRem(16);
+
+        @include respond-to-min($desktop) {
+          margin-bottom: toRem(24);
+        }
+      }
+    }
+
+    .wst-main-headings {
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .h7,
+      .h8 {
+        margin-bottom: toRem(8);
+
+        @include respond-to-min($desktop) {
+          margin-bottom: toRem(16);
+        }
+      }
+    }
+  }
+
+  .tv-pack-wrapper + .tv-pack-wrapper {
+    margin-top: toRem(32);
+
+    @include respond-to-min($desktop) {
+      margin-top: toRem(56);
+    }
+  }
+
+  .tv-pack-row {
+    display: grid;
+    row-gap: toRem(32);
+    column-gap: toRem(24);
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+
+    @include respond-to-min($tablet) {
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+
+    @include respond-to-min($desktop) {
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      row-gap: toRem(24);
+      column-gap: toRem(24);
+    }
+
+    @include respond-to-min($desktop-wide) {
+      grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+    }
+  }
+
+  .content {
+    margin-top: 0;
+  }
+
+  &.has-bg {
+    padding-top: toRem(42);
+    padding-bottom: toRem(42);
+  }
+}
+
 // arabic language
 *[lang="ar"] {
   *[dir="rtl"] {
