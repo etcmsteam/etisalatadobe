@@ -109,6 +109,10 @@
       font-size: 14px;
       line-height: 1.57;
     }
+
+    sup span {
+      font-size: 14px;
+    }
   }
 }
 
@@ -226,7 +230,6 @@
 
 // bg oeverlay
 .bg-overlay {
-  display: none;
   height: 100%;
   left: 0;
   position: absolute;
@@ -311,6 +314,23 @@
     position: absolute;
     width: 100%;
 
+    .container {
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 12px;
+      padding-right: 12px;
+
+      @media (min-width: 768px) {
+        width: 756px;
+      }
+      @media (min-width: 992px) {
+        width: 976px;
+      }
+      @media (min-width: 1248px) {
+        width: 1224px;
+      }
+    }
+
     @media (min-width: 768px) {
       padding-bottom: 48px;
       padding-top: 25px;
@@ -346,7 +366,9 @@
         margin-top: 16px;
 
         @media (min-width: 768px) {
-          margin-top: 24px;
+          &:not(.hero-description) {
+            margin-top: 24px;
+          }
         }
       }
     }
@@ -464,6 +486,17 @@
       .hero-description p,
       .hero-thumbnails .thumbnail-text {
         color: $white;
+      }
+
+      .go-back {
+        .third-action-wrapper.action-link {
+          .link {
+            color: $white;
+            &::before {
+              border-color: $white;
+            }
+          }
+        }
       }
     }
   }
@@ -917,6 +950,10 @@
       width: inherit;
     }
   }
+
+  .go-back {
+    width: 100%;
+  }
 }
 
 .single-slide-only {
@@ -938,19 +975,13 @@
     .link {
       padding-left: 10px;
       padding-right: 0;
-
-      @media (min-width: 992px) {
-        color: $white;
-      }
+      color: $almost-black;
 
       &::before {
         left: 0;
         right: auto;
         transform: translateY(-50%) rotate(135deg);
-
-        @media (min-width: 992px) {
-          border-color: $white;
-        }
+        border-color: $almost-black;
       }
     }
   }
