@@ -2120,7 +2120,18 @@ div.cover {
   }
 }
 
-.meganavigation .main-menu-desktop {
+.meganavigation{
+  .main-menu-mobile {
+    .panel-group .panel-heading{
+      padding: 0 toRem(12);
+
+      @include respond-to-min($tablet) {
+        padding: 0 toRem(16);
+      }
+    }
+  }
+
+  .main-menu-desktop {
   .navbar-default {
     background-color: $white;
     border: none;
@@ -2201,6 +2212,10 @@ div.cover {
 
             @include respond-to-min($tablet) {
               margin-left: toRem(60);
+
+              @include rtlBlock() {
+                margin-right: toRem(-50);
+              }
             }
 
             @include respond-to-min($desktop) {
@@ -2446,3 +2461,6 @@ div.cover {
     }
   }
 }
+
+} 
+
