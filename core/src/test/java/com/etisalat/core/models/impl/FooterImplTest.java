@@ -103,6 +103,7 @@ public class FooterImplTest {
     assertEquals(3, footerModel.getFollowUs().size());   
     assertEquals(expectedFileReference, linkModel.getImgUrl());
     assertEquals(expectedTitle, linkModel.getTitle());
+    assertEquals(expectedLinkUrl, linkModel.getLinkUrl());
     assertEquals(expectedCopyrightText, footerModel.getCopyrightText());
   }
   
