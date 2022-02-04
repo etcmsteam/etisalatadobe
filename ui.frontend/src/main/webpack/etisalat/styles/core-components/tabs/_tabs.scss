@@ -295,6 +295,34 @@
     font-size: toRem(16);
     line-height: toRem(16);
     text-align: left;
+
+    &--tab-cta {
+      padding: toRem(24) toRem(16) 0;
+
+      @include respond-to-min($desktop) {
+        padding: toRem(37) 0 0;
+      }
+
+      .btn-text {
+        @include font-family-lato;
+
+        font-size: $font12;
+        letter-spacing: 1.6px;
+        line-height: 1.33;
+
+        @include respond-to-min($desktop) {
+          font-size: $font16;
+          letter-spacing: 2px;
+          line-height: 1.38;
+        }
+
+        &::before {
+          @include respond-to-max($desktop) {
+            padding: 2.7px;
+          }
+        }
+      }
+    }
   }
 
   .get-more-paragraph p {
@@ -950,7 +978,7 @@
       padding-left: 0;
       width: 37%;
 
-      li:hover {
+      li:not(.learn-more-wrap):hover {
         background: $white-gray1;
       }
     }
@@ -1535,7 +1563,7 @@
 
 .cmp_tabs--vertical-whitebg {
   .cmp-tabs__tablist {
-    li:hover {
+    li:not(.learn-more-wrap):hover {
       background: $white;
     }
   }
