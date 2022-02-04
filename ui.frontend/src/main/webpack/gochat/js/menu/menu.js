@@ -4,7 +4,11 @@ const navMenu = document.querySelector("nav .menu");
 var lastId;
 var topMenu = $("header");
 var topMenuHeight = topMenu.outerHeight() + 15;
-var menuItems = topMenu.find(".menu li a");
+// var menuItems = topMenu.find(".menu li a");
+// const footerLinks = document.querySelectorAll("footer ul li a");
+
+var menuItems = $("header, footer, .page-scroll").find("ul li a, .btn-primary");
+ 
 var scrollItems = menuItems.map(function () {
   if ($(this).attr("href").indexOf("/") === -1) {
     let item = $($(this).attr("href"));
@@ -33,12 +37,13 @@ menuItems.click(function (e) {
   e.preventDefault();
   let href = $(this).attr("href");
   if (href.indexOf("/") === -1) {
-    let offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+    // $(hash).offset().top - 90;
+     let offsetTop = href === "#" ? 0 : $(href).offset().top  - 90;
     $("html, body").stop().animate(
       {
         scrollTop: offsetTop,
       },
-      300,
+      800,
     );
   } else {
     window.location = href;
