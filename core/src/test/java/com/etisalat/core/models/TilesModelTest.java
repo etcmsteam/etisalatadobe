@@ -31,6 +31,9 @@ class TilesModelTest {
 	protected static final String TILE_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer/tile2";
 	protected static final String TILE_DATA2 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer/tile3";
 	protected static final String TILE_DATA3 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer1/tile1";
+	protected static final String TILE_DATA4 = TEST_PAGE_CONTAINER_ROOT + "/accessoriescardcontainer/accessoriescardtile";
+	protected static final String TILE_DATA5 = TEST_PAGE_CONTAINER_ROOT + "/accessoriescardcontainer1/accessoriescardtile";
+
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -85,6 +88,21 @@ class TilesModelTest {
 
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
+	@Test
+	void testAccessoriesContainerLayout() {
+		String expectedLayout = "recommCard";
+		context.currentResource(TILE_DATA4);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
+	}
+	@Test
+	void testAccessoriesEmptyLayout() {
+		String expectedLayout = "";
+		context.currentResource(TILE_DATA5);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
+	}
+
 	@Test
 	void testTileBoxVariation() {
 		String expectedLayout = "3-tile-boxes";
