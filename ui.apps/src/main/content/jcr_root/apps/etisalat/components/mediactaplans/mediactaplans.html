@@ -1,0 +1,47 @@
+<div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
+     data-sly-use.imageTemplate="image.html" 
+     class="media-cta-module-section">
+    <div class="container">
+        <div class="mod-wrap">
+            <div class="mod-img">
+                <div class="cover">
+                     <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
+                </div>
+            </div>
+            <div class="mod-content">
+                <div class="content-top">
+                    <div data-sly-test="${properties.mediaSubTitle}" class="media-cta-4-small-title">${properties.mediaSubTitle}</div>
+                    <div data-sly-test="${tileModel.mediaCTATitle}" class="media-cta-4-title">
+                       <h2 data-sly-element="${properties.titleType}">${tileModel.mediaCTATitle}</h2>
+                    </div>
+                    <div class="media-cta-4-desc media-cta-4-lists"> 
+                       ${properties.text @ context='html'}
+                    </div>
+
+                    <div data-sly-test="${properties.seeAllLabel}" class="third-action-wrapper action-link">
+                        <a href="#" class="link" data-target="#">${properties.seeAllLabel}</a>
+                    </div>
+
+                    <div data-sly-test="${properties.autoRenewalText}" class="paragraph-styling">
+                        <div class="p2">
+                            <p>${properties.autoRenewalText}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-bottom">                    
+                    <div class="media-cta-4-price">
+                        <div data-sly-test="${properties.fromText}" class="from"> ${properties.fromText} </div>
+                        <div class="price">
+                            <div data-sly-test="${properties.productPrice}" class="value">${properties.productPrice}</div>
+                            <div data-sly-test="${properties.productCurrency}" class="aed">${properties.productCurrency}</div>
+                        </div>
+                    </div>
+                    <div data-sly-test="${properties.viewPlanButtonText}" class="media-cta-4-btn">
+                        <a href="#" class="btn btn-green ripple-effect" alt="${properties.viewPlanAltText}"> ${properties.viewPlanButtonText}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
