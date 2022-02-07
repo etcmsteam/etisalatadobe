@@ -38,10 +38,9 @@ $(function () {
       APPEND_THEAD.html(APPEND_TR);
       APPEND_THEAD.prependTo(element);
       FIRST_TR.remove();
-
     }
   });
-   newCustomDataTable();
+  newCustomDataTable();
 });
 
 function newCustomDataTable() {
@@ -158,3 +157,12 @@ function newCustomDataTable() {
   }
   initializeTable(CUSTOM_TABLE_COMPONENT);
 }
+
+$(document).ready(function () {
+  $(".table-collapsed .view-more")
+    .off()
+    .on("click", function (e) {
+      e.preventDefault();
+      $(this).closest(".table-collapsed").toggleClass("show");
+    });
+});
