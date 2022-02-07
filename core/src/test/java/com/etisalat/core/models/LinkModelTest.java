@@ -38,6 +38,7 @@ public class LinkModelTest {
 	 final String expectedLinkUrlActive = "true";
 	 final String imgUrl = "/content/dam/etisalat/ae/en/sample.jpg";
 	 final String expectedFileReference = "/content/dam/etisalat/ae/en/gaming-desktop_tcm313-225320.jpg";
+	 final String expectedEnableIcon = "true";
 	 Resource resource = context.resourceResolver().getResource(CONTENT_LINK);
 		
 	 LinkModel item = resource.adaptTo(LinkModel.class);
@@ -55,9 +56,12 @@ public class LinkModelTest {
 	 assertEquals(expectedLinkBehavior, item.getLinkBehavior());
 	 item.setLinkUrlActive(expectedLinkUrlActive);
 	 assertEquals(expectedLinkUrlActive, item.getLinkUrlActive());
-	 
+	 item.setImageResource(item.getImageResource());
 	 assertEquals(expectedFileReference,
 				item.getImageResource().getValueMap().get("fileReference", String.class));
+
+		item.setEnableIcon(expectedEnableIcon);
+		assertEquals(expectedEnableIcon, item.getEnableIcon());
 	}
 
 }
