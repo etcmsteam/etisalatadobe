@@ -53,11 +53,35 @@
   color: #353738;
   font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
   font-size: 14px;
+  width: fit-content;
+
+  &.icon-new-window {
+    &:after,
+    &:before {
+      content: " ";
+      width: toRem(16);
+      height:toRem(16);
+      background:url("../resources/images/new-window.svg") no-repeat 100%;
+    }
+
+    &:after {
+      margin-left:toRem(5);
+      @include rtlBlock() {
+        margin-left:0;
+         margin-right:toRem(5);
+      }
+    }
+
+    &:before {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: 992px) {
   .quick-links-section .quick-links-body .links-item {
     padding-bottom: 10px;
+    position: relative;
   }
 }
 
