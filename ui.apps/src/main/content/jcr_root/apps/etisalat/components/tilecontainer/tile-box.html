@@ -59,21 +59,30 @@
 
 		<div class="tile-boxes-4-0 with-main-text ${container.items.size == 1 ? 'with-single-tile' : ''}">
 			<div class="container">
-				<div class="content-wrapper">
-					<div class="content">
-						<div data-sly-test="${properties.mainGridTitle}" class="wst-main-headings">
-							<h3>${properties.mainGridTitle}</h3>
+				<sly data-sly-test="${properties.mainGridTitle || properties.gridtileboxDesc}">
+					<div class="content-wrapper">
+						<div class="content">
+							<div data-sly-test="${properties.mainGridTitle}" class="wst-main-headings">
+								<h3>${properties.mainGridTitle}</h3>
+							</div>
+							<div class="paragraph-styling ul-list-cms">
+								<div class="p2">${properties.gridtileboxDesc @ context="html"}</div>
+							</div>
 						</div>
-						<div class="paragraph-styling ul-list-cms">
-							<div class="p2">${properties.gridtileboxDesc @ context="html"}</div>
+						<div class="tiles-wrapper tile-box-main-text">
+							<!--/* tilesbox Start */-->
+							<div class="tile" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+							<!--/* tilesbox End */-->
 						</div>
 					</div>
+				</sly>
+				<sly data-sly-test="${!properties.mainGridTitle || !properties.gridtileboxDesc}">
 					<div class="tiles-wrapper tile-box-main-text">
 						<!--/* tilesbox Start */-->
 						<div class="tile" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
 						<!--/* tilesbox End */-->
 					</div>
-				</div>
+				</sly>
 			</div>
 		</div>
 	</sly>
