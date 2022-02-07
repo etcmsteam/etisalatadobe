@@ -28,10 +28,30 @@
       padding-left: toRem(16);
       padding-right: toRem(16);
     }
+
+    @include respond-to-min-max($desktop-wide, $desktop) {
+      width: toRem(952);
+    }
+
+    @include respond-to-min-max($desktop-min, $tablet) {
+      width: toRem(732);
+    }
+  }
+
+  .paragraph-styling p {
+    margin-bottom: toRem(16);
+
+    @include font-family-lato();
+
+    @include respond-to-max($desktop-min) {
+      margin-bottom: toRem(12);
+    }
   }
 
   // common css for both with slider and with main text
   .wst-main-headings {
+    width: 100%;
+
     h1,
     h2,
     h3,
@@ -46,15 +66,117 @@
         margin-bottom: toRem(12);
       }
     }
-  }
-  .paragraph-styling p {
-    margin-bottom: toRem(16);
 
-    @include font-family-lato();
-
-    @include respond-to-max($desktop-min) {
-      margin-bottom: toRem(12);
+    &.heading1 {
+      @include respond-to-min($tablet) {
+        height: toRem(136);
+      }
     }
+
+    &.heading2 {
+      @include respond-to-min($tablet) {
+        height: toRem(108);
+      }
+    }
+
+    &.heading3 {
+      @include respond-to-min($tablet) {
+        height: toRem(80);
+      }
+    }
+    &.heading4 {
+      @include respond-to-min($tablet) {
+        height: toRem(72);
+      }
+    }
+
+    &.heading5 {
+      @include respond-to-min($tablet) {
+        height: toRem(64);
+      }
+    }
+
+    &.heading6 {
+      @include respond-to-min($tablet) {
+        height: toRem(56);
+      }
+    }
+
+    &.heading7 {
+      height: toRem(44);
+    }
+
+    &.heading8 {
+      height: toRem(44);
+    }
+
+    &.heading1,
+    &.heading2,
+    &.heading3,
+    &.heading4,
+    &.heading5,
+    &.heading6,
+    &.heading7,
+    &.heading8 {
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      @include respond-to-max($tablet) {
+        height: auto;
+        overflow: auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .h7,
+      .h8 {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  & + .paragraph-styling {
+    p {
+      height: auto;
+      margin-bottom: 0;
+    }
+
+    .body-copy1,
+    .body-copy2,
+    .body-copy3,
+    .body-copy4 {
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      @include respond-to-max($custom-width-tab) {
+        height: auto !important;
+        overflow: auto;
+      }
+    }
+
+    .body-copy4 {
+      height: toRem(80);
+    }
+
+    .body-copy3 {
+      height: toRem(100);
+    }
+
+    .body-copy2 {
+      height: toRem(122);
+    }
+
+    .body-copy1 {
+      height: toRem(144);
+    }
+  }
+
+  .third-action-wrapper .w-100 {
+    width: 100%;
   }
 
   .load-more {
@@ -168,6 +290,7 @@
         }
       }
     }
+
     .swiper-container {
       height: auto;
       display: flex;
@@ -281,6 +404,52 @@
         width: 100%;
         padding-top: 0;
         padding-bottom: 0;
+      }
+    }
+  }
+
+  &.with-loop {
+    .scrollbar {
+      display: none;
+    }
+
+    .prev,
+    .next {
+      display: none;
+      position: absolute;
+      top: 42%;
+      z-index: 9;
+
+      @include respond-to-min($tablet) {
+        display: block;
+      }
+    }
+
+    @include respond-to-min-max($desktop-wide, $desktop) {
+      .prev {
+        left: toRem(-32);
+      }
+
+      .next {
+        right: toRem(-32);
+      }
+    }
+
+    @include respond-to-max($tablet) {
+      .prev {
+        left: toRem(-16);
+      }
+
+      .next {
+        right: toRem(-16);
+      }
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      .context-tile {
+        &:nth-child(1n + 4) {
+          display: block;
+        }
       }
     }
   }
