@@ -176,16 +176,39 @@
 .footer-links-logo-section {
   background: #fff;
   font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
+  margin-bottom: toRem(24) !important;
   min-height: 100px;
+
+  @include respond-to-min($desktop) {
+    margin-bottom: 0 !important;
+  }
+
+  @include rtlBlock() {
+    margin-bottom: 0;
+
+    @include respond-to-max($tablet) {
+      margin-bottom: toRem(24);
+    }
+  }
 }
 
 .footer-social-nav {
-  padding: 15px 0;
+  padding: 0 0 8px;
   text-align: center;
 
+  @include respond-to-min($tablet) {
+    padding: 0;
+  }
+
   @include respond-to-min($desktop) {
-    padding: 0 0 15px;
+    padding: 0;
     text-align: left;
+  }
+
+  @include respond-to-max($tablet) {
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
 
   li {
@@ -200,10 +223,16 @@
       font-weight: 700;
       letter-spacing: 2.4px;
       line-height: 1.5rem;
+      margin-right: toRem(24);
       text-transform: uppercase;
 
       @include respond-to-max($desktop) {
         display: none;
+      }
+
+      @include rtlBlock() {
+        margin-right: 0;
+        margin-left: toRem(8);
       }
     }
 
@@ -216,14 +245,18 @@
 }
 
 .footer-links-logo-section .flex-container .footer-links-nav {
-  margin-bottom: 2rem;
+  margin: toRem(12) 0 !important;
+
+  @include respond-to-min($tablet) {
+    margin: toRem(15) 0 toRem(8) !important;
+  }
 
   @include respond-to-max($tablet) {
-    padding: 0 toRem(8);
+    padding: toRem(10) toRem(8) 0 !important;
   }
 
   @include respond-to-min($desktop) {
-    margin-bottom: 1rem;
+    margin: toRem(16) 0 toRem(16) !important;
     text-align: left;
 
     @include rtlBlock() {
@@ -1010,12 +1043,9 @@
 
 .footer-links-logo-section .flex-container {
   display: block;
-  margin-bottom: toRem(48);
+  margin-bottom: toRem(32);
 }
 
-.footer-links-logo-section .flex-container .footer-links-nav {
-  margin-bottom: 2rem;
-}
 
 .footer-links-logo-section .flex-container .etisalat-logo,
 .footer-links-logo-section .flex-container .footer-links-nav {
@@ -1038,7 +1068,7 @@
     display: flexbox;
     display: flex;
     -ms-flex-align: center;
-    margin-top: toRem(64);
+    margin-top: toRem(50);
   }
 
   .footer-links-logo-section .flex-container .footer-links-nav {
@@ -1085,10 +1115,6 @@
   margin-bottom: 1rem;
 }
 
-[lang="ar"] [dir="rtl"] .footer-links-logo-section {
-  margin-bottom: 1.5rem;
-}
-
 .footer-links-logo-section .footer-links-nav li {
   @include rtlBlock() {
     &:first-child {
@@ -1101,12 +1127,14 @@
 
     &:last-child {
       a {
-        margin-right: toRem(24);
+      margin-right: 0;
       }
     }
 
     a {
       border-right: none;
+      margin-left: toRem(16);
+      margin-right: 0;
       padding-right: 0;
     }
   }
@@ -1133,11 +1161,6 @@
     font-size: 0.75rem;
     margin-right: 1rem;
     padding-right: 1rem;
-  }
-
-  .footer-links-logo-section .flex-container .footer-links-nav {
-    margin-bottom: toRem(20);
-    margin-top: toRem(52);
   }
 }
 

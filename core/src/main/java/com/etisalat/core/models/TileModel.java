@@ -185,6 +185,13 @@ public class TileModel {
     return StringUtils.EMPTY;
   }
 
+  public String getTileBoxVariation() {
+    final Resource tileContainerResource = currentResource.getParent();
+    if (null != tileContainerResource && tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE)){
+      return tileContainerResource.getValueMap().get("tileBoxVariation", StringUtils.EMPTY);
+    }
+    return StringUtils.EMPTY;
+  }
   /**
    * Returns article category tag title.
    *

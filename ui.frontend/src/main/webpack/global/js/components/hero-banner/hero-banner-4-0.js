@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { swiperInit } from "../../swiperInitialize";
 
 (function (window) {
@@ -77,8 +78,14 @@ import { swiperInit } from "../../swiperInitialize";
     $(document)
       .find(".hero-images-call-to-action-section")
       .each(function () {
-        if(!$(this).closest('.carousel').hasClass('hero-banner-image-section')) {
-          $(this).closest(".carousel").addClass("hero-banner-image-section hero-banner-image-add medium has-action dynamic-content");
+        if ($(this).closest(".carousel").length > 0) {
+          if (!$(this).closest(".carousel").hasClass("hero-banner-image-section")) {
+            $(this).closest(".carousel").addClass("hero-banner-image-section hero-banner-image-add medium has-action dynamic-content");
+          }
+        } else {
+          if (!$(this).closest(".etisalatherobanner").hasClass("hero-banner-image-section")) {
+            $(this).closest(".etisalatherobanner").addClass("hero-banner-image-section hero-banner-image-add medium has-action dynamic-content");
+          }
         }
       });
   }
