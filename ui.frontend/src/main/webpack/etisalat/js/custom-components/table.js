@@ -4,7 +4,7 @@ import $ from "jquery";
 window.dt = require("datatables.net");
 
 const CUSTOM_TABLE_COMPONENT = ".custom-datatable";
-const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".cmp-text.custom-datatable table");
+const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".cmp-text.custom-datatable:not(.specification-with-striped) table");
 
 $(function () {
   $(".see-more-table").on("click", function () {
