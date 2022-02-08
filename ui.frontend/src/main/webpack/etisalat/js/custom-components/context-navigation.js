@@ -54,7 +54,7 @@ function initContextSwiper() {
 
 function initContextSwiperWithLoop() {
   $(document)
-    .find(".tilecontainer.endless-swiper .context-navigation-4-0.with-loop")
+    .find(".tilecontainer.unending--swiper .context-navigation-4-0.with-loop")
     .each(function (index) {
       $(this).addClass("c-n-slider" + index);
       var $slider = $(this);
