@@ -1,6 +1,13 @@
 <div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
      data-sly-use.imageTemplate="image.html" 
+     data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      class="media-cta-module-section">
+     <!-- main background image  -->
+    <div data-sly-test="${properties['image/fileReference']}" class="background-image">
+        <div class="cover">
+                <div class="lazyloaded" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>                             
+        </div>
+    </div>
     <div class="container">
         <div class="mod-wrap">
             <div class="mod-img">
@@ -18,7 +25,7 @@
                     <div class="media-cta-4-lists">
                         <ul class="flag-icon">
                             <li>
-                                <span>
+                                <span data-sly-test="${properties['plan/fileReference']}">
                                     <img src="${properties['plan/fileReference']}" alt="">  
                                 </span>
                                 ${properties.excText}
@@ -30,7 +37,9 @@
                     </div>
 
                     <div data-sly-test="${properties.seeAllLabel}" class="third-action-wrapper action-link">
-                        <a href="#" class="link" data-target="#">${properties.seeAllLabel}</a>
+                       <sly data-sly-test.benefitsLink="${properties.viewBenefitsLink}" 
+	               data-sly-use.seeAllBenefitsLink="${'com.etisalat.core.models.CommonLinkModel' @link=benefitsLink}"/>
+                        <a href="${seeAllBenefitsLink.link}" class="link" data-target="#">${properties.seeAllLabel}</a>
                     </div>
 
                     <div data-sly-test="${properties.autoRenewalText}" class="paragraph-styling">
@@ -48,7 +57,9 @@
                         </div>
                     </div>
                     <div data-sly-test="${properties.viewPlanButtonText}" class="media-cta-4-btn">
-                        <a href="#" class="btn btn-green ripple-effect" alt="${properties.viewPlanAltText}"> ${properties.viewPlanButtonText}</a>
+                     <sly data-sly-test.planCTALink="${properties.viewPlanButtonLink}" 
+	               data-sly-use.viewPlanCTALink="${'com.etisalat.core.models.CommonLinkModel' @link=planCTALink}"/>
+                        <a href="${viewPlanCTALink.link}" class="btn btn-green ripple-effect" alt="${properties.viewPlanAltText}"> ${properties.viewPlanButtonText}</a>
                     </div>
                 </div>
             </div>
