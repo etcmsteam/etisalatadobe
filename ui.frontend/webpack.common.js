@@ -19,6 +19,7 @@ module.exports = {
     base: SOURCE_ROOT + "/base/main.js",
     gochat: SOURCE_ROOT + "/gochat/main.js",
     etisalat: SOURCE_ROOT + "/etisalat/main.js",
+    corecomponent: SOURCE_ROOT + "/etisalat/corecomponents.js",
     careers: SOURCE_ROOT + "/careers/main.js",
     global: SOURCE_ROOT + "/global/main.js",
     fivemobile: SOURCE_ROOT + "/fivemobile/main.js",
