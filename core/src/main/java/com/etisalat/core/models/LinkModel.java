@@ -37,6 +37,9 @@ public class LinkModel {
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String linkBehavior;
 
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String enableIcon;
+
   @SlingObject
   private ResourceResolver resourceResolver;
   
@@ -103,5 +106,13 @@ public class LinkModel {
 
   public void setLinkBehavior(String linkBehavior) {
 	this.linkBehavior = linkBehavior;
+  }
+
+  public String getEnableIcon() {
+    return enableIcon;
+  }
+
+  public void setEnableIcon(String enableIcon) {
+    this.enableIcon = enableIcon;
   }
 }
