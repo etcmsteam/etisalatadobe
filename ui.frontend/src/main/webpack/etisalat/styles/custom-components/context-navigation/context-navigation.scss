@@ -175,8 +175,10 @@
     }
   }
 
-  .third-action-wrapper .w-100 {
-    width: 100%;
+  .third-action-wrapper {
+    &.w-100 {
+      width: 100%;
+    }
   }
 
   .load-more {
@@ -198,6 +200,7 @@
     @include respond-to-min($desktop) {
       flex-wrap: nowrap;
     }
+
     &.align-middle {
       @include respond-to-max($desktop-min) {
         justify-content: center;
@@ -408,47 +411,113 @@
     }
   }
 
+  // with slider loop
   &.with-loop {
     .scrollbar {
       display: none;
     }
-
-    .prev,
-    .next {
-      display: none;
-      position: absolute;
-      top: 42%;
-      z-index: 9;
-
-      @include respond-to-min($tablet) {
-        display: block;
-      }
-    }
-
-    @include respond-to-min-max($desktop-wide, $desktop) {
-      .prev {
-        left: toRem(-32);
+    .context-tile {
+      @include respond-to-min-max($desktop-min, $tablet) {
+        &:nth-child(odd) {
+          padding-left: toRem(12);
+        }
+        &:nth-child(even) {
+          padding-left: toRem(12);
+        }
       }
 
-      .next {
-        right: toRem(-32);
-      }
-    }
-
-    @include respond-to-max($tablet) {
-      .prev {
-        left: toRem(-16);
-      }
-
-      .next {
-        right: toRem(-16);
-      }
-    }
-
-    @include respond-to-max($custom-width-tab) {
-      .context-tile {
+      @include respond-to-max($custom-width-tab) {
         &:nth-child(1n + 4) {
           display: block;
+        }
+      }
+    }
+
+    .all-tiles {
+      @include respond-to-min($tablet) {
+        flex-wrap: nowrap;
+      }
+
+      &.align-middle {
+        @include respond-to-min-max($desktop-min, $tablet) {
+          justify-content: left !important;
+        }
+
+        @include respond-to-max($custom-width-tab) {
+          justify-content: center;
+        }
+      }
+    }
+
+    &.with-slider {
+      @include respond-to-min($desktop) {
+        display: flex;
+        gap: 0;
+      }
+
+      &.two-tiles {
+        .all-tiles {
+          .context-tile + .context-tile {
+            @include respond-to-min($tablet) {
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+
+      &.single-tile,
+      &.two-tiles,
+      &.three-tiles {
+        &.has-bg {
+          @include respond-to-min($tablet) {
+            padding-top: toRem(16);
+            padding-bottom: toRem(16);
+          }
+        }
+      }
+
+      &.two-tiles,
+      &.three-tiles {
+        .all-tiles {
+          &.align-middle {
+            @include respond-to-min($tablet) {
+              justify-content: flex-start;
+            }
+          }
+        }
+      }
+
+      .prev,
+      .next {
+        @include respond-to-min($tablet) {
+          display: block;
+        }
+      }
+
+      @include respond-to-max($desktop-wide) {
+        .prev {
+          left: toRem(-32);
+        }
+
+        .next {
+          right: toRem(-32);
+        }
+      }
+
+      @include respond-to-max($desktop-min) {
+        .prev {
+          left: toRem(-16);
+        }
+
+        .next {
+          right: toRem(-16);
+        }
+      }
+
+      .all-tiles {
+        @include respond-to-min($tablet) {
+          display: flex;
+          gap: 0;
         }
       }
     }
@@ -463,6 +532,10 @@
   align-items: flex-start;
   text-align: left;
   width: 100%;
+
+  &.algin-baseline {
+    display: block;
+  }
 
   .icon {
     width: toRem(46);

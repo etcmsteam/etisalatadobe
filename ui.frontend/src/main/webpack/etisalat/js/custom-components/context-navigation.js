@@ -1,7 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
 //function to pass swiper options collectively
-const swiperOptions = (elem, next, prev, loopVal, dragVal, barHide, slideView1, slideView2, slideView3, slideView4, slideView5) => {
+const swiperOptions = (elem, next, prev, loopVal, dragVal, slideView1, slideView2, slideView3, slideView4, slideView5) => {
   return {
     scrollbar: elem.find(".scrollbar"),
     touchEventsTarget: "swiper-wrapper",
@@ -9,7 +9,6 @@ const swiperOptions = (elem, next, prev, loopVal, dragVal, barHide, slideView1, 
     prevButton: prev,
     loop: loopVal,
     scrollbarDraggable: dragVal,
-    scrollbarHide: barHide,
     simulateTouch: true,
     scrollbarHide: false,
     autoplay: false,
@@ -20,7 +19,7 @@ const swiperOptions = (elem, next, prev, loopVal, dragVal, barHide, slideView1, 
       },
       768: {
         spaceBetween: slideView2,
-        slidesPerView: 3,
+        slidesPerView: 2,
       },
       1024: {
         spaceBetween: slideView3,
@@ -48,14 +47,14 @@ function initContextSwiper() {
       $slider.find(".prev").addClass("left" + index);
       var $contextNavigation = swiperInit(
         ".c-n-slider" + index + " .swiper-container",
-        swiperOptions($slider, ".next.right" + index, ".prev.left" + index, false, true, false, 96, 96, 24, 24, 24),
+        swiperOptions($slider, ".next.right" + index, ".prev.left" + index, false, true, 96, 96, 24, 24, 24),
       );
     });
 }
 
 function initContextSwiperWithLoop() {
   $(document)
-    .find(".tilecontainer .context-navigation-4-0.with-loop")
+    .find(".tilecontainer.unending--swiper .context-navigation-4-0.with-loop")
     .each(function (index) {
       $(this).addClass("c-n-slider" + index);
       var $slider = $(this);
@@ -63,15 +62,14 @@ function initContextSwiperWithLoop() {
       $slider.find(".prev").addClass("left" + index);
       var $contextNavigation = swiperInit(
         ".c-n-slider" + index + " .swiper-container",
-        swiperOptions($slider, ".next.right" + index, ".prev.left" + index, true, false, true, 96, 24, 24, 24, 24),
+        swiperOptions($slider, ".next.right" + index, ".prev.left" + index, true, false, 96, 24, 24, 24, 24),
       );
     });
 }
 
 // register the event handlers
 $(document).ready(function () {
-  console.log($(window).width());
-  if ($(window).width() > 768) {
+  if ($(window).width() > 767) {
     initContextSwiperWithLoop();
   }
 
