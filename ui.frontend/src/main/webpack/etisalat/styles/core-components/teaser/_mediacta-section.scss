@@ -105,6 +105,7 @@
 
       .cmp-image__image {
         height: toRem(132);
+        object-fit: cover;
 
         @include respond-to-min($tablet) {
           height: toRem(250);
@@ -174,8 +175,11 @@
       width: 100%;
 
       .cmp-image__image {
-        @include respond-to-max($desktop) {
-          height: toRem(240);
+        height: toRem(132);
+        object-fit: cover;
+
+        @include respond-to-min($tablet) {
+          height: toRem(250);
         }
       }
 
@@ -209,14 +213,10 @@
       p,
       li {
         color: $dark-gray;
-        line-height: toRem(26);
+        line-height: toRem(19);
 
         @include ts-step--1;
         @include font-family-lato;
-
-        @include respond-to-min($desktop) {
-          @include ts-step-0;
-        }
       }
 
       ol {
