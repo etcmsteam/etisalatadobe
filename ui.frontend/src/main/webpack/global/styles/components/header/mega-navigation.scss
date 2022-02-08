@@ -1116,8 +1116,8 @@
       color: $dark-gray2;
       font-size: 0.88rem;
       font-weight: normal;
-      letter-spacing: 0.5px;
-      padding: 0.48rem 1rem;
+      letter-spacing: toRem(0.5);
+      padding: toRem(11.2) toRem(16);
     }
 
     .nav-back-link {
@@ -1135,13 +1135,11 @@
         border-width: 0 1.5px 1.5px 0;
         content: "";
         line-height: 1;
-        margin-right: 0.1rem;
-        margin-top: 0.3rem;
-        padding: 2.6px;
+        margin: toRem(5) toRem(1.6) 0 toRem(3.5);
+        padding: toRem(2.8);
         right: 0;
         top: 50%;
-        transform: translateY(-50%) rotate(140deg);
-        transform: translateY(-20%) rotate(-135deg);
+        transform: translateY(-50%) rotate(135deg);
         transition: all 0.3s ease-in-out;
       }
 
@@ -1154,6 +1152,21 @@
         path {
           fill: $main-green;
         }
+      }
+    }
+  }
+
+  .accountName {
+    &.nav-item-heading {
+      &::before {
+        display: none;
+      }
+    }
+
+    + .nav-item {
+      .nav-link {
+        border-bottom: toRem(1.5) solid $grey5;
+        padding: toRem(8) toRem(16);
       }
     }
   }
@@ -1197,6 +1210,8 @@
 .nav-item-heading {
   background-color: $white;
   font-weight: bold;
+  line-height: toRem(25.6);
+  font-size: toRem(16);
   padding: 0.7rem 1rem;
   position: relative;
 
