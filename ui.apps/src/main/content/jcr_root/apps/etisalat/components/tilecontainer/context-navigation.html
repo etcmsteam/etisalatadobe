@@ -3,14 +3,17 @@
    <sly data-sly-test.twoTile="${container.items.size == 2 ? 'two-tiles' : ''}"></sly>
    <sly data-sly-test.threeTile="${container.items.size == 3 ? 'three-tiles' : ''}"></sly>
    <sly data-sly-test.threeTilePlus="${container.items.size > 3 ? 'three-plus-tiles' : ''}"></sly>
-   <sly data-sly-test.typeOfSwiper="${properties.swiperbehaviour == 'with-loop'? 'with-loop' : ''}"></sly> 
-   <sly data-sly-set.withSlider="${typeOfSwiper} with-slider ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus}"></sly>
+   <sly data-sly-test.typeOfSwiper="${properties.swiperbehaviour == 'with-loop'? 'with-loop' : ''}"></sly>
+   <sly data-sly-test.arrowAlign="${properties.arrowAlignBottom == 'true'? 'arrow-position-bottom' : ''}"></sly> 
+   <sly data-sly-set.withSlider="${typeOfSwiper} with-slider ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus} ${arrowAlign}"></sly>
    
    <div class="context-navigation-4-0 ${properties.mainContextTitle ? 'with-main-text' : withSlider}">
 	  <div class="container">
 	    <div data-sly-test="${!properties.mainContextTitle}" class="${!wcmmode.edit ? 'swiper-container' : ''}">
-	      <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''} ${!wcmmode.edit ? 'all-tiles' : 'all-tiles-cq-editable'} ${properties.contextNavAlignment}">
-	        <div class="context-tile ${!wcmmode.edit ? 'swiper-slide' : ''}" data-sly-repeat="${container.items}" 
+	      <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''} ${!wcmmode.edit ? 'all-tiles' : 'all-tiles-cq-editable'} ${properties.contextNavAlignment} ${properties.leftinIpad == 'true' ? 'content-left': ''}">
+
+			<sly data-sly-test.linkAlign="${properties.linkwrtText == 'true'? 'swiper-slide btn-align-baseline' : 'swiper-slide'}"></sly>
+	        <div class="context-tile ${!wcmmode.edit ? linkAlign : ''}" data-sly-repeat="${container.items}" 
 	             data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
 	      </div>
 	    </div>
