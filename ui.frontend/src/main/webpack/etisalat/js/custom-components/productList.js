@@ -162,42 +162,84 @@ function getProductCard(data) {
 }
 
 // test st
-const productCards = {
+// var productCards = {
+//   async: true,
+//   url: window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json",
+//   // url: "https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=en",
+//   method: "POST",
+//   dataType: "json",
+//   navigationState: "",
+//   headers: {
+//     "Content-Type": "application/json",
+//     Accept: "application/json",
+//   },
+// };
+
+// $.ajax(productCards)
+//   .done(function (json, statusText, xhr) {
+//     console.log(json);
+//     let responseData = json;
+//     if (typeof responseData === "string") {
+//       responseData = JSON.parse(responseData);
+//     }
+
+//     //With Slider
+//     var htmlCards = getProductCard(responseData.list);
+//     var htmlTrendingCards = getProductCard(responseData.list);
+
+//     //With LoadMore button
+//     var htmlsmartTVCards = getProductCard(responseData.list);
+//     $("#products_2gdevices").html(htmlCards);
+//     $("#products_smartlife").html(htmlTrendingCards);
+//     $("#products_smarttv").html(htmlsmartTVCards);
+//   })
+//   .fail(function (jqXHR, textStatus, error) {
+//     console.log("fail");
+//   });
+//test en
+
+// test1 st
+var categoryID = document.getElementById("categoryID").value;
+
+var request = $.ajax({
   async: true,
-  url: "product.json",
-  // url: "https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=en",
+  url: window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json",
   method: "POST",
+  data: JSON.stringify(params),
   dataType: "json",
-  navigationState: "",
-  No: "0",
-  Nrpp: "100",
+  cache: false,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
-};
+  error: function (response) {
+    console.log(response);
+  },
+  success: function (resp) {
+    console.log(resp);
+    var htmlCards = getProductCard(resp);
+    $("#productsRow").html(htmlCards);
+    //cards();
+  },
+});
 
-$.ajax(productCards)
-  .done(function (json, statusText, xhr) {
-    responseData = json;
-    if (typeof responseData === "string") {
-      responseData = JSON.parse(responseData);
-    }
+//test2 en
 
-    //With Slider
-    var htmlCards = getProductCard(responseData.list);
-    var htmlTrendingCards = getProductCard(responseData.list);
+//test 3
+var url = window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json";
+//var data = { username: "courseya" };
+fetch(url, {
+  method: "POST", // or 'PUT'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers: {
+    "Content-Type": "application/json",
+  },
+})
+  .then((res) => res.json())
+  .then((response) => console.log("Success:", JSON.stringify(response)))
+  .catch((error) => console.error("Error:", error));
 
-    //With LoadMore button
-    var htmlsmartTVCards = getProductCard(responseData.list);
-    $("#products_2gdevices").html(htmlCards);
-    $("#products_smartlife").html(htmlTrendingCards);
-    $("#products_smarttv").html(htmlsmartTVCards);
-  })
-  .fail(function (jqXHR, textStatus, error) {
-    console.log("fail");
-  });
-//test en
+//test 3
 
 //var categoryID = document.getElementById('categoryID').value;
 // var request = $.ajax({
