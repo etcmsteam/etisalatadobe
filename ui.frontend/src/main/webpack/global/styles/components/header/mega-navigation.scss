@@ -1116,8 +1116,8 @@
       color: $dark-gray2;
       font-size: 0.88rem;
       font-weight: normal;
-      letter-spacing: 0.5px;
-      padding: 0.48rem 1rem;
+      letter-spacing: toRem(0.5);
+      padding: toRem(11.2) toRem(16);
     }
 
     .nav-back-link {
@@ -1125,23 +1125,21 @@
       background-color: $white !important;
       color: $main-green !important;
       display: flex;
-      font-size: 0.725rem !important;
-      letter-spacing: 1.6px;
-      padding: 0.75rem 1rem !important;
+      font-size: toRem(12) !important;
+      letter-spacing: toRem(1.6);
+      padding: toRem(12) toRem(16) !important;
       text-transform: uppercase;
 
       &::before {
-        border: solid #719e19;
-        border-width: 0 1.5px 1.5px 0;
+        border: solid $main-green;
+        border-width: 0 toRem(1.5) toRem(1.5) 0;
         content: "";
         line-height: 1;
-        margin-right: 0.1rem;
-        margin-top: 0.3rem;
-        padding: 2.6px;
+        margin: toRem(5) toRem(1.6) 0 toRem(3.5);
+        padding: toRem(2.8);
         right: 0;
         top: 50%;
-        transform: translateY(-50%) rotate(140deg);
-        transform: translateY(-20%) rotate(-135deg);
+        transform: translateY(-50%) rotate(135deg);
         transition: all 0.3s ease-in-out;
       }
 
@@ -1154,6 +1152,21 @@
         path {
           fill: $main-green;
         }
+      }
+    }
+  }
+
+  .accountName {
+    &.nav-item-heading {
+      &::before {
+        display: none;
+      }
+    }
+
+    + .nav-item {
+      .nav-link {
+        border-bottom: toRem(1.5) solid $grey5;
+        padding: toRem(8) toRem(16);
       }
     }
   }
@@ -1197,12 +1210,14 @@
 .nav-item-heading {
   background-color: $white;
   font-weight: bold;
-  padding: 0.7rem 1rem;
+  line-height: toRem(25.6);
+  font-size: toRem(16);
+  padding: toRem(11.2) toRem(16);
   position: relative;
 
   &::before {
     background-color: $grey5;
-    border-bottom: 1px solid $grey5;
+    border-bottom: toRem(1) solid $grey5;
     bottom: 0;
     content: "";
     height: 1px;

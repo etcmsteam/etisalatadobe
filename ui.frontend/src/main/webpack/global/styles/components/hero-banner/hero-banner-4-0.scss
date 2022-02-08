@@ -113,6 +113,10 @@
     sup span {
       font-size: 14px;
     }
+
+    .font--number {
+      @include font-family-Neotech;
+    }
   }
 }
 
@@ -277,12 +281,15 @@
         height: 100%;
         padding: 0;
       }
+      .cmp-teaser__image, .cmp-image {
+        height: 100%
+      }
 
       img,
       video {
         height: 100%;
         object-fit: cover;
-        position: absolute;
+        position: relative;
         width: 100%;
       }
     }
@@ -1089,6 +1096,39 @@
             left: auto;
             right: 0;
             transform: translateY(-50%) rotate(-45deg);
+          }
+        }
+      }
+    }
+    .hero-banner-image-section {
+      .hero-banner-section {
+        .hero-content-wrapper {
+          .hero-details {
+            .hero-description {
+              p {
+                text-align: right;
+              }
+            }
+
+            .hero-title {
+              h2 {
+                text-align: right;
+              }
+            }
+
+            .go-back {
+              text-align: right;
+            }
+          }
+          .hero-images-call-to-action-section {
+            .call-to-action-box {
+              .btn-text {
+                &:before {
+                  left: unset;
+                  right: -15px;
+                }
+              }
+            }
           }
         }
       }

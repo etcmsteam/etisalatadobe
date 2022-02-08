@@ -2,14 +2,18 @@
    <sly data-sly-set.oneTile="${container.items.size == 1 ? 'single-tile' : ''}"></sly>
    <sly data-sly-test.twoTile="${container.items.size == 2 ? 'two-tiles' : ''}"></sly>
    <sly data-sly-test.threeTile="${container.items.size == 3 ? 'three-tiles' : ''}"></sly>
-   <sly data-sly-test.threeTilePlus="${container.items.size > 3 ? 'three-plus-tiles' : ''}"></sly>   
-   <sly data-sly-set.withSlider="with-slider ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus}"></sly>
+   <sly data-sly-test.threeTilePlus="${container.items.size > 3 ? 'three-plus-tiles' : ''}"></sly>
+   <sly data-sly-test.typeOfSwiper="${properties.swiperbehaviour == 'with-loop'? 'with-loop' : ''}"></sly>
+   <sly data-sly-test.arrowAlign="${properties.arrowAlignBottom == 'true'? 'arrow-position-bottom' : ''}"></sly> 
+   <sly data-sly-set.withSlider="${typeOfSwiper} with-slider ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus} ${arrowAlign}"></sly>
    
    <div class="context-navigation-4-0 ${properties.mainContextTitle ? 'with-main-text' : withSlider}">
 	  <div class="container">
 	    <div data-sly-test="${!properties.mainContextTitle}" class="${!wcmmode.edit ? 'swiper-container' : ''}">
-	      <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''} ${!wcmmode.edit ? 'all-tiles' : 'all-tiles-cq-editable'} ${properties.contextNavAlignment}">
-	        <div class="context-tile ${!wcmmode.edit ? 'swiper-slide' : ''}" data-sly-repeat="${container.items}" 
+	      <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''} ${!wcmmode.edit ? 'all-tiles' : 'all-tiles-cq-editable'} ${properties.contextNavAlignment} ${properties.leftinIpad == 'true' ? 'content-left': ''}">
+
+			<sly data-sly-test.linkAlign="${properties.linkwrtText == 'true'? 'swiper-slide btn-align-baseline' : 'swiper-slide'}"></sly>
+	        <div class="context-tile ${!wcmmode.edit ? linkAlign : ''}" data-sly-repeat="${container.items}" 
 	             data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
 	      </div>
 	    </div>
@@ -19,7 +23,7 @@
 	          <h3>${properties.mainContextTitle}</h3>
 	        </div>
 	        <div data-sly-test="${properties.mainContextDesc}" class="paragraph-styling ul-list-cms">
-	          <div class="p2"> ${properties.mainContextDesc @ context="html"} </div>
+	          <div class=""> ${properties.mainContextDesc @ context="html"} </div>
 	        </div>
 	      </div>
 	      <div class="all-tiles col-xs-12 col-md-9">
@@ -28,32 +32,34 @@
 	      </div>
 	    </div>
 	    <sly data-sly-test="${!properties.mainContextTitle}">
-	      <div class="prev">
-	        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-	          <g fill="none" fill-rule="evenodd">
-	            <rect width="48" height="48" fill="#000" fill-rule="nonzero" opacity=".2" rx="24"></rect>
-	            <g>
-	              <path d="M0 0H24V24H0z" transform="translate(12 12)"></path>
-	              <g stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-	                <path d="M.511 5.28L17.462 5.28M5.281 10.369L.5 5.281 5.588.5" transform="translate(12 12) translate(3 7)"></path>
-	              </g>
-	            </g>
-	          </g>
-	        </svg>
-	      </div>
-	      <div class="next">
-	        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-	          <g fill="none" fill-rule="evenodd">
-	            <rect width="48" height="48" fill="#000" fill-rule="nonzero" opacity=".2" rx="24"></rect>
-	            <g>
-	              <path d="M0 0H24V24H0z" transform="matrix(-1 0 0 1 36 12)"></path>
-	              <g stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-	                <path d="M.511 5.28L17.462 5.28M5.281 10.369L.5 5.281 5.588.5" transform="matrix(-1 0 0 1 36 12) translate(3 7)"></path>
-	              </g>
-	            </g>
-	          </g>
-	        </svg>
-	      </div>
+	       <!-- Control Arrows for context nav-->
+                  <div class="controls" data-sly-test="${properties.controlDisplayBehavior=='arrow'}">
+                     <sly data-sly-use.controlTemplate="/apps/etisalat/components/tilecontainer/controls.html"
+                          data-sly-call="${controlTemplate.leftArrow @ properties=properties}">
+                     </sly>
+                     <sly data-sly-use.controlTemplate="/apps/etisalat/components/tilecontainer/controls.html"
+                          data-sly-call="${controlTemplate.rightArrow @ properties=properties}">
+                     </sly>
+                  </div>
+                  <!-- Control Arrows for context nav ends-->
+
+					<div class="controls" data-sly-test="${properties.controlDisplayBehavior=='anglewithbg'}">
+                     <sly data-sly-use.controlTemplate="/apps/etisalat/components/tilecontainer/controls.html"
+                          data-sly-call="${controlTemplate.leftAngleBG @ properties=properties}">
+                     </sly>
+                     <sly data-sly-use.controlTemplate="/apps/etisalat/components/tilecontainer/controls.html"
+                          data-sly-call="${controlTemplate.rightAngleBG @ properties=properties}">
+                     </sly>
+                  </div>
+                  <!-- Control Angle for context nav-->
+                  <div class="controls" data-sly-test="${properties.controlDisplayBehavior=='angle'}">
+                     <sly data-sly-use.controlTemplate="/apps/etisalat/components/tilecontainer/controls.html"
+                          data-sly-call="${controlTemplate.leftAngle @ properties=properties}">
+                     </sly>
+                     <sly data-sly-use.controlTemplate="/apps/etisalat/components/tilecontainer/controls.html"
+                          data-sly-call="${controlTemplate.rightAngle @ properties=properties}">
+                     </sly>
+                  </div>
 	      <div class="${!wcmmode.edit ? 'scrollbar swiper-scrollbar' : ''}"></div>
 	    </sly>
 	    <div class="hidden-md hidden-lg hidden-sm">
