@@ -6,16 +6,12 @@
       e.preventDefault();
       var modalCTA = $(this).next(".mediaCtaVideo");
       modalCTA.modal().show();
-      if($('body').hasClass('modal-open')) {
-        $("body").parent().css('overflow', 'hidden');
-      }
     });
 
     $(".youtube-popup-container").on("hidden.bs.modal", function () {
       var src = $(this).find("iframe").attr("src");
       $(this).find("iframe").attr("src", "");
       $(this).find("iframe").attr("src", src.replace("autoplay=1", ""));
-      $("html").removeAttr("style");
     });
   });
 })();
