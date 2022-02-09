@@ -22,7 +22,7 @@
                        <h2 data-sly-element="${properties.titleType}">${properties.mediaCTATitle}</h2>
                     </div>                    
                     <!-- flag icon and title  -->
-                    <div class="media-cta-4-lists">
+                    <div data-sly-test="${properties['plan/fileReference'] || properties.excText}" class="media-cta-4-lists">
                         <ul class="flag-icon">
                             <li>
                                 <span data-sly-test="${properties['plan/fileReference']}">
@@ -34,7 +34,7 @@
                     </div>                    
                     <div class="media-cta-4-desc media-cta-4-lists"> 
                        ${properties.text @ context='html'}
-                       <ul class="smiles-icon" data-sly-test="${properties['smile/fileReference'] || properties.smileText}">
+                       <ul data-sly-test="${properties['smile/fileReference'] || properties.smileText}" class="smiles-icon">
                             <li>
                                 <span data-sly-test="${properties['smile/fileReference']}">
                                     <img src="${properties['smile/fileReference']}" alt="">
