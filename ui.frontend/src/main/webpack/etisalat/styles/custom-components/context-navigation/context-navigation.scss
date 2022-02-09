@@ -28,10 +28,30 @@
       padding-left: toRem(16);
       padding-right: toRem(16);
     }
+
+    @include respond-to-min-max($desktop-wide, $desktop) {
+      width: toRem(952);
+    }
+
+    @include respond-to-min-max($desktop-min, $tablet) {
+      width: toRem(732);
+    }
+  }
+
+  .paragraph-styling p {
+    margin-bottom: toRem(16);
+
+    @include font-family-lato();
+
+    @include respond-to-max($desktop-min) {
+      margin-bottom: toRem(12);
+    }
   }
 
   // common css for both with slider and with main text
   .wst-main-headings {
+    width: 100%;
+
     h1,
     h2,
     h3,
@@ -46,14 +66,118 @@
         margin-bottom: toRem(12);
       }
     }
+
+    &.heading1 {
+      @include respond-to-min($tablet) {
+        height: toRem(136);
+      }
+    }
+
+    &.heading2 {
+      @include respond-to-min($tablet) {
+        height: toRem(108);
+      }
+    }
+
+    &.heading3 {
+      @include respond-to-min($tablet) {
+        height: toRem(80);
+      }
+    }
+    &.heading4 {
+      @include respond-to-min($tablet) {
+        height: toRem(72);
+      }
+    }
+
+    &.heading5 {
+      @include respond-to-min($tablet) {
+        height: toRem(64);
+      }
+    }
+
+    &.heading6 {
+      @include respond-to-min($tablet) {
+        height: toRem(56);
+      }
+    }
+
+    &.heading7 {
+      height: toRem(44);
+    }
+
+    &.heading8 {
+      height: toRem(44);
+    }
+
+    &.heading1,
+    &.heading2,
+    &.heading3,
+    &.heading4,
+    &.heading5,
+    &.heading6,
+    &.heading7,
+    &.heading8 {
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      @include respond-to-max($tablet) {
+        height: auto;
+        overflow: auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .h7,
+      .h8 {
+        margin-bottom: 0;
+      }
+    }
   }
-  .paragraph-styling p {
-    margin-bottom: toRem(16);
 
-    @include font-family-lato();
+  & + .paragraph-styling {
+    p {
+      height: auto;
+      margin-bottom: 0;
+    }
 
-    @include respond-to-max($desktop-min) {
-      margin-bottom: toRem(12);
+    .body-copy1,
+    .body-copy2,
+    .body-copy3,
+    .body-copy4 {
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      @include respond-to-max($custom-width-tab) {
+        height: auto !important;
+        overflow: auto;
+      }
+    }
+
+    .body-copy4 {
+      height: toRem(80);
+    }
+
+    .body-copy3 {
+      height: toRem(100);
+    }
+
+    .body-copy2 {
+      height: toRem(122);
+    }
+
+    .body-copy1 {
+      height: toRem(144);
+    }
+  }
+
+  .third-action-wrapper {
+    &.w-100 {
+      width: 100%;
     }
   }
 
@@ -76,6 +200,7 @@
     @include respond-to-min($desktop) {
       flex-wrap: nowrap;
     }
+
     &.align-middle {
       @include respond-to-max($desktop-min) {
         justify-content: center;
@@ -86,6 +211,10 @@
         justify-content: center;
         text-align: center;
       }
+    }
+
+    &.content-left {
+      justify-content: left;
     }
 
     .context-tile {
@@ -168,6 +297,7 @@
         }
       }
     }
+
     .swiper-container {
       height: auto;
       display: flex;
@@ -284,6 +414,127 @@
       }
     }
   }
+
+  // with slider loop
+  &.with-loop {
+    .scrollbar {
+      display: none;
+    }
+
+    .context-tile {
+      @include respond-to-min-max($desktop-min, $tablet) {
+        &:nth-child(odd) {
+          padding-left: toRem(12);
+        }
+        &:nth-child(even) {
+          padding-left: toRem(12);
+        }
+      }
+
+      @include respond-to-max($custom-width-tab) {
+        &:nth-child(1n + 4) {
+          display: block;
+        }
+      }
+    }
+
+    .all-tiles {
+      @include respond-to-min($tablet) {
+        flex-wrap: nowrap;
+      }
+
+      &.align-middle {
+        @include respond-to-min-max($desktop-min, $tablet) {
+          justify-content: left !important;
+        }
+
+        @include respond-to-max($custom-width-tab) {
+          justify-content: center;
+        }
+      }
+    }
+
+    &.with-slider {
+      @include respond-to-min($desktop) {
+        display: flex;
+        gap: 0;
+      }
+
+      &.two-tiles {
+        .all-tiles {
+          .context-tile + .context-tile {
+            @include respond-to-min($tablet) {
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+
+      &.single-tile,
+      &.two-tiles,
+      &.three-tiles {
+        &.has-bg {
+          @include respond-to-min($tablet) {
+            padding-top: toRem(16);
+            padding-bottom: toRem(16);
+          }
+        }
+      }
+
+      &.two-tiles,
+      &.three-tiles {
+        .all-tiles {
+          &.align-middle {
+            @include respond-to-min($tablet) {
+              justify-content: flex-start;
+            }
+          }
+        }
+      }
+
+      .prev,
+      .next {
+        @include respond-to-min($tablet) {
+          display: block;
+        }
+      }
+
+      @include respond-to-max($desktop-wide) {
+        .prev {
+          left: toRem(-32);
+        }
+
+        .next {
+          right: toRem(-32);
+        }
+      }
+
+      @include respond-to-max($desktop-min) {
+        .prev {
+          left: toRem(-16);
+        }
+
+        .next {
+          right: toRem(-16);
+        }
+      }
+
+      .all-tiles {
+        @include respond-to-min($tablet) {
+          display: flex;
+          gap: 0;
+        }
+      }
+    }
+  }
+
+  &.arrow-position-bottom {
+    .next,
+    .prev {
+      top: auto;
+      bottom: 30%;
+    }
+  }
 }
 
 // context navigation as a single tile styling
@@ -294,6 +545,14 @@
   align-items: flex-start;
   text-align: left;
   width: 100%;
+
+  &.btn-align-baseline {
+    display: block;
+
+    .icon {
+      width: auto;
+    }
+  }
 
   .icon {
     width: toRem(46);
