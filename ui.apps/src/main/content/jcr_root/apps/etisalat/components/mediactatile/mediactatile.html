@@ -2,7 +2,9 @@
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
    <sly data-sly-test="${tileModel.tiletitle}">
        <a data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" 
-          href=" ${properties.tileLinkBehavior=='opensamewindow' ? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" class="link-cover"></a>
+          href=" ${properties.tileLinkBehavior=='opensamewindow' ? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+		  class="link-cover"
+		  target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
 	  <div class="media-content">
 	    <div data-sly-test="${properties['image/fileReference']}" class="img-container">	
 	       <div class="cover" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>	        	              	        
@@ -40,7 +42,7 @@
                  </div>
                  <div class="draw-details">
                      <div data-sly-test="${properties.nextDrawTitle}" class="next-draw">${properties.nextDrawTitle}</div>
-                     <div data-sly-test="${properties.eventDate}" class="date">${'dd MMM,yyyy' @ format=properties.eventDate}</div>
+                     <div data-sly-test="${properties.eventDate}" class="date">${'MMM dd, yyyy' @ format=properties.eventDate}</div>
                  </div>
              </div>
 	        <div class="paragraph-styling">
