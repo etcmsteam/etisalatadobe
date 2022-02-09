@@ -2,7 +2,7 @@
   // register the event handlers
   $(document).ready(function () {
     // open youtube video and close by removing src and then add
-    var nonActionBox = $(ducument).find(".non-action-boxes-two-cols-4-0");
+    var nonActionBox = $(document).find(".non-action-boxes-two-cols-4-0");
     if (nonActionBox.length > 0) {
       $(".youtube-video-link").on("click", function (e) {
         e.preventDefault();
