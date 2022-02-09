@@ -135,7 +135,7 @@ module.exports = {
       ...libsBaseConfig,
       name: "clientlib-careers",
       categories: ["etisalat.careers"],
-      dependencies: ["etisalat.dependencies", "etisalat.global", "etisalat.corecomponent"],
+      dependencies: ["etisalat.dependencies", "etisalat.global", "etisalat.corecomponent", "etisalat.etisalat"],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
