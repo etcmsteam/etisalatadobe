@@ -1,6 +1,8 @@
 <div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-use.imageTemplate="image.html" 
      data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
+     data-sly-test="${properties.fileReference}"
      class="media-cta-module-section cms-module-4-0 ${properties['image/fileReference'] ? 'with-background-image' : ''}">
      <!-- main background image  -->
     <div data-sly-test="${properties['image/fileReference']}" class="background-image">
@@ -47,7 +49,7 @@
                     <div data-sly-test="${properties.seeAllLabel}" class="third-action-wrapper action-link">
                        <sly data-sly-test.benefitsLink="${properties.viewBenefitsLink}" 
 	               data-sly-use.seeAllBenefitsLink="${'com.etisalat.core.models.CommonLinkModel' @link=benefitsLink}"/>
-                        <a href="${seeAllBenefitsLink.link}" class="link" data-target="#">${properties.seeAllLabel}</a>
+                        <a href="${seeAllBenefitsLink.link}" class="link" data-target="${seeAllBenefitsLink.link}">${properties.seeAllLabel}</a>
                     </div>
 
                     <div data-sly-test="${properties.autoRenewalText}" class="paragraph-styling">
@@ -72,6 +74,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div>    
 </div>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference}"></sly>

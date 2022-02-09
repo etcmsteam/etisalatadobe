@@ -15,6 +15,43 @@
                 <items
                     jcr:primaryType="nt:unstructured"
                     sling:hideChildren="[text,actions]">
+                      <image
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Image"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <file
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                required="{Boolean}true"
+                                                fieldLabel="Image Asset"
+                                                fileNameParameter="./fileName"
+                                                fileReferenceParameter="./fileReference"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                multiple="{Boolean}false"
+                                                name="./file"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </image>
                     <mediabackground
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Background Image"
@@ -71,8 +108,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:hideChildren="[layout,roleAttribute]">
+                                            jcr:primaryType="nt:unstructured">
                                              <mediasmalltitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -186,20 +222,7 @@
                                                        maxlength="{Long}100"
                                                        name="./smileText"/>
                                                 </items>
-                                            </smile>
-                                            <viewallbenefitslabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Text that will appear for see all label."
-                                                fieldLabel="See All Benefits Label"
-                                                name="./seeAllLabel"/>
-                                            <viewbenefitslink
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="See All Benefits Link"
-                                                fieldLabel="See All Benefits Link"
-                                                name="./viewBenefitsLink"
-                                                rootPath="/content"/>
+                                            </smile>                                            
                                             <pricetag
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Price Tag"
@@ -250,32 +273,74 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Text that will appear for auto renewal labeltext. "
                                                 fieldLabel="Auto Renewal Text"
-                                                name="./autoRenewalText"/>
-                                            <viewplan
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Text that will appear for the view plans button text"
-                                                fieldLabel="View Plan CTA Text"
-                                                name="./viewPlanButtonText"/>
-                                            <viewplanlink
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="View Plan CTA Link"
-                                                fieldLabel="View Plan CTA Link"
-                                                name="./viewPlanButtonLink"
-                                                rootPath="/content"/>
-                                            <viewplanalttext
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="The alt text for Accessibility. This text will appear when the mouse hovers over the link."
-                                                fieldLabel="View Plan CTA Link Alt Text"
-                                                name="./viewPlanAltText"/>
+                                                name="./autoRenewalText"/>                                            
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </mediaplan>
+                    <planactions
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Link &amp; Actions"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                          <viewallbenefitslabel
+				                              jcr:primaryType="nt:unstructured"
+				                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                              fieldDescription="Text that will appear for see all label."
+				                              fieldLabel="See All Benefits Label"
+				                              name="./seeAllLabel"/>
+				                          <viewbenefitslink
+				                              jcr:primaryType="nt:unstructured"
+				                              sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+				                              fieldDescription="See All Benefits Link"
+				                              fieldLabel="See All Benefits Link"
+				                              name="./viewBenefitsLink"
+				                              rootPath="/content"/>  
+                                           <mediaplanlinks
+						                       jcr:primaryType="nt:unstructured"
+						                       jcr:title="Call-To-Action"
+						                       sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+						                       <items jcr:primaryType="nt:unstructured">						                               
+						                          <viewplan
+						                              jcr:primaryType="nt:unstructured"
+						                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+						                              fieldDescription="Text that will appear for the view plans button text"
+						                              fieldLabel="View Plan CTA Text"
+						                              name="./viewPlanButtonText"/>
+						                          <viewplanlink
+						                              jcr:primaryType="nt:unstructured"
+						                              sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+						                              fieldDescription="View Plan CTA Link"
+						                              fieldLabel="View Plan CTA Link"
+						                              name="./viewPlanButtonLink"
+						                              rootPath="/content"/>
+						                          <viewplanalttext
+						                              jcr:primaryType="nt:unstructured"
+						                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+						                              fieldDescription="The alt text for Accessibility. This text will appear when the mouse hovers over the link."
+						                              fieldLabel="View Plan CTA Link Alt Text"
+						                              name="./viewPlanAltText"/>                                           
+						                       </items>
+						                   </mediaplanlinks>                                              			                                                              
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </planactions>
+                    
                 </items>
             </tabs>
         </items>
