@@ -43,21 +43,23 @@
             </div>
          </div>
          <div class="nab-image">
-            <!-- youtube link  -->
-            <a href="#" class="youtube-video-link">
-               <div class="icon">
-                  <img src="${properties.playIconReference}" alt="Play Video"/>
-               </div>
-            </a>
-            <!-- Modal start -->
-            <div class="youtube-popup-container modal fade mediaCtaVideo" id="mediaCtaVideo_1" role="dialog" style="display: none;">
-               <div class="modal-dialog">
-                  <div class="modal-content">
-                     <iframe width="560" height="315" src="${properties.youTubeUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+            <sly data-sly-test="${properties.youTubeUrl}">
+               <!-- youtube link  -->
+               <a href="#" class="youtube-video-link">
+                  <div class="icon">
+                     <img src="${properties.playIconReference}" alt="Play Video"/>
+                  </div>
+               </a>
+               <!-- Modal start -->
+               <div class="youtube-popup-container modal fade mediaCtaVideo" id="mediaCtaVideo_1" role="dialog" style="display: none;">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <iframe width="560" height="315" src="${properties.youTubeUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                     </div>
                   </div>
                </div>
-            </div>
-            <!-- Modal end -->
+               <!-- Modal end -->
+            </sly>
             <div data-sly-test="${properties['image/fileReference']}" class="cover">
                <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
             </div>
