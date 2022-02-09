@@ -297,21 +297,31 @@
     .media-cta-4-title {
         margin-bottom: 2rem;
     }
-    .media-cta-4-desc p {
-        margin-bottom: 1rem;
-        @media (min-width: 992px) {
-            margin-bottom: 2rem;
-        }
-    }
-
+    
     .media-cta-4-lists ul {
         margin-bottom: 1.5rem;
+        margin-top:toRem(24);
         @media (min-width: 992px) {
             margin-bottom: 3rem;
         }
     }
 
-    
+    .cmp-image {
+         @media (min-width: 992px) {
+            height: toRem(636);
+        }
+        img {
+            height: 100%;
+        }
+    }
+    .media-cta-4-desc {
+        p {
+            margin-bottom: toRem(16);
+            @media (min-width: 992px) {
+                margin-bottom: toRem(32);
+            }
+        }
+    }
 }
 
  
@@ -334,6 +344,14 @@
                 font-size: 16px;
             }
         }
+        &.action-link {
+            &.orange a {
+                color: $dark-orange;
+                &:before {
+                    border: solid $dark-orange;
+                }
+            }
+        }
     }
     
 
@@ -347,7 +365,8 @@
         }
     }
     .media-cta-4-lists {
-        margin-bottom: 24px;
+        margin-bottom: toRem(24);
+        margin-top: toRem(24);
         ul {
             margin-bottom: 0
         }
@@ -364,45 +383,49 @@
             }
         }
     }
+    .btn.btn-orange {
+        color: $white;
+        background-color: $dark-orange;
+        border-color: $dark-orange;
+    }
 }
 
 .media-cta-text-4-0 {
     .body-wrapper {
-            .btn-text.btn-green {
-                width: fit-content;
-                @include font-family-lato;
-                text-transform: uppercase;
-                letter-spacing: toRem(2);
-                font-size: toRem(12);
-                padding-right: toRem(8);
-                line-height: toRem(16);
-                @media screen and (min-width: 992px) {
-                    font-size: toRem(14);
-                    padding-right: toRem(12);
-                    line-height: toRem(20);
+        .btn-text.btn-green {
+            width: fit-content;
+            @include font-family-lato;
+            text-transform: uppercase;
+            letter-spacing: toRem(2);
+            font-size: toRem(12);
+            padding-right: toRem(8);
+            line-height: toRem(16);
+            @media screen and (min-width: 992px) {
+                font-size: toRem(14);
+                padding-right: toRem(12);
+                line-height: toRem(20);
+            }
+                @include rtlBlock() {
+                padding-right: 0;
+                padding-left: toRem(20);
+                font-weight: get-font-weight("light");
+            }
+            &:before {
+                padding: toRem(2.6);
+                right: 0;
+                @media screen and (min-width: 992px) { 
+                    padding: toRem(3.25);
                 }
-                 @include rtlBlock() {
-                    padding-right: 0;
-                    padding-left: toRem(20);
-                    font-weight: get-font-weight("light");
-                }
-                &:before {
-                    padding: toRem(2.6);
-                    right: 0;
-                    @media screen and (min-width: 992px) { 
-                        padding: toRem(3.25);
-                    }
-                     @include rtlBlock()  {
-                        left: 0;
-                        right: auto;
-                    }
-                }
-                span.moreg {
-                    font-size: inherit;
-                    letter-spacing:inherit;
+                    @include rtlBlock()  {
+                    left: 0;
+                    right: auto;
                 }
             }
-        
+            span.moreg {
+                font-size: inherit;
+                letter-spacing:inherit;
+            }
+        }
     }
 }
 // with background image
@@ -832,7 +855,10 @@
         }
     }
 }
-
+.container-fix__width.default--bg {
+    padding-left:toRem(15);
+    padding-right: toRem(15);
+}
 
 
 
@@ -884,6 +910,9 @@
                 margin-left: 0;
                 margin-right: 24px;
             }
+        }
+        .container-fix__width.default--bg {
+            margin-left: -50vw !important;
         }
     }
 }
