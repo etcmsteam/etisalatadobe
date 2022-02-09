@@ -86,8 +86,36 @@ module.exports = {
           ...libsBaseConfig,
           name: 'clientlib-etisalat',
           categories: ['etisalat.etisalat'],
-          dependencies: ['etisalat.dependencies','etisalat.global'],
-		  embed: ['etisalat.custom.grid'],
+          dependencies: ['etisalat.dependencies','etisalat.global','etisalat.corecomponent'],		  
+          assets: {
+            // Copy entrypoint scripts and stylesheets into the respective ClientLib
+            // directories
+            js: {
+              cwd: 'clientlib-etisalat',
+              files: ['**/*.js'],
+              flatten: false
+            },
+            css: {
+              cwd: 'clientlib-etisalat',
+              files: ['**/*.css'],
+              flatten: false
+            },
+
+            // Copy all other files into the `resources` ClientLib directory
+            resources: {
+              cwd: 'clientlib-global',
+              files: ['**/*.*'],
+              flatten: false,
+              ignore: ['**/*.js', '**/*.css']
+            }
+          }
+        },
+    {
+          ...libsBaseConfig,
+          name: 'clientlib-corecomponent',
+          categories: ['etisalat.corecomponent'],
+          dependencies: ['etisalat.dependencies'],
+          embed: ['etisalat.custom.grid'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
@@ -115,8 +143,7 @@ module.exports = {
           ...libsBaseConfig,
           name: 'clientlib-careers',
           categories: ['etisalat.careers'],
-          dependencies: ['etisalat.dependencies','etisalat.global','etisalat.etisalat'],
-		  embed: ['etisalat.custom.grid'],
+          dependencies: ['etisalat.dependencies','etisalat.global','etisalat.corecomponent'],
           assets: {
             // Copy entrypoint scripts and stylesheets into the respective ClientLib
             // directories
