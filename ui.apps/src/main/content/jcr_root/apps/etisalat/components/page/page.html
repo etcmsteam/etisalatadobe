@@ -33,7 +33,8 @@
               siteLangElement = document.querySelector('html'),
               serverName = window.location.hostname,
               dataLayerUrl = window.location.href
-              dataLayerPathName = window.location.pathname;
+              pagePathName = window.location.pathname;
+              dataLayerPathName = pagePathName.split('.html')[0];
 
           let siteLang = siteLangElement.getAttribute('lang'),
               pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
@@ -41,12 +42,14 @@
 
           if (dataLayerPathName.includes('/ewallet/')) {
               if (dataLayerPathName.includes('/personal/')) {
-                pageTitle = "personal:home"
+                populatePageName('personal:home');
               } else if (dataLayerPathName.includes('/business/')) {
-                pageTitle = "business:home"
+                populatePageName('business:home');
+              } else {
+                populatePageName('home');
               }
-          } else if (pageTitle === 'index') {
-              pageTitle = 'home';
+          } else {
+              populatePageName('home');
           }
           
           if (siteLang.includes("-")) {
@@ -55,6 +58,13 @@
               siteLang = langArr[0];
           }
           pageName = siteLang + '-ae:' + pageTitle;
+
+          function populatePageName(title) {
+            let lastSegment = dataLayerPathName.split('/').pop();
+            if (lastSegment === 'index') {
+              pageTitle = title;
+            }
+          }
 
           function urlExists(url) {
             var http = new XMLHttpRequest();
