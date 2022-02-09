@@ -127,7 +127,9 @@ nav {
     }
 
     li.active a {
-      opacity: 1;
+      @include respond-to-max($desktop) {
+        color: $link-color;
+      }
     }
 
     @include respond-to-max($desktop) {
@@ -148,7 +150,7 @@ nav {
         margin-left: toRem(20);
 
         a {
-          color: $black-color;
+          color: #000;
           font-size: toRem(23);
           font-weight: 800 !important;
           padding: 0.5rem 0 !important;
