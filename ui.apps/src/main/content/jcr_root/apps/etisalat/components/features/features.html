@@ -5,12 +5,13 @@
 
 	<sly data-sly-test.watch="${properties.featuresBehavior == 'featureswatch' ?'watch-': ''}"></sly>
 
+
 	<sly data-sly-list.multifieldObj="${resource.getChildren}">
 		<sly data-sly-test="${multifieldObj.name == 'storeitems'}"/>
 		</sly>
 
-	<div class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''}">
-		<div class="features-watch-4-0">
+	<div class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''} ${properties.defaultbg ? 'default-bg' : ''}">
+		<div class="features-${watch}4-0">
 			<div class="container">
 				<div class="content-wrapper">
 					<!--/* features mobile */-->
@@ -37,6 +38,14 @@
 						<div class="img-wrap">
 							<div data-sly-test="${properties['image/fileReference']}" class="mobile-img">
 								<div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+							</div>
+							<div data-sly-test="${properties['qrimage/fileReference']}" class="scan-img">
+								<div data-sly-resource="${tileModel.qrImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+								<div data-sly-test="${properties.qrtext}" class="paragraph-styling">
+									<div class="p2">
+										<p>${properties.qrtext @ context='html'}</p>
+									</div>
+								</div>
 							</div>
 						</div>
 
