@@ -7,18 +7,16 @@ function numberWithCommas(x) {
 }
 
 function getProductCard(data) {
-  const $RELATED_PRODUCTS = $("#related-products");
-
   var products = data.products;
   var html = "";
   var featuredTile = $(".product-grid-cms");
   var featuredPosition = 0;
 
-  var promoText = $RELATED_PRODUCTS.attr("data-promoPreText") != "" ? $RELATED_PRODUCTS.attr("data-promoPreText") : "SPECIAL OFFER ";
-  var off = $RELATED_PRODUCTS.attr("data-off") != "" ? $RELATED_PRODUCTS.attr("data-off") : "% OFF";
-  var exclusive = $RELATED_PRODUCTS.attr("data-exclusive") != "" ? $RELATED_PRODUCTS.attr("data-exclusive") : "Online Exclusive";
+  var promoText = $("#related-products").attr("data-promoPreText") != "" ? $("#related-products").attr("data-promoPreText") : "SPECIAL OFFER ";
+  var off = $("#related-products").attr("data-off") != "" ? $("#related-products").attr("data-off") : "% OFF";
+  var exclusive = $("#related-products").attr("data-exclusive") != "" ? $("#related-products").attr("data-exclusive") : "Online Exclusive";
   var browserLang = $("html")[0].lang != "" ? $("html")[0].lang : "";
-  var urlString = $RELATED_PRODUCTS.attr("data-buyNowUrl") != "" ? $RELATED_PRODUCTS.attr("data-buyNowUrl") : "";
+  var urlString = $("#related-products").attr("data-buyNowUrl") != "" ? $("#related-products").attr("data-buyNowUrl") : "";
 
   if (featuredTile.length) {
     featuredPosition = featuredTile.data("position");
@@ -88,21 +86,21 @@ function getProductCard(data) {
         }
       }
     }
-    var buyNowText = $RELATED_PRODUCTS.attr("data-buyNowText") != "" ? $RELATED_PRODUCTS.attr("data-buyNowText") : "BUY NOW";
+    var buyNowText = $("#related-products").attr("data-buyNowText") != "" ? $("#related-products").attr("data-buyNowText") : "BUY NOW";
 
     if (product.isPreorder) {
-      buyNowText = $RELATED_PRODUCTS.attr("data-preOrderText") != "" ? $RELATED_PRODUCTS.attr("data-preOrderText") : "Pre-order";
+      buyNowText = $("#related-products").attr("data-preOrderText") != "" ? $("#related-products").attr("data-preOrderText") : "Pre-order";
     }
-    var aedText = $RELATED_PRODUCTS.attr("data-aedtext") != "" ? $RELATED_PRODUCTS.attr("data-aedtext") : " AED ";
+    var aedText = $("#related-products").attr("data-aedtext") != "" ? $("#related-products").attr("data-aedtext") : " AED ";
 
-    var fromText = $RELATED_PRODUCTS.attr("data-fromText") != "" ? $RELATED_PRODUCTS.attr("data-fromText") : " From ";
+    var fromText = $("#related-products").attr("data-fromText") != "" ? $("#related-products").attr("data-fromText") : " From ";
 
-    var wasText = $RELATED_PRODUCTS.attr("data-wasText") != "" ? $RELATED_PRODUCTS.attr("data-wasText") : " was ";
+    var wasText = $("#related-products").attr("data-wasText") != "" ? $("#related-products").attr("data-wasText") : " was ";
 
-    var vatText = $RELATED_PRODUCTS.attr("data-vatText") != "" ? $RELATED_PRODUCTS.attr("data-vatText") : " 5% VAT included";
+    var vatText = $("#related-products").attr("data-vatText") != "" ? $("#related-products").attr("data-vatText") : " 5% VATVAT included";
 
-    var or = $RELATED_PRODUCTS.attr("data-or") != "" ? $RELATED_PRODUCTS.attr("data-or") : "or ";
-    var smilePoints = $RELATED_PRODUCTS.attr("data-smilePoints") != "" ? $RELATED_PRODUCTS.attr("data-smilePoints") : " Smiles Points";
+    var or = $("#related-products").attr("data-or") != "" ? $("#related-products").attr("data-or") : "or ";
+    var smilePoints = $("#related-products").attr("data-smilePoints") != "" ? $("#related-products").attr("data-smilePoints") : " Smiles Points";
 
     html +=
       "</ul>" +
@@ -161,105 +159,41 @@ function getProductCard(data) {
   return html;
 }
 
-// test st
-// var productCards = {
-//   async: true,
-//   url: window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json",
-//   // url: "https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=en",
-//   method: "POST",
-//   dataType: "json",
-//   navigationState: "",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Accept: "application/json",
-//   },
-// };
+function initProductCards() {
+  $(".main-loader").show();
+  $.ajax({
+    // Our sample url to make request
+    url: window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json",
 
-// $.ajax(productCards)
-//   .done(function (json, statusText, xhr) {
-//     console.log(json);
-//     let responseData = json;
-//     if (typeof responseData === "string") {
-//       responseData = JSON.parse(responseData);
-//     }
+    // Type of Request
+    type: "GET",
 
-//     //With Slider
-//     var htmlCards = getProductCard(responseData.list);
-//     var htmlTrendingCards = getProductCard(responseData.list);
+    // Function to call when to
+    // request is ok
+    success: function (data) {
+      //var x = JSON.stringify(data);
 
-//     //With LoadMore button
-//     var htmlsmartTVCards = getProductCard(responseData.list);
-//     $("#products_2gdevices").html(htmlCards);
-//     $("#products_smartlife").html(htmlTrendingCards);
-//     $("#products_smarttv").html(htmlsmartTVCards);
-//   })
-//   .fail(function (jqXHR, textStatus, error) {
-//     console.log("fail");
-//   });
-//test en
+      var htmlCards = getProductCard(data);
+      //With Slider
+      var htmlCards = getProductCard(data);
+      var htmlTrendingCards = getProductCard(data);
 
-// test1 st
-var categoryID = document.getElementById("categoryID").value;
+      //With LoadMore button
+      var htmlsmartTVCards = getProductCard(data);
+      $("#products_2gdevices").html(htmlCards);
+      $("#products_smartlife").html(htmlTrendingCards);
+      $("#products_smarttv").html(htmlsmartTVCards);
+      $(".main-loader").hide();
+    },
 
-var request = $.ajax({
-  async: true,
-  url: window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json",
-  method: "POST",
-  data: JSON.stringify(params),
-  dataType: "json",
-  cache: false,
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-  error: function (response) {
-    console.log(response);
-  },
-  success: function (resp) {
-    console.log(resp);
-    var htmlCards = getProductCard(resp);
-    $("#productsRow").html(htmlCards);
-    //cards();
-  },
+    // Error handling
+    error: function (error) {
+      console.log(`Error ${error}`);
+    },
+  });
+}
+
+// register the event handlers
+$(document).ready(function () {
+  initProductCards();
 });
-
-//test2 en
-
-//test 3
-var url = window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json";
-//var data = { username: "courseya" };
-fetch(url, {
-  method: "POST", // or 'PUT'
-  body: JSON.stringify(data), // data can be `string` or {object}!
-  headers: {
-    "Content-Type": "application/json",
-  },
-})
-  .then((res) => res.json())
-  .then((response) => console.log("Success:", JSON.stringify(response)))
-  .catch((error) => console.error("Error:", error));
-
-//test 3
-
-//var categoryID = document.getElementById('categoryID').value;
-// var request = $.ajax({
-//     async: true,
-// 	url: "https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=en",
-// 	method: "POST",
-// 	data: JSON.stringify(params),
-// 	dataType: "json",
-// 	cache: false,
-// 	headers: {
-//         "Content-Type": "application/json",
-//         "Accept": "application/json",
-//     },
-//     error: function (response) {
-//         console.log(response);
-//     },
-// 	success: function(resp){
-// 		var htmlCards = getProductCard(resp);
-//         $('#productsRow').html(htmlCards);
-//         //cards();
-// 	}
-
-//Dynamic Data commented for future usage
