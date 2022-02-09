@@ -1,7 +1,7 @@
 <div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
      data-sly-use.imageTemplate="image.html" 
      data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
-     class="media-cta-module-section cms-module-4-0 with-background-image">
+     class="media-cta-module-section cms-module-4-0 ${properties['image/fileReference'] ? 'with-background-image' : ''}">
      <!-- main background image  -->
     <div data-sly-test="${properties['image/fileReference']}" class="background-image">
         <div class="cover">
@@ -18,8 +18,8 @@
             <div class="mod-content">
                 <div class="content-top">
                     <div data-sly-test="${properties.mediaSubTitle}" class="media-cta-4-small-title">${properties.mediaSubTitle}</div>
-                    <div data-sly-test="${tileModel.mediaCTATitle}" class="media-cta-4-title">
-                       <h2 data-sly-element="${properties.titleType}">${tileModel.mediaCTATitle}</h2>
+                    <div data-sly-test="${properties.mediaCTATitle}" class="media-cta-4-title">
+                       <h2 data-sly-element="${properties.titleType}">${properties.mediaCTATitle}</h2>
                     </div>                    
                     <!-- flag icon and title  -->
                     <div class="media-cta-4-lists">
@@ -34,6 +34,14 @@
                     </div>                    
                     <div class="media-cta-4-desc media-cta-4-lists"> 
                        ${properties.text @ context='html'}
+                       <ul class="smiles-icon" data-sly-test="${properties['smile/fileReference'] || properties.smileText}">
+                            <li>
+                                <span data-sly-test="${properties['smile/fileReference']}">
+                                    <img src="${properties['smile/fileReference']}" alt="">
+                                </span>
+                                 ${properties.smileText}
+                            </li>
+                        </ul>
                     </div>
 
                     <div data-sly-test="${properties.seeAllLabel}" class="third-action-wrapper action-link">
@@ -49,7 +57,7 @@
                     </div>
                 </div>
                 <div class="content-bottom">                    
-                    <div class="media-cta-4-price">
+                    <div class="media-cta-4-price ${properties.priceFontColor}">
                         <div data-sly-test="${properties.fromText}" class="from"> ${properties.fromText} </div>
                         <div class="price">
                             <div data-sly-test="${properties.productPrice}" class="value">${properties.productPrice}</div>

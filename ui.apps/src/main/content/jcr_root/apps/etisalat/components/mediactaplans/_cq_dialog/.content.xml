@@ -73,6 +73,12 @@
                                         <items
                                             jcr:primaryType="nt:unstructured"
                                             sling:hideChildren="[layout,roleAttribute]">
+                                             <mediasmalltitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text that will appear for the media plan small Title."
+                                                fieldLabel="Small Title"
+                                                name="./mediaSubTitle"/>
                                             <mediactatitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -114,13 +120,7 @@
                                                         text="H6"
                                                         value="h6"/>
                                                 </items>
-                                            </titleType>
-                                            <mediasubtitle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Text that will appear for the media plan sub Title."
-                                                fieldLabel="Sub Title"
-                                                name="./mediaSubTitle"/>
+                                            </titleType>                                          
                                             <exclusively
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Exclusively Details"
@@ -146,7 +146,7 @@
                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                        fieldDescription="Text that will appear for media cta plan."
                                                        fieldLabel="Exclusively Text"
-                                                       maxlength="{Long}40"
+                                                       maxlength="{Long}100"
                                                        name="./excText"/>
                                                 </items>
                                             </exclusively>
@@ -158,6 +158,35 @@
                                                 fieldLabel="Description"
                                                 name="./text"
                                                 useFixedInlineToolbar="{Boolean}true"/>
+                                             <smile
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Smile Details"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <smileimage
+                                                       jcr:primaryType="nt:unstructured"
+                                                       sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                       allowUpload="{Boolean}false"
+                                                       autoStart="{Boolean}false"
+                                                       class="cq-droptarget"
+                                                       fieldLabel="Smile Image Asset"
+                                                       fileNameParameter="./smile/fileName"
+                                                       fileReferenceParameter="./smile/fileReference"
+                                                       mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                       multiple="{Boolean}false"
+                                                       name="./smile/file"
+                                                       title="Upload Smile Image Asset"
+                                                       uploadUrl="${suffix.path}"
+                                                       useHTML5="{Boolean}true"/>
+                                                   <smiletext
+                                                       jcr:primaryType="nt:unstructured"
+                                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                       fieldDescription="Text that will appear for media cta plan."
+                                                       fieldLabel="Smile Text"
+                                                       maxlength="{Long}100"
+                                                       name="./smileText"/>
+                                                </items>
+                                            </smile>
                                             <viewallbenefitslabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -197,6 +226,23 @@
                                                         fieldLabel="Product Currency"
                                                         maxlength="{Long}40"
                                                         name="./productCurrency"/>
+                                                    <pricefontcolor
+					                                  jcr:primaryType="nt:unstructured"
+					                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
+													  fieldDescription="Select Title Font Color"
+					                                  fieldLabel="Price Font Color"
+					                                  name="./priceFontColor">
+					                                  <items jcr:primaryType="nt:unstructured">
+					                                      <long
+					                                          jcr:primaryType="nt:unstructured"
+					                                          text="Black"
+					                                          value=""/>
+					                                      <short
+					                                          jcr:primaryType="nt:unstructured"
+					                                          text="Green"
+					                                          value="green"/>                                                            
+					                                  </items>
+					                              </pricefontcolor>
                                                 </items>
                                             </pricetag>
                                             <autorenewaltext
