@@ -10,7 +10,7 @@
 		<sly data-sly-test="${multifieldObj.name == 'storeitems'}"/>
 		</sly>
 
-	<div class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''} ${properties.defaultbg ? 'default-bg' : ''}">
+	<div class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''}">
 		<div class="features-${watch}4-0">
 			<div class="container">
 				<div class="content-wrapper">
@@ -71,17 +71,13 @@
 									</div>
 							</div>
 
-							<div data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" class="third-action-desktop">
+							<div class="third-action-desktop">
 								<div  data-sly-test="${tileModel.ctatext}" class="third-action-wrapper ${properties.showlink ?'action-link':'action-btn-default'}">
 									<a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
 									   target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
 									   class="${properties.showlink ?'link':'btn btn-default ripple-effect'}">${tileModel.ctatext}</a>
 								</div>
 							</div>
-							<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
-								 data-sly-use.tileModalTemplate="/apps/etisalat/components/tile/tilemodal.html"
-								 data-sly-call="${tileModalTemplate.modal @ tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}">
-							</sly>
 							</div>
 					</sly>
 
