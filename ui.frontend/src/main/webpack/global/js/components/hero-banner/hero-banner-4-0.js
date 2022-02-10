@@ -116,12 +116,12 @@ import { swiperInit } from "../../swiperInitialize";
       var $textResult = "";
       if (window.innerWidth < 375) {
         $textResult = limitText($eleText, 24);
-        if ($eleText.length >= 24) {
+        if ($eleText.length >= 24 && $eleText.slice(-3) !== "...") {
           $(this).text($textResult + "...");
         }
       } else {
         $textResult = limitText($eleText, 32);
-        if ($eleText.length >= 32) {
+        if ($eleText.length >= 32 && $eleText.slice(-3) !== "...") {
           $(this).text($textResult + "...");
         }
       }
@@ -131,21 +131,21 @@ import { swiperInit } from "../../swiperInitialize";
     $(".hero-title.long h2").each(function () {
       var $eleText = $(this).text();
       var $textResult = limitText($eleText, 75);
-      if ($eleText.length >= 75) {
+      if ($eleText.length >= 75 && $eleText.slice(-3) !== "...") {
         $(this).text($textResult + "...");
       }
     });
     $(".hero-title.regular h2").each(function () {
       var $eleText = $(this).text();
       var $textResult = limitText($eleText, 48);
-      if ($eleText.length >= 48) {
+      if ($eleText.length >= 48 && $eleText.slice(-3) !== "...") {
         $(this).text($textResult + "...");
       }
     });
     $(".hero-title.short h2").each(function () {
       var $eleText = $(this).text();
       var $textResult = limitText($eleText, 16);
-      if ($eleText.length >= 16) {
+      if ($eleText.length >= 16 && $eleText.slice(-3) !== "...") {
         $(this).text($textResult + "...");
       }
     });
@@ -153,7 +153,7 @@ import { swiperInit } from "../../swiperInitialize";
     $(".hero-description p").each(function () {
       var $eleText = $(this).text();
       var $textResult = limitText($eleText, 96);
-      if ($eleText.length >= 96) {
+      if ($eleText.length >= 96 && $eleText.slice(-3) !== "...") {
         $(this).text($textResult + "...");
       }
     });

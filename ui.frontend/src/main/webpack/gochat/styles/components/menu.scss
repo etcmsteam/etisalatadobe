@@ -121,13 +121,15 @@ nav {
       text-decoration: none;
 
       &:hover {
-        color: $blue-color;
+        opacity: 0.9;
         transition-duration: 500ms;
       }
     }
 
     li.active a {
-      opacity: 1;
+      @include respond-to-max($desktop) {
+        color: $link-color;
+      }
     }
 
     @include respond-to-max($desktop) {
@@ -148,10 +150,10 @@ nav {
         margin-left: toRem(20);
 
         a {
-          color: $black-color;
+          color: $black;
           font-size: toRem(23);
-          font-weight: 800 !important;
-          padding: 0.5rem 0 !important;
+          font-weight: 800;
+          padding: 0.5rem 0;
           text-align: left;
         }
       }
