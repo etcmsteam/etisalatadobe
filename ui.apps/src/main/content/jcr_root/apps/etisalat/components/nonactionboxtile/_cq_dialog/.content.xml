@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-      jcr:primaryType="nt:unstructured"
-      jcr:title="Non Action Box Tile"
-      sling:resourceType="cq/gui/components/authoring/dialog"
-      helpPath="https://www.adobe.com/go/aem_cmp_title_v2">
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Non Action Box Tile"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_title_v2">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -61,13 +61,13 @@
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                    margin="{Boolean}true">
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <column
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <pretitle
                                                 jcr:primaryType="nt:unstructured"
@@ -169,6 +169,56 @@
                             </columns>
                         </items>
                     </properties>
+                    <video
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Video"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <youtube
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                fieldDescription="Enter the video embed URL."
+                                                fieldLabel="Youtube Video Embed URL"
+                                                name="./youTubeUrl"/>
+                                            <play-inplace                                              
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data jcr:primaryType="nt:unstructured"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <playicon
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        autoStart="{Boolean}false"
+                                                        class="cq-droptarget"
+                                                        fieldDescription="Drag &amp; drop the play icon image."
+                                                        fieldLabel="Play Icon"
+                                                        fileNameParameter="./playIconName"
+                                                        fileReferenceParameter="./playIconReference"
+                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                        multiple="{Boolean}false"
+                                                        name="./playIcon"
+                                                        title="Upload Image Asset"
+                                                        uploadUrl="${suffix.path}"
+                                                        useHTML5="{Boolean}true"/>
+                                                </items>
+                                            </play-inplace>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </video>
                 </items>
             </tabs>
         </items>
