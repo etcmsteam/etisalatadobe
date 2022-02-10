@@ -24,8 +24,8 @@
     @media screen and (max-width: 767px) {
         min-height: 600px;
         .container {
-          padding-left: 16px;
-          padding-right: 16px;
+          padding-left: 16px !important;
+          padding-right: 16px !important;
         }
     }
 
@@ -255,50 +255,6 @@
         min-height: 420px;
         max-height: 420px;
     }
-    
-    &.green-bg,
-    &.aqua-bg {
-        .wst-secondary-headings,
-        .wst-main-headings,
-        .paragraph-styling {
-            ul li, 
-            ol li,
-            p,
-            h1,h2,h3,h4,h5,h6,.h7,.h8 {
-                color: $white;
-            }
-        }
-    }
-    &.default-bg,
-    &.green-bg,
-    &.aqua-bg {
-        @media screen and (max-width: 767px) {
-            padding-top: 48px;
-        }
-    }
-    &.default-bg {
-        
-        background-color: $light-yellow;
-    }
-    &.green-bg {
-        background-image: linear-gradient(254deg, #314607, #719e19);
-    }
-    &.aqua-bg {
-        background-image: linear-gradient(to bottom, #679116 -46%, #199e94 100%);
-    }
-    .wst-main-headings {
-        h1,h2,h3,h4,h5,h6,.h7,.h8 {
-            margin-bottom: 24px;
-            @media (min-width: 768px) {
-                margin-bottom: 36px;
-            }
-            @media (min-width: 992px) {
-                margin-bottom: 56px;
-            }
-        }
-    }
-
-    
     .content-wrapper {
         @media (min-width: 768px) {
             display: flex;
@@ -399,7 +355,7 @@
         }
     }
 }
-.cmp_text--feature-4-0,
+
 .features-4-0-mobile  {
     background: transparent !important;
     &.green--bg {
@@ -414,7 +370,7 @@
     }
     &.aqua-green--bg {
         .features-4-0 {
-            background: get-background-gredient(aqua-green--bg);
+            background: linear-gradient(180deg, #679116 -46%, #199e94)
         }
     }
     &.aqua--bg {
@@ -422,15 +378,63 @@
             background: get-background-gredient(aqua-bg);
         }
     }
-    .features-outer-wrapper:not(.default-bg) {
-        .wst-secondary-headings,
-        .wst-main-headings {
-            h1,h2,h3,h4,h5,h6,
+    &.default--bg {
+        .features-4-0 {
+            background: get-background-gredient(default-bg);
+        }
+        .features-outer-wrapper {
+            .wst-secondary-headings {
+                 h1,h2,h3,h4,h5,h6 {
+                    color: $dark-gray;
+                 }
+            }
+            .wst-main-headings,
             .p2 p,p,span,ul li,div {
-                color: $white;
+                h1,h2,h3,h4,h5,h6 {
+                    color: $almost-black;
+                }
             }
         }
     }
+    &.purpal--bg {
+        .features-4-0 {
+            background: get-background-gredient(purpal-bg);
+        }
+    }
+    &:not(.default--bg) {
+         .features-outer-wrapper {
+            .wst-main-headings,
+            .wst-secondary-headings,
+            .paragraph-styling,.ul-list-cms,span,div {
+                h1,h2,h3,h4,h5,h6,.h7,.h8,
+                .p2 p,ul li,ol li  {
+                    color: $white;
+                }
+            }
+        }
+    }
+    &.default--bg,
+    &.green--bg,
+    &.aqua--bg,
+    &.orange--bg,
+    &.aqua-green--bg,
+    &.purpal--bg {
+        .features-4-0 {
+            @media screen and (max-width: 767px) {
+                padding-top: 48px;
+            }
+        }
+    }
+    .features-4-0 {
+        .wst-main-headings {
+            h1,h2,h3,h4,h5,h6,.h7,.h8 {
+                @media (min-width: 768px) {
+                    margin-bottom: 36px;
+                }
+            }
+        }
+    }
+
 }
 // *************************************
 // Features fullbleed banner
@@ -726,6 +730,7 @@
                 .p2 p, 
                 .p3 p, 
                 .p4 p {
+                    color: $gray-text-color;
                     margin-bottom: 16px;
                     @media (max-width: 767px) {
                         min-height: 110px;
@@ -1191,6 +1196,9 @@
             .cross-promo-plain-4-0.small .content-wrapper .third-action .third-action-wrapper.action-link {
                 text-align: right;
             }
+            .features-4-0 .content-wrapper .content { 
+                margin-right: inherit;
+            }
         }
 
 
@@ -1198,6 +1206,9 @@
             margin-right: 0;
         }
         
+        .download-etisalat .icons-wrap { 
+            flex-direction: inherit !important;
+        }
         
     }
 }
