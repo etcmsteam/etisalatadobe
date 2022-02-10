@@ -10,7 +10,7 @@
          data-sly-list.navItem="${navModel.fixedNav}" class="menu main-nav__list" role="menuitem">
          <div data-sly-test.nav_class_obj="${currentPage.path@ extension = 'html'}" data-sly-unwrap></div>
          <li
-            class="main-nav__item ${(currentPage.parent.name in navItem.navigationLink)|| navItem.navigationLink  == nav_class_obj ? 'active-nav' : ''}">
+            class="main-nav__item ${(currentPage.name in navItem.navigationLink) ? 'active' : ''} ${(currentPage.parent.name in navItem.navigationLink)|| navItem.navigationLink  == nav_class_obj ? 'active-nav' : ''}">
             <a href="${navItem.navigationLink}" class="main-nav__link">${navItem.navigationTitle}</a>
          </li>
       </ul>
