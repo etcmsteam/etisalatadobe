@@ -5,11 +5,6 @@
 
 	<sly data-sly-test.watch="${properties.featuresBehavior == 'featureswatch' ?'watch-': ''}"></sly>
 
-
-	<sly data-sly-list.multifieldObj="${resource.getChildren}">
-		<sly data-sly-test="${multifieldObj.name == 'storeitems'}"/>
-		</sly>
-
 	<div class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''}">
 		<div class="features-${watch}4-0">
 			<div class="container">
@@ -58,10 +53,12 @@
 						</div>
 
 						<div class="content">
-							<div data-sly-test="${multifieldObj.name == 'storeitems'}" data-sly-list.gsItems="${multifieldObj.getChildren}" class="feature-logo">
-								<sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-								<a href="${commonlinkmodel.link}"><img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
-							</div>
+							<sly data-sly-list.multifieldObj="${resource.getChildren}">
+								<div data-sly-test="${multifieldObj.name == 'storeitems'}" data-sly-list.gsItems="${multifieldObj.getChildren}" class="feature-logo">
+									<sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+									<a href="${commonlinkmodel.link}"><img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
+								</div>
+							</sly>
 							<div data-sly-test="${properties.featureTitle}" class="wst-main-headings">
 								<h3 data-sly-element="${properties.titleType}">${properties.featureTitle}</h3>
 							</div>
