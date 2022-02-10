@@ -25,10 +25,7 @@ export const MAIN_NAVIGATION = () => {
     navMenu.classList.toggle("active");
     hamburger.classList.toggle("hamburger--close");
   };
-
-  document.addEventListener("DOMContentLoaded", function () {
-    hamburger.addEventListener("click", menuToggle);
-  });
+  hamburger.addEventListener("click", menuToggle);
 
   // Bind click handler to menu items
   // so we can get a fancy scroll animation
@@ -37,6 +34,9 @@ export const MAIN_NAVIGATION = () => {
     let href = $(this).attr("href");
     if (href.indexOf("/") === -1) {
       // $(hash).offset().top - 90;
+      $(".main-nav__item").removeClass("active");
+
+      $(this).parent().addClass("active");
       let offsetTop = href === "#" ? 0 : $(href).offset().top - 90;
       $("html, body").stop().animate(
         {
