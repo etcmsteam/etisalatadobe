@@ -1,6 +1,6 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
    <div class="image-container">
-      <div class="cover lazyload">
+      <div class="cover-image lazyload">
          <picture data-sly-use.viewPortObj="${resource.path}">
             <sly data-sly-list="${viewPortObj.listChildren}">
                <source data-sly-test="${item.fileReference}" srcset="${item.fileReference}" media="(max-width: ${item.media})">
@@ -9,7 +9,7 @@
                <sly data-sly-test="${item.media == '1920px'}">
                   <sly data-sly-test.customLink="${properties.imageLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
                   <a data-sly-unwrap="${!properties.imageLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
-                  <img src="${item.fileReference}" class="cover lazyload" alt="${item.altText}">
+                  <img src="${item.fileReference}" class="cover-image lazyload" alt="${item.altText}">
                   </a>
                </sly>
             </sly>
