@@ -29,9 +29,6 @@ public class MegaNavigationItem {
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String navImagePath;
-  
-  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-  private String teaserCount;
 
   private String active;
 
@@ -61,13 +58,6 @@ public class MegaNavigationItem {
     return navigationLabel;
   }
 
-/**
-   * @return the teaserCount
-   */
-  public String getTeaserCount() {
-    return teaserCount;
-  }
-
   /**
    * @return the navigationLinkTo
    */
@@ -83,13 +73,6 @@ public class MegaNavigationItem {
   }
 
   /**
-   * @param teaserCount the teaserCount to set
-   */
-  public void setTeaserCount(String teaserCount) {
-    this.teaserCount = teaserCount;
-  }
-  
-    /**
    * @param navigationLabel the navigationLabel to set
    */
   public void setNavigationLabel(String navigationLabel) {
