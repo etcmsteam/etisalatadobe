@@ -234,11 +234,6 @@
             &.mega-dropdown.with-two {
               display: flex !important;
             }
-
-            &.mega-dropdown.with-three,
-            &.mega-dropdown.with-six {
-              display: block !important;
-            }
           }
 
           &::after {
@@ -387,13 +382,14 @@
 .menu-promotion-wrapper {
   .tiles-wrapper {
     display: flex;
-    flex-grow: 1;
     height: 100%;
 
     .tile {
-      flex-grow: 1;
       height: 100%;
       position: relative;
+      border-radius: toRem(4);
+      box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
+      width: 100%;
 
       div.cover {
         box-shadow: none;
@@ -406,7 +402,7 @@
       }
 
       .tile-content-wrapp {
-        background: linear-gradient(180deg, rgb(34 85 97 / 0%) 0, rgb(75 66 59 / 90%));
+        background: transparent;
         border-radius: 0;
         bottom: 0;
         height: 60%;
@@ -654,7 +650,13 @@
       border-top: 0;
       box-shadow: none;
       margin-bottom: 0;
-      padding: 2rem;
+      padding: toRem(32) toRem(32) 0 toRem(32);
+    }
+
+    .menu-items-footer {
+      .sub-menu {
+        padding: 0 toRem(32);
+      }
     }
   }
 
@@ -1484,7 +1486,19 @@
       border-radius: 8px;
       overflow: hidden;
 
+      @include respond-to-max($tablet) {
+        flex-direction: column;
+        height: auto;
+      }
+
       .tile {
+        @include respond-to-max($tablet) {
+          border-radius: toRem(4);
+          margin-bottom: toRem(15);
+          width: toRem(256);
+          height: toRem(170);
+        }
+
         .tile-content-wrapp {
           padding: 24px 1rem;
 
@@ -1941,7 +1955,13 @@
   &.mega-dropdown {
     &.with-single {
       .menu-promotion-wrapper .tiles-wrapper {
-        min-height: 325px;
+        min-height: toRem(325);
+      }
+
+      .tiles-wrapper {
+        .tile {
+          flex-grow: 1;
+        }
       }
     }
 
@@ -1964,7 +1984,8 @@
 
       .tiles-wrapper {
         .tile {
-          margin-left: 1rem;
+          margin-left: toRem(16);
+          flex-grow: 1;
         }
       }
 
@@ -1980,8 +2001,9 @@
       .menu-promotion-wrapper,
       .menu-items-wrapper {
         flex: 1 1 auto;
-        max-width: 50%;
-        width: auto;
+        margin: toRem(24) toRem(24) toRem(24) 0;
+        max-width: 60%;
+        width: 100%;
       }
 
       .menu-top {
@@ -1989,9 +2011,12 @@
       }
 
       .tiles-wrapper .tile {
+        margin-left: toRem(16);
+        flex-grow: 1;
+
         .tile-content-wrapp,
         div.cover {
-          border-radius: 4px;
+          border-radius: toRem(4);
         }
       }
     }
@@ -2008,10 +2033,24 @@
         display: flex;
       }
 
-      .tiles-wrapper .tile {
-        .tile-content-wrapp,
-        div.cover {
-          border-radius: 4px;
+      .tiles-wrapper {
+        margin: toRem(24);
+        flex-basis: 100%;
+        flex-wrap: wrap;
+        justify-content: right;
+        padding-left: toRem(48);
+
+        .tile {
+          margin-right: toRem(16);
+          width: toRem(110);
+          height: toRem(140);
+
+          .tile-content-wrapp,
+          div.cover {
+            border-radius: toRem(4);
+            height: toRem(80);
+            width: toRem(90);
+          }
         }
       }
     }
