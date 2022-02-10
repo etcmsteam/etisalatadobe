@@ -3,7 +3,8 @@
      data-sly-use.imageTemplate="image.html" 
      data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      data-sly-test="${properties.fileReference}"
-     class="media-cta-module-section cms-module-4-0 ${properties['image/fileReference'] ? 'with-background-image' : ''}">
+     data-sly-set.moduleClass="${(properties['plan/fileReference'] || properties.excText || properties.seeAllLabel) ? 'cms-module-4-0' : ''}"
+     class="media-cta-module-section ${moduleClass} ${properties['image/fileReference'] ? 'with-background-image' : ''}">
      <!-- main background image  -->
     <div data-sly-test="${properties['image/fileReference']}" class="background-image">
         <div class="cover">
