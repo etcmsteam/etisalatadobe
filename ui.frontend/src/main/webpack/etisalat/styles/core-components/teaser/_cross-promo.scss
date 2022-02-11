@@ -461,7 +461,7 @@
       line-height: toRem(48);
       margin: 24px 0;
       padding: 0 toRem(12);
-      position: relative;
+      position: relative !important;
       text-transform: uppercase;
       white-space: nowrap;
 
@@ -569,27 +569,15 @@
     }
   }
 
-  &.button--primary {
-    .cmp-teaser__action-container {
-      max-width: 100%;
-      min-width: 100%;
-      width: toRem(180);
-    }
-  }
-
-  &.button--transparent {
-    .cmp-teaser__action-container {
-      max-width: 100%;
-      min-width: 100%;
-      width: toRem(180);
-    }
-  }
-
+  &.button--primary,
+  &.button--transparent,
   &.button--secondary {
     .cmp-teaser__action-container {
-      max-width: 100%;
-      min-width: 100%;
-      width: toRem(180);
+      @include respond-to-min($tablet) {
+        max-width: toRem(180);
+        min-width: toRem(180);
+        width: toRem(180);
+      }
     }
   }
 
