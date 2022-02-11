@@ -1,11 +1,7 @@
 package com.etisalat.core.models;
 
-import java.util.Optional;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -19,6 +15,8 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
 
@@ -77,12 +75,12 @@ public class ErrorHandlerModel {
   private Page getPageFromPath(String requestURI) {
    final PageManager pageManager = this.slingRequest.getResourceResolver().adaptTo(PageManager.class);
     while (requestURI.contains("/")) {
-      if (Optional.ofNullable(pageManager).isEmpty()) {
+      if (pageManager == null) {
         LOGGER.debug("Pagemanager is null");
         return null;
       } 
       final Page page = pageManager.getContainingPage(requestURI);
-      if (Optional.ofNullable(page).isEmpty()) {
+      if (page == null) {
         requestURI = requestURI.substring(0, requestURI.lastIndexOf("/"));
         LOGGER.debug("Request URI is {}", requestURI);
         continue;
