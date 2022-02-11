@@ -577,9 +577,41 @@
       height: toRem(46);
     }
   }
-
+  .btn-text.btn-modal {
+    &, span.moreg {
+        font-size: toRem(12);
+        letter-spacing: toRem(2);
+        @include respond-to-min($desktop) {
+          font-size: toRem(14);
+        }
+    }
+    @include rtlBlock() {
+        padding-right: 0;
+         padding-left: toRem(8);
+        font-weight: 300;
+        @include font-family-lato;
+    }
+    &::before {
+      padding: toRem(2.6);
+      right:toRem(-8);
+      @include rtlBlock() {
+        left: toRem(-12);
+      }
+      @include respond-to-min($desktop) {
+        padding: toRem(3.25);
+        right:toRem(-12);
+      }
+    }
+   
+  }
   .paragraph-styling {
     flex: 1 1 auto;
+    p {
+      margin-bottom: toRem(16) !important;
+      @include respond-to-min($desktop) {
+        margin-bottom: toRem(24) !important;
+      }
+    }
   }
 
   .progress {
