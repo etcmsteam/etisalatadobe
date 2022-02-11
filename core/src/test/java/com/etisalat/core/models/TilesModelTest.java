@@ -33,6 +33,7 @@ class TilesModelTest {
 	protected static final String TILE_DATA3 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer1/tile1";
 	protected static final String TILE_DATA4 = TEST_PAGE_CONTAINER_ROOT + "/accessoriescardcontainer/accessoriescardtile";
 	protected static final String TILE_DATA5 = TEST_PAGE_CONTAINER_ROOT + "/accessoriescardcontainer1/accessoriescardtile";
+	protected static final String FEATURE_DATA = TEST_PAGE_CONTAINER_ROOT + "/container1/features";
 
 
 	@BeforeEach
@@ -51,10 +52,21 @@ class TilesModelTest {
 		tileModel.setTiletitle(expectedTileTitle);
 		assertEquals(expectedTileTitle, tileModel.getTiletitle());		
 		tileModel.setText(expectedTileDesc);
+		tileModel.setTileImageResource(tileModel.getTileImageResource());
 		assertEquals(expectedTileDesc, tileModel.getText());
 		assertEquals(expectedFileReference,
 				tileModel.getTileImageResource().getValueMap().get("fileReference", String.class));
 		
+	}
+	@Test
+	void testQrImage() {
+		String expectedFileReference = "/content/dam/etisalat/smart-living-desktop_tcm313-225319.jpg";
+		context.currentResource(FEATURE_DATA);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		tileModel.setQrImageResource(tileModel.getQrImageResource());
+		assertEquals(expectedFileReference,
+				tileModel.getQrImageResource().getValueMap().get("fileReference", String.class));
+
 	}
 	
 	@Test

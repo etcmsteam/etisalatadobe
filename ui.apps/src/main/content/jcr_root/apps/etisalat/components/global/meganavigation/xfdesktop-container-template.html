@@ -1,7 +1,11 @@
-<template data-sly-template.xfDesktopContainerTemplate="${ @ properties,navItems}">
+ <template data-sly-template.xfDesktopContainerTemplate="${ @ properties,navItems}">
+	<sly data-sly-set.onePromoTile="${navItems.containerPromotionList.size == 1 ? 'with-single' : ''}"></sly>
+	<sly data-sly-set.twoPromoTile="${navItems.containerPromotionList.size == 2 ? 'with-two' : ''}"></sly>
+	<sly data-sly-set.threePromoTile="${navItems.containerPromotionList.size == 3 ? 'with-three' : ''}"></sly>
+	<sly data-sly-set.sixPromoTile="${navItems.containerPromotionList.size == 6 ? 'with-six' : ''}"></sly>
   <li>
     <a class="mega-menu-link" data-sub-menu="sub-menu-mobile">${navItems.navigationLabel}</a>
-    <div class="sub-menu-wrap mega-dropdown with-single">
+    <div class="sub-menu-wrap mega-dropdown ${onePromoTile} ${twoPromoTile} ${threePromoTile} ${sixPromoTile}">
       <div class="menu-items-wrapper">
         <div class="menu-items">
           <sly data-sly-test="${!navItems.containerSubMenuList.isEmpty}"
