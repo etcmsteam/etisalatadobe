@@ -3,7 +3,6 @@ package com.etisalat.core.models;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
@@ -44,20 +43,23 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
   context.request().setAttribute(SlingBindings.class.getName(), bindings);
  }
 
- //@Test
+ @Test
  public void testErrorCode500() {
-  String expectedErrorPage = "/content/etisalat/ae/en/error/500";
+  String expectedErrorPage = "/content/errorpage/etisalat/language-master/en/error/500";
   context.request().setAttribute("errorCode", "500");
+  context.currentResource(ERROR_PAGE);
+  context.requestPathInfo().setResourcePath(ERROR_PAGE);
   ErrorHandlerModel model = context.request().adaptTo(ErrorHandlerModel.class);
   assertEquals(expectedErrorPage, model.getErrorPage());
  }
 
  @Test
  public void testErrorCode404() {
-   Resource resource = context.resourceResolver().getResource(ERROR_PAGE);
-   String expectedErrorPage = "/content/etisalat/ae/en/error/404";
+   context.currentResource(ERROR_PAGE);
+   context.requestPathInfo().setResourcePath(ERROR_PAGE);
+   String expectedErrorPage = "/content/errorpage/etisalat/language-master/en/error/404";
    context.request().setAttribute("errorCode", "404");
-   ErrorHandlerModel model = resource.adaptTo(ErrorHandlerModel.class);
+   ErrorHandlerModel model = context.request().adaptTo(ErrorHandlerModel.class);
    assertEquals(expectedErrorPage, model.getErrorPage());
   }
 
