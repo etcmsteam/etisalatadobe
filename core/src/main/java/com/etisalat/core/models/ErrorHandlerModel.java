@@ -53,6 +53,12 @@ public class ErrorHandlerModel {
       
   }
   
+  /**
+   * Returns the error page from request URL
+   * @param errorCode
+   * @param requestURI
+   * @return
+   */
   private String getErrorPageFromRequestedUrl(String errorCode, String requestURI) {
     Page resolvedPage = getPageFromPath(requestURI);
     if (resolvedPage != null)
@@ -60,6 +66,12 @@ public class ErrorHandlerModel {
     return null;
   }
   
+  /**
+   * Returns the page object from the request URL.
+   * 
+   * @param requestURI
+   * @return
+   */
   private Page getPageFromPath(String requestURI) {
    final PageManager pageManager = this.slingRequest.getResourceResolver().adaptTo(PageManager.class);
     while (requestURI.contains("/")) {
@@ -79,6 +91,13 @@ public class ErrorHandlerModel {
     return null;
   }
   
+  /**
+   * Returns the error page path.
+   * 
+   * @param errorCode
+   * @param resolvedPage
+   * @return
+   */
   private String getErrorPathFromPage(String errorCode, Page resolvedPage) {
     if (resolvedPage.hasChild("error"))
       return new StringBuilder().append(resolvedPage.getPath()).append("/error/").append(errorCode).toString(); 
