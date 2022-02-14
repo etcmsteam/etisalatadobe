@@ -1,5 +1,37 @@
+import { swiperInit } from "../../../global/js/swiperInitialize";
+
 (function () {
-  define(['swiper'], function () {
+    //function to pass swiper options collectively
+    const swiperOptions = (elem, next, prev, brPoint1, brPoint2, brPoint3, brPoint4, brPoint5) => {
+      return {
+        touchEventsTarget: "swiper-wrapper",
+        simulateTouch: true,
+        scrollbar: elem.find('.table-swiper-scrollbar'),
+        nextButton: next,
+        prevButton: prev,
+        scrollbarHide: false,
+        scrollbarDraggable: true,
+        breakpoints: {
+          540: {
+            slidesPerView: brPoint1
+          },
+          768: {
+            slidesPerView: brPoint2
+          },
+          1200: {
+            slidesPerView: brPoint3
+          },
+          1439: {
+            slidesPerView: brPoint4
+          },
+          9999: {
+            centeredSlides: false,
+            slidesPerView: brPoint5
+          }
+        }
+      };
+    };
+
     function initSwiper() {
       // plans table slider for CMS modules start
       $(document).find('.product-grid-text-section.plans').each(function (index) {
@@ -7,73 +39,19 @@
         var $planTableParent = $(this);
         $planTableParent.find('.table-swiper-button-next').addClass('plansRight' + index);
         $planTableParent.find('.table-swiper-button-prev').addClass('plansLeft' + index);
-        var $carouselSliderPlansGrid = new Swiper('.plansTable' + index + ' .swiper-container', {
-          touchEventsTarget: "swiper-wrapper",
-          simulateTouch: true,
-          scrollbar: $(this).find('.table-swiper-scrollbar'),
-          nextButton: '.table-swiper-button-next.plansRight' + index,
-          prevButton: '.table-swiper-button-prev.plansLeft' + index,
-          scrollbarHide: false,
-          scrollbarDraggable: true,
-          breakpoints: {
-            540: {
-              slidesPerView: 1.25
-            },
-            768: {
-              slidesPerView: 2
-            },
-            1024: {
-              slidesPerView: 3
-            },
-            1440: {
-              slidesPerView: 3
-            },
-            9999: {
-              centeredSlides: false,
-              slidesPerView: 4
-            }
-          }
-        });
 
-
-
+        var $carouselSliderPlansGrid = swiperInit('.plansTable' + index + ' .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, 1.25, 2, 3, 3, 4));
       });
       // plans table slider for CMS modules ends
       if ($( ".smart-home-elife-slider" ).length) {
    $(document).find('.smart-home-elife-slider').each(function(index) {
 	    $(this).addClass('slider' + index);
 	    var $slider = $(this);
-	    $slider.find('.table-swiper-button-next').addClass('plansRight' + index);
-        $slider.find('.table-swiper-button-prev').addClass('plansLeft' + index);	
-	    $carouselSliderSmartHome = new Swiper('.slider' + index + ' .swiper-container', {
-	        scrollbar: $(this).find('.table-swiper-scrollbar'),
-	        touchEventsTarget: "swiper-wrapper",
-            simulateTouch: true,
-	        nextButton: '.table-swiper-button-next.plansRight' + index,
-            prevButton: '.table-swiper-button-prev.plansLeft' + index,
-	        scrollbarHide: false,
-	        scrollbarDraggable: true,
-	        breakpoints: {
-	            540: {	                
-	                slidesPerView: 1
-	            },
-	            768: {	                
-	                slidesPerView: 2
-	            },
-	            1024: {	                
-	                slidesPerView: 2
-	            },
-	            1440: {	               
-	                slidesPerView: 2
-	            },
-	            9999: {	                
-	                centeredSlides: false,
-	                slidesPerView: 2
-	            }
-	        }
-	
-	    });
-	
+	    $slider.find('.table-swiper-button-next').addClass('plansRightElife' + index);
+        $slider.find('.table-swiper-button-prev').addClass('plansLeftElife' + index);
+      
+      var $carouselSliderSmartHome = swiperInit('.slider' + index + ' .swiper-container', swiperOptions($slider, '.table-swiper-button-next.plansRightElife' + index, '.table-swiper-button-prev.plansLeftElife' + index, 1, 2, 2, 2, 2));
+
 	    // hide the arrow if slides count is 2 or less
 	    var slidesCount = $slider.find('.swiper-slide').length;
 	    if (slidesCount < 3) {
@@ -90,35 +68,8 @@
         var $planTableParent = $(this);
         $planTableParent.find('.table-swiper-button-next').addClass('addOnsTableRight' + index);
         $planTableParent.find('.table-swiper-button-prev').addClass('addOnsTableLeft' + index);
-        var $carouselSliderAddons = new Swiper('.addOnsTable' + index + ' .elife-addons .swiper-container', {
-          loop: false,
-          autoplay: false,
-          touchEventsTarget: "swiper-wrapper",
-          simulateTouch: true,
-          scrollbar: $(this).find('.table-swiper-scrollbar'),
-          nextButton: '.table-swiper-button-next.addOnsTableRight' + index,
-          prevButton: '.table-swiper-button-prev.addOnsTableLeft' + index,
-          scrollbarHide: false,
-          scrollbarDraggable: true,
-          breakpoints: {
-            540: {
-              slidesPerView: 1.25
-            },
-            768: {
-              slidesPerView: 2
-            },
-            1024: {
-              slidesPerView: 3
-            },
-            1440: {
-              slidesPerView: 4
-            },
-            9999: {
-              centeredSlides: false,
-              slidesPerView: 4
-            }
-          }
-        });
+
+        var $carouselSliderAddons = swiperInit('.addOnsTable' + index + ' .elife-addons .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.addOnsTableRight' + index, '.table-swiper-button-prev.addOnsTableLeft' + index, 1.25, 2, 3, 4, 4));
 
       });
 
@@ -158,7 +109,7 @@
         if ($(window).width() > 767) {
           $(this).find('.mobCarousel').addClass('destroyed');
         } else {
-          var $carouselSlider = new Swiper($(this).find('.mobCarousel'), {
+          var $carouselSlider = swiperInit($(this).find('.mobCarousel'), {
             slidesPerView: 1,
             spaceBetween: 20,
             simulateTouch: true,
@@ -239,7 +190,7 @@
       });
     });
 
-  });
+  //});
 
 
 

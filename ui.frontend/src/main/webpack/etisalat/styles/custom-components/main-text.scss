@@ -174,8 +174,7 @@
             position: absolute;
             right: 0;
             top: 50%;
-            -webkit-transform: translateY(-50%) rotate(-45deg);
-            transform: translateY(-20%) rotate(-135deg);
+            transform: translateY(-50%) rotate(-45deg);
             transition: all 0.3s ease-in-out;
 
             @media screen and (min-width: 992px) {
@@ -429,6 +428,7 @@
     .main-text-grid-4-0 .grid-wrapper .grid-tile .action .link {
       padding-left: 20px;
       padding-right: 0;
+      @include font-family-lato;
 
       &::before {
         left: 0;
@@ -455,6 +455,107 @@
           text-align: right;
         }
       }
+    }
+  }
+}
+
+// *************************************
+// accessibility Blue and Black
+// *************************************
+
+.acc-black,
+.acc-blue {
+  a,
+  a.link {
+    color: $white;
+    &:hover {
+      color: $white !important;
+    }
+  }
+
+  .main-text-grid-4-0 .grid-wrapper,
+  .grid-tile {
+    .person-details .person {
+      .name {
+        color: $white;
+      }
+
+      .designation {
+        color: $white;
+      }
+    }
+
+    .description {
+      p {
+        color: $white;
+      }
+    }
+
+    .action {
+      .link {
+        color: $white;
+
+        &::before,
+        &::after {
+          border-color: $white !important;
+        }
+      }
+    }
+    .persondetails {
+      background: $black;
+    }
+  }
+}
+.acc-blue {
+  .grid-tile {
+    .persondetails {
+      background: $blue4 !important;
+    }
+  }
+}
+// *************************************
+// accessibility Yellow
+// *************************************
+
+.acc-yellow {
+  a,
+  a.link {
+    color: $yellow-light;
+    &:hover {
+      color: $yellow-light !important;
+    }
+  }
+
+  .main-text-grid-4-0 .grid-wrapper,
+  .grid-tile {
+    .person-details .person {
+      .name {
+        color: $yellow-light;
+      }
+
+      .designation {
+        color: $yellow-light;
+      }
+    }
+
+    .description {
+      p {
+        color: $yellow-light;
+      }
+    }
+
+    .action {
+      .link {
+        color: $yellow-light;
+
+        &::before,
+        &::after {
+          border-color: $yellow-light !important;
+        }
+      }
+    }
+    .persondetails {
+      background: $black;
     }
   }
 }

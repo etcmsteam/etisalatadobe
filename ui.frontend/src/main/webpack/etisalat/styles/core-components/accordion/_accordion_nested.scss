@@ -88,6 +88,7 @@
     }
 
     @include rtlBlock() {
+      float: none;
       margin-left: 2rem;
     }
   }
@@ -248,6 +249,216 @@
       width: 100%;
 
       @include font-family-lato;
+    }
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .cmp-accordion--nested {
+    .cmp-viewall {
+      border-bottom-color: $white;
+    }
+
+    .cmp-accordion--list {
+      article {
+        border-top-color: $white;
+
+        .cmp-list__item-title {
+          color: $white;
+
+          &::after {
+            border-right-color: $white;
+            border-top-color: $white;
+          }
+        }
+      }
+
+      span {
+        &.more,
+        &.less {
+          color: $white;
+        }
+      }
+    }
+
+    .cmp-accordion {
+      background-color: $blue4;
+
+      &__button {
+        background-color: $blue4;
+        box-shadow: 0 0 toRem(6) 0 rgb(255 255 255 / 25%);
+      }
+
+      &__title {
+        color: $white;
+      }
+
+      &__icon {
+        border-left-color: $white;
+        border-top-color: $white;
+      }
+
+      &__item {
+        border-color: $white;
+      }
+    }
+
+    p {
+      a {
+        text-decoration: underline;
+      }
+
+      .font--small {
+        color: $white;
+      }
+    }
+
+    .signifierNoIcon {
+      .cmp-accordion__header {
+        border-top-color: $white;
+      }
+
+      .cmp-accordion__title::before {
+        color: $white;
+      }
+
+      table {
+        border-color: $white;
+
+        th {
+          background-color: $blue4;
+          border-right-color: $white;
+          color: $white;
+        }
+
+        td {
+          border-right-color: $white;
+          border-top-color: $white;
+        }
+      }
+
+      span {
+        &.more,
+        &.less {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .cmp-accordion--nested {
+    .cmp-viewall {
+      border-bottom-color: $yellow-light;
+    }
+
+    .cmp-accordion--list {
+      article {
+        border-top-color: $yellow-light;
+
+        .cmp-list__item-title {
+          color: $yellow-light;
+
+          &::after {
+            border-right-color: $yellow-light;
+            border-top-color: $yellow-light;
+          }
+        }
+      }
+
+      span {
+        &.more,
+        &.less {
+          color: $yellow-light;
+        }
+      }
+    }
+
+    .cmp-accordion {
+      background-color: $black;
+
+      &__button {
+        background-color: $black;
+        box-shadow: 0 0 toRem(6) 0 rgb(255 255 0 / 25%);
+      }
+
+      &__title {
+        color: $yellow-light;
+      }
+
+      &__icon {
+        border-left-color: $yellow-light;
+        border-top-color: $yellow-light;
+      }
+
+      &__item {
+        border-color: $yellow-light;
+      }
+    }
+
+    p {
+      a {
+        text-decoration: underline;
+      }
+
+      .font--small {
+        color: $yellow-light;
+      }
+    }
+
+    .signifierNoIcon {
+      .cmp-accordion__header {
+        border-top-color: $yellow-light;
+
+        .cmp-accordion__title::before {
+          color: $yellow-light;
+        }
+      }
+
+      table {
+        border-color: $yellow-light;
+
+        th {
+          background-color: $black;
+          border-right-color: $yellow-light;
+          color: $yellow-light;
+        }
+
+        td {
+          border-right-color: $yellow-light;
+          border-top-color: $yellow-light;
+        }
+      }
+
+      span {
+        &.more,
+        &.less {
+          color: $yellow-light;
+        }
+      }
+    }
+  }
+}
+
+.acc-black {
+  .cmp-accordion--nested {
+    .cmp-accordion {
+      background-color: $black;
+
+      &__button {
+        background-color: $black;
+      }
+    }
+
+    .signifierNoIcon {
+      table {
+        th {
+          background-color: $black;
+        }
+      }
     }
   }
 }

@@ -4,8 +4,9 @@
           <div class="cmp_btn" data-sly-list.gsItems="${multifieldObj.getChildren}">
              <div class="cmp_store_btn wow fadeInUp" data-wow-delay="0.2s" >
                 <!-- Store Btn -->
-                <a href="${gsItems.btnLink}">
-                   <i data-sly-test="${gsItems.icon}" class="${gsItems.icon}"></i>
+              <sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+                <a href="${commonlinkmodel.link}">
+                   <em data-sly-test="${gsItems.icon}" class="${gsItems.icon}"></em>
                    <p data-sly-test="${gsItems.icon}" class="mb-0">
                       <span>${gsItems.btnDesc}</span>${gsItems.btnTitle}
                    </p>

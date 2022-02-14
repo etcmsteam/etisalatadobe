@@ -16,16 +16,20 @@ import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     Footer.class}, resourceType = {FooterImpl.RESOURCE_TYPE})
 public class FooterImpl implements Footer {
 
+  private static final Logger LOG = LoggerFactory.getLogger(FooterImpl.class);
+  
   /**
    * The resource type.
    */
-  protected static final String RESOURCE_TYPE = "etisalat/components/global/meganavigation";
+  protected static final String RESOURCE_TYPE = "etisalat/components/global/footer";
 
   @SlingObject
   @Optional
@@ -43,17 +47,19 @@ public class FooterImpl implements Footer {
    * @return List of QuickLinks
    */
   private List<QuickLinkModel> getQuickLinkItems() {
-    Resource quickLinksRes = res.getChild(AEConstants.QUICKLINKS);
-    List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
+    final Resource quickLinksRes = res.getChild(AEConstants.QUICKLINKS);
+    final List<QuickLinkModel> quickLinkModelList = new ArrayList<>();
     if (null != quickLinksRes) {
       quickLinksRes.listChildren().forEachRemaining(resource -> {
-        QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
+        final QuickLinkModel quickLinkModel = resource.adaptTo(QuickLinkModel.class);
         if (quickLinkModel != null) {
           setSubLinkItems(resource, quickLinkModel);
           quickLinkModelList.add(quickLinkModel);
         }
       });
-    }
+    } 
+    LOG.debug("Quick Link Model List: {} Path:{} Child Node Name: {}", quickLinkModelList, res.getPath(),
+        AEConstants.QUICKLINKS);    
     return quickLinkModelList;
   }
 
@@ -65,25 +71,28 @@ public class FooterImpl implements Footer {
    */
   private void setSubLinkItems(Resource itemResource, QuickLinkModel quickLinkModel) {
     if (itemResource.hasChildren()) {
-      Resource subItemRes = itemResource.getChild(AEConstants.QUICKLINKS);
-      List<LinkModel> subItemList = new ArrayList<>();
+      final Resource subItemRes = itemResource.getChild(AEConstants.QUICKLINKS);
+      final List<LinkModel> subItemList = new ArrayList<>();
       if (subItemRes != null) {
         subItemRes.listChildren().forEachRemaining(resource -> {
-          LinkModel linkModel = resource.adaptTo(LinkModel.class);
+          final LinkModel linkModel = resource.adaptTo(LinkModel.class);
           if (linkModel != null) {
             linkModel.setLinkUrl(
                 CommonUtility.appendHtmlExtensionToPage(resourceResolver, linkModel.getLinkUrl()));
           }
           subItemList.add(linkModel);
         });
-      }
+      } 
+      LOG.debug("Sub link items List: {} Path:{} Child Node Name: {}", subItemList, res.getPath(),
+          AEConstants.QUICKLINKS);
+      
       quickLinkModel.setLinks(subItemList);
     }
 
   }
 
   private LinkModel getPromoItem() {
-    Resource promoRes = res.getChild(AEConstants.PROMO);
+    final Resource promoRes = res.getChild(AEConstants.PROMO);
     if (promoRes != null) {
       LinkModel linkModel = promoRes.adaptTo(LinkModel.class);
       if (linkModel != null) {
@@ -92,6 +101,7 @@ public class FooterImpl implements Footer {
         return linkModel;
       }
     }
+    
     return null;
   }
 

@@ -4,7 +4,7 @@ import $ from "jquery";
 window.dt = require("datatables.net");
 
 const CUSTOM_TABLE_COMPONENT = ".custom-datatable";
-const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".cmp-text.custom-datatable table");
+const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".cmp-text.custom-datatable:not(.specification-with-striped) table");
 
 $(function () {
   $(".see-more-table").on("click", function () {
@@ -38,10 +38,9 @@ $(function () {
       APPEND_THEAD.html(APPEND_TR);
       APPEND_THEAD.prependTo(element);
       FIRST_TR.remove();
-
     }
   });
-   newCustomDataTable();
+  newCustomDataTable();
 });
 
 function newCustomDataTable() {
@@ -158,3 +157,12 @@ function newCustomDataTable() {
   }
   initializeTable(CUSTOM_TABLE_COMPONENT);
 }
+
+$(document).ready(function () {
+  $(".table-collapsed .view-more")
+    .off()
+    .on("click", function (e) {
+      e.preventDefault();
+      $(this).closest(".table-collapsed").toggleClass("show");
+    });
+});

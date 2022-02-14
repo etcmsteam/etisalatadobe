@@ -5,6 +5,7 @@
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
+        granite:class="cmp-tab-dialog-content__editor"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
             <tabs
@@ -160,10 +161,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                                                 fieldLabel="Number of Items to be displayed"
                                                 name="./numberOfItems"
-                                                value="4">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    toggle-checkbox_slave="false"/>
+                                                value="4">                                               
                                             </numberofitems>
                                             <numberofitemsTypeHint
                                                 jcr:primaryType="nt:unstructured"
@@ -174,6 +172,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Label for Load More"
+                                                required="{Boolean}true"
                                                 name="./loadMore"/>
                                         </items>
                                     </column>
@@ -197,8 +196,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <searchDisabled
-                                                jcr:primaryType="nt:unstructured"
-                                                granite:class="cq-dialog-checkbox-showhide"
+                                                jcr:primaryType="nt:unstructured"                                                
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 fieldDescription="When checked, search filter option will disabled for article results"
                                                 name="./searchDisabled"
@@ -206,7 +204,7 @@
                                                 uncheckedValue="{Boolean}false"
                                                 value="{Boolean}true"/>                                               
                                             <searchtype
-                                                granite:class="cq-dialog-dropdown-showhide"
+                                                granite:class="cq-dialog-dropdown-showhide cq-dialog-editor-dropdown-tab-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldDescription="Please choose &quot;Free Text Search&quot; to search blog post and &quot;Search with Category&quot; to&#xa;search newsroom results"
@@ -221,6 +219,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Search With Category"
                                                         value="searchcategory"/>
+                                                    <ewalletnewssection
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Ewallet News Section"
+                                                        value="ewalletNewsSection"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
@@ -235,28 +237,22 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Label of this field"
-                                                        fieldLabel="Label"
+                                                        fieldLabel="Form Text Field Label"
                                                         name="./inputLbl"
                                                         required="{Boolean}true"/>
                                                     <name
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="The name of the field, which is submitted with the form data."
-                                                        fieldLabel="Name"
+                                                        fieldLabel="Form Text Field Name"
                                                         name="./name"
                                                         required="{Boolean}true"/>
                                                     <value
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Default value of the field"
-                                                        fieldLabel="Value"
+                                                        fieldLabel="Form Text Field Value"
                                                         name="./value"/>
-                                                    <placeholder
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="Place Holder Value"
-                                                        fieldLabel="Place holder Value"
-                                                        name="./placeholderTxt"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
@@ -302,6 +298,7 @@
                     <searchresults
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Search Results"
+                        granite:class="cq-dialog-editor-showhide-target-tab"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -317,19 +314,19 @@
                                             <label
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Search Result Label"
+                                                fieldDescription="Search Result Label"                                                
                                                 fieldLabel="Search Result Label"
                                                 name="./searchResultTxt"/>
                                             <noresulttext
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="No Result Found Message"
+                                                fieldDescription="No Result Found Message"                                                
                                                 fieldLabel="No Result Label"
                                                 name="./noResultLbl"/>
                                             <clearsearch
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Clear Search Label"
+                                                fieldDescription="Clear Search Label"                                                
                                                 fieldLabel="Clear Search Label"
                                                 name="./clearSearchLbl"/>
                                         </items>
@@ -341,5 +338,9 @@
                 </items>
             </tabs>
         </items>
+        <granite:data
+	        jcr:primaryType="nt:unstructured"
+	        tab-dropdown-selector-name="searchType"
+	        tab-target-dropdown-value="freetextsearch"/>
     </content>
 </jcr:root>

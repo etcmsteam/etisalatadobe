@@ -588,12 +588,24 @@
       }
     }
   }
+  .mt-1 {
+        margin-top: toRem(4) !important;
+  }
   .my-1 {
     margin-top: toRem(4);
     margin-bottom: toRem(4);
   }
+  .mb-3 {
+    margin-bottom: toRem(16) !important;
+  }
+  .mb-4 {
+    margin-bottom: toRem(24) !important;
+  }
   .mt-auto {
     margin-top: auto;
+  }
+  .pt-0 {
+    padding-top: 0 !important;
   }
   .py-3 {
     padding-top: $padding-step-2;
@@ -750,4 +762,171 @@ hr.dashed {
       }
     }
   }
+}
+// A11y
+.acc-blue,
+.acc-black,
+.acc-yellow {
+  .product-card,
+  .product-card--offer {
+    $parent: &;
+    border: toRem(1) solid $white;
+    box-shadow: none;
+    &:hover {
+      border-color: $white;
+       .product-card__header,
+       .product-card__footer,
+       .product-card__body {
+         border-color: transparent;
+       }
+    }
+    &__special-offer {
+      color:  $blue4;
+      border: toRem(1) solid $blue4;
+      border-top: 0;
+      background-color: $white;
+    }
+    &__header__title__primary,
+    &__header__title__secondary,
+    &__price-from,
+    &__price,
+    &__old-price,
+    &__price-vat,
+    &__color-list--small ul li,
+    &__feature-list--small ul li,
+    &__item-top .package p,
+    &__item-top .package span,
+    &__item-top .package span small {
+      color: $white;
+    }
+    span.product-card__old-price,
+    span.old-price-value {
+      background-color: $white;
+      color: $blue4;
+    }
+    &__smile-points,
+    &__cta {
+      color: $white;
+      background-color: transparent;
+      border-top: toRem(1) solid;
+    }
+     &__cta {
+      border-left: 0;
+      border-right: 0;
+     }
+    
+    &__cta:hover{
+      background-color: transparent;
+      border-color: inherit;
+      border-left: 0;
+      border-right: 0;
+      border-top: toRem(1) solid;
+    }
+  }
+    .smart-home-elife-slider.plans {
+    .table-swiper-button-next,
+    .table-swiper-button-prev { 
+   background: transparent;
+      &:after{
+        border: solid $white;
+      }
+      &.swiper-button-disabled {
+        &:after {
+          border: solid $white;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+.acc-yellow { 
+  .product-card,
+  .product-card--offer {
+    $parent: &;
+    border: toRem(1) solid $yellow-light;
+    &:hover {
+      border-color: $yellow-light;
+    }
+    &__special-offer {
+      background: $yellow-light;
+      color: $black;
+      border: toRem(1) solid $black;
+      border-top: 0;
+   }
+    &__item-top {
+      border-bottom-color: $yellow-light;
+    }
+    &__header__title__primary,
+    &__header__title__secondary,
+    &__price-from,
+    &__price,
+    &__old-price,
+    &__price-vat,
+    &__color-list--small ul li,
+    &__feature-list--small ul li,
+    &__item-top .package p,
+    &__item-top .package span,
+    &__item-top .package span small,
+    &__smile-points {
+      color: $yellow-light;
+    }
+    &__old-price,
+    span.product-card__old-price,
+    span.old-price-value {
+      background-color: $yellow-light;
+      color: $black;
+    }
+    &__cta {
+      color: $yellow-light;
+      border-top-color: $yellow-light;
+       &:hover {
+          border-top-color: $yellow-light;
+       }
+    }
+  }
+  .smart-home-elife-slider.plans {
+    .table-swiper-button-next,
+    .table-swiper-button-prev { 
+      &:after{
+        border: solid $yellow-light;
+      }
+      &.swiper-button-disabled {
+        &:after {
+          border: solid $yellow-light;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+.acc-black {
+  .product-card,
+  .product-card--offer {
+    $parent: &;
+    &__special-offer {
+      color: $black;
+      border: toRem(1) solid $black;
+      border-top: 0;
+    }
+    span.product-card__old-price,
+    span.old-price-value {
+      color: $black;
+    }
+  }
+
+  .smart-home-elife-slider.plans {
+    .table-swiper-button-next,
+    .table-swiper-button-prev {
+      &:after{
+        border: solid $white;
+      }
+      &.swiper-button-disabled {
+        &:after {
+          border: solid $white;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+  
 }

@@ -57,10 +57,12 @@ public class CareerGreetingsImpl implements CareerGreetings {
       if (null != coverNode) {
         coverImage = coverNode.adaptTo(LinkModel.class);
       }
+      LOG.info("Cover child node resource {}", coverNode);
 
       if (null != imageNode) {
         image = imageNode.adaptTo(LinkModel.class);
       }
+      LOG.info("Image child node resource {}", imageNode);
     }
   }
 

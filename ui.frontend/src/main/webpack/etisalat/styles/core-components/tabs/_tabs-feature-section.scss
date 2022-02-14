@@ -10,7 +10,7 @@
 
   @include respond-to-max($phone) {
     height: toRem(528);
-    margin-bottom: toRem(48);
+    margin-bottom: toRem(96);
   }
 
   @include respond-to-min($desktop) {
@@ -23,6 +23,7 @@
       background-size: contain;
       content: "";
       height: toRem(420);
+      left: 0;
       opacity: 0.15;
       position: absolute;
       top: 0;
@@ -69,6 +70,10 @@
 
       @include respond-to-min($desktop) {
         top: toRem(64);
+
+        @include rtlBlock() {
+          margin-right: toRem(-20);
+        }
       }
 
       li {
@@ -105,13 +110,27 @@
       h3 {
         color: $almost-black;
         font-size: $font26;
+        font-weight: light;
         line-height: toRem(33);
         margin: toRem(17) 0 toRem(24);
+
+        @include rtlBlock() {
+          font-weight: 300;
+        }
+
+        @include respond-to-max($tablet) {
+          margin-right: toRem(22);
+        }
 
         @include respond-to-min($desktop) {
           font-size: $font40;
           line-height: toRem(50);
           margin-bottom: toRem(51.2);
+          margin-right: toRem(20);
+
+          @include rtlBlock() {
+            margin-right: 0;
+          }
         }
       }
 
@@ -126,6 +145,14 @@
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0;
+
+      @include rtlBlock() {
+        margin-right: toRem(-8);
+      }
+
+      @include respond-to-max($tablet) {
+        margin-right: toRem(5);
+      }
 
       @include respond-to-min($desktop) {
         margin-bottom: toRem(32);
@@ -171,6 +198,60 @@
 
         @include respond-to-max($tablet) {
           height: 100%;
+        }
+      }
+    }
+  }
+}
+
+// accessbility for smiles card
+
+.acc-black,
+.acc-blue {
+  .cmp_tabs-feature-section {
+    border-bottom: 1px solid $white;
+    border-top: 1px solid $white;
+
+    .cmp-tabs {
+      .cmp-text h3 {
+        color: $white;
+      }
+
+      .cmp-tabs__tablist {
+        li {
+          color: $white;
+
+          &.cmp-tabs__tab {
+            /* stylelint-disable-next-line max-nesting-depth */
+            &--active {
+              border-bottom: toRem(2) solid $white;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .cmp_tabs-feature-section {
+    border-bottom: 1px solid $yellow-light;
+    border-top: 1px solid $yellow-light;
+
+    .cmp-tabs {
+      .cmp-text h3 {
+        color: $yellow-light;
+      }
+
+      .cmp-tabs__tablist li {
+        color: $yellow-light;
+
+        &.cmp-tabs__tab {
+          &--active {
+            border-bottom: toRem(2) solid $yellow-light;
+            color: $yellow-light;
+          }
         }
       }
     }

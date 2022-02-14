@@ -33,6 +33,9 @@ public class TileModel {
   @ChildResource(name = "image", injectionStrategy = InjectionStrategy.OPTIONAL)
   private Resource tileImageResource;
 
+  @ChildResource(name = "qrimage", injectionStrategy = InjectionStrategy.OPTIONAL)
+  private Resource qrImageResource;
+
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String tileCTALinkNewWindow;
 
@@ -96,6 +99,20 @@ public class TileModel {
    */
   public void setTileImageResource(Resource tileImageResource) {
     this.tileImageResource = tileImageResource;
+  }
+
+  /**
+   * @return the qrImageResource
+   */
+  public Resource getQrImageResource() {
+    return qrImageResource;
+  }
+
+  /**
+   * @param qrImageResource the qrImageResource to set
+   */
+  public void setQrImageResource(Resource qrImageResource) {
+    this.qrImageResource = qrImageResource;
   }
 
   /**
@@ -178,12 +195,20 @@ public class TileModel {
     final Resource tileContainerResource = currentResource.getParent();
     if (null != tileContainerResource
         && (tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE) ||
-        tileContainerResource.getResourceType().equals(PageConstants.SWIPER_CONTAINER_RESOURCETYPE))) {
+        tileContainerResource.getResourceType().equals(PageConstants.SWIPER_CONTAINER_RESOURCETYPE)  ||
+            (tileContainerResource.getResourceType().equals(PageConstants.ACCESSORIES_CONTAINER_RESOURCETYPE)))){
       return tileContainerResource.getValueMap().get("tileBoxLayout", StringUtils.EMPTY);
     }
     return StringUtils.EMPTY;
   }
 
+  public String getTileBoxVariation() {
+    final Resource tileContainerResource = currentResource.getParent();
+    if (null != tileContainerResource && tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE)){
+      return tileContainerResource.getValueMap().get("tileBoxVariation", StringUtils.EMPTY);
+    }
+    return StringUtils.EMPTY;
+  }
   /**
    * Returns article category tag title.
    *

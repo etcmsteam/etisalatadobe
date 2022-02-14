@@ -18,11 +18,20 @@
 //     }
 // }
 .brand-portfolio {
-  padding: 0 12px !important;
   position: relative;
 
   @include respond-to-min($desktop) {
-    padding: 0 !important;
+    padding: 0 12px !important;
+  }
+
+  .outlet-wrap {
+    padding: 0 toRem(12);
+    margin: 0 toRem(6);
+
+    @include respond-to-min($desktop) {
+      padding: 0;
+      margin: 0;
+    }
   }
 
   .swiper-slide {
@@ -64,6 +73,28 @@
 
     .swiper-scrollbar-drag {
       background-color: $main-green;
+    }
+  }
+}
+
+// Accessibility
+
+.acc-blue,
+.acc-black {
+  .brand-portfolio {
+   .table-swiper-scrollbar  {
+    background-color: $steel-grey;
+    .swiper-scrollbar-drag {
+    background-color: $white;
+  }
+  }
+  }
+}
+
+.acc-yellow {
+  .brand-portfolio {
+    .table-swiper-scrollbar {
+      background-color: $steel-grey;
     }
   }
 }

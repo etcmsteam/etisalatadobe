@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     $('.hamburger').on('click', function () {
         $(".hamburger").toggleClass("is-active");
-        $("html").toggleClass("freeze nav-is-toggled");
         $(".main-menu-mobile").toggleClass("mob-visible");
         $(".nav-drill").toggleClass("main-menu-slide");
     });
@@ -31,25 +30,34 @@ $(document).ready(function () {
 });
 
 
-// sub menu nav slide
-var c = [].slice.call(document.querySelectorAll(".nav-expand"));
-c.forEach(function (a) {
-    a.querySelector(".nav-link").addEventListener("click", function () {
-            a.classList.add("active");
-               if (this.classList.contains("search-link")) {
-                 $(".nav-drill").addClass("search-nav-drill");
-               }
-        })
-        //Added condition causing errors and stop here when null
-        if(a.querySelector(".nav-back-link") != null){
-            a.querySelector(".nav-back-link").addEventListener("click", function () {
-                a.classList.remove("active");
-                if ($(".nav-drill").hasClass("search-nav-drill")) {
-                  $(".nav-drill").removeClass("search-nav-drill");
-                }
-            })
-        }
-        
+/* Sub Menu Nav Slide */
+// Selector
+let NAV_EXPAND = [].slice.call(document.querySelectorAll(".nav-expand"));
+const NAV_DRILL_CLS = $(".nav-drill");
+
+// Class
+const SEARCH_NAV_DRILL_CLS = "search-nav-drill";
+const ACTIVE_CLS = "active";
+const NAV_LINK_CLS = ".nav-link";
+const SEARCH_LINK_CLS = "search-link";
+const NAV_BACK_LINK_CLS = ".nav-back-link";
+
+NAV_EXPAND.forEach(function (item) {
+  item.querySelector(NAV_LINK_CLS).addEventListener("click", function () {
+    item.classList.add(ACTIVE_CLS);
+
+    if (this.classList.contains(SEARCH_LINK_CLS)) {
+      NAV_DRILL_CLS.addClass(SEARCH_NAV_DRILL_CLS);
+    }
+  });
+
+  item.querySelector(NAV_BACK_LINK_CLS).addEventListener("click", function () {
+    item.classList.remove(ACTIVE_CLS);
+    
+    if (NAV_DRILL_CLS.hasClass(SEARCH_NAV_DRILL_CLS)) {
+      NAV_DRILL_CLS.removeClass(SEARCH_NAV_DRILL_CLS);
+    }
+  });
 });
 
 

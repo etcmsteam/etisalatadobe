@@ -5,6 +5,9 @@
         margin-left: 3px;
       }
     }
+    .select2-selection{
+      border-bottom: 1px solid $arrow-border-green;
+    }
   }
 
   .floating-label {
@@ -14,6 +17,12 @@
     padding-top: toRem(80);
     padding-bottom: toRem(75);
     @include font-family-lato;
+    margin-right: toRem(-15);
+    margin-left: toRem(-10);
+    @include rtlBlock(){
+      margin-right: toRem(-20);
+    }
+
 
     @include respond-to-min($tablet) {
       padding-left: 0px !important;
@@ -84,9 +93,6 @@
       }
 
       h2 {
-        font-size: $font18;
-        line-height: 24px;
-        color: $almost-black;
         margin: 0;
         margin-bottom: 0.5rem;
         white-space: nowrap;
@@ -94,8 +100,6 @@
         text-overflow: ellipsis;
 
         @include respond-to-min($tablet) {
-          font-size: $font28;
-          line-height: 35px;
           margin-bottom: 1rem;
         }
       }
@@ -145,6 +149,11 @@
         &:before {
           padding: 3.5px;
           right: -20px;
+          @include rtlBlock() {
+            right: auto;
+            transform: translateY(-50%) rotate(135deg);
+            left: toRem(-12);
+          }
         }
       }
     }
@@ -173,9 +182,68 @@
         direction: rtl;
         li {
           font-size: $font16;
+          font-weight: get-font-weight("light")!important;
         }
       }
     }
+  }
+  .select2-container--default .select2-selection--single {
+    border: 0;
+    border-bottom: 1px solid $grey-select;
+    height: 2.5rem;
+    border-radius: 0;
+    outline: 0;
+    .select2-selection__arrow {
+      top: toRem(20)!important;
+  }
+  }
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: toRem(28);
+    padding-left: 0;
+    font-size: $font20;
+    height: toRem(40);
+    line-height: toRem(40);
+    display: block;
+    padding-left: toRem(8);
+    padding-right: toRem(20);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: get-font-weight("light")!important;
+  }
+  .select2-selection__arrow {
+    width: toRem(20);
+    height: toRem(26);
+    background: url("../resources/images/icon-arrow-black-2px.svg") no-repeat;
+    border-color: transparent;
+    border-width: 0;
+    background-size: toRem(20);
+    background-position: 50%;
+    border-style: solid;
+    margin-left: toRem(-4);
+    margin-top: toRem(-9.6);
+    position: absolute;
+    top: 50%;
+  }
+  .select2-container.select2-container--open .select2-selection .select2-selection__arrow {
+    transform: rotate(180deg);
+  }
+  .input-field label.floating-label {
+    top: 0 !important;
+    left: toRem(12);
+    line-height: toRem(24);
+    transform: translateY(-10px) scale(.8);
+    transform-origin: 0 0;
+    font-size: $font16!important;
+    z-index: 2;
+    top: 0!important;
+    color: #353738!important;
+    position: absolute;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: get-font-weight("regular")!important;
   }
 }
 
@@ -269,8 +337,11 @@
 
         h2 {
           height: 55px;
-          overflow: hidden;
           color: $cart-count-black;
+          font-weight: get-font-weight("regular");
+          font-size: toRem(22);
+          line-height: toRem(28);
+          overflow: hidden;
         }
 
         p {
@@ -462,7 +533,6 @@
         overflow: visible;
         text-overflow: unset;
         font-size: $font22;
-        line-height: 28px;
       }
     }
   }
@@ -501,6 +571,9 @@
   @include respond-to-max($phone) {
     margin-top: 2.6rem;
     padding: 0.5rem;
+  }
+  @include rtlBlock() {
+    margin-right: toRem(-12);
   }
 }
 
@@ -588,6 +661,7 @@
               transform-origin: 100% 50% !important;
               width: 94%;
               right: 12px;
+              @include font-family-lato;
             }
           }
         }

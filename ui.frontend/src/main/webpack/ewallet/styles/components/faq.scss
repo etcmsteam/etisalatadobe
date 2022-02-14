@@ -5,7 +5,7 @@
 
   li {
     min-height: 1px;
-    padding: 30px;
+    padding: 30px 0;
     position: relative;
 
     @include respond-to-min($tablet) {
@@ -29,21 +29,30 @@
     }
 
     a.button {
+      /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
       @extend .btn;
     }
   }
 }
 
-.return-link a {
-  color: $link-color;
-  display: block;
-  font-size: toRem(24);
-  font-weight: 500;
-  line-height: 26px;
-  margin: 0;
+.return-link {
+  a {
+    color: $link-color;
+    display: block;
+    font-size: toRem(24);
+    font-weight: 500;
+    line-height: 26px;
+    margin: 0;
 
-  @include respond-to-min($desktop-wide) {
-    margin: 50px 0 30px;
+    @include respond-to-min($desktop-wide) {
+      margin: 50px 0 30px;
+    }
+  }
+
+  .cmp-text {
+    @include respond-to-max($phone) {
+      padding: 10px 0 0;
+    }
   }
 }
 

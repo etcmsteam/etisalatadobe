@@ -20,7 +20,10 @@
       data-sly-use.footer="footer.html"
       data-sly-use.redirect="redirect.html">
     <head data-sly-call="${head.head @ page = page, pwa = pwa}"></head>
-    <body class="${page.cssClassNames} ${pageProperties.hideMegaMenu ? 'topnav--margin' : 'meganavigation--margin'}"
+    <title></title>
+	<sly data-sly-set.consumerTemplate="${properties['cq:template'] && 
+         properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/etisalat-consumer-content-page'}" />
+    <body class="${page.cssClassNames} ${pageProperties.hideMegaMenu ? 'topnav--margin' : 'meganavigation--margin'} ${consumerTemplate ? 'consumer__page' : '' }"
           dir="${page.language == 'ar' ? 'rtl' : 'ltr' }"
           id="${page.id}"
           data-cmp-data-layer-enabled="${page.data ? true : false}"
@@ -30,7 +33,8 @@
               siteLangElement = document.querySelector('html'),
               serverName = window.location.hostname,
               dataLayerUrl = window.location.href
-              dataLayerPathName = window.location.pathname;
+              pagePathName = window.location.pathname;
+              dataLayerPathName = pagePathName.split('.html')[0];
 
           let siteLang = siteLangElement.getAttribute('lang'),
               pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
@@ -38,12 +42,14 @@
 
           if (dataLayerPathName.includes('/ewallet/')) {
               if (dataLayerPathName.includes('/personal/')) {
-                pageTitle = "personal:home"
+                populatePageName('personal:home');
               } else if (dataLayerPathName.includes('/business/')) {
-                pageTitle = "business:home"
+                populatePageName('business:home');
+              } else {
+                populatePageName('home');
               }
-          } else if (pageTitle === 'index') {
-              pageTitle = 'home';
+          } else {
+              populatePageName('home');
           }
           
           if (siteLang.includes("-")) {
@@ -52,6 +58,13 @@
               siteLang = langArr[0];
           }
           pageName = siteLang + '-ae:' + pageTitle;
+
+          function populatePageName(title) {
+            let lastSegment = dataLayerPathName.split('/').pop();
+            if (lastSegment === 'index') {
+              pageTitle = title;
+            }
+          }
 
           function urlExists(url) {
             var http = new XMLHttpRequest();

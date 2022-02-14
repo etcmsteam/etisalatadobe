@@ -151,6 +151,18 @@
 
   &.table-striped {
     @include respond-to-min($desktop) {
+      &.eight-col td {
+        width: 12.5%;
+      }
+
+      &.seven-col td {
+        width: 14.28%;
+      }
+
+      &.six-col td {
+        width: 16.66%;
+      }
+
       &.five-col td {
         width: 20%;
       }
@@ -496,18 +508,20 @@
               position: absolute;
               top: 2.75rem;
               transform: translateY(-50%);
-              width: 16px;
+              width: toRem(16);
 
               @include respond-to-min($desktop) {
-                height: 24px;
+                height: toRem(24);
                 top: 50%;
-                width: 24px;
+                width: toRem(24);
+                min-height: toRem(16);
               }
 
               @include respond-to-max($desktop-min) {
                 height: toRem(16);
                 top: toRem(44);
                 width: toRem(16);
+                min-height: toRem(16);
               }
 
               @include rtlBlock() {
@@ -868,6 +882,45 @@
   }
 }
 
+.tablecontainer {
+  .table-default-section {
+    &.table-collapsed {
+      .container {
+        @include respond-to-min-max($desktop-wide, $tablet) {
+          padding-right: toRem(18);
+        }
+      }
+      .default-section-title {
+        display: flex;
+        align-items: center;
+        
+        h3 {
+          font-size: $font20;
+          margin-bottom: 0;
+          @include respond-to-min($desktop) {
+            font-size: $font26;
+          }
+          @media (min-width: 1248px) {
+            font-size: $font30;
+          }
+        }
+        .btn-text {
+          margin-left: auto;
+          @include rtlBlock() {
+            margin-left: 0;
+            margin-right: auto;
+          }
+          @include font-family-lato();
+
+          &::before {
+            padding: toRem(2.7);
+          }
+        }
+      }
+    }
+  }
+}
+
 .cmp-table-default {
   table {
     th {
@@ -993,6 +1046,9 @@
               td {
                 &:first-child {
                   padding-left: 0;
+                  @include respond-to-max($desktop) {
+                    padding-right: toRem(15);
+                  }
                   padding-right: 3.5rem;
                 }
 
@@ -1909,6 +1965,9 @@ table {
 
       @include font-family-lato();
     }
+    @include rtlBlock() {
+      float: right;
+    }
   }
 
   .dataTables_paginate {
@@ -1918,6 +1977,9 @@ table {
     float: right;
     padding-top: 0.25em;
     text-align: right;
+    @include rtlBlock() {
+      float: left;
+    }
 
     .paginate_button {
       color: $steel-grey;
@@ -1986,5 +2048,162 @@ table {
 th {
   @include rtlBlock() {
     text-align: right;
+  }
+}
+
+.acc-black,
+.acc-blue,
+.acc-yellow {
+  .table-default-section {
+    table {
+      > tfoot,
+      > thead,
+      > tbody {
+        > tr {
+          > th,
+          > td {
+            color: $white !important;
+            p,
+            .price {
+              color: $white !important;
+            }
+          }
+          > th {
+            color: $white !important;
+          }
+          border-bottom: toRem(1) solid;
+        }
+      }
+      > thead tr {
+        border-bottom: none;
+      }
+      > tr.discount {
+        color: $white !important;
+        .btn-text {
+          &:hover {
+            &::before {
+              border-color: $white;
+            }
+          }
+        }
+      }
+      tbody tr td:before {
+        color: $white !important;
+      }
+    }
+    &.table {
+      &.tableListItem ul li {
+        color: $white;
+      }
+    }
+    .table-inline--search.input-field {
+      .advanced-table-search,
+      label {
+        color: $white;
+        border-bottom-color: $white;
+        &::placeholder {
+          color: $white;
+        }
+        &:not(.browser-default):focus:not([readonly]) {
+          border-bottom-color: $white;
+          box-shadow: none;
+        }
+      }
+      input[type="search"]:not(.browser-default):valid:not([readonly]) ~ label,
+      input[type="search"]:not(.browser-default):focus:not([readonly]) ~ label {
+        color: $white;
+      }
+    }
+  }
+  .channel-lists-section table td:nth-child(2),
+  .cmp-table-default table th {
+    color: $white;
+  }
+  .channel-lists-section table td img {
+    filter: invert(87%) sepia(100%) saturate(0%) hue-rotate(98deg) brightness(103%) contrast(101%);
+  }
+  .table.table-striped table > tbody > tr:nth-of-type(odd) {
+    background-color: transparent;
+  }
+  .data-table__info,
+  .dataTables_info,
+  .custom-datatable .dataTables_paginate .paginate_button,
+  .custom-datatable .dataTables_paginate .paginate_button.current,
+  .see-more-table span {
+    color: $white !important;
+  }
+}
+.acc-yellow {
+  .table-default-section {
+    table {
+      > tfoot,
+      > thead,
+      > tbody {
+        > tr {
+          > th,
+          > td {
+            color: $yellow-light !important;
+            p,
+            .price {
+              color: $yellow-light !important;
+            }
+            border-top-color: $yellow-light;
+          }
+          > th {
+            color: $yellow-light !important;
+          }
+        }
+        > tr.discount {
+          color: $yellow-light !important;
+          .btn-text {
+            &:hover {
+              &::before {
+                border-color: $yellow-light !important;
+              }
+            }
+          }
+        }
+      }
+      tbody tr td:before {
+        color: $yellow-light !important;
+      }
+    }
+    &.table {
+      &.tableListItem ul li {
+        color: $yellow-light;
+      }
+      &.table-row-border tbody tr {
+        border-bottom-color: $yellow-light;
+      }
+    }
+    .table-inline--search.input-field {
+      .advanced-table-search,
+      label {
+        color: $yellow-light;
+        border-bottom-color: $yellow-light;
+        &::placeholder {
+          color: $yellow-light;
+        }
+        &:not(.browser-default):focus:not([readonly]) {
+          border-bottom-color: $yellow-light;
+          box-shadow: none;
+        }
+      }
+      input[type="search"]:not(.browser-default):valid:not([readonly]) ~ label,
+      input[type="search"]:not(.browser-default):focus:not([readonly]) ~ label {
+        color: $yellow-light;
+      }
+    }
+  }
+  .channel-lists-section table td:nth-child(2),
+  .cmp-table-default table th {
+    color: $yellow-light;
+  }
+  .data-table__info,
+  .dataTables_info,
+  .custom-datatable .dataTables_paginate .paginate_button,
+  .custom-datatable .dataTables_paginate .paginate_button.current,
+  .see-more-table span {
+    color: $yellow-light !important;
   }
 }

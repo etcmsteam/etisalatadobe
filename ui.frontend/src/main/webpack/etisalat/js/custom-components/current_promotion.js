@@ -1,4 +1,6 @@
-import { IsMediaQuery } from "../helpers";
+import { swiperInit } from "../../../global/js/swiperInitialize";
+import { IsMediaQuery } from "../../../global/js/helpers";
+
 $(document).ready(function () {
   var initSwiper;
   initSwiper = function () {
@@ -10,7 +12,7 @@ $(document).ready(function () {
         var $slider = $(this);
         $slider.find(".next").addClass("right" + index);
         $slider.find(".prev").addClass("left" + index);
-        var $carouselSliderCurrentPromotions = new Swiper(".c-p-slider" + index + " .swiper-container", {
+        var $carouselSliderCurrentPromotions = swiperInit(".c-p-slider" + index + " .swiper-container", {
           //clickable: true,
           scrollbar: $(this).find(".scrollbar"),
           nextButton: ".next.right" + index,
@@ -64,7 +66,7 @@ $(document).ready(function () {
         var $slider = $(this);
         $slider.find(".next").addClass("right" + index);
         $slider.find(".prev").addClass("left" + index);
-        var $carouselSliderCurrentPromotions = new Swiper(
+        var $carouselSliderCurrentPromotions = swiperInit(
           ".c-p-slider" + index + " .swiper-container",
           {
             //clickable: true,

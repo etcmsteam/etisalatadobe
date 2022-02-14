@@ -1,4 +1,4 @@
-import { FORM_VALIDATION_MESSAGES } from "../constant";
+import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
 
 (function () {
   const $FORM = $("#proxyform");

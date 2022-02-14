@@ -195,6 +195,13 @@
         position: absolute;
         top: toRem(-50);
         bottom: 0;
+        width: toRem(320);
+        height: toRem(188);
+        padding: toRem(12) 0 0;
+        left: auto;
+        z-index: 5;
+        margin-left: toRem(-12);
+        margin-right: toRem(-12);
 
         .panel-body {
           margin-right: auto;
@@ -365,11 +372,22 @@
         top: toRem(160);
         width: toRem(320);
         height: toRem(188);
-        padding: toRem(12) toRem(12) 0;
+        padding: toRem(12) 0 0;
         left: auto;
         z-index: 5;
         margin-left: toRem(-12);
         margin-right: toRem(-12);
+
+        .panel-body {
+          margin-right: auto;
+          margin-left: toRem(20);
+          padding: 0;
+
+          @include rtlBlock(){
+            margin-left: auto;
+            margin-right: toRem(20);
+          }
+        }
       }
     }
     .open > .dropdown-menu {
@@ -465,6 +483,11 @@
           border: toRem(1) solid $grey5;
           border-right: none;
           box-shadow: none;
+
+          @include rtlBlock(){
+            border: toRem(1) solid $grey5;
+            border-left: none;
+          }
         }
       }
 

@@ -22,6 +22,7 @@ public final class AEConstants {
  public static final String PN_PLAYICON_TEXT = "playIconText";
  public static final String PN_BLOGPOST = "blogpost";
  public static final String PN_NEWSROOM = "newsroom";
+ public static final String PN_NEWS_SECTION = "newssection";
  public static final String PN_ARTICLE_TYPE = "articleType";
  public static final String IMAGE = "image";
  public static final String PN_BACK_TO_HOMELINK = "backToBusinessLink";
@@ -67,6 +68,37 @@ public final class AEConstants {
  public static final String CAPTCHA_NAME = "g-recaptcha-response";
  public static final String CAPTCHA_NULL = "No captcha response found";
  public static final String CLIENT_CAPTCHA_VALUE = "hdr-google-client-token-key";
+ 
+ public static final String BREADCRUMB_ITEMS = "etisalatBreadcrumb";
+ public static final String ETISALAT_BREADCRUMB_TITLE = "breadcrumbTitle";
+ public static final String ETISALAT_BREADCRUMB_LINK = "breadcrumbLink";
+ 
+ public static final String PN_EXPLAINER_TAB_ITEMS = "stepItems";
+ public static final String PN_EXPLAINER_TAB_TITLE = "title";
+ public static final String PN_EXPLAINER_TAB_CONTENT = "content";
+ public static final String PN_EXPLAINER_TAB_PLACEMENT = "placement";
+
+ public static final String BILL_EXPLAINER_DAM_PATH = "/content/dam/etisalat/cx-billing/assets/img/explainer";
+ 
+ public static final int RESPONSE_OK = 200;
+ public static final int BAD_REQUEST = 400;
+ public static final String REDIRECT_NAME = ":redirect";
+ public static final String CONTENT = "/content";
+ public static final String HTML_CONSTANT = ".html";
+ public static final String JSP_CONSTANT = ".jsp";
+ public static final String CONTACT_US_OPERATION_ID_KEY = "OPERATIONID";
+ public static final String CONTACT_US_OPERATION_ID_VALUE = "CONTACTUS";
+ public static final String JCR_CONSTANT = "/_jcr_content";
+
+
+ public static final String ENGLISH = "en";
+ public static final String ARABIC = "ar";
+ public static final String ETISALAT_CONTENT_PAGE = "/content/etisalat";
+ public static final String HIU_APP_CONTENT_PAGE = "/content/hiuapp";
+ public static final String EWALLET_CONTENT_PAGE = "/content/ewallet";
+ 
+ public static final String ETISALAT_DEFAULT_ERROR_PAGE = "/content/etisalat/ae/en/error/";
+ public static final String ERROR_PAGE_NAME = "error";
  
  /**
   * private constructor to prevent instantiation of class.

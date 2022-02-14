@@ -351,6 +351,16 @@
   .tables-4-0 {
     overflow-x: hidden;
     overflow-y: auto;
+
+    th {
+      padding-top: 0;
+    }
+    @include respond-to-max($desktop-wide) {
+      td {
+        padding-bottom: 12px;
+        padding-top: 10px;
+      }
+    }
   }
 }
 
@@ -742,7 +752,7 @@
 
       .cmp-image {
         margin-right: 8px;
-        
+
         @include rtlBlock() {
           margin-right: $margin-step-0;
         }
@@ -1328,5 +1338,282 @@
 th {
   @include rtlBlock() {
     text-align: right;
+  }
+}
+
+.acc-black,
+.acc-blue,
+.acc-yellow {
+  &.channel-list-page {
+    .channellistheader {
+      background-color: $black;
+      border-bottom: toRem(1) solid;
+      .elife-channel-list-header {
+        .logo-wrapper {
+          .pack-name {
+            h1,h2,h3,h4,h5,h6,
+            .back,
+            .back:hover {
+              color:$white;
+            }
+            .back {
+              &:before {
+                border-color: $white;
+              }
+            }
+            @include rtlBlock() { 
+              .back:after {
+                border-color: $white;
+              }
+            }
+          }
+        }
+        .head-wrapper .search-wrapper .input-group {
+          .form-control {
+            background: $black !important;
+            border: toRem(1) solid $white !important;
+            color: $white !important;
+            &::placeholder {
+              color: $white !important;
+            }
+          }
+          .input-icon,
+          .search-close {
+            background-color: transparent !important;
+          }
+        }
+      }
+    }
+    .filters-wrapper {
+      .filters {
+        .filter-lable .label,
+        .sort-label .label,
+        .dropdown .desktop-view .sort-label .label,
+        .sub-label {
+          color: $white !important;
+        }
+        .dropdown {
+          .dropdown-menu {
+              background: $black;
+              border: toRem(1) solid $white;
+              li {
+                border-bottom-color: $white;
+                a {
+                  color: $white;
+                }
+              }
+          }
+        }
+      }
+    }
+    .tables-4-0 {
+      table {
+          thead,
+          thead th {
+            color: $white;
+
+          }
+        tbody {
+            tr {
+              td,
+              td:before,
+              td:after {
+                color: $white !important;
+              }
+            }
+          }
+      }
+    }
+    .tables-4-0,
+    .nv-modal-body {
+        &::-webkit-scrollbar-thumb {
+          background-color: $white !important;
+        }
+    }
+    .e-life-modal .nv-modal-header {
+      border-bottom-color: $white;
+    }
+    .e-life-modal.nv-modal .nv-checkboxes-wrap,
+    .e-life-modal.nv-modal .nv-radio-wrap {
+      background-color: transparent;
+      &.sm {
+        input[type=radio]:checked~label:after {
+           border-color: $white !important;
+        }
+      }
+      label {
+        border-color: $white !important;
+      }
+    }
+    .not-found {
+      p {
+        color: $white;
+      }
+    }
+     
+      .search-group .input-group, .search-group select,
+      .search-group .check-availability-style,
+      .search-input .check-availability-style .form-control,
+      .search-input .check-availability-style .input-icon {
+        background-color: transparent !important;
+      }
+      .search-input .check-availability-style .form-control {
+        border: toRem(1) solid $white;
+        color: $white !important;
+         &::placeholder {
+          color: $white !important;
+        }
+      }
+      .search-input .check-availability-style .input-icon svg g path {
+        fill: $white;
+      }
+    }
+}
+.acc-blue {
+  &.channel-list-page {
+    .channellistheader {
+        background-color: $blue4;
+        .elife-channel-list-header {
+          .head-wrapper .search-wrapper .input-group {
+            .form-control {
+              background: $blue4 !important;
+            }
+          }
+        }
+    }
+    .filters-wrapper {
+      .filters {
+        .dropdown {
+          .dropdown-menu {
+              background: $blue4;
+          }
+        }
+      }
+    }
+  }
+}
+.acc-yellow {
+  &.channel-list-page {
+    .channellistheader {
+      .elife-channel-list-header {
+        .logo-wrapper {
+          .pack-name {
+            h1,h2,h3,h4,h5,h6,
+            .back,
+            .back:hover {
+              color:$yellow-light;
+            }
+            .back {
+              &:before{
+                border-color: $yellow-light;
+              }
+            }
+            @include rtlBlock() { 
+              .back:after{
+                border-color: $yellow-light;
+              }
+            }
+          }
+        }
+        .head-wrapper .search-wrapper .input-group {
+            .form-control {
+              background: $black !important;
+              border: toRem(1) solid $yellow-light !important;
+              color: $yellow-light !important;
+              &::placeholder{
+                color: $yellow-light !important;
+              }
+            }
+        }
+      }
+    }
+    .filters-wrapper {
+      .filters {
+        .filter-lable .label,
+        .sort-label .label,
+        .dropdown .desktop-view .sort-label .label,
+        .sub-label {
+          color: $yellow-light !important;
+        }
+        .filter-lable {
+          border-right-color: $yellow-light !important;
+        }
+        .dropdown {
+          .dropdown-menu {
+              background: $black;
+              border: toRem(1) solid $yellow-light;
+              li {
+                border-bottom-color: $yellow-light;
+                a {
+                  color: $yellow-light;
+                }
+              }
+          }
+        }
+      }
+    }
+    .tables-4-0 {
+      table {
+          thead,
+          thead th {
+            color: $yellow-light;
+            tr {
+              border-bottom-color: $yellow-light !important;
+            }
+          }
+          tbody {
+            tr {
+              border-bottom-color: $yellow-light !important;
+              border-top-color: $yellow-light !important;
+              td,
+              td:before,
+              td:after {
+                color: $yellow-light !important;
+              }
+            }
+          }
+      }
+    }
+    .tables-4-0,
+      .nv-modal-body {
+      &::-webkit-scrollbar-thumb {
+        background-color: $yellow-light !important;
+      }
+    }
+    .nv-modal-close {
+      svg {
+       filter: sepia(100%) contrast(100%) saturate(1000%) hue-rotate(347deg);
+      }
+    }
+    .e-life-modal  .nv-modal-header {
+      border-bottom-color: $yellow-light;
+    }
+   .e-life-modal.nv-modal .nv-checkboxes-wrap,
+    .e-life-modal.nv-modal .nv-radio-wrap {
+      &.sm {
+        input[type=radio]:checked~label:after {
+           border-color: $yellow-light !important;
+        }
+      }
+      label {
+        border-color: $yellow-light !important;
+      }
+    }
+    .not-found {
+      p {
+        color: $yellow-light;
+      }
+    }
+      
+      .search-input .check-availability-style .form-control {
+        border-color: $yellow-light;
+        color: $yellow-light !important;
+         &::placeholder {
+          color: $yellow-light !important;
+        }
+      }
+      .search-input .check-availability-style .input-icon svg g path {
+        fill: $yellow-light;
+      }
   }
 }

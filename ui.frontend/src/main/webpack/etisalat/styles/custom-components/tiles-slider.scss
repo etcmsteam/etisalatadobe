@@ -139,6 +139,9 @@
       }
     }
 
+    .swiper-scrollbar-drag {
+      background: $main-green;
+    }
     .tile-boxes-title-small {
       margin-bottom: 0.5rem;
 
@@ -208,6 +211,9 @@
         background-color: transparent;
         flex-direction: column;
         float: left;
+        @include respond-to-max($tablet) {
+          padding: 0;
+        }
       }
     }
 
@@ -228,7 +234,39 @@
     }
 
     &.one-slides {
+      .swiper-wrapper {
+        @include respond-to-max($tablet) {
+          padding: 0;
+        }
+      }
+      .cover {
+        position: relative;
+        overflow: hidden;
+        border-radius: toRem(4) toRem(4) 0 0;
+        width: 100%;
+        @include respond-to-max($tablet) {
+          height: toRem(130);
+        }
+
+        .cmp-image__image {
+          position: absolute;
+          left: toRem(-9999);
+          right: toRem(-9999);
+          top: toRem(-9999);
+          bottom: toRem(-9999);
+          margin: auto;
+          min-width: 100%;
+        }
+      }
       .swiper-slide {
+        @include respond-to-max($phone) {
+          margin-right: 0 !important;
+        }
+
+        @include respond-to-min($desktop-wide) {
+          margin-right: 0 !important;
+        }
+
         @include respond-to-max($desktop - 1) {
           flex-basis: 100%;
           flex-grow: 0;
@@ -488,12 +526,21 @@
   }
 }
 
+.title {
+  .cmp-title__text {
+    @include respond-to-max($tablet) {
+      margin-bottom: toRem(8);
+    }
+  }
+}
+
 *[lang="ar"] *[dir="rtl"] .tile-boxes-section .swiper-wrapper .swiper-slide p {
   text-align: right;
 }
 
 //Insurance cards
 .tileBoxMobCarWrap {
+  padding: 0 toRem(12);
   .tile-box-tile {
     background: $white;
     border-radius: toRem(4);
@@ -538,9 +585,6 @@
         line-height: toRem(24);
         margin: 0;
         margin-bottom: toRem(8);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
 
         @include respond-to-min($tablet) {
           font-size: $font28;
@@ -599,3 +643,113 @@
     top: 0;
   }
 }
+
+// *************************************
+// accessibility black and blue
+// *************************************
+
+.acc-black,
+.acc-blue {
+  .tilecontainer {
+    .cmp-tilecontainer {
+      background-color: rgba(242, 242, 242, 0.33);
+    }
+    .tile-boxes-section {
+      &.with-bg {
+        background-color: transparent;
+      }
+      .swiper-wrapper {
+        .swiper-slide {
+          .tile {
+            background-color: $black;
+          }
+        }
+      }
+      .scrollbar {
+        background-color: $steel-grey;
+        .swiper-scrollbar-drag {
+          background-color: $white;
+        }
+      }
+    }
+    .tile-boxes-title-wrap {
+      h2 {
+        color: $white;
+      }
+    }
+    .tile-boxes-title-small {
+      h3 {
+        color: $white;
+      }
+    }
+    .tile-box-description {
+      p {
+        color: $white;
+      }
+      hr {
+        border: toRem(1) solid $white;
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .tilecontainer {
+    .tile-boxes-section {
+      .swiper-wrapper {
+        .swiper-slide {
+          .tile {
+            background-color: $blue4;
+          }
+        }
+      }
+    }
+  }
+}
+
+// *************************************
+// accessibility yellow
+// *************************************
+
+.acc-yellow {
+  .tilecontainer {
+    .cmp-tilecontainer {
+      background-color: rgba(242, 242, 242, 0.33);
+    }
+    .tile-boxes-section {
+      &.with-bg {
+        background-color: transparent;
+      }
+      .swiper-wrapper {
+        .swiper-slide {
+          .tile {
+            background-color: $black;
+          }
+        }
+      }
+      .scrollbar {
+        background-color: $steel-grey;
+      }
+    }
+    .tile-boxes-title-wrap {
+      h2 {
+        color: $yellow-light;
+      }
+    }
+    .tile-boxes-title-small {
+      h3 {
+        color: $yellow-light;
+      }
+    }
+    .tile-box-description {
+      p {
+        color: $yellow-light;
+      }
+      hr {
+        border: toRem(1) solid $yellow-light;
+      }
+    }
+  }
+}
+
+// *************************************

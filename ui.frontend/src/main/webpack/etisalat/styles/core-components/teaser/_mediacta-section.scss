@@ -2,7 +2,7 @@
 .cmp-teaser--mediacta-section,
 .whitebg-container {
   @include rtlBlock() {
-    font-weight: font-weight get-font-weight("light");
+    font-weight: get-font-weight("light");
     letter-spacing: 0;
   }
 
@@ -10,7 +10,7 @@
   left: 50%;
   margin-left: -50vw;
   padding-bottom: toRem(32);
-  padding-top: toRem(16);
+  padding-top: toRem(32);
   position: relative;
   width: 100vw !important;
 
@@ -39,6 +39,10 @@
       font-size: $font28;
       font-weight: get-font-weight("regular");
       margin-bottom: 1rem;
+
+      @include respond-to-max($desktop) {
+        font-size: toRem(24);
+      }
     }
 
     &__pretitle {
@@ -62,6 +66,7 @@
         li {
           color: $gray;
           font-size: $font16;
+          line-height: toRem(26);
           margin: 0 0 toRem(4) 0;
           padding-left: toRem(16);
           position: relative;
@@ -73,6 +78,7 @@
       p {
         color: $gray;
         font-size: $font16;
+        line-height: toRem(26);
         margin-bottom: toRem(8);
 
         @include font-family-lato;
@@ -84,17 +90,16 @@
     }
 
     &__content {
-      padding-bottom: toRem(40);
+      padding-bottom: toRem(10);
       width: 100%;
 
       @include respond-to-min($desktop) {
-        padding-right: toRem(32);
+        padding-bottom: toRem(0);
         width: 50%;
       }
     }
 
     &__image {
-      margin-bottom: toRem(32);
       position: relative;
       width: 100%;
 
@@ -104,9 +109,10 @@
 
       .cmp-image__image {
         height: toRem(132);
+        object-fit: cover;
 
         @include respond-to-min($tablet) {
-          height: toRem(240);
+          height: toRem(250);
         }
 
         @include respond-to-min($desktop) {
@@ -172,8 +178,13 @@
     &__image {
       width: 100%;
 
-      @include respond-to-max($tablet) {
-        height: toRem(242);
+      .cmp-image__image {
+        height: toRem(132);
+        object-fit: cover;
+
+        @include respond-to-min($tablet) {
+          height: toRem(250);
+        }
       }
 
       .cmp-image {
@@ -190,10 +201,6 @@
           height: toRem(250);
         }
       }
-
-      img {
-        @include img-cover;
-      }
     }
 
     &__content {
@@ -202,7 +209,7 @@
       width: 100%;
 
       @include respond-to-min($desktop) {
-        padding: 2rem 1.5rem 6rem;
+        padding: toRem(24) toRem(19.2) toRem(55);
       }
     }
 
@@ -210,14 +217,10 @@
       p,
       li {
         color: $dark-gray;
-        line-height: toRem(20);
+        line-height: toRem(19);
 
         @include ts-step--1;
         @include font-family-lato;
-
-        @include respond-to-min($desktop) {
-          @include ts-step-0;
-        }
       }
 
       ol {
@@ -520,7 +523,7 @@
     }
   }
 
-  @include respond-to-max($tablet) {
+  @include respond-to-max($tablet - 1) {
     .aem-GridColumn {
       padding: 0 !important;
     }

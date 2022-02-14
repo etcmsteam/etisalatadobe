@@ -70,7 +70,7 @@
     }
   }
   .btn-green {
-    background-color: $white !important;
+    background-color: transparent !important;
   }
 
   .btn-text {
@@ -1163,11 +1163,16 @@
       background-color: $sand-white;
       left: 1%;
       bottom: 3px;
-      width: 98%;
+      width: 95% !important;
       opacity: 1 !important;
       z-index: 1;
       height: 4px;
       margin-left: 12px;
+
+      @include respond-to-min($desktop) {
+        width: 96% !important;
+      }
+
       @include respond-to-min($tablet) {
         margin-left: 6px;
       }
@@ -1709,6 +1714,7 @@
       padding: 0;
       height: 100%;
       position: relative;
+      overflow: hidden;
       &:after {
         content: "";
         clear: both;
@@ -1744,6 +1750,7 @@
           color: $grey1 !important;
           font-size: 1.25rem !important;
           margin-bottom: 0.825rem;
+          position: relative;
           @include font-family-lato;
         }
         &:last-child {
@@ -1837,6 +1844,17 @@
   }
 
   .read-more-green-btn_bg {
+    .plan-card.tile-table .tile-card .smile-points,
+    .plan-card.tile-table .tile-card .tiles-box-list,
+    .product-home-card.tile-table .tile-card .smile-points,
+    .product-home-card.tile-table .tile-card .tiles-box-list,
+    .plan-multi-card-selection.tile-table .tile-card .smile-points,
+    .plan-multi-card-selection.tile-table .tile-card .tiles-box-list,
+    .plan-single-card-selection.tile-table .tile-card .smile-points,
+    .plan-single-card-selection.tile-table .tile-card .tiles-box-list {
+      border-left: 1px solid $white;
+      border-right: 1px solid $white;
+    }
     .plan-card.tile-table .tile-card:hover .smile-points,
     .plan-card.tile-table .tile-card:hover .tiles-box-list,
     .product-home-card.tile-table .tile-card:hover .smile-points,
@@ -1932,6 +1950,15 @@
       border-right: 1px solid $dark-orange;
       transition: all 0.5s ease-in-out;
     }
+    .plan-card.offer .tile-card .smile-points,
+    .plan-card.offer .tile-card .tiles-box-list,
+    .plan-multi-card-selection.offer .tile-card .smile-points,
+    .plan-multi-card-selection.offer .tile-card .tiles-box-list,
+    .plan-single-card-selection.offer .tile-card .smile-points,
+    .plan-single-card-selection.offer .tile-card .tiles-box-list {
+      border-left: 1px solid $white;
+      border-right: 1px solid $white;
+    }
     .plan-card.offer .tile-card:hover .smile-points,
     .plan-card.offer .tile-card:hover .tiles-box-list,
     .plan-multi-card-selection.offer .tile-card:hover .smile-points,
@@ -1941,6 +1968,28 @@
       border-left: 1px solid $dark-orange;
       border-right: 1px solid $dark-orange;
       transition: all 0.5s ease-in-out $dark-orange;
+    }
+    .product-tile-section.bg-cards .plan-card.tile-table .tile-card .tile-card__front .tiles-box-title {
+      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, #3f6679;
+      justify-content: flex-start;
+      padding-top: toRem(48);
+      height: toRem(268);
+      .catagory {
+        line-height: toRem(19.2);
+      }
+      h2 {
+        font-size: toRem(28);
+        margin-top: toRem(10);
+        margin-bottom: toRem(16);
+      }
+      .bottom-text {
+        p {
+          font-size: toRem(14);
+          overflow: hidden;
+          height: toRem(115);
+          line-height: toRem(22.4);
+        }
+      }
     }
     .plan-card.offer .tile-card .tiles-box-title,
     .plan-multi-card-selection.offer .tile-card .tiles-box-title,
@@ -2816,6 +2865,12 @@
               }
             }
           }
+          &.blur-image-bg-theme {
+            .cmp-image__image {
+              opacity: 0.8;
+              object-fit: cover;
+            }
+          }
         }
       }
       &:not(.swiper-wrapper) {
@@ -2907,9 +2962,9 @@
           cursor: pointer;
 
           @include rtlBlock() {
-              display: flex;
-              padding: 0;
-            }
+            display: flex;
+            padding: 0;
+          }
 
           &::before {
             content: "";
@@ -3031,9 +3086,20 @@
       .paragraph-styling {
         ul {
           margin-left: 0 !important;
+          li {
+            position: relative;
+            margin-bottom: toRem(4);
+            // list-style: disc;
+            @include rtlBlock() {
+              padding-right: toRem(24);
+            }
+          }
         }
         ol {
           margin-left: 1rem !important;
+          li {
+            position: relative;
+          }
         }
       }
       .wst-main-headings {
@@ -3638,4 +3704,255 @@
   top: 50%;
   transform: rotate(15deg);
   width: 100%;
+}
+
+// A11y
+.acc-black,
+.acc-blue,
+.acc-yellow {
+  .paragraph-styling {
+    p,
+    .p1 p,
+    .p2 p,
+    .p3 p,
+    .p4 p {
+      color: $white !important;
+    }
+  }
+  .cmp-link__arrow_left {
+    &:after,
+    &:before {
+      border-color: $white;
+    }
+  }
+  //need to replace with new image
+  .product-grid-text-section.plans .bg-cards .plan-card.offer .tile-card .tile .tiles-box-title {
+    background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
+  }
+  .product-grid-text-section .bg-cards .product-home-card.tile-table .tile-card .smile-points {
+    border-top: toRem(1) solid;
+  }
+  .cmp__bg-cards_product-grid .tile-card {
+    .smile-points {
+      border-left: toRem(1) transparent !important;
+      border-right: toRem(1) transparent !important;
+    }
+    &:hover {
+      .tiles-box-list,
+      .smile-points {
+        border-left: toRem(1) transparent !important;
+        border-right: toRem(1) transparent !important;
+      }
+    }
+  }
+  .bg-cards {
+    .plan-card .tile-card {
+      .smile-points {
+        border-left: toRem(1) transparent !important;
+        border-right: toRem(1) transparent !important;
+      }
+      &:hover {
+        .tiles-box-list,
+        .smile-points {
+          border-left: toRem(1) transparent !important;
+          border-right: toRem(1) transparent !important;
+        }
+      }
+    }
+    a.btn-text.btn-green.learn-more.btn-modal {
+      background: transparent !important;
+      span {
+        color: $white !important;
+        &:before,
+        &:after {
+          border-color: $white !important;
+        }
+      }
+    }
+    .tile-table .tile-card .tiles-box-list__contractDuration--orange,
+    .tile-table .tile-card .tiles-box-list__contractDuration,
+    .old-price--orange,
+    .old-price {
+      background: $white !important;
+      color: $black !important;
+    }
+    .tiles-box-list {
+      span.strikethrough {
+        color: $black;
+      }
+    }
+    .internet-text.dark-gray,
+    .internet-config-title,
+    .interner-config-desc,
+    ul.featureList li strong,
+    ul.featureList li b,
+    ul.featureList li p,
+    ul.featureList li p span {
+      color: $white !important;
+    }
+  }
+  .productdetail {
+    .tile .tile-card__front {
+      .view-channel-list a {
+        .channel-list-icon {
+          filter: invert(87%) sepia(100%) saturate(0%) hue-rotate(98deg) brightness(103%) contrast(101%);
+        }
+      }
+    }
+  }
+
+  .gold-bg-theme,
+  .blue-bg-theme {
+    .read-more-green-btn_bg {
+      .tile-table.plan-card .tile-card {
+        .tiles-box-title h2 {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .producttile {
+    span {
+      .strikethrough {
+        color: $black;
+      }
+    }
+  }
+
+  .cmp__bg-cards_product-grid {
+    .btn-container-noContract {
+      .showNoContract {
+        background-color: $black;
+        border-color: $white;
+        color: $white;
+      }
+    }
+  }
+}
+.acc-blue {
+  //need to replace with new image
+  .product-grid-text-section.plans .bg-cards .plan-card.offer .tile-card .tile .tiles-box-title {
+    background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
+  }
+  .bg-cards {
+    .tile-table .tile-card .tiles-box-list__contractDuration--orange,
+    .tile-table .tile-card .tiles-box-list__contractDuration,
+    .old-price--orange,
+    .old-price {
+      color: $blue4 !important;
+    }
+    .tiles-box-list {
+      span.strikethrough {
+        color: $blue4;
+      }
+    }
+  }
+}
+.acc-yellow {
+  .paragraph-styling {
+    p,
+    .p1 p,
+    .p2 p,
+    .p3 p,
+    .p4 p {
+      color: $yellow-light !important;
+    }
+  }
+  .cmp-link__arrow_left {
+    &:after,
+    &:before {
+      border-color: $yellow-light;
+    }
+  }
+  //need to replace with new image
+  .product-grid-text-section.plans .bg-cards .plan-card.offer .tile-card .tile .tiles-box-title {
+    background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
+  }
+  .bg-cards {
+    .tiles-box-title {
+      .catagory,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $yellow-light !important;
+      }
+    }
+    .plan-card .tile-card {
+      .tiles-box-title .catagory {
+        color: $yellow-light !important;
+      }
+      .divider-line {
+        border-bottom: toRem(1) dashed $yellow-light;
+        background-image: none;
+      }
+    }
+    a.btn-text.btn-green.learn-more.btn-modal {
+      span {
+        color: $yellow-light !important;
+        &:before,
+        &:after {
+          border-color: $yellow-light !important;
+        }
+      }
+    }
+    .tile-table .tile-card .tiles-box-list__contractDuration--orange,
+    .tile-table .tile-card .tiles-box-list__contractDuration,
+    .old-price--orange,
+    .old-price {
+      background: $yellow-light !important;
+      color: $black !important;
+    }
+    .internet-text.dark-gray,
+    .internet-config-title,
+    .interner-config-desc,
+    ul.featureList li strong,
+    ul.featureList li b,
+    ul.featureList li p,
+    ul.featureList li p span,
+    .read-more.link .read-more-link {
+      color: $yellow-light !important;
+    }
+  }
+  .productdetail {
+    .tile .tile-card__front {
+      .view-channel-list a {
+        .channel-list-icon {
+          filter: invert(100%) sepia(100%) saturate(1387%) hue-rotate(0.08turn) brightness(101%) contrast(103%);
+        }
+      }
+    }
+  }
+
+  .gold-bg-theme,
+  .blue-bg-theme {
+    .read-more-green-btn_bg {
+      .tile-table.plan-card .tile-card {
+        .tiles-box-title h2 {
+          color: $yellow-light;
+        }
+      }
+    }
+  }
+
+  .producttile {
+    span {
+      .strikethrough {
+        color: $black;
+      }
+    }
+  }
+
+  .cmp__bg-cards_product-grid {
+    .btn-container-noContract {
+      .showNoContract {
+        background-color: $black;
+        border-color: $yellow-light;
+        color: $yellow-light;
+      }
+    }
+  }
 }

@@ -54,12 +54,12 @@ public class TopnavModel {
   @PostConstruct
   protected void init() {
     if (StringUtils.isNotBlank(navigationRoot)) {
-      Resource res = request.getResourceResolver().getResource(navigationRoot);
+      final Resource res = request.getResourceResolver().getResource(navigationRoot);
       if (null != res && null != res.adaptTo(Page.class)) {
-        Page page = res.adaptTo(Page.class);
-        Iterator<Page> childPage = page.listChildren();
+        final Page page = res.adaptTo(Page.class);
+        final Iterator<Page> childPage = page.listChildren();
         while (childPage.hasNext()) {
-          Page languagePage = childPage.next();
+          final Page languagePage = childPage.next();
           getLanguageChildPages(languagePage);
         }
       }
@@ -71,7 +71,7 @@ public class TopnavModel {
    * @param languagePage
    */
   private void getLanguageChildPages(Page languagePage) {
-    String pageTitle = languagePage.getTitle();
+    final String pageTitle = languagePage.getTitle();
     extracted(languagePage.getLanguage().toString(), pageTitle);
   }
 
@@ -81,16 +81,16 @@ public class TopnavModel {
    * @param pageTitle
    */
   private void extracted(String languageCode, String pageTitle) {
-    String currrentPath = currentPage.getPath();
-    String newPagePath = currrentPath.replace(
+    final String currrentPath = currentPage.getPath();
+    final String newPagePath = currrentPath.replace(
         PageConstants.SLASH + currentPage.getLanguage().toString() + PageConstants.SLASH,
         PageConstants.SLASH + languageCode + PageConstants.SLASH);
-    Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
+    final Resource childRes = currentResource.getResourceResolver().getResource(newPagePath);
     if (null != childRes) {
       if (StringUtils.isNotBlank(currrentPath) && currrentPath.equals(newPagePath)) {
         setCurrentPageLanguageTitle(pageTitle);
       } else {
-        LinkModel model = new LinkModel();
+        final LinkModel model = new LinkModel();
         model.setLinkUrl(
             CommonUtility.appendHtmlExtensionToPage(resourceResolver, childRes.getPath()));
         model.setTitle(pageTitle);
@@ -129,5 +129,9 @@ public class TopnavModel {
    */
   public void setCurrentPageLanguageTitle(String currentPageLanguageTitle) {
     this.currentPageLanguageTitle = currentPageLanguageTitle;
+  }
+  
+  public List<FixedNavigtaionMultifieldModel> getTopNavIconsList() {
+    return CommonUtility.getFixedNavigationItems("linkswithicons", currentResource, resourceResolver);
   }
 }

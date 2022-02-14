@@ -48,6 +48,11 @@
     ul {
       padding-left: toRem(16);
 
+      @include rtlBlock() {
+        padding-left: 0;
+        padding-right: toRem(16);
+      }
+
       li {
         color: $gray-fill;
         font-size: $font14;
@@ -119,12 +124,6 @@
   }
 
   .cmp-container {
-    & > div {
-      @include rtlBlock() {
-        display: flex;
-      }
-    }
-
     .text {
       @include rtlBlock() {
         padding-right: $padding-step-3;

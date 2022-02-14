@@ -1,14 +1,20 @@
-.breadcrumb {
-  background-color: $sand-white-50;
+.etisalatbreadcrumb {
+  display: block;
+  margin: 0 auto;
   margin-bottom: $margin-step-0;
-  padding: toRem(4) toRem(84);
-}
 
-.cmp-breadcrumb {
-  &__item {
-    background-color: transparent;
+  @include respond-to-max($phone) {
+    display: none;
+  }
+
+  @include respond-to-min-max($desktop-wide, $desktop + 1) {
+    width: toRem(976);
+  }
+
+  li {
     color: $gray-fill;
-    font-size: 12px;
+    display: inline-block;
+    font-size: $font12;
     letter-spacing: 0;
     list-style: none;
     margin: 0;
@@ -20,17 +26,17 @@
     @include rtlBlock {
       @include font-family-Neotech-ge();
     }
-  }
 
-  a {
-    color: $gray-fill;
-  }
+    a {
+      color: $gray-fill;
 
-  &__item-link {
-    span {
       &:hover {
         color: $main-green;
         text-decoration: underline;
+      }
+
+      @include rtlBlock() {
+        font-weight: get-font-weight("light");
       }
     }
 
@@ -41,101 +47,83 @@
       padding: 0 0.125rem;
       text-decoration: none;
     }
-  }
 
-  &__item--active {
-    font-weight: get-font-weight("semibold");
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
 
-    @include rtlBlock {
+    &.active {
       font-weight: get-font-weight("semibold");
+
+      @include rtlBlock {
+        font-weight: get-font-weight("semibold");
+      }
     }
   }
 }
 
 // starter-header
 .starter-header {
-  padding: $padding-step-3 !important;
+  padding: toRem(24) toRem(20) !important;
 
   @include respond-to-min($desktop) {
-    padding: calc(#{$padding-step-3} + 1px) calc(#{$padding-step-4} - 2px) !important;
-  }
-
-  .cmp-breadcrumb--list {
-    display: none;
-    margin-bottom: $margin-step-2;
-
-    @include respond-to-min($desktop) {
-      display: block;
-
-      .cmp-text {
-        p {
-          color: $gray-fill;
-          display: inline-block;
-          font-size: $font12;
-          letter-spacing: toRem(2);
-          line-height: toRem(15);
-          text-transform: uppercase;
-
-          @include font-family-lato;
-
-          .cmp-link__arrow {
-            font-size: $font12;
-            margin-right: calc(#{$margin-step-0} + 2px);
-            padding-right: calc(#{$padding-step-0} + 2px);
-            padding-top: calc(#{$padding-step-0} + 2px);
-          }
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
+    padding: toRem(24) toRem(14) !important;
   }
 
   // breadcrumb
-  .cmp-breadcrumb {
-    &__item,
-    &-link {
-      letter-spacing: toRem(2);
-      line-height: toRem(15);
-      margin-right: calc(#{$margin-step-1}-5px);
-      padding-right: calc(#{$padding-step-1}-2px);
-      text-transform: uppercase;
+  /* stylelint-disable-next-line no-descending-specificity */
+  li {
+    letter-spacing: toRem(2);
+    line-height: toRem(15);
+    margin-right: calc(#{$margin-step-1}-5px);
+    padding-right: calc(#{$padding-step-1}-2px);
+    text-transform: uppercase;
 
-      @include font-family-lato;
+    @include font-family-lato;
+
+    @include rtlBlock() {
+      margin-left: calc(#{$margin-step-1}-5px);
+      margin-right: $margin-step-0;
+      padding-left: calc(#{$padding-step-1}-2px);
+      padding-right: $padding-step-0;
     }
 
-    &__item {
-      color: $gray-fill;
+    &:hover {
+      text-decoration: underline;
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    &::after {
+      border: solid $arrow-border-green;
+      border-width: 0 $border-step-1 $border-step-1 0;
+      content: "";
+      display: inline-block;
+      padding: toRem(2.6);
+      position: absolute;
+      top: toRem(34);
+
+      @include rtl(transform, rotate(-45deg), rotate(135deg));
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    a {
+      color: $main-green;
 
       &:hover {
+        color: $main-green;
         text-decoration: underline;
       }
+    }
 
-      &-link {
-        &::after {
-          border: solid $arrow-border-green;
-          border-width: 0 $border-step-1 $border-step-1 0;
-          content: "";
-          display: inline-block;
-          height: toRem(9);
-          padding: $padding-step-0;
-          position: absolute;
-          top: toRem(34);
-          width: toRem(9);
+    &.active {
+      font-weight: get-font-weight("regular");
 
-          @include rtl(transform, rotate(-45deg), rotate(135deg));
-        }
+      @include rtlBlock {
+        font-weight: get-font-weight("regular");
       }
     }
-  }
-
-  .breadcrumb {
-    background-color: transparent;
-    border-radius: $border-radius-step-0;
-    margin-bottom: $margin-step-2;
-    padding: $padding-step-0;
   }
 
   h3 {
@@ -151,7 +139,7 @@
 
       @include rtlBlock {
         margin-left: $margin-step-0;
-        margin-right: torem (22);
+        margin-right: toRem(22);
       }
     }
   }
@@ -178,10 +166,6 @@
 
       p {
         .font--small {
-          @include respond-to-min($desktop-wide) {
-            float: right;
-          }
-
           font-size: $font14;
           margin-top: toRem(2);
         }
@@ -206,6 +190,49 @@
   @include rtlBlock {
     .text {
       float: right !important;
+    }
+  }
+}
+
+// accessbility
+.acc-black,
+.acc-blue {
+  .etisalatbreadcrumb {
+    li {
+      color: $white;
+
+      a {
+        color: $white;
+
+        &:hover {
+          color: $white;
+        }
+      }
+
+      &::after {
+        color: $white;
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .etisalatbreadcrumb {
+    li {
+      color: $yellow-light;
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      a {
+        color: $yellow-light;
+
+        &:hover {
+          color: $yellow-light;
+        }
+      }
+
+      &::after {
+        color: $yellow-light;
+      }
     }
   }
 }

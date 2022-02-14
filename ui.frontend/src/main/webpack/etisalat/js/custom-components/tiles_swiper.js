@@ -1,3 +1,5 @@
+import { swiperInit } from "../../../global/js/swiperInitialize";
+
 //shop swiper st
 function initTileBoxesSlider() {
   // plans table slider for CMS modules start
@@ -5,15 +7,10 @@ function initTileBoxesSlider() {
     .find(".tilecontainer .tile-boxes-section")
     .each(function (index) {
       $(this).addClass("t-b-slider" + index);
-      var $tileBoxesCarousal = new Swiper(".t-b-slider" + index + " .swiper-container", {
-        //clickable: true,
+      var $tileBoxesCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
         scrollbar: $(this).find(".scrollbar"),
-        //nextButton: '.next.right'+index,
-        //prevButton: '.prev.left'+index,
         scrollbarHide: false,
         scrollbarDraggable: true,
-
-        // direction: 'rtl',
         breakpoints: {
           540: {
             slidesPerView: 1.35,
@@ -49,7 +46,7 @@ function initTileBoxesSlider() {
       if ($(window).width() > 991) {
         $(this).find(".tileboxCarousal").addClass("destroyed");
       } else {
-        var $carouselSlider = new Swiper($(this).find(".tileboxCarousal"), {
+        var $carouselSlider = swiperInit($(this).find(".tileboxCarousal"), {
           loop: false,
           autoplay: false,
           slidesPerView: 1,

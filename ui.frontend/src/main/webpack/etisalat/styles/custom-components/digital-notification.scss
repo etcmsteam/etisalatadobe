@@ -31,7 +31,7 @@
       right: 3px;
       top: 50%;
       transform: translateY(-50%) rotate(-45deg);
-      transition: all .3s ease-in-out;
+      transition: all 0.3s ease-in-out;
     }
   }
 }
@@ -107,7 +107,6 @@
   }
 }
 
-
 // notifications body styling
 .notifications-body {
   .description {
@@ -181,6 +180,13 @@
   }
 }
 
+.digital-notification-swiper-container {
+  .swiper-container-autoheight {
+    .swiper-slide {
+      width: 100%;
+    }
+  }
+}
 
 // notifications as a module
 .digital-notifications-wrapper {
@@ -188,6 +194,10 @@
 
   @include respond-to-min($tablet) {
     padding: 24px 0;
+  }
+
+  .container {
+    width: 100%;
   }
 
   &.bg-black {
@@ -238,7 +248,7 @@
     }
   }
 
-  >.container {
+  > .container {
     position: relative;
 
     @media (max-width: 767px) {
@@ -326,7 +336,6 @@
     }
   }
 
-
   .swiper-slide {
     display: block;
     width: 100%;
@@ -337,7 +346,6 @@
     text-align: left;
   }
 }
-
 
 // mid page banner
 .digital-notifications-wrapper {
@@ -358,7 +366,6 @@
     }
   }
 }
-
 
 // notifications with bottom position ( contextual notifications )
 .digital-notifications-wrapper {
@@ -400,14 +407,14 @@
     .notifications-body {
       @media (max-width: 991px) {
         display: block !important;
-        height: 30px;
-        opacity: .5;
+        height: auto;
+        opacity: 0.5;
         overflow: hidden;
 
         &.expanded {
           height: auto;
           opacity: 1;
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
         }
       }
 
@@ -444,7 +451,6 @@
     }
   }
 }
-
 
 // notification popup
 .single-notification {
@@ -529,7 +535,7 @@
         right: 3px;
         top: 50%;
         transform: translateY(-50%) rotate(-45deg);
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
 
       &:hover {
@@ -538,7 +544,6 @@
     }
   }
 }
-
 
 .notifications-popup-wrapper {
   .nv-modal-content {
@@ -641,7 +646,6 @@
       }
     }
 
-
     .notifications-head .title a {
       padding-left: 0;
       padding-right: 6px;
@@ -724,7 +728,6 @@
     }
   }
 }
-
 
 // configure notifications with menu
 .digital-notifications-wrapper.top {
@@ -811,10 +814,144 @@
       padding-right: 0;
     }
   }
+}
 
-  .nv-modal-dialog {
-    @include respond-to-min($tablet) {
-      height: 50%;
+// Accessibility
+.acc-black,
+.acc-blue {
+  .digital-notifications-wrapper {
+    &.bg-yellow {
+      background-color: $black;
+      .title {
+        h3 {
+          color: $white;
+        }
+      }
+
+      .notifications-body {
+        .description {
+          a {
+            color: $white;
+          }
+
+          p {
+            color: $white;
+          }
+          li {
+            color: $yellow-light;
+          }
+        }
+      }
+    }
+  }
+
+  .more-notifications {
+    a {
+      &::after {
+        border-color: $white;
+      }
+    }
+  }
+
+  .notifications-head {
+    .title {
+      h3 {
+        color: $white;
+      }
+
+      a {
+        color: $white;
+      }
+    }
+  }
+
+  .notifications-body {
+    li {
+      color: $white;
+    }
+
+    .description {
+      a,
+      p {
+        color: $white;
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .digital-notifications-wrapper {
+    &.bg-yellow {
+      background-color: $blue4;
+    }
+
+    &.bg-black {
+      background-color: $blue4;
+    }
+  }
+}
+
+.acc-yellow {
+  .digital-notifications-wrapper {
+    &.bg-yellow {
+      background-color: $black;
+      .title {
+        h3 {
+          color: $yellow-light;
+        }
+      }
+
+      .notifications-body {
+        .description {
+          a {
+            color: $yellow-light;
+          }
+          p {
+            color: $yellow-light;
+          }
+        }
+
+        li {
+          color: $yellow-light;
+        }
+      }
+    }
+  }
+
+  .more-notifications {
+    a {
+      &::after {
+        border-color: $yellow-light;
+      }
+    }
+  }
+
+  .notifications-head {
+    .title {
+      h3 {
+        color: $yellow-light;
+      }
+
+      a {
+        color: $yellow-light;
+      }
+    }
+  }
+
+  .notifications-body {
+    li {
+      color: $yellow-light;
+
+      &::after {
+        background-color: $yellow-light;
+      }
+    }
+
+    .description {
+      a,
+      p {
+        color: $yellow-light;
+      }
     }
   }
 }

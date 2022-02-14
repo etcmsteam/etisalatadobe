@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 // arabic
 .ul-list-cms ul li::before {
   @include rtlBlock() {
@@ -23,7 +24,6 @@
     @include font-family-Neotech;
 
     &.tabs {
-      // max-height: none;
       background: $white;
       box-shadow: 0 toRem(5) toRem(10) 0 rgb(0 0 0 / 10%);
       max-height: toRem(78);
@@ -62,14 +62,6 @@
     }
   }
 
-  .tabs-title {
-    padding-left: toRem(32);
-
-    @include respond-to-min($desktop) {
-      padding-left: toRem(48);
-    }
-  }
-
   .swiper-container {
     padding: 0;
   }
@@ -102,12 +94,9 @@
     height: toRem(56);
     margin-bottom: 0;
     min-height: toRem(56);
-
-    // overflow-x: auto;
     white-space: nowrap;
 
     @include respond-to-min($desktop) {
-      // display: block;
       height: auto;
     }
 
@@ -131,7 +120,6 @@
       text-transform: uppercase;
       width: auto;
 
-      // min-height: 56px;
       @include respond-to-min($tablet) {
         min-height: toRem(90);
       }
@@ -158,7 +146,7 @@
         border-top: 0;
         color: $main-green;
 
-        @include respond-to-min($tablet) {
+        @include respond-to-min($desktop) {
           border-bottom: toRem(4) solid $main-green;
           color: $main-green;
         }
@@ -291,7 +279,6 @@
       }
     }
 
-    /* stylelint-disable-next-line no-descending-specificity */
     li {
       &.cmp-tabs__tab--active {
         border: 0 !important;
@@ -418,6 +405,227 @@
   }
 
   .container {
-    padding: 0 !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+
+    @include respond-to-min($tablet) {
+      width: 756px;
+    }
+
+    @include respond-to-min($desktop) {
+      width: 1224px;
+    }
+  }
+
+  .cmp-text ul {
+    list-style: inside;
+
+    li {
+      padding-left: 1.5rem;
+
+      @include respond-to-max($phone) {
+        margin-bottom: toRem(-5) !important;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+
+  @include respond-to-max($phone) {
+    .cmp-text span {
+      display: inline-block;
+      line-height: toRem(20) !important;
+      vertical-align: text-top;
+      width: 92%;
+    }
+  }
+}
+
+// Accessibility
+
+.acc-black,
+.acc-blue {
+  .cmp_tabs-swipper {
+    background-color: $black;
+    box-shadow: 0 toRem(5) toRem(10) 0 rgb(255 255 255 / 10%);
+
+    .page-nav {
+      .swiper-slide {
+        color: $white;
+
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $white;
+        }
+      }
+
+      li {
+        color: $white;
+
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $white;
+        }
+      }
+    }
+
+    .config-section-main-label-top {
+      color: $white;
+    }
+  }
+
+  .cmp-text {
+    p {
+      color: $white;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    h4 {
+      color: $white;
+    }
+  }
+
+  .cmp_tabs--text {
+    h2 {
+      color: $white !important;
+    }
+
+    .cmp-text {
+      h5 {
+        color: $white !important;
+      }
+    }
+
+    .cmp-link__text {
+      color: $white !important;
+    }
+  }
+
+  .cmp_tabs--horizontal .cmp_tabs-swipper {
+    .page-nav {
+      .swiper-slide {
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $white !important;
+          color: $white;
+        }
+      }
+
+      li {
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $white !important;
+          color: $white;
+
+          &::after {
+            border-color: $white !important;
+          }
+        }
+      }
+    }
+  }
+
+  .cmp_tabs--horizontal-title {
+    li {
+      &::marker {
+        color: $white;
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .cmp_tabs-swipper {
+    background-color: $blue4;
+  }
+}
+
+.acc-yellow {
+  .cmp_tabs-swipper {
+    background-color: $black;
+    box-shadow: 0 toRem(5) toRem(10) 0 rgb(255 255 0 / 10%);
+
+    .page-nav {
+      .swiper-slide {
+        color: $yellow-light;
+
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $yellow-light;
+        }
+      }
+
+      li {
+        color: $yellow-light;
+
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $yellow-light;
+        }
+      }
+    }
+
+    .config-section-main-label-top {
+      color: $yellow-light;
+    }
+  }
+
+  .cmp-text {
+    p {
+      color: $yellow-light;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    h4 {
+      color: $yellow-light;
+    }
+  }
+
+  .cmp_tabs--text {
+    h2,
+    h6 {
+      color: $yellow-light !important;
+    }
+
+    .cmp-text {
+      h5 {
+        color: $yellow-light !important;
+      }
+    }
+
+    .cmp-link__text {
+      color: $yellow-light !important;
+    }
+  }
+
+  .cmp_tabs--horizontal .cmp_tabs-swipper {
+    .page-nav {
+      .swiper-slide {
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $yellow-light !important;
+          color: $yellow-light;
+        }
+      }
+
+      li {
+        &.cmp-tabs__tab--active {
+          border-bottom-color: $yellow-light !important;
+          color: $yellow-light;
+
+          &::after {
+            border-color: $yellow-light;
+          }
+        }
+      }
+    }
+  }
+
+  .cmp_tabs--horizontal-title {
+    li {
+      &::marker {
+        color: $yellow-light;
+      }
+    }
   }
 }

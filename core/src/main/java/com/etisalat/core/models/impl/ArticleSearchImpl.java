@@ -1,46 +1,39 @@
 package com.etisalat.core.models.impl;
 
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import java.util.Comparator;
-import java.util.HashMap;
-
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 import com.etisalat.core.util.CommonUtility;
-import com.day.cq.wcm.api.NameConstants;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.text.ParseException;
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     ArticleSearch.class}, resourceType = {ArticleSearchImpl.RESOURCE_TYPE})
 public class ArticleSearchImpl implements ArticleSearch {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ArticleSearchImpl.class);
 
   /**
    * The resource type.
    */
   protected static final String RESOURCE_TYPE = "etisalat/components/articlelist";
-
 
   /**
    * The current request.
@@ -67,7 +60,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private String parentPath;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-  private String articleListFrom;
+  private String articleListFrom;  
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String[] pages;
@@ -99,8 +92,8 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void setArticlePages(Resource res, List<GenericListPageDetails> pageDetailsList,
       String articlePageType) {
     final Page page = res.adaptTo(Page.class);
-    if (null != page && page.getProperties().get(NameConstants.PN_TEMPLATE, StringUtils.EMPTY)
-        .equals(PageConstants.BUSINESS_BLOG_TEMPLATE)) {
+    if (null != page && page.getProperties().get(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY, StringUtils.EMPTY)
+        .equals(PageConstants.ARTICLE_RESOURCETYPE)) {
       setChildPageDetails(res, page, pageDetailsList, articlePageType);
     }
 
@@ -119,10 +112,10 @@ public class ArticleSearchImpl implements ArticleSearch {
    * @param articlePageType
    */
   private void setChildPageDetails(Resource res, Page page,
-      List<GenericListPageDetails> pageDetailsList, String articlePageType) {
+    final List<GenericListPageDetails> pageDetailsList, String articlePageType) {
     if (!page.isHideInNav() && page.getProperties().get(AEConstants.PN_ARTICLE_TYPE, StringUtils.EMPTY)
         .equals(articlePageType)) {
-      GenericListPageDetails pageDetails = new GenericListPageDetails();
+      final GenericListPageDetails pageDetails = new GenericListPageDetails();
       pageDetails.setThumbnailResource(res.getChild(PageConstants.JCR_CONTENT_IMAGE));
       pageDetails.setTitle(page.getPageTitle());
       pageDetails.setDescription(page.getDescription());
@@ -161,6 +154,11 @@ public class ArticleSearchImpl implements ArticleSearch {
     if (page.getProperties().containsKey(AEConstants.PN_ARTICLE_DATE) &&
         null != page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class)) {
       pageDetails.setArticleDate(page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class));
+      try {
+		pageDetails.setArticleDateDisplayString(CommonUtility.useFormattedArticleDate(page));
+	  } catch (ParseException e) {
+		  LOG.error("Exception in parsing article date {}", e.getMessage());
+	  }
     }
   }
 
@@ -174,11 +172,11 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void setBusinessCategory(Page page, Resource resource,
       GenericListPageDetails pageDetails) {
     final TagManager tagManager = resource.getResourceResolver().adaptTo(TagManager.class);
-    String businessCatg = page.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
+    final String businessCatg = page.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
     if (StringUtils.isNotBlank(businessCatg)) {
       final Tag tag = tagManager.resolve(businessCatg);
       if (null != tag) {
-        pageDetails.setCategory(tag.getTitle());
+        pageDetails.setCategory(page.getLanguage().toString().equals(AEConstants.ENGLISH) ? tag.getTitle(Locale.forLanguageTag(AEConstants.ENGLISH)) : tag.getTitle(Locale.forLanguageTag(AEConstants.ARABIC)) );
       }
     }
   }
@@ -226,7 +224,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private void getRootPageItems(List<GenericListPageDetails> pageDetailsList,
       String articlePageType) {
     if (StringUtils.isNotBlank(parentPath)) {
-      Resource res = request.getResourceResolver().getResource(parentPath);
+      final Resource res = request.getResourceResolver().getResource(parentPath);
       if (null != res && res.hasChildren()) {
         res.listChildren()
             .forEachRemaining(
@@ -245,7 +243,7 @@ public class ArticleSearchImpl implements ArticleSearch {
       String articlePageType) {
     if (null != pages && pages.length > 0) {
       Arrays.asList(pages).forEach(path -> {
-        Resource saticPageResource = resourceResolver.getResource(path);
+        final Resource saticPageResource = resourceResolver.getResource(path);
         if (null != saticPageResource && resourceResolver.resolve(path)
             .isResourceType(NameConstants.NT_PAGE)) {
           setArticlePages(saticPageResource, pageDetailsList, articlePageType);
@@ -261,7 +259,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public List<GenericListPageDetails> getNewsPageItems() {
-    List<GenericListPageDetails> newsPageList = getItems(AEConstants.PN_NEWSROOM);
+    final List<GenericListPageDetails> newsPageList = getItems(AEConstants.PN_NEWSROOM);
     categoryMap = new HashMap<>();
     if (!newsPageList.isEmpty()) {
       categoryMap = newsPageList.stream().filter(p -> StringUtils.isNotBlank(p.getCategory()))
@@ -271,29 +269,32 @@ public class ArticleSearchImpl implements ArticleSearch {
 
     return Collections.unmodifiableList(newsPageList);
   }
+  
+  @Override
+  public List<GenericListPageDetails> getEwalletNewsSectionItems() {
+    return Collections.unmodifiableList(getItems(AEConstants.PN_NEWS_SECTION));
+  }
 
 
   @Override
   public String getBusinessCategoryTag() {
-    String category = currentPage.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
-    final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
-    if (StringUtils.isNotBlank(category) && null != tagManager) {
-      final Tag tag = tagManager.resolve(category);
-      if (null != tag) {
-        category = tag.getTitle();
-      }
-    }
-    return category;
+    final String category = currentPage.getProperties().get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY);
+    return CommonUtility.getCategoryTagTitle(request, category);
   }
 
   @Override
   public String getBackToHomeLink() {
-    String backToLink = currentPage.getProperties().get(AEConstants.PN_BACK_TO_HOMELINK,
+    final String backToLink = currentPage.getProperties().get(AEConstants.PN_BACK_TO_HOMELINK,
         currentPage.getAbsoluteParent(3).getPath());
 
     return CommonUtility.appendHtmlExtensionToPage(resourceResolver, backToLink);
   }
-
+  
+  @Override
+  public String getArticleDate() throws ParseException {	  
+	    return CommonUtility.useFormattedArticleDate(currentPage);
+  } 
+  
   @Override
   public Map<String, Long> getSearchCategories() {
     return Collections.unmodifiableMap(categoryMap);
@@ -301,7 +302,7 @@ public class ArticleSearchImpl implements ArticleSearch {
 
   @Override
   public Resource getThumbnailPageResource() {
-    Resource imageResource = currentRes.getChild(AEConstants.IMAGE);
+    final Resource imageResource = currentRes.getChild(AEConstants.IMAGE);
     if (null == imageResource) {
       return currentRes;
     } else {

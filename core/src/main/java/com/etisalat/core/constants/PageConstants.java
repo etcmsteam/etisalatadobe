@@ -51,10 +51,6 @@ public final class PageConstants {
  public static final String TITLE_RESOURCE_TYPE = "etisalat/components/title";
 
   /**
-   * Constant for BUSINESS_BLOG Template
-   */
- public static final String BUSINESS_BLOG_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-article-page-template";
-  /**
    * Constant for TILE_CONTAINER Resource Type
    */
  public static final String TILE_CONTAINER_RESOURCETYPE = "etisalat/components/tilecontainer";
@@ -63,6 +59,12 @@ public final class PageConstants {
    * Constant for SWIPER_CONTAINER Resource Type
    */
  public static final String SWIPER_CONTAINER_RESOURCETYPE = "etisalat/components/swipercontainer";
+ 
+ /**
+  * Constant for SWIPER_CONTAINER Resource Type
+  */
+ public static final String ARTICLE_RESOURCETYPE = "etisalat/components/articlepage";
+
   /**
    * Constant for DEFAULT status code
    */
@@ -82,7 +84,10 @@ public final class PageConstants {
    */
  public static final String APPLICATION_JSON = "application/json";
 
-
+    /**
+     * Constant for ACCESSORIES_CONTAINER Resource Type
+     */
+    public static final String ACCESSORIES_CONTAINER_RESOURCETYPE = "etisalat/components/accessoriescardcontainer";
   /**
    * private constructor to prevent instantiation of class.
    */

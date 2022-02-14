@@ -2,7 +2,54 @@
   background-color: $sand-white;
   position: relative;
 
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+  .col-lg-1,
+  .col-lg-2,
+  .col-lg-3,
+  .col-lg-4,
+  .col-lg-5,
+  .col-lg-6,
+  .col-lg-7,
+  .col-lg-8,
+  .col-lg-9,
+  .col-lg-10,
+  .col-lg-11,
+  .col-lg-12,
+  .col-md-1,
+  .col-md-2,
+  .col-md-3,
+  .col-md-4,
+  .col-md-5,
+  .col-md-6,
+  .col-md-7,
+  .col-md-8,
+  .col-md-9,
+  .col-md-10,
+  .col-md-11,
+  .col-md-12,
+  .col-sm-1,
+  .col-sm-2,
+  .col-sm-3,
+  .col-sm-4,
+  .col-sm-5,
+  .col-sm-6,
+  .col-sm-7,
+  .col-sm-8,
+  .col-sm-9,
+  .col-sm-10,
+  .col-sm-11,
+  .col-sm-12,
+  .col-xs-1,
+  .col-xs-2,
+  .col-xs-3,
+  .col-xs-4,
+  .col-xs-5,
+  .col-xs-6,
+  .col-xs-7,
+  .col-xs-8,
+  .col-xs-9,
+  .col-xs-10,
+  .col-xs-11,
+  .col-xs-12 {
     padding-left: 0;
     padding-right: 0;
   }
@@ -15,7 +62,7 @@
     width: 100%;
   }
 
-  >.container-fluid {
+  > .container-fluid {
     background-color: $sand-white;
   }
 
@@ -35,12 +82,11 @@
         }
 
         .rect-responsive {
-
+          padding-bottom: 65%;
           @media (min-width: $screen-lg-max) {
             min-height: 145px !important;
           }
         }
-
 
         .swiper-slide {
           width: 66.66666667%;
@@ -49,6 +95,9 @@
 
       .context-nav-box {
         background-color: $white;
+        position: absolute;
+        height: 100%;
+        width: 100%;
 
         &.content {
           display: flex;
@@ -77,6 +126,7 @@
           padding-top: 1em;
           position: relative;
           text-transform: uppercase;
+          text-align: center;
         }
 
         h5::after {
@@ -94,7 +144,6 @@
         &:hover {
           background-color: $main-green;
           cursor: pointer;
-
 
           a h5 {
             color: $white;
@@ -116,7 +165,7 @@
         }
 
         h5 {
-          height: toRem(50);
+          height: toRem(60);
           padding-left: 5%;
           padding-right: 5%;
         }
@@ -208,28 +257,32 @@
       overflow: hidden;
       padding: 0 0 2rem;
       text-align: center;
-
+      @include respond-to-max($tablet) {
+        padding: 0 0 3.5rem;
+      }
 
       .swiper-wrapper {
         -webkit-filter: blur(0);
 
         .rect-responsive {
+          padding-bottom: 65%;
           @media (min-width: $screen-lg-max) {
             min-height: 205px;
             min-width: 223.76px;
           }
         }
 
-
         .swiper-slide {
           width: 66.66666667%;
         }
       }
 
-
       .context-nav-box {
         background-color: $white;
         min-height: toRem(205);
+        position: absolute;
+        height: 100%;
+        width: 100%;
 
         @include respond-to-max($tablet) {
           min-height: toRem(190);
@@ -266,7 +319,6 @@
           margin-top: 0.5rem;
           padding-top: 1em;
           position: relative;
-                    
         }
 
         h5::after {
@@ -284,7 +336,6 @@
         &:hover {
           background-color: $main-green;
           cursor: pointer;
-
 
           a h5 {
             color: $white;
@@ -306,7 +357,7 @@
         }
 
         h5 {
-          height: 3.75rem;
+          height: toRem(60);
           padding-left: 5%;
           padding-right: 5%;
         }
@@ -327,13 +378,12 @@
     }
   }
 
-
   .support-logout-heading {
     font-size: 30px;
     letter-spacing: 0;
     margin-bottom: 2rem;
     margin-top: 2rem;
-    text-align: center;
+    text-align: center !important;
   }
 }
 
@@ -350,7 +400,6 @@
         margin-top: 1rem;
       }
     }
-
   }
 }
 
@@ -362,12 +411,14 @@
     padding: 0 0 2.25rem;
 
     .context-nav-box {
-      &.content {}
+      &.content {
+      }
 
       .icon-area {
-        img, svg {
+        img,
+        svg {
           height: 2.4rem !important;
-          
+
           @include respond-to-max($phone) {
             height: toRem(54) !important;
           }
@@ -464,6 +515,108 @@
 
     &:last-child {
       border-bottom: $border-step-1 solid $light-sand-brown;
+    }
+  }
+}
+.iconcardlist {
+  float: unset;
+}
+
+// Accessibility
+.acc-black {
+  .row-context-nav {
+    & > .container-fluid {
+      background-color: $black;
+    }
+
+    .cmp-icon-card-four-item,
+    .cmp-icon-card-three-item {
+      .context-nav-box-wrap {
+        .context-nav-box {
+          background-color: $black;
+          border: 1px solid $white;
+
+          &::after {
+            background-color: $white;
+          }
+        }
+        a h5 {
+          color: $white;
+
+          &::after {
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .row-context-nav {
+    & > .container-fluid {
+      background-color: $blue4;
+    }
+    .cmp-icon-card-four-item,
+    .cmp-icon-card-three-item {
+      .context-nav-box-wrap {
+        .context-nav-box {
+          background-color: $blue4;
+          border: 1px solid $white;
+
+          &::after {
+            background-color: $white;
+          }
+        }
+
+        a h5 {
+          color: $white;
+
+          &::after {
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .row-context-nav {
+    & > .container-fluid {
+      background-color: $black;
+    }
+
+    .cmp-icon-card-four-item,
+    .cmp-icon-card-three-item {
+      .context-nav-box-wrap {
+        .context-nav-box {
+          background-color: $black;
+          border: 1px solid $yellow-light;
+          &::after {
+            background-color: $yellow-light;
+          }
+          &.hover,
+          &:hover {
+            background-color: transparent;
+
+            a h5 {
+              color: $yellow-light;
+            }
+
+            h5::after {
+              background-color: $yellow-light;
+            }
+          }
+        }
+        a h5 {
+          color: $yellow-light;
+
+          &::after {
+            background-color: $yellow-light;
+          }
+        }
+      }
     }
   }
 }

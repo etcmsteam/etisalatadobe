@@ -22,6 +22,13 @@ $(document).ready(function () {
     .off()
     .on("click", function () {
       //var currentPopUp = $(this).find('.accessibility-popup');
+      if ($(this).hasClass("mobile-accessibility-popup")) {
+        const accessibilityOverlay = $(".accessibility-overlay");
+        $("body").append(accessibilityOverlay);
+      }
+      setTimeout(function () {
+        $(".modal-backdrop").hide();
+      }, 10);
       $(".accessibility-overlay").modal("show");
       $("body").addClass("freeze");
     });
@@ -57,28 +64,32 @@ $(document).ready(function () {
     localStorage.setItem("theme", radio.prop("value"));
   });
 
-  if (localStorage.getItem("zoom") == "large") {
-    zoomIn();
-    $(".selector-toggle-item").children('input[type="radio"][value=large]').prop("checked", true);
-    if ($("html").attr("lang") === "ar") {
-      $(".acc-font-controller .selector-toggle-title").html("<strong> حجم الخط : </strong> كبير");
-    } else {
-      $(".acc-font-controller .selector-toggle-title").html("<strong> Text size : </strong> Large");
+  const PAGE_TYPE = $("body").hasClass("consumer__page");
+
+  if (PAGE_TYPE) {
+    if (localStorage.getItem("zoom") == "large") {
+      zoomIn();
+      $(".selector-toggle-item").children('input[type="radio"][value=large]').prop("checked", true);
+      if ($("html").attr("lang") === "ar") {
+        $(".acc-font-controller .selector-toggle-title").html("<strong> حجم الخط : </strong> كبير");
+      } else {
+        $(".acc-font-controller .selector-toggle-title").html("<strong> Text size : </strong> Large");
+      }
     }
-  }
-  if (localStorage.getItem("theme")) {
-    $("body").addClass(localStorage.getItem("theme"));
-    $(".acc-theme-controller")
-      .children('input[type="radio"][value=' + localStorage.getItem("theme") + "]")
-      .prop("checked", true);
-    var themeName = $("input[value=" + localStorage.getItem("theme") + "]")
-      .parent()
-      .find("span")
-      .text();
-    if ($("html").attr("lang") === "ar") {
-      $(".selector-toggle-container-colored .selector-toggle-title").html("<strong> الألوان:  </strong> " + themeName);
-    } else {
-      $(".selector-toggle-container-colored .selector-toggle-title").html("<strong> Colour : </strong> " + themeName);
+    if (localStorage.getItem("theme")) {
+      $("body").addClass(localStorage.getItem("theme"));
+      $(".acc-theme-controller")
+        .children('input[type="radio"][value=' + localStorage.getItem("theme") + "]")
+        .prop("checked", true);
+      var themeName = $("input[value=" + localStorage.getItem("theme") + "]")
+        .parent()
+        .find("span")
+        .text();
+      if ($("html").attr("lang") === "ar") {
+        $(".selector-toggle-container-colored .selector-toggle-title").html("<strong> الألوان:  </strong> " + themeName);
+      } else {
+        $(".selector-toggle-container-colored .selector-toggle-title").html("<strong> Colour : </strong> " + themeName);
+      }
     }
   }
 

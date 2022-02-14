@@ -24,13 +24,11 @@
 	            </div>
 	            <div data-sly-test="${!properties.searchDisabled}" class="col-xs-12 col-md-3 main-text-action-wrapper">
 	               <div class="search-wrapper">
-	                  <form action="${currentPage.path @ extension = 'html'}" class="form" id="search_${blogpost.id}" method="POST" novalidate="" data-active="true">
+	                  <form action="javascript:void(0)" class="form cmp-form" id="search_${component.id}" method="POST" novalidate="" data-active="true">
 	                     <div class="form-group floating-label-input input-field ">
-	                        <input id="${properties.searchInputID}"
-	                           placeholder="${properties.placeholderTxt}"
-	                           name="${properties.name}"
+	                        <input name="${properties.name}"
 	                           value="${properties.value}"                            
-	                           type="text">
+	                           type="text" required>
 	                        <label> ${properties.inputLbl}</label>
 	                        <span class="search-icon">
 	                           <svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -89,8 +87,8 @@
 	                           <div class="box-details">
 	                              <p data-sly-test="${pageItem.description}">${pageItem.description @ context = 'html'}</p>
 	                           </div>
-	                           <div class="date" data-sly-test="${pageItem.articleDate}">
-	                              <p>${'dd MMM yyyy' @ format=pageItem.articleDate}</p>
+	                           <div class="date" data-sly-test="${pageItem.articleDateDisplayString}">
+	                              <p>${pageItem.articleDateDisplayString}</p>
 	                           </div>
 	                        </div>
 	                     </div>

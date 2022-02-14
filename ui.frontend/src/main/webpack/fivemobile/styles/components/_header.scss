@@ -1,61 +1,79 @@
+/* stylelint-disable shorthand-property-no-redundant-values */
+/* stylelint-disable max-nesting-depth */
+/* stylelint-disable no-descending-specificity */
+
 /* HEADER STARTS */
 header {
   background-color: $white-color;
+
   @include respond-to-max($desktop) {
     .cmp-experiencefragment--header {
       min-height: 20px;
+
       &.Scroll-Up {
         border-bottom: 1px solid $color-white-light;
         height: 67px;
         min-height: 0;
+
         .main-nav__list {
           top: 50px;
         }
       }
+
       &.Scroll-Down {
         .main-nav__list {
           top: 80px;
         }
       }
+
       .cmp-image {
         max-width: 45px;
       }
+
       .main-nav__list {
         background-color: $white-color;
-        display: none;
         box-shadow: none;
+        display: none;
         top: 80px;
         transition: all 0.2s ease-in-out;
+
         &.ShowMenu {
           max-height: 400px;
+
+          @include respond-to-max($tablet) {
+            max-height: 450px;
+          }
         }
       }
     }
   }
+
   .cmp-experiencefragment--header {
+    background: $white-color;
     padding: 0 10px;
     position: fixed;
     top: 0;
-    width: 100%;
-    background: $white-color;
-    z-index: 1;
     transition: height 0.35s ease-in-out;
+    width: 100%;
+    z-index: 1;
 
     &.Scroll-Up {
       .cmp-image {
-        width: 36px;
         top: 5px;
+        width: 36px;
       }
     }
+
     &.Scroll-Down {
       border-bottom: none;
       height: 100px;
 
       .cmp-image {
         display: block;
-        width: 86px;
         top: 20px;
+        width: 86px;
       }
+
       .menu__icon {
         top: 25px;
       }
@@ -65,41 +83,53 @@ header {
       position: relative;
       top: 20px;
       transition: width 0.35s ease-in-out;
+
+      @include respond-to-max($tablet) {
+        z-index: 99;
+      }
+
       .cmp-image__image {
         width: 100%;
       }
     }
 
     nav {
+      left: 0;
       position: fixed;
+      top: 0;
       width: 100%;
       z-index: 3;
-      width: 100%;
-      left: 0;
-      top: 0;
+
+      @include respond-to-max($tablet) {
+        background-color: $white-color;
+      }
+
       .menu__checkbox {
         opacity: 0;
       }
 
       .menu__icon {
+        background: $white-color;
         cursor: pointer;
         display: block;
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        user-select: none;
-        background: $white-color;
         outline: none;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        user-select: none;
+
         ::selection {
           background: none;
         }
+
         .hamburger {
           background: $color-violet;
           display: block;
           height: 5px;
+          margin-top: 20px;
           position: relative;
           width: 34px;
-          margin-top: 20px;
+
           &::before,
           &::after {
             background: $light-grey;
@@ -109,31 +139,41 @@ header {
             position: absolute;
             width: 100%;
           }
+
           &::before {
             top: 8px;
           }
+
           &::after {
             top: -8px;
           }
         }
       }
+
       .main-nav__list {
         position: relative;
         transition: width 0.35s ease-in-out;
 
         .main-nav__item {
           border-top: 1px solid $light-white;
+
           &:first-child {
             border-width: 0;
           }
+
           .main-nav__link {
+            border-right: 1px solid $thick-white;
             color: $light-purple;
             display: block;
-            padding: 10px;
-            font-size: toRem(14);
-            border-right: 1px solid $thick-white;
-            text-decoration: none;
             font-family: $fontfamily-book;
+            font-size: toRem(14);
+            padding: 10px;
+            text-decoration: none;
+
+            @include respond-to-max($tablet) {
+              font-size: toRem(16);
+            }
+
             &:hover,
             &:focus {
               color: $greyish-white;
@@ -143,43 +183,52 @@ header {
         }
       }
     }
+
     @include respond-to-min($desktop) {
       min-height: 160px;
 
       &.Scroll-Up {
-        min-height: 70px;
         border-bottom: 1px solid $color-white-light;
+        min-height: 70px;
+
         .menu__icon {
           top: 25px;
         }
+
         .main-nav__list {
-          top: 20px;
+          top: 2px;
         }
       }
+
       &.Scroll-Down {
         .main-nav__list {
           top: 60px;
         }
       }
+
       .cmp-image,
       .header__figure {
         max-width: 83px;
       }
+
       .main-nav,
       nav {
-        position: static;
         background: $white-color;
+        position: static;
+
         .main-nav__list {
-          display: block;
           clear: none;
-          max-height: none;
+          display: block;
           float: right;
-          margin: 0 15px 0 0;
-          top: 60px;
           left: 20px;
+          margin: 0 15px 0 0;
+          max-height: none;
+          top: 60px;
+
           .main-nav__item {
-            float: left;
             border-top: 0;
+            float: left;
+
             .main-nav__link {
               border: 0;
             }
@@ -195,11 +244,12 @@ header {
     }
   }
 }
+
 /* HEADER ENDS */
 
 .cmp-teaser__image {
-  text-align: center;
   padding-right: 10px;
+  text-align: center;
 }
 
 .cmp-image__image {
@@ -210,22 +260,26 @@ header {
 /* FOOTER STARTS */
 footer {
   border-top: none;
+
   .cmp-container {
-    padding: 1rem 0rem;
+    background-color: none;
     margin: 0 auto 0.5rem auto;
     max-width: 996px;
-    background-color: none;
+    padding: 1rem 0;
+
     .cmp-text {
-      font-size: $font-size;
-      padding: 40px 0;
-      text-align: center;
-      line-height: 20px;
       color: $white-color;
       font-family: $fontfamily-light;
+      font-size: $font-size;
+      line-height: 20px;
+      padding: 40px 0;
+      text-align: center;
     }
+
     @include respond-to-max($phone) {
       padding: 0 !important;
     }
+
     @include respond-to-max($desktop) {
       margin-bottom: 1rem;
       padding-left: 1rem;
@@ -233,6 +287,7 @@ footer {
     }
   }
 }
+
 /* FOOTER ENDS */
 
 /* Banner Component */
@@ -241,26 +296,31 @@ footer {
     .cmp-container {
       &:first-child {
         height: 410px;
+
         @include respond-to-max($desktop) {
           height: 330px;
+
           @include respond-to-max($phone) {
             height: 150px;
           }
         }
       }
+
       .teaser {
-        max-width: 1024px;
-        width: 100%;
-        text-align: center;
-        margin: 0 auto;
-        padding: 0 15px;
         float: none;
+        margin: 0 auto;
+        max-width: 1024px;
+        padding: 0 15px;
+        text-align: center;
+        width: 100%;
+
         .cmp-image__image {
           @include respond-to-max($desktop) {
             position: relative;
             top: 20px;
           }
         }
+
         .cmp-teaser__content {
           float: left;
         }
@@ -268,4 +328,3 @@ footer {
     }
   }
 }
-

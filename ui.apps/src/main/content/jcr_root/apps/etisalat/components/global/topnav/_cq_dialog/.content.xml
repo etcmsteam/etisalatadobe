@@ -53,13 +53,13 @@
                                                             required="{Boolean}true"
                                                             rootPath="/content"/>
                                                         <active
-					                                        jcr:primaryType="nt:unstructured"
-					                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"					                                        					                                       
-					                                        fieldLabel="Active"
-					                                        name="./active"
-					                                        text="Active"
-					                                        uncheckedValue="{Boolean}false"
-					                                        value="{Boolean}true"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldLabel="Active"
+                                                            name="./active"
+                                                            text="Active"
+                                                            uncheckedValue="{Boolean}false"
+                                                            value="{Boolean}true"/>
                                                     </items>
                                                 </field>
                                             </topnavpath>
@@ -114,14 +114,25 @@
                                                             fieldLabel="Image"
                                                             name="./navigationImage"
                                                             rootPath="/content/dam"/>
-														<modalpopup
+                                                        <openmodalwindow
                                                             jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                            fieldLabel="Open In Modal window"
-                                                            name="./openmodalwindow"
-                                                            text="Open In Modal window"
-                                                            uncheckedValue="\{Boolean}false"
-                                                            value="\{Boolean}true"/>
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Modal Popup Behavior "
+                                                            name="./openmodalwindow">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <selectmodalbehavior
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Select Modal Behavior"/>
+                                                                <modalwindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Our Markets Section Overlay"
+                                                                    value="modalwindow"/>
+                                                                <accessibilityoverlay
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Accessibility Overlay"
+                                                                    value="accessibilityoverlay"/>
+                                                            </items>
+                                                        </openmodalwindow>
                                                         <fragmentVariationPath
                                                             granite:id="xfPicker"
                                                             jcr:primaryType="nt:unstructured"
@@ -147,7 +158,7 @@
                             </columns>
                         </items>
                     </iconlinks>
-					<languageChange
+                    <languageChange
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Language Navigation"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -167,7 +178,7 @@
                                                 sling:resourceType="cq/gui/components/coral/common/form/pagefield"
                                                 fieldDescription="The root page of the global language structure."
                                                 fieldLabel="Navigation Root"
-                                                name="./navigationRoot"                                                
+                                                name="./navigationRoot"
                                                 rootPath="/content"/>
                                             <id
                                                 jcr:primaryType="nt:unstructured"

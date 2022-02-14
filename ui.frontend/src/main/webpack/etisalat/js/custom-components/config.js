@@ -69,7 +69,6 @@ $(document).ready(function () {
       } else {
         $('body').removeClass('fixed-config-section');
       }
-      console.log('touch start');
       var fixedWrapper = $('#fixed-wrapper').attr('data-behaviour')
       if (windowWidth < 991 && fixedWrapper) {
         $('#fixed-wrapper').addClass(fixedWrapper);

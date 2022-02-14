@@ -695,7 +695,6 @@
 
     .nv-modal-content {
       height: 100%;
-      overflow-x: auto;
     }
   }
 
@@ -1002,6 +1001,20 @@
       overflow: hidden;
       padding: 2rem 2rem 3rem;
 
+      @include respond-to-max($desktop-min) {
+        padding: 2rem 1rem 3rem;
+      }
+
+      @include respond-to-min-max($desktop-wide, $tablet + 1) {
+        height: toRem(770);
+
+        .modal-popup {
+          .offer-details-wrapper {
+            max-height: 100%;
+          }
+        }
+      }
+
       *[lang="ar"] *[dir="rtl"] & {
         padding: 2rem 1.3rem 3rem;
       }
@@ -1091,7 +1104,6 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
-  
 }
 
 .nv-modal__doublemin {

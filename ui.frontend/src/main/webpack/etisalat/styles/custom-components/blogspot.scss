@@ -309,6 +309,9 @@
         margin-right: 33.3333%;
       }
     }
+    @include respond-to-min($tablet) {
+      margin-right: 0;
+  }
   }
   .item {
     display: none;
@@ -968,6 +971,18 @@ textarea.materialize-textarea:focus:not([readonly]) {
       @include respond-to-min-max($desktop-wide, $desktop) {
         margin-right: -15px;
       }
+      .cmp-form {
+        .form-group {
+          margin-top: 0;
+          input:valid ~ label {
+            color: $almost-black;
+            font-size: $font16;
+            transform: translateY(-10px) scale(0.8);
+            transform-origin: 0 0;
+            z-index: 2;
+          }
+        }
+      }
     }
   }
   .input-field {
@@ -1008,9 +1023,23 @@ textarea.materialize-textarea:focus:not([readonly]) {
       }
     }
   }
+  .search-target {
+    align-items: baseline;
+    display: flex;
+    h3 {
+      font-size: $font20;
+      line-height: toRem(25);
+      padding-bottom: toRem(4);
+    }
+  }
   .container {
     @include respond-to-min($desktop-wide) {
       width: toRem(1200);
+
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
     @include respond-to-min-max($desktop-wide, $desktop-min) {
       width: toRem(952);

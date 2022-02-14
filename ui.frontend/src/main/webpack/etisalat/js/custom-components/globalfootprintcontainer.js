@@ -1,12 +1,13 @@
-import {isMobile, IsMediaQuery} from '../helpers'
+import {isMobile, IsMediaQuery} from '../../../global/js/helpers';
+import { swiperInit } from "../../../global/js/swiperInitialize";
+
 if ($(".globalfootprintcontainer").length > 0) {
-  var galleryTop = new Swiper('.swiper-gallery-slide', {
+  var $slider = $(".globalfootprintcontainer").find('.swiper-gallery-slide');
+  var galleryTop = swiperInit('.swiper-gallery-slide', {
     spaceBetween: 10,
     effect: 'fade',
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    nextButton: $slider.find('.swiper-button-next'),
+    prevButton: $slider.find('.swiper-button-prev'),
     loop: true,
     loopedSlides: 16,
     breakpoints: {
@@ -20,7 +21,7 @@ if ($(".globalfootprintcontainer").length > 0) {
         }
     }
   });
-  var galleryThumbs = new Swiper('.swiper-gallery-thumbs', {
+  var galleryThumbs = swiperInit('.swiper-gallery-thumbs', {
     spaceBetween: 10,
     speed:900,
     centeredSlides: false,
@@ -43,8 +44,8 @@ if ($(".globalfootprintcontainer").length > 0) {
         }
     }
   });
-  galleryTop.controller.control = galleryThumbs;
-  galleryThumbs.controller.control = galleryTop;
+  galleryTop.params.control = galleryThumbs;
+  galleryThumbs.params.control = galleryTop;
 }
 
 if (!IsMediaQuery.md.matches) {

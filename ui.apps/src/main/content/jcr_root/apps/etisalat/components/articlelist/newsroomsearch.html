@@ -13,7 +13,7 @@
 			</div>
 			<div class="col-xs-12 col-md-3">
 			  <div data-sly-test="${!properties.searchDisabled}" class="main-text-action-wrapper global-map-country-filter category-search">
-				<form class="form wst-form" id="search_${newsroom.id}" data-active="true" novalidate="novalidate">
+				<form class="form wst-form" id="search_${component.id}" data-active="true" novalidate="novalidate">
 				  <sly data-sly-set.totalResults="${properties.searchCategoryResultLbl} (${newsRoomList.size})" />
 				  <div class="row">
 					<div class="form-group floating-label-select floating-label-selected input-field col-xs-12">
@@ -67,7 +67,7 @@
 						<div class="tile-box-body">
 						  <h5 class="annoucements" data-sly-test="${pageItem.category}"> ${pageItem.category}</h5>
 						  <h2 data-sly-test="${pageItem.title}">${pageItem.title}</h2>
-						  <span data-sly-test="${pageItem.articleDate}" class="annoucement-date">${'dd MMM yyyy' @ format=pageItem.articleDate}</span>
+						  <span data-sly-test="${pageItem.articleDateDisplayString}" class="annoucement-date">${pageItem.articleDateDisplayString}</span>
 						  <div class="paragraph-styling ul-list-cms">
 							<p data-sly-test="${pageItem.description}">${pageItem.description @ context = 'html'}</p>
 						  </div>

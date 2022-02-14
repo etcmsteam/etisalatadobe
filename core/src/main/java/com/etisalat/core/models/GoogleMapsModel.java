@@ -6,11 +6,14 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import com.etisalat.core.util.CommonUtility;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.wcm.api.Page;
 import com.etisalat.core.services.GoogleMapsService;
 import com.etisalat.core.services.StoreLocatorService;
 
@@ -24,9 +27,14 @@ public class GoogleMapsModel {
   String key;
   String storeLocatorUrl;
   String googleContactUrl;
-  String captchaV2;
+  String hiuAppCaptchaV2;
+  String ewalletAppCaptchaV2;
+  String etisalatAppCaptchaV2;
   String captchaV3;
   String captchaInvisible;
+  
+  @ScriptVariable
+  Page currentPage;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String mapViewTitle;
@@ -43,12 +51,13 @@ public class GoogleMapsModel {
 
     url = googleService.getGoogleUrl();
     key = googleService.getGoogleKey();
+    hiuAppCaptchaV2 = googleService.getCaptchaV2HiuAppKey();
+    ewalletAppCaptchaV2 = googleService.getCaptchaV2EwalletAppKey();
+    etisalatAppCaptchaV2 = googleService.getCaptchaV2EtisalatAppKey();
     storeLocatorUrl = storeService.getStoreLocatorUrl();
     googleContactUrl = googleService.getGoogleContactUsUrl();
-
-    this.captchaV2 = googleService.getCaptchaV2SiteKey();
     this.captchaV3 = googleService.getCaptchaV3SiteKey();
-    this.captchaInvisible = googleService.getCaptchaInvisibleSiteKey();
+    this.captchaInvisible = googleService.getCaptchaInvisibleEtisalatAppKey();
   }
 
   public String getUrl() {
@@ -92,8 +101,14 @@ public class GoogleMapsModel {
   /**
    * @return the captchaV2
    */
-  public String getCaptchaV2() {
-    return captchaV2;
+  public String getCaptchaV2() {	 
+	  if(null != currentPage && CommonUtility.isHiuAppPage(currentPage)) {
+		  return hiuAppCaptchaV2;
+	  }
+	  else if(null != currentPage && CommonUtility.isEwalletAppPage(currentPage)) {
+		  return ewalletAppCaptchaV2;
+	  }	
+	  return etisalatAppCaptchaV2;
   }
 
   /**

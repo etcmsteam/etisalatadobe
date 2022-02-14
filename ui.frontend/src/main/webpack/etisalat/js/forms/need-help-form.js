@@ -1,4 +1,4 @@
-import { DIAL_CODE_DATA } from "../constant";
+import { DIAL_CODE_DATA } from "../../../global/js/constant";
 (function () {
   const $FORM = $("#cwsNeedHelp");
   const $SUBMIT_CTA = $("#cwsNeedHelp .cmp-form-button");
@@ -12,6 +12,34 @@ import { DIAL_CODE_DATA } from "../constant";
       return false;
     }
   });
+
+  function getFormData($form) {
+    var o = {};
+    var a = $form.serializeArray();
+    $.each(a, function () {
+      if (o[this.name]) {
+        if (!o[this.name].push) {
+          o[this.name] = [o[this.name]];
+        }
+        o[this.name].push(this.value || "");
+      } else {
+        o[this.name] = this.value || "";
+      }
+    });
+    return o;
+  }
+
+  function submitErrorResponse(jqXHR, textStatus, error) {
+    let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
+    console.log(errorText);
+  }
+
+  var submitSuccessResponse = function (json, statusText, xhr) {
+    let path = window.location.pathname;
+    let page = path.split("/").pop();
+    window.location.href = window.location.href.replace(page, "cws-need-help-success.html");
+    return true;
+  };
 
   $FORM.validate({
     rules: {
@@ -49,6 +77,64 @@ import { DIAL_CODE_DATA } from "../constant";
     },
 
     submitHandler: function () {
+      const formData = getFormData($FORM);
+
+      let dataWithPayload = {
+        accountNumber: formData["country-code"] + formData.contactNumber,
+        email: "cwsmarketing@etisalat.ae",
+        notificationType: "EMAIL",
+        notificationScenario: "leadInquiry",
+        gCaptchaResponse: formData["g-recaptcha-response"],
+        params: [
+          {
+            key: "CUSTOMER_NAME",
+            value: formData.fullName,
+          },
+          {
+            key: "EMAIL",
+            value: formData.emailAddress,
+          },
+          {
+            key: "CONTACT",
+            value: formData["country-code"] + formData.contactNumber,
+          },
+          {
+            key: "COUNTRY",
+            value: formData.countryName,
+          },
+          {
+            key: "COMPANY",
+            value: formData.companyName,
+          },
+          {
+            key: "SERVICE",
+            value: formData.selectServices,
+          },
+          {
+            key: "DETAIL",
+            value: formData.description,
+          },
+        ],
+      };
+
+      let dataObj = JSON.stringify(dataWithPayload, null, 2);
+
+
+      $.ajax({
+        type: "POST",
+        url: "https://www.etisalat.ae/b2c/sendNotification.service",
+        data: dataObj,
+        dataType: "json",
+
+        headers: {
+          "content-type": "application/json",
+          "x-calling-application": "cms",
+        },
+
+        encode: true,
+      })
+        .done(submitSuccessResponse)
+        .fail(submitErrorResponse);
       return false;
     },
   });
@@ -129,12 +215,15 @@ import { DIAL_CODE_DATA } from "../constant";
 
   // loop over all of the countries above, restructuring the data to be objects with named keys
   var $dialCodeDropDown = $("#country-code");
+  var cuntryCode = DIAL_CODE_DATA.map((item) => {
+    return { id: item.text, text: item.text, code: item.id };
+  });
   $dialCodeDropDown.select2({
-    data: DIAL_CODE_DATA,
+    data: cuntryCode,
     dropdownParent: $dialCodeDropDown.parent(".cmp-form-options"),
   });
   $dialCodeDropDown.on("select2:select", function (e) {
     var data = e.params.data;
-    iti.setCountry(data.id);
+    iti.setCountry(data.code);
   });
 })();

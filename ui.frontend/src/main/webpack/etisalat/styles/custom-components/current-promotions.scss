@@ -503,7 +503,7 @@
     .learn-more-wrap {
       text-align: right;
     }
-    
+
     .current-promotions-wrraper.one-only .swiper-slide:last-child {
       margin-left: 0 !important;
       margin-right: auto;
@@ -704,10 +704,14 @@
       margin-top: 1rem;
       max-height: 300px;
       overflow-x: hidden;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     @media (min-width: 768px) and (max-width: 1024px) {
       margin-top: 1rem;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     @media (min-width: 768px) {
@@ -741,7 +745,7 @@
 
     p {
       color: $steel-grey;
-      direction: rtl;
+      // direction: rtl;
       font-size: $font14;
       line-height: 1.43;
       margin-bottom: 1rem;
@@ -820,6 +824,12 @@
         }
       }
     }
+  }
+}
+
+.bottom-modal {
+  .nv-modal-close svg {
+    top: 30px !important;
   }
 }
 
@@ -903,7 +913,6 @@
 
     .nv-modal-content {
       height: 100%;
-      overflow-x: auto;
     }
   }
 
@@ -913,7 +922,6 @@
       left: 0;
       position: fixed;
       right: 0;
-      top: -1px !important;
     }
   }
 
@@ -958,7 +966,6 @@
   cursor: pointer;
   display: flex;
   float: right;
-  float: left;
   height: 24px;
   width: 24px;
 
@@ -1044,6 +1051,47 @@
         margin-right: 2rem;
         margin-top: -1rem;
         text-align: center !important;
+      }
+    }
+
+    .nv-modal-dialog {
+      height: 100%;
+      width: 100%;
+      .nv-modal-content {
+        .container {
+          @include respond-to-max($phone) {
+            width: 100%;
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .nv-modal-close svg {
+      right: 0;
+    }
+
+    .modal-popup {
+      .offer-details-wrapper {
+        max-height: 100%;
+      }
+
+      .nv-modal-body {
+        overflow: hidden;
+        overflow-y: auto;
+        @include respond-to-max($tablet) {
+          max-height: 80vh;
+        }
+        @include respond-to-min-max($desktop-min, $tablet + 1) {
+          max-height: 60vh;
+        }
+        @include respond-to-min-max($desktop-wide, $desktop) {
+          max-height: 75vh;
+        }
+      }
+
+      .nv-modal-body::-webkit-scrollbar-thumb {
+        background-color: $grey5 !important;
       }
     }
   }
@@ -1416,6 +1464,22 @@
     right: 0;
     top: 0;
     width: 47%;
+
+    .nv-modal-content {
+      .container {
+        width: 100%;
+        padding: 0;
+      }
+
+      .nv-modal-close svg {
+        top: 30px !important;
+        right: 0;
+
+        @include respond-to-max($desktop-min) {
+          top: 16px !important;
+        }
+      }
+    }
   }
 }
 
@@ -1520,6 +1584,11 @@
           margin-right: 48px;
           text-align: left;
 
+          @include respond-to-max($desktop-min) {
+            font-size: $font20;
+            margin-right: 0;
+          }
+
           *[lang="ar"] *[dir="rtl"] & {
             text-align: right;
           }
@@ -1558,6 +1627,11 @@
 
       ul li {
         margin: 0 0 1rem 1.5rem;
+
+        @include respond-to-max($desktop-min) {
+          font-size: $font16;
+          margin-left: 1rem;
+        }
       }
 
       p {
@@ -1565,6 +1639,32 @@
         line-height: 1.6;
       }
     }
+  }
+
+  .modal-popup {
+    .nv-modal-body {
+      overflow: hidden;
+      overflow-y: auto;
+      @include respond-to-max($tablet) {
+        max-height: 80vh;
+      }
+      @include respond-to-min-max($desktop-min, $tablet + 1) {
+        max-height: 55vh;
+      }
+      @include respond-to-min-max($desktop-wide, $desktop) {
+        max-height: 70vh;
+      }
+    }
+  }
+
+  .nv-modal-body::-webkit-scrollbar-thumb {
+    background-color: $grey5 !important;
+  }
+}
+
+.left-modal {
+  .nv-modal-close svg {
+    top: 30px !important;
   }
 }
 
@@ -1590,6 +1690,11 @@
 
   .modal-popup .offer-details-wrapper p {
     padding-right: 8px;
+  }
+
+  .nv-row {
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -1697,7 +1802,7 @@
     }
 
     .nv-modal__doublemin .offer-details-wrapper {
-      margin: 0 1rem 1rem 0;
+      margin: 0;
     }
   }
 }
@@ -1769,6 +1874,12 @@
   }
 }
 
+.nv-modal {
+  &.left-modal {
+    overflow: hidden;
+  }
+}
+
 @include respond-to-min($desktop) {
   .right-50-modal {
     .nv-modal-close img,
@@ -1835,6 +1946,7 @@
     .nv-py-5 {
       height: 100vh !important;
       overflow: scroll !important;
+      padding-top: toRem(32);
     }
 
     .nv-modal__doublemin {
@@ -1899,6 +2011,68 @@
   .aem-GridColumn.aem-GridColumn--default--9 {
     @include rtlBlock() {
       float: right;
+    }
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .current-promotions-wrraper {
+    .lbl {
+      color: $white;
+    }
+    .promotions-title-wrap {
+      h2 {
+        color: $white;
+      }
+    }
+  }
+
+  .current-promotions-box {
+    background-color: $black;
+
+    .description {
+      color: $white;
+      p, h1, h2, h3, h4, h5, h6, pre {
+        color: $white;
+      }
+      hr {
+        border: toRem(1) solid $white;
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .current-promotions-box {
+    background-color: $blue4;
+  }
+}
+
+.acc-yellow {
+  .current-promotions-wrraper {
+    .lbl {
+      color: $yellow-light;
+    }
+    .promotions-title-wrap {
+      h2 {
+        color: $yellow-light;
+      }
+    }
+  }
+
+  .current-promotions-box {
+    background-color: $black;
+
+    .description {
+      color: $yellow-light;
+      p, h1, h2, h3, h4, h5, h6, pre {
+        color: $yellow-light;
+      }
+      hr {
+        border: toRem(1) solid $yellow-light;
+      }
     }
   }
 }
