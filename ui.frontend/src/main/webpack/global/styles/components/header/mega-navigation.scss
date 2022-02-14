@@ -2002,9 +2002,18 @@
       .menu-promotion-wrapper,
       .menu-items-wrapper {
         flex: 1 1 auto;
-        margin: toRem(24) toRem(24) toRem(24) 0;
-        max-width: 60%;
+        margin: 0;
+        max-width: 50%;
         width: 100%;
+      }
+
+      .menu-promotion-wrapper {    
+        margin: toRem(32) 0;
+        padding-right: toRem(32);
+
+        .tiles-wrapper {
+          justify-content: right;
+        }
       }
 
       .menu-top {
@@ -2013,7 +2022,12 @@
 
       .tiles-wrapper .tile {
         margin-left: toRem(16);
-        flex-grow: 1;
+        box-shadow: 0 toRem(1) toRem(8) 0 rgb(0 0 0 / 15%);
+        width: toRem(140);
+
+        @include respond-to-min($desktop-large) {
+          width: toRem(168);
+        }
 
         .tile-content-wrapp,
         div.cover {
@@ -2046,11 +2060,49 @@
           width: toRem(110);
           height: toRem(140);
 
+          @include respond-to-min($desktop-large) {
+            width: toRem(152);
+            height: toRem(120);
+          }
+
+          div.cover {
+            height: toRem(80);
+            width: toRem(90);
+
+            @include respond-to-min($desktop-large) {
+              width: toRem(100);
+            }
+          }
+
           .tile-content-wrapp,
           div.cover {
             border-radius: toRem(4);
-            height: toRem(80);
-            width: toRem(90);
+          }
+        }
+      }
+    }
+
+    &.with-six,
+    &.with-three {
+      .menu-promotion-wrapper,
+      .menu-items-wrapper {
+        @include respond-to-min($desktop) {
+          .tile-content-wrapp {
+            position: relative;
+            top: 0;
+            max-width: 100%;
+            height: auto;
+            z-index: 2;
+            border-radius: 0;
+            padding: 0;
+            width: auto;
+            padding-left: toRem(16);
+            background: transparent;
+
+            .content {
+              position: relative;
+              bottom: auto;
+            }
           }
         }
       }
