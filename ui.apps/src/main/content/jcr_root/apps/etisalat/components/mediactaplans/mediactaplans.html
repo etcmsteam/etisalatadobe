@@ -1,5 +1,6 @@
 <div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
      data-sly-use.imageTemplate="image.html" 
      data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      data-sly-test="${properties.fileReference}"
@@ -47,11 +48,14 @@
                         </ul>
                     </div>
 
-                    <div data-sly-test="${properties.seeAllLabel}" class="third-action-wrapper action-link">
-                       <sly data-sly-test.benefitsLink="${properties.viewBenefitsLink}" 
-	               data-sly-use.seeAllBenefitsLink="${'com.etisalat.core.models.CommonLinkModel' @link=benefitsLink}"/>
-                        <a href="${seeAllBenefitsLink.link}" class="link" data-target="${seeAllBenefitsLink.link}">${properties.seeAllLabel}</a>
-                    </div>
+                    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+			         <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
+			           <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" 
+			           class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">${tileModel.ctatext}</a>
+			         </div>
+			        </sly>
+			        <sly data-sly-use.mediaCTATemplate="modalpopup.html"
+				             data-sly-call="${mediaCTATemplate.ctaModelPopup @ component=component,properties=properties}"/>
 
                     <div data-sly-test="${properties.autoRenewalText}" class="paragraph-styling">
                         <div class="p2">
@@ -70,7 +74,7 @@
                     <div data-sly-test="${properties.viewPlanButtonText}" class="media-cta-4-btn">
                      <sly data-sly-test.planCTALink="${properties.viewPlanButtonLink}" 
 	               data-sly-use.viewPlanCTALink="${'com.etisalat.core.models.CommonLinkModel' @link=planCTALink}"/>
-                        <a href="${viewPlanCTALink.link}" class="btn btn-green ripple-effect" alt="${properties.viewPlanAltText}"> ${properties.viewPlanButtonText}</a>
+                        <a href="${viewPlanCTALink.link}" class="btn btn-green ripple-effect"> ${properties.viewPlanButtonText}</a>
                     </div>
                 </div>
             </div>
