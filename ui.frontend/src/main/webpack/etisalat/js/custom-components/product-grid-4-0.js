@@ -1,0 +1,18 @@
+(function () {
+    "use strict";
+      // register the event handlers
+    $(document).ready(function () {
+        // open youtube video and close by removing src and then add
+        $(".youtube-video-link").on("click", function (e) {
+            e.preventDefault();
+            var modalCTA = $(this).next(".mediaCtaVideo");
+            modalCTA.modal().show();
+        });
+
+        $(".youtube-popup-container").on("hidden.bs.modal", function () {
+            var src = $(this).find("iframe").attr("src");
+            $(this).find("iframe").attr("src", "");
+            $(this).find("iframe").attr("src", src.replace("autoplay=1", ""));
+        });
+    });
+})();
