@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Promo Tile"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-tab-dialog-content__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[image,text,actions]">
+                    <promotext
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <promotilevariations
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Promo Tile variation"
+                                                fieldLabel="Select Promo Tile variation"
+                                                name="./promoTilevariation">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <textonly
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Text only"
+                                                        value="textonly"/>
+                                                    <twocolsleftright
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Two Cols Left Right"
+                                                        value="twocolsleftright"/>
+                                                    <twocolsleftrightsmall
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Two Cols Left Right Small"
+                                                        value="twocolsleftrightsmall"/>
+                                                    <twocolsleftrightsmallflipped
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Two Cols Left Right Flipped"
+                                                        value="twocolsleftrightflipped"/>
+                                                    <twocolsupdown
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Two Cols Up and Down"
+                                                        value="twocolsupdown"/>
+                                                    <videowithbg
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Video with BG Image"
+                                                        value="videowithbg"/>
+                                                    <textwithbgimg
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Text with BG Image"
+                                                        value="textwithbgimg"/>
+                                                    <withgradientpurplebg
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Text with Gradient and Purple Color"
+                                                        value="withgradientpurplebg"/>
+                                                    <withsolidbg
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Text with Solid BG"
+                                                        value="withsolidbg"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
+                                            </promotilevariations>
+                                            <videowithbg
+                                                granite:class="linkbehavior-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <youtube
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                        fieldDescription="Enter the video embed URL."
+                                                        fieldLabel="Youtube Video Embed URL"
+                                                        name="./youTubeUrl"/>
+                                                    <play-inplace
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <granite:data jcr:primaryType="nt:unstructured"/>
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <playicon
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                allowUpload="{Boolean}false"
+                                                                autoStart="{Boolean}false"
+                                                                class="cq-droptarget"
+                                                                fieldDescription="Drag &amp; drop the play icon image."
+                                                                fieldLabel="Play Icon"
+                                                                fileNameParameter="./playIconName"
+                                                                fileReferenceParameter="./playIconReference"
+                                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                                multiple="{Boolean}false"
+                                                                name="./playIcon"
+                                                                title="Upload Image Asset"
+                                                                uploadUrl="${suffix.path}"
+                                                                useHTML5="{Boolean}true"/>
+                                                        </items>
+                                                    </play-inplace>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="videowithbg"/>
+                                            </videowithbg>
+                                            <withgradientpurplebg
+                                                granite:class="linkbehavior-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <thumbnail-inplace
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <granite:data jcr:primaryType="nt:unstructured"/>
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <thumbnailicon
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                allowUpload="{Boolean}false"
+                                                                autoStart="{Boolean}false"
+                                                                class="cq-droptarget"
+                                                                fieldDescription="Drag &amp; drop the Thumbnail icon image."
+                                                                fieldLabel="Thumbnail icon"
+                                                                fileNameParameter="./thumbnailIconName"
+                                                                fileReferenceParameter="./thumbnailIconReference"
+                                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                                multiple="{Boolean}false"
+                                                                name="./playIcon"
+                                                                title="Upload Image Asset"
+                                                                uploadUrl="${suffix.path}"
+                                                                useHTML5="{Boolean}true"/>
+                                                        </items>
+                                                    </thumbnail-inplace>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="withgradientpurplebg"/>
+                                            </withgradientpurplebg>
+                                            <titleGroup
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Title and Description"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <pretitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="A PreTitle  for Promo Card"
+                                                        fieldLabel="PreTitle"
+                                                        name="./promopretitle"/>
+                                                    <title
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="A title to display as the headline for the Promo card"
+                                                        fieldLabel="Title"
+                                                        name="./promotitle"/>
+                                                    <description
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="A description to display as the subheadline for the Promo card"
+                                                        fieldLabel="Description"
+                                                        name="./jcr:description"
+                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                </items>
+                                            </titleGroup>
+                                            <id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="HTML ID attribute to apply to the component."
+                                                fieldLabel="ID"
+                                                name="./id"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </promotext>
+                    <promoactions
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Link &amp; Actions"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <promoCTAGroup
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Call-To-Action"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <promobannerctatitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Enter Promo Banner CTA Title"
+                                                        fieldLabel="Promo Tile CTA Title"
+                                                        name="./promoCTATitle"/>
+                                                    <actionbehaviour
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <cardlink
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                fieldDescription="Promo card cta link"
+                                                                fieldLabel="Promo Tile CTA Link"
+                                                                name="./cardLink"
+                                                                rootPath="/content"/>
+                                                            <linkbehavior
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldLabel="Link Behavior"
+                                                                name="./linkBehavior">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <opennewwindow
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open In New Window"
+                                                                        value="opennewwindow"/>
+                                                                    <opensamewindow
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open in Same Window"
+                                                                        value="opensamewindow"/>
+                                                                </items>
+                                                            </linkbehavior>
+                                                        </items>
+                                                    </actionbehaviour>
+                                                </items>
+                                            </promoCTAGroup>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </promoactions>
+                    <image414px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="414px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/cq:dialog/content/items/tabs/items/image414px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                    <image768px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="768px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/cq:dialog/content/items/tabs/items/image768px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                    <image992px
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="992px Image"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <file
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="992px Image"
+                                                fileNameParameter="./image992px/fileName"
+                                                fileReferenceParameter="./image992px/fileReference"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                multiple="{Boolean}false"
+                                                name="./image992px/file"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <alttext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Image Alt text"
+                                                fieldLabel="Image Alt text"
+                                                name="./image992px/altText"/>
+                                            <media
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./image992px/media"
+                                                value="992px"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </image992px>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

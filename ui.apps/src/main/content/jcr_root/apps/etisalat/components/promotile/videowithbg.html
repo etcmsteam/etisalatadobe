@@ -1,0 +1,43 @@
+<template  data-sly-template.VideoWithBg="${ @ properties,commonlinkmodel}">
+<div class="promo-grid-tile-4-0 with-image and-video-icon">
+    <div class="promo-img">
+
+        <!-- youtube link  -->
+        <a href="#" class="youtube-video-link">
+        </a>
+        <!-- Modal start -->
+        <div class="youtube-popup-container modal fade mediaCtaVideo" id="mediaCtaVideo_1" role="dialog" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <iframe width="560" height="315" src="${properties.youTubeUrl}" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Modal start -->
+
+
+        <div class="cover">
+           <picture data-sly-use.viewPortObj="${resource.path}">
+               <sly data-sly-list="${viewPortObj.listChildren}">
+                  <source data-sly-test="${item.fileReference}" srcset="${item.fileReference}" media="(max-width: ${item.media})">
+               </sly>
+               <sly data-sly-list="${viewPortObj.listChildren}">
+                  <sly data-sly-test="${item.media == '992px'}">
+                     <img src="${item.fileReference}" class="cover" alt="${item.altText}">
+                  </sly>
+               </sly>
+            </picture>
+        </div>
+    </div>
+    <div class="promo-content">
+        <div class="content-only">
+            
+            <div class="icon">
+                 <img src="${properties.playIconReference}" alt="Play Video"/>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+</template>
