@@ -7,19 +7,23 @@
     <sly data-sly-test.brandlogoCard="${tileModel.tileBoxContainerLayout == 'brandLogoCard' ? 'logo-li' : ''}"></sly>
     <sly data-sly-test.recommbigCard="${tileModel.tileBoxContainerLayout == 'recommBigCard' ? 'eti-big-card-li' : ''}"></sly>
     <sly data-sly-test.recommCard="${tileModel.tileBoxContainerLayout == 'recommCard' ? 'eti-card-li' : ''}"></sly>
-    <sly data-sly-test.customLink="${properties.viewAllLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
 
     <div class ="${accessoryCard}${brandlogoCard}${recommbigCard}${recommCard}">
-        <a href="${commonlinkmodel.link}" target="${properties.linktarget?'_blank':'_self'}" class="clickable-tile"></a>
+        <sly data-sly-test.cardLink="${properties.viewCardLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=cardLink}">
+        <a href="${commonlinkmodel.link}" target="${properties.cardtarget?'_blank':'_self'}" class="clickable-tile"></a> </sly>
+
         <div data-sly-test="${properties.accessoriescardproductTitle}" class="title">
             <p>${properties.accessoriescardproductTitle}</p>
         </div>
-        <div data-sly-test="${properties.accessoriescardproductTitle}" class="${!wcmmode.edit ? 'third-action-wrapper' :''}  action-link">
-            <a class="link"
-               href="${commonlinkmodel.link}"
-               target="${properties.linktarget?'_blank':'_self'}"
-               title="${properties.viewAllTitle}">${properties.viewAllTitle}</a>
-        </div>
+
+        <sly data-sly-test.customLink="${properties.viewAllLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}">
+            <div data-sly-test="${commonlinkmodel.link && properties.viewAllTitle}" class="${!wcmmode.edit ? 'third-action-wrapper' :''}  action-link">
+                <a class="link"
+                   href="${commonlinkmodel.link}"
+                   target="${properties.linktarget?'_blank':'_self'}"
+                   title="${properties.viewAllTitle}">${properties.viewAllTitle}</a>
+            </div>
+        </sly>
         <div class="img" data-sly-test="${properties['image/fileReference']}">
             <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}">
             </div>
