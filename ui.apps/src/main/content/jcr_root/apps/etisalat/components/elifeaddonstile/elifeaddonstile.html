@@ -1,5 +1,5 @@
 <sly data-sly-use.elifeAddonsTile="com.etisalat.core.models.ElifeAddonsTileModel" data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
-<div class="tile-table product-grid ">
+<div class="tile-table product-grid">
     <div class="tile-card effect__click">
         <div href="${elifeAddonsTile.availabilityButtonLink}" class="tile" alt="${elifeAddonsTile.buyNowAltText}">
             <div class="tile-card__front">
@@ -9,11 +9,11 @@
                         <h2 data-sly-test="${elifeAddonsTile.productTitle}">${elifeAddonsTile.productTitle}</h2>
                     </div>
                     <div class="tiles-box-list">
-                        <div class="detail-info-wrap detail-info-wrap-pricetag">
+                        <div data-sly-test="${elifeAddonsTile.productPrice}" class="detail-info-wrap detail-info-wrap-pricetag">
                             <div class="detail-price-new">
                                 <div class="main-part">
-                                    <div data-sly-test="${elifeAddonsTile.productPrice}" dir="ltr" class="price">${elifeAddonsTile.productPrice}</div>
-                                    <small data-sly-test="${elifeAddonsTile.productCurrency}">${elifeAddonsTile.productCurrency}</small>
+                                    <div dir="ltr" class="price">${elifeAddonsTile.productPrice}</div>
+                                    <small>${elifeAddonsTile.productCurrency}</small>
                                 </div>
                             </div>
                         </div>
@@ -21,8 +21,8 @@
                             ${elifeAddonsTile.vatInclude}
                         </p>
                     </div>
-                    <div class="read-more select-product-from-grid select-product-from-grid-without-close" data-extra-container=".extra-options-02">
-                        <span data-sly-test="${elifeAddonsTile.availabilityButtonText}">${elifeAddonsTile.availabilityButtonText}</span>
+                    <div data-sly-test="${elifeAddonsTile.availabilityButtonText}" class="read-more select-product-from-grid select-product-from-grid-without-close" data-extra-container=".extra-options-02">
+                        <span>${elifeAddonsTile.availabilityButtonText}</span>
                     </div>
                 </div>
             </div>
