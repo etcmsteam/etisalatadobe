@@ -16,7 +16,7 @@ function returnSeconds(fDate, cDate) {
 
 $(document).ready(function () {
   $(document)
-    .find(".green-friday input.green-friday-hidden")
+    .find(".greenfriday input.green-friday-hidden")
     .each(function (index) {
       let id = $(this).attr("id");
       let customInputDate = new Date($(this).val());
