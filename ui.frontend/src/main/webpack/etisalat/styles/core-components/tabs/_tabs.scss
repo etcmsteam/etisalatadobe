@@ -6,6 +6,12 @@
     padding-right: 0;
     width: toRem(30);
   }
+
+  .cmp-tabs {
+    .container {
+      width: auto;
+    }
+  }
 }
 
 // common css st
@@ -593,8 +599,24 @@
   }
 
   &.tabs-fullbdr-textOnly {
-    .cmp-teaser {
-      padding-top: 0;
+    .cmp-tabs {
+      &__tablist {
+        width: 33.33%;
+      }
+
+      &__tabpanel--active {
+        padding-left: 0;
+
+        .cmp-teaser {
+          padding: 0;
+        }
+
+        .table-striped {
+          thead th {
+            letter-spacing: 0;
+          }
+        }
+      }
     }
 
     h1,

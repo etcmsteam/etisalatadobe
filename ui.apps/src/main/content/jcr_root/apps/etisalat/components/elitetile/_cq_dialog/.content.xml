@@ -12,8 +12,7 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
-                <items
-                    jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
                     <eliteplandata
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Properties"
@@ -400,12 +399,41 @@
                                                         </uiSettings>
                                                     </featuredescription>
                                                 </items>
-                                            </featuredetails>                                            
+                                            </featuredetails>
+                                            <viewChannels
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="View Channels"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <file
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        autoStart="{Boolean}false"
+                                                        class="cq-droptarget"
+                                                        fieldDescription="Upload image for &quot;View Channels&quot;"
+                                                        fieldLabel="View Channels Image Asset"
+                                                        fileNameParameter="./fileName1"
+                                                        fileReferenceParameter="./fileReference1"
+                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                        multiple="{Boolean}false"
+                                                        name="./file1"
+                                                        title="Upload image for View Channels"
+                                                        uploadUrl="${suffix.path}"
+                                                        useHTML5="{Boolean}true"/>
+                                                    <packagetext
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Text that will appear for &quot;View Channels&quot;"
+                                                        fieldLabel="View Channels Text"
+                                                        name="./viewChannelsText"/>
+                                                </items>
+                                            </viewChannels>
                                             <pricetag
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Price Tag"
                                                 sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
-                                                <items jcr:primaryType="nt:unstructured">                                                   
+                                                <items jcr:primaryType="nt:unstructured">
                                                     <productprice
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -464,13 +492,13 @@
                                                 fieldLabel="Buy Now Button Link"
                                                 name="./availabilityButtonLink"
                                                 rootPath="/content"/>
-                                             <buynowalttext
-                                                 jcr:primaryType="nt:unstructured"
-                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                 fieldDescription="The alt text for Accessibility. This text will appear when the mouse hovers over the link."
-                                                 fieldLabel="BuyNow Link Alt Text"
-                                                 maxlength="{Long}40"
-                                                 name="./buyNowAltText"/>
+                                            <buynowalttext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The alt text for Accessibility. This text will appear when the mouse hovers over the link."
+                                                fieldLabel="BuyNow Link Alt Text"
+                                                maxlength="{Long}40"
+                                                name="./buyNowAltText"/>
                                         </items>
                                     </field>
                                 </items>
