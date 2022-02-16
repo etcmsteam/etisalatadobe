@@ -543,6 +543,7 @@
         margin: auto;
         min-width: 100%;
         min-height: 100%;
+        width: auto;
       }
     }
   }
@@ -671,6 +672,59 @@
     }
     .main {
       height: 100%;
+
+      .container {
+        @include respond-to-min($desktop-wide) {
+          width: toRem(1200);
+        }
+
+        @include respond-to-max($desktop-wide) {
+          width: toRem(952);
+        }
+
+        @include respond-to-max($desktop-min) {
+          width: toRem(732);
+        }
+
+        @include respond-to-max($phone) {
+          width: toRem(343);
+        }
+
+        .main-text-greenf {
+          .row {
+            margin: 0;
+          }
+        }
+
+        .col-xs-12 {
+          &:first-child {
+            padding-left: 0;
+
+            @include rtlBlock() {
+              padding-left: toRem(15);
+              padding-right: 0;
+
+              @include respond-to-max($tablet) {
+                padding-left: 0;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            padding-right: 0;
+
+            @include rtlBlock() {
+              padding-right: toRem(15);
+              padding-left: 0;
+
+              @include respond-to-max($tablet) {
+                padding-right: 0;
+              }
+            }
+          }
+        }
+      }
+
       .main-text-greenf {
         min-height: 289px;
         display: block;
@@ -769,8 +823,6 @@
       width: 10px;
       height: 10px;
       //background-image: url(assets/img/bg-cards/clip.png);
-    }
-    .flip-clock-wrapper ul li a div.down:before {
     }
 
     .flip-clock-divider {
