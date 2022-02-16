@@ -1,0 +1,109 @@
+.elifeaddonstile {
+  .product-grid {
+    &.tile-table {
+      .tile-card {
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+        // border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 40px;
+        &:hover {
+            .tiles-box-list {
+              border-left: 1px solid $arrow-border-green;
+              border-right: 1px solid $arrow-border-green;
+              transition: all 0.5s ease-in-out;
+              border-bottom: 1px solid;
+            }
+          }
+        .tile {
+          position: relative;
+          background-color: $white;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          border-radius: 8px;
+          box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+          overflow: hidden;
+        }
+        .tiles-box {
+          font-size: 1rem;
+        }
+        .tiles-box-title {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 1.5em;
+
+          height: 10em;
+          max-height: 146px;
+          position: relative;
+          color: $white;
+          width: 101%;
+          background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $almost-black, $green-dark-10);
+          .catagory {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 700;
+          }
+          h2 {
+            margin: 0;
+            font-size: 1.75em;
+            max-height: 2.6em;
+            overflow: hidden;
+            letter-spacing: 0;
+            color: $white;
+          }
+        }
+        .tiles-box-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+          height: 119px;
+          padding: 1.5rem 1.5rem 1rem;
+          justify-content: flex-end;
+          border-left: 1px solid $arrow-border-green;
+          border-right: 1px solid $arrow-border-green;
+        //   border-radius: 0 0 10px 10px;
+          border-bottom: 1px solid $sand-white-50;
+          transition: all .5s ease-in-out;
+
+          @media (max-width: 992px) {
+            padding: 0 1rem;
+          }
+          .detail-info-wrap-pricetag {
+            justify-content: flex-start;
+            align-items: flex-start;
+          }
+          .bottom-text {
+            color: #6f7273;
+            font-size: .75rem;
+            margin-bottom: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 33px;
+            line-height: 2;
+          }
+        }
+        .read-more {
+          text-align: center;
+          background-color: $arrow-border-green;
+          text-transform: uppercase;
+          color: $white;
+          font-size: 1rem;
+          letter-spacing: 4px;
+          padding: 0.85rem 1rem;
+          @include respond-to-max($desktop) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
