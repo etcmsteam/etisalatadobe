@@ -13,9 +13,10 @@
         </div>
         <div data-sly-list.tab="${tabs.items}" class="col-xs-12 col-md-8 body-desktop panel no-padding-top billing-explainer  billing-report-wrapper">
           <a class="${tabList.first ? '' :'collapsed'} head-mobile hidden-md hidden-lg" data-toggle="collapse" data-parent="#tabBoxes-${tabs.id}" href="#tabBoxes-${component.id}-${tabList.count}">${tab.title}</a>
-          <div id="tabBoxes-${component.id}-${tabList.count}" class="section-exp-${tabList.count} collapse ${tabList.first ? 'in' :''}" aria-expanded="false">
-            <div data-sly-set.reportIframePath="${'{0}/{1}' @ format=[resource.path, tab.name]}" data-sly-use.reportCard="${reportIframePath}" class="billing-report-section">
-            <p class="paragraph" data-sly-test="${properties.sectionTitle}">${properties.sectionTitle}</p>                             
+          <div id="tabBoxes-${component.id}-${tabList.count}" 
+               class="section-exp-${tabList.count} collapse ${tabList.first ? 'in' :''}" aria-expanded="false">
+            <div data-sly-set.reportIframePath="${'{0}/{1}' @ format=[resource.path, tab.name]}" data-sly-use.reportCard="${reportIframePath}" class="billing-report-section">            
+            <p class="paragraph" data-sly-test="${reportCard['sectionTitle']}">${reportCard['sectionTitle']}</p>                             
               <div data-sly-test="${reportCard.sling:resourceType != 'etisalat/components/swipercontainer'}" class="billing-report-card billing-report-card-usage">
                 <iframe src="${reportIframePath @ extension='html'}" frameborder="0" height="100%" width="100%"></iframe>
               </div>             
