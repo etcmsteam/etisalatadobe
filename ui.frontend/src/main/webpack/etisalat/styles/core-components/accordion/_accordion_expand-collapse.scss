@@ -1,14 +1,16 @@
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable no-descending-specificity */
 .cmp-accordion--tile-expansion {
   // padding-left: 2rem!important;
   // padding-right: 2rem !important;
   padding: 2rem 0 !important;
 
   @include respond-to-max($tablet) {
-    padding: toRem(16) !important;
+    padding: toRem(16) 0 !important;
   }
 
   @include respond-to-max($phone) {
-    padding: toRem(9.6) !important;
+    padding: toRem(9.6) 0 !important;
   }
 
   @include respond-to-max($tablet) {
@@ -89,7 +91,9 @@
         margin: toRem(16) 0;
       }
 
-      // margin: 1.2rem 0.5rem;
+      @include rtlBlock() {
+        margin: toRem(36) 0 toRem(24);
+      }
 
       a {
         color: $almost-black;
@@ -131,6 +135,27 @@
     }
   }
 
+  .cmp-accordion__panel {
+    .cmp-rte-text {
+      h3 {
+        color: $almost-black;
+        font-size: toRem(20);
+        font-weight: 400;
+        line-height: toRem(28);
+        margin: 0 0 toRem(16);
+
+        @include font-family-Neotech;
+      }
+
+      p {
+        color: $gray-text-color;
+        font-size: toRem(14) !important;
+        line-height: toRem(24) !important;
+        margin-bottom: toRem(24);
+      }
+    }
+  }
+
   .cmp-teaser--accordion-tile {
     background: $sand-white-50;
     border-radius: $border-radius-step-1;
@@ -149,16 +174,45 @@
     margin-top: toRem(-48);
   }
 
-  ul li {
-    color: $dark-gray;
-    line-height: toRem(24);
-    list-style-type: disc;
-    margin-bottom: toRem(4);
-    margin-left: toRem(32);
-    padding-left: toRem(8);
-    position: relative;
+  .cmp-text {
+    ol {
+      li {
+        color: $dark-gray;
+        line-height: toRem(24);
+        margin-bottom: toRem(4);
+        margin-left: 0;
+        padding-left: toRem(8);
+        position: relative;
 
-    @include font-family-lato();
+        @include font-family-lato();
+
+        @include rtlBlock() {
+          padding-left: 0;
+          padding-right: toRem(8);
+        }
+      }
+    }
+
+    ul {
+      li {
+        color: $dark-gray;
+        line-height: toRem(24);
+        list-style-type: disc;
+        margin-bottom: toRem(4);
+        margin-left: toRem(32);
+        padding-left: toRem(8);
+        position: relative;
+
+        @include font-family-lato();
+
+        @include rtlBlock() {
+          margin-left: 0;
+          margin-right: toRem(32);
+          padding-left: 0;
+          padding-right: toRem(8);
+        }
+      }
+    }
   }
 
   .cmp-text--wrapper {
@@ -201,7 +255,7 @@
     }
 
     td {
-      border-bottom: $border-step-1 solid $white-2;
+      border-bottom: $border-step-2 solid $white-2;
       border-collapse: separate !important;
       border-spacing: toRem(32) 0;
 
@@ -243,7 +297,7 @@
     table {
       border-collapse: separate;
       border-spacing: toRem(32) 0;
-      margin: $margin-step-0 toRem(-32) toRem(32) $margin-step-0;
+      margin: $margin-step-0 toRem(-32) toRem(32) toRem(-35);
 
       @include respond-to-max($tablet) {
         border-collapse: separate;
@@ -272,7 +326,7 @@
     }
 
     table th {
-      border-bottom: toRem(1) solid $white-2;
+      border-bottom: toRem(2) solid $white-2;
       color: $almost-black;
       font-size: $font20;
       font-weight: get-font-weight("regular");
@@ -400,8 +454,7 @@
   }
 
   .accordion {
-    padding-left: toRem(25);
-    padding-right: toRem(25);
+    padding: 0 toRem(25) toRem(24);
 
     @include respond-to-max($phone) {
       padding-left: toRem(12);
@@ -452,6 +505,14 @@
 
     @include respond-to-max($phone) {
       display: none;
+    }
+
+    @include rtlBlock() {
+      float: left;
+      margin-left: toRem(5);
+      margin-top: toRem(30);
+
+      @include font-family-Neotech;
     }
 
     :hover {
@@ -521,6 +582,12 @@
         margin-top: toRem(8);
         width: toRem(10);
       }
+
+      @include rtlBlock() {
+        float: left;
+        margin-top: toRem(30);
+        transform: rotate(45deg);
+      }
     }
 
     &__button--expanded {
@@ -541,6 +608,11 @@
       // height: 10px;
       top: toRem(5);
       transform: rotate(45deg);
+
+      @include rtlBlock() {
+        float: left;
+        transform: rotate(225deg);
+      }
     }
 
     &__button {
@@ -566,17 +638,29 @@
         margin-bottom: toRem(32);
         margin-top: toRem(16);
       }
+
+      @include rtlBlock() {
+        margin-bottom: 0;
+        margin-top: toRem(88);
+        position: absolute;
+        right: 0;
+      }
     }
 
     &__panel--expanded {
+      margin-left: toRem(10);
       margin-top: toRem(20);
 
+      @include rtlBlock() {
+        margin-top: toRem(54);
+      }
+
       @include respond-to-max($phone) {
-        margin-top: toRem(-48);
+        margin-top: toRem(0);
       }
 
       @include respond-to-max($tablet) {
-        margin-top: toRem(-32);
+        margin-top: toRem(-16);
       }
     }
   }
@@ -588,6 +672,31 @@
 
   .displaynone {
     display: none;
+  }
+
+  .cmp-accordion--table {
+    p {
+      a .font-size--14 {
+        color: $almost-black;
+        cursor: pointer;
+        display: block;
+        font-size: toRem(16);
+        font-weight: get-font-weight("medium");
+        letter-spacing: toRem(2);
+        line-height: toRem(20);
+        margin-bottom: toRem(60);
+        padding: toRem(20) 0 0 toRem(15);
+        position: relative;
+        text-transform: uppercase;
+        transition: all 0.3s ease-in-out;
+
+        @include font-family-lato();
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
 
