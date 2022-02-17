@@ -1,4 +1,10 @@
 .elifeaddonstile {
+  .default-section-title{
+    .col-center {
+      float: none !important;
+      margin: 0 auto;
+    }
+  }
   .product-grid {
     &.tile-table {
       width: 100%;
@@ -14,7 +20,6 @@
             border-left: 1px solid $arrow-border-green;
             border-right: 1px solid $arrow-border-green;
             transition: all 0.5s ease-in-out;
-            //   border-bottom: 1px solid;
           }
         }
         .tile {
@@ -53,6 +58,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
             font-weight: 700;
+            @include rtlBlock() {
+              text-align: right;
+            }
           }
           h2 {
             margin: 0;
@@ -75,7 +83,6 @@
           justify-content: flex-end;
           border-left: 1px solid $white;
           border-right: 1px solid $white;
-          //   border-radius: 0 0 10px 10px;
           border-bottom: 1px solid $sand-white-50;
           transition: all 0.5s ease-in-out;
 
@@ -87,8 +94,8 @@
             align-items: flex-start;
           }
           .bottom-text {
-            color: #6f7273;
-            font-size: 0.75rem;
+            color: $grey1;
+            font-size: toRem(12);
             margin-bottom: 0;
             white-space: nowrap;
             overflow: hidden;
@@ -114,33 +121,7 @@
   }
 }
 
-// Swiper Buttons
-.product-grid-container {
-  .swipebtn {
-    position: absolute;
-    top: 160px;
-    cursor: pointer;
-    &:before {
-      content: " ";
-      display: block;
-      width: toRem(28);
-      height: toRem(28);
-    }
-    &.table-swiper-button-prev {
-      left: -35px;
-      &:before {
-        background: url("../resources/images/angle-left.svg") no-repeat 100%;
-      }
-    }
-    &.table-swiper-button-next {
-      right: -35px;
-      &:before {
-        background: url("../resources/images/angle-right.svg") no-repeat 100%;
-      }
-    }
-  }
-  .swiper-container-horizontal .swiper-scrollbar .swiper-scrollbar-drag {
-    background-color: $arrow-border-green;
-    width: 100%;
-  }
+.swiper-container-horizontal .swiper-scrollbar .swiper-scrollbar-drag {
+  background-color: $arrow-border-green;
+  width: 100%;
 }

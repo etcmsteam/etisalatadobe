@@ -63,17 +63,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
 
 
-      $(document).find('.product-grid-container.elifeaddonstile').each(function (index) {
-        $(this).addClass('addOnsTable' + index);
-        var $planTableParent = $(this);
-        $planTableParent.find('.table-swiper-button-next').addClass('swipebtn addOnsTableRight' + index);
-        $planTableParent.find('.table-swiper-button-prev').addClass('swipebtn addOnsTableLeft' + index);
-
-        var $carouselSliderAddons = swiperInit('.addOnsTable' + index + ' .elife-addons .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.addOnsTableRight' + index, '.table-swiper-button-prev.addOnsTableLeft' + index, 1.25, 2, 3, 4, 4));
-
-      });
-
-      $(document).find('.abc.elifeaddonstile').each(function (index) {
+      $(document).find('.product-grid-text-section.addons').each(function (index) {
         $(this).addClass('addOnsTable' + index);
         var $planTableParent = $(this);
         $planTableParent.find('.table-swiper-button-next').addClass('addOnsTableRight' + index);
