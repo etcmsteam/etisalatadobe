@@ -417,6 +417,12 @@
     @include respond-to-max($tablet) {
       display: block;
     }
+
+    @include rtlBlock() {
+      left: auto;
+      right: 0;
+      transform: scaleX(-1);
+    }
   }
 
   > .cmp-container::after {
@@ -440,6 +446,12 @@
     @include respond-to-max($phone) {
       height: toRem(145);
       width: toRem(140);
+    }
+
+    @include rtlBlock() {
+      left: 0;
+      right: auto;
+      transform: rotate(360deg);
     }
   }
 
