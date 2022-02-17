@@ -212,6 +212,21 @@
         justify-content: center;
         text-align: center;
       }
+
+      @include rtlBlock() {
+        .wst-main-headings {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          .h7,
+          .h8 {
+            text-align: center;
+          }
+        }
+      }
     }
 
     &.content-left {
@@ -226,9 +241,19 @@
       @include respond-to-min-max($desktop-min, $tablet) {
         &:nth-child(odd) {
           padding-right: toRem(12);
+
+          @include rtlBlock() {
+            padding-right: 0;
+            padding-left: toRem(12);
+          }
         }
         &:nth-child(even) {
           padding-left: toRem(12);
+
+          @include rtlBlock() {
+            padding-right: toRem(12);
+            padding-left: 0;
+          }
         }
       }
 
@@ -315,8 +340,8 @@
         a.btn {
           margin: 0 !important;
           width: 100%;
-          
-          @include respond-to-min($desktop){
+
+          @include respond-to-min($desktop) {
             width: auto;
           }
         }
@@ -340,11 +365,15 @@
     }
 
     .prev {
-      left: toRem(-72);
+      left: toRem(-60);
+
+      @include rtlBlock() {
+        left: toRem(-35);
+      }
     }
 
     .next {
-      right: toRem(-72);
+      right: toRem(-60);
     }
 
     .scrollbar {
@@ -578,31 +607,31 @@
     }
   }
   .btn-text.btn-modal {
-    &, span.moreg {
-        font-size: toRem(12);
-        letter-spacing: toRem(2);
-        @include respond-to-min($desktop) {
-          font-size: toRem(14);
-        }
+    &,
+    span.moreg {
+      font-size: toRem(12);
+      letter-spacing: toRem(2);
+      @include respond-to-min($desktop) {
+        font-size: toRem(14);
+      }
     }
     @include rtlBlock() {
-        padding-right: 0;
-         padding-left: toRem(8);
-        font-weight: 300;
-        @include font-family-lato;
+      padding-right: 0;
+      padding-left: toRem(8);
+      font-weight: 300;
+      @include font-family-lato;
     }
     &::before {
       padding: toRem(2.6);
-      right:toRem(-8);
+      right: toRem(-8);
       @include rtlBlock() {
         left: toRem(-12);
       }
       @include respond-to-min($desktop) {
         padding: toRem(3.25);
-        right:toRem(-12);
+        right: toRem(-12);
       }
     }
-   
   }
   .paragraph-styling {
     flex: 1 1 auto;
