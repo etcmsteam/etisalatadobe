@@ -2,8 +2,7 @@
            data-sly-use.tileModel="com.etisalat.core.models.TileModel">
    <sly data-sly-set.itemsDisplay="${properties.numberOfItems}"></sly>
 
-   <div class="benefit-section-4-0" data-sly-set.itemsDisplay="${properties.numberOfItems}">
-      <div class="container">
+   <div class="benefit-section" data-sly-set.itemsDisplay="${properties.numberOfItems}">
          <div data-sly-test="${properties.tileTitle}" class="benefits-main-title">
             <h2 data-sly-element="${properties.titleType}">${properties.tileTitle}</h2>
          </div>
@@ -11,11 +10,10 @@
          <div class="top">
             <div class="tiles">
                <!--/* benefits Start */-->
-               <div class="benefit-tile" data-sly-repeat="${container.items @ begin = 1, end = properties.numberOfItems}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+               <div class="benefits-tile" data-sly-repeat="${container.items @ begin = 1, end = properties.numberOfItems}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
                <!--/* benefits End */-->
             </div>
          </div>
-      </div>
 
       <div data-sly-test="${container.items.size > properties.numberOfItems}" class="benefits-view-more">
          <a class="btn-text btn-green view-more collapsed" data-toggle="collapse" href="#${container.id}" role="button" aria-expanded="false" aria-controls="${container.id}">
@@ -29,7 +27,7 @@
          <div class="tiles">
 
             <!--/* benefits Start */-->
-            <div class="benefit-tile" data-sly-repeat="${container.items @ begin = tileModel.numberOfItems, end = container.items.size}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+            <div class="benefits-tile" data-sly-repeat="${container.items @ begin = tileModel.numberOfItems, end = container.items.size}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
             <!--/* benefits End */-->
 
          </div>
