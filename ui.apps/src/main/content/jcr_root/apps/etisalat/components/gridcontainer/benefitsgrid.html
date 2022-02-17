@@ -1,4 +1,5 @@
-<template  data-sly-template.benefitsgrid="${ @ container,properties}">
+<template  data-sly-template.benefitsgrid="${ @ container,properties}"
+           data-sly-use.tileModel="com.etisalat.core.models.TileModel">
    <sly data-sly-set.itemsDisplay="${properties.numberOfItems}"></sly>
 
    <div class="benefit-section-4-0" data-sly-set.itemsDisplay="${properties.numberOfItems}">
@@ -28,7 +29,7 @@
          <div class="tiles">
 
             <!--/* benefits Start */-->
-            <div class="benefit-tile" data-sly-repeat="${container.items @ begin = properties.numberOfItems, end = container.items.size}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+            <div class="benefit-tile" data-sly-repeat="${container.items @ begin = tileModel.numberOfItems, end = container.items.size}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
             <!--/* benefits End */-->
 
          </div>
