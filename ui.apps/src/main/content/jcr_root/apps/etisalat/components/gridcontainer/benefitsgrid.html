@@ -10,7 +10,7 @@
          <div class="top">
             <div class="tiles">
                <!--/* benefits Start */-->
-               <div class="benefit-tile" data-sly-repeat="${container.items @ begin = 0, end = properties.numberOfItems}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+               <div class="benefit-tile" data-sly-repeat="${container.items @ begin = 1, end = properties.numberOfItems}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
                <!--/* benefits End */-->
             </div>
          </div>
@@ -28,10 +28,8 @@
          <div class="tiles">
 
             <!--/* benefits Start */-->
-            <div class="benefit-tile" data-sly-repeat="${container.items @ begin = properties.numberOfItems, end = container.items.count}" data-sly-test="${container.items.size > 3}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+            <div class="benefit-tile" data-sly-repeat="${container.items @ begin > properties.numberOfItems, end = container.items.size}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
             <!--/* benefits End */-->
-
-
 
          </div>
       </div>
