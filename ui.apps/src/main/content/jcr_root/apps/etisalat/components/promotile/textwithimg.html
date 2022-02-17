@@ -1,20 +1,9 @@
 <template  data-sly-template.TextWithImg="${ @ properties,commonlinkmodel}">
    <div class="promo-grid-tile-4-0 with-image">
       <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover"></a>
-      <div class="promo-img">
-         <div class="cover">
-            <picture data-sly-use.viewPortObj="${resource.path}">
-               <sly data-sly-list="${viewPortObj.listChildren}">
-                  <source data-sly-test="${item.fileReference}" srcset="${item.fileReference}" media="(max-width: ${item.media})">
-               </sly>
-               <sly data-sly-list="${viewPortObj.listChildren}">
-                  <sly data-sly-test="${item.media == '992px'}">
-                     <img src="${item.fileReference}" class="cover" alt="${item.altText}">
-                  </sly>
-               </sly>
-            </picture>
-         </div>
-      </div>
+      <sly
+         data-sly-use.ImageTemplate="image.html"
+         data-sly-call="${ImageTemplate.Image @ properties=properties , commonlinkmodel=commonlinkmodel}">      </sly>
       <div class="promo-content">
          <div class="content-only">
             <div data-sly-test="${properties.promopretitle}" class="wst-secondary-headings">
@@ -29,9 +18,9 @@
                </div>
             </div>
          </div>
-         <div data-sly-test="${properties.cardLink}" class="third-action-wrapper action-btn-default">
-            <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn btn-default ripple-effect">${properties.promoCTATitle}</a>
-         </div>
+         <sly data-sly-test="${properties.cardLink}"
+            data-sly-use.ButtonTemplate="button.html"
+            data-sly-call="${ButtonTemplate.Button @ properties=properties , commonlinkmodel=commonlinkmodel}">      </sly>
       </div>
    </div>
 </template>

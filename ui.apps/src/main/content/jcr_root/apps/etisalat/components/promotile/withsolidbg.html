@@ -80,9 +80,9 @@
                </div>
             </div>
          </div>
-         <div data-sly-test="${properties.cardLink}" class="third-action-wrapper action-btn-default">
-            <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn btn-default ripple-effect">${properties.promoCTATitle}</a>
-         </div>
+         <sly data-sly-test="${properties.cardLink}"
+            data-sly-use.ButtonTemplate="button.html"
+            data-sly-call="${ButtonTemplate.Button @ properties=properties , commonlinkmodel=commonlinkmodel}">      </sly>
       </div>
    </div>
 </template>
