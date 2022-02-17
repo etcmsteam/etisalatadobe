@@ -5,13 +5,13 @@ const swiperOptions = (elem, next, prev, loopVal, dragVal, slideView1, slideView
   return {
     scrollbar: elem.find(".scrollbar"),
     touchEventsTarget: "swiper-wrapper",
-    nextButton: next,
-    prevButton: prev,
+    autoplay: false,
     loop: loopVal,
     scrollbarDraggable: dragVal,
     simulateTouch: true,
     scrollbarHide: false,
-    autoplay: false,
+    nextButton: next,
+    prevButton: prev,
     breakpoints: {
       540: {
         spaceBetween: slideView1,
@@ -56,13 +56,13 @@ function initContextSwiperWithLoop() {
   $(document)
     .find(".tilecontainer.endless-swiper .context-navigation-4-0.with-loop")
     .each(function (index) {
-      $(this).addClass("c-n-slider" + index);
-      var $slider = $(this);
-      $slider.find(".next").addClass("right" + index);
-      $slider.find(".prev").addClass("left" + index);
+      $(this).addClass("c-n-slider-loop" + index);
+      var $sliderLoop = $(this);
+      $sliderLoop.find(".next").addClass("right-loop" + index);
+      $sliderLoop.find(".prev").addClass("left-loop" + index);
       var $contextNavigation = swiperInit(
-        ".c-n-slider" + index + " .swiper-container",
-        swiperOptions($slider, ".next.right" + index, ".prev.left" + index, true, false, 96, 24, 24, 24, 24),
+        ".c-n-slider-loop" + index + " .swiper-container",
+        swiperOptions($sliderLoop, ".next.right-loop" + index, ".prev.left-loop" + index, true, false, 96, 24, 24, 24, 24),
       );
     });
 }
