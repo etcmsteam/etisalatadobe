@@ -1,3 +1,4 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
 <sly data-sly-test.customLink="${properties.cardLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
 <sly data-sly-test="${properties.promoTilevariation == 'textonly'}"
    data-sly-use.TextOnlyTemplate="textonly.html"
@@ -23,3 +24,5 @@
    data-sly-use.textWithSolidBgTemplate="withsolidbg.html"
    data-sly-call="${textWithSolidBgTemplate.WithSolidBg @ properties=properties,commonlinkmodel=commonlinkmodel}">      
 </sly>
+</sly>
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.promoTilevariation}"></sly>
