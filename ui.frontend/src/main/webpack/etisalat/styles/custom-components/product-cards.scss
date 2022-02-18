@@ -357,16 +357,18 @@
     // bugfix 709
     border-width: toRem(1) toRem(1) 0;
     #{$parent}__header,
-    #{$parent}__body {
-      border: toRem(1) solid transparent;
+    #{$parent}__body,
+    #{$parent}__price-wrapper {
+      // border: toRem(1) solid transparent;
       transition: 0.3s;
     }
     #{$parent}__header {
       border-top-left-radius: toRem(8);
       border-top-right-radius: toRem(8);
-      border-width: toRem(1) toRem(1) 0;
+      // border-width: toRem(1) toRem(1) 0;
     }
-    #{$parent}__body {
+    #{$parent}__body,
+    #{$parent}__price-wrapper {
       border-width: 0 toRem(1);
     }
     &#{$parent}--offer {
@@ -375,19 +377,31 @@
       }
     }
     &:hover {
-      border-color: transparent;
+      // border-color: transparent;
       #{$parent}__header,
       #{$parent}__body,
-      #{$parent}__footer {
+      #{$parent}__footer,
+      #{$parent}__price-wrapper {
         border-color: $main-green;
+      }
+      #{$parent}__footer {
+        #{$parent}__price-wrapper {
+          border-color: $main-green;
+        }
       }
     }
     &#{$parent}--offer {
       &:hover {
         #{$parent}__header,
         #{$parent}__body,
-        #{$parent}__footer {
+        #{$parent}__footer,
+        #{$parent}__price-wrapper {
           border-color: $dark-orange;
+        }
+        #{$parent}__footer {
+          #{$parent}__price-wrapper {
+            border-color: $dark-orange;
+          }
         }
       }
     }
@@ -801,7 +815,8 @@
       border-color: $white;
       .product-card__header,
       .product-card__footer,
-      .product-card__body {
+      .product-card__body,
+      .pr-wrapper {
         border-color: transparent;
       }
     }
@@ -955,10 +970,14 @@
   }
 }
 .devicestile.image,
-.producttile.image {
+.producttile.image,
+.elifeplantile.image,
+.elitetile.image {
   height: 100%;
 }
-.product-card--device {
+.product-card--device,
+.product-card--elife-plan,
+.product-card--elife-lite {
   &.product-card {
     height: 100%;
     display: flex;
@@ -974,3 +993,4 @@
     z-index: 2;
   }
 }
+
