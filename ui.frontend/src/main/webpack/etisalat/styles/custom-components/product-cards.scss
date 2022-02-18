@@ -188,7 +188,10 @@
     &--small {
       ul {
         li {
-          font-size: $font16;
+          font-size: $font14;
+          @include respond-to-min($desktop){
+            font-size: $font16;
+          }
           line-height: 1.43;
           margin-bottom: toRem(4);
         }
@@ -616,8 +619,13 @@
     padding-bottom: $padding-step-2;
   }
   .px-4 {
-    padding-left: $padding-step-3;
-    padding-right: $padding-step-3;
+    padding-left: toRem(12);
+    padding-right: toRem(12);
+
+    @include respond-to-min($desktop) {
+      padding-left: $padding-step-3;
+      padding-right: $padding-step-3;
+    }
   }
 
   hr.dashed {
@@ -788,6 +796,10 @@
     line-height: 20px;
     margin-top: toRem(8);
     margin-bottom: toRem(16);
+
+    @include rtlBlock() {
+      text-align: right;
+    }
   }
 
   svg {

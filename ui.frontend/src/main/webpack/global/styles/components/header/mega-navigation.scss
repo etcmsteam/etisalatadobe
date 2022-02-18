@@ -228,11 +228,20 @@
           }
 
           a + .sub-menu-wrap {
-            display: flex !important;
+            &.mega-dropdown {
+              &.with-single,
+              &.with-two {
+                display: flex !important;
+              }
 
-            &.mega-dropdown.with-single,
-            &.mega-dropdown.with-two {
-              display: flex !important;
+              &.with-three,
+              &.with-six {
+                display: block !important;
+
+                .menu-top {
+                  display: flex !important;
+                }
+              }
             }
           }
 
@@ -1984,7 +1993,7 @@
 
       .tiles-wrapper {
         .tile {
-          margin-left: toRem(16);
+          margin: 0 toRem(8);
           flex-grow: 1;
         }
       }
@@ -2007,11 +2016,11 @@
       }
 
       .menu-promotion-wrapper {    
-        margin: toRem(32) 0;
-        padding-right: toRem(32);
+        margin: toRem(32) 0 0;
+        padding-right: 0;
 
         .tiles-wrapper {
-          justify-content: right;
+          justify-content: center;
         }
       }
 
@@ -2055,20 +2064,23 @@
       }
 
       .tiles-wrapper {
-        margin: toRem(24);
+        margin: toRem(24) 0 0;
         flex-basis: 100%;
         flex-wrap: wrap;
+        height: auto;
         justify-content: left;
-        padding-left: toRem(48);
+        padding-left: 0;
 
         .tile {
+          display: flex;
+          flex-direction: column;
+          margin: 0 toRem(18) toRem(18);
           margin-right: toRem(16);
           width: toRem(110);
-          height: toRem(140);
+          height: auto;
 
           @include respond-to-min($desktop-large) {
             width: toRem(152);
-            height: toRem(120);
           }
 
           .cover {
@@ -2105,9 +2117,19 @@
             padding-left: toRem(16);
             background: transparent;
 
-            .content {
+             .content {
               position: relative;
               bottom: auto;
+
+              h4{
+                font-size: toRem(14);
+                line-height: 1.43;
+                letter-spacing: normal;
+                color: $steel-grey;
+                margin-bottom: 0;
+
+                @include font-family-lato();
+              }
             }
           }
         }
