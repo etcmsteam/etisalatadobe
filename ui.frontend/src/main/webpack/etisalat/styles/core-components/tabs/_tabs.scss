@@ -625,6 +625,20 @@
         margin-top: 0;
       }
     }
+
+    .cmp-text {
+      ul {
+        padding-left: toRem(30);
+      }
+    }
+
+    .nav-view-wrapp.panel > :not(a.collapsed) {
+      .text {
+        @include respond-to-min-max($desktop - 1, $tablet) {
+          margin-left: 0;
+        }
+      }
+    }
   }
 
   .cmp-teaser {
@@ -667,7 +681,7 @@
     flex-wrap: wrap;
     list-style: none;
     padding-left: 0;
-    width: 50%;
+    width: 40%;
   }
 
   .cmp-tabs__tab {
@@ -731,6 +745,16 @@
 
     @include rtlBlock() {
       font-weight: get-font-weight("light");
+    }
+
+    .container {
+      .cmp-container {
+        .text {
+          @include respond-to-min($desktop) {
+            width: auto !important;
+          }
+        }
+      }
     }
   }
 
