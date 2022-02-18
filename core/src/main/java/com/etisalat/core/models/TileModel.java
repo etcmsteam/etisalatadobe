@@ -30,6 +30,9 @@ public class TileModel {
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String text;
 
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private Long numberOfItems;
+
   @ChildResource(name = "image", injectionStrategy = InjectionStrategy.OPTIONAL)
   private Resource tileImageResource;
 
@@ -184,6 +187,14 @@ public class TileModel {
    */
   public void setValidDateText(String validDateText) {
     this.validDateText = validDateText;
+  }
+
+  public Long getNumberOfItems() {
+    return numberOfItems+1;
+  }
+
+  public void setNumberOfItems(Long numberOfItems) {
+    this.numberOfItems = numberOfItems;
   }
 
   /**

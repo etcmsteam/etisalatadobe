@@ -212,6 +212,21 @@
         justify-content: center;
         text-align: center;
       }
+
+      @include rtlBlock() {
+        .wst-main-headings {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          .h7,
+          .h8 {
+            text-align: center;
+          }
+        }
+      }
     }
 
     &.content-left {
@@ -226,9 +241,19 @@
       @include respond-to-min-max($desktop-min, $tablet) {
         &:nth-child(odd) {
           padding-right: toRem(12);
+
+          @include rtlBlock() {
+            padding-right: 0;
+            padding-left: toRem(12);
+          }
         }
         &:nth-child(even) {
           padding-left: toRem(12);
+
+          @include rtlBlock() {
+            padding-right: toRem(12);
+            padding-left: 0;
+          }
         }
       }
 
@@ -304,6 +329,10 @@
       display: flex;
       padding-top: toRem(5);
 
+      @include respond-to-min($desktop-wide) {
+        max-width: toRem(1200);
+      }
+
       .swiper-wrapper {
         height: auto;
       }
@@ -315,8 +344,8 @@
         a.btn {
           margin: 0 !important;
           width: 100%;
-          
-          @include respond-to-min($desktop){
+
+          @include respond-to-min($desktop) {
             width: auto;
           }
         }
@@ -337,14 +366,33 @@
       @include respond-to-min($desktop-wide) {
         display: block;
       }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.swiper-button-disabled {
+        &:hover {
+          cursor: auto;
+          opacity: 0.5;
+        }
+      }
     }
 
     .prev {
-      left: toRem(-72);
+      left: toRem(-38);
+
+      @include rtlBlock() {
+        left: toRem(-30);
+      }
     }
 
     .next {
-      right: toRem(-72);
+      right: toRem(-38);
+
+      @include rtlBlock() {
+        right: toRem(-30);
+      }
     }
 
     .scrollbar {
@@ -503,25 +551,32 @@
         @include respond-to-min($tablet) {
           display: block;
         }
+
+        &.swiper-button-disabled {
+          &:hover {
+            cursor: pointer;
+            opacity: 1;
+          }
+        }
       }
 
       @include respond-to-max($desktop-wide) {
         .prev {
-          left: toRem(-32);
+          left: toRem(-34);
         }
 
         .next {
-          right: toRem(-32);
+          right: toRem(-34);
         }
       }
 
       @include respond-to-max($desktop-min) {
         .prev {
-          left: toRem(-16);
+          left: toRem(-18);
         }
 
         .next {
-          right: toRem(-16);
+          right: toRem(-18);
         }
       }
 
@@ -578,31 +633,31 @@
     }
   }
   .btn-text.btn-modal {
-    &, span.moreg {
-        font-size: toRem(12);
-        letter-spacing: toRem(2);
-        @include respond-to-min($desktop) {
-          font-size: toRem(14);
-        }
+    &,
+    span.moreg {
+      font-size: toRem(12);
+      letter-spacing: toRem(2);
+      @include respond-to-min($desktop) {
+        font-size: toRem(14);
+      }
     }
     @include rtlBlock() {
-        padding-right: 0;
-         padding-left: toRem(8);
-        font-weight: 300;
-        @include font-family-lato;
+      padding-right: 0;
+      padding-left: toRem(8);
+      font-weight: 300;
+      @include font-family-lato;
     }
     &::before {
       padding: toRem(2.6);
-      right:toRem(-8);
+      right: toRem(-8);
       @include rtlBlock() {
         left: toRem(-12);
       }
       @include respond-to-min($desktop) {
         padding: toRem(3.25);
-        right:toRem(-12);
+        right: toRem(-12);
       }
     }
-   
   }
   .paragraph-styling {
     flex: 1 1 auto;
