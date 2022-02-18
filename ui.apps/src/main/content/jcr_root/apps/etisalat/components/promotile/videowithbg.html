@@ -14,16 +14,7 @@
          </div>
          <!-- Modal start -->
          <div class="cover">
-            <picture data-sly-use.viewPortObj="${resource.path}">
-               <sly data-sly-list="${viewPortObj.listChildren}">
-                  <source data-sly-test="${item.fileReference}" srcset="${item.fileReference}" media="(max-width: ${item.media})">
-               </sly>
-               <sly data-sly-list="${viewPortObj.listChildren}">
-                  <sly data-sly-test="${item.media == '992px'}">
-                     <img src="${item.fileReference}" class="cover" alt="${item.altText}">
-                  </sly>
-               </sly>
-            </picture>
+             <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          </div>
       </div>
       <div class="promo-content">
