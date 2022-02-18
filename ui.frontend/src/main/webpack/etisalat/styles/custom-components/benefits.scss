@@ -16,10 +16,20 @@
         font-size: $font32;
         line-height: 1.25;
         text-align: center;
+        @include rtlBlock() {
+          text-align: center;
+        }
       }
-      @include rtlBlock() {
-        @include respond-to-min($desktop) {
-          text-align: center !important;
+    }
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-align: left;
+      @include respond-to-min($desktop) {
+        text-align: center;
+        @include rtlBlock() {
+          text-align: center;
         }
       }
     }
