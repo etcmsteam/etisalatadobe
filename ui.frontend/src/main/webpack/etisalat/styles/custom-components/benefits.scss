@@ -3,8 +3,16 @@
 
   .benefits-main-title {
     margin-bottom: toRem(24);
+    padding-left: toRem(8);
     @include respond-to-min($desktop) {
       margin-bottom: toRem(64);
+      padding-left: 0;
+    }
+    @include rtlBlock() {
+      @include respond-to-max($desktop - 1) {
+        padding-left: 0;
+        padding-right: toRem(8);
+      }
     }
     h2 {
       font-size: $font26;
@@ -31,6 +39,16 @@
         @include rtlBlock() {
           text-align: center;
         }
+      }
+    }
+  }
+
+  .top {
+    @include respond-to-max($desktop - 1) {
+      padding-left: toRem(8);
+      @include rtlBlock() {
+        padding-left: 0;
+        padding-right: toRem(8);
       }
     }
   }
@@ -133,6 +151,13 @@
           margin-left: -toRem(8);
           margin-right: -toRem(8);
         }
+        &:nth-child(even) {
+          padding-left: toRem(8);
+          @include rtlBlock() {
+            padding-left: 0;
+            padding-right: toRem(8);
+          }
+        }
       }
       @include respond-to-min($desktop) {
         margin-bottom: toRem(64);
@@ -145,9 +170,18 @@
   .benefits-view-more {
     display: flex;
     margin: toRem(32) 0 toRem(16) 0;
+    padding-left: toRem(8);
     @include respond-to-min($desktop) {
       justify-content: center;
       margin: toRem(60) 0;
+      padding-left: 0;
+    }
+
+    @include respond-to-max($desktop - 1) {
+      @include rtlBlock() {
+        padding-left: 0;
+        padding-right: toRem(8);
+      }
     }
 
     a {
