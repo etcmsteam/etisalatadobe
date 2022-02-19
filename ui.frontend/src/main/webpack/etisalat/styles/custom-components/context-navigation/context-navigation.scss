@@ -230,7 +230,9 @@
     }
 
     &.content-left {
-      justify-content: left !important;
+      @include respond-to-max($desktop-min) {
+        justify-content: left !important;
+      }
     }
 
     .context-tile {
@@ -313,7 +315,6 @@
       }
     }
 
-    &.two-tiles,
     &.three-tiles {
       .all-tiles {
         &.align-middle {
@@ -356,7 +357,7 @@
       position: relative;
 
       @include respond-to-min($desktop-wide) {
-        width: toRem(1196);
+        width: toRem(1200);
       }
     }
 
@@ -604,25 +605,22 @@
     .swiper-container {
       .swiper-slide {
         @include respond-to-max($desktop-min) {
-          max-width: toRem(278);
-          margin-left: toRem(44);
-          margin-right: toRem(44) !important;
-          padding: 0;
+          padding-left: toRem(44);
+          padding-right: toRem(44);
         }
 
         @include respond-to-max($phone) {
-          max-width: 100%;
-          margin-left: 0;
+          padding: 0;
         }
 
         @include respond-to-min-max($desktop-wide, $desktop) {
-          max-width: toRem(310);
-          margin-left: toRem(82);
+          padding-left: toRem(82);
+          padding-right: toRem(82);
         }
 
         @include respond-to-min($desktop-wide) {
-          max-width: toRem(310);
-          margin-left: toRem(45);
+          padding-left: toRem(45);
+          padding-right: toRem(45);
         }
       }
     }
@@ -694,14 +692,6 @@
   &.static-tile {
     .two-tiles .all-tiles .context-tile + .context-tile {
       margin-right: toRem(50) !important;
-    }
-
-    .all-tiles {
-      &.content-left {
-        @include respond-to-min($desktop) {
-          justify-content: center !important;
-        }
-      }
     }
 
     .swiper-container {
@@ -1013,6 +1003,90 @@
           }
         }
       }
+    }
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .wst-main-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h7,
+    .h8 {
+      color: $white !important;
+    }
+  }
+
+  a,
+  a.link {
+    color: $white !important;
+
+    &::after,
+    &::before,
+    .third-action-wrapper.action-link .link:before {
+      color: $white !important;
+    }
+  }
+
+  .context-navigation-4-0 {
+    .icon g {
+      stroke: $white;
+    }
+    .icon rect {
+      fill: $black;
+      stroke: $white;
+      opacity: 1;
+    }
+  }
+}
+
+.acc-blue {
+  .context-navigation-4-0 {
+    .icon rect {
+      fill: $blue4;
+    }
+  }
+}
+
+.acc-yellow {
+  .wst-main-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h7,
+    .h8 {
+      color: $yellow-light !important;
+    }
+  }
+
+  a,
+  a.link {
+    color: $yellow-light !important;
+
+    &::after,
+    &::before,
+    .third-action-wrapper.action-link .link:before {
+      color: $yellow-light !important;
+    }
+  }
+
+  .context-navigation-4-0 {
+    .icon g {
+      stroke: $yellow-light;
+    }
+    .icon rect {
+      fill: $black;
+      stroke: $yellow-light;
+      opacity: 1;
     }
   }
 }

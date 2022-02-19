@@ -77,7 +77,7 @@ function initContextSwiperWithHideArrows() {
       $slider.find(".prev").addClass("left-arrow" + index);
       var $contextNavigationWithHideArrows = swiperInit(
         ".c-n-slider-hide-arrows" + index + " .swiper-container",
-        swiperOptions($slider, ".next.right-arrow" + index, ".prev.left-arrow" + index, false, false, 96, 44, 82, 45, 45),
+        swiperOptions($slider, ".next.right-arrow" + index, ".prev.left-arrow" + index, false, false, 0, 0, 0, 0, 0),
       );
     });
 }
