@@ -135,6 +135,9 @@ public final class CommonUtility {
           pageModel.setNavigationLink(CommonUtility
               .appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
         }
+        if (null!= pageModel && StringUtils.isNotEmpty(pageModel.getNavigationTitle())) {
+            pageModel.setTopNavigationXFResource(resource);
+          }
         pageItemList.add(pageModel);
       });
     }
