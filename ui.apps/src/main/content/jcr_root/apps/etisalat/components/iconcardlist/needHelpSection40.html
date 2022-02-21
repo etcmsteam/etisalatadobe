@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
 			<div data-sly-test="${properties.needHelpDescription}" class="col-xs-12 col-sm-6 col-md-4">
-                <div class="paragraph-styling">
+                <div class="paragraph-styling ul-list-cms">
                     ${properties.needHelpDescription @ context="html"}
                 </div>
 
@@ -20,7 +20,7 @@
 				<div class="help-otions">
 					<sly data-sly-list.cardItems="${iconCardListData.iconCardListItems}">
 						<div class="opton">
-            				<a href="${cardItems.cardLink}" target="${cardItems.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
+            				<a href="${cardItems.cardLink}" target="${cardItems.linkBehavior == 'opennewwindow'?'_blank':'_self'}" data-sly-unwrap="${!cardItems.cardLink}">
                  				<div class="icon">
                        				<img alt="${cardItems.cardTitle}" data-sly-test="${cardItems.cardIcon}" class="icon-img" src="${cardItems.cardIcon}">
 								</div>
