@@ -6,6 +6,7 @@
   <li>
     <a class="mega-menu-link" data-sub-menu="sub-menu-mobile">${navItems.navigationLabel}</a>
     <div class="sub-menu-wrap mega-dropdown ${onePromoTile} ${twoPromoTile} ${threePromoTile} ${sixPromoTile}">
+	<div data-sly-test="${threePromoTile || sixPromoTile}" class="menu-top">
       <div class="menu-items-wrapper">
         <div class="menu-items">
           <sly data-sly-test="${!navItems.containerSubMenuList.isEmpty}"
@@ -35,35 +36,57 @@
             </ul>
           </sly>
         </div>
-        <div data-sly-test="${!navItems.containerFooterMenuList.isEmpty}"
-             data-sly-list.footerMenuItems="${navItems.containerFooterMenuList}"
-             class="menu-items-footer">
-          <ul data-sly-test="${!footerMenuItems.fixedItems.isEmpty}"
-              data-sly-list.items="${footerMenuItems.fixedItems}" class="sub-menu">
-            <li data-sly-test="${!items.hideDesktopLink && items.navigationTitle}"><a
-                href="${items.navigationLink}">${items.navigationTitle}</a></li>
-          </ul>
-        </div>
+   
       </div>
-      <div class="menu-promotion-wrapper">
-        <div data-sly-list.promoObj="${navItems.containerPromotionList}" class="tiles-wrapper">
-          <div class="tile">
-            <div class="cover">
-              <img src="${promoObj.fileReference}" loading="lazy" class="cover lazyloaded"
-                   alt="m-menu-new-freedom-en-377x325">
-            </div>
-            <div class="tile-content-wrapp">
-              <div class="content">
-                <h4>${promoObj.title}</h4>
-                <a data-sly-test="${promoObj.link}" href="${promoObj.link}"
-                   class="btn-text learn-more">
-                  <span class="">${promoObj.text}</span>
+      <sly data-sly-use.promowrapperTemplate="xfdesktop-subcomponents/xfdesktop-promowrapper.html" data-sly-call="${promowrapperTemplate.xfPromoWrapper @ properties=properties, navItems=navItems}"></sly>
+
+
+		</div>
+		<sly data-sly-test="${(threePromoTile || sixPromoTile)}"> 
+         <sly data-sly-use.footerTemplate="xfdesktop-subcomponents/xfdesktop-footer.html" data-sly-call="${footerTemplate.xfFooter @ properties=properties, navItems=navItems}"></sly>
+        </sly>
+		
+	
+      <div data-sly-test="${onePromoTile || twoPromoTile}" class="menu-items-wrapper">
+        <div class="menu-items">
+          <sly data-sly-test="${!navItems.containerSubMenuList.isEmpty}"
+               data-sly-list.subMenuItems="${navItems.containerSubMenuList}">
+            <ul data-sly-test="${!subMenuItems.isFeatureItemExist}" class="sub-menu">
+              <li data-sly-test="${subMenuItems.navTitle}"
+                  class="sub-menu-heading">${subMenuItems.navTitle}</li>
+              <li data-sly-test="${!subMenuItems.fixedItems.isEmpty}"
+                  data-sly-repeat.subFixedItems="${subMenuItems.fixedItems}"
+                  class="${subFixedItems.navigationDesc ? 'sub-menu-heading' : ''}">
+                <a href="${subFixedItems.navigationLink}">
+                  ${subFixedItems.navigationTitle}
+                  <img alt="${subFixedItems.navigationTitle}" data-sly-test="${subFixedItems.navigationDesc}" class="nav-link-arrow"
+                       src="${properties.linkArrowImage}"/>
                 </a>
-              </div>
-            </div>
-          </div>
+                <p data-sly-test="${subFixedItems.navigationDesc}">${subFixedItems.navigationDesc}</p>
+              </li>
+            </ul>
+            <ul data-sly-test="${subMenuItems.isFeatureItemExist && !subMenuItems.featureImageList.isEmpty}"
+                class="sub-menu brands">
+              <li class="sub-menu-heading">${subMenuItems.title}</li>
+              <li data-sly-list.brandItem="${subMenuItems.featureImageList}"
+                  class="menu-brand-wrapper">
+                <a class="menu-brand-item" loading="lazy" href="${brandItem.link}">
+									<img alt="${brandItem.title}" src="${brandItem.fileReference}" width="80px" height="74px"></a>
+              </li>
+            </ul>
+          </sly>
         </div>
+		<sly data-sly-test="${(onePromoTile || twoPromoTile)}"> 
+			<sly data-sly-use.footerTemplate="xfdesktop-subcomponents/xfdesktop-footer.html" data-sly-call="${footerTemplate.xfFooter @ properties=properties, navItems=navItems}"></sly>
+
+        </sly>
+   
       </div>
-    </div>
+      <sly data-sly-test="${onePromoTile || twoPromoTile}"> 
+		<sly data-sly-use.promowrapperTemplate="xfdesktop-subcomponents/xfdesktop-promowrapper.html" data-sly-call="${promowrapperTemplate.xfPromoWrapper @ properties=properties, navItems=navItems}"></sly>
+      </sly>
+   
+</div>
+		
   </li>
 </template>
