@@ -9,18 +9,27 @@
    <sly data-sly-test="${properties.viewPortLayout == '6-viewport'}">
       <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image768px/fileReference'] || properties['image1024px/fileReference'] || properties['image1366px/fileReference'] || properties['image1440px/fileReference'] || properties['image1920px/fileReference']}" />
    </sly>
-   <div class="promo-grid ${properties.wstPromoTilevariation}">
+   <div class="caremal-card-wrapper ${properties.caremalPromoTilevariation}">
+   <div class="caremal-card-image">
       <div class="cover">
          <sly data-sly-test="${viewports}"
             data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
-         <div class="bg-filter"></div>
       </div>
-      <div class="grid-content">
-         <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn-text learn-more hidden-xs">
-         <span>${properties.promoCTATitle}</span>
+   </div>
+   <div class="caremal-card-details">
+   <div data-sly-test="${properties.caremalpromopretitle}" class="sub-title">
+      <p>${properties.caremalpromopretitle}</p>
+   </div>
+   <div data-sly-test="${properties.caremalpromotitle}" class="title">
+      <h3 data-sly-element="${properties.titleType}">${properties.caremalpromotitle}</h3>
+   </div>
+   <div data-sly-test="${properties.jcr:description}" class="description">
+      <p>${properties.jcr:description @context='html'}</p>
+      <div data-sly-test="${properties.cardLink}" class="learn-more-wrap">
+         <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn-text btn-green learn-more">
+         ${properties.promoCTATitle}
          </a>
-         <h1 data-sly-element="${properties.titleType}">${properties.wstpromotitle}</h1>
       </div>
    </div>
 </sly>
-<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.wstPromoTilevariation}"></sly>
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.caremalPromoTilevariation}"></sly>
