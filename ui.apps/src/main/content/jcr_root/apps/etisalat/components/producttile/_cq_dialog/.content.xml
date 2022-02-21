@@ -29,14 +29,46 @@
                                         name="./productItems">
                                         <items jcr:primaryType="nt:unstructured">
                                             <bottomimagecheck
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                checked="{Boolean}false"
-                                                fieldDescription="When checked, The tile show with Blue Image Theme."
-                                                name="./blueBgCheck"
-                                                text="Check for Blue BG Image theme"
-                                                uncheckedValue="{Boolean}false"
-                                                value="{Boolean}true"/>
+                                                    jcr:primaryType="nt:unstructured"
+                                                    granite:class="cq-dialog-checkbox-showhide"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    checked="{Boolean}false"
+                                                    fieldDescription="When checked, The tile show with Blue Image Theme."
+                                                    name="./blueBgCheck"
+                                                    text="Check and select for Blue BG Image theme"
+                                                    uncheckedValue="{Boolean}false"
+                                                    value="{Boolean}true">
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        cq-dialog-checkbox-showhide-target=".bottomimagecheck"/>
+                                            </bottomimagecheck>
+                                            <bluebgselectedbehavior
+                                                    granite:class="bottomimagecheck"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                <bluebgBehavior
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Blue Background Behavior"
+                                                        name="./bluebgBehavior">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <bgwithpattern
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Dark Blue Background With Pattern"
+                                                            value="darkbgPattern"/>
+                                                        <withoutpatter
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Dark Blue Background Without Pattern"
+                                                            value="darkbgNoPattern"/>
+                                                        <lightblue
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Light Blue Background"
+                                                            value="lightBluebg"/>
+                                                    </items>
+                                                </bluebgBehavior>
+                                                </items>
+                                            </bluebgselectedbehavior>
                                             <offer
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

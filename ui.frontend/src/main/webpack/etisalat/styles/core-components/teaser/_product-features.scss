@@ -45,6 +45,13 @@
           display: block;
         }
       }
+
+      @include respond-to-max(1200px) {
+        .more,
+        .less {
+          display: none !important;
+        }
+      }
     }
   }
 
@@ -157,17 +164,17 @@
         display: none;
       }
     }
-  }
 
-  &.show-more {
-    /* stylelint-disable-next-line no-descending-specificity */
-    .product-features__content {
-      &:nth-child(n + 4) {
-        display: block;
-      }
+    .show-more {
+      /* stylelint-disable-next-line no-descending-specificity */
+      .product-features__content {
+        &:nth-child(n + 4) {
+          display: block;
+        }
 
-      @include respond-to-max($custom-width-tab) {
-        display: block;
+        @include respond-to-max($custom-width-tab) {
+          display: block;
+        }
       }
     }
   }
