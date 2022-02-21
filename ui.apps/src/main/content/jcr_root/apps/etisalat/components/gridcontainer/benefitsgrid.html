@@ -1,14 +1,13 @@
 <template  data-sly-template.benefitsgrid="${ @ container,properties}"
            data-sly-use.tileModel="com.etisalat.core.models.TileModel">
-   <sly data-sly-set.itemsDisplay="${properties.numberOfItems}"></sly>
 
-   <div class="benefit-section" data-sly-set.itemsDisplay="${properties.numberOfItems}">
+   <div class="benefit-section">
          <div data-sly-test="${properties.tileTitle}" class="benefits-main-title">
             <h2 data-sly-element="${properties.titleType}">${properties.tileTitle}</h2>
          </div>
 
          <div class="top">
-            <div class="tiles">
+            <div class="${!wcmmode.edit ? 'tiles' : 'tile-cq-editable'}">
                <!--/* benefits Start */-->
                <div class="benefits-tile" data-sly-repeat="${container.items @ begin = 1, end = properties.numberOfItems}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
                <!--/* benefits End */-->
@@ -24,7 +23,7 @@
 
       <div class="bottom ${!wcmmode.edit ? 'collapse' : ''}" id="${container.id}" aria-expanded="false">
 
-         <div class="tiles">
+         <div class="${!wcmmode.edit ? 'tiles' : 'tile-cq-editable'}">
 
             <!--/* benefits Start */-->
             <div class="benefits-tile" data-sly-repeat="${container.items @ begin = tileModel.numberOfItems, end = container.items.size}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
