@@ -10,7 +10,11 @@
             data-sly-call="${gridContainerTemplate.promocard @ container=container,properties=properties}" />
            <sly data-sly-test="${gridTemplates == 'wstpromocard'}"
             data-sly-call="${gridContainerTemplate.wstpromocard @ container=container,properties=properties}" />
+            <sly data-sly-test="${gridTemplates == 'caremalpromocard'}"
+            data-sly-call="${gridContainerTemplate.caremalpromocard @ container=container,properties=properties}" />
         </sly>
        </sly>
    </div>
  </sly>
+
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.gridTemplates}"></sly>
