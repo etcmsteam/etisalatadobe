@@ -84,11 +84,12 @@
 
   .tiles-wrapper {
     display: grid;
-    grid-gap: 16px;
-    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+    grid-gap: toRem(16);
+    grid-template-columns: repeat(auto-fill, minmax(toRem(288), 1fr));
+    margin-bottom: toRem(15);
     @include respond-to-min($desktop) {
-      grid-gap: 24px;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: toRem(24);
+      grid-template-columns: repeat(auto-fill, minmax(toRem(300), 1fr));
     }
   }
 
@@ -96,6 +97,8 @@
     .content-wrapper {
       display: flex;
       flex-direction: column;
+      margin-bottom: toRem(15);
+
       @include respond-to-min($desktop-wide) {
         flex-direction: row;
       }
