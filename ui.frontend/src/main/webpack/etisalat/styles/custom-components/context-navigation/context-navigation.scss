@@ -232,6 +232,10 @@
     &.content-left {
       @include respond-to-max($desktop-min) {
         justify-content: left !important;
+
+        @include rtlBlock() {
+          justify-content: right !important;
+        }
       }
     }
 
@@ -385,7 +389,7 @@
     }
 
     .prev {
-      left: toRem(-38);
+      left: toRem(-35);
 
       @include rtlBlock() {
         left: toRem(-30);
@@ -393,7 +397,7 @@
     }
 
     .next {
-      right: toRem(-38);
+      right: toRem(-35);
 
       @include rtlBlock() {
         right: toRem(-30);
@@ -500,6 +504,10 @@
       &.align-middle {
         @include respond-to-min-max($desktop-min, $tablet) {
           justify-content: left !important;
+
+          @include rtlBlock() {
+            justify-content: right !important;
+          }
         }
 
         @include respond-to-max($custom-width-tab) {
@@ -624,6 +632,14 @@
         }
       }
     }
+
+    .prev {
+      left: toRem(-20);
+    }
+
+    .next {
+      right: toRem(-20);
+    }
   }
 
   &.with-hide-arrows,
@@ -697,6 +713,7 @@
     .context-tile {
       @include respond-to-max($desktop-min) {
         margin-bottom: toRem(40);
+        padding-bottom: 0;
       }
     }
 
