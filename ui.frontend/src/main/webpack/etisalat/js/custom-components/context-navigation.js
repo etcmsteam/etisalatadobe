@@ -1,4 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import { IsMediaQuery } from "../../../global/js/helpers";
 
 //function to pass swiper options collectively
 const swiperOptions = (elem, next, prev, loopVal, dragVal, slideView1, slideView2, slideView3, slideView4, slideView5) => {
@@ -39,41 +40,57 @@ const swiperOptions = (elem, next, prev, loopVal, dragVal, slideView1, slideView
 
 function initContextSwiper() {
   $(document)
-    .find(".tilecontainer  .context-navigation-4-0.with-slider")
+    .find(".tilecontainer  .context-navigation-4-0.swiper")
     .each(function (index) {
       $(this).addClass("c-n-slider" + index);
       var $slider = $(this);
-      $slider.find(".next").addClass("right" + index);
-      $slider.find(".prev").addClass("left" + index);
-      var $contextNavigation = swiperInit(
+      $slider.find(".next").addClass("right-slider" + index);
+      $slider.find(".prev").addClass("left-slider" + index);
+      var $contextNavigationWithSlider = swiperInit(
         ".c-n-slider" + index + " .swiper-container",
-        swiperOptions($slider, ".next.right" + index, ".prev.left" + index, false, true, 96, 96, 24, 24, 24),
+        swiperOptions($slider, ".next.right-slider" + index, ".prev.left-slider" + index, false, true, 96, 96, 24, 24, 24),
       );
     });
 }
 
 function initContextSwiperWithLoop() {
   $(document)
-    .find(".tilecontainer.endless-swiper .context-navigation-4-0.with-loop")
+    .find(".tilecontainer .context-navigation-4-0.with-loop")
     .each(function (index) {
       $(this).addClass("c-n-slider-loop" + index);
       var $sliderLoop = $(this);
       $sliderLoop.find(".next").addClass("right-loop" + index);
       $sliderLoop.find(".prev").addClass("left-loop" + index);
-      var $contextNavigation = swiperInit(
+      var $contextNavigationWithLoop = swiperInit(
         ".c-n-slider-loop" + index + " .swiper-container",
         swiperOptions($sliderLoop, ".next.right-loop" + index, ".prev.left-loop" + index, true, false, 96, 24, 24, 24, 24),
       );
     });
 }
 
+function initContextSwiperWithHideArrows() {
+  $(document)
+    .find(".tilecontainer .context-navigation-4-0.with-hide-arrows")
+    .each(function (index) {
+      $(this).addClass("c-n-slider-hide-arrows" + index);
+      var $slider = $(this);
+      $slider.find(".next").addClass("right-arrow" + index);
+      $slider.find(".prev").addClass("left-arrow" + index);
+      var $contextNavigationWithHideArrows = swiperInit(
+        ".c-n-slider-hide-arrows" + index + " .swiper-container",
+        swiperOptions($slider, ".next.right-arrow" + index, ".prev.left-arrow" + index, false, false, 0, 0, 0, 0, 0),
+      );
+    });
+}
+
 // register the event handlers
 $(document).ready(function () {
-  if ($(window).width() > 767) {
+  if (IsMediaQuery.sm.matches) {
     initContextSwiperWithLoop();
+    initContextSwiperWithHideArrows();
   }
 
-  if ($(window).width() > 992) {
+  if (IsMediaQuery.md.matches) {
     initContextSwiper();
   }
 

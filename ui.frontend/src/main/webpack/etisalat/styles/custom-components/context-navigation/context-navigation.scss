@@ -232,6 +232,10 @@
     &.content-left {
       @include respond-to-max($desktop-min) {
         justify-content: left !important;
+
+        @include rtlBlock() {
+          justify-content: right !important;
+        }
       }
     }
 
@@ -315,7 +319,6 @@
       }
     }
 
-    &.two-tiles,
     &.three-tiles {
       .all-tiles {
         &.align-middle {
@@ -356,6 +359,10 @@
 
     .container {
       position: relative;
+
+      @include respond-to-min($desktop-wide) {
+        width: toRem(1200);
+      }
     }
 
     .prev,
@@ -382,7 +389,7 @@
     }
 
     .prev {
-      left: toRem(-38);
+      left: toRem(-35);
 
       @include rtlBlock() {
         left: toRem(-30);
@@ -390,7 +397,7 @@
     }
 
     .next {
-      right: toRem(-38);
+      right: toRem(-35);
 
       @include rtlBlock() {
         right: toRem(-30);
@@ -472,7 +479,8 @@
   }
 
   // with slider loop
-  &.with-loop {
+  &.with-loop,
+  &.with-hide-arrows {
     .scrollbar {
       display: none;
     }
@@ -486,12 +494,6 @@
           padding-left: toRem(12);
         }
       }
-
-      @include respond-to-max($custom-width-tab) {
-        &:nth-child(1n + 4) {
-          display: block;
-        }
-      }
     }
 
     .all-tiles {
@@ -502,6 +504,10 @@
       &.align-middle {
         @include respond-to-min-max($desktop-min, $tablet) {
           justify-content: left !important;
+
+          @include rtlBlock() {
+            justify-content: right !important;
+          }
         }
 
         @include respond-to-max($custom-width-tab) {
@@ -588,6 +594,153 @@
           gap: 0;
         }
       }
+    }
+  }
+
+  // view all tiles
+  &.view-all-tiles {
+    .context-tile {
+      @include respond-to-max($custom-width-tab) {
+        &:nth-child(1n + 4) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // with hide arrows
+  &.with-hide-arrows {
+    .swiper-container {
+      .swiper-slide {
+        @include respond-to-max($desktop-min) {
+          padding-left: toRem(44);
+          padding-right: toRem(44);
+        }
+
+        @include respond-to-max($phone) {
+          padding: 0;
+        }
+
+        @include respond-to-min-max($desktop-wide, $desktop) {
+          padding-left: toRem(82);
+          padding-right: toRem(82);
+        }
+
+        @include respond-to-min($desktop-wide) {
+          padding-left: toRem(45);
+          padding-right: toRem(45);
+        }
+      }
+    }
+
+    .prev {
+      left: toRem(-20);
+    }
+
+    .next {
+      right: toRem(-20);
+    }
+  }
+
+  &.with-hide-arrows,
+  &.static-tile {
+    .context-tile {
+      @include respond-to-max($phone) {
+        margin-bottom: toRem(40);
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .icon {
+        height: toRem(71);
+        margin: auto;
+        margin-bottom: toRem(35);
+        width: toRem(71);
+
+        @include respond-to-max($tablet) {
+          margin-bottom: toRem(26);
+        }
+
+        div {
+          width: 100%;
+        }
+
+        img,
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .swiper-button-disabled {
+      display: none !important;
+    }
+
+    .wst-main-headings {
+      height: toRem(32);
+      margin-bottom: toRem(16);
+
+      h4 {
+        font-size: $font24;
+        line-height: 1.3;
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .context-tile {
+      .paragraph-styling {
+        height: toRem(54);
+        margin-bottom: toRem(16);
+
+        p {
+          color: $steel-grey;
+          margin-bottom: 0 !important;
+        }
+      }
+    }
+  }
+
+  // Static tiles
+  &.static-tile {
+    .two-tiles .all-tiles .context-tile + .context-tile {
+      margin-right: toRem(50) !important;
+    }
+
+    .context-tile {
+      @include respond-to-max($desktop-min) {
+        margin-bottom: toRem(40);
+        padding-bottom: 0;
+      }
+    }
+
+    .swiper-container {
+      .swiper-slide {
+        @include respond-to-min-max($desktop-wide, $desktop) {
+          max-width: toRem(318);
+          padding-left: toRem(12);
+          padding-right: toRem(12);
+        }
+
+        @include respond-to-min($desktop-wide) {
+          max-width: toRem(310);
+          margin-left: toRem(45);
+          margin-right: toRem(45);
+        }
+
+        @include respond-to-max($phone) {
+          margin-bottom: toRem(40);
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    .scrollbar {
+      display: none;
     }
   }
 
@@ -873,6 +1026,115 @@
           }
         }
       }
+
+      &.with-hide-arrows {
+        .swiper-container {
+          .swiper-slide {
+            @include respond-to-max($desktop-min) {
+              padding-left: toRem(44);
+              padding-right: toRem(44);
+            }
+
+            @include respond-to-max($phone) {
+              padding: 0;
+            }
+
+            @include respond-to-min-max($desktop-wide, $desktop) {
+              padding-left: toRem(82);
+              padding-right: toRem(82);
+            }
+
+            @include respond-to-min($desktop-wide) {
+              padding-left: toRem(45);
+              padding-right: toRem(45);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .wst-main-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h7,
+    .h8 {
+      color: $white !important;
+    }
+  }
+
+  a,
+  a.link {
+    color: $white !important;
+
+    &::after,
+    &::before,
+    .third-action-wrapper.action-link .link:before {
+      color: $white !important;
+    }
+  }
+
+  .context-navigation-4-0 {
+    .icon g {
+      stroke: $white;
+    }
+    .icon rect {
+      fill: $black;
+      stroke: $white;
+      opacity: 1;
+    }
+  }
+}
+
+.acc-blue {
+  .context-navigation-4-0 {
+    .icon rect {
+      fill: $blue4;
+    }
+  }
+}
+
+.acc-yellow {
+  .wst-main-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h7,
+    .h8 {
+      color: $yellow-light !important;
+    }
+  }
+
+  a,
+  a.link {
+    color: $yellow-light !important;
+
+    &::after,
+    &::before,
+    .third-action-wrapper.action-link .link:before {
+      color: $yellow-light !important;
+    }
+  }
+
+  .context-navigation-4-0 {
+    .icon g {
+      stroke: $yellow-light;
+    }
+    .icon rect {
+      fill: $black;
+      stroke: $yellow-light;
+      opacity: 1;
     }
   }
 }
