@@ -1,4 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import { IsMediaQuery } from "../../../global/js/helpers";
 
 //function to pass swiper options collectively
 const swiperOptions = (elem, next, prev, loopVal, dragVal, slideView1, slideView2, slideView3, slideView4, slideView5) => {
@@ -84,12 +85,12 @@ function initContextSwiperWithHideArrows() {
 
 // register the event handlers
 $(document).ready(function () {
-  if ($(window).width() > 767) {
+  if (IsMediaQuery.sm.matches) {
     initContextSwiperWithLoop();
     initContextSwiperWithHideArrows();
   }
 
-  if ($(window).width() > 992) {
+  if (IsMediaQuery.md.matches) {
     initContextSwiper();
   }
 
