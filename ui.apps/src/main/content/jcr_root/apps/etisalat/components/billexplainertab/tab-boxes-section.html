@@ -1,7 +1,5 @@
-<template  data-sly-template.explainerTab="${ @ properties}">
- <div class="tab-boxes-section">
-  <!-- <div class="md-p-lr"> -->
-    <!-- add spacer if needed here. -->
+<template  data-sly-template.explainerTab="${ @ properties,tabs}">
+ <div class="tab-boxes-section" id="${tabs.id}">
     <sly data-sly-test.customLink="${properties.billingCTALink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}" />
     <a data-sly-test="${properties.billingCTAText && commonlinkmodel.link}" href="${commonlinkmodel.link}" class="btn-text btn-green  learn-more btn-green block back ml-5">
       <span>${properties.billingCTAText}</span>
@@ -29,6 +27,5 @@
         </div>
       </div>
     </div>
-  <!-- </div> -->
 </div>
 </template>
