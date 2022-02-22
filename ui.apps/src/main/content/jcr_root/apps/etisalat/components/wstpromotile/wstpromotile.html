@@ -10,6 +10,7 @@
       <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image768px/fileReference'] || properties['image1024px/fileReference'] || properties['image1366px/fileReference'] || properties['image1440px/fileReference'] || properties['image1920px/fileReference']}" />
    </sly>
    <div class="promo-grid ${properties.wstPromoTilevariation}">
+    <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover"></a>
       <div class="cover">
          <sly data-sly-test="${viewports}"
             data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
