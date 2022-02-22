@@ -87,6 +87,16 @@
   }
 }
 
+.caremal-promo-grid {
+  .caremalpromotile {
+    & + .caremalpromotile {
+      @include respond-to-min($desktop) {
+        margin-top: toRem(24);
+      }
+    }
+  }
+}
+
 .caremal-card-wrapper {
   border-radius: 4px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
@@ -96,13 +106,11 @@
     height: toRem(252);
     display: flex;
     flex-direction: row;
-    & + .caremal-card-wrapper {
-      margin-top: toRem(24);
-    }
   }
   @include respond-to-max($desktop) {
     margin-bottom: toRem(16);
   }
+
   .learn-more-wrap {
     position: absolute;
     bottom: 22px;
@@ -134,9 +142,16 @@
     .caremal-card-details {
       order: 1;
       height: 100%;
-      .title h3 {
-        @include respond-to-min($desktop) {
-          font-size: toRem(32);
+      .title {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          @include respond-to-min($desktop) {
+            font-size: toRem(32);
+          }
         }
       }
     }
