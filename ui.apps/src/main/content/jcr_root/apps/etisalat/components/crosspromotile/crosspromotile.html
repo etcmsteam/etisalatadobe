@@ -16,8 +16,10 @@
         <div class="cta-content-wrap">
             <div class="cont">
                 <h4 data-sly-test="${properties.tiletitle}" data-sly-element="${properties.titleType}">${properties.tiletitle}</h4>                
-                <a class="btn-text btn-green learn-more">
-                    <span class=""> Learn more </span>
+                <sly data-sly-test.crossPromoCTALink="${properties.crossPromoLinkURL}" 
+	               data-sly-use.promoLink="${'com.etisalat.core.models.CommonLinkModel' @link=crossPromoCTALink}"/>
+                <a href="${promoLink.link}" data-sly-test="${properties.crossPromoCTATitle} class="btn-text btn-green learn-more">
+                    <span class=""> ${properties.crossPromoCTATitle} </span>
                 </a>
             </div>
         </div>
