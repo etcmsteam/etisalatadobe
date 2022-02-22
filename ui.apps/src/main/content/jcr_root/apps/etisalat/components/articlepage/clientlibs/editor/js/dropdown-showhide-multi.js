@@ -50,7 +50,8 @@
                 // unhide the target element that contains the selected value as data-showhidetargetvalue attribute
                 var show = element && (element.dataset.showhidetargetvalue === value || 
                                         element.dataset.showhidetargetvalue1 === value || 
-                                        element.dataset.showhidetargetvalue2 === value);
+                                          element.dataset.showhidetargetvalue2 === value ||
+                                        element.dataset.showhidetargetvalue3 === value );
                 setVisibilityAndHandleFieldValidation($(element), show);
             });
         }

@@ -3,7 +3,7 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Swiper Container"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[cmp.swiper.container.editor]">
+    extraClientlibs="[cmp.swiper.container.editor,cq.dropdown.dialog.multi.values]">
     <content
         granite:class="cmp-swiper-container__editor"
         jcr:primaryType="nt:unstructured"
@@ -33,13 +33,26 @@
                                         <items
                                             jcr:primaryType="nt:unstructured"
                                             sling:hideChildren="[layout,roleAttribute]">
-                                            <layouttitle
+                                            <swipercontainertitle                                               
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="A title to display as the headline for the tile."
-                                                fieldLabel="Title"
-                                                name="./layoutTitle"
-                                                value=""/>
+                                                granite:class="swipergridlayout-showhide-target"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                  <layouttitle
+	                                                jcr:primaryType="nt:unstructured"
+	                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                fieldDescription="A title to display as the headline for the tile."
+	                                                fieldLabel="Title"
+	                                                name="./layoutTitle"
+	                                                value=""/>
+                                                </items>
+                                                <granite:data
+							                        jcr:primaryType="nt:unstructured"							                        
+							                        showhidetargetvalue="default"
+							                        showhidetargetvalue1="ewallet-offer"
+							                        showhidetargetvalue2="ewallet-all-offer"
+							                        showhidetargetvalue3="ewallet-feature"/>
+                                            </swipercontainertitle>                                            
                                             <gridlayout
                                                 granite:class="cq-dialog-dropdown-showhide swiper-container-content-displaylayout"
                                                 jcr:primaryType="nt:unstructured"
@@ -95,6 +108,18 @@
 		                                                        value="usage-and-services-breakdown"/>
 		                                                </items>		                                               
 		                                            </reportcard>
+		                                            <reportcardtitle							                    
+									                    jcr:primaryType="nt:unstructured"
+									                    sling:resourceType="granite/ui/components/coral/foundation/container">
+									                    <items jcr:primaryType="nt:unstructured">
+									                       <sectiontitle
+			                                                   jcr:primaryType="nt:unstructured"
+			                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+			                                                   fieldDescription="A title to display as the headline for the bill explainer"
+			                                                   fieldLabel="Report Section Title"
+			                                                   name="./sectionTitle"/>
+									                    </items>							                   
+									                 </reportcardtitle>     
                                                     <previous
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -181,31 +206,57 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="ewallet-feature"/>
                                             </offerfeatureviewall>
-                                            <noswapdesktop
+                                            <swiperdesktopcontainer
+                                                granite:class="swipergridlayout-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                checked="{Boolean}false"
-                                                fieldDescription="Toggle to show/hide for swipper on desktop"
-                                                name="./noSwapDesktop"
-                                                text="Hide Desktop Swiper"
-                                                uncheckedValue="{Boolean}false"
-                                                value="{Boolean}true"/>
-                                            <swiperdisplaybehavior
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Scrollbar"
-                                                name="./swiperDisplayBehavior">
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <hide
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Hide"
-                                                        value="false"/>
-                                                    <show
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Show"
-                                                        value="true"/>
+                                                  <noswapdesktop
+	                                                jcr:primaryType="nt:unstructured"
+	                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+	                                                checked="{Boolean}false"
+	                                                fieldDescription="Toggle to show/hide for swipper on desktop"
+	                                                name="./noSwapDesktop"
+	                                                text="Hide Desktop Swiper"
+	                                                uncheckedValue="{Boolean}false"
+	                                                value="{Boolean}true"/>                                                
                                                 </items>
-                                            </swiperdisplaybehavior>
+                                                 <granite:data
+							                        jcr:primaryType="nt:unstructured"							                        
+							                        showhidetargetvalue="default"
+							                        showhidetargetvalue1="ewallet-offer"
+							                        showhidetargetvalue2="ewallet-all-offer"
+							                        showhidetargetvalue3="ewallet-feature"/>
+                                            </swiperdesktopcontainer>
+                                            <containerdisplaybehavior
+                                                granite:class="swipergridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                  <swiperdisplaybehavior
+	                                                jcr:primaryType="nt:unstructured"
+	                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+	                                                fieldLabel="Scrollbar"
+	                                                name="./swiperDisplayBehavior">
+	                                                <items jcr:primaryType="nt:unstructured">
+	                                                    <hide
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        text="Hide"
+	                                                        value="false"/>
+	                                                    <show
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        text="Show"
+	                                                        value="true"/>
+	                                                </items>
+	                                               </swiperdisplaybehavior>
+                                                </items>
+                                                <granite:data
+							                        jcr:primaryType="nt:unstructured"							                        
+							                        showhidetargetvalue="default"
+							                        showhidetargetvalue1="ewallet-offer"
+							                        showhidetargetvalue2="ewallet-all-offer"
+							                        showhidetargetvalue3="ewallet-feature"/>
+                                            </containerdisplaybehavior>                                                                                                                                    
                                             <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

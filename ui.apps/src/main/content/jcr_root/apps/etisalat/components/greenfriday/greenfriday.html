@@ -5,9 +5,10 @@
  value="${'MM/dd/yyy' @ format=properties.clockDate}" class="green-friday-hidden hidden" />
 <section data-sly-test="${properties.clockDate}" class="green-friday medium-banner ${properties.goodFridayLayout}">
     <div class="banner-image">
-        <div class="cover">
+        <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
             <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
         </div>
+         <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
     </div>
     <div class="main">
         <div class="container">
