@@ -5,6 +5,8 @@
       class="read-more-${properties.offerText ? 'red' : 'green'}-btn_bg">
       <div class="tile-table ${properties.fileReference ? 'product-home-card' : 'plan-card'} offer ">
          <div class="tile-card effect__click">
+		 <sly data-sly-test.cardLink="${properties.cardLink}" data-sly-use.cardlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=cardLink}"/>
+			<a href="${cardlinkmodel.link}" target="${properties.cardtarget ? '_blank' : '_self'}">
             <div class="tile">
                <div class="tile-card__front">
                   <div class="tiles-box content body-standard">
@@ -113,17 +115,19 @@
                            ${properties.contract}
                         </span>
                      </div>
-                     <div
+                     <div 
                         class="read-more select-product-from-grid select-product-from-grid-without-close link"
                         data-extra-container=".extra-options-02">
-                        <a
-                           href="https://www.etisalat.ae/b2bportal/login.html?next=mobile-plans-discovery&amp;ratePlanId=PKBXBFO1BP0000002RD&amp;productId=prod_PKBXBFO1BP0000002RD&amp;selectedFlow=Mobile%20Plans&amp;displayName=Business%20First%20+%20National%20110%20&amp;showRequestCallBack=true&amp;product=7&amp;subject=Mobile_BFP_Online-Exclusive-National110&amp;productName=Business_First_Plus_National_110_Exclusive_Online_Offer"
-                           class="cms-button read-more-link" title="National 110"> <span data-sly-test="${properties.buyNowButton}">
-                        ${properties.buyNowButton}</span>
+                        <sly data-sly-test.buttonLink="${properties.buttonLink}" data-sly-use.buttonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=buttonLink}"/>
+						<a
+                           href="${cardlinkmodel.link ? cardlinkmodel.link : buttonlinkmodel.link}" target="${properties.btnlinktarget?'_blank':'_self'}"
+                           class="cms-button read-more-link" title="National 110"> 
+							<span data-sly-test="${properties.buyNowButton}">${properties.buyNowButton}</span>
                         </a> 
                      </div>
                   </div>
                </div>
+			   </a>
             </div>
          </div>
       </div>
