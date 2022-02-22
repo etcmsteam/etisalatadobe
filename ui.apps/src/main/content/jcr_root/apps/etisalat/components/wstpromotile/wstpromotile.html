@@ -10,12 +10,13 @@
       <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image768px/fileReference'] || properties['image1024px/fileReference'] || properties['image1366px/fileReference'] || properties['image1440px/fileReference'] || properties['image1920px/fileReference']}" />
    </sly>
    <div class="promo-grid ${properties.wstPromoTilevariation}">
-    <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover"></a>
+    <a data-sly-unwrap="${!properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover">
       <div class="cover">
          <sly data-sly-test="${viewports}"
             data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          <div class="bg-filter"></div>
       </div>
+    </a>
       <div class="grid-content">
          <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn-text learn-more hidden-xs">
          <span>${properties.promoCTATitle}</span>
@@ -23,5 +24,6 @@
          <h1 data-sly-element="${properties.titleType}">${properties.wstpromotitle}</h1>
       </div>
    </div>
+
 </sly>
 <sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.wstPromoTilevariation}"></sly>
