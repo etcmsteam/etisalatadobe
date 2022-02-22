@@ -24,12 +24,14 @@
       <h3 data-sly-element="${properties.titleType}">${properties.caremalpromotitle}</h3>
    </div>
    <div data-sly-test="${properties.jcr:description}" class="description">
-      <p>${properties.jcr:description @context='html'}</p>
-      <div data-sly-test="${properties.cardLink}" class="learn-more-wrap">
+     ${properties.jcr:description @context='html'}
+   </div>
+   <div data-sly-test="${properties.cardLink}" class="learn-more-wrap">
          <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn-text btn-green learn-more">
          ${properties.promoCTATitle}
          </a>
-      </div>
+    </div>
    </div>
+ </div>
 </sly>
 <sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.caremalPromoTilevariation}"></sly>
