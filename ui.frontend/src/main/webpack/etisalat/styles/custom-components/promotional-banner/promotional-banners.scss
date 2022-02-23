@@ -5,16 +5,12 @@
   justify-content: center;
   min-height: 67px;
 
-  &.orange {
-    color: #ffa500;
-  }
-
   .plus,
   .minus {
     svg {
       g,
       path {
-        stroke: $almost-black;
+        stroke: $white;
       }
     }
   }
@@ -67,17 +63,6 @@
         font-size: 24px;
         line-height: 30px;
         margin-bottom: 4px;
-      }
-
-      span {
-        color: $steel-grey;
-        font-size: 14px;
-        line-height: 17px;
-        margin: 0;
-      }
-
-      .price {
-        text-decoration: line-through;
       }
     }
   }
@@ -175,7 +160,7 @@
           font-weight: bold;
           line-height: 1.3;
           letter-spacing: 2px;
-          color: $almost-black;
+          color: $white;
           margin: 0;
           text-transform: uppercase;
 
@@ -192,7 +177,7 @@
 .offers-expanded-view {
   position: absolute !important;
   left: 0;
-  overflow-y: auto;
+  overflow: hidden;
   height: 100%;
   z-index: 10;
   transition: all 0.2s ease-in-out;
@@ -229,6 +214,7 @@
     .swiper-scrollbar {
       margin-bottom: 1.5rem;
       height: 4px;
+      width: 98% !important;
 
       .swiper-scrollbar-drag {
         background-color: $main-green;
@@ -265,14 +251,14 @@
     .button-next {
       right: -1rem;
       @media (min-width: 1366px) {
-        right: -3.5rem;
+        right: toRem(-30);
       }
     }
 
     .button-prev {
       left: -1rem;
       @media (min-width: 1366px) {
-        left: -3.5rem;
+        left: toRem(-30);
       }
     }
   }
@@ -282,11 +268,11 @@
 
     .container {
       @include respond-to-min($desktop-wide) {
-        width: toRem(1224);
+        width: toRem(1200);
       }
 
       @include respond-to-max($desktop-wide) {
-        width: toRem(952);
+        width: toRem(976);
       }
 
       @include respond-to-max($desktop-min) {
@@ -366,6 +352,7 @@
           margin: auto;
           min-width: 100%;
           min-height: 100%;
+          width: auto;
         }
       }
 
@@ -381,11 +368,13 @@
             font-size: 18px;
             line-height: 1.11;
             color: $white;
-            margin-bottom: toRem(16);
+            margin-bottom: toRem(28);
+            margin-top: 0;
 
             @media (min-width: 992px) {
               font-size: 26px;
               line-height: 1;
+              margin-bottom: toRem(24);
             }
           }
 
@@ -409,6 +398,85 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+// *************************************
+// Accessibility
+// *************************************
+
+.acc-black,
+.acc-blue {
+  .offers-expanded-view {
+    .cross-promo-background {
+      background: $black;
+
+      .cross-promo-bg-tile {
+        .cta-content-wrap {
+          background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), transparent) !important;
+          border: 1px solid $white;
+        }
+      }
+    }
+  }
+
+  .swiper-scrollbar {
+    background: rgb(255 255 255 / 50%);
+  }
+
+  .swiper-scrollbar-drag {
+    background: $white !important;
+  }
+}
+
+.acc-blue {
+  .offers-expanded-view {
+    .cross-promo-background {
+      background: $blue4;
+
+      .cross-promo-bg-tile {
+        .cta-content-wrap {
+          background: linear-gradient(0deg, rgba(58, 87, 150, 0.8), transparent) !important;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .offers-expanded-view {
+    .cross-promo-background {
+      background: $black;
+
+      .cross-promo-bg-tile {
+        .cta-content-wrap {
+          background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), transparent) !important;
+          border: 1px solid $yellow-light;
+
+          .cont h4 {
+            color: $yellow-light;
+          }
+        }
+      }
+    }
+  }
+
+  .swiper-scrollbar {
+    background: rgb(255 255 255 / 50%);
+  }
+
+  .swiper-scrollbar-drag {
+    background: $yellow-light;
+  }
+
+  .plus,
+  .minus {
+    svg {
+      g,
+      path {
+        stroke: $white;
       }
     }
   }
