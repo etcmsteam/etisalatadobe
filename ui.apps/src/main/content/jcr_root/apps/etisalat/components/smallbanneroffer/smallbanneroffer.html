@@ -32,7 +32,7 @@
     </div>
  </section>
 <sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
-    <div class="${!wcmmode.edit ? 'offers-expanded-view with-slider collapse' : ''}" 
+    <div class="${!wcmmode.edit ? 'offers-expanded-view collapse' : ''} ${container.items.size > 3 ? 'with-slider' : ''}" 
 	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
 		 data-placeholder-text="${wcmmode.edit && 'Drag Cross Promo components here' @ i18n}" 
 		 id="${component.id}">
@@ -47,9 +47,9 @@
 							     data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=''}"></div>
                             <!-- Slides End-->
                         </div>
-                        <div class="${!wcmmode.edit ? 'table-swiper-scrollbar swiper-scrollbar' : ''}"></div>
+                        <div class="${!wcmmode.edit && container.items.size > 3 ? 'table-swiper-scrollbar swiper-scrollbar' : ''}"></div>
                     </div>
-                    <div data-sly-test="${!wcmmode.edit}" class="button-prev">
+                    <div data-sly-test="${!wcmmode.edit &&  container.items.size > 3}" class="button-prev">
                         <svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">                           
                             <g id="Online-is-better---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                                 <g id="Arrow/2pt/Chevron/Left/chevron_left_grey" transform="translate(-4.000000, 0.000000)" stroke="#B2B2B2" stroke-width="2">
@@ -58,7 +58,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div data-sly-test="${!wcmmode.edit}" class="button-next">
+                    <div data-sly-test="${!wcmmode.edit && container.items.size > 3}" class="button-next">
                         <svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">                           
                             <g id="Online-is-better---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                                 <g id="Arrow/2pt/Chevron/Right/chevron_right_grey" transform="translate(-4.000000, 0.000000)" stroke="#B2B2B2" stroke-width="2">
