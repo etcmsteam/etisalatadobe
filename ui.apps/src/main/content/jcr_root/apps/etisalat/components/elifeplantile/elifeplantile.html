@@ -1,5 +1,6 @@
 <div class="product-card product-card--elife-plan">
-  <a href="${properties.availabilityButtonLink @ extension = 'html'}" alt="${properties.buyNowAltText}" class="link-cover"></a>
+<sly data-sly-test.customLink="${properties.availabilityButtonLink}" data-sly-use.linkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+  <a href="${linkmodel.link}" target ="${properties.btnlinktarget ? '_blank' : '_self'}" class="link-cover"></a>
     <div class="product-card__header">
       <figure class="product-card__header__figure">
         <div class="product-card__image" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
