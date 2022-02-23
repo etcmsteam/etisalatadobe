@@ -15,18 +15,27 @@
     top: 0px;
     z-index: 10;
 }
-.postpaid-wrapper.has-bg{
+.postpaid-wrapper.has-bg {
     @media (max-width:1024px){
         padding: 8px 0px;
     }
     padding: 40px 0;
     background-color: #fafaf5;
-    .container {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
+}
+.container-fix__width {
+    .postpaid-wrapper.has-bg {
+        .container {
+            @media (min-width: 992px) {
+                padding: 0 toRem(12) !important;
+            }
+            @media (min-width:1200px) {
+                width: toRem(1224);
+                padding: 0 toRem(12) !important;
+            }  
+        }
     }
 }
+
 .postpaid-wrapper{ 
     .container {
         @media (max-width:767px) {
