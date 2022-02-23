@@ -7,7 +7,7 @@
       <h2 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h2>
       ${tileModel.text @ context='html'}                        
    </div>
-   <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+   <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
       <div data-sly-test="${tileModel.ctatext}" class="learn-more-wrap">
          <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" 
             class="btn-text btn-green learn-more"
@@ -15,9 +15,26 @@
             title="${tileModel.ctatext}">${tileModel.ctatext}</a>
       </div>
    </sly>
-   <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}" 
-      data-sly-use.tileModalTemplate="tilemodal.html"
-      data-sly-call="${tileModalTemplate.modal @ tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}">                
-   </sly>
+  <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
+       data-sly-use.tileModalTemplate="tilemodal.html"
+       data-sly-call="${tileModalTemplate.modal @ tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}">
+  </sly>
+  <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
+      <!-- Modal start -->
+      <a href="#" class="btn-text btn-green learn-more youtube-video-link tileBoxVideoLink" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+      <div class="youtube-popup-container modal fade tileBoxVideoModal" id="mediaCtaVideo_1" role="dialog"
+           style="display: none;">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <iframe width="560" height="315"
+                          src="${properties.tileyoutubelink}" frameborder="0"
+                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen="">
+                  </iframe>
+              </div>
+          </div>
+      </div>
+      <!-- Modal end -->
+  </sly>
 </div>
 </template>
