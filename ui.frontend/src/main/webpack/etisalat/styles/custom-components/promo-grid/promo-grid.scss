@@ -383,10 +383,14 @@
         padding: 1rem;
       }
       .btn-text {
-        display: inline-block;
         font-size: 0.875rem;
         line-height: 1.25rem;
         letter-spacing: 2px;
+        display: none;
+
+        @include respond-to-min($desktop) {
+          display: inline-block;
+        }
         &.learn-more {
           &:before {
             padding: 3px;
@@ -414,6 +418,54 @@
   }
 }
 
+.acc-black {
+  .bg-white-filler .wstpromotile .promo-grid {
+    background-color: $black;
+    border: 1px solid $white;
+
+    h1,
+    .btn-text {
+      color: $white;
+    }
+  }
+  .wstpromotile {
+    border: 2px solid yellow;
+
+    &.bgpattern,
+    &.tile-aqua {
+      .promo-grid {
+        background-color: $black;
+        .grid-content {
+          .btn-text,
+          .btn-text span,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+  .promo-grid {
+    .grid-content {
+      .btn-text,
+      .btn-text span,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $black;
+      }
+    }
+  }
+}
+
 *[lang="ar"] {
   *[dir="rtl"] {
     .promo-grid {
@@ -430,6 +482,11 @@
       .cover {
         left: auto;
         right: 0;
+      }
+      .grid-content .btn-text.learn-more:before {
+        left: -20px;
+        right: auto;
+        transform: translateY(-50%) rotate(135deg);
       }
     }
   }
