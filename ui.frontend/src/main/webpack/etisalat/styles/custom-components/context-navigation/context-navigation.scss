@@ -644,6 +644,59 @@
 
   &.with-hide-arrows,
   &.static-tile {
+    .third-action-wrapper {
+      .action-link {
+        .link {
+          font-size: $font14;
+        }
+      }
+    }
+
+    .content-detail {
+      @include respond-to-min($desktop-wide) {
+        width: toRem(1224);
+      }
+
+      h3 {
+        font-size: 2rem;
+        color: $almost-black;
+        font-weight: 400;
+        margin: 0;
+        margin-bottom: 1.5rem;
+
+        @include respond-to-max($tablet) {
+          font-size: $font26;
+          line-height: toRem(33);
+          margin-bottom: 1rem;
+        }
+      }
+
+      p {
+        margin-bottom: toRem(50);
+        color: $paracolor;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        text-align: center;
+
+        @include font-family-lato();
+
+        @include respond-to-min-max($desktop-min, $tablet) {
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.008rem;
+        }
+      }
+
+      @include respond-to-min($tablet) {
+        > h3 {
+          margin-bottom: toRem(125);
+        }
+
+        > h3 + p {
+          margin-top: toRem(-100);
+        }
+      }
+    }
+
     .context-tile {
       @include respond-to-max($phone) {
         margin-bottom: toRem(40);
@@ -695,6 +748,11 @@
       .paragraph-styling {
         height: toRem(54);
         margin-bottom: toRem(16);
+
+        @include respond-to-max($tablet) {
+          height: toRem(24);
+          margin-bottom: toRem(24);
+        }
 
         p {
           color: $steel-grey;
