@@ -1,0 +1,1055 @@
+.nv-card-wrapper {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 0.5rem; // margin: 12px;
+
+  .nv-card-input {
+    display: none;
+  }
+
+  .nv-checkboxes-wrap {
+    display: none;
+  }
+
+  .nv-brand {
+    margin-bottom: 0.5rem;
+  }
+
+  hr.dashed {
+    border: 0;
+    height: 1px;
+    background: url(/b2c/eshopApp/assets/img/nv-etisalat/SVG/divider.png) 0 0 repeat;
+  }
+
+  .nv-special-offer {
+    font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    &.nv-md {
+      left: 1rem;
+    }
+    &.nv-full-width {
+      left: 0 !important;
+      right: 0 !important;
+      border-radius: 0.25rem 0.25rem 0 0;
+    }
+  }
+  .nv-price-wrapper {
+    font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
+
+    .price {
+      .price-value {
+        font-family: Neotech, Roboto, Arial, sans-serif;
+      }
+    }
+  }
+
+  .nv-smile-points {
+    border: 0 !important;
+  }
+
+  .nv-device-header,
+  .nv-plan-header {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .nv-card {
+    border: 0;
+    border-radius: 0.5rem;
+
+    &.products {
+      height: 100%;
+      cursor: pointer;
+
+      .nv-card-body {
+        transition: all 0.5s;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        border-width: 1px;
+        border-radius: 0.5rem;
+        border-style: solid;
+        border-color: transparent; // --------------------- comment for no border  ---------------
+        // border: 0 !important;
+      }
+
+      &:hover {
+        .nv-card-body {
+          border-color: $main-green;
+        }
+      }
+
+      &.nv-device-card {
+        .nv-card-body {
+          padding: 0;
+          border-width: 1px 1px 0 1px;
+          border-radius: 0.5rem 0.5rem 0 0;
+
+          .nv-brand,
+          .nv-color-list,
+          .nv-price-wrapper,
+          .nv-product-name {
+            padding: 0 1.5rem;
+          }
+
+          .nv-brand {
+            color: $steel-grey;
+          }
+
+          .nv-product-name {
+            margin-bottom: 1rem;
+            color: $almost-black; // height: 70px;
+            max-height: 3rem;
+            overflow: hidden;
+          }
+
+          // @include media-breakpoint-down(md) {
+          //     border-width: 1px;
+          //     border-radius: .5rem;
+
+          //     .smile-points {
+          //         border-radius: 0 0 .5rem .5rem;
+          //     }
+          // }
+        }
+      }
+
+      &.nv-plan-card {
+        .nv-card-body {
+          border-width: 0px 1px;
+          border-radius: 8px 8px 0px 0px;
+
+          // border-radius: 0;
+
+          // @include media-breakpoint-down(md) {
+          //     border-width: 0 1px 1px 1px;
+          //     border-radius: 0 0 .5rem .5rem;
+          // }
+        }
+
+        &.elife-plan {
+          .nv-card-body {
+            border-radius: 0.5rem 0.5rem 0 0;
+            border-width: 1px 1px 0px 1px;
+
+            .nv-product-name {
+              font-size: 1.75rem;
+              line-height: 35px;
+              color: $almost-black;
+
+              &.nv-md {
+                font-size: 1.5rem;
+                line-height: 1.33;
+              }
+
+              &.nv-sm {
+                font-size: 1.25rem;
+                line-height: 1.33;
+              }
+            }
+          }
+        }
+      }
+
+      &.offer {
+        .nv-price-wrapper {
+          .price {
+            color: $dark-orange;
+          }
+        }
+
+        &:hover {
+          .nv-card-body {
+            border-color: $dark-orange;
+          }
+        }
+      }
+    }
+  }
+
+  .btn-buy-now {
+    border-radius: 0 0 0.5rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.25rem;
+    line-height: 18px;
+    height: 52px;
+
+    &.nv-sm {
+      height: 38px;
+    }
+    // @include media-breakpoint-down(md) {
+    //     display: none;
+    // }
+  }
+
+  .nv-selected-plan {
+    border-left: 1px solid $main-green;
+    border-right: 1px solid $main-green;
+    border-bottom: 1px solid $main-green;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    border-radius: 0 0 0.5rem 0.5rem;
+    display: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  &.selectable {
+    .nv-checkboxes-wrap {
+      display: block;
+    }
+
+    .nv-card-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+
+      &:checked {
+        + .products {
+          &.nv-device-card,
+          &.nv-plan-card {
+            .nv-card-body {
+              border-color: $main-green;
+            }
+          }
+        }
+      }
+
+      &[type="radio"]:checked {
+        + .products {
+          .nv-checkboxes-wrap label {
+            border: 1px solid $main-green;
+            box-shadow: inset 0 2px 5px 0 rgba(143, 163, 105, 0.5);
+
+            &:after {
+              box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+              border-radius: 50%;
+              opacity: 1;
+              border: 6px solid $main-green;
+            }
+          }
+        }
+      }
+
+      &[type="checkbox"]:checked {
+        + .products {
+          .nv-checkboxes-wrap label {
+            background-color: $main-green;
+            border-color: $main-green;
+            box-shadow: 0 2px 5px 0 rgba(143, 163, 105, 0.5);
+
+            &:after {
+              border: 2px solid $white;
+              border-top: none;
+              border-right: none;
+              height: 6px;
+              -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+              transform: translate(-50%, -50%) rotate(-45deg);
+              width: 12px;
+              top: 45%;
+              left: 51%;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    .nv-card {
+      &.products {
+        border-width: 1px 1px 1px 1px;
+        border-radius: 0.5rem;
+
+        .nv-price-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        &.nv-device-card {
+          .nv-card-body {
+            border-width: 1px;
+            border-radius: 0.5rem;
+
+            .nv-smile-points {
+              border-radius: 0 0 0.5rem 0.5rem;
+            }
+          }
+        }
+
+        &.nv-plan-card {
+          .nv-card-body {
+            border-width: 0 1px 1px 1px;
+            border-radius: 0 0 0.5rem 0.5rem;
+          }
+
+          &.elife-plan {
+            .nv-card-body {
+              border-radius: 0.5rem;
+              border-width: 1px;
+            }
+          }
+        }
+
+        &:hover {
+          &.nv-plan-card {
+            .nv-card-body {
+              border-width: 0 1px 1px 1px;
+              border-radius: 0.5rem;
+            }
+
+            &.elife-plan {
+              .nv-card-body {
+                border-radius: 0.5rem;
+                border-width: 1px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .btn-buy-now {
+      display: none;
+    }
+
+    &.v-2 {
+      .btn-buy-now {
+        display: block !important;
+      }
+
+      .nv-card.products {
+        .nv-card-body {
+          .nv-selected-plan {
+            border-radius: 0 0 0.5rem 0.5rem;
+          }
+        }
+
+        &,
+        &:hover {
+          .nv-card-body {
+            border-width: 1px 1px 0px 1px;
+            border-radius: 0.5rem 0.5rem 0 0;
+          }
+        }
+      }
+
+      &.selected {
+        .nv-selected-plan {
+          display: block;
+        }
+
+        .btn-buy-now {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  .cart-specification {
+    margin-bottom: 0.75rem;
+
+    li {
+      margin-bottom: 0.25rem;
+      color: $steel-grey;
+      font-size: 1rem;
+      line-height: 26px;
+    }
+  }
+
+  .cart-selected-addons {
+    .cart-selected-addon {
+      &:not(:last-child) {
+        border-bottom: 1px solid $steel-grey;
+        margin-bottom: 14px;
+        padding-bottom: 14px;
+      }
+    }
+  }
+
+  .important-card {
+    flex-direction: row;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: none;
+    align-items: center;
+    overflow: hidden;
+    border: 0;
+
+    .card-title {
+      font-size: 1.75rem;
+      line-height: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-text {
+      line-height: 21px;
+    }
+  }
+
+  .nv-smile-points {
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+
+  .nv-card.products {
+    &:hover {
+      .nv-smile-points {
+        border-color: $main-green;
+      }
+    }
+    &.offer {
+      .btn-buy-now {
+        border-color: #ff8000;
+        background-color: #ff8000;
+      }
+      &:hover {
+        .nv-smile-points {
+          border-color: #ff8000;
+        }
+      }
+    }
+  }
+}
+
+// prepaid static plans from CMS
+.prepaid-plans {
+  .container {
+    @media (max-width: 767px) {
+      padding-left: 16px;
+      padding-right: 0;
+    }
+  }
+  .nv-card > a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .content-section {
+    position: relative;
+  }
+  .nv-price-wrapper .price-vat {
+    text-align: right;
+    display: flex;
+    align-items: center;
+  }
+  .prepaid-plans-button-prev,
+  .prepaid-plans-button-next {
+    position: absolute;
+    top: 45%;
+    z-index: 2;
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.swiper-button-disabled {
+      display: none;
+    }
+
+    @media (max-width: 1365px) {
+      display: none;
+    }
+  }
+  .prepaid-plans-button-next {
+    right: -4.5rem;
+  }
+  .prepaid-plans-button-prev {
+    transform: rotate(180deg);
+    left: -4.5rem;
+  }
+  .swiper-default.swiper-full-height .swiper-slide {
+    &:last-child {
+      margin: 0 !important;
+    }
+  }
+}
+
+
+[lang="ar"] [dir="rtl"] {
+  .prepaid-plans {
+    .nv-price-wrapper .price-vat .old-price {
+      margin-right: 0;
+    }
+
+    .prepaid-plans-button-next {
+      right: auto;
+      left: -4.5rem;
+      transform: rotate(180deg);
+    }
+
+    .prepaid-plans-button-prev {
+      transform: rotate(0);
+      left: auto;
+      right: -4.5rem;
+    }
+
+    .container {
+      @media (max-width: 767px) {
+        padding-left: 0;
+        padding-right: 16px;
+      }
+    }
+  }
+  .nv-card-wrapper {
+    .btn-buy-now {
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .nv-best-seller .nv-product-name {
+    max-height: 2.7rem !important;
+  }
+  .bestseller-styling .nv-section-title {
+    font-size: 24px;
+  }
+  .nv-card-wrapper .nv-card.products .nv-card-body {
+    border: 0 !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .nv-card-wrapper .nv-card.products:hover .nv-card-body {
+    border: 0 !important;
+  }
+
+  .nv-card-wrapper .btn-buy-now {
+    display: none;
+  }
+
+  .nv-card-wrapper.keepbtn .btn-buy-now {
+    display: block;
+  }
+
+  .nv-card-wrapper .elife-plan .nv-brand {
+    margin: 0 !important;
+  }
+
+  .nv-card-wrapper .nv-card.products .nv-card-body > .nv-px-4 {
+    padding-right: 0.75rem !important;
+    padding-left: 0.75rem !important;
+  }
+
+  .nv-card-wrapper.selectable.v-2.selected .nv-selected-plan {
+    letter-spacing: 2px;
+  }
+
+  .nv-card-wrapper .nv-special-offer {
+    left: 0.75rem;
+  }
+}
+
+*[lang="ar"] {
+  *[dir="rtl"] {
+    .nv-card-wrapper {
+      .nv-special-offer {
+        right: 1.5rem;
+        left: auto;
+        &.nv-md {
+          right: 1rem;
+        }
+      }
+
+      .nv-card {
+        &.products {
+          .nv-card-body {
+            .smile-points {
+              letter-spacing: 0;
+            }
+          }
+
+          &.nv-plan-card {
+            .nv-card-body {
+              .channel-list {
+                letter-spacing: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  *[lang="ar"] *[dir="rtl"] .nv-card-wrapper .nv-special-offer {
+    right: 0.75rem;
+    left: auto;
+  }
+}
+
+
+/* -------------------- nv-utilities -------------------- */
+/* -------------------- new card -------------------- */
+.nv-card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.nv-card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.elite-plan .nv-package-warraper {
+  border-top: 0;
+  padding: 0 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.elite-plan .nv-package-warraper .nv-package-details {
+  margin-bottom: 0;
+}
+
+.elite-plan .nv-feature-list {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.75rem;
+}
+
+.elite-title {
+  position: absolute;
+  left: 16px;
+  bottom: 0;
+  right: 16px;
+}
+
+.elite-title .nv-brand,
+.elite-title .nv-product-name {
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .elite-plan .nv-package-warraper {
+    padding: 0 0 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .elite-plan .nv-feature-list {
+    margin-bottom: 2rem;
+  }
+}
+/*-------- best seller ------------------------*/
+.nv-best-seller {
+  .nv-smile-points {
+    font-weight: normal !important;
+    font-size: 0.75rem;
+  }
+
+  .btn-buy-now {
+    font-size: 12px !important;
+  }
+}
+/* -------------------- plans header -------------------- */
+.nv-plan-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  height: 8.75rem;
+
+  &.nv-md {
+    padding: 1rem;
+  }
+
+  &.compare-view {
+    height: 6rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    padding: 0.5rem;
+  }
+  @media (max-width: 991px) {
+    padding: 0.75em;
+    height: 7.625rem;
+
+    .nv-product-name {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &.elife {
+    height: auto;
+    padding: 0;
+
+    img {
+      height: 14.125rem;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    @media (max-width: 991px) {
+      height: 9.125rem;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        height: auto;
+        min-height: 100%;
+        position: absolute;
+        min-width: 100%;
+        top: 0;
+      }
+    }
+  }
+
+  &.green {
+    background: $main-green;
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat,
+      -webkit-linear-gradient(45deg, $main-green, $almost-black);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat, -o-linear-gradient(45deg, $main-green, $almost-black);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat, linear-gradient(45deg, $main-green, $almost-black);
+  }
+
+  &.purple {
+    background: $dark-purple;
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat,
+      -webkit-linear-gradient(45deg, $dark-purple, $almost-black);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat,
+      -o-linear-gradient(45deg, $dark-purple, $almost-black);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat, linear-gradient(45deg, $dark-purple, $almost-black);
+  }
+
+  &.orange {
+    background: $dark-orange;
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat,
+      -webkit-linear-gradient(45deg, $dark-orange, $almost-black);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat,
+      -o-linear-gradient(45deg, $dark-orange, $almost-black);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/plan-cards-illustration.svg) right center no-repeat, linear-gradient(45deg, $dark-orange, $almost-black);
+  }
+  &.gold {
+    background: $gold-dark;
+    background: url(/b2c/eshopApp/assets/img/bg-cards/card-header-gold.png) right center no-repeat, -webkit-linear-gradient(45deg, $gold-dark, $gold);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/card-header-gold.png) right center no-repeat, -o-linear-gradient(45deg, $gold-dark, $gold);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/card-header-gold.png) right center no-repeat, linear-gradient(45deg, $gold-dark, $gold);
+  }
+  &.silver {
+    background: $silver-dark;
+    background: url(/b2c/eshopApp/assets/img/bg-cards/card-header-platinum.png) right center no-repeat, -webkit-linear-gradient(45deg, $silver-dark, $silver);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/card-header-platinum.png) right center no-repeat, -o-linear-gradient(45deg, $silver-dark, $silver);
+    background: url(/b2c/eshopApp/assets/img/bg-cards/card-header-platinum.png) right center no-repeat, linear-gradient(45deg, $silver-dark, $silver);
+  }
+
+  //&.darkCyan {
+  //  background: @color-darkCyan;
+  //  background: url(/b2c/eshopApp/assets/img/patterns/wave-graphic-color.svg) right center
+  //      no-repeat,
+  //    linear-gradient(38.14deg, @almost-black 0%, $color-darkCyan 100%);
+  //}
+
+  .nv-product-name,
+  .nv-brand {
+    color: #fff;
+  }
+
+  &.selected {
+    height: 6.875rem;
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-items: center;
+
+    .nv-brand {
+      display: none;
+    }
+
+    .nv-product-name {
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: 2.7px;
+    }
+
+    &:after {
+      content: "×";
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: $white;
+      font-size: 1.293rem;
+      font-weight: 400;
+      line-height: 0.625;
+      opacity: 1;
+    }
+  }
+}
+
+
+/*--------------------- product title & brand ---------------------- */
+.nv-brand {
+  @include font-family-lato;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 0.75rem;
+  text-transform: uppercase;
+  // color: @white;
+  color: $steel-grey;
+  opacity: 0.8;
+}
+
+.nv-product-name {
+  font-size: 1.75rem;
+  line-height: 35px;
+  color: $almost-black;
+
+  &.nv-md {
+    font-size: 1.5rem;
+    line-height: 1.33;
+  }
+
+  &.nv-sm {
+    font-size: 1.25rem;
+    line-height: 1.33;
+  }
+}
+
+@media (max-width: 991px) {
+  .nv-brand {
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+    line-height: 12px;
+  }
+}
+
+
+/* -------------------- paragraphs -------------------- */
+.nv-paragraph-styling {
+  p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.43;
+    color: $steel-grey;
+
+    @media (max-width: 991px) {
+      font-size: 0.875rem;
+      line-height: 1.42;
+    }
+  }
+}
+/*------------------------ price wapper -------------------- */
+
+.nv-price-wrapper {
+  .from {
+    color: $steel-grey;
+    font-size: 0.75rem;
+    line-height: normal;
+    // margin-bottom: 4px;
+  }
+
+  .price {
+    color: $main-green;
+    line-height: normal;
+
+    .price-value {
+      font-size: 26px;
+      line-height: normal;
+      font-family: Neotech, Roboto, Arial, sans-serif;
+      &.nv-lg {
+        font-size: 28px;
+      }
+    }
+
+    .price-currency {
+      font-size: 0.875rem;
+      line-height: normal;
+      margin-left: 0.25rem;
+      display: inline-block;
+    }
+  }
+  .price-vat {
+    font-size: 0.875rem;
+    line-height: normal;
+    margin-top: 4px;
+    color: #6f7273;
+
+    .old-price {
+      background-color: $dark-orange;
+      letter-spacing: 0.5px;
+      color: $white;
+      margin-right: 0.25rem;
+      border-radius: 1.25rem;
+      padding: 2px 7px;
+      font-size: 0.75rem;
+
+      .old-price-value {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &.bold {
+    .from,
+    .price {
+      font-weight: bold;
+    }
+  }
+
+  &.orange {
+    .price {
+      color: #eeeeee;
+    }
+  }
+
+  &.dark {
+    .from,
+    .price {
+      color: $almost-black;
+    }
+  }
+
+  &.xl-price-wrapper {
+    .from {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .price {
+
+      .price-value {
+        font-size: 48px;
+        line-height: 54px;
+      }
+
+      .price-currency {
+        font-size: 16px;
+        line-height: 20px;
+        // display: inline-block;
+      }
+    }
+  }
+
+  &.sm-price-wrapper {
+    .price {
+      .price-value {
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .from,
+      .price-vat {
+        font-size: 12px;
+      }
+    }
+
+    .price-currency {
+      font-size: 12px;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 991px) {
+  .nv-footer-details-summary .nv-price-wrapper .price {
+    margin-bottom: 4px;
+  }
+
+  .nv-price-wrapper {
+    .price {
+      .price-value {
+        &.nv-lg {
+          font-size: 20px;
+        }
+        font-size: 20px;
+        line-height: 25px;
+      }
+
+      .price-currency {
+        font-size: 0.625rem;
+        margin-left: 0.25rem;
+        line-height: 10px;
+      }
+    }
+
+    .price-vat {
+      margin-top: 0;
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+}
+
+//
+
+*[lang="ar"] {
+  *[dir="rtl"] {
+    .nv-price-wrapper {
+      .price {
+        .price-currency {
+          margin-left: 0;
+          margin-right: 0.5rem;
+          font-size: 0.675rem;
+        }
+      }
+
+      .price-vat {
+        .old-price {
+          margin-right: 0.25rem;
+          margin-left: 0.25rem;
+        }
+      }
+
+      &.xl-price-wrapper {
+        .price {
+          .price-value {
+            font-size: 36px;
+            line-height: 48px;
+          }
+
+          .price-currency {
+            font-size: 12px;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+/* -------------------- borders -------------------- */
+.nv-border-bottom {
+  border-bottom: 1px solid #e2e1da;
+}
+
+.nv-border-top {
+  border-top: 1px solid #e2e1da;
+}
+
+.smart-home-elife-slider {
+  .swiper-scrollbar-drag {
+    background-color: #719e19;
+  }
+}
+
