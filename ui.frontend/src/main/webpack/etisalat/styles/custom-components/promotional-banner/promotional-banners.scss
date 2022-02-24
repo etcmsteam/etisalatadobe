@@ -1,9 +1,17 @@
+.root.container {
+  overflow: hidden;
+}
+
 .promotional-banner-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 67px;
+
+  .imageetisalatviewport {
+    width: auto;
+  }
 
   .plus,
   .minus {
@@ -28,6 +36,7 @@
     div.cover {
       img.cover {
         height: 100%;
+        width: auto;
       }
     }
   }
@@ -105,6 +114,10 @@
           font-size: 13px;
           color: $almost-black;
           line-height: 1.38;
+
+          &.text--white {
+            color: $white;
+          }
         }
       }
     }
@@ -268,7 +281,7 @@
 
     .container {
       @include respond-to-min($desktop-wide) {
-        width: toRem(1200);
+        width: toRem(1224);
       }
 
       @include respond-to-max($desktop-wide) {
@@ -281,12 +294,11 @@
 
       @include respond-to-max($custom-width-tab) {
         padding: 0 15px;
+        width: 100%;
       }
 
       .row {
-        @include respond-to-max($desktop-wide) {
-          margin: auto 0;
-        }
+        margin: auto 0;
       }
     }
 
