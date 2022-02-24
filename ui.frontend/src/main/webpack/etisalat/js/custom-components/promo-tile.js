@@ -3,6 +3,8 @@
       // register the event handlers
     $(document).ready(function () {
         // open youtube video and close by removing src and then add
+        var promoBox = $(document).find(".promo-grid-tile-4-0.and-video-icon");
+        if (promoBox.length > 0) {
         $(".youtube-video-link").on("click", function (e) {
             e.preventDefault();
             var modalCTA = $(this).next(".mediaCtaVideo");
@@ -22,5 +24,6 @@
               $("body").removeClass("modal-overlay");
             }
         });
+        }
     });
 })();

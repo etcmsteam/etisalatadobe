@@ -11,6 +11,7 @@
         if ($("body").hasClass("modal-open")) {
           $("body").parent().css("overflow", "hidden");
         }
+        $("body").addClass("modal-overlay");
       });
 
       $(".youtube-popup-container").on("hidden.bs.modal", function () {
@@ -18,6 +19,9 @@
         $(this).find("iframe").attr("src", "");
         $(this).find("iframe").attr("src", src.replace("autoplay=1", ""));
         $("html").removeAttr("style");
+        if ($("body").hasClass("modal-overlay")) {
+          $("body").removeClass("modal-overlay");
+        }
       });
     }
   });
