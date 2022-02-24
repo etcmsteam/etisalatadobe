@@ -642,8 +642,90 @@
     }
   }
 
+  &.three-tiles {
+    &.with-hide-arrows,
+    &.static-tile {
+      .context-tile {
+        &:last-child {
+          @include respond-to-max($desktop-min) {
+            margin-bottom: toRem(16);
+          }
+
+          @include respond-to-max($phone) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
   &.with-hide-arrows,
   &.static-tile {
+    .third-action-wrapper {
+      @include respond-to-max($desktop-min) {
+        padding-top: toRem(6);
+      }
+      &.action-link {
+        .link {
+          @include respond-to-max($desktop-min) {
+            font-size: $font14;
+          }
+        }
+      }
+    }
+
+    .content-detail {
+      @include respond-to-min($desktop-wide) {
+        width: toRem(1224);
+      }
+
+      h3 {
+        font-size: 2rem;
+        color: $almost-black;
+        font-weight: 400;
+        margin: 0;
+        margin-bottom: 1.5rem;
+
+        @include respond-to-max($tablet) {
+          font-size: $font26;
+          line-height: toRem(33);
+          margin-bottom: 1rem;
+        }
+      }
+
+      p {
+        margin-bottom: toRem(45);
+        color: $paracolor;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        text-align: center;
+
+        @include font-family-lato();
+
+        @include respond-to-max($custom-width-tab) {
+          margin-bottom: toRem(19);
+          letter-spacing: -0.008rem;
+        }
+      }
+
+      @include respond-to-min-max($desktop, $tablet) {
+        > h3 {
+          margin-bottom: toRem(125);
+        }
+
+        > h3 + p {
+          margin-top: toRem(-100);
+          margin-bottom: 0;
+        }
+      }
+
+      @include respond-to-min($desktop-wide) {
+        > h3 + p {
+          margin-bottom: toRem(46);
+        }
+      }
+    }
+
     .context-tile {
       @include respond-to-max($phone) {
         margin-bottom: toRem(40);
@@ -696,6 +778,11 @@
         height: toRem(54);
         margin-bottom: toRem(16);
 
+        @include respond-to-max($tablet) {
+          height: toRem(24);
+          margin-bottom: toRem(24);
+        }
+
         p {
           color: $steel-grey;
           margin-bottom: 0 !important;
@@ -714,6 +801,12 @@
       @include respond-to-max($desktop-min) {
         margin-bottom: toRem(40);
         padding-bottom: 0;
+
+        &:last-child {
+          @include respond-to-max($custom-width-tab) {
+            margin-bottom: 0;
+          }
+        }
       }
     }
 

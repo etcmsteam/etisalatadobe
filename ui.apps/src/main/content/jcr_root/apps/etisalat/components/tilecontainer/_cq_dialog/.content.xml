@@ -158,6 +158,7 @@
                                                         uncheckedValue="{Boolean}false"
                                                         value="{Boolean}true"/>
                                                     <swiperbehaviour
+                                                        granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                         fieldDescription="Slider behavior to be infinite loop or finite loop."
@@ -181,7 +182,28 @@
                                                                 text="Swiper hide one End"
                                                                 value="with-hide-arrows"/>
                                                         </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".swipertype-showhide-target"/>
                                                     </swiperbehaviour>
+                                                    <textWithSwiper
+                                                        granite:class="swipertype-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <textAboveSlider
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                                fieldDescription="Text &amp; Title to be added just above the Swiper"
+                                                                fieldLabel="Text above Swiper"
+                                                                name="./textAboveSlider"
+                                                                useFixedInlineToolbar="{Boolean}true"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="with-hide-arrows"/>
+                                                    </textWithSwiper>
                                                     <loadmore
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -367,8 +389,8 @@
                                                     showhidetargetvalue="tile-box"/>
                                             </tilebehavior>
                                             <id
-                                                granite:hide="true"
-												jcr:primaryType="nt:unstructured"
+												granite:hide="true"
+                                                jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="HTML ID attribute to apply to the component."
                                                 fieldLabel="ID"
