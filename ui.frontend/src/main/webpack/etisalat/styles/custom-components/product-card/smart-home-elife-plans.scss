@@ -1,23 +1,54 @@
 .smart-home-elife-slider {
-  .nv-card-contentRight,
   .nv-card-contentLeft {
+    padding-left: 0;
     @include respond-to-max($tablet - 1) {
       padding-right: 0;
     }
-  }
-  .nv-card-contentRight {
-    @include respond-to-min($desktop) {
+    @include rtlBlock() {
       padding-right: 0;
     }
   }
+
+  .nv-card-contentRight {
+    padding-right: 0;
+    @include rtlBlock() {
+      padding-left: 0;
+    }
+  }
+
   .main-text-section {
     padding: 1.5rem 0;
     @include respond-to-min($desktop) {
       padding: 3rem 0;
     }
+
+    .main-text-action-wrapper {
+      @include rtlBlock() {
+        .btn-text.btn-green {
+          &::before {
+            right: auto;
+            left: -20px;
+            transform: translateY(-50%) rotate(135deg);
+          }
+        }
+      }
+    }
+
     .paragraph-styling {
       .p1 p {
         color: $gray-text-color;
+      }
+      ul {
+        @include rtlBlock() {
+          margin-right: 1rem;
+          margin-left: 0;
+        }
+        li {
+          @include rtlBlock() {
+            padding-left: 0;
+            padding-right: 1.5rem;
+          }
+        }
       }
     }
   }

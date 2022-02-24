@@ -151,6 +151,29 @@
                 line-height: 1.33;
               }
             }
+            @include respond-to-max($desktop - 1) {
+              .nv-brand {
+                font-size: 0.5rem;
+                letter-spacing: 2px;
+                line-height: 12px;
+              }
+
+              .nv-product-name {
+                font-size: 1rem;
+                line-height: 22px;
+                margin-bottom: 12px !important;
+
+                &.nv-md {
+                  font-size: 18px;
+                  line-height: normal;
+                }
+
+                &.nv-sm {
+                  font-size: 14px;
+                  line-height: 1.33;
+                }
+              }
+            }
           }
         }
       }
@@ -475,7 +498,6 @@
   }
 }
 
-
 [lang="ar"] [dir="rtl"] {
   .prepaid-plans {
     .nv-price-wrapper .price-vat .old-price {
@@ -588,7 +610,6 @@
     left: auto;
   }
 }
-
 
 /* -------------------- nv-utilities -------------------- */
 /* -------------------- new card -------------------- */
@@ -759,7 +780,6 @@
   }
 }
 
-
 /*--------------------- product title & brand ---------------------- */
 .nv-brand {
   @include font-family-lato;
@@ -796,7 +816,6 @@
     line-height: 12px;
   }
 }
-
 
 /* -------------------- paragraphs -------------------- */
 .nv-paragraph-styling {
@@ -890,7 +909,6 @@
     }
 
     .price {
-
       .price-value {
         font-size: 48px;
         line-height: 54px;
@@ -1008,3 +1026,11 @@
   }
 }
 
+.col-md-offset-1 {
+  @include rtlBlock() {
+    @include respond-to-min($desktop) {
+      margin-left: 0;
+      margin-right: 8.33333333%;
+    }
+  }
+}
