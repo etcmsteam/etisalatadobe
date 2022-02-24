@@ -383,10 +383,14 @@
         padding: 1rem;
       }
       .btn-text {
-        display: inline-block;
         font-size: 0.875rem;
         line-height: 1.25rem;
         letter-spacing: 2px;
+        display: none;
+
+        @include respond-to-min($desktop) {
+          display: inline-block;
+        }
         &.learn-more {
           &:before {
             padding: 3px;
@@ -414,6 +418,126 @@
   }
 }
 
+.acc-black {
+  .wstpromotile {
+    .promo-grid {
+      background-color: $black !important;
+      border: 1px solid $white;
+
+      span {
+        color: $black !important;
+      }
+      .grid-content {
+        .btn-text,
+        .btn-text span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $black !important;
+        }
+      }
+    }
+
+    &.white-font {
+      .grid-content {
+        .btn-text,
+        .btn-text span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.acc-blue {
+  .wstpromotile {
+    .promo-grid {
+      background-color: $blue4 !important;
+      border: 1px solid $white;
+
+      span {
+        color: $blue4 !important;
+      }
+      .grid-content {
+        .btn-text,
+        .btn-text span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $blue4 !important;
+        }
+      }
+    }
+
+    &.white-font {
+      .grid-content {
+        .btn-text,
+        .btn-text span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .wstpromotile {
+    .promo-grid {
+      background-color: $yellow-light !important;
+      border: 1px solid $yellow-light;
+
+      span {
+        color: $yellow-light !important;
+      }
+      .grid-content {
+        .btn-text,
+        .btn-text span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $yellow-light !important;
+        }
+      }
+    }
+
+    &.white-font {
+      .grid-content {
+        .btn-text,
+        .btn-text span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
 *[lang="ar"] {
   *[dir="rtl"] {
     .promo-grid {
@@ -430,6 +554,11 @@
       .cover {
         left: auto;
         right: 0;
+      }
+      .grid-content .btn-text.learn-more:before {
+        left: -20px;
+        right: auto;
+        transform: translateY(-50%) rotate(135deg);
       }
     }
   }
