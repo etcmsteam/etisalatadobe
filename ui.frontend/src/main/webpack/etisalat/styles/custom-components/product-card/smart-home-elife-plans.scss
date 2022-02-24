@@ -14,6 +14,12 @@
     @include rtlBlock() {
       padding-left: 0;
     }
+    .swiper-scrollbar {
+      @include respond-to-min($tablet) {
+        left: 1.5% !important;
+      }
+      width: 97% !important;
+    }
   }
 
   .main-text-section {
@@ -23,8 +29,16 @@
     }
 
     .main-text-action-wrapper {
-      @include rtlBlock() {
-        .btn-text.btn-green {
+      .btn-text.btn-green {
+        @include respond-to-max($desktop - 1) {
+          font-size: $font12;
+          &::before {
+            padding: 2.6px;
+          }
+        }
+        @include rtlBlock() {
+          @include font-family-lato;
+          letter-spacing: 2px !important;
           &::before {
             right: auto;
             left: -20px;
@@ -81,7 +95,7 @@
 
   .special-offers {
     position: absolute;
-    top: 1px;
+    top: 2px;
     font-size: 0.75rem;
     font-family: Neotech-medium, GE SS Two, Arial, sans-serif;
     background-color: #ff8000;

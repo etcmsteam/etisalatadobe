@@ -96,15 +96,15 @@ function initNvcardProductDetail() {
       const renderSlides = function (data) {
         const products = data;
         let html = "";
-        const promoText = "SPECIAL OFFER ";
-        const off = "% OFF";
-        const buyNowText = "BUY NOW";
-        const aedText = "AED";
-        const fromText = "From ";
-        const wasText = "was ";
-        const vatText = " 5% VAT excluded";
-        const or = "or ";
-        const month = "/Month ";
+        let promoText = "SPECIAL OFFER ";
+        let off = "% OFF";
+        let buyNowText = "BUY NOW";
+        let aedText = "AED";
+        let fromText = "From ";
+        let wasText = "was ";
+        let vatText = " 5% VAT excluded";
+        let or = "or ";
+        let month = "/Month ";
         if (window.location.href.indexOf("/ar/") > -1) {
           promoText = " عرض خاص ";
           off = " % أقل ";
