@@ -134,21 +134,32 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             showhidetargetvalue="align-middle"/>
                                                     </leftinIpad>
-                                                    <mainTitle
+                                                    <mainText
+                                                        granite:class="swipertype-showhide-target"
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="Add Title for Context Navigation Tiles to appear in grid format."
-                                                        fieldLabel="Main Text Title"
-                                                        maxlength="{Long}100"
-                                                        name="./mainContextTitle"/>
-                                                    <maindescription
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
-                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                        fieldDescription="Text for context navigation Description."
-                                                        fieldLabel="Main Text Description"
-                                                        name="./mainContextDesc"
-                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <mainTitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Add Title for Context Navigation Tiles to appear in grid format."
+                                                                fieldLabel="Main Text Title"
+                                                                maxlength="{Long}100"
+                                                                name="./mainContextTitle"/>
+                                                            <maindescription
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                                fieldDescription="Text for context navigation Description."
+                                                                fieldLabel="Main Text Description"
+                                                                name="./mainContextDesc"
+                                                                useFixedInlineToolbar="{Boolean}true"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue1="swiper"
+                                                            showhidetargetvalue2="with-loop"/>
+                                                    </mainText>
                                                     <linkwrttext
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -388,7 +399,7 @@
                                                     showhidetargetvalue="tile-box"/>
                                             </tilebehavior>
                                             <id
-												granite:hide="true"
+                                                granite:hide="true"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="HTML ID attribute to apply to the component."
