@@ -1,0 +1,26 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+  <section class="guide-section">
+    <div class="content-section">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div data-sly-test="${properties.title}" class="wst-main-headings">
+            <div class="h7">${properties.title}</div>
+          </div>
+          <div class="paragraph-styling ul-list-cms">
+            <div class="p2">
+              ${properties.desc @ context='html'}
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div data-sly-test="${properties.fileReference}" class="img-wraper">
+            <div class="cover" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference}"></sly>
