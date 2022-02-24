@@ -642,12 +642,34 @@
     }
   }
 
+  &.three-tiles {
+    &.with-hide-arrows,
+    &.static-tile {
+      .context-tile {
+        &:last-child {
+          @include respond-to-max($desktop-min) {
+            margin-bottom: toRem(16);
+          }
+
+          @include respond-to-max($phone) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
   &.with-hide-arrows,
   &.static-tile {
     .third-action-wrapper {
-      .action-link {
+      @include respond-to-max($desktop-min) {
+        padding-top: toRem(6);
+      }
+      &.action-link {
         .link {
-          font-size: $font14;
+          @include respond-to-max($desktop-min) {
+            font-size: $font14;
+          }
         }
       }
     }
@@ -672,7 +694,7 @@
       }
 
       p {
-        margin-bottom: toRem(50);
+        margin-bottom: toRem(45);
         color: $paracolor;
         font-size: 1rem;
         line-height: 1.5rem;
@@ -680,7 +702,7 @@
 
         @include font-family-lato();
 
-        @include respond-to-min-max($desktop-min, $tablet) {
+        @include respond-to-max($custom-width-tab) {
           margin-bottom: 1.5rem;
           letter-spacing: -0.008rem;
         }
@@ -693,6 +715,7 @@
 
         > h3 + p {
           margin-top: toRem(-100);
+          margin-bottom: 0;
         }
       }
     }
@@ -774,8 +797,6 @@
         padding-bottom: 0;
 
         &:last-child {
-          margin-bottom: toRem(40);
-
           @include respond-to-max($custom-width-tab) {
             margin-bottom: 0;
           }
