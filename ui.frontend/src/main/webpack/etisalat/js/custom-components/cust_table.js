@@ -294,12 +294,11 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
 
             function popupHeight(current) {
                 var dataLabel = $(current).attr("data-label");
-                var dataLabel = $(current).attr("data-label");
                 if (typeof dataLabel !== 'undefined' && dataLabel !== '') {
-                    $('#' + dataLabel).addClass('show');
+                    $('.cmp-tabs__tabpanel--active #' + dataLabel).addClass('show');
 
-                    filterPopupHeader = $('#' + dataLabel + ' .nv-modal-header').outerHeight();
-                    filterPopupFooter = $('#' + dataLabel + ' .filter-button-wrap').outerHeight();
+                    filterPopupHeader = $('.cmp-tabs__tabpanel--active #' + dataLabel + ' .nv-modal-header').outerHeight();
+                    filterPopupFooter = $('.cmp-tabs__tabpanel--active #' + dataLabel + ' .filter-button-wrap').outerHeight();
 
                     if (window.innerWidth > 992) {
                         $('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 40));
