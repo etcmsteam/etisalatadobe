@@ -75,6 +75,9 @@ $(document).ready(function () {
     var modalCTA = $(this).next(".tileBoxVideoModal");
     $(this).closest(".swiper-wrapper").addClass("remove-transform remove-zIndex");
     $(this).closest(".swiper-container").addClass("remove-zIndex");
+    if ($(this).closest(".tile-boxes-section").hasClass("four-plus-slides")) {
+      $(this).closest(".tile-boxes-section").addClass("remove-sticky-pos");
+    }
     modalCTA.modal().show();
     if ($("body").hasClass("modal-open")) {
       $("body").parent().css("overflow", "hidden");
@@ -92,6 +95,9 @@ $(document).ready(function () {
     }
     $(this).closest(".swiper-wrapper").removeClass("remove-transform remove-zIndex");
     $(this).closest(".swiper-container").removeClass("remove-zIndex");
+    if ($(this).closest(".tile-boxes-section").hasClass("remove-sticky-pos")) {
+      $(this).closest(".tile-boxes-section").removeClass("remove-sticky-pos");
+    }
   });
 
   //open youtube video and close by removing src and then add three tile box
