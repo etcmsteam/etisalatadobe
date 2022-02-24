@@ -292,13 +292,13 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
 
           
 
-            function popupHeight(current) {
+            function popupHeight(current, parent) {
                 var dataLabel = $(current).attr("data-label");
                 if (typeof dataLabel !== 'undefined' && dataLabel !== '') {
-                    $('.cmp-tabs__tabpanel--active #' + dataLabel).addClass('show');
+                    parent.find("#"+dataLabel).addClass("show");
 
-                    filterPopupHeader = $('.cmp-tabs__tabpanel--active #' + dataLabel + ' .nv-modal-header').outerHeight();
-                    filterPopupFooter = $('.cmp-tabs__tabpanel--active #' + dataLabel + ' .filter-button-wrap').outerHeight();
+                    filterPopupHeader = parent.find(".cmp-tabs__tabpanel--active #" + dataLabel + " .nv-modal-header").outerHeight();
+                    filterPopupFooter = parent.find(".cmp-tabs__tabpanel--active #" + dataLabel + " .filter-button-wrap").outerHeight();
 
                     if (window.innerWidth > 992) {
                         $('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 40));
@@ -314,7 +314,8 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
   $('.filter-lable').off('click').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    popupHeight(this);
+    const PARENT_EL = $(this).parents(".table");
+    popupHeight(this, PARENT_EL);
 });
 $('.sort-label.mobile-view').off('click').on('click', function (e) {
     e.preventDefault();
