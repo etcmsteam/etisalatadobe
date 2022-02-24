@@ -1,0 +1,101 @@
+#container-54dd9fbb68 .teaser {
+// .default--bg,
+// .cmp-default-card {
+    padding: toRem(24) 0;
+    position: relative;
+
+    @include respond-to-min($desktop) {
+        padding: toRem(48) 0;
+    }
+  .cmp-teaser {
+    &__title {
+      font-size: $font28;
+      margin: 0 0 toRem(16);
+
+      @include respond-to-min($desktop) {
+        font-size: $font32;
+        margin: 0 0 toRem(24);
+      }
+    }
+    &__description {
+        width: 100%;
+      p {
+        color: $dark-gray;
+        font-size: $font14;
+        line-height: toRem(20);
+        margin-bottom: toRem(12);
+
+        @include respond-to-min($desktop) {
+          font-size: $font16;
+          line-height: toRem(24);
+          margin-bottom: toRem(16);
+        }
+      }
+    }
+    &__content {
+      display: block;
+      width: 100%;
+
+      @include respond-to-max($tablet) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @include respond-to-min($desktop) {
+        width: 50%;
+      }
+
+      @include respond-to-min($desktop-wide) {
+        width: 72%;
+      }
+    }
+    &__action-container {
+      position: absolute;
+      right: 0;
+      z-index: 2;
+
+      @include respond-to-max($tablet) {
+        min-width: 100%;
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+
+      @include rtlBlock {
+        // left: 6.375rem;
+        left: 0;
+        margin-right: 0;
+        right: auto;
+
+        @include respond-to-max($tablet) {
+          left: 0;
+        }
+      }
+
+      &::after {
+        clear: both;
+      }
+    }
+  }
+    &.button--transparent
+    &.button--transparent,
+    &.button--secondary,
+    &.button--primary {
+    .cmp-teaser__action-container {
+      @include respond-to-min($desktop) {
+        height: toRem(50);
+        margin-top: toRem(-25);
+        top: 50%;
+        // width: toRem(280);
+        min-width: toRem(180) !important;
+        width: auto;
+      }
+
+      @include respond-to-max($desktop) {
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+    }
+  }
+}
