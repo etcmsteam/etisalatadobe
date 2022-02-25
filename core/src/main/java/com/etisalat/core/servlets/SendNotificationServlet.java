@@ -62,12 +62,12 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 
 			if (status == AEConstants.RESPONSE_OK) {
 				response.setStatus(status);
-				response.sendRedirect(redirectUrl);
+				response.sendRedirect(redirectUrl.concat(AEConstants.SUCCESS_PARAM));
 
 			} else {
 				response.setStatus(status);
 				LOG.error("Send Notification Service Failed and API response is {}", status);
-				response.sendRedirect(redirectUrl);
+				response.sendRedirect(currentPage.getPath().concat(AEConstants.ERROR_PARAM_WITH_EXTENSION));
 			}
 		}
 		catch (SocketTimeoutException e) {
