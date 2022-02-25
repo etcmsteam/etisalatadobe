@@ -1,11 +1,11 @@
-// need to move to core and add special class at the full width level.
 .cmp-default-card {
-    padding: toRem(24) 0;
-    position: relative;
+  padding: toRem(24) 0;
+  position: relative;
 
-    @include respond-to-min($desktop) {
-        padding: toRem(48) 0;
-    }
+  @include respond-to-min($desktop) {
+    padding: toRem(48) 0;
+  }
+
   .cmp-teaser {
     &__title {
       font-size: $font28;
@@ -16,8 +16,10 @@
         margin: 0 0 toRem(24);
       }
     }
+
     &__description {
-        width: 100%;
+      width: 100%;
+
       p {
         color: $dark-gray;
         font-size: $font14;
@@ -31,6 +33,7 @@
         }
       }
     }
+
     &__content {
       display: block;
       width: 100%;
@@ -48,6 +51,7 @@
         width: 72%;
       }
     }
+
     &__action-container {
       position: absolute;
       right: 0;
@@ -75,11 +79,13 @@
       }
     }
   }
+
   &.button--transparent,
   &.button--secondary,
   &.button--primary {
     .cmp-teaser__action-container {
       margin-top: toRem(1);
+
       @include respond-to-min($desktop) {
         height: toRem(50);
         margin-top: toRem(-25);
@@ -96,15 +102,23 @@
       }
     }
   }
+
   &.cmp-default-card__default {
     .cmp-teaser {
       &__content {
+        width: 100%;
+
         @include respond-to-min($desktop) {
-          width: 100%;
+          width: 72%;
+        }
+
+        @include respond-to-min($desktop-wide) {
+          width: 72%;
         }
       }
     }
   }
+
   &.cmp-default-card__center {
     .cmp-teaser {
       &__content,
@@ -112,11 +126,10 @@
         text-align: center;
         width: 100%;
       }
+
+      &__action-container {
+        position: relative;
+      }
     }
-  }
-}
-.container-fix__fluid {
-  @include rtlBlock() {
-    float: right !important;
   }
 }
