@@ -42,10 +42,10 @@
                               <ul data-sly-test="${properties.productDesc}">${properties.productDesc @ context="html"}
                               </ul>
                            </li>
-                           <li data-sly-test="${properties.channelLabel && properties.channelLink}">
+                           <li data-sly-test="${properties.channelLabel}">
                               <div class="view-channel-list">
-                                 <a href="${properties.channelLink @ extension = 'html'}" target="_new">                                      
-                                 <em class="channel-list-icon"></em>${properties.channelLabel} </a>
+                                 <a data-sly-test="${properties.viewChannelLinkBehavior != 'openmodalwindow' && properties.channelLink}" href="${properties.channelLink @ extension = 'html'}" target="${properties.viewChannelLinkBehavior == 'opensamewindow' ? '_self' : '_blank'}"><em class="channel-list-icon"></em>${properties.channelLabel}</a>
+                                 <a data-sly-test="${properties.viewChannelLinkBehavior == 'openmodalwindow' && !properties.moreInfoLabel && !properties.seeAllLabel}" data-label="${component.id}" class="btn-modal" title="${properties.channelLabel}"><span class="channel-list-icon"></span>${properties.channelLabel}</a>
                               </div>
                            </li>
                         </ul>
