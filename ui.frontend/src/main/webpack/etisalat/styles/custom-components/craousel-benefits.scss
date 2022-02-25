@@ -4,10 +4,18 @@
       margin-left: $margin-step-0;
     }
     .swiper-slide {
+      display: flex;
+      justify-content: center;
       @include respond-to-max($phone) {
         width: 100%;
         margin-bottom: calc(#{$margin-step-4} + 4px);
         padding: 0 toRem(5);
+      }
+
+      .promotionaltile{
+        @include respond-to-min($desktop) {
+          max-width: toRem(310);
+        }
       }
     }
   }
@@ -162,7 +170,6 @@
       font-size: $font14;
       line-height: toRem(24);
       @include rtlBlock() {
-        text-align: right;
         font-weight: 300;
       }
       @include respond-to-max($tablet) {
@@ -300,6 +307,9 @@
     .description {
       margin-bottom: 1rem;
       margin: 0;
+      @include rtlBlock() {
+        text-align: right;
+      }
       @include respond-to-max($tablet) {
         width: 16rem;
       }

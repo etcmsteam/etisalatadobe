@@ -1,4 +1,4 @@
-import { swiperInit } from "../swiperInitialize";
+import { swiperInit } from "../../../global/js/swiperInitialize";
 
 $(document).find('.brand-portfolio').each(function (index) {
   var swiper = swiperInit('.slider-outlet-brands', {

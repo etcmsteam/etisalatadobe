@@ -1,0 +1,32 @@
+<template data-sly-template.needHelpSection="${ @ container,properties}">
+<sly data-sly-use.iconCardListData="com.etisalat.core.models.IconCardList"></sly>
+
+<div class="need-help-section">
+    <div class="container">
+        <div class="row need-help-row">
+			<div data-sly-test="${properties.needHelpDescription}" class="col-xs-12 col-md-4">
+                <div class="need-help-content ul-list-cms">
+                    ${properties.needHelpDescription @ context="html"}
+                    <div data-sly-test="${properties.ctaLabel}" class="third-action-wrapper ${properties.CTAlinkDisplay == 'button' ? 'action-btn-default' : 'action-link'}">
+                        <a href="${properties.CTALink}" class="${properties.CTAlinkDisplay == 'button' ? 'btn btn-default ripple-effect' : 'link' }" target="${properties.CTAlinkBehavior == 'opennewwindow'?'_blank':'_self'}">${properties.ctaLabel}</a>
+                    </div>
+                </div>
+            </div>
+			<div class="${properties.needHelpDescription ? 'col-xs-12 col-md-8' : 'col-xs-12 col-md-12'}">
+				<div class="row">
+					<sly data-sly-list.cardItems="${iconCardListData.iconCardListItems}">
+						<div class="col-xs-6 col-md-3">
+            				<a href="${cardItems.cardLink}" target="${cardItems.linkBehavior == 'opennewwindow'?'_blank':'_self'}" data-sly-unwrap="${!cardItems.cardLink}">
+                 				<div class="need-help-icons">
+                       				<img alt="${cardItems.cardTitle}" data-sly-test="${cardItems.cardIcon}" class="icon-img" src="${cardItems.cardIcon}">
+                       				<span class="heading-sub">${cardItems.cardTitle}</span>
+                  				</div>
+            				</a>
+    					</div>
+					</sly>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</template>

@@ -2,8 +2,6 @@ package com.etisalat.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
@@ -175,9 +173,4 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 		assertEquals(expected, actual);
 	}
 	
-	private String getActualArticleDate(Calendar articleDate) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-		return dateFormat.format(articleDate.getTime());
-	}
-
 }

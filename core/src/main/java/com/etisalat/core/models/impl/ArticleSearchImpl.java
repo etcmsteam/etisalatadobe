@@ -16,7 +16,10 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,6 +27,8 @@ import java.util.stream.Collectors;
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     ArticleSearch.class}, resourceType = {ArticleSearchImpl.RESOURCE_TYPE})
 public class ArticleSearchImpl implements ArticleSearch {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ArticleSearchImpl.class);
 
   /**
    * The resource type.
@@ -55,7 +60,7 @@ public class ArticleSearchImpl implements ArticleSearch {
   private String parentPath;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-  private String articleListFrom;
+  private String articleListFrom;  
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String[] pages;
@@ -149,6 +154,11 @@ public class ArticleSearchImpl implements ArticleSearch {
     if (page.getProperties().containsKey(AEConstants.PN_ARTICLE_DATE) &&
         null != page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class)) {
       pageDetails.setArticleDate(page.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class));
+      try {
+		pageDetails.setArticleDateDisplayString(CommonUtility.useFormattedArticleDate(page));
+	  } catch (ParseException e) {
+		  LOG.error("Exception in parsing article date {}", e.getMessage());
+	  }
     }
   }
 
@@ -279,7 +289,12 @@ public class ArticleSearchImpl implements ArticleSearch {
 
     return CommonUtility.appendHtmlExtensionToPage(resourceResolver, backToLink);
   }
-
+  
+  @Override
+  public String getArticleDate() throws ParseException {	  
+	    return CommonUtility.useFormattedArticleDate(currentPage);
+  } 
+  
   @Override
   public Map<String, Long> getSearchCategories() {
     return Collections.unmodifiableMap(categoryMap);

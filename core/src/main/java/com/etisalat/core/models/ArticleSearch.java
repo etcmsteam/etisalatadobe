@@ -1,5 +1,6 @@
 package com.etisalat.core.models;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -45,5 +46,7 @@ public interface ArticleSearch {
    * @return
    */
   Resource getThumbnailPageResource();
+  
+  String getArticleDate() throws ParseException;
 
 }

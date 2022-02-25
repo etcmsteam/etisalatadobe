@@ -180,12 +180,24 @@
   }
 }
 
+.digital-notification-swiper-container {
+  .swiper-container-autoheight {
+    .swiper-slide {
+      width: 100%;
+    }
+  }
+}
+
 // notifications as a module
 .digital-notifications-wrapper {
   padding: 17px 16px 24px;
 
   @include respond-to-min($tablet) {
     padding: 24px 0;
+  }
+
+  .container {
+    width: 100%;
   }
 
   &.bg-black {
@@ -395,7 +407,7 @@
     .notifications-body {
       @media (max-width: 991px) {
         display: block !important;
-        height: 30px;
+        height: auto;
         opacity: 0.5;
         overflow: hidden;
 
@@ -800,12 +812,6 @@
     @include respond-to-min($tablet) {
       padding-left: 0;
       padding-right: 0;
-    }
-  }
-
-  .nv-modal-dialog {
-    @include respond-to-min($tablet) {
-      height: 50%;
     }
   }
 }

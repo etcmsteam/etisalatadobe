@@ -93,6 +93,14 @@ public final class AEConstants {
 
  public static final String ENGLISH = "en";
  public static final String ARABIC = "ar";
+ public static final String ETISALAT_CONTENT_PAGE = "/content/etisalat";
+ public static final String HIU_APP_CONTENT_PAGE = "/content/hiuapp";
+ public static final String EWALLET_CONTENT_PAGE = "/content/ewallet";
+ 
+ public static final String ETISALAT_DEFAULT_ERROR_PAGE = "/content/etisalat/ae/en/error/";
+ public static final String ERROR_PAGE_NAME = "error";
+ public static final String ERROR_PARAM_WITH_EXTENSION =".html?success=error";
+ public static final String SUCCESS_PARAM = "?success=success";
  
  /**
   * private constructor to prevent instantiation of class.

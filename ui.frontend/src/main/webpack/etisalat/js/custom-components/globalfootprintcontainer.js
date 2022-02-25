@@ -1,5 +1,5 @@
-import {isMobile, IsMediaQuery} from '../helpers';
-import { swiperInit } from "../swiperInitialize";
+import {isMobile, IsMediaQuery} from '../../../global/js/helpers';
+import { swiperInit } from "../../../global/js/swiperInitialize";
 
 if ($(".globalfootprintcontainer").length > 0) {
   var $slider = $(".globalfootprintcontainer").find('.swiper-gallery-slide');

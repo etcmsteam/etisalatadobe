@@ -1,5 +1,5 @@
 <template data-sly-template.staticproducts="${ @ properties}">
-  <div data-sly-use.carousel="com.etisalat.core.models.ProductDetails" 
+  <div data-sly-use.carousel="com.adobe.cq.wcm.core.components.models.Carousel" 
   data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
   data-panelcontainer="${wcmmode.edit && 'Product Grid Component'}" 
   id="${carousel.id}" class="cmp-carousel" role="group" 
@@ -20,7 +20,11 @@
 	   <sly data-sly-test="${properties.tileBoxLayout == 'elifeplan'}"
 	        data-sly-use.elifePlanTemplate="staticelifeplan.html"
 	        data-sly-call="${elifePlanTemplate.elifePlan @ carousel=carousel,properties=properties}">      
-	   </sly> 
+	   </sly>
+	   <sly data-sly-test="${properties.tileBoxLayout == 'elifeaddonstile'}"
+	        data-sly-use.elifeAddonsTileTemplate="staticelifeaddonstile.html"
+	        data-sly-call="${elifeAddonsTileTemplate.elifeAddons @ carousel=carousel,properties=properties}">      
+	   </sly>
     </div>
   </div>
   <div class="promo-offers-popup-wrapper"></div>

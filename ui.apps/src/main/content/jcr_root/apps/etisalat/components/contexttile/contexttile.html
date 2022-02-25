@@ -4,17 +4,20 @@
    <div class="icon" data-sly-test="${properties['image/fileReference']}">
      <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
    </div>
-   <div class="wst-main-headings">
+   <div class="wst-main-headings ${properties.titletextspace != 'none' ? properties.titletextspace :''}">
      <h2 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h2>
    </div>
    <div class="paragraph-styling anchor ul-list-cms">
-     <div class="p2">${tileModel.text @ context='html'}</div>
+     <div class="${properties.tileHeight != 'none' ? properties.tileHeight :'' }">${tileModel.text @ context='html'}</div>
    </div>
    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
-     <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper ${properties.displayCTABehaviour == 'button' ? 'action-btn-default' : 'action-link'}">
+<sly data-sly-test.btnw100 = "${properties.displayCTABehaviour == 'w-100' ? 'action-btn-default w-100': '' }"></sly>
+<sly data-sly-test.btn = "${properties.displayCTABehaviour == 'button' ? 'action-btn-default': '' }"></sly>
+<sly data-sly-test.lnk = "${properties.displayCTABehaviour == 'link' ? 'action-link': '' }"></sly>
+     <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper ${btnw100} ${btn} ${lnk}">
        <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" 
           target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" 
-          class="${properties.displayCTABehaviour == 'button' ? 'btn btn-default ripple-effect' : 'link'}" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+          class="${properties.displayCTABehaviour == 'button' || properties.displayCTABehaviour == 'w-100' ? 'btn btn-default ripple-effect' : 'link'}" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
      </div>
    </sly>
    <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}" 

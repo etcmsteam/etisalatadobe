@@ -1,23 +1,57 @@
 // context-navigation-4-0 as module styling
-.context-navigation-4-0 {
-  &.has-bg {
-    background-color: $module-bg-color;
-
+.default--bg {
+  .context-navigation-4-0 {
     @include respond-to-min($desktop) {
       padding-top: toRem(16);
       padding-bottom: toRem(16);
     }
   }
+}
 
-  @include respond-to-max($custom-width-tab) {
-    .container {
+.context-navigation-4-0 {
+  @include respond-to-max($desktop-min) {
+    padding: toRem(16) 0;
+  }
+
+  &.has-bg {
+    background-color: $module-bg-color;
+  }
+
+  .container {
+    @include respond-to-min($desktop-wide) {
+      margin: 0;
+      padding: 0;
+      width: toRem(1224);
+    }
+
+    @include respond-to-max($custom-width-tab) {
       padding-left: toRem(16);
       padding-right: toRem(16);
+    }
+
+    @include respond-to-min-max($desktop-wide, $desktop) {
+      width: toRem(952);
+    }
+
+    @include respond-to-min-max($desktop-min, $tablet) {
+      width: toRem(732);
+    }
+  }
+
+  .paragraph-styling p {
+    margin-bottom: toRem(16);
+
+    @include font-family-lato();
+
+    @include respond-to-max($desktop-min) {
+      margin-bottom: toRem(12);
     }
   }
 
   // common css for both with slider and with main text
   .wst-main-headings {
+    width: 100%;
+
     h1,
     h2,
     h3,
@@ -32,14 +66,119 @@
         margin-bottom: toRem(12);
       }
     }
+
+    &.heading1 {
+      @include respond-to-min($tablet) {
+        height: toRem(136);
+      }
+    }
+
+    &.heading2 {
+      @include respond-to-min($tablet) {
+        height: toRem(108);
+      }
+    }
+
+    &.heading3 {
+      @include respond-to-min($tablet) {
+        height: toRem(80);
+      }
+    }
+
+    &.heading4 {
+      @include respond-to-min($tablet) {
+        height: toRem(72);
+      }
+    }
+
+    &.heading5 {
+      @include respond-to-min($tablet) {
+        height: toRem(64);
+      }
+    }
+
+    &.heading6 {
+      @include respond-to-min($tablet) {
+        height: toRem(56);
+      }
+    }
+
+    &.heading7 {
+      height: toRem(44);
+    }
+
+    &.heading8 {
+      height: toRem(44);
+    }
+
+    &.heading1,
+    &.heading2,
+    &.heading3,
+    &.heading4,
+    &.heading5,
+    &.heading6,
+    &.heading7,
+    &.heading8 {
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      @include respond-to-max($tablet) {
+        height: auto;
+        overflow: auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .h7,
+      .h8 {
+        margin-bottom: 0;
+      }
+
+      & + .paragraph-styling {
+        p {
+          height: auto;
+          margin-bottom: 0;
+        }
+
+        .ph1,
+        .ph2,
+        .ph3,
+        .ph4 {
+          overflow: hidden;
+          margin-bottom: 1rem;
+
+          @include respond-to-max($custom-width-tab) {
+            height: auto !important;
+            overflow: auto;
+          }
+        }
+
+        .ph4 {
+          height: toRem(80);
+        }
+
+        .ph3 {
+          height: toRem(100);
+        }
+
+        .ph2 {
+          height: toRem(122);
+        }
+
+        .ph1 {
+          height: toRem(144);
+        }
+      }
+    }
   }
-  .paragraph-styling p {
-    margin-bottom: toRem(16);
 
-    @include font-family-lato();
-
-    @include respond-to-max($desktop-min) {
-      margin-bottom: toRem(12);
+  .third-action-wrapper {
+    &.w-100 {
+      width: 100%;
     }
   }
 
@@ -53,9 +192,16 @@
     display: flex;
     flex-wrap: wrap;
 
+    &-cq-editable {
+      @include respond-to-min($desktop) {
+        flex-wrap: wrap !important;
+      }
+    }
+
     @include respond-to-min($desktop) {
       flex-wrap: nowrap;
     }
+
     &.align-middle {
       @include respond-to-max($desktop-min) {
         justify-content: center;
@@ -65,6 +211,31 @@
         align-items: center;
         justify-content: center;
         text-align: center;
+      }
+
+      @include rtlBlock() {
+        .wst-main-headings {
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          .h7,
+          .h8 {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    &.content-left {
+      @include respond-to-max($desktop-min) {
+        justify-content: left !important;
+
+        @include rtlBlock() {
+          justify-content: right !important;
+        }
       }
     }
 
@@ -76,9 +247,19 @@
       @include respond-to-min-max($desktop-min, $tablet) {
         &:nth-child(odd) {
           padding-right: toRem(12);
+
+          @include rtlBlock() {
+            padding-right: 0;
+            padding-left: toRem(12);
+          }
         }
         &:nth-child(even) {
           padding-left: toRem(12);
+
+          @include rtlBlock() {
+            padding-right: toRem(12);
+            padding-left: 0;
+          }
         }
       }
 
@@ -138,7 +319,6 @@
       }
     }
 
-    &.two-tiles,
     &.three-tiles {
       .all-tiles {
         &.align-middle {
@@ -148,10 +328,15 @@
         }
       }
     }
+
     .swiper-container {
       height: auto;
       display: flex;
       padding-top: toRem(5);
+
+      @include respond-to-min($desktop-wide) {
+        max-width: toRem(1200);
+      }
 
       .swiper-wrapper {
         height: auto;
@@ -163,12 +348,21 @@
 
         a.btn {
           margin: 0 !important;
+          width: 100%;
+
+          @include respond-to-min($desktop) {
+            width: auto;
+          }
         }
       }
     }
 
     .container {
       position: relative;
+
+      @include respond-to-min($desktop-wide) {
+        width: toRem(1200);
+      }
     }
 
     .prev,
@@ -181,14 +375,33 @@
       @include respond-to-min($desktop-wide) {
         display: block;
       }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.swiper-button-disabled {
+        &:hover {
+          cursor: auto;
+          opacity: 0.5;
+        }
+      }
     }
 
     .prev {
-      left: toRem(-72);
+      left: toRem(-35);
+
+      @include rtlBlock() {
+        left: toRem(-30);
+      }
     }
 
     .next {
-      right: toRem(-72);
+      right: toRem(-35);
+
+      @include rtlBlock() {
+        right: toRem(-30);
+      }
     }
 
     .scrollbar {
@@ -249,6 +462,10 @@
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
       }
 
+      @include respond-to-max($desktop-min) {
+        margin-top: toRem(20);
+      }
+
       @include respond-to-min($desktop-wide) {
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
       }
@@ -258,6 +475,373 @@
         padding-top: 0;
         padding-bottom: 0;
       }
+    }
+  }
+
+  // with slider loop
+  &.with-loop,
+  &.with-hide-arrows {
+    .scrollbar {
+      display: none;
+    }
+
+    .context-tile {
+      @include respond-to-min-max($desktop-min, $tablet) {
+        &:nth-child(odd) {
+          padding-left: toRem(12);
+        }
+        &:nth-child(even) {
+          padding-left: toRem(12);
+        }
+      }
+    }
+
+    .all-tiles {
+      @include respond-to-min($tablet) {
+        flex-wrap: nowrap;
+      }
+
+      &.align-middle {
+        @include respond-to-min-max($desktop-min, $tablet) {
+          justify-content: left !important;
+
+          @include rtlBlock() {
+            justify-content: right !important;
+          }
+        }
+
+        @include respond-to-max($custom-width-tab) {
+          justify-content: center;
+        }
+      }
+    }
+
+    &.with-slider {
+      @include respond-to-min($desktop) {
+        display: flex;
+        gap: 0;
+      }
+
+      &.two-tiles {
+        .all-tiles {
+          .context-tile + .context-tile {
+            @include respond-to-min($tablet) {
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+
+      &.single-tile,
+      &.two-tiles,
+      &.three-tiles {
+        &.has-bg {
+          @include respond-to-min($tablet) {
+            padding-top: toRem(16);
+            padding-bottom: toRem(16);
+          }
+        }
+      }
+
+      &.two-tiles,
+      &.three-tiles {
+        .all-tiles {
+          &.align-middle {
+            @include respond-to-min($tablet) {
+              justify-content: flex-start;
+            }
+          }
+        }
+      }
+
+      .prev,
+      .next {
+        @include respond-to-min($tablet) {
+          display: block;
+        }
+
+        &.swiper-button-disabled {
+          &:hover {
+            cursor: pointer;
+            opacity: 1;
+          }
+        }
+      }
+
+      @include respond-to-max($desktop-wide) {
+        .prev {
+          left: toRem(-34);
+        }
+
+        .next {
+          right: toRem(-34);
+        }
+      }
+
+      @include respond-to-max($desktop-min) {
+        .prev {
+          left: toRem(-18);
+        }
+
+        .next {
+          right: toRem(-18);
+        }
+      }
+
+      .all-tiles {
+        @include respond-to-min($tablet) {
+          display: flex;
+          gap: 0;
+        }
+      }
+    }
+  }
+
+  // view all tiles
+  &.view-all-tiles {
+    .context-tile {
+      @include respond-to-max($custom-width-tab) {
+        &:nth-child(1n + 4) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // with hide arrows
+  &.with-hide-arrows {
+    .swiper-container {
+      .swiper-slide {
+        @include respond-to-max($desktop-min) {
+          padding-left: toRem(44);
+          padding-right: toRem(44);
+        }
+
+        @include respond-to-max($phone) {
+          padding: 0;
+        }
+
+        @include respond-to-min-max($desktop-wide, $desktop) {
+          padding-left: toRem(82);
+          padding-right: toRem(82);
+        }
+
+        @include respond-to-min($desktop-wide) {
+          padding-left: toRem(45);
+          padding-right: toRem(45);
+        }
+      }
+    }
+
+    .prev {
+      left: toRem(-20);
+    }
+
+    .next {
+      right: toRem(-20);
+    }
+  }
+
+  &.three-tiles {
+    &.with-hide-arrows,
+    &.static-tile {
+      .context-tile {
+        &:last-child {
+          @include respond-to-max($desktop-min) {
+            margin-bottom: toRem(16);
+          }
+
+          @include respond-to-max($phone) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.with-hide-arrows,
+  &.static-tile {
+    .third-action-wrapper {
+      @include respond-to-max($desktop-min) {
+        padding-top: toRem(6);
+      }
+      &.action-link {
+        .link {
+          @include respond-to-max($desktop-min) {
+            font-size: $font14;
+          }
+        }
+      }
+    }
+
+    .content-detail {
+      @include respond-to-min($desktop-wide) {
+        width: toRem(1224);
+      }
+
+      h3 {
+        font-size: 2rem;
+        color: $almost-black;
+        font-weight: 400;
+        margin: 0;
+        margin-bottom: 1.5rem;
+
+        @include respond-to-max($tablet) {
+          font-size: $font26;
+          line-height: toRem(33);
+          margin-bottom: 1rem;
+        }
+      }
+
+      p {
+        margin-bottom: toRem(45);
+        color: $paracolor;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        text-align: center;
+
+        @include font-family-lato();
+
+        @include respond-to-max($custom-width-tab) {
+          margin-bottom: toRem(19);
+          letter-spacing: -0.008rem;
+        }
+      }
+
+      @include respond-to-min-max($desktop, $tablet) {
+        > h3 {
+          margin-bottom: toRem(125);
+        }
+
+        > h3 + p {
+          margin-top: toRem(-100);
+          margin-bottom: 0;
+        }
+      }
+
+      @include respond-to-min($desktop-wide) {
+        > h3 + p {
+          margin-bottom: toRem(46);
+        }
+      }
+    }
+
+    .context-tile {
+      @include respond-to-max($phone) {
+        margin-bottom: toRem(40);
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .icon {
+        height: toRem(71);
+        margin: auto;
+        margin-bottom: toRem(35);
+        width: toRem(71);
+
+        @include respond-to-max($tablet) {
+          margin-bottom: toRem(26);
+        }
+
+        div {
+          width: 100%;
+        }
+
+        img,
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .swiper-button-disabled {
+      display: none !important;
+    }
+
+    .wst-main-headings {
+      height: toRem(32);
+      margin-bottom: toRem(16);
+
+      h4 {
+        font-size: $font24;
+        line-height: 1.3;
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .context-tile {
+      .paragraph-styling {
+        height: toRem(54);
+        margin-bottom: toRem(16);
+
+        @include respond-to-max($tablet) {
+          height: toRem(24);
+          margin-bottom: toRem(24);
+        }
+
+        p {
+          color: $steel-grey;
+          margin-bottom: 0 !important;
+        }
+      }
+    }
+  }
+
+  // Static tiles
+  &.static-tile {
+    .two-tiles .all-tiles .context-tile + .context-tile {
+      margin-right: toRem(50) !important;
+    }
+
+    .context-tile {
+      @include respond-to-max($desktop-min) {
+        margin-bottom: toRem(40);
+        padding-bottom: 0;
+
+        &:last-child {
+          @include respond-to-max($custom-width-tab) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .swiper-container {
+      .swiper-slide {
+        @include respond-to-min-max($desktop-wide, $desktop) {
+          max-width: toRem(318);
+          padding-left: toRem(12);
+          padding-right: toRem(12);
+        }
+
+        @include respond-to-min($desktop-wide) {
+          max-width: toRem(310);
+          margin-left: toRem(45);
+          margin-right: toRem(45);
+        }
+
+        @include respond-to-max($phone) {
+          margin-bottom: toRem(40);
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    .scrollbar {
+      display: none;
+    }
+  }
+
+  &.arrow-position-bottom {
+    .next,
+    .prev {
+      top: auto;
+      bottom: 30%;
     }
   }
 }
@@ -270,6 +854,14 @@
   align-items: flex-start;
   text-align: left;
   width: 100%;
+
+  &.btn-align-baseline {
+    display: block;
+
+    .icon {
+      width: auto;
+    }
+  }
 
   .icon {
     width: toRem(46);
@@ -288,9 +880,41 @@
       height: toRem(46);
     }
   }
-
+  .btn-text.btn-modal {
+    &,
+    span.moreg {
+      font-size: toRem(12);
+      letter-spacing: toRem(2);
+      @include respond-to-min($desktop) {
+        font-size: toRem(14);
+      }
+    }
+    @include rtlBlock() {
+      padding-right: 0;
+      padding-left: toRem(8);
+      font-weight: 300;
+      @include font-family-lato;
+    }
+    &::before {
+      padding: toRem(2.6);
+      right: toRem(-8);
+      @include rtlBlock() {
+        left: toRem(-12);
+      }
+      @include respond-to-min($desktop) {
+        padding: toRem(3.25);
+        right: toRem(-12);
+      }
+    }
+  }
   .paragraph-styling {
     flex: 1 1 auto;
+    p {
+      margin-bottom: toRem(16) !important;
+      @include respond-to-min($desktop) {
+        margin-bottom: toRem(24) !important;
+      }
+    }
   }
 
   .progress {
@@ -351,6 +975,109 @@
   }
 }
 
+// context navigation mdoule with TV packs
+.tv-pack-tile {
+  display: flex;
+
+  .icon {
+    width: toRem(48);
+    height: toRem(48);
+    margin-right: toRem(16);
+    border-radius: toRem(6);
+
+    svg,
+    img {
+      width: toRem(48);
+      height: toRem(48);
+    }
+
+    @include respond-to-min($desktop) {
+      margin-right: toRem(24);
+      width: toRem(80);
+      height: toRem(80);
+      border-radius: toRem(8);
+
+      svg,
+      img {
+        width: toRem(80);
+        height: toRem(80);
+      }
+    }
+  }
+}
+
+.context-navigation-4-0.with-tv-pakcs {
+  .tv-pack-wrapper {
+    .wst-secondary-headings {
+      h2,
+      h3,
+      h4,
+      h5 {
+        letter-spacing: toRem(3);
+        margin-bottom: toRem(16);
+
+        @include respond-to-min($desktop) {
+          margin-bottom: toRem(24);
+        }
+      }
+    }
+
+    .wst-main-headings {
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .h7,
+      .h8 {
+        margin-bottom: toRem(8);
+
+        @include respond-to-min($desktop) {
+          margin-bottom: toRem(16);
+        }
+      }
+    }
+  }
+
+  .tv-pack-wrapper + .tv-pack-wrapper {
+    margin-top: toRem(32);
+
+    @include respond-to-min($desktop) {
+      margin-top: toRem(56);
+    }
+  }
+
+  .tv-pack-row {
+    display: grid;
+    row-gap: toRem(32);
+    column-gap: toRem(24);
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+
+    @include respond-to-min($tablet) {
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+
+    @include respond-to-min($desktop) {
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      row-gap: toRem(24);
+      column-gap: toRem(24);
+    }
+
+    @include respond-to-min($desktop-wide) {
+      grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+    }
+  }
+
+  .content {
+    margin-top: 0;
+  }
+
+  &.has-bg {
+    padding-top: toRem(42);
+    padding-bottom: toRem(42);
+  }
+}
+
 // arabic language
 *[lang="ar"] {
   *[dir="rtl"] {
@@ -392,6 +1119,115 @@
           }
         }
       }
+
+      &.with-hide-arrows {
+        .swiper-container {
+          .swiper-slide {
+            @include respond-to-max($desktop-min) {
+              padding-left: toRem(44);
+              padding-right: toRem(44);
+            }
+
+            @include respond-to-max($phone) {
+              padding: 0;
+            }
+
+            @include respond-to-min-max($desktop-wide, $desktop) {
+              padding-left: toRem(82);
+              padding-right: toRem(82);
+            }
+
+            @include respond-to-min($desktop-wide) {
+              padding-left: toRem(45);
+              padding-right: toRem(45);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Accessibility
+.acc-black,
+.acc-blue {
+  .wst-main-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h7,
+    .h8 {
+      color: $white !important;
+    }
+  }
+
+  a,
+  a.link {
+    color: $white !important;
+
+    &::after,
+    &::before,
+    .third-action-wrapper.action-link .link:before {
+      color: $white !important;
+    }
+  }
+
+  .context-navigation-4-0 {
+    .icon g {
+      stroke: $white;
+    }
+    .icon rect {
+      fill: $black;
+      stroke: $white;
+      opacity: 1;
+    }
+  }
+}
+
+.acc-blue {
+  .context-navigation-4-0 {
+    .icon rect {
+      fill: $blue4;
+    }
+  }
+}
+
+.acc-yellow {
+  .wst-main-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h7,
+    .h8 {
+      color: $yellow-light !important;
+    }
+  }
+
+  a,
+  a.link {
+    color: $yellow-light !important;
+
+    &::after,
+    &::before,
+    .third-action-wrapper.action-link .link:before {
+      color: $yellow-light !important;
+    }
+  }
+
+  .context-navigation-4-0 {
+    .icon g {
+      stroke: $yellow-light;
+    }
+    .icon rect {
+      fill: $black;
+      stroke: $yellow-light;
+      opacity: 1;
     }
   }
 }

@@ -14,7 +14,7 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 
- <h3>${properties.headingTitle}</h3>
+ <h3 data-sly-test="${properties.headingTitle}">${properties.headingTitle}</h3>
 	<div data-sly-use.tabs="com.adobe.cq.wcm.core.components.models.Tabs"
 	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	     data-panelcontainer="${wcmmode.edit && 'tabs'}"
@@ -25,13 +25,17 @@
 	     data-placeholder-text="${wcmmode.edit && 'Please drag Tab components here' @ i18n}">
 
           <sly data-sly-test="${properties.tabsMobileLayout != 'swiperView'}">
+
             <ol data-sly-test="${tabs.items && tabs.items.size > 0}"
-                data-sly-list.tab="${tabs.items}"
                 role="tablist"
                 class="cmp-tabs__tablist"
                 aria-label="${tabs.accessibilityLabel}"
                 aria-multiselectable="false">
+			<sly data-sly-test="${tabs.items && tabs.items.size > 0}"
+				 data-sly-list.tab="${tabs.items}">
+
                 <sly data-sly-test.isActive="${tab.name == tabs.activeItem}"/>
+
                 <li role="tab"
                     id="${tab.id}-tab"
                     class="cmp-tabs__tab${isActive ? ' cmp-tabs__tab--active' : ''}"
@@ -46,7 +50,16 @@
                       </span>
                    </sly>
                  </li>
+
+				</sly>
+			<sly data-sly-test="${properties.ctaLinkText}">
+			<li class="learn-more-wrap learn-more-wrap--tab-cta" data-sly-test="${properties.ctaLinkText}" >
+                    <a href="${properties.ctaLink}" class="btn-text btn-green learn-more" aria-label="${properties.ctaLinkText}">
+						${properties.ctaLinkText}
+                    </a>
+                </li></sly>
             </ol>
+
           </sly>
          <sly data-sly-test="${properties.tabsMobileLayout && properties.tabsMobileLayout == 'swiperView'}"
              data-sly-use.tabSwiperTemplate="swiperview.html"
@@ -71,7 +84,7 @@
 <div id="Mobile-${tabs.id}"
      data-sly-use.accord="com.adobe.cq.wcm.core.components.models.Tabs"
      data-sly-test="${properties.tabsMobileLayout && ( properties.tabsMobileLayout == 'accordionView' || properties.tabsMobileLayout == 'notTabAccordionView')}"
-     class="hidden-md hidden-lg">
+     class="${properties.tabsMobileLayout == 'accordionView' ? 'hidden-md hidden-lg' : ''} ${properties.tabsMobileLayout == 'notTabAccordionView' ? 'hidden-sm hidden-md hidden-lg' : ''}">
 
   <sly data-sly-test="${properties.tabsMobileLayout && (properties.tabsMobileLayout == 'accordionView' || properties.tabsMobileLayout == 'notTabAccordionView')}"
         data-sly-use.tabAccordionTemplate="accordionview.html"

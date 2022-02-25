@@ -50,6 +50,7 @@ public class QuickLinkModelTest {
 	final String expectedLinkUrl = "https://www.etisalat.ae/b2c/quick-pay.html";
 	final String expectedAltText = "ContactAltText";
 	final String expectedTitle = "Contact Sales";
+    final String expectedEnableIcon = "true";
 	 
     LinkModel linkModel = resource.adaptTo(LinkModel.class);
     QuickLinkModel item = resource.adaptTo(QuickLinkModel.class);
@@ -61,7 +62,8 @@ public class QuickLinkModelTest {
     assertEquals(expectedLinkText, expectedItem.getLinkText());
     assertEquals(expectedLinkUrl, expectedItem.getLinkUrl());
     assertEquals(expectedAltText, expectedItem.getAltText());
-    assertEquals(expectedTitle, expectedItem.getTitle());         
+    assertEquals(expectedTitle, expectedItem.getTitle());
+    assertEquals(expectedEnableIcon, expectedItem.getEnableIcon());
  }
 
 }

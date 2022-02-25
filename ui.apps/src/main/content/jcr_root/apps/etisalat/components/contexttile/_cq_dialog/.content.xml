@@ -34,6 +34,7 @@
                                                 allowUpload="{Boolean}false"
                                                 autoStart="{Boolean}false"
                                                 class="cq-droptarget"
+                                                fieldDescription="Add icon for the Context Navigation tile."
                                                 fieldLabel="Image Asset"
                                                 fileNameParameter="./image/fileName"
                                                 fileReferenceParameter="./image/fileReference"
@@ -78,6 +79,7 @@
                                             <titleType
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Add Tile Heading tag"
                                                 fieldLabel="Title Style"
                                                 name="./titleType">
                                                 <items jcr:primaryType="nt:unstructured">
@@ -119,6 +121,51 @@
                                                 fieldLabel="Tile Description"
                                                 name="./text"
                                                 useFixedInlineToolbar="{Boolean}true"/>
+                                            <titletextspace
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Control padding between title and description"
+                                                fieldLabel="Space between Title and Text"
+                                                name="./titletextspace">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <def
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="None"
+                                                        value="none"/>
+                                                    <h1
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 1"
+                                                        value="heading1"/>
+                                                    <h2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 2"
+                                                        value="heading2"/>
+                                                    <h3
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 3"
+                                                        value="heading3"/>
+                                                    <h4
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 4"
+                                                        value="heading4"/>
+                                                    <h5
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 5"
+                                                        value="heading5"/>
+                                                    <h6
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 6"
+                                                        value="heading6"/>
+                                                    <h7
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 7"
+                                                        value="heading7"/>
+													<h8
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Padding 8"
+                                                        value="heading8"/>
+                                                </items>
+                                            </titletextspace>
                                             <tilelinklabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -129,23 +176,30 @@
                                             <displayCTABehaviour
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select link display as: Link or Button"
                                                 fieldLabel="Display CTA as a"
                                                 name="./displayCTABehaviour">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <button
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Button"
-                                                        value="button"/>
                                                     <link
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Link"
                                                         value="link"/>
+                                                    <button
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Button"
+                                                        value="button"/>
+                                                    <buttonfullwidth
+                                                        jcr:primaryType="nt:unstructured"
+                                                        fieldDescription="Select if full width button is required in Ipad and lower resolutions"
+                                                        text="Button Full width(in Ipad and lower resolutions)"
+                                                        value="w-100"/>
                                                 </items>
                                             </displayCTABehaviour>
                                             <tileLinkBehavior
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Tile Link Behavior."
                                                 fieldLabel="Tile Link Behavior"
                                                 name="./tileLinkBehavior">
                                                 <items jcr:primaryType="nt:unstructured">
@@ -230,6 +284,35 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="opensamewindow"/>
                                             </tilelinksamewindow>
+                                            <tileHeight
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Restricting the text in tile (Use it along with title and text spacing)"
+                                                fieldLabel="Restrict Tile Content"
+                                                name="./tileHeight">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <def
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="None"
+                                                        value="none"/>
+                                                    <ph1
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Tile Height 1"
+                                                        value="ph1"/>
+                                                    <ph2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Tile Height 2"
+                                                        value="ph2"/>
+                                                    <ph3
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Tile Height 3"
+                                                        value="ph3"/>
+                                                    <ph4
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Tile Height 4"
+                                                        value="ph4"/>
+                                                </items>
+                                            </tileHeight>
                                         </items>
                                     </column>
                                 </items>

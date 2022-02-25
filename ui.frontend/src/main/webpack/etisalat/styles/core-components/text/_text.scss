@@ -468,6 +468,11 @@
     padding-left: toRem(24);
     position: relative;
 
+    @include rtlBlock() {
+      padding-left: $padding-step-0;
+      padding-right: toRem(24);
+    }
+
     li {
       color: $dark-gray;
       font-size: $font20;
@@ -476,6 +481,11 @@
       margin-left: 0;
       padding-left: toRem(24);
       position: relative;
+
+      @include rtlBlock() {
+        padding-left: $padding-step-0;
+        padding-right: toRem(24);
+      }
     }
 
     li::after {
@@ -794,15 +804,6 @@ hr {
     color: $white;
   }
 
-  .cmp-button--secondary {
-    &:hover {
-      background-color: transparent;
-      border-color: $white;
-      box-shadow: none !important;
-      color: $white;
-    }
-  }
-
   .cmp-button--promo,
   .cmp-button--promo :hover {
     background-color: transparent;
@@ -817,6 +818,54 @@ hr {
 
   pre {
     color: $white;
+  }
+}
+
+.acc-blue {
+  .cmp-button--secondary {
+    background-color: $white;
+    color: $blue4;
+
+    a {
+      color: $blue4;
+      text-decoration: none !important;
+
+      &:hover {
+        color: $blue4 !important;
+      }
+    }
+
+    &:hover {
+      background-color: $white;
+      border-color: $white;
+      box-shadow: none !important;
+      color: $blue4;
+    }
+  }
+}
+
+.acc-black,
+.acc-yellow {
+  .cmp-button--secondary {
+    background-color: $white;
+    border-color: $white;
+    color: $black;
+
+    a {
+      color: $black;
+      text-decoration: none !important;
+
+      &:hover {
+        color: $black !important;
+      }
+    }
+
+    &:hover {
+      background-color: $white;
+      border-color: $white;
+      box-shadow: none !important;
+      color: $black;
+    }
   }
 }
 
@@ -836,17 +885,6 @@ hr {
 
   pre {
     color: $yellow-light;
-  }
-
-  .cmp-button--secondary {
-    border-color: $yellow-light;
-
-    &:hover {
-      background-color: transparent;
-      border-color: $yellow-light;
-      box-shadow: none !important;
-      color: $yellow-light;
-    }
   }
 
   .cmp-button--primary {
@@ -878,4 +916,27 @@ hr {
   background-color: transparent;
   border-color: $white;
   color: $white;
+}
+
+// Font weight for RTL
+[dir="rtl"] * {
+  font-weight: get-font-weight("light");
+  letter-spacing: 0 !important;
+}
+
+[dir="rtl"] {
+  .h1,
+  h1,
+  .h2,
+  h2,
+  .h3,
+  h3,
+  .h4,
+  h4,
+  .h5,
+  h5,
+  .h6,
+  h6 {
+    font-weight: get-font-weight("light");
+  }
 }

@@ -4,33 +4,31 @@
   .cmp-teaser {
     border-radius: toRem(4);
     height: 100%;
-    margin-bottom: toRem(40);
+    margin-bottom: toRem(30);
     min-height: toRem(148);
     overflow: hidden;
     position: relative;
+
+    @include respond-to-min($tablet) {
+      min-height: toRem(250);
+    }
 
     @include respond-to-min($desktop) {
       min-height: toRem(250);
     }
 
     &__content {
+      align-items: end;
       background: linear-gradient(0deg, $black, transparent);
       border-radius: toRem(4);
       bottom: 0;
+      display: flex;
       height: 100%;
       min-height: toRem(47);
-      padding: toRem(54) toRem(24) 0 toRem(15);
+      padding: toRem(24);
       position: absolute;
       width: 100%;
       z-index: 9;
-
-      @include respond-to-min($tablet) {
-        padding: toRem(54) toRem(24) 0 toRem(24);
-      }
-
-      @include respond-to-min($desktop) {
-        padding: toRem(150) toRem(24) 0 toRem(24);
-      }
 
       h1 {
         color: $white;
@@ -44,9 +42,19 @@
           margin-bottom: toRem(25);
         }
       }
+
+      .cont {
+        bottom: toRem(24);
+        position: absolute;
+
+        a.cmp-teaser__action-link {
+          position: relative;
+        }
+      }
     }
 
     &__action-container {
+      display: contents;
       a {
         color: $white;
         font-size: $font14;
@@ -54,9 +62,11 @@
         letter-spacing: toRem(2);
         line-height: toRem(20);
         position: absolute;
-        text-transform: uppercase;
+        text-transform: capitalize;
 
-        // top: toRem(100);
+        @include respond-to-min($desktop-min) {
+          text-transform: uppercase;
+        }
 
         @include font-family-lato();
 
@@ -115,6 +125,16 @@
 
     &__title {
       color: $white;
+      font-size: $font20;
+      margin-bottom:toRem(35.2);
+
+      @include respond-to-min($desktop-min) {
+        font-size: $font26;
+      }
+
+      @include rtlBlock() {
+        font-weight: get-font-weight("light");
+      }
     }
   }
 
@@ -127,10 +147,18 @@
     .aem-Grid .aem-GridColumn {
       &:first-child {
         padding-left: 0;
+
+        @include rtlBlock() {
+          padding-left: toRem(12);
+        }
       }
 
       &:last-child {
         padding-right: 0;
+        
+        @include rtlBlock() {
+          padding-right: toRem(12);
+        }
       }
     }
   }
@@ -473,6 +501,14 @@
 
     @include respond-to-min($tablet) {
       padding: 0 toRem(12) !important;
+    }
+  }
+}
+
+.cmp-teaser--promo-card-row {
+  .teaser.aem-GridColumn--xsmall--12 {
+    @include respond-to-max($tablet) {
+      padding: 0 !important;
     }
   }
 }

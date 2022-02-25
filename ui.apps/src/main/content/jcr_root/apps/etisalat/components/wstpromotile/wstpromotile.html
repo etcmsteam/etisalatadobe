@@ -1,0 +1,29 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+   <sly data-sly-test.customLink="${properties.cardLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+   <sly data-sly-test="${properties.viewPortLayout == '3-viewport'}">
+      <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image768px/fileReference'] || properties['image992px/fileReference']}" />
+   </sly>
+   <sly data-sly-test="${properties.viewPortLayout == '4-viewport'}">
+      <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image540px/fileReference'] || properties['image768px/fileReference'] || properties['image1440px/fileReference']}" />
+   </sly>
+   <sly data-sly-test="${properties.viewPortLayout == '6-viewport'}">
+      <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image768px/fileReference'] || properties['image1024px/fileReference'] || properties['image1366px/fileReference'] || properties['image1440px/fileReference'] || properties['image1920px/fileReference']}" />
+   </sly>
+   <div class="promo-grid ${properties.wstPromoTilevariation}">
+    <a data-sly-unwrap="${!properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover">
+      <div class="cover">
+         <sly data-sly-test="${viewports}"
+            data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+         <div class="bg-filter"></div>
+      </div>
+    </a>
+      <div class="grid-content">
+         <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn-text learn-more hidden-xs">
+         <span>${properties.promoCTATitle}</span>
+         </a>
+         <h1>${properties.wstpromotitle}</h1>
+      </div>
+   </div>
+
+</sly>
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.wstPromoTilevariation}"></sly>

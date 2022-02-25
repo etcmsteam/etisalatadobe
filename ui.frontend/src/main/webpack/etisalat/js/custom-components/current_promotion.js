@@ -1,5 +1,5 @@
-import { swiperInit } from "../swiperInitialize";
-import { IsMediaQuery } from "../helpers";
+import { swiperInit } from "../../../global/js/swiperInitialize";
+import { IsMediaQuery } from "../../../global/js/helpers";
 
 $(document).ready(function () {
   var initSwiper;
@@ -113,7 +113,7 @@ $(document).ready(function () {
       $(".modal-popup-wrapper #" + dataLabel).addClass("show");
       $(".modal-popup-wrapper #" + dataLabel).removeClass("fade");
       $(".modal-popup-wrapper .modal-popup").addClass("show");
-      $("body").addClass("freeze");
+      $("body").addClass("freeze no-scroll");
       $(".modal-popup-wrapper").show;
       $(".modal-popup-wrapper").css("display", "block");
     }
@@ -128,7 +128,7 @@ $(document).ready(function () {
     $(currentOpendPopUp).removeClass("show");
     $(currentOpendPopUp).css("display", "none");
     $(currentOpendPopUp).children().remove();
-    $("body").removeClass("freeze");
+    $("body").removeClass("freeze no-scroll");
   };
   $(".modal-popup-wrapper")
     .off("click")

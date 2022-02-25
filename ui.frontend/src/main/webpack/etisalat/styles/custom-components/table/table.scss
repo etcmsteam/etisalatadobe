@@ -151,6 +151,18 @@
 
   &.table-striped {
     @include respond-to-min($desktop) {
+      &.eight-col td {
+        width: 12.5%;
+      }
+
+      &.seven-col td {
+        width: 14.28%;
+      }
+
+      &.six-col td {
+        width: 16.66%;
+      }
+
       &.five-col td {
         width: 20%;
       }
@@ -870,6 +882,45 @@
   }
 }
 
+.tablecontainer {
+  .table-default-section {
+    &.table-collapsed {
+      .container {
+        @include respond-to-min-max($desktop-wide, $tablet) {
+          padding-right: toRem(18);
+        }
+      }
+      .default-section-title {
+        display: flex;
+        align-items: center;
+        
+        h3 {
+          font-size: $font20;
+          margin-bottom: 0;
+          @include respond-to-min($desktop) {
+            font-size: $font26;
+          }
+          @media (min-width: 1248px) {
+            font-size: $font30;
+          }
+        }
+        .btn-text {
+          margin-left: auto;
+          @include rtlBlock() {
+            margin-left: 0;
+            margin-right: auto;
+          }
+          @include font-family-lato();
+
+          &::before {
+            padding: toRem(2.7);
+          }
+        }
+      }
+    }
+  }
+}
+
 .cmp-table-default {
   table {
     th {
@@ -995,7 +1046,7 @@
               td {
                 &:first-child {
                   padding-left: 0;
-                  @include respond-to-max($desktop){
+                  @include respond-to-max($desktop) {
                     padding-right: toRem(15);
                   }
                   padding-right: 3.5rem;
@@ -1914,7 +1965,7 @@ table {
 
       @include font-family-lato();
     }
-    @include rtlBlock(){
+    @include rtlBlock() {
       float: right;
     }
   }
@@ -1926,7 +1977,7 @@ table {
     float: right;
     padding-top: 0.25em;
     text-align: right;
-    @include rtlBlock(){
+    @include rtlBlock() {
       float: left;
     }
 
@@ -2012,7 +2063,8 @@ th {
           > th,
           > td {
             color: $white !important;
-            p,.price {
+            p,
+            .price {
               color: $white !important;
             }
           }
@@ -2022,30 +2074,31 @@ th {
           border-bottom: toRem(1) solid;
         }
       }
-       > thead tr {
-         border-bottom: none;
-       }
+      > thead tr {
+        border-bottom: none;
+      }
       > tr.discount {
-          color: $white !important;
-          .btn-text {
-            &:hover {
-              &::before {
-                border-color: $white;
-              }
+        color: $white !important;
+        .btn-text {
+          &:hover {
+            &::before {
+              border-color: $white;
             }
           }
+        }
       }
       tbody tr td:before {
         color: $white !important;
       }
     }
-     &.table {
+    &.table {
       &.tableListItem ul li {
         color: $white;
       }
     }
     .table-inline--search.input-field {
-      .advanced-table-search,label {
+      .advanced-table-search,
+      label {
         color: $white;
         border-bottom-color: $white;
         &::placeholder {
@@ -2056,20 +2109,20 @@ th {
           box-shadow: none;
         }
       }
-      input[type=search]:not(.browser-default):valid:not([readonly])~label,
-      input[type=search]:not(.browser-default):focus:not([readonly])~label {
-         color: $white;
+      input[type="search"]:not(.browser-default):valid:not([readonly]) ~ label,
+      input[type="search"]:not(.browser-default):focus:not([readonly]) ~ label {
+        color: $white;
       }
-    } 
+    }
   }
   .channel-lists-section table td:nth-child(2),
   .cmp-table-default table th {
     color: $white;
   }
   .channel-lists-section table td img {
-     filter: invert(87%) sepia(100%) saturate(0%) hue-rotate(98deg) brightness(103%) contrast(101%);
+    filter: invert(87%) sepia(100%) saturate(0%) hue-rotate(98deg) brightness(103%) contrast(101%);
   }
-  .table.table-striped table>tbody>tr:nth-of-type(odd) {
+  .table.table-striped table > tbody > tr:nth-of-type(odd) {
     background-color: transparent;
   }
   .data-table__info,
@@ -2081,7 +2134,7 @@ th {
   }
 }
 .acc-yellow {
-    .table-default-section {
+  .table-default-section {
     table {
       > tfoot,
       > thead,
@@ -2090,7 +2143,8 @@ th {
           > th,
           > td {
             color: $yellow-light !important;
-             p,.price {
+            p,
+            .price {
               color: $yellow-light !important;
             }
             border-top-color: $yellow-light;
@@ -2118,12 +2172,13 @@ th {
       &.tableListItem ul li {
         color: $yellow-light;
       }
-      &.table-row-border tbody tr{
+      &.table-row-border tbody tr {
         border-bottom-color: $yellow-light;
       }
     }
     .table-inline--search.input-field {
-      .advanced-table-search,label {
+      .advanced-table-search,
+      label {
         color: $yellow-light;
         border-bottom-color: $yellow-light;
         &::placeholder {
@@ -2134,9 +2189,9 @@ th {
           box-shadow: none;
         }
       }
-      input[type=search]:not(.browser-default):valid:not([readonly])~label,
-      input[type=search]:not(.browser-default):focus:not([readonly])~label {
-         color: $yellow-light;
+      input[type="search"]:not(.browser-default):valid:not([readonly]) ~ label,
+      input[type="search"]:not(.browser-default):focus:not([readonly]) ~ label {
+        color: $yellow-light;
       }
     }
   }

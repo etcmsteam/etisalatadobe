@@ -37,14 +37,14 @@
     @include respond-to-min($tablet) {
       height: toRem(371);
       margin-left: toRem(-30);
-      margin-top: $margin-step-2;
+      margin-top: 0;
       width: toRem(297);
     }
 
     @include respond-to-min($desktop) {
       height: toRem(479);
       margin-left: 0;
-      margin-top: toRem(36);
+      margin-top: 0;
       width: toRem(384);
     }
   }
@@ -56,12 +56,10 @@
     img {
       @include respond-to-min($tablet) {
         height: toRem(29);
-        margin: toRem(12) 0 toRem(16);
       }
 
       @include respond-to-min($desktop) {
         height: toRem(36);
-        margin: toRem(140) 0 toRem(32);
       }
     }
 
@@ -89,7 +87,7 @@
       @include respond-to-min($desktop) {
         font-size: $font32;
         line-height: toRem(40);
-        margin: toRem(160) 0 toRem(32);
+        margin: toRem(58) 0 toRem(32);
       }
     }
 
@@ -178,7 +176,7 @@
         .cmp-link__arrow_left {
           position: absolute;
           right: toRem(70);
-          top: toRem(140);
+          top: toRem(512);
         }
 
         .cmp-button--secondary {
@@ -216,14 +214,14 @@
     @include respond-to-min($tablet) {
       height: toRem(371);
       margin-left: toRem(-30);
-      margin-top: $margin-step-2;
+      margin-top: 0;
       width: toRem(297);
     }
 
     @include respond-to-min($desktop) {
       height: toRem(479);
       margin-left: 0;
-      margin-top: toRem(36);
+      margin-top: 0;
       width: toRem(384);
     }
   }
@@ -235,12 +233,10 @@
     img {
       @include respond-to-min($tablet) {
         height: toRem(29);
-        margin: toRem(60) 0 $margin-step-2;
       }
 
       @include respond-to-min($desktop) {
         height: toRem(36);
-        margin: toRem(140) 0 $margin-step-4;
       }
     }
 
@@ -268,7 +264,7 @@
       @include respond-to-min($desktop) {
         font-size: $font32;
         line-height: toRem(40);
-        margin: toRem(155) 0 $margin-step-4;
+        margin: toRem(58) 0 $margin-step-4;
       }
     }
 
@@ -319,10 +315,6 @@
   &.aqua-green--bg {
     .text {
       margin-top: 0;
-
-      @include respond-to-min($desktop) {
-        margin-top: toRem(150);
-      }
     }
 
     .cmp_store_btn {
@@ -373,7 +365,7 @@
         .cmp-link__arrow_left {
           position: absolute;
           right: toRem(70);
-          top: toRem(400);
+          top: toRem(512);
         }
 
         .cmp-button--secondary {
@@ -392,13 +384,6 @@
       .aem-Grid {
         display: flex;
         flex-direction: column-reverse;
-      }
-    }
-
-    .cmp_flipped {
-      .aem-Grid {
-        display: flex;
-        flex-direction: column;
       }
     }
   }
@@ -621,10 +606,6 @@
   margin-bottom: toRem(208);
 
   .cmp-container {
-    > .aem-Grid {
-      flex-direction: column;
-    }
-
     .aem-Grid.aem-Grid--phone--12 > .aem-GridColumn.aem-GridColumn--phone--5 {
       margin-top: toRem(-48);
       width: 70%;
@@ -807,18 +788,6 @@
       margin-left: 0;
     }
 
-    &.aqua-green--bg {
-      .text {
-        margin-top: toRem(120);
-      }
-    }
-
-    .cmp_btn {
-      img {
-        margin: toRem(28) 0 toRem(32);
-      }
-    }
-
     .image {
       .cmp-image__image {
         margin-top: 0;
@@ -836,23 +805,43 @@
       margin-left: 0;
     }
 
-    &.aqua-green--bg {
-      .text {
-        margin-top: toRem(120);
-      }
-    }
-
-    .cmp_btn {
-      img {
-        margin-top: toRem(108);
-      }
-    }
-
     .image {
       .cmp-image__image {
         margin-top: 0;
         top: toRem(-30);
       }
     }
+  }
+}
+
+.cmp_text--feature-4-0,
+.cmp_text--feature-watch,
+.cmp_text--feature-watch-flipped {
+  .container {
+    .aem-Grid {
+      @include respond-to-min($tablet) {
+        display: flex;
+        flex-direction: column;
+        height: toRem(300);
+        justify-content: center;
+
+        .buttonstore {
+          padding: toRem(10) 0;
+        }
+      }
+
+      @include respond-to-min($desktop) {
+        height: toRem(420);
+
+        .buttonstore {
+          padding: toRem(20) 0;
+        }
+      }
+    }
+  }
+
+  .cmp-link__arrow_left::after {
+    margin-top: toRem(-5);
+    right: toRem(-7);
   }
 }
