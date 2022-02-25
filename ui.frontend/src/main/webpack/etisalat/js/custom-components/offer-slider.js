@@ -35,11 +35,12 @@ $(document).ready(function () {
   }
 
   $(".offers-expanded-view").on("shown.bs.collapse", function () {
-    var body = document.body,
-      html = document.documentElement;
-    var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    const body = document.body.scrollHeight;
+    const navHeight = document.getElementsByClassName("top-nav-section")[0].offsetHeight;
+    const menuHeight = document.getElementsByClassName("mega-menu-navbar")[0].offsetHeight;
+    const height = body - (navHeight + menuHeight - 32);
 
-    var ele = $(this);
+    const ele = $(this);
     $(ele).css("height", height);
   });
 
