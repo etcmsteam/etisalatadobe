@@ -4,16 +4,12 @@
   <div data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
        data-sly-test="${properties.heroDisplayBehavior}" class="${!wcmmode.edit ? heroBannerClass : ''}"
        data-sly-unwrap="${heroBannerClass ? false : true}">
-     <!-- background images -->
 	<div class="hero-bg-images">
 	    <sly data-sly-use.heroImagesTemplate="heroimages.html"
 			             data-sly-call="${heroImagesTemplate.heroImages @ properties=properties}"/>
 	</div>
-	<!-- all hero content -->
 		<div class="hero-content-wrapper ${properties.heroAlignment} ${properties.titleFontColor == 'light-color' ? 'light-color' : ''}">
-		  <!-- banner click area  -->
 		  <div class="container">
-		    <!-- hero details div contains -> video link - headings - description - thumbnails - offers etc in below container  -->
 		    <div class="hero-details">		     
 		       <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}" 
 	               data-sly-use.heroBannerLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerCTALink}"/>
@@ -69,7 +65,6 @@
 			   <sly data-sly-use.heroCTAModelTemplate="modalpopup.html"
 				             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
 		    </div>
-			<!--hero call to action sign in start -->
 			<div data-sly-test="${properties.heroImageTitle || properties.heroImageDesc}" class="hero-images-call-to-action-section">
 				<div class="container">
 					<div class="call-to-action-box">
@@ -84,7 +79,6 @@
 					</div>
 				</div>
 			</div>
-			<!--hero call to action sign in ends -->
 		  </div>
 		</div>	
     </div>
