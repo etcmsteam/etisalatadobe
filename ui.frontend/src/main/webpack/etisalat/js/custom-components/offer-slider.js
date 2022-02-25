@@ -38,10 +38,10 @@ $(document).ready(function () {
     const body = document.body.scrollHeight;
     const navHeight = document.getElementsByClassName("top-nav-section")[0].offsetHeight;
     const menuHeight = document.getElementsByClassName("mega-menu-navbar")[0].offsetHeight;
-    const height = body - (navHeight + menuHeight - 32);
+    const height = body - (navHeight + menuHeight);
 
     const ele = $(this);
-    $(ele).css("height", height);
+    $(ele).css("height", height + 20);
   });
 
   $(".with-slider").on("shown.bs.collapse", function () {
