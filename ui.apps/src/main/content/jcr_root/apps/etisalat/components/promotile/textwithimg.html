@@ -1,16 +1,16 @@
-<template  data-sly-template.TextWithImg="${ @ properties,commonlinkmodel}">
+<template  data-sly-template.TextWithImg="${ @ properties,commonlinkmodel,imageViewportModel}">
    <div class="promo-grid-tile-4-0 with-image">
       <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover"></a>
       <sly
          data-sly-use.ImageTemplate="image.html"
-         data-sly-call="${ImageTemplate.Image @ properties=properties , commonlinkmodel=commonlinkmodel}">      </sly>
+         data-sly-call="${ImageTemplate.Image @ properties=properties , commonlinkmodel=commonlinkmodel,imageViewportModel=imageViewportModel}">      </sly>
       <div class="promo-content">
          <div class="content-only">
             <div data-sly-test="${properties.promopretitle}" class="wst-secondary-headings">
                <h4>${properties.promopretitle}</h4>
             </div>
             <div data-sly-test="${properties.promotitle}"  class="wst-main-headings">
-              <h4 data-sly-element="${properties.titleType}">${properties.promotitle}</h4>
+              <h4>${properties.promotitle}</h4>
             </div>
             <div  data-sly-test="${properties.jcr:description}" class="paragraph-styling ul-list-cms">
                <div class="p2">
