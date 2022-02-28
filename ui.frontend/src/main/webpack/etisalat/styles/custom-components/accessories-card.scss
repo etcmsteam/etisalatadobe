@@ -1,9 +1,11 @@
 // accessories card
 .card-list-wrapper,
 .eti-big-card-list,
-.eti-card-list-wrapper {
+.eti-card-list-wrapper,
+.logo-list {
   .accessoriescardtile {
     width: 100%;
+    height: 100%;
   }
 }
 .accessoriescardcontainer {
@@ -12,6 +14,20 @@
     justify-content: center;
     align-items: center;
   }
+  .brands-logo{
+    .scrollbar{
+      @include respond-to-min($desktop) {
+        padding-left: $padding-step-1;
+        padding-right: $padding-step-2;
+      }
+    }
+  }
+   .scrollbar{
+      @include respond-to-min($desktop) {
+        padding-left: toRem(12);
+        padding-right: toRem(12);
+      }
+    }
 }
 .card-li {
   display: flex;
@@ -1045,21 +1061,40 @@ general third action link
     .scrollbar {
       background-color: $steel-grey;
     }
-   
   }
   .third-action-wrapper.action-link .link:before {
     color: $almost-black;
   }
+  .third-action-wrapper.action-link {
+    .link {
+      &:before {
+        border: solid $yellow-light;
+        border-width: 0 1px 1px 0;
+      }
+    }
+  }
 }
 .acc-black,
 .acc-blue,
-.acc-yellow{
+.acc-yellow {
   .card-li,
   .eti-card-li,
   .eti-big-card-li,
-  .logo-li{
-    &:hover{
+  .logo-li {
+    &:hover {
       border-color: transparent;
+    }
+  }
+}
+
+.acc-black,
+.acc-blue {
+  .third-action-wrapper.action-link {
+    .link {
+      &:before {
+        border: solid $white;
+        border-width: 0 1px 1px 0;
+      }
     }
   }
 }

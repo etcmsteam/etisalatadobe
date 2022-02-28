@@ -1,0 +1,61 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+  <section data-sly-test="${properties.tourGuideLayout != 'besttourguide'}" class="guide-section">
+    <div class="content-section">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div data-sly-test="${properties.title}" class="wst-main-headings">
+            <div class="h7">${properties.title}</div>
+          </div>
+          <div class="paragraph-styling ul-list-cms">
+            <div class="p2">
+              ${properties.desc @ context='html'}
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div data-sly-test="${properties.fileReference}" class="img-wraper">
+            <div class="cover" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section data-sly-test="${properties.tourGuideLayout == 'besttourguide'}" class="guide-section">
+     <div class="content-section">
+			<div class="get-best-main">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="wst-main-headings">
+							<div class="h7">${properties.title}
+							</div>
+						</div>
+						<div class="paragraph-styling ul-list-cms">
+							<div class="p2">
+								${properties.desc @ context='html'}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" data-sly-use.guideObj="${resource.path}" data-sly-list.guideItems="${guideObj.listChildren}">				
+				 <sly data-sly-test="${guideItems.name == 'bestGuideItems'}" data-sly-list.guideItem="${guideItems.listChildren}">
+				  <div class="col-xs-12 col-sm-6 col-md-4">	
+					 <div data-sly-use.guideImageResource="${guideItem.path}" class="img-wrap">
+						<div class="${!wcmmode.edit ? 'cover' : ''}">
+							<sly data-sly-test="${guideItem.fileReference}" data-sly-resource="${guideImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
+						</div>
+					 </div>
+					 <div class="paragraph-styling ul-list-cms get-best">
+						<div class="p2">
+							<p>${guideItem.bestGuideText @ context='html'}</p>
+						</div>
+					 </div>
+					</div>
+				  </sly>			  						
+				</div>
+			</div>
+		</div>
+  </section>
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.tourGuideLayout}"></sly>
