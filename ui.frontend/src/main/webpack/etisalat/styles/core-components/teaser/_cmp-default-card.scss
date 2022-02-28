@@ -134,41 +134,48 @@
   }
 }
 
-.default--bg {
-  .button--transparent.cmp-default-card {
-    .cmp-teaser {
-      &__action-container {
-        @include respond-to-min($desktop) {
-          min-width: toRem(180) !important;
-          width: auto !important;
-        }
+.button--secondary.cmp-default-card,
+.button--primary.cmp-default-card,
+.button--transparent.cmp-default-card,
+.default--bg .button--transparent.cmp-default-card {
+  .cmp-teaser {
+    &__action-container {
+      @include respond-to-min($desktop) {
+        min-width: toRem(180) !important;
+        width: auto !important;
+      }
 
-        @include respond-to-max($desktop) {
-          min-width: 100%;
-          width: 100%;
-        }
+      @include respond-to-max($desktop) {
+        min-width: 100%;
+        width: 100%;
+      }
 
-        &:hover {
-          background-color: $white;
-          border-color: $main-green;
-          box-shadow: none !important;
+      border-color: $gray-text-color;
+
+      a {
+        color: $gray-text-color;
+      }
+
+      &:hover {
+        background-color: $white;
+        border-color: $main-green;
+        box-shadow: none !important;
+        color: $main-green !important;
+
+        a {
           color: $main-green !important;
-
-          a {
-            color: $main-green !important;
-          }
         }
+      }
 
-        &:focus,
-        &:active {
-          background-color: $green-btn;
-          border-color: $green-btn;
+      &:focus,
+      &:active {
+        background-color: $green-btn;
+        border-color: $green-btn;
+        color: $white !important;
+        outline: 0;
+
+        a {
           color: $white !important;
-          outline: 0;
-
-          a {
-            color: $white !important;
-          }
         }
       }
     }
@@ -177,6 +184,9 @@
 
 .acc-black,
 .acc-blue {
+  .button--secondary.cmp-default-card,
+  .button--primary.cmp-default-card,
+  .button--transparent.cmp-default-card,
   .default--bg .button--transparent.cmp-default-card {
     .cmp-teaser__action-container {
       background-color: transparent;
@@ -197,6 +207,9 @@
 }
 
 .acc-yellow {
+  .button--secondary.cmp-default-card,
+  .button--primary.cmp-default-card,
+  .button--transparent.cmp-default-card,
   .default--bg .button--transparent.cmp-default-card {
     .cmp-teaser__action-container {
       &:hover,
