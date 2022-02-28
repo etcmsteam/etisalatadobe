@@ -133,3 +133,82 @@
     }
   }
 }
+
+.default--bg {
+  .button--transparent.cmp-default-card {
+    .cmp-teaser {
+      &__action-container {
+        @include respond-to-min($desktop) {
+          min-width: toRem(180) !important;
+          width: auto !important;
+        }
+
+        @include respond-to-max($desktop) {
+          min-width: 100%;
+          width: 100%;
+        }
+
+        &:hover {
+          background-color: $white;
+          border-color: $main-green;
+          box-shadow: none !important;
+          color: $main-green !important;
+
+          a {
+            color: $main-green !important;
+          }
+        }
+
+        &:focus,
+        &:active {
+          background-color: $green-btn;
+          border-color: $green-btn;
+          color: $white !important;
+          outline: 0;
+
+          a {
+            color: $white !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.acc-black,
+.acc-blue {
+  .default--bg .button--transparent.cmp-default-card {
+    .cmp-teaser__action-container {
+      background-color: transparent;
+      border-color: $white;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        border-color: $white;
+
+        a {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .default--bg .button--transparent.cmp-default-card {
+    .cmp-teaser__action-container {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        border-color: $yellow-light;
+
+        a {
+          color: $yellow-light !important;
+        }
+      }
+    }
+  }
+}
