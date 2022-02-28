@@ -133,3 +133,95 @@
     }
   }
 }
+
+.button--secondary.cmp-default-card,
+.button--primary.cmp-default-card,
+.button--transparent.cmp-default-card,
+.default--bg .button--transparent.cmp-default-card {
+  .cmp-teaser {
+    &__action-container {
+      border-color: $gray-text-color;
+
+      @include respond-to-min($desktop) {
+        min-width: toRem(180) !important;
+        width: auto !important;
+      }
+
+      @include respond-to-max($desktop) {
+        min-width: 100%;
+        width: 100%;
+      }
+
+      a {
+        color: $gray-text-color;
+      }
+
+      &:hover {
+        background-color: $white;
+        border-color: $main-green;
+        box-shadow: none !important;
+        color: $main-green !important;
+
+        a {
+          color: $main-green !important;
+        }
+      }
+
+      &:focus,
+      &:active {
+        background-color: $green-btn;
+        border-color: $green-btn;
+        color: $white !important;
+        outline: 0;
+
+        a {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.acc-blue,
+.acc-black {
+  .button--secondary.cmp-default-card,
+  .button--primary.cmp-default-card,
+  .button--transparent.cmp-default-card,
+  .default--bg .button--transparent.cmp-default-card {
+    .cmp-teaser__action-container {
+      background-color: transparent;
+      border-color: $white;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: transparent;
+        border-color: $white;
+
+        a {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .button--secondary.cmp-default-card,
+  .button--primary.cmp-default-card,
+  .button--transparent.cmp-default-card,
+  .default--bg .button--transparent.cmp-default-card {
+    .cmp-teaser__action-container {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        border-color: $yellow-light;
+
+        a {
+          color: $yellow-light !important;
+        }
+      }
+    }
+  }
+}
