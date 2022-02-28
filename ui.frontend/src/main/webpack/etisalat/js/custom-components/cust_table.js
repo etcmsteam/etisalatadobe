@@ -297,13 +297,13 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                 if (typeof dataLabel !== 'undefined' && dataLabel !== '') {
                     parent.find("#"+dataLabel).addClass("show");
 
-                    filterPopupHeader = parent.find(".cmp-tabs__tabpanel--active #" + dataLabel + " .nv-modal-header").outerHeight();
-                    filterPopupFooter = parent.find(".cmp-tabs__tabpanel--active #" + dataLabel + " .filter-button-wrap").outerHeight();
+                    filterPopupHeader = parent.find('#' + dataLabel + ' .nv-modal-header').outerHeight();
+                    filterPopupFooter = parent.find('#' + dataLabel + ' .filter-button-wrap').outerHeight();
 
                     if (window.innerWidth > 992) {
-                        $('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 40));
+                        parent.find('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 40));
                     } else {
-                        $('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 50));
+                        parent.find('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 50));
                     }
 
 

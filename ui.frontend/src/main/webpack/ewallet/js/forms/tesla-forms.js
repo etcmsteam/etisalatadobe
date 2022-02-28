@@ -74,7 +74,7 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
     },
     messages: messagelocal,
     submitHandler: function (form) {
-      return false;
+      form.submit();
     },
   });
 })();
