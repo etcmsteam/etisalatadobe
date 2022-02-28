@@ -96,8 +96,8 @@ public class ImageViewportModel {
    */
   public boolean getSixViewportContent() {
     return (StringUtils.isNotBlank(this.image414px) || StringUtils.isNotBlank(this.image768px)        
-        || StringUtils.isNotBlank(this.image1920px) || StringUtils.isNotBlank(this.image1024px)
-        || StringUtils.isNotBlank(this.image1366px) || StringUtils.isNotBlank(this.image1440px));
+        || StringUtils.isNotBlank(this.image1440px) || StringUtils.isNotBlank(this.image1024px)
+        || StringUtils.isNotBlank(this.image1366px) || StringUtils.isNotBlank(this.image1920px));
   }
 
   public String getImage414px() {
