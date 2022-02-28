@@ -1,5 +1,7 @@
 package com.etisalat.core.models;
 
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -67,6 +69,36 @@ public class ImageViewportModel {
   @ValueMapValue(name="retinaimage992px/altText")
   private String image992PXAltText;
   
+  /**
+   * Returns true, if 4-viewport has a image.
+   * @return true
+   */
+  public boolean getFourViewportContent() {
+    return (StringUtils.isNotBlank(this.retinaImage414px1x) || StringUtils.isNotBlank(this.retinaImage414px2x)
+        || StringUtils.isNotBlank(this.retinaImage540px1x) || StringUtils.isNotBlank(this.retinaImage540px2x)
+        || StringUtils.isNotBlank(this.retinaImage768px1x) || StringUtils.isNotBlank(this.retinaImage768px2x)
+        || StringUtils.isNotBlank(this.retinaImage1440px1x) || StringUtils.isNotBlank(this.retinaImage1440px2x));
+  }
+  
+  /**
+   * Returns true, if 3-viewport has a image.
+   * @return true
+   */
+  public boolean getThreeViewportContent() {
+    return (StringUtils.isNotBlank(this.retinaImage414px1x) || StringUtils.isNotBlank(this.retinaImage414px2x)        
+        || StringUtils.isNotBlank(this.retinaImage768px1x) || StringUtils.isNotBlank(this.retinaImage768px2x)
+        || StringUtils.isNotBlank(this.retinaImage992px1x) || StringUtils.isNotBlank(this.retinaImage992px2x));
+  }
+  
+  /**
+   * Returns true, if 6-viewport has a image.
+   * @return true
+   */
+  public boolean getSixViewportContent() {
+    return (StringUtils.isNotBlank(this.image414px) || StringUtils.isNotBlank(this.image768px)        
+        || StringUtils.isNotBlank(this.image1920px) || StringUtils.isNotBlank(this.image1024px)
+        || StringUtils.isNotBlank(this.image1366px) || StringUtils.isNotBlank(this.image1440px));
+  }
 
   public String getImage414px() {
       return image414px;
