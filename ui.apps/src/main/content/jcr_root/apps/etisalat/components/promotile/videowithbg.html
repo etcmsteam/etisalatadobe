@@ -1,4 +1,5 @@
-<template  data-sly-template.VideoWithBg="${ @ properties,commonlinkmodel}">
+<template  data-sly-template.VideoWithBg="${ @ properties,commonlinkmodel,imageViewportModel}">
+<sly data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
    <div class="promo-grid-tile-4-0 with-image and-video-icon">
       <div class="promo-img">
          <!-- youtube link  -->
@@ -14,7 +15,8 @@
          </div>
          <!-- Modal start -->
          <div class="cover">
-             <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+             <sly data-sly-test="${viewports}"
+            data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          </div>
       </div>
       <div class="promo-content">
