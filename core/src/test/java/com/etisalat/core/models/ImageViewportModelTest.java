@@ -26,6 +26,10 @@ public class ImageViewportModelTest {
   protected static final String FOUR_IMAGE_VIEWPORT_DATA = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatfourviewport";
   protected static final String THREE_IMAGE_VIEWPORT_DATA = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatthreeviewport";
   
+  protected static final String FOUR_IMAGE_VIEWPORT_HAS_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/fourviewport-hasimage";
+  protected static final String THREE_IMAGE_VIEWPORT_HAS_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/threeviewport-hasimage";
+  protected static final String SIX_IMAGE_VIEWPORT_HAS_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/sixviewport-hasimage";
+  
   
   @BeforeEach
   public void setup() throws Exception {
@@ -127,6 +131,27 @@ public class ImageViewportModelTest {
     assertEquals(expectImage992px1x, actualImage992px1x);
     assertEquals(expectImage992px2x, actualImage992px2x);
     assertEquals(expectImage992AltText, actualImage992AltText);
+  }
+  
+  @Test
+  void testFourViewportHasImage() {
+    Resource resource = context.resourceResolver().getResource(FOUR_IMAGE_VIEWPORT_HAS_CONTENT);
+    ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+    assertEquals(true, item.getFourViewportContent());
+  }
+  
+  @Test
+  void testThreeViewportHasImage() {
+    Resource resource = context.resourceResolver().getResource(THREE_IMAGE_VIEWPORT_HAS_CONTENT);
+    ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+    assertEquals(true, item.getThreeViewportContent());
+  }
+  
+  @Test
+  void testSixViewportHasImage() {
+    Resource resource = context.resourceResolver().getResource(SIX_IMAGE_VIEWPORT_HAS_CONTENT);
+    ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+    assertEquals(true, item.getSixViewportContent());
   }
 
 }
