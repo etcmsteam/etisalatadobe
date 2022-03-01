@@ -137,21 +137,24 @@ public class ImageViewportModelTest {
   void testFourViewportHasImage() {
     Resource resource = context.resourceResolver().getResource(FOUR_IMAGE_VIEWPORT_HAS_CONTENT);
     ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
-    assertEquals(true, item.getFourViewportContent());
+    boolean actualFourViewPortContent = item.getFourViewportContent();
+    assertEquals(true, actualFourViewPortContent);
   }
   
   @Test
   void testThreeViewportHasImage() {
     Resource resource = context.resourceResolver().getResource(THREE_IMAGE_VIEWPORT_HAS_CONTENT);
     ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
-    assertEquals(true, item.getThreeViewportContent());
+    boolean actualThreeViewPortContent = item.getThreeViewportContent();
+    assertEquals(true, actualThreeViewPortContent);
   }
   
   @Test
   void testSixViewportHasImage() {
     Resource resource = context.resourceResolver().getResource(SIX_IMAGE_VIEWPORT_HAS_CONTENT);
     ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
-    assertEquals(true, item.getSixViewportContent());
+    boolean actualSixViewPortContent = item.getSixViewportContent();
+    assertEquals(true, actualSixViewPortContent);
   }
 
 }
