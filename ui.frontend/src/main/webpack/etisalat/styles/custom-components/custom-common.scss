@@ -341,6 +341,54 @@ img {
   }
 }
 
+.btn-col-2 {
+  .cmp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    >.button {
+      width: 100%;
+      &:first-child {
+        margin-bottom: toRem(16);
+      }
+      .cmp-button {
+        width: 100%;
+      }
+    }
+    @media (min-width: 768px) {
+      flex-direction: row;
+      >.button {
+        width: auto;
+        &:first-child {
+          margin-right: toRem(24);
+          margin-bottom: 0;
+        }
+        .cmp-button {
+          min-width: 282px;
+        }
+      }
+    }
+  }
+}
+
+*[lang="ar"] {
+  *[dir="rtl"] {
+    .btn-col-2 {
+      .cmp-container {
+        @media (min-width: 768px) {
+          >.button {
+            &:first-child {
+              margin-left: toRem(24);
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .img-responsive {
   display: block;
   height: auto;
