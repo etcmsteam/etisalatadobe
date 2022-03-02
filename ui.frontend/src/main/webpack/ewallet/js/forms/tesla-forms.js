@@ -16,20 +16,20 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
   let messagelocal;
   const validateMessage = {
     en: {
-      ewalletFirstName: FORM_VALIDATION_MESSAGES.EN.ewalletFirstName,
-      ewalletLastName: FORM_VALIDATION_MESSAGES.EN.ewalletLastName,
-      companyName: FORM_VALIDATION_MESSAGES.EN.companyName,
-      emirate: FORM_VALIDATION_MESSAGES.EN.emirate,
-      phoneNumber: FORM_VALIDATION_MESSAGES.EN.phoneNumber,
+      FIRST_NAME: FORM_VALIDATION_MESSAGES.EN.ewalletFirstName,
+      LAST_NAME: FORM_VALIDATION_MESSAGES.EN.ewalletLastName,
+      COMPANY_NAME: FORM_VALIDATION_MESSAGES.EN.companyName,
+      EMIRATE: FORM_VALIDATION_MESSAGES.EN.emirate,
+      PHONE_NUMBER: FORM_VALIDATION_MESSAGES.EN.phoneNumber,
       emailAddress: FORM_VALIDATION_MESSAGES.EN.emailAddress,
     },
     ar: {
-      ewalletFirstName: FORM_VALIDATION_MESSAGES.AR.ewalletFirstName,
-      ewalletLastName: FORM_VALIDATION_MESSAGES.AR.ewalletLastName,
-      companyName: FORM_VALIDATION_MESSAGES.AR.companyName,
-      emirate: FORM_VALIDATION_MESSAGES.EN.emirate,
-      phoneNumber: FORM_VALIDATION_MESSAGES.AR.phoneNumber,
-      emailAddress: FORM_VALIDATION_MESSAGES.AR.emailAddress,
+      FIRST_NAME: FORM_VALIDATION_MESSAGES.AR.ewalletFirstName,
+      LAST_NAME: FORM_VALIDATION_MESSAGES.AR.ewalletLastName,
+      COMPANY_NAME: FORM_VALIDATION_MESSAGES.AR.companyName,
+      EMIRATE: FORM_VALIDATION_MESSAGES.EN.emirate,
+      PHONE_NUMBER: FORM_VALIDATION_MESSAGES.AR.phoneNumber,
+      EMAIL: FORM_VALIDATION_MESSAGES.AR.emailAddress,
     },
   };
 
@@ -41,25 +41,25 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
 
   $FORM.validate({
     rules: {
-      ewalletFirstName: {
+      FIRST_NAME: {
         required: true,
         simplealphabeticlatinarabic: true,
         maxlength: 248,
       },
-      ewalletLastName: {
+      LAST_NAME: {
         required: true,
         simplealphabeticlatinarabic: true,
         maxlength: 248,
       },
-      companyName: {
+      COMPANY_NAME: {
         required: true,
         simplealphabeticlatinarabic: true,
         maxlength: 248,
       },
-      emirate: {
+      EMIRATE: {
         required: true,
       },
-      phoneNumber: {
+      PHONE_NUMBER: {
         required: true,
         number: true,
         digits: true,
@@ -69,7 +69,7 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
       },
       emailAddress: {
         required: true,
-        email: true,
+        EMAIL: true,
       },
     },
     messages: messagelocal,
