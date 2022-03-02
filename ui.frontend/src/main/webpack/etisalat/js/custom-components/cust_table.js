@@ -9,6 +9,7 @@
             var availableHeight = (windowHeight - (topbar + header + channelList + filters));
             var filterPopupHeader = 0;
             var filterPopupFooter = 0;
+            applyTabid();
 
             if (window.innerWidth > 991) {
                 $('.tables-4-0').css('height', (availableHeight - 87) + 'px');
@@ -310,6 +311,26 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                     $('body').addClass('freeze');
                 }
             }
+
+            function applyTabid() {
+              var tabs = $(".cmp-tabs__tabpanel");
+              tabs.each(function (index) {
+                var filter = $(this).find("#filters");
+                var radiosBtns = filter.find("input[type='radio']");
+                var labelsChange = filter.find("label");
+
+                radiosBtns.each(function (i) {
+                  var filterId = $(this).attr("id");
+                  $(this).attr("id", filterId + index);
+                });
+
+                labelsChange.each(function (i) {
+                  var labelName = $(this).attr("for");
+                  $(this).attr("for", labelName + index);
+                });
+              });
+            }
+
   // popup filters
   $('.filter-lable').off('click').on('click', function (e) {
     e.preventDefault();
