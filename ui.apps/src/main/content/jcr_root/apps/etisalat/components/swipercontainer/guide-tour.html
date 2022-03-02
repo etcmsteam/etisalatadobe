@@ -1,0 +1,65 @@
+<template data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" data-sly-template.guideTour="${ @ container,properties}">
+    <sly data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component">
+        <!--/*for popup link*/-->
+        <a href="#" class="guide-tour" data-label="guidetour-${component.id}">${properties.guidetourLinkLabel}</a>
+        <!--/*for overlay html*/-->
+        <div class="guide-tour-modal ${!wcmmode.edit ? 'nv-modal fade full-height-mob' : ''} last-exit-popup-wrapper" id="guidetour-${component.id}">
+            <div class="nv-modal-dialog modal-align-center">
+                <div class="nv-modal-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="nv-modal-header">
+                                <h4 class="nv-modal-title" data-sly-element="${properties.titleType}">${properties.guidetourTitle}</h4>
+                                <span class="nv-modal-close">
+                        <?xml version="1.0" encoding="UTF-8"?>
+                                    <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                           <g id="eLife-Flows---Desktop" stroke="none" stroke-width="1" fill="none"
+                              fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                              <g id="dd_eLifeConfig-1.0.7" transform="translate(-1297.000000, -629.000000)"
+                                 stroke="#242424">
+                                 <g id="verifyEligibility" transform="translate(0.000000, 576.000000)">
+                                    <g id="title" transform="translate(609.000000, 40.000000)">
+                                       <g id="closeIcon" transform="translate(675.000000, 0.000000)">
+                                          <g id="Close-icon-Icon/Outline-1pt/close/close_black"
+                                             transform="translate(12.000000, 12.000000)">
+                                             <line x1="22.5" y1="1.5" x2="1.5" y2="22.5" id="Line"></line>
+                                             <line x1="22.5" y1="22.5" x2="1.5" y2="1.5" id="Line"></line>
+                                          </g>
+                                       </g>
+                                    </g>
+                                 </g>
+                              </g>
+                           </g>
+                        </svg>
+                     </span>
+                            </div>
+                            <div class="nv-modal-body">
+                                <div class="container">
+                                    <div class="${!wcmmode.edit ? 'multi-step' : ''}">
+                                        <sly data-sly-repeat="${container.items}" data-sly-resource="${item.name @ decorationTagName=wcmmode.edit ? 'div' : ''}"></sly>
+                                    </div>
+                                    <div class="wraper">
+                                        <div class="progress-wrap">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="20"
+                                                     aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                                    <span class="sr-only"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <button class="back btn btn-default" data-sly-test="${properties.prevLink}">${properties.prevLink}</button>
+                                        <button class="next btn btn-green ripple-effect" data-sly-test="${properties.nextLink}">${properties.nextLink}</button>
+                                        <button class="started btn btn-green ripple-effect" data-sly-test="${properties.getstartedLink}">${properties.getstartedLink}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sly>
+</template>
