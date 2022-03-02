@@ -38,11 +38,17 @@
          data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
          method="POST" action="${customForm.formAction}" id="${customForm.formId}" name="${customForm.formId}"
          class="cmp-form ${grid.cssClass}">
+<sly data-sly-test="${properties.successMessageOptions == 'samePage'}">
+<div data-sly-test="${properties.customSuccessMessage}" class="successMsg">${properties.customSuccessMessage}</div>
+</sly>
+<sly data-sly-test="${properties.successMessageOptions == 'differentPage'}">
          <input type="hidden" name=":redirect" value="${customForm.redirectUrl  @ extension='html'}"/>
+</sly>
          <sly data-sly-repeat.paragraph="${grid.paragraphs}"
             data-sly-resource="${paragraph.path @ resourceType=paragraph.resourceType, decorationTagName='div', cssClassName=paragraph.cssClass}"></sly>
          <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/responsivegrid/new'
             , appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
             data-sly-test="${wcmmode.edit || wcmmode.preview}"></sly>
+<div data-sly-test="${properties.customErrorMessage}" class="errorMsg">${properties.customErrorMessage}</div>
       </form>
    </sly>
