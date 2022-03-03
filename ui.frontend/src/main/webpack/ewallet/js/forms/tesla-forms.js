@@ -1,7 +1,7 @@
 import { FORM_VALIDATION_MESSAGES } from "./constant";
 (function () {
   const $FORM = $("#ewalletteslaform");
-  const $SUBMIT_CTA = $("#new_form .cmp-form-button");
+  const $SUBMIT_CTA = $("#ewalletteslaform .cmp-form-button");
 
   if (!$FORM.length) {
     return false;
