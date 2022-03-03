@@ -42,7 +42,7 @@ class CustomFormImplTest {
 	void customFormMethods() {
 		Resource navItemRes = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
-		final String expectedRedirectUrl = "/content/hiuapp/language-master/en/test2";
+		final String expectedRedirectUrl = "/content/formcontainer";
 		final String expectedFormId = "formid";
 		final String expectedFormAction = "/content/formcontainer/_jcr_content.sendnotification.html";		
 		CustomForm customForm = context.request().adaptTo(CustomForm.class);
