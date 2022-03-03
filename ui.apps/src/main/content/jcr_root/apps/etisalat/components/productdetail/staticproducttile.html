@@ -1,7 +1,7 @@
 <template  data-sly-template.productTile="${ @ carousel,properties}">
        <div class="product-grid-text-section plans more-info-wrapper ${properties.tileBoxLayout == 'devicetile' ? 'product-device-text' : ''}">
           <div class="row">
-            <div data-sly-test="${properties.mainProductTitle}" class="col-xs-12 col-md-${carousel.items.size > 2 ? '3' : '6'}">
+            <div data-sly-test="${properties.mainProductTitle && !properties.productFilterEnabled}" class="col-xs-12 col-md-${carousel.items.size > 2 ? '3' : '6'}">
               <div class="main-text-section">
                 <a data-sly-test="${properties.productCTALink && properties.productCTATitle}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.productCTALink}" href="${commonlinkmodel.link}" class="btn-text btn-green  learn-more">
                   <span> ${properties.productCTATitle} </span>
@@ -20,7 +20,12 @@
               <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? '' : 'hide'} table-swiper-button-prev swiper-button-prev swiper-button-black"></div>
               <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? '' : 'hide'} table-swiper-button-next swiper-button-next swiper-button-black"></div>
             </div>
-            <sly data-sly-test="${properties.mainProductTitle}">
+            <div data-sly-test="${properties.productFilterEnabled}" class="col-lg-3 col-md-3">
+               <sly data-sly-use.productFilterTemplate="productfilter.html"
+			        data-sly-call="${productFilterTemplate.filter @ carousel=carousel,properties=properties}">      
+			   </sly>
+            </div>
+            <sly data-sly-test="${properties.mainProductTitle || properties.productFilterEnabled}">
               <div class="col-xs-12 col-md-${carousel.items.size > 2 ? '9' : '6'}" data-sly-test="${carousel.items && carousel.items.size > 0}">
             </sly>
             <sly data-sly-test="${!properties.mainProductTitle}">
