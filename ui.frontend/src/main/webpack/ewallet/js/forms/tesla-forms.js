@@ -1,6 +1,6 @@
 import { FORM_VALIDATION_MESSAGES } from "./constant";
 (function () {
-  const $FORM = $("#new_form");
+  const $FORM = $("#ewalletteslaform");
   const $SUBMIT_CTA = $("#new_form .cmp-form-button");
 
   if (!$FORM.length) {
@@ -77,4 +77,16 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
       form.submit();
     },
   });
+
+  const CONTACT_FORM = function () {
+    const MY_PARAM = location.search.split("success=")[1];
+    const SUCCESS_MSG = $(".successMsg");
+    const FAIL_MSG = $(".errorMsg");
+    MY_PARAM === "success" ? SUCCESS_MSG.removeClass("hide") : SUCCESS_MSG.addClass("hide");
+    MY_PARAM === "fail" ? FAIL_MSG.removeClass("hide") : FAIL_MSG.addClass("hide");
+  };
+
+  if ($FORM) {
+    CONTACT_FORM();
+  }
 })();
