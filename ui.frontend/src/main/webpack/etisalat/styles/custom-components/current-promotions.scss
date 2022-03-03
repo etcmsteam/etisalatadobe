@@ -254,10 +254,16 @@
 
   .col-md-9 {
     left: toRem(15);
+    @include rtlBlock() {
+      right: 0;
+    }
   }
 
   .col-md-3 {
     padding-left: toRem(30);
+    @include rtlBlock() {
+      padding-right: toRem(30);
+    }
     @media (min-width: 992px) {
       padding-left: inherit;
     }
@@ -2122,5 +2128,10 @@
         border: toRem(1) solid $yellow-light;
       }
     }
+  }
+}
+.container.container-fix__width {
+  @include rtlBlock(){
+    float: right;
   }
 }
