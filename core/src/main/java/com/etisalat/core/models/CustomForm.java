@@ -7,4 +7,10 @@ public interface CustomForm {
   String getFormAction();
   
   String getFormId();
+  
+  String getSuccessMessageOptions();
+  
+  String getCustomErrorMessage();
+  
+  String getCustomSuccessMessage();
 }
