@@ -257,6 +257,17 @@
     @include rtlBlock() {
       right: 0;
     }
+    @media (max-width: 991px) {
+       right: inherit;
+       @include rtlBlock() {
+          // padding-right: 0 !important;
+       }
+    }
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+      @include rtlBlock() {
+        padding-right: 0;
+      }
+    }
   }
 
   .col-md-3 {
@@ -264,8 +275,27 @@
     @include rtlBlock() {
       padding-right: toRem(30);
     }
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+      @include rtlBlock() {
+        padding-right: toRem(30) !important;
+      }
+    }
+    @media (min-width: 768px) {
+      @include rtlBlock() {
+        padding-right: toRem(30);
+      }
+    }
     @media (min-width: 992px) {
       padding-left: inherit;
+      @include rtlBlock() {
+        padding-right: 0;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
+       padding-left: toRem(30);
+       @include rtlBlock() {
+        padding-right: toRem(30);
+      }
     }
   }
 
@@ -341,6 +371,14 @@
 
     .next {
       left: 60px;
+      @include rtlBlock() {
+        right: 0;
+      }
+    }
+    .prev {
+      @include rtlBlock() {
+        right: toRem(60);
+      }
     }
   }
 
@@ -483,6 +521,12 @@
     }
     &:before {
       padding: toRem(3.7);
+      @include rtlBlock() {
+        left: toRem(-60);
+        @media (min-width: 992px) {
+          left: inherit;
+        }
+      }
     }
   }
 
@@ -2132,6 +2176,6 @@
 }
 .container.container-fix__width {
   @include rtlBlock(){
-    float: right;
+    float: right !important;
   }
 }
