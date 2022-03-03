@@ -247,7 +247,7 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                 $('#filters .nv-modal-body input[data-filter="all"]').prop('checked', true);
 
                 applyFilters();
-                $(this).closest('.list-wrapper').hide();
+                $('.sorting-filter-wrapper .list-wrapper').hide();
                 $('.circle-count').hide();
             });
 
