@@ -43,10 +43,34 @@ public class CustomFormImpl implements CustomForm {
 
 	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
 	private String formSubmissionOptions;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String successMessageOptions;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String customSuccessMessage;
+	
+	@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+	private String customErrorMessage;
+
+	@Override
+	public String getSuccessMessageOptions() {
+		return successMessageOptions;
+	}
+
+	@Override
+	public String getCustomSuccessMessage() {
+		return customSuccessMessage;
+	}
+	
+	@Override
+	public String getCustomErrorMessage() {
+		return customErrorMessage;
+	}
 
 	@Override
 	public String getRedirectUrl() {
-		if(StringUtils.isNotBlank(customFormRedirect)) {
+		if(StringUtils.isNotBlank(customFormRedirect) && (StringUtils.isNotBlank(successMessageOptions)) && successMessageOptions.equals("customFormRedirect")) {
 			return customFormRedirect ;
 		}else if(currentPage != null) {
 			return currentPage.getPath();
@@ -69,5 +93,6 @@ public class CustomFormImpl implements CustomForm {
 	public String getFormId() {		
 		return customFormId;
 	}
+
 
 }
