@@ -58,7 +58,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="SendNotification Custom Form"
                                                         value=".sendnotification"/>
-													<proxy
+                                                    <proxy
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Proxy Custom Form"
                                                         value="proxy"/>
@@ -67,13 +67,66 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
                                             </formSubmissionOptions>
-                                            <customFormRedirect
+                                            <successMessageTarget
+                                                granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                fieldDescription="Leave empty to redisplay the form after submission"
-                                                fieldLabel="Thank You Page"
-                                                name="./customFormRedirect"
-                                                rootPath="/content"/>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Success Message Behavior"
+                                                fieldLabel="Select Success Message Behavior"
+                                                name="./successMessageOptions">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <samePage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Success Message on Same Page"
+                                                        value="samePage"/>
+                                                    <differentPage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Success Message on new Page"
+                                                        value="differentPage"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".successMessage-showhide-target"/>
+                                            </successMessageTarget>
+                                            <successMessage
+                                                granite:class="successMessage-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <customSuccessMessage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Success Message to be displayed"
+                                                        fieldLabel="Success Message"
+                                                        name="./customSuccessMessage"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="samePage"/>
+                                            </successMessage>
+                                            <formRedirectPath
+                                                granite:class="successMessage-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <customFormRedirect
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                        fieldDescription="Leave empty to redisplay the form after submission"
+                                                        fieldLabel="Thank You Page"
+                                                        name="./customFormRedirect"
+                                                        rootPath="/content"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="differentPage"/>
+                                            </formRedirectPath>
+                                            <customErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter the error message incase failed to submit form."
+                                                fieldLabel="Error Message"
+                                                name="./customErrorMessage"/>
                                             <customFormId
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
