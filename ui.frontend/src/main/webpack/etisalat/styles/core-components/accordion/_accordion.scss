@@ -259,6 +259,46 @@
 .cmp-accordion--text {
   width: 70% !important;
 
+  &.with-full-bg {
+    width: 100% !important;
+
+    @include respond-to-min-max($desktop-wide, $tablet) {
+      width: 97.5% !important;
+    }
+
+    .cmp-accordion__panel--expanded {
+      @include respond-to-min($desktop-wide) {
+        box-shadow: toRem(-1165) 0 0 0 $sand-white-50, toRem(1165) 0 0 0 $sand-white-50;
+      }
+
+      @include respond-to-max($desktop-wide) {
+        box-shadow: toRem(-500) 0 0 0 $sand-white-50, toRem(500) 0 0 0 $sand-white-50;
+      }
+
+      @include respond-to-max($phone) {
+        box-shadow: toRem(-300) 0 0 0 $sand-white-50, toRem(300) 0 0 0 $sand-white-50;
+      }
+
+      .cmp-text {
+        padding: toRem(24) toRem(102) toRem(16);
+
+        @include respond-to-max($phone) {
+          padding: toRem(24) toRem(12) toRem(12) 0;
+        }
+      }
+    }
+
+    .cmp-accordion__icon {
+      @include respond-to-min($desktop) {
+        margin-right: toRem(24);
+      }
+
+      @include respond-to-max($desktop-min) {
+        margin-right: 0;
+      }
+    }
+  }
+
   .container {
     @include clearFix();
 
