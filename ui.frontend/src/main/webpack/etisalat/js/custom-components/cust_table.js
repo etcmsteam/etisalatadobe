@@ -35,7 +35,7 @@
                 $(this).focus();
             });
 
-            $("#searchInput").on("change keyup copy paste cut", function () {
+            $(".search-wrapper #searchInput").on("change keyup copy paste cut", function () {
                 var table = $(".tables-4-0 table");
                 var inputValue = $(this).val();
                 $(table).show();
