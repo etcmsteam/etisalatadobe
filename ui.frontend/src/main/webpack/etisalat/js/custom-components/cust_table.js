@@ -247,7 +247,7 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                 $('#filters .nv-modal-body input[data-filter="all"]').prop('checked', true);
 
                 applyFilters();
-                $('.sorting-filter-wrapper .list-wrapper').hide();
+                $('.filter-tags .list-wrapper').hide();
                 $('.circle-count').hide();
             });
 
@@ -255,21 +255,15 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
             $('.filters-wrapper').off().on('click', '.list-item a', function () {
                 var removeTag = $(this).closest('.list-item').attr('data-label');
 
+                $('.list-wrapper').each (function(){
+                    $(this).find("[data-label*='"+ removeTag + "']" ).remove();
+                    if($(this).find('.list-item').length === 0){
+                        $(this).hide();
+                    }
+                })
 
                 //var currentTableID = $(this).closest('.table-default-section').find('.tables-4-0')[0].id;
                 applyFilters('', removeTag);
-
-
-                var liList = $(this).closest('.list-item');
-                var ulWrapper = $(this).closest('.list-wrapper');
-                // $('.circle-count').text(liList.length)
-
-                if ($(ulWrapper).find('.list-item').length <= 1) {
-                    $(ulWrapper).css('display', 'none');
-                    // $('.circle-count').hide();
-                }
-
-                liList.remove();
 
             });
 
