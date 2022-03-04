@@ -188,6 +188,34 @@ module.exports = {
     },
     {
       ...libsBaseConfig,
+      name: "clientlib-futurenow",
+      categories: ["etisalat.futurenow"],
+      dependencies: ["etisalat.dependencies", "etisalat.global", "etisalat.corecomponent"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-futurenow",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-futurenow",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-global",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
       name: "clientlib-hiuapp",
       categories: ["etisalat.hiuapp"],
       dependencies: ["etisalat.dependencies"],

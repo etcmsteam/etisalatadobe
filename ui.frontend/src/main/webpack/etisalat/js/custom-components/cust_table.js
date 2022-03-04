@@ -9,6 +9,7 @@
             var availableHeight = (windowHeight - (topbar + header + channelList + filters));
             var filterPopupHeader = 0;
             var filterPopupFooter = 0;
+            applyTabid();
 
             if (window.innerWidth > 991) {
                 $('.tables-4-0').css('height', (availableHeight - 87) + 'px');
@@ -34,7 +35,7 @@
                 $(this).focus();
             });
 
-            $("#searchInput").on("change keyup copy paste cut", function () {
+            $(".search-wrapper #searchInput").on("change keyup copy paste cut", function () {
                 var table = $(".tables-4-0 table");
                 var inputValue = $(this).val();
                 $(table).show();
@@ -292,30 +293,50 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
 
           
 
-            function popupHeight(current) {
-                var dataLabel = $(current).attr("data-label");
+            function popupHeight(current, parent) {
                 var dataLabel = $(current).attr("data-label");
                 if (typeof dataLabel !== 'undefined' && dataLabel !== '') {
-                    $('#' + dataLabel).addClass('show');
+                    parent.find("#"+dataLabel).addClass("show");
 
-                    filterPopupHeader = $('#' + dataLabel + ' .nv-modal-header').outerHeight();
-                    filterPopupFooter = $('#' + dataLabel + ' .filter-button-wrap').outerHeight();
+                    filterPopupHeader = parent.find('#' + dataLabel + ' .nv-modal-header').outerHeight();
+                    filterPopupFooter = parent.find('#' + dataLabel + ' .filter-button-wrap').outerHeight();
 
                     if (window.innerWidth > 992) {
-                        $('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 40));
+                        parent.find('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 40));
                     } else {
-                        $('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 50));
+                        parent.find('.e-life-modal .nv-modal-body').css('height', windowHeight - (filterPopupHeader + filterPopupFooter + 50));
                     }
 
 
                     $('body').addClass('freeze');
                 }
             }
+
+            function applyTabid() {
+              var tabs = $(".cmp-tabs__tabpanel");
+              tabs.each(function (index) {
+                var filter = $(this).find("#filters");
+                var radiosBtns = filter.find("input[type='radio']");
+                var labelsChange = filter.find("label");
+
+                radiosBtns.each(function (i) {
+                  var filterId = $(this).attr("id");
+                  $(this).attr("id", filterId + index);
+                });
+
+                labelsChange.each(function (i) {
+                  var labelName = $(this).attr("for");
+                  $(this).attr("for", labelName + index);
+                });
+              });
+            }
+
   // popup filters
   $('.filter-lable').off('click').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    popupHeight(this);
+    const PARENT_EL = $(this).parents(".table");
+    popupHeight(this, PARENT_EL);
 });
 $('.sort-label.mobile-view').off('click').on('click', function (e) {
     e.preventDefault();

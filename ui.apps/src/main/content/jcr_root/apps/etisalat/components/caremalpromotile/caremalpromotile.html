@@ -1,14 +1,7 @@
-<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
-   <sly data-sly-test.customLink="${properties.cardLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-   <sly data-sly-test="${properties.viewPortLayout == '3-viewport'}">
-      <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image768px/fileReference'] || properties['image992px/fileReference']}" />
-   </sly>
-   <sly data-sly-test="${properties.viewPortLayout == '4-viewport'}">
-      <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image540px/fileReference'] || properties['image768px/fileReference'] || properties['image1440px/fileReference']}" />
-   </sly>
-   <sly data-sly-test="${properties.viewPortLayout == '6-viewport'}">
-      <sly data-sly-set.viewports = "${properties['image414px/fileReference'] || properties['image768px/fileReference'] || properties['image1024px/fileReference'] || properties['image1366px/fileReference'] || properties['image1440px/fileReference'] || properties['image1920px/fileReference']}" />
-   </sly>
+<sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"  
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+  <sly data-sly-test.customLink="${properties.cardLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+  <sly data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
    <div class="caremal-card-wrapper ${properties.caremalPromoTilevariation}">
    <div class="caremal-card-image">
       <div class="cover">
@@ -21,7 +14,7 @@
       <p>${properties.caremalpromopretitle}</p>
    </div>
    <div data-sly-test="${properties.caremalpromotitle}" class="title">
-      <h3 data-sly-element="${properties.titleType}">${properties.caremalpromotitle}</h3>
+      <h3>${properties.caremalpromotitle}</h3>
    </div>
    <div data-sly-test="${properties.jcr:description}" class="description">
      ${properties.jcr:description @context='html'}

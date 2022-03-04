@@ -1,6 +1,11 @@
 // elife table filter popups module
 .e-life-modal {
   .nv-modal-close {
+    @include respond-to-max($desktop) {
+      position: absolute;
+      top: 20px;
+      right: 0;
+    }
     @include rtlBlock() {
       margin-left: $margin-step-0;
       left: 0;
@@ -194,6 +199,7 @@
 
   .nv-modal-header {
     padding: 20px 0;
+    position: relative;
 
     @include respond-to-min($desktop) {
       border-bottom: 1px solid #97979724;
@@ -694,11 +700,11 @@
 
 .channellistheader {
   background-color: $white;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   padding: 4px 16px;
 
   @include respond-to-min($desktop) {
     padding: 14px 12px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   }
 
   .search-input {

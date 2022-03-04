@@ -99,6 +99,8 @@ public final class AEConstants {
  
  public static final String ETISALAT_DEFAULT_ERROR_PAGE = "/content/etisalat/ae/en/error/";
  public static final String ERROR_PAGE_NAME = "error";
+ public static final String ERROR_PARAM_WITH_EXTENSION =".html?success=fail";
+ public static final String SUCCESS_PARAM = "?success=success";
  
  /**
   * private constructor to prevent instantiation of class.

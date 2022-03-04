@@ -629,3 +629,54 @@
     }
   }
 }
+
+.cmp-tab-channellist {
+  .cmp_tabs-swipper {
+    max-height: toRem(52);
+    min-height: toRem(52);
+
+    @include respond-to-min($desktop) {
+      max-height: toRem(75);
+      min-height: toRem(75);
+    }
+
+    .page-nav {
+      height: toRem(52);
+      min-height: toRem(52);
+
+      @include respond-to-min($desktop) {
+        min-height: toRem(75);
+      }
+
+      .swiper-slide {
+        font-size: toRem(14);
+        font-weight: get-font-weight("bold");
+        line-height: toRem(52);
+        margin-right: 0;
+        max-height: toRem(52);
+        min-height: toRem(52);
+        padding-bottom: 0;
+
+        @include font-family-lato();
+
+        @include respond-to-max($desktop) {
+          align-items: normal;
+          width: auto !important;
+        }
+
+        @include respond-to-min($desktop) {
+          font-size: toRem(20);
+          line-height: toRem(75);
+          max-height: toRem(75);
+          min-height: toRem(75);
+        }
+      }
+    }
+  }
+
+  .cmp-tabs .cmp-tabs__tabpanel {
+    .container {
+      @extend %container;
+    }
+  }
+}

@@ -42,19 +42,28 @@
                               <ul data-sly-test="${properties.productDesc}">${properties.productDesc @ context="html"}
                               </ul>
                            </li>
-                           <li data-sly-test="${properties.channelLabel && properties.channelLink}">
+                           <li data-sly-test="${properties.channelLabel}">
                               <div class="view-channel-list">
-                                 <a href="${properties.channelLink @ extension = 'html'}" target="_new">                                         
-                                 <em class="channel-list-icon"></em>${properties.channelLabel} </a>
+                                 <a data-sly-test="${properties.viewChannelLinkBehavior != 'openmodalwindow' && properties.channelLink}" href="${properties.channelLink @ extension = 'html'}" target="${properties.viewChannelLinkBehavior == 'opensamewindow' ? '_self' : '_blank'}"><em class="channel-list-icon"></em>${properties.channelLabel}</a>
+                                 <a data-sly-test="${properties.viewChannelLinkBehavior == 'openmodalwindow' && !properties.moreInfoLabel && !properties.seeAllLabel}" data-label="${component.id}" class="btn-modal" title="${properties.channelLabel}"><span class="channel-list-icon"></span>${properties.channelLabel}</a>
                               </div>
                            </li>
                         </ul>
+						</a>
                         <a data-label="${component.id}" class="btn-text btn-green  learn-more btn-modal "
                            title="${properties.seeAllLabel}" data-sly-test="${properties.seeAllLabel}">
                         <span class="moreg">${properties.seeAllLabel}</span>
                         </a>
+						<a href="${cardlinkmodel.link}" target="${properties.cardtarget ? '_blank' : '_self'}">
                         <span class="${properties.offerText ? 'tiles-box-list__contractDuration tiles-box-list__contractDuration--orange' : 'tiles-box-list__contractDuration'}"  data-sly-test="${properties.commitmentText}">${properties.commitmentText}</span>
-                        <div class="detail-info-wrap detail-info-wrap-pricetag">
+                        <sly data-sly-use.productTileObj="${resource.path}" data-sly-list.tileIconItems="${productTileObj.listChildren}">
+						  <div data-sly-test="${tileIconItems.name == 'iconItems'}" data-sly-list.iconItem="${tileIconItems.listChildren}" class="apolo-awards-icon-wrapper">
+                             <sly data-sly-list.imageRes="${iconItem.listChildren}">
+                                <div data-sly-test="${imageRes.fileReference}" class="icon"><img src="${imageRes.fileReference}"></div>
+						     </sly>
+						  </div>
+						</sly>
+						<div class="detail-info-wrap detail-info-wrap-pricetag">
                            <div class="detail-price-new">
                               <div class="main-part" data-sly-test="${properties.productPrice}">
                                  <div data-sly-test="${properties.contractText}" dir="ltr" class="from">${properties.contractText}</div>

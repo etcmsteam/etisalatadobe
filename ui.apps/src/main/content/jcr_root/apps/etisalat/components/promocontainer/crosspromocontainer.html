@@ -1,0 +1,11 @@
+<template  data-sly-template.crosspromocontainer="${ @ container,properties}">
+   <div class="cross-promo-background ${properties.crosspromotilevariation}">
+		<div class="row">
+
+	        	<div class="${properties.crosspromotilevariation == 'small-tile' ? 'col-xs-12 col-sm-12 col-md-4' : 'col-sm-12 col-md-6' }" data-sly-repeat="${container.items}" 
+	             data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+		</div>
+	</div>
+
+<sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+</template>

@@ -703,12 +703,12 @@
         @include font-family-lato();
 
         @include respond-to-max($custom-width-tab) {
-          margin-bottom: 1.5rem;
+          margin-bottom: toRem(19);
           letter-spacing: -0.008rem;
         }
       }
 
-      @include respond-to-min($tablet) {
+      @include respond-to-min-max($desktop, $tablet) {
         > h3 {
           margin-bottom: toRem(125);
         }
@@ -716,6 +716,12 @@
         > h3 + p {
           margin-top: toRem(-100);
           margin-bottom: 0;
+        }
+      }
+
+      @include respond-to-min($desktop-wide) {
+        > h3 + p {
+          margin-bottom: toRem(46);
         }
       }
     }
