@@ -13,7 +13,7 @@
     <sly data-sly-test.brandlogoConCard="${properties.tileBoxLayout == 'brandLogoCard' && !properties.dynamicbrandcheck ? 'logo-list' : ''}"></sly>
     <sly data-sly-test.recommbigConCard="${properties.tileBoxLayout == 'recommBigCard' ? 'eti-big-card-list' : ''}"></sly>
     <sly data-sly-test.recommConCard="${properties.tileBoxLayout == 'recommCard' ? 'eti-card-list-wrapper' : ''}"></sly>
-<sly data-sly-test="${properties.tileBoxLayout == 'accessoriesCard' || staticBrandLogo || properties.tileBoxLayout == 'recommBigCard' || properties.tileBoxLayout == 'recommCard'}">
+    <sly data-sly-test="${properties.tileBoxLayout == 'accessoriesCard' || staticBrandLogo || properties.tileBoxLayout == 'recommBigCard' || properties.tileBoxLayout == 'recommCard'}">
     <div class="${accessoryCard}${brandlogoCard}${recommbigCard}${recommCard} container-fix__width">
         <div class="container container-center">
             <div class="wst-main-headings">
@@ -45,16 +45,20 @@
         <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
     </div>
 </sly>
-    <sly data-sly-test.dynamicBrand="${properties.tileBoxLayout == 'brandLogoCard' && properties.dynamicbrandcheck ? 'brands-logo with-slider' : ''}">
-        <div class="${dynamicBrand} container-fix__width">
+    <sly data-sly-test.dynamicBrand="${properties.tileBoxLayout == 'brandLogoCard' && properties.dynamicbrandcheck ? 'brands-logo with-slider with-slider' : ''}">
+        <div class="${dynamicBrand}  container-fix__width"
+             data-request-method="GET"
+             data-data-url=""
+             data-data-path="/content/dam/etisalat/prod-mock-assets/shop-by-brands-data.json"
+             data-category-id="${properties.brandcategoryid}">
             <div class="container container-center">
                 <div class="wst-main-headings">
                     <h4 data-sly-element="${properties.titleType}">${properties.accessoriescardPreTitle}</h4>
                 </div>
                 <div class="row">
                     <div class="logo-list">
-                        <div  class="${!wcmmode.edit ? 'swiper-container' : ''}">
-                            <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}" id="productRow-${properties.brandcategoryid}">
+                        <div  class="${!wcmmode.edit ? 'swiper-container brands-swiper' : ''}">
+                            <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}" id="shopbyBrandCategory">
                                 <!-- /*dynamic tiles to load*/-->
                             </div>
                         </div>
@@ -63,9 +67,9 @@
                         <div class="next">
                         </div>
                     </div>
-                    <div class="scrollbar"></div>
+                    <div class="scrollbar scrollbar brand-scrollbar"></div>
                 </div>
             </div>
         </div>
     </sly>
-</sly>
+    </sly>
