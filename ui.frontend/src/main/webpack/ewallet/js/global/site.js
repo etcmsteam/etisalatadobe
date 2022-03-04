@@ -1014,14 +1014,14 @@ $(document).ready(function () {
     function getStores(map) {
       $(".loader-disable-screen").show();
 
-      var payload = {
-        lang: "en",
-        buildNumber: "8",
-        osVersion: "8",
-        osType: "IOS",
-        deviceId: "C9DD924D-E8B3-4D83-BB01-D0F04A96E3E3",
-        transactionId: "1569360219214",
-      };
+      // var payload = {
+      //   lang: "en",
+      //   buildNumber: "8",
+      //   osVersion: "8",
+      //   osType: "IOS",
+      //   deviceId: "C9DD924D-E8B3-4D83-BB01-D0F04A96E3E3",
+      //   transactionId: "1569360219214",
+      // };
       if (storesLoaded) {
         if (currentView == "map") {
           renderStores(storeLocatorData);
@@ -1039,8 +1039,12 @@ $(document).ready(function () {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-
-        data: JSON.stringify(payload),
+        data: {
+          lat: currentLocation.lat,
+          lng: currentLocation.lng,
+          range: window.appConfig.maps.range,
+        },
+        //data: JSON.stringify(payload),
         //timeout:9999,
         // cache: true, WORKS ONLY FOR GET,HEAD requests http://api.jquery.com/jQuery.ajax/
         //encode: true
