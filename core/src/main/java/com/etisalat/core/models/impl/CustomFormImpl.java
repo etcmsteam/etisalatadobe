@@ -70,7 +70,7 @@ public class CustomFormImpl implements CustomForm {
 
 	@Override
 	public String getRedirectUrl() {
-		if(StringUtils.isNotBlank(customFormRedirect) && (StringUtils.isNotBlank(successMessageOptions)) && successMessageOptions.equals("customFormRedirect")) {
+		if(StringUtils.isNotBlank(customFormRedirect) && (StringUtils.isNotBlank(successMessageOptions)) && successMessageOptions.equals("differentPage")) {
 			return customFormRedirect ;
 		}else if(currentPage != null) {
 			return currentPage.getPath();
