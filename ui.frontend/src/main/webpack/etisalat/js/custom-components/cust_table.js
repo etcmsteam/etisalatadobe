@@ -230,6 +230,7 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                 //var resetTableID = $(this).closest('.e-life-modal').attr('data-id');
 
                 $('#filters .nv-modal-body input[data-filter="all"]').prop('checked', true);
+                $('.nv-checkboxes-wrap input[data-filter="all"]').addClass('radio-active');
 
 
                 //$('.nv-modal-body input[data-filter="all"]').prop('checked', true);
@@ -242,7 +243,6 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
 
             // clear filter 
             $('.filters-wrapper .clear-all a').off().on('click', function () {
-
                 //var clearTableID = $(this).closest('.table-default-section').find('.tables-4-0')[0].id;
                 $('#filters .nv-modal-body input[data-filter="all"]').prop('checked', true);
 
@@ -266,7 +266,6 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                 applyFilters('', removeTag);
 
             });
-
 
 
 
@@ -349,5 +348,15 @@ $('.sort-label.mobile-view').off('click').on('click', function (e) {
                 $(currentOpendPopUp).css('display', 'none');
                 $('body').removeClass('freeze');
             });
+
+            // Radio buttons
+
+            var labelTags = $('.list-item').attr('data-label');
+            $('.nv-checkboxes-wrap input[data-filter="all"]').addClass('radio-active');
+
+            $('.nv-checkboxes-wrap input').off('click').on('click', function (e) {
+                $('.cmp-tabs__tabpanel--active .nv-checkboxes-wrap input').removeClass('radio-active');
+               // $(labelTags);
+            })
 
         });
