@@ -255,7 +255,14 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
             $('.filters-wrapper').off().on('click', '.list-item a', function () {
                 var removeTag = $(this).closest('.list-item').attr('data-label');
 
-                $('.list-wrapper').each (function(){
+                $('.list-wrapper').each (function() {
+                    $(this).find("[data-label*='"+ removeTag + "']" ).remove();
+                    if($(this).find('.list-item').length === 0){
+                        $(this).hide();
+                    }
+                })
+
+                $('.list-wrapper')(function () {
                     $(this).find("[data-label*='"+ removeTag + "']" ).remove();
                     if($(this).find('.list-item').length === 0){
                         $(this).hide();
@@ -354,9 +361,11 @@ $('.sort-label.mobile-view').off('click').on('click', function (e) {
             var labelTags = $('.list-item').attr('data-label');
             $('.nv-checkboxes-wrap input[data-filter="all"]').addClass('radio-active');
 
-            $('.nv-checkboxes-wrap input').off('click').on('click', function (e) {
-                $('.cmp-tabs__tabpanel--active .nv-checkboxes-wrap input').removeClass('radio-active');
-               // $(labelTags);
-            })
+            $('.e-life-modal .nv-checkboxes-wrap input').on("click", function () {
+                var groupName =$(this).attr("name"); var filter = $(this).data("filter");
+                console.log(groupName,filter);
+                $(`input[name= "${groupName}" ]`).removeClass('radio-active'); $(`input[data-filter = "${filter}" ]`).addClass('radio-active');
+                console.log($(`input[data-filter=${filter}]`))
+            });
 
         });
