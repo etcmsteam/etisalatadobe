@@ -9,6 +9,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.etisalat.core.models.ProductDetails;
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     ProductDetails.class}, resourceType = {ProductDetailsImpl.RESOURCE_TYPE})
@@ -37,6 +39,9 @@ public class ProductDetailsImpl implements ProductDetails {
   
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String productFilterTag;
+  
+  @Self
+  protected SlingHttpServletRequest request;
 
 
   @Override
@@ -55,5 +60,12 @@ public class ProductDetailsImpl implements ProductDetails {
     LOG.info("Product Detials filter list size:: {}",filterTagList.size());
     return Collections.unmodifiableList(filterTagList);
   }
+
+
+  @Override
+  public String getProductFilterTagName() {
+    return CommonUtility.getCategoryTagName(request, productFilterTag);
+  }
+  
   
 }
