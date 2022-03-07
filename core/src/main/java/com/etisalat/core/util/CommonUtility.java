@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.TimeZone;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -240,6 +241,7 @@ public final class CommonUtility {
 	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
 		  DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", currentPage.getLanguage(true));
+		  outputFormat.setTimeZone(TimeZone.getDefault());
 		  String articleDate = outputFormat.format(articleCalender.getTime());
 		  return StringUtils.isNotBlank(articleDate) ? articleDate : StringUtils.EMPTY ;
 	  }
