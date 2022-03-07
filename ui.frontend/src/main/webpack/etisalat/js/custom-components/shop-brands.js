@@ -73,10 +73,15 @@ export const SHOP_BRANDS = () => {
       categoryId: CATEGORY_ID,
       linkPath: LINK_PATH = "/b2c/eshop/viewProducts",
       requestMethod: REQUEST_METHOD = "POST",
+      enableReqParams: ENABLE_REQ_PARAMS,
     } = BRAND_LOGO_DATA;
 
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toUpperCase() : "EN";
-    const url = DATA_URL ? DATA_URL : `${DATA_PATH}?locale=en-${locale}`;
+    let url = DATA_URL || DATA_PATH;
+
+    if (ENABLE_REQ_PARAMS) {
+      url = `${DATA_PATH}?locale=en-${locale}`;
+    }
 
     var payload = {
       No: "0",
@@ -89,7 +94,7 @@ export const SHOP_BRANDS = () => {
       type: REQUEST_METHOD,
       url: url,
       contentType: "application/json; charset=utf-8",
-      data: JSON.stringify(payload),
+      data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
       success: function (res) {
         var htmlCards = getBrandsCard(res);
         $rootThis.find(".swiper-wrapper").html(htmlCards);
