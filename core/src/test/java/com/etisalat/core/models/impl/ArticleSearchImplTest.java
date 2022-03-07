@@ -1,27 +1,62 @@
 package com.etisalat.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
-
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
 import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
+import com.day.cq.wcm.api.Page;
+import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.models.ArticleSearch;
 import com.etisalat.core.models.GenericListPageDetails;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import junitx.util.PrivateAccessor;
 
 /**
  * JUnit test verifying the ArticleSearch
  */
-@ExtendWith(AemContextExtension.class)
+@ExtendWith({ AemContextExtension.class, MockitoExtension.class })
  class ArticleSearchImplTest {
 	
 	private final AemContext context = new AemContext();
+	
+	@InjectMocks
+  private ArticleSearchImpl articleSearchImpl;
+	
+	@Mock
+  private SlingHttpServletRequest slingHttpServletRequest;
+	
+	@Mock
+	private ResourceResolver resourceResolver;
+	
+  @Mock
+  private TagManager tagManager;
+
+  @Mock
+  private Tag tag;
+  
+  @Mock
+  private Page page;
+  
+  @Mock
+  private ValueMap valueMap;
 
 	private static final String CONTENT_ROOT = "/content";
 	private static final String CURRENT_PAGE = "/content/blogpost";
@@ -154,12 +189,21 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 	}
 	
 	@Test
-	void testCategory() {
-		final String expected = "etisalat:business/smb/category/business-advice-ideas";
-		context.currentResource(BLOG_SEARCH_1);
-		ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
-
-		String actual = articleModel.getBusinessCategoryTag();
+	void testCategory() throws NoSuchFieldException {
+		final String expected = "Business Advice Ideas";
+		final String CATEGORY_TAG = "etisalat:business/smb/category/business-advice-ideas";
+		MockitoAnnotations.initMocks(this);
+		when(valueMap.get(AEConstants.PN_BUSINESS_BLOG_TAG, StringUtils.EMPTY)).thenReturn(CATEGORY_TAG);
+		 PrivateAccessor.setField(articleSearchImpl, "currentPage", page);
+		Mockito.when(this.slingHttpServletRequest.getResourceResolver()).thenReturn(this.resourceResolver);		
+		Mockito.when(this.resourceResolver.adaptTo(TagManager.class)).thenReturn(this.tagManager);
+		when(tagManager.resolve(CATEGORY_TAG)).thenReturn(tag);
+		when(page.getProperties()).thenReturn(valueMap);
+		
+		
+    when(tag.getTitle()).thenReturn("Business Advice Ideas");
+    
+		String actual = articleSearchImpl.getBusinessCategoryTag();
 		assertEquals(expected, actual);
 	}
 	
@@ -172,5 +216,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 		String actual = articleModel.getBackToHomeLink();
 		assertEquals(expected, actual);
 	}
+	
+	
 	
 }

@@ -100,7 +100,6 @@ class ProductDetailsImplTest {
     PrivateAccessor.setField(productDetailsImpl, PRODUCT_FILTER_TAG, ALL_CATEGORIES_TAG);
     
     when(tagManager.resolve(ALL_CATEGORIES_TAG)).thenReturn(categoryTag);
-    when(categoryTag.listChildren()).thenReturn(Collections.emptyIterator());
     when(categoryTag.getName()).thenReturn(ALL_CATEGORIES);
     String actualTagName = productDetailsImpl.getProductFilterTagName();
 
