@@ -5,7 +5,7 @@
                 <div class="col-xs-12">
                     <section class="content-section">
                         <div class="row">
-                            <div data-sly-test="${properties.mainProductTitle}" class="col-xs-12">
+                            <div data-sly-test="${properties.mainProductTitle && !properties.productFilterEnabled}" class="col-xs-12">
                                 <div class="benefits-box">
                                     <div class="default-section-title text-center">
                                         <h3 class="margin-bottom-small">${properties.mainProductTitle}</h3>
@@ -13,6 +13,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div data-sly-test="${properties.productFilterEnabled}" class="col-lg-3 col-md-3">
+				               <sly data-sly-use.productFilterTemplate="productfilter.html"
+							        data-sly-call="${productFilterTemplate.filter @ carousel=carousel,properties=properties}">      
+							   </sly>
+				            </div>
                             <div class="${carousel.items.size >= 2 ? 'col-xs-12' : ''}">
                                 <div class="bg-cards elife-plan mt-30 elife-addons">
                                     <div class="row row-tiles-table">
