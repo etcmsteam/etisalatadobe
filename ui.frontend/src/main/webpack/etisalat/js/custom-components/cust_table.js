@@ -230,6 +230,7 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                 //var resetTableID = $(this).closest('.e-life-modal').attr('data-id');
 
                 $('#filters .nv-modal-body input[data-filter="all"]').prop('checked', true);
+                $('.nv-checkboxes-wrap input').removeClass('radio-active');
                 $('.nv-checkboxes-wrap input[data-filter="all"]').addClass('radio-active');
 
 
@@ -261,16 +262,10 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
                         $(this).hide();
                     }
                 })
-
-                $('.list-wrapper')(function () {
-                    $(this).find("[data-label*='"+ removeTag + "']" ).remove();
-                    if($(this).find('.list-item').length === 0){
-                        $(this).hide();
-                    }
-                })
+                applyFilters('', removeTag);
 
                 //var currentTableID = $(this).closest('.table-default-section').find('.tables-4-0')[0].id;
-                applyFilters('', removeTag);
+                
 
             });
 
