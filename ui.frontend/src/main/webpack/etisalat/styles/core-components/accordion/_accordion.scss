@@ -262,7 +262,7 @@
   &.with-full-bg {
     width: 100% !important;
 
-    @include respond-to-min-max($desktop-wide, $tablet) {
+    @include respond-to-min-max($desktop-wide, $desktop) {
       width: 97.5% !important;
     }
 
@@ -310,6 +310,10 @@
         .cmp-text {
           padding: toRem(24) toRem(102) toRem(16);
 
+          @include respond-to-max($tablet) {
+            padding: toRem(24) toRem(98) toRem(16);
+          }
+
           @include respond-to-min-max($desktop-min, $tablet) {
             @include rtlBlock {
               padding: toRem(24) 0 toRem(16) toRem(16);
@@ -321,6 +325,12 @@
 
             @include rtlBlock {
               padding: toRem(24) 0 toRem(12) toRem(12);
+            }
+          }
+
+          p {
+            @include respond-to-min($desktop) {
+              line-height: 28;
             }
           }
         }
