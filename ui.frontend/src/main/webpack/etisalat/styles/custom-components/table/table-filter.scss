@@ -1,6 +1,11 @@
 // elife table filter popups module
 .e-life-modal {
   .nv-modal-close {
+    @include respond-to-max($desktop) {
+      position: absolute;
+      top: 20px;
+      right: 0;
+    }
     @include rtlBlock() {
       margin-left: $margin-step-0;
       left: 0;
@@ -63,7 +68,7 @@
         top: 0;
         visibility: hidden;
 
-        &[type="radio"]:checked {
+        &[type="radio"]:checked, &.radio-active {
           ~ label {
             border: 1px solid $main-green;
             box-shadow: inset 0 2px 5px 0 rgba(143, 163, 105, 0.5);
@@ -94,6 +99,11 @@
               -webkit-transform: translate(-50%, -50%) rotate(-45deg);
               transform: translate(-50%, -50%) rotate(-45deg);
               width: 12px;
+            }
+          }
+          &:not(.radio-active) label {
+            &::after {
+            opacity: 0;
             }
           }
         }
@@ -194,6 +204,7 @@
 
   .nv-modal-header {
     padding: 20px 0;
+    position: relative;
 
     @include respond-to-min($desktop) {
       border-bottom: 1px solid #97979724;

@@ -2,22 +2,9 @@ $(document).ready(function () {
   //footer copyright year in dynamic
   $(".footer-copyright-year").text(new Date().getFullYear());
 });
+
 (function () {
   define(["lodash", "select2", "swiper"], function (_) {
-    const position = "{lat: 25.208549, lng: 55.271945}";
-    const lang = "en";
-    const locationHref = "https://ewallet.ae/en/locations/locations.jsp";
-    //return function () {
-    // ---------------------------------------------------------
-    // Common functions
-    // ---------------------------------------------------------
-    function checkIconURL(docLang, link) {
-      if (link.indexOf("/" + docLang + "/") > 1) {
-        return "/" + docLang + "/system/assets/img/bulk/";
-      } else {
-        return "/resources/images/";
-      }
-    }
     function isJson(str) {
       try {
         JSON.parse(str);
@@ -33,7 +20,7 @@ $(document).ready(function () {
     } else {
       currentFilter = "all";
     }
-    var defaultCenterPosition = position; // { lat: 25.208549, lng: 55.271945 };
+    var defaultCenterPosition = window.appConfig.maps.center; // { lat: 25.208549, lng: 55.271945 };
     var currentLocation = defaultCenterPosition;
     var map;
     var markers = [];
@@ -43,10 +30,7 @@ $(document).ready(function () {
     var myInfoWindow;
     var autocomplete;
     var listFilterid = "";
-
-    const checkURL = "https://ewallet.ae" + checkIconURL(lang, locationHref);
-    const currentUrlPath = checkURL;
-    debugger;
+    var currentUrlPath = window.location.origin + window.appConfig.maps.customMarkerBaseUrl;
     var $mapFilter = $("#mapFilter");
     var $mapFiltersLinks = $(".map-filter-topnav .nav a");
     var swiperMap;
@@ -1030,14 +1014,14 @@ $(document).ready(function () {
     function getStores(map) {
       $(".loader-disable-screen").show();
 
-      var payload = {
-        lang: "en",
-        buildNumber: "8",
-        osVersion: "8",
-        osType: "IOS",
-        deviceId: "C9DD924D-E8B3-4D83-BB01-D0F04A96E3E3",
-        transactionId: "1569360219214",
-      };
+      // var payload = {
+      //   lang: "en",
+      //   buildNumber: "8",
+      //   osVersion: "8",
+      //   osType: "IOS",
+      //   deviceId: "C9DD924D-E8B3-4D83-BB01-D0F04A96E3E3",
+      //   transactionId: "1569360219214",
+      // };
       if (storesLoaded) {
         if (currentView == "map") {
           renderStores(storeLocatorData);
@@ -1055,8 +1039,12 @@ $(document).ready(function () {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-
-        data: JSON.stringify(payload),
+        data: {
+          lat: currentLocation.lat,
+          lng: currentLocation.lng,
+          range: window.appConfig.maps.range,
+        },
+        //data: JSON.stringify(payload),
         //timeout:9999,
         // cache: true, WORKS ONLY FOR GET,HEAD requests http://api.jquery.com/jQuery.ajax/
         //encode: true
