@@ -85,12 +85,12 @@
     .cmp-carousel__indicators {
       margin-top: 50px;
 
-      @include respond-to-max($phone) {
-        margin-top: 50px;
+      @include respond-to-min($tablet) {
+        margin-top: -20px;
       }
 
-      @include respond-to-min-max($desktop, $tablet) {
-        margin-top: 140px;
+      @include respond-to-min($desktop) {
+        margin-top: 50px;
       }
     }
   }
@@ -133,7 +133,6 @@
 
 // Home page Header banner image
 .teaser_img_right {
-
   .cmp-teaser {
     align-items: unset;
     display: flex;
@@ -244,6 +243,18 @@
         width: toRem(660);
       }
 
+      @include respond-to-min($tablet) {
+        margin-top: 16px;
+      }
+
+      @include respond-to-min($desktop) {
+        padding-left: 0;
+        margin-top: 32px;
+      }
+
+      @include respond-to-min($desktop-wide) {
+        margin-top: -105px;
+      }
     }
 
     .cmp-carousel__indicator {
@@ -252,20 +263,23 @@
       box-sizing: border-box;
       float: left;
       height: 14px;
-      margin: 15px 10px 0 0;
+      margin: 15px 30px 0 0;
       opacity: 1;
       padding: 0;
       width: 14px;
 
+      &--active {
+        background-color: $white;
+      }
+
       @include respond-to-max($tablet) {
         margin-top: 15px;
-        margin-right: 30px;
       }
 
-      @include respond-to-min($desktop) {
+      @include respond-to-min($tablet) {
         margin-top: 0;
+        margin-right: 12px;
       }
-
     }
   }
 
