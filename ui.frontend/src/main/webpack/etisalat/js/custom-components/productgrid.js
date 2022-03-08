@@ -2,6 +2,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
 (function () {
     //function to pass swiper options collectively
+    var $carouselSliderPlansGrid;
     const swiperOptions = (elem, next, prev, brPoint1, brPoint2, brPoint3, brPoint4, brPoint5) => {
       return {
         touchEventsTarget: "swiper-wrapper",
@@ -40,7 +41,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
         $planTableParent.find('.table-swiper-button-next').addClass('plansRight' + index);
         $planTableParent.find('.table-swiper-button-prev').addClass('plansLeft' + index);
 
-        var $carouselSliderPlansGrid = swiperInit('.plansTable' + index + ' .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, 1.25, 2, 3, 3, 4));
+        $carouselSliderPlansGrid = swiperInit('.plansTable' + index + ' .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, 1.25, 2, 3, 3, 4));
       });
       // plans table slider for CMS modules ends
       if ($( ".smart-home-elife-slider" ).length) {
@@ -94,29 +95,6 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
             4,
           ),
         );
-      });
-    }
-
-    var recommendedCardsCarousal;
-    function initSwiperRecommendedCards() {
-      recommendedCardsCarousal = swiperInit(".most-recommended-products .swiper-container", {
-        loop: false,
-        autoplay: false,
-        slidesPerView: 3,
-        spaceBetween: 24,
-        pagination: ".swiper-pagination",
-        paginationClickable: true,
-        breakpoints: {
-          767: {
-            slidesPerView: 1.25,
-          },
-          992: {
-            slidesPerView: 2.5,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        },
       });
     }
 
@@ -262,8 +240,8 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
         }
         // update the swiper after filtering the slides
         if (window.innerWidth < 992) {
-          recommendedCardsCarousal.update();
-          recommendedCardsCarousal.slideReset(100, false);
+          $carouselSliderPlansGrid.update();
+          $carouselSliderPlansGrid.slideReset(100, false);
         }
       });
 
@@ -287,13 +265,13 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
       // update the swiper
       if (window.innerWidth < 992) {
-        initSwiperRecommendedCards();
+        initSwiper();
       }
 
       $(".most-recommended-products .swiper-slide a").click(function (event) {
         event.preventDefault();
         if (window.innerWidth < 992) {
-          recommendedCardsCarousal.update();
+          $carouselSliderPlansGrid.update();
         }
         return false;
       });
