@@ -5,7 +5,7 @@
     background-color: $module-bg-color;
   }
 
-  &.fliped {
+  &.flipped {
     .nab-wrapper {
       .nab-content,
       .promo-content {
@@ -206,6 +206,41 @@
     }
   }
 
+  .youtube-popup-container {
+    position: fixed;
+    z-index: 1062;
+    left: 0;
+
+    @include respond-to-max($desktop-min) {
+      left: 0;
+      top: 0;
+    }
+
+    .modal-dialog {
+      width: 80%;
+      top: 5%;
+      margin: 0 auto;
+
+      @include respond-to-min($desktop) {
+        top: 7%;
+      }
+
+      .modal-content {
+        height: toRem(500);
+        border: 0;
+
+        @include respond-to-min($desktop) {
+          height: toRem(720);
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
   // youtube video link
   .youtube-video-link {
     position: absolute;
@@ -389,46 +424,6 @@
                 }
               }
             }
-            .youtube-popup-container {
-              position: fixed;
-              z-index: 1062;
-              left: 0;
-
-              @include respond-to-max($desktop-min) {
-                left: 0;
-                top: 0;
-              }
-
-              .modal-dialog {
-                width: 80%;
-                top: 5%;
-                margin: 0 auto;
-                @media (min-width: 992px) {
-                  top: 7%;
-                }
-                .modal-content {
-                  height: 500px;
-                  border: 0;
-                  @media (min-width: 992px) {
-                    height: 720px;
-                  }
-                  iframe {
-                    width: 100%;
-                    height: 100%;
-                  }
-                }
-              }
-            }
-            // youtube video link
-            .youtube-video-link {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              z-index: 5;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
           }
 
           img,
@@ -444,6 +439,7 @@
 /************************************************
 guidelines for main headings h1 to h6
 *************************************************/
+.non-action-boxes-4-0,
 .context-navigation-4-0,
 .non-action-boxes-two-cols-4-0,
 .cta-with-main-text-4-0,
@@ -656,6 +652,7 @@ guidelines for sub headings h7 to h8
   }
 }
 
+.non-action-boxes-4-0,
 .context-navigation-4-0,
 .non-action-boxes-two-cols-4-0,
 .cta-with-main-text-4-0,

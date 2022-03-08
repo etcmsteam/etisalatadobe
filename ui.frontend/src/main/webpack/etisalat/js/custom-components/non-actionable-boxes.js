@@ -2,7 +2,7 @@
   // register the event handlers
   $(document).ready(function () {
     // open youtube video and close by removing src and then add
-    var nonActionBox = $(document).find(".non-action-boxes-two-cols-4-0");
+    var nonActionBox = $(document).find(".non-action-boxes-two-cols-4-0, .non-action-boxes-4-0");
     if (nonActionBox.length > 0) {
       $(".youtube-video-link").on("click", function (e) {
         e.preventDefault();
@@ -44,6 +44,8 @@
     };
 
     $(".nab-content .paragraph-styling p").each(function () {
+      const clickableAreaCls = ".clickable-area";
+
       if ($(this).hasClass("processed") === false) {
         var $eleText = $(this).html().trim();
         var $textResult = limitText($eleText, 210);
@@ -63,10 +65,10 @@
 
           $customSpan.css("display", "none");
 
-          $(this).closest(".clickable-area").addClass("pointer");
-          cliceableArea($(this).closest(".clickable-area"));
+          $(this).closest(clickableAreaCls).addClass("pointer");
+          cliceableArea($(this).closest(clickableAreaCls));
         } else {
-          $(this).closest(".clickable-area").find(".action").css("display", "none");
+          $(this).closest(clickableAreaCls).find(".action").css("display", "none");
         }
 
         $(this).addClass("processed");
