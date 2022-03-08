@@ -1,7 +1,14 @@
-<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+<sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+	 data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
    data-sly-use.tileModel="com.etisalat.core.models.TileModel"
    data-panelcontainer="${wcmmode.edit && 'Non Action Box Tile'}"
    data-placeholder-text="${wcmmode.edit && 'Please update Non Action Box Tile' @ i18n}">
+
+ <sly data-sly-set.coverClass="cover"/>
+ 
+  <sly data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
+
+
    <!-- quotes -false and no pretitle - media-->
    <sly data-sly-test="${!properties.enableQuotes && !properties.pretitle}">
       <div class="media-content">
@@ -25,7 +32,8 @@
       </div>
    </sly>
    <!-- quotes -false and  pretitle - non action-->
-   <sly data-sly-test="${!properties.enableQuotes && properties.pretitle }">
+   <sly data-sly-test="${!properties.enableQuotes && properties.pretitle && viewports}">
+
       <div class="nab-wrapper">
          <div class="nab-content">
 			<div data-sly-test="${properties.newFeatures}" class="wst-main-headings">
@@ -49,6 +57,7 @@
                </div>
             </div>
          </div>
+
          <div class="nab-image">
             <sly data-sly-test="${properties.youTubeUrl}">
                <!-- youtube link  -->
@@ -67,11 +76,11 @@
                </div>
                <!-- Modal end -->
             </sly>
-            <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
-            </div>
+		<div class="${!wcmmode.edit ? coverClass : ''}">
+        <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>  
          </div>
       </div>
+	  </div>
    </sly>
    <!--quotes = true testimonials-->
    <sly data-sly-test="${properties.enableQuotes && !properties.title  && !properties.pretitle }">
@@ -112,4 +121,4 @@
       </div>
    </sly>
 </sly>
-<sly data-sly-call="${templates.placeholder @ isEmpty =  !properties.fileReference && !properties.description}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty =  !properties.fileReference && !properties.description && !viewports}"></sly>
