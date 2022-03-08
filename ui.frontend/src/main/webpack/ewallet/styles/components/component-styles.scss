@@ -1,13 +1,21 @@
 .buttonstore {
-  @extend .wrapper;
-
+  margin: 0 auto;
   position: relative;
   z-index: 99;
+
+  @include respond-to-max($tablet) {
+    margin-top: 20px;
+    width: 890px;
+  }
+
+  @include respond-to-min($desktop) {
+    width: 1240px
+  }
 
   @include respond-to-min($tablet) {
     margin-top: 30px;
   }
-  @include respond-to-min-max($tablet, $phone) {
+  @include respond-to-min-max($desktop-wide, $phone) {
     padding-left: 15px;
   }
 
