@@ -99,7 +99,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
     var recommendedCardsCarousal;
     function initSwiperRecommendedCards() {
-      recommendedCardsCarousal = new Swiper(".most-recommended-products .swiper-container", {
+      recommendedCardsCarousal = swiperInit(".most-recommended-products .swiper-container", {
         loop: false,
         autoplay: false,
         slidesPerView: 3,
@@ -340,13 +340,15 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       };
       // load the right container based on id from URL
       var idToPass = getUrlParameter("selectedFilterID");
-      // if (idToPass !== "" && idToPass !== undefined) {
-      //   if (idToPass.includes("?")) {
-      //     $("[data-label='" + idToPass.slice(0, 1) + "']").click();
-      //   } else {
-      //     $("[data-label='" + idToPass + "']").click();
-      //   }
-      // }
+      if (idToPass !== "" && idToPass !== undefined && idToPass !== false) {
+        if (idToPass.includes("?")) {
+          $("[data-label='" + idToPass.slice(0, 1) + "']").click();
+        } else {
+          $("[data-label='" + idToPass + "']").click();
+        }
+      } else {
+        $("[data-label='all-categories']").click();
+      }
     });
 
   //});
