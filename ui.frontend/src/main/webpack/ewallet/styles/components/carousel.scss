@@ -73,7 +73,6 @@
       margin-top: toRem(10);
 
       @include respond-to-max($tablet) {
-        height: toRem(300);
         margin: -16px 9px 0;
       }
 
@@ -134,9 +133,6 @@
 
 // Home page Header banner image
 .teaser_img_right {
-  @include respond-to-min($desktop-wide) {
-    height: 380px;
-  }
 
   .cmp-teaser {
     align-items: unset;
@@ -144,7 +140,7 @@
     flex-direction: column-reverse;
 
     @include respond-to-min($desktop) {
-      align-items: center;
+      align-items: flex-start;
       flex-direction: row-reverse;
     }
 
@@ -195,16 +191,13 @@
   .cmp-teaser__content {
     padding-bottom: 45px;
     padding-right: 45px;
+    padding-top: 10px;
 
     @include respond-to-min($desktop) {
-      bottom: 0;
-      left: 0;
       padding-bottom: 0;
       padding-left: 0;
       padding-right: 20px;
-      position: absolute;
-      right: 0;
-      top: 10px;
+      padding-top: 20px;
       width: 50%;
     }
 
@@ -244,21 +237,13 @@
     ol {
       display: flex;
       justify-content: left;
-      padding-left: 12px;
-
-      @include respond-to-max($tablet) {
-        padding-left: 0;
-      }
+      padding-left: 3px;
 
       @include respond-to-min-max($desktop, $tablet) {
         margin: 0 auto;
-        padding-left: 0;
         width: toRem(660);
       }
 
-      @include respond-to-min($desktop-wide) {
-        margin: -60px 0 0;
-      }
     }
 
     .cmp-carousel__indicator {
