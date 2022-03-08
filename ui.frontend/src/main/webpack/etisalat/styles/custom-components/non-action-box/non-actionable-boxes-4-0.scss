@@ -1,3 +1,246 @@
+.non-action-boxes-4-0 {
+  padding: toRem(16) 0;
+
+  &.has-bg {
+    background-color: $module-bg-color;
+  }
+
+  &.fliped {
+    .nab-wrapper {
+      .nab-content,
+      .promo-content {
+        order: 2;
+
+        @include respond-to-min($tablet) {
+          margin-right: 0;
+        }
+      }
+
+      .nab-image {
+        order: 1;
+
+        @include respond-to-min($tablet) {
+          margin-right: toRem(24);
+        }
+      }
+    }
+  }
+
+  .paragraph-styling p {
+    margin-bottom: toRem(16);
+
+    @include respond-to-min($desktop) {
+      margin-bottom: toRem(24);
+    }
+  }
+
+  .container {
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1200);
+    }
+
+    @include respond-to-max($desktop-wide) {
+      width: toRem(952);
+    }
+
+    @include respond-to-max($desktop-min) {
+      width: toRem(732);
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      padding-left: toRem(16);
+      padding-right: toRem(16);
+      width: 100%;
+    }
+  }
+
+  .clickable-area.pointer {
+    cursor: pointer;
+  }
+
+  .nab-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-to-min($tablet) {
+      flex-direction: row;
+    }
+
+    .nab-content,
+    .promo-content {
+      position: relative;
+
+      @include respond-to-min($tablet) {
+        margin-right: toRem(24);
+      }
+
+      @include respond-to-max($custom-width-tab) {
+        order: 2;
+      }
+    }
+
+    .nab-image {
+      position: relative;
+      height: toRem(258);
+      width: 100%;
+
+      @include respond-to-min($tablet) {
+        width: 50%;
+      }
+
+      @include respond-to-min($desktop) {
+        height: toRem(270);
+      }
+
+      @include respond-to-max($custom-width-tab) {
+        order: 1;
+        margin-bottom: toRem(16);
+      }
+
+      div.cover {
+        border-radius: toRem(4);
+      }
+
+      .icon {
+        width: toRem(64);
+        height: toRem(64);
+
+        @include respond-to-min($tablet) {
+          width: toRem(74);
+          height: toRem(74);
+        }
+
+        @include respond-to-min($desktop) {
+          width: toRem(64);
+          height: toRem(64);
+        }
+
+        svg,
+        img {
+          width: toRem(64);
+          height: toRem(64);
+
+          @include respond-to-min($tablet) {
+            width: toRem(74);
+            height: toRem(74);
+          }
+
+          @include respond-to-min($desktop) {
+            width: toRem(64);
+            height: toRem(64);
+          }
+        }
+      }
+    }
+
+    .nab-content,
+    .promo-content {
+      padding-bottom: toRem(32);
+      width: 100%;
+
+      @include respond-to-min($tablet) {
+        width: 50%;
+      }
+    }
+
+    .action {
+      position: absolute;
+      bottom: toRem(8);
+      line-height: toRem(20);
+
+      .link {
+        text-transform: uppercase;
+        letter-spacing: toRem(2);
+        font-size: $font14;
+        padding-right: toRem(20);
+        position: relative;
+        line-height: 1.43;
+
+        &:hover {
+          text-decoration: underline;
+          color: $main-green;
+        }
+
+        &:before {
+          border: solid $main-green;
+          border-width: 0 toRem(1) toRem(1) 0;
+          padding: toRem(3.5);
+          content: "";
+          position: absolute;
+          line-height: 1;
+          top: 37%;
+          transform: translateY(-50%) rotate(45deg);
+          transition: all 0.3s ease-in-out;
+          -webkit-transform: translateY(-50%) rotate(45deg);
+          right: 0;
+        }
+      }
+
+      a {
+        @include respond-to-min($desktop) {
+          width: auto;
+        }
+      }
+
+      .read-less {
+        display: none;
+      }
+
+      .read-more {
+        display: inline-block;
+      }
+
+      &.expanded {
+        .read-more {
+          display: none;
+        }
+
+        .read-less {
+          display: inline-block;
+        }
+      }
+    }
+
+    .hidden-paragraph {
+      display: none;
+    }
+  }
+
+  // youtube video link
+  .youtube-video-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// promo - non-actionable boxes - variation
+.promo-non-actionable-box {
+  .nab-wrapper {
+    padding-bottom: 0;
+
+    .promo-content {
+      padding-bottom: 0;
+
+      @include respond-to-min($tablet) {
+        padding-right: 8.333333%;
+        width: 41.66666667%;
+      }
+    }
+
+    .nab-image {
+      @include respond-to-min($tablet) {
+        height: 368px;
+        width: 58.33333333%;
+      }
+    }
+  }
+}
+
 // two cols variations
 .non-action-boxes-two-cols-4-0 {
   padding: toRem(16) 0;
@@ -132,16 +375,17 @@
                 width: 64px;
                 height: 64px;
               }
-              svg, img {
+              svg,
+              img {
                 width: 64px;
                 height: 64px;
                 @media screen and (min-width: 768px) {
-                    width: 74px;
-                    height: 74px;
+                  width: 74px;
+                  height: 74px;
                 }
                 @media screen and (min-width: 992px) {
-                    width: 64px;
-                    height: 64px;
+                  width: 64px;
+                  height: 64px;
                 }
               }
             }
@@ -301,12 +545,14 @@ guidelines for main headings h1 to h6
       }
     }
   }
-  .ul-list-cms{
-    ul, ol {
+  .ul-list-cms {
+    ul,
+    ol {
       li {
-        ul, ol {
+        ul,
+        ol {
           padding-left: toRem(0);
-          @include rtlBlock(){
+          @include rtlBlock() {
             padding-right: toRem(0);
             li {
               padding-right: toRem(24);
@@ -435,6 +681,25 @@ guidelines for sub headings h7 to h8
 // arabic language
 *[lang="ar"] {
   *[dir="rtl"] {
+    @include respond-to-min($tablet) {
+      .non-action-boxes-4-0 .nab-wrapper .nab-content,
+      .non-action-boxes-4-0 .nab-wrapper .promo-content,
+      .non-action-boxes-4-0.fliped .nab-wrapper .nab-image {
+        margin-right: 0;
+        margin-left: toRem(24);
+      }
+
+      .promo-non-actionable-box {
+        .nab-wrapper {
+          .promo-content {
+            padding-right: 0;
+            padding-left: 8.333333%;
+            width: 41.66666667%;
+          }
+        }
+      }
+    }
+
     @include respond-to-min($desktop) {
       .non-action-boxes-two-cols-4-0 .content-wrapper .content {
         margin-left: toRem(24);
