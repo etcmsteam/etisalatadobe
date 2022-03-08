@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.Self;
@@ -22,7 +26,7 @@ import com.etisalat.core.models.ProductDetails;
 import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
-    ProductDetails.class}, resourceType = {ProductDetailsImpl.RESOURCE_TYPE})
+    ProductDetails.class}, resourceType = {ProductDetailsImpl.RESOURCE_TYPE}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductDetailsImpl implements ProductDetails {
 	
   private static final Logger LOG = LoggerFactory.getLogger(ProductDetailsImpl.class);
@@ -38,11 +42,17 @@ public class ProductDetailsImpl implements ProductDetails {
   @SlingObject
   protected Resource currentRes;
   
+  @Inject
+  private String productPath;
+  
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String productFilterTag;
   
   @Self
   protected SlingHttpServletRequest request;
+  
+  @SlingObject
+  ResourceResolver resourceResolver;
 
 
   @Override
@@ -69,6 +79,16 @@ public class ProductDetailsImpl implements ProductDetails {
   @Override
   public String getProductFilterTagName() {
     return CommonUtility.getCategoryTagName(request, productFilterTag);
+  }
+  
+  @Override
+  public String getTagNameFromProductPath() {
+    if (StringUtils.isNotBlank(productPath)) {
+      String productCategoryTag = resourceResolver.getResource(productPath).getValueMap().get("productFilterTag",
+          StringUtils.EMPTY);
+      return CommonUtility.getCategoryTagName(request, productCategoryTag);
+    }
+    return StringUtils.EMPTY;
   }
   
   

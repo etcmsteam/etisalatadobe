@@ -14,5 +14,11 @@ public interface ProductDetails {
    * @return a product filter tag name.
    */
   String getProductFilterTagName();  
+  
+  /**
+   * 
+   * @return a tag name from product path.
+   */
+  String getTagNameFromProductPath();
 
 }

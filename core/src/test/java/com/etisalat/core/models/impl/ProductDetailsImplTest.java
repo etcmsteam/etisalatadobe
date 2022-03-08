@@ -10,9 +10,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -42,6 +44,12 @@ class ProductDetailsImplTest {
 
   @Mock
   private Resource resource;
+  
+  @Mock
+  private Resource tagResource;
+  
+  @Mock
+  private ValueMap valueMap;
   
   @Mock
   private SlingHttpServletRequest slingHttpServletRequest;
@@ -84,7 +92,7 @@ class ProductDetailsImplTest {
   }
   
   @Test
-  void getFilterTagEmpty() {
+  void testFilterTagEmpty() {
     Tag filterTag = mock(Tag.class);
 
     when(tagManager.resolve(FILTER_TAG_PATH)).thenReturn(filterTag);
@@ -96,7 +104,7 @@ class ProductDetailsImplTest {
   }
 
   @Test
-  void getFilterTagName() throws NoSuchFieldException {
+  void testFilterTagName() throws NoSuchFieldException {
     Tag categoryTag = mock(Tag.class);
     PrivateAccessor.setField(productDetailsImpl, PRODUCT_FILTER_TAG, ALL_CATEGORIES_TAG);
     
@@ -105,6 +113,26 @@ class ProductDetailsImplTest {
     String actualTagName = productDetailsImpl.getProductFilterTagName();
 
     assertEquals(ALL_CATEGORIES, actualTagName);
+  }
+  
+  @Test
+  void testTagNameFromProductPath() throws NoSuchFieldException {
+    Tag categoryTag = mock(Tag.class);
+    PrivateAccessor.setField(productDetailsImpl, "productPath", ALL_CATEGORIES_TAG);
+    when(resourceResolver.getResource(Mockito.anyString())).thenReturn(tagResource);
+    when(tagResource.getValueMap()).thenReturn(valueMap);
+    when(valueMap.get("productFilterTag",StringUtils.EMPTY)).thenReturn(ALL_CATEGORIES_TAG);
+    when(tagManager.resolve(ALL_CATEGORIES_TAG)).thenReturn(categoryTag);
+    when(categoryTag.getName()).thenReturn(ALL_CATEGORIES);
+    String actualTagName = productDetailsImpl.getTagNameFromProductPath();
+
+    assertEquals(ALL_CATEGORIES, actualTagName);
+  }
+  
+  @Test
+  void testTagNameFromProductPathEmpty() throws NoSuchFieldException {
+    PrivateAccessor.setField(productDetailsImpl, "productPath", StringUtils.EMPTY);
+    assertTrue(StringUtils.isBlank(productDetailsImpl.getTagNameFromProductPath()));
   }
   
 }

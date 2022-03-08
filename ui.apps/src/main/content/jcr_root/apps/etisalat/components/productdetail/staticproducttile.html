@@ -38,8 +38,12 @@
                     <div class="row row-tiles-table most-recommended-products">
                       <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'swiper-container swiper-container-horizontal' : ''}">
                         <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'swiper-wrapper' : ''}" id="product">
-                          <sly data-sly-test="${properties.mainProductTitle}">
-                            <div data-sly-repeat.item="${carousel.items}" class="swiper-slide  ${!wcmmode.edit && carousel.items.size > 2 ? 'col-xs-12 col-sm-6 col-md-4 swiper-slide-active' : 'swiper-slide-active col-xs-12 col-sm-6'}" data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
+                          <sly data-sly-test="${properties.mainProductTitle || properties.productFilterEnabled}" data-sly-list.item="${carousel.items}" >
+                             <sly data-sly-set.productTilePath="${'{0}/{1}' @ format=[resource.path, item.name]}"
+                                  data-sly-use.productdetails="${'com.etisalat.core.models.ProductDetails' @productPath=productTilePath}">
+                                <div class="swiper-slide  ${!wcmmode.edit && carousel.items.size > 2 ? 'col-xs-12 col-sm-6 col-md-4 swiper-slide-active' : 'swiper-slide-active col-xs-12 col-sm-6'}" 
+                                     data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}" data-label="${productdetails.tagNameFromProductPath}"></div>
+                             </sly>                                                         
                           </sly>
                           <sly data-sly-test="${!properties.mainProductTitle}">
                             <div data-sly-repeat.item="${carousel.items}" class="swiper-slide ${!wcmmode.edit && carousel.items.size > 3 ? 'col-xs-12 col-sm-6 col-md-3 swiper-slide-active' : 'swiper-slide-active col-xs-12 col-sm-6 col-md-4'}" data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
