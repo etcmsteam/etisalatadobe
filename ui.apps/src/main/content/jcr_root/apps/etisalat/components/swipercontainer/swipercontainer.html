@@ -16,6 +16,10 @@
          data-sly-use.featureTemplate="ewallet-featurecontent.html"
          data-sly-call="${featureTemplate.featureContent @ container=container,properties=properties}">      
       </sly>
+      <sly data-sly-test="${properties.tileBoxLayout == 'guide-tour'}"
+           data-sly-use.guideTourTemplate="guide-tour.html"
+           data-sly-call="${guideTourTemplate.guideTour @ container=container,properties=properties}">
+      </sly>
       <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
    </div>
 </sly>

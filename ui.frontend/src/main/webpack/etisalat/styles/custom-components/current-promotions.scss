@@ -10,7 +10,7 @@
   background-color: $white;
   border-radius: 4px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: $padding-step-0;
+  padding: toRem(16);
   width: 100%;
 
   @media (min-width: 992px) {
@@ -25,10 +25,11 @@
 }
 
 .learn--more__white {
-  color: $white;
+  color: $white !important;
+  font-size: toRem(16);
 
   &::before {
-    border: solid $white;
+    border-color: $white !important;
     border-width: 0 1px 1px 0;
   }
 
@@ -100,7 +101,7 @@
 .promotions-title-wrap {
   h2 {
     color: $white;
-    font-size: $font20;
+    font-size: $font26;
     line-height: 1.4;
     margin: 0;
 
@@ -236,14 +237,14 @@
 }
 
 .current-promotions-wrraper {
-  padding-bottom: $padding-step-5;
+  padding-bottom: toRem(40);
   padding-left: $padding-step-0;
-  padding-top: calc(#{$padding-step-4} + 4px);
+  padding-top: toRem(36);
   position: relative;
 
   @include respond-to-min($desktop) {
-    padding-bottom: 52px;
-    padding-top: 80px;
+    padding-bottom: toRem(80);
+    padding-top: toRem(80);
   }
 
   @media (max-width: 991px) {
@@ -252,11 +253,50 @@
   }
 
   .col-md-9 {
-    left: 30px;
+    left: toRem(15);
+    @include rtlBlock() {
+      right: 0;
+    }
+    @media (max-width: 991px) {
+       right: inherit;
+       @include rtlBlock() {
+          // padding-right: 0 !important;
+       }
+    }
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+      @include rtlBlock() {
+        padding-right: 0;
+      }
+    }
   }
 
   .col-md-3 {
-    padding-left: 45px;
+    padding-left: toRem(30);
+    @include rtlBlock() {
+      padding-right: toRem(30);
+    }
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+      @include rtlBlock() {
+        padding-right: toRem(30) !important;
+      }
+    }
+    @media (min-width: 768px) {
+      @include rtlBlock() {
+        padding-right: toRem(30);
+      }
+    }
+    @media (min-width: 992px) {
+      padding-left: inherit;
+      @include rtlBlock() {
+        padding-right: 0;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
+       padding-left: toRem(30);
+       @include rtlBlock() {
+        padding-right: toRem(30);
+      }
+    }
   }
 
   .full-tile-link {
@@ -331,6 +371,14 @@
 
     .next {
       left: 60px;
+      @include rtlBlock() {
+        right: 0;
+      }
+    }
+    .prev {
+      @include rtlBlock() {
+        right: toRem(60);
+      }
     }
   }
 
@@ -438,12 +486,51 @@
   .lbl {
     color: white;
     display: inline-block;
-    font-size: $font12;
-    font-weight: 500;
-    letter-spacing: 4px;
+    font-size: toRem(10);
+    font-weight: 700;
+    letter-spacing: toRem(3.33);
     line-height: 12px;
-    margin-bottom: 10px;
+    margin-bottom: toRem(2);
     text-transform: uppercase;
+    @media (min-width: 992px) {
+      font-size: toRem(12);
+      letter-spacing: toRem(4);
+      margin-bottom: toRem(10);
+    }
+  }
+
+  .paragraph-styling {
+    p,
+    a {
+      color: $white;
+      line-height: 1.38;
+    }
+    p {
+      font-size: toRem(14);
+      margin-bottom: toRem(24);
+      @media (min-width: 992px) { 
+        font-size: toRem(16);
+      margin-bottom: toRem(32);
+      }
+    }
+  }
+
+  .btn-text {
+    @media (min-width: 992px) {
+      font-size: toRem(16) !important;
+    }
+    @include rtlBlock() {
+      padding-left: toRem(40) !important;
+    }
+    &:before {
+      padding: toRem(3.7);
+      @include rtlBlock() {
+        left: toRem(-60);
+        @media (min-width: 992px) {
+          left: inherit;
+        }
+      }
+    }
   }
 
   .container {
@@ -1453,6 +1540,28 @@
     @include md {
       margin-top: 1rem;
     }
+    .swiper-scrollbar {
+      left: 0 !important;
+      width: 100% !important;
+    }
+    .swiper-slide {
+      @include rtlBlock() {
+        margin-left: toRem(16) !important;
+        margin-right: 0 !important;
+        @media (min-width: 992px) { 
+          margin-left: toRem(24) !important;
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+  &.light {
+    .scrollbar.swiper-scrollbar {
+      background: $sand-white;
+    }
+    .swiper-scrollbar-drag {
+      background: $main-green;
+    }
   }
 }
 
@@ -2029,6 +2138,12 @@
     }
   }
 
+  .offer-details-wrapper {
+    h3, p {
+      color: $white;
+    }
+  }
+
   .current-promotions-box {
     background-color: $black;
 
@@ -2074,5 +2189,10 @@
         border: toRem(1) solid $yellow-light;
       }
     }
+  }
+}
+.container.container-fix__width {
+  @include rtlBlock(){
+    float: right !important;
   }
 }

@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.TimeZone;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -240,9 +241,22 @@ public final class CommonUtility {
 	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
 		  DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", currentPage.getLanguage(true));
+		  outputFormat.setTimeZone(getArticleDateTimeZone(currentPage));
 		  String articleDate = outputFormat.format(articleCalender.getTime());
 		  return StringUtils.isNotBlank(articleDate) ? articleDate : StringUtils.EMPTY ;
 	  }
+	 
+    private static TimeZone getArticleDateTimeZone(Page currentPage) {
+      int length = 0;
+      final String dateTime = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, String.class);
+      if (dateTime.contains("+")) {
+        length = dateTime.lastIndexOf("+");
+      } else {
+        length = dateTime.lastIndexOf("-");
+      }
+      String strTimeZone = "GMT" + dateTime.substring(length, dateTime.length());
+      return TimeZone.getTimeZone(strTimeZone);
+    }
   
   /**
    * private constructor to prevent instantiation of class.

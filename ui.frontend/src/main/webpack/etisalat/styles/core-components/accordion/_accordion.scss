@@ -259,6 +259,132 @@
 .cmp-accordion--text {
   width: 70% !important;
 
+  &.with-full-bg {
+    width: 100% !important;
+
+    @include respond-to-min-max($desktop-wide, $desktop) {
+      width: 97.5% !important;
+    }
+
+    .cmp-accordion {
+      &__header {
+        padding-top: 0;
+      }
+
+      &__panel--expanded {
+        @include rtlBlock {
+          margin-right: 0;
+          right: 0;
+        }
+
+        &::after,
+        &::before {
+          background-color: $sand-white-50;
+          content: "";
+          height: calc(100% - 79px);
+          position: absolute;
+          right: -200%;
+          top: toRem(79);
+          width: 200%;
+
+          @include rtlBlock {
+            left: -200%;
+            right: auto;
+          }
+
+          @include respond-to-max($desktop-min) {
+            height: calc(100% - 75px);
+            top: toRem(75);
+          }
+        }
+
+        &::before {
+          left: -200%;
+          top: auto;
+
+          @include rtlBlock {
+            right: -200%;
+          }
+        }
+
+        .cmp-text {
+          padding: toRem(24) toRem(102) toRem(16);
+
+          @include respond-to-max($tablet) {
+            padding: toRem(24) toRem(98) toRem(16);
+          }
+
+          @include respond-to-min-max($desktop-min, $tablet) {
+            @include rtlBlock {
+              padding: toRem(24) 0 toRem(16) toRem(16);
+            }
+          }
+
+          @include respond-to-max($phone) {
+            padding: toRem(24) toRem(12) toRem(12) 0;
+
+            @include rtlBlock {
+              padding: toRem(24) 0 toRem(12) toRem(12);
+            }
+          }
+
+          p {
+            color: $gray-text-color !important;
+            margin-bottom: 0 !important;
+            margin-top: 0 !important;
+
+            @include respond-to-min($desktop) {
+              line-height: toRem(28) !important;
+            }
+          }
+        }
+      }
+
+      &__button {
+        padding: 0;
+      }
+
+      &__icon {
+        @include respond-to-min($desktop) {
+          margin-right: toRem(24);
+
+          @include rtlBlock {
+            margin-left: toRem(24);
+            margin-right: 0;
+          }
+        }
+
+        @include respond-to-max($desktop-min) {
+          margin-right: 0;
+
+          @include rtlBlock {
+            margin-left: 0;
+          }
+        }
+      }
+
+      &__title {
+        margin-bottom: toRem(16);
+        padding: toRem(17) toRem(24);
+
+        @include rtlBlock {
+          margin-bottom: toRem(16);
+          padding: toRem(17) toRem(24);
+        }
+
+        @include respond-to-max($desktop-min) {
+          padding-left: 0;
+          padding-right: toRem(50);
+
+          @include rtlBlock {
+            padding-left: toRem(50);
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+
   .container {
     @include clearFix();
 

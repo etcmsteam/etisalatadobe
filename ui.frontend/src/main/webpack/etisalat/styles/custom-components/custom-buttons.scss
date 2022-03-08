@@ -292,14 +292,14 @@
   padding: 2.7px;
   position: absolute;
   right: 3px;
-  top: 50%;
+  top: 52%;
   transform: translateY(-20%) rotate(-135deg);
   transition: all 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
   .btn-text::before {
-    padding: 4.7px;
+    padding: toRem(2.7);
   }
 }
 
@@ -489,6 +489,8 @@
 
 [lang="ar"] [dir="rtl"] .btn-text {
   @include font-family-Neotech-ge;
+  padding-right: 0;
+  padding-left: toRem(16);
 }
 
 [lang="ar"] [dir="rtl"] .btn-text.download {
@@ -501,8 +503,9 @@
 }
 
 [lang="ar"] [dir="rtl"] .btn-text::before {
-  left: 3px;
   right: auto;
+  left: 0;
+  transform: translateY(-50%) rotate(135deg);
 }
 
 [lang="ar"] [dir="rtl"] .btn-text.back {

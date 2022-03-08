@@ -3,8 +3,17 @@
   width: 100% !important;
 }
 
+@include respond-to-min($tablet) {
+  .fixednavigation {
+      margin: 0 auto;
+      width: 690px;
+  }
+}
+
+
 @include respond-to-max($desktop) {
   .fixednavigation {
+    background-color: $white;
     position: absolute;
     top: 0 !important;
     width: 100% !important;
@@ -12,6 +21,8 @@
 
   nav {
     position: static;
+    width: 600px;
+    margin: 0 auto;
 
     .menu__icon,
     .menu__checkbox,
@@ -24,7 +35,7 @@
       display: block;
       outline: none;
       position: absolute;
-      right: 0;
+      right: 10px;
       top: 60px;
 
       ::selection {
@@ -174,7 +185,7 @@
 @include respond-to-min($desktop) {
   nav {
     background: none;
-    margin-top: 6px;
+    margin-top: 3px;
 
     .menu__checkbox,
     .menu__icon {
@@ -195,10 +206,20 @@
 
         li.active-nav {
           a {
+            font-weight: bold;
+            line-height: 28px;
             border-bottom: 2px solid $white;
             font-weight: bold;
             line-height: 28px;
             padding: 8px 0;
+            border-radius: 0;
+            border-width: 0;
+            border-bottom: 2px solid $white;
+
+            &:hover {
+              border-width: 0;
+              border-bottom: 2px solid $white;
+            }
           }
         }
       }
