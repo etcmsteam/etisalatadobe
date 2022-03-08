@@ -106,11 +106,11 @@
                     <div class="category-list-wrap clearfix">
                         <ul data-sly-test="${productDetails.productFilterTagDetails.size > 0}" 
                             data-sly-list.productFilter="${productDetails.productFilterTagDetails}">
-                            <li class="${productFilterList.first ? 'active' : ''}">
+                            <li class="${productFilterList.first ? 'active' : ''}" data-sly-test="${productFilter.tagTitle}">
                                 <div class="checkboxes-wrap">
                                     <input name="checkbox_list_recommended" type="radio" id="checkbox_${productFilterList.count}"
-                                        data-label="all-categories">
-                                    <label for="checkbox_${productFilterList.count}">${productFilter}</label>
+                                        data-label="${productFilter.tagName}">
+                                    <label for="checkbox_${productFilterList.count}">${productFilter.tagTitle}</label>
                                 </div>
                             </li>                            
                         </ul>

@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.etisalat.core.models.CategoryTagVO;
 import com.etisalat.core.models.ProductDetails;
 import com.etisalat.core.util.CommonUtility;
 
@@ -45,19 +46,22 @@ public class ProductDetailsImpl implements ProductDetails {
 
 
   @Override
-  public List<String> getProductFilterTagDetails() {
+  public List<CategoryTagVO> getProductFilterTagDetails() {
     final TagManager tagManager = currentRes.getResourceResolver().adaptTo(TagManager.class);
-    final List<String> filterTagList = new ArrayList<>();
-    LOG.info("Product Detials Filter tag path:: {}",productFilterTag);
+    final List<CategoryTagVO> filterTagList = new ArrayList<>();
+    LOG.info("Product Detials Filter tag path:: {}", productFilterTag);
     if (StringUtils.isNotBlank(productFilterTag)) {
       final Tag tag = tagManager.resolve(productFilterTag);
       if (null != tag) {
         tag.listChildren().forEachRemaining(childtag -> {
-          filterTagList.add(childtag.getTitle());
+          CategoryTagVO categoryTag = new CategoryTagVO();
+          categoryTag.setTagName(childtag.getName());
+          categoryTag.setTagTitle(childtag.getTitle());
+          filterTagList.add(categoryTag);
         });
       }
     }
-    LOG.info("Product Detials filter list size:: {}",filterTagList.size());
+    LOG.info("Product Detials filter list size:: {}", filterTagList.size());
     return Collections.unmodifiableList(filterTagList);
   }
 

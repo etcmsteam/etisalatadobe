@@ -3,6 +3,8 @@ package com.etisalat.core.models.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.text.ParseException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -216,6 +218,17 @@ import junitx.util.PrivateAccessor;
 		String actual = articleModel.getBackToHomeLink();
 		assertEquals(expected, actual);
 	}
+	
+	 
+  @Test
+  void testArticleDate() throws ParseException {
+    final String expected = "14 Sep 2021";
+    context.currentResource(BLOG_SEARCH_2);
+    ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
+    String actual = articleModel.getArticleDate();
+    assertEquals(expected, actual);
+  }
+  
 	
 	
 	

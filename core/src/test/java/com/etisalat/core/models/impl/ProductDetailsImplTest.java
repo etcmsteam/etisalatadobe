@@ -22,6 +22,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.etisalat.core.models.CategoryTagVO;
 
 import junitx.util.PrivateAccessor;
 
@@ -78,7 +79,7 @@ class ProductDetailsImplTest {
 
     when(tagManager.resolve(FILTER_TAG_PATH)).thenReturn(filterTag);
     when(filterTag.listChildren()).thenReturn(tagIterator);
-    List<String> filterList = productDetailsImpl.getProductFilterTagDetails();
+    List<CategoryTagVO> filterList = productDetailsImpl.getProductFilterTagDetails();
     assertEquals(2, filterList.size());
   }
   
@@ -89,7 +90,7 @@ class ProductDetailsImplTest {
     when(tagManager.resolve(FILTER_TAG_PATH)).thenReturn(filterTag);
     when(filterTag.listChildren()).thenReturn(Collections.emptyIterator());
 
-    List<String> filterList = productDetailsImpl.getProductFilterTagDetails();
+    List<CategoryTagVO> filterList = productDetailsImpl.getProductFilterTagDetails();
 
     assertTrue(filterList.isEmpty());
   }
