@@ -26,22 +26,25 @@
 
 .ewalletherobanner {
   .teaser {
-    @extend .wrapper;
 
     color: $white;
     position: relative;
     z-index: 1;
 
-    @include respond-to-max($desktop) {
-      padding: 140px 0 0;
-      width: 660px;
+    @include respond-to-min($desktop-wide) {
+      max-width: 1240px;
+      margin: 0 auto;
     }
 
     @include respond-to-min($tablet) {
       padding-top: 55px;
     }
 
-    @include respond-to-max($phone) {
+    @include respond-to-min-max($desktop, $desktop-wide) {
+      padding-left: 20px;
+    }
+
+    @include respond-to-max($desktop) {
       padding: 15px 0 0;
     }
 
@@ -63,6 +66,7 @@
       }
 
       @include respond-to-min-max($desktop-wide-xl, $desktop) {
+        padding-left: 15px;
         width: 60%;
       }
 
@@ -70,7 +74,7 @@
         width: 50%;
       }
 
-      @include respond-to-max($phone) {
+      @include respond-to-max($desktop) {
         padding: 0 15px;
       }
 
