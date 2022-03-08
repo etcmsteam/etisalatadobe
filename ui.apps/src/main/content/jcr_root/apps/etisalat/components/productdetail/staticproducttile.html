@@ -28,7 +28,7 @@
             <sly data-sly-test="${properties.mainProductTitle || properties.productFilterEnabled}">
               <div class="col-xs-12 col-md-${carousel.items.size > 2 ? '9' : '6'}" data-sly-test="${carousel.items && carousel.items.size > 0}">
             </sly>
-            <sly data-sly-test="${!properties.mainProductTitle}">
+            <sly data-sly-test="${!properties.mainProductTitle && !properties.productFilterEnabled}">
               <div class="col-xs-12 col-md-12" data-sly-test="${carousel.items && carousel.items.size > 0}">
             </sly>
             <div class="cmp__bg-cards_product-grid">
@@ -45,7 +45,7 @@
                                      data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}" data-label="${productdetails.tagNameFromProductPath}"></div>
                              </sly>                                                         
                           </sly>
-                          <sly data-sly-test="${!properties.mainProductTitle}">
+                          <sly data-sly-test="${!properties.mainProductTitle && !properties.productFilterEnabled}">
                             <div data-sly-repeat.item="${carousel.items}" class="swiper-slide ${!wcmmode.edit && carousel.items.size > 3 ? 'col-xs-12 col-sm-6 col-md-3 swiper-slide-active' : 'swiper-slide-active col-xs-12 col-sm-6 col-md-4'}" data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
                           </sly>
                         </div>

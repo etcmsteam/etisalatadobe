@@ -1,5 +1,7 @@
 <template  data-sly-template.filter="${ @ carousel,properties}">
-<div data-sly-use.productDetails="com.etisalat.core.models.ProductDetails" class="recomended-product-filter">
+<div data-sly-use.productDetails="com.etisalat.core.models.ProductDetails"
+     data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
+     class="recomended-product-filter">
     <div class="product-filter">
         <!-- desktop filters  -->
         <div class="filter-compare-sort-section">
@@ -108,9 +110,9 @@
                             data-sly-list.productFilter="${productDetails.productFilterTagDetails}">
                             <li class="${productFilterList.first ? 'active' : ''}" data-sly-test="${productFilter.tagTitle}">
                                 <div class="checkboxes-wrap">
-                                    <input name="checkbox_list_recommended" type="radio" id="checkbox_${productFilterList.count}"
+                                    <input name="checkbox_list_recommended" type="radio" id="${component.id}_checkbox_${productFilterList.count}"
                                         data-label="${productFilter.tagName}">
-                                    <label for="checkbox_${productFilterList.count}">${productFilter.tagTitle}</label>
+                                    <label for="${component.id}_checkbox_${productFilterList.count}">${productFilter.tagTitle}</label>
                                 </div>
                             </li>                            
                         </ul>
