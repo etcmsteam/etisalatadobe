@@ -28,6 +28,9 @@
    <sly data-sly-test="${!properties.enableQuotes && properties.pretitle }">
       <div class="nab-wrapper">
          <div class="nab-content">
+			<div data-sly-test="${properties.newFeatures}" class="wst-main-headings">
+               <h5 data-sly-element="${properties.newFeatureType}" >${properties.newFeatures}</h5>
+            </div>
             <div data-sly-test="${properties.pretitle}" class="wst-secondary-headings">
                <h4>${properties.pretitle}</h4>
             </div>
@@ -39,6 +42,10 @@
                   <div class="p2">
                      ${properties.description @ context='html'}
                   </div>
+               </div>
+			   <div data-sly-test="${properties.enableReadMore}" class="action">
+                    <a href="#" class="link read-more">Read More</a>
+                    <a href="#" class="link read-less">Read Less</a>
                </div>
             </div>
          </div>

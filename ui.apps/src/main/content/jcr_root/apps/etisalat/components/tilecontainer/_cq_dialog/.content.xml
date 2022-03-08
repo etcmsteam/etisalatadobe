@@ -288,6 +288,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <nonactionboxbehavior
+                                                        granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                         fieldLabel="Non Action Box Container Behavior"
@@ -305,8 +306,41 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="With Title"
                                                                 value="with-title"/>
+                                                            <leftrightvariation
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Left Right Variation"
+                                                                value="leftRightVariation"/>
                                                         </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".leftrighttilelayout-showhide-target"/>
                                                     </nonactionboxbehavior>
+                                                    <tileFlip
+                                                        granite:class="leftrighttilelayout-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <flipped
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldLabel="Non Action Box Container Behavior"
+                                                                name="./tileFlipped">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <right-image
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Right Image"
+                                                                        value=""/>
+                                                                    <left-image
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Left Image"
+                                                                        value="flipped"/>
+                                                                </items>
+                                                            </flipped>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="leftRightVariation"/>
+                                                    </tileFlip>
                                                     <nonactionboxdescription
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
