@@ -61,10 +61,11 @@
                                                 fieldLabel="Heading Title"
                                                 name="./headingTitle"/>
                                             <mobilelayout
+                                                granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 defaultValue="Default"
-                                                fieldLabel="Display mobile View as a"
+                                                fieldLabel="Display Tab View as a"
                                                 name="./tabsMobileLayout">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <default
@@ -73,18 +74,39 @@
                                                         value="default"/>
                                                     <accordionmob
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Accordion - (Tablet view as accordion)"
+                                                        text="Accordion - (Mobile and Tablet view as accordion)"
                                                         value="accordionView"/>
                                                     <accordiontab
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Accordion - (Tablet view as desktop)"
+                                                        text="Accordion - (Mobile View as Accordion and Tablet view as desktop)"
                                                         value="notTabAccordionView"/>
-                                                    <swiper
+                                                    <swiperView
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Swiper"
                                                         value="swiperView"/>
                                                 </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
                                             </mobilelayout>
+                                            <swiperView
+                                                granite:class="linkbehavior-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <enableArrow
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Enable Prev - Next Arrows for WST Channel List"
+                                                        name="./enablearrow"
+                                                        text="Enable Prev - Next Arrows for WST Channel List"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="swiperView"/>
+                                            </swiperView>
                                             <tabtitlemain
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
