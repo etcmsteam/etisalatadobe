@@ -212,7 +212,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       });
 
 
-      //Product cards no tabs filter
+      //Product cards with filter
       var radios = [];
       var selected = [];
 
@@ -235,20 +235,12 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       // on radio selction show hide right panel ( container )
       $(".category-list-wrap input").change(function () {
         if ($(this).is(":checked")) {
-          // check if the radio is checked
           filterCards($(this).attr("data-label"), $(this));
-        }
-        // update the swiper after filtering the slides
-        if (window.innerWidth < 992) {
-          $carouselSliderPlansGrid.update();
-          $carouselSliderPlansGrid.slideReset(100, false);
         }
       });
 
       function filterCards(radioInput, selfFilter) {
         var filter = $(selfFilter).closest(".category-list-wrap");
-        //var common = $(selfFilter).closest('.common');
-        //var currentTab = $('#'+tabsID);
         $(filter).find("ul li").removeClass("active");
         $(filter)
           .find("[data-label='" + radioInput + "']")
@@ -257,24 +249,11 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
         $(".common > div").css("display", "none");
 
         if (radioInput === "all-categories") {
-          $(".common > div").css("display", "flex");
+          $(".common > div").css("display", "block");
         } else {
-          $("[data-label='" + radioInput + "']").css("display", "flex");
+          $("[data-label='" + radioInput + "']").css("display", "block");
         }
       }
-
-      // update the swiper
-      if (window.innerWidth < 992) {
-        initSwiper();
-      }
-
-      $(".most-recommended-products .swiper-slide a").click(function (event) {
-        event.preventDefault();
-        if (window.innerWidth < 992) {
-          $carouselSliderPlansGrid.update();
-        }
-        return false;
-      });
 
       // filter mobile view popup open close
       function filtersMobileView(thisValue) {
