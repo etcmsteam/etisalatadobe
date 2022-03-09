@@ -1,5 +1,6 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	 data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+	 data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
 	 data-panelcontainer="${wcmmode.edit && 'Features Card'}"
 	 data-placeholder-text="${wcmmode.edit && 'Please update Features Component' @ i18n}">
 
@@ -54,8 +55,11 @@
 
 						</div>
 						<div class="img-wrap">
-							<div data-sly-test="${properties['image/fileReference']}" class="mobile-img">
-								<div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+							<div class="mobile-img" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+								<sly data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+									<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+								</sly>
+								<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
 							</div>
 							<div data-sly-test="${properties['qrimage/fileReference']}" class="scan-img">
 								<div data-sly-resource="${tileModel.qrImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
@@ -71,8 +75,11 @@
 
 					<!--/* features watch */-->
 					<sly data-sly-test="${properties.featuresBehavior == 'featureswatch'}">
-						<div data-sly-test="${properties['image/fileReference']}" class="img-wrap">
-							<div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+						<div class="img-wrap" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+							<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+								<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+							</div>
+							<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
 						</div>
 
 						<div class="content">
