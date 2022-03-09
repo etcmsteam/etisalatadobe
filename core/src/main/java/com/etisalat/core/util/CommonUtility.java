@@ -116,6 +116,24 @@ public final class CommonUtility {
 	  }
 	return category;
   }
+  
+  /**
+   * Returns Category Tag Name.
+   *
+   * @param request SlingHttpServletRequest 
+   * @param category Category tag name
+   * @return Category Tag Name
+   */
+  public static String getCategoryTagName(SlingHttpServletRequest request, String category) {
+  final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+    if (StringUtils.isNotBlank(category) && null != tagManager) {
+      final Tag tag = tagManager.resolve(category);
+       if (null != tag) {
+          category = tag.getName();
+       }
+    }
+  return category;
+  }
 
   /**
    * Returns generic Fixed Navigation list for multifield for different purpose
