@@ -1,14 +1,16 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
    data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+   data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
    data-panelcontainer="${wcmmode.edit && 'Non Action Box Tile'}"
    data-placeholder-text="${wcmmode.edit && 'Please update Non Action Box Tile' @ i18n}">
    <!-- quotes -false and no pretitle - media-->
    <sly data-sly-test="${!properties.enableQuotes && !properties.pretitle}">
       <div class="media-content">
-         <div class="img-container">
-            <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
+         <div class="img-container" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+            <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+               <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
             </div>
+            <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          </div>
          <div class="body-wrapper">
             <div class="body">
@@ -60,9 +62,10 @@
                </div>
                <!-- Modal end -->
             </sly>
-            <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
+            <div data-sly-test="${properties.viewPortLayout != '1-viewport'}" class="cover">
+               <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
             </div>
+            <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          </div>
       </div>
    </sly>
@@ -70,10 +73,11 @@
    <sly data-sly-test="${properties.enableQuotes && !properties.title  && !properties.pretitle }">
       <div class="with-image-banner">
          <!-- tile image  -->
-         <div class="img-banner">
-            <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
+         <div class="img-banner" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+            <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+               <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
             </div>
+            <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          </div>
          <!-- tile content -->
          <div class="testimonial-tile ">
