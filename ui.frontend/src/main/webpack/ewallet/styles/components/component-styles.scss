@@ -1,13 +1,21 @@
 .buttonstore {
-  @extend .wrapper;
-
+  margin: 0 auto;
   position: relative;
   z-index: 99;
+
+  @include respond-to-max($tablet) {
+    margin-top: 20px;
+    width: 890px;
+  }
+
+  @include respond-to-min($desktop) {
+    width: 1240px
+  }
 
   @include respond-to-min($tablet) {
     margin-top: 30px;
   }
-  @include respond-to-min-max($tablet, $phone) {
+  @include respond-to-min-max($desktop-wide, $phone) {
     padding-left: 15px;
   }
 
@@ -34,7 +42,20 @@
 
       a {
         img {
-          width: 168px;
+          max-width: 150px;
+          height: 45px;
+          object-fit: contain;
+
+          @include respond-to-min($tablet) {
+            max-width: 160px;
+            height: 48px;
+          }
+
+          @include respond-to-min($desktop) {
+            max-width: 168px;
+            width: 168px;
+            height: 50px;
+          }
         }
       }
     }
