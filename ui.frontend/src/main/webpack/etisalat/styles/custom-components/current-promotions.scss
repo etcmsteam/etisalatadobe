@@ -237,14 +237,14 @@
 }
 
 .current-promotions-wrraper {
-  padding-bottom: $padding-step-5;
+  padding-bottom: toRem(40);
   padding-left: $padding-step-0;
-  padding-top: calc(#{$padding-step-4} + 4px);
+  padding-top: toRem(36);
   position: relative;
 
   @include respond-to-min($desktop) {
-    padding-bottom: 52px;
-    padding-top: 80px;
+    padding-bottom: toRem(80);
+    padding-top: toRem(80);
   }
 
   @media (max-width: 991px) {
@@ -518,6 +518,9 @@
   .btn-text {
     @media (min-width: 992px) {
       font-size: toRem(16) !important;
+    }
+    @include rtlBlock() {
+      padding-left: toRem(40) !important;
     }
     &:before {
       padding: toRem(3.7);
@@ -1536,6 +1539,20 @@
   .swiper-container {
     @include md {
       margin-top: 1rem;
+    }
+    .swiper-scrollbar {
+      left: 0 !important;
+      width: 100% !important;
+    }
+    .swiper-slide {
+      @include rtlBlock() {
+        margin-left: toRem(16) !important;
+        margin-right: 0 !important;
+        @media (min-width: 992px) { 
+          margin-left: toRem(24) !important;
+          margin-right: 0 !important;
+        }
+      }
     }
   }
   &.light {
