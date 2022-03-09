@@ -1,13 +1,14 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
    data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+     data-sly-use.image="com.adobe.cq.wcm.core.components.models.Image"
    data-panelcontainer="${wcmmode.edit && 'Non Action Box Tile'}"
    data-placeholder-text="${wcmmode.edit && 'Please update Non Action Box Tile' @ i18n}">
-   <!-- quotes -false and no pretitle - media-->
-   <sly data-sly-test="${!properties.enableQuotes && !properties.pretitle}">
+   <!-- /*only title*/-->
+   <sly data-sly-test="${tileModel.tileBoxVariation == 'with-title'}">
       <div class="media-content">
          <div class="img-container">
             <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
+               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt=tilemodel.imageAlt></div>
             </div>
          </div>
          <div class="body-wrapper">
@@ -24,8 +25,8 @@
          </div>
       </div>
    </sly>
-   <!-- quotes -false and  pretitle - non action-->
-   <sly data-sly-test="${!properties.enableQuotes && properties.pretitle }">
+   <!--/*pretitle*/-->
+   <sly data-sly-test="${tileModel.tileBoxVariation == 'with-pretitle'}">
       <div class="nab-wrapper">
          <div class="nab-content">
             <div data-sly-test="${properties.pretitle}" class="wst-secondary-headings">
@@ -61,18 +62,18 @@
                <!-- Modal end -->
             </sly>
             <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
+               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt=tilemodel.imageAlt></div>
             </div>
          </div>
       </div>
    </sly>
-   <!--quotes = true testimonials-->
-   <sly data-sly-test="${properties.enableQuotes && !properties.title  && !properties.pretitle }">
+   <!--/*quotes*/-->
+   <sly data-sly-test="${tileModel.tileBoxVariation == 'with-quotes'}">
       <div class="with-image-banner">
          <!-- tile image  -->
          <div class="img-banner">
             <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
+               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt=tilemodel.imageAlt></div>
             </div>
          </div>
          <!-- tile content -->
@@ -92,9 +93,9 @@
                   </g>
                </svg>
             </div>
-            <div data-sly-test="${properties.description}" class="paragraph-styling ul-list-cms">
+            <div data-sly-test="${properties.quotesdescription}" class="paragraph-styling ul-list-cms">
                <div class="p2">
-                  ${properties.description @ context='html'}
+                  ${properties.quotesdescription @ context='html'}
                </div>
             </div>
             <div class="user-profile">
