@@ -21,6 +21,11 @@
 
         @include respond-to-min($tablet) {
           margin-right: toRem(24);
+
+          @include rtlBlock {
+            margin-left: toRem(24);
+            margin-right: 0;
+          }
         }
       }
     }
@@ -271,6 +276,14 @@
       @include respond-to-min($tablet) {
         height: 368px;
         width: 58.33333333%;
+      }
+    }
+
+    .paragraph-styling {
+      padding-bottom: toRem(16);
+
+      @include respond-to-min($desktop) {
+        padding-bottom: toRem(24);
       }
     }
   }
@@ -671,6 +684,67 @@ guidelines for sub headings h7 to h8
           font-weight: 300;
         }
       }
+    }
+  }
+}
+
+// Accessibility
+.acc-blue,
+.acc-black {
+  .non-action-boxes-4-0 {
+    background-color: $black;
+    .nab-wrapper {
+      .nab-image div.cover {
+        border: toRem(1) solid $white;
+      }
+
+      .action .link:before {
+        border-color: $white;
+      }
+    }
+  }
+
+  .wst-secondary-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $white !important;
+    }
+  }
+}
+
+.acc-blue {
+  .non-action-boxes-4-0 {
+    background-color: $blue4;
+  }
+}
+
+.acc-yellow {
+  .non-action-boxes-4-0 {
+    background-color: $black;
+
+    .nab-wrapper {
+      .nab-image div.cover {
+        border: toRem(1) solid $yellow-light;
+      }
+
+      .action .link:before {
+        border-color: $yellow-light;
+      }
+    }
+  }
+
+  .wst-secondary-headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $yellow-light !important;
     }
   }
 }
