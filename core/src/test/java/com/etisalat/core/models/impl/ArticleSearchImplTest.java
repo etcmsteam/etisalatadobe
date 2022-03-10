@@ -228,8 +228,4 @@ import junitx.util.PrivateAccessor;
     String actual = articleModel.getArticleDate();
     assertEquals(expected, actual);
   }
-  
-	
-	
-	
 }

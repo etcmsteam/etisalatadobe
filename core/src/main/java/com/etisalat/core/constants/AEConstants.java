@@ -101,6 +101,8 @@ public final class AEConstants {
  public static final String ERROR_PAGE_NAME = "error";
  public static final String ERROR_PARAM_WITH_EXTENSION =".html?success=fail";
  public static final String SUCCESS_PARAM = "?success=success";
+ public static final String EWALLET_ARTICLE_DATE_FORMAT= "MMM, dd yyyy";
+ public static final String ETISALAT_ARTICLE_DATE_FORMAT = "dd MMM yyyy";
  
  /**
   * private constructor to prevent instantiation of class.
