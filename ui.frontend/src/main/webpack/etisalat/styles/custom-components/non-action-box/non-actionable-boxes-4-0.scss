@@ -8,7 +8,7 @@
 
   .container {
     @include respond-to-min($desktop-wide) {
-      width: toRem(1200);
+      width: toRem(1200) !important;
     }
 
     @include respond-to-max($desktop-wide) {
@@ -49,6 +49,7 @@
           margin-left: toRem(24);
         }
       }
+
       ol {
         @include rtlBlock() {
           list-style-position: inside;
@@ -103,24 +104,10 @@
               height: toRem(224);
             }
 
-            .cover {
+            div.cover {
               border-radius: toRem(4);
-              width: toRem(385);
-              max-height: toRem(244);
-
-              @include respond-to-max($desktop-min) {
-                width: toRem(358);
-              }
-
-              @include respond-to-min-max($desktop-wide, $desktop) {
-                width: toRem(304);
-              }
-
-              @include respond-to-max($custom-width-tab) {
-                width: 100%;
-                max-height: toRem(218);
-              }
             }
+
             .icon {
               width: 64px;
               height: 64px;
@@ -132,19 +119,22 @@
                 width: 64px;
                 height: 64px;
               }
-              svg, img {
+
+              svg,
+              img {
                 width: 64px;
                 height: 64px;
                 @media screen and (min-width: 768px) {
-                    width: 74px;
-                    height: 74px;
+                  width: 74px;
+                  height: 74px;
                 }
                 @media screen and (min-width: 992px) {
-                    width: 64px;
-                    height: 64px;
+                  width: 64px;
+                  height: 64px;
                 }
               }
             }
+
             .youtube-popup-container {
               position: fixed;
               z-index: 1062;
@@ -162,12 +152,14 @@
                 @media (min-width: 992px) {
                   top: 7%;
                 }
+
                 .modal-content {
                   height: 500px;
                   border: 0;
                   @media (min-width: 992px) {
                     height: 720px;
                   }
+
                   iframe {
                     width: 100%;
                     height: 100%;
@@ -301,12 +293,15 @@ guidelines for main headings h1 to h6
       }
     }
   }
-  .ul-list-cms{
-    ul, ol {
+
+  .ul-list-cms {
+    ul,
+    ol {
       li {
-        ul, ol {
+        ul,
+        ol {
           padding-left: toRem(0);
-          @include rtlBlock(){
+          @include rtlBlock() {
             padding-right: toRem(0);
             li {
               padding-right: toRem(24);
