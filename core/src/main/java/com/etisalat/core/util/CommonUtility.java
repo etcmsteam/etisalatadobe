@@ -256,9 +256,9 @@ public final class CommonUtility {
 	/*
 	 * Get Formatted Article Date for Page resource
 	*/
-	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
+	 public static String useFormattedArticleDate(Page currentPage , String dateFormat) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
-		  DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", currentPage.getLanguage(true));
+		  DateFormat outputFormat = new SimpleDateFormat(dateFormat, currentPage.getLanguage(true));
 		  outputFormat.setTimeZone(getArticleDateTimeZone(currentPage));
 		  String articleDate = outputFormat.format(articleCalender.getTime());
 		  return StringUtils.isNotBlank(articleDate) ? articleDate : StringUtils.EMPTY ;

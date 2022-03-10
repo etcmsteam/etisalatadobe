@@ -35,12 +35,15 @@ class TilesModelTest {
 	protected static final String TILE_DATA5 = TEST_PAGE_CONTAINER_ROOT + "/accessoriescardcontainer1/accessoriescardtile";
 	protected static final String FEATURE_DATA = TEST_PAGE_CONTAINER_ROOT + "/container1/features";
 	protected static final String BENEFITS_DATA = TEST_PAGE_CONTAINER_ROOT + "/gridcontainer/benefitstile";
+	protected static final String NABTILE_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer2/tile1";
+	protected static final String NABTILE_DATA2 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer3/tile1";
 
 
+	protected static final String TAGS_DATA = CONTENT_ROOT + "/cq:tags";
 	@BeforeEach
 	public void setup() throws Exception {
 		context.addModelsForClasses(TileModel.class);
-		context.load().json("/com/etisalat/core/models/TilesModel.json", CONTENT_ROOT);		
+		context.load().json("/com/etisalat/core/models/TilesModel.json", CONTENT_ROOT);
 	}
 
 	@Test
@@ -107,7 +110,7 @@ class TilesModelTest {
 	@Test
 	void testTileContianerEmptyLayout() {
 		String expectedLayout = "";
-		context.currentResource(TILE_DATA3);
+		context.currentResource(NABTILE_DATA2);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
@@ -136,22 +139,33 @@ class TilesModelTest {
 	}
 	@Test
 	void testTileBoxEmptyVariation() {
-		String expectedLayout = StringUtils.EMPTY;
-		context.currentResource(TILE_DATA3);
+		String expectedLayout = "";
+		context.currentResource(NABTILE_DATA2);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getTileBoxVariation());
 	}
 	
 	@Test
 	void testTileTagTitle() {
-		context.currentResource(TILE_DATA1);
+		String expectedTitle = "Business Advice & Ideas";
+		context.currentResource(TAGS_DATA);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
-	    assertNotNull(tileModel.getCategoryTagTitle());
+		tileModel.setCategoryTag("etisalat:business/smb/category/business-advice-ideas");
+	    assertEquals(expectedTitle,tileModel.getCategoryTagTitle());
+	}
+
+	@Test
+	void testEmptyTileTagTitle() {
+		String expectedTitle = "";
+		context.currentResource(TAGS_DATA);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		tileModel.setCategoryTag("");
+		assertEquals(expectedTitle,tileModel.getCategoryTagTitle());
 	}
 	
 	@Test
 	void testTileTag() {
-		String expected = "ETISALAT:BUSINESS/SMB/CATEGORY/PRODUCT-RELATED";
+		String expected = "etisalat:business/smb/category/business-advice-ideas";
 		context.currentResource(TILE_DATA1);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expected, tileModel.getCategoryTag());
@@ -159,7 +173,7 @@ class TilesModelTest {
 	
 	@Test
 	void testTileTagCase2() {
-		String expected = "ETISALAT:BUSINESS/SMB/CATEGORY/PRODUCT-RELATED";
+		String expected = "etisalat:business/smb/category/business-advice-ideas";
 		context.currentResource(TILE_DATA2);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setCategoryTag(expected);
@@ -190,5 +204,20 @@ class TilesModelTest {
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setValidDateText(expected);
 		assertEquals(expected, tileModel.getValidDateText());
+	}
+
+	@Test
+	void testNabBoxVariation() {
+		String expectedLayout = "with-pretitle";
+		context.currentResource(NABTILE_DATA1);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getNabBoxVariation());
+	}
+	@Test
+	void testNabBoxEmptyVariation() {
+		String expectedLayout = "";
+		context.currentResource(NABTILE_DATA2);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getNabBoxVariation());
 	}
 }
