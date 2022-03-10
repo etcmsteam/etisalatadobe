@@ -126,11 +126,10 @@ function initBrandsLogo() {
 }
 
 // register the event handlers
-$(document).ready(function() {
+
   initAccessorySwiper();
   initRecommendationSwiper();
   initBigRecommendationSwiper();
   initBrandsLogo();
-});
     
 };
