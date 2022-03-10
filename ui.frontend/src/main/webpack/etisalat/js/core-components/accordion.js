@@ -3,7 +3,6 @@ export const ACCORDION_JS = () => {
   // Class
   const SHOW_CLASS = "show";
   const HIDE_CLASS = "hidden";
-
   // Selector
   const MORE_CLASS = $(".more");
   const LESS_CLASS = $(".less");
