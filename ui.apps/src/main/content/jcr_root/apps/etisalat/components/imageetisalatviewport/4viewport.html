@@ -1,4 +1,4 @@
-<template  data-sly-template.fourViewport="${ @ imageViewport}">
+<template  data-sly-template.fourViewport="${ @ imageViewport,image}">
     <source data-sly-test="${imageViewport.retinaImage414px1x && !imageViewport.retinaImage414px2x}" 
           srcset="${imageViewport.retinaImage414px1x}" media="(max-width: 414px)">
     <source data-sly-test="${!imageViewport.retinaImage414px1x && imageViewport.retinaImage414px2x}" 
@@ -25,11 +25,11 @@
           srcset="${imageViewport.retinaImage1440px1x} 1x, ${imageViewport.retinaImage1440px2x} 2x" media="(max-width: 1440px)"> 
    <img data-sly-test="${imageViewport.retinaImage1440px1x && !imageViewport.retinaImage1440px2x}" 
         src="${imageViewport.retinaImage1440px1x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
-        alt="${imageViewport.image1440PXAltText ? imageViewport.image1440PXAltText : ''}">
+        alt="${image.alt || true}" title="${image.displayPopupTitle && image.title}">
    <img data-sly-test="${!imageViewport.retinaImage1440px1x && imageViewport.retinaImage1440px2x}" 
         src="${imageViewport.retinaImage1440px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
-        alt="${imageViewport.image1440PXAltText ? imageViewport.image1440PXAltText : ''}">
+        alt="${image.alt || true}" title="${image.displayPopupTitle && image.title}">
    <img data-sly-test="${imageViewport.retinaImage1440px1x && imageViewport.retinaImage1440px2x}" 
         src="${imageViewport.retinaImage1440px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
-        alt="${imageViewport.image1440PXAltText ? imageViewport.image1440PXAltText : ''}">
+        alt="${image.alt || true}" title="${image.displayPopupTitle && image.title}">
 </template>
