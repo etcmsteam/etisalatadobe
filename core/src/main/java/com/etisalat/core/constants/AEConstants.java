@@ -103,7 +103,6 @@ public final class AEConstants {
  public static final String SUCCESS_PARAM = "?success=success";
  public static final String EWALLET_ARTICLE_DATE_FORMAT= "MMM, dd yyyy";
  public static final String ETISALAT_ARTICLE_DATE_FORMAT = "dd MMM yyyy";
- public static final String ETISALAT_PAGE_DATE_FORMAT = "MMM dd, yyyy";
  
  /**
   * private constructor to prevent instantiation of class.

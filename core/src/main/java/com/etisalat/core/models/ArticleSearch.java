@@ -49,6 +49,4 @@ public interface ArticleSearch {
   
   String getArticleDate() throws ParseException;
 
-  String getEwalletArticlePageDate() throws ParseException;
-
 }

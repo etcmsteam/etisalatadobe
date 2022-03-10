@@ -228,17 +228,4 @@ import junitx.util.PrivateAccessor;
     String actual = articleModel.getArticleDate();
     assertEquals(expected, actual);
   }
-  
-  @Test
-  void testEwalletArticleDate() throws ParseException {
-    final String expected = "Sep 14, 2021";
-    context.currentResource(BLOG_SEARCH_2);
-    ArticleSearch articleModel = context.request().adaptTo(ArticleSearch.class);
-    String actual = articleModel.getEwalletArticlePageDate();
-    assertEquals(expected, actual);
-  }
-  
-	
-	
-	
 }

@@ -296,11 +296,6 @@ public class ArticleSearchImpl implements ArticleSearch {
 	    return CommonUtility.useFormattedArticleDate(currentPage,AEConstants.ETISALAT_ARTICLE_DATE_FORMAT);
   } 
   
- @Override
-  public String getEwalletArticlePageDate() throws ParseException {	  
-	    return CommonUtility.useFormattedArticleDate(currentPage,AEConstants.ETISALAT_PAGE_DATE_FORMAT);
-  } 
-  
   @Override
   public Map<String, Long> getSearchCategories() {
     return Collections.unmodifiableMap(categoryMap);
