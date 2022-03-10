@@ -1,0 +1,87 @@
+<sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+	data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
+<div class="non-action-boxes-section elife-monthly-wrapper">
+<sly data-sly-set.viewports = "${properties.viewPortLayout == '1-viewport' || imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
+
+
+  <div class="media-cta-section {{class}}">
+    <div class="container media-cta-container">
+      <div class="media-cta-wrapper">
+        <div class="col-xs-12 col-md-5 media-cta-photo">
+           <div class="cover" data-sly-test="${viewports}">
+            <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-7 body-standard text-left pr-0">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div data-sly-test="${properties.nabTitle}" class="col-xs-12 col-md-7">
+                  <p data-sly-test="${properties.nabSubTitle}" class="heading-mini">${properties.nabSubTitle}</p>
+                  <h4 data-sly-element="${properties.titleType}">${properties.nabTitle}</h4>
+                </div>
+                <div data-sly-test="${properties.productPrice}" class="col-xs-12 col-md-5">
+                  <div class="detail-price-info mb-15">
+                    <div class="detail-price-new ${properties.priceFontColor}">
+                      <span dir="ltr" class="price">${properties.productPrice}</span>
+                      <span data-sly-test="${properties.productCurrency}" class="price-valute">
+                        ${properties.productCurrency}
+                      </span>
+                      <div data-sly-test="${properties.oldPrice}" class="bottom-part">
+                        <span class="before-price-container">was <span class="before-price">${properties.oldPrice}</span></span>
+                        ${properties.vatText}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div data-sly-test="${properties.description}" class="paragraph-styling ul-list-cms">
+                <div class="p3">
+                  ${properties.description @ context='html'}
+                </div>
+              </div>
+
+              <form data-sly-test="${properties.formInputLabel}" class="form wst-form" novalidate="">
+                <div class="panel-group collapse-tab-wrapper">
+                  <div class="account-number-form">
+                    <div class="panel collapse-content">
+                      <div class="panel-collapse">
+                        <div class="panel-body">
+                          ${properties.formDescription @ context='html'}
+
+                          <div class="row">
+                            <div
+                              class="form-group mt-25 mb-0 floating-label-input input-field col-xs-12 col-sm-8">
+                              <input
+                                type="text"
+                                name="${properties.inputID}"
+                                id="${properties.inputID}"
+                                required/>
+                              <label> ${properties.formInputLabel} </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                              <button
+                                type="${properties.buttonType}"
+                                class="btn btn-green ripple-effect"
+                              >
+                                ${properties.buttonLabel}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !resource.hasChildren}"></sly>
