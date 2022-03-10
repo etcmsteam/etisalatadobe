@@ -204,7 +204,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     showhidetargetvalue="staticlist"/>
                             </staticlist>
-                            <dynamiclist
+                            <dynamiclistdetails
                                 granite:class="productlist-showhide-target"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -231,6 +231,24 @@
                                                     value="dynamicelifeplan"/>
                                         </items>
                                     </dynamicgridlayout>
+                                    <flagText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Text that will appear near Country Flag"
+                                        fieldLabel="Flag Text"
+                                        name="./flagText"/>
+                                    <contractText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Text that will appear for Contract Plan Cards"
+                                        fieldLabel="Contract Plan Text "
+                                        name="./contractText"/>
+                                    <noncontractText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Text that will appear for Non Contract Plan Cards"
+                                        fieldLabel="Non Contract Plan Text"
+                                        name="./noncontractText"/>
                                     <apiurllink
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -322,31 +340,51 @@
                                         rootPath="/content"/>
                                     <listlayout
                                         jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-dropdown-showhide"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                         fieldLabel="Build list layout with"
                                         name="./listLayout">
                                         <items jcr:primaryType="nt:unstructured">
                                             <loadmore
                                                 jcr:primaryType="nt:unstructured"
-                                                text="Load more button"
+                                                text="With Button"
                                                 value="loadmore"/>
                                             <slider
                                                 jcr:primaryType="nt:unstructured"
-                                                text="Slider"
+                                                text="With Slider"
                                                 value="slider"/>
+                                            <noncontract
+                                                jcr:primaryType="nt:unstructured"
+                                                text="With NonContract Section"
+                                                value="noncontractbutton"/>
                                         </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".listlayout-showhide-target"/>
                                     </listlayout>
-                                    <loadmorectatext
+                                    <buttonlistlayout
+                                        granite:class="listlayout-showhide-target"
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Load more CTA Text"
-                                        fieldLabel="Load more CTA Text"
-                                        name="./loadMoreCTAText"/>
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <loadmorectatext
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Load more CTA Text"
+                                            fieldLabel="Load more CTA Text"
+                                            name="./loadMoreCTAText">
+                                            </loadmorectatext>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="loadmore"
+                                            showhidetargetvalue1="noncontractbutton"/>
+                                    </buttonlistlayout>
                                 </items>
                                 <granite:data
                                     jcr:primaryType="nt:unstructured"
                                     showhidetargetvalue="dynamiclist"/>
-                            </dynamiclist>
+                            </dynamiclistdetails>
                         </items>
                     </productcategorydata>
                     <productfilter
