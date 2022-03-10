@@ -206,6 +206,7 @@
               .replaced-svg {
                 height: toRem(12);
                 width: toRem(12);
+                stroke: inherit;
               }
             }
           }
@@ -2088,7 +2089,6 @@
         height: auto;
         justify-content: left;
         padding-left: 0;
-
         .tile {
           display: flex;
           flex-direction: column;
@@ -2115,6 +2115,14 @@
             border-radius: toRem(4);
           }
         }
+        .tile-content-wrapp{
+          @media (min-width: 992px) {
+            @include rtlBlock() {
+              padding-left: 0;
+              padding-right: toRem(16);
+            }
+          }
+        }
       }
     }
 
@@ -2134,7 +2142,6 @@
             width: auto;
             padding-left: toRem(16);
             background: transparent;
-
              .content {
               position: relative;
               bottom: auto;
