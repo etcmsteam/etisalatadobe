@@ -235,5 +235,17 @@ public class TileModel {
     }
     return StringUtils.EMPTY;
   }
+  /**
+   * Returns non action box tile behaviour.
+   *
+   * @return
+   */
+  public String getNabBoxVariation() {
+    final Resource tileContainerResource = currentResource.getParent();
+    if (null != tileContainerResource && tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE)){
+      return tileContainerResource.getValueMap().get("nabBoxVariation", StringUtils.EMPTY);
+    }
+    return StringUtils.EMPTY;
+  }
 
 }
