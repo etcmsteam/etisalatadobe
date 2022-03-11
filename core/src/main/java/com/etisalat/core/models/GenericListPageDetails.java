@@ -13,6 +13,7 @@ public class GenericListPageDetails {
   private Calendar offTime;
   private String path;
   private String articleDateDisplayString;
+  private String ewalletArticleDateDisplayString;
   private String thumbnail;
   private String category;
   private Calendar articleDate;
@@ -186,5 +187,14 @@ public class GenericListPageDetails {
   public void setArticleDateDisplayString(String articleDateDisplayString) {
 	this.articleDateDisplayString = articleDateDisplayString;
   }
+  
+  public String getEwalletArticleDateDisplayString() {
+		return ewalletArticleDateDisplayString;
+  }
+
+  public void setEwalletArticleDateDisplayString(String ewalletArticleDateDisplayString) {
+		this.ewalletArticleDateDisplayString = ewalletArticleDateDisplayString;
+   }
+ 
 
 }

@@ -13,7 +13,7 @@
 
       .cmp-teaser__description {
         @include respond-to-max($desktop) {
-          width: 65%;
+          width: 60%;
         }
 
         @include respond-to-max($phone) {
@@ -26,23 +26,29 @@
 
 .ewalletherobanner {
   .teaser {
-    @extend .wrapper;
-
     color: $white;
     position: relative;
     z-index: 1;
 
-    @include respond-to-max($desktop) {
-      padding: 140px 0 0;
-      width: 660px;
+    @include respond-to-min($desktop-wide) {
+      max-width: 1270px;
+      margin: 0 auto;
     }
 
     @include respond-to-min($tablet) {
       padding-top: 55px;
     }
 
-    @include respond-to-max($phone) {
+    @include respond-to-min-max($desktop, $desktop-wide) {
+      padding-left: 20px;
+    }
+
+    @include respond-to-max($desktop) {
       padding: 15px 0 0;
+    }
+
+    @include respond-to-min($tablet) {
+      padding: 75px 0 0;
     }
 
     @include respond-to-min-max($tablet, $tablet) {
@@ -57,9 +63,14 @@
 
     .cmp-teaser__description {
       width: 100%;
+      padding: 0 15px;
 
       @include respond-to-min($tablet) {
         width: 75%;
+      }
+
+      @include respond-to-min-max($tablet, $desktop) {
+        padding-top: 100px;
       }
 
       @include respond-to-min-max($desktop-wide-xl, $desktop) {
@@ -70,7 +81,7 @@
         width: 50%;
       }
 
-      @include respond-to-max($phone) {
+      @include respond-to-max($desktop) {
         padding: 0 15px;
       }
 
@@ -100,9 +111,7 @@
       p {
         color: $white;
         font-size: 16px;
-        font-weight: 700;
         line-height: 24px;
-        padding-right: 20px;
 
         @include respond-to-min($tablet) {
           font-size: 20px;

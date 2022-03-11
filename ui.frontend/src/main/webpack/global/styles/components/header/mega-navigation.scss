@@ -202,6 +202,13 @@
 
           .sub-menu-wrap .sub-menu {
             max-width: 290px;
+            li.sub-menu-heading {
+              .replaced-svg {
+                height: toRem(12);
+                width: toRem(12);
+                stroke: inherit;
+              }
+            }
           }
 
           .menu-items-footer .sub-menu {
@@ -286,6 +293,7 @@
 
       li {
         margin-bottom: 1.5rem;
+        padding-bottom: 0;
 
         &:last-child {
           margin-bottom: 0;
@@ -428,6 +436,7 @@
         .content {
           bottom: 24px;
           position: absolute;
+          white-space: initial;
 
           h4 {
             color: $white;
@@ -2054,6 +2063,10 @@
         .cover {
           border-radius: toRem(4);
         }
+        .tile-content-wrapp {
+          padding-left: 0;
+          margin-top: toRem(16);
+        }
       }
     }
 
@@ -2076,7 +2089,6 @@
         height: auto;
         justify-content: left;
         padding-left: 0;
-
         .tile {
           display: flex;
           flex-direction: column;
@@ -2103,6 +2115,14 @@
             border-radius: toRem(4);
           }
         }
+        .tile-content-wrapp{
+          @media (min-width: 992px) {
+            @include rtlBlock() {
+              padding-left: 0;
+              padding-right: toRem(16);
+            }
+          }
+        }
       }
     }
 
@@ -2122,7 +2142,6 @@
             width: auto;
             padding-left: toRem(16);
             background: transparent;
-
              .content {
               position: relative;
               bottom: auto;

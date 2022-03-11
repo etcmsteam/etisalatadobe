@@ -1,5 +1,6 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
+export const ACCESSORIES_CARDS = () => {
 //function to pass swiper options collectively
 const swiperOptions = (elem, next, prev, brPoint1, brPoint2, brPoint3, brPoint4, brPoint5) => {
   return {
@@ -125,9 +126,10 @@ function initBrandsLogo() {
 }
 
 // register the event handlers
-$(document).ready(function() {
+
   initAccessorySwiper();
   initRecommendationSwiper();
   initBigRecommendationSwiper();
-  initBrandsLogo()
-});
+  initBrandsLogo();
+    
+};

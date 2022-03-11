@@ -71,7 +71,8 @@
               <li class="sub-menu-heading">${subMenuItems.title}</li>
               <li data-sly-list.brandItem="${subMenuItems.featureImageList}"
                   class="menu-brand-wrapper">
-                <a class="menu-brand-item" loading="lazy" href="${brandItem.link}">
+				<sly data-sly-test.brandItemLink="${brandItem.linkURL}" data-sly-use.brandItemModel="${'com.etisalat.core.models.CommonLinkModel' @link=brandItemLink}"/>
+                <a class="menu-brand-item" loading="lazy" href="${brandItemModel.link}">
 									<img alt="${brandItem.title}" src="${brandItem.fileReference}" width="80px" height="74px"></a>
               </li>
             </ul>

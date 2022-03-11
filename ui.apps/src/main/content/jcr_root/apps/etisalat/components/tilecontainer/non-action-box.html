@@ -7,7 +7,7 @@
     <sly data-sly-test.withtitle="${properties.nabBoxVariation == 'with-title' ? 'cta-with-main-text-4-0 with-two-cols' : ''}"></sly>
 
     <!--not testimonials container-->
-    <sly data-sly-test="${properties.nabBoxVariation != 'with-quotes' && properties.nonactionboxbehavior != 'leftRightVariation'}">
+    <sly data-sly-test="${properties.nabBoxVariation != 'with-quotes' && properties.nabBoxVariation != 'leftRightVariation'}">
     <div class="${withpretitle}${withtitle}">
         <div class="container">
             <div class="content-wrapper">
@@ -32,7 +32,7 @@
     </sly>
 
 	<!--Left & Right - non action box container-->
-    <sly data-sly-test="${properties.nonactionboxbehavior == 'leftRightVariation'}">
+    <sly data-sly-test="${properties.nabBoxVariation == 'leftRightVariation'}">
     <div data-sly-unwrap="${!properties.promoLeftRight}" class="promo-non-actionable-box">
     <div class="non-action-boxes-4-0 ${properties.tileFlipped}">
             <div class="container" data-sly-repeat="${container.items}" 
