@@ -3,8 +3,9 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Image - Etisalat Viewports"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[cq.dropdown.dialog.tabs.values,core.wcm.components.image.v2.editor]">
+    extraClientlibs="[cq.dropdown.dialog.tabs.values,core.wcm.components.image.v2.editor,cq.dropdown.dialog.multi.values]">
     <content
+        granite:class="cmp-image-container__editor"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
@@ -29,7 +30,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <imagelayout
-                                                granite:class="tabs__show-hide"
+                                                granite:class="tabs__show-hide cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldLabel="Display Image layout as a"
@@ -52,7 +53,28 @@
                                                         text="Single Image"
                                                         value="1-viewport"/>
                                                 </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".imageviewportlayout-showhide-target"/>
                                             </imagelayout>
+                                            <viewportcontainer
+                                                granite:class="imageviewportlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                        fieldLabel="View Port Alternative Text"
+                                                        name="./altTextThreeFourSixViewPorts"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="6-viewport"
+                                                    showhidetargetvalue1="4-viewport"
+                                                    showhidetargetvalue2="3-viewport"/>
+                                            </viewportcontainer>
                                         </items>
                                     </column>
                                 </items>
@@ -106,6 +128,9 @@
                         jcr:title="Metadata"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            dep-value="1-viewport"/>
                         <items jcr:primaryType="nt:unstructured">
                             <columns
                                 jcr:primaryType="nt:unstructured"
@@ -258,49 +283,7 @@
                                 </items>
                             </columns>
                         </items>
-                        <granite:data
-                            jcr:primaryType="nt:unstructured"
-                            dep-value="1-viewport"/>
                     </metadata>
-                    <metadataforthreefoursixviewports
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Metadata For 6/4/3 View Ports"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                        margin="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <alternativeGroup
-                                                granite:class="cmp-image__editor-alt"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/well">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <alt
-                                                        granite:class="cmp-image__editor-alt-text"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
-                                                        fieldLabel="Alternative Text"
-                                                        name="./altTextThreeFourSixViewPorts"
-                                                        required="{Boolean}false"/>
-                                                </items>
-                                            </alternativeGroup>
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                        <granite:data
-                            jcr:primaryType="nt:unstructured"
-                            dep-value="3-viewport,4-viewport,6-viewport"/>
-                    </metadataforthreefoursixviewports>
                 </items>
             </tabs>
         </items>
