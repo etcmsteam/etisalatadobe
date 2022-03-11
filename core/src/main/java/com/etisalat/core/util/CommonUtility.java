@@ -17,6 +17,10 @@ import org.apache.sling.api.resource.ResourceResolver;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.day.cq.dam.api.Asset;
+import com.day.cq.dam.api.DamConstants;
+import com.day.cq.dam.commons.util.DamUtil;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
@@ -275,6 +279,17 @@ public final class CommonUtility {
       String strTimeZone = "GMT" + dateTime.substring(length, dateTime.length());
       return TimeZone.getTimeZone(strTimeZone);
     }
+    
+	public static String getImageAlt(String imageAlt, ResourceResolver resourceResolver, String assetPath) {
+		if (StringUtils.isEmpty(imageAlt)) {
+			Resource assetResource = resourceResolver.getResource(assetPath);
+			if (assetResource != null) {
+				Asset asset = DamUtil.resolveToAsset(assetResource);
+				return asset.getMetadataValue(DamConstants.DC_TITLE);
+			}
+		}
+		return imageAlt;
+	}
   
   /**
    * private constructor to prevent instantiation of class.

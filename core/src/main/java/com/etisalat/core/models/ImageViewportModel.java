@@ -3,9 +3,13 @@ package com.etisalat.core.models;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import com.etisalat.core.util.CommonUtility;
 
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -58,6 +62,16 @@ public class ImageViewportModel {
 
 	@ValueMapValue(name = "retinaimage1920px/2x/fileReference")
 	private String retinaImage1920px2x;
+
+	@ValueMapValue(name = "altTextThreeFourSixViewPorts")
+	private String altText;
+
+	@ValueMapValue
+	private String viewPortLayout;
+
+	/** The resource resolver. */
+	@SlingObject
+	private ResourceResolver resourceResolver;
 
 	/**
 	 * Returns true, if 4-viewport has a image.
@@ -160,6 +174,31 @@ public class ImageViewportModel {
 
 	public String getRetinaImage1920px2x() {
 		return retinaImage1920px2x;
+	}
+
+	public String getSixViewPortAltText() {
+		return getAltText("6-viewport", retinaImage1920px1x, retinaImage1920px2x);
+	}
+
+	public String getFourViewPortAltText() {
+		return getAltText("4-viewport", retinaImage1440px1x, retinaImage1440px2x);
+	}
+
+	public String getThreeViewPortAltText() {
+		return getAltText("3-viewport", retinaImage992px1x, retinaImage992px2x);
+	}
+
+	private String getAltText(String viewPortType, String retinaImage1x, String retinaImage2x) {
+		if (StringUtils.isNotBlank(viewPortLayout) && viewPortLayout.equals(viewPortType)) {
+			if (StringUtils.isNotBlank(retinaImage1x) && StringUtils.isBlank(retinaImage2x)) {
+				return CommonUtility.getImageAlt(altText, resourceResolver, retinaImage1x);
+			} else if (StringUtils.isBlank(retinaImage1x) && StringUtils.isNotBlank(retinaImage2x)) {
+				return CommonUtility.getImageAlt(altText, resourceResolver, retinaImage2x);
+			} else if (StringUtils.isNotBlank(retinaImage1x) && StringUtils.isNotBlank(retinaImage2x)) {
+				return CommonUtility.getImageAlt(altText, resourceResolver, retinaImage2x);
+			}
+		}
+		return StringUtils.EMPTY;
 	}
 
 }

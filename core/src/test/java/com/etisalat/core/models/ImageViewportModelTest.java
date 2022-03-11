@@ -1,6 +1,10 @@
 package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
@@ -8,6 +12,8 @@ import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import com.day.cq.dam.api.DamConstants;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -23,8 +29,14 @@ public class ImageViewportModelTest {
 
   private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
   protected static final String SIX_IMAGE_VIEWPORT_DATA = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewport";
+  protected static final String SIX_IMAGE_VIEWPORT_DATA_WITHOUT_VIEWPORT_LAYOUT = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithoutviewportlayout";
   protected static final String FOUR_IMAGE_VIEWPORT_DATA = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatfourviewport";
   protected static final String THREE_IMAGE_VIEWPORT_DATA = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatthreeviewport";
+  protected static final String SIX_IMAGE_WRONG_VIEWPORT_DATA = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatwrongviewport";
+  protected static final String SIX_IMAGEWITHOUT_1920_2X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithout19202xImage";
+  protected static final String THREE_IMAGEWITHOUT_992_1X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatthreeviewportwithout9921xImage";
+  protected static final String THREE_IMAGEWITHOUT_992_1X_IMAGE_AND_ALT_TEXT = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatthreeviewportwithout9921xImageAndAltText";
+  protected static final String THREE_IMAGEWITHOUT_992_1X_AND_2X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatthreeviewportwithout992px1xand2x";
   
   protected static final String FOUR_IMAGE_VIEWPORT_HAS_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/fourviewport-hasimage";
   protected static final String THREE_IMAGE_VIEWPORT_HAS_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/threeviewport-hasimage";
@@ -166,4 +178,91 @@ public class ImageViewportModelTest {
     assertEquals(true, actualSixViewPortContent);
   }
 
+  @Test
+  void testGetSixViewPortAltText() {
+	  Resource resource = context.resourceResolver().getResource(SIX_IMAGE_VIEWPORT_DATA);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualSixViewPortAltText = item.getSixViewPortAltText();
+	  assertEquals("Alt Text 1920px", actualSixViewPortAltText);
+  }
+
+  @Test
+  void testGetFourViewPortAltText() {
+	  Resource resource = context.resourceResolver().getResource(FOUR_IMAGE_VIEWPORT_DATA);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualFourViewPortAltText = item.getFourViewPortAltText();
+	  assertEquals("Alt Text 1440px", actualFourViewPortAltText);
+  }
+
+  @Test
+  void testGetThreeViewPortAltText() {
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGE_VIEWPORT_DATA);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualThreeViewPortAltText = item.getThreeViewPortAltText();
+	  assertEquals("Alt Text 992px", actualThreeViewPortAltText);
+  }
+  
+  @Test
+  void testGetSixViewPortAltTextWithOutViewPort() {
+	  Resource resource = context.resourceResolver().getResource(SIX_IMAGE_VIEWPORT_DATA_WITHOUT_VIEWPORT_LAYOUT);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualSixViewPortAltText = item.getSixViewPortAltText();
+	  assertEquals("", actualSixViewPortAltText);
+  }
+  
+  @Test
+  void testGetSixViewPortAltTextWrongViewPort() {
+	  Resource resource = context.resourceResolver().getResource(SIX_IMAGE_WRONG_VIEWPORT_DATA);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualSixViewPortAltText = item.getSixViewPortAltText();
+	  assertEquals("", actualSixViewPortAltText);
+  }
+  
+  @Test
+  void testGetSixViewPortWithout1920px2xImage() {
+	  Resource resource = context.resourceResolver().getResource(SIX_IMAGEWITHOUT_1920_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualSixViewPortAltText = item.getSixViewPortAltText();
+	  assertEquals("Alt Text 1920px", actualSixViewPortAltText);
+  }
+  
+  @Test
+  void testGetThreeViewPortWithout992px1xImage() {
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGEWITHOUT_992_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualThreeViewPortAltText = item.getThreeViewPortAltText();
+	  assertEquals("Alt Text 992px", actualThreeViewPortAltText);
+  }
+  
+  @Test
+  void testGetThreeViewPortWithout992px1xImageAndAltText() {
+	  Map<String, Object> assetMeta = new HashMap<>();
+	  assetMeta.put(DamConstants.DC_TITLE, "Alt Text 992px");
+	  context.create().asset("/content/dam/etisalat/offerbanner/bg-cards/992x200.jpg", 100, 100, "image/jpeg", assetMeta);
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGEWITHOUT_992_1X_IMAGE_AND_ALT_TEXT);
+	  
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualThreeViewPortAltText = item.getThreeViewPortAltText();
+	  assertEquals("Alt Text 992px", actualThreeViewPortAltText);
+  }
+  
+  @Test
+  void testGetThreeViewPortWithout992px1xImageAndAltTextResourceNull() {
+	  Map<String, Object> assetMeta = new HashMap<>();
+	  assetMeta.put(DamConstants.DC_TITLE, "Alt Text 992px");
+	  context.create().asset("/content/dam/etisalat/offerbanner/bg-cards-test/992x200.jpg", 100, 100, "image/jpeg", assetMeta);
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGEWITHOUT_992_1X_IMAGE_AND_ALT_TEXT);
+	  
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  assertNull(item.getThreeViewPortAltText());
+  }
+  
+  @Test
+  void testGetThreeViewPortWithout992px1xAnd2xImage() {
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGEWITHOUT_992_1X_AND_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  String actualThreeViewPortAltText = item.getThreeViewPortAltText();
+	  assertEquals("", actualThreeViewPortAltText);
+  }
+  
 }
