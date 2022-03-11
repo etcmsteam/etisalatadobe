@@ -1,21 +1,25 @@
 <sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
 	 data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
    data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+   data-sly-use.image="com.adobe.cq.wcm.core.components.models.Image"
    data-panelcontainer="${wcmmode.edit && 'Non Action Box Tile'}"
    data-placeholder-text="${wcmmode.edit && 'Please update Non Action Box Tile' @ i18n}">
 
  <sly data-sly-set.coverClass="cover"/>
  
-  <sly data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
+  <sly data-sly-set.viewports = "${properties.viewPortLayout == '1-viewport' || imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
 
 
-   <!-- quotes -false and no pretitle - media-->
-   <sly data-sly-test="${!properties.enableQuotes && !properties.pretitle}">
+   <!-- /*only title*/-->
+   <sly data-sly-test="${tileModel.nabBoxVariation == 'with-title'}">
       <div class="media-content">
          <div class="img-container">
-            <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
-            </div>
+          <!--  <div data-sly-test="${properties['image/fileReference']}" class="cover">
+               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" ></div>
+            </div>-->
+			<div class="${!wcmmode.edit ? coverClass : ''}">
+			<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>  
+         </div>
          </div>
          <div class="body-wrapper">
             <div class="body">
@@ -31,8 +35,8 @@
          </div>
       </div>
    </sly>
-   <!-- quotes -false and  pretitle - non action-->
-   <sly data-sly-test="${!properties.enableQuotes && properties.pretitle && viewports}">
+   <!--/*pretitle OR leftRightVariation*/-->
+   <sly data-sly-test="${(tileModel.nabBoxVariation == 'with-pretitle' || tileModel.nabBoxVariation == 'leftRightVariation') && viewports}">
 
       <div class="nab-wrapper">
          <div class="nab-content ${resource.parent.promoLeftRight ? 'promo-content' : ''}">
@@ -82,14 +86,17 @@
       </div>
 	  </div>
    </sly>
-   <!--quotes = true testimonials-->
-   <sly data-sly-test="${properties.enableQuotes && !properties.title  && !properties.pretitle }">
+	<!--/*quotes*/-->
+   <sly data-sly-test="${tileModel.nabBoxVariation == 'with-quotes'}">
       <div class="with-image-banner">
          <!-- tile image  -->
          <div class="img-banner">
-            <div data-sly-test="${properties['image/fileReference']}" class="cover">
-               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" alt="${properties.accAltText}"></div>
-            </div>
+          <!--  <div data-sly-test="${properties['image/fileReference']}" class="cover">
+               <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}" ></div>
+            </div>-->
+			<div class="${!wcmmode.edit ? coverClass : ''}">
+			<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>  
+         </div>
          </div>
          <!-- tile content -->
          <div class="testimonial-tile ">
@@ -108,9 +115,9 @@
                   </g>
                </svg>
             </div>
-            <div data-sly-test="${properties.description}" class="paragraph-styling ul-list-cms">
+            <div data-sly-test="${properties.quotesdescription}" class="paragraph-styling ul-list-cms">
                <div class="p2">
-                  ${properties.description @ context='html'}
+                  ${properties.quotesdescription @ context='html'}
                </div>
             </div>
             <div class="user-profile">

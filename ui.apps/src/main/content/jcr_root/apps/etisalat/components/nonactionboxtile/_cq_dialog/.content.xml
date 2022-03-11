@@ -13,6 +13,53 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
+				                    <image
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Image"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <file
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Image Asset"
+                                                fileNameParameter="./image/fileName"
+                                                fileReferenceParameter="./image/fileReference"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                multiple="{Boolean}false"
+                                                name="./image/file"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <imageresourcehidden
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./image/sling:resourceType"
+                                                value="etisalat/components/image"/>
+                                            <alttext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Image Alt text"
+                                                fieldLabel="Image Alt text"
+                                                name="./image/alt"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </image>
                     <properties
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Non Action Box Details"
@@ -74,16 +121,14 @@
                                             <pretitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Enter Value if Only Pretitle Variation is selected"
-                                                fieldDescription="A pretitle that will be displayed on the Promotion. Enter value for Only Pretitle Varitaion"
-                                                fieldLabel="Non Action Box Pretitle for &quot;Only Pretitle Variation&quot;"
+                                                fieldDescription="A pretitle that will be displayed on the Non Action Box Tile"
+                                                fieldLabel="Non Action Box Pretitle"
                                                 name="./pretitle"/>
                                             <title
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Enter Value if Title or Pretitle Variation is selected"
-                                                fieldDescription="A title to display as the headline for the Promotion.Enter value for Only Pretitle and Title Varitaion"
-                                                fieldLabel="Non Action Box Title for &quot;Only Title or Pretitle Variation&quot;"
+                                                fieldDescription="A title to display on the Non Action Box Tile"
+                                                fieldLabel="Non Action Box Title"
                                                 name="./title"/>
                                             <titleType
                                                 jcr:primaryType="nt:unstructured"
@@ -121,52 +166,14 @@
                                                         value="h6"/>
                                                 </items>
                                             </titleType>
-                                            <enablequotes
-                                                granite:class="cq-dialog-checkbox-showhide"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Enable Non Action Box Quotes for &quot;Only Quotes Variation&quot;"
-                                                name="./enableQuotes"
-                                                text="Enable Quotes"
-                                                uncheckedValue="false"
-                                                value="true">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    cq-dialog-checkbox-showhide-target=".userdetails"/>
-                                            </enablequotes>
-                                            <userdetails
-                                                granite:class="userdetails"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <username
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="User Name to be entered"
-                                                        fieldLabel="User Name"
-                                                        name="./userName"/>
-                                                    <userdesignation
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="User Designation to be entered"
-                                                        fieldLabel="User Designation"
-                                                        name="./userDesignation"/>
-                                                </items>
-                                            </userdetails>
                                             <description
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="etisalat/components/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Text that will appear for the main product Description."
+                                                fieldDescription="Text that will appear for the Non Action Box Tile Description."
                                                 fieldLabel="Description"
                                                 name="./description"
                                                 useFixedInlineToolbar="{Boolean}true"/>
-                                            <alttext
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Image Alt text"
-                                                fieldLabel="Image Alt text"
-                                                name="./accAltText"/>
                                         </items>
                                     </column>
                                 </items>
@@ -223,6 +230,54 @@
                             </columns>
                         </items>
                     </video>
+					<userdetails
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Quotes Details"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <userdetails
+                                                granite:class="userdetails"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <username
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="User Name to be entered"
+                                                        fieldLabel="User Name"
+                                                        name="./userName"/>
+                                                    <userdesignation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="User Designation to be entered"
+                                                        fieldLabel="User Designation"
+                                                        name="./userDesignation"/>
+                                                </items>
+                                            </userdetails>
+                                            <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="etisalat/components/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Text that will appear for the main product Description."
+                                                fieldLabel="Description"
+                                                name="./quotesdescription"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </userdetails>
                 </items>
             </tabs>
         </items>
