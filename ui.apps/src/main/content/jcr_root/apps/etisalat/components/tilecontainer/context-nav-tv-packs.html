@@ -1,0 +1,22 @@
+<template data-sly-template.tvPacks="${ @ container,properties}">
+    <div class="context-navigation-4-0 ${properties.mainContextPackTitle ? 'with-main-text' : ''} with-tv-pakcs">
+        <div class="container">
+            <div class="row">
+                <div data-sly-test="${properties.mainContextPackTitle}" class="row">
+                    <div class="content col-xs-12 col-md-3">
+                        <div class="wst-main-headings">
+                            <h3>${properties.mainContextPackTitle}</h3>
+                        </div>
+                        <div data-sly-test="${properties.mainContextPackDesc}" class="paragraph-styling ul-list-cms">
+                            <div class="">${properties.mainContextPackDesc @ context='html'}</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-9">
+                        <sly data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></sly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
