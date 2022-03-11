@@ -829,7 +829,13 @@
 }
 .container-fix__width {
     &.media-cta-plan-full-width {
-        .media-cta-module-section .mod-wrap {
+        .media-cta-module-section {
+            .container {
+                @media only screen and (min-width : 1200px) { 
+                    width: toRem(1200);
+                }
+            }
+            .mod-wrap {
             @media only screen and (min-device-width:768px)  { 
                 margin-left: toRem(12);
                 margin-right: toRem(12);
@@ -839,9 +845,11 @@
                 margin-right: toRem(12);
             }
             @media only screen and (min-width : 1200px) { 
-                    margin-left: toRem(-12);
-                    margin-right: inherit;
+                    margin-left: 0;
+                    margin-right: 0;
+                    width: 100%;
             }
+        }
         }
         .media-cta-module-section {
             &,.cms-module-4-0 {
