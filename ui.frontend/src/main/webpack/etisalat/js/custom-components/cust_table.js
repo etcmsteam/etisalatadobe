@@ -337,8 +337,9 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
 $('.sort-label.mobile-view').off('click').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
+    const PARENT_EL = $(this).parents(".table");
     if (window.innerWidth < 991) {
-        popupHeight(this);
+        popupHeight(this, PARENT_EL);
     }
 
 });
