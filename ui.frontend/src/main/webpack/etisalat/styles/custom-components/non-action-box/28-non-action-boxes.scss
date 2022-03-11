@@ -1,6 +1,4 @@
 .non-action-boxes-section {
-  background-color: rgba(242, 242, 242, 0.33);
-
   @include respond-to-max($desktop) {
     .media-cta-section {
       .cta-heading {
@@ -12,7 +10,15 @@
 
   .paragraph-styling {
     p {
-      margin: 0;
+      margin: 0 0 toRem(8) 0;
+    }
+
+    &.ul-list-cms {
+      ul {
+        padding-left: 0;
+        margin-left: toRem(16);
+        margin-bottom: toRem(16);
+      }
     }
   }
 
@@ -37,6 +43,7 @@
     margin-top: toRem(12) !important;
     font-size: toRem(12) !important;
     letter-spacing: toRem(4);
+    text-transform: uppercase;
   }
 
   .media-cta-container,
@@ -54,6 +61,7 @@
     .media-cta-container {
       box-shadow: none;
       background: transparent;
+      width: auto;
 
       .detail-price-info {
         padding-left: 0;
@@ -397,6 +405,10 @@
         overflow: hidden;
         padding-left: toRem(12);
 
+        &.pr-0 {
+          padding-right: 0 !important;
+        }
+
         @include respond-to-max($desktop) {
           order: 1;
           padding-right: 0;
@@ -428,6 +440,7 @@
       max-height: toRem(132) !important;
       min-height: toRem(132) !important;
       height: toRem(132) !important;
+      padding: 0 toRem(12) 0 0 !important;
 
       @include respond-to-min($tablet) {
         max-height: toRem(250) !important;
@@ -439,6 +452,10 @@
         max-height: toRem(270) !important;
         min-height: toRem(270) !important;
         height: toRem(270) !important;
+      }
+
+      & > .cover {
+        position: relative;
       }
     }
   }
