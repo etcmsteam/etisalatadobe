@@ -1,6 +1,10 @@
 // media cta variation
 .nab-media-cta {
   .cmp-teaser {
+    @include respond-to-max($custom-width-tab) {
+      padding: 0 toRem(16);
+    }
+
     &__content {
       padding-bottom: 0;
     }
@@ -23,11 +27,20 @@
     .cmp-teaser {
       &__image {
         margin-left: 0;
+        margin-right: 0;
         padding-left: toRem(12);
 
         @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+
+        @include rtlBlock {
           padding-left: 0;
-          padding-right: 0;
+          padding-right: toRem(12);
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
         }
       }
     }
@@ -36,8 +49,16 @@
       padding-right: toRem(64);
 
       @include respond-to-max($desktop-min) {
+        padding: 0;
+      }
+
+      @include rtlBlock {
+        padding-left: toRem(64);
         padding-right: 0;
-        padding-bottom: 0;
+
+        @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
       }
 
       .cmp-teaser {
@@ -88,7 +109,16 @@
         padding-right: toRem(12);
 
         @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+
+        @include rtlBlock {
+          padding-left: toRem(64);
           padding-right: 0;
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
         }
       }
 
@@ -98,6 +128,15 @@
 
         @include respond-to-max($desktop-min) {
           padding-left: 0;
+        }
+
+        @include rtlBlock {
+          padding-right: toRem(64);
+          padding-left: 0;
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
         }
       }
     }
@@ -151,6 +190,7 @@
         width: 33.3%;
         margin-right: toRem(24);
         max-width: toRem(384);
+
         @include rtlBlock() {
           margin-left: toRem(24);
         }
@@ -159,6 +199,8 @@
       ol {
         @include rtlBlock() {
           list-style-position: inside;
+          margin-left: 0;
+          margin-right: toRem(28);
         }
       }
     }
@@ -206,7 +248,11 @@
             position: relative;
 
             @include respond-to-min($tablet) {
+              height: toRem(258);
               margin-bottom: toRem(24);
+            }
+
+            @include respond-to-min($desktop) {
               height: toRem(224);
             }
 
@@ -273,6 +319,7 @@
                 }
               }
             }
+
             // youtube video link
             .youtube-video-link {
               position: absolute;
@@ -407,8 +454,10 @@ guidelines for main headings h1 to h6
         ul,
         ol {
           padding-left: toRem(0);
+
           @include rtlBlock() {
             padding-right: toRem(0);
+
             li {
               padding-right: toRem(24);
             }
@@ -458,6 +507,7 @@ guidelines for secondary headings h1 to h4
     h4 {
       font-size: 12px;
       line-height: 1rem;
+
       @include respond-to-min($desktop) {
         font-size: toRem(14);
         line-height: toRem(20);

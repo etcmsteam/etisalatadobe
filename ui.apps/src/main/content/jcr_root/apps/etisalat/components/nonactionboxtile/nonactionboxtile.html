@@ -38,7 +38,7 @@
             <div data-sly-test="${properties.title}" class="wst-main-headings">
                <h5 data-sly-element="${properties.titleType}" >${properties.title}</h5>
             </div>
-            <div class="clickable-area">
+            <div class="${!wcmmode.edit ? 'clickable-area' : ''}">
                <div data-sly-test="${properties.description}" class="paragraph-styling">
                   <div class="p2">
                      ${properties.description @ context='html'}
@@ -113,4 +113,4 @@
       </div>
    </sly>
 </sly>
-<sly data-sly-call="${templates.placeholder @ isEmpty =  !viewports && !properties.description}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty =  !properties.fileReference && !tileModel.nabBoxVariation}"></sly>
