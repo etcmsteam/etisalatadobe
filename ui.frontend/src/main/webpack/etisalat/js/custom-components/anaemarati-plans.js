@@ -1,20 +1,148 @@
-import { swiperInit } from "../../../global/js/swiperInitialize";
+const setSpacebetweenTableCarousel = (parent) => {
+  $(parent)
+    .find(".swiper-container")
+    .each(function () {
+      var slideTemp = $(this)[0].swiper;
+      if (slideTemp) {
 
-export const ANAEMARATI_CARDS = () => {
+        $(this)
+          .find(".swiper-wrapper")
+          .removeAttr("style");
+        $(this)
+          .find(".swiper-slide")
+          .removeAttr("style");
+        setTimeout(function(){
+          $(window).trigger('resize');
+           slideTemp.update(true);
+        },1000)
+
+
+      }
+    });
+}
+
+const initActions = () => {
+  // popup
+  var popUpActive = function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var btn = $(this);
+    var goldOrSilver = ($(btn).closest('.nv-card-body').find('.nv-plan-header ').hasClass('gold')) ? 'gold' : 'silver';
+
+    var popup = $('#benafits_list');
+    var dataTarget = btn.attr("data-target");
+    if (dataTarget) {
+ 
+      popup.addClass('show');
+      $(popup).find('.nv-brand').text(btn.closest('.nv-card-body').find('.nv-brand').text());
+      $(popup).find('.nv-modal-title').text(btn.closest('.nv-card-body').find('.nv-product-name').text());
+      $(popup).find('.modalContent').load(dataTarget);
+      $(popup).find('.modalContent').removeClass('gold platinum silver');
+      $(popup).find('.modalContent').addClass(goldOrSilver);
+
+      $('body').addClass('freeze');
+    }
+  };
+  var popUpEligibilityActive = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    alert('whoa');
+    var btn = $(this);
+    var popup = $('#eligibility-summary');
+    var dataTarget = btn.attr("data-target");
+    popup.addClass('show');
+    $('body').addClass('freeze');
+    $(popup).find('.nv-brand').text(btn.closest('.nv-plan-card').find('.nv-brand').text());
+    $(popup).find('.nv-modal-title').text(btn.closest('.nv-plan-card').find('.nv-product-name').text());
+    $(popup).find('.planName').text(btn.closest('.nv-plan-card').find('.nv-product-name').text());
+    $(popup).find('.redirectUrl').attr('href', dataTarget);
+    $(popup).find('.leadUrl').attr('href', $(popup).find('.leadUrl').attr('href') + btn.closest('.nv-plan-card').find('.nv-product-name').text());
+    return false;
+  };
+  // close popup
+  var closePopUp = function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var currentOpendPopUp = $(this).closest('.nv-modal');
+    $(currentOpendPopUp).removeClass('show');
+    $(currentOpendPopUp).css('display', 'none');
+    $('body').removeClass('freeze');
+  };
+
+  // current promotions module with popup
+  $('.buynget-cards').off().on('click', 'a.nv-btn-link', popUpActive);
+  $('.offers-popup-wrapper').off('click').on('click', '.nv-modal-close', closePopUp);
+
+  $('.full-width-slider').off('click').on('click', 'button.btn-buy-now', popUpEligibilityActive);
+  $('.nv-eligibility-summary').off('click').on('click', '.nv-modal-close', closePopUp);
+
+
+  // Show No contract plans
+  $('.showNoContract').on('click', function (event) {
+    event.preventDefault();
+    $('.nocContractPlansSection').removeClass('hidden');
+    $(this).closest('.row').addClass('hidden');
+    setSpacebetweenTableCarousel('.nocContractPlansSection');
+  });
+}
+
+const initSwiperFull = () => {
+
+  // plans table slider for CMS modules start
+  $(document).find('.full-width-slider.plans .swiper-full-height').each(function (index) {
+    $(this).addClass('plansTableFull' + index);
+    var $planTableParent = $(this);
+    $planTableParent.find('.table-swiper-button-next').addClass('plansRight' + index);
+    $planTableParent.find('.table-swiper-button-prev').addClass('plansLeft' + index);
+    var $carouselSliderPlansGrid = new Swiper('.plansTableFull' + index + ' .swiper-container', {
+      //clickable: true,
+      scrollbar: $(this).find('.table-swiper-scrollbar'),
+      nextButton: $(this).find('.table-swiper-button-next.plansRight' + index),
+      prevButton: $(this).find('.table-swiper-button-prev.plansLeft' + index),
+      scrollbarHide: false,
+      scrollbarDraggable: true,
+      spaceBetween: 20,
+      slidesPerView: 'auto',
+      observer: true,
+      observeParents: true,
+      breakpoints: {
+        540: {
+          slidesPerView: 1.2,
+          spaceBetween: 16,
+        },
+        768: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 3
+        },
+        1440: {
+          slidesPerView: 4
+        },
+        9999: {
+          centeredSlides: false,
+          slidesPerView: 4
+        }
+      }
+    });
+  });
+  // plans table slider for CMS modules ends
+}
+
+const ANAEMARATI_CARDS = () => {
   function renderAnaemaratiCards(index) {
     const $rootThis = $(this);
-    const rootInstanceClass = `brands-logo-${index}`;
+    const rootInstanceClass = `plans-full-width-slider-${index}`;
     $rootThis.addClass(rootInstanceClass);
 
     const DATA_PARAMS = $rootThis.data();
     const {
       dataUrl: DATA_URL,
-      dataPath: DATA_PATH = "/b2c/eshop/getProductsByCategory",
-      categoryId: CATEGORY_ID = 'cat1090015',
-      planType: PLAN_TYPE = 'Shop',
-      linkPath: LINK_PATH = "/b2c/eshop/viewProducts",
-      requestMethod: REQUEST_METHOD = "POST",
+      dataPath: DATA_PATH = "/content/dam/mock-data/anaemarati-gold-plans-data.json",
+      categoryId: CATEGORY_ID = "cat1090015",
+      requestMethod: REQUEST_METHOD = "GET",
       enableReqParams: ENABLE_REQ_PARAMS,
+      ctaUrl: CTA_URL = "/b2c/eshop/postpaidLine?",
     } = DATA_PARAMS;
 
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
@@ -70,9 +198,12 @@ export const ANAEMARATI_CARDS = () => {
         }
         var dynamicAttributes = sku.dynamicAttributesList;
         var redirectUrl = "";
-        if (PLAN_TYPE.indexOf("Lead Generation") !== -1) {
+
+        // plantype.value
+        var planTypeValue = "";
+        if (planTypeValue.indexOf("Lead Generation") !== -1) {
           redirectUrl =
-            document.getElementById("redurlpreprod").value +
+            CTA_URL +
             "productId=" +
             product.productId +
             "&productName=" +
@@ -81,28 +212,16 @@ export const ANAEMARATI_CARDS = () => {
             sku.displayName.replace(/\s+/g, " ").trim().replace(/\s+/g, "_") +
             "&catName=" +
             "Emirati_Freedom&listVal=Emirati_Freedom_Plans&locale=EN";
-        } else if (PLAN_TYPE.indexOf("Shop") !== -1) {
+        } else if (planTypeValue.indexOf("Shop") !== -1) {
           redirectUrl =
-            document.getElementById("redurlpreprod").value +
-            "productId=" +
-            product.productId +
-            "&skuId=" +
-            sku.skuId +
-            "&catName=" +
-            "Emirati_Freedom&listVal=Emirati_Freedom_Plans&locale=EN";
-        } else if (PLAN_TYPE.indexOf("Create Your Number") !== -1) {
-          redirectUrl = document.getElementById("redurlpreprod").value + "&catName=" + "Emirati_Freedom&listVal=Emirati_Freedom_Plans&locale=EN";
-        } else if (PLAN_TYPE.indexOf("Call Back Auto") !== -1) {
-          redirectUrl = document.getElementById("redurlpreprod").value;
+            CTA_URL + "productId=" + product.productId + "&skuId=" + sku.skuId + "&catName=" + "Emirati_Freedom&listVal=Emirati_Freedom_Plans&locale=EN";
+        } else if (planTypeValue.indexOf("Create Your Number") !== -1) {
+          redirectUrl = CTA_URL + "&catName=" + "Emirati_Freedom&listVal=Emirati_Freedom_Plans&locale=EN";
+        } else if (planTypeValue.indexOf("Call Back Auto") !== -1) {
+          redirectUrl = CTA_URL;
         } else {
           redirectUrl =
-            document.getElementById("redurlpreprod").value +
-            "productId=" +
-            product.productId +
-            "&skuId=" +
-            sku.skuId +
-            "&catName=" +
-            "Emirati_Freedom&listVal=Emirati_Freedom_Plans&locale=EN";
+            CTA_URL + "productId=" + product.productId + "&skuId=" + sku.skuId + "&catName=" + "Emirati_Freedom&listVal=Emirati_Freedom_Plans&locale=EN";
         }
         html +=
           '<div class="swiper-slide">' +
@@ -193,21 +312,18 @@ export const ANAEMARATI_CARDS = () => {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(payload),
         success: function (res) {
-
           var htmlCards = getPlansCard(res, cardType);
-        //   var productRow = "#productsRow" + cardType;
-          var productRow = $rootThis.find('.swiper-wrapper');
-          console.log('productRow', productRow);
+          var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
+
           $(productRow).html(htmlCards);
           if ("Carousal" == "Carousal") {
             if ($(".swiper-slide").length > 3) {
               $(".swiper-scrollbar").removeClass("hide");
               $(".table-swiper-button-prev").removeClass("hide");
               $(".table-swiper-button-next").removeClass("hide");
-              /*window.onload = function() {
-                                                                            cards();
-                                                                          };*/
-              cards();
+
+              initSwiperFull();
+              initActions();
             }
           } else {
             $(productRow).removeClass("swiper-wrapper");
@@ -231,13 +347,14 @@ export const ANAEMARATI_CARDS = () => {
       });
     }
 
-    getCardsData(url + "&planFilter=CONTRACT", payloadGold, "gold");
-    getCardsData(url + "&planFilter=NON_CONTRACT", payloadSilver, "silver");
+    const goldPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=CONTRACT` : url;
+    const silverPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=NON_CONTRACT` : url;
 
-    //
+    getCardsData(goldPlanUrl, payloadGold, "gold");
+    getCardsData(silverPlanUrl, payloadSilver, "silver");
   }
 
-  $(".brands-logo").each(renderAnaemaratiCards);
+  $(".anaemarati-plans-dynamic").each(renderAnaemaratiCards);
 };
 
 $(document).ready(ANAEMARATI_CARDS);
