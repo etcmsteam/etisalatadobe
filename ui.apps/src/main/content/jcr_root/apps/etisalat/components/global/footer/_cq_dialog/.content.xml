@@ -109,7 +109,7 @@
                                                 fieldDescription="Download section title"
                                                 fieldLabel="Download section title"
                                                 name="./downloadTitle"
-                                                required="{Boolean}true"/>
+                                                required="{Boolean}false"/>
                                             <downloadsection
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -160,6 +160,42 @@
                             </columns>
                         </items>
                     </download>
+                    <needhelp
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Need Help Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <container
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <needHelpTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Need Help Section Title"
+                                                fieldLabel="Need Help Section Title"
+                                                name="./needHelpTitle"
+                                                required="{Boolean}false"/>
+                                            <needhelpDescription
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Need Help Description Field"
+                                                fieldLabel="Need Help Description"
+                                                name="./needHelpDescription"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                        </items>
+                                    </container>
+                                </items>
+                            </columns>
+                        </items>
+                    </needhelp>
                     <followus
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Follow Us"
@@ -181,7 +217,7 @@
                                                 fieldDescription="Follow us section title"
                                                 fieldLabel="Follow us section title"
                                                 name="./followUsTitle"
-                                                required="{Boolean}true"/>
+                                                required="{Boolean}false"/>
                                             <followussection
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -253,7 +289,7 @@
                                                 fieldDescription="Payment section title"
                                                 fieldLabel="Payment section title"
                                                 name="./paymentTitle"
-                                                required="{Boolean}true"/>
+                                                required="{Boolean}false"/>
                                             <paymentsection
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -332,7 +368,7 @@
                                                 fieldDescription="Promotion URL"
                                                 fieldLabel="Promotion URL"
                                                 name="./promo/linkUrl"
-                                                required="{Boolean}true"
+                                                required="{Boolean}false"
                                                 rootPath="/content"/>
                                             <copyrighttext
                                                 jcr:primaryType="nt:unstructured"
@@ -340,49 +376,49 @@
                                                 fieldDescription="CopyRight Text"
                                                 fieldLabel="CopyRight Text"
                                                 name="./copyrightText"
-                                                required="{Boolean}true"/>
+                                                required="{Boolean}false"/>
                                             <linkSectiongroup
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Footer Links"
                                                 sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                  <linksection
-		                                                jcr:primaryType="nt:unstructured"
-		                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-		                                                composite="{Boolean}true"
-		                                                fieldLabel="Add footer links"
-		                                                required="{Boolean}false">
-		                                                <field
-		                                                    jcr:primaryType="nt:unstructured"
-		                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
-		                                                    name="./footerLinks">
-		                                                    <items jcr:primaryType="nt:unstructured">
-		                                                        <linktext
-		                                                            jcr:primaryType="nt:unstructured"
-		                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-		                                                            fieldDescription="Link Text"
-		                                                            fieldLabel="Link Text"
-		                                                            name="./linkText"
-		                                                            required="{Boolean}true"/>
-		                                                        <linkurl
-		                                                            jcr:primaryType="nt:unstructured"
-		                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-		                                                            fieldDescription="Link URL"
-		                                                            fieldLabel="Link URL"
-		                                                            name="./linkUrl"
-		                                                            required="{Boolean}true"
-		                                                            rootPath="/content"/>
-		                                                    </items>
-		                                                </field>
-		                                            </linksection>                                                
+                                                    <linksection
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldLabel="Add footer links"
+                                                        required="{Boolean}false">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./footerLinks">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <linktext
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Link Text"
+                                                                    fieldLabel="Link Text"
+                                                                    name="./linkText"
+                                                                    required="{Boolean}true"/>
+                                                                <linkurl
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                    fieldDescription="Link URL"
+                                                                    fieldLabel="Link URL"
+                                                                    name="./linkUrl"
+                                                                    required="{Boolean}true"
+                                                                    rootPath="/content"/>
+                                                            </items>
+                                                        </field>
+                                                    </linksection>
                                                 </items>
                                             </linkSectiongroup>
-                                             <quickAccessGroup
+                                            <quickAccessGroup
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Quick Access Links"
                                                 sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                   <quickaccesssectiontitle
+                                                    <quickaccesssectiontitle
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Quick Access section title"
@@ -434,7 +470,7 @@
                                                         </field>
                                                     </quickaccesssection>
                                                 </items>
-                                             </quickAccessGroup>                                                                                        
+                                            </quickAccessGroup>
                                         </items>
                                     </container>
                                 </items>
