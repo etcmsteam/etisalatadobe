@@ -36,6 +36,13 @@
           </div>
         </div>
         <!-- download etisalat icons -->
+		<!--Need help section-->
+		<div data-sly-test="${properties.needHelpTitle}" class="needhelp-etisalat">
+            <div class="footer-heading">${properties.needHelpTitle}</div>
+                <div class="help-content">
+                   ${properties.needHelpDescription @ context = "html"}
+            </div>
+        </div>
         <!-- follow-us etisalat icons -->
         <div class="follow-etisalat">
           <div class="footer-heading">${properties.followUsTitle}</div>
@@ -85,15 +92,15 @@
 			</ul>
 
           <ul class="footer-links-nav" data-sly-list.items="${footer.footerLinks}">
-            <li><a style="padding-left: 0; border-left: 0" href="${items.linkUrl}" title="${items.linkText}">${items.linkText}</a>
+            <li><a href="${items.linkUrl}" title="${items.linkText}">${items.linkText}</a>
             </li>
           </ul>
-          <div class="copyright desktop year"> &copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
+          <div data-sly-test="${footer.copyrightText}" class="copyright desktop year"> &copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
 
           <!-- <div class="copyright desktop ">&copy; 2021 Etisalat. All Rights Reserved.</div> -->
         </div>
         <div class="col-xs-12 col-md-3">
-          <a class="etisalat-logo" href="${footer.promo.linkUrl}" title="Expo 2020">
+          <a data-sly-test="${footer.promo.imgUrl}" class="etisalat-logo" href="${footer.promo.linkUrl}" title="Expo 2020">
             <img alt="icon-amex-card"  src="${footer.promo.imgUrl}" title="icon-amex-card"/>
           </a>
           <div class="copyright">&copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>

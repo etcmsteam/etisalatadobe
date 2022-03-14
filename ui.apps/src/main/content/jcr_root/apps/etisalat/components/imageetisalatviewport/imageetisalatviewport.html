@@ -2,14 +2,9 @@
      data-sly-use.imageViewport="com.etisalat.core.models.ImageViewportModel">
      
  <picture data-sly-test="${properties.viewPortLayout == '6-viewport'}">
-   <source data-sly-test="${imageViewport.image414px}" srcset="${imageViewport.image414px}" media="(max-width: 414px)">
-   <source data-sly-test="${imageViewport.image768px}" srcset="${imageViewport.image768px}" media="(max-width: 768px)">
-   <source data-sly-test="${imageViewport.image1024px}" srcset="${imageViewport.image1024px}" media="(max-width: 1024px)">
-   <source data-sly-test="${imageViewport.image1366px}" srcset="${imageViewport.image1366px}" media="(max-width: 1366px)">
-   <source data-sly-test="${imageViewport.image1440px}" srcset="${imageViewport.image1440px}" media="(max-width: 1440px)">
-   <source data-sly-test="${imageViewport.image1920px}" srcset="${imageViewport.image1920px}" media="(max-width: 1920px)">
-   <img data-sly-test="${imageViewport.image1920px}" src="${imageViewport.image1920px}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
-     alt="${imageViewport.image1920PXAltText ? imageViewport.image1920PXAltText : ''}">
+    <sly data-sly-use.sixViewportTemplate="6viewport.html"
+      data-sly-call="${sixViewportTemplate.sixViewport @ imageViewport=imageViewport}">
+    </sly>
  </picture>
  
   <picture data-sly-test="${properties.viewPortLayout == '4-viewport'}">
@@ -26,6 +21,6 @@
 
   <div data-sly-test="${properties.viewPortLayout == '1-viewport' && properties['fileReference']}" class="${!wcmmode.edit ? 'cover' : ''}">
      <div class="lazyloaded" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>         
-  </div>  
+  </div>
 </sly>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !resource.hasChildren}"></sly>

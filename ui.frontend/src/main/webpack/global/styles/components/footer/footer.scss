@@ -51,6 +51,9 @@
     display: block !important;
     height: auto !important;
   }
+  .quick-links-section .quick-links-body {
+    margin-bottom: 30px
+  }
 }
 
 @media (min-width: 992px) {
@@ -64,6 +67,7 @@
   font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
   font-size: 14px;
   width: fit-content;
+  line-height: 1.43;
 
   &.icon-new-window {
     &:after,
@@ -88,8 +92,12 @@
   }
 }
 
-@media (min-width: 992px) {
-  .quick-links-section .quick-links-body .links-item {
+
+
+.quick-links-section .quick-links-body .links-item {
+  padding-bottom: 1.4rem;
+
+  @media (min-width: 992px) {
     padding-bottom: 10px;
     position: relative;
   }
@@ -1077,7 +1085,6 @@
 
 .footer-links-logo-section .flex-container {
   display: block;
-  margin-bottom: toRem(32);
 }
 
 .footer-links-logo-section .flex-container .etisalat-logo,
@@ -1101,12 +1108,11 @@
     display: flexbox;
     display: flex;
     -ms-flex-align: center;
-    margin-top: toRem(50);
   }
 
   .footer-links-logo-section .flex-container .footer-links-nav {
-    margin-bottom: 1rem;
-    margin-top: toRem(16);
+    margin-bottom: 1rem !important;
+    margin-top: 0 !important;
     text-align: left;
   }
 
@@ -1173,7 +1179,7 @@
   }
 }
 
-[lang="ar"] [dir="rtl"] .footer-links-logo-section li:last-child a {
+[lang="ar"] [dir="rtl"] .footer-links-logo-section .footer-links-nav li:last-child a {
   border-left: none;
 }
 
@@ -1187,6 +1193,15 @@
       text-align: right;
     }
   }
+}
+
+[lang="ar"] [dir="rtl"] .footer-links-logo-section .footer-links-nav li a {
+  padding-right: 0;
+  margin-right: 0;
+  padding-left: 1.5rem;
+  margin-left: 1.5rem;
+  border-right: 0;
+  border-left: 1px solid #e5e5e5;
 }
 
 @media (max-width: 991px) {
@@ -1381,6 +1396,7 @@
     letter-spacing: 0;
     margin-bottom: 16px;
     text-transform: none;
+    line-height: 1.6;
   }
 }
 
@@ -1502,10 +1518,6 @@
   display: flexbox;
   display: flex;
   -ms-flex-align: center;
-}
-
-.quick-links-section .quick-links-body .links-item {
-  padding-bottom: 1.4rem;
 }
 
 .quick-links-section .quick-links-body .links-item a:hover {
@@ -1693,4 +1705,5 @@
 .footer .quick-links-section {
   padding-bottom: toRem(20);
   padding-top: toRem(20);
+  margin-bottom: toRem(24);
 }

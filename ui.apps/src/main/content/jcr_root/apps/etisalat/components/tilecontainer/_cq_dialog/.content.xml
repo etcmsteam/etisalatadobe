@@ -323,6 +323,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <nonactionboxbehavior
+                                                        granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                         fieldLabel="Non Action Box Container Behavior"
@@ -340,16 +341,79 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="With Quotes"
                                                                 value="with-quotes"/>
+                                                            <leftrightvariation
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="With Left Right Variation"
+                                                                value="leftRightVariation"/>
                                                         </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".leftrighttilelayout-showhide-target"/>
                                                     </nonactionboxbehavior>
-                                                    <nonactionboxdescription
+                                                    <descriptionBox
+                                                        granite:class="leftrighttilelayout-showhide-target"
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
-                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                        fieldDescription="Text that will appear for the Non Action Box Description."
-                                                        fieldLabel="Non Action Box Description"
-                                                        name="./nonactionboxDesc"
-                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <nonactionboxdescription
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                                fieldDescription="Text that will appear for the Non Action Box Description."
+                                                                fieldLabel="Non Action Box Description"
+                                                                name="./nonactionboxDesc"
+                                                                useFixedInlineToolbar="{Boolean}true"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="with-pretitle"
+                                                            showhidetargetvalue1="with-title"
+                                                            showhidetargetvalue2="with-quotes"/>
+                                                    </descriptionBox>
+                                                    <tileFlip
+                                                        granite:class="leftrighttilelayout-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <flipped
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldLabel="Image Alignment"
+                                                                name="./tileFlipped">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <right-image
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Right Image"
+                                                                        value=""/>
+                                                                    <left-image
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Left Image"
+                                                                        value="flipped"/>
+                                                                </items>
+                                                            </flipped>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="leftRightVariation"/>
+                                                    </tileFlip>
+                                                    <promo_leftright
+                                                        granite:class="leftrighttilelayout-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <promoleftright
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                                fieldDescription="Select for Promo in Left Right variation."
+                                                                name="./promoLeftRight"
+                                                                text="Promo in Left/Right Variation"
+                                                                uncheckedValue="false"
+                                                                value="true"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="leftRightVariation"/>
+                                                    </promo_leftright>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"

@@ -1,4 +1,5 @@
-<sly data-sly-use.tileModel="com.etisalat.core.models.TileModel"          
+<sly data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"          
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
    <sly data-sly-test="${tileModel.tiletitle}">
        <a data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" 
@@ -6,8 +7,11 @@
 		  class="link-cover"
 		  target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
 	  <div class="media-content">
-	    <div data-sly-test="${properties['image/fileReference']}" class="img-container">	
-	       <div class="cover" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>	        	              	        
+	    <div class="img-container" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">	
+	       <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+			   <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+		   </div>
+		   <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>	        	              	        
 	    </div>
 	    <div class="body-wrapper">
 	      <div class="body">
