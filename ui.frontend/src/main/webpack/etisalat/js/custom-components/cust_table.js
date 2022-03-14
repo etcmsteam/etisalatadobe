@@ -145,7 +145,8 @@
                 var tableTR = table + ' tbody tr';
 
                 $(table).show();
-
+                $(this).closest('.dropdown-menu').find('a').removeClass('active');
+                console.log("ss");
                 if (removeTag != '' && removeTag != undefined) {
 
 
