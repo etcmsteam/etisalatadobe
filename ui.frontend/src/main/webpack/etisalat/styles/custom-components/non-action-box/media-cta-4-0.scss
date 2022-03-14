@@ -280,6 +280,43 @@
   }
 }
 
+.media-cta-image-flipped {
+  .cta-with-main-text-4-0.with-single-col {
+    .media-cta-text-4-0 {
+      .media-content {
+        .img-container {
+          @media screen and (min-width: 768px) {
+            margin-right: 0;
+            margin-left: toRem(16);
+            @include rtlBlock {
+               margin-right: toRem(16);
+                margin-left: 0;
+            }
+          }
+          @media screen and (min-width: 992px) {
+            order: 2;
+            margin-left: toRem(24);
+            @include rtlBlock {
+               margin-right: toRem(24);
+                margin-left: 0;
+            }
+          }
+        }
+        .body-wrapper {
+          @media screen and (min-width: 768px) {
+            order: 1;
+            padding-left: toRem(16);
+            padding-right: 0;
+            @include rtlBlock {
+              padding-right: toRem(16);
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 // arabic language
 *[lang="ar"] {
   *[dir="rtl"] {
