@@ -132,17 +132,23 @@ export const ANAEMARATI_CARDS = () => {
     const rootInstanceClass = `plans-full-width-slider-${index}`;
     $rootThis.addClass(rootInstanceClass);
 
+    // /content/dam/etisalat/prod-mock-assets/anaemarat-gold-plans-data-ar.json
+    const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
     const DATA_PARAMS = $rootThis.data();
+    const defaultDataPath =
+      locale === "en"
+        ? "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json"
+        : "/content/dam/etisalat/prod-mock-assets/anaemarat-gold-plans-data-ar.json";
+        
     const {
       dataJsonUrl: DATA_URL,
-      dataJsonPath: DATA_PATH = "/content/dam/mock-data/anaemarati-gold-plans-data.json",
+      dataJsonPath: DATA_PATH = defaultDataPath,
       categoryId: CATEGORY_ID = "cat1090015",
       requestMethod: REQUEST_METHOD = "GET",
       enableReqParams: ENABLE_REQ_PARAMS,
       ctaUrl: CTA_URL = "/b2c/eshop/postpaidLine?",
     } = DATA_PARAMS;
 
-    const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
     let url = DATA_URL || DATA_PATH;
 
     if (ENABLE_REQ_PARAMS) {
