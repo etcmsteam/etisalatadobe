@@ -393,6 +393,32 @@
                                         fieldDescription="Apply Button Text"
                                         fieldLabel="Apply Button Text"
                                         name="./applyButtonLabel"/>
+                                     <allCategoriesEnabled
+		                                granite:class="cq-dialog-checkbox-showhide"
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                fieldDescription="When checked, all categories product filter option will add."
+		                                name="./allCategoryFilterEnabled"
+		                                text="Enable All Categories Product Filter"
+		                                uncheckedValue="{Boolean}false"
+		                                value="{Boolean}true">
+		                                <granite:data
+		                                    jcr:primaryType="nt:unstructured"
+		                                    cq-dialog-checkbox-showhide-target=".categoriesTogglefield"/>
+		                            </allCategoriesEnabled>
+		                            <allcategoryLabel
+		                                granite:class="categoriesTogglefield"
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/container">
+		                                <items jcr:primaryType="nt:unstructured">
+		                                   <applybuttonlabel
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="All Categories Filter Text"
+		                                        fieldLabel="All Categories Filter Text"
+		                                        name="./allCategoriesFilterText"/>
+		                                 </items>
+		                            </allcategoryLabel>
                                 </items>
                             </filterOptions>
                         </items>

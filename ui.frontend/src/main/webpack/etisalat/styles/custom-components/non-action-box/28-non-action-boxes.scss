@@ -19,10 +19,18 @@
         margin-left: toRem(16);
         margin-bottom: toRem(16);
 
+        @include respond-to-max($desktop-min) {
+          margin-left: 0;
+        }
+
         @include rtlBlock {
           padding-right: 0;
           margin-left: 0;
           margin-right: toRem(16);
+
+          @include respond-to-max($desktop-min) {
+            margin-right: 0;
+          }
         }
       }
     }
@@ -302,6 +310,10 @@
                 @include respond-to-max($tablet) {
                   width: 100%;
                 }
+
+                @include rtlBlock {
+                  text-align: right;
+                }
               }
 
               .loading-message {
@@ -365,15 +377,19 @@
           transform-origin: 0 0;
           font-size: toRem(16);
           z-index: 2;
+
+          @include rtlBlock {
+            transform-origin: 100% 50% !important;
+          }
         }
 
         .cmp-form-text {
-          @include respond-to-max($phone) {
-            margin-bottom: toRem(60);
-          }
-
           &__text {
-            box-shadow: none;
+            box-shadow: none !important;
+
+            @include respond-to-max($phone) {
+              margin-bottom: toRem(60);
+            }
           }
 
           label {
@@ -662,46 +678,84 @@
 @include respond-to-max($phone) {
   .elife-monthly-wrapper.non-action-boxes-section .form button {
     width: 80.27vw;
+
+    @include rtlBlock {
+      width: 77.2vw;
+    }
   }
 }
 
 // Accessibility
 .acc-black,
 .acc-blue {
-  .non-action-boxes-section .media-cta-section .media-cta-container .detail-price-new {
-    .price,
-    .price-valute {
-      color: $white;
+  .non-action-boxes-section .media-cta-section .media-cta-container {
+    .detail-price-new {
+      .price,
+      .price-valute,
+      .ul-list-cms ul li {
+        color: $white !important;
+      }
+
+      .before-price-container {
+        background-color: $black;
+        border: toRem(1) solid $white;
+        color: $white;
+      }
     }
 
-    .before-price-container {
+    .collapse-tab-wrapper .account-number-form .collapse-content .panel-body {
       background-color: $black;
-      border: toRem(1) solid $white;
-      color: $white;
+      border-color: $white;
+
+      .cmp-form-text__text,
+      label {
+        color: $white;
+        border-bottom-color: $white;
+      }
     }
   }
 }
 
 .acc-blue {
-  .non-action-boxes-section .media-cta-section .media-cta-container .detail-price-new {
-    .before-price-container {
+  .non-action-boxes-section .media-cta-section .media-cta-container {
+    .detail-price-new {
+      .before-price-container {
+        background-color: $blue4;
+      }
+    }
+
+    .collapse-tab-wrapper .account-number-form .collapse-content .panel-body {
       background-color: $blue4;
     }
   }
 }
 
 .acc-yellow {
-  .non-action-boxes-section .media-cta-section .media-cta-container .detail-price-new.green {
-    .price,
-    .price-valute,
-    .before-price-container {
-      color: $yellow-light;
+  .non-action-boxes-section .media-cta-section .media-cta-container {
+    .detail-price-new.green {
+      .price,
+      .price-valute,
+      .before-price-container,
+      .ul-list-cms ul li {
+        color: $yellow-light;
+      }
+
+      .before-price-container {
+        background-color: $black;
+        border: toRem(1) solid $yellow-light;
+        color: $yellow-light;
+      }
     }
 
-    .before-price-container {
+    .collapse-tab-wrapper .account-number-form .collapse-content .panel-body {
       background-color: $black;
-      border: toRem(1) solid $yellow-light;
-      color: $yellow-light;
+      border-color: $yellow-light;
+
+      .cmp-form-text__text,
+      label {
+        color: $yellow-light;
+        border-bottom-color: $yellow-light;
+      }
     }
   }
 }

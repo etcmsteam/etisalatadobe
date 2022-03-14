@@ -9,11 +9,16 @@ import { swiperInit } from "../../swiperInitialize";
     $(document)
       .find(".hero-banner-section.multi-slides")
       .each(function (index) {
+        var carouselEffect = "fade";
+        var hasCallToAction = $(this).find(".hero-images-call-to-action-section");
+        if(hasCallToAction.length > 0) {
+          carouselEffect = "slide";
+        }
         $(this).addClass("h-b-slider-multi" + index);
         var $carouselSliderCurrentPromotionsMulti = swiperInit(".h-b-slider-multi" + index + " .swiper-hero-container", {
           //clickable: true,
           direction: "horizontal",
-          effect: "fade",
+          effect: carouselEffect,
           followFinger: false,
           nextButton: ".hero-next",
           prevButton: ".hero-prev",
@@ -153,7 +158,7 @@ import { swiperInit } from "../../swiperInitialize";
     $(".hero-description p").each(function () {
       var $eleText = $(this).text();
       var $textResult = limitText($eleText, 96);
-      if ($eleText.length >= 96 && $eleText.slice(-3) !== "...") {
+      if ($eleText.length >= 95 && $eleText.slice(-3) !== "...") {
         $(this).text($textResult + "...");
       }
     });

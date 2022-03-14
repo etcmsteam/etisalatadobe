@@ -1,12 +1,15 @@
-<template data-sly-template.singleCarousel="${ @ properties}">
+<template data-sly-template.singleCarousel="${ @ properties,imageViewportModel}">
 	<div data-sly-use.carousel="com.adobe.cq.wcm.core.components.models.Carousel" data-sly-use.templates="core/wcm/components/commons/v1/templates.html" data-panelcontainer="${wcmmode.edit && 'Promotional carousel'}" id="${carousel.id}" class="cmp-carousel product-grid-single" role="group" aria-label="${carousel.accessibilityLabel}" aria-live="polite" aria-roledescription="carousel" data-cmp-is="carousel" data-cmp-autoplay="${(wcmmode.edit || wcmmode.preview) ? '' : carousel.autoplay}" data-cmp-delay="${carousel.delay}" data-cmp-autopause-disabled="${carousel.autopauseDisabled}" data-cmp-data-layer="${carousel.data.json}" data-placeholder-text="${wcmmode.edit && 'Please add Promotional Carousel items here' @ i18n}">
 		<sly data-sly-test.oneTile="${carousel.items.size == 1}"></sly>
 		<sly data-sly-test.twoTile="${carousel.items.size ==2}"></sly>
 		<sly data-sly-test.threeTile="${carousel.items.size ==3}"></sly>
 		<div class="product-promotions-wrraper one-only">
-			<div class="background-with-color">
-				<div class="cover" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
-			</div>
+			<div class="background-with-color" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+				<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+				   <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+				</div>
+				<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+			 </div>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-xs-12"> <span class="lbl">${properties.promotionPreTitle}</span>
