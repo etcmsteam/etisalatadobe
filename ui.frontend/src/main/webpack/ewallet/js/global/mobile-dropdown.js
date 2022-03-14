@@ -15,11 +15,6 @@
     e.preventDefault();
     MENU_ICON.toggleClass("CloseBtn");
     MENU_WRAPPER.toggleClass("ShowMenu");
-    MENU_WRAPPER.slideToggle("slow");
-  });
-
-  $(".menu li a").on("click", function () {
-    $(".MenuWrapper.ShowMenu").slideToggle("slow");
   });
 
   function isMobileActive(MEDIA_QUERY) {
