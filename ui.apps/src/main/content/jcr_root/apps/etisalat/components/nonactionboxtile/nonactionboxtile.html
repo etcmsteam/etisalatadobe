@@ -9,8 +9,8 @@
    <!-- /*only title*/-->
    <sly data-sly-test="${tileModel.nabBoxVariation == 'with-title'}">
       <div class="media-content">
-         <div class="img-container" data-sly-test="${viewports}">
-            <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+         <div class="img-container">
+            <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport' && viewports}">
                <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
             </div>
             <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
@@ -31,7 +31,7 @@
    </sly>
    <!--/*pretitle OR leftRightVariation*/-->
 
-   <sly data-sly-test="${(tileModel.nabBoxVariation == 'with-pretitle' || tileModel.nabBoxVariation == 'leftRightVariation') && viewports}">
+   <sly data-sly-test="${tileModel.nabBoxVariation == 'with-pretitle' || tileModel.nabBoxVariation == 'leftRightVariation'}">
 
       <div class="nab-wrapper">
          <div class="nab-content ${resource.parent.promoLeftRight ? 'promo-content' : ''}">
