@@ -1022,6 +1022,11 @@ $(document).ready(function () {
       //   deviceId: "C9DD924D-E8B3-4D83-BB01-D0F04A96E3E3",
       //   transactionId: "1569360219214",
       // };
+      var data = {
+        lat: currentLocation.lat,
+        lng: currentLocation.lng,
+        range: window.appConfig.maps.range,
+      };
       if (storesLoaded) {
         if (currentView == "map") {
           renderStores(storeLocatorData);
@@ -1033,21 +1038,16 @@ $(document).ready(function () {
       $.ajax({
         type: "POST",
         dataType: "json",
+        encode: true,
         url: "https://mobileapp.e-wallet.ae/mwallet-rest/api/help/stores",
 
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        data: {
-          lat: currentLocation.lat,
-          lng: currentLocation.lng,
-          range: window.appConfig.maps.range,
-        },
-        //data: JSON.stringify(payload),
-        //timeout:9999,
-        // cache: true, WORKS ONLY FOR GET,HEAD requests http://api.jquery.com/jQuery.ajax/
-        //encode: true
+
+        data: JSON.stringify(data),
+
         error: function (response) {
           console.log(response);
         },
