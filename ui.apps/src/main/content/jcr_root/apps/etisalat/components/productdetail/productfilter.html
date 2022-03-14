@@ -106,9 +106,15 @@
             <div class="category-list-collapsible-section">
                 <div class="category-body-collapisble collapse in">
                     <div class="category-list-wrap clearfix">
-                        <ul data-sly-test="${productDetails.productFilterTagDetails.size > 0}" 
-                            data-sly-list.productFilter="${productDetails.productFilterTagDetails}">
-                            <li class="${productFilterList.first ? 'active' : ''}" data-sly-test="${productFilter.tagTitle}">
+                         <ul data-sly-test="${(properties.allCategoryFilterEnabled && properties.allCategoriesFilterText) || productDetails.productFilterTagDetails.size > 0}">
+                            <li class="active" data-sly-test="${properties.allCategoryFilterEnabled && properties.allCategoriesFilterText}">
+                               <div class="checkboxes-wrap">
+                                   <input name="checkbox_list_recommended" checked="" type="radio" id="${component.id}_checkbox_Filter-1" data-label="all-categories">
+                                   <label for="${component.id}_checkbox_Filter-1" class="floating-label">${properties.allCategoriesFilterText}</label>
+                               </div>
+                            </li>
+                            <li data-sly-test="${productDetails.productFilterTagDetails.size > 0}" 
+                                data-sly-repeat.productFilter="${productDetails.productFilterTagDetails}">
                                 <div class="checkboxes-wrap">
                                     <input name="checkbox_list_recommended" type="radio" id="${component.id}_checkbox_${productFilterList.count}"
                                         data-label="${productFilter.tagName}">
@@ -124,8 +130,6 @@
                     <a href="#" class="btn btn-green ripple-effect">${properties.applyButtonLabel}</a>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
