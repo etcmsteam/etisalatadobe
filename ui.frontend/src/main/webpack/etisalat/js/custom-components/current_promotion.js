@@ -106,6 +106,7 @@ $(document).ready(function () {
   // popup
 
   $(".btn-modal").on("click", function (event) {
+    event.preventDefault();
     var dataLabel = $(this).attr("data-label");
     if (dataLabel) {
       var $el = $("#" + dataLabel).clone();
