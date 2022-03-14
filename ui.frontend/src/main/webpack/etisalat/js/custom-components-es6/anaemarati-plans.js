@@ -138,11 +138,11 @@ export const ANAEMARATI_CARDS = () => {
     const defaultDataPath =
       locale === "en"
         ? "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json"
-        : "/content/dam/etisalat/prod-mock-assets/anaemarat-gold-plans-data-ar.json";
+        : "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data-ar.json";
         
     const {
-      dataJsonUrl: DATA_URL,
-      dataJsonPath: DATA_PATH = defaultDataPath,
+      jsonUrl: DATA_URL,
+      jsonPath: DATA_PATH = defaultDataPath,
       categoryId: CATEGORY_ID = "cat1090015",
       requestMethod: REQUEST_METHOD = "GET",
       enableReqParams: ENABLE_REQ_PARAMS,
