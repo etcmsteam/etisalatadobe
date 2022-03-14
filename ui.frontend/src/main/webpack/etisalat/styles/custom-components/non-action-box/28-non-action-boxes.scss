@@ -18,6 +18,12 @@
         padding-left: 0;
         margin-left: toRem(16);
         margin-bottom: toRem(16);
+
+        @include rtlBlock {
+          padding-right: 0;
+          margin-left: 0;
+          margin-right: toRem(16);
+        }
       }
     }
   }
@@ -74,7 +80,7 @@
 
         .price-timing,
         .price-valute {
-          @include font-family-Helvetica;
+          @include font-family-lato;
           font-size: $font14;
         }
 
@@ -82,7 +88,7 @@
           font-size: $font14;
           margin-top: toRem(8);
           line-height: toRem(17);
-          @include font-family-Helvetica;
+          @include font-family-lato;
         }
 
         .before-price-container {
@@ -351,6 +357,42 @@
             color: $almost-black !important;
           }
         }
+
+        .form-group .valid ~ label,
+        .form-group input:valid ~ label {
+          color: $almost-black;
+          transform: translateY(-10px) scale(0.8);
+          transform-origin: 0 0;
+          font-size: toRem(16);
+          z-index: 2;
+        }
+
+        .cmp-form-text {
+          @include respond-to-max($phone) {
+            margin-bottom: toRem(60);
+          }
+
+          &__text {
+            box-shadow: none;
+          }
+
+          label {
+            left: toRem(12);
+
+            @include rtlBlock {
+              left: 0;
+              right: toRem(12);
+            }
+          }
+        }
+
+        .btn {
+          margin-top: toRem(19.2);
+
+          @include respond-to-max($phone) {
+            margin-top: toRem(-6);
+          }
+        }
       }
     }
 
@@ -383,6 +425,7 @@
         color: $almost-black;
         font-weight: normal;
         margin-bottom: toRem(16);
+        margin-top: 0;
 
         @include respond-to-min($desktop) {
           font-size: $font28;
@@ -407,6 +450,11 @@
 
         &.pr-0 {
           padding-right: 0 !important;
+
+          @include rtlBlock {
+            padding-right: toRem(12) !important;
+            padding-left: 0 !important;
+          }
         }
 
         @include respond-to-max($desktop) {
@@ -442,6 +490,14 @@
       height: toRem(132) !important;
       padding: 0 toRem(12) 0 0 !important;
 
+      @include rtlBlock {
+        padding: 0 0 0 toRem(12) !important;
+
+        @include respond-to-max($desktop-min) {
+          padding: 0 !important;
+        }
+      }
+
       @include respond-to-min($tablet) {
         max-height: toRem(250) !important;
         min-height: toRem(250) !important;
@@ -452,6 +508,10 @@
         max-height: toRem(270) !important;
         min-height: toRem(270) !important;
         height: toRem(270) !important;
+      }
+
+      @include respond-to-max($phone) {
+        padding: 0 !important;
       }
 
       & > .cover {
@@ -485,10 +545,6 @@
 
           .body-standard {
             order: 2;
-          }
-
-          .wst-form {
-            padding: 0;
           }
         }
 
@@ -562,7 +618,6 @@
   }
 
   .elife-monthly-wrapper.non-action-boxes-section .ul-list-cms ul > li {
-    padding-left: 0;
     font-size: 0.88rem !important;
     line-height: toRem(20) !important;
   }
@@ -599,32 +654,54 @@
   .elife-monthly-wrapper.non-action-boxes-section .form button {
     position: absolute;
     bottom: toRem(-21);
-    left: -5vw;
+    top: -5vh;
     width: 95vw;
   }
 }
 
 @include respond-to-max($phone) {
   .elife-monthly-wrapper.non-action-boxes-section .form button {
-    width: 88vw;
+    width: 80.27vw;
   }
 }
 
-// *************************************
-// arabic overides
-// *************************************
+// Accessibility
+.acc-black,
+.acc-blue {
+  .non-action-boxes-section .media-cta-section .media-cta-container .detail-price-new {
+    .price,
+    .price-valute {
+      color: $white;
+    }
 
-*[lang="ar"] {
-  *[dir="rtl"] {
-    .non-action-boxes-section {
-      .media-cta-section {
-        .media-cta-wrapper {
-          .body-standard {
-            padding: 0;
-            padding-left: toRem(64);
-          }
-        }
-      }
+    .before-price-container {
+      background-color: $black;
+      border: toRem(1) solid $white;
+      color: $white;
+    }
+  }
+}
+
+.acc-blue {
+  .non-action-boxes-section .media-cta-section .media-cta-container .detail-price-new {
+    .before-price-container {
+      background-color: $blue4;
+    }
+  }
+}
+
+.acc-yellow {
+  .non-action-boxes-section .media-cta-section .media-cta-container .detail-price-new.green {
+    .price,
+    .price-valute,
+    .before-price-container {
+      color: $yellow-light;
+    }
+
+    .before-price-container {
+      background-color: $black;
+      border: toRem(1) solid $yellow-light;
+      color: $yellow-light;
     }
   }
 }
