@@ -15,6 +15,9 @@
 
   &.has-bg {
     background-color: $module-bg-color;
+    @include respond-to-max($desktop-min) {
+      padding: toRem(16) 0;
+    }
   }
 
   .container {
@@ -40,11 +43,15 @@
 
   .paragraph-styling p {
     margin-bottom: toRem(16);
-
+    font-size: toRem(16);
     @include font-family-lato();
 
     @include respond-to-max($desktop-min) {
       margin-bottom: toRem(12);
+    }
+    @include respond-to-max($desktop) {
+      font-size: toRem(14);
+      line-height: 20px;
     }
   }
 
@@ -1070,6 +1077,9 @@
 
   .content {
     margin-top: 0;
+    @include respond-to-max($desktop) {
+      margin-bottom: 20px;
+    }
   }
 
   &.has-bg {
