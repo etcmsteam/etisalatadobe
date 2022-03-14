@@ -1,5 +1,6 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
+/* eslint-disable */
 const setSpacebetweenTableCarousel = (parent) => {
   $(parent)
     .find(".swiper-container")
