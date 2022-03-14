@@ -26,7 +26,7 @@ class DigitalNotificationTest {
 
 	@BeforeEach
 	public void setup() throws Exception {
-		context.addModelsForClasses(ProductDetailsItem.class);
+		context.addModelsForClasses(DigitalNotification.class);
 		context.load().json("/com/etisalat/core/models/DigitalNotification.json", CONTENT_ROOT);
 	}
 

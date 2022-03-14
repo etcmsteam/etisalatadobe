@@ -9,18 +9,17 @@
     border-width: 1px;
     color: $link-color;
     display: inline-block;
-    font-size: toRem(16);
+    font-size: 16px;
     font-weight: 700;
     height: 57px;
     line-height: 28px;
     margin-top: 50px;
     outline: 0;
-    padding: 0.75rem 0.5rem;
+    padding: 15px 0;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
-    width: 100%;
     width: 318px;
 
     &:hover {
@@ -53,26 +52,32 @@
     margin: 35px 0 20px;
   }
 
-  @include respond-to-min($tablet) {
-    .cmp-text {
-      p {
-        padding: 0 25%;
-      }
-    }
-
+  @include respond-to-max($desktop) {
     h2 {
-      font-size: toRem(36);
+      font-size: 36px;
       line-height: 42px;
-    }
-
-    a {
-      max-width: 100%;
     }
   }
 
-  @include respond-to-min($desktop) {
-    h2 {
-      font-size: toRem(48);
+  @include respond-to-min-max($desktop, $device-736) {
+    p {
+      padding: 0 12%;
+    }
+  }
+
+  @include respond-to-max($XS-device) {
+    a {
+      max-width: 100%;
+    }
+
+    .cmp-text {
+      padding: 0;
+    }
+  }
+
+  @include respond-to-max($device-736) {
+    a {
+      margin-top: 35px;
     }
   }
 }

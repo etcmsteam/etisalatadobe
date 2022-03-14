@@ -1,3 +1,148 @@
+// media cta variation
+.nab-media-cta {
+  .cmp-teaser {
+    @include respond-to-max($custom-width-tab) {
+      padding: 0 toRem(16);
+    }
+
+    &__content {
+      padding-bottom: 0;
+    }
+
+    &__title {
+      color: $almost-black;
+      font-size: $font32;
+      line-height: toRem(40);
+      margin: 0;
+      margin-bottom: toRem(32);
+
+      @include respond-to-max($desktop) {
+        font-size: $font26;
+      }
+    }
+  }
+
+  .image-right,
+  .image-left {
+    .cmp-teaser {
+      &__image {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: toRem(12);
+
+        @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+
+        @include rtlBlock {
+          padding-left: 0;
+          padding-right: toRem(12);
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .cmp-teaser__content {
+      padding-right: toRem(64);
+
+      @include respond-to-max($desktop-min) {
+        padding: 0;
+      }
+
+      @include rtlBlock {
+        padding-left: toRem(64);
+        padding-right: 0;
+
+        @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+      }
+
+      .cmp-teaser {
+        &__pretitle {
+          color: $gray1;
+          font-size: $font12;
+          letter-spacing: toRem(4);
+          line-height: toRem(26);
+          margin: 0 !important;
+          margin-bottom: toRem(6) !important;
+          margin-top: toRem(12) !important;
+          padding: 0;
+        }
+
+        &__title {
+          font-size: $font28;
+          line-height: toRem(38);
+          margin: 0;
+          margin-bottom: toRem(16);
+
+          @include respond-to-max($desktop) {
+            font-size: $font22;
+            line-height: normal;
+          }
+        }
+
+        &__description {
+          p {
+            color: $gray1;
+            font-size: $font16;
+            line-height: toRem(26);
+            margin-bottom: toRem(8);
+
+            @include respond-to-max($desktop) {
+              font-size: $font14;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .image-left {
+    .cmp-teaser {
+      &__image {
+        margin: 0;
+        padding-left: 0;
+        padding-right: toRem(12);
+
+        @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+
+        @include rtlBlock {
+          padding-left: toRem(64);
+          padding-right: 0;
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
+        }
+      }
+
+      &__content {
+        padding-left: toRem(64);
+        padding-right: 0;
+
+        @include respond-to-max($desktop-min) {
+          padding-left: 0;
+        }
+
+        @include rtlBlock {
+          padding-right: toRem(64);
+          padding-left: 0;
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
 // two cols variations
 .non-action-boxes-two-cols-4-0 {
   padding: toRem(16) 0;
@@ -8,7 +153,7 @@
 
   .container {
     @include respond-to-min($desktop-wide) {
-      width: toRem(1200);
+      width: toRem(1200) !important;
     }
 
     @include respond-to-max($desktop-wide) {
@@ -45,13 +190,17 @@
         width: 33.3%;
         margin-right: toRem(24);
         max-width: toRem(384);
+
         @include rtlBlock() {
           margin-left: toRem(24);
         }
       }
+
       ol {
         @include rtlBlock() {
           list-style-position: inside;
+          margin-left: 0;
+          margin-right: toRem(28);
         }
       }
     }
@@ -99,28 +248,18 @@
             position: relative;
 
             @include respond-to-min($tablet) {
+              height: toRem(258);
               margin-bottom: toRem(24);
+            }
+
+            @include respond-to-min($desktop) {
               height: toRem(224);
             }
 
-            .cover {
+            div.cover {
               border-radius: toRem(4);
-              width: toRem(385);
-              max-height: toRem(244);
-
-              @include respond-to-max($desktop-min) {
-                width: toRem(358);
-              }
-
-              @include respond-to-min-max($desktop-wide, $desktop) {
-                width: toRem(304);
-              }
-
-              @include respond-to-max($custom-width-tab) {
-                width: 100%;
-                max-height: toRem(218);
-              }
             }
+
             .icon {
               width: 64px;
               height: 64px;
@@ -132,19 +271,22 @@
                 width: 64px;
                 height: 64px;
               }
-              svg, img {
+
+              svg,
+              img {
                 width: 64px;
                 height: 64px;
                 @media screen and (min-width: 768px) {
-                    width: 74px;
-                    height: 74px;
+                  width: 74px;
+                  height: 74px;
                 }
                 @media screen and (min-width: 992px) {
-                    width: 64px;
-                    height: 64px;
+                  width: 64px;
+                  height: 64px;
                 }
               }
             }
+
             .youtube-popup-container {
               position: fixed;
               z-index: 1062;
@@ -162,12 +304,14 @@
                 @media (min-width: 992px) {
                   top: 7%;
                 }
+
                 .modal-content {
                   height: 500px;
                   border: 0;
                   @media (min-width: 992px) {
                     height: 720px;
                   }
+
                   iframe {
                     width: 100%;
                     height: 100%;
@@ -175,6 +319,7 @@
                 }
               }
             }
+
             // youtube video link
             .youtube-video-link {
               position: absolute;
@@ -301,13 +446,18 @@ guidelines for main headings h1 to h6
       }
     }
   }
-  .ul-list-cms{
-    ul, ol {
+
+  .ul-list-cms {
+    ul,
+    ol {
       li {
-        ul, ol {
+        ul,
+        ol {
           padding-left: toRem(0);
-          @include rtlBlock(){
+
+          @include rtlBlock() {
             padding-right: toRem(0);
+
             li {
               padding-right: toRem(24);
             }
@@ -357,6 +507,7 @@ guidelines for secondary headings h1 to h4
     h4 {
       font-size: 12px;
       line-height: 1rem;
+
       @include respond-to-min($desktop) {
         font-size: toRem(14);
         line-height: toRem(20);

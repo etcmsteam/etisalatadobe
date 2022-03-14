@@ -77,7 +77,6 @@
       margin-top: toRem(10);
 
       @include respond-to-max($tablet) {
-        height: toRem(300);
         margin: -16px 9px 0;
       }
 
@@ -88,14 +87,14 @@
     }
 
     .cmp-carousel__indicators {
-      margin-top: 40px;
+      margin-top: 50px;
 
-      @include respond-to-max($phone) {
-        margin-top: 40px;
+      @include respond-to-min($tablet) {
+        margin-top: -20px;
       }
 
-      @include respond-to-min-max($desktop, $tablet) {
-        margin-top: 140px;
+      @include respond-to-min($desktop) {
+        margin-top: 50px;
       }
     }
   }
@@ -138,8 +137,13 @@
 
 // Home page Header banner image
 .teaser_img_right {
+
+  @include respond-to-min($desktop) {
+    height: 350px;
+  }
+
   @include respond-to-min($desktop-wide) {
-    height: 380px;
+    height: 420px;
   }
 
   .cmp-teaser {
@@ -148,7 +152,7 @@
     flex-direction: column-reverse;
 
     @include respond-to-min($desktop) {
-      align-items: center;
+      align-items: flex-start;
       flex-direction: row-reverse;
     }
 
@@ -199,16 +203,13 @@
   .cmp-teaser__content {
     padding-bottom: 45px;
     padding-right: 45px;
+    padding-top: 10px;
 
     @include respond-to-min($desktop) {
-      bottom: 0;
-      left: 0;
       padding-bottom: 0;
       padding-left: 0;
       padding-right: 20px;
-      position: absolute;
-      right: 0;
-      top: 10px;
+      padding-top: 20px;
       width: 50%;
     }
 
@@ -248,20 +249,24 @@
     ol {
       display: flex;
       justify-content: left;
-      padding-left: 12px;
+      padding-left: 3px;
 
       @include respond-to-min-max($desktop, $tablet) {
         margin: 0 auto;
-        padding-left: 0;
         width: toRem(660);
       }
 
+      @include respond-to-min($tablet) {
+        margin-top: 16px;
+      }
+
       @include respond-to-min($desktop) {
-        margin: -60px 0 0;
+        padding-left: 0;
+        margin-top: 32px;
       }
 
       @include respond-to-min($desktop-wide) {
-        margin: -30px 0 0;
+        margin-top: -105px;
       }
     }
 
@@ -271,17 +276,22 @@
       box-sizing: border-box;
       float: left;
       height: 14px;
-      margin: 0 5px 0 0;
+      margin: 15px 30px 0 0;
       opacity: 1;
       padding: 0;
       width: 14px;
 
       &--active {
         background-color: $white;
-        height: 14px;
-        margin-bottom: -2px;
-        outline: 2px solid $main-green;
-        width: 14px;
+      }
+
+      @include respond-to-max($tablet) {
+        margin-top: 15px;
+      }
+
+      @include respond-to-min($tablet) {
+        margin-top: 0;
+        margin-right: 12px;
       }
     }
   }

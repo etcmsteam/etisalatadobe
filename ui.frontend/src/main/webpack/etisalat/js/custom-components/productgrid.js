@@ -2,6 +2,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
 (function () {
     //function to pass swiper options collectively
+    var $carouselSliderPlansGrid;
     const swiperOptions = (elem, next, prev, brPoint1, brPoint2, brPoint3, brPoint4, brPoint5) => {
       return {
         touchEventsTarget: "swiper-wrapper",
@@ -40,7 +41,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
         $planTableParent.find('.table-swiper-button-next').addClass('plansRight' + index);
         $planTableParent.find('.table-swiper-button-prev').addClass('plansLeft' + index);
 
-        var $carouselSliderPlansGrid = swiperInit('.plansTable' + index + ' .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, 1.25, 2, 3, 3, 4));
+        $carouselSliderPlansGrid = swiperInit('.plansTable' + index + ' .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, 1.25, 2, 3, 3, 4));
       });
       // plans table slider for CMS modules ends
       if ($( ".smart-home-elife-slider" ).length) {
@@ -209,6 +210,102 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
           setSpacebetweenTableCarousel();
         }, 500);
       });
+
+
+      //Product cards with filter
+      var radios = [];
+      var selected = [];
+
+      $(".category-list-wrap input").each(function () {
+        radios.push($(this));
+      });
+
+      for (var i = 0; i < radios.length; i++) {
+        $(radios[i]).each(function (index) {
+          var self = $(this);
+          if ($(this).prop("checked")) {
+            selected.push($(this));
+
+            // passing data-label and id to function for filtering
+            filterCards($(this).attr("data-label"), $(this));
+          }
+        });
+      }
+
+      // on radio selction show hide right panel ( container )
+      $(".category-list-wrap input").change(function () {
+        if ($(this).is(":checked")) {
+          filterCards($(this).attr("data-label"), $(this));
+        }
+      });
+
+      function filterCards(radioInput, selfFilter) {
+        var filter = $(selfFilter).closest(".category-list-wrap");
+        $(filter).find("ul li").removeClass("active");
+        $(filter)
+          .find("[data-label='" + radioInput + "']")
+          .closest("li")
+          .addClass("active");
+        $(".common > div").css("display", "none");
+
+        if (radioInput === "all-categories") {
+          $(".common > div").css("display", "block");
+        } else {
+          $("[data-label='" + radioInput + "']").css("display", "block");
+        }
+      }
+
+      // filter mobile view popup open close
+      function filtersMobileView(thisValue) {
+        if (window.innerWidth < 992) {
+          var currentElement = $(thisValue).attr("data-label");
+          if (currentElement) {
+            $(".responsive-" + currentElement).addClass("mobileViewActive");
+            $("body").addClass("freeze");
+          }
+        }
+      }
+      $(".filter-compare-sort-section a")
+        .off("click")
+        .on("click", function () {
+          filtersMobileView(this);
+        });
+
+      // to make filters popup in-active ( hide )in mobile view
+      $(".filter-close")
+        .off("click")
+        .on("click", function () {
+          $(".responsive-filters").removeClass("mobileViewActive");
+          $(".responsive-sort").removeClass("mobileViewActive");
+          $("body").removeClass("freeze");
+        });
+
+      // get the ID from URL
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+          sURLVariables = sPageURL.split("&"),
+          sParameterName,
+          i;
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split("=");
+
+          if (sParameterName[0] === sParam) {
+            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+          }
+        }
+        return false;
+      };
+      // load the right container based on id from URL
+      var idToPass = getUrlParameter("selectedFilterID");
+      if (idToPass !== "" && idToPass !== undefined && idToPass !== false) {
+        if (idToPass.includes("?")) {
+          $("[data-label='" + idToPass.slice(0, 1) + "']").click();
+        } else {
+          $("[data-label='" + idToPass + "']").click();
+        }
+      } else {
+        $("[data-label='all-categories']").click();
+      }
     });
 
   //});

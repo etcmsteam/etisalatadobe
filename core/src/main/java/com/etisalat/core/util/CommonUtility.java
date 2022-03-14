@@ -116,6 +116,24 @@ public final class CommonUtility {
 	  }
 	return category;
   }
+  
+  /**
+   * Returns Category Tag Name.
+   *
+   * @param request SlingHttpServletRequest 
+   * @param category Category tag name
+   * @return Category Tag Name
+   */
+  public static String getCategoryTagName(SlingHttpServletRequest request, String category) {
+  final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+    if (StringUtils.isNotBlank(category) && null != tagManager) {
+      final Tag tag = tagManager.resolve(category);
+       if (null != tag) {
+          category = tag.getName();
+       }
+    }
+  return category;
+  }
 
   /**
    * Returns generic Fixed Navigation list for multifield for different purpose
@@ -238,13 +256,25 @@ public final class CommonUtility {
 	/*
 	 * Get Formatted Article Date for Page resource
 	*/
-	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
+	 public static String useFormattedArticleDate(Page currentPage , String dateFormat) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
-		  DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", currentPage.getLanguage(true));
-		  outputFormat.setTimeZone(TimeZone.getDefault());
+		  DateFormat outputFormat = new SimpleDateFormat(dateFormat, currentPage.getLanguage(true));
+		  outputFormat.setTimeZone(getArticleDateTimeZone(currentPage));
 		  String articleDate = outputFormat.format(articleCalender.getTime());
 		  return StringUtils.isNotBlank(articleDate) ? articleDate : StringUtils.EMPTY ;
 	  }
+	 
+    private static TimeZone getArticleDateTimeZone(Page currentPage) {
+      int length = 0;
+      final String dateTime = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, String.class);
+      if (dateTime.contains("+")) {
+        length = dateTime.lastIndexOf("+");
+      } else {
+        length = dateTime.lastIndexOf("-");
+      }
+      String strTimeZone = "GMT" + dateTime.substring(length, dateTime.length());
+      return TimeZone.getTimeZone(strTimeZone);
+    }
   
   /**
    * private constructor to prevent instantiation of class.

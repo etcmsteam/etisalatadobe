@@ -163,7 +163,7 @@ function initProductCards() {
   $(".main-loader").show();
   $.ajax({
     // Our sample url to make request
-    url: window.location.origin + "/content/dam/etisalat/product-details/mockdata/product.json",
+    url: window.location.origin + "/content/dam/etisalat/prod-mock-assets/product.json",
 
     // Type of Request
     type: "GET",

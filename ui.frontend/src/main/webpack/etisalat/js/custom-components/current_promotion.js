@@ -24,12 +24,12 @@ $(document).ready(function () {
             540: {
               spaceBetween: 16,
               slidesPerView: $slider.parent().hasClass("top-carousel") ? 1 : 1.68,
-              loop: false,
+              //loop: false,
             },
             768: {
               spaceBetween: $slider.parent().hasClass("top-carousel") ? 0 : 16,
               slidesPerView: $slider.parent().hasClass("top-carousel") ? 2 : 2.5,
-              loop: false,
+              //loop: false,
             },
             1024: {
               spaceBetween: 24,

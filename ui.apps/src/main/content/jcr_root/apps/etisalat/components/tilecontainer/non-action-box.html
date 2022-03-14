@@ -2,12 +2,12 @@
 
     <sly data-sly-set.oneTileCheck="${container.items.size == 1 ? 'single-tile' : 'testimonialSlider'}"></sly>
 
-    <sly data-sly-test.withquotes="${properties.nonactionboxbehavior == 'with-quotes' ? 'testimonial-module testimonialSlider' : ''}"></sly>
-    <sly data-sly-test.withpretitle="${properties.nonactionboxbehavior == 'with-pretitle' ? 'non-action-boxes-two-cols-4-0' : ''}"></sly>
-    <sly data-sly-test.withtitle="${properties.nonactionboxbehavior == 'with-title' ? 'cta-with-main-text-4-0 with-two-cols' : ''}"></sly>
+    <sly data-sly-test.withquotes="${properties.nabBoxVariation == 'with-quotes' ? 'testimonial-module testimonialSlider' : ''}"></sly>
+    <sly data-sly-test.withpretitle="${properties.nabBoxVariation == 'with-pretitle' ? 'non-action-boxes-two-cols-4-0' : ''}"></sly>
+    <sly data-sly-test.withtitle="${properties.nabBoxVariation == 'with-title' ? 'cta-with-main-text-4-0 with-two-cols' : ''}"></sly>
 
     <!--not testimonials container-->
-    <sly data-sly-test="${properties.nonactionboxbehavior != 'with-quotes'}">
+    <sly data-sly-test="${properties.nabBoxVariation != 'with-quotes'}">
     <div class="${withpretitle}${withtitle}">
         <div class="container">
             <div class="content-wrapper">
@@ -19,9 +19,9 @@
                         <div class="p2">${properties.nonactionboxDesc @ context="html"}</div>
                     </div>
                 </div>
-                <div class="${properties.nonactionboxbehavior == 'with-title' ? 'cta' :'' } ${properties.nonactionboxbehavior == 'with-pretitle' ? 'two-cols-wrapper' :'' }">
+                <div class="${properties.nabBoxVariation == 'with-title' ? 'cta' :'' } ${properties.nabBoxVariation == 'with-pretitle' ? 'two-cols-wrapper' :'' }">
                     <!-- boxes Start-->
-                    <div class="nonactionboxtile ${properties.nonactionboxbehavior == 'with-title' ? 'media-cta-text-4-0 with-up-down' :'' } ${properties.nonactionboxbehavior == 'with-pretitle' ? 'non-action-boxes-4-0' :'' }"  data-sly-repeat="${container.items}"
+                    <div class="nonactionboxtile ${properties.nabBoxVariation == 'with-title' ? 'media-cta-text-4-0 with-up-down' :'' } ${properties.nabBoxVariation == 'with-pretitle' ? 'non-action-boxes-4-0' :'' }"  data-sly-repeat="${container.items}"
                          data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
                     <!-- boxes End-->
                 </div>
@@ -32,7 +32,7 @@
     </sly>
 
     <!--testimonials container-->
-    <sly data-sly-test="${properties.nonactionboxbehavior == 'with-quotes'}">
+    <sly data-sly-test="${properties.nabBoxVariation == 'with-quotes'}">
         <div class="testimonial-module container-fix__width ${oneTileCheck}">
             <div class="testimonial-box">
                 <div class="pattern-wrapper">
