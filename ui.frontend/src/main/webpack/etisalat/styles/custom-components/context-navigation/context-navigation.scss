@@ -15,6 +15,9 @@
 
   &.has-bg {
     background-color: $module-bg-color;
+    @include respond-to-max($desktop-min) {
+      padding: toRem(16) 0;
+    }
   }
 
   .container {
@@ -40,11 +43,15 @@
 
   .paragraph-styling p {
     margin-bottom: toRem(16);
-
+    font-size: toRem(16);
     @include font-family-lato();
 
     @include respond-to-max($desktop-min) {
       margin-bottom: toRem(12);
+    }
+    @include respond-to-max($desktop) {
+      font-size: toRem(14);
+      line-height: 20px;
     }
   }
 
@@ -976,6 +983,10 @@
 }
 
 // context navigation mdoule with TV packs
+.context-navigation-4-0 :after,
+.context-navigation-4-0 :before {
+  box-sizing: border-box;
+}
 .tv-pack-tile {
   display: flex;
 
@@ -1070,6 +1081,9 @@
 
   .content {
     margin-top: 0;
+    @include respond-to-max($desktop) {
+      margin-bottom: 20px;
+    }
   }
 
   &.has-bg {
