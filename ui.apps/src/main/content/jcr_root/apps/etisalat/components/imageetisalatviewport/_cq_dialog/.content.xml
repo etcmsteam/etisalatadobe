@@ -3,8 +3,9 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Image - Etisalat Viewports"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[cq.dropdown.dialog.tabs.values]">
+    extraClientlibs="[cq.dropdown.dialog.tabs.values,core.wcm.components.image.v2.editor,cq.dropdown.dialog.multi.values]">
     <content
+        granite:class="cmp-image-container__editor cmp-image__editor"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
@@ -29,7 +30,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <imagelayout
-                                                granite:class="tabs__show-hide"
+                                                granite:class="tabs__show-hide cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldLabel="Display Image layout as a"
@@ -52,38 +53,34 @@
                                                         text="Single Image"
                                                         value="1-viewport"/>
                                                 </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".imageviewportlayout-showhide-target"/>
                                             </imagelayout>
+                                            <viewportcontainer
+                                                granite:class="imageviewportlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                        fieldLabel="View Port Alternative Text"
+                                                        name="./altTextThreeFourSixViewPorts"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="6-viewport"
+                                                    showhidetargetvalue1="4-viewport"
+                                                    showhidetargetvalue2="3-viewport"/>
+                                            </viewportcontainer>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </properties>
-                    <image414px
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/image414px"/>                    
-                    <image768px
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/image768px"/>                                         
-                    <image1024px
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/image1024px"/>                       
-                    <image1366px
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/image1366px"/>                        
-                    <image1440px
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/image1440px"/>
-                    <image1920px
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="1920px Image"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/image1920px"/>                     
                     <retinaimage414px
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
@@ -95,18 +92,30 @@
                     <retinaimage768px
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage768px"/>                        
+                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage768px"/>
                     <retinaimage992px
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage992px"/> 
+                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage992px"/>
+                    <retinaimage1024px
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage1024px"/>
+                    <retinaimage1366px
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage1336px"/>
                     <retinaimage1440px
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage1440px"/>                       
+                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage1440px"/>
+                    <retinaimage1920px
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/mnt/overlay/etisalat/components/imageetisalatviewport/tabs/retinaimage1920px"/>
                     <asset
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Asset"                        
+                        jcr:title="Asset"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <granite:data

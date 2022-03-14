@@ -1,4 +1,4 @@
-<template data-sly-template.fourTile="${ @ tileModel,properties}">
+<template data-sly-template.fourTile="${ @ tileModel,properties,imageViewportModel}">
     <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
         <!-- Modal start -->
         <a href="#" class="youtube-video-link tileBoxVideoLink"></a>
@@ -14,10 +14,11 @@
         </div>
         <!-- Modal end -->
     </sly>
-     <div class="tile-boxes-image-wrapper" data-sly-test="${properties['image/fileReference']}">
-         <div class="cover">            
-             <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>        
+     <div class="tile-boxes-image-wrapper" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+         <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">            
+            <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          </div>
+         <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
       </div>
       <div class="tile-box-body">
          <div class="tile-boxes-title-small">
