@@ -11,18 +11,14 @@
 }
 
 
-@include respond-to-max($desktop) {
+@include respond-to-max($desktop + 1) {
   .fixednavigation {
-    background-color: $white;
     position: absolute;
     top: 0 !important;
     width: 100% !important;
   }
 
   nav {
-    position: static;
-    width: 600px;
-    margin: 0 auto;
 
     .menu__icon,
     .menu__checkbox,
@@ -37,6 +33,7 @@
       position: absolute;
       right: 10px;
       top: 60px;
+      z-index: 99;
 
       ::selection {
         background: none;
@@ -91,31 +88,41 @@
     }
 
     .MenuWrapper {
-      display: none;
+      visibility: hidden;
+      background-color: $white;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0 15px;
+      max-height: 0;
+      transition: all 0.3s ease-in;
+      ul {
+        transition: all 0.1s ease-in;
+        visibility: hidden;
+      }
 
-      @include respond-to-min-max($desktop, $tablet) {
-        background-color: $white;
-        margin-left: -10%;
-        margin-right: -10%;
+      &.ShowMenu {
+        overflow-y: auto;
+        visibility:visible;
+        max-height: 580px;
+        transition: all 0.32s ease-out;
+        ul {
+          transition: all 0.1s ease-out;
+          visibility: visible;
+        }
       }
     }
 
     ul {
       background-color: $white;
-      transition: max-height 0.2s ease-out;
-
-      @include respond-to-min-max($desktop, $tablet) {
-        margin: 0 auto;
-        width: toRem(650);
-      }
+      max-width: 650px;
+      margin: 0 auto;
+      display: block;
 
       &.main-nav__list {
         padding-top: 60px;
-
-        @include respond-to-max($phone) {
-          padding-left: 20px;
-          padding-right: 20px;
-        }
 
         li {
           &:last-child {
