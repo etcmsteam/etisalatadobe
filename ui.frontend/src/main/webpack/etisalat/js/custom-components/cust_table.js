@@ -143,7 +143,9 @@
 
                 //var table = '.'+TableID;
                 var tableTR = table + ' tbody tr';
+
                 $(table).show();
+
                 if (removeTag != '' && removeTag != undefined) {
 
 
