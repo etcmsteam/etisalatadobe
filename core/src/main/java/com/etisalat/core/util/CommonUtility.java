@@ -280,6 +280,14 @@ public final class CommonUtility {
       return TimeZone.getTimeZone(strTimeZone);
     }
     
+	/**
+	 * Gets the image alt from metadata of image if no alt is authored.
+	 *
+	 * @param imageAlt the image alt
+	 * @param resourceResolver the resource resolver
+	 * @param assetPath the asset path
+	 * @return the image alt
+	 */
 	public static String getImageAlt(String imageAlt, ResourceResolver resourceResolver, String assetPath) {
 		if (StringUtils.isEmpty(imageAlt)) {
 			Resource assetResource = resourceResolver.getResource(assetPath);
