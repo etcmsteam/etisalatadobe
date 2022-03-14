@@ -192,6 +192,8 @@ export const ANAEMARATI_CARDS = () => {
         if (sku.activePromo == true) offer = true;
         if (offer) {
           classes = "nv-card products nv-plan-card offer";
+        } else {
+          classes = "nv-card products nv-plan-card";
         }
         var dynamicAttributes = sku.dynamicAttributesList;
         var redirectUrl = "";
@@ -287,7 +289,7 @@ export const ANAEMARATI_CARDS = () => {
           "</div>" +
           "</div>" +
           '<div class="nv-selected-plan">' +
-          '<img src="/b2c/eshopApp/assets/img/buy-get/Icons/SVG/checkmark-consumer.svg" class="icon" alt=""> selected plan ' +
+          '<img src="../resources/images/nv-etisalat/SVG/icon-checkbox-gold.svg" class="icon" alt=""> selected plan ' +
           "</div> " +
           '<button class="btn btn-green btn-buy-now" data-target="' +
           redirectUrl +
@@ -307,7 +309,7 @@ export const ANAEMARATI_CARDS = () => {
         type: REQUEST_METHOD,
         url: url,
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(payload),
+        data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
           var htmlCards = getPlansCard(res, cardType);
           var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
