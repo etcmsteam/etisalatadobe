@@ -1,17 +1,14 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 /* eslint-disable */
 
-
 export const ACCESSORIES_CARDS = () => {
-
   // function to pass swiper options collectively
-
 
   const swiperOptions = (elem, next, prev, brPoint1, brPoint2, brPoint3, brPoint4, brPoint5) => {
     return {
       slidesPerView: 2.2,
       scrollbar: elem.find(".scrollbar"),
-      nextButton: $("html").attr("lang") ==="ar" ? next : prev,
+      nextButton: $("html").attr("lang") === "ar" ? next : prev,
       prevButton: $("html").attr("lang") === "ar" ? next : prev,
       scrollbarHide: false,
       scrollbarDraggable: true,
