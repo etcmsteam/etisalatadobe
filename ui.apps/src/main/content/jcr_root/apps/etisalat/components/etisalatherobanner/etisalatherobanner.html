@@ -44,16 +44,10 @@
 			      </sly>	      	        
 		        <div class="text"> ${properties.pretitle}</div>
 		      </div>
-			  <div class="ele-margin hero-thumbnails">
-			  <sly data-sly-use.thumbnailObj="${resource.path}" data-sly-list.thumbnailItems="${thumbnailObj.listChildren}">
-			     <div data-sly-test="${thumbnailItems.name == 'thumbnailItems'}" data-sly-repeat.thumbItem="${thumbnailItems.listChildren}" class="thumbnail-icon">
-			       <img data-sly-test="${thumbItem.fileReference}" src="${thumbItem.fileReference}" alt=""/>		    
-			     </div>
-			  </sly>			
-				<div data-sly-test="${properties.thumbnailText}" class="thumbnail-text">
-				  ${properties.thumbnailText}
-				</div>
-			  </div>
+		      
+			  <sly data-sly-use.thumbnailImagesTemplate="thumbnail-images.html"
+			             data-sly-call="${thumbnailImagesTemplate.thumbnailImage @ properties=properties}"/>
+			             
 		      <div data-sly-test="${properties.jcr:description}" class="ele-margin hero-description">
 	                ${properties.jcr:description @ context = 'html'}
 	          </div>          

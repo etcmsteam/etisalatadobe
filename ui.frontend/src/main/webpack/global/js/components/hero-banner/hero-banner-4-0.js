@@ -166,6 +166,13 @@ import { swiperInit } from "../../swiperInitialize";
     // hero-banner-video - popup modal with youtube video to make video not to play-auto
     $(".hero-play-video").on("click", function () {
       $(".swiper-slide-active video")[0].pause();
+      setTimeout(function () {
+        if ($("body").hasClass("modal-open")) {
+          $("body").parent().css("overflow", "hidden");
+        }
+      }, 0);
+      
+      $("body").addClass("modal-overlay");
     });
     // on close popup make video pause and reset and play the background video
     $(".hero-banner-modal").on("hidden.bs.modal", function () {
@@ -173,6 +180,11 @@ import { swiperInit } from "../../swiperInitialize";
       $(this).find("iframe").attr("src", "");
       $(this).find("iframe").attr("src", src.replace("autoplay=1", ""));
       $("video")[0].play();
+
+      $("html").removeAttr("style");
+      if ($("body").hasClass("modal-overlay")) {
+        $("body").removeClass("modal-overlay");
+      }
     });
   });
 })(window);
