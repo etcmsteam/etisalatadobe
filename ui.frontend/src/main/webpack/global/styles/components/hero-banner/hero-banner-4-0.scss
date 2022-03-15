@@ -371,6 +371,12 @@
         margin-bottom: 0;
         margin-top: 16px;
 
+        @media (max-width: 991px) {
+          &.hero-description {
+            margin-top: 8px;
+          }
+        }
+        
         @media (min-width: 768px) {
           &:not(.hero-description) {
             margin-top: 24px;
@@ -426,6 +432,16 @@
       .hero-title h2,
       .hero-description p {
         text-align: center;
+
+        &:nth-child(2) {
+          span {
+            &:first-of-type {
+              display: inline-block;
+              width: 100%;
+              text-indent: -76px;
+            }
+          }
+        }
       }
     }
   }
@@ -455,6 +471,16 @@
       .hero-title h2,
       .hero-description p {
         text-align: center;
+
+        &:nth-child(2) {
+          span {
+            &:first-of-type {
+              display: inline-block;
+              width: 100%;
+              text-indent: -76px;
+            }
+          }
+        }
       }
     }
   }
@@ -591,6 +617,7 @@
 }
 
 .hero-banner-modal {
+  z-index: 1062;
   .modal-dialog {
     margin: 0 auto;
     top: 5%;
@@ -1158,6 +1185,41 @@
                   transform: translateY(-50%) rotate(135deg);
                 }
               }
+            }
+          }
+          @media (min-width: 992px) {
+            &.slide-center {
+              .hero-details {
+                .hero-description {
+                  p {
+                    text-align: center;
+                  }
+                }
+        
+                .hero-title {
+                  h2 {
+                    text-align: center;
+                  }
+                }
+                
+                .go-back {
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+      .go-back {
+        .third-action-wrapper.action-link {
+          .link {
+            padding-right: 10px;
+            padding-left: 0;
+  
+            &::before {
+              transform: translateY(-50%) rotate(-45deg);
+              right: 0;
+              left: auto;
             }
           }
         }

@@ -1,0 +1,17 @@
+<template data-sly-template.thumbnailImage="${ @ properties}">
+    <sly data-sly-set.hasThumbnailImage="false" />
+	 <sly data-sly-use.thumbnailObj="${resource.path}" data-sly-list.thumbnailItems="${thumbnailObj.listChildren}">
+		  <sly data-sly-test="${thumbnailItems.name == 'thumbnailItems'}" data-sly-set.hasThumbnailImage="true" />					 					 
+	 </sly>
+			  
+	<div data-sly-test="${properties.thumbnailText || hasThumbnailImage}" class="ele-margin hero-thumbnails">
+	    <sly data-sly-use.thumbnailObj="${resource.path}" data-sly-list.thumbnailItems="${thumbnailObj.listChildren}">
+	        <div data-sly-test="${thumbnailItems.name == 'thumbnailItems'}" data-sly-repeat.thumbItem="${thumbnailItems.listChildren}" class="thumbnail-icon">
+	            <img data-sly-test="${thumbItem.fileReference}" src="${thumbItem.fileReference}" alt="" />
+	        </div>
+	    </sly>
+	    <div data-sly-test="${properties.thumbnailText}" class="thumbnail-text">
+	        ${properties.thumbnailText}
+	    </div>
+	</div>
+</template>
