@@ -113,7 +113,7 @@ $(document).ready(function () {
       $(".modal-popup-wrapper #" + dataLabel).addClass("show");
       $(".modal-popup-wrapper #" + dataLabel).removeClass("fade");
       $(".modal-popup-wrapper .modal-popup").addClass("show");
-      $("body, html").addClass("freeze");
+      $("body").addClass("freeze no-scroll");
       $(".modal-popup-wrapper").show;
       $(".modal-popup-wrapper").css("display", "block");
     }
@@ -128,7 +128,7 @@ $(document).ready(function () {
     $(currentOpendPopUp).removeClass("show");
     $(currentOpendPopUp).css("display", "none");
     $(currentOpendPopUp).children().remove();
-    $("body, html").removeClass("freeze");
+    $("body").removeClass("freeze no-scroll");
   };
   $(".modal-popup-wrapper")
     .off("click")
