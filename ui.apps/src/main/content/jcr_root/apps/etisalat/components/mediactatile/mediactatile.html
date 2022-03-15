@@ -59,12 +59,15 @@
 	          class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">${tileModel.ctatext}</a>
 	        </div>
 	      </sly>
-	      <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}" 
-	        data-sly-use.tileModalTemplate="/apps/etisalat/components/tile/tilemodal.html" 
-	        data-sly-call="${tileModalTemplate.modal @ tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}"></sly>
-	    </div>
-	  </div>	  
-   </sly>     
+		<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}">
+			<div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
+				<div data-sly-use.tileModalTemplate="/apps/etisalat/components/tile/tilemodal.html" data-sly-call="${tileModalTemplate.modal @
+						tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}"></div>
+			</div>
+		</sly>
+		</div>
+		</div>
+		</sly>
 </sly>
 
 <sly data-sly-call="${templates.placeholder @ isEmpty = !tileModel.tiletitle}"></sly>
