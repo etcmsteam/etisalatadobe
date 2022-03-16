@@ -19,7 +19,11 @@
 	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	     data-panelcontainer="${wcmmode.edit && 'tabs'}"
 	     id="${tabs.id}"
-	     class="cmp-tabs ${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'accordionView') ? 'hidden-sm hidden-xs' : ''}${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'notTabAccordionView') ? 'cmp-tabs--accordion-view-2 hidden-xs' : ''}"
+	     data-sly-set.recommendProductView="${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'recommendproductplan')}"
+         data-sly-set.accordionView="${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'accordionView') ? 'hidden-sm hidden-xs' : ''}"
+         data-sly-set.notTabAccodView="${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'notTabAccordionView') ? 'cmp-tabs--accordion-view-2 hidden-xs' : ''}"
+	     class="cmp-tabs ${accordionView} ${notTabAccodView} ${recommendProductView}"   
+	     data-sly-test="${!recommendProductView}"
 	     data-cmp-is="tabs"
 	     data-cmp-data-layer="${tabs.data.json}"
 	     data-placeholder-text="${wcmmode.edit && 'Please drag Tab components here' @ i18n}">
@@ -81,6 +85,12 @@
 <!--mobile view start-->
 
 <sly data-sly-test="${wcmmode.preview || wcmmode.disabled}">
+
+ <sly data-sly-test="${properties.tabsMobileLayout && properties.tabsMobileLayout == 'recommendproductplan'}"
+	        data-sly-use.recommendPlanTemplate="recommendproductplan.html"
+	        data-sly-call="${recommendPlanTemplate.recommendProductTab @ tabs=tabs,properties=properties}">      
+ </sly>
+	   
 <div id="Mobile-${tabs.id}"
      data-sly-use.accord="com.adobe.cq.wcm.core.components.models.Tabs"
      data-sly-test="${properties.tabsMobileLayout && ( properties.tabsMobileLayout == 'accordionView' || properties.tabsMobileLayout == 'notTabAccordionView')}"
