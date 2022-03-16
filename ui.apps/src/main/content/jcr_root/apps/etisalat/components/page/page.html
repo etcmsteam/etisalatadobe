@@ -35,11 +35,20 @@
     pagePathName = window.location.pathname;
     dataLayerPathName = pagePathName.split('.html')[0],
     userAgentData = navigator.userAgent,
-    timestampData = new Date();
+    currentDate = new Date(),
+    previousPage = document.referrer,
+    previousPathName = '';
 
     let siteLang = siteLangElement.getAttribute('lang'),
       pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
       pageName;
+    
+    if (document.referrer !== '' && document.referrer !== undefined) {
+      previousPage = new URL(document.referrer).pathname;
+      var arr = previousPage.split('/');
+      var lastItem = arr.pop();
+      previousPathName = lastItem.split('.')[0];
+    }
 
     if (dataLayerPathName.includes('/ewallet/')) {
       if (dataLayerPathName.includes('/personal/')) {
@@ -97,37 +106,42 @@
       }
     });
     } else {
-      adobeDataLayer.push({
-        "event": "pageLoaded",
-        "xdmPageLoad": {
-          "web": {
-            "webPageDetails": {
-              "name": pageName,
-              "server": serverName,
-              "siteSection": pageTitle,
-              "siteSection1": "Home Navigation",
-              "siteSection2": "",
-              "isErrorPage": isErrorFlg,
-              "URL": dataLayerUrl,
-              "pageViews": {
-                "value": 1
+      window.onload = function () {
+        var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
+        loadTime = loadTime/1000 + 's';
+
+        adobeDataLayer.push({
+          "event": "pageLoaded",
+          "xdmPageLoad": {
+            "web": {
+              "webPageDetails": {
+                "name": pageName,
+                "server": serverName,
+                "siteSection": pageTitle,
+                "siteSection1": "Home Navigation",
+                "siteSection2": "",
+                "isErrorPage": isErrorFlg,
+                "URL": dataLayerUrl,
+                "pageViews": {
+                  "value": 1
+                }
               }
-            }
-          },
-          "pageInfo": {
-            "country": "ae",
-            "language": siteLang,
-            "previousPageName": "[previous page name]",
-            "pageType": "Home",
-            "pageLoadTime": "load time"
-          },
-          "user": {
-            "loginStatus": "logged-in/logged-out"
-          },
-          "timestamp": timestampData,
-          "userAgentString": userAgentData
-        }
-      });
+            },
+            "pageInfo": {
+              "country": "ae",
+              "language": siteLang,
+              "previousPageName": "[previous page name]",
+              "pageType": "Home",
+              "pageLoadTime": loadTime
+            },
+            "user": {
+              "loginStatus": "logged-in/logged-out"
+            },
+            "timestamp": currentDate.toString(),
+            "userAgentString": userAgentData
+          }
+        });
+      }
     }
   </script>
   <!--For Google Map-->
