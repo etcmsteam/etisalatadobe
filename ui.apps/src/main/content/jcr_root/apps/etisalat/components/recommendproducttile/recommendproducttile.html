@@ -1,0 +1,40 @@
+<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+     data-sly-set.viewports="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}"
+     data-sly-use.hasContent="${viewports || properties.productTitle}" class="product-card-box">
+    
+    <div class="img-wrap">
+        <div data-sly-test="${viewports}" class="cover">
+            <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content">
+            <div data-sly-test="${properties.offerText}" class="product-special-offer">${properties.offerText}</div>
+            <div data-sly-test="${properties.productTitle}" class="product-head">
+                <h3 data-sly-element="${properties.titleType}">${properties.productTitle}</h3>
+            </div>
+            <div class="price-and-action">
+                <div class="media-cta-4-price">
+                    <div class="price">
+                        <div data-sly-test="${properties.productPrice}" class="value">${properties.productPrice}</div>
+                        <div data-sly-test="${properties.productCurrency}" class="aed">${properties.productCurrency}</div>
+                    </div>
+                    <div data-sly-test="${properties.vatInclude}" class="vat-wrap">
+                        <div class="vat">${properties.vatInclude}</div>
+                    </div>
+                </div>
+                <div data-sly-test="${properties.ctatext}" class="third-action-wrapper action-btn-default">
+                    <sly data-sly-test.productPlanCTALink="${properties.productCTALink}" data-sly-use.recommendPlanLink="${'com.etisalat.core.models.CommonLinkModel' @link=productPlanCTALink}" />
+                    <a href="${recommendPlanLink.link}" target="${properties.productLinktarget ? '_blank' : '_self'}" class="btn btn-green ripple-effect m-0">${properties.ctatext}</a>
+                </div>
+            </div>
+            <div data-sly-test="${properties.productText}" class="product-text">
+                ${properties.productText @ context="html"}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>

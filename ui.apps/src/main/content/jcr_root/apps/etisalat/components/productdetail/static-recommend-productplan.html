@@ -1,0 +1,36 @@
+<template data-sly-template.recommendProductTile="${ @ carousel,properties}">
+  <div class="container">
+    <div class="row">
+      <div data-sly-test="${properties.productFilterEnabled}" class="col-lg-3 col-md-3">
+        <sly data-sly-use.productFilterTemplate="productfilter.html" data-sly-call="${productFilterTemplate.filter @ carousel=carousel,properties=properties}"></sly>
+      </div>      
+     <div data-sly-set.colClass="${carousel.items.size > 2 ? '9' : '6'}" 
+          class="col-xs-12 col-md-${properties.productFilterEnabled ? colClass : '12'}" data-sly-test="${carousel.items && carousel.items.size > 0}">
+     
+	 <div class="product-wrapper-inner">
+        <div class="wst-main-headings">
+          <h5 data-sly-element="${properties.mainTitleStyle}">${properties.mainProductTitle}</h5>
+        </div>
+        <div class="paragraph-styling">
+          <div class="p2"> ${properties.mainProductDesc @ context='html'} </div>
+        </div>
+        <div class="most-recommended-products">
+          <div class="product-wrapper">
+            <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'swiper-container' : ''}">
+              <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'swiper-wrapper' : ''} common">
+                <sly data-sly-list.item="${carousel.items}">
+                  <sly data-sly-set.productTilePath="${'{0}/{1}' @ format=[resource.path, item.name]}" data-sly-use.productdetails="${'com.etisalat.core.models.ProductDetails' @productPath=productTilePath}">
+                    <div class="swiper-slide" data-sly-resource="${item.name @ decorationTagName=wcmmode.edit ? 'div' : ''}" id="${item.id}" data-label="${productdetails.tagNameFromProductPath}"></div>
+                  </sly>
+                </sly>
+              </div>
+			   <div class="${!wcmmode.edit && properties.slider && carousel.items.size > 3 ? 'swiper-pagination' : ''}"></div>
+            </div>
+          </div>
+        </div>
+      </div>   
+	  
+    </div>
+  </div>
+  </div>
+</template>

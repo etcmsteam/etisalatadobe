@@ -21,6 +21,10 @@
 	        data-sly-use.elifePlanTemplate="staticelifeplan.html"
 	        data-sly-call="${elifePlanTemplate.elifePlan @ carousel=carousel,properties=properties}">      
 	   </sly>
+	   <sly data-sly-test="${properties.tileBoxLayout == 'recommendproductplan'}"
+	        data-sly-use.recommendPlanTemplate="static-recommend-productplan.html"
+	        data-sly-call="${recommendPlanTemplate.recommendProductTile @ carousel=carousel,properties=properties}">      
+	   </sly>
 	   <sly data-sly-test="${properties.tileBoxLayout == 'elifeaddonstile'}"
 	        data-sly-use.elifeAddonsTileTemplate="staticelifeaddonstile.html"
 	        data-sly-call="${elifeAddonsTileTemplate.elifeAddons @ carousel=carousel,properties=properties}">      
