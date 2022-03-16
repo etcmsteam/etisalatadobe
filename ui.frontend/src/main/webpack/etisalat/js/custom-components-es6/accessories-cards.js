@@ -8,7 +8,7 @@ export const ACCESSORIES_CARDS = () => {
     return {
       slidesPerView: 2.2,
       scrollbar: elem.find(".scrollbar"),
-      nextButton: $("html").attr("lang") === "ar" ? next : prev,
+      nextButton: $("html").attr("lang") === "ar" ? prev : next,
       prevButton: $("html").attr("lang") === "ar" ? next : prev,
       scrollbarHide: false,
       scrollbarDraggable: true,
