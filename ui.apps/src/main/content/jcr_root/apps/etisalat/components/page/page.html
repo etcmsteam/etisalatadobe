@@ -33,7 +33,9 @@
       serverName = window.location.hostname,
       dataLayerUrl = window.location.href
     pagePathName = window.location.pathname;
-    dataLayerPathName = pagePathName.split('.html')[0];
+    dataLayerPathName = pagePathName.split('.html')[0],
+    userAgentData = navigator.userAgent,
+    timestampData = new Date();
 
     let siteLang = siteLangElement.getAttribute('lang'),
       pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
@@ -76,7 +78,7 @@
     };
 
     const isErrorFlg = urlExists(dataLayerUrl);
-
+    if(!dataLayerPathName.includes('/etisalat/')) {
     window.adobeDataLayer = window.adobeDataLayer || [];
     adobeDataLayer.push({
       "event": "pageLoaded",
@@ -94,6 +96,39 @@
         }
       }
     });
+    } else {
+      adobeDataLayer.push({
+        "event": "pageLoaded",
+        "xdmPageLoad": {
+          "web": {
+            "webPageDetails": {
+              "name": pageName,
+              "server": serverName,
+              "siteSection": pageTitle,
+              "siteSection1": "Home Navigation",
+              "siteSection2": "",
+              "isErrorPage": isErrorFlg,
+              "URL": dataLayerUrl,
+              "pageViews": {
+                "value": 1
+              }
+            }
+          },
+          "pageInfo": {
+            "country": "ae",
+            "language": siteLang,
+            "previousPageName": "[previous page name]",
+            "pageType": "Home",
+            "pageLoadTime": "load time"
+          },
+          "user": {
+            "loginStatus": "logged-in/logged-out"
+          },
+          "timestamp": timestampData,
+          "userAgentString": userAgentData
+        }
+      });
+    }
   </script>
   <!--For Google Map-->
   <script>
