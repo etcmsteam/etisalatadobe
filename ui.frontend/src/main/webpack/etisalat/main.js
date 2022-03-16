@@ -8,6 +8,7 @@ import { ACCESSORIES_CARDS } from "./js/custom-components-es6/accessories-cards"
 import { GLOBALFOOTPRINT } from "./js/custom-components-es6/globalfootprintcontainer";
 import { ANAEMARATI_CARDS } from "./js/custom-components-es6/anaemarati-plans";
 import { TAB_SWIPER } from "./js/custom-components-es6/tab-swiper";
+import { FOOTER_DOWNNLOAD_ICONS } from "../global/js/components/footer/footer";
 
 document.addEventListener("DOMContentLoaded", () => {
   VIEW_MORE_TOGGLE();
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   GLOBALFOOTPRINT();
   ANAEMARATI_CARDS();
   TAB_SWIPER();
+  FOOTER_DOWNNLOAD_ICONS();
 });
 
 // Stylesheets
