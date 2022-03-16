@@ -35,7 +35,9 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
     function initSwiper() {
       // plans table slider for CMS modules start
-      $(document).find('.product-grid-text-section.plans').each(function (index) {
+      var findPlans = $(document).find('.product-grid-text-section.plans:not(".product-recommend-text")');
+      if(findPlans.length > 0){
+        findPlans.each(function (index) {
         $(this).addClass('plansTable' + index);
         var $planTableParent = $(this);
         $planTableParent.find('.table-swiper-button-next').addClass('plansRight' + index);
@@ -43,6 +45,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
         $carouselSliderPlansGrid = swiperInit('.plansTable' + index + ' .swiper-container', swiperOptions($planTableParent, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, 1.25, 2, 3, 3, 4));
       });
+    }
       // plans table slider for CMS modules ends
       if ($( ".smart-home-elife-slider" ).length) {
    $(document).find('.smart-home-elife-slider').each(function(index) {

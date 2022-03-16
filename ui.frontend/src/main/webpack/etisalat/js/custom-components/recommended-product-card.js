@@ -1,6 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
 (function () {
+  //swiper for most recommended products
   var recommendedCardsCarousal;
   function initSwiperRecommendedCards() {
     recommendedCardsCarousal = swiperInit(".most-recommended-products .swiper-container", {
@@ -204,11 +205,15 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
         }
       }, 1000);
     } else {
-      if (idToPass !== "" && idToPass !== undefined) {
-        if (idToPass.includes("?")) {
-          $("[data-label='" + idToPass.slice(0, 1) + "']").click();
+      if (idToPass !== "" && idToPass !== undefined && idToPass !== false) {
+        if (idToPass !== "" && idToPass !== undefined) {
+          if (idToPass.includes("?")) {
+            $("[data-label='" + idToPass.slice(0, 1) + "']").click();
+          } else {
+            $("[data-label='" + idToPass + "']").click();
+          }
         } else {
-          $("[data-label='" + idToPass + "']").click();
+          $("[data-label='all-categories']").click();
         }
       }
     }
