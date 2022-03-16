@@ -4,7 +4,7 @@
 .eti-card-list-wrapper {
   .accessoriescardtile {
     width: 100%;
-    height: 100%;
+    height: auto;
 
     .link:hover {
       text-decoration: none !important;
@@ -324,7 +324,6 @@
       @include respond-to-min($desktop) {
         width: toRem(80);
         height: toRem(80);
-        object-fit: none;
       }
     }
   }
@@ -547,10 +546,10 @@
     svg {
       width: toRem(120);
       height: toRem(120);
+      object-fit: contain;
       @include respond-to-min($desktop) {
         width: toRem(384);
         height: toRem(272);
-        object-fit: contain;
       }
     }
   }
@@ -731,8 +730,8 @@
   @include respond-to-min($desktop) {
     border: solid $border-step-1 $cold-gray;
     height: toRem(97);
-    padding-left: $padding-step-2;
-    padding-right: $padding-step-2;
+    padding-left: toRem(24);
+    padding-right: toRem(24);
   }
   &:hover {
     border-color: $main-green;
