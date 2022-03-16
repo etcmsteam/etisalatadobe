@@ -127,11 +127,18 @@
                      <div 
                         class="read-more select-product-from-grid select-product-from-grid-without-close link"
                         data-extra-container=".extra-options-02">
-                        <sly data-sly-test.buttonLink="${properties.buttonLink}" data-sly-use.buttonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=buttonLink}"/>
+                       <sly data-sly-test.buttonLink="${properties.buttonLink}" class ="" data-sly-use.buttonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=buttonLink}"/>
+                           <sly data-sly-test.loggedinbuttonLink="${properties.loggedinbuttonLink}" class ="" data-sly-use.loggedinbuttonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=loggedinbuttonLink}"/>
 						<a
                            href="${cardlinkmodel.link ? cardlinkmodel.link : buttonlinkmodel.link}" target="${properties.btnlinktarget?'_blank':'_self'}"
                            class="cms-button read-more-link" title="National 110"> 
 							<span data-sly-test="${properties.buyNowButton}">${properties.buyNowButton}</span>
+                        </a> 
+                        
+                        <a
+                           href="${cardlinkmodel.link ? cardlinkmodel.link : loggedinbuttonlinkmodel.link}" target="${properties.loggedinbtnlinktarget?'_blank':'_self'}"
+                           class="b2b-button read-more-link" title="National 110"> 
+							<span data-sly-test="${properties.loggedinbuyNowButton}">${properties.loggedinbuyNowButton}</span>
                         </a> 
                      </div>
                   </div>
