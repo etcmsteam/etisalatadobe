@@ -1,6 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
+/* eslint-disable */
 
-$(document).ready(function () {
+export const TAB_SWIPER = () => {
   var initSwiper;
   initSwiper = function () {
     //edc-tabs-wrapper
@@ -10,6 +11,9 @@ $(document).ready(function () {
         $(this).addClass("edc-swiper-tabs" + index);
         var $swiperTabsParent = $(this);
         const istabs = $swiperTabsParent.parents().hasClass("cmp_tabs--horizontal-title");
+        const isWSTChanneltabs = $swiperTabsParent.parents().hasClass("cmp-tab-wst-channellist");
+        const isChanneltabs = $swiperTabsParent.parents().hasClass("cmp-tab-channellist");
+
         $swiperTabsParent.find(".swiper-button-next").addClass("r" + index);
         $swiperTabsParent.find(".swiper-button-prev").addClass("l" + index);
         var edcSwiperWithArrows = swiperInit(".edc-swiper-tabs" + index + " .swiper-container", {
@@ -19,13 +23,13 @@ $(document).ready(function () {
           prevButton: ".swiper-button-prev.l" + index,
           breakpoints: {
             540: {
-              slidesPerView: istabs ? "auto" : 3,
+              slidesPerView: istabs ? "auto" : isWSTChanneltabs ? "auto" : isChanneltabs ? "auto" : 3,
             },
             768: {
-              slidesPerView: istabs ? "auto" : 4,
+              slidesPerView: istabs ? "auto" : isWSTChanneltabs ? "auto" : isChanneltabs ? "auto" : 4,
             },
             1024: {
-              slidesPerView: istabs ? "auto" : 4,
+              slidesPerView: istabs ? "auto" : isWSTChanneltabs ? "auto" : isChanneltabs ? "auto" : 4,
             },
             1440: {
               slidesPerView: "auto",
@@ -40,4 +44,4 @@ $(document).ready(function () {
 
   // register the event handlers
   initSwiper();
-});
+};

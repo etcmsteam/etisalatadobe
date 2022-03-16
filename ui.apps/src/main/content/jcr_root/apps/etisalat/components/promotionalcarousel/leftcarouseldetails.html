@@ -1,4 +1,4 @@
-<template data-sly-template.carousel="${ @ properties}">
+<template data-sly-template.carousel="${ @ properties,imageViewportModel}">
    <div data-sly-use.carousel="com.adobe.cq.wcm.core.components.models.Carousel"
         data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
         data-panelcontainer="${wcmmode.edit && 'Promotional carousel'}" id="${carousel.id}" class="cmp-carousel" role="group"
@@ -12,9 +12,11 @@
       <div
               class="current-promotions-wrraper light ${oneTile ? 'one-only' :''} ${twoTile ? 'two-only' : ''} ${threeTile ? 'three-only' : ''} ${!oneTile && !twoTile && !threeTile ? 'three-plus': ''}">
 
-         <div class="background-with-color">
-            <div class="cover"
-                 data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+         <div class="background-with-color" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+            <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+               <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+            </div>
+            <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
          </div>
 
          <div class="container">

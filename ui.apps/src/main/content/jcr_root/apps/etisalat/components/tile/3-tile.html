@@ -1,4 +1,4 @@
-<template  data-sly-template.threeTile="${ @ tileModel,properties}">
+<template  data-sly-template.threeTile="${ @ tileModel,properties,imageViewportModel}">
   <div class="tile-box-tile">
    <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
       <!-- Modal start -->
@@ -15,8 +15,11 @@
       </div>
       <!-- Modal end -->
    </sly>
-   <div class="img-cover" data-sly-test="${properties['image/fileReference']}">
-      <div class="cover lazyloaded" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+   <div class="img-cover" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+      <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+         <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+      </div>
+      <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
    </div>
    <div class="tile-box-body">
       <h2 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h2>

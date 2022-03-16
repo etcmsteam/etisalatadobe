@@ -1,9 +1,8 @@
 /* eslint-disable no-undef */
-(function ($) {
+export const ACCORDION_JS = () => {
   // Class
   const SHOW_CLASS = "show";
   const HIDE_CLASS = "hidden";
-
   // Selector
   const MORE_CLASS = $(".more");
   const LESS_CLASS = $(".less");
@@ -44,7 +43,8 @@
   ACCORDION_VIEW_CLASS.on("click", function () {
     accordionView("accordion");
   });
+
   LIST_ITEM_VIEW_CLASS.on("click", function () {
     accordionView("list");
   });
-})(jQuery);
+};

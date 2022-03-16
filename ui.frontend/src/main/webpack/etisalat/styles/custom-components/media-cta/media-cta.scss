@@ -1,13 +1,13 @@
 .media-cta-4-small-title {
     @include font-family-lato;  
-    font-size: 10px;
+    font-size: toRem(10);
     font-weight: bold;
     line-height: 1.2;
     letter-spacing: 4px;
     color: $almost-black;
     text-transform: uppercase;
     @media (min-width: 992px) {
-        font-size: 12px;
+        font-size: toRem(12);
         line-height: 1;
         letter-spacing: 4px;
     }
@@ -829,18 +829,29 @@
 }
 .container-fix__width {
     &.media-cta-plan-full-width {
-        .media-cta-module-section .mod-wrap {
-            @media only screen and (min-device-width:768px)  { 
-                margin-left: toRem(12);
-                margin-right: toRem(12);
+        .media-cta-module-section {
+            .container {
+                @media only screen and (min-width: 1200px) {
+                    width: toRem(1200);
+                }
             }
-            @media screen and (min-width: 992px) { 
-                margin-left: toRem(12);
-                margin-right: toRem(12);
-            }
-            @media only screen and (min-width : 1200px) { 
-                    margin-left: toRem(-12);
-                    margin-right: inherit;
+            .mod-wrap {
+                @media only screen and (min-device-width:768px)  { 
+                    margin-left: toRem(12);
+                    margin-right: toRem(12);
+                }
+                @media screen and (min-width: 992px) { 
+                    margin-left: toRem(12);
+                    margin-right: toRem(12);
+                }
+                @media only screen and (min-width : 1200px) { 
+                    margin-left: 0;
+                    margin-right: 0;
+                    @include rtlBlock() {
+                        margin-left: 0;
+                        margin-right: 0 !important;
+                    }
+                }
             }
         }
         .media-cta-module-section {

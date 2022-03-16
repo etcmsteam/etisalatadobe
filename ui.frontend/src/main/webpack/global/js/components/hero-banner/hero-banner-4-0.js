@@ -9,11 +9,16 @@ import { swiperInit } from "../../swiperInitialize";
     $(document)
       .find(".hero-banner-section.multi-slides")
       .each(function (index) {
+        var carouselEffect = "fade";
+        var hasCallToAction = $(this).find(".hero-images-call-to-action-section");
+        if(hasCallToAction.length > 0) {
+          carouselEffect = "slide";
+        }
         $(this).addClass("h-b-slider-multi" + index);
         var $carouselSliderCurrentPromotionsMulti = swiperInit(".h-b-slider-multi" + index + " .swiper-hero-container", {
           //clickable: true,
           direction: "horizontal",
-          effect: "fade",
+          effect: carouselEffect,
           followFinger: false,
           nextButton: ".hero-next",
           prevButton: ".hero-prev",
@@ -153,7 +158,7 @@ import { swiperInit } from "../../swiperInitialize";
     $(".hero-description p").each(function () {
       var $eleText = $(this).text();
       var $textResult = limitText($eleText, 96);
-      if ($eleText.length >= 96 && $eleText.slice(-3) !== "...") {
+      if ($eleText.length >= 95 && $eleText.slice(-3) !== "...") {
         $(this).text($textResult + "...");
       }
     });
@@ -161,6 +166,13 @@ import { swiperInit } from "../../swiperInitialize";
     // hero-banner-video - popup modal with youtube video to make video not to play-auto
     $(".hero-play-video").on("click", function () {
       $(".swiper-slide-active video")[0].pause();
+      setTimeout(function () {
+        if ($("body").hasClass("modal-open")) {
+          $("body").parent().css("overflow", "hidden");
+        }
+      }, 0);
+      
+      $("body").addClass("modal-overlay");
     });
     // on close popup make video pause and reset and play the background video
     $(".hero-banner-modal").on("hidden.bs.modal", function () {
@@ -168,6 +180,11 @@ import { swiperInit } from "../../swiperInitialize";
       $(this).find("iframe").attr("src", "");
       $(this).find("iframe").attr("src", src.replace("autoplay=1", ""));
       $("video")[0].play();
+
+      $("html").removeAttr("style");
+      if ($("body").hasClass("modal-overlay")) {
+        $("body").removeClass("modal-overlay");
+      }
     });
   });
 })(window);
