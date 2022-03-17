@@ -24,6 +24,13 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       },
     });
   }
+  var mySwiper;
+  function initSwiper() {
+    mySwiper = new Swiper(".tab-config-deeplink", {
+      slidesPerView: "auto",
+      preventClicks: false,
+    });
+  }
 
   $(document).ready(function () {
     // each tab
@@ -32,6 +39,22 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
     var radios = [];
     // selected radios
     var selected = [];
+    var hash;
+    if (window.location.href.indexOf("#") > 0) {
+      hash = window.location.href.substring(window.location.href.indexOf("#"));
+    }
+    setTimeout(function () {
+      initSwiper();
+      if (hash) {
+        var current = $('[href="' + hash + '"]').parent();
+        var swiperIndex = $(current).index();
+        $(".tab-config-deeplink .swiper-slide").removeClass("active");
+        $(".deeplink-tabs .deeplink-tab").removeClass("active");
+        $(current).addClass("active");
+        mySwiper.slideTo(swiperIndex, 500);
+        $(hash).addClass("active");
+      }
+    }, 500);
 
     if (tabs.length > 0) {
       for (var i = 0; i < tabs.length; i++) {
@@ -71,6 +94,14 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
       $(".tab-config-deeplink .swiper-slide a").click(function (event) {
         event.preventDefault();
+        $(".tab-config-deeplink .swiper-slide").removeClass("active");
+        $(".deeplink-tabs .deeplink-tab").removeClass("active");
+        var _self = $(this);
+        var _selfParent = $(this).parent();
+        var swiperIndex = $(_selfParent).index();
+        mySwiper.slideTo(swiperIndex, 500);
+        _self.parent().addClass("active");
+        $(_self.attr("href")).addClass("active");
         if (window.innerWidth < 992) {
           recommendedCardsCarousal.update();
         }
@@ -187,6 +218,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
     var idToPass = getUrlParameter("selectedFilterID");
     if (tabs.length > 0) {
       setTimeout(function () {
+        if (idToPass !== "" && idToPass !== undefined && idToPass !== false) {
         if (idToPass !== "" && idToPass !== undefined) {
           var id = $(".deeplink-tab.active").attr("id");
           if (idToPass.includes("?")) {
@@ -203,6 +235,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
             filterCards(idToPass, id);
           }
         }
+      }
       }, 1000);
     } else {
       if (idToPass !== "" && idToPass !== undefined && idToPass !== false) {

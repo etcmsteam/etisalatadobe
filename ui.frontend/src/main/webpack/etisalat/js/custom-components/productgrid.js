@@ -219,7 +219,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       var radios = [];
       var selected = [];
 
-      $(".category-list-wrap input").each(function () {
+      $(".product-grid-text-section.plans:not('.product-recommend-text') .category-list-wrap input").each(function () {
         radios.push($(this));
       });
 
@@ -236,7 +236,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       }
 
       // on radio selction show hide right panel ( container )
-      $(".category-list-wrap input").change(function () {
+      $(".product-grid-text-section.plans:not('.product-recommend-text') .category-list-wrap input").change(function () {
         if ($(this).is(":checked")) {
           filterCards($(this).attr("data-label"), $(this));
         }
