@@ -58,6 +58,11 @@
         @media screen and (min-width: 768px) {
             display: flex;
         }
+        .text-left {
+            @include rtlBlock() {
+                text-align: right;
+            }
+        }
     }
     &.two-col {
         div.cover {
@@ -138,11 +143,17 @@
 
         .media-cta-photo {
             border-radius: 4px 4px 0 0;
-            padding: 0;
+            padding: 0 !important;
 
             @media (min-width: 992px) {
                 border-radius: 4px 0 0 4px;
-                padding-right: 12px;
+                padding-right: 12px !important;
+                padding-left: 0 !important;
+                @include rtlBlock() {
+                    padding-right:0 !important;
+                    padding-left: 12px !important;
+                    border-radius: 0 4px 4px 0;
+                }
             }
         }
 
@@ -150,6 +161,10 @@
             padding: 1rem 1rem 4rem;
             @media (min-width: 992px) {
                 padding: 1.5rem 4rem 2.5rem 12px;
+            }
+            @include rtlBlock() {
+                padding-left: 0;
+                padding-right: 1.5rem;
             }
             h4 {
                 margin-bottom: 1.4rem;
@@ -163,9 +178,6 @@
                     font-size: 18px;
                 }
             }
-
-           
-
         }
 
         &.col-reverse {
@@ -177,9 +189,15 @@
 
                 @media (min-width: 992px) {
                     border-radius: 0 4px 4px 0;
-                    padding-left: 12px;
-                    padding-right: 0;
+                    padding-right: 0!important;
+                    padding-left: 12px !important;
+
+                    @include rtlBlock() {
+                        border-radius: 4px 0 0 4px;
+                        padding-left: 0 !important;
+                    }
                 }
+                
             }
 
             .body-standard {
@@ -199,8 +217,8 @@
 .media-cta-section {
     >.container {
         @media (max-width: 991px) {
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
         }
     }
 }
