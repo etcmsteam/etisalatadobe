@@ -19,7 +19,7 @@
           <div class="common product-wrapper-logo product-col-3">                          
             <sly data-sly-list.item="${carousel.items}">
               <sly data-sly-set.productTilePath="${'{0}/{1}' @ format=[resource.path, item.name]}" data-sly-use.productdetails="${'com.etisalat.core.models.ProductDetails' @productPath=productTilePath}">
-                <div class="product-logo-card-box" data-sly-resource="${item.name @ decorationTagName=wcmmode.edit ? 'div' : ''}" id="${item.id}" data-label="${productdetails.tagNameFromProductPath}"></div>
+                <sly data-sly-resource="${item.name @ decorationTagName=wcmmode.edit ? 'div' : ''}" id="${item.id}" data-label="${productdetails.tagNameFromProductPath}"></sly>
               </sly>
             </sly>
           </div>

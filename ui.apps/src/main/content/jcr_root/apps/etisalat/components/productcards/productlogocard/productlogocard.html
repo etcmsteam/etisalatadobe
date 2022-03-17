@@ -1,9 +1,8 @@
-<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
      data-sly-set.viewports="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.viewPortLayout == '1-viewport'}"
-     data-sly-set.hasContent="${viewports || properties.productTitle}">   
-     <sly data-sly-test.productPlanCTALink="${properties.productCTALink}" data-sly-use.recommendPlanLink="${'com.etisalat.core.models.CommonLinkModel' @link=productPlanCTALink}" /> 
-     <a href="${recommendPlanLink.link}" target="${properties.productLinktarget ? '_blank' : '_self'}" class="link-cover"></a>    
+     data-sly-set.hasContent="${viewports || properties.productTitle}"
+     class="product-logo-card-box ${properties.mostPopularText ? 'offer' : ''}">        
      <div class="product-logo">
         <div data-sly-test="${properties.mostPopularText}" class="most-popular">${properties.mostPopularText}</div>
         <div class="img-wrap">
@@ -31,7 +30,7 @@
         </div>        
         <button data-sly-test="${properties.ctatext}" role="button" class="btn btn-green ripple-effect btn-buy-now ">${properties.ctatext}</button>
     </div>
-</sly>
+</div>
 
 
 <sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>
