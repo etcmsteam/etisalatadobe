@@ -35,7 +35,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
 
     function initSwiper() {
       // plans table slider for CMS modules start
-      var findPlans = $(document).find('.product-grid-text-section.plans:not(".product-recommend-text")');
+      var findPlans = $(document).find('.product-grid-text-section.plans:not(".product-recommend-text,.product-with-logo-text")');
       if(findPlans.length > 0){
         findPlans.each(function (index) {
         $(this).addClass('plansTable' + index);
@@ -219,7 +219,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       var radios = [];
       var selected = [];
 
-      $(".product-grid-text-section.plans:not('.product-recommend-text') .category-list-wrap input").each(function () {
+      $(".product-grid-text-section.plans.plansTable0 .category-list-wrap input").each(function () {
         radios.push($(this));
       });
 
@@ -236,7 +236,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       }
 
       // on radio selction show hide right panel ( container )
-      $(".product-grid-text-section.plans:not('.product-recommend-text') .category-list-wrap input").change(function () {
+      $(".product-grid-text-section.plans.plansTable0 .category-list-wrap input").change(function () {
         if ($(this).is(":checked")) {
           filterCards($(this).attr("data-label"), $(this));
         }
