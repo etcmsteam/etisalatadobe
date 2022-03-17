@@ -10,7 +10,11 @@ import { ACCORDION_JS } from "./js/core-components/accordion";
 // Language JS
 import { LANGUAGE_JS } from "./js/core-components/language";
 
+// Tabs JS
+import { TABS_JS } from "./js/core-components/tabs";
+
 document.addEventListener("DOMContentLoaded", () => {
   ACCORDION_JS();
   LANGUAGE_JS();
+  TABS_JS();
 });
