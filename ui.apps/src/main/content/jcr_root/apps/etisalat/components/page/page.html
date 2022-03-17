@@ -37,17 +37,37 @@
     userAgentData = navigator.userAgent,
     currentDate = new Date(),
     previousPage = document.referrer,
-    previousPathName = '';
+    previousPageName = '',
+    siteSection = '';
+    siteSection1 = '',
+    siteSection2 = '';
 
     let siteLang = siteLangElement.getAttribute('lang'),
       pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
       pageName;
     
-    if (document.referrer !== '' && document.referrer !== undefined) {
-      previousPage = new URL(document.referrer).pathname;
+    //sitesection 1 and 2
+    const pathArr = dataLayerPathName.split('/');
+    if(pathArr.length >= 3) {
+      const newPathArr = pathArr.slice(-3);
+      siteSection = newPathArr[2];
+      siteSection1 = newPathArr[1];
+      siteSection2 = newPathArr[0];
+    }
+
+    function isValidHttpUrl(string) {
+      try {
+        return new URL(string);
+      } catch (e) {
+        return false;
+      }
+    }
+ 
+    if (isValidHttpUrl(previousPage)) {
+      previousPage = isValidHttpUrl(previousPage).pathname;
       var arr = previousPage.split('/');
       var lastItem = arr.pop();
-      previousPathName = lastItem.split('.')[0];
+      previousPageName = lastItem.split('.')[0];
     }
 
     if (dataLayerPathName.includes('/ewallet/')) {
@@ -117,9 +137,9 @@
               "webPageDetails": {
                 "name": pageName,
                 "server": serverName,
-                "siteSection": pageTitle,
-                "siteSection1": "Home Navigation",
-                "siteSection2": "",
+                "siteSection": siteSection,
+                "siteSection1": siteSection1,
+                "siteSection2": siteSection2,
                 "isErrorPage": isErrorFlg,
                 "URL": dataLayerUrl,
                 "pageViews": {
@@ -130,12 +150,13 @@
             "pageInfo": {
               "country": "ae",
               "language": siteLang,
-              "previousPageName": "[previous page name]",
-              "pageType": "Home",
+              "previousPageName": previousPageName,
+              "referrer": previousPage, 
+              "pageType": siteSection,
               "pageLoadTime": loadTime
             },
             "user": {
-              "loginStatus": "logged-in/logged-out"
+              "loginStatus": "logged-out"
             },
             "timestamp": currentDate.toString(),
             "userAgentString": userAgentData
