@@ -33,11 +33,42 @@
       serverName = window.location.hostname,
       dataLayerUrl = window.location.href
     pagePathName = window.location.pathname;
-    dataLayerPathName = pagePathName.split('.html')[0];
+    dataLayerPathName = pagePathName.split('.html')[0],
+    userAgentData = navigator.userAgent,
+    currentDate = new Date(),
+    previousPage = document.referrer,
+    previousPageName = '',
+    siteSection = '';
+    siteSection1 = '',
+    siteSection2 = '';
 
     let siteLang = siteLangElement.getAttribute('lang'),
       pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
       pageName;
+    
+    //sitesection 1 and 2
+    const pathArr = dataLayerPathName.split('/');
+    if(pathArr.length >= 3) {
+      const newPathArr = pathArr.slice(-3);
+      siteSection = newPathArr[2];
+      siteSection1 = newPathArr[1];
+      siteSection2 = newPathArr[0];
+    }
+
+    function isValidHttpUrl(string) {
+      try {
+        return new URL(string);
+      } catch (e) {
+        return false;
+      }
+    }
+ 
+    if (isValidHttpUrl(previousPage)) {
+      previousPage = isValidHttpUrl(previousPage).pathname;
+      var arr = previousPage.split('/');
+      var lastItem = arr.pop();
+      previousPageName = lastItem.split('.')[0];
+    }
 
     if (dataLayerPathName.includes('/ewallet/')) {
       if (dataLayerPathName.includes('/personal/')) {
@@ -76,7 +107,7 @@
     };
 
     const isErrorFlg = urlExists(dataLayerUrl);
-
+    if(!dataLayerPathName.includes('/etisalat/')) {
     window.adobeDataLayer = window.adobeDataLayer || [];
     adobeDataLayer.push({
       "event": "pageLoaded",
@@ -94,6 +125,45 @@
         }
       }
     });
+    } else {
+      window.onload = function () {
+        var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
+        loadTime = loadTime/1000 + 's';
+
+        adobeDataLayer.push({
+          "event": "pageLoaded",
+          "xdmPageLoad": {
+            "web": {
+              "webPageDetails": {
+                "name": pageName,
+                "server": serverName,
+                "siteSection": siteSection,
+                "siteSection1": siteSection1,
+                "siteSection2": siteSection2,
+                "isErrorPage": isErrorFlg,
+                "URL": dataLayerUrl,
+                "pageViews": {
+                  "value": 1
+                }
+              }
+            },
+            "pageInfo": {
+              "country": "ae",
+              "language": siteLang,
+              "previousPageName": previousPageName,
+              "referrer": previousPage, 
+              "pageType": siteSection,
+              "pageLoadTime": loadTime
+            },
+            "user": {
+              "loginStatus": "logged-out"
+            },
+            "timestamp": currentDate.toString(),
+            "userAgentString": userAgentData
+          }
+        });
+      }
+    }
   </script>
   <!--For Google Map-->
   <script>
