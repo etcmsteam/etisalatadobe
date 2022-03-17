@@ -26,8 +26,9 @@ export const SHOP_BRANDS = () => {
     const swiper = swiperInit(`.${rootInstanceClass} .brands-swiper`, {
       slidesPerView: 2.2,
       scrollbar: `.${rootInstanceClass} .brand-scrollbar`,
-      nextButton: `.${rootInstanceClass}.brands-logo .next`,
-      prevButton: `.${rootInstanceClass}.brands-logo .prev`,
+      nextButton: $("html").attr("lang") === "ar" ? `.${rootInstanceClass}.brands-logo .prev` : `.${rootInstanceClass}.brands-logo .next`,
+      prevButton: $("html").attr("lang") === "ar" ? `.${rootInstanceClass}.brands-logo .next` : `.${rootInstanceClass}.brands-logo .prev`,
+
       scrollbarHide: false,
       scrollbarDraggable: true,
       breakpoints: {
