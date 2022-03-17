@@ -13,6 +13,13 @@
       margin: 0 0 toRem(8) 0;
     }
 
+    @include rtlBlock {
+      b,
+      b span {
+        font-weight: bold;
+      }
+    }
+
     &.ul-list-cms {
       ul {
         padding-left: 0;
@@ -58,6 +65,7 @@
     font-size: toRem(12) !important;
     letter-spacing: toRem(4);
     text-transform: uppercase;
+    font-weight: 700;
   }
 
   .media-cta-container,
@@ -298,6 +306,18 @@
                 }
               }
 
+              .cmp-form-text__text {
+                &:focus {
+                  background-color: $white;
+
+                  &:not([readonly]) {
+                    & ~ label {
+                      color: $main-green;
+                    }
+                  }
+                }
+              }
+
               // label,
               p {
                 color: $grey1;
@@ -379,7 +399,7 @@
           z-index: 2;
 
           @include rtlBlock {
-            transform-origin: 100% 50% !important;
+            transform-origin: 100% 0 !important;
           }
         }
 
