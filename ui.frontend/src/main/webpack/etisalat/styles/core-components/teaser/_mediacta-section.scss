@@ -1,3 +1,4 @@
+/* stylelint-disable no-eol-whitespace */
 /* stylelint-disable no-descending-specificity */
 .cmp-teaser--mediacta-section,
 .whitebg-container {
@@ -178,7 +179,7 @@
 
     border-radius: $border-radius-step-1;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 
@@ -187,7 +188,7 @@
 
       border-radius: $border-radius-step-1;
       display: flex;
-      flex-direction: row-reverse;
+      flex-direction: row;
       flex-wrap: wrap;
       width: 100%;
     }
@@ -356,6 +357,11 @@
   }
 
   &.image-left {
+    .cmp-teaser__link {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+   
     .cmp-image {
       border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
 
@@ -370,6 +376,11 @@
   }
 
   &.image-right {
+    .cmp-teaser__link {
+      display: flex;
+      flex-direction: row;
+    }
+    
     .cmp-image {
       border-radius: $border-radius-step-1 $border-radius-step-1 0 0;
 
@@ -552,6 +563,13 @@
   @include respond-to-max($tablet - 1) {
     .aem-GridColumn {
       padding: 0 !important;
+    }
+
+    p .image--space {
+      img,
+      svg {
+        margin-right: 20px;
+      }
     }
   }
 

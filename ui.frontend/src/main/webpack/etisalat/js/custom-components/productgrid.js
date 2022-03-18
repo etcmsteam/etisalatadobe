@@ -1,4 +1,6 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
+// Analytics JS
+import { ANALYTICS_FILTER } from "../analytics/analytics";
 
 (function () {
     //function to pass swiper options collectively
@@ -239,6 +241,8 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       $(".product-grid-text-section.plans.plansTable0 .category-list-wrap input").change(function () {
         if ($(this).is(":checked")) {
           filterCards($(this).attr("data-label"), $(this));
+          var filterValue = $(this).next("label").text();
+          ANALYTICS_FILTER("order product", filterValue, filterValue);  
         }
       });
 
