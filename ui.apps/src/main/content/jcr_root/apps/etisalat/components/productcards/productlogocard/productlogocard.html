@@ -1,0 +1,37 @@
+<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+     data-sly-use.productdetails="com.etisalat.core.models.ProductDetails"
+     data-sly-set.viewports="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.viewPortLayout == '1-viewport'}"
+     data-sly-set.hasContent="${viewports || properties.productTitle}"
+     class="${!wcmmode.edit ? 'product-logo-card-box' : ''} ${properties.mostPopularText ? 'offer' : ''}" data-label="${productdetails.productFilterTagName}">        
+     <div class="product-logo">
+        <div data-sly-test="${properties.mostPopularText}" class="most-popular">${properties.mostPopularText}</div>
+        <div class="img-wrap">
+             <sly data-sly-test="${viewports}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content">
+            <h2 data-sly-test="${properties.productTitle}" data-sly-element="${properties.titleType}" class="product-head">${properties.productTitle}</h2>
+            <div data-sly-test="${properties.productText}" class="product-description">
+                ${properties.productText @ context="html"}
+            </div>
+        </div>
+    </div>
+    <div class="content-footer">
+        <div class="product-price-wrapper">
+            <div data-sly-test="${properties.fromText}" class="from">
+                ${properties.fromText}
+            </div>
+            <div data-sly-test="${properties.productCurrency || properties.productPrice}" class="price">
+                <span class="price-value">${properties.productPrice}</span>
+                <span class="price-currency">${properties.productCurrency}</span>
+            </div>
+            <div data-sly-test="${properties.vatInclude}" class="price-vat">${properties.vatInclude}</div>
+        </div>        
+        <button data-sly-test="${properties.ctatext}" role="button" class="btn btn-green ripple-effect btn-buy-now ">${properties.ctatext}</button>
+    </div>
+</div>
+
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>
