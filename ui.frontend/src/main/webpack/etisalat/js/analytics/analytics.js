@@ -14,9 +14,9 @@ export const ANALYTICS_FILTER = (category, type, value) => {
 };
 
 // CTA and Hero Banner CTA Events
-$('a.btn, a.cmp-button, a.btn-text').on('click', function(){
+$('a.btn, a.cmp-button, a.btn-text, .etisalatherobanner .hero-bg-cta, .link').on('click', function(){
   let $this = $(this);
-  const ctaName = $this.text().toLowerCase();
+  const ctaName = $this.text() ? $this.text().toLowerCase().trim() : '';
   const currrentURL = window.location.href;
   const pagePathName = window.location.pathname;
   const dataLayerPathName = pagePathName.split('.html')[0];
@@ -33,7 +33,7 @@ $('a.btn, a.cmp-button, a.btn-text').on('click', function(){
         webInteraction: {
           name: ctaName,
           URL: currrentURL,
-          type: "[other or exit or download]",
+          type: "other",
           region: sectionHeading,
           linkClicks: {
             value: 1,
