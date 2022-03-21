@@ -1,0 +1,47 @@
+<template data-sly-template.threeColumnVideo="${ @ properties}">
+<div class="${properties.mediaAlignmentThreeColumnVideo}" data-sly-test="${properties.mediaAlignmentThreeColumnVideo}">
+    <a href="https://www.etisalat.ae/en/index.jsp" class="link-cover"></a>
+    <div class="container">
+        <div class="media-content">
+            <div class="video-container">
+				<sly data-sly-test="${properties.youTubeUrlThreeColumnVideo}">
+					<a href="${properties.youTubeUrlThreeColumnVideo @ context='uri'}" class="youtube-video-link">
+						<sly data-sly-test="${properties.playIconReferenceThreeColumnVideo}">
+							<div class="icon">
+								<img src="${properties.playIconReferenceThreeColumnVideo}" />
+							</div>
+						</sly>
+					</a>
+				</sly>
+                <sly data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">	
+					<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+						<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+					</div>
+						<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>	        	              	        
+				</sly>
+            </div>
+            <div class="body-wrapper">
+                <div class="head">
+                    <div class="wst-main-headings">
+                         <h4 data-sly-test="${properties.tiletitle}">${properties.tiletitle}</h4>
+                    </div>
+                </div>
+                <div class="body">
+                    <a href="#" class="clickable-area" >
+                        <div class="paragraph-styling">
+                            <div class="p2">
+                                ${properties.text  @ context='html'}
+                            </div>
+                        </div>
+        
+                        <div class="third-action-wrapper action-link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" data-sly-test="${properties.tileLinkBehavior}">
+                            <span class="link" data-sly-test="${properties.ctatext}">${properties.ctatext}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</template>
