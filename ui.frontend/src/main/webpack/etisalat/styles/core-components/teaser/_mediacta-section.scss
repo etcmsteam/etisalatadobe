@@ -128,10 +128,20 @@
         }
       }
     }
+
+    .img-static {
+      position: relative;
+      width: 100%;
+
+      @include respond-to-min($desktop) {
+        width: 50%;
+      }
+    }
   }
 
   .image-right {
-    .cmp-teaser__image {
+    .cmp-teaser__image,
+    .img-static {
       @include respond-to-min($desktop) {
         margin-left: toRem(64);
 
@@ -150,7 +160,8 @@
   }
 
   .image-left {
-    .cmp-teaser__image {
+    .cmp-teaser__image,
+    .img-static {
       @include respond-to-min($desktop) {
         margin-right: toRem(24);
 
@@ -172,8 +183,6 @@
 // media cts st
 
 .cmp-teaser--mediacta {
-  margin: 1rem 0;
-
   .cmp-teaser {
     @include media-box-shadow;
 
@@ -181,7 +190,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: hidden;
     width: 100%;
+
+    .img-static {
+      height: toRem(240);
+      width: 100%;
+    }
 
     &__image {
       height: toRem(240);
@@ -216,8 +231,7 @@
       @include respond-to-min($desktop) {
         display: flex;
         flex-direction: column;
-        padding: toRem(24);
-        padding: toRem(24) toRem(16)  toRem(24) toRem(24);
+        padding: toRem(24) toRem(64)  toRem(40) toRem(12);
       }
     }
 
@@ -271,14 +285,14 @@
     h5 {
       font-size: toRem(18);
 
-      @media (max-width: 991px) {
-        font-size: toRem(18);
-      }
-
       @include respond-to-min($tablet) {
         color: $almost-black;
         font-size: toRem(24);
         margin: 0 0 toRem(16);
+      }
+
+      @media (max-width: 991px) {
+        font-size: toRem(18);
       }
 
       @media (min-width: 1248px) {
@@ -464,6 +478,24 @@
     text-transform: uppercase;
 
     @include font-family-lato;
+  }
+
+  &.mediactaTwoCol-imageWithText {
+    .cmp-teaser__title {
+      margin-bottom: toRem(22.4);
+      
+      @include respond-to-max($desktop - 1) {
+        margin-bottom: toRem(16);
+        margin-top: 0;
+
+        @include font-family-lato;
+      }
+    }
+    
+    @include respond-to-max($desktop - 1) {
+      margin-bottom: toRem(24);
+      margin-top: 0;
+    }
   }
 }
 
