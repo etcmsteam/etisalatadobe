@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -24,6 +25,8 @@ import org.mockito.MockitoAnnotations;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.day.cq.wcm.api.Page;
+import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.models.CategoryTagVO;
 
 import junitx.util.PrivateAccessor;
@@ -44,6 +47,9 @@ class ProductDetailsImplTest {
 
   @Mock
   private Resource resource;
+  
+  @Mock
+  private Page currentPage;
   
   @Mock
   private Resource tagResource;
@@ -75,6 +81,7 @@ class ProductDetailsImplTest {
     Tag filterTag = mock(Tag.class);
     Tag nocontract = mock(Tag.class);
     Tag allcategory = mock(Tag.class);
+    Locale locale = new Locale(AEConstants.ENGLISH);
 
     List<Tag> listTags = new ArrayList<>();
 
@@ -84,6 +91,7 @@ class ProductDetailsImplTest {
     Iterator<Tag> tagIterator = listTags.iterator();
     when(nocontract.getTitle()).thenReturn("No Contract");
     when(allcategory.getTitle()).thenReturn("All Categories");
+    when(currentPage.getLanguage()).thenReturn(locale);
 
     when(tagManager.resolve(FILTER_TAG_PATH)).thenReturn(filterTag);
     when(filterTag.listChildren()).thenReturn(tagIterator);
