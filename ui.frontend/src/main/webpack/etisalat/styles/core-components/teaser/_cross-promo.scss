@@ -20,6 +20,11 @@
       }
     }
 
+    .img-static {
+      min-width: auto;
+      width: auto;
+    }
+
     .cmp-teaser__content {
       padding-bottom: toRem(32);
 
@@ -491,6 +496,19 @@
       margin-right: 1rem;
     }
 
+    .img-static {
+      width: 100%;
+
+      @include respond-to-max($tablet) {
+        width: 100%;
+      }
+
+      @include respond-to-min($desktop) {
+        position: relative;
+        width: 60%;
+      }
+    }
+
     .cmp-teaser__image {
       width: 100%;
 
@@ -527,6 +545,19 @@
     @include respond-to-max($tablet) {
       margin-left: 1rem;
       margin-right: 1rem;
+    }
+
+    .img-static {
+      width: 100%;
+
+      @include respond-to-min($desktop) {
+        position: relative;
+        width: 60%;
+      }
+
+      @include respond-to-max($tablet) {
+        width: 100%;
+      }
     }
 
     .cmp-teaser__image {
@@ -707,7 +738,8 @@
 
 @include respond-to-min($desktop) {
   .tile-teaser.image-right {
-    .cmp-teaser__image {
+    .cmp-teaser__image,
+    .img-static {
       margin-left: toRem(24);
 
       @include rtlBlock {
@@ -718,7 +750,8 @@
   }
 
   .tile-teaser.image-left {
-    .cmp-teaser__image {
+    .cmp-teaser__image,
+    .img-static {
       margin-right: toRem(24);
 
       @include rtlBlock {
