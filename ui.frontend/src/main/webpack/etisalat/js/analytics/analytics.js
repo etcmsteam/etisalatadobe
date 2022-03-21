@@ -14,7 +14,7 @@ export const ANALYTICS_FILTER = (category, type, value) => {
 };
 
 // CTA and Hero Banner CTA Events
-$('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link').on('click', function(){
+$('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link', '.cms-button').on('click', function(){
   let $this = $(this);
   const ctaName = $this.text() ? $this.text().toLowerCase().trim() : '';
   const currrentURL = window.location.href;
