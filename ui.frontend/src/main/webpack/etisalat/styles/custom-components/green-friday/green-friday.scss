@@ -321,10 +321,17 @@
 // custom styling
 
 .green-friday {
+  position: relative;
+
+  @include respond-to-max($phone) {
+    margin-left: toRem(-16);
+    margin-right: toRem(-16);
+  }
+
   .green-friday-hidden {
     display: none;
   }
-  position: relative;
+
   .banner-image {
     overflow: hidden;
     max-height: 67px;
@@ -492,7 +499,9 @@
 
         .main-text-greenf {
           .row {
-            margin: 0;
+            @include respond-to-max($desktop-min) {
+              margin: 0 !important;
+            }
           }
         }
 
@@ -736,14 +745,14 @@
             margin: 0;
             > div.col-md-4 {
               order: 2;
-              padding: 0;
+              padding: 0 !important;
             }
             > div.col-md-6 {
-              padding: 0;
+              padding: 0 !important;
             }
             > div.col-md-8 {
               order: 1;
-              padding: 0;
+              padding: 0 !important;
             }
           }
           .content {
