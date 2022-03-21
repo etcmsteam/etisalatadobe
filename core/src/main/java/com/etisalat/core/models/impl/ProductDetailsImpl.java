@@ -19,11 +19,14 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.wcm.api.Page;
+
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.etisalat.core.models.CategoryTagVO;
 import com.etisalat.core.models.ProductDetails;
 import com.etisalat.core.util.CommonUtility;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, adapters = {
     ProductDetails.class}, resourceType = {ProductDetailsImpl.RESOURCE_TYPE}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -41,6 +44,9 @@ public class ProductDetailsImpl implements ProductDetails {
    */
   @SlingObject
   protected Resource currentRes;
+  
+  @ScriptVariable
+  private Page currentPage;
   
   @Inject
   private String productPath;
@@ -66,7 +72,7 @@ public class ProductDetailsImpl implements ProductDetails {
         tag.listChildren().forEachRemaining(childtag -> {
           CategoryTagVO categoryTag = new CategoryTagVO();
           categoryTag.setTagName(childtag.getName());
-          categoryTag.setTagTitle(childtag.getTitle());
+          categoryTag.setTagTitle(childtag.getTitle(currentPage.getLanguage()));
           filterTagList.add(categoryTag);
         });
       }
