@@ -209,7 +209,7 @@
     }
 
     &__content {
-      padding: toRem(16) toRem(16) 0;
+      padding: toRem(16);
       position: relative;
       width: 100%;
 
@@ -217,6 +217,7 @@
         display: flex;
         flex-direction: column;
         padding: toRem(24);
+        padding: toRem(24) toRem(16)  toRem(24) toRem(24);
       }
     }
 
@@ -270,14 +271,14 @@
     h5 {
       font-size: toRem(18);
 
+      @media (max-width: 991px) {
+        font-size: toRem(18);
+      }
+
       @include respond-to-min($tablet) {
         color: $almost-black;
         font-size: toRem(24);
         margin: 0 0 toRem(16);
-      }
-
-      @media (max-width: 991px) {
-        font-size: toRem(18);
       }
 
       @media (min-width: 1248px) {
