@@ -190,6 +190,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: hidden;
     width: 100%;
 
     .img-static {
@@ -481,6 +482,24 @@
     text-transform: uppercase;
 
     @include font-family-lato;
+  }
+
+  &.mediactaTwoCol-imageWithText {
+    .cmp-teaser__title {
+      margin-bottom: toRem(22.4);
+      
+      @include respond-to-max($desktop - 1) {
+        margin-bottom: toRem(16);
+        margin-top: 0;
+
+        @include font-family-lato;
+      }
+    }
+    
+    @include respond-to-max($desktop - 1) {
+      margin-bottom: toRem(24);
+      margin-top: 0;
+    }
   }
 }
 
