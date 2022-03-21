@@ -14,7 +14,7 @@ export const ANALYTICS_FILTER = (category, type, value) => {
 };
 
 // CTA and Hero Banner CTA Events
-$('a.btn, a.cmp-button, a.btn-text, .etisalatherobanner .hero-bg-cta, .link').on('click', function(){
+$('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link').on('click', function(){
   let $this = $(this);
   const ctaName = $this.text() ? $this.text().toLowerCase().trim() : '';
   const currrentURL = window.location.href;
@@ -39,19 +39,54 @@ $('a.btn, a.cmp-button, a.btn-text, .etisalatherobanner .hero-bg-cta, .link').on
             value: 1,
           },
         },
-      },
-      linkInfo: {
-        sectionHeading: sectionHeading,
-        action: btnAction,
-        name: ctaName,
       }
     }
   });
 
   if ($this.closest(".etisalatherobanner").length > 0) {
-    window.adobeDataLayer.xdmActionDetails.push({
-      eventInfo: {
-        bannerClick: 1
+    btnAction = $this.closest(".etisalatherobanner").find(".hero-title");
+    console.log(btnAction);
+    if (btnAction.length > 0) {
+      btnAction = btnAction.text().toLowerCase().trim();
+    }
+    window.adobeDataLayer.push({
+      xdmActionDetails: {
+        linkInfo: {
+          sectionHeading: sectionHeading,
+          action: btnAction,
+          name: ctaName,
+        },
+        eventInfo: {
+          bannerClick: 1,
+        },
+      },
+    });
+  } else if ($this.closest(".teaser").length > 0) {
+    btnAction = $this.closest(".teaser").find(".cmp-teaser__title");
+    if (btnAction.length > 0) {
+      btnAction = btnAction.text().toLowerCase().trim();
+    }
+    window.adobeDataLayer.push({
+      xdmActionDetails: {
+        linkInfo: {
+          sectionHeading: sectionHeading,
+          action: btnAction,
+          name: ctaName,
+        },
+        eventInfo: {
+          intCampaign: 1,
+        },
+      },
+    });
+  } else {
+    btnAction = ctaName;
+    window.adobeDataLayer.push({
+      xdmActionDetails: {
+        linkInfo: {
+          sectionHeading: sectionHeading,
+          action: btnAction,
+          name: ctaName,
+        },
       },
     });
   }
