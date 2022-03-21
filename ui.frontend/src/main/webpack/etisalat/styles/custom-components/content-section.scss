@@ -135,11 +135,14 @@
                 }
             }
             .cmp-image__image {
-                width: 100%;
-                 height: 240px;
-                // @media (min-width: 992px) {
-                //     height: auto;
-                // }
+                position: absolute;
+                left: -9999px;
+                right: -9999px;
+                top: -9999px;
+                bottom: -9999px;
+                margin: auto;
+                min-width: 100%;
+                min-height: 100%;
             }
         }
 
@@ -199,6 +202,14 @@
 
             .learn-more-link {
                 left: 1.5rem;
+                @include rtlBlock() {
+                    .btn-text {
+                        @media (min-width: 992px) {
+                            padding-right: 12px;
+                        }
+                    }
+                }
+                
             }
         }
     }
@@ -269,7 +280,7 @@
 
         @media (max-width: 991px) {
             bottom: 2rem;
-            left: 1rem;
+            left: 1rem !important;
         }
 
         a {
