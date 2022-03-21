@@ -44,7 +44,15 @@ $('a.btn, a.cmp-button, a.btn-text, .etisalatherobanner .hero-bg-cta, .link').on
         sectionHeading: sectionHeading,
         action: btnAction,
         name: ctaName,
-      },
-    },
+      }
+    }
   });
+
+  if ($this.closest(".etisalatherobanner").length > 0) {
+    window.adobeDataLayer.xdmActionDetails.push({
+      eventInfo: {
+        bannerClick: 1
+      },
+    });
+  }
 });
