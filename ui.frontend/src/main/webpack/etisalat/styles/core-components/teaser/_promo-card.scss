@@ -124,6 +124,15 @@
       }
     }
 
+    .img-static {
+      border-radius: toRem(4);
+      height: toRem(148);
+
+      @include respond-to-min($desktop) {
+        height: toRem(250);
+      }
+    }
+
     &__title {
       color: $white;
       font-size: $font20;
@@ -243,6 +252,20 @@
     margin-bottom: toRem(26);
     overflow: hidden;
     position: relative;
+
+    .img-static {
+      &::after {
+        background: $black;
+        border-radius: toRem(4);
+        content: "";
+        height: 100%;
+        opacity: 0.2;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+      }
+    }
 
     &__image {
       &::after {
@@ -396,6 +419,11 @@
           border-color: $main-green !important;
           top: toRem(5);
         }
+      }
+
+      .img-static {
+        height: toRem(160);
+        width: 48%;
       }
 
       &__image {
