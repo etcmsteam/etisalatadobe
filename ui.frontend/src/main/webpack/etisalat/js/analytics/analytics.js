@@ -45,7 +45,6 @@ $('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link').on('click'
 
   if ($this.closest(".etisalatherobanner").length > 0) {
     btnAction = $this.closest(".etisalatherobanner").find(".hero-title");
-    console.log(btnAction);
     if (btnAction.length > 0) {
       btnAction = btnAction.text().toLowerCase().trim();
     }
