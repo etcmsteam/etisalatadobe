@@ -91,7 +91,8 @@
       background-color: $white;
     }
 
-    .cmp-teaser__image {
+    .cmp-teaser__image,
+    .img-static {
       @include respond-to-max($phone) {
         padding: 0 toRem(16);
       }
@@ -424,7 +425,8 @@
       .cmp-teaser {
         display: block;
 
-        &__image {
+        &__image,
+        .img-static {
           width: 100%;
 
           @include respond-to-min($desktop) {
@@ -807,7 +809,8 @@
     width: 100%;
   }
 
-  .cmp-teaser__image {
+  .cmp-teaser__image,
+  .img-static {
     height: auto;
     width: 100%;
   }
@@ -995,20 +998,6 @@
 
 @media (min-width: 48em) {
   .cmp_tabs--vertical {
-    .image-left {
-      .cmp-teaser {
-        display: flex;
-        flex-direction: row-reverse;
-      }
-    }
-
-    .image-right {
-      .cmp-teaser {
-        display: flex;
-        flex-direction: row;
-      }
-    }
-
     .cmp-tabs__tab--active::after {
       border: solid $main-green;
       border-radius: toRem(4);
@@ -1028,7 +1017,7 @@
 
     .cmp-teaser {
       display: flex;
-      flex-direction: row;
+      flex-direction: row-reverse;
       padding: 2rem;
       width: 100%;
 
@@ -1174,7 +1163,8 @@
       width: 100%;
     }
 
-    .cmp-teaser__image {
+    .cmp-teaser__image,
+    .img-static {
       height: auto;
       width: 100%;
     }
@@ -1456,7 +1446,8 @@
       display: flex;
       width: 100%;
 
-      &__image {
+      &__image,
+      .img-static {
         height: toRem(428);
         width: 50%;
       }

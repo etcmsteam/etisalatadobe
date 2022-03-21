@@ -253,12 +253,20 @@
   }
 
   .cmp-icon-card-three-item {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
     .context-nav-box-wrap {
       overflow: hidden;
       padding: 0 0 2rem;
       text-align: center;
-      @include respond-to-max($tablet) {
-        padding: 0 0 3.5rem;
+
+      @include respond-to-min($tablet) {
+        padding: 0 0 2.25rem;
+      }
+      // Note: live has 1440px. however we only have $desktop-large:1360px;
+      @include respond-to-min($desktop-large) {
+        padding: 0 0 3.125rem;
       }
 
       .swiper-wrapper {
@@ -266,31 +274,49 @@
 
         .rect-responsive {
           padding-bottom: 65%;
+
+          @include respond-to-min($tablet) {
+            padding-bottom: 100%;
+          }
+
+          @include respond-to-min($desktop) {
+            padding-bottom: 65%;
+          }
+
           @media (min-width: $screen-lg-max) {
-            min-height: 205px;
+            min-height: auto;
             min-width: 223.76px;
           }
         }
 
         .swiper-slide {
           width: 66.66666667%;
+          padding: 0 !important;
         }
       }
 
       .context-nav-box {
         background-color: $white;
-        min-height: toRem(205);
+        // min-height: toRem(205);
         position: absolute;
-        height: 100%;
+        height: auto;
         width: 100%;
 
         @include respond-to-max($tablet) {
-          min-height: toRem(190);
+          // min-height: toRem(190);
           width: 100%;
         }
 
         @include respond-to-max($phone) {
-          min-height: toRem(210);
+          // min-height: toRem(210);
+        }
+
+        @include respond-to-min($tablet) {
+          height: 100%;
+        }
+
+        @include respond-to-min($desktop) {
+          height: 100%;
         }
 
         &.content {
@@ -319,6 +345,10 @@
           margin-top: 0.5rem;
           padding-top: 1em;
           position: relative;
+
+          @include respond-to-min($desktop-large) {
+            font-size: 1.25rem;
+          } 
         }
 
         h5::after {
