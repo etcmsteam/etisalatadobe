@@ -232,6 +232,10 @@
         display: flex;
         flex-direction: column;
         padding: toRem(24) toRem(64)  toRem(40) toRem(12);
+
+        @include rtlBlock() {
+          padding: toRem(24) toRem(12)  toRem(40) toRem(64);
+        }
       }
     }
 
@@ -478,6 +482,24 @@
     text-transform: uppercase;
 
     @include font-family-lato;
+  }
+
+  &.mediactaTwoCol-imageWithText {
+    .cmp-teaser__title {
+      margin-bottom: toRem(22.4);
+      
+      @include respond-to-max($desktop - 1) {
+        margin-bottom: toRem(16);
+        margin-top: 0;
+
+        @include font-family-lato;
+      }
+    }
+    
+    @include respond-to-max($desktop - 1) {
+      margin-bottom: toRem(24);
+      margin-top: 0;
+    }
   }
 }
 

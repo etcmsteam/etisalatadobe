@@ -401,6 +401,14 @@
       @include rtlBlock() {
         left: toRem(-30);
       }
+
+      @include respond-to-min($desktop-wide) {
+        left: toRem(-56);
+    
+        @include rtlBlock() {
+          left: toRem(-56);
+        }
+      }
     }
 
     .next {
@@ -408,6 +416,15 @@
 
       @include rtlBlock() {
         right: toRem(-30);
+      }
+
+      
+      @include respond-to-min($desktop-wide) {
+        right: toRem(-56);
+
+        @include rtlBlock() {
+          right: toRem(-56);
+        }
       }
     }
 
@@ -575,13 +592,23 @@
         }
       }
 
-      @include respond-to-max($desktop-wide) {
+      @include respond-to-max($desktop-wide - 1) {
         .prev {
-          left: toRem(-34);
+          left: toRem(-40);
         }
 
         .next {
-          right: toRem(-34);
+          right: toRem(-40);
+        }
+      }
+
+      @include respond-to-min($desktop-wide) {
+        .prev {
+          left: toRem(-56);
+        }
+
+        .next {
+          right: toRem(-56);
         }
       }
 
@@ -848,7 +875,7 @@
     .next,
     .prev {
       top: auto;
-      bottom: 30%;
+      bottom: 45%;
     }
   }
 }

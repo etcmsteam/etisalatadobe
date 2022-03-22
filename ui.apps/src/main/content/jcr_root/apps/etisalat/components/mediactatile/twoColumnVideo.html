@@ -1,4 +1,4 @@
-<template data-sly-template.twoColumnVideo="${ @ properties}">
+<template data-sly-template.twoColumnVideo="${ @ tileModel,properties,imageViewportModel}">
 <div class="media-cta-section"> 
     <div class="container" data-sly-test="${properties.mediaCtaHeadingTwoColumnVideo}">
         <div class="row">
@@ -38,11 +38,16 @@
                             <h4 data-sly-test="${properties.tiletitle}">${properties.tiletitle}</h4>
                            ${properties.text  @ context='html'}
                         </div>
-                        <div class="learn-more-link">
-                            <a class="btn-text btn-green  learn-more" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" data-sly-test="${properties.tileLinkBehavior}">
-                                <span data-sly-test="${properties.ctatext}">${properties.ctatext}</span>
-                            </a>
-                        </div>
+						
+						<sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+							<div data-sly-test="${tileModel.ctatext}" class="learn-more-link">
+							  <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" 
+							  class="btn-text btn-green learn-more" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">
+								<span>${tileModel.ctatext}</span>
+							  </a>
+							</div>
+						</sly>
+						
                     </div>
                 </div>
             </div>
