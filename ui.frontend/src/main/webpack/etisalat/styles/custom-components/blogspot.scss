@@ -942,8 +942,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
     padding-left: 0.5rem;
   }
   &.blogPage-share {
-    padding-left: toRem(12);
-    padding-right: toRem(12);
+    padding-left: toRem(4);
+    padding-right: toRem(4);
+    @include respond-to-min($desktop) {
+      padding-left: toRem(12);
+      padding-right: toRem(12);
+    }
+    
     .container {
       @include respond-to-min($tablet) {
         width: 756px !important;
@@ -954,13 +959,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
       @include respond-to-min($desktop-wide) {
         width: 1224px !important;
       }
-      .container {
-        .row {
-          @include respond-to-min-max($desktop-wide, $desktop) {
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
+      .row {
+        @include respond-to-min-max($desktop-wide, $tablet) {
+          margin-left: auto !important;
+          margin-right: auto !important;
         }
+      }
+      .wst-main-headings {
+        margin-left: toRem(-2);
       }
     }
   }
