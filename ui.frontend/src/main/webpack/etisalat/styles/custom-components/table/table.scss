@@ -291,20 +291,25 @@
 
   &.shorter-first-column {
     table {
-      @media screen and (min-width: 1248px) {
         thead,
         tbody {
           tr {
             th,
             td {
               &:first-child {
-                width: 15%;
+                @media screen and (min-width: 1248px) {
+                  width: 15%;
+                }
+                @include rtlBlock() {
+                  @include respond-to-min($desktop) {
+                    width: 20% !important;
+                  }
+                }
               }
             }
           }
         }
       }
-    }
   }
 
   &.table-collapsed {
