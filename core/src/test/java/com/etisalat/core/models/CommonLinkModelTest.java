@@ -1,12 +1,14 @@
 package com.etisalat.core.models;
 
-import io.wcm.testing.mock.aem.junit5.AemContext;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 @ExtendWith(AemContextExtension.class)
 public class CommonLinkModelTest {
@@ -33,5 +35,13 @@ public class CommonLinkModelTest {
         context.request().setAttribute("link", externalLink);
         CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
         assertEquals(externalLink, model.getLink());
+    }
+    
+    @Test
+    void testVideoLink() {
+        String videoLink = "https://www.youtube.com/embed/Xwr22z1hysY";
+        context.request().setAttribute("link", videoLink);
+        CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+        assertFalse(model.isVideo());        
     }
 }
