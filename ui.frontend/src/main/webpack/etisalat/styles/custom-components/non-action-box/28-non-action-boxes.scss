@@ -480,10 +480,11 @@
       }
 
       .body-standard {
-        padding: 0;
-        padding-right: 4rem;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-right: 4rem !important;
         overflow: hidden;
-        padding-left: toRem(12);
+        padding-left: toRem(12) !important;
 
         &.pr-0 {
           padding-right: 0 !important;
@@ -491,6 +492,10 @@
           @include rtlBlock {
             padding-right: toRem(12) !important;
             padding-left: 0 !important;
+
+            @include respond-to-max($desktop-min) {
+              padding-right: 0 !important;
+            }
           }
         }
 
