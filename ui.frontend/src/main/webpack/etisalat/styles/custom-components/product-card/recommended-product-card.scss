@@ -5,6 +5,15 @@
     padding-right: 16px;
   }
 }
+.recommended-plan-tabs {
+  > .container {
+    width: auto;
+  }
+  .deeplink-tabs {
+    margin-left: 12px;
+    margin-right: -12px;
+  }
+}
 .product-grid-text-section {
   &.product-recommend-text {
     padding: 0;
@@ -41,31 +50,12 @@
     }
 
     .container {
+      width: auto;
       padding-left: 0;
       padding-right: 0;
       > div.row {
         padding-left: 0;
         padding-right: 0;
-      }
-    }
-    @media (min-width: 1200px) {
-      .container {
-        width: 1224px !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-      }
-    }
-    @media (min-width: 992px) {
-      .container {
-        width: 976px;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .container {
-        width: 756px;
-        padding-left: 0;
-        padding-right: 24px;
       }
     }
 
@@ -75,6 +65,9 @@
         border-color: $dark-orange;
       }
     }
+    .paragraph-styling .p2 p {
+      margin-right: 0;
+    }
   }
   &.product-with-logo-text {
     padding: 0;
@@ -83,6 +76,7 @@
     }
 
     .container {
+      width: auto;
       padding-left: 0;
       padding-right: 0;
       > div.row {
@@ -90,28 +84,11 @@
         padding-right: 0;
       }
     }
-    @media (min-width: 1200px) {
-      .container {
-        width: 1224px !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-      }
-    }
-    @media (min-width: 992px) {
-      .container {
-        width: 976px;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .container {
-        width: 756px;
-        padding-left: 0;
-        padding-right: 24px;
-      }
-    }
     .btn-green {
       background-color: $main-green !important;
+    }
+    .paragraph-styling .p2 p {
+      margin-right: 0;
     }
   }
 }
@@ -400,7 +377,7 @@
           h3 {
             //mobiile screen
             color: $almost-black;
-            font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+            @include font-family-Neotech;
             font-size: 18px;
             letter-spacing: 0;
             line-height: 23px;
@@ -418,13 +395,7 @@
         }
         .price-and-action {
           .media-cta-4-price {
-            //mobiile screen
-            // padding-bottom: 8px;
             padding-bottom: 16px;
-
-            // @media(min-width: 768px){
-            //     padding-bottom: 16px;
-            // }
 
             .price {
               text-align: center;
@@ -433,7 +404,6 @@
                 display: inline-block;
               }
               .value {
-                //mobiile screen
                 color: $almost-black;
                 font-family: Neotech-medium, GE SS Two, Roboto, Arial,
                   sans-serif;
@@ -483,6 +453,15 @@
         }
         .third-action-wrapper {
           margin: 0 24px;
+          @media (min-width: 992px) {
+            &.action-btn-default a,
+            &.action-btn-green a,
+            &.action-btn-orange a,
+            &.action-link a {
+              min-width: unset;
+            }
+          }
+          
         }
         .product-text {
           padding: 24px 16px;
@@ -782,7 +761,7 @@
         .product-head {
           //mobile screen
           color: $almost-black;
-          font-family: Neotech-medium, GE SS Two, Roboto, Arial, sans-serif;
+          @include font-family-Neotech;
           font-size: 20px;
           letter-spacing: 0;
           line-height: 25px;
@@ -841,7 +820,7 @@
           .price-value {
             //mobile screen
             color: $main-green;
-            font-family: Neotech-medium, GE SS Two, Arial, sans-serif;
+            @include font-family-Neotech-ge();
             font-size: 20px;
             letter-spacing: 0;
             line-height: 25px;
@@ -1024,15 +1003,10 @@
   position: relative;
   z-index: 8;
 
-  @media (min-width : 768px) {
-    margin-right: 18px;
-  }
-
   @media (min-width: 992px) {
     min-height: 90px;
     max-height: 90px;
     margin-right: 0;
-    width: 1200px;
 
     .page-nav {
       display: block;
@@ -1150,6 +1124,12 @@
             }
           }
         }
+      }
+    }
+    .recommended-plan-tabs {
+      .deeplink-tabs {
+        margin-left: 0;
+        margin-right: 0;
       }
     }
   }
