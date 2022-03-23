@@ -5,22 +5,71 @@
 		<div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
 	         <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
 	 </sly>	     
-	 <div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.videoLink}" class="${!wcmmode.edit ? 'video_ctn' : ''}">
-	   <video muted="muted" loop="" playsinline="" class="video_cover"
-	          autoplay="" tabindex="0" autobuffer="autobuffer" preload="preload"
-	          poster="${properties['video/fileReference']}" >
-	      <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"
-	              src="${properties.videoLink}">
-	      <source type="video/webm; codecs=&quot;vp8, vorbis&quot;"
-	              src="${properties.videoLink}">
-	      <source type="video/ogg; codecs=&quot;theora, vorbis&quot;"
-	              src="${properties.videoLink}">
-	      <track label="" kind="" srclang="" src="">
-	   </video>
-	</div>	  
+	 <sly data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.videoLink}" >
+	   <sly data-sly-test.heroBannerVideoLink="${properties.videoLink}" 
+	               data-sly-use.videoLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerVideoLink}"/>	               
+	    <div data-sly-test="${videoLink.video}" class="${!wcmmode.edit  ? 'video_ctn' : ''}">
+		   <video muted="muted" loop="" playsinline="" class="video_cover"
+		          autoplay="" tabindex="0" autobuffer="autobuffer" preload="preload"
+		          poster="${properties['video/fileReference']}" >		     
+			      <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"
+			              src="${properties.videoLink}">
+			      <source type="video/webm; codecs=&quot;vp8, vorbis&quot;"
+			              src="${properties.videoLink}">
+			      <source type="video/ogg; codecs=&quot;theora, vorbis&quot;"
+			              src="${properties.videoLink}">		      		     
+		   </video>
+		</div>	  
+       <div data-sly-test="${!videoLink.video}" class="video-item">
+           <video data-sly-test="${properties['video/fileReference']}" class="video_cover" poster="${properties['video/fileReference']}"> </video>     			     	      		     		     
+		   <div class="${!wcmmode.edit ? 'video_ctn' : ''}"
+		        id="youTubeVideoPlayer"
+		        data-videoid="${properties.videoLink}">
+		   </div>
+	   </div>          
+	</sly>	  
 	<div data-sly-test="${properties.heroDisplayBehavior == 'image-viewports'}">	
 	  <div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>    
 	  <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
 	</div>	         
  </div>	
+ 
+<script>
+    videoList = document.querySelectorAll(".video-item div");
+
+    if (videoList.length > 0) {
+      let videoID = document.querySelector("#youTubeVideoPlayer");
+      let tag = document.createElement("script");
+      let firstScriptTag = document.getElementsByTagName("script")[0];
+      tag.src = "https://www.youtube.com/iframe_api";
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      let player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("youTubeVideoPlayer", {
+          width: "100%",
+          videoId: videoID.dataset.videoid.split("/").pop(),
+          playerVars: {
+            'autoplay': 1,
+            'playsinline': 1,
+            'loop': 1,
+            'rel': 0,
+            'controls': 0,
+            'showinfo': 0,
+            'disablekb': 1,
+            'modestbranding': 1,
+			'widgetid': 0
+          },
+          events: {
+            onReady: onPlayerReady,
+          },
+        });
+      }
+
+      function onPlayerReady(event) {
+        event.target.mute();
+        event.target.playVideo();
+      }
+    }
+</script>
 </template>
