@@ -47,7 +47,12 @@
 							  </a>
 							</div>
 						</sly>
-						
+						<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}">
+							<div data-sly-test="${tileModel.ctatext}" class="learn-more-link">
+								<div data-sly-use.tileModalTemplate="/apps/etisalat/components/tile/tilemodal.html" data-sly-call="${tileModalTemplate.modal @
+													tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}"></div>
+							</div>
+						</sly>
                     </div>
                 </div>
             </div>
