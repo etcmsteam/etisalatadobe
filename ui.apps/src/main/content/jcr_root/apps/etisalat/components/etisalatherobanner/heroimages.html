@@ -21,7 +21,7 @@
 		   </video>
 		</div>	  
        <div data-sly-test="${!videoLink.video}" class="video-item">
-           <video data-sly-test="${properties['video/fileReference']}" class="video_cover" poster="${properties['video/fileReference']}"> </video>     			     	      		     		     
+           <video data-sly-test="${!wcmmode.edit && properties['video/fileReference']}" class="video_cover" poster="${properties['video/fileReference']}"> </video>     			     	      		     		     
 		   <div class="${!wcmmode.edit ? 'video_ctn' : ''}"
 		        id="youTubeVideoPlayer"
 		        data-videoid="${properties.videoLink}">
@@ -34,7 +34,7 @@
 	</div>	         
  </div>	
  
-<script>
+<script data-sly-test="${!videoLink.video}">
     videoList = document.querySelectorAll(".video-item div");
 
     if (videoList.length > 0) {
