@@ -298,6 +298,24 @@ public final class CommonUtility {
 		}
 		return imageAlt;
 	}
+	
+  /**
+   * Checks if asset is video.
+   *
+   * @param resourceResolver the resource resolver
+   * @param assetPath the asset path
+   * @return true, if is video
+   */
+  public static boolean checkAssetIsVideo(ResourceResolver resourceResolver, String assetPath) {
+    if (StringUtils.isNotEmpty(assetPath) && (assetPath.startsWith(AEConstants.DAM_CONTENT))) {
+      Resource assetResource = resourceResolver.getResource(assetPath);
+      if (null != assetResource) {
+        Asset asset = DamUtil.resolveToAsset(assetResource);
+        return DamUtil.isVideo(asset);
+      }
+    }
+    return false;
+  }
   
   /**
    * private constructor to prevent instantiation of class.

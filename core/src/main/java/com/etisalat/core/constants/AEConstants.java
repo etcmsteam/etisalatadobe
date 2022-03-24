@@ -104,6 +104,8 @@ public final class AEConstants {
  public static final String EWALLET_ARTICLE_DATE_FORMAT= "MMM, dd yyyy";
  public static final String ETISALAT_ARTICLE_DATE_FORMAT = "dd MMM yyyy";
  
+ public static final String DAM_CONTENT = "/content/dam/";
+ 
  /**
   * private constructor to prevent instantiation of class.
   */
