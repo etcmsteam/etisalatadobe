@@ -55,6 +55,7 @@
         const CLICKABLE_AREA_CLS = ".clickable-area";
 
         if ($(this).hasClass("processed") === false) {
+          let classBodyCopy = $('span:first',this).attr('class');
           let $ELE_TEXT = $(this).html().trim();
           let $TEXT_RESULT = LIMIT_TEXT($ELE_TEXT, 210);
 
@@ -64,8 +65,10 @@
             let PARAGRAPH_WITH_DOTS = $(this).html($TEXT_RESULT[0]);
 
             $CUSTOM_SPAN.addClass("custom-span");
+            $CUSTOM_SPAN.addClass(classBodyCopy);
             $CUSTOM_SPAN.html(" " + $TEXT_RESULT[1]);
             $CUSTOM_DOTS.addClass("custom-dots");
+            $CUSTOM_DOTS.addClass(classBodyCopy);
             $CUSTOM_DOTS.html(" ...");
             PARAGRAPH_WITH_DOTS.append($($CUSTOM_DOTS));
             PARAGRAPH_WITH_DOTS.append($($CUSTOM_SPAN));
