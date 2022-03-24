@@ -9,6 +9,136 @@
 }
 
 .context-navigation-4-0 {
+  &.main-text-slider {
+    padding-top: toRem(60);
+    padding-bottom: toRem(54);
+
+    .container {
+      margin: 0 auto;
+
+      @include respond-to-min($desktop-wide) {
+        padding: 0;
+        width: toRem(1192) !important;
+      }
+
+      @include respond-to-min-max($desktop-wide, $desktop) {
+        width: toRem(948) !important;
+      }
+
+      @include respond-to-min-max($desktop-min, $tablet) {
+        width: toRem(724) !important;
+      }
+
+      @include respond-to-max($custom-width-tab) {
+        margin: 0 toRem(-16);
+      }
+    }
+
+    .wst-main-headings {
+      width: 100%;
+      &.heading1 {
+        @include respond-to-min($tablet) {
+          height: 136px;
+        }
+      }
+      &.heading2 {
+        @include respond-to-min($tablet) {
+          height: 108px;
+        }
+        h2 {
+          font-size: 30px !important;
+          line-height: 34px !important;
+          @include respond-to-min($desktop) {
+            font-size: 40px !important;
+            line-height: 52px !important;
+          }
+        }
+      }
+      &.heading3 {
+        @include respond-to-min($tablet) {
+          height: 80px;
+        }
+      }
+      &.heading4 {
+        @include respond-to-min($tablet) {
+          height: 72px;
+        }
+      }
+      &.heading5 {
+        @include respond-to-min($tablet) {
+          height: 64px;
+        }
+      }
+      &.heading6 {
+        @include respond-to-min($tablet) {
+          height: 56px;
+        }
+      }
+      &.heading7 {
+        height: 44px;
+      }
+      &.heading8 {
+        height: 44px;
+      }
+
+      &.heading1,
+      &.heading2,
+      &.heading3,
+      &.heading4,
+      &.heading5,
+      &.heading6,
+      &.heading7,
+      &.heading8 {
+        overflow: hidden;
+        margin-bottom: 1rem;
+        @include respond-to-max($tablet) {
+          height: auto;
+          overflow: auto;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h7,
+        .h8 {
+          margin-bottom: 0;
+        }
+
+        & + .paragraph-styling {
+          p {
+            height: auto;
+            margin-bottom: 0;
+          }
+          .p1,
+          .p2,
+          .p3,
+          .p4 {
+            overflow: hidden;
+            margin-bottom: 1rem;
+            @include respond-to-max($custom-width-tab) {
+              height: auto !important;
+              overflow: auto;
+            }
+          }
+          .p4 {
+            height: 80px;
+          }
+          .p3 {
+            height: 100px;
+          }
+          .p2 {
+            height: 122px;
+          }
+          .p1 {
+            height: 144px;
+          }
+        }
+      }
+    }
+  }
+
   @include respond-to-max($desktop-min) {
     padding: toRem(16) 0;
   }
@@ -404,7 +534,7 @@
 
       @include respond-to-min($desktop-wide) {
         left: toRem(-56);
-    
+
         @include rtlBlock() {
           left: toRem(-56);
         }
@@ -418,7 +548,6 @@
         right: toRem(-30);
       }
 
-      
       @include respond-to-min($desktop-wide) {
         right: toRem(-56);
 
