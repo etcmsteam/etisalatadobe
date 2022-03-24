@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-console */
 export const ANALYTICS_FILTER = (category, type, value) => {
   window.adobeDataLayer.push({
@@ -13,8 +14,32 @@ export const ANALYTICS_FILTER = (category, type, value) => {
   });
 };
 
+export const ANALYTICS_LINKS_TABS = (name,url,heading) => {
+  window.adobeDataLayer.push({
+     event: "linkClicked",
+     xdmActionDetails: {
+      web: {
+          webInteraction: {
+          name:name,		
+          URL:url,	
+          type:"other",	
+          region: "main",
+          linkClicks: {
+            value: 1
+            }
+                }
+          },
+    linkInfo: {
+           sectionHeading: heading,
+           action: "tab change",
+           name: name
+    },
+    }
+    });
+  };
+  
 // CTA and Hero Banner CTA Events
-$('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link', '.cms-button').on('click', function(){
+$('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link, .cms-button').on('click', function(){
   let $this = $(this);
   const ctaName = $this.text() ? $this.text().toLowerCase().trim() : '';
   const currrentURL = window.location.href;

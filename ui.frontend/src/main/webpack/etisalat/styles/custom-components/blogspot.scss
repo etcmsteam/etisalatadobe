@@ -941,6 +941,35 @@ textarea.materialize-textarea:focus:not([readonly]) {
     margin-bottom: toRem(5);
     padding-left: 0.5rem;
   }
+  &.blogPage-share {
+    padding-left: toRem(4);
+    padding-right: toRem(4);
+    @include respond-to-min($desktop) {
+      padding-left: toRem(12);
+      padding-right: toRem(12);
+    }
+    
+    .container {
+      @include respond-to-min($tablet) {
+        width: 756px !important;
+      }
+      @include respond-to-min($desktop) {
+        width: 976px !important;
+      }
+      @include respond-to-min($desktop-wide) {
+        width: 1224px !important;
+      }
+      .row {
+        @include respond-to-min-max($desktop-wide, $tablet) {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+      }
+      .wst-main-headings {
+        margin-left: toRem(-2);
+      }
+    }
+  }
 }
 
 .blog_post_details {
@@ -1094,6 +1123,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
   width: 100%;
   @include respond-to-min($desktop) {
     width: 75% !important;
+    @include rtlBlock() {
+      float: right !important;
+    }
   }
 }
 

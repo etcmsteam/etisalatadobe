@@ -27,7 +27,6 @@
 
 .cta-benefits,
 .media-cta-section {
-    background-color: hsla(0, 0%, 95%, .33);
     padding: 40px 0;
 
     @media (min-width: 992px) {
@@ -40,6 +39,14 @@
         .text-left {
             @include rtlBlock() {
                 text-align: right;
+            }
+        }
+        .learn-more-link {
+            .btn-modal {
+                .moreg {
+                    font-size: inherit;
+                    letter-spacing: inherit;
+                }
             }
         }
     }
@@ -265,13 +272,36 @@
 .media-cta-section {
     >.container {
         @media (max-width: 991px) {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+}
+.media-cta-section {
+    & > .container {
+        width: inherit;
+        @media screen and (min-width: 1200px) {
+            width: toRem(1200);
         }
     }
 }
 
-
+.container-fix__width {
+  .media-cta-section {
+    & > .container {
+         @media (min-width: 768px) {
+            width: toRem(732);
+        }
+        @media (min-width: 1024px) {
+            width: toRem(950);
+        }
+        @media screen and (min-width: 1200px) {
+            width: toRem(1200);
+        }
+    }  
+  }  
+}
+//btn-modal 
 .media-cta-wrapper {
     .learn-more-link {
         position: absolute;

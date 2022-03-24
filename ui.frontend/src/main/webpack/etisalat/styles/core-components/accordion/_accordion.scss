@@ -268,6 +268,7 @@
 
     .cmp-accordion {
       &__header {
+        line-height: 0;
         padding-top: 0;
       }
 
@@ -281,20 +282,15 @@
         &::before {
           background-color: $sand-white-50;
           content: "";
-          height: calc(100% - 79px);
+          height: 100%;
           position: absolute;
           right: -200%;
-          top: toRem(79);
+          top: 0;
           width: 200%;
 
           @include rtlBlock {
             left: -200%;
             right: auto;
-          }
-
-          @include respond-to-max($desktop-min) {
-            height: calc(100% - 75px);
-            top: toRem(75);
           }
         }
 
@@ -341,7 +337,17 @@
       }
 
       &__button {
-        padding: 0;
+        padding: toRem(17) toRem(24);
+
+        @include respond-to-max(991px) {
+          padding-left: 0;
+          padding-right: 80px;
+
+          @include rtlBlock {
+            padding-left: 80px;
+            padding-right: 0;
+          }
+        }
       }
 
       &__icon {
@@ -365,11 +371,11 @@
 
       &__title {
         margin-bottom: toRem(16);
-        padding: toRem(17) toRem(24);
+        padding: 0;
 
         @include rtlBlock {
           margin-bottom: toRem(16);
-          padding: toRem(17) toRem(24);
+          padding: 0;
         }
 
         @include respond-to-max($desktop-min) {
@@ -431,7 +437,8 @@
 
     @include respond-to-min($desktop) {
       font-size: $font20;
-      padding: toRem(5) 1.5rem;
+      line-height: 1.4;
+      padding: 0;
     }
 
     @include rtlBlock() {
@@ -494,6 +501,7 @@
 
   .cmp-accordion__panel--expanded {
     background-color: $sand-white-50;
+    position: relative;
 
     @include rtlBlock() {
       left: 0;
@@ -524,6 +532,14 @@
     ol {
       li {
         padding-left: 0.75rem;
+      }
+    }
+
+    ul {
+      margin-left: toRem(28);
+
+      li {
+        padding-left: toRem(12);
       }
     }
   }

@@ -40,6 +40,10 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
     // selected radios
     var selected = [];
     var hash;
+
+    $(".deeplink-tabs").closest('.tabs').addClass('recommended-plan-tabs');
+    $(".deeplink-tab:nth-child(3)").find(".product-grid-text-section").addClass("product-recommend-plan-cards");
+
     if (window.location.href.indexOf("#") > 0) {
       hash = window.location.href.substring(window.location.href.indexOf("#"));
     }
