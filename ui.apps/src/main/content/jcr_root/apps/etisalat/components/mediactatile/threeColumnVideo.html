@@ -37,17 +37,32 @@
                     </div>
                 </div>
                 <div class="body">
-                    <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" class="clickable-area" >
-                        <div class="paragraph-styling">
-                            <div class="p2">
-                                ${properties.text  @ context='html'}
-                            </div>
-                        </div>
-        
-                        <div class="third-action-wrapper action-link" data-sly-test="${properties.ctatext}">
-                            <span class="link">${properties.ctatext}</span>
-                        </div>
-                    </a>
+					<sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+						<a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" class="clickable-area" >
+							<div class="paragraph-styling">
+								<div class="p2">
+									${properties.text  @ context='html'}
+								</div>
+							</div>
+			
+							<div class="third-action-wrapper action-link" data-sly-test="${properties.ctatext}">
+								<span class="link">${properties.ctatext}</span>
+							</div>
+						</a>
+					</sly>
+					<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}">
+						<a href="javascript:void(0)" class="clickable-area" >
+								<div class="paragraph-styling">
+									<div class="p2">
+										${properties.text  @ context='html'}
+									</div>
+								</div>
+								<div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
+									<div data-sly-use.tileModalTemplate="/apps/etisalat/components/mediactatile/tileModelThreeColVideo.html" data-sly-call="${tileModalTemplate.modal @
+											tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}"></div>
+								</div>
+						</a>
+                    </sly>
                 </div>
             </div>
 
