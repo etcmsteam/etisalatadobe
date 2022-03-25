@@ -1,5 +1,5 @@
 /* eslint-disable */
-const STORE_LOCATOR = () => {
+export const STORE_LOCATOR = () => {
   function isJson(str) {
     try {
       JSON.parse(str);
