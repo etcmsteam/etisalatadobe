@@ -4,7 +4,7 @@
        data-placeholder-text="${wcmmode.edit && 'Drag Tile components here' @ i18n}"       
        id="${container.id}">  
       <h4 data-sly-test="${properties.tileBoxLayout == 'main-text-grid' && properties.tileTitle}">${properties.tileTitle}</h4>   
-        <sly data-sly-test.tileLayout="${properties.tileBoxLayout}" data-sly-use.tileContainerTemplate="${tileLayout}.html">
+        <sly data-sly-test.tileLayout="${properties.tileBoxLayout}" data-sly-test="${properties.tileBoxLayout != 'main-text'}" data-sly-use.tileContainerTemplate="${tileLayout}.html">
           <sly data-sly-test="${tileLayout == 'non-action-box'}" 
                data-sly-call="${tileContainerTemplate.nonActionBox @ container=container,properties=properties}" />
           
@@ -25,6 +25,9 @@
                
           <sly data-sly-test="${tileLayout == 'context-nav-tv-packs'}" 
                data-sly-call="${tileContainerTemplate.tvPacks @ container=container,properties=properties}" />
+      </sly>
+	  <sly data-sly-test="${properties.tileBoxLayout == 'main-text'}" data-sly-use.mainTextTemplate="context-navigation.html">
+			<sly data-sly-call="${mainTextTemplate.contextNav @ container=container,properties=properties}" />
       </sly>
       <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
    </div>
