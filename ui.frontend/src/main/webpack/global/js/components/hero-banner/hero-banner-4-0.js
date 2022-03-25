@@ -44,7 +44,7 @@ import { swiperInit } from "../../swiperInitialize";
   //single slide only
   function initHeroSwiperSingleSlide() {
     $(document)
-      .find(".hero-banner-section.single-slide-only")
+      .find(".hero-banner-section.one-slide-banner")
       .each(function (index) {
         $(this).addClass("h-b-slider" + index);
         var $carouselSliderCurrentPromotionsSingle = swiperInit(".h-b-slider" + index + " .swiper-hero-container", {
@@ -98,7 +98,17 @@ import { swiperInit } from "../../swiperInitialize";
   // register the event handlers
   $(document).ready(function () {
     initHeroSwiper();
-    initHeroSwiperSingleSlide();
+    var carouselCount = $(".hero-banner-section").find(".etisalatherobanner"),
+    heroBannerCount = $(".etisalatherobanner").find(".hero-banner-section");
+    if (carouselCount.length === 1) {
+      carouselCount.closest(".hero-banner-section").addClass("one-slide-banner");
+      initHeroSwiperSingleSlide();
+    }
+    if (heroBannerCount.length === 1) {
+      heroBannerCount.addClass("one-slide-banner");
+      initHeroSwiperSingleSlide();
+    }
+    
     initHeroBannerCallToAction();
 
     const limitText = function (title, limit) {
