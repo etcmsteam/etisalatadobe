@@ -13,16 +13,23 @@
     padding-top: toRem(60);
     padding-bottom: toRem(54);
 
+    .all-tiles .context-tile {
+      padding: 0 !important;
+
+      @include respond-to-max($custom-width-tab) {
+        margin-bottom: toRem(36);
+      }
+    }
+
     .container {
       margin: 0 auto;
 
       @include respond-to-min($desktop-wide) {
-        padding: 0;
         width: toRem(1192) !important;
       }
 
       @include respond-to-min-max($desktop-wide, $desktop) {
-        width: toRem(948) !important;
+        width: toRem(944) !important;
       }
 
       @include respond-to-min-max($desktop-min, $tablet) {
@@ -31,6 +38,34 @@
 
       @include respond-to-max($custom-width-tab) {
         margin: 0 toRem(-16);
+      }
+    }
+
+    .prev {
+      @include respond-to-min($tablet) {
+        right: toRem(-22) !important;
+      }
+
+      @include respond-to-min($desktop-wide) {
+        left: -0.5rem !important;
+      }
+
+      @media screen and (min-width: 1340px) {
+        left: -3.5rem !important;
+      }
+    }
+
+    .next {
+      @include respond-to-min($tablet) {
+        right: toRem(-22) !important;
+      }
+
+      @include respond-to-min($desktop-wide) {
+        right: -0.5rem !important;
+      }
+
+      @media screen and (min-width: 1340px) {
+        right: -3.5rem !important;
       }
     }
 
