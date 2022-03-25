@@ -1,4 +1,12 @@
 #storelocator {
+  line-height: 1.6;
+  line-height: 1.6;  
+  transition: margin-top .3s ease-in-out 1.5s;
+  
+  &.store-locator__slide-up {
+    margin-top: -139px;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -121,17 +129,25 @@
   // commons.less
   #pac-input-store-locator {
     padding-right: 125px !important;
+    margin-bottom: 16px;
   }
 
-  // -------------------------- custom overrides ends end ----------------------------------
-
   // For the Tabs arrow start -----------------------
+  .nav > li > a:focus,
+  .nav > li > a:hover {
+    background-color: #fff;
+  }
+
   .swiper-slide.active:after {
+    content: "";
     margin-left: -12px;
     left: 50%;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
     border-bottom: 12px solid #ddd;
+    position: absolute;
+    bottom: 0;
+    -ms-transform: translate(-9.5vw);
   }
 
   .swiper-slide.dark-gray.active:after {
@@ -159,6 +175,35 @@
   .swiper-pagination-fraction {
     bottom: 3px;
   }
+
+  .store-locator-wrap .map-container .background-map .map-filter .map-filter-list .swiper-slide {
+    position: relative;
+  }
+
+  .loader-disable-screen {
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    .loader {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: none;
+      transform: scale(.24);
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+
+  // -------------------------- custom overrides ends end ----------------------------------
+
   // For the Tabs arrow end -----------------------
 
   #store-locator-map {
@@ -4408,73 +4453,10 @@
     box-shadow: 0 1px 4px 0 rgba(166, 166, 166, 0.5);
   }
 
-  // Places Autocomplete results
-  // ms
-  //@media (max-width: $custom-width-tab) {
-  .pac-container {
-    margin-top: 0;
-    > .pac-item {
-      padding: 15px 4px 9px;
-      line-height: 0.875rem;
-      .pac-icon {
-        margin-right: 1.6rem;
-        margin-left: 0.6rem;
-      }
-      span {
-        font-size: 0.875rem;
-      }
-      .pac-item-query {
-        color: $almost-black;
-      }
-      .pac-item-query + span {
-        margin-left: 5.2rem;
-        display: block;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-    }
-  }
-
   //}
   @media (min-width: $tablet) {
     .sm-small-space {
       margin-left: 2rem;
-    }
-
-    .pac-container {
-      margin-top: 0;
-      > .pac-item {
-        padding: 15px 4px 9px;
-        .pac-icon {
-          margin-right: 1.25rem;
-          margin-left: 1.34rem;
-        }
-        span {
-          font-size: 0.875rem;
-        }
-        .pac-item-query {
-          color: $almost-black;
-        }
-      }
-    }
-  }
-
-  @media (min-width: $desktop) {
-    .pac-container {
-      margin-top: 0;
-      > .pac-item {
-        padding: 15px 4px 9px;
-        .pac-icon {
-          margin-right: 2.25rem;
-          margin-left: 2rem;
-        }
-        span {
-          font-size: 1rem;
-        }
-        .pac-item-query {
-          color: $almost-black;
-        }
-      }
     }
   }
 
@@ -5908,3 +5890,72 @@
 
   // Select2.less start ---------------------------------------------------------------------
 }
+
+// ----------- Moving this out of #storelocator as this element will parallel to body
+// Places Autocomplete results start
+// ms
+//@media (max-width: $custom-width-tab) {
+.pac-container {
+  margin-top: 0;
+  > .pac-item {
+    padding: 15px 4px 9px;
+    line-height: 0.875rem;
+    .pac-icon {
+      margin-right: 1.6rem;
+      margin-left: 0.6rem;
+    }
+    span {
+      font-size: 0.875rem;
+    }
+    .pac-item-query {
+      color: $almost-black;
+    }
+    .pac-item-query + span {
+      margin-left: 5.2rem;
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+
+//}
+@media (min-width: $tablet) {
+  .pac-container {
+    margin-top: 0;
+    > .pac-item {
+      padding: 15px 4px 9px;
+      .pac-icon {
+        margin-right: 1.25rem;
+        margin-left: 1.34rem;
+      }
+      span {
+        font-size: 0.875rem;
+      }
+      .pac-item-query {
+        color: $almost-black;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .pac-container {
+    margin-top: 0;
+    > .pac-item {
+      padding: 15px 4px 9px;
+      .pac-icon {
+        margin-right: 2.25rem;
+        margin-left: 2rem;
+      }
+      span {
+        font-size: 1rem;
+      }
+      .pac-item-query {
+        color: $almost-black;
+      }
+    }
+  }
+}
+
+// Places Autocomplete results end

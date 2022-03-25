@@ -1,5 +1,15 @@
+import _template from 'lodash/template';
+import _find from 'lodash/find';
+import _remove from 'lodash/remove';
+
 /* eslint-disable */
 export const STORE_LOCATOR = () => {
+  const $storeLocatorRoot = $("#storelocator");
+
+  if($storeLocatorRoot.length === 0) {
+     return;
+  }
+
   function isJson(str) {
     try {
       JSON.parse(str);
@@ -9,7 +19,13 @@ export const STORE_LOCATOR = () => {
     return true;
   }
 
-  const DATA_PARAMS = $("#storelocator").data();
+  const _templateSettings = {
+    evaluate: /<#([\s\S]+?)#>/g,
+    interpolate: /<#=([\s\S]+?)#>/g,
+    escape: /<#-([\s\S]+?)#>/g,
+  };
+
+  const DATA_PARAMS = $storeLocatorRoot.data() || {};
   const defaultRange = DATA_PARAMS.range || 10;
   const CONFIG = {
     maps: {
@@ -60,6 +76,7 @@ export const STORE_LOCATOR = () => {
     map: map,
   };
 
+  // TODO: Uncomment this and remove etisalat target once we allow kml format in AEM Envs
   // var kml2g = new google.maps.KmlLayer(`${currentUrlPath}2g.kml`, AI_options),
   //   kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
   //   kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
@@ -335,7 +352,7 @@ export const STORE_LOCATOR = () => {
       // var storeLocatorData = json.data;
       // filter stores
       if (currentFilter !== "all") {
-        _.remove(storeLocatorData, function (n) {
+        _remove(storeLocatorData, function (n) {
           return n.type !== categoryMap[currentFilter];
         });
       }
@@ -491,7 +508,7 @@ export const STORE_LOCATOR = () => {
 
       // set the correct icon depending of the type
 
-      _.forEach(temp.items, function (item) {
+      temp.items.forEach(function (item) {
         const itemType = item.type || "";
         if (itemType) {
           item.iconPath = currentUrlPath + iconMap[itemType.replace(/ +/g, "")];
@@ -499,12 +516,8 @@ export const STORE_LOCATOR = () => {
         item.color = colorMap[item.type];
       });
 
-      _.templateSettings = {
-        evaluate: /<#([\s\S]+?)#>/g,
-        interpolate: /<#=([\s\S]+?)#>/g,
-        escape: /<#-([\s\S]+?)#>/g,
-      };
-      var compiledTemplate = _.template($("#store-locator-result-item-template").html());
+
+      var compiledTemplate = _template($("#store-locator-result-item-template").html(), _templateSettings);
       $(".store-locator-wrap .result-slide").html(compiledTemplate(temp));
 
       // init swiper
@@ -650,7 +663,7 @@ export const STORE_LOCATOR = () => {
   function myStoreClick(id) {
     // alert('testo:'+id)
 
-    var marker = _.find(markers, function (item) {
+    var marker = _find(markers, function (item) {
       return item.storeid.valueOf() === parseInt(id.valueOf());
     });
 
@@ -670,7 +683,7 @@ export const STORE_LOCATOR = () => {
 
     $(".store-locator-wrap .result-slide").html("");
 
-    var compiledTemplate = _.template($("#store-locator-coverage-item-template").html());
+    var compiledTemplate = _template($("#store-locator-coverage-item-template").html(), _templateSettings);
     $(".store-locator-wrap .result-slide").html(compiledTemplate);
 
     // swiper init

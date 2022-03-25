@@ -55,7 +55,9 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
         $(".tab-config-deeplink .swiper-slide").removeClass("active");
         $(".deeplink-tabs .deeplink-tab").removeClass("active");
         $(current).addClass("active");
-        mySwiper.slideTo(swiperIndex, 500);
+        if(mySwiper && typeof mySwiper.slideTo === 'function'){
+          mySwiper.slideTo(swiperIndex, 500);
+        }
         $(hash).addClass("active");
       }
     }, 500);
