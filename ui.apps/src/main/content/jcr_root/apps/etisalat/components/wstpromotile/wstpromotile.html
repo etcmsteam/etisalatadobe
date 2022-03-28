@@ -4,11 +4,14 @@
    <sly data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
    <div class="promo-grid ${properties.wstPromoTilevariation}">
     <a data-sly-unwrap="${!properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover">
-        <div class="cover" data-sly-test="${viewports && properties.viewPortLayout != '1-viewport'}">
-           <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
-        </div>
-	    <sly data-sly-test="${properties.viewPortLayout == '1-viewport' && properties.fileReference}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
-        <div class="bg-filter"></div>
+      <div class="cover" data-sly-test="${viewports && properties.viewPortLayout != '1-viewport'}">
+         <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+		 <div class="bg-filter"></div>
+      </div>
+	  <sly data-sly-test="${properties.viewPortLayout == '1-viewport' && properties.fileReference}">
+         <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+         <div class="bg-filter"></div>
+	  </sly>
     </a>
       <div class="grid-content">
          <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn-text learn-more hidden-xs">
