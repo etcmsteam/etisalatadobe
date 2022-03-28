@@ -26,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.stream.Collectors;
 
 @Model(adaptables = {Resource.class,
     SlingHttpServletRequest.class})
@@ -110,7 +111,8 @@ public class TableModel {
         line = br.readLine(); // this will read the first line (to ignore csv header)
         while ((line = br.readLine()) != null && line
             .contains(AEConstants.COMMA_DELIMITER)) {//loop will run from 2nd line
-          final String[] values = line.split(AEConstants.COMMA_DELIMITER);
+
+          final String[] values = getFormattedRowDateForTable(line);
           setRowsDataForChannelsTable(values, rows);
         }
       } catch (IOException e) {
@@ -249,6 +251,15 @@ public class TableModel {
       LOGGER.error("The resource doesn't exists at the path {}", csvPath);
     }
     return rendition;
+  }
+
+  private String[] getFormattedRowDateForTable (String csvLineData) {
+    List<String> listLineElementFormatted = Arrays.asList(csvLineData.split(AEConstants.COMMA_DELIMITER))
+            .stream().map(s -> s.indexOf(AEConstants.TILT_DELIMITER) > -1 ?
+                    s.replaceAll(AEConstants.TILT_DELIMITER, AEConstants.COMMA_DELIMITER) : s)
+            .collect(Collectors.toList());
+    String[] values = listLineElementFormatted.toArray(new String[0]);
+    return values;
   }
 
 }
