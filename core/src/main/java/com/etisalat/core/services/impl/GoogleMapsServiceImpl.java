@@ -23,6 +23,7 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
 
   private String url;
   private String key;
+  private String eWalletKey;
   private String contactMap;
 
   private String captchaV2HiuAppKey;
@@ -44,6 +45,7 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
     this.captchaV3 = PropertiesUtil.toString(config.getGoogleCaptchaV3(), StringUtils.EMPTY);
     this.captchaInvisibleEtisalatAppkey = PropertiesUtil
         .toString(config.getGoogleCaptchaInvisibleEtisalatAppKey(), StringUtils.EMPTY);
+    this.eWalletKey = PropertiesUtil.toString(config.getEwalletGoogleKey(), AEConstants.NO_CONFIG_FOUND);
   }
 
 
@@ -55,6 +57,11 @@ public class GoogleMapsServiceImpl implements GoogleMapsService {
   @Override
   public String getGoogleKey() {
     return this.key;
+  }
+
+  @Override
+  public String getEwalletKey() {
+    return this.eWalletKey;
   }
 
   @Override
