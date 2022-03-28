@@ -1,0 +1,428 @@
+<div class="container-fluid" id="storelocator">
+    <div
+            class="loader-disable-screen"
+            style="display: none"
+            id="loader-disable-screen"
+    >
+        <div class="loader loader_svg">
+            <img
+                    class="loader_svg"
+                    src="/content/dam/etisalat/store-locator/loader-business.svg"
+                    alt="loading
+      stores"
+            />
+        </div>
+    </div>
+    <div class="store-locator-wrap row">
+        <div class="tiles-content bg-dark">
+            <div class="cover">
+                <!-- TODO: Need to check whether this image need to keep lazy loaded. Removing data src for now. -->
+                <!-- data-src="/content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_1000.jpg" -->
+                <!-- <img
+                  class="cover lazyload"
+                  sizes="(max-width: 1000px) 100vw, 1000px"
+                  srcset="
+                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_200.jpg   200w,
+                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_435.jpg   435w,
+                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_614.jpg   614w,
+                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_757.jpg   757w,
+                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_886.jpg   886w,
+                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_1000.jpg 1000w
+                  "
+                  src="/content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_1000.jpg"
+                  alt="dubai"
+                /> -->
+
+                <img class="cover lazyload"
+                     sizes="(max-width: 1000px) 100vw, 1000px"
+                     srcset=""
+                     src="${properties.fileReference}"
+                     alt="${properties.backgroundImageLabel}"
+                />
+            </div>
+            <div class="store-locator-header col-md-8 col-sm-8 col-ms-8 col-xs-10">
+                <!--  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>${properties.heading}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div
+                            class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-ms-10 col-ms-offset-1 col-xs-10 col-xs-offset-1"
+                    >
+                        <form
+                                id="store-locator-form"
+                                class="form custom-dd"
+                                action="/api/getstores"
+                                method="POST"
+                        >
+                            <div class="search-group">
+                                <div class="input-group form-group">
+                                    <div class="col-md-4 col-lg-3 col-sm-4 hidden-ms hidden-xs">
+                                        <div class="form-section category-dropdown">
+                                            <div class="floating-label-select store-locator-custome">
+                                                <!--<select id="mapFilter" class="mapFilter">
+                                                      <option value="coverage"  selected="selected" data-icon="coverage" >Coverage</option>
+                                                      <option value="store-business"  data-icon="store-business">Stores</option>
+                                                      <option value="store-machine" data-icon="store-payment"> Payment Machines</option>
+                                                      <option value="store-wifi" data-icon="store-wifi">WIFI Locations</option>
+                                                      <option value="store-basket" data-icon="store-basket">Reseller</option>
+                                                      <option value="all"  data-icon="menu_icon">All Categories</option>
+                                                    </select>-->
+                                                <select id="mapFilter" class="mapFilter">
+                                                    <!-- <sly data-sly-list.multifieldObj="${resource.getChildren}">
+                                                            <div data-sly-test="${multifieldObj.name == 'sectionitems'}" data-sly-list.gsItems="${multifieldObj.getChildren}" class="feature-logo">
+                                                                <option value="${gsItems.icon}" data-icon="${gsItems.icon}" >${gsItems.sectionTitle}</option>
+                                                            </div>
+                                                        </sly> -->
+                                                    <option
+                                                            value="coverage"
+                                                            selected="selected"
+                                                            data-icon="coverage"
+                                                    >
+                                                        Coverage
+                                                    </option>
+                                                    <option
+                                                            value="store-business"
+                                                            data-icon="store-business"
+                                                    >
+                                                        Stores
+                                                    </option>
+                                                    <option
+                                                            value="store-machine"
+                                                            data-icon="store-payment"
+                                                    >
+                                                        Payment Machines
+                                                    </option>
+                                                    <option value="store-wifi" data-icon="store-wifi">
+                                                        WIFI Locations
+                                                    </option>
+                                                    <option value="store-basket" data-icon="store-basket">
+                                                        Reseller
+                                                    </option>
+                                                    <option value="all" data-icon="menu_icon">
+                                                        All Categories
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                            class="col-lg-9 col-md-8 col-sm-8 col-ms-12 col-xs-12 store-locator-style"
+                                    >
+                                        <input
+                                                id="pac-input-store-locator"
+                                                type="text"
+                                                class="form-control col-md-5"
+                                                placeholder="${properties.searchplaceholdertext || 'Enter a location for Etisalat'}"
+                                        />
+                                        <span class="check-seach-btn">
+                      <a class="btn search-btn"
+                      >${properties.locationsearchbuttontext || 'Check'}</a
+                      >
+                    </span>
+                                        <span class="clear-check-seach-btn">
+                      <button
+                              type="button"
+                              id="store-locator-text-cleaner"
+                              class="btn search-btn close-btn"
+                      >
+                        <svg viewBox="0 0 41 41">
+                          <path
+                                  d="M21.106 20.046l18.766-18.766c.293-.293.293-.767 0-1.06-.293-.293-.768-.293-1.061 0l-18.765 18.765-18.766-18.765c-.293-.293-.767-.293-1.06 0-.293.293-.293.767 0 1.06l18.765 18.766-18.765 18.765c-.293.293-.293.767 0 1.06.146.147.338.22.53.22s.384-.073.53-.22l18.766-18.764 18.765 18.764c.147.147.338.22.53.22s.384-.073.531-.22c.293-.293.293-.767 0-1.06l-18.766-18.765"
+                          ></path>
+                        </svg>
+                      </button>
+                    </span>
+                                        <div class="my-current-location col-ms-12">
+                                            <svg id="store-pin-small" viewBox="0 0 14 20">
+                                                <path
+                                                        d="M6.667 9.583c-1.608 0-2.917-1.308-2.917-2.917 0-1.608 1.308-2.917 2.917-2.917 1.608 0 2.917 1.308 2.917 2.917 0 1.608-1.308 2.917-2.917 2.917m0-9.583c-3.676 0-6.667 2.99-6.667 6.667 0 3.537 6.061 12.756 6.319 13.146.077.117.207.188.347.188.14 0 .27-.071.348-.188.258-.39 6.319-9.609 6.319-13.146 0-3.677-2.991-6.667-6.667-6.667"
+                                                        fill="#ffffff"
+                                                ></path>
+                                            </svg>
+                                            <a href="#" id="my-location-link"
+                                            >${properties.locationhreftextlabel || 'Use my current
+                                                location'}</a
+                                            >
+                                        </div>
+                                    </div>
+                                    <div
+                                            class="global-village-timing col-lg-9 col-md-8 col-sm-8 col-ms-12 col-xs-12"
+                                    >
+                                        <a style="width: 100%; font-size: 16px">
+                                            ${properties.ctaButtonText}
+                                        </a>
+                                        <!-- <a
+                                            href="${properties.ctaButtonlink}"
+                                            style="width: 100%; font-size: 16px"
+                                            >
+                                            ${properties.ctaButtonText || 'Holiday Timings'}
+                                            </a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-ms-12 col-xs-12 map-container">
+            <div class="background-map">
+                <div class="map-filter">
+                    <div class="map-filter-topnav hidden">
+                        <div
+                                class="col-md-9 col-sm-9 col-md-offset-3 col-md-ar-offset-right-0 col-md-ar-offset-3 col-sm-offset-4 col-sm-ar-offset-right-0 col-sm-ar-offset-4 col-ms-9 col-ms-offset-4 col-ms-ar-offset-right-0 col-ms-ar-offset-4 col-xs-12"
+                        >
+                            <div class="map-filter-list topnav-swiper-container">
+                                <ul class="nav swiper-wrapper">
+                                    <li class="swiper-slide sandy-green-b active">
+                                        <a href="#coverage" data-category="coverage">Coverage</a>
+                                    </li>
+                                    <li class="swiper-slide dark-green-b">
+                                        <a href="#stores" data-category="store-business">Stores</a>
+                                    </li>
+                                    <li class="swiper-slide yellow-b">
+                                        <a href="#store-machine" data-category="store-machine">
+                                            Payment Machines</a
+                                        >
+                                    </li>
+                                    <li class="swiper-slide purple-b">
+                                        <a href="#store-wifi" data-category="store-wifi">WIFI Locations</a>
+                                    </li>
+                                    <li class="swiper-slide orange-b">
+                                        <a href="#store-basket" data-category="store-basket">Reseller</a>
+                                    </li>
+                                    <li class="swiper-slide dark-gray">
+                                        <a href="#all" data-category="all">All</a>
+                                    </li>
+                                </ul>
+                                <!-- Add Arrows -->
+                                <div
+                                        class="swiper-button-next hidden-lg hidden-md hidden-xl"
+                                ></div>
+                                <div
+                                        class="swiper-button-prev hidden-lg hidden-md hidden-xl"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-ms-12">
+                        <div class="result-main-container">
+                            <div class="swiper-container-map sidebar-result-container hidden">
+                                <div class="result-slide swiper-wrapper"></div>
+                                <div class="result-pager hidden-xs hidden-ms">
+                                    <div class="pager">
+                                        <p>
+                                            Pages
+                                        <div class="swiper-pagination"></div>
+                                        </p>
+                                    </div>
+                                    <div class="pager-arrows">
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-map-result-container">
+                                <div id="store-locator-map"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-ms-12 hidden-sm hidden-md hidden-xl hidden-lg">
+            <div class="switch-store-locator hidden">
+                <a id="sl-MapView-link" href="#" class="col-xs-6 switcher">
+                    <svg viewBox="0 0 30 44" id="current-location-green">
+                        <g
+                                id="Etisalat_Icons"
+                                stroke="none"
+                                stroke-width="1"
+                                fill="none"
+                                fill-rule="evenodd"
+                        >
+                            <path
+                                    d="M15,43.291866 C15,43.291866 0,23.1730909 0,14.9282297 C0,6.68411483 6.7155,0 15,0 C23.2845,0 30,6.68411483 30,14.9282297 C30,23.1730909 15,43.291866 15,43.291866 Z M21,14.9282297 C21,18.226622 18.3135,20.8995215 15,20.8995215 C11.6865,20.8995215 9,18.226622 9,14.9282297 C9,11.6298373 11.6865,8.9569378 15,8.9569378 C18.3135,8.9569378 21,11.6298373 21,14.9282297 Z"
+                                    id="ic_current-location"
+                                    fill="#719E19"
+                            ></path>
+                        </g>
+                    </svg>
+                    <span>Map View</span>
+                </a>
+                <a id="sl-ListView-link" href="#" class="col-xs-6 switcher">
+                    <svg
+                            id="ListView-mobile"
+                            width="20px"
+                            height="17px"
+                            viewBox="0 0 20 17"
+                            version="1.1"
+                    >
+                        <g
+                                id="Etisalat_Icons"
+                                stroke="none"
+                                stroke-width="1"
+                                fill="none"
+                                fill-rule="evenodd"
+                        >
+                            <g
+                                    id="00---Icon---text---Desktop-A---Icon-+-label"
+                                    transform="translate(-573.000000, -195.000000)"
+                                    fill="#719E19"
+                            >
+                                <path
+                                        d="M593,196.209373 C593,195.320786 592.747105,195 591.947368,195 L574.052632,195 C573.247105,195 573,195.314135 573,196.209373 L573,196.814059 C573,197.751323 573.273421,198.023432 574.052632,198.023432 L591.947368,198.023432 C592.736842,198.023432 593,197.73288 593,196.814059 L593,196.209373 Z M593,202.860922 C593,201.972336 592.747105,201.65155 591.947368,201.65155 L574.052632,201.65155 C573.247105,201.65155 573,201.965684 573,202.860922 L573,203.465608 C573,204.402872 573.273421,204.674981 574.052632,204.674981 L591.947368,204.674981 C592.736842,204.674981 593,204.384429 593,203.465608 L593,202.860922 Z M593,209.512472 C593,208.623885 592.747105,208.303099 591.947368,208.303099 L574.052632,208.303099 C573.247105,208.303099 573,208.617234 573,209.512472 L573,210.117158 C573,211.054422 573.273421,211.326531 574.052632,211.326531 L591.947368,211.326531 C592.736842,211.326531 593,211.035979 593,210.117158 L593,209.512472 Z"
+                                        id="ic_ListView"
+                                ></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <span>List View</span>
+                </a>
+            </div>
+            <div class="container-fluid storelocatorMob" style="display: none">
+                <div class="row main-text main-text-D bg-lighty">
+                    <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+                        <div class="body-big">
+                            <p>
+                                Please touch *Map View* to view the coverage of your selection.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="store-locator-result-item-template">
+    <# items.forEach(function(item){ #>
+    <div class="result-item-container swiper-slide">
+        <div class="desc-short <#=item.type #> <#=item.color #>" data-storeid="<#=item.externalLocationId #>">
+            <div class="col-md-2">
+                <div class="item-icon green-bg">
+                    <img src="<#=item.iconPath #>">
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="item-title">
+                    <h4>
+                        <#=item.name #>
+                    </h4>
+                    <p>
+                        <#=item.address1 #>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="desc-long">
+            <div class="long-details-container">
+                <#if (item.address2) {#>
+                <div class="details-item">
+                    <div class="details-icon">
+                        <svg id="store-pin-small-details" viewBox="0 0 14 20">
+                            <path d="M6.667 9.583c-1.608 0-2.917-1.308-2.917-2.917 0-1.608 1.308-2.917 2.917-2.917 1.608 0 2.917 1.308 2.917 2.917 0 1.608-1.308 2.917-2.917 2.917m0-9.583c-3.676 0-6.667 2.99-6.667 6.667 0 3.537 6.061 12.756 6.319 13.146.077.117.207.188.347.188.14 0 .27-.071.348-.188.258-.39 6.319-9.609 6.319-13.146 0-3.677-2.991-6.667-6.667-6.667" fill="#719e19"></path>
+                        </svg>
+                    </div>
+                    <div class="details-desc">
+                        <#=item.address2 #>
+                    </div>
+                </div>
+                <#}#>
+                <div class="details-item">
+                    <div class="details-icon">
+                        <svg id="store-clock" viewBox="0 0 20 20">
+                            <path d="M14.891 14.865c-.158.172-.423.179-.589.026l-5-4.583c-.086-.079-.135-.19-.135-.307v-4.583c0-.23.187-.417.417-.417.23 0 .417.187.417.417v4.4l4.865 4.459c.17.156.181.42.026.589m-4.891-14.865c-5.513 0-10 4.486-10 10s4.487 10 10 10c5.514 0 10-4.486 10-10s-4.486-10-10-10" fill="#719e19"></path>
+                        </svg>
+                    </div>
+                    <div class="details-desc">
+                        <#=item.information#>
+                    </div>
+                </div>
+                <div class="details-item">
+                    <div class="details-icon">
+                        <svg id="store-info" viewBox="0 0 20 20">
+                            <path d="M9.999 0c-5.523 0-9.999 4.477-9.999 9.999 0 5.523 4.477 10.001 9.999 10.001 5.523 0 10.001-4.478 10.001-10.001s-4.478-9.999-10.001-9.999zm0 3.687c.861 0 1.56.698 1.56 1.559s-.699 1.559-1.56 1.559c-.861 0-1.559-.698-1.559-1.559s.698-1.559 1.559-1.559zm0 4.157c.381 0 .76.152 1.027.411.267.259.42.624.415.988v5.672c.005.368-.15.735-.422.995s-.657.409-1.042.404c-.377-.005-.749-.159-1.012-.418s-.414-.62-.409-.981v-5.672c-.005-.364.148-.728.416-.988.267-.259.645-.411 1.026-.411z" fill="#719e19"></path>
+                        </svg>
+                    </div>
+                    <div class="details-desc">
+                        <a href="#" class="more-details">Show on Map</a>
+                    </div>
+                </div>
+                <div class="close-btn ">
+                    <a href="#">close
+                        <svg id="menu-arrow" viewBox="0 0 9 13">
+                            <path d="M0,3H1V4H2V5H3V6H4V7H3V8H2V9H1v1H0v2H1v1H2V12H3V11H4V10H5V9H6V8H7V7H8V6H7V5H6V4H5V3H4V2H3V1H2V0H1V1H0V3Z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <#})#>
+</script>
+<script type="text/template" id="store-locator-coverage-item-template">
+    <div class="result-item-container coverage net-5g">
+        <div class="desc-short">
+            <div class="col-md-10 col-sm-10 col-ms-10">
+                <div class="item-title">
+                    <h4>5G</h4>
+                    <p>Mobile Coverage</p>
+                </div>
+            </div>
+            <div class="toggle">
+                <input type="checkbox" name="5g" value="5g" id="5g" />
+                <label></label>
+            </div>
+        </div>
+    </div>
+    <div class="result-item-container coverage net-4g">
+        <div class="desc-short">
+            <div class="col-md-10 col-sm-10 col-ms-10">
+                <div class="item-title">
+                    <h4>4G</h4>
+                    <p>Mobile Coverage</p>
+                    <!-- <p style="color: red;">**Typical Download Speed (15Mbit/S)</p> -->
+                </div>
+            </div>
+            <div class="toggle">
+                <input type="checkbox" name="4g" value="4g" id="4g" />
+                <label></label>
+            </div>
+        </div>
+    </div>
+    <div class="result-item-container coverage net-3g">
+        <div class="desc-short">
+            <div class="col-md-10 col-sm-10 col-ms-10">
+                <div class="item-title">
+                    <h4>3G</h4>
+                    <p>Mobile Coverage</p>
+                    <!-- <p style="color: red;">**Typical Download Speed (8Mbit/S)</p> -->
+                </div>
+            </div>
+            <div class="toggle">
+                <input type="checkbox" name="3g" value="3g"  id="3g"/>
+                <label></label>
+            </div>
+        </div>
+    </div>
+    <div class="result-item-container coverage net-2g">
+        <div class="desc-short">
+            <div class="col-md-10 col-sm-10 col-ms-10">
+                <div class="item-title">
+                    <h4>2G</h4>
+                    <p>Mobile Coverage</p>
+                    <!-- <p style="color: red;">**Typical Download Speed (0.01Mbit/S)</p> -->
+                </div>
+            </div>
+            <div class="toggle">
+                <input type="checkbox" name="2g" value="2g" id="2g" />
+                <label></label>
+            </div>
+        </div>
+    </div>
+    <!--  <p style="color: red;    padding: 10px;    font-size: smaller;">**Disclaimer: Download speed has many dependencies, such as mobile device,  mobile network coverage, mobile technology, user location (indoor / outdoor).</p> -->
+</script>
