@@ -13,7 +13,7 @@ export const TAB_SWIPER = () => {
         const istabs = $swiperTabsParent.parents().hasClass("cmp_tabs--horizontal-title");
         const isWSTChanneltabs = $swiperTabsParent.parents().hasClass("cmp-tab-wst-channellist");
         const isChanneltabs = $swiperTabsParent.parents().hasClass("cmp-tab-channellist");
-        const isConfigtabs = $swiperTabsParent.parents().hasClass("cmp_tabs--horizontal");
+        const isConfigtabs = $swiperTabsParent.parents().hasClass("cmp-tab-config");
 
         $swiperTabsParent.find(".swiper-button-next").addClass("r" + index);
         $swiperTabsParent.find(".swiper-button-prev").addClass("l" + index);
