@@ -10,6 +10,14 @@ export const STORE_LOCATOR = () => {
      return;
   }
 
+  setTimeout(() => {
+    $storeLocatorRoot.addClass('store-locator__slide-down');
+
+    setTimeout(() => {
+      $storeLocatorRoot.removeClass('store-locator__slide-down');
+    }, 1000);
+  }, 1500);
+
   function isJson(str) {
     try {
       JSON.parse(str);

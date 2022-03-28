@@ -1,16 +1,117 @@
 #storelocator {
   line-height: 1.6;
-  line-height: 1.6;  
-  transition: margin-top .3s ease-in-out 1.5s;
-  
-  &.store-locator__slide-up {
-    margin-top: -139px;
+  line-height: 1.6;
+  transition: margin-top 0.3s ease-in-out 1.5s;
+  margin-top: -55px;
+
+  @include respond-to-min($desktop-wide) {
+    & {
+      margin-top: -153px;
+    }
+  }
+
+  @include respond-to-min($desktop) {
+    .col-lg-offset-2 {
+      margin-left: 8.33333333%;
+      width: 83.33333333%;
+    }
+    .global-village-timing {
+      float: right;
+    }
+  }
+
+  @include respond-to-min($desktop-large) {
+    & {
+      margin-top: -138px;
+    }
+    .col-lg-offset-2 {
+      margin-left: 16.66666667%;
+      width: 66.66666667%;
+    }
+
+    .form.custom-dd .category-dropdown .select2.select2-container {
+      width: auto !important;
+    }
+  }
+
+  &.store-locator__slide-down {
+    margin-top: 0;
   }
 
   * {
     box-sizing: border-box;
   }
   // TODO: Need to remove this if this is possible through AEM container
+  &.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .loader_svg svg, .loader_svg svg circle {
+    fill: $main-green;
+  }
+
+  .btn.search-btn {
+    padding: 0 1.5rem;
+    font-size: 0.75rem;
+    line-height: 2.75rem;
+    letter-spacing: 0.14285714em;
+  }
+
+  .check-seach-btn .btn.search-btn {
+    line-height: 3.2rem;
+  }
+
+  .search-group .store-locator-style > span.clear-check-seach-btn svg {
+    margin-top: 1.2rem;
+  }
+
+  .store-locator-wrap .map-container .background-map .map-filter .result-main-container .sidebar-result-container .result-slide .result-item-container {
+    width: 100%;
+  }
+
+  .store-locator-wrap
+    .map-container
+    .background-map
+    .map-filter
+    .result-main-container
+    .sidebar-result-container
+    .result-slide
+    .result-item-container
+    .desc-short
+    p {
+    margin: 0 0 12.5px;
+  }
+
+  .gm-style .gm-style-iw-t:after {
+    top: 15px !important;
+    z-index: -1;
+  }
+
+  @include respond-to-min($tablet) {
+    .btn.search-btn {
+      padding: 0 1.5rem;
+    }
+
+    .check-seach-btn .btn.search-btn {
+      line-height: 3rem;
+    }
+
+    .btn.search-btn.close-btn {
+      line-height: 2.75rem;
+    }
+  }
+
+  @include respond-to-min($desktop-large) {
+    .check-seach-btn .btn.search-btn {
+      line-height: 4rem;
+    }
+
+    .btn.search-btn.close-btn {
+      line-height: 3.2rem;
+    }
+  }
+
   @media (min-width: 1600px) {
     &.container-fluid {
       max-width: 1680px;
@@ -18,6 +119,21 @@
       padding-left: 0;
       margin-right: auto;
       margin-left: auto;
+    }
+  }
+
+  .store-locator-wrap .tiles-content .store-locator-header h2 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+
+  .form .search-group .form-group.input-group {
+    margin-bottom: 0;
+  }
+
+  @include respond-to-min($desktop-large) {
+    .form .search-group .form-group.input-group {
+      margin-top: 0;
     }
   }
 
@@ -126,10 +242,38 @@
     height: auto;
   }
 
+  @include respond-to-min($desktop-wide) {
+    .input-group .col-lg-3 {
+      width: 33.33333333%;
+    }
+    .input-group .col-lg-9 {
+      width: 66.66666667%;
+    }
+  }
+
+  @include respond-to-min($desktop-large) {
+    .input-group .col-lg-3 {
+      width: 25%;
+    }
+    .input-group .col-lg-9 {
+      width: 75%;
+    }
+  }
+
   // commons.less
   #pac-input-store-locator {
-    padding-right: 125px !important;
+    padding-right: 98px !important;
     margin-bottom: 16px;
+  }
+
+  @include respond-to-min($tablet) {
+    #pac-input-store-locator {
+      padding-right: 125px !important;
+    }
+  }
+
+  .store-locator-wrap .tiles-content .store-locator-header form .search-group {
+    margin-bottom: 0px;
   }
 
   // For the Tabs arrow start -----------------------
@@ -194,7 +338,7 @@
       height: 100%;
       position: relative;
       background: none;
-      transform: scale(.24);
+      transform: scale(0.24);
 
       svg {
         width: 100%;
@@ -324,6 +468,7 @@
       .box-section {
         .dynamic-value {
           color: $steel-grey;
+          margin: 0 0 12.5px;
         }
 
         p {
@@ -338,6 +483,7 @@
           h4 {
             font-size: 1.375rem;
             margin: 0;
+            color: $main-green;
           }
 
           h5 {
@@ -518,7 +664,7 @@
           svg {
             height: 15px;
             width: 15px;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             fill: $texts-gray;
           }
         }
@@ -669,7 +815,7 @@
       height: 3rem;
     }
   }
-  @media (min-width: $desktop-wide) {
+  @media (min-width: $desktop-large) {
     .search-group {
       select {
       }
@@ -1181,6 +1327,7 @@
                   justify-content: center;
                   align-items: center;
                   margin-top: 12.5px;
+                  margin-bottom: 10px;
                 }
 
                 .pager-arrows {
@@ -2541,7 +2688,7 @@
       }
     }
   }
-  @media (min-width: $desktop-wide) {
+  @media (min-width: $desktop-large) {
     .store-locator-wrap {
       .store-locator-header {
         padding-top: 3.625rem;
@@ -3339,8 +3486,11 @@
     -ms-transform: translateX(0vw) !important;
   }
   .gm-ui-hover-effect {
-    top: 12px !important;
-    right: 52px !important;
+    // top: 12px !important;
+    // right: 52px !important;
+
+    top: 0 !important;
+    right: 0 !important;
   }
 
   @media (max-width: 768px) {
@@ -3351,7 +3501,8 @@
       .dynamic-value,
       .box-section-footer,
       .box-section-body {
-        display: none !important;
+        // TODO: Need to wether this is required
+        // display: none !important;
       }
     }
   }
@@ -4551,7 +4702,7 @@
     /*End search field for store-locator module and CHECK AVAILABILITY module*/
   }
 
-  @media (min-width: $desktop-wide) {
+  @media (min-width: $desktop-large) {
     /*start search field for store-locator module and CHECK AVAILABILITY module*/
     .search-group {
       .form-group {
@@ -4776,7 +4927,7 @@
           }
         }
       }
-      @media (min-width: $desktop-wide) {
+      @media (min-width: $desktop-large) {
         .select2.select2-container {
           height: 4rem;
           padding-left: 1rem;
