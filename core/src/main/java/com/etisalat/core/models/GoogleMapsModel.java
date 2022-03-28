@@ -58,6 +58,9 @@ public class GoogleMapsModel {
     googleContactUrl = googleService.getGoogleContactUsUrl();
     this.captchaV3 = googleService.getCaptchaV3SiteKey();
     this.captchaInvisible = googleService.getCaptchaInvisibleEtisalatAppKey();
+    if (currentPage.getPath().contains("/content/ewallet/")){
+      key = googleService.getEwalletKey();
+    }
   }
 
   public String getUrl() {
