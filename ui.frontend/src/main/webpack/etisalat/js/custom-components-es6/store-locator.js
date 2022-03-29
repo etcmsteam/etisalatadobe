@@ -84,27 +84,10 @@ export const STORE_LOCATOR = () => {
     map: map,
   };
 
-  // TODO: Uncomment this and remove etisalat target once we allow kml format in AEM Envs
-  // var kml2g = new google.maps.KmlLayer(`${currentUrlPath}2g.kml`, AI_options),
-  //   kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
-  //   kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
-  //   kml5g = new google.maps.KmlLayer("https://author-p42155-e161076.adobeaemcloud.com/content/dam/etisalat/store-locator/5G_DB_19Dec21.kml", AI_options);
-  // kml5g = new google.maps.KmlLayer("https://www.etisalat.ae/en/system/wst/assets/kml/5G_DB_19Dec21.kml", AI_options);
-
-  var kml2g = new google.maps.KmlLayer("https://sites.google.com/site/etisalatkml/home/kml/2g.kml", AI_options),
-    kml3g = new google.maps.KmlLayer("https://www.etisalat.ae/en/system/wst/assets/kml/3gM2.kml", AI_options),
-    kml4g = new google.maps.KmlLayer("https://www.etisalat.ae/en/system/wst/assets/kml/4gM7.kml", AI_options),
-    kml5g = new google.maps.KmlLayer("https://www.etisalat.ae/en/system/wst/assets/kml/5G_DB_19Dec21.kml", AI_options);
-
-  // TODO: Verify this when AEM Publisher allows the KML MIME Type
-  // var kml2g = new google.maps.KmlLayer(`${currentUrlPath}2g.kml`, AI_options),
-  // kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
-  // kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
-  // kml5g = new google.maps.KmlLayer(`${currentUrlPath}5G_DB_19Dec21.kml`, AI_options);
-
-  //   var kml2g=new google.maps.KmlLayer("https://sites.google.com/site/etkmlz/kml/2gM7.kml",AI_options),
-  // kml3g=new google.maps.KmlLayer("https://sites.google.com/site/etisalatkml/home/kml/3g.kml",AI_options),
-  // kml4g=new google.maps.KmlLayer("https://sites.google.com/site/etisalatkml/home/kml/4g.kml",AI_options);
+  var kml2g = new google.maps.KmlLayer(`${currentUrlPath}2g.kml`, AI_options),
+  kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
+  kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
+  kml5g = new google.maps.KmlLayer(`${currentUrlPath}5G_DB_19Dec21.kml`, AI_options);
 
   // ---------------------------------------------------------
   // Common functions
