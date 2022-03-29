@@ -13,33 +13,12 @@
             />
         </div>
     </div>
-    <div class="store-locator-wrap row">
+    <div class="store-locator-wrap row" data-sly-use.productDetails="com.etisalat.core.models.ProductDetails">
         <div class="tiles-content bg-dark">
-            <div class="cover">
-                <!-- TODO: Need to check whether this image need to keep lazy loaded. Removing data src for now. -->
-                <!-- data-src="/content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_1000.jpg" -->
-                <!-- <img
-                  class="cover lazyload"
-                  sizes="(max-width: 1000px) 100vw, 1000px"
-                  srcset="
-                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_200.jpg   200w,
-                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_435.jpg   435w,
-                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_614.jpg   614w,
-                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_757.jpg   757w,
-                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_886.jpg   886w,
-                    /content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_1000.jpg 1000w
-                  "
-                  src="/content/dam/etisalat/store-locator/dubai_v9wl1p_c_scale,w_1000.jpg"
-                  alt="dubai"
-                /> -->
-
-                <img class="cover lazyload"
-                     sizes="(max-width: 1000px) 100vw, 1000px"
-                     srcset=""
-                     src="${properties.fileReference}"
-                     alt="${properties.backgroundImageLabel}"
-                />
+            <div data-sly-test="${properties.fileReference}" class="cover">
+                <div class="cover" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}">
             </div>
+        </div>
             <div class="store-locator-header col-md-8 col-sm-8 col-ms-8 col-xs-10">
                 <!--  -->
                 <div class="row">
@@ -62,47 +41,18 @@
                                     <div class="col-md-4 col-lg-3 col-sm-4 hidden-ms hidden-xs">
                                         <div class="form-section category-dropdown">
                                             <div class="floating-label-select store-locator-custome">
-                                                <!--<select id="mapFilter" class="mapFilter">
-                                                      <option value="coverage"  selected="selected" data-icon="coverage" >Coverage</option>
-                                                      <option value="store-business"  data-icon="store-business">Stores</option>
-                                                      <option value="store-machine" data-icon="store-payment"> Payment Machines</option>
-                                                      <option value="store-wifi" data-icon="store-wifi">WIFI Locations</option>
-                                                      <option value="store-basket" data-icon="store-basket">Reseller</option>
-                                                      <option value="all"  data-icon="menu_icon">All Categories</option>
-                                                    </select>-->
                                                 <select id="mapFilter" class="mapFilter">
-                                                    <!-- <sly data-sly-list.multifieldObj="${resource.getChildren}">
-                                                            <div data-sly-test="${multifieldObj.name == 'sectionitems'}" data-sly-list.gsItems="${multifieldObj.getChildren}" class="feature-logo">
-                                                                <option value="${gsItems.icon}" data-icon="${gsItems.icon}" >${gsItems.sectionTitle}</option>
-                                                            </div>
-                                                        </sly> -->
-                                                    <option
-                                                            value="coverage"
+
+                                                    <option data-sly-list.productFilter="${productDetails.productFilterTagDetails  @ begin=0, end=0}"
                                                             selected="selected"
-                                                            data-icon="coverage"
-                                                    >
-                                                        Coverage
+                                                        value="${productFilter.tagName}"
+                                                        data-icon="${productFilter.tagName}">
+                                                        ${productFilter.tagTitle}
                                                     </option>
-                                                    <option
-                                                            value="store-business"
-                                                            data-icon="store-business"
-                                                    >
-                                                        Stores
-                                                    </option>
-                                                    <option
-                                                            value="store-machine"
-                                                            data-icon="store-payment"
-                                                    >
-                                                        Payment Machines
-                                                    </option>
-                                                    <option value="store-wifi" data-icon="store-wifi">
-                                                        WIFI Locations
-                                                    </option>
-                                                    <option value="store-basket" data-icon="store-basket">
-                                                        Reseller
-                                                    </option>
-                                                    <option value="all" data-icon="menu_icon">
-                                                        All Categories
+                                                    <option data-sly-repeat.productFilter="${productDetails.productFilterTagDetails}"
+                                                            value="${productFilter.tagName}"
+                                                            data-icon="${productFilter.tagName}">
+                                                        ${productFilter.tagTitle}
                                                     </option>
                                                 </select>
                                             </div>
@@ -151,15 +101,9 @@
                                     <div
                                             class="global-village-timing col-lg-9 col-md-8 col-sm-8 col-ms-12 col-xs-12"
                                     >
-                                        <a style="width: 100%; font-size: 16px">
+                                        <a href="${properties.ctaButtonlink}" style="width: 100%; font-size: 16px">
                                             ${properties.ctaButtonText}
                                         </a>
-                                        <!-- <a
-                                            href="${properties.ctaButtonlink}"
-                                            style="width: 100%; font-size: 16px"
-                                            >
-                                            ${properties.ctaButtonText || 'Holiday Timings'}
-                                            </a> -->
                                     </div>
                                 </div>
                             </div>
@@ -177,25 +121,13 @@
                         >
                             <div class="map-filter-list topnav-swiper-container">
                                 <ul class="nav swiper-wrapper">
-                                    <li class="swiper-slide sandy-green-b active">
-                                        <a href="#coverage" data-category="coverage">Coverage</a>
+                                    <li class="swiper-slide active" data-sly-list.productFilter="${productDetails.productFilterTagDetails  @ begin=0, end=0}">
+                                        <a href="#${productFilter.tagName}" data-category="${productFilter.tagName}">${productFilter.tagTitle}</a>
                                     </li>
-                                    <li class="swiper-slide dark-green-b">
-                                        <a href="#stores" data-category="store-business">Stores</a>
-                                    </li>
-                                    <li class="swiper-slide yellow-b">
-                                        <a href="#store-machine" data-category="store-machine">
-                                            Payment Machines</a
+                                    <li class="swiper-slide" data-sly-list.productFilter="${productDetails.productFilterTagDetails  @ begin=1}"
                                         >
-                                    </li>
-                                    <li class="swiper-slide purple-b">
-                                        <a href="#store-wifi" data-category="store-wifi">WIFI Locations</a>
-                                    </li>
-                                    <li class="swiper-slide orange-b">
-                                        <a href="#store-basket" data-category="store-basket">Reseller</a>
-                                    </li>
-                                    <li class="swiper-slide dark-gray">
-                                        <a href="#all" data-category="all">All</a>
+                                        <a href="#${productFilter.tagName}" data-category="${productFilter.tagName}">${productFilter.tagTitle}</a>
+
                                     </li>
                                 </ul>
                                 <!-- Add Arrows -->
@@ -215,7 +147,7 @@
                                 <div class="result-pager hidden-xs hidden-ms">
                                     <div class="pager">
                                         <p>
-                                            Pages
+                                            ${properties.paginationLabel}
                                         <div class="swiper-pagination"></div>
                                         </p>
                                     </div>
