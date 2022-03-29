@@ -76,6 +76,76 @@
         text-align: center;
       }
     }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 25px;
+      margin-bottom: 12.5px;
+    }
+
+    h1 {
+      font-size: toRem(35);
+    }
+    h3 {
+      font-size: toRem(24);
+    }
+    h4 {
+      font-size: toRem(24);
+      margin-bottom: toRem(24);
+      line-height: 40px;
+      color: $almost-black;
+      margin-top: 0;
+    }
+    h5,
+    h6 {
+      font-size: toRem(16);
+    }
+    
+    @media (min-width: 768px) {
+      h1 {
+        font-size: toRem(55);
+        letter-spacing: 0;
+      }
+    }
+
+    @media (min-width: 992px) {
+      h1 {
+        font-size: toRem(55);
+        letter-spacing: 0;
+      }
+      h3 {
+        font-size: toRem(26);
+      }
+    }
+
+    @media (min-width: 1248px) {
+      h1 {
+        font-size: toRem(80);
+        letter-spacing: 0;
+      }
+      h3 {
+        font-size: toRem(30);
+      }
+      h5,
+      h6 {
+        font-size: toRem(20);
+      }
+    }
+
+    @media (min-width: 1600px) {
+      h1 {
+        font-size: toRem(80);
+        letter-spacing: .0625em;
+      }
+      h3 {
+        font-size: toRem(30);
+      }
+      h5,
+      h6 {
+        font-size: toRem(20);
+      }
+    }
   }
 
   .tile-boxes-title-small {
@@ -373,11 +443,11 @@
       }
 
       .scrollbar {
-        width: 96% !important;
+        width: 98% !important;
 
         @include respond-to-min($desktop) {
           margin-top: 2rem;
-          width: 98% !important;
+          width: 100% !important;
         }
       }
     }
@@ -569,6 +639,10 @@
       }
     }
   }
+
+  .swiper-container-horizontal > .swiper-scrollbar {
+    left: 0 !important;
+  }
 }
 
 .title {
@@ -589,7 +663,7 @@
   
   .tile-box-tile {
     background: $white;
-    border-radius: toRem(4);
+    border-radius: toRem(8);
     box-shadow: 0 toRem(5) toRem(10) 0 rgba(0, 0, 0, 0.1);
     margin-bottom: toRem(32);
     min-height: toRem(280);
