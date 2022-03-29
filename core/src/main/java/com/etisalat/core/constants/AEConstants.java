@@ -61,6 +61,7 @@ public final class AEConstants {
  public static final String TRUE = "true";
  public static final String EQUAL_DELIMITER = "=";
  public static final String COMMA_DELIMITER = ",";
+ public static final String TILT_DELIMITER = "~";
 
  public static final String NO_CONFIG_FOUND = "No config found";
  public static final String POST_METHOD = "POST";
