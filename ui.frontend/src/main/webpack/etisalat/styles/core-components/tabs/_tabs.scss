@@ -12,6 +12,83 @@
       width: auto;
     }
   }
+
+  &.cmp-tab-expansion {
+    border-radius: 4px;
+    padding: 40px 0;
+
+    @media (min-width: 992px) {
+      padding: 80px 0 60px;
+    }
+
+    &.cmp_tabs--vertical {
+      &.cmp_tabs--mobile {
+        .cmp-teaser__content {
+          background-color: transparent;
+
+          @media screen and (max-width: 576px) {
+            padding: 0;
+          }
+        }
+      }
+
+      .cmp-teaser {
+        padding: toRem(16) toRem(16) toRem(24);
+
+        @media (min-width: 992px) {
+          padding: toRem(36);
+        }
+      }
+    }
+
+    @media (min-width: 768px) {
+      &.cmp_tabs--vertical {
+        &.cmp_tabs--mobile {
+          .cmp-teaser__content {
+            background-color: transparent;
+          }
+        }
+
+        .cmp-tabs__tabpanel--active {
+          min-height: 416px;
+        }
+      }
+    }
+
+    &.cmp_tabs--mobile {
+      .nav-view-wrapp.panel {
+        >a {
+          margin-left: toRem(-17);
+          padding: 18px 0 18px 16px;
+
+          &.collapsed {
+            color: $steel-grey;
+          }
+
+          @media (max-width: 991px) {
+            &.collapsed::before {
+              transform: translateY(-50%) rotate(-135deg);
+            }
+          }
+
+          @media (max-width: 991px) {
+            &::before {
+              padding: 3.5px !important;
+              transform: translateY(-50%) rotate(45deg);
+            }
+          }
+        }
+
+        >:not(a.collapsed) {
+          font-weight: 700;
+        }
+      }
+
+      .learn-more-wrap--tab-cta {
+        padding-left: 0;
+      }
+    }
+  }
 }
 
 // common css st
@@ -101,6 +178,20 @@
     .cmp-teaser__content {
       background-color: $sand-white-50;
     }
+
+    h3:first-of-type {
+      color: $almost-black;
+      font-size: toRem(28);
+      letter-spacing: normal;
+      line-height: 1.21;
+      margin: 0 0 toRem(24) 0;
+
+      @media (min-width: 992px) {
+        font-size: toRem(32);
+        line-height: 1.25;
+        margin: 0 0 toRem(52) 0;
+      }
+    }
   }
 
   .panel {
@@ -148,16 +239,25 @@
 
     &__description {
       ol {
-        padding: 0 toRem(35);
+        margin-left: toRem(28);
 
         li {
-          padding: 0 toRem(10);
+          margin-bottom: 4px;
+          padding-left: toRem(12);
         }
       }
 
       ol li,
       ul li {
         font-size: $font16;
+      }
+
+      @include respond-to-max(991px) {
+        ol li,
+        ul li {
+          font-size: $font16 !important;
+          line-height: 1.5;
+        }
       }
 
       p {
@@ -602,7 +702,7 @@
   &.tabs-fullbdr-textOnly {
     .cmp-tabs {
       &__tablist {
-        width: 33.33%;
+        width: 34%;
       }
 
       &__tabpanel--active {
@@ -683,6 +783,7 @@
       flex-direction: row-reverse;
       justify-content: flex-end;
       padding: toRem(16);
+      padding-right: 1.875rem !important;
       text-align: left;
 
       @include font-family-Neotech;
@@ -759,7 +860,7 @@
     font-weight: get-font-weight("bold");
     padding-left: toRem(37);
     padding-top: toRem(40);
-    width: 68%;
+    width: 66%;
 
     @include respond-to-min-max($desktop-wide, $desktop) {
       width: 70%;
@@ -1018,11 +1119,11 @@
     .cmp-teaser {
       display: flex;
       flex-direction: row-reverse;
-      padding: 2rem;
+      padding: toRem(36) toRem(24) toRem(26);
       width: 100%;
 
       @include respond-to-max($tablet) {
-        padding: 0 toRem(16) toRem(24);
+        padding: toRem(16) toRem(16) toRem(24);
       }
 
       @include respond-to-max($desktop) {
@@ -1076,16 +1177,14 @@
 
       svg,
       img {
-        height: toRem(40);
+        height: toRem(24);
         margin-right: calc(#{$margin-step-1} + 2px);
-        width: toRem(35);
+        width: toRem(24);
 
         @include respond-to-min($tablet) {
           fill: inherit;
           float: left;
-          height: toRem(30);
           margin-right: toRem(24);
-          width: toRem(32);
 
           @include rtlBlock() {
             margin-left: toRem(24);
@@ -1107,7 +1206,7 @@
         color: $main-green;
         font-size: $font20;
         font-weight: get-font-weight("bold");
-        line-height: toRem(29);
+        line-height: 1.4;
         padding: 1rem 1rem 1rem 1.2rem;
         position: relative;
 
@@ -1127,7 +1226,7 @@
     .cmp-tabs__tabpanel--active {
       background: $white-gray1;
       display: block;
-      width: 70%;
+      width: 71.823%;
     }
 
     .cmp-teaser__description {
@@ -1235,6 +1334,7 @@
       .nav-view-wrapp.panel > :not(a.collapsed) {
         background: $sand-white-50;
         color: $main-green;
+        font-weight: 700;
 
         @include respond-to-max($tablet) {
           margin: 0 toRem(-17);

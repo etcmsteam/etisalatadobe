@@ -49,4 +49,13 @@ class GoogleMapsModelTest {
 		assertNotNull(googleMapsModel.getUrl());
 		assertNotNull(googleMapsModel.getStoreLocatorUrl());
 	}
+
+	@ParameterizedTest
+	@ValueSource(strings = { "/content/ewallet/en" })
+	void testEwalletGoogleKey(String pagePath) {
+		context.create().page(pagePath, "/apps/etisalat/page");
+		context.request().setAttribute("currentPage", context.currentPage(pagePath));
+		GoogleMapsModel googleMapsModel = context.request().adaptTo(GoogleMapsModel.class);
+		assertNotNull(googleMapsModel.getKey());
+	}
 }
