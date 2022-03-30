@@ -13,10 +13,13 @@ export const TABS_JS = () => {
     const sectionHeading = document.title;
     ANALYTICS_LINKS_TABS(tabsName, tabsURL, sectionHeading);
   });
-
-  if (window.innerWidth > 767 && window.innerWidth < 992) {
-    if (!$(".tabs.cmp-tab-expansion").closest(".container").hasClass("container-fix__fluid")) {
-      $(".tabs.cmp-tab-expansion").closest(".container").addClass("container-center cmp-expansion-pad-15");
-    }
-  }
 };
+
+
+if (window.innerWidth > 767 && window.innerWidth < 992) {
+  $(".tabs.cmp-tab-expansion").each(function () {
+    if (!$(this).closest(".container").hasClass("container-fix__fluid")) {
+      $(this).closest(".container").addClass("container-center cmp-expansion-pad-15");
+    }
+  });
+}
