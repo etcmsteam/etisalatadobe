@@ -46,11 +46,33 @@
         &.cmp_tabs--mobile {
           .cmp-teaser__content {
             background-color: transparent;
+            padding: 0;
           }
         }
 
         .cmp-tabs__tabpanel--active {
           min-height: 416px;
+        }
+
+        .cmp-tabs {
+          li {
+            &.cmp-tabs__tab {
+              padding: 24px 0;
+              padding-left: 1.5rem;
+            }
+          }
+        }
+
+        .cmp-tabs__tab--active {
+          padding-right: 24px;
+        }
+
+        .cmp-tabs__tablist {
+          width: 37%;
+
+          @media all and (device-width: 1024px) and (device-height: 768px) and (orientation: landscape) {
+            width: 53.8666%;
+          }
         }
       }
     }
@@ -59,6 +81,7 @@
       .nav-view-wrapp.panel {
         > a {
           margin-left: toRem(-17);
+          margin-right: toRem(-17);
           padding: 18px 0 18px 16px;
 
           &.collapsed {
@@ -67,6 +90,7 @@
 
           @media (max-width: 991px) {
             &.collapsed::before {
+              right: toRem(20);
               transform: translateY(-50%) rotate(-135deg);
             }
           }
@@ -89,6 +113,11 @@
       }
     }
   }
+}
+
+.cmp-expansion-pad-15 {
+  padding-left: 17px !important;
+  padding-right: 17px !important;
 }
 
 // common css st
