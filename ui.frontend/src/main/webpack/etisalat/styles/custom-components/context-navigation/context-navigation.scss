@@ -881,10 +881,6 @@
   &.main-text-slider-4-0-0 {
     padding: 0;
 
-    @include respond-to-max($custom-width-tab) {
-      margin: 0 toRem(-16);
-    }
-
     .all-tiles .context-tile {
       padding: 0 !important;
 
@@ -940,6 +936,10 @@
 
       @include respond-to-min-max($desktop-min, $tablet) {
         width: toRem(732) !important;
+      }
+
+      @include respond-to-max($custom-width-tab) {
+        padding: 0;
       }
     }
 
@@ -1025,7 +1025,6 @@
       }
 
       @include respond-to-max($custom-width-tab) {
-        margin: 0 toRem(-16);
         padding: 0;
       }
     }
@@ -1036,7 +1035,7 @@
       }
 
       @include respond-to-min($desktop-wide) {
-        left: toRem(-72) !important;
+        left: toRem(-68) !important;
       }
     }
 
@@ -1046,7 +1045,7 @@
       }
 
       @include respond-to-min($desktop-wide) {
-        right: toRem(-72) !important;
+        right: toRem(-68) !important;
       }
     }
 
@@ -1109,6 +1108,13 @@
 
   &.main-text-slider-4-0-0,
   &.main-text-slider {
+    &.static-tile .context-tile .paragraph-styling,
+    .paragraph-styling {
+      p {
+        margin-bottom: toRem(24) !important;
+      }
+    }
+
     .wst-main-headings {
       width: 100%;
       &.heading1 {
