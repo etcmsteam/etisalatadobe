@@ -76,6 +76,19 @@
         text-align: center;
       }
     }
+
+    h1,
+    h3 {
+      margin-top: 25px;
+      margin-bottom: 12.5px;
+    }
+
+    h4 {
+      margin-bottom: toRem(24);
+      line-height: 40px;
+      color: $almost-black;
+      margin-top: 0;
+    }
   }
 
   .tile-boxes-title-small {
@@ -90,6 +103,40 @@
       @include respond-to-min($desktop) {
         font-size: $font20;
         line-height: 1.4;
+      }
+    }
+
+    h1 {
+      margin-top: 25px;
+      margin-bottom: 12.5px;
+    }
+    h2 {
+      margin-top: 25px;
+      margin-bottom: toRem(92.8);
+    }
+
+    h4 {
+      margin-bottom: toRem(24);
+      line-height: 40px;
+      color: $almost-black;
+      margin-top: 0;
+    }
+
+    @media (min-width: 768px) {
+      h2 {
+        margin-bottom: toRem(48);
+      }
+    }
+    
+    @media (min-width: 992px) {
+      h2 {
+        margin-bottom: toRem(80);
+      }
+    }
+
+    @media (min-width: 1248px) {
+      h2 {
+        margin-bottom: toRem(80);
       }
     }
   }
@@ -377,7 +424,7 @@
 
         @include respond-to-min($desktop) {
           margin-top: 2rem;
-          width: 98% !important;
+          width: 100% !important;
         }
       }
     }
@@ -402,6 +449,20 @@
 
       &--hidden {
         display: none;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding-right: 0;
+        padding-left: toRem(16);
+        width: 100%;
+      }
+      @include rtlBlock() {
+        .container {
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
     }
   }
@@ -569,6 +630,10 @@
       }
     }
   }
+
+  .swiper-container-horizontal > .swiper-scrollbar {
+    left: 0 !important;
+  }
 }
 
 .title {
@@ -589,7 +654,7 @@
   
   .tile-box-tile {
     background: $white;
-    border-radius: toRem(4);
+    border-radius: toRem(8);
     box-shadow: 0 toRem(5) toRem(10) 0 rgba(0, 0, 0, 0.1);
     margin-bottom: toRem(32);
     min-height: toRem(280);
