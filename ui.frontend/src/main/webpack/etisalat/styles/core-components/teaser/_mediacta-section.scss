@@ -318,38 +318,21 @@
       }
     }
 
-    h4 {
-      margin: 0 0 toRem(16);
-
-      @include respond-to-min($desktop) {
-        margin: 0 0 toRem(22.4);
-      }
-    }
-
     h5,
     h6 {
       margin-bottom: 12.5px;
       margin-top: 12.5px;
     }
 
-    h3,
     h4 {
-      font-size: toRem(18);
+      margin: 0 0 toRem(16);
 
       @include respond-to-min($tablet) {
         color: $almost-black;
-        font-size: toRem(24);
       }
 
-      @media (max-width: 991px) {
-        font-size: toRem(18);
-        font-weight: 700;
-
-        @include font-family-lato();
-      }
-
-      @media (min-width: 1248px) {
-        font-size: toRem(26);
+      @include respond-to-min($desktop) {
+        margin: 0 0 toRem(22.4);
       }
     }
 
@@ -551,6 +534,18 @@
     @include respond-to-max($desktop - 1) {
       margin-bottom: toRem(24);
       margin-top: 0;
+    }
+
+    .cmp-teaser {
+      &__content {
+        @include respond-to-min($desktop) {
+          padding: toRem(42) toRem(24) toRem(40) toRem(12);
+  
+          @include rtlBlock() {
+            padding: toRem(24) toRem(12) toRem(40) toRem(64);
+          }
+        }
+      }
     }
   }
 }
