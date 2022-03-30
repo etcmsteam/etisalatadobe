@@ -57,6 +57,35 @@
   }
 }
 
+.teaseretisalat {
+  &.tile-teaser {
+    .cmp-teaser__content {
+      .cmp-teaser__pretitle {
+        font-size: toRem(12);
+        font-weight: 700;
+        margin-bottom: toRem(4);
+        letter-spacing: toRem(4);
+        line-height: toRem(14);
+
+        @media screen and (min-width: 992px) {
+          font-size: toRem(14);
+          line-height: toRem(20);
+        }
+      }
+
+      .cmp-teaser__action-container {
+        .cmp-teaser__action-link {
+          line-height: toRem(16);
+
+          @media screen and (min-width: 992px) {
+            line-height: toRem(20);
+          }
+        }
+      }
+    }
+  }
+}
+
 .teaser--pattern__bg.link__arrow {
   a {
     @include rtlBlock {
@@ -291,17 +320,6 @@
 
     @include respond-to-min($desktop-wide) {
       width: toRem(1224);
-    }
-
-    &__title {
-      font-size: $font32;
-      line-height: toRem(40);
-      margin: 0 0 toRem(24) 0;
-
-      @include respond-to-max($tablet) {
-        font-size: $font28;
-        margin-bottom: 1rem;
-      }
     }
 
     .img-static {
