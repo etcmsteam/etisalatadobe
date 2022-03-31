@@ -163,6 +163,17 @@
             "userAgentString": userAgentData
           }
         });
+        if(isErrorFlg){
+        window.adobeDataLayer.push({
+            event:"errorInteraction",
+              errorInfo:{
+                error:1,
+                errorMessage: 'page not found',
+                errorCode: "404",
+                errorType:"page load Error"
+             }
+          });
+        }
       }
     }
   </script>
