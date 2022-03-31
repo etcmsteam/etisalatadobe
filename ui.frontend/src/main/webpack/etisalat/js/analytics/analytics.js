@@ -115,3 +115,65 @@ $('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link, .cms-button
     });
   }
 });
+
+// Buy Now CTA click
+$("a.cms-button").on("click", function () {
+  let $this = $(this);
+  const ctaName = $this.text() ? $this.text().toLowerCase().trim() : '';
+  const currrentURL = window.location.href;
+  const pagePathName = window.location.pathname;
+  const dataLayerPathName = pagePathName.split('.html')[0];
+  let sectionHeading = '';
+  let btnAction = '';
+  let productPriceVal = '';
+  let descriptionVal = '';
+
+  const pathArr = dataLayerPathName.split('/');
+  sectionHeading = pathArr.pop();
+
+  btnAction = $this.closest(".tiles-box.content").find(".tiles-box-title h2");
+  if (btnAction.length > 0) {
+    btnAction = btnAction.text().toLowerCase().trim();
+  }
+
+  productPriceVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new");
+  if (productPriceVal.length > 0) {
+    productPriceVal = productPriceVal.text().toLowerCase().trim().replace(/\n|\r/g, "");
+  }
+
+  descriptionVal = $this.closest(".tiles-box.content").find(".tiles-box-list .featureList");
+  if (descriptionVal.length > 0) {
+    descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, "");
+  }
+
+  window.adobeDataLayer.push({
+    event: "linkClicked",
+    xdmActionDetails: {
+      web: {
+        webInteraction: {
+          name: ctaName,
+          URL: currrentURL,
+          type: "other",
+          region: sectionHeading,
+          linkClicks: {
+            value: 1,
+          },
+        },
+      },
+      linkInfo: {
+        sectionHeading: sectionHeading,
+        action: btnAction,
+        name: ctaName,
+      },
+      product: {
+        productDetails: {
+          productName: btnAction,
+          productPrice: productPriceVal,
+          productType: sectionHeading,
+          productCategory: btnAction,
+          productDescription: descriptionVal,
+        }
+      }
+    }
+  });
+});
