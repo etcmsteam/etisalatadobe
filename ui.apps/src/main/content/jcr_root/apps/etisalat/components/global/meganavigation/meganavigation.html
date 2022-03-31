@@ -23,7 +23,27 @@
          data-sly-call="${mobiletemplate.mobile @ properties=properties,meganavigation=meganavigation}">  
     </sly>
   </sly>
-
+  
+ <script data-sly-test="${properties.cart}">
+  (function() {
+	var $location = window.location.origin;
+	var getshoppingCart = {
+		async: true,
+		crossDomain: true,
+		url: $location + "/b2c/eshop/getShoppingCart",
+		method: "GET",
+	};
+	$.ajax(getshoppingCart)
+		.done(function(response) {
+			if (response.numberOfItemsInCart != 0) {
+				$(".cart-count").removeClass("hide");
+				$(".cart-count").html(response.numberOfItemsInCart);
+			}
+		})
+		.error(function(error) {});
+  })(); 
+ </script>
+ 
  </sly>
 </sly>
 
