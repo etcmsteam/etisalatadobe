@@ -950,6 +950,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     }
 
     .container {
+
       @include respond-to-min($tablet) {
         width: 756px !important;
       }
@@ -960,7 +961,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
         width: 1224px !important;
       }
       .row {
-        @include respond-to-min-max($desktop-wide, $tablet) {
+        @include respond-to-max($desktop-wide) {
           margin-left: auto !important;
           margin-right: auto !important;
         }
@@ -1134,6 +1135,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
   .share {
     position: absolute;
     left: 0;
+
+    @include respond-to-max($desktop-min) {
+      position: static;
+    }
   }
 }
 
