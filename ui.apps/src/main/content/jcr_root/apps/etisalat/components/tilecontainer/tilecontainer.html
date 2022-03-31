@@ -3,7 +3,7 @@
        data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
        data-placeholder-text="${wcmmode.edit && 'Drag Tile components here' @ i18n}"       
        id="${container.id}">  
-      <h4 data-sly-test="${properties.tileBoxLayout == 'main-text-grid' && properties.tileTitle}">${properties.tileTitle}</h4>   
+      <h4 data-sly-test="${properties.tileBoxLayout == 'main-text-grid' && properties.tileTitle}" data-sly-element="${properties.titleType}">${properties.tileTitle}</h4>   
         <sly data-sly-test.tileLayout="${properties.tileBoxLayout}" data-sly-test="${properties.tileBoxLayout != 'main-text' && properties.tileBoxLayout != 'main-text-4'}" data-sly-use.tileContainerTemplate="${tileLayout}.html">
           <sly data-sly-test="${tileLayout == 'non-action-box'}" 
                data-sly-call="${tileContainerTemplate.nonActionBox @ container=container,properties=properties}" />
