@@ -156,6 +156,33 @@
   }
 }
 
+.container-fix__fluid {
+  @include respond-to-min($desktop) {
+    .cmp-teaser--multicol:first-child {
+      .cmp-container {
+        padding-left: 0 !important;
+        @include rtlBlock {
+          padding-right: 0 !important;
+        }
+      }
+    }
+
+    .cmp-teaser--multicol:nth-child(2) {
+      .cmp-container {
+        padding-right: 0 !important;
+        @include rtlBlock {
+          padding-left: 0 !important;
+        }
+      }
+    }
+  }
+  @include respond-to-max($desktop) {
+    .cmp-teaser--multicol .cmp-container {
+      padding: 0 !important;
+    }
+  }
+}
+
 .cmp-expansion-pad-15 {
   padding-left: 17px !important;
   padding-right: 17px !important;
