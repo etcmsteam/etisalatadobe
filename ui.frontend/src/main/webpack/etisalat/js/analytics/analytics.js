@@ -1,13 +1,20 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 export const ANALYTICS_FILTER = (category, type, value) => {
+  const pagePathName = window.location.pathname;
+  const dataLayerPathName = pagePathName.split('.html')[0];
+  let fltrCategory = '';
+
+  const pathArr = dataLayerPathName.split('/');
+  fltrCategory = pathArr.pop();
+
   window.adobeDataLayer.push({
     event: "filter",
     eventInfo: {
       filterClick: 1,
     },
     filterDetails: {
-      filterCategory: category,
+      filterCategory: fltrCategory,
       filterType: type,
       filterValue: value,
     },
@@ -59,7 +66,7 @@ $('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link').on('click'
           name: ctaName,
           URL: currrentURL,
           type: "other",
-          region: sectionHeading,
+          region: "main",
           linkClicks: {
             value: 1,
           },
@@ -163,7 +170,7 @@ $("a.cms-button").on("click", function () {
           name: ctaName,
           URL: currrentURL,
           type: "other",
-          region: sectionHeading,
+          region: "main",
           linkClicks: {
             value: 1
           },
@@ -185,4 +192,45 @@ $("a.cms-button").on("click", function () {
       }
     }
   });
+});
+
+// Footer click Events
+$(".footer").on("click", function (e) {
+  e.preventDefault();
+  if (e.target.tagName.toLowerCase() === "a") {
+    console.log($(e.target));
+    const ctaName = e.target.innerText ? e.target.innerText.toLowerCase().trim() : "";
+    const currrentURL = window.location.href;
+    const pagePathName = window.location.pathname;
+    const dataLayerPathName = pagePathName.split(".html")[0];
+    let sectionHeading = "";
+
+    const pathArr = dataLayerPathName.split('/');
+    sectionHeading = pathArr.pop();
+
+    window.adobeDataLayer.push({
+      event: "linkClicked",
+      xdmActionDetails: {
+        web: {
+          webInteraction: {
+            name: ctaName,
+            URL: currrentURL,
+            type: "other",
+            region: "footer",
+            linkClicks: {
+              value: 1,
+            },
+          },
+        },
+        linkInfo: {
+          sectionHeading: sectionHeading,
+          action: "footer",
+          name: ctaName,
+        },
+        eventInfo: {
+          footerClick: 1,
+        },
+      },
+    });
+  }
 });
