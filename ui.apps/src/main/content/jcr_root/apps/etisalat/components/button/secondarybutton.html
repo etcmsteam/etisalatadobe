@@ -1,4 +1,5 @@
 <template data-sly-template.secondaryButton="${ @ properties}">
+ <div class="container">
   <div data-sly-test="${properties.linkBehavior != 'openmodalwindow'}" class="button">
     <sly data-sly-test.customLink="${properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
     <a class="cmp-button  cmp-button--secondary"
@@ -7,6 +8,7 @@
       <span class="cmp-button__text">${properties.title}</span>
     </a>
   </div>
+ </div>
   <div data-sly-test="${properties.linkBehavior == 'openmodalwindow'}"
        class="button">
     <a data-label="${resource.name}" class="cmp-button btn-modal cmp-button--secondary"
