@@ -124,26 +124,35 @@ $("a.cms-button").on("click", function () {
   const pagePathName = window.location.pathname;
   const dataLayerPathName = pagePathName.split('.html')[0];
   let sectionHeading = '';
-  let btnAction = '';
-  let productPriceVal = '';
-  let descriptionVal = '';
+  let totalVal = '';
 
   const pathArr = dataLayerPathName.split('/');
   sectionHeading = pathArr.pop();
 
-  btnAction = $this.closest(".tiles-box.content").find(".tiles-box-title h2");
-  if (btnAction.length > 0) {
-    btnAction = btnAction.text().toLowerCase().trim();
+  let btnAct = $this.closest(".tiles-box.content").find(".tiles-box-title h2");
+  if (btnAct.length > 0) {
+    btnAct = btnAct.text().toLowerCase().trim();
+  } else {
+    btnAct = '';
   }
 
-  productPriceVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new");
+  let productPriceVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new .price");
+  let currVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new small");
   if (productPriceVal.length > 0) {
-    productPriceVal = productPriceVal.text().toLowerCase().trim().replace(/\n|\r/g, "");
+    productPriceVal = productPriceVal.text().toLowerCase().trim();
+    currVal = currVal.text().trim();
+    totalVal = productPriceVal + ' ' + currVal;
+  } else {
+    productPriceVal = '';
+    currVal = '';
+    totalVal = '';
   }
 
-  descriptionVal = $this.closest(".tiles-box.content").find(".tiles-box-list .featureList");
+  let descriptionVal = $this.closest(".tiles-box.content").find(".tiles-box-list .featureList");
   if (descriptionVal.length > 0) {
     descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, "");
+  } else {
+    descriptionVal = '';
   }
 
   window.adobeDataLayer.push({
@@ -156,22 +165,22 @@ $("a.cms-button").on("click", function () {
           type: "other",
           region: sectionHeading,
           linkClicks: {
-            value: 1,
+            value: 1
           },
         },
       },
       linkInfo: {
         sectionHeading: sectionHeading,
-        action: btnAction,
-        name: ctaName,
+        action: btnAct,
+        name: ctaName
       },
       product: {
         productDetails: {
-          productName: btnAction,
-          productPrice: productPriceVal,
+          productName: btnAct,
+          productPrice: totalVal,
           productType: sectionHeading,
-          productCategory: btnAction,
-          productDescription: descriptionVal,
+          productCategory: btnAct,
+          productDescription: descriptionVal
         }
       }
     }
