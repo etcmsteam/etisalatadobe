@@ -4,7 +4,24 @@
   max-height: toRem(78);
   min-height: toRem(56);
   transition: all 0.25s ease-in-out;
-  
+
+  .container > .row > .col-xs-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  &.add-links {
+    height: 56px;
+    @media (max-width:991px) {
+      margin-top: 100px;      
+    }
+  }
+
+  &.add-links-with-span {
+    @media (max-width:991px) {
+      margin-top: 120px;
+    }
+  }
 
   @include respond-to-min($desktop) {
     max-height: toRem(90);
@@ -95,7 +112,7 @@
       top: auto !important;
       right: 0;
       z-index: 9;
-      bottom: 0;
+      bottom: 12.5px;
       padding: 0 1rem;
     }
     }
@@ -114,6 +131,15 @@
       padding: 0;
     }
   }
+
+  
+  @include respond-to-max($desktop-min) {
+    .col-xs-12 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
   .hero-links-secton {
     @include respond-to-min($desktop) {
       max-width: toRem(486);
@@ -129,6 +155,12 @@
   box-shadow: 0 toRem(2) toRem(10) 0 hsla(0, 0%, 67%, 0.2);
   background-color: $main-green;
   border-radius: toRem(5);
+
+  @include respond-to-min($tablet) {
+    height: toRem(96);
+  }
+
+
   li {
     display: table-cell;
     width: 1%;
@@ -170,7 +202,7 @@
     ul {
       li {
         a {
-          height: 96px;
+          height: 84px;
           flex-direction: column;
           text-align: center;
           color: $white;
