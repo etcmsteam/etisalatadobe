@@ -131,13 +131,22 @@
       transition: all 0.3s ease-in-out;
       color: $custom-gray;
       background-color: fade($white, 20%);
-      border: toRem(1) solid $black;
-      padding: 0 1.966rem;
+      border: toRem(2) solid $texts-gray;
+      padding: 0 toRem(32);
       justify-content: center;
       height: toRem(48);
       font-size: $font12;
       line-height: toRem(44);
       letter-spacing: 0.14285714em;
+
+      @include respond-to-min(1400px) {
+        border: toRem(1) solid $texts-gray;
+        font-size: $font14;
+        height: toRem(68);
+        line-height: toRem(64);
+        letter-spacing: 0.14285714em;
+        padding: 0 toRem(45);
+      }
 
       &.focus,
       &:focus {
