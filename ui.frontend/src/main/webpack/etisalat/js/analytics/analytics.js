@@ -196,10 +196,13 @@ $("a.cms-button").on("click", function () {
 
 // Footer click Events
 $(".footer").on("click", function (e) {
-  e.preventDefault();
-  if (e.target.tagName.toLowerCase() === "a") {
-    console.log($(e.target));
-    const ctaName = e.target.innerText ? e.target.innerText.toLowerCase().trim() : "";
+  if (e.target.tagName.toLowerCase() === "a" || e.target.tagName.toLowerCase() === "img") {
+    let ctaName = '';
+    if (e.target.tagName.toLowerCase() === "a") {
+      ctaName = e.target.innerText ? e.target.innerText.toLowerCase().trim() : "";
+    } else if (e.target.tagName.toLowerCase() === "img") {
+      ctaName = $(e.target).attr("alt") ? $(e.target).attr("alt").toLowerCase().trim() : "";
+    }
     const currrentURL = window.location.href;
     const pagePathName = window.location.pathname;
     const dataLayerPathName = pagePathName.split(".html")[0];
