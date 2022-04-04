@@ -1,7 +1,7 @@
 $screen-md: 992px;
+$screen-sm-max: ($screen-md - 1);
 $almost-black: #353738;
-$steel-grey: #848789;
-
+$brand-primary: darken(#428bca, 6.5%); // #337ab7
 /************************************************
 guidelines for main headings h1 to h6
 *************************************************/
@@ -171,4 +171,127 @@ guidelines for secondary headings h1 to h4
       line-height: 12px;
       letter-spacing: 2px;
     }
+}
+
+/************************************************
+Paragraph styling for p1 - p4
+*************************************************/
+.paragraph-styling {
+  .p1,
+  .p2,
+  .p3,
+  .p4 {
+    p {
+      color: $gray-text-color;
+      @include font-family-Helvetica;
+      margin-bottom: 0.75rem;
+
+      @media screen and (min-width: $screen-md) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    ul li,
+    ol li {
+      color: $gray-text-color !important;
+    }
+
+    a {
+      color: $brand-primary;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .p1 p,
+  .p1 a,
+  .p1 ul li,
+  .p1 ol li {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+
+    @media screen and (min-width: $screen-md) {
+      font-size: 1.25rem !important;
+      line-height: 28px !important;
+    }
+  }
+
+  .p2 p,
+  .p2 a,
+  .p2 ul li,
+  .p2 ol li {
+    font-size: 14px !important;
+    line-height: 20px !important;
+
+    @media screen and (min-width: $screen-md) {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+    }
+  }
+
+  .p3 p,
+  .p3 a,
+  .p3 ul li,
+  .p3 ol li {
+    font-size: 12px !important;
+    line-height: 1rem !important;
+
+    @media screen and (min-width: $screen-md) {
+      font-size: 14px !important;
+      line-height: 20px !important;
+    }
+  }
+
+  .p4 p,
+  .p4 a,
+  .p4 ul li,
+  .p4 ol li {
+    font-size: 12px !important;
+    line-height: 1rem !important;
+  }
+}
+
+/************************************************
+general Paragraph styling
+*************************************************/
+.paragraph-styling {
+  a {
+    color: $gray-text-color;
+    font-size: 14px;
+    line-height: 24px;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 14px;
+    color: $gray-text-color;
+    line-height: 24px;
+    margin-bottom: 1.5rem;
+  }
+
+  &.big {
+    p {
+      font-size: 18px;
+    }
+  }
+
+  &.anchor {
+    a {
+      color: $brand-primary;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-sm-max) {
+  .paragraph-styling {
+    &.big p {
+      font-size: 16px;
+    }
+  }
 }
