@@ -3,7 +3,7 @@
   $(document).ready(function () {
     // open youtube video and close by removing src and then add
     let NON_ACTION_BOX_VIDEO = $(document).find(".non-action-boxes-two-cols-4-0, .non-action-boxes-4-0");
-    let NON_ACTION_BOX_READ_MORE = $(document).find(".non-action-boxes-4-0 .nab-content .paragraph-styling p");
+    let NON_ACTION_BOX_READ_MORE = $(document).find(".nab-content .paragraph-styling p");
 
     if (NON_ACTION_BOX_VIDEO.length > 0) {
       $(".youtube-video-link").on("click", function (e) {
@@ -55,7 +55,7 @@
         const CLICKABLE_AREA_CLS = ".clickable-area";
 
         if ($(this).hasClass("processed") === false) {
-          let classBodyCopy = $('span:first',this).attr('class');
+          let classBodyCopy = $("span:first", this).attr("class");
           let $ELE_TEXT = $(this).html().trim();
           let $TEXT_RESULT = LIMIT_TEXT($ELE_TEXT, 210);
 

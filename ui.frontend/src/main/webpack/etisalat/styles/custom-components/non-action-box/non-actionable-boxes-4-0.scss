@@ -327,7 +327,20 @@
 // media cta variation
 .nab-media-cta {
   .cmp-teaser {
+    @include respond-to-min($desktop-wide) {
+      max-width: toRem(1200);
+    }
+
+    @include respond-to-max($desktop-wide) {
+      max-width: toRem(952);
+    }
+
+    @include respond-to-max($desktop-min) {
+      max-width: toRem(732);
+    }
+
     @include respond-to-max($custom-width-tab) {
+      width: 100%;
       padding: 0 toRem(16);
     }
 
@@ -370,6 +383,10 @@
             padding: 0;
           }
         }
+      }
+
+      img {
+        padding-left: 0;
       }
     }
 
@@ -485,6 +502,9 @@
   }
 
   .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
     @include respond-to-min($desktop-wide) {
       width: toRem(1200) !important;
     }
@@ -499,8 +519,6 @@
 
     @include respond-to-max($custom-width-tab) {
       width: 100%;
-      padding-left: toRem(16);
-      padding-right: toRem(16);
     }
   }
 
