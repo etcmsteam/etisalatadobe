@@ -196,12 +196,16 @@ $("a.cms-button").on("click", function () {
 
 // Footer click Events
 $(".footer").on("click", function (e) {
-  if (e.target.tagName.toLowerCase() === "a" || e.target.tagName.toLowerCase() === "img") {
-    let ctaName = '';
-    if (e.target.tagName.toLowerCase() === "a") {
-      ctaName = e.target.innerText ? e.target.innerText.toLowerCase().trim() : "";
-    } else if (e.target.tagName.toLowerCase() === "img") {
-      ctaName = $(e.target).attr("alt") ? $(e.target).attr("alt").toLowerCase().trim() : "";
+  let trgt = e.target;
+  if (trgt.tagName.toLowerCase() === "a" || trgt.tagName.toLowerCase() === "img" || $(trgt).closest("svg").length > 0) {
+    let ctaName = "";
+    if (trgt.tagName.toLowerCase() === "a") {
+      ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : "";
+    } else if (trgt.tagName.toLowerCase() === "img") {
+      ctaName = $(trgt).attr("alt") ? $(trgt).attr("alt").toLowerCase().trim() : "";
+    } else {
+      let title = $(trgt).closest("a").attr("title");
+      ctaName = title ? title.toLowerCase().trim() : "";
     }
     const currrentURL = window.location.href;
     const pagePathName = window.location.pathname;
