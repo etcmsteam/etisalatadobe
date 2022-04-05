@@ -3,8 +3,6 @@
 }
 
 .non-action-boxes-4-0 {
-  padding: toRem(16) 0;
-
   &.has-bg {
     background-color: $module-bg-color;
   }
@@ -53,22 +51,23 @@
   }
 
   .container {
+    margin: 0 auto !important;
+    padding: 0 !important;
+
     @include respond-to-min($desktop-wide) {
-      width: toRem(1200);
+      width: toRem(1200) !important;
     }
 
     @include respond-to-max($desktop-wide) {
-      width: toRem(952);
+      width: toRem(952) !important;
     }
 
     @include respond-to-max($desktop-min) {
-      width: toRem(732);
+      width: toRem(732) !important;
     }
 
     @include respond-to-max($custom-width-tab) {
-      padding-left: toRem(16);
-      padding-right: toRem(16);
-      width: 100%;
+      width: 100% !important;
     }
   }
 
@@ -189,7 +188,6 @@
           top: 37%;
           transform: translateY(-50%) rotate(45deg);
           transition: all 0.3s ease-in-out;
-          -webkit-transform: translateY(-50%) rotate(45deg);
           right: 0;
         }
       }
@@ -215,6 +213,10 @@
 
         .read-less {
           display: inline-block;
+
+          &:before {
+            transform: translateY(5%) rotate(225deg);
+          }
         }
       }
     }
@@ -268,6 +270,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.container-fix__width,
+.container-fix__fluid {
+  &.default--bg {
+    .non-action-boxes-4-0 {
+      padding: toRem(16) 0;
+    }
+  }
+}
+
+.container-fix__width {
+  .non-action-boxes-4-0 {
+    @include respond-to-max($custom-width-tab) {
+      .container {
+        padding-left: toRem(16) !important;
+        padding-right: toRem(16) !important;
+      }
+    }
   }
 }
 
