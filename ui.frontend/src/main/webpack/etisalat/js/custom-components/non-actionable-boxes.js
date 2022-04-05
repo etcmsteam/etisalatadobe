@@ -55,7 +55,7 @@
         const CLICKABLE_AREA_CLS = ".clickable-area";
 
         if ($(this).hasClass("processed") === false) {
-          let classBodyCopy = $('span:first',this).attr('class');
+          let classBodyCopy = $("span:first", this).attr("class");
           let $ELE_TEXT = $(this).html().trim();
           let $TEXT_RESULT = LIMIT_TEXT($ELE_TEXT, 210);
 
