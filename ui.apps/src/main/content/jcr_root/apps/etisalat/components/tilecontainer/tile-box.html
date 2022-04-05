@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="tile-boxes-section ${container.items.size == 1 ? 'horizontal-tile single-tile' : ''}">
-					<h4 data-sly-test="${properties.tileTitle}">${properties.tileTitle}</h4>
+					<h4 data-sly-test="${properties.tileTitle}" data-sly-element="${properties.titleType}">${properties.tileTitle}</h4>
 					<div class="tileBoxMobCarWrap">
 						<div class="tileboxCarousal">
 							<div class="${!wcmmode.edit ? 'swiper-wrapper' : '' }">
@@ -38,7 +38,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div data-sly-test="${properties.tileTitle}" class="tile-boxes-title-wrap">
-							<h2>${properties.tileTitle}</h2>
+							<h2 data-sly-element="${properties.titleType}">${properties.tileTitle}</h2>
 						</div>
 					</div>
 				</div>
@@ -81,18 +81,7 @@
 						<!--/* tilesbox Start */-->
 						<div class="tile" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
 						<!--/* tilesbox End */-->
-					</div>
-					
-					<div data-sly-test="${properties.viewAllCTAText}" class="tile-action-link">
-                      <div class="row">
-                        <div class="col-xs-12 col-md-3">
-                          <div class="action">
-                           <sly data-sly-test.viewAllCTALink="${properties.viewallCTALink}" data-sly-use.viewAllLink="${'com.etisalat.core.models.CommonLinkModel' @link=viewAllCTALink}" />
-                            <a class="btn" href="${viewAllLink.link}" target="${properties.viewallLinktarget ? '_blank' : '_self'}">${properties.viewAllCTAText}</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+					</div>										
 				</sly>
 			</div>
 		</div>

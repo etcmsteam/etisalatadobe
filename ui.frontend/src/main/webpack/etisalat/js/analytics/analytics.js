@@ -39,7 +39,7 @@ export const ANALYTICS_LINKS_TABS = (name,url,heading) => {
   };
   
 // CTA and Hero Banner CTA Events
-$('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link, .cms-button').on('click', function(){
+$('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link').on('click', function(){
   let $this = $(this);
   const ctaName = $this.text() ? $this.text().toLowerCase().trim() : '';
   const currrentURL = window.location.href;
@@ -114,4 +114,75 @@ $('a.btn, a.cmp-button, a.btn-text, .link, .cmp-teaser__action-link, .cms-button
       },
     });
   }
+});
+
+// Buy Now CTA click
+$("a.cms-button").on("click", function () {
+  let $this = $(this);
+  const ctaName = $this.text() ? $this.text().toLowerCase().trim() : '';
+  const currrentURL = window.location.href;
+  const pagePathName = window.location.pathname;
+  const dataLayerPathName = pagePathName.split('.html')[0];
+  let sectionHeading = '';
+  let totalVal = '';
+
+  const pathArr = dataLayerPathName.split('/');
+  sectionHeading = pathArr.pop();
+
+  let btnAct = $this.closest(".tiles-box.content").find(".tiles-box-title h2");
+  if (btnAct.length > 0) {
+    btnAct = btnAct.text().toLowerCase().trim();
+  } else {
+    btnAct = '';
+  }
+
+  let productPriceVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new .price");
+  let currVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new small");
+  if (productPriceVal.length > 0) {
+    productPriceVal = productPriceVal.text().toLowerCase().trim();
+    currVal = currVal.text().trim();
+    totalVal = productPriceVal + ' ' + currVal;
+  } else {
+    productPriceVal = '';
+    currVal = '';
+    totalVal = '';
+  }
+
+  let descriptionVal = $this.closest(".tiles-box.content").find(".tiles-box-list .featureList");
+  if (descriptionVal.length > 0) {
+    descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, "");
+  } else {
+    descriptionVal = '';
+  }
+
+  window.adobeDataLayer.push({
+    event: "linkClicked",
+    xdmActionDetails: {
+      web: {
+        webInteraction: {
+          name: ctaName,
+          URL: currrentURL,
+          type: "other",
+          region: sectionHeading,
+          linkClicks: {
+            value: 1
+          },
+        },
+      },
+      linkInfo: {
+        sectionHeading: sectionHeading,
+        action: btnAct,
+        name: ctaName
+      },
+      product: {
+        productDetails: {
+          productName: btnAct,
+          productPrice: totalVal,
+          productType: sectionHeading,
+          productCategory: btnAct,
+          productDescription: descriptionVal
+        }
+      }
+    }
+  });
 });

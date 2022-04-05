@@ -11,7 +11,7 @@ public @interface GoogleMapsConfiguration {
   String getGoogleUrl() default "https://maps.googleapis.com/maps/api/js?";
 
   @AttributeDefinition(name = "google key", description = "Google Map API Key")
-  String getGoogleKey() default "v=3.35&key=AIzaSyDGHGq1W76Xca8Q2YbMmlAu6LDpD3-UOL8&region=ae&libraries=places,geometry";
+  String getGoogleKey() default "v=3.35&key=AIzaSyCOx2f4gLCMTELYki1Rb7Lm_8T6Zte3FFA&region=ae&libraries=places,geometry";
 
   @AttributeDefinition(name = "ewallet google key", description = "Ewallet Google Map API Key")
   String getEwalletGoogleKey() default "key=AIzaSyD3xSlpPxMzhPSRDkvd4dqL9ityhr8WlJ0&libraries=places,geometry";

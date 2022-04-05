@@ -12,14 +12,14 @@
 Include conf.d/variables/custom.vars
 
 <VirtualHost *:80>
-	ServerName	"publish"
+	ServerName	"etisalat"
 	# Put names of which domains are used for your published site/content here
-	ServerAlias	 "etisalat"
+	ServerAlias	 *-etisalat-cms.azureedge.net
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-		Header add X-Vhost "publish"
+		Header add X-Vhost "etisalat"
 	</IfModule>
 	<Directory />
 		<IfModule disp_apache2.c>
@@ -60,6 +60,10 @@ Include conf.d/variables/custom.vars
 
 		# Rewrite index page internally, pass through (PT)
 		RewriteRule "^(/?)$" "/index.html" [PT]
-
+        # rewrite for Home page - (Etisalat ae)
+        RewriteRule ^/?$ /content/etisalat/ae/en/index.html [PT,L]
+		RewriteRule ^/fivemobile/?$ /content/fivemobile/ae/en/index.html [PT,L]
+		RewriteRule ^/hiuapp/?$ /content/hiuapp/ae/en/index.html [PT,L]
+		RewriteRule ^/ewallet/?$ /content/ewallet/ae/en/index.html [PT,L]
 	</IfModule>
 </VirtualHost>

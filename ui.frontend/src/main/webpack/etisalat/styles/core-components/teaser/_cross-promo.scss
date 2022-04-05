@@ -244,6 +244,12 @@
 
   &.link__arrow {
     .cmp-teaser__action-container {
+      line-height: 1.5rem;
+
+      &:hover {
+        text-decoration: none;
+      }
+
       @include respond-to-min($desktop) {
         height: toRem(20);
         margin-top: toRem(-10);
@@ -258,6 +264,11 @@
       &::after {
         @include respond-to-max($desktop) {
           right: auto !important;
+
+          @include rtlBlock() {
+            left: auto !important;
+            margin: 1px 5px 0 0;
+          }
         }
       }
     }

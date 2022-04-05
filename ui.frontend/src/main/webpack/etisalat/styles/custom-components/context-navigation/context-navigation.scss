@@ -42,13 +42,8 @@
   }
 
   .paragraph-styling p {
-    margin-bottom: toRem(16);
     font-size: toRem(16);
     @include font-family-lato();
-
-    @include respond-to-max($desktop-min) {
-      margin-bottom: toRem(12);
-    }
     @include respond-to-max($desktop) {
       font-size: toRem(14);
       line-height: 20px;
@@ -1346,6 +1341,17 @@
   @include respond-to-max($custom-width-tab) {
     &:nth-child(1n + 4) {
       display: none;
+    }
+  }
+}
+
+.context-navigation-4-0 {
+  .context-tile {
+    .paragraph-styling p {
+      margin-bottom: toRem(16) !important;
+      @include respond-to-max($desktop-min) {
+        margin-bottom: toRem(12) !important;
+      }
     }
   }
 }
