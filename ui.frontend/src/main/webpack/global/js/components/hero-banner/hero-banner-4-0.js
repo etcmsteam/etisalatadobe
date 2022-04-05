@@ -97,15 +97,21 @@ import { swiperInit } from "../../swiperInitialize";
 
   // register the event handlers
   $(document).ready(function () {
+    let carouselCount = $(".hero-banner-section:not('.multi-slides')").find(".etisalatherobanner");
+    let heroBannerCount = $(".etisalatherobanner").find(".hero-banner-section");
+
     initHeroSwiper();
-    var carouselCount = $(".hero-banner-section").find(".etisalatherobanner"),
-    heroBannerCount = $(".etisalatherobanner").find(".hero-banner-section");
-    if (carouselCount.length === 1) {
-      carouselCount.closest(".hero-banner-section").addClass("one-slide-banner");
+    if (carouselCount.length > 0) {
+      carouselCount.each(function () {
+        $(this).closest(".hero-banner-section").addClass("one-slide-banner");
+      });
       initHeroSwiperSingleSlide();
     }
-    if (heroBannerCount.length === 1) {
-      heroBannerCount.addClass("one-slide-banner");
+    
+    if (heroBannerCount.length > 0) {
+      heroBannerCount.each(function () {
+        $(this).addClass("one-slide-banner");
+      });
       initHeroSwiperSingleSlide();
     }
     
