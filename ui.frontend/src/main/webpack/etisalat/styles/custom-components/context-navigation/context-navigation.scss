@@ -43,6 +43,7 @@
 
   .paragraph-styling {
     p {
+      color: $gray-text-color;
       font-size: toRem(16);
       @include font-family-lato();
       @include respond-to-max($desktop) {
@@ -51,16 +52,30 @@
       }
     }
 
-    ul,
-    ol {
-      li {
-        margin-bottom: toRem(4);
+    &.ul-list-cms { 
+      ul,
+      ol {
+        color: $gray-text-color;
+        li {
+          color: $gray-text-color;
+          margin-bottom: toRem(4);
 
-        &:last-child {
-          margin-bottom: 0;
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          a {
+            color: $main-green;
+            font-size: inherit;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
     }
+    
   }
 
   // common css for both with slider and with main text
