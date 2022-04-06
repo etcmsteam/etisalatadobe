@@ -306,20 +306,9 @@
 // media cta variation
 .nab-media-cta {
   .cmp-teaser {
-    @include respond-to-min($desktop-wide) {
-      max-width: toRem(1200);
-    }
-
-    @include respond-to-max($desktop-wide) {
-      max-width: toRem(952);
-    }
-
-    @include respond-to-max($desktop-min) {
-      max-width: toRem(732);
-    }
+    padding: 0 toRem(12);
 
     @include respond-to-max($custom-width-tab) {
-      width: 100%;
       padding: 0 toRem(16);
     }
 
@@ -346,8 +335,8 @@
     .cmp-teaser {
       &__image,
       .img-static {
-        margin-left: 0;
-        margin-right: 0;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         padding-left: toRem(12);
 
         @include respond-to-max($desktop-min) {
@@ -366,6 +355,10 @@
 
       img {
         padding-left: 0;
+
+        @include rtlBlock {
+          padding-right: 0;
+        }
       }
     }
 
@@ -480,27 +473,6 @@
     background-color: $module-bg-color;
   }
 
-  .container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
-    @include respond-to-min($desktop-wide) {
-      width: toRem(1200) !important;
-    }
-
-    @include respond-to-min-max($desktop-wide, $desktop) {
-      width: toRem(952) !important;
-    }
-
-    @include respond-to-min-max($desktop-min, $tablet) {
-      width: toRem(732) !important;
-    }
-
-    @include respond-to-max($custom-width-tab) {
-      width: 100%;
-    }
-  }
-
   .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -525,7 +497,6 @@
 
       ol {
         @include rtlBlock() {
-          list-style-position: inside;
           margin-left: 0;
           margin-right: toRem(28);
         }
