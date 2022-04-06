@@ -105,6 +105,90 @@
   }
 }
 
+.cm-teaser-support-wrapper {
+  .cmp-teaser {
+    &__image {
+      @include respond-to-min($tablet) {
+        width: 50%;
+      }
+
+      @include respond-to-max($phone) {
+        width: 100%;
+      }
+
+      div.cmp-image {
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        position: absolute;
+        left: -9999px;
+        right: -9999px;
+        top: -9999px;
+        bottom: -9999px;
+        margin: auto;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+      }
+    }
+
+    &__content {
+      padding-left: 8.33333333%;
+      padding-right: 8.33333333%;
+
+      @include respond-to-min($tablet) {
+        width: 50%;
+      }
+
+      @include respond-to-max($phone) {
+        width: 100%;
+      }
+
+      .cmp-teaser {
+        &__title,
+        &__description,
+        &__action-container {
+          @include respond-to-min($tablet) {
+            width: 83.33333333%;
+          }
+
+          @include respond-to-min($phone) {
+            width: 100%;
+          }
+        }
+
+        &__title {
+          h1,
+          h2,
+          h3,
+          h4,
+          h4,
+          h6 {
+            text-transform: uppercase;
+          }
+        }
+
+        &__description {
+          p {
+            color: $steel-grey;
+            font-size: $font14;
+            line-height: 1.6;
+            margin: toRem(18) 0;
+
+            @media (min-width: 1440px) {
+              font-size: $font16;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .media-cta-support-wrapper {
   .cmp-teaser__action-container {
     text-align: center;
@@ -117,7 +201,10 @@
       width: 50%;
     }
   }
+}
 
+.cm-teaser-support-wrapper,
+.media-cta-support-wrapper {
   &.button--secondary,
   &.button--primary,
   &.button--green {
@@ -203,6 +290,16 @@
         background-color: $dark-green;
         border-color: $dark-green;
       }
+    }
+  }
+}
+
+.cm-teaser-support-wrapper {
+  &.button--secondary,
+  &.button--primary,
+  &.button--green {
+    .cmp-teaser__action-link {
+      margin-top: 1rem;
     }
   }
 }

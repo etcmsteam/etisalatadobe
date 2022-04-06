@@ -3,8 +3,6 @@
 }
 
 .non-action-boxes-4-0 {
-  padding: toRem(16) 0;
-
   &.has-bg {
     background-color: $module-bg-color;
   }
@@ -49,26 +47,6 @@
       b span {
         font-weight: bold;
       }
-    }
-  }
-
-  .container {
-    @include respond-to-min($desktop-wide) {
-      width: toRem(1200);
-    }
-
-    @include respond-to-max($desktop-wide) {
-      width: toRem(952);
-    }
-
-    @include respond-to-max($desktop-min) {
-      width: toRem(732);
-    }
-
-    @include respond-to-max($custom-width-tab) {
-      padding-left: toRem(16);
-      padding-right: toRem(16);
-      width: 100%;
     }
   }
 
@@ -189,7 +167,6 @@
           top: 37%;
           transform: translateY(-50%) rotate(45deg);
           transition: all 0.3s ease-in-out;
-          -webkit-transform: translateY(-50%) rotate(45deg);
           right: 0;
         }
       }
@@ -215,6 +192,10 @@
 
         .read-less {
           display: inline-block;
+
+          &:before {
+            transform: translateY(5%) rotate(225deg);
+          }
         }
       }
     }
@@ -271,6 +252,26 @@
   }
 }
 
+.container-fix__width,
+.container-fix__fluid {
+  &.default--bg {
+    .non-action-boxes-4-0 {
+      padding: toRem(16) 0;
+    }
+  }
+}
+
+.container-fix__width {
+  .non-action-boxes-4-0 {
+    @include respond-to-max($custom-width-tab) {
+      .container {
+        padding-left: toRem(16) !important;
+        padding-right: toRem(16) !important;
+      }
+    }
+  }
+}
+
 // promo - non-actionable boxes - variation
 .promo-non-actionable-box {
   .nab-wrapper {
@@ -305,7 +306,20 @@
 // media cta variation
 .nab-media-cta {
   .cmp-teaser {
+    @include respond-to-min($desktop-wide) {
+      max-width: toRem(1200);
+    }
+
+    @include respond-to-max($desktop-wide) {
+      max-width: toRem(952);
+    }
+
+    @include respond-to-max($desktop-min) {
+      max-width: toRem(732);
+    }
+
     @include respond-to-max($custom-width-tab) {
+      width: 100%;
       padding: 0 toRem(16);
     }
 
@@ -348,6 +362,10 @@
             padding: 0;
           }
         }
+      }
+
+      img {
+        padding-left: 0;
       }
     }
 
@@ -463,22 +481,23 @@
   }
 
   .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
     @include respond-to-min($desktop-wide) {
       width: toRem(1200) !important;
     }
 
-    @include respond-to-max($desktop-wide) {
-      width: toRem(952);
+    @include respond-to-min-max($desktop-wide, $desktop) {
+      width: toRem(952) !important;
     }
 
-    @include respond-to-max($desktop-min) {
-      width: toRem(732);
+    @include respond-to-min-max($desktop-min, $tablet) {
+      width: toRem(732) !important;
     }
 
     @include respond-to-max($custom-width-tab) {
       width: 100%;
-      padding-left: toRem(16);
-      padding-right: toRem(16);
     }
   }
 

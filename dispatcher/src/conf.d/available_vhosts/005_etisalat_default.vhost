@@ -12,14 +12,14 @@
 Include conf.d/variables/custom.vars
 
 <VirtualHost *:80>
-	ServerName	"etisalat"
+	ServerName	"publish"
 	# Put names of which domains are used for your published site/content here
-	ServerAlias	 *-etisalat-cms.azureedge.net
+	ServerAlias	 "*"
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-		Header add X-Vhost "etisalat"
+		Header add X-Vhost "publish"
 	</IfModule>
 	<Directory />
 		<IfModule disp_apache2.c>
@@ -40,7 +40,7 @@ Include conf.d/variables/custom.vars
 		# Don't compress images
 		SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
 		# Make sure proxies don't deliver the wrong content
-		# Header append Vary User-Agent env=!dont-vary
+		Header append Vary User-Agent env=!dont-vary
 		# Prevent clickjacking
 		Header always append X-Frame-Options SAMEORIGIN
 	</Directory>
@@ -59,8 +59,11 @@ Include conf.d/variables/custom.vars
 		Include conf.d/rewrites/rewrite.rules
 
 		# Rewrite index page internally, pass through (PT)
-		# RewriteRule "^(/?)$" "/index.html" [PT]
+		RewriteRule "^(/?)$" "/index.html" [PT]
         # rewrite for Home page - (Etisalat ae)
         RewriteRule ^/?$ /content/etisalat/ae/en/index.html [PT,L]
+		RewriteRule ^/fivemobile/?$ /content/fivemobile/ae/en/index.html [PT,L]
+		RewriteRule ^/hiuapp/?$ /content/hiuapp/ae/en/index.html [PT,L]
+		RewriteRule ^/ewallet/?$ /content/ewallet/ae/en/index.html [PT,L]
 	</IfModule>
 </VirtualHost>
