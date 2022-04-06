@@ -21,10 +21,12 @@
       .img-static {
         height: 132px;
         min-height: 132px;
+
         @include respond-to-min($desktop) {
           height: 270px;
           min-height: 270px;
         }
+
         @include respond-to-min-max($desktop, $tablet) {
           height: 250px;
           min-height: 250px;
@@ -520,6 +522,17 @@
           @include rtlBlock() {
             padding: toRem(24) toRem(12) toRem(40) toRem(64);
           }
+        }
+      }
+
+      .img-static {
+        @include respond-to-max($desktop-min) {
+          height: 240px;
+          min-height: 240px;
+        }
+
+        div.cover {
+          position: relative;
         }
       }
     }
