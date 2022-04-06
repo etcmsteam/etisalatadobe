@@ -21,7 +21,7 @@
                   <h4 data-sly-element="${properties.titleType}">${properties.title}</h4>
                </div>
                <div data-sly-test="${properties.description}" class="paragraph-styling">
-                  <div class="p2">
+                  <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p2' : properties.descParagraphStyle}" class="${descriptionStyle}">
                      ${properties.description @ context='html'}
                   </div>
                </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="${!wcmmode.edit ? 'clickable-area' : ''}">
                <div data-sly-test="${properties.description}" class="paragraph-styling">
-                  <div class="p2">
+                  <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p2' : properties.descParagraphStyle}" class="${descriptionStyle}">
                      ${properties.description @ context='html'}
                   </div>
                </div>
@@ -112,7 +112,7 @@
                </svg>
             </div>
             <div data-sly-test="${properties.quotesdescription}" class="paragraph-styling ul-list-cms">
-               <div class="p2">
+               <div data-sly-set.quoteStyle="${!properties.descQuotesStyle || properties.descQuotesStyle == '' ? 'p2' : properties.descQuotesStyle}" class="${quoteStyle}">
                   ${properties.quotesdescription @ context='html'}
                </div>
             </div>
