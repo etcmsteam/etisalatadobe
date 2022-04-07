@@ -241,3 +241,54 @@ $(".footer").on("click", function (e) {
     });
   }
 });
+
+$("header").on("click", function (e) {
+  let headerTrgt = e.target;
+  if (headerTrgt.tagName.toLowerCase() === "a" ||
+  headerTrgt.tagName.toLowerCase() === "img" ||
+  headerTrgt.tagName.toLowerCase() === "svg" ||
+  headerTrgt.tagName.toLowerCase() === "span" ||
+  $(headerTrgt).closest("svg").length > 0) {
+    let ctaName = "";
+    if (headerTrgt.tagName.toLowerCase() === "a" || headerTrgt.tagName.toLowerCase() === "span") {
+      ctaName = headerTrgt.innerText ? headerTrgt.innerText.toLowerCase().trim() : "";
+    } else if (headerTrgt.tagName.toLowerCase() === "img") {
+      ctaName = $(headerTrgt).attr("alt") ? $(headerTrgt).attr("alt").toLowerCase().trim() : "";
+    } else {
+      let title = $(headerTrgt).closest("a").attr("title");
+      ctaName = title ? title.toLowerCase().trim() : "";
+    }
+    const currrentURL = window.location.href;
+    const pagePathName = window.location.pathname;
+    const dataLayerPathName = pagePathName.split(".html")[0];
+    let sectionHeading = "";
+
+    const pathArr = dataLayerPathName.split('/');
+    sectionHeading = pathArr.pop();
+
+    window.adobeDataLayer.push({
+      event: "linkClicked",
+      xdmActionDetails: {
+        web: {
+          webInteraction: {
+            name: ctaName,
+            URL: currrentURL,
+            type: "other",
+            region: "header",
+            linkClicks: {
+              value: 1,
+            },
+          },
+        },
+        linkInfo: {
+          sectionHeading: sectionHeading,
+          action: "header",
+          name: ctaName,
+        },
+        eventInfo: {
+          headerClick: 1,
+        },
+      },
+    });
+  }
+});
