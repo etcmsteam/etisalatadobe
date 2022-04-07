@@ -114,7 +114,7 @@
   }
 }
 
-.cmp-button--secondary {
+%cmp-button-secondary {
   @include secondary-button;
 
   @include rtlBlock() {
@@ -155,6 +155,10 @@
       color: $almost-black;
     }
   }
+}
+
+.cmp-button--secondary {
+  @extend %cmp-button-secondary;
 }
 
 .cmp-button--width_100 {
@@ -826,7 +830,14 @@ hr {
 }
 
 .button-mediaCTA {
+  @extend %cmp-button-secondary;
+
   min-width: 180px;
+  width: 100%;
+
+  @include respond-to-min($tablet) {
+    width: auto;
+  }
 }
 
 .icon-mediaCTA-centerAligned {
@@ -835,6 +846,7 @@ hr {
 
   svg,
   img {
+    flex-shrink: 0;
     height: 30px;
     margin-right: 36px;
     width: 32px;
