@@ -138,11 +138,6 @@
 
 @include respond-to-max($phone) {
   .cmp_text--feature-watch {
-    margin-bottom: toRem(208) !important;
-    max-height: toRem(502);
-    min-height: toRem(502);
-    padding-top: $padding-step-3 !important;
-
     .image {
       .cmp-image__image {
         height: toRem(283);
@@ -400,28 +395,39 @@
 // cmp_banner--full-bleed class name
 // Feature Banner Full Bleed aem authoring name
 .cmp_banner--full-bleed {
-  @include respond-to-min($desktop) {
-    min-height: toRem(523);
-  }
-
   .cmp-text {
     margin-bottom: 0;
-    padding-bottom: toRem(44);
-    padding-top: toRem(64);
     position: relative;
-    width: toRem(588);
 
-    @include respond-to-max($tablet) {
-      margin-left: toRem(36);
-      padding-bottom: toRem(65);
-      padding-top: toRem(52);
+    @include respond-to-min($desktop) {
+      padding-bottom: toRem(64);
+      padding-top: toRem(64);
+      width: toRem(588);
     }
 
-    @include respond-to-max($phone) {
-      margin-bottom: toRem(50);
-      margin-left: 0;
-      padding-bottom: 0;
-      padding-top: toRem(32);
+    @include respond-to-max($desktop-wide) {
+      width: toRem(476);
+    }
+
+    @include respond-to-max($desktop-min) {
+      padding-bottom: toRem(52);
+      padding-top: toRem(52);
+      width: toRem(366);
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      padding: toRem(32) toRem(4);
+      width: 100%;
+    }
+
+    @include respond-to-min-max($desktop-min, $tablet) {
+      margin-left: toRem(36);
+      margin-right: 0;
+
+      @include rtlBlock() {
+        margin-left: 0;
+        margin-right: toRem(36);
+      }
     }
 
     h3 {
@@ -473,6 +479,20 @@
     }
 
     ul {
+      min-height: toRem(163);
+
+      @include respond-to-max($desktop-wide) {
+        min-height: toRem(162);
+      }
+
+      @include respond-to-max($desktop-min) {
+        min-height: toRem(331);
+      }
+
+      @include respond-to-max($custom-width-tab) {
+        min-height: toRem(273);
+      }
+
       @include respond-to-min($desktop) {
         display: flex;
         flex-wrap: wrap;
@@ -489,6 +509,7 @@
 
         @include respond-to-max($tablet) {
           font-size: $font16;
+          line-height: toRem(24);
           margin-bottom: toRem(8);
         }
       }
@@ -504,19 +525,37 @@
     .cmp-button--promo,
     .cmp-button--secondary,
     .cmp-button--transparent {
-      bottom: toRem(48);
-      left: toRem(294);
+      bottom: toRem(64);
+      left: auto;
       position: absolute;
+      right: 0;
       width: toRem(288);
 
-      @include respond-to-max($tablet) {
+      @include rtlBlock {
+        left: 0;
+        right: auto;
+      }
+
+      @include respond-to-min-max($desktop-wide, $desktop) {
+        max-width: toRem(238);
+      }
+
+      @include respond-to-max($desktop-min) {
         bottom: 0;
+        display: block;
         left: 0;
         margin: $margin-step-3 0 0;
+        position: relative;
+
+        @include rtlBlock {
+          left: auto;
+          right: 0;
+        }
       }
 
       @include respond-to-max($phone) {
-        bottom: toRem(-67);
+        display: block;
+        position: relative;
       }
     }
   }
@@ -527,8 +566,17 @@
     padding: 0 toRem(12) !important;
     width: toRem(1224) !important;
 
-    @include respond-to-max($phone) {
+    @include respond-to-max($desktop-wide) {
+      width: toRem(976) !important;
+    }
+
+    @include respond-to-max($desktop-min) {
+      width: toRem(756) !important;
+    }
+
+    @include respond-to-max($custom-width-tab) {
       padding: 0 toRem(16);
+      width: 100% !important;
     }
   }
 
@@ -536,22 +584,26 @@
     background-position: top center;
     background-size: 100% auto;
     height: 100%;
-    min-height: toRem(523);
 
-    @include respond-to-max($tablet) {
-      min-height: toRem(685);
+    @include respond-to-min($desktop) {
+      min-height: toRem(503);
     }
 
-    @include respond-to-max($phone) {
-      min-height: toRem(620);
+    @include respond-to-max($desktop-min) {
+      min-height: toRem(700);
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      min-height: toRem(594);
     }
   }
 
   @include rtlBlock {
     .cmp-button--primary {
-      left: toRem(6);
+      left: 0;
+      right: auto;
 
-      @include respond-to-max($tablet) {
+      @include respond-to-max($desktop-min) {
         right: 0;
       }
     }
@@ -572,6 +624,10 @@
       margin: 0;
     }
   }
+
+  .configurator-header {
+    line-height: toRem(16);
+  }
 }
 
 .cmp_banner--full-bleed-right {
@@ -582,19 +638,12 @@
       float: left;
     }
 
-    @include respond-to-max($tablet) {
-      margin-right: toRem(256);
+    @include respond-to-min-max($desktop-min, $tablet) {
+      margin-left: 0;
+      margin-right: toRem(36);
 
       @include rtlBlock() {
-        margin-left: toRem(256);
-      }
-    }
-
-    @include respond-to-max($phone) {
-      float: left;
-
-      @include rtlBlock() {
-        float: right;
+        margin-left: toRem(36);
         margin-right: 0;
       }
     }

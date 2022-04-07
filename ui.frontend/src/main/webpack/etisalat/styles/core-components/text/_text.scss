@@ -114,7 +114,7 @@
   }
 }
 
-.cmp-button--secondary {
+%cmp-button-secondary {
   @include secondary-button;
 
   @include rtlBlock() {
@@ -155,6 +155,10 @@
       color: $almost-black;
     }
   }
+}
+
+.cmp-button--secondary {
+  @extend %cmp-button-secondary;
 }
 
 .cmp-button--width_100 {
@@ -779,6 +783,42 @@ hr {
   }
 }
 
+.ul-list-icon-border {
+  padding: toRem(12) 0 toRem(80);
+
+  .cmp-text {
+    border-bottom: 1px solid $light-sand-brown;
+    margin-top: toRem(25);
+  }
+
+  ul li {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+
+    a {
+      @include font-family-lato;
+
+      border-top: 1px solid $light-sand-brown;
+      color: $main-green;
+      cursor: pointer;
+      display: block;
+      font-size: toRem(16) !important;
+      line-height: toRem(22);
+      margin: 0;
+      padding: toRem(15) 0;
+
+      svg,
+      img {
+        box-sizing: content-box;
+        float: left;
+        margin-top: 0;
+        padding-right: toRem(15);
+      }
+    }
+  }
+}
+
 .hero-heading-big {
   font-size: $font54;
   line-height: toRem(64);
@@ -790,7 +830,14 @@ hr {
 }
 
 .button-mediaCTA {
+  @extend %cmp-button-secondary;
+
   min-width: 180px;
+  width: 100%;
+
+  @include respond-to-min($tablet) {
+    width: auto;
+  }
 }
 
 .icon-mediaCTA-centerAligned {
@@ -799,6 +846,7 @@ hr {
 
   svg,
   img {
+    flex-shrink: 0;
     height: 30px;
     margin-right: 36px;
     width: 32px;
