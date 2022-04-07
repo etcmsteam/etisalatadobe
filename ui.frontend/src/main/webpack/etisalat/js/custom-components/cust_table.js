@@ -1,5 +1,26 @@
         $(document).ready(function () {
-            
+            if($(".elife-channel-list-header").length > 0 ){
+                $('body').addClass('channel-list-page');
+                var windowHeight = $(window).innerHeight();
+                var topbar = $('.top-nav-section').innerHeight() || 49;
+                var header = $('.elife-channel-list-header').innerHeight();
+                var channelList = $('.channel-list-tabs-wrapper').innerHeight() || 76;
+                var filters = $('.sorting-filter-wrapper').innerHeight();
+                var availableHeight = (windowHeight - (topbar + header + channelList + filters));
+                var filterPopupHeader = 0;
+                var filterPopupFooter = 0;
+                applyTabid();
+
+                if (window.innerWidth > 991) {
+                    $('.tables-4-0').css('height', (availableHeight - 87) + 'px');
+                } else {
+                    $('.tables-4-0').css('height', (availableHeight + 32) + 'px');
+                }
+                if ($(".not-found").length > 0) {
+                    $(".not-found").find("a").addClass("btn btn-default ripple-effect");
+                }
+            }
+
             if (window.location.href.indexOf("/ar/") > -1) {
               const sortByelement = $(".sort-label .label");
               const sortBytextToReplace = '<span class="label"> ترتيب بحسب: <span class="sub-label"> A to Z</span></span>';
@@ -14,27 +35,7 @@
               filterResetElement.replaceWith(filterResettextToReplace);
             }
 
-            $('body').addClass('channel-list-page');
-            var windowHeight = $(window).innerHeight();
-            var topbar = $('.top-nav-section').innerHeight() || 49;
-            var header = $('.elife-channel-list-header').innerHeight();
-            var channelList = $('.channel-list-tabs-wrapper').innerHeight() || 76;
-            var filters = $('.sorting-filter-wrapper').innerHeight();
-            var availableHeight = (windowHeight - (topbar + header + channelList + filters));
-            var filterPopupHeader = 0;
-            var filterPopupFooter = 0;
-            applyTabid();
-
-            if (window.innerWidth > 991) {
-                $('.tables-4-0').css('height', (availableHeight - 87) + 'px');
-            } else {
-                $('.tables-4-0').css('height', (availableHeight + 32) + 'px');
-            }
-            if ($(".not-found").length > 0) { 
-                $(".not-found").find("a").addClass("btn btn-default ripple-effect");
-            }
-
-            // search expand for mobile view 
+            // search expand for mobile view
             $('.head-wrapper .input-group .input-icon').off().on('click', function(e) {
                 e.preventDefault();
                 $(this).closest('.head-wrapper').addClass('search-expanded');
