@@ -71,16 +71,23 @@
         }
 
         .cmp-tabs {
-          li {
-            &.cmp-tabs__tab {
-              padding: 24px 0;
-              padding-left: 1.5rem;
+          li.cmp-tabs__tab {
+            padding: 24px 0;
+            padding-left: 1.5rem;
+
+            @include rtlBlock() {
+              padding-left: 0;
+              padding-right: 1.5rem;
             }
           }
-        }
 
-        .cmp-tabs__tab--active {
-          padding-right: 24px !important;
+          li.cmp-tabs__tab .cmp-tabs__tab--active {
+            padding-right: 24px;
+
+            @include rtlBlock() {
+              padding-left: 24px;
+            }
+          }
         }
 
         .cmp-tabs__tablist {
@@ -104,6 +111,10 @@
           margin-right: toRem(-17);
           padding: 18px 0 18px 16px !important;
 
+          @include rtlBlock() {
+            padding: 18px 16px 18px 0 !important;
+          }
+
           &.collapsed {
             color: $steel-grey;
           }
@@ -112,6 +123,13 @@
             &.collapsed::before {
               right: toRem(20);
               transform: translateY(-50%) rotate(-135deg);
+            }
+
+            @include rtlBlock() {
+              &.collapsed::before {
+                left: toRem(20);
+                right: auto;
+              }
             }
           }
 
@@ -154,28 +172,29 @@
       }
     }
   }
-}
 
-.container-fix__fluid {
   @include respond-to-min($desktop) {
     .cmp-teaser--multicol:first-child {
       .cmp-container {
-        padding: 0 12px 0 0!important;
+        padding: 0 12px 0 0 !important;
+
         @include rtlBlock() {
-          padding:  0 0 0 12px !important;
+          padding: 0 0 0 12px !important;
         }
       }
     }
 
     .cmp-teaser--multicol:nth-child(2) {
       .cmp-container {
-        padding:  0 0 0 12px !important;
+        padding: 0 0 0 12px !important;
+
         @include rtlBlock() {
-          padding: 0 12px 0 0!important;
+          padding: 0 12px 0 0 !important;
         }
       }
     }
   }
+
   @include respond-to-max($desktop) {
     .cmp-teaser--multicol .cmp-container {
       padding: 0 !important;
