@@ -292,3 +292,60 @@ $("header").on("click", function (e) {
     });
   }
 });
+
+// Form start tracking
+function formStart(name) {
+  window.adobeDataLayer.push({
+    event: "form start",
+    formDetails: {
+      formName: name,
+    },
+    eventInfo: {
+      formStart: 1,
+    },
+  });
+}
+
+// Form Complete
+function formComplete(name) {
+  window.adobeDataLayer.push({
+    event: "form submit",
+    formDetails: {
+      formName: name,
+    },
+    eventInfo: {
+      formSubmit: 1,
+    },
+  });
+}
+
+let formObj = $(document).find('form');
+if (formObj.length > 0) {
+  formObj.each(function () {
+    let dirty = false;
+    let inputEle = $(this).find('input');
+    let textArea = $(this).find('textarea');
+    let formName = $(this).attr('name');
+
+    inputEle.each(function () {
+      $(this).on('input', function() {
+        if (!dirty) {
+          dirty = true;
+          formStart(formName);
+        }
+      });
+    });
+    textArea.each(function () {
+      $(this).on('input', function() {
+        if (!dirty) {
+          dirty = true;
+          formStart(formName);
+        }
+      });
+    });
+
+    $(this).on('submit', function() {
+      formComplete(formName);
+    });
+  });
+}
