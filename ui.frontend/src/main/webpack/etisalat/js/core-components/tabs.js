@@ -14,12 +14,3 @@ export const TABS_JS = () => {
     ANALYTICS_LINKS_TABS(tabsName, tabsURL, sectionHeading);
   });
 };
-
-
-if (window.innerWidth > 767 && window.innerWidth < 992) {
-  $(".tabs.cmp-tab-expansion").each(function () {
-    if (!$(this).closest(".container").hasClass("container-fix__fluid")) {
-      $(this).closest(".container").addClass("container-center cmp-expansion-pad-15");
-    }
-  });
-}
