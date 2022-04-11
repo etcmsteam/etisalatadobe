@@ -135,6 +135,7 @@
         var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
         loadTime = loadTime/1000 + 's';
 
+      if(!isErrorFlg){
         adobeDataLayer.push({
           "event": "pageLoaded",
           "xdmPageLoad": {
@@ -167,18 +168,48 @@
             "userAgentString": userAgentData
           }
         });
-        if(isErrorFlg){
-        window.adobeDataLayer.push({
-            event:"errorInteraction",
-              errorInfo:{
+        }
+        else{
+          adobeDataLayer.push({
+          event:"errorInteraction",
+          "xdmPageLoad": {
+            "web": {
+              "webPageDetails": {
+                "name": pageName,
+                "server": serverName,
+                "siteSection": siteSection,
+                "siteSection1": siteSection1,
+                "siteSection2": siteSection2,
+                "isErrorPage": isErrorFlg,
+                "URL": dataLayerUrl,
+                "pageViews": {
+                  "value": 1
+                }
+              }
+            },
+            "pageInfo": {
+              "country": "ae",
+              "language": siteLang,
+              "previousPageName": previousPageName,
+              "referrer": previousPage, 
+              "pageType": pageTitle,
+              "pageLoadTime": loadTime
+            },
+            "user": {
+              "loginStatus": "logged-out"
+            },
+            "timestamp": currentDate.toString(),
+            "userAgentString": userAgentData,
+            errorInfo:{
                 error:1,
                 errorMessage: 'page not found',
                 errorCode: "404",
                 errorType:"page load Error"
              }
-          });
-        }
+          }
+        });
       }
+     }
     }
   </script>
   <!--For Google Map-->
