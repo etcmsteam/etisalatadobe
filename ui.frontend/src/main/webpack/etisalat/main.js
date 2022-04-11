@@ -1,5 +1,6 @@
 import "./js/forms";
 import "./js/custom-components/*.js";
+import "./js/analytics/analytics-events.js";
 import "../global/js/components/**/*.js";
 
 import { VIEW_MORE_TOGGLE } from "./js/overview-section";
