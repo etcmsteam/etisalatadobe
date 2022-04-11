@@ -79,6 +79,7 @@ public class FooterImplTest {
 	final String expectedTitle = "download1";
 	final String expectedLinkUrl = "/content/etisalat/sample";
     final String expectedCopyrightText = "Etisalat. All Rights Reserved.";
+    final String expectedLinkTarget = "true";
     context.currentResource(FOOTER_3);
 
     Footer footerModel = context.request().adaptTo(Footer.class);
@@ -88,6 +89,7 @@ public class FooterImplTest {
     assertEquals(expectedTitle, linkModel.getTitle());
     assertEquals(expectedLinkUrl, linkModel.getLinkUrl());
     assertEquals(expectedCopyrightText, footerModel.getCopyrightText());
+    assertEquals(expectedLinkTarget, linkModel.getLinkTarget());
   }
   
   @Test
@@ -95,6 +97,7 @@ public class FooterImplTest {
     final String expectedFileReference = "/content/dam/etisalat/footer/icon-facebook_tcm313-206701.png";
     final String expectedTitle = "icon-facebook";
     final String expectedLinkUrl = "https://www.facebook.com/Etisalat/";
+    final String expectedLinkTarget = "true";
     final String expectedCopyrightText = "Etisalat. All Rights Reserved.";
     context.currentResource(FOOTER_4);
 
@@ -105,6 +108,7 @@ public class FooterImplTest {
     assertEquals(expectedTitle, linkModel.getTitle());
     assertEquals(expectedLinkUrl, linkModel.getLinkUrl());
     assertEquals(expectedCopyrightText, footerModel.getCopyrightText());
+    assertEquals(expectedLinkTarget, linkModel.getLinkTarget());
   }
   
   @Test
