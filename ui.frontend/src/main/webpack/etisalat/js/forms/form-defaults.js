@@ -27,6 +27,9 @@
    * Set the defaults for jQuery Validate
    */
   function setValidationDefaults() {
+    if (!$.validator) {
+      return false;
+    }
     $.validator.setDefaults({
       errorClass: "has-error",
       errorElement: "div",

@@ -25,4 +25,39 @@
          'callback': reCaptchaVerify,
          'expired-callback': reCaptchaExpired
      });
+
+     trackCaptcha();
  }
+
+function trackCaptcha() {
+  const currrentURL = window.location.href;
+  const pagePathName = window.location.pathname;
+  const dataLayerPathName = pagePathName.split(".html")[0];
+  let sectionHeading = "";
+  let btnAction = "";
+
+  const pathArr = dataLayerPathName.split("/");
+  sectionHeading = pathArr.pop();
+  
+  window.adobeDataLayer.push({
+    event: "linkClicked",
+    xdmActionDetails: {
+      web: {
+        webInteraction: {
+          name: "reCaptcha",
+          URL: currrentURL,
+          type: "other",
+          region: "main",
+          linkClicks: {
+            value: 1,
+          },
+        },
+      },
+      linkInfo: {
+        sectionHeading: sectionHeading,
+        action: btnAction,
+        name: ctaName,
+      },
+    },
+  });
+}
