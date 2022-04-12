@@ -54,9 +54,9 @@ function trackCaptcha() {
         },
       },
       linkInfo: {
-        sectionHeading: "<%Page Category%>",
-        action: "<%Action of the CTA%>",
-        name: "<captcha>",
+        sectionHeading: sectionHeading,
+        action: btnAction,
+        name: ctaName,
       },
     },
   });
