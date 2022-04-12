@@ -73,52 +73,65 @@ export const FORM_SUCCESS = (form, data) => {
       },
     });
   } else if (formId === "cwsNeedHelp") {
-    window.adobeDataLayer.push({
-      event: "form success",
-      formDetails: {
-        formName: name,
-        referenceNumber: "",
-      },
-      user: {
-        accountNumber: data.accountNumber ? data.accountNumber : "",
-        name: data.contactFirstName + data.contactLastName,
-        email: data.emailAddress ? data.emailAddress : "",
-        contactNumber: data.mobileNo ? data.mobileNo : "",
-        companyName: data.companyName ? data.companyName : "",
-        requestRequirements: data.description ? data.description : "",
-      },
-      productDetails: {
-        productName: "",
-        expectedRevenue: "",
-      },
-      eventInfo: {
-        formSuccess: 1,
-      },
-    });
+    if (data) {
+      let accNumber = data.accountNumber;
+      let custName = data.params[0].CUSTOMER_NAME;
+      let emailId = data.params[0].EMAIL;
+      let contact = data.params[0].CONTACT;
+      let compName = data.params[0].COMPANY;
+      let detail = data.params[0].DETAIL;
+
+      window.adobeDataLayer.push({
+        event: "form success",
+        formDetails: {
+          formName: name,
+          referenceNumber: "",
+        },
+        user: {
+          accountNumber: accNumber,
+          name: custName,
+          email: emailId,
+          contactNumber: contact,
+          companyName: compName,
+          requestRequirements: detail,
+        },
+        productDetails: {
+          productName: "",
+          expectedRevenue: "",
+        },
+        eventInfo: {
+          formSuccess: 1,
+        },
+      });
+    }
   } else if (formId === "newsletterSubscription") {
-    console.log('newsletter');
-    window.adobeDataLayer.push({
-      event: "form success",
-      formDetails: {
-        formName: name,
-        referenceNumber: "",
-      },
-      user: {
-        accountNumber: data.accountNumber ? data.accountNumber : "",
-        name: data.contactFirstName + data.contactLastName,
-        email: data.emailAddress ? data.emailAddress : "",
-        contactNumber: data.mobileNo ? data.mobileNo : "",
-        companyName: data.companyName ? data.companyName : "",
-        requestRequirements: data.description ? data.description : "",
-      },
-      productDetails: {
-        productName: "",
-        expectedRevenue: "",
-      },
-      eventInfo: {
-        formSuccess: 1,
-      },
-    });
+    if (data) {
+      let jsonData = JSON.parse(data);
+      let customerName = jsonData.CustomerName;
+      let emailAdd = jsonData.EmailAddress;
+      window.adobeDataLayer.push({
+        event: "form success",
+        formDetails: {
+          formName: name,
+          referenceNumber: "",
+        },
+        user: {
+          accountNumber: "",
+          name: customerName,
+          email: emailAdd,
+          contactNumber: "",
+          companyName: "",
+          requestRequirements: "",
+        },
+        productDetails: {
+          productName: "",
+          expectedRevenue: "",
+        },
+        eventInfo: {
+          formSuccess: 1,
+        },
+      });
+    }
   }
 };
 
