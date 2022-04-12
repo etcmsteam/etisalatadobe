@@ -70,6 +70,19 @@
 }
 
 .fluid--container {
+  left: 50% !important;
+  margin-left: -50vw !important;
+  max-width: inherit !important;
+  position: relative !important;
+  width: 100vw !important;
+
+  @include rtlBlock() {
+    left: auto !important;
+    margin-left: auto !important;
+    margin-right: -50vw !important;
+    right: 50% !important;
+  }
+
   .container:not(.aem-GridColumn) {
     width: 100%;
   }
@@ -112,24 +125,17 @@
 
   .cmp-container {
     .container {
-      padding-left: toRem(16);
-      padding-right: toRem(16);
+      padding: 0 !important;
 
       @media (min-width: 768px) {
-        padding-left: toRem(12);
-        padding-right: toRem(12);
         width: toRem(756);
       }
 
       @media (min-width: 992px) {
-        padding-left: toRem(12);
-        padding-right: toRem(12);
         width: toRem(976);
       }
 
       @media (min-width: 1248px) {
-        padding-left: toRem(12);
-        padding-right: toRem(12);
         width: toRem(1224);
       }
     }
