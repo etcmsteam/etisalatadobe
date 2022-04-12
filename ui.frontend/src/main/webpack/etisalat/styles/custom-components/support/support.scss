@@ -110,14 +110,32 @@
   &.image-right {
     .cmp-teaser {
       &__image {
+        height: auto;
+        position: relative;
+
         @include respond-to-min($tablet) {
           max-width: 50%;
           width: 50%;
         }
 
-        @include respond-to-max($phone) {
+        @include respond-to-min($desktop-wide) {
+          min-height: toRem(334);
+        }
+
+        @include respond-to-min($desktop) {
+          max-height: toRem(254);
+        }
+
+        @include respond-to-max($custom-width-tab) {
+          height: 67vw;
           max-width: 100%;
-          width: 100%;
+          margin: 0 toRem(16);
+          width: calc(100% - toRem(32));
+        }
+
+        @include respond-to-min-max($desktop-min, $tablet) {
+          height: toRem(288);
+          float: left;
         }
 
         div.cmp-image {
@@ -137,20 +155,24 @@
           min-width: 100%;
           min-height: 100%;
           width: auto;
+          padding: 0;
         }
       }
 
       &__content {
-        padding-left: 8.33333333%;
-        padding-right: 8.33333333%;
-
         @include respond-to-min($tablet) {
+          padding-top: toRem(25);
           max-width: 50%;
           width: 50%;
         }
 
-        @include respond-to-max($phone) {
+        @include respond-to-min-max($desktop-min, $tablet) {
+          float: left;
+        }
+
+        @include respond-to-max($custom-width-tab) {
           max-width: 100%;
+          padding: toRem(16) toRem(16) toRem(32);
           width: 100%;
         }
 
@@ -158,16 +180,25 @@
           &__title,
           &__description,
           &__action-container {
-            @include respond-to-min($tablet) {
-              width: 83.33333333%;
+            margin-left: auto;
+            margin-right: auto;
+
+            @include respond-to-min($desktop) {
+              width: 68.585%;
             }
 
-            @include respond-to-min($phone) {
+            @include respond-to-min($tablet) {
+              width: 69.45%;
+            }
+
+            @include respond-to-max($custom-width-tab) {
               width: 100%;
             }
           }
 
           &__title {
+            text-align: center;
+
             h1,
             h2,
             h3,
@@ -183,12 +214,70 @@
               color: $steel-grey;
               font-size: $font14;
               line-height: 1.6;
-              margin: toRem(18) 0;
+              margin: 0 0 toRem(18) 0;
 
               @media (min-width: 1440px) {
                 font-size: $font16;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+.cmp-tabs-support-wrapper {
+  .cmp_tabs-swipper {
+    border-bottom: toRem(2) solid $main-green;
+    height: toRem(120);
+    min-height: toRem(120);
+
+    .container-center {
+      width: 100% !important;
+    }
+
+    .col-xs-12 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+
+      .page-nav {
+        min-height: toRem(120);
+        height: toRem(120);
+        white-space: normal;
+
+        .swiper-slide {
+          text-transform: uppercase;
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          height: toRem(120);
+          margin-right: 0;
+          padding-bottom: 0;
+
+          @include respond-to-min($tablet) {
+            width: 33.33%;
+          }
+
+          @include respond-to-min($desktop) {
+            white-space: normal;
+            font-size: toRem(24);
+            line-height: toRem(24);
+
+            &:hover {
+              background-color: $main-green;
+              color: $white;
+            }
+          }
+
+          @include respond-to-max($desktop) {
+            font-size: toRem(20);
+          }
+
+          &.cmp-tabs__tab--active {
+            background-color: $main-green;
+            color: $white;
           }
         }
       }
@@ -302,6 +391,11 @@
 }
 
 .teaser-support-wrapper {
+  .cmp-teaser__action-container {
+    position: relative;
+    max-width: 100%;
+  }
+
   &.button--secondary,
   &.button--primary,
   &.button--green {
