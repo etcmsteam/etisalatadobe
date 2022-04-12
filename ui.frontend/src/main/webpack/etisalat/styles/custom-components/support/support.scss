@@ -221,6 +221,63 @@
   }
 }
 
+.cmp-tabs-support-wrapper {
+  .cmp_tabs-swipper {
+    height: toRem(120);
+    min-height: toRem(120);
+
+    .container-center {
+      width: 100% !important;
+    }
+
+    .col-xs-12 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+
+      .page-nav {
+        min-height: toRem(120);
+        height: toRem(120);
+        white-space: normal;
+
+        .swiper-slide {
+          text-transform: uppercase;
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          height: toRem(120);
+          margin-right: 0;
+          padding-bottom: 0;
+
+          @include respond-to-min($tablet) {
+            width: 33.33%;
+          }
+
+          @include respond-to-min($desktop) {
+            white-space: normal;
+            font-size: toRem(24);
+            line-height: toRem(24);
+
+            &:hover {
+              background-color: $main-green;
+              color: $white;
+            }
+          }
+
+          @include respond-to-max($desktop) {
+            font-size: toRem(20);
+          }
+
+          &.cmp-tabs__tab--active {
+            background-color: $main-green;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
 .media-cta-support-wrapper {
   .cmp-teaser__action-container {
     text-align: center;
