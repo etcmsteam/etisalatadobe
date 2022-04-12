@@ -11,7 +11,7 @@
       <sly data-sly-test.threeTile="${carousel.items.size ==3}"></sly>
       <sly data-sly-test.threePlus="${carousel.items.size > 3}"></sly>
       <div
-              class="current-promotions-wrraper light ${oneTile ? 'one-only' :''} ${twoTile ? 'two-only' : ''} ${threeTile ? 'three-only' : ''} ${threePlus ? 'three-plus' : ''} ${!oneTile && !twoTile && !threeTile && !threePlus ? 'no-slide': ''}">
+              class="current-promotions-wrraper light ${oneTile ? 'one-only' :''} ${twoTile ? 'two-only' : ''} ${threeTile ? 'three-only' : ''} ${threePlus ? 'three-plus' : ''} ${carousel.items.size == 0 ? 'no-slide': ''}">
 
          <div class="background-with-color" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
             <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
@@ -22,7 +22,7 @@
 
          <div class="container">
             <div class="row">
-               <div class="${!oneTile && !twoTile && !threeTile && !threePlus ? 'col-md-4': 'col-md-3'} col-xs-12">
+               <div class="${carousel.items.size == 0 ? 'col-md-4': 'col-md-3'} col-xs-12">
                   <span data-sly-test="${properties.promotionPreTitle}" class="lbl">${properties.promotionPreTitle}</span>
                   <div class="promotions-title-wrap">
                      <h2>${properties.promotionTitle} </h2>
