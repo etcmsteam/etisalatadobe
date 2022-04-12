@@ -110,25 +110,31 @@
   &.image-right {
     .cmp-teaser {
       &__image {
+        height: auto;
         position: relative;
 
         @include respond-to-min($tablet) {
-          height: toRem(288);
           max-width: 50%;
           width: 50%;
         }
 
+        @include respond-to-min($desktop-wide) {
+          min-height: toRem(334);
+        }
+
         @include respond-to-min($desktop) {
-          height: auto;
+          max-height: toRem(254);
         }
 
         @include respond-to-max($custom-width-tab) {
           height: 67vw;
           max-width: 100%;
-          width: 100%;
+          margin: 0 toRem(16);
+          width: calc(100% - toRem(32));
         }
 
         @include respond-to-min-max($desktop-min, $tablet) {
+          height: toRem(288);
           float: left;
         }
 
@@ -223,6 +229,7 @@
 
 .cmp-tabs-support-wrapper {
   .cmp_tabs-swipper {
+    border-bottom: toRem(2) solid $main-green;
     height: toRem(120);
     min-height: toRem(120);
 
