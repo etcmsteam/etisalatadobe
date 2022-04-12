@@ -19,7 +19,7 @@
 	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	     data-panelcontainer="${wcmmode.edit && 'tabs'}"
 	     id="${tabs.id}"
-	     data-sly-set.recommendProductView="${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'recommendproductplan')}"
+	     data-sly-set.recommendProductView="${properties.tabsMobileLayout == 'recommendproductplan' && (wcmmode.preview || wcmmode.disabled)}"
          data-sly-set.accordionView="${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'accordionView') ? 'hidden-sm hidden-xs' : ''}"
          data-sly-set.notTabAccodView="${(wcmmode.preview || wcmmode.disabled && properties.tabsMobileLayout == 'notTabAccordionView') ? 'cmp-tabs--accordion-view-2 hidden-xs' : ''}"
 	     class="cmp-tabs ${accordionView} ${notTabAccodView}"   
