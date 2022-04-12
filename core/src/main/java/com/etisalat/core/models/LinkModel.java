@@ -60,6 +60,10 @@ public class LinkModel {
   @SlingObject
   private ResourceResolver resourceResolver;
   
+  /** The link target. */
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String linkTarget;
+  
   /**
    * Gets the link text.
    *
@@ -240,4 +244,14 @@ public class LinkModel {
   public void setIconClassName(String iconClassName) {
     this.iconClassName = iconClassName;
   }
+
+  /**
+   * Gets the link target.
+   *
+   * @return the link target
+   */
+  public String getLinkTarget() {
+	return linkTarget;
+  }
+
 }

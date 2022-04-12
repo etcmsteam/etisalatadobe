@@ -74,6 +74,24 @@
           }
         }
       }
+      ol {
+        li {
+          padding-left: toRem(12);
+          @include rtlBlock() {
+            padding-right: toRem(12);
+            padding-left: 0;
+          }
+        }
+      }
+      ul {
+        li {
+          padding-left: toRem(24);
+          @include rtlBlock() {
+            padding-left: 0;
+            padding-right: toRem(24);
+          }
+        }
+      }
     }
     
   }
@@ -362,7 +380,6 @@
     .swiper-container {
       height: auto;
       display: flex;
-      padding-top: toRem(5);
 
       @include respond-to-min($desktop-wide) {
         max-width: toRem(1200);
@@ -392,6 +409,8 @@
 
       @include respond-to-min($desktop-wide) {
         width: toRem(1200);
+        padding-left: 0;
+        padding-right: 0;
       }
     }
 
@@ -492,7 +511,7 @@
         margin-top: toRem(20);
       }
 
-      @include respond-to-min($desktop-min) {
+      @include respond-to-max($desktop-min) {
         margin-bottom: toRem(20);
       }
     }
@@ -1263,7 +1282,7 @@
 
   .icon {
     width: toRem(46);
-    height: toRem(46);
+    height: auto;
     display: flex;
     align-items: center;
     margin-bottom: toRem(24);
@@ -1382,6 +1401,11 @@
       }
     }
   }
+  .container {
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 // context navigation mdoule with TV packs
@@ -1488,6 +1512,13 @@
   }
 
   &.has-bg {
+    padding-top: toRem(42);
+    padding-bottom: toRem(42);
+  }
+}
+
+.default--bg {
+  .context-navigation-4-0.with-tv-pakcs {
     padding-top: toRem(42);
     padding-bottom: toRem(42);
   }
