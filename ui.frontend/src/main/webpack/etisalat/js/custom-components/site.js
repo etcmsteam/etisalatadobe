@@ -4,6 +4,7 @@ $(document).ready(function () {
         $(".hamburger").toggleClass("is-active");
         $(".main-menu-mobile").toggleClass("mob-visible");
         $(".nav-drill").toggleClass("main-menu-slide");
+        $("body").toggleClass("freeze no-scroll");
     });
 
 
