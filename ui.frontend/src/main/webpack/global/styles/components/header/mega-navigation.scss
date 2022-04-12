@@ -70,7 +70,10 @@
         }
 
         a {
-          margin-bottom: toRem(5);
+          margin-bottom: 0;
+         @media (min-width: 992px) {
+           margin-bottom: toRem(5);
+          }
           transition: all 0.25s ease-in-out;
           width: toRem(86);
 
@@ -1971,7 +1974,7 @@
   }
 
   @include respond-to-min($tablet) {
-    margin-right: 1rem;
+    margin-right: 0;
   }
 }
 
@@ -2642,6 +2645,14 @@ div.cover {
 
       :hover {
         cursor: pointer;
+      }
+    }
+  }
+
+  .nav-drill {
+    .nav-item {
+      svg {
+        stroke: none !important;
       }
     }
   }
