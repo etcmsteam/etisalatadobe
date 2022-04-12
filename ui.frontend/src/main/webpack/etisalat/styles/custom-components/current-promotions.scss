@@ -222,7 +222,6 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-
 }
 
 .current-promotions-wrraper {
@@ -232,7 +231,7 @@
   position: relative;
 
   @include respond-to-min($desktop) {
-    padding-bottom: toRem(80);
+    padding-bottom: toRem(52);
     padding-top: toRem(80);
   }
 
@@ -242,15 +241,14 @@
   }
 
   .col-md-9 {
-    left: toRem(15);
     @include rtlBlock() {
       right: 0;
     }
     @media (max-width: 991px) {
-       right: inherit;
-       @include rtlBlock() {
-          // padding-right: 0 !important;
-       }
+      right: inherit;
+      @include rtlBlock() {
+        // padding-right: 0 !important;
+      }
     }
     @media screen and (max-width: 991px) and (min-width: 768px) {
       @include rtlBlock() {
@@ -280,9 +278,9 @@
         padding-right: 0;
       }
     }
-    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
-       padding-left: toRem(30);
-       @include rtlBlock() {
+    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+      padding-left: toRem(30);
+      @include rtlBlock() {
         padding-right: toRem(30);
       }
     }
@@ -497,15 +495,19 @@
     p {
       font-size: toRem(14);
       margin-bottom: toRem(24);
-      @media (min-width: 992px) { 
+      @media (min-width: 992px) {
         font-size: toRem(16);
-      margin-bottom: toRem(32);
+        margin-bottom: toRem(36);
       }
     }
   }
 
-  .btn-text {
-    font-size: toRem(14) !important;
+  .btn-text.learn-more {
+    font-size: toRem(12);
+
+    @include respond-to-min($desktop) {
+      font-size: toRem(16);
+    }
 
     &:before {
       padding: toRem(3.7);
@@ -1532,7 +1534,7 @@
       @include rtlBlock() {
         margin-left: toRem(16) !important;
         margin-right: 0 !important;
-        @media (min-width: 992px) { 
+        @media (min-width: 992px) {
           margin-left: toRem(24) !important;
           margin-right: 0 !important;
         }
@@ -2120,7 +2122,8 @@
   }
 
   .offer-details-wrapper {
-    h3, p {
+    h3,
+    p {
       color: $white;
     }
   }
@@ -2130,7 +2133,14 @@
 
     .description {
       color: $white;
-      p, h1, h2, h3, h4, h5, h6, pre {
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      pre {
         color: $white;
       }
       hr {
@@ -2163,7 +2173,14 @@
 
     .description {
       color: $yellow-light;
-      p, h1, h2, h3, h4, h5, h6, pre {
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      pre {
         color: $yellow-light;
       }
       hr {
