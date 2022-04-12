@@ -1,4 +1,5 @@
 import { DIAL_CODE_DATA } from "../../../global/js/constant";
+import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
 (function () {
   const $FORM = $("#cwsNeedHelp");
   const $SUBMIT_CTA = $("#cwsNeedHelp .cmp-form-button");
@@ -31,6 +32,7 @@ import { DIAL_CODE_DATA } from "../../../global/js/constant";
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
+    FORM_ERROR($FORM);
     console.log(errorText);
   }
 
@@ -38,6 +40,7 @@ import { DIAL_CODE_DATA } from "../../../global/js/constant";
     let path = window.location.pathname;
     let page = path.split("/").pop();
     window.location.href = window.location.href.replace(page, "cws-need-help-success.html");
+    FORM_SUCCESS($FORM, dataWithPayload);
     return true;
   };
 
