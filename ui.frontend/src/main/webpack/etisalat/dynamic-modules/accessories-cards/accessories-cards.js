@@ -1,5 +1,6 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 /* eslint-disable */
+import "./accessories-card.scss";
 
 export const ACCESSORIES_CARDS = () => {
   // function to pass swiper options collectively
