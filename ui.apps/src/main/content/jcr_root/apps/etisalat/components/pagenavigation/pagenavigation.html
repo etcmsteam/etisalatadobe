@@ -3,7 +3,7 @@
        <sly data-sly-set.heroLinksSectionPresentCss="add-links-with-span"></sly>
    </sly>
 </sly>
-<div class="config-section-wrap ${heroLinksSectionPresentCss}"
+<div class="config-section-wrap ${properties.stickyBehavior ? 'page-nav-wrap' : ''} ${heroLinksSectionPresentCss}"
   data-sly-use.pageNav="com.etisalat.core.models.PageNavigation"
   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
   id="pagenav-${properties.id}">
@@ -15,10 +15,10 @@
             </div>
          </div>
          <div class="col-xs-12 col-md-${properties.pageTitle ? 9 : 12}">
-            <div data-simplebar data-sly-test="${!pageNav.pageNavItems.isEmpty}">                                
+            <div id="${properties.stickyBehavior ? 'page-nav' : ''}" data-simplebar data-sly-test="${!pageNav.pageNavItems.isEmpty}">                                
                   <div class="simplebar-wrapper">                    
                         <div class="simplebar-content">
-                           <ul class="page-nav" data-sly-list.navItems="${pageNav.pageNavItems}">
+                           <ul class="page-nav ${properties.stickyBehavior ? 'nav' : ''}" data-sly-list.navItems="${pageNav.pageNavItems}">
                               <li class="${request.pathInfo == navItems.navigationLink ? 'active' : ''}">
                                  <a href="${navItems.navigationLink}">${navItems.navigationTitle}</a>
                               </li>
