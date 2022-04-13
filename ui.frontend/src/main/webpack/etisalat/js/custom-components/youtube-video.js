@@ -2,6 +2,9 @@
 let videoList = document.querySelectorAll(".video-item div");
 
 export const YOU_TUBE_VIDEO_PLAYER = () => {
+  if(!videoList.length) {
+    return false;
+  }
   let videoID = document.querySelector("#youTubeVideoPlayer");
   let tag = document.createElement("script");
   let firstScriptTag = document.getElementsByTagName("script")[0];

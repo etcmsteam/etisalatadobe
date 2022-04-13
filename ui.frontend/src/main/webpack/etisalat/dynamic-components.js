@@ -8,6 +8,12 @@ const DYNAMIC_MODULE = {
   "cmp-accessoriescardcontainer": async () => {
     await import(/* webpackChunkName: 'accessories-card' */ "./dynamic-modules/accessories-cards/accessories-cards").then((obj) => obj.ACCESSORIES_CARDS());
   },
+  "cmp-green-friday": async () => {
+    await import(/* webpackChunkName: 'green-friday' */ "./dynamic-modules/green-friday/green-friday").then((obj) => obj.GREEN_FRIDAY());
+  },
+  "cmp-need-help": async () => {
+    await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
