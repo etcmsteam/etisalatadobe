@@ -10,6 +10,7 @@ import { ANAEMARATI_CARDS } from "./js/custom-components-es6/anaemarati-plans";
 import { TAB_SWIPER } from "./js/custom-components-es6/tab-swiper";
 import { STORE_LOCATOR } from "./js/custom-components-es6/store-locator";
 import { FEATURES_DOWNLOAD_ICONS } from "./js/custom-components-es6/features-4.0";
+import DYNAMIC_COMPONENTS from "./dynamic-components.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   VIEW_MORE_TOGGLE();
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   TAB_SWIPER();
   STORE_LOCATOR();
   FEATURES_DOWNLOAD_ICONS();
+  DYNAMIC_COMPONENTS.init();
 });
 
 // Stylesheets

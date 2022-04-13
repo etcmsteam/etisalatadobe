@@ -3,8 +3,10 @@ import "regenerator-runtime/runtime";
 // register the className of each dynamic component to it's own js chunk, and initialization call
 const DYNAMIC_MODULE = {
   "cmp-herobanner": async () => {
-    await import(/* webpackChunkName: 'hero-banner' */ "./dynamic-modules/hero-banner/hero-banner-4-0")
-    .then((obj) => obj.HERO_BANNER());
+    await import(/* webpackChunkName: 'hero-banner' */ "./dynamic-modules/hero-banner/hero-banner-4-0").then((obj) => obj.HERO_BANNER());
+  },
+  "cmp-accessoriescardcontainer": async () => {
+    await import(/* webpackChunkName: 'accessories-card' */ "./dynamic-modules/accessories-cards/accessories-cards").then((obj) => obj.ACCESSORIES_CARDS());
   },
 };
 
