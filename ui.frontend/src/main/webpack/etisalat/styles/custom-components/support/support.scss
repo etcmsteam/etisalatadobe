@@ -118,16 +118,16 @@
           width: 50%;
         }
 
-        @include respond-to-min($desktop-large) {
-          min-height: toRem(372);
+        @include respond-to-min($desktop) {
+          max-height: toRem(254);
         }
 
         @include respond-to-min($desktop-wide) {
           min-height: toRem(334);
         }
 
-        @include respond-to-min($desktop) {
-          max-height: toRem(254);
+        @include respond-to-min(1400px) {
+          min-height: toRem(372);
         }
 
         @include respond-to-max($custom-width-tab) {
@@ -248,7 +248,38 @@
 
     .container-center {
       width: 100% !important;
-      padding: 0 !important;
+
+      @include respond-to-max($custom-width-tab) {
+        padding: 0 !important;
+      }
+
+      .swiper-container {
+        width: 100% !important;
+
+        @include respond-to-min($custom-width-tab) {
+          width: 83.33333334% !important;
+        }
+      }
+
+      .swiper-button-prev {
+        left: 3% !important;
+
+        @include respond-to-min($custom-width-tab) {
+          &.swiper-button-disabled {
+            display: block !important;
+          }
+        }
+      }
+
+      .swiper-button-next {
+        right: 3% !important;
+
+        @include respond-to-min($custom-width-tab) {
+          &.swiper-button-disabled {
+            display: block !important;
+          }
+        }
+      }
     }
 
     .col-xs-12 {
@@ -280,7 +311,7 @@
 
           @include respond-to-min($desktop) {
             white-space: normal;
-            font-size: toRem(24);
+            font-size: toRem(20);
             line-height: toRem(24);
 
             &:hover {
@@ -289,8 +320,12 @@
             }
           }
 
-          @include respond-to-max($desktop) {
-            font-size: toRem(20);
+          @include respond-to-min(1400px) {
+            font-size: toRem(24);
+          }
+
+          @include respond-to-max($custom-width-tab) {
+            font-size: toRem(18);
           }
 
           &.cmp-tabs__tab--active {
