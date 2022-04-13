@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import {YOU_TUBE_VIDEO_PLAYER} from './youtube-video';
+
 import "./index.scss";
 /* eslint-disable */
 export const HERO_BANNER = () => {
@@ -202,4 +204,9 @@ export const HERO_BANNER = () => {
       }
     });
   });
+
+  if (videoList.length > 0) {
+    YOU_TUBE_VIDEO_PLAYER();
+  }
+
 };
