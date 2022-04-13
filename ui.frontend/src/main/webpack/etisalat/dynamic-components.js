@@ -14,6 +14,9 @@ const DYNAMIC_MODULE = {
   "cmp-need-help": async () => {
     await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
   },
+  "cmp-non-actionable-box": async () => {
+    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_BOX());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
