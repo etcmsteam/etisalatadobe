@@ -10,6 +10,14 @@ export const STORE_LOCATOR = () => {
     return;
   }
 
+  setTimeout(() => {
+    $storeLocatorRoot.addClass("store-locator__slide-down");
+
+    setTimeout(() => {
+      $storeLocatorRoot.removeClass("store-locator__slide-down");
+    }, 1000);
+  }, 1500);
+
   function isJson(str) {
     try {
       JSON.parse(str);
@@ -97,7 +105,7 @@ export const STORE_LOCATOR = () => {
 
     var icon = $(data.element).data("icon");
     var $result = $(
-      '<div class="' + icon + '">' + '<img src="' + currentUrlPath + "" + icon + '.svg" height="24" width="24" /><span>' + data.text + "</span>" + "</div>",
+      '<div class="' + icon + '">' + '<img src="' + currentUrlPath + "" + icon + '.svg" height="24" width="24" /><span>'+ $.trim(data.text) + "</span>" + "</div>",
     );
 
     return $result;
@@ -932,9 +940,11 @@ export const STORE_LOCATOR = () => {
     }, 2000);
 
     $storeLocatorRoot.addClass("store-locator__slide-down");
+    
+    document.querySelector("body").classList.add("js-fixed-nav");
 
     setTimeout(function () {
-      document.querySelector("body").classList.add("js-fixed-nav");
+      document.querySelector("body").classList.removeClass("js-fixed-nav");
     }, 1500);
 
     // Adding class to image tag as per live reference

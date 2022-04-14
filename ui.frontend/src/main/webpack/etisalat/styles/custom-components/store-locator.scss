@@ -8,14 +8,16 @@
 
   $line-height-base: 1.6;
   $line-height-computed: math.floor(($font-size-base * $line-height-base));
-  @include font-family-Neotech-roboto();
+  @include font-family-lato-roboto();
   line-height: 1.6;
   transition: margin-top 0.3s ease-in-out 1.5s;
-  margin-top: -55px;
+  margin-top: -53.8px;
 
   @include respond-to-min($desktop) {
     & {
+      margin-top: -159px;
       margin-bottom: -50px;
+      min-height: 464px;
     }
   }
 
@@ -45,6 +47,9 @@
     }
   }
 
+  &.store-locator__slide-down {
+    margin-top: 0;
+  }
 
   * {
     box-sizing: border-box;
@@ -567,6 +572,9 @@
       display: flex;
     }
   } */
+    #select2-mapFilter-results {
+      max-height: 230px;
+    }
 
     .category-dropdown {
       .select2-results__option--highlighted,
@@ -1254,7 +1262,7 @@
                         }
 
                         .details-desc {
-                          width: 90%;
+                          width: 100%;
                           font-size: 16px;
                           line-height: 1.6;
                           letter-spacing: 0.6px;
@@ -1554,8 +1562,12 @@
                     }
 
                     h4 {
+                      @include font-family-Neotech-roboto;
                       font-size: 1rem;
-                      margin-bottom: 2px;
+                      font-weight: 400;
+                      line-height: 1.3;
+                      margin-top: toRem(12.5);
+                      margin-bottom: toRem(2);
                     }
 
                     p {
@@ -3704,6 +3716,10 @@
           padding: 0;
           border: 0;
           //text-overflow: clip;
+
+          & span {
+            vertical-align: middle;
+          }
         }
       }
       .select2-selection__arrow {
@@ -5296,7 +5312,7 @@ html[lang="ar"] {
 
               .result-main-container {
                 .sidebar-result-container {
-                  & h4 {
+                  h4 {
                     @include font-family-Neotech-roboto;
                     font-weight: 400;
                     line-height: 1.3;

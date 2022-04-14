@@ -28,6 +28,10 @@
   font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
 }
 
+@mixin font-family-lato-roboto {
+  font-family: Lato, Roboto, Arial, sans-serif;
+}
+
 @mixin font-family-lato-withoutge {
   font-family: Lato, Roboto, Arial, sans-serif;
 }
@@ -266,7 +270,7 @@ $screen-xxl-max: 1201px;
 
 // font size PX into REM
 @function calculateRem($size) {
-  $remSize: $size / 16px;
+  $remSize: calc($size / 16px);
 
   @return #{$remSize}rem;
 }
@@ -279,7 +283,7 @@ $screen-xxl-max: 1201px;
 /* h1 { @include fontSize(32px); } */
 
 @function toRem($value) {
-  $remValue: ($value / 16) + rem;
+  $remValue: calc($value / 16) + rem;
 
   @return $remValue;
 }
