@@ -32,9 +32,9 @@
                     <span class="less hidden">${properties.viewlessitems}</span>
                 </a>
                <sly data-sly-use.accordObj="${resource.path}" data-sly-list.accordItems="${accordObj.listChildren}">                
-                <sly data-sly-test="${accordItems.name == 'itemsText'}" data-sly-list.itemList="${accordItems.listChildren}">
-                   <p data-sly-test="${item.title == itemList.title}"
-                      class="cmp-accordion__itemdesc">${itemList.linkText}</p>
+                <sly data-sly-test="${accordItems.name == 'itemsText'}" data-sly-list.descItem="${accordItems.listChildren}">
+                   <p data-sly-test="${itemList.index == descItemList.index}"
+                      class="cmp-accordion__itemdesc">${descItem.linkText}</p>
                 </sly>
                </sly>
             </button>
