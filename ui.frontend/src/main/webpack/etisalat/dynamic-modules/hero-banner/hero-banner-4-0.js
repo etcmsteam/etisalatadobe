@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-import { swiperInit } from "../../swiperInitialize";
+import { swiperInit } from "../../../global/js/swiperInitialize";
 
-(function (window) {
-  "use strict";
-
+import "./index.scss";
+/* eslint-disable */
+export const HERO_BANNER = () => {
   // for multiple slides
   function initHeroSwiper() {
     $(document)
@@ -11,7 +11,7 @@ import { swiperInit } from "../../swiperInitialize";
       .each(function (index) {
         var carouselEffect = "fade";
         var hasCallToAction = $(this).find(".hero-images-call-to-action-section");
-        if(hasCallToAction.length > 0) {
+        if (hasCallToAction.length > 0) {
           carouselEffect = "slide";
         }
         $(this).addClass("h-b-slider-multi" + index);
@@ -75,7 +75,7 @@ import { swiperInit } from "../../swiperInitialize";
         heroModel.insertAfter(className);
       });
     }
-  };
+  }
 
   //Hero banner call to action initialization
 
@@ -107,14 +107,14 @@ import { swiperInit } from "../../swiperInitialize";
       });
       initHeroSwiperSingleSlide();
     }
-    
+
     if (heroBannerCount.length > 0) {
       heroBannerCount.each(function () {
         $(this).addClass("one-slide-banner");
       });
       initHeroSwiperSingleSlide();
     }
-    
+
     initHeroBannerCallToAction();
 
     const limitText = function (title, limit) {
@@ -187,7 +187,7 @@ import { swiperInit } from "../../swiperInitialize";
           $("body").parent().css("overflow", "hidden");
         }
       }, 0);
-      
+
       $("body").addClass("modal-overlay");
     });
     // on close popup make video pause and reset and play the background video
@@ -203,4 +203,4 @@ import { swiperInit } from "../../swiperInitialize";
       }
     });
   });
-})(window);
+};
