@@ -17,6 +17,9 @@ const DYNAMIC_MODULE = {
   "cmp-non-actionable-box": async () => {
     await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_BOX());
   },
+  "cmp-tile-box": async () => {
+    await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
