@@ -1,7 +1,7 @@
 <template data-sly-template.link="${ @ properties}">
 
   <sly data-sly-test="${properties.linkBehavior != 'openmodalwindow'}">
-    <sly data-sly-test.customLink="${properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+    <sly data-sly-test.customLink="${properties.ctaSameWindowLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
     <a href="${commonlinkmodel.link}"
        class="btn-text btn-green  learn-more"
        title="${properties.title}"

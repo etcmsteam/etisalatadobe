@@ -1,6 +1,6 @@
 <template data-sly-template.mainText="${ @ properties}">
   <div data-sly-test="${properties.linkBehavior != 'openmodalwindow'}" class="third-action-wrapper  action-btn-default mainText-btn">
-    <sly data-sly-test.customLink="${properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+    <sly data-sly-test.customLink="${properties.ctaSameWindowLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
     <a class="btn btn-default ripple-effect"
        href="${commonlinkmodel.link}"
        target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}">

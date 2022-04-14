@@ -3,6 +3,7 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Tile"
     sling:resourceType="cq/gui/components/authoring/dialog"
+	extraClientlibs="[cq.dropdown.dialog.multi.values]"
     helpPath="https://www.adobe.com/go/aem_cmp_title_v2">
     <content
         jcr:primaryType="nt:unstructured"
@@ -146,23 +147,6 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="openmodalwindow"/>
                                             </fragmentlink>
-                                            <tilelinknewwindow
-                                                granite:class="linkbehavior-showhide-target"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <tilebuttonlink
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Target URL for Tile CTA."
-                                                        fieldLabel="Tile CTA link"
-                                                        name="./tileCTALinkNewWindow"
-                                                        rootPath="/content"/>
-                                                </items>
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    showhidetargetvalue="opennewwindow"/>
-                                            </tilelinknewwindow>
                                             <tilelinksamewindow
                                                 granite:class="linkbehavior-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
@@ -178,7 +162,8 @@
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
-                                                    showhidetargetvalue="opensamewindow"/>
+                                                    showhidetargetvalue="opensamewindow"
+                                                    showhidetargetvalue1="opennewwindow"/>
                                             </tilelinksamewindow>
                                             <youtubemodal
                                                 granite:class="linkbehavior-showhide-target"
