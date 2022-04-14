@@ -2,26 +2,26 @@
 
     <sly data-sly-set.oneTileCheck="${container.items.size == 1 ? 'single-tile' : 'testimonialSlider'}"></sly>
 
-    <sly data-sly-test.withquotes="${properties.nonactionboxbehavior == 'with-quotes' ? 'testimonial-module testimonialSlider' : ''}"></sly>
-    <sly data-sly-test.withpretitle="${properties.nonactionboxbehavior == 'with-pretitle' ? 'non-action-boxes-two-cols-4-0' : ''}"></sly>
-    <sly data-sly-test.withtitle="${properties.nonactionboxbehavior == 'with-title' ? 'cta-with-main-text-4-0 with-two-cols' : ''}"></sly>
+    <sly data-sly-test.withquotes="${properties.nabBoxVariation == 'with-quotes' ? 'testimonial-module testimonialSlider' : ''}"></sly>
+    <sly data-sly-test.withpretitle="${properties.nabBoxVariation == 'with-pretitle' ? 'non-action-boxes-two-cols-4-0 general-guide' : ''}"></sly>
+    <sly data-sly-test.withtitle="${properties.nabBoxVariation == 'with-title' ? 'cta-with-main-text-4-0 with-two-cols' : ''}"></sly>
 
     <!--not testimonials container-->
-    <sly data-sly-test="${properties.nonactionboxbehavior != 'with-quotes'}">
+    <sly data-sly-test="${properties.nabBoxVariation != 'with-quotes' && properties.nabBoxVariation != 'leftRightVariation'}">
     <div class="${withpretitle}${withtitle}">
         <div class="container">
             <div class="content-wrapper">
                 <div class="content">
                     <div data-sly-test="${properties.tileTitle}" class="wst-main-headings">
-                        <h3>${properties.tileTitle}</h3>
+                        <h3 data-sly-element="${properties.titleType}">${properties.tileTitle}</h3>
                     </div>
                     <div class="paragraph-styling ul-list-cms">
-                        <div class="p2">${properties.nonactionboxDesc @ context="html"}</div>
+                        <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p2' : properties.descParagraphStyle}" class="${descriptionStyle}">${properties.nonactionboxDesc @ context="html"}</div>
                     </div>
                 </div>
-                <div class="${properties.nonactionboxbehavior == 'with-title' ? 'cta' :'' } ${properties.nonactionboxbehavior == 'with-pretitle' ? 'two-cols-wrapper' :'' }">
+                <div class="${properties.nabBoxVariation == 'with-title' ? 'cta' :'' } ${properties.nabBoxVariation == 'with-pretitle' ? 'two-cols-wrapper' :'' }">
                     <!-- boxes Start-->
-                    <div class="nonactionboxtile ${properties.nonactionboxbehavior == 'with-title' ? 'media-cta-text-4-0 with-up-down' :'' } ${properties.nonactionboxbehavior == 'with-pretitle' ? 'non-action-boxes-4-0' :'' }"  data-sly-repeat="${container.items}"
+                    <div class="nonactionboxtile ${properties.nabBoxVariation == 'with-title' ? 'media-cta-text-4-0 with-up-down' :'' } ${properties.nabBoxVariation == 'with-pretitle' ? 'non-action-boxes-4-0' :'' }"  data-sly-repeat="${container.items}"
                          data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
                     <!-- boxes End-->
                 </div>
@@ -31,8 +31,18 @@
     </div>
     </sly>
 
+	<!--Left & Right - non action box container-->
+    <sly data-sly-test="${properties.nabBoxVariation == 'leftRightVariation'}">
+    <div data-sly-unwrap="${!properties.promoLeftRight}" class="promo-non-actionable-box">
+    <div class="non-action-boxes-4-0 ${properties.tileFlipped}">
+            <div class="container" data-sly-repeat="${container.items}" 
+                 data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+    </div>
+    </div>
+    </sly>
+
     <!--testimonials container-->
-    <sly data-sly-test="${properties.nonactionboxbehavior == 'with-quotes'}">
+    <sly data-sly-test="${properties.nabBoxVariation == 'with-quotes'}">
         <div class="testimonial-module container-fix__width ${oneTileCheck}">
             <div class="testimonial-box">
                 <div class="pattern-wrapper">
@@ -56,7 +66,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-4">
                             <div data-sly-test="${properties.tileTitle}" class="wst-main-headings">
-                                <h3>${properties.tileTitle}</h3>
+                                <h3 data-sly-element="${properties.titleType}">${properties.tileTitle}</h3>
                             </div>
                             <div class="paragraph-styling ul-list-cms">
                                 <div class="p2">

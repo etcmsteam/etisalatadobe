@@ -24,7 +24,7 @@
          properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/etisalat-consumer-content-page'}" />
 
 <body
-  class="${page.cssClassNames} ${pageProperties.hideMegaMenu ? 'topnav--margin' : 'meganavigation--margin'} ${consumerTemplate ? 'consumer__page' : '' }"
+  class="${page.cssClassNames} ${pageProperties.hideHeader ? '' : (pageProperties.hideMegaMenu ? 'topnav--margin' : 'meganavigation--margin')}  ${consumerTemplate ? 'consumer__page' : '' }"
   dir="${page.language == 'ar' ? 'rtl' : 'ltr' }" id="${page.id}"
   data-cmp-data-layer-enabled="${page.data ? true : false}" data-page-title="${currentPage.title}">
   <script data-sly-test.dataLayerEnabled="${page.data}">
@@ -33,11 +33,46 @@
       serverName = window.location.hostname,
       dataLayerUrl = window.location.href
     pagePathName = window.location.pathname;
-    dataLayerPathName = pagePathName.split('.html')[0];
+    dataLayerPathName = pagePathName.split('.html')[0],
+    userAgentData = navigator.userAgent,
+    currentDate = new Date(),
+    previousPage = document.referrer,
+    previousPageName = '',
+    siteSection = '';
+    siteSection1 = '',
+    siteSection2 = '';
 
     let siteLang = siteLangElement.getAttribute('lang'),
       pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
       pageName;
+
+    let dateStr = currentDate.toString();
+    let index = dateStr.lastIndexOf(':') + 3;
+    currentDate = dateStr.substring(0, index);
+    
+    //sitesection 1 and 2
+    const pathArr = dataLayerPathName.split('/');
+    if(pathArr.length >= 3) {
+      const newPathArr = pathArr.slice(-3);
+      siteSection = newPathArr[0];
+      siteSection1 = newPathArr[1];
+      siteSection2 = newPathArr[2];
+    }
+
+    function isValidHttpUrl(string) {
+      try {
+        return new URL(string);
+      } catch (e) {
+        return false;
+      }
+    }
+ 
+    if (isValidHttpUrl(previousPage)) {
+      previousPage = isValidHttpUrl(previousPage).pathname;
+      var arr = previousPage.split('/');
+      var lastItem = arr.pop();
+      previousPageName = lastItem.split('.')[0];
+    }
 
     if (dataLayerPathName.includes('/ewallet/')) {
       if (dataLayerPathName.includes('/personal/')) {
@@ -76,7 +111,7 @@
     };
 
     const isErrorFlg = urlExists(dataLayerUrl);
-
+    if(!dataLayerPathName.includes('/etisalat/')) {
     window.adobeDataLayer = window.adobeDataLayer || [];
     adobeDataLayer.push({
       "event": "pageLoaded",
@@ -87,6 +122,7 @@
             "server": serverName,
             "siteSection": pageTitle,
             "isErrorPage": isErrorFlg,
+            "URL": dataLayerUrl,
             "pageViews": {
               "value": 1
             }
@@ -94,6 +130,87 @@
         }
       }
     });
+    } else {
+      window.onload = function () {
+        var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
+        loadTime = loadTime/1000 + 's';
+
+      if(!isErrorFlg){
+        adobeDataLayer.push({
+          "event": "pageLoaded",
+          "xdmPageLoad": {
+            "web": {
+              "webPageDetails": {
+                "name": pageName,
+                "server": serverName,
+                "siteSection": siteSection,
+                "siteSection1": siteSection1,
+                "siteSection2": siteSection2,
+                "isErrorPage": isErrorFlg,
+                "URL": dataLayerUrl,
+                "pageViews": {
+                  "value": 1
+                }
+              }
+            },
+            "pageInfo": {
+              "country": "ae",
+              "language": siteLang,
+              "previousPageName": previousPageName,
+              "referrer": previousPage, 
+              "pageType": pageTitle,
+              "pageLoadTime": loadTime
+            },
+            "user": {
+              "loginStatus": "logged-out"
+            },
+            "timestamp": currentDate.toString(),
+            "userAgentString": userAgentData
+          }
+        });
+        }
+        else{
+          adobeDataLayer.push({
+          event:"errorInteraction",
+          "xdmPageLoad": {
+            "web": {
+              "webPageDetails": {
+                "name": pageName,
+                "server": serverName,
+                "siteSection": siteSection,
+                "siteSection1": siteSection1,
+                "siteSection2": siteSection2,
+                "isErrorPage": isErrorFlg,
+                "URL": dataLayerUrl,
+                "pageViews": {
+                  "value": 1
+                }
+              }
+            },
+            "pageInfo": {
+              "country": "ae",
+              "language": siteLang,
+              "previousPageName": previousPageName,
+              "referrer": previousPage, 
+              "pageType": pageTitle,
+              "pageLoadTime": loadTime
+            },
+            "user": {
+              "loginStatus": "logged-out"
+            },
+            "timestamp": currentDate.toString(),
+            "userAgentString": userAgentData,
+            errorInfo:{
+                error:1,
+                errorMessage: 'page not found',
+                errorCode: "404",
+                errorType:"page load Error"
+             }
+          }
+        });
+      }
+     }
+    }
   </script>
   <!--For Google Map-->
   <script>

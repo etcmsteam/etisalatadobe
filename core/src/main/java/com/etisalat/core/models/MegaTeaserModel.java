@@ -21,6 +21,9 @@ public class MegaTeaserModel {
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String actionsEnabled;
+  
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String linkURL;
 
   private String link;
 
@@ -91,6 +94,13 @@ public class MegaTeaserModel {
   public String getLink() {
     return link;
   }
+  
+  /**
+   * @return the linkURL
+   */
+  public String getLinkURL() {
+    return linkURL;
+  }
 
   /**
    * @return the text
@@ -105,6 +115,14 @@ public class MegaTeaserModel {
   public void setLink(String link) {
     this.link = link;
   }
+  
+  /**
+   * @param linkURL the linkURL to set
+   */
+  public void setLinkURL(String linkURL) {
+    this.linkURL = linkURL;
+  }
+  
 
   /**
    * @param text the text to set

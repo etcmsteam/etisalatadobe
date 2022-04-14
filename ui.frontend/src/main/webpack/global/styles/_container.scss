@@ -65,7 +65,26 @@
   }
 
   .container:not(.aem-GridColumn) {
-    padding: 0;
+    width: 100%;
+  }
+}
+
+.fluid--container {
+  left: 50% !important;
+  margin-left: -50vw !important;
+  max-width: inherit !important;
+  position: relative !important;
+  width: 100vw !important;
+
+  @include rtlBlock() {
+    left: auto !important;
+    margin-left: auto !important;
+    margin-right: -50vw !important;
+    right: 50% !important;
+  }
+
+  .container:not(.aem-GridColumn) {
+    width: 100%;
   }
 }
 
@@ -102,5 +121,51 @@
     margin-left: auto !important;
     margin-right: -50vw !important;
     right: 50% !important;
+  }
+
+  .cmp-container {
+    .container {
+      padding-left: toRem(16);
+      padding-right: toRem(16);
+
+      @media (min-width: 768px) {
+        padding-left: toRem(12);
+        padding-right: toRem(12);
+        width: toRem(756);
+      }
+
+      @media (min-width: 992px) {
+        padding-left: toRem(12);
+        padding-right: toRem(12);
+        width: toRem(976);
+      }
+
+      @media (min-width: 1248px) {
+        padding-left: toRem(12);
+        padding-right: toRem(12);
+        width: toRem(1224);
+      }
+    }
+  }
+}
+
+.container.bg-filter-container {
+  .cmp-container {
+    > .aem-Grid {
+      background-color: $black;
+      opacity: 0.6;
+    }
+  }
+
+  &.cmp_banner--full-bleed {
+    .cmp-container {
+      > .aem-Grid {
+        min-height: toRem(523);
+
+        @media screen and (max-width: 991px) {
+          min-height: toRem(700);
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,27 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div class="tv-pack-wrapper" 
+        data-sly-test.hasContent="${properties.channelTitle}">
+        <div data-sly-test="${properties.channelTitle}" class="wst-secondary-headings">
+            <h4 data-sly-element="${properties.channelTitleStyle}">${properties.channelTitle}</h4>
+        </div>
+        <div class="tv-pack-row" data-sly-use.packObj="${resource.path}" data-sly-list.packItems="${packObj.listChildren}">
+            <div data-sly-test="${packItems.name == 'tvPackItems'}" data-sly-repeat.packItem="${packItems.listChildren}" class="tv-pack-tile">
+                <div data-sly-test="${packItem.fileReference}" class="icon">
+                    <img src="${packItem.fileReference}" alt="${packItem.packageTitle}"/>
+                </div>
+                <div class="content-wrap">
+                    <div data-sly-test="${packItem.packageTitle}" class="wst-main-headings">
+                        <h4 data-sly-element="${properties.packageTitleStyle}">${packItem.packageTitle}</h4>
+                    </div>
+                    <div data-sly-test="${packItem.ctatext}" class="third-action-wrapper action-link">
+                       <sly data-sly-test.channelCTALink="${packItem.channelCTALink}" 
+	                       data-sly-use.channelLink="${'com.etisalat.core.models.CommonLinkModel' @link=channelCTALink}"/>
+                        <a href="${channelLink.link}" target="${packItem.tvPackLinktarget ? '_blank' : '_self'}" class="link">${packItem.ctatext}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>
+</sly>

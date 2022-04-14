@@ -1,16 +1,13 @@
 package com.etisalat.core.models;
 
+import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.PageConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.annotations.injectorspecific.*;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
@@ -20,6 +17,9 @@ import com.etisalat.core.util.CommonUtility;
     SlingHttpServletRequest.class})
 
 public class TileModel {
+
+  @ScriptVariable(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private Page currentPage;
 
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String tiletitle;
@@ -230,8 +230,24 @@ public class TileModel {
     if (StringUtils.isNotBlank(categoryTag) && null != tagManager) {
       final Tag tag = tagManager.resolve(categoryTag);
       if (null != tag) {
-        return tag.getTitle();
+        if (currentPage != null) {
+          return tag.getTitle(currentPage.getLanguage());
+        } else {
+          return tag.getTitle();
+        }
       }
+    }
+    return StringUtils.EMPTY;
+  }
+  /**
+   * Returns non action box tile behaviour.
+   *
+   * @return
+   */
+  public String getNabBoxVariation() {
+    final Resource tileContainerResource = currentResource.getParent();
+    if (null != tileContainerResource && tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE)){
+      return tileContainerResource.getValueMap().get("nabBoxVariation", StringUtils.EMPTY);
     }
     return StringUtils.EMPTY;
   }

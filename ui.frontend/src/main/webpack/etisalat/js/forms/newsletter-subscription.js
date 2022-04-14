@@ -1,5 +1,7 @@
 /* eslint-disable */
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
+import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
+
 
 (function () {
   const NO_SCROLL_CLASS = "no-scroll";
@@ -60,10 +62,12 @@ import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
     $BODY.addClass(NO_SCROLL_CLASS);
     $("input[name='EmailAddress']").val("").removeClass("valid");
     $("input[name='CustomerName']").val("").removeClass("valid");
+    FORM_SUCCESS($FORM, dataObj);
   }
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
+    FORM_ERROR($FORM);
     console.log(errorText);
   }
 

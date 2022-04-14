@@ -1,0 +1,62 @@
+<template data-sly-template.twoColumnVideo="${ @ tileModel,properties,imageViewportModel}">
+<div class="media-cta-section"> 
+    <div class="container" data-sly-test="${properties.mediaCtaHeadingTwoColumnVideo}">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="cta-heading"> ${properties.mediaCtaHeadingTwoColumnVideo} </h2>
+            </div>
+        </div>
+    </div>
+	<div class="container">
+        <div class="media-cta-container media-cta-container-${properties.bgColorTwoColumnVideo}">
+            <div class="${properties.mediaAlignmentTwoColumnVideo}" data-sly-test="${properties.mediaAlignmentTwoColumnVideo}">
+                <div class="col-xs-12 col-md-6 media-cta-photo">
+                    <div class="cover">
+                          <div class="video-container">
+								<div class="img-container" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">	
+									<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+										<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+									</div>
+										<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>	        	              	        
+								</div>
+								<sly data-sly-test="${properties.youTubeUrlTwoColumnVideo}">
+								<div class="video-controls-media-cta youtube-video-link"><img src="${properties.playIconReferenceTwoColumnVideo}" /></div>
+								<div class="youtube-popup-container  modal fade mediaCtaVideo" id="mediaCtaVideo_1" role="dialog" style="display: none;">
+								  <div class="modal-dialog">
+									 <div class="modal-content">
+										<iframe width="560" height="315" src="${properties.youTubeUrlTwoColumnVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+									 </div>
+								  </div>
+								</div>
+								</sly>
+						  </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 body-standard text-left">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 data-sly-test="${properties.tiletitle}">${properties.tiletitle}</h4>
+                           ${properties.text  @ context='html'}
+                        </div>
+						
+						<sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+							<div data-sly-test="${tileModel.ctatext}" class="learn-more-link">
+							  <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" 
+							  class="btn-text btn-green learn-more" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">
+								<span>${tileModel.ctatext}</span>
+							  </a>
+							</div>
+						</sly>
+						<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}">
+							<div data-sly-test="${tileModel.ctatext}" class="learn-more-link">
+								<div data-sly-use.tileModalTemplate="/apps/etisalat/components/tile/tilemodal.html" data-sly-call="${tileModalTemplate.modal @
+													tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}"></div>
+							</div>
+						</sly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>

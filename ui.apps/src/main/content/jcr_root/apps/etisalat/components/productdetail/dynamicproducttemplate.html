@@ -12,14 +12,17 @@
 <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicloadmoretemplate.html"
          data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">  
     </sly>
-
 </sly>
-
-
 
 <sly data-sly-test="${properties.listLayout && properties.listLayout == 'slider'}">
 <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicslidertemplate.html"
          data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">  
+    </sly>
+</sly>
+
+<sly data-sly-test="${properties.listLayout && properties.listLayout == 'noncontractbutton'}">
+    <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicnoncontracttemplate.html"
+         data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
     </sly>
 </sly>
 

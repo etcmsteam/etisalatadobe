@@ -55,6 +55,7 @@
 
     &__action-container {
       display: contents;
+
       a {
         color: $white;
         font-size: $font14;
@@ -123,10 +124,19 @@
       }
     }
 
+    .img-static {
+      border-radius: toRem(4);
+      height: toRem(148);
+
+      @include respond-to-min($desktop) {
+        height: toRem(250);
+      }
+    }
+
     &__title {
       color: $white;
       font-size: $font20;
-      margin-bottom:toRem(35.2);
+      margin-bottom: toRem(35.2);
 
       @include respond-to-min($desktop-min) {
         font-size: $font26;
@@ -155,7 +165,7 @@
 
       &:last-child {
         padding-right: 0;
-        
+
         @include rtlBlock() {
           padding-right: toRem(12);
         }
@@ -183,6 +193,10 @@
           height: toRem(554);
         }
       }
+
+      .img-static {
+        height: toRem(554);
+      }
     }
 
     .gutter-padding-left {
@@ -193,6 +207,10 @@
           height: toRem(553);
         }
       }
+
+      .img-static {
+        height: toRem(553);
+      }
     }
 
     .image-right {
@@ -202,6 +220,10 @@
         .cmp-image__image {
           height: toRem(264);
         }
+      }
+
+      .img-static {
+        height: toRem(264);
       }
     }
 
@@ -217,6 +239,10 @@
           height: toRem(264) !important;
         }
       }
+
+      .img-static {
+        height: toRem(264);
+      }
     }
   }
 
@@ -226,6 +252,20 @@
     margin-bottom: toRem(26);
     overflow: hidden;
     position: relative;
+
+    .img-static {
+      &::after {
+        background: $black;
+        border-radius: toRem(4);
+        content: "";
+        height: 100%;
+        opacity: 0.2;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+      }
+    }
 
     &__image {
       &::after {
@@ -379,6 +419,11 @@
           border-color: $main-green !important;
           top: toRem(5);
         }
+      }
+
+      .img-static {
+        height: toRem(160);
+        width: 48%;
       }
 
       &__image {

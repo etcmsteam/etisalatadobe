@@ -11,6 +11,14 @@
       left: 0;
       @include respond-to-max($tablet) {
         left: toRem(30);
+        position: absolute;
+        top: 50%;
+        right: calc(100% - 1.5rem);
+        transform: translateY(-50%);
+        margin: 0;
+        svg {
+          right: 0;
+        }
       }
     }
 
@@ -68,7 +76,8 @@
         top: 0;
         visibility: hidden;
 
-        &[type="radio"]:checked, &.radio-active {
+        &[type="radio"]:checked,
+        &.radio-active {
           ~ label {
             border: 1px solid $main-green;
             box-shadow: inset 0 2px 5px 0 rgba(143, 163, 105, 0.5);
@@ -103,7 +112,7 @@
           }
           &:not(.radio-active) label {
             &::after {
-            opacity: 0;
+              opacity: 0;
             }
           }
         }
@@ -1028,7 +1037,7 @@
 
   &.search-full-width {
     .search-input {
-      padding: $padding-step-0 $padding-step-5;
+      padding: $padding-step-0 toRem(36);
       width: 100%;
 
       @include respond-to-max($desktop-wide) {
@@ -1054,6 +1063,12 @@
   display: none;
   margin-top: 16px;
   text-align: center;
+
+  h5 {
+    @include rtlBlock() {
+      text-align: center;
+    }
+  }
 
   @include respond-to-max($tablet - 1) {
     padding-left: 12px;
@@ -1132,7 +1147,6 @@
       margin-right: 0;
     }
   }
-
   .filters-wrapper .filters .filter-lable .icon,
   .filters-wrapper .filters .sort-label .icon {
     margin-left: toRem(4);
@@ -1362,17 +1376,22 @@ th {
       .elife-channel-list-header {
         .logo-wrapper {
           .pack-name {
-            h1,h2,h3,h4,h5,h6,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
             .back,
             .back:hover {
-              color:$white;
+              color: $white;
             }
             .back {
               &:before {
                 border-color: $white;
               }
             }
-            @include rtlBlock() { 
+            @include rtlBlock() {
               .back:after {
                 border-color: $white;
               }
@@ -1405,41 +1424,40 @@ th {
         }
         .dropdown {
           .dropdown-menu {
-              background: $black;
-              border: toRem(1) solid $white;
-              li {
-                border-bottom-color: $white;
-                a {
-                  color: $white;
-                }
+            background: $black;
+            border: toRem(1) solid $white;
+            li {
+              border-bottom-color: $white;
+              a {
+                color: $white;
               }
+            }
           }
         }
       }
     }
     .tables-4-0 {
       table {
-          thead,
-          thead th {
-            color: $white;
-
-          }
+        thead,
+        thead th {
+          color: $white;
+        }
         tbody {
-            tr {
-              td,
-              td:before,
-              td:after {
-                color: $white !important;
-              }
+          tr {
+            td,
+            td:before,
+            td:after {
+              color: $white !important;
             }
           }
+        }
       }
     }
     .tables-4-0,
     .nv-modal-body {
-        &::-webkit-scrollbar-thumb {
-          background-color: $white !important;
-        }
+      &::-webkit-scrollbar-thumb {
+        background-color: $white !important;
+      }
     }
     .e-life-modal .nv-modal-header {
       border-bottom-color: $white;
@@ -1448,8 +1466,8 @@ th {
     .e-life-modal.nv-modal .nv-radio-wrap {
       background-color: transparent;
       &.sm {
-        input[type=radio]:checked~label:after {
-           border-color: $white !important;
+        input[type="radio"]:checked ~ label:after {
+          border-color: $white !important;
         }
       }
       label {
@@ -1461,42 +1479,43 @@ th {
         color: $white;
       }
     }
-     
-      .search-group .input-group, .search-group select,
-      .search-group .check-availability-style,
-      .search-input .check-availability-style .form-control,
-      .search-input .check-availability-style .input-icon {
-        background-color: transparent !important;
-      }
-      .search-input .check-availability-style .form-control {
-        border: toRem(1) solid $white;
+
+    .search-group .input-group,
+    .search-group select,
+    .search-group .check-availability-style,
+    .search-input .check-availability-style .form-control,
+    .search-input .check-availability-style .input-icon {
+      background-color: transparent !important;
+    }
+    .search-input .check-availability-style .form-control {
+      border: toRem(1) solid $white;
+      color: $white !important;
+      &::placeholder {
         color: $white !important;
-         &::placeholder {
-          color: $white !important;
-        }
-      }
-      .search-input .check-availability-style .input-icon svg g path {
-        fill: $white;
       }
     }
+    .search-input .check-availability-style .input-icon svg g path {
+      fill: $white;
+    }
+  }
 }
 .acc-blue {
   &.channel-list-page {
     .channellistheader {
-        background-color: $blue4;
-        .elife-channel-list-header {
-          .head-wrapper .search-wrapper .input-group {
-            .form-control {
-              background: $blue4 !important;
-            }
+      background-color: $blue4;
+      .elife-channel-list-header {
+        .head-wrapper .search-wrapper .input-group {
+          .form-control {
+            background: $blue4 !important;
           }
         }
+      }
     }
     .filters-wrapper {
       .filters {
         .dropdown {
           .dropdown-menu {
-              background: $blue4;
+            background: $blue4;
           }
         }
       }
@@ -1509,32 +1528,37 @@ th {
       .elife-channel-list-header {
         .logo-wrapper {
           .pack-name {
-            h1,h2,h3,h4,h5,h6,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
             .back,
             .back:hover {
-              color:$yellow-light;
+              color: $yellow-light;
             }
             .back {
-              &:before{
+              &:before {
                 border-color: $yellow-light;
               }
             }
-            @include rtlBlock() { 
-              .back:after{
+            @include rtlBlock() {
+              .back:after {
                 border-color: $yellow-light;
               }
             }
           }
         }
         .head-wrapper .search-wrapper .input-group {
-            .form-control {
-              background: $black !important;
-              border: toRem(1) solid $yellow-light !important;
+          .form-control {
+            background: $black !important;
+            border: toRem(1) solid $yellow-light !important;
+            color: $yellow-light !important;
+            &::placeholder {
               color: $yellow-light !important;
-              &::placeholder{
-                color: $yellow-light !important;
-              }
             }
+          }
         }
       }
     }
@@ -1551,59 +1575,59 @@ th {
         }
         .dropdown {
           .dropdown-menu {
-              background: $black;
-              border: toRem(1) solid $yellow-light;
-              li {
-                border-bottom-color: $yellow-light;
-                a {
-                  color: $yellow-light;
-                }
+            background: $black;
+            border: toRem(1) solid $yellow-light;
+            li {
+              border-bottom-color: $yellow-light;
+              a {
+                color: $yellow-light;
               }
+            }
           }
         }
       }
     }
     .tables-4-0 {
       table {
-          thead,
-          thead th {
-            color: $yellow-light;
-            tr {
-              border-bottom-color: $yellow-light !important;
+        thead,
+        thead th {
+          color: $yellow-light;
+          tr {
+            border-bottom-color: $yellow-light !important;
+          }
+        }
+        tbody {
+          tr {
+            border-bottom-color: $yellow-light !important;
+            border-top-color: $yellow-light !important;
+            td,
+            td:before,
+            td:after {
+              color: $yellow-light !important;
             }
           }
-          tbody {
-            tr {
-              border-bottom-color: $yellow-light !important;
-              border-top-color: $yellow-light !important;
-              td,
-              td:before,
-              td:after {
-                color: $yellow-light !important;
-              }
-            }
-          }
+        }
       }
     }
     .tables-4-0,
-      .nv-modal-body {
+    .nv-modal-body {
       &::-webkit-scrollbar-thumb {
         background-color: $yellow-light !important;
       }
     }
     .nv-modal-close {
       svg {
-       filter: sepia(100%) contrast(100%) saturate(1000%) hue-rotate(347deg);
+        filter: sepia(100%) contrast(100%) saturate(1000%) hue-rotate(347deg);
       }
     }
-    .e-life-modal  .nv-modal-header {
+    .e-life-modal .nv-modal-header {
       border-bottom-color: $yellow-light;
     }
-   .e-life-modal.nv-modal .nv-checkboxes-wrap,
+    .e-life-modal.nv-modal .nv-checkboxes-wrap,
     .e-life-modal.nv-modal .nv-radio-wrap {
       &.sm {
-        input[type=radio]:checked~label:after {
-           border-color: $yellow-light !important;
+        input[type="radio"]:checked ~ label:after {
+          border-color: $yellow-light !important;
         }
       }
       label {
@@ -1615,16 +1639,16 @@ th {
         color: $yellow-light;
       }
     }
-      
-      .search-input .check-availability-style .form-control {
-        border-color: $yellow-light;
+
+    .search-input .check-availability-style .form-control {
+      border-color: $yellow-light;
+      color: $yellow-light !important;
+      &::placeholder {
         color: $yellow-light !important;
-         &::placeholder {
-          color: $yellow-light !important;
-        }
       }
-      .search-input .check-availability-style .input-icon svg g path {
-        fill: $yellow-light;
-      }
+    }
+    .search-input .check-availability-style .input-icon svg g path {
+      fill: $yellow-light;
+    }
   }
 }

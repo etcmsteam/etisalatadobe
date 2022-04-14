@@ -17,6 +17,10 @@ import org.apache.sling.api.resource.ResourceResolver;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.day.cq.dam.api.Asset;
+import com.day.cq.dam.api.DamConstants;
+import com.day.cq.dam.commons.util.DamUtil;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.NameConstants;
@@ -115,6 +119,24 @@ public final class CommonUtility {
 	     }
 	  }
 	return category;
+  }
+  
+  /**
+   * Returns Category Tag Name.
+   *
+   * @param request SlingHttpServletRequest 
+   * @param category Category tag name
+   * @return Category Tag Name
+   */
+  public static String getCategoryTagName(SlingHttpServletRequest request, String category) {
+  final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+    if (StringUtils.isNotBlank(category) && null != tagManager) {
+      final Tag tag = tagManager.resolve(category);
+       if (null != tag) {
+          category = tag.getName();
+       }
+    }
+  return category;
   }
 
   /**
@@ -238,9 +260,9 @@ public final class CommonUtility {
 	/*
 	 * Get Formatted Article Date for Page resource
 	*/
-	 public static String useFormattedArticleDate(Page currentPage) throws ParseException{
+	 public static String useFormattedArticleDate(Page currentPage , String dateFormat) throws ParseException{
 		  final Calendar articleCalender = currentPage.getProperties().get(AEConstants.PN_ARTICLE_DATE, Calendar.class);
-		  DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", currentPage.getLanguage(true));
+		  DateFormat outputFormat = new SimpleDateFormat(dateFormat, currentPage.getLanguage(true));
 		  outputFormat.setTimeZone(getArticleDateTimeZone(currentPage));
 		  String articleDate = outputFormat.format(articleCalender.getTime());
 		  return StringUtils.isNotBlank(articleDate) ? articleDate : StringUtils.EMPTY ;
@@ -257,6 +279,43 @@ public final class CommonUtility {
       String strTimeZone = "GMT" + dateTime.substring(length, dateTime.length());
       return TimeZone.getTimeZone(strTimeZone);
     }
+    
+	/**
+	 * Gets the image alt from metadata of image if no alt is authored.
+	 *
+	 * @param imageAlt the image alt
+	 * @param resourceResolver the resource resolver
+	 * @param assetPath the asset path
+	 * @return the image alt
+	 */
+	public static String getImageAlt(String imageAlt, ResourceResolver resourceResolver, String assetPath) {
+		if (StringUtils.isEmpty(imageAlt)) {
+			Resource assetResource = resourceResolver.getResource(assetPath);
+			if (assetResource != null) {
+				Asset asset = DamUtil.resolveToAsset(assetResource);
+				return asset.getMetadataValue(DamConstants.DC_TITLE);
+			}
+		}
+		return imageAlt;
+	}
+	
+  /**
+   * Checks if asset is video.
+   *
+   * @param resourceResolver the resource resolver
+   * @param assetPath the asset path
+   * @return true, if is video
+   */
+  public static boolean checkAssetIsVideo(ResourceResolver resourceResolver, String assetPath) {
+    if (StringUtils.isNotEmpty(assetPath) && (assetPath.startsWith(AEConstants.DAM_CONTENT))) {
+      Resource assetResource = resourceResolver.getResource(assetPath);
+      if (null != assetResource) {
+        Asset asset = DamUtil.resolveToAsset(assetResource);
+        return DamUtil.isVideo(asset);
+      }
+    }
+    return false;
+  }
   
   /**
    * private constructor to prevent instantiation of class.

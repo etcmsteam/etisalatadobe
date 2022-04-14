@@ -96,6 +96,7 @@
 
       &__title {
         margin: 0 0 toRem(16) 0;
+        text-transform: capitalize;
 
         @include ts-step-0;
         @include font-family-Neotech;
@@ -130,7 +131,24 @@
         }
 
         .cmp-image__image {
+          height: 100%;
           width: 100%;
+        }
+      }
+
+      .img-static {
+        margin-bottom: toRem(12);
+        margin-left: toRem(10);
+        max-width: toRem(160);
+        min-width: toRem(160);
+
+        @include respond-to-max($tablet) {
+          max-width: toRem(104);
+          min-width: toRem(104);
+        }
+
+        @include rtlBlock {
+          margin-right: toRem(10);
         }
       }
 

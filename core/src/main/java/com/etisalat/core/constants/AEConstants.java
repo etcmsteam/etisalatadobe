@@ -61,6 +61,7 @@ public final class AEConstants {
  public static final String TRUE = "true";
  public static final String EQUAL_DELIMITER = "=";
  public static final String COMMA_DELIMITER = ",";
+ public static final String TILT_DELIMITER = "~";
 
  public static final String NO_CONFIG_FOUND = "No config found";
  public static final String POST_METHOD = "POST";
@@ -101,6 +102,10 @@ public final class AEConstants {
  public static final String ERROR_PAGE_NAME = "error";
  public static final String ERROR_PARAM_WITH_EXTENSION =".html?success=fail";
  public static final String SUCCESS_PARAM = "?success=success";
+ public static final String EWALLET_ARTICLE_DATE_FORMAT= "MMM, dd yyyy";
+ public static final String ETISALAT_ARTICLE_DATE_FORMAT = "dd MMM yyyy";
+ 
+ public static final String DAM_CONTENT = "/content/dam/";
  
  /**
   * private constructor to prevent instantiation of class.

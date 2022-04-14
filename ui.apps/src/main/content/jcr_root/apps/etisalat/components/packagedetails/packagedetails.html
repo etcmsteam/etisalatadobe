@@ -21,9 +21,9 @@
 				</div>
 				<div data-sly-test="${packVariation == 'packTextItems'}" class="content-wrapper">
 					<div data-sly-test="${packItem.tiletitle}" class="wst-main-headings">
-						<div class="h7">${packItem.tiletitle}</div>
+						<div class="${packItem.titleStyle ? packItem.titleStyle : 'h7'}">${packItem.tiletitle}</div>
 					</div>
-					<div class="paragraph-styling">
+					<div class="paragraph-styling" data-sly-test="${packItem.text}">
 						<div class="p2">
 							${packItem.text @ context='html'}
 						</div>
@@ -32,10 +32,10 @@
 			 </div>
 		   </sly>
         </div>
-        <div data-sly-test="${properties.footerNote}" class="tile-foot-note">
+         <div data-sly-test="${properties.footerNote}" class="tile-foot-note">
             <div class="paragraph-styling">
                 <div class="p4">
-                    <p>${properties.footerNote}</p>
+                    <p>${properties.footerNote @context = 'html'}</p>
                 </div>
             </div>
         </div>

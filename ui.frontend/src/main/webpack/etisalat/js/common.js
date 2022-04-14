@@ -79,4 +79,13 @@
       dropdownParent: $COUNTRY_NAME.parent(".cmp-form-options"),
     });
   }
+
+  // For mobile Tabs with Accordion
+  $('.nav-view-wrapp > a[data-toggle="collapse"]').click(function (e) {
+    if (!$(this).hasClass("collapsed")) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
+  
 })(jQuery);

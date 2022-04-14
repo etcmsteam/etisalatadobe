@@ -29,6 +29,8 @@ module.exports = {
   },
   output: {
     filename: "clientlib-[name]/[name].js",
+    chunkFilename: "clientlib-dynamic-modules/resources/[name].js",
+    publicPath: "/etc.clientlibs/etisalat/clientlibs/",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
@@ -41,7 +43,7 @@ module.exports = {
           {
             loader: "glob-import-loader",
             options: {
-              resolve: resolve,
+              resolve: resolve
             },
           },
         ],
@@ -93,7 +95,7 @@ module.exports = {
       { from: path.resolve(__dirname, SOURCE_ROOT + "/gochat/resources"), to: "./clientlib-gochat/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/etisalat/resources"), to: "./clientlib-etisalat/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/careers/resources"), to: "./clientlib-careers/" },
-      { from: path.resolve(__dirname, SOURCE_ROOT + '/futurenow/resources'), to: './clientlib-futurenow/' },
+      { from: path.resolve(__dirname, SOURCE_ROOT + "/futurenow/resources"), to: "./clientlib-futurenow/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/global/resources"), to: "./clientlib-global/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/fivemobile/resources"), to: "./clientlib-fivemobile/" },
       { from: path.resolve(__dirname, SOURCE_ROOT + "/hiuapp/resources"), to: "./clientlib-hiuapp/" },

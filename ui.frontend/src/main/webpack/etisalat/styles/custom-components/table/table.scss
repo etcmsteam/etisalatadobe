@@ -291,20 +291,25 @@
 
   &.shorter-first-column {
     table {
-      @media screen and (min-width: 1248px) {
         thead,
         tbody {
           tr {
             th,
             td {
               &:first-child {
-                width: 15%;
+                @media screen and (min-width: 1248px) {
+                  width: 15%;
+                }
+                @include rtlBlock() {
+                  @include respond-to-min($desktop) {
+                    width: 20% !important;
+                  }
+                }
               }
             }
           }
         }
       }
-    }
   }
 
   &.table-collapsed {
@@ -1150,9 +1155,6 @@
       margin: 0;
 
       tbody {
-        tr {
-        }
-
         td {
           border-bottom: 1px solid $white-2;
           padding-left: 0;
@@ -1590,7 +1592,34 @@ table {
 
   .foot-notes-section.under-table {
     margin-bottom: 0;
-    margin-top: 24px;
+    margin-top: toRem(24);
+  
+    ol,
+    ul {
+      list-style: none;
+      counter-reset: list-counter;
+
+      li {
+        list-style: none;
+        counter-increment: list-counter;
+        position: relative;
+        font-size: toRem(14);
+        line-height: 1.6;
+        padding-left: toRem(12);
+        margin-bottom: toRem(13);
+        color: $gray-text-color;
+
+        &:before {
+          content: counter(list-counter);
+          color: $gray-text-color;
+          font-size: toRem(10);
+          line-height: 1;
+          top: 0;
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
 
     @include respond-to-max($desktop - 1) {
       display: none;
@@ -1724,9 +1753,6 @@ table {
           padding-bottom: 15px;
 
           @include font-family-lato;
-          @include rtlBlock() {
-            font-weight: get-font-weight("bold");
-          }
         }
       }
     }
@@ -1736,6 +1762,9 @@ table {
       font-size: $font16;
       line-height: 1.5;
 
+      @include respond-to-max($tablet) {
+        font-size: $font14;
+      }
       tr {
         border-bottom: 1px solid $silver-white;
 
@@ -1753,7 +1782,7 @@ table {
 
           @include rtlBlock() {
             padding-right: $padding-step-0;
-            font-weight: get-font-weight("regular");
+            padding-left: toRem(24);
             @include respond-to-max($phone) {
               padding-right: 4px;
               padding-left: 0;
@@ -1943,11 +1972,7 @@ table {
 }
 
 .custom-datatable {
-  margin: 0 -4px;
-
-  @include respond-to-min($tablet) {
-    margin: 0;
-  }
+  margin: 0;
 
   .dataTables_info {
     display: none;
@@ -2204,5 +2229,32 @@ th {
   .custom-datatable .dataTables_paginate .paginate_button.current,
   .see-more-table span {
     color: $yellow-light !important;
+  }
+}
+
+.cmp-tab-wst-channellist {
+  .table-default-section {
+    .custom-datatable {
+      margin: 0 2rem !important;
+      padding: 0 1rem;
+
+      @include respond-to-max($desktop - 1) {
+        margin: 0 0.5rem !important;
+        padding: 0 0.5rem !important;
+      }
+    }
+  }
+}
+
+.dataTables_wrapper{
+  table{
+    &.dataTable{
+      a{
+        display: flex;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }

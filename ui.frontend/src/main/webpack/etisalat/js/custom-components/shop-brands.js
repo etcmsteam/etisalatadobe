@@ -6,11 +6,29 @@ export const SHOP_BRANDS = () => {
     const rootInstanceClass = `brands-logo-${index}`;
     $rootThis.addClass(rootInstanceClass);
 
+    const BRAND_LOGO_DATA = $rootThis.data();
+    const {
+      dataUrl: DATA_URL,
+      dataPath: DATA_PATH = "/b2c/eshop/getProductsByBrand",
+      categoryId: CATEGORY_ID,
+      linkPath: LINK_PATH = "/b2c/eshop/viewProducts",
+      requestMethod: REQUEST_METHOD = "POST",
+      enableReqParams: ENABLE_REQ_PARAMS,
+    } = BRAND_LOGO_DATA;
+
+    const locale = $("html")[0].lang != "" ? $("html")[0].lang.toUpperCase() : "EN";
+    let url = DATA_URL || DATA_PATH;
+
+    if (ENABLE_REQ_PARAMS) {
+      url = `${DATA_PATH}?locale=en-${locale}`;
+    }
+
     const swiper = swiperInit(`.${rootInstanceClass} .brands-swiper`, {
       slidesPerView: 2.2,
       scrollbar: `.${rootInstanceClass} .brand-scrollbar`,
-      nextButton: `.${rootInstanceClass}.brands-logo .next`,
-      prevButton: `.${rootInstanceClass}.brands-logo .prev`,
+      nextButton: $("html").attr("lang") === "ar" ? `.${rootInstanceClass}.brands-logo .prev` : `.${rootInstanceClass}.brands-logo .next`,
+      prevButton: $("html").attr("lang") === "ar" ? `.${rootInstanceClass}.brands-logo .next` : `.${rootInstanceClass}.brands-logo .prev`,
+
       scrollbarHide: false,
       scrollbarDraggable: true,
       breakpoints: {
@@ -44,6 +62,8 @@ export const SHOP_BRANDS = () => {
           }
           for (var j = 0; j < filters[i].dimensionValues.length; j++) {
             var refinement = filters[i].dimensionValues[j];
+            const TILE_LINK = `${LINK_PATH}?category=mobileDevices&subCategory=${CATEGORY_ID}&catName=Smartphones&filtersParam=${refinement.navigationState}&locale=${locale}`;
+
             html +=
               '<div class="swiper-slide">' +
               '<div class="logo-li brand-container" data-name="' +
@@ -51,6 +71,7 @@ export const SHOP_BRANDS = () => {
               '" data-navigation="' +
               refinement.navigationState +
               '">' +
+              '<a href="' + TILE_LINK +'" class="clickable-tile"></a>' +
               '<div class="img">' +
               '<img src="' +
               refinement.image +
@@ -64,23 +85,6 @@ export const SHOP_BRANDS = () => {
           return html;
         }
       }
-    }
-
-    const BRAND_LOGO_DATA = $rootThis.data();
-    const {
-      dataUrl: DATA_URL,
-      dataPath: DATA_PATH = "/b2c/eshop/getProductsByBrand",
-      categoryId: CATEGORY_ID,
-      linkPath: LINK_PATH = "/b2c/eshop/viewProducts",
-      requestMethod: REQUEST_METHOD = "POST",
-      enableReqParams: ENABLE_REQ_PARAMS,
-    } = BRAND_LOGO_DATA;
-
-    const locale = $("html")[0].lang != "" ? $("html")[0].lang.toUpperCase() : "EN";
-    let url = DATA_URL || DATA_PATH;
-
-    if (ENABLE_REQ_PARAMS) {
-      url = `${DATA_PATH}?locale=en-${locale}`;
     }
 
     var payload = {
@@ -103,11 +107,6 @@ export const SHOP_BRANDS = () => {
       },
     });
 
-    $rootThis.on("click", ".brand-container", function () {
-      var navState = $(this).data("navigation");
-
-      window.location.href = `${LINK_PATH}?category=mobileDevices&subCategory=${CATEGORY_ID}&catName=Smartphones&filtersParam=${navState}&locale=${locale}`;
-    });
   }
 
   $(".brands-logo").each(renderShopBrandsCarousel);

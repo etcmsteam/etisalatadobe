@@ -17,6 +17,13 @@ public interface GoogleMapsService {
 	public String getGoogleKey();
 
 	/**
+	 * Returns a google site map key.
+	 *
+	 * @return
+	 */
+	public String getEwalletKey();
+
+	/**
 	 * Returns a google contact us url.
 	 *
 	 * @return

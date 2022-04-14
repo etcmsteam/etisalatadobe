@@ -84,11 +84,6 @@ dfn {
   font-style: italic;
 }
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
 mark {
   background: #ff0;
   color: #000;
@@ -335,9 +330,9 @@ img {
   vertical-align: middle;
 }
 
-.imageetisalatviewport{
-  img{
-    width: 100%;
+.imageetisalatviewport {
+  img {
+    width: auto;
   }
 }
 
@@ -347,7 +342,7 @@ img {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    >.button {
+    > .button {
       width: 100%;
       &:first-child {
         margin-bottom: toRem(16);
@@ -358,7 +353,7 @@ img {
     }
     @media (min-width: 768px) {
       flex-direction: row;
-      >.button {
+      > .button {
         width: auto;
         &:first-child {
           margin-right: toRem(24);
@@ -377,7 +372,7 @@ img {
     .btn-col-2 {
       .cmp-container {
         @media (min-width: 768px) {
-          >.button {
+          > .button {
             &:first-child {
               margin-left: toRem(24);
               margin-right: 0;
@@ -398,11 +393,23 @@ img {
 .img-rounded {
   border-radius: 0;
 }
+.img-static {
+  position: relative;
+  min-height: 242px;
 
+  @media (min-width: 768px) {
+    min-height: 250px;
+  }
+
+  img {
+    position: static !important;
+  }
+}
 .imagesblock {
   .responsive-img-wraper {
     img {
-      width: 100%
+      position: static;
+      width: 100%;
     }
   }
 }
@@ -448,8 +455,6 @@ hr {
 .wst-main-headings h5,
 .wst-main-headings h6 {
   color: #353738;
-  margin: 0;
-
   @include font-family-Neotech;
 }
 

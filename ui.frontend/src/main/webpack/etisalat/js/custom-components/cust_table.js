@@ -1,26 +1,41 @@
         $(document).ready(function () {
+            if($(".elife-channel-list-header").length > 0 ){
+                $('body').addClass('channel-list-page');
+                var windowHeight = $(window).innerHeight();
+                var topbar = $('.top-nav-section').innerHeight() || 49;
+                var header = $('.elife-channel-list-header').innerHeight();
+                var channelList = $('.channel-list-tabs-wrapper').innerHeight() || 76;
+                var filters = $('.sorting-filter-wrapper').innerHeight();
+                var availableHeight = (windowHeight - (topbar + header + channelList + filters));
+                var filterPopupHeader = 0;
+                var filterPopupFooter = 0;
+                applyTabid();
 
-            $('body').addClass('channel-list-page');
-            var windowHeight = $(window).innerHeight();
-            var topbar = $('.top-nav-section').innerHeight() || 49;
-            var header = $('.elife-channel-list-header').innerHeight();
-            var channelList = $('.channel-list-tabs-wrapper').innerHeight() || 76;
-            var filters = $('.sorting-filter-wrapper').innerHeight();
-            var availableHeight = (windowHeight - (topbar + header + channelList + filters));
-            var filterPopupHeader = 0;
-            var filterPopupFooter = 0;
-            applyTabid();
-
-            if (window.innerWidth > 991) {
-                $('.tables-4-0').css('height', (availableHeight - 87) + 'px');
-            } else {
-                $('.tables-4-0').css('height', (availableHeight + 32) + 'px');
+                if (window.innerWidth > 991) {
+                    $('.tables-4-0').css('height', (availableHeight - 87) + 'px');
+                } else {
+                    $('.tables-4-0').css('height', (availableHeight + 32) + 'px');
+                }
+                if ($(".not-found").length > 0) {
+                    $(".not-found").find("a").addClass("btn btn-default ripple-effect");
+                }
             }
-            if ($(".not-found").length > 0) { 
-                $(".not-found").find("a").addClass("btn btn-default ripple-effect");
+
+            if (window.location.href.indexOf("/ar/") > -1) {
+              const sortByelement = $(".sort-label .label");
+              const sortBytextToReplace = '<span class="label"> ترتيب بحسب: <span class="sub-label"> A to Z</span></span>';
+              sortByelement.replaceWith(sortBytextToReplace);
+              $(".filter-lable .label").text("تصنيف");
+              $("#filters .nv-modal-title").text("تصنيف");
+              const filterApllyelem = $("#filters .btn.btn-green");
+              const filterApllyReplaceText = '<button class="btn btn-green" role="button">تطبيق <span class="hide-on-mobile">التصنيفات</span></button>';
+              filterApllyelem.replaceWith(filterApllyReplaceText);
+              const filterResetElement = $(".filter-button-wrap .nv-btn-link");
+              const filterResettextToReplace = '<a href="#" class="nv-btn-link green"> إعادة ضبط <span class="hide-on-mobile">التصنيفات</span> </a>';
+              filterResetElement.replaceWith(filterResettextToReplace);
             }
 
-            // search expand for mobile view 
+            // search expand for mobile view
             $('.head-wrapper .input-group .input-icon').off().on('click', function(e) {
                 e.preventDefault();
                 $(this).closest('.head-wrapper').addClass('search-expanded');
@@ -337,8 +352,9 @@ $('.e-life-modal .nv-plan-details-modal button').off().on('click', function () {
 $('.sort-label.mobile-view').off('click').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
+    const PARENT_EL = $(this).parents(".table");
     if (window.innerWidth < 991) {
-        popupHeight(this);
+        popupHeight(this, PARENT_EL);
     }
 
 });

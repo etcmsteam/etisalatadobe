@@ -11,8 +11,8 @@
   line-height: 3rem;
   outline: 0;
   padding: 0 0.5rem;
+  position: absolute;
   text-align: center;
-  text-align: $white;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
   white-space: nowrap;
@@ -66,6 +66,7 @@
 
   @include rtlBlock() {
     padding-left: toRem(10);
+    padding-right: 0;
   }
 
   &::after {
@@ -78,13 +79,13 @@
     padding: toRem(3.5);
     position: absolute;
     right: 0;
-    top: toRem(6);
+    top: toRem(5);
     width: toRem(7);
 
     @include rtlBlock {
-      left: -1rem;
+      left: -0.5rem;
       right: auto;
-      top: 0.7rem;
+      top: toRem(9.5);
       transform: translateY(-50%) rotate(135deg);
     }
   }
@@ -225,6 +226,22 @@
       img {
         height: auto;
         max-width: 100%;
+        padding-left: 12px;
+
+        @include rtlBlock() {
+          padding-left: 0;
+          padding-right: 12px;
+        }
+      }
+    }
+
+    .img-static {
+      max-width: 50%;
+      padding-left: 12px;
+
+      @include rtlBlock() {
+        padding-left: 0;
+        padding-right: 12px;
       }
     }
 
@@ -245,6 +262,22 @@
       img {
         height: auto;
         max-width: 100%;
+        padding-right: 12px;
+
+        @include rtlBlock() {
+          padding-left: 12px;
+          padding-right: 0;
+        }
+      }
+    }
+
+    .img-static {
+      max-width: 50%;
+      padding-right: 12px;
+
+      @include rtlBlock() {
+        padding-left: 12px;
+        padding-right: 0;
       }
     }
 

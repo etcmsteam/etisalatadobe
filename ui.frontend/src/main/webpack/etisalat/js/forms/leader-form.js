@@ -1,4 +1,6 @@
 /* eslint-disable */
+import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
+
 (function () {
   const $FORM = $("#leadOrder");
   const $SUBMIT_CTA = $("#leadOrder .cmp-form-button");
@@ -31,6 +33,7 @@
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
+    FORM_ERROR($FORM);
     console.log(errorText);
   }
 
@@ -105,6 +108,7 @@
         encode: true,
       })
         .done(function () {
+          FORM_SUCCESS($FORM, PAYLOAD);
           return true;
         })
         .fail(submitErrorResponse);

@@ -15,7 +15,8 @@ Include conf.d/variables/custom.vars
 	ServerName	"hiuapp"
 	# Put names of which domains are used for your published site/content here
 	# ServerAlias	 "publish-p42155-e161076.adobeaemcloud.com	publish-p42155-e164800.adobeaemcloud.com	publish-p42155-e266409.adobeaemcloud.com	publish-p42155-e266400.adobeaemcloud.com	publish-p42155-e266399.adobeaemcloud.com	publish-p42155-e266398.adobeaemcloud.com"
-	ServerAlias "*"
+	# ServerAlias "*"
+	ServerAlias  *.hiuapp.ae *-hiuapp-cms.azureedge.net
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
 	# Add header breadcrumbs for help in troubleshooting
@@ -59,10 +60,14 @@ Include conf.d/variables/custom.vars
 		RewriteEngine	on
 		Include conf.d/rewrites/rewrite.rules
 
+        ## Redirect to home page
+        RewriteRule ^$ /content/hiuapp/ae/en/index.html [NC,R]
+        ## Redirect to home page
+        RewriteRule ^/$ /content/hiuapp/ae/en/index.html [NC,R]
+
 		# Rewrite index page internally, pass through (PT)
 		#RewriteRule "^(/?)$" "/index.html" [PT]
 		# rewrite for Home page - (FiveMobile Index) 
 		RewriteRule ^/?$ /content/hiuapp/ae/en/index.html [PT,L]
-		RewriteRule ^/hiuapp/?$ /content/hiuapp/ae/en/index.html [PT,L]
 	</IfModule>
 </VirtualHost>

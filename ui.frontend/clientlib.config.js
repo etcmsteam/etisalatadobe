@@ -330,5 +330,18 @@ module.exports = {
         },
       },
     },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-dynamic-modules",
+      categories: ["etisalat.dynamic-modules"],
+      dependencies: [],
+      assets: {
+        resources: {
+          cwd: "clientlib-dynamic-modules/resources",
+          files: ["**/*.*"],
+          flatten: false,
+        },
+      },
+    },
   ],
 };

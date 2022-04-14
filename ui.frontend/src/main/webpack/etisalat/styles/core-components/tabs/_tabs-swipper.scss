@@ -140,7 +140,7 @@
       }
 
       &.cmp-tabs__tab--active {
-        border-bottom: toRem(2) solid $main-green;
+        border-bottom: toRem(2) solid $main-green !important;
         border-left: 0;
         border-right: 0;
         border-top: 0;
@@ -183,9 +183,9 @@
   }
 
   .swiper-button-next {
-    right: toRem(-24);
+    right: toRem(-15);
 
-    @include respond-to-min($desktop-wide) {
+    @include respond-to-min($desktop-large) {
       right: toRem(-50);
     }
 
@@ -195,9 +195,9 @@
   }
 
   .swiper-button-prev {
-    left: toRem(-24);
+    left: toRem(-15);
 
-    @include respond-to-min($desktop-wide) {
+    @include respond-to-min($desktop-large) {
       left: toRem(-50);
     }
 
@@ -283,19 +283,6 @@
       &.cmp-tabs__tab--active {
         border: 0 !important;
         color: $main-green;
-
-        &::after {
-          border-bottom: toRem(2) solid $main-green;
-          bottom: 0;
-          color: $main-green;
-          content: "";
-          display: block;
-          left: 0;
-          margin: 0 auto;
-          position: absolute;
-          right: 0;
-          width: toRem(72);
-        }
       }
     }
   }
@@ -677,6 +664,66 @@
   .cmp-tabs .cmp-tabs__tabpanel {
     .container {
       @extend %container;
+    }
+  }
+}
+
+.cmp-tab-wst-channellist {
+  .cmp_tabs-swipper {
+    margin-bottom: toRem(16);
+    margin-left: toRem(12);
+    margin-right: toRem(12);
+
+    @include respond-to-min($desktop) {
+      margin-bottom: toRem(36);
+      margin-left: toRem(16);
+      margin-right: toRem(16);
+    }
+
+    .container-center {
+      width: auto !important;
+
+      @include respond-to-max($desktop - 1) {
+        padding: 0 !important;
+      }
+    }
+
+    .row {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 0 36px !important;
+
+      @include respond-to-max($desktop - 1) {
+        padding: 0 !important;
+      }
+    }
+
+    .tabs-swiper-navigation {
+      position: relative;
+
+      @include respond-to-max($desktop - 1) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .swiper-button-next {
+        right: -1.8rem;
+      }
+
+      .swiper-button-prev {
+        left: -1.8rem;
+      }
+    }
+
+    .swiper-slide {
+      @include font-family-lato;
+
+      @include respond-to-max($tablet - 1) {
+        font-size: $font14;
+        width: auto !important;
+      }
+
+      font-weight: 700;
     }
   }
 }

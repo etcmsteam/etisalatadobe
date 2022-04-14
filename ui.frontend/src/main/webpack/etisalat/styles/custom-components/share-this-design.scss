@@ -10,10 +10,23 @@
       margin-top: 0;
     }
   }
+
+  @include respond-to-max($desktop-min){
+    position: static;
+  }
   
   .main-text-action-wrapper {
      float: right;
+     
 
+     @include respond-to-max($phone){
+      padding: 0 !important;
+    }
+
+    @include respond-to-max($desktop-min){
+      padding-left: 0 !important;
+    }
+    
       @include rtlBlock(){
         float: left;
       }
@@ -189,6 +202,10 @@
             }
           }
         }
+      }
+
+      @include respond-to-max($desktop-min){
+        position: static;
       }
 
       @include respond-to-min($desktop) {

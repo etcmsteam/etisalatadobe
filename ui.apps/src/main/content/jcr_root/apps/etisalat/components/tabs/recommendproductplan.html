@@ -1,0 +1,16 @@
+<template data-sly-template.recommendProductTab="${ @ tabs,properties}">
+<div class="container" data-sly-test="${tabs.items && tabs.items.size > 0}">
+  <div class="config-section-wrap eshop-config-tabs">
+    <div class="swiper-container page-nav page-nav-tab-config tab-config-deeplink">      
+      <div data-sly-list.tab="${tabs.items}" class="swiper-wrapper justify-content-md-center">
+        <div class="swiper-slide ${tabList.first ? 'active' :''}">
+          <a href="#recommend-${tab.id}">${tab.title}</a>
+        </div>        
+      </div>
+    </div>
+  </div>
+  <div class="deeplink-tabs" data-sly-list.item="${tabs.items}">
+    <div class="deeplink-tab ${itemList.first ? 'active' :''}" id="recommend-${item.id}" data-sly-resource="${item.name @ decorationTagName=wcmmode.edit ? 'div' : ''}" role="tabpanel" aria-labelledby="${tabs.accessibilityLabel}"></div>        
+  </div>
+</div>
+</template>

@@ -12,6 +12,199 @@
       width: auto;
     }
   }
+
+  &.cmp-tab-expansion {
+    border-radius: 4px;
+    padding: 40px 0;
+
+    .tabs-expand-table {
+      table {
+        font-weight: normal;
+      }
+
+      .table {
+        margin-bottom: 25px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      padding: 80px 0 60px;
+    }
+
+    &.cmp_tabs--vertical {
+      &.cmp_tabs--mobile {
+        .cmp-teaser__content {
+          background-color: transparent;
+
+          @media screen and (max-width: 576px) {
+            padding: 0;
+          }
+        }
+
+        .cmp-teaser__description ol li {
+          @media (max-width: 991px) {
+            font-weight: normal;
+          }
+        }
+      }
+
+      .cmp-teaser {
+        padding: toRem(16) toRem(16) toRem(24);
+
+        @media (min-width: 992px) {
+          padding: toRem(36);
+        }
+      }
+    }
+
+    @media (min-width: 768px) {
+      &.cmp_tabs--vertical {
+        &.cmp_tabs--mobile {
+          .cmp-teaser__content {
+            background-color: transparent;
+            padding: 0;
+          }
+        }
+
+        .cmp-tabs__tabpanel--active {
+          min-height: 416px;
+        }
+
+        .cmp-tabs {
+          li.cmp-tabs__tab {
+            padding: 24px 0;
+            padding-left: 1.5rem;
+
+            @include rtlBlock() {
+              padding-left: 0;
+              padding-right: 1.5rem;
+            }
+          }
+
+          li.cmp-tabs__tab .cmp-tabs__tab--active {
+            padding-right: 24px;
+
+            @include rtlBlock() {
+              padding-left: 24px;
+            }
+          }
+        }
+
+        .cmp-tabs__tablist {
+          width: 37%;
+
+          @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+            width: 53.8666%;
+          }
+
+          @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+            width: 53.8666%;
+          }
+        }
+      }
+    }
+
+    &.cmp_tabs--mobile {
+      .nav-view-wrapp.panel {
+        > a {
+          margin-left: toRem(-17);
+          margin-right: toRem(-17);
+          padding: 18px 0 18px 16px !important;
+
+          @include rtlBlock() {
+            padding: 18px 16px 18px 0 !important;
+          }
+
+          &.collapsed {
+            color: $steel-grey;
+          }
+
+          @media (max-width: 991px) {
+            &.collapsed::before {
+              right: toRem(20);
+              transform: translateY(-50%) rotate(-135deg);
+            }
+
+            @include rtlBlock() {
+              &.collapsed::before {
+                left: toRem(20);
+                right: auto;
+              }
+            }
+          }
+
+          @media (max-width: 991px) {
+            &::before {
+              padding: 3.5px !important;
+              transform: translateY(-50%) rotate(45deg);
+            }
+          }
+        }
+
+        > :not(a.collapsed) {
+          font-weight: 700;
+        }
+      }
+
+      .learn-more-wrap--tab-cta {
+        padding-left: 0;
+      }
+    }
+
+    &.cmp_tabs--vertical-whitebg {
+      .cmp-tabs__tab {
+        img,
+        svg {
+          height: toRem(24);
+        }
+      }
+    }
+  }
+}
+
+.container-fix__fluid {
+  .tabs.cmp-tab-expansion {
+    &.cmp_tabs--mobile {
+      .nav-view-wrapp.panel > a {
+        @media (min-width: 768px) and (max-width: 1024px) {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @include respond-to-min($desktop) {
+    .cmp-teaser--multicol:first-child {
+      .cmp-container {
+        padding: 0 12px 0 0 !important;
+
+        @include rtlBlock() {
+          padding: 0 0 0 12px !important;
+        }
+      }
+    }
+
+    .cmp-teaser--multicol:nth-child(2) {
+      .cmp-container {
+        padding: 0 0 0 12px !important;
+
+        @include rtlBlock() {
+          padding: 0 12px 0 0 !important;
+        }
+      }
+    }
+  }
+
+  @include respond-to-max($desktop) {
+    .cmp-teaser--multicol .cmp-container {
+      padding: 0 !important;
+    }
+  }
+}
+
+.cmp-expansion-pad-15 {
+  padding-left: 17px !important;
+  padding-right: 17px !important;
 }
 
 // common css st
@@ -91,14 +284,50 @@
       background-color: $white;
     }
 
-    .cmp-teaser__image {
+    .cmp-teaser__image,
+    .img-static {
       @include respond-to-max($phone) {
         padding: 0 toRem(16);
       }
     }
 
+    &.cmp-tab--get-more {
+      .img-static {
+        @include respond-to-max($phone) {
+          height: 200px;
+          margin: 0 toRem(16);
+          min-height: 200px;
+          padding: 0;
+        }
+      }
+
+      .cmp-teaser {
+        @include respond-to-max($desktop-wide) {
+          flex-direction: column !important;
+
+          .img-static {
+            margin-bottom: toRem(16);
+          }
+        }
+      }
+    }
+
     .cmp-teaser__content {
       background-color: $sand-white-50;
+    }
+
+    > h3:first-of-type {
+      color: $almost-black;
+      font-size: toRem(28);
+      letter-spacing: normal;
+      line-height: 1.21;
+      margin: 0 0 toRem(24) 0;
+
+      @media (min-width: 992px) {
+        font-size: toRem(32);
+        line-height: 1.25;
+        margin: 0 0 toRem(52) 0;
+      }
     }
   }
 
@@ -124,39 +353,48 @@
       }
     }
 
-    &__title {
-      color: $almost-black;
-      font-size: $font20;
-      line-height: 1.6;
-      margin-bottom: toRem(16);
-      margin-top: 0;
+    // &__title {
+    //   color: $almost-black;
+    //   font-size: $font20;
+    //   line-height: 1.6;
+    //   margin-bottom: toRem(16);
+    //   margin-top: 0;
 
-      @include respond-to-max($tablet) {
-        margin-top: toRem(16);
-      }
+    //   @include respond-to-max($tablet) {
+    //     margin-top: toRem(16);
+    //   }
 
-      @include respond-to-min($desktop) {
-        font-size: $font24;
-        line-height: 1.33;
-      }
+    //   @include respond-to-min($desktop) {
+    //     font-size: $font24;
+    //     line-height: 1.33;
+    //   }
 
-      @include rtlBlock {
-        font-weight: get-font-weight("light");
-      }
-    }
+    //   @include rtlBlock {
+    //     font-weight: get-font-weight("light");
+    //   }
+    // }
 
     &__description {
       ol {
-        padding: 0 toRem(35);
+        margin-left: toRem(28);
 
         li {
-          padding: 0 toRem(10);
+          margin-bottom: 4px;
+          padding-left: toRem(12);
         }
       }
 
       ol li,
       ul li {
         font-size: $font16;
+      }
+
+      @include respond-to-max(991px) {
+        ol li,
+        ul li {
+          font-size: $font16 !important;
+          line-height: 1.5;
+        }
       }
 
       p {
@@ -233,7 +471,7 @@
       }
     }
 
-    span {
+    a span {
       display: inline-block;
       margin-right: toRem(15);
 
@@ -424,7 +662,8 @@
       .cmp-teaser {
         display: block;
 
-        &__image {
+        &__image,
+        .img-static {
           width: 100%;
 
           @include respond-to-min($desktop) {
@@ -576,13 +815,15 @@
 .cmp_tabs--vertical-fullbdr {
   .nav-view-wrapp.panel > a {
     border-left: toRem(4) solid $main-green;
+    line-height: toRem(25) !important;
+    margin: 0 toRem(16) 0 0 !important;
+    padding: toRem(24) toRem(24) toRem(24) toRem(12) !important;
 
     @include font-family-Neotech;
 
     @include rtlBlock() {
       border-left: toRem(4) solid transparent;
       border-right: toRem(4) solid $main-green;
-      padding: toRem(24) toRem(15) toRem(24) toRem(15) !important;
     }
   }
 
@@ -590,17 +831,19 @@
     border-bottom: toRem(1) solid $light-sand-brown;
     border-left: toRem(4) solid transparent;
     color: $almost-black;
-    padding: toRem(24) toRem(16);
+    padding: toRem(24) toRem(24) toRem(24) 0;
 
     @include rtlBlock() {
       border-right: toRem(4) solid transparent;
+      padding: toRem(24) 0 toRem(24) toRem(24);
     }
   }
 
   &.tabs-fullbdr-textOnly {
     .cmp-tabs {
       &__tablist {
-        width: 33.33%;
+        padding-right: 12px;
+        width: 34%;
       }
 
       &__tabpanel--active {
@@ -681,6 +924,7 @@
       flex-direction: row-reverse;
       justify-content: flex-end;
       padding: toRem(16);
+      padding-right: 0 !important;
       text-align: left;
 
       @include font-family-Neotech;
@@ -757,7 +1001,7 @@
     font-weight: get-font-weight("bold");
     padding-left: toRem(37);
     padding-top: toRem(40);
-    width: 68%;
+    width: 66%;
 
     @include respond-to-min-max($desktop-wide, $desktop) {
       width: 70%;
@@ -779,12 +1023,6 @@
   }
 
   .cmp-teaser__description {
-    h3 {
-      font-size: $font24;
-      line-height: 1.33;
-      margin: 0 0 toRem(24) 0;
-    }
-
     p {
       color: $gray;
       font-size: $font16;
@@ -807,7 +1045,8 @@
     width: 100%;
   }
 
-  .cmp-teaser__image {
+  .cmp-teaser__image,
+  .img-static {
     height: auto;
     width: 100%;
   }
@@ -966,7 +1205,7 @@
     border: solid $main-green;
     border-width: 0 toRem(1) toRem(1) 0;
     content: "";
-    line-height: 1;
+    line-height: toRem(25) !important;
     padding: toRem(5) !important;
     position: absolute;
     right: toRem(2);
@@ -1015,11 +1254,11 @@
     .cmp-teaser {
       display: flex;
       flex-direction: row-reverse;
-      padding: 2rem;
+      padding: toRem(36) toRem(24) toRem(26);
       width: 100%;
 
       @include respond-to-max($tablet) {
-        padding: 0 toRem(16) toRem(24);
+        padding: toRem(16) toRem(16) toRem(24);
       }
 
       @include respond-to-max($desktop) {
@@ -1035,7 +1274,7 @@
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-end;
-        padding: toRem(24);
+        padding: toRem(24) toRem(30);
         text-align: left;
 
         @include font-family-lato;
@@ -1073,16 +1312,14 @@
 
       svg,
       img {
-        height: toRem(40);
+        height: toRem(24);
         margin-right: calc(#{$margin-step-1} + 2px);
-        width: toRem(35);
+        width: toRem(24);
 
         @include respond-to-min($tablet) {
           fill: inherit;
           float: left;
-          height: toRem(30);
           margin-right: toRem(24);
-          width: toRem(32);
 
           @include rtlBlock() {
             margin-left: toRem(24);
@@ -1104,7 +1341,7 @@
         color: $main-green;
         font-size: $font20;
         font-weight: get-font-weight("bold");
-        line-height: toRem(29);
+        line-height: 1.4;
         padding: 1rem 1rem 1rem 1.2rem;
         position: relative;
 
@@ -1124,28 +1361,15 @@
     .cmp-tabs__tabpanel--active {
       background: $white-gray1;
       display: block;
-      width: 70%;
+      width: 71.823%;
     }
 
     .cmp-teaser__description {
-      h3 {
-        font-size: toRem(24);
-        line-height: 1.33;
-        margin-bottom: 1.5rem;
-        margin-left: 0;
-        margin-top: 0;
-
-        @include respond-to-max($tablet) {
-          margin-top: toRem(16);
-        }
-      }
-
       p {
         color: $paracolor;
         font-size: toRem(16);
         font-weight: normal;
         line-height: 1.5;
-        padding-right: toRem(16);
       }
 
       ul {
@@ -1160,7 +1384,25 @@
       width: 100%;
     }
 
-    .cmp-teaser__image {
+    &.cmp-tab--get-more {
+      .cmp-teaser__content {
+        margin-right: toRem(24);
+      }
+
+      .img-static {
+        height: 242px;
+        min-height: 242px;
+        min-width: 360px;
+
+        @include respond-to-max($desktop - 1) {
+          height: 200px;
+          min-height: 200px;
+        }
+      }
+    }
+
+    .cmp-teaser__image,
+    .img-static {
       height: auto;
       width: 100%;
     }
@@ -1231,6 +1473,7 @@
       .nav-view-wrapp.panel > :not(a.collapsed) {
         background: $sand-white-50;
         color: $main-green;
+        font-weight: 700;
 
         @include respond-to-max($tablet) {
           margin: 0 toRem(-17);
@@ -1442,7 +1685,8 @@
       display: flex;
       width: 100%;
 
-      &__image {
+      &__image,
+      .img-static {
         height: toRem(428);
         width: 50%;
       }
@@ -1494,6 +1738,17 @@
   }
 
   // 2nd vartion en
+
+  .container-fix__width {
+    .cmp_tabs--vertical {
+      &.cmp_tabs--vertical-whitebg {
+        .cmp-tabs {
+          align-items: stretch;
+          margin: toRem(16) 0;
+        }
+      }
+    }
+  }
 }
 
 .cmp_tabs--vertical .cmp-teaser__action-link {

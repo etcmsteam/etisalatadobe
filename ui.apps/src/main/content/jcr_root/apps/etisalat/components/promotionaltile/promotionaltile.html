@@ -1,10 +1,6 @@
-<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     data-panelcontainer="${wcmmode.edit && 'Promotional tile'}"
-     data-placeholder-text="${wcmmode.edit && 'Please update Promotional tile' @ i18n}">
-    <sly
-            data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}">
-    </sly>
-    <div class="current-promotions-box ${properties.textAlignment}">
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+    <sly data-sly-set.textAlignment="${properties.textAlignment}"/>
+    <div class="current-promotions-box ${!wcmmode.edit ? textAlignment : ''}">
         <div  data-sly-test="${properties.fileReference}" class="icon-wrap">
          <span class="icon-with-bg">
             <div
@@ -68,4 +64,4 @@
             </sly>
         </div>
     </div>
-</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title}"></sly>

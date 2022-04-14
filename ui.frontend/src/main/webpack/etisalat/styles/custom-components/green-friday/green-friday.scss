@@ -321,10 +321,17 @@
 // custom styling
 
 .green-friday {
+  position: relative;
+
+  @include respond-to-max($phone) {
+    margin-left: toRem(-16);
+    margin-right: toRem(-16);
+  }
+
   .green-friday-hidden {
     display: none;
   }
-  position: relative;
+
   .banner-image {
     overflow: hidden;
     max-height: 67px;
@@ -372,6 +379,15 @@
       }
     }
     .content {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        text-align: right;
+      }
       h4,
       p {
         white-space: nowrap;
@@ -380,16 +396,12 @@
       }
       h4 {
         color: $almost-black;
-        font-size: 24px;
-        line-height: 30px;
-        text-align: right;
         margin: 0;
       }
       p {
         color: $steel-grey;
         font-size: 14px;
         line-height: 17px;
-        text-align: right;
         margin: 0;
       }
     }
@@ -444,12 +456,23 @@
           h4 {
             margin-bottom: 1rem;
           }
+          h1,
+          h2,
+          h3,
           h4,
+          h5,
+          h6,
           p {
             text-align: left;
+          }
+          h4,
+          p {
             text-overflow: inherit;
             overflow: auto;
             white-space: inherit;
+          }
+          h4 {
+            overflow: inherit;
           }
         }
         .timer {
@@ -474,25 +497,30 @@
       height: 100%;
 
       .container {
+        padding-left: toRem(12);
+        padding-right: toRem(12);
+
         @include respond-to-min($desktop-wide) {
-          width: toRem(1200);
+          width: toRem(1224);
         }
 
         @include respond-to-max($desktop-wide) {
-          width: toRem(952);
+          width: toRem(976);
         }
 
         @include respond-to-max($desktop-min) {
-          width: toRem(732);
+          width: toRem(756);
         }
 
         @include respond-to-max($phone) {
-          width: toRem(343);
+          width: toRem(367);
         }
 
         .main-text-greenf {
           .row {
-            margin: 0;
+            @include respond-to-max($desktop-min) {
+              margin: 0 !important;
+            }
           }
         }
 
@@ -541,17 +569,24 @@
           @media (min-width: 992px) {
             height: 289px;
           }
+          h1,
+          h2,
+          h3,
           h4,
+          h5,
+          h6,
           p {
             text-align: left;
+          }
+          h4,
+          p {
             text-overflow: inherit;
             overflow: auto;
             white-space: inherit;
           }
           h4 {
-            font-size: 40px;
-            line-height: 64px;
             margin-bottom: 8px;
+             overflow: inherit;
           }
           p {
             font-size: 18px;
@@ -736,14 +771,14 @@
             margin: 0;
             > div.col-md-4 {
               order: 2;
-              padding: 0;
+              padding: 0 !important;
             }
             > div.col-md-6 {
-              padding: 0;
+              padding: 0 !important;
             }
             > div.col-md-8 {
               order: 1;
-              padding: 0;
+              padding: 0 !important;
             }
           }
           .content {
@@ -755,8 +790,6 @@
               line-height: 20px;
             }
             h4 {
-              font-size: 20px;
-              line-height: 28px;
               white-space: inherit;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -936,6 +969,15 @@
             min-height: 70px;
           }
           .content {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+              text-align: right;
+            }
             h4,
             p {
               white-space: nowrap;
@@ -944,9 +986,6 @@
             }
             h4 {
               color: $almost-black;
-              font-size: 24px;
-              line-height: 30px;
-              text-align: right;
               margin: 0;
               margin-bottom: 4px;
             }
@@ -954,7 +993,6 @@
               color: $steel-grey;
               font-size: 14px;
               line-height: 17px;
-              text-align: right;
               margin: 0;
             }
           }
@@ -1007,13 +1045,16 @@
           p {
             display: none;
           }
-          h4 {
-            @include font-family-lato;
-            line-height: 19px;
-            font-weight: bold;
-            font-size: 16px;
-            margin-top: 4px;
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
             text-align: center;
+          }
+          h4 {
+            margin-top: 4px;
           }
         }
         .timer {
@@ -1072,7 +1113,12 @@
 
     .green-friday.medium-banner .main .main-text-greenf .content {
       p,
-      h4 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         text-align: right;
       }
     }
@@ -1086,7 +1132,12 @@
     @media (min-width: 992px) {
       .green-friday.and-small .main .main-text-greenf .content {
         p,
-        h4 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
           text-align: left;
         }
       }
@@ -1112,7 +1163,12 @@
     @media (max-width: 991px) {
       .green-friday.and-small .main .main-text-greenf .content {
         p,
-        h4 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
           text-align: center;
         }
       }

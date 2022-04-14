@@ -1,6 +1,7 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
-  <sly data-sly-use.parentRes="${resource.parent.path}" data-sly-set.heroBannerClass="${parentRes && 
-   parentRes.sling:resourceType == 'etisalat/components/carousel' ? '' : 'hero-banner-section single-slide-only'}" />
+  <sly data-sly-set.heroInnerPageView="${properties.heroImageInnerPageView ? 'hero-banner-section single-slide-only' : 'hero-banner-section'}" 
+       data-sly-use.parentRes="${resource.parent.path}" data-sly-set.heroBannerClass="${parentRes && 
+   parentRes.sling:resourceType == 'etisalat/components/carousel' ? '' : heroInnerPageView}" />
   <div data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
        data-sly-test="${properties.heroDisplayBehavior}" class="${!wcmmode.edit ? heroBannerClass : ''}"
        data-sly-unwrap="${heroBannerClass ? false : true}">
@@ -44,16 +45,10 @@
 			      </sly>	      	        
 		        <div class="text"> ${properties.pretitle}</div>
 		      </div>
-			  <div class="ele-margin hero-thumbnails" data-sly-test="${properties.thumbnailText}">
-			  <sly data-sly-use.thumbnailObj="${resource.path}" data-sly-list.thumbnailItems="${thumbnailObj.listChildren}">
-			     <div data-sly-test="${thumbnailItems.name == 'thumbnailItems'}" data-sly-repeat.thumbItem="${thumbnailItems.listChildren}" class="thumbnail-icon">
-			       <img data-sly-test="${thumbItem.fileReference}" src="${thumbItem.fileReference}" alt=""/>		    
-			     </div>
-			  </sly>			
-				<div data-sly-test="${properties.thumbnailText}" class="thumbnail-text">
-				  ${properties.thumbnailText}
-				</div>
-			  </div>
+		      
+			  <sly data-sly-use.thumbnailImagesTemplate="thumbnail-images.html"
+			             data-sly-call="${thumbnailImagesTemplate.thumbnailImage @ properties=properties}"/>
+			             
 		      <div data-sly-test="${properties.jcr:description}" class="ele-margin hero-description">
 	                ${properties.jcr:description @ context = 'html'}
 	          </div>          
@@ -69,11 +64,11 @@
 				<div class="container">
 					<div class="call-to-action-box">
 						<h3 data-sly-test="${properties.heroImageTitle}" class="heading">${properties.heroImageTitle} </h3>
-						<div data-sly-test="${properties.heroImageDesc}" class="description"> ${properties.heroImageDesc @ context =
-							'html'}</div>
+						<div data-sly-test="${properties.heroImageDesc}" class="description"> ${properties.heroImageDesc @ context = 'html'}</div>
 					    <sly data-sly-test.heroImageCTALink="${properties.heroImageLinkURL}" 
-	               data-sly-use.heroImageLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroImageCTALink}"/>
-					    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}" 
+	                         data-sly-use.heroImageLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroImageCTALink}"/>
+					    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}"  
+					         target="${properties.heroImageLinktarget ? '_blank' : '_self'}" 
 					         class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
 					      ${properties.heroImageCTATitle}</a>                                                           
 					</div>

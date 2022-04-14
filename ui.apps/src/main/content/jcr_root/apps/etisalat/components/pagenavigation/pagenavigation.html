@@ -1,7 +1,12 @@
-<div class="config-section-wrap" 
-   data-sly-use.pageNav="com.etisalat.core.models.PageNavigation" 
-   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"     
-   id="pagenav-${properties.id}">
+<sly data-sly-list.child="${resource.listChildren}">
+   <sly data-sly-test="${child.name == 'heroLinksSection' && properties.heroLinksSectionBehaviour == 'static'}">
+       <sly data-sly-set.heroLinksSectionPresentCss="add-links-with-span"></sly>
+   </sly>
+</sly>
+<div class="config-section-wrap ${heroLinksSectionPresentCss}"
+  data-sly-use.pageNav="com.etisalat.core.models.PageNavigation"
+  data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+  id="pagenav-${properties.id}">
    <div class="container">
       <div class="row">
          <div class="col-xs-12 col-md-3">

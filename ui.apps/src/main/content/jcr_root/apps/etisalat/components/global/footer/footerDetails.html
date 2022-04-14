@@ -27,8 +27,8 @@
         <div class="download-etisalat" >
           <div class="footer-heading">${properties.downloadTitle}</div>
           <div class="icons-wrap" data-sly-list.items="${footer.download}">
-            <div class="icon ${items.title}" style="display: block;">
-              <a href="${items.linkUrl}" target="_blank">
+            <div class="icon ${items.iconClassName}" style="display: block;">
+              <a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}">
                 <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}">
 
               </a>
@@ -36,19 +36,26 @@
           </div>
         </div>
         <!-- download etisalat icons -->
+		<!--Need help section-->
+		<div data-sly-test="${properties.needHelpTitle}" class="needhelp-etisalat">
+            <div class="footer-heading">${properties.needHelpTitle}</div>
+                <div class="help-content">
+                   ${properties.needHelpDescription @ context = "html"}
+            </div>
+        </div>
         <!-- follow-us etisalat icons -->
-        <div class="follow-etisalat">
+        <div data-sly-test="${properties.followUsTitle}" class="follow-etisalat">
           <div class="footer-heading">${properties.followUsTitle}</div>
           <div class="icons-wrap" data-sly-list.items="${footer.followUs}">
             <div class="icon">
-              <a href="${items.linkUrl}" target="_blank">
+              <a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}">
                 <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}"></a>
             </div>
           </div>
         </div>
         <!-- follow-us etisalat icons -->
         <!-- payment etisalat icons -->
-        <div class="payment-etisalat">
+        <div data-sly-test="${properties.paymentTitle}" class="payment-etisalat">
           <div class="footer-heading">${properties.paymentTitle}</div>
           <div class="icons-wrap" data-sly-list.items="${footer.payment}">
             <div class="icon">
@@ -61,14 +68,14 @@
     </div>
   </div>
 
-  <div class="container footer-links-logo-section">
+  <div data-sly-test="${properties.quickAccessTitle || footer.footerLinks || footer.promo.imgUrl}" class="container footer-links-logo-section">
     <div class="row">
       <div class="flex-container">
         <div class="col-xs-12 col-md-9">
 
           <!-- end: footer - quick links -->
 
-		  <ul class="footer-social-nav">
+		  <ul data-sly-test="${properties.quickAccessTitle}" class="footer-social-nav">
 			<li>${properties.quickAccessTitle}</li>
 				<sly data-sly-list.multifieldObj="${resource.getChildren}">
        				<sly data-sly-test="${multifieldObj.name == 'quickaccess'}">
@@ -85,15 +92,15 @@
 			</ul>
 
           <ul class="footer-links-nav" data-sly-list.items="${footer.footerLinks}">
-            <li><a style="padding-left: 0; border-left: 0" href="${items.linkUrl}" title="${items.linkText}">${items.linkText}</a>
+            <li><a href="${items.linkUrl}" title="${items.linkText}">${items.linkText}</a>
             </li>
           </ul>
-          <div class="copyright desktop year"> &copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
+          <div data-sly-test="${footer.copyrightText}" class="copyright desktop year"> &copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
 
           <!-- <div class="copyright desktop ">&copy; 2021 Etisalat. All Rights Reserved.</div> -->
         </div>
-        <div class="col-xs-12 col-md-3">
-          <a class="etisalat-logo" href="${footer.promo.linkUrl}" title="Expo 2020">
+        <div data-sly-test="${footer.promo.imgUrl || footer.copyrightText}"class="col-xs-12 col-md-3">
+          <a data-sly-test="${footer.promo.imgUrl}" class="etisalat-logo" href="${footer.promo.linkUrl}" title="Expo 2020">
             <img alt="icon-amex-card"  src="${footer.promo.imgUrl}" title="icon-amex-card"/>
           </a>
           <div class="copyright">&copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
