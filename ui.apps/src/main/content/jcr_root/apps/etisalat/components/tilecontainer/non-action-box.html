@@ -8,7 +8,7 @@
 
     <!--not testimonials container-->
     <sly data-sly-test="${properties.nabBoxVariation != 'with-quotes' && properties.nabBoxVariation != 'leftRightVariation'}">
-    <div class="${withpretitle}${withtitle}">
+    <div data-component="cmp-non-actionable-box" class="${withpretitle}${withtitle}">
         <div class="container">
             <div class="content-wrapper">
                 <div class="content">
@@ -34,7 +34,7 @@
 	<!--Left & Right - non action box container-->
     <sly data-sly-test="${properties.nabBoxVariation == 'leftRightVariation'}">
     <div data-sly-unwrap="${!properties.promoLeftRight}" class="promo-non-actionable-box">
-    <div class="non-action-boxes-4-0 ${properties.tileFlipped}">
+    <div data-component="cmp-non-actionable-box" class="non-action-boxes-4-0 ${properties.tileFlipped}">
             <div class="container" data-sly-repeat="${container.items}" 
                  data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
     </div>
@@ -43,7 +43,7 @@
 
     <!--testimonials container-->
     <sly data-sly-test="${properties.nabBoxVariation == 'with-quotes'}">
-        <div class="testimonial-module container-fix__width ${oneTileCheck}">
+        <div data-component="cmp-non-actionable-box" class="testimonial-module container-fix__width ${oneTileCheck}">
             <div class="testimonial-box">
                 <div class="pattern-wrapper">
                     <!--?xml version="1.0" encoding="UTF-8"?-->

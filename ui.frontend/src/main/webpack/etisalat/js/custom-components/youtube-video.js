@@ -1,7 +1,10 @@
 /* eslint-disable */
 let videoList = document.querySelectorAll(".video-item div");
 
-const YOU_TUBE_VIDEO_PLAYER = () => {
+export const YOU_TUBE_VIDEO_PLAYER = () => {
+  if(!videoList.length) {
+    return false;
+  }
   let videoID = document.querySelector("#youTubeVideoPlayer");
   let tag = document.createElement("script");
   let firstScriptTag = document.getElementsByTagName("script")[0];
@@ -37,7 +40,3 @@ const YOU_TUBE_VIDEO_PLAYER = () => {
     event.target.playVideo();
   }
 };
-
-if (videoList.length > 0) {
-  YOU_TUBE_VIDEO_PLAYER();
-}

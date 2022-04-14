@@ -43,7 +43,7 @@ module.exports = {
           {
             loader: "glob-import-loader",
             options: {
-              resolve: resolve
+              resolve: resolve,
             },
           },
         ],
@@ -88,6 +88,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
       filename: "clientlib-[name]/[name].css",
+      chunkFilename: "clientlib-dynamic-modules/resources/[name].css",
     }),
     new CopyWebpackPlugin([
       { from: path.resolve(__dirname, SOURCE_ROOT + "/base/resources"), to: "./clientlib-base/" },
