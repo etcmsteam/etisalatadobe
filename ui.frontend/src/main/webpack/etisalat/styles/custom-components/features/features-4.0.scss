@@ -243,6 +243,43 @@
     }
 }
 
+.features-4-0-bg-pattern {
+    .features {
+        @media (min-width: 992px) {
+            .features-4-0 {
+                position: relative;
+    
+                &:before,
+                &:after {
+                    content: "";
+                    background: url("../resources/images/background-pattern.svg") no-repeat;
+                    background-size: contain;
+                    height: 420px;
+                    position: absolute;
+                    width: 420px;
+                    opacity: .15;
+                    top: 0;
+                    z-index: 0;
+                }
+
+                .content-wrapper {
+                    .img-wrap {
+                        justify-content: space-around;
+                        z-index: 1;
+                    } 
+                }
+            }
+            .features-4-0:before {
+                left: 0;
+            }
+            .features-4-0:after {
+                right: 0;
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
 .features-4-0 {
     width: 100%;
     min-height: 493px;
