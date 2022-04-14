@@ -1,0 +1,20 @@
+<template  data-sly-template.pushMenuIcon="${ @ resource}">
+ <div class="push-nav-container">
+   <div class="container push-nav-menu-nav-wrapper">
+     <div class="row">
+       <div class="col-xs-3">
+         <div class="en-logo-text-wrapper"></div>
+       </div>
+       <div class="col-xs-9" data-sly-use.menuObj="${resource.path}" data-sly-list.pushItems="${menuObj.listChildren}">
+          <ul class="push-nav-menu" data-sly-test="${pushItems.name == 'pushMenuItems'}" 
+               data-sly-list.menuItem="${pushItems.listChildren}">
+            <li class="push-menu-item" data-sly-test.menuCTALink="${menuItem.navigationLink}" 
+                data-sly-use.pushMenuLink="${'com.etisalat.core.models.CommonLinkModel' @link=menuCTALink}">
+              <a href="${pushMenuLink.link}" target="${menuItem.pushMenuLinkTarget ? '_blank' : '_self'}"> ${menuItem.navigationTitle} </a>
+            </li>
+          </ul>   
+       </div>
+     </div>
+   </div>
+ </div>
+</template>
