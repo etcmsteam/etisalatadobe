@@ -9,14 +9,7 @@ export const STORE_LOCATOR = () => {
   if($storeLocatorRoot.length === 0) {
      return;
   }
-
-  setTimeout(() => {
-    $storeLocatorRoot.addClass('store-locator__slide-down');
-
-    setTimeout(() => {
-      $storeLocatorRoot.removeClass('store-locator__slide-down');
-    }, 1000);
-  }, 1500);
+  
 
   function isJson(str) {
     try {
@@ -939,5 +932,14 @@ export const STORE_LOCATOR = () => {
         }, 2000);
       }
     }, 2000);
+
+    $storeLocatorRoot.addClass("store-locator__slide-down");
+
+    setTimeout(() => {
+      $storeLocatorRoot.removeClass("store-locator__slide-down");
+    }, 1500);
+
+    // Adding class to image tag as per live reference
+    $(".jsSLImageCover").find("img").addClass("cover lazyloaded");
   });
 };
