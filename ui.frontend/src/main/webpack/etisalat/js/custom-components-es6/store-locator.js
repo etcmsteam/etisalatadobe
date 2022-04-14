@@ -1,15 +1,14 @@
-import _template from 'lodash/template';
-import _find from 'lodash/find';
-import _remove from 'lodash/remove';
+import _template from "lodash/template";
+import _find from "lodash/find";
+import _remove from "lodash/remove";
 
 /* eslint-disable */
 export const STORE_LOCATOR = () => {
   const $storeLocatorRoot = $("#storelocator");
 
-  if($storeLocatorRoot.length === 0) {
-     return;
+  if ($storeLocatorRoot.length === 0) {
+    return;
   }
-  
 
   function isJson(str) {
     try {
@@ -78,9 +77,9 @@ export const STORE_LOCATOR = () => {
   };
 
   var kml2g = new google.maps.KmlLayer(`${currentUrlPath}2g.kml`, AI_options),
-  kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
-  kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
-  kml5g = new google.maps.KmlLayer(`${currentUrlPath}5G_DB_19Dec21.kml`, AI_options);
+    kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
+    kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
+    kml5g = new google.maps.KmlLayer(`${currentUrlPath}5G_DB_19Dec21.kml`, AI_options);
 
   // ---------------------------------------------------------
   // Common functions
@@ -499,7 +498,6 @@ export const STORE_LOCATOR = () => {
         }
         item.color = colorMap[item.type];
       });
-
 
       var compiledTemplate = _template($("#store-locator-result-item-template").html(), _templateSettings);
       $(".store-locator-wrap .result-slide").html(compiledTemplate(temp));
@@ -935,8 +933,8 @@ export const STORE_LOCATOR = () => {
 
     $storeLocatorRoot.addClass("store-locator__slide-down");
 
-    setTimeout(() => {
-      $storeLocatorRoot.removeClass("store-locator__slide-down");
+    setTimeout(function () {
+      document.querySelector("body").classList.add("js-fixed-nav");
     }, 1500);
 
     // Adding class to image tag as per live reference
