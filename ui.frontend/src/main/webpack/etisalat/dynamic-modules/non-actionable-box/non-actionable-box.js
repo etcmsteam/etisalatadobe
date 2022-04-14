@@ -1,4 +1,6 @@
 import "./index.scss";
+import { NON_ACTIONABLE_BOX_TESTIMONIAL } from "./testimonials";
+
 /* eslint-disable */
 export const NON_ACTIONABLE_BOX = () => {
   // open youtube video and close by removing src and then add
@@ -95,4 +97,6 @@ export const NON_ACTIONABLE_BOX = () => {
         });
     }
   }
+
+  NON_ACTIONABLE_BOX_TESTIMONIAL();
 };
