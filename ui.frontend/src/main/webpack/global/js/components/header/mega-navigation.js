@@ -1,7 +1,7 @@
-/* eslint-disable */
+/* eslint-disable no-undef */
 $(document).ready(function () {
-  $(".mega-dropdown-mob a").click(function (e) {
+  $(".mega-dropdown-mob a").click(function () {
     $(this).closest("ul").children(".mega-dropdown-mob-menu").slideToggle("100");
-    return;
+    $(this).parent().toggleClass("open");
   });
 });
