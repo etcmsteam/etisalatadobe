@@ -8,7 +8,7 @@
   <sly data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}" />
    <!-- /*only title*/-->
    <sly data-sly-test="${tileModel.nabBoxVariation == 'with-title'}">
-      <div class="media-content">
+      <div data-component="cmp-non-actionable-box" class="media-content">
          <div class="img-container">
             <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport' && viewports}">
                <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
@@ -33,7 +33,7 @@
 
    <sly data-sly-test="${tileModel.nabBoxVariation == 'with-pretitle' || tileModel.nabBoxVariation == 'leftRightVariation'}">
 
-      <div class="nab-wrapper">
+      <div data-component="cmp-non-actionable-box" class="nab-wrapper">
          <div class="nab-content ${resource.parent.promoLeftRight ? 'promo-content' : ''}">
 			<div data-sly-test="${properties.newFeatures}" class="wst-main-headings">
                <h5 data-sly-element="${properties.newFeatureType}" >${properties.newFeatures}</h5>
@@ -86,7 +86,7 @@
    </sly>
 	<!--/*quotes*/-->
    <sly data-sly-test="${tileModel.nabBoxVariation == 'with-quotes'}">
-      <div class="with-image-banner">
+      <div data-component="cmp-non-actionable-box" class="with-image-banner">
          <!-- tile image  -->
          <div class="img-banner" data-sly-test="${viewports}">
             <div data-sly-test="${properties.viewPortLayout != '1-viewport'}" class="cover">
