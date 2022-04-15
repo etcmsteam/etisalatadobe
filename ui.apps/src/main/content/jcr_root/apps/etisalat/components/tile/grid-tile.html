@@ -1,6 +1,6 @@
 <template  data-sly-template.gridtile="${ @ tileModel,properties,imageViewportModel}">
     <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
-        <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+        <a href="${tileModel.tileCTALinkSameWindow}"
            class="link-cover"
            target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
     </sly>
@@ -36,7 +36,7 @@
         </div>
         <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
             <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
-                <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+                <a href="${tileModel.tileCTALinkSameWindow}"
                    class="link"
                    target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
                    title="${tileModel.ctatext}">${tileModel.ctatext}</a>
