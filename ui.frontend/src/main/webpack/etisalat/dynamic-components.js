@@ -26,6 +26,9 @@ const DYNAMIC_MODULE = {
   "cmp-promogrid-4-0": async () => {
     await import(/* webpackChunkName: 'promo-grid-4-0' */ "./dynamic-modules/promo-grid-4-0/promo-grid-4-0").then((obj) => obj.PROMO_GRID_4_0());
   },
+  "media-cta": async () => {
+    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
