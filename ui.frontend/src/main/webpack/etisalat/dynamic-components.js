@@ -20,6 +20,9 @@ const DYNAMIC_MODULE = {
   "cmp-tile-box": async () => {
     await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
   },
+  "cmp-features": async () => {
+    await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
