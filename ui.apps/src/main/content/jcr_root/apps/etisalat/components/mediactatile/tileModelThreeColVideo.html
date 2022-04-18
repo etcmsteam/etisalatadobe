@@ -1,11 +1,11 @@
 <template data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
 		  data-sly-use.tileModel="com.etisalat.core.models.TileModel"
           data-sly-template.modal="${ @ tileModel,properties,resource,wcmmode}">
-	<div data-label="${component.id}" class="${tileModel.tileBoxVariation == 'grid-tile-box' || tileModel.tileBoxContainerLayout == 'mediacta' ? 'third-action-wrapper action-link' : 'btn-text btn-green  learn-more'} btn-modal"
+	<div data-component="media-cta" data-label="${component.id}" class="${tileModel.tileBoxVariation == 'grid-tile-box' || tileModel.tileBoxContainerLayout == 'mediacta' ? 'third-action-wrapper action-link' : 'btn-text btn-green  learn-more'} btn-modal"
 	   title="${tileModel.ctatext}">
 	  <span class="${tileModel.tileBoxVariation == 'grid-tile-box' || tileModel.tileBoxContainerLayout == 'mediacta' ? 'link' : 'moreg'}">${tileModel.ctatext}</span>
 	</div>
-	<div class="offers-popup-wrapper">
+	<div data-component="media-cta" class="offers-popup-wrapper">
 	   <div id="${component.id}" class="nv-modal fade  ${properties.modalBehavior}-modal">
 	      <div class="nv-modal-dialog">
 	         <div class="nv-modal-content nv-py-5">

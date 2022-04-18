@@ -2,14 +2,16 @@ import _template from 'lodash/template';
 import _find from 'lodash/find';
 import _remove from 'lodash/remove';
 
+import "./store-locator.scss";
 /* eslint-disable */
 export const STORE_LOCATOR = () => {
   const $storeLocatorRoot = $("#storelocator");
-
+   
   if($storeLocatorRoot.length === 0) {
      return;
   }
-
+  
+  $storeLocatorRoot.removeClass("invisible");
   setTimeout(() => {
     $storeLocatorRoot.addClass('store-locator__slide-down');
 
