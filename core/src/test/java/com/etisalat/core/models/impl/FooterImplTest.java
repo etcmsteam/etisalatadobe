@@ -35,6 +35,7 @@ public class FooterImplTest {
   protected static final String FOOTER_5 = TEST_PAGE_CONTAINER_ROOT + "/footerpayment";
   protected static final String FOOTER_6 = TEST_PAGE_CONTAINER_ROOT + "/footer-links";
   protected static final String FOOTER_7 = TEST_PAGE_CONTAINER_ROOT + "/empty";
+  protected static final String FOOTER_8 = TEST_PAGE_CONTAINER_ROOT + "/quick-access-links";
 
   
   @BeforeEach
@@ -152,5 +153,21 @@ public class FooterImplTest {
     assertTrue(footerModel.getQuickLinks().isEmpty());   
   }
   
+  @Test
+  public void testQuickAccessLinks() {
+    final String expectedQatitle = "About Us";
+    final String expectedQuickAccessLinkUrl = "https://www.etisalat.ae/en/footer/about-us.jsp";
+    final String expectedFileReference = "/content/dam/ewallet/img-hotels-xs-08_tcm451-117068.jpg";
+    final String expectedLinkTarget = "true";
+    context.currentResource(FOOTER_8);
+
+    Footer footerModel = context.request().adaptTo(Footer.class);
+    LinkModel linkModel = footerModel.getQuickAccessLinks().get(0);        
+    assertEquals(2, footerModel.getQuickAccessLinks().size()); 
+    assertEquals(expectedQatitle, linkModel.getQatitle());
+    assertEquals(expectedQuickAccessLinkUrl, linkModel.getQuickaccesslinkUrl());
+    assertEquals(expectedFileReference, linkModel.getQaFileReference());
+    assertEquals(expectedLinkTarget, linkModel.getLinkTarget());
+  }
 
 }

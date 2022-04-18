@@ -41,4 +41,9 @@ public interface Footer {
    */
   List<LinkModel> getFooterLinks();
 
+  /**
+   * @return a collection of objects representing the quick access links.
+   */
+  List<LinkModel> getQuickAccessLinks();
+
 }
