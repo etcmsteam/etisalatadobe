@@ -23,8 +23,8 @@ const DYNAMIC_MODULE = {
   "cmp-features": async () => {
     await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
   },
-  "media-cta": async () => {
-    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
+  "cmp-promogrid-4-0": async () => {
+    await import(/* webpackChunkName: 'promo-grid-4-0' */ "./dynamic-modules/promo-grid-4-0/promo-grid-4-0").then((obj) => obj.PROMO_GRID_4_0());
   },
 };
 
