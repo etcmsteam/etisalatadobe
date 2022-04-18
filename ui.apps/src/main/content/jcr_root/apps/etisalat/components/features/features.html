@@ -6,7 +6,7 @@
 
 	<sly data-sly-test.watch="${properties.featuresBehavior == 'featureswatch' ?'watch-': ''}"></sly>
 
-	<div class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''}">
+	<div data-component="cmp-features" class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''}">
 		<div class="features-${watch}4-0">
 			<div class="container">
 				<div class="content-wrapper">
@@ -100,7 +100,7 @@
 
 							<div class="third-action-desktop">
 								<div  data-sly-test="${tileModel.ctatext}" class="third-action-wrapper ${properties.showlink ?'action-link':'action-btn-default'}">
-									<a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+									<a href="${tileModel.tileCTALinkSameWindow}"
 									   target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
 									   class="${properties.showlink ?'link':'btn btn-default ripple-effect'}">${tileModel.ctatext}</a>
 								</div>
@@ -110,7 +110,7 @@
 						<div class="third-action-mobile">
 							<div data-sly-test="${tileModel.ctatext}"
 								 class="third-action-wrapper ${properties.showlink ?'action-link':'action-btn-default'}">
-								<a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+								<a href="${tileModel.tileCTALinkSameWindow}"
 								   target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
 								   class="${properties.showlink ?'link':'btn btn-default ripple-effect'}">${tileModel.ctatext}</a>
 							</div>
