@@ -29,6 +29,9 @@ const DYNAMIC_MODULE = {
   "media-cta": async () => {
     await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
   },
+  "cmp-storelocator": async () => {
+    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
