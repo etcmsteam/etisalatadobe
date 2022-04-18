@@ -157,4 +157,12 @@ public class FooterImpl implements Footer {
   public List<LinkModel> getFooterLinks() {
     return Collections.unmodifiableList(CommonUtility.getLinkItems(AEConstants.FOOTER_LINKS, res));
   }
+
+  /**
+   * @return a collection of objects representing the quick access links.
+   */
+  @Override
+  public List<LinkModel> getQuickAccessLinks() {
+    return Collections.unmodifiableList(CommonUtility.getLinkItems(AEConstants.QUICK_ACCESS_LINKS, res));
+  }
 }
