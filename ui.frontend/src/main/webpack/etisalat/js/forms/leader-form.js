@@ -32,7 +32,17 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
     return o;
   }
 
-  function getParameterByNameWithPlus(name, href) {
+  function bindingUIFromParams() {
+      const productName = getParameterByName("productName", currentURL);
+      if (productName) {
+        const targetElement = $(".teaser-form").find(".cmp-teaser__title");
+        const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim();
+        const valueWithProductName = targetElementValue + " " + productName + "?";
+        targetElement.html(valueWithProductName);
+      }
+    }
+
+  function getParameterByName(name, href) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     const regexS = "[\\?&]" + name + "=([^&#]*)";
     const regex = new RegExp(regexS);
@@ -44,7 +54,7 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
   function queryParamValue(name, url = currentURL) {
     if (!name || !currentURL) return undefined;
 
-    return getParameterByNameWithPlus(name, url)
+    return getParameterByName(name, url)
       .replace(/_/g, " ")
       .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
   }
@@ -143,4 +153,6 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
       $(".account-number").addClass("hide");
     }
   });
+
+  bindingUIFromParams();
 })();
