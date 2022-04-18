@@ -30,7 +30,7 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
   },
   "cmp-storelocator": async () => {
-    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR());
+    await import(/* webpackChunkName: 'storelocator' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR());
   },
 };
 
