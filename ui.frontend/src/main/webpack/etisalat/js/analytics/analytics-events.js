@@ -1,7 +1,7 @@
+/* eslint-disable no-undef */
 (function (window, document) {
-
   // CTA and Hero Banner CTA Events
-  $("a.btn, a.cmp-button, a.btn-text, a.link, .cmp-teaser__action-link").on("click", function () { 
+  $("a.btn, a.cmp-button, a.btn-text, a.link, .cmp-teaser__action-link").on("click", function () {
     let $this = $(this);
     const ctaName = $this.text() ? $this.text().toLowerCase().trim() : "";
     const currrentURL = window.location.href;
@@ -112,7 +112,7 @@
     sectionHeading = pathArr.pop();
 
     productCat = pathArr.pop();
-    
+
     let btnAct = $this.closest(".tiles-box.content").find(".tiles-box-title h2");
     if (btnAct.length > 0) {
       btnAct = btnAct.text().toLowerCase().trim();
@@ -174,9 +174,7 @@
   // Footer click Events
   $(".footer").on("click", function (e) {
     let trgt = e.target;
-    if (trgt.tagName.toLowerCase() === "a" ||
-    trgt.tagName.toLowerCase() === "img" ||
-    $(trgt).closest("svg").length > 0) {
+    if (trgt.tagName.toLowerCase() === "a" || trgt.tagName.toLowerCase() === "img" || $(trgt).closest("svg").length > 0) {
       let ctaName = "";
       if (trgt.tagName.toLowerCase() === "a") {
         ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : "";
@@ -331,4 +329,3 @@
     });
   }
 })(window, document);
-
