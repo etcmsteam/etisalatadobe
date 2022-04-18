@@ -6,13 +6,13 @@
 			 <div class="tile-box-blogtile">
 				<div class="img-cover" data-sly-test="${properties['image/fileReference']}">
 				   <div  class="cover lazyloaded" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
-				   <div class="category">
-					  <p data-sly-test="${tileModel.categoryTagTitle}"> ${tileModel.categoryTagTitle}</p>
+				   <div data-sly-test="${tileModel.categoryTagTitle}" class="category">
+					  <p>${tileModel.categoryTagTitle}</p>
 				   </div>
 				</div>
 				<div class="tile-box-blogbody">
-				   <div data-sly-test="${tileModel.tiletitle}" class="box-title">
-					  <h2>${tileModel.tiletitle}</h2>
+				   <div class="box-title">
+					  <h2 data-sly-test="${tileModel.tiletitle}">${tileModel.tiletitle}</h2>
 				   </div>
 					<div class="box-details" data-sly-test="${tileModel.text}">
 						${tileModel.text @ context = 'html'}
@@ -24,7 +24,7 @@
 			 </div>
 		  </div>
 	   </a>
-    </div>
+    </div>  
 </sly>
 
-<sly data-sly-call="${templates.placeholder @ isEmpty = !tileModel.tiletitle}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !tileModel.categoryTag}"></sly>
