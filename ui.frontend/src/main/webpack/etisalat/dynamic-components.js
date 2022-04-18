@@ -15,7 +15,7 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
   },
   "cmp-non-actionable-box": async () => {
-    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_BOX());
+    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
   },
   "cmp-tile-box": async () => {
     await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
