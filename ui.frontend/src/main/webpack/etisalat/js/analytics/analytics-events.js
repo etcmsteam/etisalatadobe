@@ -148,6 +148,7 @@
 
         let prodName = $this.closest(".tiles-box.content").find(".tiles-box-title catagory");
         if (prodName.length > 0) {
+          prodName = prodName.text().toLowerCase().trim();
           prodName += btnAct;
         } else {
           prodName = "";
