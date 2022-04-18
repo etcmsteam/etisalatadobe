@@ -20,6 +20,15 @@ const DYNAMIC_MODULE = {
   "cmp-tile-box": async () => {
     await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
   },
+  "cmp-features": async () => {
+    await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
+  },
+  "cmp-promogrid-4-0": async () => {
+    await import(/* webpackChunkName: 'promo-grid-4-0' */ "./dynamic-modules/promo-grid-4-0/promo-grid-4-0").then((obj) => obj.PROMO_GRID_4_0());
+  },
+  "media-cta": async () => {
+    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

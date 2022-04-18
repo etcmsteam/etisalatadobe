@@ -1,6 +1,6 @@
-(function () {
-  // register the event handlers
-  $(document).ready(function () {
+import "./index.scss";
+/* eslint-disable */
+export const MEDIA_CTA = () => {
     $(".video-controls-media-cta").on("click", function (e) {
       e.preventDefault();
       let MODAL_CTA = $(this).next(".mediaCtaVideo");
@@ -23,6 +23,4 @@
         $("body").removeClass("modal-overlay");
       }
     });
-  });
-
-})();
+};
