@@ -1,4 +1,4 @@
-  import "./index.scss";
+import "./index.scss";
 /* eslint-disable */
 export const MEDIA_CTA = () => {
     $(".video-controls-media-cta").on("click", function (e) {
