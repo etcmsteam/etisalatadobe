@@ -139,11 +139,18 @@
       } else if ($this.closest(".producttile").length > 0 && $this.hasClass("cms-button")) {
         productCat = pathArr.pop();
 
-        let btnAct = $this.closest(".tiles-box.content").find(".tiles-box-title");
+        let btnAct = $this.closest(".tiles-box.content").find(".tiles-box-title h2");
         if (btnAct.length > 0) {
           btnAct = btnAct.text().toLowerCase().trim();
         } else {
           btnAct = "";
+        }
+
+        let prodName = $this.closest(".tiles-box.content").find(".tiles-box-title catagory");
+        if (prodName.length > 0) {
+          prodName += btnAct;
+        } else {
+          prodName = "";
         }
 
         let productPriceVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new .price");
@@ -186,7 +193,7 @@
             },
             product: {
               productDetails: {
-                productName: btnAct,
+                productName: prodName,
                 productPrice: totalVal,
                 productType: sectionHeading,
                 productCategory: productCat,
