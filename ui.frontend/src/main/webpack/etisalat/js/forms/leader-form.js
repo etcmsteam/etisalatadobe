@@ -4,6 +4,7 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
 (function () {
   const $FORM = $("#leadOrder");
   const $SUBMIT_CTA = $("#leadOrder .cmp-form-button");
+  const currentURL = window.location.href;
 
   if (!$FORM.length) {
     return false;
@@ -29,6 +30,23 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
       }
     });
     return o;
+  }
+
+  function getParameterByNameWithPlus(name, href) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    const regexS = "[\\?&]" + name + "=([^&#]*)";
+    const regex = new RegExp(regexS);
+    const results = regex.exec(href);
+    if (results == null) return "";
+    else return decodeURIComponent(results[1].replace(/\-/g, " "));
+  }
+
+  function queryParamValue(name, url = currentURL) {
+    if (!name || !currentURL) return undefined;
+
+    return getParameterByNameWithPlus(name, url)
+      .replace(/_/g, " ")
+      .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
   }
 
   function submitErrorResponse(jqXHR, textStatus, error) {
@@ -71,12 +89,15 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
     },
     submitHandler: function () {
       const formData = getFormData($FORM);
+      const product = queryParamValue("product") || formData.product;
+      const subject = queryParamValue("subject") || formData.subject;
+      const channel = queryParamValue("channel") || formData.channel;
 
       const PAYLOAD = {
         accountNumber: formData.accountNumber,
-        product: formData.product,
-        subject: formData.subject,
-        channel: formData.channel,
+        product,
+        subject,
+        channel,
         existingAccount: formData.existingAccount,
         contactFirstName: formData.firstName,
         contactLastName: formData.lastName,

@@ -3,7 +3,7 @@
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"> 
 	   <sly data-sly-test="${tileModel.tiletitle && (!properties.mediaCtaType || properties.mediaCtaType == 'default')}">
 		   <a data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" 
-			  href=" ${properties.tileLinkBehavior=='opensamewindow' ? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+			  href=" ${tileModel.tileCTALinkSameWindow}"
 			  class="link-cover"
 			  target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
 		  <div class="media-content">
@@ -55,7 +55,7 @@
 			  </div>
 			  <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
 				<div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
-				  <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" 
+				  <a href="${tileModel.tileCTALinkSameWindow}" 
 				  class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">${tileModel.ctatext}</a>
 				</div>
 			  </sly>

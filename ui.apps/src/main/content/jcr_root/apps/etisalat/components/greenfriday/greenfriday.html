@@ -3,7 +3,7 @@
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
 <input data-sly-test="${properties.clockDate}" id="${component.id}" type="text" 
  value="${'MM/dd/yyy' @ format=properties.clockDate}" class="green-friday-hidden hidden" />
-<section data-sly-test="${properties.clockDate}" class="green-friday medium-banner ${properties.goodFridayLayout}">
+<div data-component="cmp-green-friday" data-sly-test="${properties.clockDate}" class="green-friday medium-banner ${properties.goodFridayLayout}">
     <div class="banner-image">
         <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
             <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 </sly>
 
 <sly data-sly-call="${templates.placeholder @ isEmpty = !properties.clockDate}"></sly>
