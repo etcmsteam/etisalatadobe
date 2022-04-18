@@ -23,6 +23,9 @@ const DYNAMIC_MODULE = {
   "cmp-features": async () => {
     await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
   },
+  "media-cta": async () => {
+    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
