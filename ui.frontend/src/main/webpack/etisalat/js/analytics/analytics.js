@@ -8,6 +8,7 @@ export const ANALYTICS_FILTER = (category, type, value) => {
   const pathArr = dataLayerPathName.split('/');
   fltrCategory = pathArr.pop();
 
+  if (window.adobeDataLayer) {
   window.adobeDataLayer.push({
     event: "filter",
     eventInfo: {
@@ -19,9 +20,11 @@ export const ANALYTICS_FILTER = (category, type, value) => {
       filterValue: value,
     },
   });
+  }
 };
 
 export const ANALYTICS_LINKS_TABS = (name,url,heading) => {
+  if (window.adobeDataLayer) {
   window.adobeDataLayer.push({
      event: "linkClicked",
      xdmActionDetails: {
@@ -43,12 +46,13 @@ export const ANALYTICS_LINKS_TABS = (name,url,heading) => {
     },
     }
     });
+  }
   };
 
 export const FORM_SUCCESS = (form, data) => {
   const name = form.attr('name');
   const formId = form.attr('id');
-  console.log(form);
+  if (window.adobeDataLayer) {
   if (formId === "leadOrder") {
     window.adobeDataLayer.push({
       event: "form success",
@@ -133,10 +137,12 @@ export const FORM_SUCCESS = (form, data) => {
       });
     }
   }
+  }
 };
 
 export const FORM_ERROR = (form) => {
   let name = form.attr('name');
+  if (window.adobeDataLayer) {
   window.adobeDataLayer.push({
     event: "form error",
     formDetails: {
@@ -149,5 +155,6 @@ export const FORM_ERROR = (form) => {
       rootCause: "formLoadError",
     },
   });
+  }
 };
   
