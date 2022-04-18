@@ -1,11 +1,58 @@
-import "./index.scss";
-import { NON_ACTIONABLE_BOX_TESTIMONIAL } from "./testimonials";
-
+import { swiperInit } from "../../../global/js/swiperInitialize";
 /* eslint-disable */
-export const NON_ACTIONABLE_BOX = () => {
+import "./index.scss";
+const TESTIMONIAL_MODULE = () => {
+  $(".testimonial-module.testimonialSlider").each(function (index) {
+    $(this).addClass("slider" + index);
+    var $planTableParent = $(this);
+    $planTableParent.find(".controls .next").addClass("slider" + index);
+    $planTableParent.find(".controls .prev").addClass("slider" + index);
+    var $testimonialSlider = swiperInit(".slider" + index + " .swiper-container", {
+      loop: false,
+      autoplay: false,
+      touchEventsTarget: "swiper-wrapper",
+      simulateTouch: true,
+      scrollbar: $(this).find(".swiper-scrollbar"),
+      nextButton: ".next.slider" + index,
+      prevButton: ".prev.slider" + index,
+      scrollbarHide: false,
+      scrollbarDraggable: true,
+      breakpoints: {
+        540: {
+          slidesPerView: 1.2,
+          spaceBetween: 16,
+        },
+        768: {
+          slidesPerView: 2.3,
+          spaceBetween: 16,
+        },
+        1024: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        1440: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        9999: {
+          centeredSlides: false,
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+      },
+    });
+
+    if (window.outerWidth > 992) {
+      if ($(this).find(".swiper-slide").length < 3) {
+        $(this).find(".controls").css("display", "none");
+      }
+    }
+  });
+};
+export const NON_ACTIONABLE_MODULE = () => {
   // open youtube video and close by removing src and then add
-  let NON_ACTION_BOX_VIDEO = $(document).find(".non-action-boxes-two-cols-4-0, .non-action-boxes-4-0");
-  let NON_ACTION_BOX_READ_MORE = $(document).find(".non-action-boxes-4-0 .nab-content .paragraph-styling p");
+  let NON_ACTION_BOX_VIDEO = $(".non-action-boxes-two-cols-4-0, .non-action-boxes-4-0");
+  let NON_ACTION_BOX_READ_MORE = $(".non-action-boxes-4-0 .nab-content .paragraph-styling p");
 
   if (NON_ACTION_BOX_VIDEO.length > 0) {
     $(".youtube-video-link").on("click", function (e) {
@@ -97,6 +144,5 @@ export const NON_ACTIONABLE_BOX = () => {
         });
     }
   }
-
-  NON_ACTIONABLE_BOX_TESTIMONIAL();
+  TESTIMONIAL_MODULE();
 };

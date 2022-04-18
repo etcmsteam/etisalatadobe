@@ -64,6 +64,18 @@ public class LinkModel {
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   private String linkTarget;
   
+  /** The quickaccesslink url. */
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String quickaccesslinkUrl;
+  
+  /** The qatitle. */
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  private String qatitle;
+  
+  /** The file reference. */
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL, name = "fileReference")
+  private String qaFileReference;
+  
   /**
    * Gets the link text.
    *
@@ -252,6 +264,33 @@ public class LinkModel {
    */
   public String getLinkTarget() {
 	return linkTarget;
+  }
+
+  /**
+   * Gets the quickaccesslink url.
+   *
+   * @return the quickaccesslink url
+   */
+  public String getQuickaccesslinkUrl() {
+	return CommonUtility.appendHtmlExtensionToPage(resourceResolver, quickaccesslinkUrl);
+  }
+
+  /**
+   * Gets the qatitle.
+   *
+   * @return the qatitle
+   */
+  public String getQatitle() {
+	return qatitle;
+  }
+
+  /**
+   * Gets the qa file reference.
+   *
+   * @return the qa file reference
+   */
+  public String getQaFileReference() {
+	return qaFileReference;
   }
 
 }

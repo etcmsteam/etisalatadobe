@@ -108,6 +108,8 @@ public final class AEConstants {
  
  public static final String DAM_CONTENT = "/content/dam/";
  
+ public static final String QUICK_ACCESS_LINKS = "quickaccess";
+ 
  /**
   * private constructor to prevent instantiation of class.
   */
