@@ -11,7 +11,7 @@
          <div data-sly-test="${properties.fileReference}" class="col-sm-6 col-lg-5 offer-content">
             <sly data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
             <div class="offer-txt extra-pad">
-               <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"             
+               <a href="${tileModel.tileCTALinkSameWindow}"             
                   target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
                   title="${tileModel.ctatext}">${tileModel.ctatext}</a>
                <label>${tileModel.validDateText} ${'dd/MM/yyyy' @ format=properties.articleDate}</label>
@@ -31,7 +31,7 @@
                <div class="offer-content">
                   <sly data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></sly>
                   <div class="offer-txt extra-pad">
-                     <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"             
+                     <a href="${tileModel.tileCTALinkSameWindow}"             
                         target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
                         title="${tileModel.ctatext}">${tileModel.ctatext}</a>
                      <label>${tileModel.validDateText} ${'dd/MM/yyyy' @ format=properties.articleDate}</label>

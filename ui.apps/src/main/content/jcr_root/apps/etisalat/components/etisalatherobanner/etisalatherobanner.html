@@ -2,7 +2,7 @@
   <sly data-sly-set.heroInnerPageView="${properties.heroImageInnerPageView ? 'hero-banner-section single-slide-only' : 'hero-banner-section'}" 
        data-sly-use.parentRes="${resource.parent.path}" data-sly-set.heroBannerClass="${parentRes && 
    parentRes.sling:resourceType == 'etisalat/components/carousel' ? '' : heroInnerPageView}" />
-  <div data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
+  <div data-component="cmp-herobanner" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
        data-sly-test="${properties.heroDisplayBehavior}" class="${!wcmmode.edit ? heroBannerClass : ''}"
        data-sly-unwrap="${heroBannerClass ? false : true}">
 	<div class="hero-bg-images">
@@ -53,7 +53,7 @@
 	                ${properties.jcr:description @ context = 'html'}
 	          </div>          
 		      <div data-sly-test="${properties.bannerCTATitle && properties.linkBehavior != 'openmodalwindow'}" class="ele-margin hero-cta">
-		        <sly data-sly-test.heroCTALink="${properties.linkBehavior == 'opensamewindow'? properties.ctaSameWindowLink : properties.ctaNewWindowLink}" 
+		        <sly data-sly-test.heroCTALink="${properties.ctaSameWindowLink}" 
 	               data-sly-use.heroModelLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}"/>
 		        <a href="${heroModelLink.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn ${properties.ctaColor} ripple-effect"> ${properties.bannerCTATitle} </a>
 		      </div>	      

@@ -4,6 +4,7 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
 (function () {
   const $FORM = $("#leadOrder");
   const $SUBMIT_CTA = $("#leadOrder .cmp-form-button");
+  const currentURL = window.location.href;
 
   if (!$FORM.length) {
     return false;
@@ -29,6 +30,33 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
       }
     });
     return o;
+  }
+
+  function bindingUIFromParams() {
+      const productName = getParameterByName("productName", currentURL);
+      if (productName) {
+        const targetElement = $(".teaser-form").find(".cmp-teaser__title");
+        const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim();
+        const valueWithProductName = targetElementValue + " " + productName + "?";
+        targetElement.html(valueWithProductName);
+      }
+    }
+
+  function getParameterByName(name, href) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    const regexS = "[\\?&]" + name + "=([^&#]*)";
+    const regex = new RegExp(regexS);
+    const results = regex.exec(href);
+    if (results == null) return "";
+    else return decodeURIComponent(results[1].replace(/\-/g, " "));
+  }
+
+  function queryParamValue(name, url = currentURL) {
+    if (!name || !currentURL) return undefined;
+
+    return getParameterByName(name, url)
+      .replace(/_/g, " ")
+      .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
   }
 
   function submitErrorResponse(jqXHR, textStatus, error) {
@@ -71,12 +99,15 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
     },
     submitHandler: function () {
       const formData = getFormData($FORM);
+      const product = queryParamValue("product") || formData.product;
+      const subject = queryParamValue("subject") || formData.subject;
+      const channel = queryParamValue("channel") || formData.channel;
 
       const PAYLOAD = {
         accountNumber: formData.accountNumber,
-        product: formData.product,
-        subject: formData.subject,
-        channel: formData.channel,
+        product,
+        subject,
+        channel,
         existingAccount: formData.existingAccount,
         contactFirstName: formData.firstName,
         contactLastName: formData.lastName,
@@ -122,4 +153,6 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
       $(".account-number").addClass("hide");
     }
   });
+
+  bindingUIFromParams();
 })();
