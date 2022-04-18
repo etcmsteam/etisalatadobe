@@ -1,14 +1,13 @@
 <sly data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
-  <sly data-sly-test="${tileModel.categoryTagTitle}">
    <div class="${!wcmmode.edit ? 'col-xs-12 col-md-3 item': ''}" style="display: block;">
 	   <a href="${tileModel.linkURL}">
 		  <div class="blog-post-wrapper">
 			 <div class="tile-box-blogtile">
 				<div class="img-cover" data-sly-test="${properties['image/fileReference']}">
 				   <div  class="cover lazyloaded" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
-				   <div class="category">
-					  <p data-sly-test="${tileModel.categoryTagTitle}"> ${tileModel.categoryTagTitle}</p>
+				   <div data-sly-test="${tileModel.categoryTagTitle}" class="category">
+					  <p>${tileModel.categoryTagTitle}</p>
 				   </div>
 				</div>
 				<div class="tile-box-blogbody">
@@ -25,8 +24,7 @@
 			 </div>
 		  </div>
 	   </a>
-    </div>
- </sly>     
+    </div>  
 </sly>
 
-<sly data-sly-call="${templates.placeholder @ isEmpty = !tileModel.categoryTag}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !tileModel.tiletitle}"></sly>
