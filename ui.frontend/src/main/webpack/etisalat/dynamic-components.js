@@ -23,6 +23,9 @@ const DYNAMIC_MODULE = {
   "cmp-features": async () => {
     await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
   },
+  "cmp-promogrid-4-0": async () => {
+    await import(/* webpackChunkName: 'promo-grid-4-0' */ "./dynamic-modules/promo-grid-4-0/promo-grid-4-0").then((obj) => obj.PROMO_GRID_4_0());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
