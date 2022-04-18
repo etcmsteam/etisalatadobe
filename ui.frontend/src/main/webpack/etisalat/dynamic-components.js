@@ -14,9 +14,6 @@ const DYNAMIC_MODULE = {
   "cmp-need-help": async () => {
     await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
   },
-  "cmp-non-actionable-box": async () => {
-    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
-  },
   "cmp-tile-box": async () => {
     await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
   },
@@ -30,7 +27,10 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
   },
   "cmp-storelocator": async () => {
-    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR());
+    await import(/* webpackChunkName: 'storelocator' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR());
+  },
+  "cmp-non-actionable-box": async () => {
+    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
   },
 };
 
