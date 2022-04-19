@@ -211,7 +211,7 @@ html[lang="ar"] {
   .container {
       padding: 0 !important;
   }
-
+  
   #top-nav-cart-img,
   .links svg {
     height: 24px;
@@ -227,8 +227,7 @@ html[lang="ar"] {
 
   .links {
     li {
-      display: block;
-      float: left;
+      display: inline-block;
 
       @include rtlBlock() {
         float: right;
@@ -236,6 +235,10 @@ html[lang="ar"] {
 
       a {
         padding: 0 1rem;
+
+        @media (min-width: 992px) and (max-width: 1280px) {
+          padding: 0 1.5rem;
+        }
 
         svg {
           stroke: $almost-black;
@@ -260,10 +263,16 @@ html[lang="ar"] {
 
   .top-nav-left {
     .links {
+      display: flex;
+
       a {
         border-bottom: 2px solid $sand-white;
         font-weight: 800;
         height: 47px;
+
+        @media (min-width: 992px) and (max-width: 1280px) {
+          padding: 0 1rem;
+        }
       }
 
       .active > a,
@@ -430,6 +439,14 @@ html[lang="ar"] {
             letter-spacing: 0;
           }
         }
+      }
+    }
+  }
+
+  &.push-nav {
+    & .top-nav-left {
+      & .links {
+        display: flex;
       }
     }
   }
@@ -1290,6 +1307,8 @@ body.push-menu-open {
 
 .top-nav-section .top-nav-left .links .inc-push-meu-icon a {
   border: none;
+  padding: 0;
+  width: inherit;
 
   &:focus, &:active {
     outline: none;
