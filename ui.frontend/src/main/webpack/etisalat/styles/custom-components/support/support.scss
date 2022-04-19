@@ -192,7 +192,7 @@
             }
 
             @include respond-to-min($tablet) {
-              width: 69.45%;
+              width: 69%;
             }
 
             @include respond-to-max($custom-width-tab) {
@@ -300,23 +300,37 @@
           height: toRem(120);
           line-height: 1.3 !important;
           margin-right: 0;
-          padding: 0;
-          padding-left: 4.4%;
+          padding: 0 1% 0 3.4%;
+          position: relative;
 
           @include font-family-Neotech-roboto;
 
           @include respond-to-min($tablet) {
             width: 33.33%;
+            &::before{
+              content: " ";
+              width: 1px;
+              background-color: $sand-white;
+              position: absolute;
+              right: 0;
+            }
           }
 
           @include respond-to-min($desktop) {
             white-space: normal;
             font-size: toRem(20);
             line-height: toRem(24);
+            &::before {
+              bottom: 1.25rem;
+              top: 1.25rem
+            }
 
             &:hover {
               background-color: $main-green;
               color: $white;
+              &::before {
+                width: 0;
+              }
             }
           }
 
@@ -331,6 +345,9 @@
           &.cmp-tabs__tab--active {
             background-color: $main-green;
             color: $white;
+            &::before {
+              width: 0;
+            }
           }
         }
       }
