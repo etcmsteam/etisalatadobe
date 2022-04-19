@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
+import com.etisalat.core.models.ImageViewportModel;
 import com.etisalat.core.models.LinkModel;
 import com.etisalat.core.models.MegaFixedNavigationItem;
 import com.etisalat.core.models.MegaNavigation;
@@ -286,10 +287,12 @@ public class MegaNavigationImpl implements MegaNavigation {
                                                               String resourceType) {
         final List<MegaTeaserModel> tilesList = new ArrayList<>();
         childResource.listChildren().forEachRemaining(resource -> {
-            if (!resource.getName().equals(AEConstants.CQ_RESPONSIVE_NODE) && resource.getResourceType()
-                    .equals(resourceType)) {
+            if (!resource.getName().equals(AEConstants.CQ_RESPONSIVE_NODE) && (resource.getResourceType()
+                    .equals(resourceType) || resource.getResourceType().equals(PageConstants.TEASER_ETISALAT_RESOURCE_TYPE))) {
                 final MegaTeaserModel teaserModel = resource.adaptTo(MegaTeaserModel.class);
-                if (null != teaserModel && StringUtils.isNotBlank(teaserModel.getFileReference())) {
+                teaserModel.setTeaserResource(resource);
+            if (null != teaserModel
+                && (StringUtils.isNotBlank(teaserModel.getFileReference()) || isTeaserEtisalatHasContent(resource))) {
                     setTeaserCTADetails(teaserModel, resource);
                     tilesList.add(teaserModel);
                 }
@@ -300,14 +303,30 @@ public class MegaNavigationImpl implements MegaNavigation {
     }
 
     /**
+     * Checks if is teaser etisalat has content.
+     *
+     * @param resource the resource
+     * @return true, if is teaser etisalat has content
+     */
+    private boolean isTeaserEtisalatHasContent(Resource resource) {
+      if (resource.getResourceType().equals(PageConstants.TEASER_ETISALAT_RESOURCE_TYPE)) {
+        final ImageViewportModel imageViewportModel = this.modelFactory.getModelFromWrappedRequest(this.request,
+            resource, ImageViewportModel.class);
+
+        return (imageViewportModel.getFourViewportContent() || imageViewportModel.getSixViewportContent()
+            || imageViewportModel.getThreeViewportContent());
+      }
+
+      return false;
+    }
+    
+    /**
      * Sets teaser cta link and text details.
      *
      * @param teaserModel
      * @param actionResource
      */
     private void setTeaserCTADetails(MegaTeaserModel teaserModel, Resource actionResource) {
-        if (StringUtils.isNotBlank(teaserModel.getActionsEnabled()) && ("true")
-                .equals(teaserModel.getActionsEnabled())) {
             final  Resource item = actionResource.getChild("actions");
             if (null != item) {
                 for (Resource itemRes : item.getChildren()) {
@@ -315,10 +334,9 @@ public class MegaNavigationImpl implements MegaNavigation {
                     teaserModel.setLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,
                             vm.get(AEConstants.PROPERTY_LINK, StringUtils.EMPTY)));
                     teaserModel.setText(vm.get("text", String.class));
+                    teaserModel.setActionLinkTarget(vm.get("linkTarget", String.class));
                 }
-
             }
-        }
     }
 
     /**

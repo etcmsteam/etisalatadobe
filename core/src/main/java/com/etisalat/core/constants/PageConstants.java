@@ -44,6 +44,11 @@ public final class PageConstants {
    * Constant for TEASER Resource Type
    */
  public static final String TEASER_RESOURCE_TYPE = "etisalat/components/teaser";
+ 
+ /**
+  * Constant for TEASER Etisalat Resource Type
+  */
+ public static final String TEASER_ETISALAT_RESOURCE_TYPE = "etisalat/components/teaseretisalat";
 
   /**
    * Constant for TITLE Resource Type
