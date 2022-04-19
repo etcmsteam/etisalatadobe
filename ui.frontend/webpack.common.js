@@ -29,7 +29,7 @@ module.exports = {
   },
   output: {
     filename: "clientlib-[name]/[name].js",
-    chunkFilename: "clientlib-dynamic-modules/resources/[name].js",
+    chunkFilename: "clientlib-dynamic-modules/resources/[name].[hash].js",
     publicPath: "/etc.clientlibs/etisalat/clientlibs/",
     path: path.resolve(__dirname, "dist"),
   },
@@ -88,7 +88,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
       filename: "clientlib-[name]/[name].css",
-      chunkFilename: "clientlib-dynamic-modules/resources/[name].css",
+      chunkFilename: "clientlib-dynamic-modules/resources/[name].[hash].css",
     }),
     new CopyWebpackPlugin([
       { from: path.resolve(__dirname, SOURCE_ROOT + "/base/resources"), to: "./clientlib-base/" },
