@@ -23,6 +23,7 @@
       let totalVal = "";
       let productCat = "";
       let lnkRegion = "";
+      let chkLink = "";
 
       const pathArr = dataLayerPathName.split("/");
       sectionHeading = pathArr.pop();
@@ -36,7 +37,10 @@
         ctaName = title ? title.toLowerCase().trim() : "";
       }
       const anchorOrigin = isValidHttpUrl($this.attr("href")).origin;
-      let chkLink = $this.attr("href").split(".");
+      if ($this.attr("href") && $this.attr("href") !== "#") {
+        chkLink = $this.attr("href").split(".");
+        chkLink = chkLink[1] ? chkLink[1] : "";
+      }
 
       if (anchorOrigin && currentOrigin !== anchorOrigin) {
         if ($this.attr("href") && $this.attr("href") !== "#") {
@@ -259,7 +263,7 @@
             },
           },
         });
-      } else if (chkLink[1].toLowerCase() === "pdf") {
+      } else if (chkLink.toLowerCase() === "pdf") {
         window.adobeDataLayer.push({
           event: "linkClicked",
           xdmActionDetails: {
