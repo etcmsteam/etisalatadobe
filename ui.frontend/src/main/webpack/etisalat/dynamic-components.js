@@ -41,8 +41,8 @@ const DYNAMIC_MODULE = {
   "cmp-benefits": async () => {
     await import(/* webpackChunkName: 'benefits-section' */ "./dynamic-modules/benefits/benefits").then((obj) => obj.BENIFITS());
   },
-  "cmp-config-section-wrap": async () => {
-    await import(/* webpackChunkName: 'config-section-wrap' */ "./dynamic-modules/config-section/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
+  "cmp-config-tabs": async () => {
+    await import(/* webpackChunkName: 'config-tabs' */ "./dynamic-modules/config-tabs/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
   },
 };
 
