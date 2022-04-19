@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -33,6 +34,7 @@ class MegaNavigationImplTest {
 	protected static final String MEGA_NAV_5 = TEST_PAGE_CONTAINER_ROOT + "/topnav";
 	protected static final String MEGA_SUBNAV = TEST_PAGE_CONTAINER_ROOT + "/pages/page_1/page_1_1";
 	protected static final String MEGA_XF_NAV_6 = TEST_PAGE_CONTAINER_ROOT + "/xfContainerList";
+	 protected static final String MEGA_NAV_7 = TEST_PAGE_CONTAINER_ROOT + "/megaMenuWithoutTopNavigation";
 
 
 	@BeforeEach
@@ -177,5 +179,38 @@ class MegaNavigationImplTest {
 		assertEquals(expectedMenuLink, topNavModel.getNavigationLink());
 		assertEquals(expectedMenuImage, topNavModel.getNavigationImage());
 	}
+	
+	 @Test
+	  void testTopNavPushMenuItems() {
+	    final int expectedSize = 2;
+	    final String expectedMenuLink = "#home";
+	    final String expectedMenuLabel = "Home";
+	    final boolean openLinkInNewTab = true;
 
+	    context.currentResource(MEGA_NAV_1);
+
+	    MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
+	    FixedNavigtaionMultifieldModel topNavModel = megaNavigationModel.getTopNavPushMenuIconItems().get(0);
+
+	    assertEquals(expectedSize, megaNavigationModel.getTopNavMenuItems().size());
+	    assertEquals(expectedMenuLabel, topNavModel.getNavigationTitle());
+	    assertEquals(expectedMenuLink, topNavModel.getNavigationLink());
+	    assertEquals(openLinkInNewTab, topNavModel.isNavigationLinkTarget());
+	  }
+	 
+	 @Test
+	 void testPushMenuIconEnabled() {
+	   context.currentResource(MEGA_NAV_1);
+
+     MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
+     assertTrue(megaNavigationModel.isPushMenuEnabled());
+	 }
+
+	 @Test
+   void testPushMenuIconNotEnabled() {
+     context.currentResource(MEGA_NAV_7);
+
+     MegaNavigation megaNavigationModel = context.request().adaptTo(MegaNavigation.class);
+     assertFalse(megaNavigationModel.isPushMenuEnabled());
+   }
 }

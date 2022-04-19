@@ -14,6 +14,7 @@ public final class AEConstants {
  public static final String JCR_CONTENT_ROOT = "jcr:content/root";
  public static final String TOP_NAVIGATION_LINKS = "topnavlinks";
  public static final String LINKS_WITH_ICONS = "linkswithicons";
+ public static final String PUSH_MENU_ICON_LINKS = "pushMenuItems";
     
  public static final String PN_BUSINESS_BLOG_TAG = "businessBlogTag";
  public static final String PN_ARTICLE_DATE = "articleDate";
@@ -106,6 +107,8 @@ public final class AEConstants {
  public static final String ETISALAT_ARTICLE_DATE_FORMAT = "dd MMM yyyy";
  
  public static final String DAM_CONTENT = "/content/dam/";
+ 
+ public static final String QUICK_ACCESS_LINKS = "quickaccess";
  
  /**
   * private constructor to prevent instantiation of class.
