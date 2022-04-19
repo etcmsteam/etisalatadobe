@@ -1,6 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
-(function () {
+/* eslint-disable */
+export const RECOMMENDED_PRODUCT_CARDS = () => {
   //swiper for most recommended products
   var recommendedCardsCarousal;
   function initSwiperRecommendedCards() {
@@ -42,7 +43,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       hash = window.location.href.substring(window.location.href.indexOf("#"));
     }
     setTimeout(function () {
-      if(!$(".tab-config-deeplink").length) {
+      if (!$(".tab-config-deeplink").length) {
         return;
       }
       mySwiper = new Swiper(".tab-config-deeplink", {
@@ -255,4 +256,4 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       }
     }
   });
-})(define, window);
+};

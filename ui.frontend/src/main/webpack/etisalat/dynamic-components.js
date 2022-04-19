@@ -47,6 +47,12 @@ const DYNAMIC_MODULE = {
   "cmp-anaemarati-plans": async () => {
     await import(/* webpackChunkName: 'anaemarati-plans' */ "./dynamic-modules/anaemarati-plans/anaemarati-plans").then((obj) => obj.ANAEMARATI_CARDS());
   },
+  "cmp-product-cards": async () => {
+    await import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS());
+  },
+  "cmp-recommended-product-cards": async () => {
+    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/product-cards/recommended-product-cards").then((obj) => obj.RECOMMENDED_PRODUCT_CARDS());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
