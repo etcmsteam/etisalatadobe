@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import "regenerator-runtime/runtime";
 
 // register the className of each dynamic component to it's own js chunk, and initialization call
@@ -15,7 +16,7 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
   },
   "cmp-tile-box": async () => {
-    await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
+    await import(/* webpackChunkName: 'tilebox' */ "./dynamic-modules/tilebox/tilebox").then((obj) => obj.TILE_BOX());
   },
   "cmp-features": async () => {
     await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
