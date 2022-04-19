@@ -1,6 +1,6 @@
-import _template from 'lodash/template';
-import _find from 'lodash/find';
-import _remove from 'lodash/remove';
+import _template from "lodash/template";
+import _find from "lodash/find";
+import _remove from "lodash/remove";
 
 import "./store-locator.scss";
 /* eslint-disable */
@@ -13,10 +13,10 @@ export const STORE_LOCATOR = () => {
   
   $storeLocatorRoot.removeClass("invisible");
   setTimeout(() => {
-    $storeLocatorRoot.addClass('store-locator__slide-down');
+    $storeLocatorRoot.addClass("store-locator__slide-down");
 
     setTimeout(() => {
-      $storeLocatorRoot.removeClass('store-locator__slide-down');
+      $storeLocatorRoot.removeClass("store-locator__slide-down");
     }, 1000);
   }, 1500);
 
@@ -87,9 +87,9 @@ export const STORE_LOCATOR = () => {
   };
 
   var kml2g = new google.maps.KmlLayer(`${currentUrlPath}2g.kml`, AI_options),
-  kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
-  kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
-  kml5g = new google.maps.KmlLayer(`${currentUrlPath}5G_DB_19Dec21.kml`, AI_options);
+    kml3g = new google.maps.KmlLayer(`${currentUrlPath}3gM2.kml`, AI_options),
+    kml4g = new google.maps.KmlLayer(`${currentUrlPath}4gM7.kml`, AI_options),
+    kml5g = new google.maps.KmlLayer(`${currentUrlPath}5G_DB_19Dec21.kml`, AI_options);
 
   // ---------------------------------------------------------
   // Common functions
@@ -107,7 +107,7 @@ export const STORE_LOCATOR = () => {
 
     var icon = $(data.element).data("icon");
     var $result = $(
-      '<div class="' + icon + '">' + '<img src="' + currentUrlPath + "" + icon + '.svg" height="24" width="24" /><span>' + data.text + "</span>" + "</div>",
+      '<div class="' + icon + '">' + '<img src="' + currentUrlPath + "" + icon + '.svg" height="24" width="24" /><span>'+ $.trim(data.text) + "</span>" + "</div>",
     );
 
     return $result;
@@ -508,7 +508,6 @@ export const STORE_LOCATOR = () => {
         }
         item.color = colorMap[item.type];
       });
-
 
       var compiledTemplate = _template($("#store-locator-result-item-template").html(), _templateSettings);
       $(".store-locator-wrap .result-slide").html(compiledTemplate(temp));
@@ -941,5 +940,16 @@ export const STORE_LOCATOR = () => {
         }, 2000);
       }
     }, 2000);
+
+    $storeLocatorRoot.addClass("store-locator__slide-down");
+    
+    document.querySelector("body").classList.add("js-fixed-nav");
+
+    setTimeout(function () {
+      document.querySelector("body").classList.removeClass("js-fixed-nav");
+    }, 1500);
+
+    // Adding class to image tag as per live reference
+    $(".jsSLImageCover").find("img").addClass("cover lazyloaded");
   });
 };
