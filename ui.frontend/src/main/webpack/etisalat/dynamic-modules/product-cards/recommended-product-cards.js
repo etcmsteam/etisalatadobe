@@ -1,5 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
+import "./index.scss";
 /* eslint-disable */
 export const RECOMMENDED_PRODUCT_CARDS = () => {
   //swiper for most recommended products
