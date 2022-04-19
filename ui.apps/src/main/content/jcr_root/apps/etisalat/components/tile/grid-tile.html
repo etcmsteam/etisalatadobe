@@ -36,10 +36,19 @@
         </div>
         <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
             <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
-                <a href="${tileModel.tileCTALinkSameWindow}"
-                   class="link"
-                   target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-                   title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+                <sly data-sly-test="${properties['onclickfunction'].length != 0}">
+                    <a href="${tileModel.tileCTALinkSameWindow}"
+                       class="link"
+                       target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
+                       onclick="${properties.onclickfunction @ context='attribute'}"
+                       title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+                </sly>
+                <sly data-sly-test="${properties['onclickfunction'].length == 0}">
+                    <a href="${tileModel.tileCTALinkSameWindow}"
+                       class="link"
+                       target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
+                       title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+                </sly>
             </div>
         </sly>
         <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
