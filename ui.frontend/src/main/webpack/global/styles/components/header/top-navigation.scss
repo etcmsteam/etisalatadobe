@@ -1245,3 +1245,129 @@ html[lang="ar"] {
   margin-left: 0;
   min-width: 236px;
 }
+
+
+// Push Top Nav Bar
+
+body.push-menu-open {
+  margin-top: 56px;
+
+  & .push-enLogo {
+    transform: translateY(-62px);
+  }
+
+  & .top-nav-section {
+    height: 128px;
+  }
+}
+
+@media (min-width: 992px){
+    body.push-menu-open {
+      margin-top: 220px;
+
+      & .main-mega-menu-desktop .mega-menu-navbar-default {
+        top: 128px;
+      }
+    }
+}
+
+// Top Nav Toggle Icon
+.inc-push-meu-icon {
+    background-color: $cherry-red;
+    width: 55px;
+    margin-right: 2rem;
+
+  & .push-enLogo {
+    transition: all .3s ease-in-out;
+    transition: .3s;
+    transform: translate(0);
+  }
+
+  & .push-close {
+    position: absolute;
+  }
+}
+
+.top-nav-section .top-nav-left .links .inc-push-meu-icon a {
+  border: none;
+
+  &:focus, &:active {
+    outline: none;
+  }
+  
+  & svg {
+    margin-left: 0;
+    stroke: none;
+    width: 32px;
+    height: 24px;
+  }
+}
+
+.top-nav-section.push-nav .top-nav-left .links .inc-push-meu-icon a
+.top-nav-section.push-nav .top-nav-left .links .inc-push-meu-icon a:hover,
+.top-nav-section .top-nav-left .links .inc-push-meu-icon.active > a,
+.top-nav-section .top-nav-left .links .inc-push-meu-icon.active > a:hover {
+  border: 0;
+  padding: 0;
+}
+
+.push-nav-container {
+    background-color: $cherry-red;
+    height: 0;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    transition: .3s;
+
+    & .container {
+      padding: 0 !important;
+    }
+
+    &.open {
+      height: 80px;
+    }
+
+    .en-logo-text-wrapper {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      margin-left: 44px;
+      overflow: hidden;
+    }
+
+    .push-nav-menu {
+      display: flex;
+      margin-bottom: 0;
+      padding: 0;
+      height: 80px;
+      align-items: center;
+
+      & .push-menu-item {
+          padding-right: 1.4rem;
+
+          & a {
+            color: $white;
+            @include font-family-lato();
+            text-transform: none;
+            font-size: toRem(16);
+            font-weight: 700;
+            letter-spacing: normal;
+          }
+      }
+    }
+
+    @media (min-width: 1248px) {
+      & .container {
+          width: 1224px;
+      }
+    }
+    @media (min-width: 992px) {
+      & .container {
+          width: 976px;
+      }
+    }
+    @media (min-width: 768px) {
+      & .container {
+          width: 756px;
+      }
+    }
+}

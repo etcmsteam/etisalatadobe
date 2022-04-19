@@ -40,6 +40,10 @@ public class FixedNavigtaionMultifieldModel {
   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
   @Default(values = "false")
   private String openmodalwindow;
+  
+  @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+  @Default(values = "false")
+  private boolean navigationLinkTarget;
 
   private Resource topNavigationXFResource;
 
@@ -142,5 +146,21 @@ public class FixedNavigtaionMultifieldModel {
   public void setTopNavigationXFResource(Resource topNavigationXFResource) {
     this.topNavigationXFResource = topNavigationXFResource;
   }
+
+  /**
+   * @return the navigationLinkTarget
+   */
+  public boolean isNavigationLinkTarget() {
+    return navigationLinkTarget;
+  }
+
+  /**
+   * @param navigationLinkTarget the navigationLinkTarget to set
+   */
+  public void setNavigationLinkTarget(boolean navigationLinkTarget) {
+    this.navigationLinkTarget = navigationLinkTarget;
+  }
+
+
 
 }

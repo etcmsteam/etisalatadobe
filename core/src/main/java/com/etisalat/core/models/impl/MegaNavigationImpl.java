@@ -434,6 +434,21 @@ public class MegaNavigationImpl implements MegaNavigation {
     public List<FixedNavigtaionMultifieldModel> getTopNavIconMenuItems() {
         return Collections.unmodifiableList(getTopNavigationItems(AEConstants.LINKS_WITH_ICONS));
     }
+    
+    @Override
+    public List<FixedNavigtaionMultifieldModel> getTopNavPushMenuIconItems() {     
+      return Collections.unmodifiableList(getTopNavigationItems(AEConstants.PUSH_MENU_ICON_LINKS));
+    }
+
+
+    @Override
+    public boolean isPushMenuEnabled() {
+      getTopNavigationItems(AEConstants.PUSH_MENU_ICON_LINKS);
+      if(null != getTopNavResource()) {
+        return  getTopNavResource().getValueMap().get("pushMenuEnabled",false);
+      }
+      return false;
+    }
 
     @Override
     public List<LinkModel> getLanguageItems() {

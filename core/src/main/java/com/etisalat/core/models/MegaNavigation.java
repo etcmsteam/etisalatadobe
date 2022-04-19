@@ -53,6 +53,19 @@ public interface MegaNavigation {
    * the list.
    */
   List<FixedNavigtaionMultifieldModel> getTopNavIconMenuItems();
+  
+  /**
+   * @return a collection of objects representing the top navigation push menu icons left side items that compose
+   * the list.
+   */
+  List<FixedNavigtaionMultifieldModel> getTopNavPushMenuIconItems();
+  
+  /**
+   * Checks if push menu enabled.
+   *
+   * @return true, if is push menu enabled
+   */
+  boolean isPushMenuEnabled();
 
   /**
    * @return a collection of objects representing the language items that compose the list.

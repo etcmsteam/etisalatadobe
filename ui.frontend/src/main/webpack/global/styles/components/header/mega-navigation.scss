@@ -1001,6 +1001,34 @@
   transition: ease-out 0.3s;
   width: 272px;
   z-index: 11;
+
+  .nav-item.inc-push-meu {
+    & .nav-link {
+      background-color: $cherry-red !important;
+      padding: 1rem;
+    }
+
+    & .nav-expand-content {
+      background-color: $cherry-red !important;
+      z-index: 4;
+
+      & .nav-item {
+        & .nav-link {
+          background-color: $cherry-red !important;
+          color: $white !important;
+          
+          &.nav-back-link {
+            border-bottom: 1px solid $white;
+
+            &:before {
+              border-color: $white !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
 
 .nav-items {
@@ -1161,7 +1189,7 @@
 
       &::before {
         border: solid $main-green;
-        border-width: 0 toRem(1.5) toRem(1.5) 0;
+        border-width: 0 toRem(1.7) toRem(1.7) 0;
         content: "";
         line-height: 1;
         margin: toRem(5) toRem(1.6) 0 toRem(3.5);
@@ -1170,6 +1198,10 @@
         top: 50%;
         transform: translateY(-50%) rotate(135deg);
         transition: all 0.3s ease-in-out;
+        width: 9px;
+        height: 9px;
+        margin-top: 7px;
+        margin-right: 3px;
       }
 
       .nav-link-icon {
