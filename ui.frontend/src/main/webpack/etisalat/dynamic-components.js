@@ -44,6 +44,9 @@ const DYNAMIC_MODULE = {
   "cmp-config-tabs": async () => {
     await import(/* webpackChunkName: 'config-tabs' */ "./dynamic-modules/config-tabs/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
   },
+  "cmp-anaemarati-plans": async () => {
+    await import(/* webpackChunkName: 'anaemarati-plans' */ "./dynamic-modules/anaemarati-plans/anaemarati-plans").then((obj) => obj.ANAEMARATI_CARDS());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
