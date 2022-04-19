@@ -9,6 +9,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+import java.util.List;
+
 @ExtendWith(AemContextExtension.class)
 class HeroLinkSectionTest {
 
@@ -40,4 +43,11 @@ class HeroLinkSectionTest {
 
 	}		
 
+	@Test
+	void testGetHeroLinkSectionResourceNull() {		
+		context.currentResource("/content/etisalat/en/jcr:content/root/container/pagenavigation1");
+		HeroLinkSection heroLinkSection = context.request().adaptTo(HeroLinkSection.class);
+		List<HeroLinkSectionVO> heroLinkLIst = heroLinkSection.getHeroLinkSectionList();
+		assertEquals(Collections.emptyList(), heroLinkLIst);
+	}
 }
