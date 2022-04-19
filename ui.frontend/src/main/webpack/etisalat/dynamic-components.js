@@ -33,6 +33,17 @@ const DYNAMIC_MODULE = {
   "cmp-non-actionable-box": async () => {
     await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
   },
+  "cmp-context-navigation": async () => {
+    await import(/* webpackChunkName: 'context-navigation' */ "./dynamic-modules/context-navigation/context-navigation").then((obj) =>
+      obj.CONTEXT_NAVIGATION(),
+    );
+  },
+  "cmp-benefits": async () => {
+    await import(/* webpackChunkName: 'benefits-section' */ "./dynamic-modules/benefits/benefits").then((obj) => obj.BENIFITS());
+  },
+  "cmp-config-section-wrap": async () => {
+    await import(/* webpackChunkName: 'config-section-wrap' */ "./dynamic-modules/config-section/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
