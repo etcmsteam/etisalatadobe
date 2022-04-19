@@ -240,6 +240,8 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
               filterCards(idToPass, id);
             }
           }
+        } else {
+          $("[data-label='all-categories']").click();
         }
       }, 1000);
     } else {
@@ -250,9 +252,9 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
           } else {
             $("[data-label='" + idToPass + "']").click();
           }
-        } else {
-          $("[data-label='all-categories']").click();
         }
+      } else {
+        $("[data-label='all-categories']").click();
       }
     }
   });
