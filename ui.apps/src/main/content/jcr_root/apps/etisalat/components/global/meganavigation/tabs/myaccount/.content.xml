@@ -40,13 +40,22 @@
                                fieldLabel="Link To"
                                name="./navigationLinkTo"
                                rootPath="/content"/>
-                           <navigationimage
-                               jcr:primaryType="nt:unstructured"
-                               sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                               fieldLabel="Image Icon"
-                               fieldDescription="Menu Icon image for Mobile View"
-                               name="./navImagePath"
-                               rootPath="/content/dam"/>
+                           <file
+			                   jcr:primaryType="nt:unstructured"
+			                   sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+			                   allowUpload="{Boolean}false"
+			                   autoStart="{Boolean}false"
+			                   class="cq-droptarget"
+			                   fieldLabel="Image Icon"
+			                   fieldDescription="Menu Icon image for Mobile View"
+			                   fileNameParameter="./fileName"
+			                   fileReferenceParameter="./navImagePath"
+			                   mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+			                   multiple="{Boolean}false"
+			                   name="./file"			                  
+			                   title="Upload Image Asset"
+			                   uploadUrl="${suffix.path}"
+			                   useHTML5="{Boolean}true"/>
                            <subnavigationitems
                                jcr:primaryType="nt:unstructured"
                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
