@@ -83,6 +83,12 @@
           });
         }
       } else if (chkLink.toLowerCase() === "pdf") {
+        if ($this.closest(".tabs").length > 0) {
+          let tabMenu = $this.closest(".tabs").find(".cmp-tabs__tab--active");
+          if (tabMenu.length > 0) {
+            btnAction = tabMenu.first().prop("innerText").trim().toLowerCase();
+          }
+        }
         window.adobeDataLayer.push({
           event: "linkClicked",
           xdmActionDetails: {
@@ -99,7 +105,7 @@
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: sectionHeading,
+              action: btnAction,
               name: ctaName,
             },
             eventInfo: {
@@ -235,6 +241,10 @@
           },
         });
       } else if ($this.closest("header").length > 0) {
+        if ($this.closest(".sub-menu").length > 0) {
+          let subMenu = $this.closest(".sub-menu").find(".sub-menu-heading");
+          btnAction = subMenu.first().text().toLowerCase() ? subMenu.first().text().toLowerCase() : "";
+        }
         window.adobeDataLayer.push({
           event: "linkClicked",
           xdmActionDetails: {
