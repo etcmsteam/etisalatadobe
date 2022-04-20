@@ -200,26 +200,26 @@ public class MegaNavigationImpl implements MegaNavigation {
         if (null != rootRes) {
             rootRes.listChildren().forEachRemaining(resource -> {
                 final String styleID = getContainerStyleID(resource);
-                LOG.info("Mega Menu Style ID {}", styleID);
+                LOG.debug("Mega Menu Style ID {}", styleID);
                 switch (styleID) {
                     case "1626427188774": {
                         navModel.setContainerSubMenuList(getMegaSubMenuList(resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE));
-                        LOG.info("Mega menu container sub menu list {}",navModel.getContainerSubMenuList());
+                        LOG.debug("Mega menu container sub menu list {}",navModel.getContainerSubMenuList());
                         break;
                     }
                     case "1626427211199": {
                         navModel
                                 .setContainerFooterMenuList(getMegaSubMenuList(resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE));
-                        LOG.info("Mega menu container footer menu list {}",navModel.getContainerFooterMenuList());
+                        LOG.debug("Mega menu container footer menu list {}",navModel.getContainerFooterMenuList());
                         break;
                     }
                     case "1626428057855": {
                         navModel.setContainerPromotionList(getMegaPromotionalTilesList(resource, PageConstants.TEASER_RESOURCE_TYPE));
-                        LOG.info("Mega menu container promotion list {}",navModel.getContainerFooterMenuList());
+                        LOG.debug("Mega menu container promotion list {}",navModel.getContainerFooterMenuList());
                         break;
                     }
                     default:
-                        LOG.error("Style ID is empty or didn't match the mega meu style id {}", styleID);
+                        LOG.debug("Style ID is empty or didn't match the mega meu style id {}", styleID);
                 }
 
             });
@@ -273,7 +273,7 @@ public class MegaNavigationImpl implements MegaNavigation {
             }
         }
         fixedNavModel.setFeatureImageList(brandMenuList);
-        LOG.info("Mega menu container brand menu list {}",fixedNavModel.getFeatureImageList());
+        LOG.debug("Mega menu container brand menu list {}",fixedNavModel.getFeatureImageList());
         subMenuList.add(fixedNavModel);
     }
 
@@ -298,7 +298,7 @@ public class MegaNavigationImpl implements MegaNavigation {
                 }
             }
         });
-        LOG.info("Mega menu promotional tiles list {}",tilesList);
+        LOG.debug("Mega menu promotional tiles list {}",tilesList);
         return tilesList;
     }
 
@@ -374,7 +374,7 @@ public class MegaNavigationImpl implements MegaNavigation {
         }
 
         setTopNavigationMenuItems(topNavItemsList, rootRes, childItem);
-        LOG.info("Mega menu top navigation item list {}",topNavItemsList);
+        LOG.debug("Mega menu top navigation item list {}",topNavItemsList);
         return topNavItemsList;
     }
 
