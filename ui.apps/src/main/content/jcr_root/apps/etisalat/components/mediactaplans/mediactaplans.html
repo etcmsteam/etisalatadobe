@@ -1,4 +1,4 @@
-<div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
+<div data-component="media-cta" data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
      data-sly-use.imageTemplate="image.html" 
@@ -52,7 +52,7 @@
 
                     <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
 			         <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
-			           <a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" 
+			           <a href="${tileModel.tileCTALinkSameWindow}" 
 			           class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">${tileModel.ctatext}</a>
 			         </div>
 			        </sly>

@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,6 +33,7 @@ class FixedNavigationMultifieldModelTest {
 		final String expectedFixedNavTitle = "Overview";
 		final String expectedFixedNavDesc = "sampledesc";
 		final String expectedFixedNavImage = "/content/dam/sample.png";
+		final boolean expectedFixedLinkTarget = true;
 		Resource resource = context.resourceResolver().getResource(CONTENT_FIXED_NAV);
 		
 		FixedNavigtaionMultifieldModel item = resource.adaptTo(FixedNavigtaionMultifieldModel.class);
@@ -43,6 +45,8 @@ class FixedNavigationMultifieldModelTest {
 		assertEquals(expectedFixedNavTitle, item.getNavigationTitle());
 		item.setNavigationImage(expectedFixedNavImage);
 		assertEquals(expectedFixedNavImage, item.getNavigationImage());
+		item.setNavigationLinkTarget(expectedFixedLinkTarget);
+		assertTrue(item.isNavigationLinkTarget());
 	}
 
 	

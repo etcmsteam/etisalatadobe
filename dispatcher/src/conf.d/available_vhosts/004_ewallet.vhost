@@ -61,13 +61,16 @@ Include conf.d/variables/custom.vars
 		Include conf.d/rewrites/rewrite.rules
 
 		## Redirect to home page
-        RewriteRule ^$ /content/ewallet/ae/en/personal/index.html [NC,R]
+        #RewriteRule ^$ /content/ewallet/ae/en/personal/index.html [NC,R]
         ## Redirect to home page
-        RewriteRule ^/$ /content/ewallet/ae/en/personal/index.html [NC,R]
+        #RewriteRule ^/$ /content/ewallet/ae/en/personal/index.html [NC,R]
 
 		# Rewrite index page internally, pass through (PT)
 		#RewriteRule "^(/?)$" "/index.html" [PT]
-		# rewrite for Home page - (FiveMobile Index) 
+		# rewrite for Home page - (Ewallet Index)
 		RewriteRule ^/?$ /content/ewallet/ae/en/personal/index.html [PT,L]
+
+        RewriteRule ^/en/(.+)$ /content/ewallet/ae/en/$1 [PT,L]
+		RewriteRule ^(.*?).jsp $1.html [PT]
 	</IfModule>
 </VirtualHost>

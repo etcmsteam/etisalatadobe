@@ -10,6 +10,7 @@
   }
 
   .container {
+    //padding: 0 !important;
     margin-left: auto;
     margin-right: auto;
     max-width: 1224px;
@@ -72,7 +73,7 @@
         a {
           margin-bottom: 0;
          @media (min-width: 992px) {
-           margin-bottom: toRem(5);
+           margin-bottom: toRem(1);
           }
           transition: all 0.25s ease-in-out;
           width: toRem(86);
@@ -133,8 +134,8 @@
 
             @media (min-width: 1248px) {
               min-width: 108px;
-              padding-left: 1.6rem;
-              padding-right: 1.6rem;
+              padding-left: toRem(23);
+              padding-right: toRem(23);
               text-align: center;
             }
 
@@ -425,8 +426,10 @@
       }
 
       .tile-content-wrapp {
-        background: transparent;
+        background: linear-gradient(180deg,rgba(34,85,97,0),rgba(75,66,59,.9));
         border-radius: 0;
+        border-bottom-left-radius: toRem(8);
+        border-bottom-right-radius: toRem(8);
         bottom: 0;
         height: 60%;
         max-width: 100%;
@@ -1001,6 +1004,34 @@
   transition: ease-out 0.3s;
   width: 272px;
   z-index: 11;
+
+  .nav-item.inc-push-meu {
+    & .nav-link {
+      background-color: $cherry-red !important;
+      padding: 1rem;
+    }
+
+    & .nav-expand-content {
+      background-color: $cherry-red !important;
+      z-index: 4;
+
+      & .nav-item {
+        & .nav-link {
+          background-color: $cherry-red !important;
+          color: $white !important;
+          
+          &.nav-back-link {
+            border-bottom: 1px solid $white;
+
+            &:before {
+              border-color: $white !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
 
 .nav-items {
@@ -1161,7 +1192,7 @@
 
       &::before {
         border: solid $main-green;
-        border-width: 0 toRem(1.5) toRem(1.5) 0;
+        border-width: 0 toRem(1.7) toRem(1.7) 0;
         content: "";
         line-height: 1;
         margin: toRem(5) toRem(1.6) 0 toRem(3.5);
@@ -1170,6 +1201,10 @@
         top: 50%;
         transform: translateY(-50%) rotate(135deg);
         transition: all 0.3s ease-in-out;
+        width: 9px;
+        height: 9px;
+        margin-top: 7px;
+        margin-right: 3px;
       }
 
       .nav-link-icon {
@@ -2194,10 +2229,9 @@
   }
 }
 
-.mega-menu-navbar > .container {
-  padding-left: 10px;
-  padding-right: 24px;
-}
+// .mega-menu-navbar > .container {
+//   padding: 0 !important;
+// }
 
 .main-menu-slide {
   img {

@@ -1,9 +1,15 @@
 <template data-sly-template.xfmobile="${ @ properties,meganavigation}">
    <!--main menu mobile version: starts  -->
-   <nav class="nav-drill">
-      <!-- For MyAccount Menu: starts -->
-      <ul data-sly-test="${!meganavigation.accountNavigationItems.isEmpty}" data-sly-list.accountItems="${meganavigation.accountNavigationItems}" class="nav-items nav-level-1">
-         <li class="nav-item highlighted ${accountItems.subNavigationList.size > 0 ? 'nav-expand' :''}">
+   <nav class="nav-drill">      
+      <ul data-sly-test="${!meganavigation.accountNavigationItems.isEmpty || meganavigation.pushMenuEnabled}" data-sly-list.accountItems="${meganavigation.accountNavigationItems}" class="nav-items nav-level-1">
+         <!-- incpection push menu starts -->
+          <sly data-sly-use.pushMenuIconTemplate="pushmenuicon.html"
+              data-sly-call="${pushMenuIconTemplate.pushMenuIcon @ properties=properties,meganavigation=meganavigation}">  
+          </sly>
+          <!-- incpection push menu ends -->
+         
+         <!-- For MyAccount Menu: starts -->
+         <li data-sly-test="${!meganavigation.accountNavigationItems.isEmpty}" class="nav-item highlighted ${accountItems.subNavigationList.size > 0 ? 'nav-expand' :''}">
             <a class="nav-link" href="${accountItems.navigationLinkTo}">
             <img alt="${accountItems.navigationLabel}" class="nav-link-icon" src="${accountItems.navImagePath}" />
             <span class="accountName">${accountItems.navigationLabel}</span>
@@ -25,9 +31,10 @@
                </li>
             </ul>
          </li>
+          <!-- For MyAccount Menu: ends -->
          <li class="nav-spacer spacer-32"></li>
       </ul>
-      <!-- For MyAccount Menu: ends -->
+     
       <ul data-sly-test="${properties.search}" class="nav-items nav-level-1">
          <li class="nav-item nav-expand">
             <a class="nav-link search-link" href="#">

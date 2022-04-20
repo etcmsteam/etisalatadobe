@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.models.FixedNavigtaionMultifieldModel;
+import com.etisalat.core.models.ImageViewportModel;
 import com.etisalat.core.models.LinkModel;
 import com.etisalat.core.models.MegaFixedNavigationItem;
 import com.etisalat.core.models.MegaNavigation;
@@ -199,26 +200,26 @@ public class MegaNavigationImpl implements MegaNavigation {
         if (null != rootRes) {
             rootRes.listChildren().forEachRemaining(resource -> {
                 final String styleID = getContainerStyleID(resource);
-                LOG.info("Mega Menu Style ID {}", styleID);
+                LOG.debug("Mega Menu Style ID {}", styleID);
                 switch (styleID) {
                     case "1626427188774": {
                         navModel.setContainerSubMenuList(getMegaSubMenuList(resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE));
-                        LOG.info("Mega menu container sub menu list {}",navModel.getContainerSubMenuList());
+                        LOG.debug("Mega menu container sub menu list {}",navModel.getContainerSubMenuList());
                         break;
                     }
                     case "1626427211199": {
                         navModel
                                 .setContainerFooterMenuList(getMegaSubMenuList(resource, PageConstants.FIXED_NAVIGATION_RESOURCE_TYPE));
-                        LOG.info("Mega menu container footer menu list {}",navModel.getContainerFooterMenuList());
+                        LOG.debug("Mega menu container footer menu list {}",navModel.getContainerFooterMenuList());
                         break;
                     }
                     case "1626428057855": {
                         navModel.setContainerPromotionList(getMegaPromotionalTilesList(resource, PageConstants.TEASER_RESOURCE_TYPE));
-                        LOG.info("Mega menu container promotion list {}",navModel.getContainerFooterMenuList());
+                        LOG.debug("Mega menu container promotion list {}",navModel.getContainerFooterMenuList());
                         break;
                     }
                     default:
-                        LOG.error("Style ID is empty or didn't match the mega meu style id {}", styleID);
+                        LOG.debug("Style ID is empty or didn't match the mega meu style id {}", styleID);
                 }
 
             });
@@ -272,7 +273,7 @@ public class MegaNavigationImpl implements MegaNavigation {
             }
         }
         fixedNavModel.setFeatureImageList(brandMenuList);
-        LOG.info("Mega menu container brand menu list {}",fixedNavModel.getFeatureImageList());
+        LOG.debug("Mega menu container brand menu list {}",fixedNavModel.getFeatureImageList());
         subMenuList.add(fixedNavModel);
     }
 
@@ -286,19 +287,39 @@ public class MegaNavigationImpl implements MegaNavigation {
                                                               String resourceType) {
         final List<MegaTeaserModel> tilesList = new ArrayList<>();
         childResource.listChildren().forEachRemaining(resource -> {
-            if (!resource.getName().equals(AEConstants.CQ_RESPONSIVE_NODE) && resource.getResourceType()
-                    .equals(resourceType)) {
+            if (!resource.getName().equals(AEConstants.CQ_RESPONSIVE_NODE) && (resource.getResourceType()
+                    .equals(resourceType) || resource.getResourceType().equals(PageConstants.TEASER_ETISALAT_RESOURCE_TYPE))) {
                 final MegaTeaserModel teaserModel = resource.adaptTo(MegaTeaserModel.class);
-                if (null != teaserModel && StringUtils.isNotBlank(teaserModel.getFileReference())) {
+                teaserModel.setTeaserResource(resource);
+            if (null != teaserModel
+                && (StringUtils.isNotBlank(teaserModel.getFileReference()) || isTeaserEtisalatHasContent(resource))) {
                     setTeaserCTADetails(teaserModel, resource);
                     tilesList.add(teaserModel);
                 }
             }
         });
-        LOG.info("Mega menu promotional tiles list {}",tilesList);
+        LOG.debug("Mega menu promotional tiles list {}",tilesList);
         return tilesList;
     }
 
+    /**
+     * Checks if is teaser etisalat has content.
+     *
+     * @param resource the resource
+     * @return true, if is teaser etisalat has content
+     */
+    private boolean isTeaserEtisalatHasContent(Resource resource) {
+      if (resource.getResourceType().equals(PageConstants.TEASER_ETISALAT_RESOURCE_TYPE)) {
+        final ImageViewportModel imageViewportModel = this.modelFactory.getModelFromWrappedRequest(this.request,
+            resource, ImageViewportModel.class);
+
+        return (imageViewportModel.getFourViewportContent() || imageViewportModel.getSixViewportContent()
+            || imageViewportModel.getThreeViewportContent());
+      }
+
+      return false;
+    }
+    
     /**
      * Sets teaser cta link and text details.
      *
@@ -306,8 +327,6 @@ public class MegaNavigationImpl implements MegaNavigation {
      * @param actionResource
      */
     private void setTeaserCTADetails(MegaTeaserModel teaserModel, Resource actionResource) {
-        if (StringUtils.isNotBlank(teaserModel.getActionsEnabled()) && ("true")
-                .equals(teaserModel.getActionsEnabled())) {
             final  Resource item = actionResource.getChild("actions");
             if (null != item) {
                 for (Resource itemRes : item.getChildren()) {
@@ -315,10 +334,9 @@ public class MegaNavigationImpl implements MegaNavigation {
                     teaserModel.setLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,
                             vm.get(AEConstants.PROPERTY_LINK, StringUtils.EMPTY)));
                     teaserModel.setText(vm.get("text", String.class));
+                    teaserModel.setActionLinkTarget(vm.get("linkTarget", String.class));
                 }
-
             }
-        }
     }
 
     /**
@@ -356,7 +374,7 @@ public class MegaNavigationImpl implements MegaNavigation {
         }
 
         setTopNavigationMenuItems(topNavItemsList, rootRes, childItem);
-        LOG.info("Mega menu top navigation item list {}",topNavItemsList);
+        LOG.debug("Mega menu top navigation item list {}",topNavItemsList);
         return topNavItemsList;
     }
 
@@ -433,6 +451,21 @@ public class MegaNavigationImpl implements MegaNavigation {
     @Override
     public List<FixedNavigtaionMultifieldModel> getTopNavIconMenuItems() {
         return Collections.unmodifiableList(getTopNavigationItems(AEConstants.LINKS_WITH_ICONS));
+    }
+    
+    @Override
+    public List<FixedNavigtaionMultifieldModel> getTopNavPushMenuIconItems() {     
+      return Collections.unmodifiableList(getTopNavigationItems(AEConstants.PUSH_MENU_ICON_LINKS));
+    }
+
+
+    @Override
+    public boolean isPushMenuEnabled() {
+      getTopNavigationItems(AEConstants.PUSH_MENU_ICON_LINKS);
+      if(null != getTopNavResource()) {
+        return  getTopNavResource().getValueMap().get("pushMenuEnabled",false);
+      }
+      return false;
     }
 
     @Override

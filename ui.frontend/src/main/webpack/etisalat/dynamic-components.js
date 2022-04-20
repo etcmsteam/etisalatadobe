@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import "regenerator-runtime/runtime";
 
 // register the className of each dynamic component to it's own js chunk, and initialization call
@@ -14,11 +15,43 @@ const DYNAMIC_MODULE = {
   "cmp-need-help": async () => {
     await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
   },
-  "cmp-non-actionable-box": async () => {
-    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_BOX());
-  },
   "cmp-tile-box": async () => {
-    await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
+    await import(/* webpackChunkName: 'tilebox' */ "./dynamic-modules/tilebox/tilebox").then((obj) => obj.TILE_BOX());
+  },
+  "cmp-features": async () => {
+    await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
+  },
+  "cmp-promogrid-4-0": async () => {
+    await import(/* webpackChunkName: 'promo-grid-4-0' */ "./dynamic-modules/promo-grid-4-0/promo-grid-4-0").then((obj) => obj.PROMO_GRID_4_0());
+  },
+  "media-cta": async () => {
+    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
+  },
+  "cmp-storelocator": async () => {
+    await import(/* webpackChunkName: 'storelocator' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR());
+  },
+  "cmp-non-actionable-box": async () => {
+    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
+  },
+  "cmp-context-navigation": async () => {
+    await import(/* webpackChunkName: 'context-navigation' */ "./dynamic-modules/context-navigation/context-navigation").then((obj) =>
+      obj.CONTEXT_NAVIGATION(),
+    );
+  },
+  "cmp-benefits": async () => {
+    await import(/* webpackChunkName: 'benefits-section' */ "./dynamic-modules/benefits/benefits").then((obj) => obj.BENIFITS());
+  },
+  "cmp-config-tabs": async () => {
+    await import(/* webpackChunkName: 'config-tabs' */ "./dynamic-modules/config-tabs/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
+  },
+  "cmp-anaemarati-plans": async () => {
+    await import(/* webpackChunkName: 'anaemarati-plans' */ "./dynamic-modules/anaemarati-plans/anaemarati-plans").then((obj) => obj.ANAEMARATI_CARDS());
+  },
+  "cmp-product-cards": async () => {
+    await import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS());
+  },
+  "cmp-recommended-product-cards": async () => {
+    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/product-cards/recommended-product-cards").then((obj) => obj.RECOMMENDED_PRODUCT_CARDS());
   },
 };
 

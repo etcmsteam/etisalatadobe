@@ -221,20 +221,12 @@
 
 .footer-links-logo-section {
   background: #fff;
-  font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
-  margin-bottom: toRem(24) !important;
+  @include font-family-lato();
   min-height: 100px;
+  margin-bottom: toRem(24) !important;
 
-  @include respond-to-min($desktop) {
-    margin-bottom: 0 !important;
-  }
-
-  @include rtlBlock() {
-    margin-bottom: 0;
-
-    @include respond-to-max($tablet) {
-      margin-bottom: toRem(24);
-    }
+  & .etisalat-logo svg {
+      max-height: 110px;
   }
 }
 
@@ -1049,10 +1041,11 @@
 .footer-links-logo-section .etisalat-logo {
   display: block;
   text-align: right;
-}
-
-.footer-links-logo-section .etisalat-logo svg {
-  width: 260px;
+  margin-bottom: 10px;
+  & svg {
+    max-width: 100%;
+    max-height: 110px;
+  }
 }
 
 .footer-links-logo-section .footer-links-nav li {
@@ -1122,6 +1115,14 @@
 
   .footer-links-logo-section .flex-container .etisalat-logo {
     text-align: right;
+
+    & svg {
+      height: 100%;
+    }
+  }
+  
+  [lang="ar"] [dir="rtl"] .footer-links-logo-section .flex-container .etisalat-logo {
+    text-align: left;
   }
 }
 
@@ -1252,7 +1253,7 @@
 }
 
 .footer-black {
-  background-color: #242424;
+  background-color: $dark-gray;
   box-shadow: 0 -2px 4px 0 rgb(0 0 0 / 15%);
   padding: 13px 0;
 }
@@ -1712,7 +1713,10 @@
 }
 
 .footer .quick-links-section {
-  padding-bottom: toRem(20);
-  padding-top: toRem(20);
+  padding: 3.5rem 0 3rem;
   margin-bottom: toRem(24);
+
+  // & .container {
+  //   padding: 0 !important;
+  // }
 }

@@ -1,7 +1,7 @@
 <template data-sly-template.threeColumnVideo="${ @ tileModel,properties,imageViewportModel}">
-<div class="${properties.mediaAlignmentThreeColumnVideo}" data-sly-test="${properties.mediaAlignmentThreeColumnVideo}">
+<div data-component="media-cta" class="${properties.mediaAlignmentThreeColumnVideo}" data-sly-test="${properties.mediaAlignmentThreeColumnVideo}">
     <a data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" 
-			  href=" ${properties.tileLinkBehavior=='opensamewindow' ? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}"
+			  href=" ${tileModel.tileCTALinkSameWindow}"
 			  class="link-cover"
 			  target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
     <div class="container">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="body">
 					<sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
-						<a href="${properties.tileLinkBehavior == 'opensamewindow'? tileModel.tileCTALinkSameWindow : tileModel.tileCTALinkNewWindow}" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" class="clickable-area" >
+						<a href="${tileModel.tileCTALinkSameWindow}" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" class="clickable-area" >
 							<div class="paragraph-styling">
 								<div class="p2">
 									${properties.text  @ context='html'}

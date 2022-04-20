@@ -77,22 +77,17 @@
 
 		  <ul data-sly-test="${properties.quickAccessTitle}" class="footer-social-nav">
 			<li>${properties.quickAccessTitle}</li>
-				<sly data-sly-list.multifieldObj="${resource.getChildren}">
-       				<sly data-sly-test="${multifieldObj.name == 'quickaccess'}">
-          				<sly data-sly-list.qaItems="${multifieldObj.getChildren}">
-							<li class="links-item">
-								<a href="${qaItems.quickaccesslinkUrl}" title="${qaItems.qatitle}" target="_blank">
-  									<img data-sly-test="${qaItems.fileReference}" alt="${qaItems.qatitle}" title="${qaItems.qatitle}" src="${qaItems.fileReference}"/>
-  								</a>
-                			</li>
-
-						</sly>
-          			</sly>
-       			</sly>
+				<sly data-sly-list.qaItems="${footer.quickAccessLinks}">
+					<li class="links-item">
+						<a href="${qaItems.quickaccesslinkUrl}" title="${qaItems.qatitle}" target="${qaItems.linkTarget ? '_blank' : '_self'}">
+  							<img data-sly-test="${qaItems.qaFileReference}" alt="${qaItems.qatitle}" title="${qaItems.qatitle}" src="${qaItems.qaFileReference}"/>
+  						</a>
+                	</li>
+				</sly>
 			</ul>
 
           <ul class="footer-links-nav" data-sly-list.items="${footer.footerLinks}">
-            <li><a href="${items.linkUrl}" title="${items.linkText}">${items.linkText}</a>
+            <li><a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}" title="${items.linkText}">${items.linkText}</a>
             </li>
           </ul>
           <div data-sly-test="${footer.copyrightText}" class="copyright desktop year"> &copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
@@ -100,9 +95,11 @@
           <!-- <div class="copyright desktop ">&copy; 2021 Etisalat. All Rights Reserved.</div> -->
         </div>
         <div data-sly-test="${footer.promo.imgUrl || footer.copyrightText}"class="col-xs-12 col-md-3">
-          <a data-sly-test="${footer.promo.imgUrl}" class="etisalat-logo" href="${footer.promo.linkUrl}" title="Expo 2020">
-            <img alt="icon-amex-card"  src="${footer.promo.imgUrl}" title="icon-amex-card"/>
-          </a>
+		   <div class="etisalat-logo">
+			  <a data-sly-test="${footer.promo.imgUrl}" href="${footer.promo.linkUrl}">
+				<img alt="footer-logo" src="${footer.promo.imgUrl}"/>
+			  </a>
+		   </div>
           <div class="copyright">&copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
         </div>
       </div>

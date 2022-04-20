@@ -134,4 +134,8 @@ public class TopnavModel {
   public List<FixedNavigtaionMultifieldModel> getTopNavIconsList() {
     return CommonUtility.getFixedNavigationItems("linkswithicons", currentResource, resourceResolver);
   }
+  
+  public List<FixedNavigtaionMultifieldModel> getTopLeftNavList() {
+    return CommonUtility.getFixedNavigationItems("topnavlinks", currentResource, resourceResolver);
+  }
 }

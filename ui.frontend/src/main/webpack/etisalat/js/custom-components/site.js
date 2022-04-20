@@ -44,21 +44,23 @@ const SEARCH_LINK_CLS = "search-link";
 const NAV_BACK_LINK_CLS = ".nav-back-link";
 
 NAV_EXPAND.forEach(function (item) {
-  item.querySelector(NAV_LINK_CLS).addEventListener("click", function () {
-    item.classList.add(ACTIVE_CLS);
+  if(item) {
+    item.querySelector(NAV_LINK_CLS) && item.querySelector(NAV_LINK_CLS).addEventListener("click", function () {
+      item.classList.add(ACTIVE_CLS);
 
-    if (this.classList.contains(SEARCH_LINK_CLS)) {
-      NAV_DRILL_CLS.addClass(SEARCH_NAV_DRILL_CLS);
-    }
-  });
+      if (this.classList.contains(SEARCH_LINK_CLS)) {
+        NAV_DRILL_CLS.addClass(SEARCH_NAV_DRILL_CLS);
+      }
+    });
 
-  item.querySelector(NAV_BACK_LINK_CLS).addEventListener("click", function () {
-    item.classList.remove(ACTIVE_CLS);
-    
-    if (NAV_DRILL_CLS.hasClass(SEARCH_NAV_DRILL_CLS)) {
-      NAV_DRILL_CLS.removeClass(SEARCH_NAV_DRILL_CLS);
-    }
-  });
+    item.querySelector(NAV_BACK_LINK_CLS) && item.querySelector(NAV_BACK_LINK_CLS).addEventListener("click", function () {
+      item.classList.remove(ACTIVE_CLS);
+
+      if (NAV_DRILL_CLS.hasClass(SEARCH_NAV_DRILL_CLS)) {
+        NAV_DRILL_CLS.removeClass(SEARCH_NAV_DRILL_CLS);
+      }
+    });
+  }
 });
 
 
