@@ -8,25 +8,25 @@
       <column
           jcr:primaryType="nt:unstructured"
           sling:resourceType="granite/ui/components/coral/foundation/container">
-          <items jcr:primaryType="nt:unstructured">
-              <file
-                  jcr:primaryType="nt:unstructured"
-                  sling:resourceType="granite/ui/components/foundation/form/fileupload"
-                  allowUpload="{Boolean}false"
-                  autoStart="{Boolean}false"
-                  class="cq-droptarget fileUploadResuable"
-                  fieldDescription="Logo File"
-                  fieldLabel="Logo File"
-                  fileNameParameter="./fileName"
-                  fileReferenceParameter="./fileReference"
-                  mimeTypes="[image]"
-                  multiple="{Boolean}false"
-                  name="./file"
-                  required="{Boolean}true"
+          <items jcr:primaryType="nt:unstructured">            
+               <file
+                   jcr:primaryType="nt:unstructured"
+                   sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                   allowUpload="{Boolean}false"
+                   autoStart="{Boolean}false"
+                   class="cq-droptarget"
+                   fieldLabel="Logo File"
+                   fieldDescription="Logo File"
+                   fileNameParameter="./fileName"
+                   fileReferenceParameter="./fileReference"
+                   mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                   multiple="{Boolean}false"
+                   name="./file"
+                   required="{Boolean}true"
                   requiredField="A logo image is required"
-                  title="Upload Image Asset"
-                  uploadUrl="${suffix.path}"
-                  useHTML5="{Boolean}true"/>
+                   title="Upload Image Asset"
+                   uploadUrl="${suffix.path}"
+                   useHTML5="{Boolean}true"/>
               <logolink
                   jcr:primaryType="nt:unstructured"
                   sling:resourceType="cq/gui/components/coral/common/form/pagefield"
@@ -40,8 +40,7 @@
                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                   fieldDescription="Custom Alt-Text"
                   fieldLabel="Custom Alt-Text"
-                  name="./logoAltText"
-                  required="true"/>
+                  name="./logoAltText"/>
           </items>
       </column>
     </items>
