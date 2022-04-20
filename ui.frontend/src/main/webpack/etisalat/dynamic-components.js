@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import "regenerator-runtime/runtime";
 
 // register the className of each dynamic component to it's own js chunk, and initialization call
@@ -15,7 +16,7 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
   },
   "cmp-tile-box": async () => {
-    await import(/* webpackChunkName: 'tile-box' */ "./dynamic-modules/tile-box/tile-box").then((obj) => obj.TILE_BOX());
+    await import(/* webpackChunkName: 'tilebox' */ "./dynamic-modules/tilebox/tilebox").then((obj) => obj.TILE_BOX());
   },
   "cmp-features": async () => {
     await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
@@ -31,6 +32,20 @@ const DYNAMIC_MODULE = {
   },
   "cmp-non-actionable-box": async () => {
     await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
+  },
+  "cmp-context-navigation": async () => {
+    await import(/* webpackChunkName: 'context-navigation' */ "./dynamic-modules/context-navigation/context-navigation").then((obj) =>
+      obj.CONTEXT_NAVIGATION(),
+    );
+  },
+  "cmp-benefits": async () => {
+    await import(/* webpackChunkName: 'benefits-section' */ "./dynamic-modules/benefits/benefits").then((obj) => obj.BENIFITS());
+  },
+  "cmp-config-tabs": async () => {
+    await import(/* webpackChunkName: 'config-tabs' */ "./dynamic-modules/config-tabs/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
+  },
+  "cmp-anaemarati-plans": async () => {
+    await import(/* webpackChunkName: 'anaemarati-plans' */ "./dynamic-modules/anaemarati-plans/anaemarati-plans").then((obj) => obj.ANAEMARATI_CARDS());
   },
 };
 

@@ -23,6 +23,7 @@
       let totalVal = "";
       let productCat = "";
       let lnkRegion = "";
+      let chkLink = "";
 
       const pathArr = dataLayerPathName.split("/");
       sectionHeading = pathArr.pop();
@@ -36,7 +37,10 @@
         ctaName = title ? title.toLowerCase().trim() : "";
       }
       const anchorOrigin = isValidHttpUrl($this.attr("href")).origin;
-      let chkLink = $this.attr("href").split(".");
+      if ($this.attr("href") && $this.attr("href") !== "#") {
+        chkLink = $this.attr("href").split(".");
+        chkLink = chkLink[1] ? chkLink[1] : "";
+      }
 
       if (anchorOrigin && currentOrigin !== anchorOrigin) {
         if ($this.attr("href") && $this.attr("href") !== "#") {
@@ -78,10 +82,37 @@
             },
           });
         }
+      } else if (chkLink.toLowerCase() === "pdf") {
+        window.adobeDataLayer.push({
+          event: "linkClicked",
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: "download",
+                region: "main",
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: sectionHeading,
+              name: ctaName,
+            },
+            eventInfo: {
+              downloadClick: 1,
+            },
+          },
+        });
       } else if ($this.closest(".etisalatherobanner").length > 0) {
         btnAction = $this.closest(".etisalatherobanner").find(".hero-title");
         if (btnAction.length > 0) {
           btnAction = btnAction.text().toLowerCase().trim();
+        } else {
+          btnAction = "";
         }
         window.adobeDataLayer.push({
           event: "linkClicked",
@@ -256,31 +287,6 @@
             },
             eventInfo: {
               footerClick: 1,
-            },
-          },
-        });
-      } else if (chkLink[1].toLowerCase() === "pdf") {
-        window.adobeDataLayer.push({
-          event: "linkClicked",
-          xdmActionDetails: {
-            web: {
-              webInteraction: {
-                name: ctaName,
-                URL: currrentURL,
-                type: "download",
-                region: lnkRegion,
-                linkClicks: {
-                  value: 1,
-                },
-              },
-            },
-            linkInfo: {
-              sectionHeading: sectionHeading,
-              action: btnAction,
-              name: ctaName,
-            },
-            eventInfo: {
-              downloadClick: 1,
             },
           },
         });
