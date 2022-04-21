@@ -1,0 +1,22 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel" 
+     data-sly-use.tileModel="com.etisalat.core.models.TileModel" />
+<sly data-sly-test="${properties.tileLinkBehavior != 'youtubemodalwindow'}">
+    <a href="${tileModel.tileCTALinkSameWindow}" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">
+        <div class="techsupport-slidebox">
+            <sly data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+                <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+                    <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                </div>
+                <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+            </sly>
+            <h3 data-sly-test="${properties.tileTitle}" data-sly-element="${properties.titleType}">${properties.tileTitle}</h3>
+            <div class="overlay"></div>
+        </div>
+    </a>
+</sly>
+
+<sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
+	
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.tileTitle}"></sly>
