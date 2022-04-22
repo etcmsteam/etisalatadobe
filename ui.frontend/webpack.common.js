@@ -28,7 +28,7 @@ module.exports = {
     ewallet: SOURCE_ROOT + "/ewallet/main.js",
   },
   output: {
-    filename: "clientlib-[name]/[name].js",
+    filename: "clientlib-[name]/[name].[hash].js",
     chunkFilename: "clientlib-dynamic-modules/resources/[name].[hash].js",
     publicPath: "/etc.clientlibs/etisalat/clientlibs/",
     path: path.resolve(__dirname, "dist"),
@@ -87,7 +87,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
-      filename: "clientlib-[name]/[name].css",
+      filename: "clientlib-[name]/[name].[hash].css",
       chunkFilename: "clientlib-dynamic-modules/resources/[name].[hash].css",
     }),
     new CopyWebpackPlugin([
