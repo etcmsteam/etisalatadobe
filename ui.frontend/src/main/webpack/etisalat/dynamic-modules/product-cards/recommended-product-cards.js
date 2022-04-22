@@ -1,6 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
-(function () {
+import "./index.scss";
+/* eslint-disable */
+export const RECOMMENDED_PRODUCT_CARDS = () => {
   //swiper for most recommended products
   var recommendedCardsCarousal;
   function initSwiperRecommendedCards() {
@@ -42,7 +43,7 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
       hash = window.location.href.substring(window.location.href.indexOf("#"));
     }
     setTimeout(function () {
-      if(!$(".tab-config-deeplink").length) {
+      if (!$(".tab-config-deeplink").length) {
         return;
       }
       mySwiper = new Swiper(".tab-config-deeplink", {
@@ -239,6 +240,8 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
               filterCards(idToPass, id);
             }
           }
+        } else {
+          $("[data-label='all-categories']").click();
         }
       }, 1000);
     } else {
@@ -249,10 +252,10 @@ import { swiperInit } from "../../../global/js/swiperInitialize";
           } else {
             $("[data-label='" + idToPass + "']").click();
           }
-        } else {
-          $("[data-label='all-categories']").click();
         }
+      } else {
+        $("[data-label='all-categories']").click();
       }
     }
   });
-})(define, window);
+};

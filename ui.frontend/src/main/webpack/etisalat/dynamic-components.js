@@ -33,6 +33,26 @@ const DYNAMIC_MODULE = {
   "cmp-non-actionable-box": async () => {
     await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
   },
+  "cmp-context-navigation": async () => {
+    await import(/* webpackChunkName: 'context-navigation' */ "./dynamic-modules/context-navigation/context-navigation").then((obj) =>
+      obj.CONTEXT_NAVIGATION(),
+    );
+  },
+  "cmp-benefits": async () => {
+    await import(/* webpackChunkName: 'benefits-section' */ "./dynamic-modules/benefits/benefits").then((obj) => obj.BENIFITS());
+  },
+  "cmp-config-tabs": async () => {
+    await import(/* webpackChunkName: 'config-tabs' */ "./dynamic-modules/config-tabs/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
+  },
+  "cmp-anaemarati-plans": async () => {
+    await import(/* webpackChunkName: 'anaemarati-plans' */ "./dynamic-modules/anaemarati-plans/anaemarati-plans").then((obj) => obj.ANAEMARATI_CARDS());
+  },
+  "cmp-product-cards": async () => {
+    await import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS());
+  },
+  "cmp-recommended-product-cards": async () => {
+    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/product-cards/recommended-product-cards").then((obj) => obj.RECOMMENDED_PRODUCT_CARDS());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

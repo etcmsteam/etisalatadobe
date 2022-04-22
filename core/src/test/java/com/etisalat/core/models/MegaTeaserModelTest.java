@@ -33,26 +33,50 @@ class MegaTeaserModelTest {
 	}
 	
 	@Test
-	void testTabImageItems() {
-		final String expectedImagePath = "/content/dam/etisalat/sampletest1.png";
-		final String expectedTitle = "Support";
-		final String expectedPreTitle = "presampletitle";
-	    final String isActionEnabled = "true";
-		Resource resource = context.resourceResolver().getResource(TAB_TEASER_1);
-		MegaTeaserModel teaser = resource.adaptTo(MegaTeaserModel.class);
-		String fileReference = teaser.getFileReference();
-		String title = teaser.getTitle();
-		
-		teaser.setActionsEnabled(isActionEnabled);
-        teaser.setFileReference(expectedImagePath);
-        teaser.setTitle(expectedTitle);
-        teaser.setPretitle(expectedPreTitle);
-		assertEquals(expectedImagePath, fileReference);
-		assertEquals(expectedTitle, title);	
-		assertEquals(expectedPreTitle,teaser.getPretitle());
-		assertEquals(isActionEnabled,teaser.getActionsEnabled());
-	}
-	
+  void testTabImageItems() {
+    final String expectedImagePath = "/content/dam/etisalat/sampletest1.png";
+    final String expectedTitle = "Support";
+    final String expectedPreTitle = "presampletitle";
+    final String isActionEnabled = "true";
+    final String expectedLinkTarget = "_self";
+    final String expectedLinkURL = "/content/etisalat/sample.html";
+    final String expectedResourceType = "etisalat/components/teaser";
+    final String expectedTitleType = "h3";
+    final String expectedText = "Leanmore";
+    Resource resource = context.resourceResolver().getResource(TAB_TEASER_1);
+    MegaTeaserModel teaser = resource.adaptTo(MegaTeaserModel.class);
+    String fileReference = teaser.getFileReference();
+    String title = teaser.getTitle();
+
+    teaser.setActionsEnabled(isActionEnabled);
+    teaser.setFileReference(expectedImagePath);
+    teaser.setTitle(expectedTitle);
+    teaser.setPretitle(expectedPreTitle);
+    teaser.setActionLinkTarget(expectedLinkTarget);
+    teaser.setLinkTarget(expectedLinkTarget);
+    teaser.setLinkURL(expectedLinkURL);
+    teaser.setTeaserResource(resource);
+    teaser.setLink(expectedLinkURL);
+    teaser.setTitleType(expectedTitleType);
+    teaser.setText(expectedText);
+    teaser.setResourceType(expectedResourceType);
+    teaser.setBrandTitle(expectedTitle);
+    
+    assertEquals(expectedImagePath, fileReference);
+    assertEquals(expectedTitle, title);
+    assertEquals(expectedPreTitle, teaser.getPretitle());
+    assertEquals(isActionEnabled, teaser.getActionsEnabled());
+    assertEquals(expectedLinkTarget, teaser.getActionLinkTarget());
+    assertEquals(expectedLinkTarget, teaser.getLinkTarget());
+    assertEquals(expectedLinkURL, teaser.getLinkURL());
+    assertEquals(resource.getPath(), teaser.getTeaserResource().getPath());
+    assertEquals(expectedResourceType, teaser.getResourceType());
+    assertEquals(expectedTitleType,teaser.getTitleType());
+    assertEquals(expectedLinkURL,teaser.getLink());
+    assertEquals(expectedText,teaser.getText());
+    assertEquals(expectedTitle,teaser.getBrandTitle());
+  }
+
 	@Test
 	void testEmptyImageList() {
 		context.currentResource(TAB_TEASER_2);
