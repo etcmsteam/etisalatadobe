@@ -6,26 +6,35 @@ $(document).ready(function () {
     body.css("position", "relative");
     body.scrollspy({
       target: "#page-nav",
-      offset: 144,
+      offset: 250,
     });
 
     $("#page-nav a").on("click", function (event) {
       event.preventDefault();
       var hash = this.hash,
         $that = $(this);
-
+  
       if ($(hash).length > 0) {
         $(this).parent().parent().find(".active").removeClass("active");
         $that.parent().addClass("active");
         var hashOffsetTop, $PageNavWrap;
         $PageNavWrap = $(".page-nav-wrap");
-
+        
         if ($PageNavWrap.hasClass("affix")) {
-          hashOffsetTop = $(hash).offset().top - 140;
+          if (window.outerWidth > 768) {
+            hashOffsetTop = $(hash).offset().top - 239;
+          } else {
+            hashOffsetTop = $(hash).offset().top - 150;
+          }
         } else {
-          hashOffsetTop = $(hash).offset().top - 360;
+          if (window.outerWidth > 768) {
+            hashOffsetTop = $(hash).offset().top - 285;
+          } else {
+            hashOffsetTop = $(hash).offset().top - 150;
+          }
         }
 
+        hashOffsetTop = hashOffsetTop < 0 ? 0 : hashOffsetTop;
         $("html, body").animate({ scrollTop: hashOffsetTop }, { duration: 800, queue: false });
       }
     });
@@ -34,7 +43,7 @@ $(document).ready(function () {
     wrap.each(function () {
       $(this).affix({
         offset: {
-          top: $(this).offset().top - 104,
+          top: $(this).offset().top - 205,
         },
       });
     });
