@@ -11,6 +11,10 @@
 # Include customer defined variables
 Include conf.d/variables/custom.vars
 
+<LocationMatch "\.(?i:txt)|(?i:pdf)|(?i:xml)$">
+    Header set Content-Disposition inline
+</LocationMatch>
+
 <VirtualHost *:80>
 	ServerName	"etisalat"
 	# Put names of which domains are used for your published site/content here
