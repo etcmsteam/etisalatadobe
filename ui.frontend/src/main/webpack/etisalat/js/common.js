@@ -77,6 +77,7 @@
     $COUNTRY_NAME.select2({
       data: COUNTRY,
       dropdownParent: $COUNTRY_NAME.parent(".cmp-form-options"),
+      sorter: (data) => data.sort((a, b) => a.text.localeCompare(b.text)),
     });
   }
 
