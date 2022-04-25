@@ -6,3 +6,4 @@ import "./mobile-dropdown";
 import "./offers-overview-slider";
 import "./ewallet-newsearch";
 import "./site";
+import "./svg";

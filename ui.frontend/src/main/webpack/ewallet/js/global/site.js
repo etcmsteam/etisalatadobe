@@ -1,3 +1,4 @@
+/* eslint-disable */
 $(document).ready(function () {
   //footer copyright year in dynamic
   $(".footer-copyright-year").text(new Date().getFullYear());
@@ -5,6 +6,9 @@ $(document).ready(function () {
 
 (function () {
   define(["lodash", "select2", "swiper"], function (_) {
+    if (!document.getElementById("store-locator-map")) {
+      return;
+    }
     function isJson(str) {
       try {
         JSON.parse(str);
