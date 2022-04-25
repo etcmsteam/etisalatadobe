@@ -1,4 +1,5 @@
-//JSON added here as temporarily - creating separated json file causes access denied in AEM
+export const PRODUCT_LIST = () => { 
+ //JSON added here as temporarily - creating separated json file causes access denied in AEM
 function numberWithCommas(x) {
   x = x.toString();
   var pattern = /(-?\d+)(\d{3})/;
@@ -192,8 +193,6 @@ function initProductCards() {
     },
   });
 }
-
 // register the event handlers
-$(document).ready(function () {
   initProductCards();
-});
+}
