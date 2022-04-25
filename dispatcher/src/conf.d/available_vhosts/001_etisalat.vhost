@@ -11,6 +11,10 @@
 # Include customer defined variables
 Include conf.d/variables/custom.vars
 
+<LocationMatch "\.(?i:txt)|(?i:pdf)|(?i:xml)$">
+    Header set Content-Disposition inline
+</LocationMatch>
+
 <VirtualHost *:80>
 	ServerName	"etisalat"
 	# Put names of which domains are used for your published site/content here
@@ -67,5 +71,6 @@ Include conf.d/variables/custom.vars
 		# RewriteRule "^(/?)$" "/index.html" [PT]
         # rewrite for Home page - (Etisalat ae)
         RewriteRule ^/?$ /content/etisalat/ae/en/index.html [PT,L]
+        RewriteRule ^/en/(.+)$ /content/etisalat/ae/en/$1 [PT,L]
 	</IfModule>
 </VirtualHost>

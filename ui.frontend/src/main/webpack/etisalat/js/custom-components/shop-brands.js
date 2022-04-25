@@ -111,5 +111,3 @@ export const SHOP_BRANDS = () => {
 
   $(".brands-logo").each(renderShopBrandsCarousel);
 };
-
-$(document).ready(SHOP_BRANDS);
