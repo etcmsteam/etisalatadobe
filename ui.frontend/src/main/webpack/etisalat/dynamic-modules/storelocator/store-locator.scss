@@ -1,7 +1,9 @@
 @use "sass:math";
 @import "../../../global/styles/base";
-
 /* stylelint-disable */
+/* because store locator has many selector which were intended for > 1440px 
+instead of 1360px we have in base _breakpoint.scss */
+$store-locator-desktop-large: 1440px;
 #storelocator {
   $font-size-base: 16px; // custom Etisalat
   $font-size-arabic-base: 1.5rem; // custom Etisalat Arabic
@@ -10,6 +12,7 @@
 
   $line-height-base: 1.6;
   $line-height-computed: math.floor(($font-size-base * $line-height-base));
+
   @include font-family-lato-roboto();
   line-height: 1.6;
   transition: margin-top 0.3s ease-in-out 1.5s;
@@ -33,7 +36,7 @@
     }
   }
 
-  @include respond-to-min($desktop-large) {
+  @include respond-to-min($store-locator-desktop-large) {
     & {
       margin-top: -129px;
       margin-bottom: -50px;
@@ -122,7 +125,7 @@
     }
   }
 
-  @include respond-to-min($desktop-large) {
+  @include respond-to-min($store-locator-desktop-large) {
     .check-seach-btn .btn.search-btn {
       line-height: 4rem;
     }
@@ -149,7 +152,7 @@
     @include respond-to-min($tablet) {
       margin-bottom: 20px;
     }
-    @include respond-to-min($desktop-large) {
+    @include respond-to-min($store-locator-desktop-large) {
       margin-bottom: 24px;
     }
   }
@@ -158,7 +161,7 @@
     margin-bottom: 0;
   }
 
-  @include respond-to-min($desktop-large) {
+  @include respond-to-min($store-locator-desktop-large) {
     .form .search-group .form-group.input-group {
       margin-top: 0;
     }
@@ -282,7 +285,7 @@
     }
   }
 
-  @include respond-to-min($desktop-large) {
+  @include respond-to-min($store-locator-desktop-large) {
     .input-group .col-lg-3 {
       width: 25%;
     }
@@ -849,7 +852,7 @@
       height: 3rem;
     }
   }
-  @media (min-width: $desktop-large) {
+  @media (min-width: $store-locator-desktop-large) {
     .search-group {
       select {
       }
@@ -1360,8 +1363,8 @@
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  margin-top: 12.5px;
-                  margin-bottom: 10px;
+                  padding: 8px;
+                  margin: 0;
                 }
 
                 .pager-arrows {
@@ -2726,7 +2729,7 @@
       }
     }
   }
-  @media (min-width: $desktop-large) {
+  @media (min-width: $store-locator-desktop-large) {
     .store-locator-wrap {
       .store-locator-header {
         padding-top: 3.625rem;
@@ -4183,7 +4186,7 @@
     /*End search field for store-locator module and CHECK AVAILABILITY module*/
   }
 
-  @media (min-width: $desktop-large) {
+  @media (min-width: $store-locator-desktop-large) {
     /*start search field for store-locator module and CHECK AVAILABILITY module*/
     .search-group {
       .form-group {
@@ -4408,7 +4411,7 @@
           }
         }
       }
-      @media (min-width: $desktop-large) {
+      @media (min-width: $store-locator-desktop-large) {
         .select2.select2-container {
           height: 4rem;
           padding-left: 1rem;
@@ -5641,7 +5644,7 @@ html[lang="ar"] {
           }
         }
       }
-      @media (min-width: $desktop-wide) {
+      @media (min-width: $store-locator-desktop-large) {
         .store-locator-wrap {
           .map-container {
             .background-map {
