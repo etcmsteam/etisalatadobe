@@ -193,4 +193,8 @@ function initProductCards() {
     },
   });
 }
+// register the event handlers
+$(document).ready(function () {
+  initProductCards();
+});
 }
