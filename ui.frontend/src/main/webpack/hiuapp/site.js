@@ -1,3 +1,4 @@
+/* eslint-disable */
 $(document).ready(function () {
   $(".scrollUp").hide();
   $(window).scroll(() => {
@@ -6,7 +7,7 @@ $(document).ready(function () {
       $(".scrollUp").show();
     } else {
       $(".scrollUp").hide();
-      $("nav ul").css("overflow", "visible");
+      $("nav ul").css("overflow", "auto");
     }
   });
 
