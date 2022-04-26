@@ -7,6 +7,8 @@ import { GUIDE_TOUR_POPUP } from "./js/guide-tour";
 import { GLOBALFOOTPRINT } from "./js/custom-components-es6/globalfootprintcontainer";
 import { TAB_SWIPER } from "./js/custom-components-es6/tab-swiper";
 import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
+import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
+import { PRODUCT_LIST } from "./js/custom-components/productList";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   GLOBALFOOTPRINT();
   TAB_SWIPER();
   YOU_TUBE_VIDEO_PLAYER();
+  SHOP_BRANDS();
+  PRODUCT_LIST();
   DYNAMIC_COMPONENTS.init();
 });
 
