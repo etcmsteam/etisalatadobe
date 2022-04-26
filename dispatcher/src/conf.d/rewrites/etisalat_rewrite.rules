@@ -1,0 +1,15 @@
+#
+# This file contains the rewrite rules, and can be customized.
+#
+# By default, it includes just the rewrite rules. You can
+# add rewrite rules to this file but you should still include
+# the default rewrite rules.
+
+Include conf.d/rewrites/default_rewrite.rules
+
+RewriteRule ^/?$ /content/etisalat/ae/en/index.html [PT,L]
+RewriteRule ^/en/(.+)$ /content/etisalat/ae/en/$1 [PT,L]
+
+RewriteRule ^/(.*)\.jsp(.*)$ /content/etisalat/ae/$1.html$2 [PT,L]
+RewriteRule ^/business-apps/* /content/etisalat/ae/en/smb/index.html [R=301,L]
+RewriteRule ^/en/biz/business.jsp /content/etisalat/ae/en/smb/index.html [R=301,L]
