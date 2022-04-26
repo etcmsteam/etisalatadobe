@@ -56,6 +56,9 @@ const DYNAMIC_MODULE = {
   "cmp-digital-notification": async () => {
     await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) => obj.DIGITAL_NOTIFICATION());
   },
+  "cmp-news-room": async () => {
+    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
