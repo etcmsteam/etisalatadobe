@@ -50,6 +50,9 @@ const DYNAMIC_MODULE = {
   "cmp-product-cards": async () => {
     await import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS());
   },
+  "cmp-news-room": async () => {
+    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
