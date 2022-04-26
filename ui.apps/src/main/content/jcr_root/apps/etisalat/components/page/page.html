@@ -74,13 +74,13 @@
       previousPageName = lastItem.split('.')[0];
     }
 
-    if (dataLayerPathName.includes('/ewallet/')) {
+    if (serverName.includes('ewallet.ae')) {
       if (dataLayerPathName.includes('/personal/')) {
         populatePageName('personal:home');
       } else if (dataLayerPathName.includes('/business/')) {
         populatePageName('business:home');
       } else {
-        populatePageName('home');
+        populatePageName('personal:home');
       }
     } else {
       populatePageName('home');
@@ -95,7 +95,7 @@
 
     function populatePageName(title) {
       let lastSegment = dataLayerPathName.split('/').pop();
-      if (lastSegment === 'index') {
+      if (lastSegment === 'index' || pagePathName === "/") {
         pageTitle = title;
       }
     }
@@ -111,7 +111,7 @@
     };
 
     const isErrorFlg = urlExists(dataLayerUrl);
-    if(!dataLayerPathName.includes('/etisalat/')) {
+    if(!serverName.includes('etisalat.ae')) {
     window.adobeDataLayer = window.adobeDataLayer || [];
     adobeDataLayer.push({
       "event": "pageLoaded",
