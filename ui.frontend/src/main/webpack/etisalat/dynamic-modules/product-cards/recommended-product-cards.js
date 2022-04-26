@@ -241,7 +241,11 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
             }
           }
         } else {
-          $("[data-label='all-categories']").click();
+          var id = $(".recommended-plan-tabs .deeplink-tab.active").attr("id");
+          $("#" + id)
+            .find(".recomended-product-filter")
+            .find("[data-label='all-categories']")
+            .click();
         }
       }, 1000);
     } else {
