@@ -2,9 +2,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
 $(document).ready(function () {
-  $(document)
-    .find(".tech-support-wrapper")
-    .each(function (index) {
+  $(".tech-support-wrapper").each(function (index) {
       $(this).addClass("tech" + index);
       var $slider = $(this);
       $slider.find(".swiper-button-next").addClass("right" + index);
@@ -43,9 +41,7 @@ $(document).ready(function () {
   // youtube video player
   let TECH_SUPPORT_BOX = $(".techsupport-slidebox");
   if (TECH_SUPPORT_BOX.length > 0) {
-    console.log("TECH_SUPPORT_BOX", TECH_SUPPORT_BOX.length);
     $(".youtube-video-link").on("click", function (e) {
-      console.log("video triggered!");
       e.preventDefault();
       let MODAL_CTA = $(this).next(".techSupportVideo");
       MODAL_CTA.modal().show();
@@ -59,7 +55,6 @@ $(document).ready(function () {
 
     $(".youtube-popup-container").on("hidden.bs.modal", function () {
       let SRC = $(this).find("iframe").attr("src");
-      console.log("src", SRC);
       $(this).find("iframe").attr("src", "");
       $(this).find("iframe").attr("src", SRC.replace("autoplay=1", ""));
       $("html").removeAttr("style");
@@ -69,5 +64,4 @@ $(document).ready(function () {
       }
     });
   }
-  
 });
