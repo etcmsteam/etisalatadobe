@@ -50,6 +50,9 @@ const DYNAMIC_MODULE = {
   "cmp-product-cards": async () => {
     await import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS());
   },
+  "cmp-intl-tel-input": async () => {
+    await import(/* webpackChunkName: 'intl-tel-input' */ "./dynamic-modules/intl-tel-input/intl-tel-input-min").then((obj) => obj.FORM_INTL_TEL_INPUT());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
