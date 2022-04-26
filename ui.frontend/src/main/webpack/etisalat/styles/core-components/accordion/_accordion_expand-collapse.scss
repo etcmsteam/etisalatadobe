@@ -1,6 +1,28 @@
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable no-descending-specificity */
 .cmp-accordion--tile-expansion {
+  .accordion {
+    padding: 32px 16px 0 36px;
+
+    @include respond-to-max($desktop) {
+      padding: 32px 16px 0;
+    }
+
+    @include respond-to-max($tablet) {
+      padding: 20px 16px 0;
+    }
+
+    .cmp-accordion__header {
+      padding-top: 0;
+    }
+  }
+
+  .cmp-accordion__button {
+    margin-right: 0;
+  }
+
+
+
   // padding-left: 2rem!important;
   // padding-right: 2rem !important;
   padding: 2rem 0 !important;
@@ -410,6 +432,11 @@
     width: toRem(340);
     z-index: 0;
 
+    @include respond-to-max($desktop) {
+      background-repeat: no-repeat;
+      height: auto;
+    }
+
     @include respond-to-max($phone) {
       display: block;
     }
@@ -437,6 +464,10 @@
     transform: rotate(180deg);
     width: toRem(340);
     z-index: 0;
+
+    @include respond-to-max($desktop) {
+      background-repeat: no-repeat;
+    }
 
     @include respond-to-max($tablet) {
       height: toRem(145);
@@ -466,21 +497,13 @@
   }
 
   .accordion {
-    padding: 0 toRem(25) toRem(24);
-
     @include respond-to-max($phone) {
-      padding-left: toRem(12);
-      padding-right: toRem(12);
-
       .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--5 {
         width: 100%;
       }
     }
 
     @include respond-to-max($tablet) {
-      padding-left: toRem(12);
-      padding-right: toRem(12);
-
       .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--5 {
         width: 100%;
       }
@@ -628,8 +651,6 @@
     }
 
     &__button {
-      margin-left: toRem(10);
-      margin-top: toRem(5);
       padding: 0;
       z-index: 10;
     }
