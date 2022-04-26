@@ -814,17 +814,10 @@
 
 .cmp_tabs--vertical-fullbdr {
   .nav-view-wrapp.panel > a {
-    border-left: toRem(4) solid $main-green;
     line-height: toRem(25) !important;
-    margin: 0 toRem(16) 0 0 !important;
-    padding: toRem(24) toRem(24) toRem(24) toRem(12) !important;
+    padding: toRem(24) toRem(24) toRem(24) toRem(0) !important;
 
     @include font-family-Neotech;
-
-    @include rtlBlock() {
-      border-left: toRem(4) solid transparent;
-      border-right: toRem(4) solid $main-green;
-    }
   }
 
   .nav-view-wrapp.panel > a.collapsed {
@@ -1217,6 +1210,30 @@
     @include rtlBlock() {
       left: toRem(2);
       right: auto;
+    }
+  }
+
+  .nav-view-wrapp.panel > :not(a.collapsed)::after {
+    border-left: 4px solid #719e19;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -16px;
+    position: absolute;
+    top: 0;
+
+    @include respond-to-max($tablet) {
+      left: -12px;
+    }
+
+    @include rtlBlock() {
+      border-left: 0;
+      border-right: 4px solid #719e19;
+      right: -16px;
+
+      @include respond-to-max($tablet) {
+        right: -10px;
+      }
     }
   }
 
@@ -1803,6 +1820,10 @@
   @include respond-to-max($desktop) {
     .collapse.in {
       border-bottom: 1px solid #e2e1da;
+    }
+
+    @include rtlBlock() {
+      border-bottom: 0;
     }
   }
 
