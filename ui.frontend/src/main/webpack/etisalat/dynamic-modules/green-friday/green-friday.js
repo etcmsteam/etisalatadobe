@@ -1,3 +1,4 @@
+import "../shared/js/flipclock.min";
 import "./green-friday.scss";
 /* eslint-disable */
 export const GREEN_FRIDAY = () => {
