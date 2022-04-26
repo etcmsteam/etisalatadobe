@@ -1,7 +1,6 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
-$( document ).ready(function() {
-
+/* eslint-disable*/
+export const DIGITAL_NOTIFICATION = () => {
 // get height of slide and assign it to container
 var getSwiperSlideHeight = function () {
     var height = $('.digital-notifications-wrapper.multi-notifications').find('.swiper-slide');
@@ -203,4 +202,4 @@ if ($('body').hasClass('show-digital-notification-top') && sessionStorage.getIte
 
     setNotificaiton(true);
 }
-});
+}
