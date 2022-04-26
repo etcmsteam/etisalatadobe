@@ -14,10 +14,12 @@ import { RELATED_JOBS } from "./js/custom-components/related-jobs";
 import { SITE } from './js/custom-components/site';
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
+import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
 
 
 document.addEventListener("DOMContentLoaded", () => {
   SITE();
+  POP_UP_ACCESSIBILITY();
   VIEW_MORE_TOGGLE();
   GUIDE_TOUR_POPUP();
   GLOBALFOOTPRINT();
