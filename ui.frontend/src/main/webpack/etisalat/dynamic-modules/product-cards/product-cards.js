@@ -1,6 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 // Analytics JS
 import { ANALYTICS_FILTER } from "../../js/analytics/analytics";
+import { RECOMMENDED_PRODUCT_CARDS } from "../product-cards/recommended-product-cards";
 
 /* eslint-disable */
 export const PRODUCT_CARDS = () => {
@@ -331,4 +332,6 @@ export const PRODUCT_CARDS = () => {
       $("[data-label='all-categories']").click();
     }
   });
+
+  RECOMMENDED_PRODUCT_CARDS();
 };
