@@ -59,13 +59,7 @@ Include conf.d/variables/custom.vars
 		Include conf.d/rewrites/rewrite.rules
 
 		# rewrite for Home page - (Fivemobile ae)
-		RewriteCond %{REQUEST_URI} ^/$
-        RewriteRule ^(.*)$ /content/fivemobile/ae/en/index.html [PT,L]
-
-        RewriteCond %{REQUEST_URI} !^/content/ [NC]
-        RewriteCond %{REQUEST_URI} !^/en/
-        RewriteRule ^/(.*)(.*)$ /content/fivemobile/ae/en/$1.html$2 [PT,L]
-
+		RewriteRule ^/?$ /content/fivemobile/ae/en/index.html [PT,L]
 		RewriteRule ^/en/(.+)$ /content/fivemobile/ae/en/$1 [PT,L]
 
 
