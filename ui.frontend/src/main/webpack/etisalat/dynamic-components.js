@@ -54,10 +54,13 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/product-cards/recommended-product-cards").then((obj) => obj.RECOMMENDED_PRODUCT_CARDS());
   },
   "cmp-digital-notification": async () => {
-    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) => obj.DIGITAL_NOTIFICATION());
+    await import(/* webpackChunkName: 'cmp-digital-notification' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) => obj.DIGITAL_NOTIFICATION());
   },
   "cmp-news-room": async () => {
     await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
+  },
+  "cmp-guide-tour": async () => {
+    await import(/* webpackChunkName: 'cmp-guide-tour' */ "./dynamic-modules/guide-tour/guide-tour").then((obj) => obj.GUIDE_TOUR_POPUP());
   },
 };
 

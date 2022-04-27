@@ -7,11 +7,11 @@ export const GUIDE_TOUR_POPUP = () => {
   }
 
   // popup
-  $(".guide-tour")
-    .off()
-    .on("click", function (e) {
+  $(document)
+    .on("click", ".guide-tour", function (e) {
       e.preventDefault();
       e.stopPropagation();
+      console.log("TEST DYNAMIC MODAL",'SPA Script');
       var dataLabel = $(this).attr("data-label");
       if (typeof dataLabel !== "undefined" && dataLabel !== "") {
         $("#" + dataLabel).addClass("show");
@@ -20,9 +20,8 @@ export const GUIDE_TOUR_POPUP = () => {
     });
 
   // close popup
-  $(".guide-tour-modal")
-    .off()
-    .on("click", ".nv-modal-close", function (e) {
+  $(document)
+    .on("click", ".nv-modal-close", ".guide-tour-modal", function (e) {
       e.stopPropagation();
       e.preventDefault();
       var currentOpendPopUp = $(this).closest(".nv-modal");
