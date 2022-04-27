@@ -3,6 +3,7 @@
 /* stylelint-disable max-nesting-depth */
 /* stylelint-disable order/properties-alphabetical-order */
 /* stylelint-disable no-descending-specificity */
+/* stylelint-disable no-duplicate-selectors */
 .carrers-feature {
   .image-right .cmp-teaser__content {
     @include respond-to-min($desktop) {
@@ -57,28 +58,28 @@
   }
 }
 
-.teaseretisalat {
-  &.tile-teaser {
-    .cmp-teaser__content {
-      .cmp-teaser__pretitle {
+.tile-teaser {
+  .cmp-teaser__content {
+    .cmp-teaser__pretitle {
+      font-size: toRem(12);
+      font-weight: 700;
+      margin-bottom: toRem(4);
+      letter-spacing: toRem(4);
+      line-height: toRem(14);
+
+      @include respond-to-min($desktop) {
         font-size: toRem(12);
-        font-weight: 700;
-        margin-bottom: toRem(4);
-        letter-spacing: toRem(4);
-        line-height: toRem(14);
-
-        @include respond-to-min($desktop) {
-          font-size: toRem(14);
-          line-height: toRem(20);
-        }
-      }
-
-      .cmp-teaser__action-container {
-        margin-bottom: 0;
+        line-height: toRem(20);
       }
     }
-  }
 
+    .cmp-teaser__action-container {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.teaseretisalat {
   &.link__arrow {
     .cmp-teaser__action-container {
       .cmp-teaser__action-link {
