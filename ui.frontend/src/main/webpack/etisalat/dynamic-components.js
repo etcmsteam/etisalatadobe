@@ -54,10 +54,13 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/product-cards/recommended-product-cards").then((obj) => obj.RECOMMENDED_PRODUCT_CARDS());
   },
   "cmp-digital-notification": async () => {
-    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) => obj.DIGITAL_NOTIFICATION());
+    await import(/* webpackChunkName: 'digital-notification' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) => obj.DIGITAL_NOTIFICATION());
   },
   "cmp-news-room": async () => {
-    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
+    await import(/* webpackChunkName: 'news-room' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
+  },
+  "cmp-related-jobs": async () => {
+    await import(/* webpackChunkName: 'related-jobs' */ "./dynamic-modules/related-jobs/related-jobs").then((obj) => obj.RELATED_JOBS());
   },
 };
 
