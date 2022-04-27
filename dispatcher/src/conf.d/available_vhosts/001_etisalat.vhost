@@ -63,28 +63,12 @@ Include conf.d/variables/custom.vars
 		Include conf.d/rewrites/rewrite.rules
 
         # rewrite for Home page - (Etisalat ae - English)
-        RewriteCond %{REQUEST_URI} ^/$
-        RewriteRule ^(.*)$ /content/etisalat/ae/en/index.html [PT,L]
-
-        # rewrite for Home page - (Etisalat ae - Arabic)
-        RewriteCond %{REQUEST_URI} ^/ar$
-        RewriteRule ^(.*)$ /content/etisalat/ae/ar/index.html [PT,L]
+        RewriteRule ^/?$ /content/etisalat/ae/en/index.html [PT,L]
 
         RewriteCond %{REQUEST_URI} .jsp$
         RewriteRule ^/(.*).jsp$ /$1.html [R=301,L]
 
-        RewriteCond %{REQUEST_URI} ^/en$
-        RewriteRule ^(.+)$ /content/etisalat/ae/en$1 [PT,L]
-
-        RewriteCond %{REQUEST_URI} ^/ar$
-        RewriteRule ^(.+)$ /content/etisalat/ae/ar$1 [PT,L]
-
-        RewriteCond %{REQUEST_URI} !^/content/ [NC]
-        RewriteCond %{REQUEST_URI} !^/en/ [NC]
-        RewriteCond %{REQUEST_URI} !^/ar/ [NC]
-        RewriteRule ^/(.*)(.*)$ /content/etisalat/ae/en/error/404.html [PT,L]
-
-        RewriteRule ^/(.+)$ /content/etisalat/ae/$1 [PT,L]
+        RewriteRule ^/en/(.+)$ /content/etisalat/ae/en/$1 [PT,L]
 
 	</IfModule>
 </VirtualHost>
