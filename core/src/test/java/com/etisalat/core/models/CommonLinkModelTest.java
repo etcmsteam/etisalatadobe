@@ -3,6 +3,7 @@ package com.etisalat.core.models;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,5 +44,22 @@ public class CommonLinkModelTest {
         context.request().setAttribute("link", videoLink);
         CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
         assertFalse(model.isVideo());        
+    }
+    
+    @Test
+    void testXFLanguageCode() {
+    	String expectedLanguageCode = "ar";
+    	context.load().json("/com/etisalat/core/models/CommonLinksModel.json", "/content/experience-fragments/etisalat/language-master/ar/business");
+        context.currentPage("/content/experience-fragments/etisalat/language-master/ar/business/fragment-template-page");
+        CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+        assertEquals(expectedLanguageCode, model.getXFLanguageCode());        
+    }
+    
+    @Test
+    void testXFLanguageCodeCurrentPageLengthCheck() {
+    	context.load().json("/com/etisalat/core/models/CommonLinksModel.json", "/content/experience-fragments");
+        context.currentPage("/content/experience-fragments/etisalat");
+        CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+        assertEquals(StringUtils.EMPTY, model.getXFLanguageCode());   
     }
 }
