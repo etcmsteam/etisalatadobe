@@ -19,9 +19,9 @@ import { TABLE } from "./js/custom-components/table";
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  DYNAMIC_COMPONENTS.init();
   SITE();
   POP_UP_ACCESSIBILITY();
-  TABLE();
   VIEW_MORE_TOGGLE();
   GUIDE_TOUR_POPUP();
   GLOBALFOOTPRINT();
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   RELATED_JOBS();
   BRAND_PORTFOLIO();
   CURRENT_PROMOTION();
-  DYNAMIC_COMPONENTS.init();
+  TABLE();
 });
 
 // Stylesheets
