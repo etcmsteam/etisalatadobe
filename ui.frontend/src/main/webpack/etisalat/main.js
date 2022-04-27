@@ -9,7 +9,6 @@ import { TAB_SWIPER } from "./js/custom-components-es6/tab-swiper";
 import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
 import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
 import { PRODUCT_LIST } from "./js/custom-components/productList";
-import { RELATED_JOBS } from "./js/custom-components/related-jobs";
 import { SITE } from './js/custom-components/site';
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   YOU_TUBE_VIDEO_PLAYER();
   SHOP_BRANDS();
   PRODUCT_LIST();
-  RELATED_JOBS();
   BRAND_PORTFOLIO();
   CURRENT_PROMOTION();
   DYNAMIC_COMPONENTS.init();
