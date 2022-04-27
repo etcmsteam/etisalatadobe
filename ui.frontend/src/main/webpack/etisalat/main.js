@@ -16,11 +16,13 @@ import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
 import { NV_CARD } from "./js/custom-components/nv-card-productlist";
+import { TABLE } from "./js/custom-components/table";
 
 
 document.addEventListener("DOMContentLoaded", () => {
   SITE();
   POP_UP_ACCESSIBILITY();
+  TABLE();
   VIEW_MORE_TOGGLE();
   GUIDE_TOUR_POPUP();
   GLOBALFOOTPRINT();
