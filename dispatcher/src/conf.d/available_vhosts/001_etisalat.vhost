@@ -63,39 +63,12 @@ Include conf.d/variables/custom.vars
 		Include conf.d/rewrites/rewrite.rules
 
         # rewrite for Home page - (Etisalat ae - English)
-        RewriteCond %{REQUEST_URI} ^/$
-        RewriteRule ^(.*)$ /content/etisalat/ae/en/index.html [PT,L]
-
-        # rewrite for Home page - (Etisalat ae - Arabic)
-        RewriteCond %{REQUEST_URI} ^/ar$
-        RewriteRule ^(.*)$ /content/etisalat/ae/ar/index.html [PT,L]
+        RewriteRule ^/?$ /content/etisalat/ae/en/index.html [PT,L]
 
         RewriteCond %{REQUEST_URI} .jsp$
         RewriteRule ^/(.*).jsp$ /$1.html [R=301,L]
 
-        RewriteCond %{REQUEST_URI} ^/en$
-        RewriteRule ^(.+)$ /content/etisalat/ae/en$1 [PT,L]
-
-        RewriteCond %{REQUEST_URI} ^/ar$
-        RewriteRule ^(.+)$ /content/etisalat/ae/ar$1 [PT,L]
-
-        RewriteCond %{REQUEST_URI} !^/content/ [NC]
-        RewriteCond %{REQUEST_URI} !^/en/ [NC]
-        RewriteCond %{REQUEST_URI} !^/ar/ [NC]
-        RewriteRule ^/(.*)(.*)$ /content/etisalat/ae/en/error/404.html [PT,L]
-
-        RewriteCond %{REQUEST_URI} !^/apps
-        RewriteCond %{REQUEST_URI} !^/bin
-        RewriteCond %{REQUEST_URI} !^/content
-        RewriteCond %{REQUEST_URI} !^/etc
-        RewriteCond %{REQUEST_URI} !^/home
-        RewriteCond %{REQUEST_URI} !^/libs
-        RewriteCond %{REQUEST_URI} !^/saml_login
-        RewriteCond %{REQUEST_URI} !^/system
-        RewriteCond %{REQUEST_URI} !^/tmp
-        RewriteCond %{REQUEST_URI} !^/var
-        RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg)$
-        RewriteRule ^/(.+)$ /content/etisalat/ae/$1 [PT,L]
+        RewriteRule ^/en/(.+)$ /content/etisalat/ae/en/$1 [PT,L]
 
 	</IfModule>
 </VirtualHost>
