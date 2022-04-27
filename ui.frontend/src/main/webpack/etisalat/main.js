@@ -15,6 +15,7 @@ import { SITE } from './js/custom-components/site';
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
+import { NV_CARD } from "./js/custom-components/nv-card-productlist";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   RELATED_JOBS();
   BRAND_PORTFOLIO();
   CURRENT_PROMOTION();
+  NV_CARD();
   DYNAMIC_COMPONENTS.init();
 });
 
