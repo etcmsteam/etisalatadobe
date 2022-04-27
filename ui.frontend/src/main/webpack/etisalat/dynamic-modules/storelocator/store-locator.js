@@ -946,7 +946,7 @@ export const STORE_LOCATOR = () => {
     document.querySelector("body").classList.add("js-fixed-nav");
 
     setTimeout(function () {
-      document.querySelector("body").classList.removeClass("js-fixed-nav");
+      document.querySelector("body").classList.remove("js-fixed-nav");
     }, 1500);
 
     // Adding class to image tag as per live reference

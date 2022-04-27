@@ -2,7 +2,7 @@
   <!-- Desktop Menu Start -->
 
 
-  <div class="quick-links-section flexible-col">
+  <div data-sly-test="${footer.quickLinks || footer.download || footer.followUs || footer.payment}" class="quick-links-section flexible-col">
     <div class="container">
       <div class="links-wrap" data-sly-list.items="${footer.quickLinks}">
         <div class="links">
@@ -22,9 +22,9 @@
           </ul>
         </div>
       </div>
-      <div class="footer-social-dwonload">
+      <div data-sly-test="${properties.downloadTitle || properties.needHelpTitle || properties.followUsTitle || properties.paymentTitle}" class="footer-social-dwonload">
         <!-- download etisalat icons -->
-        <div class="download-etisalat" >
+        <div data-sly-test="${properties.downloadTitle}" class="download-etisalat" >
           <div class="footer-heading">${properties.downloadTitle}</div>
           <div class="icons-wrap" data-sly-list.items="${footer.download}">
             <div class="icon ${items.iconClassName}" style="display: block;">

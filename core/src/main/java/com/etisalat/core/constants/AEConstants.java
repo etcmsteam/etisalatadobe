@@ -99,7 +99,7 @@ public final class AEConstants {
  public static final String HIU_APP_CONTENT_PAGE = "/content/hiuapp";
  public static final String EWALLET_CONTENT_PAGE = "/content/ewallet";
  
- public static final String ETISALAT_DEFAULT_ERROR_PAGE = "/content/etisalat/ae/en/error/";
+ public static final String ETISALAT_DEFAULT_ERROR_PAGE = "/content/%s/ae/en/error/404";
  public static final String ERROR_PAGE_NAME = "error";
  public static final String ERROR_PARAM_WITH_EXTENSION =".html?success=fail";
  public static final String SUCCESS_PARAM = "?success=success";

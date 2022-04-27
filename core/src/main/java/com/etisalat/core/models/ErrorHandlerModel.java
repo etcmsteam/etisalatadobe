@@ -45,7 +45,7 @@ public class ErrorHandlerModel {
     response.setStatus(Integer.parseInt(errorCode));
     response.setContentType("text/html");
     response.setCharacterEncoding(PageConstants.UTF_8);
-    this.errorPage = AEConstants.ETISALAT_DEFAULT_ERROR_PAGE + this.errorCode;
+    this.errorPage = getDefaultErrorPage(requestURI);
      if (StringUtils.isNotBlank(requestURI)) {
       this.errorPage = getErrorPageFromRequestedUrl(this.errorCode, requestURI);
       LOGGER.debug("Page path - init method {}", this.errorPage);
@@ -63,7 +63,7 @@ public class ErrorHandlerModel {
     Page resolvedPage = getPageFromPath(requestURI);
     if (resolvedPage != null)
       return getErrorPathFromPage(errorCode, resolvedPage); 
-    return null;
+    return this.errorPage;
   }
   
   /**
@@ -103,7 +103,7 @@ public class ErrorHandlerModel {
       return new StringBuilder().append(resolvedPage.getPath()).append("/error/").append(errorCode).toString(); 
     if (resolvedPage.getParent() != null && resolvedPage.getDepth() >= 2)
       return getErrorPathFromPage(errorCode, resolvedPage.getParent()); 
-    return null;
+    return this.errorPage;
   }
 
   /**
@@ -113,6 +113,20 @@ public class ErrorHandlerModel {
     return this.errorPage;
   }
 
+  /**
+   * Returns the site specific default error page.
+   * 
+   * @param path
+   * @return
+   */
+  private String getDefaultErrorPage(String path) {
+    String siteName = "etisalat";
+    String[] pathArry = StringUtils.split(path, "/");
+    if (pathArry.length > 0) {
+      siteName = pathArry[1];
+    }
+    return String.format(AEConstants.ETISALAT_DEFAULT_ERROR_PAGE, siteName);
+  }
 
 
 }

@@ -1,6 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 // Analytics JS
 import { ANALYTICS_FILTER } from "../../js/analytics/analytics";
+import { RECOMMENDED_PRODUCT_CARDS } from "../product-cards/recommended-product-cards";
 
 /* eslint-disable */
 export const PRODUCT_CARDS = () => {
@@ -237,6 +238,7 @@ export const PRODUCT_CARDS = () => {
     //Product cards with filter
     var radios = [];
     var selected = [];
+    var tabs = $(".deeplink-tab");
 
     $(".product-grid-text-section.plans.plansTable0 .category-list-wrap input").each(function () {
       radios.push($(this));
@@ -264,6 +266,7 @@ export const PRODUCT_CARDS = () => {
     });
 
     function filterCards(radioInput, selfFilter) {
+      if (tabs.length === 0) {
       var filter = $(selfFilter).closest(".category-list-wrap");
       $(filter).find("ul li").removeClass("active");
       $(filter)
@@ -277,6 +280,7 @@ export const PRODUCT_CARDS = () => {
       } else {
         $("[data-label='" + radioInput + "']").css("display", "block");
       }
+    }
     }
 
     // filter mobile view popup open close
@@ -328,7 +332,10 @@ export const PRODUCT_CARDS = () => {
         $("[data-label='" + idToPass + "']").click();
       }
     } else {
+      if (tabs.length === 0) {
       $("[data-label='all-categories']").click();
+      }
     }
   });
+  RECOMMENDED_PRODUCT_CARDS();
 };

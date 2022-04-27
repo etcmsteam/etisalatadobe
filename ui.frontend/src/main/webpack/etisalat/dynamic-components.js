@@ -53,6 +53,12 @@ const DYNAMIC_MODULE = {
   "cmp-recommended-product-cards": async () => {
     await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/product-cards/recommended-product-cards").then((obj) => obj.RECOMMENDED_PRODUCT_CARDS());
   },
+  "cmp-digital-notification": async () => {
+    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) => obj.DIGITAL_NOTIFICATION());
+  },
+  "cmp-news-room": async () => {
+    await import(/* webpackChunkName: 'recommended-product-cards' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
