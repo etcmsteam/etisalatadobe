@@ -1,9 +1,9 @@
 /* eslint-disable */
-import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
+import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
 
-(function () {
-  const $FORM = $("#leadOrder");
-  const $SUBMIT_CTA = $("#leadOrder .cmp-form-button");
+export const OMNI_LEAD_FORM = () => {
+  const $FORM = $("#omniLead");
+  const $SUBMIT_CTA = $("#omniLead .cmp-form-button");
   const currentURL = window.location.href;
 
   if (!$FORM.length) {
@@ -32,17 +32,7 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
     return o;
   }
 
-  function bindingUIFromParams() {
-      const productName = getParameterByName("productName", currentURL);
-      if (productName) {
-        const targetElement = $(".teaser-form").find(".cmp-teaser__title");
-        const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim();
-        const valueWithProductName = targetElementValue + " " + productName + "?";
-        targetElement.html(valueWithProductName);
-      }
-    }
-
-  function getParameterByName(name, href) {
+  function getParameterByNameWithPlus(name, href) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     const regexS = "[\\?&]" + name + "=([^&#]*)";
     const regex = new RegExp(regexS);
@@ -54,7 +44,7 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
   function queryParamValue(name, url = currentURL) {
     if (!name || !currentURL) return undefined;
 
-    return getParameterByName(name, url)
+    return getParameterByNameWithPlus(name, url)
       .replace(/_/g, " ")
       .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
   }
@@ -127,7 +117,7 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
 
       $.ajax({
         type: "POST",
-        url: "https://www.etisalat.ae/b2bportal/Utility/checkCaptcha.service",
+        url: "https://www.etisalat.ae/b2bportal/createOmniLead.service",
         data: dataObj,
         dataType: "json",
 
@@ -153,6 +143,4 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
       $(".account-number").addClass("hide");
     }
   });
-
-  bindingUIFromParams();
-})();
+};

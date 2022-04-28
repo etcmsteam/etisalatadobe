@@ -1,4 +1,4 @@
-(function ($) {
+export const FORM_DEFAULTS = () => {
   /**
    * Set default settings for jquery validate plugin
    * -------------------------------------------------------------------------------
@@ -474,4 +474,4 @@
   }
 
   setValidationDefaults();
-})(jQuery);
+};
