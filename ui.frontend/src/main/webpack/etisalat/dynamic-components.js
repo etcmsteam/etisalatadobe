@@ -59,6 +59,9 @@ const DYNAMIC_MODULE = {
   "cmp-related-jobs": async () => {
     await import(/* webpackChunkName: 'related-jobs' */ "./dynamic-modules/related-jobs/related-jobs").then((obj) => obj.RELATED_JOBS());
   },
+  "cmp-forms-module": async () => {
+    await import(/* webpackChunkName: 'forms' */ "./dynamic-modules/forms/forms").then((obj) => obj.FORMS_MODULE());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

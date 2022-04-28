@@ -1,9 +1,8 @@
 /* eslint-disable */
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
-import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
+import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
 
-
-(function () {
+export const NEWS_LETTER_SUBSCRIPTION = () => {
   const NO_SCROLL_CLASS = "no-scroll";
   const $SUCCSS_POP_UP = $(".cmp-experiencefragment--Newsletter-subscription-pop-up");
   const $BODY = $("body");
@@ -119,4 +118,4 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
     $SUCCSS_POP_UP.hide();
     $BODY.removeClass(NO_SCROLL_CLASS);
   });
-})();
+};
