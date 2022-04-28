@@ -1,5 +1,6 @@
+/* eslint-disable*/
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
-(function () {
+export const SMB_FORMS = () => {
   const $FORM = $("#eventRegistration");
   const $SUBMIT_CTA = $("#eventRegistration .cmp-form-button");
 
@@ -87,4 +88,4 @@ import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
       return false;
     },
   });
-})();
+};

@@ -1,5 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
+/* eslint-disable */
 export const SHOP_BRANDS = () => {
   function renderShopBrandsCarousel(index) {
     const $rootThis = $(this);

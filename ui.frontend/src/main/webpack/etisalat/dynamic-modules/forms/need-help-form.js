@@ -1,6 +1,7 @@
+/* eslint-disable*/
 import { DIAL_CODE_DATA } from "../../../global/js/constant";
-import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
-(function () {
+import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
+export const NEED_HELP_FORM = () => {
   const $FORM = $("#cwsNeedHelp");
   const $SUBMIT_CTA = $("#cwsNeedHelp .cmp-form-button");
 
@@ -229,4 +230,4 @@ import { FORM_SUCCESS, FORM_ERROR } from "../analytics/analytics";
     var data = e.params.data;
     iti.setCountry(data.code);
   });
-})();
+};

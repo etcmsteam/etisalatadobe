@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const POP_UP_ACCESSIBILITY = () => {
   function zoomIn() {
     const $affectedElements = $("p,ul,li,span,b,a,button,h1,h2,h3,h4,h5,h6,strike,svg");

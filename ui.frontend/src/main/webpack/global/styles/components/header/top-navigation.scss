@@ -511,6 +511,70 @@ html[lang="ar"] {
   transition: all 0.2s ease-in-out;
   z-index: 10;
 
+  &.etisalat-carrier {
+    z-index: 11;
+
+    & .sub_menu_mobile {
+      padding: 0;
+    }
+
+    & .panel-group {
+      &.container {
+        padding-left: toRem(12);
+        padding-right: toRem(12);
+      }
+
+      .panel {
+        width: auto;
+      }
+    }
+
+    & .push-menu-inception {
+
+      & .panel-heading {
+        background-color: $cherry-red;
+        color: $white;
+        padding: 0 1rem;
+
+        & .push-enLogo,
+        & .svg {
+          stroke: transparent;
+          transition: all .3s ease-in-out;
+          transition: .3s;
+          transform: translate(0);
+        }
+
+        & .panel-title {
+          .arrow_accordion:after {
+            border-color: $white;
+          }
+
+          & a {
+            line-height: normal;
+          }
+        }
+
+        & +.panel-collapse>.panel-body {
+          background-color: $cherry-red;
+        }
+      }
+
+      & .panel-collapse {
+        & .panel-body {
+          padding: 0;
+          padding-left: 2rem !important;
+
+          & .item_sub-menu,
+          & a {
+            color: $white;
+            padding: 1.3rem 0;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+  }
+
   &.sticky {
     background: $white;
     padding-bottom: toRem(148);
@@ -524,7 +588,7 @@ html[lang="ar"] {
 
   .menu-account-link {
     align-items: center;
-    color: #353738;
+    color: $almost-black;
     display: flex;
     -ms-flex-align: center;
     font-family: Lato, GE SS Two, Roboto, Arial, sans-serif;
@@ -561,7 +625,7 @@ html[lang="ar"] {
     }
 
     .panel-heading {
-      background-color: #fff;
+      background-color: $white;
       padding: 0 toRem(10) 0 toRem(22);
 
       .panel-title {
@@ -1198,7 +1262,7 @@ html[lang="ar"] {
         .panel-collapse {
           .panel-body {
             padding-left: auto;
-            padding-right: 2rem;
+            padding-right: 2rem !important;
           }
         }
 
@@ -1224,6 +1288,20 @@ html[lang="ar"] {
           }
         }
       }
+
+      &.etisalat-carrier {
+        & .panel-group {
+          & .push-menu-inception {
+             & .panel-collapse {
+               & .panel-body {
+                  padding-left: 0;
+                  padding-right: 2rem !important;
+               }
+             }
+          }
+        }
+      }
+
     }
   }
 }

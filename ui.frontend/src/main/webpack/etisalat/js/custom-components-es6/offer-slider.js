@@ -1,7 +1,8 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 import { IsMediaQuery } from "../../../global/js/helpers";
-
-$(document).ready(function () {
+/* eslint-disable */
+export const OFFER_SLIDER = () => { 
+$(".promotional-banner-wrapper").each(function () {
   if (IsMediaQuery.md.matches) {
     var $carouselSlider = swiperInit($(".offers-expanded-view.with-slider").find(".swiper-container"), {
       loop: false,
@@ -59,3 +60,4 @@ $(document).ready(function () {
     }
   });
 });
+}

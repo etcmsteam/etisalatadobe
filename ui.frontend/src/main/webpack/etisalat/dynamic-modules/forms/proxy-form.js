@@ -1,6 +1,7 @@
+/* eslint-disable*/
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
 
-(function () {
+export const PROXY_FORM = () => {
   const $FORM = $("#proxyform");
   const $SUBMIT_CTA = $("#proxyform .cmp-form-button");
 
@@ -70,4 +71,4 @@ import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
       return true;
     },
   });
-})();
+};

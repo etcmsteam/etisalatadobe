@@ -14,6 +14,7 @@
    ~ limitations under the License.
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-test="${properties.ootbformType == 'true'}">
+   <div data-component="cmp-forms-module">
    <form data-sly-use.container="com.adobe.cq.wcm.core.components.models.form.Container"
       data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
       method="${container.method}" action="${container.action}" id="${container.id}" name="${container.name}"
@@ -32,8 +33,10 @@
       <sly data-sly-resource="${resource.path @ resourceType=container.resourceTypeForDropArea, appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
          data-sly-test="${wcmmode.edit || wcmmode.preview}"></sly>
    </form>
+   </div>
 </sly>
 <sly data-sly-test="${!properties.ootbformType}">
+   <div data-component="cmp-forms-module">
    <form data-sly-use.customForm="com.etisalat.core.models.CustomForm"
       data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
       method="POST" action="${customForm.formAction}" id="${customForm.formId}" name="${customForm.formId}"
@@ -59,4 +62,5 @@
          , appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
          data-sly-test="${wcmmode.edit || wcmmode.preview}"></sly>
    </form>
+   </div>
 </sly>
