@@ -1,4 +1,3 @@
-import "./js/forms";
 import "./js/custom-components/*.js";
 import "./js/analytics/analytics-events.js";
 
