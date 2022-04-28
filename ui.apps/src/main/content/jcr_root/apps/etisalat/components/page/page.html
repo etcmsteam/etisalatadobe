@@ -41,6 +41,7 @@
     siteSection = '';
     siteSection1 = '',
     siteSection2 = '';
+    siteSecMicrosites = '';
 
     let siteLang = siteLangElement.getAttribute('lang'),
       pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
@@ -86,6 +87,32 @@
       populatePageName('home');
     }
 
+    //sitesection changes
+    if (serverName.includes('ewallet.ae')) {
+      if (pagePathName.includes('/personal/')) {
+        siteSecMicrosites = "personal";
+      } else if (pagePathName.includes('/business/')) {
+        siteSecMicrosites = "business";
+      } else if (pagePathName.includes('/aboutus/')) {
+        siteSecMicrosites = "aboutus";
+      } else if (pagePathName.includes('/faq/')) {
+        siteSecMicrosites = "faq";
+      } else if (pagePathName.includes('/locations/')) {
+        siteSecMicrosites = "locations";
+      } else if (pagePathName.includes('/offer/')) {
+        siteSecMicrosites = "offer";
+      } else if (pagePathName === '/') {
+        siteSecMicrosites = "personal";
+      }
+    } else if (serverName.includes('hiuapp.ae')) {
+      siteSecMicrosites = "home";
+      if (pagePathName.includes('terms_conditions')) {
+        siteSecMicrosites = "t&c";
+      }
+    } else if (serverName.includes('fivemobile.ae')) {
+      siteSecMicrosites = "home";
+    }
+
     if (siteLang.includes("-")) {
       let langArr = [];
       langArr = siteLang.split("-");
@@ -120,7 +147,7 @@
           "webPageDetails": {
             "name": pageName,
             "server": serverName,
-            "siteSection": pageTitle,
+            "siteSection": siteSecMicrosites,
             "isErrorPage": isErrorFlg,
             "URL": dataLayerUrl,
             "pageViews": {
