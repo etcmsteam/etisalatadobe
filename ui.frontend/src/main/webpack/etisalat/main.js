@@ -16,6 +16,8 @@ import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
 import { NV_CARD } from "./js/custom-components/nv-card-productlist";
 import { TABLE } from "./js/custom-components/table";
+import { OFFER_SLIDER } from "./js/custom-components/offer-slider";
+import { SHARE_FEEDBACK } from "./js/custom-components/share-feedback";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
   BRAND_PORTFOLIO();
   CURRENT_PROMOTION();
   NV_CARD();
+  OFFER_SLIDER();
+  SHARE_FEEDBACK();
   DYNAMIC_COMPONENTS.init();
 });
 
