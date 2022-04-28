@@ -1,5 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
+/* eslint-disable */
 export const NV_CARD = () => { 
   function initNvcardProductDetail() {
     $(document)

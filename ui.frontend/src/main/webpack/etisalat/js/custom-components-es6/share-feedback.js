@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const SHARE_FEEDBACK = () => { 
 (function(){
   $(".share-feedback-btn").each(function () {

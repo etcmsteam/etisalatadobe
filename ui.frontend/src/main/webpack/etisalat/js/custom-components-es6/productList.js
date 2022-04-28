@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const PRODUCT_LIST = () => { 
  //JSON added here as temporarily - creating separated json file causes access denied in AEM
 function numberWithCommas(x) {

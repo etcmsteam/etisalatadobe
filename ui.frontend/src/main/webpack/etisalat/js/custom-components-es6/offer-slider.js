@@ -1,6 +1,6 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 import { IsMediaQuery } from "../../../global/js/helpers";
-
+/* eslint-disable */
 export const OFFER_SLIDER = () => { 
 $(".promotional-banner-wrapper").each(function () {
   if (IsMediaQuery.md.matches) {

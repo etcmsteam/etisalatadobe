@@ -7,17 +7,17 @@ import { GUIDE_TOUR_POPUP } from "./js/guide-tour";
 import { GLOBALFOOTPRINT } from "./js/custom-components-es6/globalfootprintcontainer";
 import { TAB_SWIPER } from "./js/custom-components-es6/tab-swiper";
 import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
-import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
-import { PRODUCT_LIST } from "./js/custom-components/productList";
+import { SHOP_BRANDS } from "./js/custom-components-es6/shop-brands";
+import { PRODUCT_LIST } from "./js/custom-components-es6/productList";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
 import { SITE } from './js/custom-components/site';
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
-import { NV_CARD } from "./js/custom-components/nv-card-productlist";
+import { NV_CARD } from "./js/custom-components-es6/nv-card-productlist";
 import { TABLE } from "./js/custom-components/table";
-import { OFFER_SLIDER } from "./js/custom-components/offer-slider";
-import { SHARE_FEEDBACK } from "./js/custom-components/share-feedback";
+import { OFFER_SLIDER } from "./js/custom-components-es6/offer-slider";
+import { SHARE_FEEDBACK } from "./js/custom-components-es6/share-feedback";
 
 
 document.addEventListener("DOMContentLoaded", () => {
