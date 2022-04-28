@@ -30,7 +30,7 @@
         .slider {
             @media (min-width:992px) {
                 flex: 1;
-                width: 66.66666667%;
+                width: 68%;
                 margin-left: 24px;
             }
 
@@ -52,6 +52,17 @@
                             border-radius: 3px;
                         }
 
+                        .cmp-image__image {
+                            bottom: -9999px;
+                            left: -9999px;
+                            margin: auto;
+                            min-height: 100%;
+                            min-width: 100%;
+                            position: absolute;
+                            right: -9999px;
+                            top: -9999px;
+                        }
+
                         a {
                             display: block;
                             width: 100%;
@@ -71,23 +82,25 @@
                             height: 200px;
                             text-align:left;
 
-                            h3 {
+                            h1,
+                            h2,
+                            h3,
+                            h4,
+                            h5,
+                            h6 {
                                 @media (max-width:991px) {
                                     padding: 16px;
-                                    font-size: 20px;
                                 }
+
                                 color: $white;
                                 z-index:30;
                                 width: 100%;
-                                font-size: 26px;
                                 padding: 24px;
                                 margin: 0;
                                 align-self: flex-end;
                             }
 
-                            .imageetisalatviewport img {
-                                object-fit: cover;
-                            }
+
 
                             .overlay {
                                 width: 100%;
@@ -103,6 +116,7 @@
                 }
             }
         }
+
         .content {
             @media (min-width:992px) {
                 width: 317.33px;
@@ -155,23 +169,14 @@
                         max-width: 282px;
                     }
 
-                    h2 {
-                        @media (max-width:991px) {
-                            margin-bottom: 16px;
-                            margin-top: 0;
-                            font-size: 26px;
-                        }
-                        font-size: 24px;
-                        color: $almost-black;
-                        margin-bottom: 24px;
-                    }
-
                     p {
                         @media (max-width:991px) {
                             margin-bottom: 36px;
                         }
+
                         margin-bottom: 42px;
                         color: $gray-text-color;
+                        line-height: 1.5rem;
 
                     }
 
@@ -215,7 +220,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        z-index: 5;
+        z-index: 200;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -269,6 +274,10 @@
                     margin-left: 16px;
                 }
 
+                .swiper-slide {
+                    margin-right: 0 !important;
+                }
+
                 .content {
                     .techsupport-box {
                         &::after {
@@ -299,6 +308,8 @@
                                         transform: rotate(180deg);
                                     }
                                 }
+
+
                             }
                         }
                     }
@@ -337,7 +348,24 @@
 
         .swiper-wrapper {
             transform: none !important;
-            z-index: 1050 ;
+            z-index: 1050;
         }
+    }
+}
+
+.cq-Editable-dom--container {
+    .imageetisalatviewport img,
+    .techsupporttile {
+        width: auto;
+        height: 90px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        display: none;
     }
 }

@@ -1,11 +1,15 @@
 package com.etisalat.core.models;
 
+import com.day.cq.wcm.api.Page;
 import com.etisalat.core.util.CommonUtility;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.inject.Inject;
@@ -19,6 +23,10 @@ public class CommonLinkModel {
     /** The link. */
     @Inject
     private String link;
+    
+    /** The current page. */
+    @ScriptVariable
+    private Page currentPage;
 
     /** The resource resolver. */
     @SlingObject
@@ -42,4 +50,17 @@ public class CommonLinkModel {
       return CommonUtility.checkAssetIsVideo(resourceResolver, link);
     }
 
+    /**
+     * Gets the XF language code from the fragment path.
+     *
+     * @return the XF language code
+     */
+	public String getXFLanguageCode() {
+		String pagePath = currentPage.getPath();
+		String[] pagePathArray = pagePath.split("/");
+		if (pagePathArray.length > 4) {
+			return pagePathArray[5];
+		}
+		return StringUtils.EMPTY;
+	}
 }

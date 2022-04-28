@@ -10,15 +10,14 @@ import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
 import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
 import { PRODUCT_LIST } from "./js/custom-components/productList";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
-import { RELATED_JOBS } from "./js/custom-components/related-jobs";
-import { SITE } from './js/custom-components/site';
+import { SITE } from "./js/custom-components/site";
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
 import { TABLE } from "./js/custom-components/table";
 
-
 document.addEventListener("DOMContentLoaded", () => {
+  DYNAMIC_COMPONENTS.init();
   SITE();
   POP_UP_ACCESSIBILITY();
   TABLE();
@@ -29,10 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   YOU_TUBE_VIDEO_PLAYER();
   SHOP_BRANDS();
   PRODUCT_LIST();
-  RELATED_JOBS();
   BRAND_PORTFOLIO();
   CURRENT_PROMOTION();
-  DYNAMIC_COMPONENTS.init();
 });
 
 // Stylesheets
