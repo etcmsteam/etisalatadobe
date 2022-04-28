@@ -21,8 +21,8 @@ import { SHARE_FEEDBACK } from "./js/custom-components-es6/share-feedback";
 const ERROR_BOUNDARY = (fun) => {
   try {
     fun();
-  } catch (err) {
-    console.error(err);
+  } catch (error) {    
+    console.error("Module Script Error: ", error);
   }
 };
 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     SHARE_FEEDBACK,
   ].forEach(ERROR_BOUNDARY);
 
-  
+
   DYNAMIC_COMPONENTS.init();
 });
 
