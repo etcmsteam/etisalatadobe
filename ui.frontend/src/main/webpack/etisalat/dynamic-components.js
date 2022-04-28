@@ -75,7 +75,9 @@ const DYNAMIC_COMPONENTS = {
       entries.forEach((entry) => {
         // execute the dynamic import & init script registered
         if (entry.isIntersecting) {
-          DYNAMIC_MODULE[entry.target.attributes["data-component"].nodeValue]();
+          DYNAMIC_MODULE[entry.target.attributes["data-component"].nodeValue]().catch((error) => {
+            console.error("Dynamic Module Script Error: ", error);
+          });
           observer.unobserve(entry.target);
         }
       });

@@ -18,23 +18,34 @@ import { TABLE } from "./js/custom-components-es6/table";
 import { OFFER_SLIDER } from "./js/custom-components-es6/offer-slider";
 import { SHARE_FEEDBACK } from "./js/custom-components-es6/share-feedback";
 
+const ERROR_BOUNDARY = (fun) => {
+  try {
+    fun();
+  } catch (error) {
+    console.error("Module Script Error: ", error);
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+  [
+    SITE,
+    POP_UP_ACCESSIBILITY,
+    TABLE,
+    VIEW_MORE_TOGGLE,
+    GUIDE_TOUR_POPUP,
+    GLOBALFOOTPRINT,
+    TAB_SWIPER,
+    YOU_TUBE_VIDEO_PLAYER,
+    SHOP_BRANDS,
+    PRODUCT_LIST,
+    BRAND_PORTFOLIO,
+    CURRENT_PROMOTION,
+    NV_CARD,
+    OFFER_SLIDER,
+    SHARE_FEEDBACK,
+  ].forEach(ERROR_BOUNDARY);
+
   DYNAMIC_COMPONENTS.init();
-  SITE();
-  POP_UP_ACCESSIBILITY();
-  TABLE();
-  VIEW_MORE_TOGGLE();
-  GUIDE_TOUR_POPUP();
-  GLOBALFOOTPRINT();
-  TAB_SWIPER();
-  YOU_TUBE_VIDEO_PLAYER();
-  SHOP_BRANDS();
-  PRODUCT_LIST();
-  BRAND_PORTFOLIO();
-  CURRENT_PROMOTION();
-  NV_CARD();
-  OFFER_SLIDER();
-  SHARE_FEEDBACK();
 });
 
 // Stylesheets
