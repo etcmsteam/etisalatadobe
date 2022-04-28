@@ -1,3 +1,6 @@
+import './related-jobs.scss';
+
+/* eslint-disable */
 export const RELATED_JOBS = () => {
   if ($(".related-jobs").length <= 0) {
     return false;
@@ -56,7 +59,6 @@ export const RELATED_JOBS = () => {
     }
     return html;
   };
-
 
   $.ajax(apiSettings)
     .done(function (json, statusText, xhr) {

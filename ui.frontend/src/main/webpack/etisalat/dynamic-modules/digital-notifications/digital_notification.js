@@ -1,4 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import "./index.scss";
 /* eslint-disable*/
 export const DIGITAL_NOTIFICATION = () => {
 // get height of slide and assign it to container

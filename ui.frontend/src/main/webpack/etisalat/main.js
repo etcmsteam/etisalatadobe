@@ -10,8 +10,7 @@ import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
 import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
 import { PRODUCT_LIST } from "./js/custom-components/productList";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
-import { RELATED_JOBS } from "./js/custom-components/related-jobs";
-import { SITE } from "./js/custom-components/site";
+import { SITE } from './js/custom-components/site';
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ERROR_BOUNDARY(YOU_TUBE_VIDEO_PLAYER);
   ERROR_BOUNDARY(SHOP_BRANDS);
   ERROR_BOUNDARY(PRODUCT_LIST);
-  ERROR_BOUNDARY(RELATED_JOBS);
   ERROR_BOUNDARY(BRAND_PORTFOLIO);
   ERROR_BOUNDARY(CURRENT_PROMOTION);
   ERROR_BOUNDARY(TABLE);
