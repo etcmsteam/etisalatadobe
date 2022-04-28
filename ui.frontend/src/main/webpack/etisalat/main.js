@@ -11,28 +11,35 @@ import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
 import { PRODUCT_LIST } from "./js/custom-components/productList";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
 import { RELATED_JOBS } from "./js/custom-components/related-jobs";
-import { SITE } from './js/custom-components/site';
+import { SITE } from "./js/custom-components/site";
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
 import { TABLE } from "./js/custom-components/table";
 
+const ERROR_BOUNDARY = (fun) => {
+  try {
+    fun();
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 document.addEventListener("DOMContentLoaded", () => {
-  DYNAMIC_COMPONENTS.init();
-  SITE();
-  POP_UP_ACCESSIBILITY();
-  VIEW_MORE_TOGGLE();
-  GUIDE_TOUR_POPUP();
-  GLOBALFOOTPRINT();
-  TAB_SWIPER();
-  YOU_TUBE_VIDEO_PLAYER();
-  SHOP_BRANDS();
-  PRODUCT_LIST();
-  RELATED_JOBS();
-  BRAND_PORTFOLIO();
-  CURRENT_PROMOTION();
-  TABLE();
+  ERROR_BOUNDARY(DYNAMIC_COMPONENTS.init);
+  ERROR_BOUNDARY(SITE);
+  ERROR_BOUNDARY(POP_UP_ACCESSIBILITY);
+  ERROR_BOUNDARY(VIEW_MORE_TOGGLE);
+  ERROR_BOUNDARY(GUIDE_TOUR_POPUP);
+  ERROR_BOUNDARY(GLOBALFOOTPRINT);
+  ERROR_BOUNDARY(TAB_SWIPER);
+  ERROR_BOUNDARY(YOU_TUBE_VIDEO_PLAYER);
+  ERROR_BOUNDARY(SHOP_BRANDS);
+  ERROR_BOUNDARY(PRODUCT_LIST);
+  ERROR_BOUNDARY(RELATED_JOBS);
+  ERROR_BOUNDARY(BRAND_PORTFOLIO);
+  ERROR_BOUNDARY(CURRENT_PROMOTION);
+  ERROR_BOUNDARY(TABLE);
 });
 
 // Stylesheets
