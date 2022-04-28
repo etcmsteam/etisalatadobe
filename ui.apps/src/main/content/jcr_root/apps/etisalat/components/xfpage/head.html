@@ -22,6 +22,9 @@
 	<sly data-sly-include="customheaderlibs.html" />
     <sly data-sly-call="${headlibRenderer.headlibs @ designPath=head.designPath}" />
     <sly data-sly-include="author.html" />
+    <sly data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel" 
+       data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+     <sly data-sly-test="${commonModel.xFLanguageCode == 'ar'}" data-sly-call="${clientlib.css @ categories='etisalat.rtl'}" />
     <sly data-sly-include="/libs/cq/cloudserviceconfigs/components/servicelibs/servicelibs.jsp" />
     <sly data-sly-resource="${'cloudconfig-header' @ resourceType='cq/cloudconfig/components/scripttags/header'}"/>
     <sly data-sly-test.faviconpath="${head.faviconPath}">
