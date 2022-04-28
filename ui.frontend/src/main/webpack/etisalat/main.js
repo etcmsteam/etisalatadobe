@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   NV_CARD();
   OFFER_SLIDER();
   SHARE_FEEDBACK();
-  DYNAMIC_COMPONENTS.init();
 });
 
 // Stylesheets
