@@ -2,7 +2,7 @@ import "./js/forms";
 import "./js/custom-components/*.js";
 import "./js/analytics/analytics-events.js";
 
-import DYNAMIC_COMPONENTS from "./dynamic-components.js";
+
 import { VIEW_MORE_TOGGLE } from "./js/overview-section";
 import { GLOBALFOOTPRINT } from "./js/custom-components-es6/globalfootprintcontainer";
 import { TAB_SWIPER } from "./js/custom-components-es6/tab-swiper";
@@ -14,7 +14,7 @@ import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
 import { TABLE } from "./js/custom-components/table";
-
+import DYNAMIC_COMPONENTS from "./dynamic-components.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   SITE();
