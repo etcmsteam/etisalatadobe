@@ -1,6 +1,6 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 import { IsMediaQuery } from "../../../global/js/helpers";
-
+/* eslint-disable */
 export const CURRENT_PROMOTION = () => {
   function initSwiper() {
     // plans table slider for CMS modules start
