@@ -1,5 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
+/* eslint-disable */
 export const BRAND_PORTFOLIO = () => {
   $(document)
     .find(".brand-portfolio")
