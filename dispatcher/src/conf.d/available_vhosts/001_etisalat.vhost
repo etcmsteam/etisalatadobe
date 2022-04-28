@@ -63,7 +63,8 @@ Include conf.d/variables/custom.vars
 		Include conf.d/rewrites/rewrite.rules
 
         # rewrite for Home page - (Etisalat ae - English)
-        RewriteCond %{REQUEST_URI} ^/$
+        RewriteCond %{REQUEST_URI} ^/$ [OR]
+        RewriteCond %{REQUEST_URI} ^/en$
         RewriteRule ^(.*)$ /content/etisalat/ae/en/index.html [PT,L]
 
         # rewrite for Home page - (Etisalat ae - Arabic)
@@ -73,6 +74,18 @@ Include conf.d/variables/custom.vars
         RewriteCond %{REQUEST_URI} .jsp$
         RewriteRule ^/(.*).jsp$ /$1.html [R=301,L]
 
+        RewriteCond %{REQUEST_URI} !^/apps
+        RewriteCond %{REQUEST_URI} !^/bin
+        RewriteCond %{REQUEST_URI} !^/content
+        RewriteCond %{REQUEST_URI} !^/etc
+        RewriteCond %{REQUEST_URI} !^/etc.clientlibs
+        RewriteCond %{REQUEST_URI} !^/home
+        RewriteCond %{REQUEST_URI} !^/libs
+        RewriteCond %{REQUEST_URI} !^/saml_login
+        RewriteCond %{REQUEST_URI} !^/system
+        RewriteCond %{REQUEST_URI} !^/tmp
+        RewriteCond %{REQUEST_URI} !^/var
+        RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg)$
         RewriteRule ^/(.+)$ /content/etisalat/ae/$1 [PT,L]
 
 	</IfModule>
