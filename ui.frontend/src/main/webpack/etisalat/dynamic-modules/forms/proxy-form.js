@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
 
 export const PROXY_FORM = () => {
