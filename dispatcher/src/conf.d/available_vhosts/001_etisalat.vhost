@@ -63,12 +63,17 @@ Include conf.d/variables/custom.vars
 		Include conf.d/rewrites/rewrite.rules
 
         # rewrite for Home page - (Etisalat ae - English)
-        RewriteRule ^/?$ /content/etisalat/ae/en/index.html [PT,L]
+        RewriteCond %{REQUEST_URI} ^/$
+        RewriteRule ^(.*)$ /content/etisalat/ae/en/index.html [PT,L]
+
+        # rewrite for Home page - (Etisalat ae - Arabic)
+        RewriteCond %{REQUEST_URI} ^/ar$
+        RewriteRule ^(.*)$ /content/etisalat/ae/ar/index.html [PT,L]
 
         RewriteCond %{REQUEST_URI} .jsp$
         RewriteRule ^/(.*).jsp$ /$1.html [R=301,L]
 
-        RewriteRule ^/en/(.+)$ /content/etisalat/ae/en/$1 [PT,L]
+        RewriteRule ^/(.+)$ /content/etisalat/ae/en$1 [PT,L]
 
 	</IfModule>
 </VirtualHost>
