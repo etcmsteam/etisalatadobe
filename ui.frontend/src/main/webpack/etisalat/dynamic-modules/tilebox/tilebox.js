@@ -13,7 +13,7 @@ export const TILE_BOX = () => {
       .each(function (index) {
         $(this).addClass("t-b-slider" + index);
         var $tileBoxesCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
-          scrollbar: $(this).find(".swiper-scrollbar"),
+          scrollbar: $(this).find(".scrollbar"),
           scrollbarHide: false,
           scrollbarDraggable: true,
           breakpoints: {
