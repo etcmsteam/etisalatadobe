@@ -8,16 +8,24 @@
 
 		<div data-component="cmp-tile-box" class="container">
 			<div class="row">
-				<div class="tile-boxes-section general-guide ${container.items.size == 1 ? 'horizontal-tile single-tile' : ''}">
-					<h4 data-sly-test="${properties.tileTitle}" data-sly-element="${properties.titleType}">${properties.tileTitle}</h4>
+				<div
+					class="tile-boxes-section general-guide ${container.items.size == 1 ? 'horizontal-tile single-tile' : ''} tile-boxes-section-swiper">
+					<h4 data-sly-test="${properties.tileTitle}" data-sly-element="${properties.titleType}">
+						${properties.tileTitle}</h4>
 					<div class="tileBoxMobCarWrap">
 						<div class="tileboxCarousal">
-							<div class="${!wcmmode.edit ? 'swiper-wrapper' : '' }">
-								<!-- Slides Start-->
-								<div class="${!wcmmode.edit ? 'swiper-slide' : ''} col-xs-12 ${oneTile}${twoTile}${threeTile}" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
-								<!-- Slides End-->
+							<div class="${!wcmmode.edit ? 'swiper-container swiper-container-horizontal' : ''}">
+								<div class="${!wcmmode.edit ? 'swiper-wrapper' : '' }">
+									<!-- Slides Start-->
+									<div class="${!wcmmode.edit ? 'swiper-slide' : ''} col-xs-12 ${oneTile}${twoTile}${threeTile}"
+										data-sly-repeat="${container.items}"
+										data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
+									<!-- Slides End-->
+								</div>
+								<div
+									class="${!wcmmode.edit ? 'table-swiper-scrollbar swiper-scrollbar' : ''}">
+								</div>
 							</div>
-							<div class="${!wcmmode.edit ? 'table-swiper-scrollbar swiper-scrollbar' : ''} ${properties.swiperDisplayBehavior == 'false' ? 'scrollbar--hidden' : '' }"></div>
 						</div>
 					</div>
 				</div>

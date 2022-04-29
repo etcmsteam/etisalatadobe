@@ -408,6 +408,7 @@
   &.one-slides,
   &.two-slides,
   &.three-slides,
+  &.tile-boxes-section-swiper,
   &.four-slides,
   &.four-plus-slides {
     .swiper-slide {
@@ -417,6 +418,7 @@
     }
   }
 
+  &.tile-boxes-section-swiper,
   &.four-plus-slides {
     padding-bottom: 39px;
 
@@ -429,7 +431,17 @@
       }
     }
   }
-
+  &.tile-boxes-section-swiper {
+    .tileBoxMobCarWrap {
+      .swiper-container-horizontal > .swiper-scrollbar {
+        width: 98% !important;
+        @include rtlBlock() {
+          right: 1%!important;
+          left: 0!important;
+        }
+      }
+    }
+  }
   .swiper-container-horizontal .swiper-scrollbar {
     @include respond-to-max($desktop-min) {
       left: 0;
