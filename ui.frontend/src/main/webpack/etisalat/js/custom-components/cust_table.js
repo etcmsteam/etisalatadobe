@@ -358,6 +358,17 @@ $('.sort-label.mobile-view').off('click').on('click', function (e) {
     }
 
 });
+
+            // popup
+            $('.elife-popup').off('click').on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                var dataLabel = $(this).attr("data-label");
+                if(typeof dataLabel !== 'undefined'  && dataLabel !== '') {
+                    $('#'+dataLabel).addClass('show');
+                    $('body').addClass('freeze');
+                }
+            });
             // close popup
             $('.e-life-modal').off('click').on('click', '.nv-modal-close', function (e) {
                 e.stopPropagation();
