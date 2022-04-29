@@ -815,16 +815,31 @@
 }
 
 $prefix: "cmp-teaser";
+$grid-spacing: 12px;
 
 .cmp-teaser--multicol {
-  @include respond-to-min($desktop) {
-    .aem-Grid .aem-GridColumn {
+  .aem-Grid .aem-GridColumn {
+    padding-top: $grid-spacing;
+
+    @include respond-to-min($desktop) {
+      padding-top: 0;
+
       &:first-child {
-        padding-left: 0;
+        padding: 0 $grid-spacing 0 0;
       }
 
       &:last-child {
-        padding-right: 0;
+        padding: 0 0 0 $grid-spacing;
+      }
+
+      @include rtlBlock() {
+        &:last-child {
+          padding: 0 $grid-spacing 0 0;
+        }
+
+        &:first-child {
+          padding: 0 0 0 $grid-spacing;
+        }
       }
     }
   }

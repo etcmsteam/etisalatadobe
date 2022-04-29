@@ -1,6 +1,8 @@
 /* eslint-disable*/
+import intlTelInput from "intl-tel-input";
 import { DIAL_CODE_DATA } from "../../../global/js/constant";
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
+
 export const NEED_HELP_FORM = () => {
   const $FORM = $("#cwsNeedHelp");
   const $SUBMIT_CTA = $("#cwsNeedHelp .cmp-form-button");
@@ -123,7 +125,6 @@ export const NEED_HELP_FORM = () => {
 
       let dataObj = JSON.stringify(dataWithPayload, null, 2);
 
-
       $.ajax({
         type: "POST",
         url: "https://www.etisalat.ae/b2c/sendNotification.service",
@@ -145,7 +146,7 @@ export const NEED_HELP_FORM = () => {
 
   /*--intlTelInput starts--*/
   var input2 = document.querySelector("#contactNumber");
-  var iti = window.intlTelInput(input2, {
+  var iti = intlTelInput(input2, {
     initialCountry: "AE",
     utilsScript: intlTelInputUtils,
     autoPlaceholder: "off",
