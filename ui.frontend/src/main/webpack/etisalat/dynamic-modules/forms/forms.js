@@ -1,5 +1,4 @@
 import "intl-tel-input/build/js/utils";
-import "intl-tel-input/build/js/intlTelInput";
 import "../../js/common";
 
 import { FORM_DEFAULTS } from "./form-defaults";
