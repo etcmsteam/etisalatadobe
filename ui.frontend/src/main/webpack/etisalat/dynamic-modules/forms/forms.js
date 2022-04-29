@@ -1,6 +1,5 @@
 import "intl-tel-input/build/js/utils";
 import "intl-tel-input/build/js/intlTelInput";
-import "select2/dist/js/select2.min";
 import "../../js/common";
 
 import { FORM_DEFAULTS } from "./form-defaults";
