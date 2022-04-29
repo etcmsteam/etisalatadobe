@@ -109,8 +109,12 @@ export const TABLE = () => {
         bLengthChange: false,
         pageLength: Number(pageLimit),
         fnInfoCallback: function (oSettings, iStart, iEnd, iMax, iTotal, sPre) {
+          const totalPages = this.api().page.info().pages;
           const currentPage = this.api().page.info().page + 1;
-          return "Page " + currentPage + " of " + this.api().page.info().pages;
+          const pageLabel = $(".data-table__info").attr('data-pagination-label');
+          const labelArr = pageLabel.split(" ");
+          const returnValue =  totalPages +" "+ labelArr[1] +" "+ currentPage + " "+labelArr[0];
+          return returnValue;
         },
         drawCallback: function (settings) {
           const pagination = $(".data-table__pagination", elem);
