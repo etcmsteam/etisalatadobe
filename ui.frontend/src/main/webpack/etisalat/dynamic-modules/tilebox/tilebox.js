@@ -82,9 +82,6 @@ export const TILE_BOX = () => {
             },
           },
         });
-         if ($(this).find(".swiper-slide").length > 3) {
-           $(".swiper-scrollbar").addClass("show");
-         }
       });
     // plans table slider 3 tiles ends
 
