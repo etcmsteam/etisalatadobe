@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+import "intl-tel-input/build/js/intlTelInput";
+
 (function ($) {
   // Class
   const FORM_OPTION_CLASS = ".cmp-form-options";
@@ -88,5 +90,4 @@
       e.stopPropagation();
     }
   });
-  
 })(jQuery);
