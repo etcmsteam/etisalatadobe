@@ -31,33 +31,36 @@
     const dataLayerEle = document.querySelector('body'),
       siteLangElement = document.querySelector('html'),
       serverName = window.location.hostname,
-      dataLayerUrl = window.location.href
-    pagePathName = window.location.pathname;
-    dataLayerPathName = pagePathName.split('.html')[0],
-    userAgentData = navigator.userAgent,
+      dataLayerUrl = window.location.href,
+      pagePathName = window.location.pathname,
+      userAgentData = navigator.userAgent;
+
+    let dataLayerPathName = pagePathName.split('.html')[0],
     currentDate = new Date(),
     previousPage = document.referrer,
     previousPageName = '',
-    siteSection = '';
+    siteSection = '',
     siteSection1 = '',
-    siteSection2 = '';
-    siteSecMicrosites = '';
+    siteSection2 = '',
+    siteSecMicrosites = '',
     domainNm = '';
 
     let siteLang = siteLangElement.getAttribute('lang'),
-      pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
+      pageTitle = dataLayerEle.dataset.pageTitle ? dataLayerEle.dataset.pageTitle.toLowerCase() : "",
       pageName;
 
     let dateStr = currentDate.toString();
     let index = dateStr.lastIndexOf(':') + 3;
     currentDate = dateStr.substring(0, index);
 
-    domainNm = serverName.split('.');
-    if (domainNm.length > 1) {
-      domainNm = serverName.split('.').slice(-2)[0];
-    } else {
-      domainNm = '';
+
+    if (serverName.indexOf('.') !== -1) {
+      domainNm = serverName.split('.');
+      if (domainNm.length > 1) {
+        domainNm = serverName.split('.').slice(-2)[0];
+      }
     }
+    
 
     pageTitle = domainNm + ':' + pageTitle;
     
@@ -126,7 +129,7 @@
     function populatePageName(dmName, title) {
       let lastSegment = dataLayerPathName.split('/').pop();
       if (lastSegment === 'index' || pagePathName === "/") {
-        pageTitle = dmName + ':' + title;
+        pageTitle = dmName && dmName !== '' ? dmName + ':' + title : title;
       }
     }
 
