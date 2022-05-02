@@ -25,6 +25,7 @@ export const BACK_TO_TOP = () => {
       };
 
       backToTop();
+      
       function debounce(method, delay) {
         clearTimeout(method._tId);
         method._tId = setTimeout(function () {
