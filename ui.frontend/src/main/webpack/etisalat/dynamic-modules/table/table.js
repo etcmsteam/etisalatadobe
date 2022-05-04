@@ -1,5 +1,6 @@
 /* eslint-disable */
 import $ from "jquery";
+import "./index.scss";
 
 window.dt = require("datatables.net");
 
