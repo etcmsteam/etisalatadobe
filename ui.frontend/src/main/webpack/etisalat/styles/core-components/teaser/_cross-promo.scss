@@ -920,12 +920,25 @@ $grid-spacing: 12px;
       }
     }
 
+    &::before,
     &::after {
-      transform: scaleX(-1);
+      background: url("../resources/images/bg-cards/plan-cards-illustration.svg") right 0 no-repeat;
+      background-size: contain;
+      opacity: 0.7;
     }
 
-    &::before {
-      display: none;
+    &::after {
+      transform: none;
+    }
+
+    @include rtlBlock() {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        transform: rotateY(180deg);
+      }
     }
   }
 
