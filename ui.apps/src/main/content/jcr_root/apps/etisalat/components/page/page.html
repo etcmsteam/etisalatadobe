@@ -31,27 +31,60 @@
     const dataLayerEle = document.querySelector('body'),
       siteLangElement = document.querySelector('html'),
       serverName = window.location.hostname,
-      dataLayerUrl = window.location.href
-    pagePathName = window.location.pathname;
-    dataLayerPathName = pagePathName.split('.html')[0],
-    userAgentData = navigator.userAgent,
+      dataLayerUrl = window.location.href,
+      pagePathName = window.location.pathname,
+      userAgentData = navigator.userAgent;
+
+    let dataLayerPathName = pagePathName.split('.html')[0],
     currentDate = new Date(),
     previousPage = document.referrer,
     previousPageName = '',
-    siteSection = '';
+    siteSection = '',
     siteSection1 = '',
-    siteSection2 = '';
-    siteSecMicrosites = '';
+    siteSection2 = '',
+    siteSecMicrosites = '',
+    domainNm = '';
 
     let siteLang = siteLangElement.getAttribute('lang'),
-      pageTitle = dataLayerEle.dataset.pageTitle.toLowerCase(),
+      pageTitle = dataLayerEle.dataset.pageTitle ? dataLayerEle.dataset.pageTitle.toLowerCase() : "",
       pageName;
 
     let dateStr = currentDate.toString();
     let index = dateStr.lastIndexOf(':') + 3;
     currentDate = dateStr.substring(0, index);
+
+
+    if (serverName.indexOf('.') !== -1) {
+      domainNm = serverName.split('.');
+      if (domainNm.length > 1) {
+        domainNm = serverName.split('.').slice(-2)[0];
+      }
+    }
     
-    //sitesection 1 and 2
+
+    pageTitle = domainNm + ':' + pageTitle;
+    
+    //sitesection for microsites
+    if (!serverName.includes('etisalat.ae')) {
+      let secArr = dataLayerUrl.split('/en/');
+      if (secArr.length > 1) {
+        if (secArr[1].includes('/')) {
+          siteSecMicrosites = secArr[1].split('/')[0];
+        } else {
+          siteSecMicrosites = secArr[1].split('.html')[0];
+          if (siteSecMicrosites === 'index') {
+            siteSecMicrosites = 'home';
+          }
+        }
+      } else {
+        siteSecMicrosites = 'home';
+        if (serverName.includes('ewallet.ae')) {
+          siteSecMicrosites = 'personal';
+        }
+      }
+    }
+    
+    //sitesection 1 and 2 etisalat
     const pathArr = dataLayerPathName.split('/');
     if(pathArr.length >= 3) {
       const newPathArr = pathArr.slice(-3);
@@ -77,40 +110,14 @@
 
     if (serverName.includes('ewallet.ae')) {
       if (dataLayerPathName.includes('/personal/')) {
-        populatePageName('personal:home');
+        populatePageName(domainNm, 'personal:home');
       } else if (dataLayerPathName.includes('/business/')) {
-        populatePageName('business:home');
+        populatePageName(domainNm, 'business:home');
       } else {
-        populatePageName('personal:home');
+        populatePageName(domainNm, 'personal:home');
       }
     } else {
-      populatePageName('home');
-    }
-
-    //sitesection changes
-    if (serverName.includes('ewallet.ae')) {
-      if (pagePathName.includes('/personal/')) {
-        siteSecMicrosites = "personal";
-      } else if (pagePathName.includes('/business/')) {
-        siteSecMicrosites = "business";
-      } else if (pagePathName.includes('/aboutus/')) {
-        siteSecMicrosites = "aboutus";
-      } else if (pagePathName.includes('/faq/')) {
-        siteSecMicrosites = "faq";
-      } else if (pagePathName.includes('/locations/')) {
-        siteSecMicrosites = "locations";
-      } else if (pagePathName.includes('/offer/')) {
-        siteSecMicrosites = "offer";
-      } else if (pagePathName === '/') {
-        siteSecMicrosites = "personal";
-      }
-    } else if (serverName.includes('hiuapp.ae')) {
-      siteSecMicrosites = "home";
-      if (pagePathName.includes('terms_conditions')) {
-        siteSecMicrosites = "t&c";
-      }
-    } else if (serverName.includes('fivemobile.ae')) {
-      siteSecMicrosites = "home";
+      populatePageName(domainNm, 'home');
     }
 
     if (siteLang.includes("-")) {
@@ -118,14 +125,15 @@
       langArr = siteLang.split("-");
       siteLang = langArr[0];
     }
-    pageName = siteLang + '-ae:' + pageTitle;
 
-    function populatePageName(title) {
+    function populatePageName(dmName, title) {
       let lastSegment = dataLayerPathName.split('/').pop();
       if (lastSegment === 'index' || pagePathName === "/") {
-        pageTitle = title;
+        pageTitle = dmName && dmName !== '' ? dmName + ':' + title : title;
       }
     }
+
+    pageName = siteLang + '-ae:' + pageTitle;
 
     function urlExists(url) {
       var http = new XMLHttpRequest();

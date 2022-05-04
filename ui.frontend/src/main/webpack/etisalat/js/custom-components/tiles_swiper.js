@@ -1,13 +1,13 @@
+/* eslint-disable */
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
-//shop swiper st
+  
 function initTileBoxesSlider() {
   // plans table slider for CMS modules start
   $(document)
     .find(".tilecontainer .tile-boxes-section")
     .each(function (index) {
       $(this).addClass("t-b-slider" + index);
-      var $tileBoxesCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
+      const $tileBoxesCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
         scrollbar: $(this).find(".scrollbar"),
         scrollbarHide: false,
         scrollbarDraggable: true,
@@ -41,12 +41,12 @@ function initTileBoxesSlider() {
   $(document)
     .find(".tilecontainer .tileBoxMobCarWrap")
     .each(function (itemindex) {
-      var swiperSlideLength = $(this).find(".swiper-slide").length;
+      const swiperSlideLength = $(this).find(".swiper-slide").length;
       $(this).addClass("swiper-with-" + swiperSlideLength + "-slides");
       if ($(window).width() > 991) {
         $(this).find(".tileboxCarousal").addClass("destroyed");
       } else {
-        var $carouselSlider = swiperInit($(this).find(".tileboxCarousal"), {
+        const $carouselSlider = swiperInit($(this).find(".tileboxCarousal"), {
           loop: false,
           autoplay: false,
           slidesPerView: 1,
@@ -63,14 +63,13 @@ function initTileBoxesSlider() {
     });
 }
 
-// register the event handlers
-$(document).ready(function () {
+export const TILES_SWIPER_MODULE = () => {
   initTileBoxesSlider();
   if ($(window).width() < 992) {
   }
 
   // open youtube video and close by removing src and then add tile box Grid
-  $(".tileBoxVideoLink").on("click", function (e) {
+  $(document).on("click", ".tileBoxVideoLink", function (e) {
     e.preventDefault();
     var modalCTA = $(this).next(".tileBoxVideoModal");
     $(this).closest(".swiper-wrapper").addClass("remove-transform remove-zIndex");
@@ -85,7 +84,7 @@ $(document).ready(function () {
     $("body").addClass("modal-overlay");
   });
 
-  $(".tileBoxVideoModal").on("hidden.bs.modal", function () {
+  $(document).on("hidden.bs.modal", ".tileBoxVideoModal", function () {
     var src = $(this).find("iframe").attr("src");
     $(this).find("iframe").attr("src", "");
     $(this).find("iframe").attr("src", src.replace("autoplay=1", ""));
@@ -101,10 +100,4 @@ $(document).ready(function () {
   });
 
   //open youtube video and close by removing src and then add three tile box
-});
-//shop swiper en
-
-//insurance swiper st
-// External carousel for mobile only
-
-//insurance swiper en
+};
