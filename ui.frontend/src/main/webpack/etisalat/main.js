@@ -1,4 +1,3 @@
-import "./js/custom-components/*.js";
 import "./js/analytics/analytics-events.js";
 
 
@@ -17,6 +16,16 @@ import { NV_CARD } from "./js/custom-components-es6/nv-card-productlist";
 import { TABLE } from "./js/custom-components-es6/table";
 import { OFFER_SLIDER } from "./js/custom-components-es6/offer-slider";
 import { SHARE_FEEDBACK } from "./js/custom-components-es6/share-feedback";
+import { CONTEXT_NAV } from "./js/custom-components-es6/05-context-nav";
+import { BACK_TO_TOP } from "./js/custom-components-es6/backtotop";
+import { PAGE_NAV_CONFIG } from "./js/custom-components-es6/config.js";
+import { CUSTOMER_TABLE } from "./js/custom-components-es6/cust_table.js";
+import { MAIN_TEXT_ACITON } from "./js/custom-components-es6/main-text.js";
+import { SCROLLSPY_AFFIX_MODULE } from "./js/custom-components-es6/scrollspy-affix.js";
+import { SMS_BLOG_SHARE_LINK_MODULE } from "./js/custom-components-es6/smb-blog-share-link.js";
+import { IMAGE_WITH_NEW_SVG_MODULE } from "./js/custom-components-es6/svg.js";
+import { TECH_SUPPORT_MODULE } from "./js/custom-components-es6/tech-support.js";
+import { TILES_SWIPER_MODULE } from "./js/custom-components-es6/tiles_swiper.js";
 
 const ERROR_BOUNDARY = (fun) => {
   try {
@@ -43,6 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
     NV_CARD,
     OFFER_SLIDER,
     SHARE_FEEDBACK,
+    CONTEXT_NAV,
+    BACK_TO_TOP,
+    PAGE_NAV_CONFIG,
+    CUSTOMER_TABLE,
+    MAIN_TEXT_ACITON,
+    SCROLLSPY_AFFIX_MODULE,
+    SMS_BLOG_SHARE_LINK_MODULE,
+    TECH_SUPPORT_MODULE,
+    TILES_SWIPER_MODULE,
+    IMAGE_WITH_NEW_SVG_MODULE,
   ].forEach(ERROR_BOUNDARY);
 
   DYNAMIC_COMPONENTS.init();
@@ -50,3 +69,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Stylesheets
 import "./main.scss";
+

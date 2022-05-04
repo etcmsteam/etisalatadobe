@@ -1,25 +1,30 @@
-$(document).ready(function () {
-  var pageNav = $("#page-nav");
+/* eslint-disable */
+
+export const PAGE_NAV_CONFIG = () => {
+  const pageNav = $("#page-nav");
 
   if (pageNav.length > 0) {
-    var body = $("body");
+    const body = $("body");
+    const wrap = $(".page-nav-wrap");
+
     body.css("position", "relative");
     body.scrollspy({
       target: "#page-nav",
       offset: 250,
     });
 
-    $("#page-nav a").on("click", function (event) {
-      event.preventDefault();
-      var hash = this.hash,
+    $(document).on("click", "#page-nav a", function (e) {
+      e.preventDefault();
+      const hash = this.hash,
         $that = $(this);
-  
-      if ($(hash).length > 0) {
+
+        if ($(hash).length > 0) {
+        const $PageNavWrap = $(".page-nav-wrap");
+        let hashOffsetTop;
+
         $(this).parent().parent().find(".active").removeClass("active");
         $that.parent().addClass("active");
-        var hashOffsetTop, $PageNavWrap;
-        $PageNavWrap = $(".page-nav-wrap");
-        
+
         if ($PageNavWrap.hasClass("affix")) {
           if (window.outerWidth > 768) {
             hashOffsetTop = $(hash).offset().top - 239;
@@ -39,7 +44,6 @@ $(document).ready(function () {
       }
     });
 
-    var wrap = $(".page-nav-wrap");
     wrap.each(function () {
       $(this).affix({
         offset: {
@@ -49,11 +53,11 @@ $(document).ready(function () {
     });
   }
 
-  $(".has-related").click(function () {
+  $(document).on("click", ".has-related", function () {
     $("li").each(function () {
       if ($(this).data("hasrelated") == "0") {
         $(this).hide();
       }
     });
   });
-});
+};
