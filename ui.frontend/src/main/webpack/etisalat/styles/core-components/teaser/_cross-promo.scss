@@ -225,7 +225,7 @@
       content: "";
       height: 100%;
       left: 0;
-      opacity: 0.4;
+      opacity: 0.7;
       position: absolute;
       top: 0;
       width: 100%;
@@ -920,15 +920,12 @@ $grid-spacing: 12px;
       }
     }
 
-    &::before,
     &::after {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.svg") right 0 no-repeat;
-      background-size: contain;
-      opacity: 0.7;
+      transform: scaleX(-1);
     }
 
-    &::after {
-      transform: none;
+    &::before {
+      display: none;
     }
 
     @include rtlBlock() {
@@ -937,7 +934,7 @@ $grid-spacing: 12px;
       }
 
       &::before {
-        transform: rotateY(180deg);
+        display: block;
       }
     }
   }
