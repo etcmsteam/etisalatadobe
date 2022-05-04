@@ -36,7 +36,6 @@ export const NEED_HELP_FORM = () => {
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
     FORM_ERROR($FORM);
-    console.log(errorText);
   }
 
   var submitSuccessResponse = function (json, statusText, xhr) {
@@ -60,6 +59,7 @@ export const NEED_HELP_FORM = () => {
       },
       contactNumber: {
         required: true,
+        digits: true,
         maxlength: 15,
       },
       companyName: {
@@ -198,8 +198,12 @@ export const NEED_HELP_FORM = () => {
         input2.classList.add("error");
         input2.parentElement.parentElement.classList.add("has-error-fields", "intl-error");
         var errorCode = iti.getValidationError();
-        errorMsg.innerHTML = errorMap[errorCode];
-        errorMsg.classList.remove("hide");
+        if (errorCode !== -99) {
+          errorMsg.innerHTML = errorMap[errorCode];
+          errorMsg.classList.remove("hide");
+        } else {
+          $PARENT_ELEMENT.find(".has-error.alert-label").css("display", "block");
+        }
       }
     } else {
       $("#contactNumber").parents(".cmp-form-text").find("label").removeClass("floating-label");

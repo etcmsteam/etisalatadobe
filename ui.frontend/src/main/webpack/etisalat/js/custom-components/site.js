@@ -59,4 +59,12 @@ export const SITE = () => {
         });
     }
   });
+
+  // For mobile Tabs with Accordion
+  $('.nav-view-wrapp > a[data-toggle="collapse"]').click(function (e) {
+    if (!$(this).hasClass("collapsed")) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
 };
