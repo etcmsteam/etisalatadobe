@@ -14,7 +14,6 @@ import { BRAND_PORTFOLIO } from "./js/custom-components-es6/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components-es6/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components-es6/pop-up-accessibility";
 import { NV_CARD } from "./js/custom-components-es6/nv-card-productlist";
-import { TABLE } from "./js/custom-components-es6/table";
 import { OFFER_SLIDER } from "./js/custom-components-es6/offer-slider";
 import { SHARE_FEEDBACK } from "./js/custom-components-es6/share-feedback";
 
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
   [
     SITE,
     POP_UP_ACCESSIBILITY,
-    TABLE,
     VIEW_MORE_TOGGLE,
     GLOBALFOOTPRINT,
     TAB_SWIPER,
