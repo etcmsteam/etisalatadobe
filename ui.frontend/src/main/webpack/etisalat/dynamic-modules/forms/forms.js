@@ -1,5 +1,5 @@
 import "intl-tel-input/build/js/utils";
-import "../../js/common";
+import "../../js/utils/common";
 
 import { FORM_DEFAULTS } from "./form-defaults";
 import { LEADER_FORM } from "./leader-form";
