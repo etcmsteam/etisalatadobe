@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { swipedInit } from "../swipedEvents";
+import { swipedInit } from "../utils/swipedEvents";
 
 export const CAROUSEL_SWIPER = () => {
   const carouselContainer = document.querySelector(".carousel");

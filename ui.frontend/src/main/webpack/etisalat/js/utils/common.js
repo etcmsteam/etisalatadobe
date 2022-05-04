@@ -82,12 +82,4 @@ import "intl-tel-input/build/js/intlTelInput";
       sorter: (data) => data.sort((a, b) => a.text.localeCompare(b.text)),
     });
   }
-
-  // For mobile Tabs with Accordion
-  $('.nav-view-wrapp > a[data-toggle="collapse"]').click(function (e) {
-    if (!$(this).hasClass("collapsed")) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  });
 })(jQuery);

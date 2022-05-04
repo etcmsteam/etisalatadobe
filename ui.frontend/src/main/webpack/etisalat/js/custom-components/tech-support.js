@@ -1,13 +1,14 @@
-// this is a test file.
+
+/* eslint-disable */
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
-$(document).ready(function () {
+export const TECH_SUPPORT_MODULE = () => {
   $(".tech-support-wrapper").each(function (index) {
       $(this).addClass("tech" + index);
-      var $slider = $(this);
+      const $slider = $(this);
       $slider.find(".swiper-button-next").addClass("right" + index);
       $slider.find(".swiper-button-prev").addClass("left" + index);
-      var $techSlider = swiperInit(".tech" + index + " .swiper-container", {
+      const $techSlider = swiperInit(".tech" + index + " .swiper-container", {
         nextButton: ".swiper-button-next.right" + index,
         prevButton: ".swiper-button-prev.left" + index,
         scrollbarHide: false,
@@ -39,11 +40,12 @@ $(document).ready(function () {
     });
 
   // youtube video player
-  let TECH_SUPPORT_BOX = $(".techsupport-slidebox");
+  const TECH_SUPPORT_BOX = $(".techsupport-slidebox");
   if (TECH_SUPPORT_BOX.length > 0) {
-    $(".youtube-video-link").on("click", function (e) {
+
+    $(document).on("click", ".youtube-video-link", function (e) {
       e.preventDefault();
-      let MODAL_CTA = $(this).next(".techSupportVideo");
+      const MODAL_CTA = $(this).next(".techSupportVideo");
       MODAL_CTA.modal().show();
 
       if ($("body").hasClass("modal-open")) {
@@ -53,8 +55,8 @@ $(document).ready(function () {
       $("body").addClass("modal-overlay");
     });
 
-    $(".youtube-popup-container").on("hidden.bs.modal", function () {
-      let SRC = $(this).find("iframe").attr("src");
+    $(document).on("hidden.bs.modal", ".youtube-popup-container", function () {
+      const SRC = $(this).find("iframe").attr("src");
       $(this).find("iframe").attr("src", "");
       $(this).find("iframe").attr("src", SRC.replace("autoplay=1", ""));
       $("html").removeAttr("style");
@@ -64,4 +66,4 @@ $(document).ready(function () {
       }
     });
   }
-});
+};
