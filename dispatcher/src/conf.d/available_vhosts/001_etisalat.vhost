@@ -71,6 +71,9 @@ Include conf.d/variables/custom.vars
         RewriteCond %{REQUEST_URI} ^/ar$
         RewriteRule ^(.*)$ /content/etisalat/ae/ar/index.html [PT,L]
 
+        #Shorten the URL from web request
+        RewriteRule ^/content/etisalat/ae/(.*).html$ $1.html [R,L]
+
         RewriteCond %{REQUEST_URI} .jsp$
         RewriteRule ^/(.*).jsp$ /$1.html [R=301,L]
 
