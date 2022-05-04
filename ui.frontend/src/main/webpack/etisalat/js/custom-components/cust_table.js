@@ -366,7 +366,7 @@ $('.sort-label.mobile-view').off('click').on('click', function (e) {
                 var dataLabel = $(this).attr("data-label");
                 if(typeof dataLabel !== 'undefined'  && dataLabel !== '') {
                     $('#'+dataLabel).addClass('show');
-                    $('body').addClass('freeze');
+                    $('body,html').addClass('freeze');
                 }
             });
             // close popup
@@ -376,7 +376,7 @@ $('.sort-label.mobile-view').off('click').on('click', function (e) {
                 var currentOpendPopUp = $(this).closest('.nv-modal');
                 $(currentOpendPopUp).removeClass('show');
                 $(currentOpendPopUp).css('display', 'none');
-                $('body').removeClass('freeze');
+                $('body,html').removeClass('freeze');
             });
 
             // Radio buttons
