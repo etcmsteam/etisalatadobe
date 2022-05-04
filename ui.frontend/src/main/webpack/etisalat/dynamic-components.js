@@ -65,6 +65,9 @@ const DYNAMIC_MODULE = {
     "cmp-forms-module": async () => {
     await import(/* webpackChunkName: 'forms' */ "./dynamic-modules/forms/forms").then((obj) => obj.FORMS_MODULE());
   },
+  "cmp-table": async () => {
+    await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

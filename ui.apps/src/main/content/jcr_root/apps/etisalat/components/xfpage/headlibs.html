@@ -13,9 +13,13 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-<!DOCTYPE HTML>
-<html data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel" lang="${commonModel.xFLanguageCode}">
-	<head data-sly-include="head.html"></head>
-    <body dir="${commonModel.xFLanguageCode == 'ar' ? 'rtl' : 'ltr' }" data-sly-use.body="body.js" class="${body.cssClasses} ${pageProperties.hideHeader ? '' : (pageProperties.hideMegaMenu ? 'topnav--margin' : 'meganavigation--margin')}"
-            data-sly-include="body.html"></body>
-</html>
+<template data-sly-template.headlibs="${@ designPath}"
+          data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+          data-sly-use.head="${'headlibs.js' @ designPath=designPath}">
+    <sly data-sly-set.fragmentTemplate="${properties['cq:template']  == '/conf/etisalat/settings/wcm/templates/fragment-template'}"/>
+	<sly data-sly-test="${!fragmentTemplate}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+		<sly data-sly-call="${clientLib.all @ categories='cq.foundation-main'}" />
+	</sly>
+    <link data-sly-test="${head.staticDesign}" href="${head.staticDesign}" rel="stylesheet" type="text/css" />
+    <link data-sly-test="${head.design}" href="${head.design}" rel="stylesheet" type="text/css" />
+</template>
