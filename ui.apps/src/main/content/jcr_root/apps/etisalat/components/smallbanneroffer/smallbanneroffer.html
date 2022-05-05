@@ -1,17 +1,17 @@
 <sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
-<section class="promotional-banner-wrapper ${container.items.size > 0 ? 'expand-collapse' : ''} orange" 
+<section class="promotional-banner-wrapper ${container.items.size > 0 ? 'expand-collapse' : ''} orange"
          data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component">
     <div class="banner-image">
         <div class="${!wcmmode.edit ? 'cover' : ''}" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
             <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
         </div>
-        <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" 
+        <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}"
 		data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
     </div>
     <div class="main slider-init" data-toggle="${container.items.size > 0 ? 'collapse' : ''}" data-target="#${component.id}">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="${container.items.size > 0 ? 'col-xs-12' : 'col-xs-9 col-md-8 col-md-offset-2'}">
                     <div data-sly-test="${properties.text}" class="content small">
                         <div>${properties.text @ context='html'}</div>
 						<sly data-sly-test="${container.items.size > 0}">
@@ -37,9 +37,9 @@
 
  <sly data-sly-set.twoTile="${container.items.size == 2 ? 'col-md-6' : ''}"></sly>
  <sly data-sly-set.threeTile="${container.items.size >= 3 ? 'col-md-4' : ''}"></sly>
-    <div class="${!wcmmode.edit ? 'offers-expanded-view collapse' : ''} ${container.items.size > 3 ? 'with-slider' : ''}" 
-	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
-		 data-placeholder-text="${wcmmode.edit && 'Drag Cross Promo components here' @ i18n}" 
+    <div class="${!wcmmode.edit ? 'offers-expanded-view collapse' : ''} ${container.items.size > 3 ? 'with-slider' : ''}"
+	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+		 data-placeholder-text="${wcmmode.edit && 'Drag Cross Promo components here' @ i18n}"
 		 id="${component.id}">
         <div class="cross-promo-background small-tile">
             <div class="container">
@@ -48,14 +48,14 @@
                         <!-- Additional required wrapper -->
                         <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">
                             <!-- Slides Start-->
-                            <div class="col-xs-12 ${twoTile}${threeTile} ${!wcmmode.edit ? 'swiper-slide' : ''}" 
+                            <div class="col-xs-12 ${twoTile}${threeTile} ${!wcmmode.edit ? 'swiper-slide' : ''}"
 							     data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=''}"></div>
                             <!-- Slides End-->
                         </div>
                         <div class="${!wcmmode.edit && container.items.size > 3 ? 'table-swiper-scrollbar swiper-scrollbar' : ''}"></div>
                     </div>
                     <div data-sly-test="${!wcmmode.edit &&  container.items.size > 3}" class="button-prev">
-                        <svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">                           
+                        <svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="Online-is-better---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                                 <g id="Arrow/2pt/Chevron/Left/chevron_left_grey" transform="translate(-4.000000, 0.000000)" stroke="#B2B2B2" stroke-width="2">
                                     <polyline id="Line" transform="translate(10.000000, 10.000000) rotate(-270.000000) translate(-10.000000, -10.000000) " points="18.75 5.625 10 14.375 1.25 5.625"></polyline>
@@ -64,7 +64,7 @@
                         </svg>
                     </div>
                     <div data-sly-test="${!wcmmode.edit && container.items.size > 3}" class="button-next">
-                        <svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">                           
+                        <svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="Online-is-better---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                                 <g id="Arrow/2pt/Chevron/Right/chevron_right_grey" transform="translate(-4.000000, 0.000000)" stroke="#B2B2B2" stroke-width="2">
                                     <polyline id="Line" transform="translate(10.000000, 10.000000) scale(-1, 1) rotate(-270.000000) translate(-10.000000, -10.000000) " points="18.75 5.625 10 14.375 1.25 5.625"></polyline>
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <sly data-sly-test="${wcmmode.edit}" 
+        <sly data-sly-test="${wcmmode.edit}"
 		     data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
     </div>
 </sly>
