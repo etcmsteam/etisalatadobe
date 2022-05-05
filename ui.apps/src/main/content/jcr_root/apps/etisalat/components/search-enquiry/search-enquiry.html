@@ -1,0 +1,178 @@
+<div class="etisalat-enquiry-service-update-wrapper">
+<div
+    class="etisalat-enquiry-service-container etisalat-enquiry-service-update"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="enquiry-content">
+            ${properties.heading @ context='html'}
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <div class="search-field search-wrapper">
+            <form>
+              <div class="form-row align-items-center">
+                <div class="col-auto">
+                  <div class="input-group">
+                    <svg class="search-icon">
+                      <use xlink:href="#main-menu-search"></use>
+                    </svg>
+                    <input
+                      type="text"
+                      class="search-box form-control"
+                      id="inlineFormInputGroup"
+                      placeholder="${properties.placeholdertext}"
+                    />
+                    <div class="close-icon">
+                      <svg
+                        width="64px"
+                        height="64px"
+                        viewBox="0 0 64 64"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                      >
+                        <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+                        <title>icon-outline-close-white</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g
+                          id="Assets"
+                          stroke="none"
+                          stroke-width="3"
+                          fill="none"
+                          fill-rule="evenodd"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <g id="icon-outline-close-white" stroke="#242424">
+                            <g id="Icon-/-Outline-/-Close-/-b.-White">
+                              <path d="M60,4 L4,60" id="Line"></path>
+                              <path d="M60,60 L4,4" id="Line"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+          <!-- <div class="captcha">captcha</div> -->
+          <div
+            id="captchaRC"
+            style="margin: auto; text-align: center"
+            data-callback="recaptcha_callback"
+            data-expired-callback="handleCaptchaExpired"
+            class="g-recaptcha"
+            data-sitekey=""
+          ></div>
+        </div>
+
+        <div class="col-xs-12 col-sm-2 col-sm-offset-5">
+          <div class="search-button">
+            <button id="btn-search" class="btn btn-green ripple-effect">
+              ${properties.searchbuttonlabel}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h4 class="no-results">Please refine your search for better results</h4>
+        <div class="etisalat-enquiry-results-block"></div>
+        <!-- <div class="etisalat-enquiry-results-wrapper">
+              <h4>search result title name</h4>
+              <p>Abu dhabi - UAE</p>
+              <p>Telephone: 028844040</p>
+            </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="web-story-pagination container">
+    <h3>Please refine your search for better results</h3>
+    <div class="pages-list col-md-4 col-sm-12 pull-right">
+      <svg class="pag_prev disable">
+        <use xlink:href="#hero-image-arrow-left"></use>
+      </svg>
+      <ul class="pagination-list"></ul>
+      <svg class="pag_next">
+        <use xlink:href="#hero-image-arrow"></use>
+      </svg>
+    </div>
+    <p class="pages">
+      ${properties.paginationtext} <span class="current-page">1 </span> of
+      <span class="total-pages"> </span>
+    </p>
+  </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+  function recaptcha_callback(response) {
+    $("#btn-search").removeAttr("disabled");
+    sessionStorage.setItem("gcresponse", response);
+    $("#captchaErrormsg").html("");
+  }
+  function handleCaptchaExpired(response) {
+    $("#btn-search").prop("disabled", true);
+  }
+  (function (require) {
+    require(["modules/etisalat-enquiry-service-update.min"], function (hmd) {
+      hmd();
+    });
+  })(require);
+</script>
+<!-- <nav class="text-center">
+  <ul class="pagination">
+    <li class="pag_prev">
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li id="pag_1"><a href="#">1</a></li>
+    <li class="numeros"><a href="#">2</a></li>
+    <li class="numeros"><a href="#">3</a></li>
+    <li class="numeros"><a href="#">4</a></li>
+    <li class="numeros"><a href="#">5</a></li>
+    <li class="pag_next">
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->
+<div class="emergency-numbers-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 class="elife-main-title mb-24">Emergency service numbers</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <p class="elife-generic-description">police - 999</p>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <p class="elife-generic-description">police - 998</p>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <p class="elife-generic-description">police - 997</p>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <a class="btn-text btn-green learn-more">
+          <span class="more"> all emergency contacts </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
