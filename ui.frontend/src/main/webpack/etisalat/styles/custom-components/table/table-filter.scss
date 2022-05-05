@@ -195,6 +195,81 @@
         }
       }
     }
+
+    &.caremal-image-pop-up.caremal-image {
+      // Style that is related to RTE to acheive HTML Ref
+      .popup-details {
+        ol,
+        ul {
+          list-style: auto;
+          margin-left: 1.75rem;
+
+          li {
+            padding-left: toRem(10);
+            margin-bottom: toRem(4);
+          }
+        }
+
+        .carmel-popup-text p {
+          margin-bottom: toRem(12);
+
+          @include respond-to-min($desktop) {
+            margin-bottom: toRem(16);
+          }
+        }
+
+        .carmel-popup-text p,
+        .carmel-popup-text ol > li {
+          line-height: 20px;
+          font-size: 14px !important;
+          @include respond-to-min($desktop) {
+            line-height: 24px;
+            font-size: 1rem !important;
+          }
+        }
+      }
+
+      // ------
+
+      .nv-modal-close {
+        position: static;
+        svg {
+          top: 0 !important;
+          right: 0;
+        }
+      }
+
+      .nv-modal-body {
+        max-height: calc(100vh - 170px);
+      }
+
+      .image-wrap .cover {
+        border-radius: 8px;
+      }
+
+      .container {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        @include respond-to-min($tablet) {
+          width: toRem(756);
+        }
+        @include respond-to-min($desktop) {
+          width: toRem(976);
+        }
+        @include respond-to-min($desktop-wide) {
+          width: toRem(1224);
+        }
+      }
+
+      .nv-modal-dialog {
+        .nv-modal-title {
+          text-align: center;
+        }
+      }
+    }
   }
 
   .nv-modal-content {

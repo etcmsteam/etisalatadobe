@@ -286,12 +286,13 @@
                         <div class="d-flex nv-py-3">
                            <div class="nv-checkboxes-wrap sm">
                               <sly data-sly-test="${mapItemList.index == 1}" >
-                                 <input name="${filtersItem}" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" checked>
+                                 <input name="${filtersItem}" type="radio" id="${filtersItem}-${myMap[mapItem]}" data-filter="${filtersItem}-${myMap[mapItem]}" checked>
+                                 <label for="${filtersItem}-${myMap[mapItem]}"> </label>
                               </sly>
                               <sly data-sly-test="${mapItemList.index >= 2}" >
                                  <input name="${filtersItem}" type="radio" id="${myMap[mapItem]}" data-filter="${myMap[mapItem]}" >
+                                 <label for="${myMap[mapItem]}"> </label>
                               </sly>
-                              <label for="${myMap[mapItem]}"> </label>
                            </div>
                            <div class="nv-checkboxes-text gray-color flex-fill">
                               ${mapItem}
