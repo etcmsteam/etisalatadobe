@@ -1,0 +1,34 @@
+<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+     data-sly-set.hasContent="${properties['image/fileReference'] || properties.miniHeading || properties.text}"
+     data-component="cmp-bill-expaliner" class="non-action-boxes-section">
+    <div class="media-cta-section faq-billing-explainer">
+        <div class="container">
+            <div class="row">
+                <div data-sly-test="${properties['image/fileReference']}" class="col-xs-12 col-sm-6 col-md-6">                   
+                   <div class="img-responsive" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>                             
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 body-standard text-left">
+                    <div class="expained-bill-body">
+                      <div class="row">
+                          <div class="col-xs-12">
+                            <div class="spacer white-32 transparent"></div>
+                            <h5 data-sly-test="${properties.miniHeading}" class="heading-mini">${properties.miniHeading}</h5>
+                             ${tileModel.text @ context='html'}   
+                            <div class="main-text-wst3 text-left">
+                              <div data-sly-test="${tileModel.ctatext}" class="">                              
+                                  <a href="${tileModel.linkURL}" target="${properties.linktarget ? '_blank' : '_self'}" 
+                                     class="btn btn-default mw240 btn-green ripple-effect">${tileModel.ctatext}</a>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>
