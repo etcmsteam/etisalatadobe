@@ -14,7 +14,7 @@
                 <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">              
                     <sly data-sly-test.crossPromoCTALink="${properties.crossPromoLinkURL}" 
                        data-sly-use.promoLink="${'com.etisalat.core.models.CommonLinkModel' @link=crossPromoCTALink}"/>
-                    <a href="${promoLink.link}" target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.crossPromoCTATitle}" class="btn-text btn-green learn-more">
+                    <a href="${promoLink.link}" target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.crossPromoCTATitle}" class="${properties.ctaStyle ?  properties.ctaStyle : 'btn-text learn-more'}">
                         <span class=""> ${properties.crossPromoCTATitle} </span>
                     </a>
 			    </sly>
