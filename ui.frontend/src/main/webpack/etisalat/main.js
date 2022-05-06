@@ -26,6 +26,7 @@ import { SMS_BLOG_SHARE_LINK_MODULE } from "./js/custom-components/smb-blog-shar
 import { IMAGE_WITH_NEW_SVG_MODULE } from "./js/custom-components/svg.js";
 import { TECH_SUPPORT_MODULE } from "./js/custom-components/tech-support.js";
 import { TILES_SWIPER_MODULE } from "./js/custom-components/tiles_swiper.js";
+import { POPOVER } from "./js/custom-components/popover.js";
 
 const ERROR_BOUNDARY = (fun) => {
   try {
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     TECH_SUPPORT_MODULE,
     TILES_SWIPER_MODULE,
     IMAGE_WITH_NEW_SVG_MODULE,
+    POPOVER,
   ].forEach(ERROR_BOUNDARY);
 
   DYNAMIC_COMPONENTS.init();
