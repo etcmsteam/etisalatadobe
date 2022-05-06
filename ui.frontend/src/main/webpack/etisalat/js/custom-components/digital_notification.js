@@ -11,14 +11,14 @@ export const DIGITAL_NOTIFICATION_MODULE = () => {
     $slider.each(function () {
       var h = $(this).height();
       max = h > max ? h : max;
-      return max - 48;
+      return max;
     });
 
     if (sliderIndex === index) {
       $slider
         .parent()
         .parent()
-        .css("height", max + "px");
+        .css("height", max - 48 + "px");
     }
   });
 
