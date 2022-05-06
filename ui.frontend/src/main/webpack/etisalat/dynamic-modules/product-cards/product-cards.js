@@ -295,8 +295,9 @@ export const PRODUCT_CARDS = () => {
     }
     $(".filter-compare-sort-section a")
       .off("click")
-      .on("click", function () {
+      .on("click", function (e) {
         filtersMobileView(this);
+        return false;
       });
 
     // to make filters popup in-active ( hide )in mobile view
