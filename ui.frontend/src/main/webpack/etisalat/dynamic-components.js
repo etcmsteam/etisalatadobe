@@ -51,7 +51,9 @@ const DYNAMIC_MODULE = {
     await import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS());
   },
   "cmp-digital-notification": async () => {
-    await import(/* webpackChunkName: 'digital-notification' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) => obj.DIGITAL_NOTIFICATION());
+    await import(/* webpackChunkName: 'digital-notification' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) =>
+      obj.DIGITAL_NOTIFICATION(),
+    );
   },
   "cmp-news-room": async () => {
     await import(/* webpackChunkName: 'news-room' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
@@ -62,11 +64,14 @@ const DYNAMIC_MODULE = {
   "cmp-guide-tour": async () => {
     await import(/* webpackChunkName: 'guide-tour' */ "./dynamic-modules/guide-tour/guide-tour").then((obj) => obj.GUIDE_TOUR_POPUP());
   },
-    "cmp-forms-module": async () => {
+  "cmp-forms-module": async () => {
     await import(/* webpackChunkName: 'forms' */ "./dynamic-modules/forms/forms").then((obj) => obj.FORMS_MODULE());
   },
   "cmp-table": async () => {
     await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
+  },
+  "enquiry-service": async () => {
+    await import(/* webpackChunkName: 'enquiry-service' */ "./dynamic-modules/enquiry-service/enquiry-service").then((obj) => obj.ENQUIRY_SERVICE());
   },
 };
 
