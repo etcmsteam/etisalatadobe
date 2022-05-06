@@ -11,7 +11,7 @@ export const DIGITAL_NOTIFICATION_MODULE = () => {
     $slider.each(function () {
       var h = $(this).height();
       max = h > max ? h : max;
-      return max - 50;
+      return max - 48;
     });
 
     if (sliderIndex === index) {
