@@ -295,7 +295,7 @@ export const PRODUCT_CARDS = () => {
     }
     $(".filter-compare-sort-section a")
       .off("click")
-      .on("click", function (e) {
+      .on("click", function () {
         filtersMobileView(this);
         return false;
       });
