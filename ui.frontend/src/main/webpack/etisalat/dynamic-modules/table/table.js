@@ -154,9 +154,10 @@ export const TABLE = () => {
     }
 
     function initializeTable(component) {
-      $(component).each((index, elem) => {
-        initializeDataTable(elem);
-      });
+      initializeDataTable(elem);
+      // $(component).each((index, elem) => {
+      //   initializeDataTable(elem);
+      // });
     }
     initializeTable(CUSTOM_TABLE_COMPONENT);
   }
