@@ -126,6 +126,10 @@
       }
     }
 
+    li a {
+      font-size: $font12;
+    }
+
     p + p {
       margin-top: 8px;
     }
@@ -453,7 +457,7 @@
         padding-right: toRem(18);
 
         &::after {
-          top: 45%;
+          top: 50%;
           transform: translateY(-50%) rotate(-135deg);
         }
       }
@@ -461,7 +465,7 @@
       &.active {
         a {
           &::after {
-            top: 54%;
+            top: 35%;
             transform: translateY(-50%) rotate(45deg);
           }
         }
@@ -621,6 +625,44 @@
 
         .nv-modal-content {
           height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.digital-notification {
+  .nv-modal-dialog {
+    .nv-modal-content {
+      @include respond-to-max($desktop-min) {
+        padding-top: toRem(24) !important;
+      }
+
+      .container {
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        width: 100%;
+
+        @include respond-to-min($desktop-wide) {
+          max-width: toRem(1200);
+        }
+
+        @include respond-to-max($desktop-wide) {
+          max-width: toRem(952);
+        }
+
+        @include respond-to-max($desktop-min) {
+          max-width: toRem(732);
+        }
+
+        .nv-modal-close {
+          position: absolute;
+          right: 0;
+
+          svg {
+            right: 0;
+          }
         }
       }
     }
