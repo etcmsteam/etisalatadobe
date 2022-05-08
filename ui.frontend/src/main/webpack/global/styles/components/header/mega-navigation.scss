@@ -7,6 +7,9 @@
     align-items: center;
     display: flex;
     position: relative;
+    @include rtlBlock {
+      flex-direction: row-reverse;
+    }
   }
 
   .container {
@@ -1384,6 +1387,7 @@
 
     .nav-inline-link {
       color: #353738;
+      padding: toRem(20) toRem(16);
     }
   }
 }
@@ -1400,7 +1404,7 @@
 
     .nav-footer {
       align-items: center;
-      padding: 0.5rem 1rem 0.5rem 0;
+      padding: toRem(8) toRem(16);
     }
   }
 
@@ -1489,7 +1493,11 @@
 
   &.active {
     border-left: 4px solid #719e19;
-    color: #719e19;
+    color: #719e19 !important;
+    @include rtlBlock {
+      border-right: 4px solid #719e19;
+      border-left-width: 0;
+    }
   }
 }
 
@@ -2218,11 +2226,6 @@
   }
 }
 
-.main-menu-mobile .nav-footer-inline-wrapper {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
 .white-bg {
   background-color: $white;
 }
@@ -2655,7 +2658,9 @@ div.cover {
 
     .hamburger {
       float: left;
-      margin-left: toRem(16) !important;
+      @include rtlBlock {
+        float: right;
+      }
 
       @include respond-to-min($tablet) {
         margin-left: toRem(8) !important;

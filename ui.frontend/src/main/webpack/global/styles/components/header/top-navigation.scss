@@ -599,6 +599,10 @@ html[lang="ar"] {
 
     span {
       margin-left: toRem(10);
+      @include rtlBlock {
+        margin-left: 0;
+        margin-right: toRem(10);
+      }
     }
   }
 
@@ -694,7 +698,8 @@ html[lang="ar"] {
     }
 
     .panel-collapse .panel-body {
-      padding: 0 0 0 1.7rem;
+      padding: 0 0 0 2rem !important;
+      border-top: 1px solid $light-sand-brown;
 
       .item_sub-menu {
         color: $gray-fill;
@@ -837,6 +842,10 @@ html[lang="ar"] {
 
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: $sand-white-50 !important;
+}
+
+.main-menu-mobile .panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: $light-sand-brown !important;
 }
 
 .panel-body {
