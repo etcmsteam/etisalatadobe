@@ -191,6 +191,7 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
       .off("click")
       .on("click", function () {
         filtersMobileView(this);
+        return false;
       });
 
     // to make filters popup in-active ( hide )in mobile view
