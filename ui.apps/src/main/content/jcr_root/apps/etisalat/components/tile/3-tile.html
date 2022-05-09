@@ -1,4 +1,4 @@
-<template  data-sly-template.threeTile="${ @ tileModel,properties,imageViewportModel}">
+<template  data-sly-template.threeTile="${ @ tileModel,properties,imageViewportModel,attributeModel}">
   <div class="tile-box-tile">
    <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
       <!-- Modal start -->
@@ -32,8 +32,7 @@
                  class="btn-text btn-green learn-more"
                  target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
                  onclick="${properties.onclickfunction @ context='attribute'}"
-                 data-insurance-type="${properties.insuranceType}"
-                 data-channel="${properties.channel}"
+                 data-sly-attribute="${attributeModel.attributeDataMap}"
                  title="${tileModel.ctatext}">${tileModel.ctatext}</a>
           </sly>
           <sly data-sly-test="${!properties.enableOnClick}">
