@@ -70,9 +70,6 @@ const DYNAMIC_MODULE = {
   "cmp-table": async () => {
     await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
   },
-  "enquiry-service": async () => {
-    await import(/* webpackChunkName: 'enquiry-service' */ "./dynamic-modules/enquiry-service/enquiry-service").then((obj) => obj.ENQUIRY_SERVICE());
-  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
