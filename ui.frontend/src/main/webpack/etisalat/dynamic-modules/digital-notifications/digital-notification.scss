@@ -46,18 +46,15 @@
   justify-content: center;
   width: toRem(18);
 
-  @include respond-to-min($desktop) {
-    svg,
-    img {
-      height: toRem(18);
-      width: toRem(18);
-    }
-  }
-
   svg,
   img {
     height: 15px;
     width: 15px;
+
+    @include respond-to-min($desktop) {
+      height: toRem(18);
+      width: toRem(18);
+    }
   }
 }
 
@@ -129,6 +126,10 @@
       }
     }
 
+    li a {
+      font-size: $font12;
+    }
+
     p + p {
       margin-top: 8px;
     }
@@ -186,6 +187,11 @@
       width: 100%;
     }
   }
+
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 // notifications as a module
@@ -197,13 +203,26 @@
   }
 
   .container {
-    width: 100%;
+    padding-left: toRem(12);
+    padding-right: toRem(12);
+    max-width: toRem(1224);
+
+    @include respond-to-max($desktop-wide) {
+      max-width: toRem(976);
+    }
+
+    @include respond-to-max($desktop-min) {
+      max-width: toRem(756);
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      padding: 0;
+      max-width: 100%;
+    }
   }
 
   &.bg-black {
     background-color: $black;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   &.bg-yellow {
@@ -350,9 +369,7 @@
 // mid page banner
 .digital-notifications-wrapper {
   &.mid-page {
-    margin-top: 1rem;
-
-    // border-radius: 4px;
+    border-radius: 4px;
     padding-left: 16px;
     padding-right: 16px;
 
@@ -363,6 +380,11 @@
 
     .noti-icon-dismis {
       display: none;
+    }
+
+    .container {
+      padding: 0;
+      max-width: 100%;
     }
   }
 }
@@ -435,16 +457,16 @@
         padding-right: toRem(18);
 
         &::after {
-          top: 45%;
-          transform: translateY(-50%) rotate(45deg);
+          top: 50%;
+          transform: translateY(-50%) rotate(-135deg);
         }
       }
 
       &.active {
         a {
           &::after {
-            top: 54%;
-            transform: translateY(-50%) rotate(-135deg);
+            top: 35%;
+            transform: translateY(-50%) rotate(45deg);
           }
         }
       }
@@ -609,6 +631,44 @@
   }
 }
 
+.digital-notification {
+  .nv-modal-dialog {
+    .nv-modal-content {
+      @include respond-to-max($desktop-min) {
+        padding-top: toRem(24) !important;
+      }
+
+      .container {
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        width: 100%;
+
+        @include respond-to-min($desktop-wide) {
+          max-width: toRem(1200);
+        }
+
+        @include respond-to-max($desktop-wide) {
+          max-width: toRem(952);
+        }
+
+        @include respond-to-max($desktop-min) {
+          max-width: toRem(732);
+        }
+
+        .nv-modal-close {
+          position: absolute;
+          right: 0;
+
+          svg {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
 // *************************************
 // arabic overides
 // *************************************
@@ -731,6 +791,7 @@
 
 // configure notifications with menu
 .digital-notifications-wrapper.top {
+  left: 0;
   position: absolute;
   top: 0;
   width: 100%;
@@ -746,8 +807,6 @@
 
 .bg-black {
   .more-notifications {
-    margin-right: 3rem;
-
     a {
       color: $white;
     }

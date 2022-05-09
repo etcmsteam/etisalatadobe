@@ -1,6 +1,5 @@
 import "./js/analytics/analytics-events.js";
 
-
 import { VIEW_MORE_TOGGLE } from "./js/custom-components/overview-section";
 import { GLOBALFOOTPRINT } from "./js/custom-components/globalfootprintcontainer";
 import { TAB_SWIPER } from "./js/custom-components/tab-swiper";
@@ -26,6 +25,7 @@ import { SMS_BLOG_SHARE_LINK_MODULE } from "./js/custom-components/smb-blog-shar
 import { IMAGE_WITH_NEW_SVG_MODULE } from "./js/custom-components/svg.js";
 import { TECH_SUPPORT_MODULE } from "./js/custom-components/tech-support.js";
 import { TILES_SWIPER_MODULE } from "./js/custom-components/tiles_swiper.js";
+import { DIGITAL_NOTIFICATION_MODULE } from "./js/custom-components/digital_notification";
 
 const ERROR_BOUNDARY = (fun) => {
   try {
@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     TECH_SUPPORT_MODULE,
     TILES_SWIPER_MODULE,
     IMAGE_WITH_NEW_SVG_MODULE,
+    DIGITAL_NOTIFICATION_MODULE,
   ].forEach(ERROR_BOUNDARY);
 
   DYNAMIC_COMPONENTS.init();
@@ -69,4 +70,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Stylesheets
 import "./main.scss";
-
