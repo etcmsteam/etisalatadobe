@@ -1,23 +1,17 @@
-<template  data-sly-template.gridtile="${ @ tileModel,properties,imageViewportModel}">
+<template  data-sly-template.gridtile="${ @ tileModel,properties,imageViewportModel}" data-sly-use.attributeModel="com.etisalat.core.models.AttributeModel">
     <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
         <sly data-sly-test="${properties.enableOnClick}">
             <a href="${tileModel.tileCTALinkSameWindow}"
                class="link-cover"
                target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
                onclick="${properties.onclickfunction @ context='attribute'}"
-               data-insurance-type="${properties.insuranceType}"
-               data-channel="${properties.channel}"></a>
+               data-sly-attribute="${attributeModel.attributeDataMap}"></a>
         </sly>
         <sly data-sly-test="${!properties.enableOnClick}">
             <a href="${tileModel.tileCTALinkSameWindow}"
                class="link-cover"
                target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
         </sly>
-
-
-        <a href="${tileModel.tileCTALinkSameWindow}"
-           class="link-cover"
-           target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
     </sly>
     <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
         <!-- Modal start -->
@@ -56,8 +50,7 @@
                        class="link"
                        target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
                        onclick="${properties.onclickfunction @ context='attribute'}"
-                       data-insurance-type="${properties.insuranceType}"
-                       data-channel="${properties.channel}"
+                       data-sly-attribute="${attributeModel.attributeDataMap}"
                        title="${tileModel.ctatext}">${tileModel.ctatext}</a>
                 </sly>
                 <sly data-sly-test="${!properties.enableOnClick}">
