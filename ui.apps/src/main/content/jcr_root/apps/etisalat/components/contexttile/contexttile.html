@@ -1,19 +1,30 @@
 <sly data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
 
+  <div  class="icon-and-heading"  data-sly-unwrap="${!properties.elifeProgressBar}">
    <div class="icon" data-sly-test="${properties['image/fileReference']}">
      <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
    </div>
    <div class="wst-main-headings ${properties.titletextspace != 'none' ? properties.titletextspace :''}">
      <h2 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h2>
    </div>
+  </div>
+   <div data-sly-test="${properties.elifeProgressBar}" class="progress">
+     <input class="get-sec-from-cms" value="3.5" type="hidden"> 
+     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" 
+          aria-valuemax="100" 
+          style="width: ${properties.progressBarWidth ? properties.progressBarWidth : 0  @ context='styleToken'}%;">
+       <span class="sr-only">${tileModel.tiletitle}</span>
+     </div>
+   </div>
    <div data-sly-test="${tileModel.text}" class="paragraph-styling anchor ul-list-cms">
      <div class="${properties.tileHeight != 'none' ? properties.tileHeight :'' }">${tileModel.text @ context='html'}</div>
    </div>
-   <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
-<sly data-sly-test.btnw100 = "${properties.displayCTABehaviour == 'w-100' ? 'action-btn-default w-100': '' }"></sly>
-<sly data-sly-test.btn = "${properties.displayCTABehaviour == 'button' ? 'action-btn-default': '' }"></sly>
-<sly data-sly-test.lnk = "${properties.displayCTABehaviour == 'link' ? 'action-link': '' }"></sly>
+   
+    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+	<sly data-sly-test.btnw100 = "${properties.displayCTABehaviour == 'w-100' ? 'action-btn-default w-100': '' }"></sly>
+	<sly data-sly-test.btn = "${properties.displayCTABehaviour == 'button' ? 'action-btn-default': '' }"></sly>
+	<sly data-sly-test.lnk = "${properties.displayCTABehaviour == 'link' ? 'action-link': '' }"></sly>
      <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper ${btnw100} ${btn} ${lnk}">
        <a href="${tileModel.tileCTALinkSameWindow}" 
           target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" 
