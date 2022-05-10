@@ -186,8 +186,10 @@
         width: 50%;
       }
 
-      @media only screen and (min-device-width: 768px) and (max-device-width: 991px) and (orientation: landscape) {
-        width: 50%;
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          width: 50%;
+        }
       }
 
       @include respond-to-min($desktop-wide) {
@@ -304,17 +306,19 @@
         width: 280px;
       }
 
-      @media only screen and (min-device-width: 768px) and (max-device-width: 991px) and (orientation: landscape) {
-        position: absolute !important;
-        right: 40px !important;
-        top: 40px;
-        width: 280px !important;
-      }
-
       @include respond-to-max($desktop) {
         position: relative;
         right: 0;
         width: 100%;
+      }
+
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          position: absolute;
+          right: 40px;
+          top: 40px;
+          width: 280px;
+        }
       }
     }
   }
