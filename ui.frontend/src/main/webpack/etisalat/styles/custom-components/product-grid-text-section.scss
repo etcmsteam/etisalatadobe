@@ -55,33 +55,39 @@
     }
   }
   &.swipper-with-arrows {
-    .table-swiper-button-next,
-    .table-swiper-button-prev {
-      background: none;
-      height: toRem(48) !important;
-      top: 42%;
-      width: toRem(48) !important;
-      &.swiper-button-disabled {
-          pointer-events: all;
-          cursor: auto;
-          opacity: 1;
-          &:hover {
-            opacity: .5;
+    .cmp__bg-cards_product-grid {
+      .bg-cards{
+        .row-tiles-table {
+          .table-swiper-button-next,
+          .table-swiper-button-prev {
+            background: none;
+            height: toRem(48);
+            top: 42%;
+            width: toRem(48) !important;
+            &.swiper-button-disabled {
+                pointer-events: all;
+                cursor: auto;
+                opacity: 1;
+                &:hover {
+                  opacity: .5;
+                }
+            }
+            svg {
+              stroke: none;
+            }
+            @media  (max-width: 1248px){
+              display: none;
+            }
           }
+          .table-swiper-button-next {
+            left: auto !important;
+            right: toRem(-60) !important;
+          }
+          .table-swiper-button-prev {
+            left: toRem(-60) !important;
+          }
+        }
       }
-      svg {
-        stroke: none !important;
-      }
-      @media  (max-width: 1248px){
-        display: none !important;
-      }
-    }
-    .table-swiper-button-next {
-      left: auto !important;
-      right: toRem(-60) !important;
-    }
-    .table-swiper-button-prev {
-      left: toRem(-60) !important;
     }
   }
 }
