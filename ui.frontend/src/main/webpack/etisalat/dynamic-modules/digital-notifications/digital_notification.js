@@ -35,12 +35,12 @@ export const DIGITAL_NOTIFICATION = () => {
   $(".digital-notifications-wrapper .more-notifications")
     .off()
     .on("click", function (e) {
-      if ($(this).closest(".digital-notifications-wrapper").hasClass("expand-collapse")) {
+      if ($(this).closest(".digital-notifications-wrapper .more-info").hasClass("expand-collapse")) {
         e.preventDefault();
         e.stopPropagation();
 
         $(this).toggleClass("active");
-        $(this).closest(".digital-notifications-wrapper.expand-collapse").find(".notifications-body").slideToggle();
+        $(this).closest(".digital-notifications-wrapper .more-info.expand-collapse").find(".notifications-body").slideToggle();
         if (getBottomNotificationHeight() > 0) {
           $("body").css("padding-bottom", getBottomNotificationHeight() + 66 + "px");
         }
