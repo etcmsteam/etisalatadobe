@@ -71,6 +71,9 @@ Include conf.d/variables/custom.vars
         RewriteCond %{REQUEST_URI} ^/ar$
         RewriteRule ^(.*)$ /content/etisalat/ae/ar/index.html [PT,L]
 
+        RewriteCond %{REQUEST_URI} !\.\w+$
+        RewriteRule (.+) $1.html [PT]
+
         #Shorten the URL from web request
         RewriteRule ^/content/etisalat/ae/(.*).html$ $1.html [R,L]
 
