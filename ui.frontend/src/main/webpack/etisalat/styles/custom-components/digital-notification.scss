@@ -403,70 +403,72 @@
     z-index: 9;
   }
 
-  &.expand-collapse {
-    .mob-tab-bar {
-      @media (max-width: 991px) {
-        align-items: center;
-        display: flex;
-        justify-content: center;
+  .more-info {
+    &.expand-collapse {
+      .mob-tab-bar {
+        @media (max-width: 991px) {
+          align-items: center;
+          display: flex;
+          justify-content: center;
 
-        .tab-line {
-          background-color: $grey1;
-          border-radius: 2px;
-          display: block;
-          height: 4px;
-          margin-bottom: 16px;
-          margin-top: -12px;
-          width: 24px;
+          .tab-line {
+            background-color: $grey1;
+            border-radius: 2px;
+            display: block;
+            height: 4px;
+            margin-bottom: 16px;
+            margin-top: -12px;
+            width: 24px;
 
-          &:hover {
-            cursor: pointer;
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
       }
-    }
 
-    .notifications-body {
-      @media (max-width: 991px) {
-        display: block !important;
-        height: auto;
-        opacity: 0.5;
-        overflow: hidden;
-
-        &.expanded {
+      .notifications-body {
+        @media (max-width: 991px) {
+          display: block !important;
           height: auto;
-          opacity: 1;
-          transition: all 0.3s ease-in-out;
+          opacity: 0.5;
+          overflow: hidden;
+
+          &.expanded {
+            height: auto;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+
+        @include respond-to-min($desktop) {
+          display: none;
+          &.active {
+            display: block;
+          }
         }
       }
 
-      @include respond-to-min($desktop) {
-        //display: none;
-        &.active {
-          display: block;
+      .more-notifications {
+        @media (max-width: 991px) {
+          display: none;
         }
-      }
-    }
 
-    .more-notifications {
-      @media (max-width: 991px) {
-        display: none;
-      }
-
-      a {
-        padding-right: toRem(18);
-
-        &::after {
-          top: 50%;
-          transform: translateY(-50%) rotate(-135deg);
-        }
-      }
-
-      &.active {
         a {
+          padding-right: toRem(18);
+
           &::after {
             top: 35%;
             transform: translateY(-50%) rotate(45deg);
+          }
+        }
+
+        &.active {
+          a {
+            &::after {
+              top: 50%;
+              transform: translateY(-50%) rotate(-135deg);
+            }
           }
         }
       }
