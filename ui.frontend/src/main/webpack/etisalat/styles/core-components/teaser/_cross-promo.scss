@@ -186,6 +186,12 @@
         width: 50%;
       }
 
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          width: 50%;
+        }
+      }
+
       @include respond-to-min($desktop-wide) {
         width: 33%;
       }
@@ -304,6 +310,15 @@
         position: relative;
         right: 0;
         width: 100%;
+      }
+
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          position: absolute;
+          right: 40px;
+          top: 40px;
+          width: 280px;
+        }
       }
     }
   }
