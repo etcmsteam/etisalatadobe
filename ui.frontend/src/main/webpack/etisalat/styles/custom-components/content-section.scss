@@ -494,6 +494,118 @@
         }
     }
 }
+
+.tile-boxes-2-column {
+
+    &.tile-boxes-section {
+        position: relative;
+    }
+
+    .swiper-slide {
+
+        .col-xs-12,
+        .col-md-6 {
+            padding: 0 !important;
+        }
+    }
+
+    .tile-box-body>:first-child {
+        @include single-line-ellipsis();
+    }
+
+    .tile-box-tile .tile-box-body p {
+        line-height: toRem(20);
+        color: #848789;
+        font-size: toRem(14);
+        margin: 0 0 toRem(12.5);
+
+        @include respond-to-min($desktop) {
+            line-height: toRem(22);
+        }
+    }
+
+    &.tile-boxes-section.horizontal-tile .tile-box-tile {
+        height: 250px;
+        min-height: 250px;
+        max-height: 250px;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    &.tile-boxes-section.horizontal-tile .tile-box-tile .tile-img-cover {
+        height: 250px;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .tileBoxMobCarWrap .tile-box-tile .img-cover,
+    &.tile-boxes-section.horizontal-tile .tile-box-tile .tile-box-text {
+        height: 100%;
+    }
+
+    @include respond-to-max($desktop-min) {
+        &.tile-boxes-section.horizontal-tile .swiper-container-horizontal .swiper-scrollbar {
+            width: 96%;
+        }
+        
+    }
+
+
+    @include respond-to-max($tablet) {
+        &.tile-boxes-section.horizontal-tile .swiper-container-horizontal .swiper-scrollbar {
+            width: 93% !important;
+        }
+
+        &.tile-boxes-section .swiper-wrapper .swiper-slide {
+            padding: 0 !important;
+        }
+    }
+
+
+    @include respond-to-max($desktop) {
+        &.tile-boxes-section.horizontal-tile {
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0;
+        }
+
+        &.tile-boxes-section.horizontal-tile .swiper-container-horizontal .swiper-scrollbar {
+            left: 0.8rem !important;
+            bottom: 0;
+        }
+
+        &.tile-boxes-section.horizontal-tile .tile-box-tile {
+            height: auto;
+            min-height: auto;
+            max-height: none;
+        }
+        &.tile-boxes-section.horizontal-tile .tile-box-tile .tile-box-text .tile-box-body {
+            min-height: 170px;
+            padding: 1rem 1rem 2.5rem;
+        }
+        &.tile-boxes-section.horizontal-tile .tile-box-tile .tile-img-cover {
+            height: 210px;
+        }
+    }
+
+
+
+
+
+    @include respond-to-min($desktop) {
+        &.tile-boxes-section.tile-boxes-section-swiper .tileBoxMobCarWrap .swiper-container-horizontal>.swiper-scrollbar {
+            display: none;
+        }
+
+        &.tile-boxes-section .tile-box-tile .tile-box-body {
+            padding: toRem(24);
+        }
+    }
+}
+
 .media-cta-wrapper {
     position: relative;
     flex-wrap: wrap;
