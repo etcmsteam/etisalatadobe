@@ -483,6 +483,20 @@
       @include single-line-ellipsis();
   }
 
+  .tile-box-body > h2 {
+    color: #353738;
+    margin: 0;
+    font-size: toRem(18);
+    line-height: toRem(24);
+    margin-bottom: 0.5rem;
+
+    @include respond-to-min($desktop) {
+      line-height: toRem(35);
+      font-size: toRem(22);
+      margin-bottom: 1rem
+    }
+  }
+
   .tile-box-tile .tile-box-body p {
       line-height: toRem(20);
       color: #848789;
@@ -504,6 +518,11 @@
           letter-spacing: 0;
           font-size: 1.2rem;
           margin-bottom: 1rem;
+          line-height: toRem(40);
+          @include rtlBlock() {
+            padding-left: 0;
+            padding-right: 0.7rem;
+          }
       }
 
       &.horizontal-tile .tile-box-tile {
@@ -594,6 +613,7 @@
           &.horizontal-tile .tile-box-tile .tile-box-text .learn-more {
               right: 24px;
               left: auto;
+              bottom: 1.25rem;
           }
       }
   }
