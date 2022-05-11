@@ -1,0 +1,54 @@
+<template data-sly-template.verticalview="${ @ properties,stepModel}">
+
+    <!-- how to install steps desktop -->
+    <div class="how-to-install-steps-desktop">
+        <div class="steps-status-wrapper">
+            <div class="container">
+                <div class="steps-wrap">
+                    <div class="step ${steps.state}" data-sly-repeat.steps="${stepModel.verticalDataList}">
+                        <div class="step-circle">
+                            <div class="step-number">${stepsList.count}</div>
+                        </div>
+                        <div class="step-details">
+                            <div class="step-title">
+                                <h3>${steps.title}</h3>
+                            </div>
+                            <div class="step-image">
+                                <img alt="" data-sly-test="${steps.fileReference}" src="${steps.fileReference}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- how to install steps mobile -->
+    <div class="how-to-install-steps-mobile">
+
+        <div class="container">
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" data-sly-repeat.steps="${stepModel.verticalDataList}">
+                        <div class="steps-wrap">
+                            <div class="step-details">
+                                <div class="step-title">
+                                    <h3>${steps.title}</h3>
+                                </div>
+                                <div class="step-image">
+                                    <img data-sly-test="${steps.fileReference}"  src="${steps.fileReference}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+        </div>
+
+    </div>
+</template>
