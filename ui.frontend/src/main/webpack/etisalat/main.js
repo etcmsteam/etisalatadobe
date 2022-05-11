@@ -12,7 +12,6 @@ import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
 import { NV_CARD } from "./js/custom-components/nv-card-productlist";
-import { TABLE } from "./js/custom-components/table";
 import { OFFER_SLIDER } from "./js/custom-components/offer-slider";
 import { SHARE_FEEDBACK } from "./js/custom-components/share-feedback";
 import { CONTEXT_NAV } from "./js/custom-components/05-context-nav";
@@ -25,7 +24,7 @@ import { SMS_BLOG_SHARE_LINK_MODULE } from "./js/custom-components/smb-blog-shar
 import { IMAGE_WITH_NEW_SVG_MODULE } from "./js/custom-components/svg.js";
 import { TECH_SUPPORT_MODULE } from "./js/custom-components/tech-support.js";
 import { TILES_SWIPER_MODULE } from "./js/custom-components/tiles_swiper.js";
-import { DIGITAL_NOTIFICATION_MODULE } from "./js/custom-components/digital_notification";
+import { LOGIN_INIT } from "./js/custom-components/login";
 
 const ERROR_BOUNDARY = (fun) => {
   try {
@@ -40,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
   [
     SITE,
     POP_UP_ACCESSIBILITY,
-    TABLE,
     VIEW_MORE_TOGGLE,
     GLOBALFOOTPRINT,
     TAB_SWIPER,
@@ -62,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     TECH_SUPPORT_MODULE,
     TILES_SWIPER_MODULE,
     IMAGE_WITH_NEW_SVG_MODULE,
-    DIGITAL_NOTIFICATION_MODULE,
+    LOGIN_INIT,
   ].forEach(ERROR_BOUNDARY);
 
   DYNAMIC_COMPONENTS.init();

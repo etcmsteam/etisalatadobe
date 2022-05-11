@@ -1,0 +1,148 @@
+<div class="etisalat-enquiry-service-update-wrapper">
+  <svg id="svg-spritemap" xmlns="http://www.w3.org/2000/svg" style="display: none">
+    <symbol id="hero-image-arrow-left" viewBox="0 0 45 88.83">
+      <defs>
+        <style>
+          .cls-1 {
+          fill: none;
+          opacity: 1;
+          stroke-linecap: round;
+          stroke-linejoin: round
+          }
+        </style>
+      </defs>
+      <title>Page 1</title>
+      <g id="_03---Hero-image" data-name="03---Hero-image" stroke-width="10">
+        <g id="_03---Hero-image---Desktop_Bv2" data-name="03---Hero-image---Desktop_Bv2">
+          <g id="_03---Hero-image-2" data-name="03---Hero-image">
+            <g id="Arrows">
+              <polyline id="Page-1" class="cls-1" points="44.5 88.33 0.5 44.5 44.33 0.5" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="hero-image-arrow" viewBox="0 0 46 89">
+      <path d="M1.004 1.004l43.996 43.83-43.83 43.996" fill="none"/>
+    </symbol>
+  </svg>
+<div
+    class="etisalat-enquiry-service-container etisalat-enquiry-service-update"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="enquiry-content">
+            ${properties.heading @ context='html'}
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <div class="search-field search-wrapper">
+            <form>
+              <div class="form-row align-items-center">
+                <div class="col-auto">
+                  <div class="input-group">
+                    <img alt="search" src="/content/dam/etisalat/header/search.svg" class="search-icon"/>
+                    <input
+                      type="text"
+                      class="search-box form-control"
+                      id="inlineFormInputGroup"
+                      placeholder="${properties.placeholdertext}"
+                    />
+                    <div class="close-icon">
+                      <svg
+                        width="64px"
+                        height="64px"
+                        viewBox="0 0 64 64"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                      >
+                        <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+                        <title>icon-outline-close-white</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g
+                          id="Assets"
+                          stroke="none"
+                          stroke-width="3"
+                          fill="none"
+                          fill-rule="evenodd"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <g id="icon-outline-close-white" stroke="#242424">
+                            <g id="Icon-/-Outline-/-Close-/-b.-White">
+                              <path d="M60,4 L4,60" id="Line"></path>
+                              <path d="M60,60 L4,4" id="Line"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+          <div
+            id="captchaRC"
+            style="margin: auto; text-align: center"
+            data-callback="recaptcha_callback"
+            data-expired-callback="handleCaptchaExpired"
+            class="g-recaptcha"
+            data-sitekey=""
+          ></div>
+        </div>
+
+        <div class="col-xs-12 col-sm-2 col-sm-offset-5">
+          <div class="search-button">
+            <button id="btn-search" class="btn btn-green ripple-effect">
+              ${properties.searchbuttonlabel}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h4 class="no-results">Please refine your search for better results</h4>
+        <div class="etisalat-enquiry-results-block"></div>
+      </div>
+    </div>
+  </div>
+  <div class="web-story-pagination container">
+    <h3>Please refine your search for better results</h3>
+    <div class="pages-list col-md-4 col-sm-12 pull-right">
+      <svg class="pag_prev disable">
+        <use xlink:href="#hero-image-arrow-left"></use>
+      </svg>
+      <ul class="pagination-list"></ul>
+      <svg class="pag_next">
+        <use xlink:href="#hero-image-arrow"></use>
+      </svg>
+    </div>
+    <p class="pages">
+      ${properties.paginationtext} <span class="current-page">1 </span> of
+      <span class="total-pages"> </span>
+    </p>
+  </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+  function recaptcha_callback(response) {
+    $("#btn-search").removeAttr("disabled");
+    sessionStorage.setItem("gcresponse", response);
+    $("#captchaErrormsg").html("");
+  }
+  function handleCaptchaExpired(response) {
+    $("#btn-search").prop("disabled", true);
+  }
+</script>

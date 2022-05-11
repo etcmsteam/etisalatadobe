@@ -1,5 +1,6 @@
 /* eslint-disable */
 import $ from "jquery";
+import "./index.scss";
 
 window.dt = require("datatables.net");
 
@@ -111,9 +112,9 @@ export const TABLE = () => {
         fnInfoCallback: function (oSettings, iStart, iEnd, iMax, iTotal, sPre) {
           const totalPages = this.api().page.info().pages;
           const currentPage = this.api().page.info().page + 1;
-          const pageLabel = $(".data-table__info").attr('data-pagination-label');
+          const pageLabel = $(".data-table__info").attr("data-pagination-label");
           const labelArr = pageLabel.split(" ");
-          const returnValue =  totalPages +" "+ labelArr[1] +" "+ currentPage + " "+labelArr[0];
+          const returnValue = labelArr[0] + " " + currentPage + " " + labelArr[1] + " " + totalPages;
           return returnValue;
         },
         drawCallback: function (settings) {
