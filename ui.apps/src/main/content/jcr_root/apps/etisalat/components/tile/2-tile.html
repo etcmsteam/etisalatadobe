@@ -39,15 +39,15 @@
 					<a href="${tileModel.tileCTALinkSameWindow}" class="btn-text btn-green learn-more" target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
 				</sly>
 			</sly>
-        </div>
-		<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
+			<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
              data-sly-use.tileModalTemplate="tilemodal.html"
              data-sly-call="${tileModalTemplate.modal @ tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}">
-        </sly>
-        <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
-             <!-- Modal start -->
-             <a href="#" class="btn-text btn-green learn-more" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
-             <!-- Modal end -->
-        </sly>
+			</sly>
+			<sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
+				 <!-- Modal start -->
+				 <a href="#" class="btn-text btn-green learn-more" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+				 <!-- Modal end -->
+			</sly>
+        </div>
     </div>
 </template>
