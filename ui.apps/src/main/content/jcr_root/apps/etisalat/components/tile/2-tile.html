@@ -1,4 +1,4 @@
-<template data-sly-template.twoTile="${ @ tileModel,properties,imageViewportModel}">
+<template data-sly-template.twoTile="${ @ tileModel,properties,imageViewportModel,attributeModel}">
     <div class="tile-box-tile">
         <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
             <!-- Modal start -->
@@ -27,13 +27,12 @@
             </div>
 			<sly data-sly-test="${tileModel.ctatext && properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
 				<sly data-sly-test="${properties.enableOnClick}">
-				  <a href="#"
-					 class="btn-text btn-green learn-more"
-					 target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}"
-					 onclick="${properties.onclickfunction @ context='attribute'}"
-					 data-insurance-type="${properties.insuranceType}"
-					 data-channel="${properties.channel}"
-					 title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+					<a href="#"
+					   class="btn-text btn-green learn-more"
+					   target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}"
+					   onclick="${properties.onclickfunction @ context='attribute'}"
+					   data-sly-attribute="${attributeModel.attributeDataMap}"
+					   title="${tileModel.ctatext}">${tileModel.ctatext}</a>
 				</sly>
 				<sly data-sly-test="${!properties.enableOnClick}">
 					<a href="${tileModel.tileCTALinkSameWindow}" class="btn-text btn-green learn-more" target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
