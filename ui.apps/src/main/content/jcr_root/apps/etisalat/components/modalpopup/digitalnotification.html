@@ -1,0 +1,28 @@
+<template data-sly-template.notificationPopup="${ @ properties}">
+ <div class="nv-modal-header">
+    <div class="nv-modal-title" data-sly-element="${properties.titleType}"> ${properties.title}</div>
+  </div>
+  <div class="nv-modal-body" data-sly-use.notificationObj="${resource.path}" data-sly-list.notificationItems="${notificationObj.listChildren}">
+   <div data-sly-test="${notificationItems.name == 'notificationItems'}" data-sly-repeat.notificationItem="${notificationItems.listChildren}" class="single-notification">
+       <div class="row">
+           <div class="col-xs-12 col-md-4">
+               <div data-sly-test="${notificationItem.notificationDate}" class="notification-date">
+                   <h3>${'dd MMM yyyy' @ format=notificationItem.notificationDate}</h3>
+               </div>
+           </div>
+           <div class="col-xs-12 col-md-7">
+               <div data-sly-test="${notificationItem.notificationTitle}" class="notification-title">
+                   <h3>${notificationItem.notificationTitle}</h3>
+               </div>
+               <div data-sly-test="${notificationItem.notificationText}" class="notification-description">
+                   ${notificationItem.notificationText @ context = 'html'}
+               </div>
+               <div data-sly-test="${notificationItem.notificationCTATitle}"  class="notifications-learn-more">
+                 <sly data-sly-test.notificationCTALink="${notificationItem.notificationLinkURL}" data-sly-use.linkURL="${'com.etisalat.core.models.CommonLinkModel' @link=notificationCTALink}" />
+                   <a href="${linkURL.link}" target="${notificationItem.notificationLinktarget ? '_blank' : '_self'}" >${notificationItem.notificationCTATitle}</a>
+               </div>
+           </div>
+       </div>
+   </div>    
+  </div>
+</template>
