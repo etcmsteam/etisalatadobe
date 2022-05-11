@@ -576,11 +576,19 @@
 
           &.horizontal-tile h4 {
               padding-left: 0;
+              @include rtlBlock() {                
+                padding-right: 0;
+              }
           }
 
           &.horizontal-tile .swiper-container-horizontal .swiper-scrollbar {
-              left: 0.8rem !important;
-              bottom: 0;
+            left: 0.8rem !important;
+            bottom: 0;
+          
+            @include rtlBlock() {
+              right: 0.8rem !important;
+              left: auto !important;
+            }
           }
 
           &.horizontal-tile .tile-box-tile {
