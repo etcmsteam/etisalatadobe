@@ -69,6 +69,7 @@ const DYNAMIC_MODULE = {
   },
   "cmp-bill-expaliner": async () => {
     await import(/* webpackChunkName: 'forms' */ "./dynamic-modules/bill-explainer/bill-explainer").then((obj) => obj.BILL_EXPLAINER());
+  },
   "cmp-table": async () => {
     await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
   },
