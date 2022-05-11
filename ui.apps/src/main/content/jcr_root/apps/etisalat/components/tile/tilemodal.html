@@ -1,6 +1,7 @@
 <template data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
 		  data-sly-use.tileModel="com.etisalat.core.models.TileModel"
           data-sly-template.modal="${ @ tileModel,properties,resource,wcmmode}">
+  <sly data-sly-test="${!properties.modalVariation || properties.modalVariation == 'default'}">
 	<a data-label="${component.id}" class="${tileModel.tileBoxVariation == 'grid-tile-box' || tileModel.tileBoxContainerLayout == 'mediacta' ? 'third-action-wrapper action-link' : 'btn-text btn-green  learn-more'} btn-modal"
 	   title="${tileModel.ctatext}">
 	  <span class="${tileModel.tileBoxVariation == 'grid-tile-box' || tileModel.tileBoxContainerLayout == 'mediacta' ? 'link' : 'moreg'}">${tileModel.ctatext}</span>
@@ -39,4 +40,21 @@
 	      </div>
 	   </div>
 	</div>
+   </sly>
+   
+   <!--/* variation for elife context */-->
+   <sly data-sly-test="${!properties.modalVariation || properties.modalVariation == 'elifeContext'}">
+	<a href="#" class="elife-popup btn-text btn-green  learn-more" data-label="${component.id}">${tileModel.ctatext}</a>
+	   <div class="e-life-modal nv-modal caremal-image-pop-up caremal-image fade full-height-mob ${properties.modalBehavior}-modal" id="${component.id}">
+	     <div class="nv-modal-dialog">
+	        <div class="nv-modal-content">
+	            <div class="container">
+	               <sly
+		                data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
+		            </sly>
+	             </div>
+	          </div>
+	        </div>
+	     </div>
+    </sly>
 </template>

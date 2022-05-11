@@ -527,6 +527,10 @@ html[lang="ar"] {
       .panel {
         width: auto;
       }
+
+      .panel-collapse.in {
+        border-bottom: 2px solid $light-sand-brown;
+      }
     }
 
     & .push-menu-inception {
@@ -599,6 +603,10 @@ html[lang="ar"] {
 
     span {
       margin-left: toRem(10);
+      @include rtlBlock {
+        margin-left: 0;
+        margin-right: toRem(10);
+      }
     }
   }
 
@@ -694,7 +702,7 @@ html[lang="ar"] {
     }
 
     .panel-collapse .panel-body {
-      padding: 0 0 0 1.7rem;
+      padding: 0 0 0 2rem !important;
 
       .item_sub-menu {
         color: $gray-fill;
@@ -818,11 +826,6 @@ html[lang="ar"] {
     padding-top: 56px;
     top: 0;
     width: 100%;
-  }
-
-  .nav-footer-inline-wrapper {
-    margin-left: -15px;
-    margin-right: -15px;
   }
 }
 
@@ -1398,6 +1401,10 @@ body.push-menu-open {
 @media (min-width: 992px) {
   body.push-menu-open {
     margin-top: 220px;
+
+    .navbar-default {
+      top: 8rem !important;
+    }
 
     & .main-mega-menu-desktop .mega-menu-navbar-default {
       top: 128px;

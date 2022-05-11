@@ -353,6 +353,24 @@ export const CUSTOMER_TABLE = () => {
     }
   });
 
+  // popup
+  $(".elife-popup")
+    .off("click")
+    .on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var dataLabel = $(this).attr("data-label");
+      if (typeof dataLabel !== "undefined" && dataLabel !== "") {
+        const $el = $("#" + dataLabel).clone();
+        $(".modal-popup-wrapper").append($el);
+        $(".modal-popup-wrapper #" + dataLabel).addClass("show");
+        $(".modal-popup-wrapper #" + dataLabel).removeClass("fade");
+        $(".modal-popup-wrapper .modal-popup").addClass("show");
+        $("body, html").addClass("freeze");
+        $(".modal-popup-wrapper").css("display", "block");
+      }
+    });
+
   // close popup
   $(document).on("click", ".nv-modal-close", ".e-life-modal", function (e) {
     e.stopPropagation();
@@ -360,6 +378,14 @@ export const CUSTOMER_TABLE = () => {
     var currentOpendPopUp = $(this).closest(".nv-modal");
     $(currentOpendPopUp).removeClass("show");
     $(currentOpendPopUp).css("display", "none");
+
+    const modalPopupWrapper = $(this).closest(".modal-popup-wrapper");
+    if (modalPopupWrapper && modalPopupWrapper.length) {
+      $(modalPopupWrapper).removeClass("show");
+      $(modalPopupWrapper).css("display", "none");
+      $(modalPopupWrapper).children().remove();
+    }
+
     $("body").removeClass("freeze");
   });
 

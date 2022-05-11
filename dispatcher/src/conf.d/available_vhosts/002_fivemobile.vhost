@@ -61,6 +61,9 @@ Include conf.d/variables/custom.vars
 		# rewrite for Home page - (Fivemobile ae)
 		RewriteRule ^/?$ /content/fivemobile/ae/en/index.html [PT,L]
 
+        RewriteCond %{REQUEST_URI} !\.\w+$
+        RewriteRule (.+) $1.html [R=301,L]
+
 		RewriteCond %{REQUEST_URI} !^/apps
         RewriteCond %{REQUEST_URI} !^/bin
         RewriteCond %{REQUEST_URI} !^/content
