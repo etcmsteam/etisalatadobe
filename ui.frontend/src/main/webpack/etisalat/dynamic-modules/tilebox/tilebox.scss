@@ -466,6 +466,169 @@
   }
 }
 
+
+// Tile Box 1 Column Variation Start
+.tile-boxes-2-column {
+
+  .swiper-slide {
+
+      .col-xs-12,
+      .col-md-6 {
+          padding: 0 !important;
+      }
+  }
+
+
+  .tile-box-body>:first-child {
+      @include single-line-ellipsis();
+  }
+
+  .tile-box-body > h2 {
+    color: #353738;
+    margin: 0;
+    font-size: toRem(18);
+    line-height: toRem(24);
+    margin-bottom: 0.5rem;
+
+    @include respond-to-min($desktop) {
+      line-height: toRem(35);
+      font-size: toRem(22);
+      margin-bottom: 1rem
+    }
+  }
+
+  .tile-box-tile .tile-box-body p {
+      line-height: toRem(20);
+      color: #848789;
+      font-size: toRem(14);
+      margin: 0 0 toRem(12.5);
+
+      @include respond-to-min($desktop) {
+          line-height: toRem(22);
+      }
+  }
+
+  &.tile-boxes-section {
+      position: relative;
+
+      &.horizontal-tile h4 {
+          padding-left: 0.7rem;
+          @include font-family-lato();
+          font-weight: 700;
+          letter-spacing: 0;
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+          line-height: toRem(40);
+          @include rtlBlock() {
+            padding-left: 0;
+            padding-right: 0.7rem;
+          }
+      }
+
+      &.horizontal-tile .tile-box-tile {
+          height: 250px;
+          min-height: 250px;
+          max-height: 250px;
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          margin-bottom: 1rem;
+      }
+
+      &.horizontal-tile .tile-box-tile .tile-img-cover {
+          height: 250px;
+          overflow: hidden;
+          padding: 0;
+      }
+
+      &.horizontal-tile .tile-box-tile .img-cover,
+      &.horizontal-tile .tile-box-tile .tile-box-text {
+          height: 100%;
+      }
+
+
+
+      @include respond-to-max($desktop-min) {
+          &.horizontal-tile .swiper-container-horizontal .swiper-scrollbar {
+              width: 96%;
+          }
+
+      }
+
+      @include respond-to-max($tablet) {
+          &.horizontal-tile .swiper-container-horizontal .swiper-scrollbar {
+              width: 93% !important;
+          }
+
+          .swiper-wrapper .swiper-slide {
+              padding: 0 !important;
+          }
+      }
+
+
+      @include respond-to-max($desktop) {
+          &.horizontal-tile {
+              padding-left: 12px;
+              padding-right: 12px;
+              margin-bottom: 1.5rem;
+              padding-bottom: 0;
+          }
+
+          &.horizontal-tile h4 {
+              padding-left: 0;
+              @include rtlBlock() {                
+                padding-right: 0;
+              }
+          }
+
+          &.horizontal-tile .swiper-container-horizontal .swiper-scrollbar {
+            left: 0.8rem !important;
+            bottom: 0;
+          
+            @include rtlBlock() {
+              right: 0.8rem !important;
+              left: auto !important;
+            }
+          }
+
+          &.horizontal-tile .tile-box-tile {
+              height: auto;
+              min-height: auto;
+              max-height: none;
+          }
+
+          &.horizontal-tile .tile-box-tile .tile-box-text .tile-box-body {
+              min-height: 170px;
+              padding: 1rem 1rem 2.5rem;
+          }
+
+          &.horizontal-tile .tile-box-tile .tile-img-cover {
+              height: 210px;
+          }
+      }
+
+      @include respond-to-min($desktop) {
+          &.tile-boxes-section-swiper .tileBoxMobCarWrap .swiper-container-horizontal>.swiper-scrollbar {
+              display: none;
+          }
+
+          .tile-box-tile .tile-box-body {
+              padding: toRem(24);
+          }
+      }
+
+      @include rtlBlock() {
+          &.horizontal-tile .tile-box-tile .tile-box-text .learn-more {
+              right: 24px;
+              left: auto;
+              bottom: 1.25rem;
+          }
+      }
+  }
+
+}
+// Tile Box 1 Column Variation End
+
 // *************************************
 // arabic overides
 // *************************************

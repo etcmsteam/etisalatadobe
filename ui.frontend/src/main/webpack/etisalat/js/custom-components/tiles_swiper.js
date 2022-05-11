@@ -5,6 +5,7 @@ function initTileBoxesSlider() {
   // plans table slider for CMS modules start
   $(document)
     .find(".tilecontainer .tile-boxes-section")
+    .not('.tile-box-2-column')
     .each(function (index) {
       $(this).addClass("t-b-slider" + index);
       const $tileBoxesCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
