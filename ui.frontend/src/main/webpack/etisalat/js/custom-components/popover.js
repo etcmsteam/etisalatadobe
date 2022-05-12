@@ -627,25 +627,20 @@ export const POPOVER = () => {
     if (!elem || !limit) return;
 
     // Get the inner content of the element
-    var content = elem.textContent.replace(/\r?\n|\r|\s+/g, " ").trim();
+    var content = elem.innerHTML.replace(/\r?\n|\r|\s+/g, " ").trim();
     var firstcontent, lastcontent;
     // Convert the content into an array of words
+    console.log('innerHtml', content);
     content = content.split(" ");
     if (content.length > limit) {
-      for (var i = 0; i < limit; i++) {
-        if (typeof firstcontent == "undefined") {
-          firstcontent = content[i];
-        } else {
-          firstcontent = firstcontent + " " + content[i];
-        }
-      }
-      for (var b = limit; b < content.length; b++) {
-        if (typeof lastcontent == "undefined") {
-          lastcontent = content[b];
-        } else {
-          lastcontent = lastcontent + " " + content[b];
-        }
-      }
+      console.log('conetent', content);
+      firstcontent = content.splice(0, limit).join(" ");
+      lastcontent = content
+        .join(" ")
+        .replace(/(<([^>]+)>)|(\n)/gi, " ")
+        .trim()
+        .replace(/(\s{2,})/, " ");
+
       //$('.popover-dots').removeClass('hidden');
     } else {
       //$('.popover-dots').addClass('hidden');
@@ -653,7 +648,7 @@ export const POPOVER = () => {
     return [firstcontent, lastcontent];
   };
 
-  var text = document.querySelectorAll(".popover-content p");
+  var text = document.querySelectorAll(".popover-content div");
   var truncatedText;
   var dotsSingle = document.querySelectorAll(".popover-dots");
   //var popOverDots = $('.popover-dots');
@@ -661,7 +656,7 @@ export const POPOVER = () => {
   for (var k = 0; k < text.length; k++) {
     truncatedText = truncate(text[k], 50);
     if (typeof truncatedText[k] != "undefined") {
-      text[k].innerText = truncatedText[0];
+      text[k].innerHTML = truncatedText[0];
       dotsSingle[k].dataset.content = truncatedText[1];
       $(dotsSingle[k]).removeClass("hidden");
     }
