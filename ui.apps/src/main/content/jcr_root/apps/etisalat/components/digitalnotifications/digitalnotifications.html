@@ -1,4 +1,5 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
      data-sly-use.notification="com.etisalat.core.models.DigitalNotification">
  <div class="more-info expand-collapse" data-sly-unwrap="${properties.displayDigitalBehavior == 'viewmore' ? false : true}">
       <div class="notifications-head">
@@ -24,8 +25,9 @@
                <a data-sly-test="${properties.titleLinkText && notification.titleLink}" href="${notification.titleLink}">${properties.titleLinkText}</a> 
             </h3>
          </div>
-         <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'learnmore'}" class="more-notifications">
-            <div data-sly-test="${properties.title}" data-sly-resource="${resource @ resourceType='etisalat/components/button'}"></div>
+         <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'learnmore'}" class="more-notifications">            
+            <sly data-sly-test="${properties.title}" data-sly-use.notificationTemplate="modalpopup.html"
+				             data-sly-call="${notificationTemplate.notificationLink @ component=component,properties=properties}"/>
          </div>
          <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'viewmore'}" class="more-notifications">
             <a data-sly-test="${properties.viewMoreItems && properties.viewLesstems}" href="#"> 
@@ -41,7 +43,8 @@
                   ${properties.notificationDesc @ context = 'html'}
                </div>
                <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'learnmore'}" class="more-notifications">
-		            <div data-sly-test="${properties.title}" data-sly-resource="${resource @ resourceType='etisalat/components/button'}"></div>
+		            <sly data-sly-test="${properties.title}" data-sly-use.notificationTemplate="modalpopup.html"
+				             data-sly-call="${notificationTemplate.notificationLink @ component=component,properties=properties}"/>
 		         </div>
 					<a data-sly-test="${properties.actionsEnabled && properties.notificationCTATitle && notification.notificationCTALink}"
 						href="${notification.notificationCTALink}"
