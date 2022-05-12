@@ -46,16 +46,16 @@ export const DIGITAL_NOTIFICATION = () => {
         }
 
         if (document.documentElement.lang == "ar") {
-          if ($(this).find("a").text().toLowerCase() == " عرض المزيد ") {
-            $(this).find("a").text(" عرض أقل ");
-          } else {
+          if ($(this).find("a").text().toLowerCase() == " عرض أقل ") {
             $(this).find("a").text(" عرض المزيد ");
+          } else {
+            $(this).find("a").text(" عرض أقل ");
           }
         } else {
-          if ($(this).find("a").text().toLowerCase() == "view more") {
-            $(this).find("a").text("view less");
-          } else {
+          if ($(this).find("a").text().toLowerCase() == "view less") {
             $(this).find("a").text("view more");
+          } else {
+            $(this).find("a").text("view less");
           }
         }
       }
@@ -98,12 +98,20 @@ export const DIGITAL_NOTIFICATION = () => {
     });
 
   // expand bottom menu on bar click
+  Array.from($(".digital-notifications-wrapper")).forEach((item, index) => {
+    let expandItem = $(item).find(".expand-collapse").attr("data-id", index).data("id");
+
+    if (expandItem === index) {
+      $(item).find(".mob-tab-bar").addClass("show-tab");
+    }
+  });
+
   $(".mob-tab-bar")
     .off()
     .on("click", ".tab-line", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      $(this).closest(".digital-notifications-wrapper.expand-collapse").find(".notifications-body").toggleClass("expanded");
+      $(".digital-notifications-wrapper .more-info.expand-collapse").find(".notifications-body").toggleClass("expanded");
     });
 
   var notificationsswiper = swiperInit(".digital-notifications-wrapper.multi-notifications .swiper-container", {

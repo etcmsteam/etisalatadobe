@@ -33,6 +33,10 @@
       transform: translateY(-50%) rotate(-45deg);
       transition: all 0.3s ease-in-out;
     }
+
+    &.btn-modal {
+      cursor: pointer;
+    }
   }
 
   .notifications-popup-wrapper {
@@ -395,10 +399,6 @@
 
 // notifications with bottom position ( contextual notifications )
 .digital-notifications-wrapper {
-  .mob-tab-bar {
-    display: none;
-  }
-
   &.bottom {
     bottom: 0;
     left: 0;
@@ -407,34 +407,39 @@
     z-index: 9;
   }
 
-  .more-info {
-    &.expand-collapse {
-      .mob-tab-bar {
-        @media (max-width: 991px) {
-          align-items: center;
-          display: flex;
-          justify-content: center;
+  .mob-tab-bar {
+    display: none;
 
-          .tab-line {
-            background-color: $grey1;
-            border-radius: 2px;
-            display: block;
-            height: 4px;
-            margin-bottom: 16px;
-            margin-top: -12px;
-            width: 24px;
+    @media (max-width: 991px) {
+      align-items: center;
+      justify-content: center;
 
-            &:hover {
-              cursor: pointer;
-            }
-          }
-        }
+      &.show-tab {
+        display: flex;
       }
 
+      .tab-line {
+        background-color: $grey1;
+        border-radius: 2px;
+        display: block;
+        height: 4px;
+        margin-bottom: 16px;
+        margin-top: -12px;
+        width: 24px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .more-info {
+    &.expand-collapse {
       .notifications-body {
         @media (max-width: 991px) {
           display: block !important;
-          height: auto;
+          height: 30px;
           opacity: 0.5;
           overflow: hidden;
 
