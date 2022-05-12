@@ -73,6 +73,12 @@ const DYNAMIC_MODULE = {
   "cmp-table": async () => {
     await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
   },
+  "cmp-steps4-0": async () => {
+    await import(/* webpackChunkName: 'steps4-0' */ "./dynamic-modules/steps4-0");
+  },
+  "cmp-how-to-install": async () => {
+    await import(/* webpackChunkName: 'how-to-install' */ "./dynamic-modules/how-to-install").then((obj) => obj.HOW_TO_INSTALL());
+  }
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

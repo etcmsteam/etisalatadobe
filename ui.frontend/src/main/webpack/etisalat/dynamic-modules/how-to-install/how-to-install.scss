@@ -1,0 +1,323 @@
+/* stylelint-disable*/
+.how-to-install-steps-desktop {
+    @media (max-width: 991px) {
+        display: none !important;
+    }
+
+    // steps line and circles with default, active and completed state
+    .steps-status-wrapper {
+        .step {
+            position: relative;
+
+            .step-circle {
+
+                // default line
+                &:after {
+                    content: '';
+                    width: 2px;
+                    //height: 100%;
+                    display: flex;
+                    background: #cad3ca;
+
+                    margin-left: 10px;
+                    height: 102%;
+                    margin-top: 0;
+                    left: auto;
+
+                    // @media (min-width: 992px) {
+
+                    //     height: 2px;
+                    //     position: absolute;
+                    //     top: 10px;
+                    //     left: 50%;
+                    //     width: ~"calc(100% - 50px)";
+                    //         width: ~"-moz-calc(100% - 50px)";
+                    //         width: ~"-webkit-calc(100% - 50px)";
+                    //     margin-top: 0;
+                    //     margin-left: 12px;
+                    // }
+                }
+
+                // default circle step
+                .step-number {
+                    background-color: #fff;
+                    border-radius: 50%;
+                    border: 1px solid #fff;
+                    color: #848789;
+                    font-size: 14px;
+                    height: 22px;
+                    margin: 0 auto;
+                    position: relative;
+                    width: 22px;
+                    z-index: 1;
+                    line-height: 1.5;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        transform: scale(1.6);
+                        transition: all .25s cubic-bezier(.55, .06, .68, .19);
+                        box-shadow: none;
+                        border: 1px solid #cad3ca;
+                        background: #fff;
+                        z-index: -1;
+                    }
+                }
+            }
+
+            // hide the line for last child
+            &:last-child {
+                .step-circle {
+                    &:after {
+                        display: none !important;
+                    }
+                }
+            }
+
+            // complete step line - green
+            &.completed {
+                .step-circle {
+                    &:after {
+                        content: '';
+                        width: 2px;
+                        height: 102%;
+                        display: flex;
+                        background: #d5e2ba;
+
+
+                        // @media (min-width: 992px) {
+                        //     width: ~"calc(100% - 50px)";
+                        //     width: ~"-moz-calc(100% - 50px)";
+                        //     width: ~"-webkit-calc(100% - 50px)";
+                        //     height: 2px;
+                        // }
+                    }
+                }
+            }
+
+            // completed and active step ( circle ) green
+            &.completed,
+            &.active {
+                .step-circle {
+                    .step-number {
+                        border-color: #719e19;
+                        color: #fff;
+                        width: 22px;
+                        background: #719e19;
+                        height: 22px;
+
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                            transform: scale(1.8);
+                            transition: all .25s cubic-bezier(.55, .06, .68, .19);
+                            border: 1px solid rgba(113, 158, 25, .6);
+                            opacity: .2;
+                            background-color: #719e19;
+                            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
+                            z-index: 2;
+                        }
+                    }
+                }
+            }
+
+            .step-image {
+                width: 273px;
+                height: 254px;
+
+                img {
+                    width: 100%;
+                    height: 254px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    //  title 
+    .step-title h3 {
+        font-size: 16px;
+        line-height: 22px;
+        color: #353738;
+        margin: 0;
+        font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
+        // @media (min-width: 992px) {
+        //     font-size: 24px;
+        //     line-height: 32px;
+        //     font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
+        // }
+    }
+
+    // description
+    .step-description {
+        p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 20px;
+            color: #848789;
+            // @media (min-width: 992px) {
+            //     font-size: 14px;
+            //     line-height: 20px;
+            // }
+        }
+    }
+
+    // benefit section as a module 
+    .steps-status-wrapper {
+        >.container {
+            @media (max-width: 767px) {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+
+        .steps-wrap {
+            display: block;
+        }
+
+        .step {
+            margin-bottom: 24px;
+            display: flex;
+            width: 100%;
+
+            .step-circle {
+                margin-right: 16px;
+            }
+
+            @media (max-width: 991px) {}
+
+            .step-circle {
+                // @media (min-width: 992px) {
+                //     margin-bottom: 48px;
+                // }
+            }
+
+            .step-title {
+                margin-bottom: 24px;
+                text-align: left;
+
+            }
+
+            .step-description {
+                p+p {
+                    margin-top: 16px !important;
+                }
+            }
+        }
+
+    }
+}
+
+
+.how-to-install-steps-mobile {
+    @media (min-width: 992px) {
+        display: none !important;
+    }
+
+    .step-details {
+        max-width: 290px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .step-title {
+            h3 {
+                font-size: 13px;
+                line-height: 1.38;
+                letter-spacing: 0.15px;
+                text-align: center;
+                color: #6f7273;
+                margin-bottom: 50px;
+            }
+        }
+
+        .step-image {
+            width: 214px;
+            height: 430px;
+
+            img {
+                width: 100%;
+                height: 430px;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .swiper-pagination {
+        bottom: 0 !important;
+        height: 10px;
+        line-height: 8px;
+        position: relative;
+        margin-top: 24px;
+
+        .swiper-pagination-bullet {
+            background: #f1f1eb;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #719e19;
+        }
+
+    }
+
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: 50%;
+        background-size: cover;
+    }
+
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        border-radius: 100%;
+        padding-top: 0;
+    }
+
+}
+
+
+
+
+
+*[lang="ar"] *[dir="rtl"] {
+    .how-to-install-steps-desktop {
+
+        // @media (min-width: 992px) {
+        //     .steps-status-wrapper .step {
+        //         padding-right: 0;
+        //         padding-left: 24px;
+        //     }
+        // }
+        .step-title h2 {
+            text-align: right !important;
+        }
+
+        .steps-status-wrapper .step .step-circle {
+            margin-right: 0;
+            margin-left: 16px;
+        }
+
+        @media (max-width: 991px) {}
+    }
+}
