@@ -26,7 +26,13 @@
                     <div data-sly-test="${properties.mediaSubTitle}" class="media-cta-4-small-title">${properties.mediaSubTitle}</div>
                     <div data-sly-test="${properties.mediaCTATitle}" class="media-cta-4-title">
                        <h2 data-sly-element="${properties.titleType}">${properties.mediaCTATitle}</h2>
-                    </div>                    
+                    </div>
+
+					<!-- See all benefits link before exclusively text started -->
+			        <sly data-sly-test="${properties.seeAllBenefitsAlignment == 'beforeExclusivelyText'}" data-sly-use.seeAllBenefitsTemplate="seeallbenefits.html"
+				         data-sly-call="${seeAllBenefitsTemplate.seeAllBenefits @ component=component,properties=properties,tileModel=tileModel}"/>
+					<!-- See all benefits link before exclusively text ended-->
+
                     <!-- flag icon and title  -->
                     <div data-sly-test="${properties['plan/fileReference'] || properties.excText}" class="media-cta-4-lists">
                         <ul class="flag-icon">
@@ -37,7 +43,13 @@
                                 ${properties.excText}
                             </li>
                         </ul>
-                    </div>                    
+                    </div>
+
+					<!-- See all benefits link after exclusively text started -->
+			        <sly data-sly-test="${properties.seeAllBenefitsAlignment == 'afterExclusivelyText'}" data-sly-use.seeAllBenefitsTemplate="seeallbenefits.html"
+				         data-sly-call="${seeAllBenefitsTemplate.seeAllBenefits @ component=component,properties=properties,tileModel=tileModel}"/>
+					<!-- See all benefits link after exclusively text ended-->
+
                     <div class="media-cta-4-desc media-cta-4-lists"> 
                        ${properties.text @ context='html'}
                        <ul data-sly-test="${properties['smile/fileReference'] || properties.smileText}" class="smiles-icon">
@@ -50,14 +62,11 @@
                         </ul>
                     </div>
 
-                    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
-			         <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
-			           <a href="${tileModel.tileCTALinkSameWindow}" 
-			           class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">${tileModel.ctatext}</a>
-			         </div>
-			        </sly>
-			        <sly data-sly-use.mediaCTATemplate="modalpopup.html"
-				             data-sly-call="${mediaCTATemplate.ctaModelPopup @ component=component,properties=properties}"/>
+                    <!-- See all benefits link default position started -->
+			        <sly data-sly-test="${properties.seeAllBenefitsAlignment == 'default' || !properties.seeAllBenefitsAlignment}" 
+					     data-sly-use.seeAllBenefitsTemplate="seeallbenefits.html"
+				         data-sly-call="${seeAllBenefitsTemplate.seeAllBenefits @ component=component,properties=properties,tileModel=tileModel}"/>
+					<!-- See all benefits link default position ended-->
 
                     <div data-sly-test="${properties.autoRenewalText}" class="paragraph-styling">
                         <div class="p2">
