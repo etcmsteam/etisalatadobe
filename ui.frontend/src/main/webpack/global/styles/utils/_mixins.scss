@@ -177,7 +177,7 @@ $screen-xxl-max: 1201px;
   font-size: $font14;
   font-weight: 700;
   letter-spacing: toRem(2);
-  line-height: 3rem;
+  line-height: toRem(46);
   outline: 0;
   padding: 0 0.5rem;
   text-align: center;
@@ -190,6 +190,12 @@ $screen-xxl-max: 1201px;
 
 @mixin truncate($truncation-boundary) {
   max-width: $truncation-boundary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin single-line-ellipsis() {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

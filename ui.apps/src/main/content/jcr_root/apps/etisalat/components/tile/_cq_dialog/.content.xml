@@ -141,6 +141,22 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
                                                     </modalBehavior>
+                                                    <modalVariation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Select Modal Variation"
+                                                        name="./modalVariation">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <default
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Default"
+                                                                value="default"/>
+                                                            <elifecontext
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="ELife Context"
+                                                                value="elifeContext"/>
+                                                        </items>
+                                                    </modalVariation>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
@@ -159,44 +175,14 @@
                                                         name="./tileCTALinkSameWindow"
                                                         rootPath="/content"/>
                                                     <enableOnClick
-                                                            granite:class="cq-dialog-checkbox-showhide"
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                            checked="{Boolean}false"
-                                                            fieldDescription="When checked, More filed will be enabled with parameters."
-                                                            name="./enableOnClick"
-                                                            text="Check to enable the onclick event on link"
-                                                            uncheckedValue="{Boolean}false"
-                                                            value="{Boolean}true">
-                                                        <granite:data
-                                                            jcr:primaryType="nt:unstructured"
-                                                            cq-dialog-checkbox-showhide-target=".enableonclick"/>
-                                                    </enableOnClick>
-                                                    <moreParamtere
-                                                        granite:class="enableonclick"
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <onclickfunction
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldDescription="Javascript function to be called"
-                                                                fieldLabel="OnClick Function"
-                                                                name="./onclickfunction"/>
-                                                            <insuranceType
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldDescription="Insurance Type"
-                                                                fieldLabel="Insurance Type"
-                                                                name="./insuranceType"/>
-                                                            <channel
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldDescription="Channel"
-                                                                fieldLabel="Channel"
-                                                                name="./channel"/>
-                                                        </items>
-                                                    </moreParamtere>
+                                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                        path="etisalat/components/commons/cta-onclick/enableOnClick">
+                                                    </enableOnClick>
+                                                    <attributes
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                        path="etisalat/components/commons/cta-onclick/attributes"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"

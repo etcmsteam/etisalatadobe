@@ -54,6 +54,42 @@
       }
     }
   }
+  &.swipper-with-arrows {
+    .cmp__bg-cards_product-grid {
+      .bg-cards{
+        .row-tiles-table {
+          .table-swiper-button-next,
+          .table-swiper-button-prev {
+            background: none;
+            height: toRem(48);
+            top: 42%;
+            width: toRem(48) !important;
+            &.swiper-button-disabled {
+                pointer-events: all;
+                cursor: auto;
+                opacity: 1;
+                &:hover {
+                  opacity: .5;
+                }
+            }
+            svg {
+              stroke: none;
+            }
+            @media  (max-width: 1248px){
+              display: none;
+            }
+          }
+          .table-swiper-button-next {
+            left: auto !important;
+            right: toRem(-60) !important;
+          }
+          .table-swiper-button-prev {
+            left: toRem(-60) !important;
+          }
+        }
+      }
+    }
+  }
 }
 
 .product-grid-text-section {
@@ -2839,8 +2875,7 @@
             .tile-table,
             .tile-card,
             .tile,
-            .tile-card__front,
-            .tiles-box {
+            .tile-card__front {
               height: 100%;
             }
             .tiles-box-list {
@@ -2909,6 +2944,28 @@
             .cmp-image__image {
               opacity: 0.8;
               object-fit: cover;
+            }
+          }
+
+          & .tile {
+            position: relative;
+            a {
+              position: relative;
+              z-index: 1;
+            }
+
+            & .tile-wrap-link {
+              top:   0;
+              right:  0;
+              bottom: 0;
+              left:   0;
+              overflow: hidden;
+              text-indent: 100%;
+              white-space: nowrap;
+              /* Needs a heightened specificity to trump `.tile-wrap-link`.
+              * Stack it under all other links in the post text. */
+              position: absolute;
+              z-index: 0;
             }
           }
         }
@@ -3037,7 +3094,7 @@
     & .smile-points {
       font-size: toRem(12.608) !important;
       font-weight: normal;
-      
+
       span {
         width: 100%;
         .center {
@@ -3231,6 +3288,7 @@
       }
 
       .icon-checkbox-platinum {
+        padding-left: toRem(8);
           @include rtlBlock {
             margin-left: toRem(24);
             margin-right: 0;
@@ -4305,7 +4363,7 @@
       align-items: center;
     }
   }
-  &.purple-bg-theme.image-bg-theme, 
+  &.purple-bg-theme.image-bg-theme,
   &.image-bg-theme,
   &.blur-image-bg-theme {
     .tiles-box-title {

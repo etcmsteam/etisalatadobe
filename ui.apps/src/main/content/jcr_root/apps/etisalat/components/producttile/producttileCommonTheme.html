@@ -5,8 +5,8 @@
       class="read-more-${properties.offerText ? 'red' : 'green'}-btn_bg">
       <div class="tile-table ${properties.fileReference ? 'product-home-card' : 'plan-card'} offer ">
          <div class="tile-card effect__click">
-		 <sly data-sly-test.cardLink="${properties.cardLink}" data-sly-use.cardlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=cardLink}"/>
-			<a href="${cardlinkmodel.link}" target="${properties.cardtarget ? '_blank' : '_self'}">
+            
+		      <sly data-sly-test.cardLink="${properties.cardLink}" data-sly-use.cardlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=cardLink}"/>
             <div class="tile">
                <div class="tile-card__front">
                   <div class="tiles-box content body-standard">
@@ -49,21 +49,21 @@
                               </div>
                            </li>
                         </ul>
-						</a>
                         <a data-label="${component.id}" class="btn-text btn-green  learn-more btn-modal "
                            title="${properties.seeAllLabel}" data-sly-test="${properties.seeAllLabel}">
-                        <span class="moreg">${properties.seeAllLabel}</span>
+                           <span class="moreg">${properties.seeAllLabel}</span>
                         </a>
-						<a href="${cardlinkmodel.link}" target="${properties.cardtarget ? '_blank' : '_self'}">
-                        <span class="${properties.offerText ? 'tiles-box-list__contractDuration tiles-box-list__contractDuration--orange' : 'tiles-box-list__contractDuration'}"  data-sly-test="${properties.commitmentText}">${properties.commitmentText}</span>
-                        <sly data-sly-use.productTileObj="${resource.path}" data-sly-list.tileIconItems="${productTileObj.listChildren}">
-						  <div data-sly-test="${tileIconItems.name == 'iconItems'}" data-sly-list.iconItem="${tileIconItems.listChildren}" class="apolo-awards-icon-wrapper">
-                             <sly data-sly-list.imageRes="${iconItem.listChildren}">
-                                <div data-sly-test="${imageRes.fileReference}" class="icon"><img src="${imageRes.fileReference}"></div>
-						     </sly>
-						  </div>
-						</sly>
-						<div class="detail-info-wrap detail-info-wrap-pricetag">
+                        <a href="${cardlinkmodel.link}" target="${properties.cardtarget ? '_blank' : '_self'}">
+                           <span class="${properties.offerText ? 'tiles-box-list__contractDuration tiles-box-list__contractDuration--orange' : 'tiles-box-list__contractDuration'}"  data-sly-test="${properties.commitmentText}">${properties.commitmentText}</span>
+                           <sly data-sly-use.productTileObj="${resource.path}" data-sly-list.tileIconItems="${productTileObj.listChildren}">
+                              <div data-sly-test="${tileIconItems.name == 'iconItems'}" data-sly-list.iconItem="${tileIconItems.listChildren}" class="apolo-awards-icon-wrapper">
+                                       <sly data-sly-list.imageRes="${iconItem.listChildren}">
+                                          <div data-sly-test="${imageRes.fileReference}" class="icon"><img src="${imageRes.fileReference}"></div>
+                                 </sly>
+                              </div>
+                           </sly>
+                        </a>
+                        <div class="detail-info-wrap detail-info-wrap-pricetag">
                            <div class="detail-price-new">
                               <div class="main-part" data-sly-test="${properties.productPrice}">
                                  <div data-sly-test="${properties.contractText}" dir="ltr" class="from">${properties.contractText}</div>
@@ -127,23 +127,23 @@
                      <div 
                         class="read-more select-product-from-grid select-product-from-grid-without-close link"
                         data-extra-container=".extra-options-02">
-                       <sly data-sly-test.buttonLink="${properties.buttonLink}" class ="" data-sly-use.buttonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=buttonLink}"/>
+                     <sly data-sly-test.buttonLink="${properties.buttonLink}" class ="" data-sly-use.buttonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=buttonLink}"/>
                            <sly data-sly-test.loggedinbuttonLink="${properties.loggedinbuttonLink}" class ="" data-sly-use.loggedinbuttonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=loggedinbuttonLink}"/>
-						<a
+                  <a
                            href="${cardlinkmodel.link ? cardlinkmodel.link : buttonlinkmodel.link}" target="${properties.btnlinktarget?'_blank':'_self'}"
                            class="cms-button read-more-link" title="National 110"> 
-							<span data-sly-test="${properties.buyNowButton}">${properties.buyNowButton}</span>
+                     <span data-sly-test="${properties.buyNowButton}">${properties.buyNowButton}</span>
                         </a> 
                         
                         <a
                            href="${cardlinkmodel.link ? cardlinkmodel.link : loggedinbuttonlinkmodel.link}" target="${properties.loggedinbtnlinktarget?'_blank':'_self'}"
                            class="b2b-button read-more-link" title="National 110"> 
-							<span data-sly-test="${properties.loggedinbuyNowButton}">${properties.loggedinbuyNowButton}</span>
+                     <span data-sly-test="${properties.loggedinbuyNowButton}">${properties.loggedinbuyNowButton}</span>
                         </a> 
                      </div>
                   </div>
                </div>
-			   </a>
+               <a href="${cardlinkmodel.link}" target="${properties.cardtarget ? '_blank' : '_self'}" class="tile-wrap-link"></a>
             </div>
          </div>
       </div>

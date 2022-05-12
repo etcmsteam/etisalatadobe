@@ -70,6 +70,9 @@ const DYNAMIC_MODULE = {
   "cmp-bill-expaliner": async () => {
     await import(/* webpackChunkName: 'forms' */ "./dynamic-modules/bill-explainer/bill-explainer").then((obj) => obj.BILL_EXPLAINER());
   },
+  "cmp-table": async () => {
+    await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
@@ -83,9 +86,15 @@ const DYNAMIC_COMPONENTS = {
       entries.forEach((entry) => {
         // execute the dynamic import & init script registered
         if (entry.isIntersecting) {
-          DYNAMIC_MODULE[entry.target.attributes["data-component"].nodeValue]().catch((error) => {
-            console.error("Dynamic Module Script Error: ", error);
-          });
+          const component = entry.target.attributes["data-component"].nodeValue;
+          // check if script not already loaded
+          if (!ALREADY_LOADED_SCRIPTS[component]) {
+            // record script state
+            ALREADY_LOADED_SCRIPTS[component] = true;
+            DYNAMIC_MODULE[component]().catch((error) => {
+              console.error("Dynamic Module Script Error: ", error);
+            });
+          }
           observer.unobserve(entry.target);
         }
       });
@@ -96,12 +105,7 @@ const DYNAMIC_COMPONENTS = {
       const componentContext = Array.from(document.querySelectorAll(`div[data-component=${component}]`));
       // if component found on page
       if (componentContext[0]) {
-        // check if script not already loaded
-        if (!ALREADY_LOADED_SCRIPTS[component]) {
-          // record script state
-          ALREADY_LOADED_SCRIPTS[component] = true;
-          componentContext.forEach((target) => observer.observe(target));
-        }
+        componentContext.forEach((target) => observer.observe(target));
       }
     });
   },

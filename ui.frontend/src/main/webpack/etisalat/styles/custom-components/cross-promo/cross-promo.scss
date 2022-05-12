@@ -64,6 +64,14 @@
               border-width: 0 2px 2px 0;
             }
                 }
+                &.btn-green {
+                  color: $main-green;
+
+                  &:before {
+                    border-width: 0 1px 1px 0;
+                    border-color: $main-green;
+                  }
+                }
             }
             }
         }
@@ -458,6 +466,7 @@
 .btn.btn-transparent {
   background: transparent;
   border: 1px solid #fff;
+  color: #fff;
   &:hover {
     background: transparent;
     border: 1px solid #fff;
@@ -489,6 +498,23 @@
 .small-pedding {
   @media (max-width: 768px) {
     padding:0px 12px;
+  }
+}
+.modal-popup-wrapper {
+  .nv-modal.right-modal {
+    .nv-modal-close {
+      svg {
+        top: 0;
+      }
+    }
+  }
+
+  .nv-modal.bottom-modal {
+    @include respond-to-max(991px) {
+      .nv-modal-close svg {
+        top: 15px !important;
+      }
+    }
   }
 }
 

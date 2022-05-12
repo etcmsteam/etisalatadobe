@@ -11,11 +11,17 @@
         <div class="cta-content-wrap">
             <div class="cont">
                 <h4 data-sly-test="${properties.tiletitle}">${properties.tiletitle}</h4>                
-                <sly data-sly-test.crossPromoCTALink="${properties.crossPromoLinkURL}" 
-	               data-sly-use.promoLink="${'com.etisalat.core.models.CommonLinkModel' @link=crossPromoCTALink}"/>
-                <a href="${promoLink.link}" data-sly-test="${properties.crossPromoCTATitle}" class="btn-text btn-green learn-more">
-                    <span class=""> ${properties.crossPromoCTATitle} </span>
-                </a>
+                <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">              
+                    <sly data-sly-test.crossPromoCTALink="${properties.crossPromoLinkURL}" 
+                       data-sly-use.promoLink="${'com.etisalat.core.models.CommonLinkModel' @link=crossPromoCTALink}"/>
+                    <a href="${promoLink.link}" target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.crossPromoCTATitle}" class="${properties.ctaStyle ?  properties.ctaStyle : 'btn-text learn-more'}">
+                        <span class=""> ${properties.crossPromoCTATitle} </span>
+                    </a>
+			    </sly>
+				<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
+                   data-sly-use.modalTemplate="modalpopup.html"
+                   data-sly-call="${modalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode}">
+                </sly>
             </div>
         </div>
     </div>

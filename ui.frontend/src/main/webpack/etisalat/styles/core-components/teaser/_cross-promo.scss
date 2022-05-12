@@ -80,14 +80,11 @@
 }
 
 .teaseretisalat {
-  &.link__arrow {
+  &.link__arrow,
+  &.link__arrow_green {
     .cmp-teaser__action-container {
       .cmp-teaser__action-link {
-        line-height: toRem(16);
-
-        @include respond-to-min($desktop) {
-          line-height: toRem(20);
-        }
+        line-height: toRem(24);
       }
     }
   }
@@ -186,6 +183,12 @@
         width: 50%;
       }
 
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          width: 50%;
+        }
+      }
+
       @include respond-to-min($desktop-wide) {
         width: 33%;
       }
@@ -225,7 +228,7 @@
       content: "";
       height: 100%;
       left: 0;
-      opacity: 0.4;
+      opacity: 0.7;
       position: absolute;
       top: 0;
       width: 100%;
@@ -257,7 +260,8 @@
     }
   }
 
-  &.link__arrow {
+  &.link__arrow,
+  &.link__arrow_green {
     .cmp-teaser__action-container {
       line-height: 1.5rem;
 
@@ -291,7 +295,8 @@
 
   &.button--transparent,
   &.button--secondary,
-  &.button--primary {
+  &.button--primary,
+  &.button--orange {
     .cmp-teaser__action-container {
       @include respond-to-min($desktop) {
         height: toRem(50);
@@ -304,6 +309,15 @@
         position: relative;
         right: 0;
         width: 100%;
+      }
+
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          position: absolute;
+          right: 40px;
+          top: 40px;
+          width: 280px;
+        }
       }
     }
   }
@@ -653,7 +667,8 @@
 
   &.button--primary,
   &.button--transparent,
-  &.button--secondary {
+  &.button--secondary,
+  &.button--orange {
     .cmp-teaser__action-container {
       @include respond-to-min($tablet) {
         max-width: toRem(180);
@@ -927,9 +942,24 @@ $grid-spacing: 12px;
     &::before {
       display: none;
     }
+
+    @include rtlBlock() {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        display: block;
+      }
+    }
   }
 
-  .link__arrow {
+  .link__arrow,
+  .link__arrow_green,
+  .button--primary,
+  .button--transparent,
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       position: relative;
     }
@@ -937,7 +967,8 @@ $grid-spacing: 12px;
 
   .button--primary,
   .button--transparent,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       @include respond-to-min($desktop) {
         max-width: toRem(240);
@@ -1011,7 +1042,8 @@ $grid-spacing: 12px;
 
   .button--transparent,
   .button--primary,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       background: transparent;
       border: toRem(1) solid $white;
@@ -1100,7 +1132,8 @@ $grid-spacing: 12px;
 
   .button--transparent,
   .button--primary,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       background: transparent;
       border: toRem(1) solid $white;
@@ -1190,7 +1223,8 @@ $grid-spacing: 12px;
 
   .button--transparent,
   .button--primary,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       background: transparent;
       border: toRem(1) solid $yellow-light !important;

@@ -52,6 +52,10 @@
           margin-bottom: 1rem;
       }
 
+      > *:first-child {
+        @include single-line-ellipsis();
+      }
+
       @include respond-to-min($tablet) {
         padding-bottom: toRem(24);
       }
@@ -66,12 +70,19 @@
         }
       }
 
+      + .btn-text {
+        @include rtlBlock() {
+          left: auto;          
+          right: 25px;
+        }
+      }
+
       .btn-text {
         bottom: toRem(24);
         font-size: $font12;
         left: toRem(24);
         letter-spacing: toRem(2);
-        position: absolute;
+        position: absolute;        
 
         @include respond-to-min($tablet) {
           font-size: $font14;

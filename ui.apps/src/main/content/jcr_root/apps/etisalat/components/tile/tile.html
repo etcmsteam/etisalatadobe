@@ -1,18 +1,23 @@
 <sly data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+	 data-sly-use.attributeModel="com.etisalat.core.models.AttributeModel"
      data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
   <sly data-sly-test="${tileModel.tiletitle}">
 	   <sly data-sly-test="${tileModel.tileBoxVariation == '4-tile-boxes'}"
 	        data-sly-use.fourTileTemplate="4-tile.html"
-	        data-sly-call="${fourTileTemplate.fourTile @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel}">      
+	        data-sly-call="${fourTileTemplate.fourTile @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel,attributeModel=attributeModel}">
 	   </sly>    
 	   <sly data-sly-test="${tileModel.tileBoxVariation == '3-tile-boxes'}"
 	        data-sly-use.threeTileTemplate="3-tile.html"
-	        data-sly-call="${threeTileTemplate.threeTile @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel}">      
+	        data-sly-call="${threeTileTemplate.threeTile @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel,attributeModel=attributeModel}">
 	   </sly>
 	  <sly data-sly-test="${tileModel.tileBoxVariation == 'grid-tile-box'}"
 		   data-sly-use.gridTileTemplate="grid-tile.html"
-		   data-sly-call="${gridTileTemplate.gridtile @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel}">
+		   data-sly-call="${gridTileTemplate.gridtile @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel,attributeModel=attributeModel}">
+	  </sly>
+	  <sly data-sly-test="${tileModel.tileBoxVariation == '2-tile-boxes'}"
+	       data-sly-use.threeTileTemplate="2-tile.html"
+	       data-sly-call="${threeTileTemplate.twoTile @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel,attributeModel=attributeModel}">
 	  </sly>
   </sly>
 </sly>
