@@ -16,10 +16,7 @@ import javax.jcr.lock.LockException;
 import javax.jcr.nodetype.ConstraintViolationException;
 import javax.jcr.version.VersionException;
 import javax.servlet.Servlet;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import java.io.*;
 import java.util.Iterator;
 import java.util.concurrent.Executors;
 
@@ -71,9 +68,9 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
             try {
                 writeLogs(logFileLocation, logs.toString(), session);
             } catch (RepositoryException repositoryException) {
-                LOG.debug(repositoryException.getMessage());
+                LOG.error("SEVERE "+repositoryException.getMessage());
             }
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         }
     }
 
@@ -119,48 +116,28 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
         try {
             wsp.move(sourcePath, destinationPath);
         } catch (AccessDeniedException e) {
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         } catch (ConstraintViolationException e) {
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         } catch (VersionException e) {
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         } catch (PathNotFoundException e) {
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         } catch (ItemExistsException e) {
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         } catch (LockException e) {
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         } catch (RepositoryException e) {
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         }
     }
 
     public static void writeLogs(String logFileLocation, String logs, Session session) throws IOException, RepositoryException {
-        final PipedInputStream pis = new PipedInputStream();
-        final PipedOutputStream pos = new PipedOutputStream(pis);
-        Executors.newSingleThreadExecutor().submit(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    OutputStreamWriter writer = new OutputStreamWriter(pos);
-                    writer.append(logs);
-                    writer.close();
-                } catch (IOException e) {
-                    LOG.debug(e.getMessage());
-                } finally {
-                    try {
-                        pos.close();
-                    } catch (IOException e) {
-                        LOG.debug(e.getMessage());
-                    }
-                }
-            }
-        });
-        Binary binary = session.getValueFactory().createBinary(pis);
+        InputStream inputStream = new ByteArrayInputStream(logs.getBytes());
+        Binary binary = session.getValueFactory().createBinary(inputStream);
         session.getNode(logFileLocation).setProperty("jcr:data", binary);
         session.save();
-        pos.close();
-        pis.close();
+        inputStream.close();
     }
 
 }

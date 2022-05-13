@@ -91,9 +91,9 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
             try {
                 writeLogs(logFileLocation, logs.toString(), session);
             } catch (RepositoryException repositoryException) {
-                LOG.debug(e.getMessage());
+                LOG.error("SEVERE "+e.getMessage());
             }
-            LOG.debug(e.getMessage());
+            LOG.error("SEVERE "+e.getMessage());
         }
 
     }
@@ -155,30 +155,10 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
         }
     }
     public static void writeLogs(String logFileLocation, String logs, Session session) throws IOException, RepositoryException {
-        final PipedInputStream pis = new PipedInputStream();
-        final PipedOutputStream pos = new PipedOutputStream(pis);
-        Executors.newSingleThreadExecutor().submit(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    OutputStreamWriter writer = new OutputStreamWriter(pos);
-                    writer.append(logs);
-                    writer.close();
-                } catch (IOException e) {
-                    LOG.debug(e.getMessage());
-                } finally {
-                    try {
-                        pos.close();
-                    } catch (IOException e) {
-                        LOG.debug(e.getMessage());
-                    }
-                }
-            }
-        });
-        Binary binary = session.getValueFactory().createBinary(pis);
+        InputStream inputStream = new ByteArrayInputStream(logs.getBytes());
+        Binary binary = session.getValueFactory().createBinary(inputStream);
         session.getNode(logFileLocation).setProperty("jcr:data", binary);
         session.save();
-        pos.close();
-        pis.close();
+        inputStream.close();
     }
 }
