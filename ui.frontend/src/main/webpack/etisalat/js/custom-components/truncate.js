@@ -41,9 +41,12 @@ export const TRUNCATE = () => {
 
   var dots = $(".popover-dots");
   $(".truncate-tooltip__description .popover.fade.top").remove();
-  dots.popover({
-    trigger: "focus",
-    placement: "top",
+  $(".popover-dots").each(function(){
+      $(this).popover({
+        trigger: "focus",
+        placement: "top",
+        container: this.parentNode
+      });
   });
   if (navigator.userAgent.indexOf("Chrome") == -1) {
     $("body").on("click", function (e) {
