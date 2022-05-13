@@ -291,22 +291,6 @@
                                                                 fieldLabel="Features Description"
                                                                 name="./featureFullBleedDescription"
                                                                 useFixedInlineToolbar="{Boolean}true"/>
-                                                            <descriptionleftcolumn
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
-                                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                                fieldDescription="Add features left column description"
-                                                                fieldLabel="Features Left Column Description "
-                                                                name="./descriptionLeftColumn"
-                                                                useFixedInlineToolbar="{Boolean}true"/>
-                                                            <descriptionrightcolumn
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
-                                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                                fieldDescription="Add features right  column description"
-                                                                fieldLabel="Features Right Column Description "
-                                                                name="./descriptionRightColumn"
-                                                                useFixedInlineToolbar="{Boolean}true"/>
                                                         </items>
                                                     </descriptionsection>
                                                     <pricetag
@@ -378,9 +362,9 @@
                                                                 name="./vatInclude"/>
                                                         </items>
                                                     </pricetag>
-                                                    <ctasectionleftcolumn
+                                                    <ctasectionlearmore
                                                         jcr:primaryType="nt:unstructured"
-                                                        jcr:title="Link/Button Left Column"
+                                                        jcr:title="LearnMore-Call-To-Action"
                                                         sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <ctaStyle
@@ -389,34 +373,94 @@
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                                 fieldDescription="Select CTA Style"
                                                                 fieldLabel="CTA Style"
-                                                                name="./ctaStyleLeftColumn"/>
+                                                                name="./ctaStyleLearnMore"/>
                                                             <linklabel
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                 emptyText="Text"
                                                                 fieldDescription="Enter CTA Label"
                                                                 fieldLabel="CTA Label"
-                                                                name="./ctatextLeftColumn"/>
+                                                                name="./ctatextLearnMore"/>
                                                             <linkBehavior
                                                                 granite:class="cq-dialog-dropdown-showhide"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                                 fieldDescription="Select Link Behavior"
                                                                 fieldLabel="Link Behavior"
-                                                                name="./featuresLeftColumnLinkBehavior">
+                                                                name="./featuresLearnMoreLinkBehavior">
                                                                 <items jcr:primaryType="nt:unstructured">
                                                                     <opennewwindow
                                                                         jcr:primaryType="nt:unstructured"
                                                                         text="Open In New Window"
-                                                                        value="opennewwindowleftcolumn"/>
+                                                                        value="opennewwindowlearnmore"/>
                                                                     <opensamewindow
                                                                         jcr:primaryType="nt:unstructured"
                                                                         text="Open in Same Window"
-                                                                        value="opensamewindowleftcolumn"/>
+                                                                        value="opensamewindowlearnmore"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    cq-dialog-dropdown-showhide-target=".linkbehaviorleanmore-showhide-target"/>
+                                                            </linkBehavior>
+                                                            <linkwindow
+                                                                granite:class="linkbehaviorleanmore-showhide-target"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <buttonlink
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldDescription="Target URL for when the link is clicked."
+                                                                        fieldLabel="CTA link"
+                                                                        name="./learnMoreCtaLink"
+                                                                        rootPath="/content"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    showhidetargetvalue="opensamewindowlearnmore"
+                                                                    showhidetargetvalue1="opennewwindowlearnmore"/>
+                                                            </linkwindow>
+                                                        </items>
+                                                    </ctasectionlearmore>
+                                                    <ctacalltoaction
+                                                        jcr:primaryType="nt:unstructured"
+                                                        jcr:title="Call-To-Action"
+                                                        sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <ctaStyle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="etisalat/components/commons/cta-variations/ctaStyle"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select CTA Style"
+                                                                fieldLabel="CTA Style"
+                                                                name="./ctaStyle"/>
+                                                            <linklabel
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                emptyText="Text"
+                                                                fieldDescription="Enter CTA Label"
+                                                                fieldLabel="CTA Label"
+                                                                name="./ctaText"/>
+                                                            <linkBehavior
+                                                                granite:class="cq-dialog-dropdown-showhide"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Link Behavior"
+                                                                fieldLabel="Link Behavior"
+                                                                name="./featuresLinkBehavior">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <opennewwindow
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open In New Window"
+                                                                        value="opennewwindow"/>
+                                                                    <opensamewindow
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open in Same Window"
+                                                                        value="opensamewindow"/>
                                                                     <linkmodalpopup
                                                                         jcr:primaryType="nt:unstructured"
                                                                         text="Open CTA Link in Modal window"
-                                                                        value="openmodalwindowleftcolumn"/>
+                                                                        value="openmodalwindow"/>
                                                                 </items>
                                                                 <granite:data
                                                                     jcr:primaryType="nt:unstructured"
@@ -432,111 +476,16 @@
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                         fieldDescription="Target URL for when the link is clicked."
                                                                         fieldLabel="CTA link"
-                                                                        name="./tileCTALinkSameWindowLeftColumn"
+                                                                        name="./ctaLink"
                                                                         rootPath="/content"/>
                                                                 </items>
                                                                 <granite:data
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    showhidetargetvalue="opensamewindowleftcolumn"
-                                                                    showhidetargetvalue1="opennewwindowleftcolumn"/>
+                                                                    showhidetargetvalue="opensamewindow"
+                                                                    showhidetargetvalue1="opennewwindow"/>
                                                             </linkwindow>
                                                             <fragmentlink
                                                                 granite:class="linkbehavior-showhide-target"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                    <fragmentVariationPath
-                                                                        granite:id="xfPicker"
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="cq/experience-fragments/editor/components/xffield"
-                                                                        fieldDescription="Choose the experience fragment variation to display."
-                                                                        fieldLabel="Experience Fragment Variation Path"
-                                                                        filter="folderOrVariant"
-                                                                        name="./fragmentVariationPathLeftColumn"
-                                                                        propertyFilter="cq:xfShowInEditor"
-                                                                        variant="web"/>
-                                                                    <modalBehavior
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceSuperType="etisalat/components/commons/modal-popup-variations/modalBehavior"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                        fieldDescription="Select Popup Behavior"
-                                                                        fieldLabel="Popup Behavior"
-                                                                        name="./modalBehaviorLeftColumn">
-                                                                        <granite:data
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
-                                                                    </modalBehavior>
-                                                                </items>
-                                                                <granite:data
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    showhidetargetvalue="openmodalwindowleftcolumn"/>
-                                                            </fragmentlink>
-                                                        </items>
-                                                    </ctasectionleftcolumn>
-                                                    <ctasectionrightcolumn
-                                                        jcr:primaryType="nt:unstructured"
-                                                        jcr:title="Link/Button Right Column"
-                                                        sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <ctaStyle
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceSuperType="etisalat/components/commons/cta-variations/ctaStyle"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                fieldDescription="Select CTA Style"
-                                                                fieldLabel="CTA Style"
-                                                                name="./ctaStyleRightColumn"/>
-                                                            <linklabel
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                emptyText="Text"
-                                                                fieldDescription="Enter CTA Label"
-                                                                fieldLabel="CTA Label"
-                                                                name="./ctatextRightColumn"/>
-                                                            <linkBehavior
-                                                                granite:class="cq-dialog-dropdown-showhide"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                fieldDescription="Select Link Behavior"
-                                                                fieldLabel="Link Behavior"
-                                                                name="./featuresRightColumnLinkBehavior">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                    <opennewwindow
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        text="Open In New Window"
-                                                                        value="opennewwindowrightcolumn"/>
-                                                                    <opensamewindow
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        text="Open in Same Window"
-                                                                        value="opensamewindowrightcolumn"/>
-                                                                    <linkmodalpopup
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        text="Open CTA Link in Modal window"
-                                                                        value="openmodalwindowrightcolumn"/>
-                                                                </items>
-                                                                <granite:data
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    cq-dialog-dropdown-showhide-target=".linkbehaviorrightcolumn-showhide-target"/>
-                                                            </linkBehavior>
-                                                            <linkwindow
-                                                                granite:class="linkbehaviorrightcolumn-showhide-target"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                    <buttonlink
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                        fieldDescription="Target URL for when the link is clicked."
-                                                                        fieldLabel="CTA link"
-                                                                        name="./ctaLinkRightColumn"
-                                                                        rootPath="/content"/>
-                                                                </items>
-                                                                <granite:data
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    showhidetargetvalue="opensamewindowrightcolumn"
-                                                                    showhidetargetvalue1="opennewwindowrightcolumn"/>
-                                                            </linkwindow>
-                                                            <fragmentlink
-                                                                granite:class="linkbehaviorrightcolumn-showhide-target"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                                 <items jcr:primaryType="nt:unstructured">
@@ -556,7 +505,7 @@
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                                         fieldDescription="Select Popup Behavior"
                                                                         fieldLabel="Popup Behavior"
-                                                                        name="./modalBehaviorRightColumn">
+                                                                        name="./modalBehavior">
                                                                         <granite:data
                                                                             jcr:primaryType="nt:unstructured"
                                                                             cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
@@ -564,10 +513,10 @@
                                                                 </items>
                                                                 <granite:data
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    showhidetargetvalue="openmodalwindowrightcolumn"/>
+                                                                    showhidetargetvalue="openmodalwindow"/>
                                                             </fragmentlink>
                                                         </items>
-                                                    </ctasectionrightcolumn>
+                                                    </ctacalltoaction>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"

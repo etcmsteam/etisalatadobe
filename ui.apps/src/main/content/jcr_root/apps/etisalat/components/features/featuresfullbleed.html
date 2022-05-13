@@ -18,7 +18,7 @@
                         </div>
                         <div class="paragraph-styling anchor ul-list-cms two-col-no-bullets">
                             <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p2' : properties.descParagraphStyle}" class="${descriptionStyle}">
-                                <div data-sly-test="${properties.featureFullBleedDescription}">${properties.featureFullBleedDescription @ context='html'}</div>
+                                ${properties.featureFullBleedDescription @ context='html'}
                             </div>
                         </div>
                     </div>
@@ -37,17 +37,17 @@
                         </div>
 
                         <div class="third-action-wrapper">
-							<sly data-sly-test="${properties.featuresRightColumnLinkBehavior != 'openmodalwindowrightcolumn'}">
-                                <sly data-sly-test.ctaLinkRightColumn="${properties.ctaLinkRightColumn}" 
-                                     data-sly-use.rightColumnLink="${'com.etisalat.core.models.CommonLinkModel' @link=ctaLinkRightColumn}"/>
-                                <a href="${rightColumnLink.link}" target="${properties.featuresRightColumnLinkBehavior == 'opennewwindowrightcolumn' ? '_blank' : '_self'}" data-sly-test="${properties.ctatextRightColumn}" class="${properties.ctaStyleRightColumn}">
-                                    ${properties.ctatextRightColumn}
+							<sly data-sly-test="${properties.featuresLinkBehavior != 'openmodalwindow'}">
+                                <sly data-sly-test.ctaLink="${properties.ctaLink}" 
+                                   data-sly-use.ctaCallToActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=ctaLink}"/>
+                                <a href="${ctaCallToActionLink.link}" target="${properties.featuresLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.ctaText}" class="${properties.ctaStyle}">
+                                    ${properties.ctaText}
                                 </a>
 							</sly>
-							<sly data-sly-test="${properties.featuresRightColumnLinkBehavior == 'openmodalwindowrightcolumn'}" 
-                                 data-sly-set.ctaTitle="${properties.ctatextRightColumn}"
-								 data-sly-set.modalBehavior="${properties.modalBehaviorRightColumn}" 
-								 data-sly-set.ctaStyle="${properties.ctaStyleRightColumn}"
+							<sly data-sly-test="${properties.featuresLinkBehavior == 'openmodalwindow'}" 
+                                 data-sly-set.ctaTitle="${properties.ctaText}"
+								 data-sly-set.modalBehavior="${properties.modalBehavior}" 
+								 data-sly-set.ctaStyle="${properties.ctaStyle}"
                                  data-sly-use.modalTemplate="modalpopup.html"
                                  data-sly-call="${modalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode,ctaTitle=ctaTitle,modalBehavior=modalBehavior,ctaStyle=ctaStyle}">
                             </sly>
