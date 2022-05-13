@@ -855,27 +855,38 @@ $prefix: "cmp-teaser";
 $grid-spacing: 12px;
 
 .cmp-teaser--multicol {
-  .aem-Grid .aem-GridColumn {
-    padding-top: $grid-spacing;
+  .aem-Grid {
+    display: flex;
+    flex-wrap: wrap;
 
-    @include respond-to-min($desktop) {
-      padding-top: 0;
+    .aem-GridColumn {
+      padding-top: $grid-spacing;
 
-      &:first-child {
-        padding: 0 $grid-spacing 0 0;
-      }
+      @include respond-to-min($desktop) {
+        padding-top: 0;
 
-      &:last-child {
-        padding: 0 0 0 $grid-spacing;
-      }
-
-      @include rtlBlock() {
-        &:last-child {
+        &:first-child {
           padding: 0 $grid-spacing 0 0;
         }
 
-        &:first-child {
+        &:last-child {
           padding: 0 0 0 $grid-spacing;
+        }
+
+        @include rtlBlock() {
+          &:last-child {
+            padding: 0 $grid-spacing 0 0;
+          }
+
+          &:first-child {
+            padding: 0 0 0 $grid-spacing;
+          }
+        }
+      }
+
+      &.teaseretisalat {
+        .cmp-teaser {
+          height: 100%;
         }
       }
     }
