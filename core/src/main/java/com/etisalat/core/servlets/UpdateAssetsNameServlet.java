@@ -51,13 +51,13 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
             }
             if(request.getRequestParameter("damFolderPath") != null) {
                 String parentFolderPath = request.getRequestParameter("damFolderPath").getString();
-                LOG.info("damFolderPath :: "+parentFolderPath);
+                LOG.debug("damFolderPath :: "+parentFolderPath);
                 Node parentNodeAsset = rootNode.getNode(parentFolderPath.substring(1));
                 UpdateFolderAssets(session, parentNodeAsset, wsp, rootNode, response);
             }
             if(request.getRequestParameter("assetsPath") != null) {
                 String assetsPath = request.getRequestParameter("assetsPath").getString();
-                LOG.info("assetsPath :: "+assetsPath);
+                LOG.debug("assetsPath :: "+assetsPath);
                 String[] path = assetsPath.split("~");
                 for(String assetPath : path){
                     Node assetNode = rootNode.getNode(assetPath.substring(1));
@@ -71,9 +71,9 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
             try {
                 writeLogs(logFileLocation, logs.toString(), session);
             } catch (RepositoryException repositoryException) {
-                repositoryException.printStackTrace();
+                LOG.debug(repositoryException.getMessage());
             }
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         }
     }
 
@@ -118,28 +118,20 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
 
         try {
             wsp.move(sourcePath, destinationPath);
-
         } catch (AccessDeniedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         } catch (ConstraintViolationException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         } catch (VersionException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         } catch (PathNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         } catch (ItemExistsException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         } catch (LockException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         } catch (RepositoryException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         }
     }
 
@@ -154,13 +146,21 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
                     writer.append(logs);
                     writer.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOG.debug(e.getMessage());
+                } finally {
+                    try {
+                        pos.close();
+                    } catch (IOException e) {
+                        LOG.debug(e.getMessage());
+                    }
                 }
             }
         });
         Binary binary = session.getValueFactory().createBinary(pis);
         session.getNode(logFileLocation).setProperty("jcr:data", binary);
         session.save();
+        pos.close();
+        pis.close();
     }
 
 }
