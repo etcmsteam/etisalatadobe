@@ -11,21 +11,6 @@ export const TRUNCATE = () => {
     if (content.length > limit) {
       lastcontent = content.splice(limit).join(" ");
       firstcontent = content.join(" ");
-      // for (var i = 0; i < limit; i++) {
-      //   if (typeof firstcontent == "undefined") {
-      //     firstcontent = content[i];
-      //   } else {
-      //     firstcontent = firstcontent + " " + content[i];
-      //   }
-      // }
-      // for (var b = limit; b < content.length; b++) {
-      //   if (typeof lastcontent == "undefined") {
-      //     lastcontent = content[b];
-      //   } else {
-      //     lastcontent = lastcontent + " " + content[b];
-      //   }
-      // }
-      //$('.popover-dots').removeClass('hidden');
     }
     return [firstcontent, lastcontent];
   };
@@ -41,7 +26,7 @@ export const TRUNCATE = () => {
     let text = truncateElem[k].querySelector(".truncate-tooltip__description");
     let truncatedText = truncate(text, 50);
     if (text && typeof truncatedText[0] != "undefined") {
-      text.innerHTML = `<p>${truncatedText[0]}</p>`; // my change
+      text.innerHTML = `<p>${truncatedText[0]}</p>`;
       dotsSingle.dataset.content = truncatedText[1];
       text.appendChild(dotsSingle);
     }
