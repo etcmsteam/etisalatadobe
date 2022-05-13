@@ -1,0 +1,23 @@
+<template  data-sly-template.horizonalview>
+    <div data-component="cmp-steps4-0" class="steps-status-wrapper">
+        <div class="container">
+            <div class="steps-wrap">
+                <sly data-sly-list.multifieldObj="${resource.getChildren}">
+                    <div class= "step ${steps.state}" data-sly-test="${multifieldObj.name == 'horizontalItems'}" data-sly-repeat.steps="${multifieldObj.getChildren}">
+                        <div class="step-circle">
+                            <div class="step-number">${stepsList.count}</div>
+                        </div>
+                        <div class="step-details">
+                            <div class="step-title">
+                                <h3>${steps.title}</h3>
+                            </div>
+                            <div class="step-description">
+                                ${steps.description @ context='html'}
+                            </div>
+                        </div>
+                    </div>
+                </sly>
+            </div>
+        </div>
+    </div>
+</template>
