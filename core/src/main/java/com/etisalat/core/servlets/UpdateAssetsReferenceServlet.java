@@ -91,9 +91,9 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
             try {
                 writeLogs(logFileLocation, logs.toString(), session);
             } catch (RepositoryException repositoryException) {
-                repositoryException.printStackTrace();
+                LOG.debug(e.getMessage());
             }
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         }
 
     }
@@ -165,12 +165,20 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
                     writer.append(logs);
                     writer.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOG.debug(e.getMessage());
+                } finally {
+                    try {
+                        pos.close();
+                    } catch (IOException e) {
+                        LOG.debug(e.getMessage());
+                    }
                 }
             }
         });
         Binary binary = session.getValueFactory().createBinary(pis);
         session.getNode(logFileLocation).setProperty("jcr:data", binary);
         session.save();
+        pos.close();
+        pis.close();
     }
 }
