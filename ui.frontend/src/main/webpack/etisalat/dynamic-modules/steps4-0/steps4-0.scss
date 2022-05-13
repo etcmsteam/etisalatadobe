@@ -15,7 +15,7 @@
                 height: calc(100% - 20px);
                 margin-top: 12px;
                 
-                @media (min-width: 992px) {
+                @include respond-to-min($desktop) {
                    
                     height: 2px;
                     position: absolute;
@@ -28,10 +28,10 @@
             }
             // default circle step
             .step-number {
-                background-color: #fff;
+                background-color: $white;
                 border-radius: 50%;
-                border: 1px solid #fff;
-                color: #848789;
+                border: 1px solid $white;
+                color: $steel-grey;
                 font-size: 14px;
                 height: 22px;
                 margin: 0 auto;
@@ -54,7 +54,7 @@
                     transition: all .25s cubic-bezier(.55,.06,.68,.19);
                     box-shadow: none;
                     border: 1px solid #cad3ca;
-                    background: #fff;
+                    background: $white;
                     z-index: -1;
                 } 
             }
@@ -75,10 +75,10 @@
                     width: 2px;
                     height: calc(100% - 20px);
                     display: flex;
-                    background: #719e19;
+                    background: $arrow-border-green;
 
                     
-                    @media (min-width: 992px) {
+                    @include respond-to-min($desktop) {
                         width: calc(100% - 50px);
                         height: 2px;
                     }
@@ -90,10 +90,10 @@
         &.active {
             .step-circle {
                 .step-number {
-                    border-color: #719e19;
-                    color: #fff;
+                    border-color: $arrow-border-green;
+                    color: $white;
                     width: 22px;
-                    background: #719e19;
+                    background: $arrow-border-green;
                     height: 22px;
                     &:before {
                         content: "";
@@ -107,7 +107,7 @@
                         transition: all .25s cubic-bezier(.55,.06,.68,.19);
                         border: 1px solid rgba(113,158,25,.6);
                         opacity: .2;
-                        background-color: #719e19;
+                        background-color: $arrow-border-green;
                         box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
                         z-index: 2;
                     }
@@ -121,13 +121,13 @@
 .step-title h3 {
     font-size: 16px;
     line-height: 22px;
-    color: #353738;
+    color: $cart-count-black;
     margin: 0;
-    font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
-    @media (min-width: 992px) {
+    @include font-family-lato();
+    @include respond-to-min($desktop) {
         font-size: 24px;
         line-height: 32px;
-        font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
+        @include font-family-Neotech-ge();
     }
 }
 // description
@@ -136,8 +136,8 @@
         margin: 0;
         font-size: 14px;
         line-height: 20px;
-        color: #848789;
-        @media (min-width: 992px) {
+        color: $steel-grey;
+        @include respond-to-min($desktop) {
             font-size: 14px;
             line-height: 20px;
         }
@@ -147,7 +147,7 @@
 // benefit section as a module 
 .steps-status-wrapper {
     > .container {
-        @media (max-width: 767px) {
+        @include respond-to-max($tablet-min) {
             padding-left: 16px;
             padding-right: 16px;
         }
@@ -161,7 +161,7 @@
         &:last-child {
             margin-bottom: 0;
         }
-        @media (min-width: 992px) {
+        @include respond-to-min($desktop) {
             margin-bottom: 0;
             padding-right: 24px;
             flex-basis: 0;
@@ -173,7 +173,7 @@
                 padding-right: 0;
             }
         }
-        @media (max-width: 991px) {
+        @include respond-to-max($desktop-min) {
             display: flex;
             width: 100%;
             .step-circle {
@@ -181,13 +181,13 @@
             }
         }
         .step-circle {
-            @media (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 margin-bottom: 48px;
             }
         }
         .step-title {
             margin-bottom: 8px;
-            @media (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 margin-bottom: 16px;
                 text-align: center;
             }
@@ -196,7 +196,7 @@
             p+p {
                 margin-top: 16px !important;
             }
-            @media (min-width: 992px) {
+            @include respond-to-min($desktop) {
                 text-align: center;
             }
         }
@@ -207,14 +207,13 @@
 
 *[lang="ar"] *[dir="rtl"] {
 
-    
-    @media (min-width: 992px) {
+    @include respond-to-min($desktop) {
         .steps-status-wrapper .step {
             padding-right: 0;
             padding-left: 24px;
         }
     }
-    @media (max-width: 991px) {
+    @include respond-to-max($desktop-min) {
         .step-title h2{
             text-align: right !important;
         }

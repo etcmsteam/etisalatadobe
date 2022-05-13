@@ -1,6 +1,6 @@
 /* stylelint-disable*/
 .how-to-install-steps-desktop {
-    @media (max-width: 991px) {
+    @include respond-to-max($desktop-min) {
         display: none !important;
     }
 
@@ -24,7 +24,7 @@
                     margin-top: 0;
                     left: auto;
 
-                    // @media (min-width: 992px) {
+                    // @include respond-to-min($desktop) {
 
                     //     height: 2px;
                     //     position: absolute;
@@ -40,10 +40,10 @@
 
                 // default circle step
                 .step-number {
-                    background-color: #fff;
+                    background-color: $white;
                     border-radius: 50%;
-                    border: 1px solid #fff;
-                    color: #848789;
+                    border: 1px solid $white;
+                    color: $steel-grey;
                     font-size: 14px;
                     height: 22px;
                     margin: 0 auto;
@@ -67,7 +67,7 @@
                         transition: all .25s cubic-bezier(.55, .06, .68, .19);
                         box-shadow: none;
                         border: 1px solid #cad3ca;
-                        background: #fff;
+                        background: $white;
                         z-index: -1;
                     }
                 }
@@ -93,7 +93,7 @@
                         background: #d5e2ba;
 
 
-                        // @media (min-width: 992px) {
+                        // @include respond-to-min($desktop) {
                         //     width: ~"calc(100% - 50px)";
                         //     width: ~"-moz-calc(100% - 50px)";
                         //     width: ~"-webkit-calc(100% - 50px)";
@@ -108,10 +108,10 @@
             &.active {
                 .step-circle {
                     .step-number {
-                        border-color: #719e19;
-                        color: #fff;
+                        border-color: $arrow-border-green;
+                        color: $white;
                         width: 22px;
-                        background: #719e19;
+                        background: $arrow-border-green;
                         height: 22px;
 
                         &:before {
@@ -126,7 +126,7 @@
                             transition: all .25s cubic-bezier(.55, .06, .68, .19);
                             border: 1px solid rgba(113, 158, 25, .6);
                             opacity: .2;
-                            background-color: #719e19;
+                            background-color: $arrow-border-green;
                             box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .1);
                             z-index: 2;
                         }
@@ -151,13 +151,13 @@
     .step-title h3 {
         font-size: 16px;
         line-height: 22px;
-        color: #353738;
+        color: $cart-count-black;
         margin: 0;
-        font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
-        // @media (min-width: 992px) {
+        @include font-family-lato();
+        // @include respond-to-min($desktop) {
         //     font-size: 24px;
         //     line-height: 32px;
-        //     font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
+        //     @include font-family-Neotech-ge();
         // }
     }
 
@@ -167,8 +167,8 @@
             margin: 0;
             font-size: 14px;
             line-height: 20px;
-            color: #848789;
-            // @media (min-width: 992px) {
+            color: $steel-grey;
+            // @include respond-to-min($desktop) {
             //     font-size: 14px;
             //     line-height: 20px;
             // }
@@ -178,7 +178,7 @@
     // benefit section as a module 
     .steps-status-wrapper {
         >.container {
-            @media (max-width: 767px) {
+            @include respond-to-max($tablet-min) {
                 padding-left: 16px;
                 padding-right: 16px;
             }
@@ -197,10 +197,10 @@
                 margin-right: 16px;
             }
 
-            @media (max-width: 991px) {}
+            @include respond-to-max($desktop-min) {}
 
             .step-circle {
-                // @media (min-width: 992px) {
+                // @include respond-to-min($desktop) {
                 //     margin-bottom: 48px;
                 // }
             }
@@ -223,7 +223,7 @@
 
 
 .how-to-install-steps-mobile {
-    @media (min-width: 992px) {
+    @include respond-to-min($desktop) {
         display: none !important;
     }
 
@@ -239,7 +239,7 @@
                 line-height: 1.38;
                 letter-spacing: 0.15px;
                 text-align: center;
-                color: #6f7273;
+                color: $grey1;
                 margin-bottom: 50px;
             }
         }
@@ -264,12 +264,12 @@
         margin-top: 24px;
 
         .swiper-pagination-bullet {
-            background: #f1f1eb;
+            background: $sand-white;
             opacity: 1;
         }
 
         .swiper-pagination-bullet-active {
-            background: #719e19;
+            background: $arrow-border-green;
         }
 
     }
@@ -278,7 +278,7 @@
     .swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: #fff;
+        background: $white;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -297,13 +297,10 @@
 }
 
 
-
-
-
 *[lang="ar"] *[dir="rtl"] {
     .how-to-install-steps-desktop {
 
-        // @media (min-width: 992px) {
+        // @include respond-to-min($desktop) {
         //     .steps-status-wrapper .step {
         //         padding-right: 0;
         //         padding-left: 24px;
@@ -318,6 +315,6 @@
             margin-left: 16px;
         }
 
-        @media (max-width: 991px) {}
+        @include respond-to-max($desktop-min) {}
     }
 }
