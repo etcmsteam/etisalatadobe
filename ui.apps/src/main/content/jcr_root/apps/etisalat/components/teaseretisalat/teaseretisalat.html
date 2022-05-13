@@ -35,10 +35,7 @@
   <div class="cmp-teaser__content">
     <sly data-sly-call="${pretitleTemplate.pretitle @ teaser=teaser}"></sly>
     <sly data-sly-call="${titleTemplate.title @ teaser=teaser}"></sly>
-    <sly data-sly-test="${!properties.enableToolTip}" data-sly-call="${descriptionTemplate.description @ teaser=teaser}"></sly>
-	<sly data-sly-test="${properties.enableToolTip}" data-sly-use.toolTipdescriptionTemplate="tooltipdescription.html" 
-	     data-sly-call="${toolTipdescriptionTemplate.description @ properties=properties}">
-    </sly>
+    <div class="truncate-tooltip__description" data-sly-call="${descriptionTemplate.description @ teaser=teaser}"></div>
     <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" data-sly-call="${actionsTemplate.actions @ teaser=teaser}"></sly>
 	<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
          data-sly-use.modalTemplate="modalpopup.html"
