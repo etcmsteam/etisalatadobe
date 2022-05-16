@@ -36,6 +36,33 @@
                             </div>
                         </div>
 
+                        <div data-sly-test="${!properties.ctatextLearnMore}" class="third-action-wrapper">
+							<sly data-sly-test="${properties.featuresLinkBehavior != 'openmodalwindow'}">
+                                <sly data-sly-test.ctaLink="${properties.ctaLink}" 
+                                   data-sly-use.ctaCallToActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=ctaLink}"/>
+                                <a href="${ctaCallToActionLink.link}" target="${properties.featuresLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.ctaText}" class="${properties.ctaStyle}">
+                                    ${properties.ctaText}
+                                </a>
+							</sly>
+							<sly data-sly-test="${properties.featuresLinkBehavior == 'openmodalwindow'}" 
+                                 data-sly-set.ctaTitle="${properties.ctaText}"
+								 data-sly-set.modalBehavior="${properties.modalBehavior}" 
+								 data-sly-set.ctaStyle="${properties.ctaStyle}"
+                                 data-sly-use.modalTemplate="modalpopup.html"
+                                 data-sly-call="${modalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode,ctaTitle=ctaTitle,modalBehavior=modalBehavior,ctaStyle=ctaStyle}">
+                            </sly>
+                        </div>
+                    </div>
+
+                    <div data-sly-test="${properties.ctatextLearnMore}" class="price-and-action link-n-btn">
+                        <div class="media-cta-4-price">
+							<sly data-sly-test.learMoreLink="${properties.learnMoreCtaLink}" 
+                                   data-sly-use.learnMoreActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=learMoreLink}"/>
+                            <a href="${learnMoreActionLink.link}" target="${properties.featuresLearnMoreLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyleLearnMore}">
+                                 ${properties.ctatextLearnMore}
+                             </a>
+                        </div>
+
                         <div class="third-action-wrapper">
 							<sly data-sly-test="${properties.featuresLinkBehavior != 'openmodalwindow'}">
                                 <sly data-sly-test.ctaLink="${properties.ctaLink}" 
