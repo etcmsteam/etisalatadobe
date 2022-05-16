@@ -483,6 +483,7 @@
       position: relative;
       top: 0;
       left: 0;
+      right: 0;
       z-index: 1;
       img {
         width: 100%;
@@ -706,6 +707,15 @@
   .container {
     width: 100%;
   }
+  &.promo-grid-wrapper--expo {
+    .col-md-3 {
+      flex: 0 0 auto !important;
+      width: 25% !important;
+    }
+    .container {
+      @include expo-container();
+    }
+  }
 }
 
 .modal-overlay {
@@ -713,6 +723,117 @@
     background-color: $overlay-background;
     display: block;
     z-index: 1061;
+  }
+}
+
+.promo-expo-popup {
+  &.nv-modal {
+    padding: 0px !important;
+    top: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    .modal-content {
+      min-height: toRam(685);
+      box-shadow: none;
+      border: 0;
+      @include respond-to-max($tablet) {
+        min-height: toRem(485);
+      }
+      .modal-header {
+        padding: 2.75rem 0;
+        border-bottom: 1px solid $light-sand-brown;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2.75rem;
+        position: relative;
+        @include respond-to-max($tablet) {
+          padding: toRem(30);
+          margin-bottom: 1.75rem;
+          h3 {
+            &.modal-title {
+              font-size: 1rem;
+              line-height: 1.5rem;
+            }
+          }
+        }
+        h3 {
+          margin: 0;
+          font-size: 1.5rem;
+          line-height: 2rem;
+          color: $almost-black;
+        }
+
+        .close {
+          content: "";
+          width: 2.2rem;
+          height: 2.2rem;
+          display: block;
+          background-size: 1.5rem;
+          right: 0%;
+          top: 37%;
+          position: absolute;
+          margin-right: 0.75rem;
+          background-color: transparent;
+          border: 0;
+          svg {
+            width: 100%;
+            height: 100%;
+          }
+          @include respond-to-max($tablet) {
+            width: 1.8rem;
+            height: 1.8rem;
+          }
+        }
+      }
+      .modal-body {
+        .pop-up-content {
+          .container {
+            @include expo-container();
+            .container-fluid {
+              padding: 0 toRem(12);
+            }
+          }
+          .main-text-wst3 {
+            display: flex;
+            align-items: center;
+            .main-text-expo-icon {
+              text-align: center;
+            }
+            p {
+              color: $gray-fill;
+              font-size: 0.875rem;
+              line-height: 24px;
+              margin: 0;
+            }
+          }
+          .ul-list-expo {
+            ul,
+            ol {
+              margin-left: 17px;
+              padding-bottom: 1rem;
+              margin-bottom: 0;
+
+              li {
+                list-style: disc;
+                color: $gray-fill;
+                font-size: 0.875rem;
+                line-height: 24px;
+                margin-bottom: 0.3rem;
+                padding-bottom: 0.3rem;
+              }
+            }
+            ol li {
+              list-style: decimal;
+            }
+          }
+        }
+        @include respond-to-max($tablet) {
+          padding: toReam(5);
+        }
+      }
+    }
   }
 }
 
@@ -727,6 +848,21 @@
       .col-md-3 {
         padding-left: 12px;
         padding-right: 8px;
+      }
+    }
+    .promo-expo-popup {
+      &.nv-modal {
+        .modal-content {
+          .modal-header {
+            .close {
+              right: auto;
+              top: 37%;
+              margin-left: 0;
+              margin-right: 0;
+              left: 0;
+            }
+          }
+        }
       }
     }
   }
