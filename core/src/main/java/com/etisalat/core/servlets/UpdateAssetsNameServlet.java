@@ -1,5 +1,8 @@
 package com.etisalat.core.servlets;
 
+import com.day.cq.replication.ReplicationActionType;
+import com.day.cq.replication.ReplicationException;
+import com.day.cq.replication.Replicator;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -7,6 +10,7 @@ import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +22,6 @@ import javax.jcr.version.VersionException;
 import javax.servlet.Servlet;
 import java.io.*;
 import java.util.Iterator;
-import java.util.concurrent.Executors;
 
 @Component(service = { Servlet.class })
 @SlingServletResourceTypes(resourceTypes = "etisalat/components/page",
@@ -29,6 +32,9 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(UpdateAssetsNameServlet.class);
     static StringBuffer logs = new StringBuffer();
+
+    @Reference
+    Replicator replicator;
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
@@ -64,7 +70,7 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
             }
             writeLogs(logFileLocation, logs.toString(), session);
             response.getWriter().write("</br>********************************Update Completed******************************");
-        } catch (RepositoryException e) {
+        } catch (RepositoryException | ReplicationException e) {
             try {
                 writeLogs(logFileLocation, logs.toString(), session);
             } catch (RepositoryException repositoryException) {
@@ -74,7 +80,7 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
         }
     }
 
-    private static void UpdateFolderAssets(Session session, Node parentNode, Workspace wsp, Node rootNode, SlingHttpServletResponse response) throws RepositoryException, IOException {
+    private void UpdateFolderAssets(Session session, Node parentNode, Workspace wsp, Node rootNode, SlingHttpServletResponse response) throws RepositoryException, IOException, ReplicationException {
         if (parentNode.hasNodes()) {
             Iterator<Node> ite = parentNode.getNodes();
             while (ite.hasNext()) {
@@ -82,6 +88,9 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
                 String assetOldName = childNode.getName();
                 String assetOldPath = childNode.getPath();
                 if (childNode.getPrimaryNodeType().getName().equalsIgnoreCase("dam:Asset") && (assetOldName.contains(" ") || assetOldName.contains("(") || assetOldName.contains(")") || assetOldName.contains(",") || assetOldName.contains("&"))) {
+                    if(rootNode.hasNode(assetOldPath.substring(1))){
+                        replicator.replicate(session, ReplicationActionType.DEACTIVATE,assetOldPath);
+                    }
                     String assetPath = childNode.getParent().getPath()+"/";
                     String updatedAssetName = assetOldName.replaceAll(" ","-").replaceAll("\\(","-").replaceAll("\\)","-").replaceAll(",","-").replaceAll("&","-");
                     moveAndUpdateAssetsName(assetOldPath, assetPath+updatedAssetName, wsp);
@@ -97,10 +106,13 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
             }
         }
     }
-    private static void UpdateAssets(Session session, Node assetNode, Workspace wsp, Node rootNode, SlingHttpServletResponse response) throws RepositoryException, IOException {
+    private void UpdateAssets(Session session, Node assetNode, Workspace wsp, Node rootNode, SlingHttpServletResponse response) throws RepositoryException, IOException, ReplicationException {
         String assetOldName = assetNode.getName();
         String assetOldPath = assetNode.getPath();
         if (assetNode.getPrimaryNodeType().getName().equalsIgnoreCase("dam:Asset") && (assetOldName.contains(" ") || assetOldName.contains("(") || assetOldName.contains(")") || assetOldName.contains(",") || assetOldName.contains("&"))) {
+            if(rootNode.hasNode(assetOldPath.substring(1))){
+                replicator.replicate(session, ReplicationActionType.DEACTIVATE,assetOldPath);
+            }
             String assetPath = assetNode.getParent().getPath()+"/";
             String updatedAssetName = assetOldName.replaceAll(" ","-").replaceAll("\\(","-").replaceAll("\\)","-").replaceAll(",","-").replaceAll("&","-");;
             moveAndUpdateAssetsName(assetOldPath, assetPath+updatedAssetName, wsp);
@@ -111,7 +123,7 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
         }
 
     }
-    public static void moveAndUpdateAssetsName(String sourcePath, String destinationPath, Workspace wsp) {
+    public void moveAndUpdateAssetsName(String sourcePath, String destinationPath, Workspace wsp) {
 
         try {
             wsp.move(sourcePath, destinationPath);
@@ -132,7 +144,7 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
         }
     }
 
-    public static void writeLogs(String logFileLocation, String logs, Session session) throws IOException, RepositoryException {
+    public void writeLogs(String logFileLocation, String logs, Session session) throws IOException, RepositoryException {
         InputStream inputStream = new ByteArrayInputStream(logs.getBytes());
         Binary binary = session.getValueFactory().createBinary(inputStream);
         session.getNode(logFileLocation).setProperty("jcr:data", binary);
