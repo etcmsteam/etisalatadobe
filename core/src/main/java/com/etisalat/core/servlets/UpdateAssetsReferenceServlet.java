@@ -18,7 +18,6 @@ import javax.jcr.Session;
 import javax.servlet.Servlet;
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.Executors;
 
 @Component(service = { Servlet.class })
 @SlingServletResourceTypes(resourceTypes = "etisalat/components/page",
@@ -106,8 +105,8 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
                 String childNodePath = childNode.getPath();
                 if (childNode.hasProperty("fileReference")) {
                     String fileReferenceVal = childNode.getProperty("fileReference").getString();
-                    if (fileReferenceVal.contains(" ") || fileReferenceVal.contains("(") || fileReferenceVal.contains(")") || fileReferenceVal.contains(",") || fileReferenceVal.contains("&")) {
-                        String updatedReferenceVal = fileReferenceVal.replaceAll(" ", "-").replaceAll("\\(", "-").replaceAll("\\)", "-").replaceAll("&", "-");
+                    if (fileReferenceVal.contains(" ") || fileReferenceVal.contains("(") || fileReferenceVal.contains(")") || fileReferenceVal.contains(",") || fileReferenceVal.contains("&") || fileReferenceVal.contains("%20") || fileReferenceVal.contains("%26")) {
+                        String updatedReferenceVal = fileReferenceVal.replaceAll(" ", "-").replaceAll("\\(", "-").replaceAll("\\)", "-").replaceAll("&", "-").replaceAll("%20","-").replaceAll("%26","-");
                         childNode.setProperty("fileReference", updatedReferenceVal);
                         session.save();
                         LOG.info(childNode.getPath() + "     " + fileReferenceVal + "     " + updatedReferenceVal + "     " + "fileReference");
