@@ -36,8 +36,6 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
     var selected = [];
     var hash;
 
-    $(".deeplink-tabs").closest(".tabs").addClass("recommended-plan-tabs");
-
     if (window.location.href.indexOf("#") > 0) {
       hash = window.location.href.substring(window.location.href.indexOf("#"));
     }
