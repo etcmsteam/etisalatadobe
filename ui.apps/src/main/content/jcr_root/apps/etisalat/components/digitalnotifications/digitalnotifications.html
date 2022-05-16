@@ -45,11 +45,13 @@
                <div data-sly-test="${properties.displayDigitalBehavior && properties.displayDigitalBehavior == 'learnmore'}" class="more-notifications">
 		            <sly data-sly-test="${properties.title}" data-sly-use.notificationTemplate="modalpopup.html"
 				             data-sly-call="${notificationTemplate.notificationLink @ component=component,properties=properties}"/>
-		         </div>
-					<a data-sly-test="${properties.actionsEnabled && properties.notificationCTATitle && notification.notificationCTALink}"
-						href="${notification.notificationCTALink}"
-						class="btn btn-green ripple-effect">${properties.notificationCTATitle}</a>
-				</div>
+		       </div>
+	           <div class="third-action-wrapper action-link" data-sly-unwrap="${properties.ctaStyle == 'link' ? false : true}">
+				<a data-sly-test="${properties.actionsEnabled && properties.notificationCTATitle && notification.notificationCTALink}"
+					href="${notification.notificationCTALink}"
+					class="${properties.ctaStyle}">${properties.notificationCTATitle}</a>
+			   </div>
+		     </div>
          </div>
       </div>
    </div>
