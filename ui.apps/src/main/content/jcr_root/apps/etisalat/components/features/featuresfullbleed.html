@@ -1,5 +1,5 @@
 <template data-sly-template.featuresFullBleed="${ @ properties,imageViewportModel}">
-    <div data-component="cmp-features" class="features-full-bleed-4-0 variation-price">
+    <div data-component="cmp-features" class="features-full-bleed-4-0 variation-price ${properties.featuresFullBleedAlignment} ${properties.featuresFullBleedTextColor}">
         <div class="container">
             <div class="feature-wrapper">
                 <div class="img-wrap" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
@@ -24,14 +24,14 @@
                     </div>
 
                     <div class="price-and-action">
-                        <div class="media-cta-4-price ${properties.priceColor}">
+                        <div class="media-cta-4-price">
                             <div data-sly-test="${properties.productPriceLabel}" class="from">${properties.productPriceLabel}</div>
-                            <div data-sly-test="${properties.productPrice}" class="price">
+                            <div data-sly-test="${properties.productPrice}" class="price ${properties.priceColor}">
                                 <div class="value">${properties.productPrice}</div>
-                                <div class="aed">${properties.productCurrency}</div>
+                                <div class="aed ${properties.priceColor}">${properties.productCurrency}</div>
                             </div>
                             <div data-sly-test="${properties.productOldPrice || properties.vatInclude}" class="vat-wrap">
-                                <div class="old-price">${properties.productOldPriceText} <span class="old-price-value">${properties.productOldPrice}</span></div>
+                                <div class="old-price ${properties.priceColor}">${properties.productOldPriceText} <span class="old-price-value">${properties.productOldPrice}</span></div>
                                 <div class="vat">${properties.vatInclude}</div>
                             </div>
                         </div>
