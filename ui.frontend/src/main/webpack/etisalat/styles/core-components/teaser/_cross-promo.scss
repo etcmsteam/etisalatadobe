@@ -324,17 +324,18 @@
   &.button--primary,
   &.button--orange {
     .cmp-teaser__action-container {
+      width: 280px;
+      min-width: 280px;
+
       @include respond-to-min($desktop) {
         height: toRem(50);
         margin-top: toRem(-25);
         top: 50%;
-        width: 280px;
       }
 
       @include respond-to-max($desktop) {
         position: relative;
         right: 0;
-        width: 100%;
       }
 
       @media only screen and (orientation: landscape) {
@@ -342,8 +343,11 @@
           position: absolute;
           right: 40px;
           top: 40px;
-          width: 280px;
         }
+      }
+
+      @include respond-to-max($tablet-min) {
+        width: 100%;
       }
     }
   }
@@ -896,9 +900,15 @@ $grid-spacing: 12px;
     }
   }
 
-  @include respond-to-max($tablet) {
-    .cross-promotion-plain {
+  .cross-promotion-plain {
+    @include respond-to-max($tablet) {
       padding: 0;
+    }
+
+    @include respond-to-max($desktop-min) {
+      &.aem-GridColumn {
+        padding: $grid-spacing 0 0;
+      }
     }
   }
   .#{$prefix}--purpal-bg {
