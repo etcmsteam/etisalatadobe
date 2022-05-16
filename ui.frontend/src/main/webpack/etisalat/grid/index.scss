@@ -88,3 +88,26 @@ $grid-spacing: 12px;
   padding-right: 12px !important;
   padding-left: 12px !important;
 }
+
+.container-grid-spacing .aem-Grid {
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to-min($desktop) {
+    flex-direction: row;
+  }
+
+  // if this class is applied on aem-grid container then we need to override following
+  &::after,
+  &::before {
+    content: none;
+  }
+}
+
+.container-grid-spacing__space-24 .aem-Grid {
+  gap: 8px;
+
+  @include respond-to-min($desktop) {
+    gap: 24px;
+  }
+}
