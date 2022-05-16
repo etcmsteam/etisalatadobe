@@ -162,19 +162,20 @@
   }
 
   &.cmp-tabs-align-center {
-    @include respond-to-max(991px) {
-      .config-section-wrap {
-        .justify-content-md-center {
-          justify-content: center;
-        }
+    @include respond-to-min(768px) {
+      .cmp_tabs-swipper .page-nav {
+        justify-content: center;
       }
     }
 
-    @include respond-to-max(768px) {
+    @include respond-to-max(992px) {
       .cmp_tabs-swipper .page-nav .swiper-slide,
       .cmp_tabs-swipper .page-nav li {
         align-items: center;
+        margin-right: 0;
+        min-height: unset;
         padding-bottom: 0 !important;
+        width: auto !important;
       }
     }
   }
