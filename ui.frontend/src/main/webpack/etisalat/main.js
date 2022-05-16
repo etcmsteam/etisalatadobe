@@ -24,6 +24,7 @@ import { SMS_BLOG_SHARE_LINK_MODULE } from "./js/custom-components/smb-blog-shar
 import { IMAGE_WITH_NEW_SVG_MODULE } from "./js/custom-components/svg.js";
 import { TECH_SUPPORT_MODULE } from "./js/custom-components/tech-support.js";
 import { TILES_SWIPER_MODULE } from "./js/custom-components/tiles_swiper.js";
+import { TRUNCATE } from "./js/custom-components/truncate.js";
 import { LOGIN_INIT } from "./js/custom-components/login";
 
 const ERROR_BOUNDARY = (fun) => {
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     TECH_SUPPORT_MODULE,
     TILES_SWIPER_MODULE,
     IMAGE_WITH_NEW_SVG_MODULE,
+    TRUNCATE,
     LOGIN_INIT,
   ].forEach(ERROR_BOUNDARY);
 

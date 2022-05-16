@@ -1,0 +1,238 @@
+/* stylelint-disable*/
+// steps line and circles with default, active and completed state
+.steps-status-wrapper {
+    .step {
+        position: relative;
+        .step-circle {
+            // default line
+            &:after {
+                content: '';
+                width: 2px;
+                display: flex;
+                background: #cad3ca;
+
+                margin-left: 10px;
+                height: calc(100% - 20px);
+                margin-top: 12px;
+                
+                @include respond-to-min($desktop) {
+                   
+                    height: 2px;
+                    position: absolute;
+                    top: 10px;
+                    left: 50%;
+                    width: calc(100% - 50px);
+                    margin-top: 0;
+                    margin-left: 12px;
+                }
+            }
+            // default circle step
+            .step-number {
+                background-color: $white;
+                border-radius: 50%;
+                border: 1px solid $white;
+                color: $steel-grey;
+                font-size: 14px;
+                height: 22px;
+                margin: 0 auto;
+                position: relative;
+                width: 22px;
+                z-index: 1;
+                line-height: 1.5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    transform: scale(1.6);
+                    transition: all .25s cubic-bezier(.55,.06,.68,.19);
+                    box-shadow: none;
+                    border: 1px solid #cad3ca;
+                    background: $white;
+                    z-index: -1;
+                } 
+            }
+        }
+        // hide the line for last child
+        &:last-child {
+            .step-circle {
+                &:after {
+                    display: none !important;
+                }
+            }
+        }
+        // complete step line - green
+        &.completed {
+            .step-circle {
+                &:after {
+                    content: '';
+                    width: 2px;
+                    height: calc(100% - 20px);
+                    display: flex;
+                    background: $arrow-border-green;
+
+                    
+                    @include respond-to-min($desktop) {
+                        width: calc(100% - 50px);
+                        height: 2px;
+                    }
+                }
+            }
+        }
+        // completed and active step ( circle ) green
+        &.completed,
+        &.active {
+            .step-circle {
+                .step-number {
+                    border-color: $arrow-border-green;
+                    color: $white;
+                    width: 22px;
+                    background: $arrow-border-green;
+                    height: 22px;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        transform: scale(1.8);
+                        transition: all .25s cubic-bezier(.55,.06,.68,.19);
+                        border: 1px solid rgba(113,158,25,.6);
+                        opacity: .2;
+                        background-color: $arrow-border-green;
+                        box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+                        z-index: 2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//  title 
+.step-title h3 {
+    font-size: 16px;
+    line-height: 22px;
+    color: $cart-count-black;
+    margin: 0;
+    @include font-family-lato();
+    @include respond-to-min($desktop) {
+        font-size: 24px;
+        line-height: 32px;
+        @include font-family-Neotech-ge();
+    }
+}
+// description
+.step-description {
+    p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: $steel-grey;
+        @include respond-to-min($desktop) {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+}
+
+// benefit section as a module 
+.steps-status-wrapper {
+    > .container {
+        @include respond-to-max($tablet-min) {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+    }
+    .steps-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .step {
+        margin-bottom: 24px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @include respond-to-min($desktop) {
+            margin-bottom: 0;
+            padding-right: 24px;
+            flex-basis: 0;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            &:last-child {
+                margin-right: 0;
+                padding-right: 0;
+            }
+        }
+        @include respond-to-max($desktop-min) {
+            display: flex;
+            width: 100%;
+            .step-circle {
+                margin-right: 16px;
+            }
+        }
+        .step-circle {
+            @include respond-to-min($desktop) {
+                margin-bottom: 48px;
+            }
+        }
+        .step-title {
+            margin-bottom: 8px;
+            @include respond-to-min($desktop) {
+                margin-bottom: 16px;
+                text-align: center;
+            }
+        }
+        .step-description {
+            p+p {
+                margin-top: 16px !important;
+            }
+            @include respond-to-min($desktop) {
+                text-align: center;
+            }
+        }
+    }
+    
+}
+
+
+*[lang="ar"] *[dir="rtl"] {
+
+    @include respond-to-min($desktop) {
+        .steps-status-wrapper .step {
+            padding-right: 0;
+            padding-left: 24px;
+        }
+
+        .steps-status-wrapper .step .step-circle:after {
+            right: 50%;
+            left: auto;
+            margin-left: auto;
+            margin-right: 12px;
+        }
+    }
+    @include respond-to-max($desktop-min) {
+        .step-title h2{
+            text-align: right !important;
+        }
+        .steps-status-wrapper .step .step-circle {
+            margin-right: 0;
+            margin-left: 16px;
+        }
+
+        .steps-status-wrapper .step .step-circle:after {
+            margin-right: 10px;
+        }
+    }
+  }
+
+
