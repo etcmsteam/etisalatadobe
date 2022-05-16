@@ -1,3 +1,4 @@
+import "./index.scss";
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
 /* eslint-disable*/
