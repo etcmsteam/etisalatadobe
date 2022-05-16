@@ -399,4 +399,23 @@ export const CUSTOMER_TABLE = () => {
     $(`input[name= "${groupName}" ]`).removeClass("radio-active");
     $(`input[data-filter = "${filter}" ]`).addClass("radio-active");
   });
+
+  // table heading
+  const CMP_TEXT_CUSTOM_TABLE_CLASS = $(".charges-custom-table .cmp-text:not(.specification-with-striped) table");
+
+  CMP_TEXT_CUSTOM_TABLE_CLASS.each(function (index, element) {
+    if ($(element).find("thead").length === 0) {
+      const APPEND_THEAD = $("<thead></thead>");
+      const APPEND_TR = $("<tr></tr>");
+      let FIRST_TR = $("tr:first", this);
+
+      $("td", FIRST_TR).each(function (i, e) {
+        APPEND_TR.append($("<th>").html(e.textContent).get(0));
+      });
+
+      APPEND_THEAD.html(APPEND_TR);
+      APPEND_THEAD.prependTo(element);
+      FIRST_TR.remove();
+    }
+  });
 };
