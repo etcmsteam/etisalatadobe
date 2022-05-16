@@ -27,92 +27,150 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <tiletitle
+                                            <columns
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Add Crosspromo Title"
-                                                fieldLabel="Title"
-                                                name="./tiletitle"/>
-											<ctaStyle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/include"
-                                                path="etisalat/components/commons/cta-variations/ctaStyle"/>
-                                            <crosspromoctatitle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Enter Crosspromo CTA Title"
-                                                fieldLabel="Crosspromo CTA Title"
-                                                name="./crossPromoCTATitle"/>
-                                            <tileLinkBehavior
-                                                granite:class="cq-dialog-dropdown-showhide"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="Select Tile Link Behavior"
-                                                fieldLabel="Tile Link Behavior"
-                                                name="./tileLinkBehavior">
+                                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                                margin="{Boolean}true">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <opennewwindow
+                                                    <column
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Open In New Window"
-                                                        value="opennewwindow"/>
-                                                    <opensamewindow
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Open in Same Window"
-                                                        value="opensamewindow"/>
-                                                    <linkmodalpopup
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Open CTA Link in Modal window"
-                                                        value="openmodalwindow"/>
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <crosspromovariation
+                                                                granite:class="cq-dialog-dropdown-showhide"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldLabel="Select Cross Promo Tile Variation"
+                                                                name="./crosspromoplanVariation">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <default
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Default"
+                                                                        value="default"/>
+                                                                    <crosspromoplans
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Cross Promo Plans"
+                                                                        value="crosspromoplans"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    cq-dialog-dropdown-showhide-target=".crosspromo-showhide-target"/>
+                                                            </crosspromovariation>
+                                                            <tiletitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Add Crosspromo Title"
+                                                                fieldLabel="Title"
+                                                                name="./tiletitle"/>
+                                                            <crosspromoplandetails
+                                                                granite:class="crosspromo-showhide-target"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <crosspromoplansPretitle
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Pre Text that will appear for the Cross Promo Plan Variation"
+                                                                        fieldLabel="PreTitle"
+                                                                        maxlength="{Long}100"
+                                                                        name="./crosspromoplansPretitle"/>
+                                                                    <crosspromoplansDescription
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                                        fieldDescription="Description that will appear for the Cross Promo Plan Variation."
+                                                                        fieldLabel="Cross Promo Plan Description"
+                                                                        name="./crosspromoplanDescription"
+                                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    showhidetargetvalue="crosspromoplans"/>
+                                                            </crosspromoplandetails>
+                                                            <crosspromoctatitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Enter Crosspromo CTA Title"
+                                                                fieldLabel="Crosspromo CTA Title"
+                                                                name="./crossPromoCTATitle"/>
+                                                            <tilelinkwindow
+                                                                granite:class="linkbehavior-showhide-target"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <crosspromoctalink
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldDescription="Enter Crosspromo CTA Link."
+                                                                        fieldLabel="Crosspromo CTA Link"
+                                                                        name="./crossPromoLinkURL"
+                                                                        rootPath="/content"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    showhidetargetvalue="opensamewindow"
+                                                                    showhidetargetvalue1="opennewwindow"/>
+                                                            </tilelinkwindow>
+                                                            <tileLinkBehavior
+                                                                granite:class="cq-dialog-dropdown-showhide"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Tile Link Behavior"
+                                                                fieldLabel="Tile Link Behavior"
+                                                                name="./tileLinkBehavior">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <opennewwindow
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open In New Window"
+                                                                        value="opennewwindow"/>
+                                                                    <opensamewindow
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open in Same Window"
+                                                                        value="opensamewindow"/>
+                                                                    <linkmodalpopup
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open CTA Link in Modal window"
+                                                                        value="openmodalwindow"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
+                                                            </tileLinkBehavior>
+                                                            <fragmentlink
+                                                                granite:class="linkbehavior-showhide-target"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <fragmentVariationPath
+                                                                        granite:id="xfPicker"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="cq/experience-fragments/editor/components/xffield"
+                                                                        fieldDescription="Choose the experience fragment variation to display."
+                                                                        fieldLabel="Experience Fragment Variation Path"
+                                                                        filter="folderOrVariant"
+                                                                        name="./fragmentVariationPath"
+                                                                        propertyFilter="cq:xfShowInEditor"
+                                                                        variant="web"/>
+                                                                    <modalBehavior
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceSuperType="etisalat/components/commons/modal-popup-variations/modalBehavior"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                        fieldDescription="Select Popup Behavior"
+                                                                        fieldLabel="Popup Behavior"
+                                                                        name="./modalBehavior"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    showhidetargetvalue="openmodalwindow"/>
+                                                            </fragmentlink>
+                                                            <ctaStyle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                path="etisalat/components/commons/cta-variations/ctaStyle"/>
+                                                        </items>
+                                                    </column>
                                                 </items>
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    cq-dialog-dropdown-showhide-target=".linkbehavior-showhide-target"/>
-                                            </tileLinkBehavior>
-                                            <fragmentlink
-                                                granite:class="linkbehavior-showhide-target"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <fragmentVariationPath
-                                                        granite:id="xfPicker"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="cq/experience-fragments/editor/components/xffield"
-                                                        fieldDescription="Choose the experience fragment variation to display."
-                                                        fieldLabel="Experience Fragment Variation Path"
-                                                        filter="folderOrVariant"
-                                                        name="./fragmentVariationPath"
-                                                        propertyFilter="cq:xfShowInEditor"
-                                                        variant="web"/>
-                                                    <modalBehavior
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceSuperType="etisalat/components/commons/modal-popup-variations/modalBehavior"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Popup Behavior"
-                                                        fieldLabel="Popup Behavior"
-                                                        name="./modalBehavior"/>
-                                                </items>
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    showhidetargetvalue="openmodalwindow"/>
-                                            </fragmentlink>
-                                            <tilelinkwindow
-                                                granite:class="linkbehavior-showhide-target"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <crosspromoctalink
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Enter Crosspromo CTA Link."
-                                                        fieldLabel="Crosspromo CTA Link"
-                                                        name="./crossPromoLinkURL"
-                                                        rootPath="/content"/>
-                                                </items>
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    showhidetargetvalue="opensamewindow"
-                                                    showhidetargetvalue1="opennewwindow"/>
-                                            </tilelinkwindow>
+                                            </columns>
                                         </items>
                                     </column>
                                 </items>
