@@ -1,5 +1,7 @@
 <sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"  
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
+     data-sly-use.tileModel="com.etisalat.core.models.TileModel"
      data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">        
 	<div class="promo-grid-tile-4-0 expo-tile expo-tile__${properties.expoPromoTilevariation} promo-grid-popup bg-overlay-promo bg-lighter-filler">
 	  <div class="cover">
@@ -9,13 +11,20 @@
 	    <a data-sly-test="${properties.expoPromoCTATitle}" class="btn-text learn-more hidden-xs">
 	      <span>${properties.expoPromoCTATitle}</span>
 	    </a>
-	    <h1>${properties.expoPromoTitle}</h1>
+	    <h1 data-sly-element="${properties.titleType}">${properties.expoPromoTitle}</h1>
 	  </div>
-	  <div class="grid-content-back darkBg">		  
-		    <a class="btn-text learn-more hidden-xs">
+	  <div class="grid-content-back darkBg">		       
+	       <a data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && tileModel.tileCTALinkSameWindow}" 
+	           href="${tileModel.tileCTALinkSameWindow}" class="link-cover" 
+	           target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
+	        <a data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}" class="link-cover btn-modal" data-label="${component.id}"></a>	       	       	
+	            			               
+		    <a data-sly-test="${properties.ctatext}" class="btn-text learn-more hidden-xs">
 		      <span>${properties.ctatext}</span>
 		    </a> ${properties.text @ context='html'}		  
 	  </div>
+	  <sly data-sly-use.expoPromoTemplate="modalpopup.html"
+			    data-sly-call="${expoPromoTemplate.expoPromoModal @ component=component,properties=properties}"/>
 	</div>
 </sly>
 <sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !viewports}"></sly>
