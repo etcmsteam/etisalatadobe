@@ -4,7 +4,7 @@
       class="">
 	 <div class="nv-modal-header">
 	    <h3 class="nv-modal-title" data-sly-element="${properties.titleType}"> ${properties.title}</h3>
-		<sly data-sly-use.closebuttonTemplate="/apps/etisalat/components/button/closebutton.html"
+		<sly data-sly-test="${wcmmode.preview || wcmmode.disabled}" data-sly-use.closebuttonTemplate="/apps/etisalat/components/button/closebutton.html"
 			data-sly-call="${closebuttonTemplate.close}">
 		</sly>
 	  </div>
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 
-				<sly data-sly-list="${container.items}">
+				<sly data-sly-test="${!wcmmode.edit}" data-sly-list="${container.items}">
 				  <sly data-sly-set.containerPath="${'{0}/{1}' @ format=[resource.path, item.name]}" data-sly-use.cmpItem="${containerPath}" />
 				     <div data-sly-test="${cmpItem.sling:resourceType == 'etisalat/components/teaseretisalat'}"  class="container-fluid p-0">
 				        <div class="crosspromo-wrapper">
@@ -46,6 +46,8 @@
 				     </div>
 				      <sly data-sly-test="${cmpItem.sling:resourceType == 'etisalat/components/spacer'}" data-sly-resource="${item.name  @ decorationTagName=''}"></sly>
 				</sly>
+				
+				<div data-sly-test="${wcmmode.edit}" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></div>
 
 			</div>
 	    </div>
