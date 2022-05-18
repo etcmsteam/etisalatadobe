@@ -1,8 +1,6 @@
 package com.etisalat.core.servlets;
 
-import com.day.cq.replication.ReplicationActionType;
 import com.day.cq.replication.ReplicationException;
-import com.day.cq.replication.Replicator;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -10,7 +8,6 @@ import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,8 +30,6 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
     private static final Logger LOG = LoggerFactory.getLogger(UpdateAssetsNameServlet.class);
     static StringBuffer logs = new StringBuffer();
 
-    @Reference
-    Replicator replicator;
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
@@ -88,9 +83,6 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
                 String assetOldName = childNode.getName();
                 String assetOldPath = childNode.getPath();
                 if (childNode.getPrimaryNodeType().getName().equalsIgnoreCase("dam:Asset") && (assetOldName.contains(" ") || assetOldName.contains("(") || assetOldName.contains(")") || assetOldName.contains(",") || assetOldName.contains("&"))) {
-                    if(rootNode.hasNode(assetOldPath.substring(1))){
-                        replicator.replicate(session, ReplicationActionType.DEACTIVATE,assetOldPath);
-                    }
                     String assetPath = childNode.getParent().getPath()+"/";
                     String updatedAssetName = assetOldName.replaceAll(" ","-").replaceAll("\\(","-").replaceAll("\\)","-").replaceAll(",","-").replaceAll("&","-");
                     moveAndUpdateAssetsName(assetOldPath, assetPath+updatedAssetName, wsp);
@@ -110,9 +102,6 @@ public class UpdateAssetsNameServlet extends SlingSafeMethodsServlet {
         String assetOldName = assetNode.getName();
         String assetOldPath = assetNode.getPath();
         if (assetNode.getPrimaryNodeType().getName().equalsIgnoreCase("dam:Asset") && (assetOldName.contains(" ") || assetOldName.contains("(") || assetOldName.contains(")") || assetOldName.contains(",") || assetOldName.contains("&"))) {
-            if(rootNode.hasNode(assetOldPath.substring(1))){
-                replicator.replicate(session, ReplicationActionType.DEACTIVATE,assetOldPath);
-            }
             String assetPath = assetNode.getParent().getPath()+"/";
             String updatedAssetName = assetOldName.replaceAll(" ","-").replaceAll("\\(","-").replaceAll("\\)","-").replaceAll(",","-").replaceAll("&","-");;
             moveAndUpdateAssetsName(assetOldPath, assetPath+updatedAssetName, wsp);
