@@ -733,14 +733,20 @@
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
 
-    .modal-content {
+    .nv-modal-content {
       min-height: toRam(685);
       box-shadow: none;
       border: 0;
       @include respond-to-max($tablet) {
         min-height: toRem(485);
       }
-      .modal-header {
+      .container {
+        @include expo-container();
+        .container-fluid {
+          padding: 0 toRem(12);
+        }
+      }
+      .nv-modal-header {
         padding: 2.75rem 0;
         border-bottom: 1px solid $light-sand-brown;
         display: flex;
@@ -748,16 +754,7 @@
         justify-content: center;
         margin-bottom: 2.75rem;
         position: relative;
-        @include respond-to-max($tablet) {
-          padding: toRem(30);
-          margin-bottom: 1.75rem;
-          h3 {
-            &.modal-title {
-              font-size: 1rem;
-              line-height: 1.5rem;
-            }
-          }
-        }
+
         h3 {
           margin: 0;
           font-size: 1.5rem;
@@ -765,10 +762,10 @@
           color: $almost-black;
         }
 
-        .close {
+        .nv-modal-close {
           content: "";
-          width: 2.2rem;
-          height: 2.2rem;
+          width: 1.5rem;
+          height: 1.5rem;
           display: block;
           background-size: 1.5rem;
           right: 0%;
@@ -778,6 +775,7 @@
           background-color: transparent;
           border: 0;
           svg {
+            color: $almost-black;
             width: 100%;
             height: 100%;
           }
@@ -786,15 +784,17 @@
             height: 1.8rem;
           }
         }
-      }
-      .modal-body {
-        .pop-up-content {
-          .container {
-            @include expo-container();
-            .container-fluid {
-              padding: 0 toRem(12);
-            }
+        @include respond-to-max($tablet) {
+          padding: toRem(30);
+          margin-bottom: 1.75rem;
+          h3.nv-modal-title {
+            font-size: 1rem;
+            line-height: 1.5rem;
           }
+        }
+      }
+      .nv-modal-body {
+        .pop-up-content {
           .main-text-wst3 {
             display: flex;
             align-items: center;
@@ -854,7 +854,7 @@
       &.nv-modal {
         .modal-content {
           .modal-header {
-            .close {
+            .nv-modal-close {
               right: auto;
               top: 37%;
               margin-left: 0;

@@ -1,9 +1,12 @@
 <template data-sly-template.expoPopup="${ @ properties}">
- <div data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer" 
+ <div data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer"
       data-placeholder-text="${wcmmode.edit && 'Drag Expo Promo components here' @ i18n}"
       class="container">
 	 <div class="nv-modal-header">
 	    <h3 class="nv-modal-title" data-sly-element="${properties.titleType}"> ${properties.title}</h3>
+		<sly data-sly-use.closebuttonTemplate="/apps/etisalat/components/button/closebutton.html"
+			data-sly-call="${closebuttonTemplate.close}">
+		</sly>
 	  </div>
 	  <div class="nv-modal-body">
 	    <div class="pop-up-content">
@@ -16,8 +19,8 @@
 	                ${properties.mainText @ context = 'html'}
 	             </div>
 	          </div>
-	                       
-	          <div class="pt-30 main-text-expo" data-sly-use.featureObj="${resource.path}" data-sly-list.featureItems="${featureObj.listChildren}">             
+
+	          <div class="pt-30 main-text-expo" data-sly-use.featureObj="${resource.path}" data-sly-list.featureItems="${featureObj.listChildren}">
 	             <div data-sly-test="${featureItems.name == 'featureItems'}" data-sly-repeat.featureItem="${featureItems.listChildren}" class="row">
 	                <div class="col-xs-12 col-sm-4">
 	                   <h4 data-sly-test="${featureItem.featureTitle}">${featureItem.featureTitle}</h4>
@@ -29,14 +32,14 @@
 	                      </div>
 	                   </div>
 	                </div>
-	             </div>                                       
-	          </div>	          
-	          <sly data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=''}"></sly>	          			     
+	             </div>
+	          </div>
+	          <sly data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=''}"></sly>
 	        </div>
 	    </div>
-	    
+
 	     <sly data-sly-test="${wcmmode.edit}"
 	   data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
-	  </div>	  	
+	  </div>
   </div>
 </template>
