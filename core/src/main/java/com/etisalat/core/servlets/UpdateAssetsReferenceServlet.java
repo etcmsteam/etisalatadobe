@@ -106,7 +106,7 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
                 if (childNode.hasProperty("fileReference")) {
                     String fileReferenceVal = childNode.getProperty("fileReference").getString();
                     if (fileReferenceVal.contains(" ") || fileReferenceVal.contains("(") || fileReferenceVal.contains(")") || fileReferenceVal.contains(",") || fileReferenceVal.contains("&") || fileReferenceVal.contains("%20") || fileReferenceVal.contains("%26")) {
-                        String updatedReferenceVal = fileReferenceVal.replaceAll(" ", "-").replaceAll("\\(", "-").replaceAll("\\)", "-").replaceAll("&", "-").replaceAll("%20","-").replaceAll("%26","-");
+                        String updatedReferenceVal = fileReferenceVal.replaceAll(" ", "-").replaceAll("\\(", "-").replaceAll("\\)", "-").replaceAll("&", "-").replaceAll("%20","-").replaceAll("%26","-").replaceAll(",","-");
                         childNode.setProperty("fileReference", updatedReferenceVal);
                         session.save();
                         LOG.info(childNode.getPath() + "     " + fileReferenceVal + "     " + updatedReferenceVal + "     " + "fileReference");
