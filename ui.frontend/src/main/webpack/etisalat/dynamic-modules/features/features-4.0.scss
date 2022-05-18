@@ -577,7 +577,10 @@
                 padding: toRem(92) toRem(12);
                 min-height: 560px;
             }
-            .value{
+            // .paragraph-styling {
+            //     margin-bottom: 100px;
+            // }
+            .value {
                 font-size: toRem(40);
                 @include respond-to-min($desktop) {
                     font-size: toRem(50);
@@ -597,6 +600,7 @@
             }
         }
         .value {
+            @include font-family-Neotech;
             font-size: toRem(28);
             line-height: toRem(40);
             padding-right: toRem(8);
@@ -607,7 +611,7 @@
 
         .aed {
             line-height: toRem(15);
-            font-size: toRem(12);
+            font-size: toRem(14);
         }
         .vat-wrap {
             display: flex;
@@ -624,12 +628,11 @@
 
                 @include respond-to-min($desktop) {
                     margin-top: toRem(2);
-                    font-size: toRem(14);
                 }
             }
         }
         .price-and-action.link-n-btn {
-            margin-top: toRem(50);
+            margin-top: toRem(40);
             align-items: center;
         }
     }
@@ -673,6 +676,36 @@
             }
         }
         &.variation-price {
+            .wst-secondary-headings {
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        margin-bottom: toRem(8);
+                    }
+                }
+
+                .wst-main-headings {
+                    h1,
+                    h2,
+                    h3 {
+                        margin-bottom: toRem(16) !important;
+                        @include respond-to-min($desktop) {
+                            margin-bottom: toRem(10)  !important;
+                        }
+                    }
+
+                    h4,
+                    h5,
+                    h6 {
+                        margin-bottom: toRem(12);
+                        @include respond-to-min($desktop) {
+                            margin-bottom: toRem(16);
+                        }
+                    }
+                }
             ul {
                 display: flex;
                 flex-wrap: wrap;
@@ -685,13 +718,17 @@
                     }
                 }
             }
+            .media-cta-4-price {
+                .btn-text {
+                    color: $white;
+                    &:before {
+                        border: solid $white;
+                        border-width: 0 1px 1px 0;
+                    }
+                }
+            }
         }
 
-        .wst-secondary-headings {
-        h1,h2,h3,h4,h5 {
-            margin-bottom: toRem(8);
-        }
-    }
 
     .feature-wrapper {
         display: flex;
