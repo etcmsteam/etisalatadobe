@@ -708,10 +708,6 @@
     width: 100%;
   }
   &.promo-grid-wrapper--expo {
-    .col-md-3 {
-      flex: 0 0 auto !important;
-      width: 25% !important;
-    }
     .container {
       @include expo-container();
     }
@@ -735,7 +731,9 @@
 
     .nv-modal-content {
       min-height: toRam(685);
+      border-radius: 0;
       box-shadow: none;
+      padding: 0;
       border: 0;
       @include respond-to-max($tablet) {
         min-height: toRem(485);
@@ -763,29 +761,26 @@
         }
 
         .nv-modal-close {
-          content: "";
           width: 1.5rem;
           height: 1.5rem;
           display: block;
-          background-size: 1.5rem;
           right: 0%;
           top: 37%;
           position: absolute;
-          margin-right: 0.75rem;
-          background-color: transparent;
-          border: 0;
+          margin: 0 0.75rem 0 0;
           svg {
             color: $almost-black;
             width: 100%;
             height: 100%;
+            right: 0;
           }
           @include respond-to-max($tablet) {
-            width: 1.8rem;
-            height: 1.8rem;
+            width: 1rem;
+            height: 1rem;
           }
         }
         @include respond-to-max($tablet) {
-          padding: toRem(30);
+          padding: toRem(30) !important;
           margin-bottom: 1.75rem;
           h3.nv-modal-title {
             font-size: 1rem;
@@ -794,52 +789,69 @@
         }
       }
       .nv-modal-body {
+        padding: toRem(15) !important;
         .pop-up-content {
-          .main-text-wst3 {
-            display: flex;
-            align-items: center;
-            .main-text-expo-icon {
-              text-align: center;
-                @include respond-to-max($tablet) {
-                  margin-bottom: toRem(15);
-                }
-            }
+          .main-text-expo {
             p {
               color: $gray-fill;
               font-size: 0.875rem;
               line-height: 24px;
-              margin: 0;
-              strong {
+              margin: 0 0 toRem(12);
+              @include respond-to-max($tablet) {
+                margin: 0 0 toRem(24);
+              }
+              b {
                 font-size: 1rem;
                 @include respond-to-max($tablet) {
                   font-size: 0.875rem;
                 }
               }
             }
-          }
-          .ul-list-expo {
-            ul,
-            ol {
-              margin-left: 17px;
-              padding-bottom: 1rem;
-              margin-bottom: 0;
-
-              li {
-                list-style: disc;
-                color: $gray-fill;
-                font-size: 0.875rem;
-                line-height: 24px;
-                margin-bottom: 0.3rem;
-                padding-bottom: 0.3rem;
+            h4 {
+              font-size: 1.5rem;
+              @include respond-to-max($tablet) {
+                font-size: 1rem;
               }
             }
-            ol li {
-              list-style: decimal;
+            .ul-list-expo {
+              ul,
+              ol {
+                margin-left: 17px;
+                padding-bottom: 1rem;
+                margin-bottom: 0;
+
+                li {
+                  list-style: disc;
+                  color: $gray-fill;
+                  font-size: 0.875rem;
+                  line-height: 24px;
+                  margin-bottom: 0.3rem;
+                  padding-bottom: 0.3rem;
+                }
+              }
+              ol li {
+                list-style: decimal;
+              }
+            }
+          }
+          .main-text-wst3 {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            .main-text-expo-icon {
+              text-align: center;
+              @include respond-to-max($tablet) {
+                margin-bottom: toRem(15);
+              }
+            }
+            p {
+              margin: 0;
             }
           }
         }
+
         @include respond-to-max($tablet) {
-          padding: toReam(5);
+          padding: toRem(5) !important;
         }
       }
     }

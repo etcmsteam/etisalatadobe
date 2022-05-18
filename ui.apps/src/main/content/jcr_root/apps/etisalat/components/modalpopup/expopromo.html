@@ -1,7 +1,7 @@
 <template data-sly-template.expoPopup="${ @ properties}">
  <div data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer"
       data-placeholder-text="${wcmmode.edit && 'Drag Expo Promo components here' @ i18n}"
-      class="container">
+      class="">
 	 <div class="nv-modal-header">
 	    <h3 class="nv-modal-title" data-sly-element="${properties.titleType}"> ${properties.title}</h3>
 		<sly data-sly-use.closebuttonTemplate="/apps/etisalat/components/button/closebutton.html"
@@ -10,32 +10,34 @@
 	  </div>
 	  <div class="nv-modal-body">
 	    <div class="pop-up-content">
-	        <div class="container-fluid">
-	          <div data-sly-test="${properties.mainText || properties['maintext/fileReference']}" class="row pb30 main-text-wst3 main-text-expo">
-	             <div data-sly-test="${properties['maintext/fileReference']}" class="col-xs-12 col-sm-1 col-md-1 main-text-expo-icon">
-	                <img src="${properties['maintext/fileReference']}" alt="">
-	             </div>
-	             <div data-sly-test="${properties.mainText}" class="col-xs-12 col-sm-11 col-md-11">
-	                ${properties.mainText @ context = 'html'}
-	             </div>
-	          </div>
+			<div class="container-fluid">
+				<div class="container-fluid">
+					<div data-sly-test="${properties.mainText || properties['maintext/fileReference']}" class="row pb30 main-text-wst3 main-text-expo">
+						<div data-sly-test="${properties['maintext/fileReference']}" class="col-xs-12 col-sm-1 col-md-1 main-text-expo-icon">
+							<img src="${properties['maintext/fileReference']}" alt="">
+						</div>
+						<div data-sly-test="${properties.mainText}" class="col-xs-12 col-sm-11 col-md-11">
+							${properties.mainText @ context = 'html'}
+						</div>
+					</div>
 
-	          <div class="pt-30 main-text-expo" data-sly-use.featureObj="${resource.path}" data-sly-list.featureItems="${featureObj.listChildren}">
-	             <div data-sly-test="${featureItems.name == 'featureItems'}" data-sly-repeat.featureItem="${featureItems.listChildren}" class="row">
-	                <div class="col-xs-12 col-sm-4">
-	                   <h4 data-sly-test="${featureItem.featureTitle}">${featureItem.featureTitle}</h4>
-	                </div>
-	                <div class="col-xs-12 col-sm-8">
-	                   <div data-sly-test="${featureItem.featureText}" class="container-fluid">
-	                      <div class="row main-text-wst3 ul-list-expo">
-	                        ${featureItem.featureText @ context = 'html'}
-	                      </div>
-	                   </div>
-	                </div>
-	             </div>
-	          </div>
-	          <sly data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=''}"></sly>
-	        </div>
+					<div class="pt-30 main-text-expo" data-sly-use.featureObj="${resource.path}" data-sly-list.featureItems="${featureObj.listChildren}">
+						<div data-sly-test="${featureItems.name == 'featureItems'}" data-sly-repeat.featureItem="${featureItems.listChildren}" class="row">
+							<div class="col-xs-12 col-sm-4">
+							<h4 data-sly-test="${featureItem.featureTitle}">${featureItem.featureTitle}</h4>
+							</div>
+							<div class="col-xs-12 col-sm-8">
+							<div data-sly-test="${featureItem.featureText}" class="container-fluid">
+								<div class="row ul-list-expo">
+									${featureItem.featureText @ context = 'html'}
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<sly data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=''}"></sly>
+				</div>
+			</div>
 	    </div>
 
 	     <sly data-sly-test="${wcmmode.edit}"
