@@ -34,21 +34,21 @@
 							</div>
 							</div>
 						</div>
-					</div>					
+					</div>
 				</div>
-												
+
 				<sly data-sly-list="${container.items}">
-				  <sly data-sly-set.containerPath="${'{0}/{1}' @ format=[resource.path, item.name]}" data-sly-use.cmpItem="${containerPath}" />  
+				  <sly data-sly-set.containerPath="${'{0}/{1}' @ format=[resource.path, item.name]}" data-sly-use.cmpItem="${containerPath}" />
 				     <div data-sly-test="${cmpItem.sling:resourceType == 'etisalat/components/teaseretisalat'}"  class="container-fluid p-0">
-				        <div class="row">
+				        <div class="crosspromo-wrapper">
 				           <sly data-sly-resource="${item.name  @ decorationTagName='div'}"></sly>
-				        </div>				     
-				     </div>    				     
-				      <sly data-sly-test="${cmpItem.sling:resourceType == 'etisalat/components/spacer'}" data-sly-resource="${item.name  @ decorationTagName=''}"></sly>				     
+				        </div>
+				     </div>
+				      <sly data-sly-test="${cmpItem.sling:resourceType == 'etisalat/components/spacer'}" data-sly-resource="${item.name  @ decorationTagName=''}"></sly>
 				</sly>
-												
+
 			</div>
-	    </div>	   
+	    </div>
 	  </div>
 	    <sly data-sly-test="${wcmmode.edit}"
 	   data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
