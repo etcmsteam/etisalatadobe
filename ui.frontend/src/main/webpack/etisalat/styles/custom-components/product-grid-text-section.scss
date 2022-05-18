@@ -56,7 +56,7 @@
   }
   &.swipper-with-arrows {
     .cmp__bg-cards_product-grid {
-      .bg-cards{
+      .bg-cards {
         .row-tiles-table {
           .table-swiper-button-next,
           .table-swiper-button-prev {
@@ -65,17 +65,17 @@
             top: 42%;
             width: toRem(48) !important;
             &.swiper-button-disabled {
-                pointer-events: all;
-                cursor: auto;
-                opacity: 1;
-                &:hover {
-                  opacity: .5;
-                }
+              pointer-events: all;
+              cursor: auto;
+              opacity: 1;
+              &:hover {
+                opacity: 0.5;
+              }
             }
             svg {
               stroke: none;
             }
-            @media  (max-width: 1248px){
+            @media (max-width: 1248px) {
               display: none;
             }
           }
@@ -193,6 +193,10 @@
   .paragraph-styling .p2 p {
     @include font-family-lato;
     margin-right: toRem(16);
+
+    @include rtlBlock {
+      margin-right: 0;
+    }
   }
 }
 
@@ -2957,10 +2961,10 @@
             }
 
             & .tile-wrap-link {
-              top:   0;
-              right:  0;
+              top: 0;
+              right: 0;
               bottom: 0;
-              left:   0;
+              left: 0;
               overflow: hidden;
               text-indent: 100%;
               white-space: nowrap;
@@ -3030,7 +3034,7 @@
     .tile-table.offer {
       .tile-card .tiles-box {
         .smile-points {
-          background-color: rgba(114,158,25,.1);
+          background-color: rgba(114, 158, 25, 0.1);
         }
       }
     }
@@ -3040,7 +3044,7 @@
     .tile-table.offer {
       .tile-card .tiles-box {
         .smile-points {
-          background-color: rgba(255,128,0,.1);
+          background-color: rgba(255, 128, 0, 0.1);
         }
       }
     }
@@ -3116,11 +3120,11 @@
     .smile-points {
       border-bottom: transparent !important;
       &.green {
-        background-color: rgba(114,158,25,.1) !important;
+        background-color: rgba(114, 158, 25, 0.1) !important;
         color: $main-green !important;
       }
       &.orange {
-        background-color: rgba(255,128,0,.1) !important;
+        background-color: rgba(255, 128, 0, 0.1) !important;
         color: $dark-orange;
       }
 
@@ -3272,6 +3276,16 @@
       @media (max-width: 991px) {
         display: none;
       }
+
+      background-size: 19px 19px;
+      background-position: left;
+
+      @include rtlBlock {
+        background-position: right;
+        left: 62% !important;
+        right: auto !important;
+      }
+
       svg {
         stroke: #353738;
         width: 1rem;
@@ -3318,10 +3332,10 @@
 
       .icon-checkbox-platinum {
         padding-left: toRem(8);
-          @include rtlBlock {
-            margin-left: toRem(24);
-            margin-right: 0;
-          }
+        @include rtlBlock {
+          margin-left: toRem(24);
+          margin-right: 0;
+        }
       }
     }
   }
@@ -4317,21 +4331,21 @@
       margin-top: toRem(12.5);
       display: flex;
       .icon {
-          height: toRem(48);
+        height: toRem(48);
+        width: toRem(48);
+        border-radius: toRem(5);
+        background-color: $grey5;
+        margin-right: toRem(12);
+        padding: 0;
+        @include rtlBlock() {
+          margin-right: 0;
+          margin-left: toRem(12);
+        }
+        img {
           width: toRem(48);
+          height: toRem(48);
           border-radius: toRem(5);
-          background-color: $grey5;
-          margin-right: toRem(12);
-          padding: 0;
-          @include rtlBlock() {
-            margin-right: 0;
-            margin-left: toRem(12);
-          }
-          img {
-              width: toRem(48);
-              height: toRem(48);
-              border-radius: toRem(5);
-              }
+        }
       }
     }
   }
@@ -4340,21 +4354,21 @@
       margin-top: toRem(12.5);
       display: flex;
       .icon {
-          height: toRem(48);
+        height: toRem(48);
+        width: toRem(48);
+        border-radius: toRem(5);
+        background-color: $grey5;
+        margin-right: toRem(12);
+        padding: 0;
+        @include rtlBlock() {
+          margin-right: 0;
+          margin-left: toRem(12);
+        }
+        img {
           width: toRem(48);
+          height: toRem(48);
           border-radius: toRem(5);
-          background-color: $grey5;
-          margin-right: toRem(12);
-          padding: 0;
-          @include rtlBlock() {
-            margin-right: 0;
-            margin-left: toRem(12);
-          }
-          img {
-              width: toRem(48);
-              height: toRem(48);
-              border-radius: toRem(5);
-              }
+        }
       }
     }
   }
