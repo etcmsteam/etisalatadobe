@@ -571,10 +571,73 @@
         }
     }
 
+    &.variation-price {
+        &.feature-style {
+            @include respond-to-min($desktop) {
+                padding: toRem(92) toRem(12);
+                min-height: 560px;
+            }
+            .value{
+                font-size: toRem(40);
+                @include respond-to-min($desktop) {
+                    font-size: toRem(50);
+                }
+            }
+        }
+        .from {
+            color: $white;
+            line-height: toRem(15);
+            font-size: toRem(12);
+        }
+        .price {
+            display: flex;
+            align-items: baseline;
+            &.green-font {
+                color: $main-green;
+            }
+        }
+        .value {
+            font-size: toRem(28);
+            line-height: toRem(40);
+            padding-right: toRem(8);
+            @include respond-to-min($desktop) {
+                font-size: toRem(32);
+            }
+        }
+
+        .aed {
+            line-height: toRem(15);
+            font-size: toRem(12);
+        }
+        .vat-wrap {
+            display: flex;
+            align-items: center;
+            margin-top: toRem(2);
+            height: toRem(20);
+    
+            .vat {
+                color: $white;
+                @include font-family-lato();
+                font-size: toRem(12);
+                letter-spacing: 0;
+                line-height: toRem(14);
+
+                @include respond-to-min($desktop) {
+                    margin-top: toRem(2);
+                    font-size: toRem(14);
+                }
+            }
+        }
+        .price-and-action.link-n-btn {
+            margin-top: toRem(50);
+            align-items: center;
+        }
+    }
+
     .wst-secondary-headings,
     .wst-main-headings,
     .paragraph-styling {
-        ul li, 
+        ul li,
         ol li,
         p,
         h1,h2,h3,h4,h5,h6,.h7,.h8 {
@@ -582,14 +645,53 @@
         }
     }
 
-    .wst-secondary-headings {
+        &.grey-font {
+            .wst-main-headings,
+            .wst-secondary-headings {
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                .h7,
+                .h8 {
+                    color: $black  !important;
+                }
+            }
+
+            .paragraph-styling {
+                ol li,
+                ul li,
+                p {
+                    color: $warm-gray  !important;
+                }
+            }
+            .from, .vat {
+                color: $almost-black !important;
+            }
+        }
+        &.variation-price {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    flex: 1 0 100%;
+                    list-style: none;
+                    @media (min-width: 992px) {
+                        flex: 1 0 50%;
+                        margin-bottom: toRem(10);
+                    }
+                }
+            }
+        }
+
+        .wst-secondary-headings {
         h1,h2,h3,h4,h5 {
-            margin-bottom: 8px;
+            margin-bottom: toRem(8);
         }
     }
-
-    
-
 
     .feature-wrapper {
         display: flex;
@@ -655,6 +757,31 @@
             width: 100%;
             max-width: 288px;
         }
+        .black-font {
+            color: $black;
+        }
+        .green-font {
+            color: $main-green;
+        }
+        .orange-font {
+            color: $orange;
+        }
+        .grey-font {
+            color: $orange;
+        }
+        .white-font {
+            color: $white;
+        }
+        .old-price {
+            color: $white !important;
+            &.orange-font {
+                background-color: $orange;
+            }
+            &.white-font {
+                background-color: $white;
+                color: $almost-black !important;
+            }
+        }
     }
 
     // flipped module
@@ -675,7 +802,6 @@
             }
         }
     }
-    
 }
 
 // *************************************
