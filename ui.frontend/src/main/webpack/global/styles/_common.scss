@@ -166,3 +166,115 @@ $breakpoint: (
 [dir="rtl"] strong {
   font-weight: 700;
 }
+
+@media (min-width: 992px) {
+  h2 {
+    @include rtlBlock {
+      font-size: toRem(40);
+    }
+  }
+}
+
+// table styling
+
+.charges-custom-table {
+  margin-bottom: 2rem;
+
+  tr.footer {
+    background: transparent;
+  }
+
+  table {
+    @include respond-to-min($tablet) {
+      border-collapse: separate;
+      border-spacing: 2rem 0;
+      margin: 0 -2rem;
+    }
+
+    tbody,
+    thead {
+      td,
+      th {
+        border: none;
+        color: $almost-black;
+        font-size: $font20;
+        line-height: 56px;
+        padding: 0;
+        vertical-align: bottom;
+
+        @include respond-to-min($tablet) {
+          border-bottom: 2px solid $white-2;
+        }
+
+        @include respond-to-max($tablet - 1) {
+          font-size: $font14;
+          height: 48px;
+          line-height: 28px;
+          padding: 0.75rem 0;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    thead {
+      th {
+        @include font-family-lato;
+
+        font-weight: normal;
+
+        &:first-child {
+          @include respond-to-min($tablet) {
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    tbody {
+      td {
+        color: $steel-grey;
+
+        @include respond-to-min($tablet) {
+          padding: 0 1rem !important;
+        }
+
+        @include respond-to-max($tablet - 1) {
+          &:first-child {
+            min-width: 100px;
+          }
+
+          &:last-child {
+            color: $almost-black;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    &.equal-column {
+      border-spacing: 0;
+      margin: 0;
+
+      tbody {
+        td {
+          border-bottom: 1px solid $white-2;
+          padding-left: 0;
+          width: 50%;
+
+          @include respond-to-min($desktop) {
+            padding-left: 3rem;
+          }
+
+          &:first-child {
+            min-width: 20px;
+            width: 50%;
+
+            @include respond-to-min($desktop) {
+              padding-left: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

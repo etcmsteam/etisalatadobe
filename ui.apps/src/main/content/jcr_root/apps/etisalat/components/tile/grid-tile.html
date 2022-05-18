@@ -1,17 +1,8 @@
-<template  data-sly-template.gridtile="${ @ tileModel,properties,imageViewportModel,attributeModel}">
+<template  data-sly-template.gridtile="${ @ tileModel,properties,imageViewportModel}">
     <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
-        <sly data-sly-test="${properties.enableOnClick}">
-            <a href="#"
-               class="link-cover"
-               target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-               onclick="${properties.onclickfunction @ context='attribute'}"
-               data-sly-attribute="${attributeModel.attributeDataMap}"></a>
-        </sly>
-        <sly data-sly-test="${!properties.enableOnClick}">
-            <a href="${tileModel.tileCTALinkSameWindow}"
-               class="link-cover"
-               target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
-        </sly>
+        <a href="${tileModel.tileCTALinkSameWindow}"
+           class="link-cover"
+           target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
     </sly>
     <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
         <!-- Modal start -->
@@ -45,20 +36,10 @@
         </div>
         <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
             <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
-                <sly data-sly-test="${properties.enableOnClick}">
-                    <a href="#"
-                       class="link"
-                       target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-                       onclick="${properties.onclickfunction @ context='attribute'}"
-                       data-sly-attribute="${attributeModel.attributeDataMap}"
-                       title="${tileModel.ctatext}">${tileModel.ctatext}</a>
-                </sly>
-                <sly data-sly-test="${!properties.enableOnClick}">
-                    <a href="${tileModel.tileCTALinkSameWindow}"
-                       class="link"
-                       target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-                       title="${tileModel.ctatext}">${tileModel.ctatext}</a>
-                </sly>
+                <a href="${tileModel.tileCTALinkSameWindow}"
+                   class="link"
+                   target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
+                   title="${tileModel.ctatext}">${tileModel.ctatext}</a>
             </div>
         </sly>
         <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">

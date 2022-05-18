@@ -1,4 +1,5 @@
-<sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"  
+<sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+     data-sly-use.attributeModel="com.etisalat.core.models.AttributeModel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
   <sly data-sly-set.coverClass="${properties.viewPortLayout != '1-viewport' ? 'cover' : ''}"/>
  
@@ -11,13 +12,24 @@
         <div class="cta-content-wrap">
             <div class="cont">
                 <h4 data-sly-test="${properties.tiletitle}">${properties.tiletitle}</h4>                
-                <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">              
-                    <sly data-sly-test.crossPromoCTALink="${properties.crossPromoLinkURL}" 
+                <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && !properties.enableOnClick}">
+                    <sly data-sly-test.crossPromoCTALink="${properties.crossPromoLinkURL}"
                        data-sly-use.promoLink="${'com.etisalat.core.models.CommonLinkModel' @link=crossPromoCTALink}"/>
                     <a href="${promoLink.link}" target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.crossPromoCTATitle}" class="${properties.ctaStyle ?  properties.ctaStyle : 'btn-text learn-more'}">
                         <span class=""> ${properties.crossPromoCTATitle} </span>
                     </a>
 			    </sly>
+                <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.enableOnClick}">
+                    <sly data-sly-test.crossPromoCTALink="${properties.crossPromoLinkURL}"
+                         data-sly-use.promoLink="${'com.etisalat.core.models.CommonLinkModel' @link=crossPromoCTALink}"/>
+                    <a data-sly-test="${properties.crossPromoCTATitle}"
+                       class="${properties.ctaStyle ?  properties.ctaStyle : 'btn-text learn-more'}"
+                       href="#" target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}"
+                       onclick="${properties.onclickfunction @ context='attribute'}"
+                       data-sly-attribute="${attributeModel.attributeDataMap}">
+                        <span class=""> ${properties.crossPromoCTATitle} </span>
+                    </a>
+                </sly>
 				<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
                    data-sly-use.modalTemplate="modalpopup.html"
                    data-sly-call="${modalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode}">
