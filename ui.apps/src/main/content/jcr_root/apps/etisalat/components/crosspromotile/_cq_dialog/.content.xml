@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="nt:unstructured"
-    jcr:title="Cross Promo Tile"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Cross Promo Tile"
+          sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -27,13 +27,58 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <crosspromovariation
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Select Cross Promo Tile Variation"
+                                                name="./crosspromoplanVariation">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <default
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Default"
+                                                        value="default"/>
+                                                    <crosspromoplans
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Cross Promo Plans"
+                                                        value="crosspromoplans"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".crosspromo-showhide-target"/>
+                                            </crosspromovariation>
                                             <tiletitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Add Crosspromo Title"
                                                 fieldLabel="Title"
                                                 name="./tiletitle"/>
-											<ctaStyle
+                                            <crosspromoplandetails
+                                                granite:class="crosspromo-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <crosspromoplansPretitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Pre Text that will appear for the Cross Promo Plan Variation"
+                                                        fieldLabel="PreTitle"
+                                                        maxlength="{Long}100"
+                                                        name="./crosspromoplansPretitle"/>
+                                                    <crosspromoplansDescription
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="Description that will appear for the Cross Promo Plan Variation."
+                                                        fieldLabel="Cross Promo Plan Description"
+                                                        name="./crosspromoplanDescription"
+                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="crosspromoplans"/>
+                                            </crosspromoplandetails>
+                                            <ctaStyle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/include"
                                                 path="etisalat/components/commons/cta-variations/ctaStyle"/>
@@ -108,14 +153,14 @@
                                                         name="./crossPromoLinkURL"
                                                         rootPath="/content"/>
                                                     <enableOnClick
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/include"
-                                                            path="etisalat/components/commons/cta-onclick/enableOnClick">
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                        path="etisalat/components/commons/cta-onclick/enableOnClick">
                                                     </enableOnClick>
                                                     <attributes
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/include"
-                                                            path="etisalat/components/commons/cta-onclick/attributes"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                        path="etisalat/components/commons/cta-onclick/attributes"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
