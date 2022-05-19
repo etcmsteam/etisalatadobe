@@ -21,19 +21,8 @@
     margin-right: 0;
   }
 
-
-
-  // padding-left: 2rem!important;
-  // padding-right: 2rem !important;
-  padding: 2rem 0 !important;
-
-  @include respond-to-max($tablet) {
-    padding: toRem(16) 0 !important;
-  }
-
-  @include respond-to-max($phone) {
-    padding: toRem(9.6) 0 !important;
-  }
+  margin-bottom: toRem(24);
+  padding: 0 !important;
 
   @include respond-to-max($tablet) {
     h3 {
@@ -407,18 +396,9 @@
   > .cmp-container {
     background: $sand-white-50;
     border-radius: $border-radius-step-1;
-    margin-bottom: toRem(24);
     min-height: toRem(140);
     overflow: hidden;
     position: relative;
-
-    @include respond-to-max($phone) {
-      margin-bottom: 0;
-    }
-
-    @include respond-to-max($tablet) {
-      margin-bottom: 0;
-    }
   }
 
   > .cmp-container::before {
@@ -568,16 +548,16 @@
     }
 
     .cmp-accordion__button {
-        @media (max-width: 1200px) {
-          & .accordion-top-view .less, 
-          & .accordion-top-view .more {
-            display: none;
-          }
+      @media (max-width: 1200px) {
+        & .accordion-top-view .less,
+        & .accordion-top-view .more {
+          display: none;
         }
+      }
 
-        & .cmp-accordion__icon {
-          transition: all .3s ease-in-out;
-        }
+      & .cmp-accordion__icon {
+        transition: all 0.3s ease-in-out;
+      }
     }
 
     &__title {
@@ -612,7 +592,7 @@
       right: toRem(5);
       top: toRem(3);
       transform: translateY(-20%) rotate(225deg);
-      transition: all .3s ease-in-out;
+      transition: all 0.3s ease-in-out;
       z-index: 10;
 
       // margin-top: 1rem;
@@ -725,7 +705,7 @@
       }
     }
   }
-  
+
   @include rtlBlock() {
     .accordion {
       padding: 0 toRem(36);
@@ -761,7 +741,10 @@
       }
     }
   }
+}
 
+.cmp-accordion__header {
+  padding-top: 0;
 }
 
 .sort_asc {

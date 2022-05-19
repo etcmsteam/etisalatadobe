@@ -3,6 +3,7 @@ import "./index.scss";
 /* eslint-disable */
 export const CONFIG_SECTION_WRAP = () => {
   var windowWidth = $(window).width();
+  $(".deeplink-tabs").closest(".tabs").addClass("recommended-plan-tabs");
 
   $(window).scroll(function () {
     if ($(".config-section-wrap").hasClass("affix")) {
