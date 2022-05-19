@@ -587,6 +587,12 @@
                         font-size: toRem(32);
                     }
                 }
+                &.medium-font {
+                    font-size: toRem(40);
+                    @include respond-to-min($desktop) {
+                        font-size: toRem(50);
+                    }
+                }
                 &.big-font {
                     font-size: toRem(40);
                     @include respond-to-min($desktop) {
@@ -641,7 +647,10 @@
         }
         .price-and-action.link-n-btn {
             margin-top: toRem(40);
-            align-items: center;
+            align-items: flex-start;
+            @include respond-to-min($desktop) {
+                align-items: center;
+            }
         }
     }
 
@@ -679,8 +688,11 @@
                     color: $warm-gray  !important;
                 }
             }
-            .from, .vat {
-                color: $almost-black !important;
+            .from,
+            .value,
+            .aed,
+            .vat {
+                color: $almost-black  !important;
             }
         }
         &.variation-price {
@@ -720,6 +732,7 @@
                 li {
                     flex: 1 0 100%;
                     list-style: none;
+                    margin-bottom: toRem(8);
                     @media (min-width: 992px) {
                         flex: 1 0 50%;
                         margin-bottom: toRem(10);
