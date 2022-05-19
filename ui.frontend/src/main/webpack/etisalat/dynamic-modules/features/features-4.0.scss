@@ -577,13 +577,21 @@
                 padding: toRem(92) toRem(12);
                 min-height: 560px;
             }
-            // .paragraph-styling {
-            //     margin-bottom: 100px;
-            // }
+            .paragraph-styling {
+                margin-bottom: 100px;
+            }
             .value {
-                font-size: toRem(40);
-                @include respond-to-min($desktop) {
-                    font-size: toRem(50);
+                &.small-font {
+                    font-size: toRem(26);
+                    @include respond-to-min($desktop) {
+                        font-size: toRem(32);
+                    }
+                }
+                &.big-font {
+                    font-size: toRem(40);
+                    @include respond-to-min($desktop) {
+                        font-size: toRem(50);
+                    }
                 }
             }
         }
@@ -817,6 +825,9 @@
             &.white-font {
                 background-color: $white;
                 color: $almost-black !important;
+            }
+            &.black-font {
+                background-color: $black;
             }
         }
     }
