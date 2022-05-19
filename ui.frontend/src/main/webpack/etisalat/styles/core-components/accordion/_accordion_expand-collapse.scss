@@ -61,13 +61,12 @@
   .cmp-text {
     h3 {
       font-size: $font20;
-
-      @include respond-to-max($phone) {
-        line-height: toRem(27);
-      }
+      line-height: toRem(28);
+      margin-bottom: 1rem;
 
       @include respond-to-max($tablet) {
         font-size: $font16;
+        margin-top: 0;
       }
     }
 
@@ -300,7 +299,6 @@
           color: $almost-black;
           font-size: $font14;
           line-height: toRem(28);
-          width: toRem(208);
         }
       }
     }
@@ -548,16 +546,16 @@
     }
 
     .cmp-accordion__button {
-        @media (max-width: 1200px) {
-          & .accordion-top-view .less, 
-          & .accordion-top-view .more {
-            display: none;
-          }
+      @media (max-width: 1200px) {
+        & .accordion-top-view .less,
+        & .accordion-top-view .more {
+          display: none;
         }
+      }
 
-        & .cmp-accordion__icon {
-          transition: all .3s ease-in-out;
-        }
+      & .cmp-accordion__icon {
+        transition: all 0.3s ease-in-out;
+      }
     }
 
     &__title {
@@ -592,7 +590,7 @@
       right: toRem(5);
       top: toRem(3);
       transform: translateY(-20%) rotate(225deg);
-      transition: all .3s ease-in-out;
+      transition: all 0.3s ease-in-out;
       z-index: 10;
 
       // margin-top: 1rem;
@@ -648,18 +646,12 @@
 
     &__itemdesc {
       font-size: $font18;
+      line-height: toRem(24);
       margin-bottom: toRem(24);
       margin-top: toRem(24);
 
-      @include respond-to-max($phone) {
-        font-size: $font16;
-        margin-bottom: toRem(32);
-        margin-top: toRem(32);
-      }
-
       @include respond-to-max($tablet) {
         font-size: $font16;
-        margin-bottom: toRem(32);
         margin-top: toRem(16);
       }
 
@@ -691,11 +683,15 @@
         font-weight: get-font-weight("medium");
         letter-spacing: toRem(2);
         line-height: toRem(20);
-        margin-bottom: toRem(60);
+        margin-bottom: toRem(36);
         padding: toRem(20) 0 0 toRem(15);
         position: relative;
         text-transform: uppercase;
         transition: all 0.3s ease-in-out;
+
+        @include respond-to-max($tablet) {
+          margin-bottom: 0;
+        }
 
         @include font-family-lato();
 
@@ -705,7 +701,7 @@
       }
     }
   }
-  
+
   @include rtlBlock() {
     .accordion {
       padding: 0 toRem(36);
@@ -741,7 +737,6 @@
       }
     }
   }
-
 }
 
 .cmp-accordion__header {
