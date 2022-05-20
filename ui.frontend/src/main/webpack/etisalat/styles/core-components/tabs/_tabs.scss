@@ -246,9 +246,11 @@
   .p3,
   .p4 {
     p {
+      line-height: toRem(24);
       margin-bottom: toRem(12);
 
       @include respond-to-min($desktop) {
+        line-height: toRem(20);
         margin-bottom: toRem(16);
       }
     }
@@ -487,7 +489,7 @@
           border-width: 0 toRem(1) toRem(1) 0;
           content: "";
           line-height: 1;
-          padding: 4px !important;
+          padding: 3.5px !important;
           position: absolute;
           right: toRem(20);
           top: 50%;
@@ -505,7 +507,7 @@
 
     a span {
       display: inline-block;
-      margin-right: toRem(15);
+      margin-right: toRem(6.4);
 
       @include rtlBlock() {
         margin-left: toRem(15);
@@ -1253,6 +1255,7 @@
     @include rtlBlock() {
       border-left: 0;
       border-right: 4px solid #719e19;
+      left: 0;
       right: -16px;
 
       @include respond-to-max($tablet) {
@@ -1936,6 +1939,10 @@
   position: relative;
 
   @include font-family-lato;
+
+  @include rtlBlock() {
+    font-weight: 300;
+  }
 }
 
 .teaser_list ol {
@@ -1951,6 +1958,10 @@
     position: relative;
 
     @include font-family-lato;
+
+    @include rtlBlock() {
+      font-weight: 300;
+    }
   }
 }
 

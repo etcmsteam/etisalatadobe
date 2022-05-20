@@ -105,8 +105,8 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
                 String childNodePath = childNode.getPath();
                 if (childNode.hasProperty("fileReference")) {
                     String fileReferenceVal = childNode.getProperty("fileReference").getString();
-                    if (fileReferenceVal.contains(" ") || fileReferenceVal.contains("(") || fileReferenceVal.contains(")") || fileReferenceVal.contains(",") || fileReferenceVal.contains("&") || fileReferenceVal.contains("%20") || fileReferenceVal.contains("%26")) {
-                        String updatedReferenceVal = fileReferenceVal.replaceAll(" ", "-").replaceAll("\\(", "-").replaceAll("\\)", "-").replaceAll("&", "-").replaceAll("%20","-").replaceAll("%26","-");
+                    if (fileReferenceVal.contains(" ") || fileReferenceVal.contains("(") || fileReferenceVal.contains(")") || fileReferenceVal.contains(",") || fileReferenceVal.contains("&") || fileReferenceVal.contains("%20") || fileReferenceVal.contains("%26") || fileReferenceVal.contains("%28") || fileReferenceVal.contains("%29") || fileReferenceVal.contains("%2C") || fileReferenceVal.contains("%2c")) {
+                        String updatedReferenceVal = fileReferenceVal.replaceAll(" ", "-").replaceAll("\\(", "-").replaceAll("\\)", "-").replaceAll("&", "-").replaceAll("%20","-").replaceAll("%26","-").replaceAll(",","-").replaceAll("%28","-").replaceAll("%29","-").replaceAll("%2C","-").replaceAll("%2c","-");
                         childNode.setProperty("fileReference", updatedReferenceVal);
                         session.save();
                         LOG.info(childNode.getPath() + "     " + fileReferenceVal + "     " + updatedReferenceVal + "     " + "fileReference");
@@ -120,8 +120,7 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
                         Iterator mapKeySet = map.keySet().iterator();
                         while (mapKeySet.hasNext()) {
                             String oldLink = mapKeySet.next().toString();
-                            String oldLinkWithP20 = oldLink.replaceAll(" ", "%20");
-                            String oldLinkWithP26 = oldLink.replaceAll("&", "%26");
+                            String oldLinkWithPChar = oldLink.replaceAll(" ", "%20").replaceAll("&", "%26").replaceAll("\\(", "%28").replaceAll("\\)", "%29").replaceAll("%2c","-").replaceAll("%2C","-");
                             String updatedLink = map.get(oldLink);
                             if (markup.contains(oldLink)) {
                                 markup = markup.replace(oldLink, updatedLink);
@@ -129,17 +128,11 @@ public class UpdateAssetsReferenceServlet extends SlingSafeMethodsServlet {
                                 logs.append(childNode.getPath() + "     " + oldLink + "     " + updatedLink + "     " + propList[i] + "\n");
                                 response.getWriter().write(childNode.getPath() + "     " + oldLink + "     " + updatedLink + "     " + propList[i] + "</br>");
                             }
-                            if (markup.contains(oldLinkWithP20)) {
-                                markup = markup.replace(oldLinkWithP20, updatedLink);
-                                LOG.info(childNode.getPath() + "     " + oldLinkWithP20 + "     " + updatedLink + "     " + propList[i]);
-                                logs.append(childNode.getPath() + "     " + oldLinkWithP20 + "     " + updatedLink + "     " + propList[i] + "\n");
-                                response.getWriter().write(childNode.getPath() + "     " + oldLinkWithP20 + "     " + updatedLink + "     " + propList[i] + "</br>");
-                            }
-                            if (markup.contains(oldLinkWithP26)) {
-                                markup = markup.replace(oldLinkWithP26, updatedLink);
-                                LOG.info(childNode.getPath() + "     " + oldLinkWithP26 + "     " + updatedLink + "     " + propList[i]);
-                                logs.append(childNode.getPath() + "     " + oldLinkWithP26 + "     " + updatedLink + "     " + propList[i] + "\n");
-                                response.getWriter().write(childNode.getPath() + "     " + oldLinkWithP26 + "     " + updatedLink + "     " + propList[i] + "</br>");
+                            if (markup.contains(oldLinkWithPChar)) {
+                                markup = markup.replace(oldLinkWithPChar, updatedLink);
+                                LOG.info(childNode.getPath() + "     " + oldLinkWithPChar + "     " + updatedLink + "     " + propList[i]);
+                                logs.append(childNode.getPath() + "     " + oldLinkWithPChar + "     " + updatedLink + "     " + propList[i] + "\n");
+                                response.getWriter().write(childNode.getPath() + "     " + oldLinkWithPChar + "     " + updatedLink + "     " + propList[i] + "</br>");
                             }
                         }
                         childNode.setProperty(propList[i], markup);
