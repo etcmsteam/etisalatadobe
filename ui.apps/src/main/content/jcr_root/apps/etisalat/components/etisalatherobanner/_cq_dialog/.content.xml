@@ -34,7 +34,7 @@
                                     <column
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">										
                                            <heroalignment
 					                          jcr:primaryType="nt:unstructured"
 					                          sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -153,37 +153,63 @@
 					                          jcr:title="Title and Description"
 					                          sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
 					                          <items jcr:primaryType="nt:unstructured">
+					                              <heropretitle
+	                                                 granite:class="herovariation-showhide-target"
+	                                                 jcr:primaryType="nt:unstructured"
+	                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
+	                                                 <items jcr:primaryType="nt:unstructured">
+	                                                   <bannerPreTitle
+						                                  jcr:primaryType="nt:unstructured"
+						                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+						                                  fieldDescription="A pre title to display as the headline for the herobanner."
+						                                  fieldLabel="Pre Title"
+						                                  name="./heroPreTitle"/>	                                                
+	                                                </items>
+	                                                <granite:data
+							                             jcr:primaryType="nt:unstructured"
+							                             showhidetargetvalue="hero-images"/>
+                                                  </heropretitle>
 					                              <title
 					                                  jcr:primaryType="nt:unstructured"
 					                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
 					                                  fieldDescription="A title to display as the headline for the herobanner."
 					                                  fieldLabel="Title"
 					                                  name="./heroTitle"/>
-					                              <titlefonttype
-					                                  jcr:primaryType="nt:unstructured"
-					                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
-													  fieldDescription="Select Title Font Style"
-					                                  fieldLabel="Title Font Style"
-					                                  name="./titleFontStyle">
-					                                  <items jcr:primaryType="nt:unstructured">
-														  <regular
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Regular"
-					                                          value="regular"/>
-					                                      <long
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Long"
-					                                          value="long"/>
-					                                      <short
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Short"
-					                                          value="short"/>
-					                                      <shortTruncate
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Short without truncate"
-					                                          value="short-without-trunc"/>                                                           
-					                                  </items>
-					                              </titlefonttype>
+				                                 <heroTitleFontGroup
+	                                                 granite:class="herovariation-showhide-target"
+	                                                 jcr:primaryType="nt:unstructured"
+	                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
+	                                                 <items jcr:primaryType="nt:unstructured">
+	                                                    <titlefonttype
+							                                  jcr:primaryType="nt:unstructured"
+							                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
+															  fieldDescription="Select Title Font Style"
+							                                  fieldLabel="Title Font Style"
+							                                  name="./titleFontStyle">
+							                                  <items jcr:primaryType="nt:unstructured">
+																  <regular
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Regular"
+							                                          value="regular"/>
+							                                      <long
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Long"
+							                                          value="long"/>
+							                                      <short
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Short"
+							                                          value="short"/>
+							                                      <shortTruncate
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Short without truncate"
+							                                          value="short-without-trunc"/>                                                           
+							                                  </items>
+							                              </titlefonttype>
+	                                                 </items>
+	                                                 <granite:data
+							                             jcr:primaryType="nt:unstructured"
+							                             showhidetargetvalue="herobanner-wst"/>
+                                                  </heroTitleFontGroup>					                              
 					                              <titlefontcolor
 					                                  jcr:primaryType="nt:unstructured"
 					                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -211,12 +237,51 @@
 					                                  useFixedInlineToolbar="{Boolean}true"/>
 					                          </items>
 					                      </titleGroup>
-					                      <id
-					                          jcr:primaryType="nt:unstructured"
-					                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-					                          fieldDescription="HTML ID attribute to apply to the component."
-					                          fieldLabel="ID"
-					                          name="./id"/>  
+					                      <priceTagGroup
+                                                granite:class="herovariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                   <pricetag
+	                                                jcr:primaryType="nt:unstructured"                                               
+	                                                jcr:title="Price Tag"
+	                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+	                                                <items jcr:primaryType="nt:unstructured">
+	                                                    <fromtext
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for product price."
+	                                                        fieldLabel="From Text"
+	                                                        maxlength="{Long}40"
+	                                                        name="./fromText"/>
+	                                                    <productprice
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for product price."
+	                                                        fieldLabel="Product Price"
+	                                                        maxlength="{Long}40"
+	                                                        name="./productPrice"/>
+	                                                    <productcurrency
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for product currency."
+	                                                        fieldLabel="Product Currency"
+	                                                        maxlength="{Long}40"
+	                                                        name="./productCurrency"/>                                                    
+	                                                    <vatText
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for VAT info."
+	                                                        fieldLabel="VAT Information"
+	                                                        maxlength="{Long}40"
+	                                                        name="./vatText"/>
+	                                                  </items>                                                 
+                                                  </pricetag>
+                                                </items>
+	                                            <granite:data
+						                           jcr:primaryType="nt:unstructured"
+						                            showhidetargetvalue="hero-images"/>
+	                                      </priceTagGroup>					                      
                                           <viewportlayouthidden
                                               jcr:primaryType="nt:unstructured"
                                               sling:resourceType="granite/ui/components/coral/foundation/form/hidden"

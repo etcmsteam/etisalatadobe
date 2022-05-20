@@ -39,6 +39,7 @@
     font-size: $font16;
     font-weight: get-font-weight("bold");
     line-height: 1.5;
+    padding-right: toRem(32);
 
     @include rtlBlock() {
       font-weight: get-font-weight("light");
@@ -47,21 +48,15 @@
     &::after {
       color: $almost-black;
       content: " + ";
-      display: table-cell;
-      float: right;
       font-size: $font30;
       font-weight: get-font-weight("light");
-      line-height: toRem(12);
+      line-height: normal;
       padding: toRem(5);
-      position: relative;
-      text-align: center;
-      vertical-align: top;
+      position: absolute;
+      right: 0;
+      top: 0;
 
       @include rtlBlock() {
-        @include respond-to-max($tablet) {
-          float: left;
-        }
-
         @include respond-to-min($desktop) {
           margin-left: 0.5rem;
         }
@@ -91,15 +86,13 @@
     &::after {
       color: $almost-black;
       content: " - ";
-      display: table-cell;
-      float: right;
       font-size: $font64;
       font-weight: get-font-weight("normal");
-      line-height: toRem(12);
+      line-height: toRem(16);
       padding: toRem(5);
-      position: relative;
-      text-align: center;
-      vertical-align: top;
+      position: absolute;
+      right: 0;
+      top: 5px;
     }
   }
 

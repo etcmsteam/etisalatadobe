@@ -510,6 +510,11 @@
           right: toRem(30);
           top: toRem(26);
           transform: rotate(-135deg);
+
+          @include rtlBlock () {
+            right: auto;
+            left: toRem(28);
+          }
         }
       }
 
@@ -517,10 +522,13 @@
         color: $main-green;
         font-size: $font18;
 
-        @include font-family-Neotech-roboto();
+        @include font-family-Neotech-ge();
 
         @include respond-to-max($desktop-wide) {
           font-size: $font16;
+        }
+        @include respond-to-max($tablet) {
+          font-size: $font12;
         }
       }
     }

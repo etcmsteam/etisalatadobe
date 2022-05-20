@@ -9,29 +9,11 @@
   }
 
   .cmp-teaser {
-    &__title {
-      font-size: $font28;
-      margin: 0 0 toRem(16);
-
-      @include respond-to-min($desktop) {
-        font-size: $font32;
-        margin: 0 0 toRem(24);
-      }
-    }
-
     &__description {
-      width: 100%;
-
-      p {
-        color: $dark-gray;
-        font-size: $font14;
-        line-height: toRem(20);
-        margin-bottom: toRem(12);
-
-        @include respond-to-min($desktop) {
-          font-size: $font16;
-          line-height: toRem(24);
-          margin-bottom: toRem(16);
+      a {
+        &:hover {
+          color: $main-green;
+          text-decoration: underline;
         }
       }
     }
@@ -50,7 +32,7 @@
       }
 
       @include respond-to-min($desktop-wide) {
-        width: 72%;
+        width: 75%;
       }
     }
 
@@ -139,6 +121,28 @@
     &.button--orange {
       .cmp-teaser__action-container {
         display: inline-block !important;
+      }
+    }
+  }
+  &.cmp-default-card__full-width {
+    .cmp-teaser {
+      &__content {
+        width: 100%;
+      }
+
+      &__description {
+        width: 100%;
+
+        @include respond-to-min($tablet) {
+          width: 75%;
+        }
+      }
+    }
+  }
+  &.cmp-default-card__content-full{
+    .cmp-teaser{
+      &__content {
+        width: 100%;
       }
     }
   }
