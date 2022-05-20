@@ -17,6 +17,8 @@
   <div data-component="cmp-hero-images" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
        data-sly-test="${properties.heroDisplayBehavior}" class="hero-images-variation medium hero-image hero-links-add testimonials ${!wcmmode.edit ? heroBannerClass : ''}"
        data-sly-unwrap="${heroBannerClass ? false : true}">
+   <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''} hero-links-menu" data-sly-unwrap="${heroBannerClass ? false : true}">    
+     <div class="${!wcmmode.edit ? 'swiper-slide bg-dark' : ''}" data-sly-unwrap="${heroBannerClass ? false : true}">
        
       <!-- Start - cover -->
       <sly data-sly-use.heroImagesTemplate="heroimages.html"
@@ -59,11 +61,11 @@
                            </div>
                        </div>
                             
-                       <div data-sly-test="${properties.bannerCTATitle && properties.linkBehavior != 'openmodalwindow'}" class="ele-margin hero-cta">
+                       <sly data-sly-test="${properties.bannerCTATitle && properties.linkBehavior != 'openmodalwindow'}">
 					        <sly data-sly-test.heroCTALink="${properties.ctaSameWindowLink}" 
 				               data-sly-use.heroModelLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}"/>
 					        <a href="${heroModelLink.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn ${properties.ctaColor} ripple-effect"> ${properties.bannerCTATitle} </a>
-				       </div>	      
+				       </sly>	      
 					   <sly data-sly-use.heroCTAModelTemplate="modalpopup.html"
 						             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
                    </div>
@@ -81,7 +83,9 @@
            </div>
        </div>
        
-       <sly data-sly-test="${!wcmmode.edit}" data-sly-use.docsModalTemplate="documentmodal.html"
+       </div>
+     </div>
+      <sly data-sly-test="${!wcmmode.edit}" data-sly-use.docsModalTemplate="documentmodal.html"
 			    data-sly-call="${docsModalTemplate.documentPopup @ component=component,properties=properties}"/>
-  </div>
+  </div>  
 </template>
