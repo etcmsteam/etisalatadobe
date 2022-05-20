@@ -207,8 +207,8 @@
 							                              </titlefonttype>
 	                                                 </items>
 	                                                 <granite:data
-						                             jcr:primaryType="nt:unstructured"
-						                             showhidetargetvalue="herobanner-wst"/>
+							                             jcr:primaryType="nt:unstructured"
+							                             showhidetargetvalue="herobanner-wst"/>
                                                   </heroTitleFontGroup>					                              
 					                              <titlefontcolor
 					                                  jcr:primaryType="nt:unstructured"
@@ -237,12 +237,51 @@
 					                                  useFixedInlineToolbar="{Boolean}true"/>
 					                          </items>
 					                      </titleGroup>
-					                      <id
-					                          jcr:primaryType="nt:unstructured"
-					                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-					                          fieldDescription="HTML ID attribute to apply to the component."
-					                          fieldLabel="ID"
-					                          name="./id"/>  
+					                      <priceTagGroup
+                                                granite:class="herovariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                   <pricetag
+	                                                jcr:primaryType="nt:unstructured"                                               
+	                                                jcr:title="Price Tag"
+	                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+	                                                <items jcr:primaryType="nt:unstructured">
+	                                                    <fromtext
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for product price."
+	                                                        fieldLabel="From Text"
+	                                                        maxlength="{Long}40"
+	                                                        name="./fromText"/>
+	                                                    <productprice
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for product price."
+	                                                        fieldLabel="Product Price"
+	                                                        maxlength="{Long}40"
+	                                                        name="./productPrice"/>
+	                                                    <productcurrency
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for product currency."
+	                                                        fieldLabel="Product Currency"
+	                                                        maxlength="{Long}40"
+	                                                        name="./productCurrency"/>                                                    
+	                                                    <vatText
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                                        fieldDescription="Text that will appear for VAT info."
+	                                                        fieldLabel="VAT Information"
+	                                                        maxlength="{Long}40"
+	                                                        name="./vatText"/>
+	                                                  </items>                                                 
+                                                  </pricetag>
+                                                </items>
+	                                            <granite:data
+						                           jcr:primaryType="nt:unstructured"
+						                            showhidetargetvalue="hero-images"/>
+	                                      </priceTagGroup>					                      
                                           <viewportlayouthidden
                                               jcr:primaryType="nt:unstructured"
                                               sling:resourceType="granite/ui/components/coral/foundation/form/hidden"

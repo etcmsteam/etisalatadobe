@@ -35,6 +35,19 @@
                        <h3 data-sly-test="${properties.heroTitle}" class="hero-heading-big">${properties.heroTitle @ context = 'html'}</h3>
                        <div data-sly-test="${properties.jcr:description}" class="hero-description">${properties.jcr:description @ context = 'html'}</div>
                        
+                       <div class="wst-price-tag">
+                           <div data-sly-test="${properties.fromText}" class="top-part">
+                               ${properties.fromText}
+                           </div>
+                           <div data-sly-test="${properties.productPrice || properties.productCurrency}" class="main-part">
+                               <div class="price">${properties.productPrice}</div>
+                               <div class="tag">${properties.productCurrency}</div>
+                           </div>
+                           <div data-sly-test="${properties.vatText}" class="bottom-part">
+                               ${properties.vatText}
+                           </div>
+                       </div>
+                            
                        <div data-sly-test="${properties.bannerCTATitle && properties.linkBehavior != 'openmodalwindow'}" class="ele-margin hero-cta">
 					        <sly data-sly-test.heroCTALink="${properties.ctaSameWindowLink}" 
 				               data-sly-use.heroModelLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}"/>
