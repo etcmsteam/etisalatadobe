@@ -3,7 +3,8 @@
         <div class="container">
             <div class="feature-wrapper">
                 <div class="img-wrap" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
-                    <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+                    <div data-sly-test="${properties.featuresImageOpacity}" class="bg-overlay" style="background-color:#000; opacity:${properties.featuresImageOpacity @ context='styleToken'};"></div>
+					<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
                         <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
                     </div>
 					<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
