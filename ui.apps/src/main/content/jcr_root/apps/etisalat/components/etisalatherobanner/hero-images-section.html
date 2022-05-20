@@ -12,6 +12,7 @@
  
  <sly data-sly-set.alignBannerClass="${leftAlignBannerClass} ${rightAlignBannerClass} ${centerAlignBannerClass}" />
  <sly data-sly-set.heroSectionAlignment="${leftAlignment} ${rightAlignment} ${centerAlignment} ${alignBannerClass}" />
+ <sly data-sly-set.="${leftAlignment} ${rightAlignment} ${centerAlignment} col-xs-12 col-md-6" />
  
   <div data-component="cmp-herobanner" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
        data-sly-test="${properties.heroDisplayBehavior}" class="${!wcmmode.edit ? heroBannerClass : ''}"
@@ -25,7 +26,7 @@
        <div class="container">
            <div class="row ">
                <div class="hero-details">                    
-                   <div class="${properties.uploadDocLinkURL ? '${leftAlignment} ${rightAlignment} ${centerAlignment} col-xs-12 col-md-6' : heroSectionAlignment}">
+                   <div class="${properties.uploadDocLinkURL ? iframeClass : heroSectionAlignment}">
                         <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}" 
 			               data-sly-use.heroBannerLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerCTALink}"/>
 				      	<div class="hero-bg-cta" data-label="${heroBannerLink.link}"></div>
