@@ -2,8 +2,9 @@
     <div data-component="cmp-features" class="features-full-bleed-4-0 variation-price ${properties.featuresFullBleedAlignment} ${properties.featuresFullBleedTextColor} ${properties.enableFeaturesView ? 'feature-style' : ''}">
         <div class="container">
             <div class="feature-wrapper">
+			    <div class="bg-filter" style="background-color:#000; opacity:${properties.featuresImageOpacity ? properties.featuresImageOpacity : 0 @ context='styleToken'};"></div>
                 <div class="img-wrap" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
-                    <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+					<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
                         <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
                     </div>
 					<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
