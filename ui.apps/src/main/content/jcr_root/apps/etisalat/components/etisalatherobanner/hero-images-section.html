@@ -1,0 +1,50 @@
+<template  data-sly-template.heroImageSection="${ @ properties}">
+ <sly data-sly-set.heroInnerPageView="${properties.heroImageInnerPageView ? 'hero-image-section hero-image hero-links-add testimonials single-slide-only' : 'hero-image-section hero-image hero-links-add testimonials'}" 
+       data-sly-use.parentRes="${resource.parent.path}" data-sly-set.heroBannerClass="${parentRes && 
+   parentRes.sling:resourceType == 'etisalat/components/carousel' ? '' : heroInnerPageView}" />
+ 
+  <div data-component="cmp-herobanner" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
+       data-sly-test="${properties.heroDisplayBehavior}" class="${!wcmmode.edit ? heroBannerClass : ''}"
+       data-sly-unwrap="${heroBannerClass ? false : true}">
+       
+      <!-- Start - cover -->
+      <sly data-sly-use.heroImagesTemplate="heroimages.html"
+			             data-sly-call="${heroImagesTemplate.heroImages @ properties=properties}"/>
+			             
+       <!-- Start - container -->
+       <div class="container">
+           <div class="row ">
+               <div class="hero-details">                    
+                   <div class="${properties.heroAlignment} col-xs-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-0">
+                        <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}" 
+			               data-sly-use.heroBannerLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerCTALink}"/>
+				      	<div class="hero-bg-cta" data-label="${heroBannerLink.link}"></div>
+		      	
+                       <div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.youTubeUrl}" class="video-wrapper">
+							<sly data-sly-use.heroVideoModelTemplate="herovideo.html"
+						             data-sly-call="${heroVideoModelTemplate.heroVideoModel @ component=component,properties=properties}"/>
+						</div>
+						<div data-sly-test="${properties.backToLinkLbl}" class="go-back">
+						   <sly data-sly-test.customLink="${properties.backToLinkURL}" 
+			                     data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+							<div class="third-action-wrapper action-link">
+								<a data-sly-test="${commonlinkmodel.link}" href="${commonlinkmodel.link}" class="link">${properties.backToLinkLbl}</a>
+							</div>
+						</div>
+                       <h5 data-sly-test="${properties.heroPreTitle}" class="hero-heading-small">${properties.heroPreTitle}</h5>
+                       <h3 data-sly-test="${properties.heroTitle}" class="hero-heading-big">${properties.heroTitle @ context = 'html'}</h3>
+                       <div data-sly-test="${properties.jcr:description}" class="hero-description">${properties.jcr:description @ context = 'html'}</div>
+                       
+                       <div data-sly-test="${properties.bannerCTATitle && properties.linkBehavior != 'openmodalwindow'}" class="ele-margin hero-cta">
+					        <sly data-sly-test.heroCTALink="${properties.ctaSameWindowLink}" 
+				               data-sly-use.heroModelLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}"/>
+					        <a href="${heroModelLink.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn ${properties.ctaColor} ripple-effect"> ${properties.bannerCTATitle} </a>
+				       </div>	      
+					   <sly data-sly-use.heroCTAModelTemplate="modalpopup.html"
+						             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
+                   </div>
+               </div>
+           </div>
+       </div>
+  </div>
+</template>
