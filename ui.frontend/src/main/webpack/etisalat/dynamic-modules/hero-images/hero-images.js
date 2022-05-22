@@ -388,19 +388,39 @@ export const HERO_IMAGES = () => {
   // hr overlay open
   $(".hr-landing-section .swiper-slide .hr-upload-docs-box .upload-docs-btn")
     .off("click")
-    .on("click", function () {
-      var parent = $(this).closest(".hr-landing-section");
-      parent.css("position", "static");
-      parent.find(".wst-overlay-wrapper").addClass("active");
-      $("body").addClass("freeze");
+    .on("click", function (event) {
+      // modal-popup-wrapper
+      event.preventDefault();
+      event.stopPropagation();
+      var dataLabel = $(this).attr("data-label");
+      if (dataLabel) {
+        const $el = $("#" + dataLabel).clone();
+        $(".modal-popup-wrapper").append($el);
+        $(".modal-popup-wrapper #" + dataLabel).addClass("show").addClass('active');
+        $(".modal-popup-wrapper #" + dataLabel).removeClass("fade");
+        $(".modal-popup-wrapper .modal-popup").addClass("show");
+        $("body, html").addClass("freeze");
+        $(".modal-popup-wrapper").css("display", "block");
+      }
+
     });
+
+
   // hr overlay close
-  $(".hr-landing-section .close")
+  $(".modal-popup-wrapper")
     .off("click")
-    .on("click", function () {
-      $(".hr-landing-section .wst-overlay-wrapper").removeClass("active");
-      $(".hr-landing-section").css("position", "relative");
-      $("body").removeClass("freeze");
+    .on("click", ".hero-image-section-iframe-modal.wst-overlay-wrapper .close", function () {
+      
+      event.stopPropagation();
+      event.preventDefault();
+      const modalPopupWrapper = $(this).closest(".modal-popup-wrapper");
+      if (modalPopupWrapper && modalPopupWrapper.length) {
+        $(modalPopupWrapper).removeClass("show");
+        $(modalPopupWrapper).css("display", "none");
+        $(modalPopupWrapper).children().remove();
+      }
+  
+      $("body, html").removeClass("freeze");
     });
 
   $(".play-video").on("click", function () {
