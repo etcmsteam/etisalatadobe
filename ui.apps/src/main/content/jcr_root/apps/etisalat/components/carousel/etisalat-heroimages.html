@@ -1,5 +1,10 @@
 <template data-sly-template.hero="${ @ carousel,properties}">
-  <div data-component="cmp-hero-images" id="${carousel.id}" class="hero-links-add testimonials ${!wcmmode.edit ? 'swiper-container hero-image-section medium hero-images-variation hero-image' : ''} ${properties.heroImageInnerPageView ? '' : 'hero-video hr-landing-section'}">
+  <div data-component="cmp-hero-images" id="${carousel.id}" 
+       data-sly-use.model="com.etisalat.core.models.HeroLinkSection"        
+       class="hero-links-add testimonials ${!wcmmode.edit ? 'swiper-container hero-image-section hero-images-variation hero-image' : ''} 
+       ${properties.heroImageInnerPageView ? '' : 'hr-landing-section'} 
+       ${model.heroLinkSectionList.size > 0 ? '' : 'medium'} 
+       ${!properties.heroImageInnerPageView && model.heroLinkSectionList.isEmpty  ? 'hero-video' : ''}">
     <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''} hero-links-menu">
       <div role="tabpanel" data-sly-repeat.item="${carousel.items}" 
            data-sly-resource="${item.name @ decorationTagName=''}" 
@@ -10,8 +15,7 @@
            class="swiper-slide bg-dark"></div>
     </div>
     
-    <div data-sly-use.model="com.etisalat.core.models.HeroLinkSection" 
-         data-sly-test.mylist="${model.heroLinkSectionList}" class="container links-wrapper">
+    <div data-sly-test.mylist="${model.heroLinkSectionList}" class="container links-wrapper">
       <div class="row">
         <div class="col-xs-12">
           <!--hero quick links start -->
