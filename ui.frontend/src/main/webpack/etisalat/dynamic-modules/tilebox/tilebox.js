@@ -47,8 +47,8 @@ export const TILE_BOX = () => {
     $(document)
       .find(".tilecontainer .tile-boxes-section.tile-boxes-section-swiper")
       .each(function (index) {
-        const continer = $(this).find(".swiper-container");
-        var $tileBoxesSwiperCarousal = swiperInit(continer, {
+        const container = $(this).find(".swiper-container");
+        var $tileBoxesSwiperCarousal = swiperInit(container, {
           scrollbar: $(this).find(".swiper-scrollbar"),
           scrollbarHide: false,
           scrollbarDraggable: true,
