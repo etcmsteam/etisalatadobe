@@ -61,15 +61,15 @@ export const TILE_BOX = () => {
           breakpoints: {
             540: {
               spaceBetween: 0,
-              slidesPerView: 1.35,
+              slidesPerView: 1,
             },
             768: {
               spaceBetween: 0,
-              slidesPerView: 2.35,
+              slidesPerView: 1,
             },
             1024: {
               spaceBetween: 0,
-              slidesPerView: 3,
+              slidesPerView: 1,
             },
             1440: {
               spaceBetween: 0,
