@@ -572,6 +572,21 @@
     }
 
     &.variation-price {
+        .content-wrapper {
+            margin-right: 0;
+            @include respond-to-min-max($desktop, $tablet) {
+                width: 100%;
+                max-width: 100%;
+                border: 2px solid red;
+            }
+        }
+        &.learnnmore-content {
+            .content-wrapper {
+                @include respond-to-min($desktop) {
+                    margin-left: 490px;
+                }
+            }
+        }
         .wst-secondary-headings {
             h1,
             h2,
@@ -615,7 +630,7 @@
                 list-style: none;
                 margin-bottom: toRem(8);
 
-                @media (min-width: 992px) {
+                @include respond-to-min($tablet) {
                     flex: 1 0 50%;
                     margin-bottom: toRem(10);
                 }
@@ -708,12 +723,19 @@
             }
         }
 
-        .price-and-action.link-n-btn {
-            margin-top: toRem(40);
-            align-items: flex-start;
 
-            @include respond-to-min($desktop) {
-                align-items: center;
+
+        .price-and-action {
+            @include respond-to-min($tablet) {
+                flex-direction: row;
+            }
+            &.link-n-btn {
+                margin-top: toRem(40);
+                align-items: flex-start;
+
+                @include respond-to-min($tablet) {
+                    align-items: center;
+                }
             }
         }
 
