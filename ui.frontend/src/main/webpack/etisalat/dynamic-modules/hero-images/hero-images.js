@@ -370,10 +370,10 @@ export const HERO_IMAGES = () => {
     $(".hero-image")
       .not(".hero-image-inizialized")
       .each(function () {
-        var heroImage = $(this);
-        heroImage.addClass("hero-image-inizialized");
+        var $heroImage = $(this);
+        $heroImage.addClass("hero-image-inizialized");
         var hero = new Hero($(this));
-        if ($(".swiper-container").hasClass("destryeMe")) {
+        if ($heroImage.hasClass("destryeMe")) {
           // $(".destryeMe.swiper-container")[0].swiper.destroy(false, true);
           hero.heroSwiperInstance.destroy(false, true);
         }
