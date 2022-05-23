@@ -427,6 +427,61 @@ export const HERO_IMAGES = () => {
     $("video")[0].pause();
   });
 
+
+  $(".hero-image-section .play-video")
+    .off("click")
+    .on("click", function (event) {
+      // modal-popup-wrapper
+      event.preventDefault();
+      event.stopPropagation();
+      var dataTarget = $(this).attr("data-target");
+      if (dataTarget) {
+        // fade in
+        const modalBackdropId = `heroBannerModalBackdrop-${dataTarget.replace("#", '')}`;
+        $("<div />").addClass("modal-backdrop").appendTo(document.body).addClass("fade in").attr({
+          id: modalBackdropId,
+        });
+
+        const $el = $(dataTarget).clone();
+        const $modalPopupWrapper = $(".modal-popup-wrapper");
+        $modalPopupWrapper.attr({ 'data-modal-backdrop-target': modalBackdropId });
+        $modalPopupWrapper.append($el);
+
+        $modalPopupWrapper.find(dataTarget).addClass("show").addClass("active");
+        $modalPopupWrapper.find(dataTarget).removeClass("fade");
+        $(".modal-popup-wrapper .modal-popup").addClass("show");
+        $("body, html").addClass("freeze");
+        $(".modal-popup-wrapper").css("display", "block");
+
+        $modalPopupWrapper.find(dataTarget).find(".hero-img-video-modal-section").addClass("in").show();
+      }
+    });
+
+  // video overlay close
+  $(".modal-popup-wrapper")
+    .off("click")
+    .on("click", ".hero-img-video-modal-section", function () {
+      event.stopPropagation();
+      event.preventDefault();
+      
+      const $modalPopupWrapper = $(this).closest(".modal-popup-wrapper");
+      if ($modalPopupWrapper) {
+        const $modalBackdrop = $(`#${$modalPopupWrapper.attr('data-modal-backdrop-target')}`);
+
+        $modalPopupWrapper.removeClass("show");
+        $modalPopupWrapper.css("display", "none");
+        $modalPopupWrapper.children().remove();
+
+        $modalBackdrop.remove();        
+      }
+
+      $("body, html").removeClass("freeze");
+    });
+
+  $(".play-video").on("click", function () {
+    $("video")[0].pause();
+  });
+
   // document.onclick = function(e){
   //   if(e.target.className !== 'modal-content') {
   //     if(e.target.className !== 'play-video') {

@@ -924,6 +924,11 @@
       line-height: 26px;
       color: $almost-black;
       @include font-family-lato();
+
+      @include respond-to-max($desktop-min) {
+        font-size: 14px;
+        color: #919192;
+      }
     }
 
     button.btn,
@@ -1213,6 +1218,7 @@
     position: static;
     width: auto;
     top: 0;
+    margin-top: 0;
 
     @media (min-width: $desktop) {
       margin-bottom: 10px;
@@ -1225,6 +1231,10 @@
       text-transform: uppercase;
       @include font-family-lato();
       position: relative;
+
+      @media (max-width: $desktop-min) {
+        color: $main-green;
+      }
 
       svg,
       img,
@@ -1241,6 +1251,7 @@
           top: -3px;
           width: 20px;
           height: 20px;
+          stroke: $white;
         }
       }
 
@@ -1473,7 +1484,8 @@
   }
 }
 
-.hero-img-video-modal-section {
+.hero-img-video-modal-section.hero-images-modal {
+  position: fixed;
   .modal-dialog {
     width: 80%;
     top: 5%;
