@@ -118,10 +118,6 @@
           width: 50%;
         }
 
-        @include respond-to-min($desktop) {
-          max-height: toRem(254);
-        }
-
         @include respond-to-min($desktop-wide) {
           min-height: toRem(334);
         }
@@ -138,7 +134,6 @@
         }
 
         @include respond-to-min-max($desktop-min, $tablet) {
-          height: toRem(288);
           float: left;
         }
 
@@ -152,6 +147,7 @@
         img {
           position: absolute;
           left: -9999px;
+          object-fit: cover;
           right: -9999px;
           top: -9999px;
           bottom: -9999px;
@@ -166,6 +162,8 @@
       &__content {
         @include respond-to-min($tablet) {
           padding-top: toRem(25);
+          padding-left: 4.16666667%;
+          padding-right: 4.16666667%;
           max-width: 50%;
           width: 50%;
         }
@@ -186,14 +184,10 @@
           &__action-container {
             margin-left: auto;
             margin-right: auto;
-
-            @include respond-to-min($desktop) {
-              width: 68.585%;
-            }
-
             @include respond-to-min($tablet) {
-              width: 550px;
+              width: 83.33333333%;
             }
+
 
             @include respond-to-max($custom-width-tab) {
               width: 100%;
@@ -467,6 +461,7 @@
   .cmp-teaser__action-container {
     position: relative;
     max-width: 100%;
+    border: none;
   }
 
   &.button--secondary,
