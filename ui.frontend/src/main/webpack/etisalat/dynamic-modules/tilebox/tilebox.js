@@ -10,7 +10,7 @@ export const TILE_BOX = () => {
     $(document)
       .find(".tilecontainer .tile-boxes-section")
       .not(".tile-boxes-section-swiper")
-      .not('.tile-box-2-column')
+      .not(".tile-box-2-column")
       .each(function (index) {
         $(this).addClass("t-b-slider" + index);
         var $tileBoxesCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
@@ -110,31 +110,31 @@ export const TILE_BOX = () => {
         }
       });
 
-
-      // Tile Box 2 Column Variation start
-      $(document).find('.tileBoxModified').each(function (itemindex) {
-
-        var swiperSlideLength = $(this).find('.swiper-slide').length;
-        $(this).addClass('swiper-with-' + swiperSlideLength + '-slides');
+    // Tile Box 2 Column Variation start
+    $(document)
+      .find(".tileBoxModified")
+      .each(function (itemindex) {
+        var swiperSlideLength = $(this).find(".swiper-slide").length;
+        $(this).addClass("swiper-with-" + swiperSlideLength + "-slides");
         if ($(window).width() > 991) {
-          $(this).find('.tileboxCarousal').addClass('destroyed');
+          $(this).find(".tileboxCarousal").addClass("destroyed");
         } else {
-          var $carouselSlider = new Swiper($(this).find('.tileboxCarousal'), {
+          var $carouselSlider = new Swiper($(this).find(".tileboxCarousal"), {
             loop: false,
             autoplay: false,
             slidesPerView: 1.1,
             simulateTouch: true,
-            pagination: '.swiper-pagination',
+            pagination: ".swiper-pagination",
             touchEventsTarget: "swiper-wrapper",
             scrollbarDraggable: true,
             scrollbarHide: false,
             scrollbar: ".table-swiper-scrollbar",
             centeredSlides: false,
-            spaceBetween: 20
+            spaceBetween: 20,
           });
         }
       });
-      // Tile Box 2 Column Variation end
+    // Tile Box 2 Column Variation end
   }
 
   initTileBoxesSlider();
@@ -142,8 +142,9 @@ export const TILE_BOX = () => {
   $(".tileBoxVideoLink").on("click", function (e) {
     e.preventDefault();
     var modalCTA = $(this).next(".tileBoxVideoModal");
-    $(this).closest(".swiper-wrapper").addClass("remove-transform remove-zIndex");
     $(this).closest(".swiper-container").addClass("remove-zIndex");
+    $(this).closest(".swiper-wrapper").addClass("remove-transform remove-zIndex");
+    $(this).closest(".swiper-wrapper .swiper-slide").addClass("remove-transform");
     if ($(this).closest(".tile-boxes-section").hasClass("four-plus-slides")) {
       $(this).closest(".tile-boxes-section").addClass("remove-sticky-pos");
     }
@@ -162,8 +163,9 @@ export const TILE_BOX = () => {
     if ($("body").hasClass("modal-overlay")) {
       $("body").removeClass("modal-overlay");
     }
-    $(this).closest(".swiper-wrapper").removeClass("remove-transform remove-zIndex");
     $(this).closest(".swiper-container").removeClass("remove-zIndex");
+    $(this).closest(".swiper-wrapper").removeClass("remove-transform remove-zIndex");
+    $(this).closest(".swiper-wrapper .swiper-slide").removeClass("remove-transform");
     if ($(this).closest(".tile-boxes-section").hasClass("remove-sticky-pos")) {
       $(this).closest(".tile-boxes-section").removeClass("remove-sticky-pos");
     }
