@@ -144,23 +144,34 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             cq-dialog-dropdown-showhide-target=".fullbleedbehavior-showhide-target"/>
                                                     </fullbleedbehavior>
-                                                    <featuresalignment
+                                                    <featuresalignmentsection
+                                                        granite:class="fullbleedbehavior-showhide-target"
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Features Text Alignment"
-                                                        fieldLabel="Features Text Alignment"
-                                                        name="./featuresFullBleedAlignment">
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
                                                         <items jcr:primaryType="nt:unstructured">
-                                                            <left
+                                                            <featuresalignment
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Left"
-                                                                value=""/>
-                                                            <right
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Right"
-                                                                value="flipped"/>
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Features Text Alignment"
+                                                                fieldLabel="Features Text Alignment"
+                                                                name="./featuresFullBleedAlignment">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <left
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Left"
+                                                                        value=""/>
+                                                                    <right
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Right"
+                                                                        value="flipped"/>
+                                                                </items>
+                                                            </featuresalignment>
                                                         </items>
-                                                    </featuresalignment>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="fullbleeddefault"
+                                                            showhidetargetvalue1="featuresview"/>
+                                                    </featuresalignmentsection>
                                                     <featurestextcolor
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
