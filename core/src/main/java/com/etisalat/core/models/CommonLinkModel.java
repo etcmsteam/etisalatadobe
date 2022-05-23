@@ -9,7 +9,9 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.inject.Inject;
@@ -32,13 +34,24 @@ public class CommonLinkModel {
     @SlingObject
     ResourceResolver resourceResolver;
 
+    @Self
+    protected SlingHttpServletRequest request;
+
+    @OSGiService
+    EtisalatExternalizer etisalatExternalizer;
+
     /**
      * Gets the link.
      *
      * @return the link
      */
     public String getLink() {
-        return CommonUtility.appendHtmlExtensionToPage(resourceResolver, link);
+        String urlWithExtension = CommonUtility.appendHtmlExtensionToPage(resourceResolver, link);
+        if (null != etisalatExternalizer && StringUtils.isNotBlank(request.getRequestPathInfo().getSelectorString())) {
+            return etisalatExternalizer.getLinkUrl(urlWithExtension, resourceResolver, request);
+        } else {
+            return urlWithExtension;
+        }
     }
     
     /**
