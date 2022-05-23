@@ -72,9 +72,6 @@ public class TileModel {
   @Self
   protected SlingHttpServletRequest request;
 
-  @Self
-  ExternalizerModel externalizerModel;
-
   //@Reference
   @OSGiService
   EtisalatExternalizer etisalatExternalizer;

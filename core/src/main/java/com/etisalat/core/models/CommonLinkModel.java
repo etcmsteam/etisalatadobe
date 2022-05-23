@@ -47,7 +47,7 @@ public class CommonLinkModel {
      */
     public String getLink() {
         String urlWithExtension = CommonUtility.appendHtmlExtensionToPage(resourceResolver, link);
-        if (null != etisalatExternalizer && StringUtils.isNotBlank(request.getRequestPathInfo().getSelectorString())) {
+        if (null != etisalatExternalizer) {
             return etisalatExternalizer.getLinkUrl(urlWithExtension, resourceResolver, request);
         } else {
             return urlWithExtension;

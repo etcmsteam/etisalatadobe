@@ -3,6 +3,7 @@ package com.etisalat.core.models;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import com.etisalat.core.models.impl.EtisalatExternalizerImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,15 @@ public class CommonLinkModelTest {
     void testExternalLink() {
         String externalLink = "https://www.google.com/";
         context.request().setAttribute("link", externalLink);
+        CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+        assertEquals(externalLink, model.getLink());
+    }
+
+    @Test
+    void testExternalizerLink() {
+        String externalLink = "/content/etisalat/ae/en/carrier-and-wholesale";
+        context.request().setAttribute("link", externalLink);
+        context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
         CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
         assertEquals(externalLink, model.getLink());
     }
