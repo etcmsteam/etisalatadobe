@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <div data-sly-test="${!properties.ctatextLearnMore}" class="third-action-wrapper">
+                        <div data-sly-test="${!properties.ctatextLearnMore && properties.fullBleedBehavior != 'learnmoreview'}" class="third-action-wrapper">
 							<sly data-sly-test="${properties.featuresLinkBehavior != 'openmodalwindow'}">
                                 <sly data-sly-test.ctaLink="${properties.ctaLink}" 
                                    data-sly-use.ctaCallToActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=ctaLink}"/>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div data-sly-test="${properties.ctatextLearnMore}" class="price-and-action link-n-btn">
+                    <div data-sly-test="${properties.ctatextLearnMore && properties.fullBleedBehavior == 'learnmoreview'}" class="price-and-action link-n-btn">
                         <div class="media-cta-4-price">
 							<sly data-sly-test.learMoreLink="${properties.learnMoreCtaLink}" 
                                    data-sly-use.learnMoreActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=learMoreLink}"/>
