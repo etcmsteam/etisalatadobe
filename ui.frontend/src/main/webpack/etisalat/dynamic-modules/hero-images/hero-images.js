@@ -374,7 +374,8 @@ export const HERO_IMAGES = () => {
         heroImage.addClass("hero-image-inizialized");
         var hero = new Hero($(this));
         if ($(".swiper-container").hasClass("destryeMe")) {
-          $(".destryeMe.swiper-container")[0].swiper.destroy(false, true);
+          // $(".destryeMe.swiper-container")[0].swiper.destroy(false, true);
+          hero.heroSwiperInstance.destroy(false, true);
         }
       });
     var t1 = performance.now();
@@ -396,37 +397,34 @@ export const HERO_IMAGES = () => {
       if (dataLabel) {
         const $el = $("#" + dataLabel).clone();
         $(".modal-popup-wrapper").append($el);
-        $(".modal-popup-wrapper #" + dataLabel).addClass("show").addClass('active');
+        $(".modal-popup-wrapper #" + dataLabel)
+          .addClass("show")
+          .addClass("active");
         $(".modal-popup-wrapper #" + dataLabel).removeClass("fade");
         $(".modal-popup-wrapper .modal-popup").addClass("show");
         $("body, html").addClass("freeze");
         $(".modal-popup-wrapper").css("display", "block");
       }
-
     });
-
 
   // hr overlay close
-  $(".modal-popup-wrapper")
-    .off("click")
-    .on("click", ".hero-image-section-iframe-modal.wst-overlay-wrapper .close", function () {
-      
-      event.stopPropagation();
-      event.preventDefault();
-      const modalPopupWrapper = $(this).closest(".modal-popup-wrapper");
-      if (modalPopupWrapper && modalPopupWrapper.length) {
-        $(modalPopupWrapper).removeClass("show");
-        $(modalPopupWrapper).css("display", "none");
-        $(modalPopupWrapper).children().remove();
-      }
-  
-      $("body, html").removeClass("freeze");
-    });
+  const $modalPopupWrapper = $(".modal-popup-wrapper");
+  $modalPopupWrapper.on("click", ".hero-image-section-iframe-modal.wst-overlay-wrapper .close", function () {
+    event.stopPropagation();
+    event.preventDefault();
+    const modalPopupWrapperClosest = $(this).closest(".modal-popup-wrapper");
+    if (modalPopupWrapperClosest && modalPopupWrapperClosest.length) {
+      $(modalPopupWrapperClosest).removeClass("show");
+      $(modalPopupWrapperClosest).css("display", "none");
+      $(modalPopupWrapperClosest).children().remove();
+    }
+
+    $("body, html").removeClass("freeze");
+  });
 
   $(".play-video").on("click", function () {
     $("video")[0].pause();
   });
-
 
   $(".hero-image-section .play-video")
     .off("click")
@@ -437,46 +435,44 @@ export const HERO_IMAGES = () => {
       var dataTarget = $(this).attr("data-target");
       if (dataTarget) {
         // fade in
-        const modalBackdropId = `heroBannerModalBackdrop-${dataTarget.replace("#", '')}`;
+        const modalBackdropId = `heroBannerModalBackdrop-${dataTarget.replace("#", "")}`;
         $("<div />").addClass("modal-backdrop").appendTo(document.body).addClass("fade in").attr({
           id: modalBackdropId,
         });
 
         const $el = $(dataTarget).clone();
-        const $modalPopupWrapper = $(".modal-popup-wrapper");
-        $modalPopupWrapper.attr({ 'data-modal-backdrop-target': modalBackdropId });
+        $modalPopupWrapper.attr({ "data-modal-backdrop-target": modalBackdropId });
         $modalPopupWrapper.append($el);
 
         $modalPopupWrapper.find(dataTarget).addClass("show").addClass("active");
         $modalPopupWrapper.find(dataTarget).removeClass("fade");
         $(".modal-popup-wrapper .modal-popup").addClass("show");
         $("body, html").addClass("freeze");
-        $(".modal-popup-wrapper").css("display", "block");
+        $modalPopupWrapper.css("display", "block");
 
         $modalPopupWrapper.find(dataTarget).find(".hero-img-video-modal-section").addClass("in").show();
       }
     });
 
   // video overlay close
-  $(".modal-popup-wrapper")
-    .off("click")
-    .on("click", ".hero-img-video-modal-section", function () {
-      event.stopPropagation();
-      event.preventDefault();
-      
-      const $modalPopupWrapper = $(this).closest(".modal-popup-wrapper");
-      if ($modalPopupWrapper) {
-        const $modalBackdrop = $(`#${$modalPopupWrapper.attr('data-modal-backdrop-target')}`);
+  $modalPopupWrapper.on("click", ".hero-img-video-modal-section", function (event) {
+    event.stopPropagation();
+    event.preventDefault();
 
-        $modalPopupWrapper.removeClass("show");
-        $modalPopupWrapper.css("display", "none");
-        $modalPopupWrapper.children().remove();
+    const $modalPopupWrapper = $(this).closest(".modal-popup-wrapper");
+    if ($modalPopupWrapper) {
+      const $modalBackdrop = $(`#${$modalPopupWrapper.attr("data-modal-backdrop-target")}`);
 
-        $modalBackdrop.remove();        
-      }
+      $modalPopupWrapper.removeClass("show");
+      $modalPopupWrapper.css("display", "none");
+      $modalPopupWrapper.children().remove();
+      $modalPopupWrapper.removeAttr('id');
 
-      $("body, html").removeClass("freeze");
-    });
+      $modalBackdrop.remove();
+    }
+
+    $("body, html").removeClass("freeze");
+  });
 
   $(".play-video").on("click", function () {
     $("video")[0].pause();
