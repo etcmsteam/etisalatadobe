@@ -109,6 +109,10 @@
   &.image-left,
   &.image-right {
     .cmp-teaser {
+      @include respond-to-min($tablet) {
+        display: flex;
+      }
+
       &__image {
         height: auto;
         position: relative;
@@ -188,7 +192,6 @@
               width: 83.33333333%;
             }
 
-
             @include respond-to-max($custom-width-tab) {
               width: 100%;
             }
@@ -223,6 +226,11 @@
       }
     }
   }
+  &.image-right {
+    @include respond-to-min($tablet) {
+      flex-direction: row-reverse;
+    }
+  }
 }
 
 .cmp-tabs-support-wrapper {
@@ -239,6 +247,7 @@
     border-bottom: toRem(2) solid $main-green;
     height: toRem(120);
     min-height: toRem(120);
+    padding: 0;
 
     .container-center {
       width: 100% !important;
@@ -249,9 +258,12 @@
 
       .swiper-container {
         width: 100% !important;
-
-        @include respond-to-min($custom-width-tab) {
-          width: 83.33333334% !important;
+      }
+      .tabs-swiper-navigation {
+        .swiper-container {
+          @include respond-to-min($custom-width-tab) {
+            width: 83.33333334% !important;
+          }
         }
       }
 
@@ -302,7 +314,7 @@
           @include respond-to-min($tablet) {
             font-size: toRem(20);
             width: 33.33%;
-            &::before{
+            &::before {
               content: " ";
               width: 1px;
               background-color: $sand-white;
