@@ -109,6 +109,11 @@
   &.image-left,
   &.image-right {
     .cmp-teaser {
+
+      @include respond-to-min($tablet){
+        display: flex;
+      }
+
       &__image {
         height: auto;
         position: relative;
@@ -221,6 +226,11 @@
           }
         }
       }
+    }
+  }
+  &.image-right {
+    @include respond-to-min($tablet){
+      flex-direction: row-reverse;
     }
   }
 }
