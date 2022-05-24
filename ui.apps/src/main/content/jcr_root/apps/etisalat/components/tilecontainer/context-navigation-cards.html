@@ -1,7 +1,7 @@
 <template data-sly-template.contextNavCard="${ @ container,properties}">
     <sly data-sly-set.oneCard="${container.items.size == 1 ? 'one-col-static' : ''}"></sly>
-    <sly data-sly-test.twoCard="${container.items.size == 2 ? 'two-col-static' : ''}"></sly>
-    <sly data-sly-test.threeCard="${container.items.size == 3 ? 'three-col-static' : ''}"></sly>
+    <sly data-sly-set.twoCard="${container.items.size == 2 ? 'two-col-static' : ''}"></sly>
+    <sly data-sly-set.threeCard="${container.items.size == 3 ? 'three-col-static' : ''}"></sly>
     <div data-component="cmp-context-navigation-cards">
         <section class="context-navigation more-value ${oneCard} ${twoCard} ${threeCard}">
             <div data-sly-test="${properties.tileTitle || properties.contextNavCardDescription}" class="container">
