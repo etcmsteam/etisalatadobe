@@ -69,7 +69,7 @@ export const TILE_BOX = () => {
             },
             1024: {
               spaceBetween: 0,
-              slidesPerView: 1,
+              slidesPerView: 3,
             },
             1440: {
               spaceBetween: 0,
