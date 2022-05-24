@@ -572,6 +572,23 @@
     }
 
     &.variation-price {
+        @include respond-to-min($tablet) {
+            min-height: 503px;
+        }
+        .content-wrapper {
+            margin-right: 0 !important;
+            @include respond-to-min-max($desktop, $tablet) {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        &.learnmore-content {
+            .content-wrapper {
+                @include respond-to-min($desktop) {
+                    margin-left: 490px;
+                }
+            }
+        }
         .wst-secondary-headings {
             h1,
             h2,
@@ -584,7 +601,6 @@
         }
 
         .wst-main-headings {
-
             h1,
             h2,
             h3 {
@@ -615,7 +631,9 @@
                 list-style: none;
                 margin-bottom: toRem(8);
 
-                @media (min-width: 992px) {
+                @include respond-to-min($tablet) {
+                    font-size: toRem(20) !important;
+                    line-height: toRem(20) !important;
                     flex: 1 0 50%;
                     margin-bottom: toRem(10);
                 }
@@ -708,12 +726,30 @@
             }
         }
 
-        .price-and-action.link-n-btn {
-            margin-top: toRem(40);
-            align-items: flex-start;
 
-            @include respond-to-min($desktop) {
-                align-items: center;
+
+        .price-and-action {
+            @include respond-to-min($tablet) {
+                flex-direction: row;
+                align-items: flex-end;
+            }
+            &.link-n-btn {
+                margin-top: toRem(40);
+                align-items: flex-start;
+
+                @include respond-to-min($tablet) {
+                    align-items: center;
+                }
+            }
+            .third-action-wrapper {
+                .btn {
+                    @include respond-to-min-max($desktop, $tablet) {
+                        width: toRem(360);
+                    }
+                    @include respond-to-max($phone) {
+                        max-width: 100%;
+                    }
+                }
             }
         }
 
@@ -728,15 +764,33 @@
         }
 
         &.feature-style {
-            @include respond-to-min($desktop) {
+            .content-wrapper {
+                justify-content: flex-start;
+            }
+            .wst-main-headings {
+                h1,h2,h3,h4,h5,h6,.h7,.h8 {
+                    font-size: toRem(32);
+                    margin-bottom: toRem(18) !important;
+                    @include respond-to-min($tablet) {
+                        margin-bottom: toRem(32) !important;
+                    }
+                }
+            }
+            @include respond-to-min($tablet) {
                 padding: toRem(92) toRem(12);
                 min-height: 560px;
                 max-height: 560px;
             }
 
             .paragraph-styling {
-                margin-bottom: 100px;
-                margin-top: 40px;
+                @include respond-to-min($tablet) {
+                    margin-bottom: 100px;
+                    margin-top: 40px;
+                }
+                @include respond-to-max($tablet) {
+                    margin-bottom: 40px;
+                    margin-top: 40px;
+                }
             }
             .from, .aed, .vat {
                 font-size: toRem(14) !important;

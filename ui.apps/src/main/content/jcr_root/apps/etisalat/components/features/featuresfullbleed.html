@@ -1,5 +1,9 @@
 <template data-sly-template.featuresFullBleed="${ @ properties,imageViewportModel}">
-    <div data-component="cmp-features" class="features-full-bleed-4-0 variation-price ${properties.featuresFullBleedAlignment} ${properties.featuresFullBleedTextColor} ${properties.enableFeaturesView ? 'feature-style' : ''}">
+    <sly data-sly-test="${properties.fullBleedBehavior != 'learnmoreview'}" data-sly-set.textAlignment="${properties.featuresFullBleedAlignment}"/>
+    <sly data-sly-set.textColor="${properties.featuresFullBleedTextColor}"/>
+    <sly data-sly-set.featuresView="${properties.fullBleedBehavior == 'featuresview' ? 'feature-style' : ''}"/>
+    <sly data-sly-set.learnMoreView="${properties.fullBleedBehavior == 'learnmoreview' ? 'learnmore-content' : ''}"/>
+    <div data-component="cmp-features" class="features-full-bleed-4-0 variation-price ${textAlignment} ${textColor} ${featuresView} ${learnMoreView}">
         <div class="container">
             <div class="feature-wrapper">
 			    <div class="bg-filter" style="background-color:#000; opacity:${properties.featuresImageOpacity ? properties.featuresImageOpacity : 0 @ context='styleToken'};"></div>
@@ -37,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div data-sly-test="${!properties.ctatextLearnMore}" class="third-action-wrapper">
+                        <div data-sly-test="${!properties.ctatextLearnMore && properties.fullBleedBehavior != 'learnmoreview'}" class="third-action-wrapper">
 							<sly data-sly-test="${properties.featuresLinkBehavior != 'openmodalwindow'}">
                                 <sly data-sly-test.ctaLink="${properties.ctaLink}" 
                                    data-sly-use.ctaCallToActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=ctaLink}"/>
@@ -55,7 +59,7 @@
                         </div>
                     </div>
 
-                    <div data-sly-test="${properties.ctatextLearnMore}" class="price-and-action link-n-btn">
+                    <div data-sly-test="${properties.ctatextLearnMore && properties.fullBleedBehavior == 'learnmoreview'}" class="price-and-action link-n-btn">
                         <div class="media-cta-4-price">
 							<sly data-sly-test.learMoreLink="${properties.learnMoreCtaLink}" 
                                    data-sly-use.learnMoreActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=learMoreLink}"/>

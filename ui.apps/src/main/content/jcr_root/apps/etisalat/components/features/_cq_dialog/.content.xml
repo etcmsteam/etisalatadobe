@@ -119,32 +119,59 @@
                                                         fieldDescription="Enter Image Opacity (range between 0.1 to 0.9)"
                                                         fieldLabel="Image Opacity"
                                                         name="./featuresImageOpacity"/>
-												    <featuresview
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        checked="{Boolean}false"
-                                                        fieldDescription="If checked, Features page view will be applied"
-                                                        name="./enableFeaturesView"
-                                                        text="Enable Features View"
-                                                        uncheckedValue="false"
-                                                        value="true"/>
-                                                    <featuresalignment
+												    <fullbleedbehavior
+                                                        granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Features Text Alignment"
-                                                        fieldLabel="Features Text Alignment"
-                                                        name="./featuresFullBleedAlignment">
+														fieldDescription="Select the Features Bleed Section Behavior"
+                                                        fieldLabel="Display As"
+                                                        name="./fullBleedBehavior">
                                                         <items jcr:primaryType="nt:unstructured">
-                                                            <left
+                                                            <default
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Left"
-                                                                value=""/>
-                                                            <right
+                                                                text="Default"
+                                                                value="fullbleeddefault"/>
+                                                            <featuresview
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Right"
-                                                                value="flipped"/>
+                                                                text="Features View"
+                                                                value="featuresview"/>
+                                                            <learnmoreview
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Learn More View"
+                                                                value="learnmoreview"/>
                                                         </items>
-                                                    </featuresalignment>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".fullbleedbehavior-showhide-target"/>
+                                                    </fullbleedbehavior>
+                                                    <featuresalignmentsection
+                                                        granite:class="fullbleedbehavior-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <featuresalignment
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Features Text Alignment"
+                                                                fieldLabel="Features Text Alignment"
+                                                                name="./featuresFullBleedAlignment">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <left
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Left"
+                                                                        value=""/>
+                                                                    <right
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Right"
+                                                                        value="flipped"/>
+                                                                </items>
+                                                            </featuresalignment>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="fullbleeddefault"
+                                                            showhidetargetvalue1="featuresview"/>
+                                                    </featuresalignmentsection>
                                                     <featurestextcolor
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -461,66 +488,76 @@
                                                                 name="./vatInclude"/>
                                                         </items>
                                                     </pricetag>
-                                                    <ctasectionlearmore
+                                                    <learmoresection
+                                                        granite:class="fullbleedbehavior-showhide-target"
                                                         jcr:primaryType="nt:unstructured"
-                                                        jcr:title="LearnMore-Call-To-Action"
-                                                        sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
                                                         <items jcr:primaryType="nt:unstructured">
-                                                            <ctaStyle
+                                                            <ctasectionlearmore
                                                                 jcr:primaryType="nt:unstructured"
-                                                                sling:resourceSuperType="etisalat/components/commons/cta-variations/ctaStyle"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                fieldDescription="Select CTA Style"
-                                                                fieldLabel="CTA Style"
-                                                                name="./ctaStyleLearnMore"/>
-                                                            <linklabel
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                emptyText="Text"
-                                                                fieldDescription="Enter CTA Label"
-                                                                fieldLabel="CTA Label"
-                                                                name="./ctatextLearnMore"/>
-                                                            <linkBehavior
-                                                                granite:class="cq-dialog-dropdown-showhide"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                fieldDescription="Select Link Behavior"
-                                                                fieldLabel="Link Behavior"
-                                                                name="./featuresLearnMoreLinkBehavior">
+                                                                jcr:title="LearnMore-Call-To-Action"
+                                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
                                                                 <items jcr:primaryType="nt:unstructured">
-                                                                    <opennewwindow
+                                                                    <ctaStyle
                                                                         jcr:primaryType="nt:unstructured"
-                                                                        text="Open In New Window"
-                                                                        value="opennewwindowlearnmore"/>
-                                                                    <opensamewindow
+                                                                        sling:resourceSuperType="etisalat/components/commons/cta-variations/ctaStyle"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                        fieldDescription="Select CTA Style"
+                                                                        fieldLabel="CTA Style"
+                                                                        name="./ctaStyleLearnMore"/>
+                                                                    <linklabel
                                                                         jcr:primaryType="nt:unstructured"
-                                                                        text="Open in Same Window"
-                                                                        value="opensamewindowlearnmore"/>
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        emptyText="Text"
+                                                                        fieldDescription="Enter CTA Label"
+                                                                        fieldLabel="CTA Label"
+                                                                        name="./ctatextLearnMore"/>
+                                                                    <linkBehavior
+                                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                        fieldDescription="Select Link Behavior"
+                                                                        fieldLabel="Link Behavior"
+                                                                        name="./featuresLearnMoreLinkBehavior">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <opennewwindow
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="Open In New Window"
+                                                                                value="opennewwindowlearnmore"/>
+                                                                            <opensamewindow
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="Open in Same Window"
+                                                                                value="opensamewindowlearnmore"/>
+                                                                        </items>
+                                                                        <granite:data
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            cq-dialog-dropdown-showhide-target=".linkbehaviorleanmore-showhide-target"/>
+                                                                    </linkBehavior>
+                                                                    <linkwindow
+                                                                        granite:class="linkbehaviorleanmore-showhide-target"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <buttonlink
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                fieldDescription="Target URL for when the link is clicked."
+                                                                                fieldLabel="CTA link"
+                                                                                name="./learnMoreCtaLink"
+                                                                                rootPath="/content"/>
+                                                                        </items>
+                                                                        <granite:data
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            showhidetargetvalue="opensamewindowlearnmore"
+                                                                            showhidetargetvalue1="opennewwindowlearnmore"/>
+                                                                    </linkwindow>
                                                                 </items>
-                                                                <granite:data
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    cq-dialog-dropdown-showhide-target=".linkbehaviorleanmore-showhide-target"/>
-                                                            </linkBehavior>
-                                                            <linkwindow
-                                                                granite:class="linkbehaviorleanmore-showhide-target"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                    <buttonlink
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                        fieldDescription="Target URL for when the link is clicked."
-                                                                        fieldLabel="CTA link"
-                                                                        name="./learnMoreCtaLink"
-                                                                        rootPath="/content"/>
-                                                                </items>
-                                                                <granite:data
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    showhidetargetvalue="opensamewindowlearnmore"
-                                                                    showhidetargetvalue1="opennewwindowlearnmore"/>
-                                                            </linkwindow>
+                                                            </ctasectionlearmore>
                                                         </items>
-                                                    </ctasectionlearmore>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="learnmoreview"/>
+                                                    </learmoresection>
                                                     <ctacalltoaction
                                                         jcr:primaryType="nt:unstructured"
                                                         jcr:title="Call-To-Action"
