@@ -2,45 +2,46 @@
     <sly data-sly-set.oneCard="${container.items.size == 1 ? 'one-col-static' : ''}"></sly>
     <sly data-sly-test.twoCard="${container.items.size == 2 ? 'two-col-static' : ''}"></sly>
     <sly data-sly-test.threeCard="${container.items.size == 3 ? 'three-col-static' : ''}"></sly>
-
-    <section data-component="cmp-context-navigation-cards" class="context-navigation more-value ${oneCard} ${twoCard} ${threeCard}">
-        <div data-sly-test="${properties.tileTitle || properties.contextNavCardDescription}" class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="content-detail">
-                        <h3 data-sly-test="${properties.tileTitle}" class="text-center">${properties.tileTitle}</h3>
-                        <div data-sly-test="${properties.contextNavCardDescription}" class="text-center">${properties.contextNavCardDescription @ context='html'}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-cards context-navigation-cards context-navigation-swiper">
-            <div class="container">
-                <div class="row row-tiles-table">
-                    <div data-sly-unwrap="${oneCard || twoCard || threeCard}" class="${!wcmmode.edit ? 'swiper-container' : '' }">
-                        <div data-sly-unwrap="${oneCard || twoCard || threeCard}" class="${!wcmmode.edit ? 'swiper-wrapper' : '' }">
-                            <div data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}" 
-                                 class="${!wcmmode.edit ? 'swiper-slide' : ''} col-xs-12 col-sm-6 col-md-4 col-lg-4 swiper-slide-active bring-value-card-wrapper">
-                            </div>
+    <div data-component="cmp-context-navigation-cards">
+        <section class="context-navigation more-value ${oneCard} ${twoCard} ${threeCard}">
+            <div data-sly-test="${properties.tileTitle || properties.contextNavCardDescription}" class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="content-detail">
+                            <h3 data-sly-test="${properties.tileTitle}" class="text-center">${properties.tileTitle}</h3>
+                            <div data-sly-test="${properties.contextNavCardDescription}" class="text-center">${properties.contextNavCardDescription @ context='html'}</div>
                         </div>
-                        <div class=""${!wcmmode.edit ? 'table-swiper-scrollbar' : '' }"></div>
-                    </div>
-                    <div data-sly-test="${!wcmmode.edit}" class="table-swiper-button-prev">
-                        <svg>
-                            <use xlink:href="#hero-image-arrow-left" />
-                        </svg>
-                    </div>
-                    <div data-sly-test="${!wcmmode.edit}" class="table-swiper-button-next">
-                        <svg>
-                            <use xlink:href="#hero-image-arrow" />
-                        </svg>
                     </div>
                 </div>
             </div>
-            <div class="view-accessories hidden-md hidden-lg">
-                <a href="#" class="btn btn-default">${properties.contextNavCardLoadMore}</a>
+            <div class="bg-cards context-navigation-cards context-navigation-swiper">
+                <div class="container">
+                    <div class="row row-tiles-table">
+                        <div data-sly-unwrap="${oneCard || twoCard || threeCard}" class="${!wcmmode.edit ? 'swiper-container' : '' }">
+                            <div data-sly-unwrap="${oneCard || twoCard || threeCard}" class="${!wcmmode.edit ? 'swiper-wrapper' : '' }">
+                                <div data-sly-repeat="${container.items}"
+                                     data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"
+                                     class="${!wcmmode.edit ? 'swiper-slide' : ''} col-xs-12 col-sm-6 col-md-4 col-lg-4 bring-value-card-wrapper swiper-slide-active">
+                                </div>
+                            </div>
+                            <div class="${!wcmmode.edit ? 'table-swiper-scrollbar' : ''}"></div>
+                        </div>
+                        <div data-sly-test="${!wcmmode.edit}" class="table-swiper-button-prev">
+                            <svg>
+                                <use xlink:href="#hero-image-arrow-left"></use>
+                            </svg>
+                        </div>
+                        <div data-sly-test="${!wcmmode.edit}" class="table-swiper-button-next">
+                            <svg>
+                                <use xlink:href="#hero-image-arrow"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-accessories hidden-md hidden-lg">
+                    <a href="#" class="btn btn-default">${properties.contextNavCardLoadMore}</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </template>
