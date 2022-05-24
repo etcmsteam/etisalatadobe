@@ -47,7 +47,7 @@
                 font-size: 20px;
               }
             }
-            .btn-text {
+            .btn-text{
                 color: #FFFFFF;
                 letter-spacing: 2px;
                 line-height: 20px;
@@ -105,7 +105,7 @@
 .gradient-aqua {
   background: linear-gradient(225deg, #3D3D3D 0%, #199E94 100%) !important;
 }
-
+ 
 .cross-promo-plain {
   border-radius: 8px;
   position: relative;
@@ -126,8 +126,6 @@
   }
   .container {
     max-width: 1224px;
-    padding-left: 12px;
-    padding-right: 12px;
   }
 
   &.cp-image-text {
@@ -143,11 +141,20 @@
       @media (max-width: 768px) {
         padding: 2rem 12px;
       }
+      .ul-list-cms ul li:after {
+        background-color: #fff;
+      }
     }
     .right-col {
       display: flex;
       align-items: center;
       justify-content: center;
+      @media (min-width: 768px) {
+        padding-right: 0 !important;
+      }
+      @media (min-width: 768px) {
+        padding-right: 0 !important;
+      }
       div.cover {
         height: 100%;
         overflow: hidden;
@@ -155,7 +162,7 @@
         position: static;
       }
       img {
-        height: auto;
+        // height: auto;
         @media (min-width: 768px) {
           position: absolute;
           bottom: 0;
@@ -164,11 +171,10 @@
       }
       picture {
         img.cover {
-          left: 0;
           margin: auto;
           min-height: 100%;
           min-width: 100%;
-          top: auto;
+          position:static;
         }
       }
     }
@@ -241,6 +247,7 @@
     color: #fff;
     img {
       max-width: 100%;
+      height: auto;
     }
     .lef-col {
       &>span {
@@ -253,14 +260,19 @@
         display: inline-block;
         margin-bottom: 15px;
       }
+      .ul-list-cms ul li:after {
+        background-color: #fff;
+      }
     }
     h3 {
       margin-top: 0px;
       line-height: 38px;
     }
+    
     a {
-      color: #fff;
+      // color: #353738;
       &.btn-text {
+        color: #FFFFFF;
         margin-top: 20px;
         display: table;
         margin-bottom: 5px;
@@ -285,6 +297,15 @@
         }
       }
     }
+    a {
+      &.btn-green {
+        color: $main-green;
+        &:before {
+          border-width: 0 1px 1px 0;
+          border-color: $main-green;
+        }
+      }
+    }
   }
   &.promo-big {
     border-radius: 0;
@@ -298,6 +319,9 @@
         flex-direction: column;
         .lef-col {
           order: 1;
+          .ul-list-cms ul li:after {
+            background-color: #fff;
+          }
         }
         .right-col {
           order: 2;
@@ -306,6 +330,7 @@
       h3 {
         font-size: 32px;
         margin-bottom: 35px;
+        color: #fff;
         @media (max-width: 768px) {
           font-size: 26px;
           line-height: 38px;
@@ -313,7 +338,7 @@
         }
       }
       a {
-        &.btn-text {
+        &.btn-text{
           @media (max-width: 768px) {
             font-size: 16px;
             font-weight: bold;
@@ -373,6 +398,11 @@
           margin-top: 0;
           margin-bottom: 1rem;
           line-height: 28px;
+        }
+      }
+      .lef-col {
+        .ul-list-cms ul li:after {
+          background-color: #fff;
         }
       }
       .lef-col,
@@ -451,6 +481,9 @@
       }
       .lef-col {
         z-index: 999;
+        .ul-list-cms ul li:after {
+          background-color: #fff;
+        }
       }
       h4 {
         margin-bottom: 10px;
@@ -462,7 +495,7 @@
         }
       }
       a {
-        &.btn-text {
+        &.btn-text{
           margin: 0;
         }
       }
@@ -485,13 +518,23 @@
   }
 }
 .btn.btn-transparent {
-  background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
+  background: transparent !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
   &:hover {
-    background: transparent;
-    border: 1px solid #fff;
-    color: #fff;
+    background: transparent !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+  }
+}
+.btn.btn-default  {
+  color: #353738;
+  background-color: #fff;
+  &:hover {
+    background-color: $white;
+    border-color: $main-green;
+    box-shadow: none !important;
+    color: $main-green;
   }
 }
 .no-padding-row {
