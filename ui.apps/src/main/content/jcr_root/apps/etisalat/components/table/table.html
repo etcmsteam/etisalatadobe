@@ -12,9 +12,12 @@
       <sly data-sly-use.manualCsvSimpleTemplate="manual-simplecsv.html" data-sly-call="${manualCsvSimpleTemplate.manualSimplecsv @ tableModel=tableModel}"></sly>
    </sly>
    <!-- [When source is RTE or Simple CSV ends] -->
-   <!-- [When source is CSV with Sorting and filtering starts] -->
+   <!-- [When source is CSV with Sorting and filtering -with Column View starts] -->
    <sly data-sly-test="${properties.tableSource == 'csv'}" data-sly-use.csvTemplate="csv.html" data-sly-call="${csvTemplate.csv @ tableModel=tableModel}"></sly>
-   <!-- [When source is CSV with Sorting and filtering ends] -->
+   <!-- [When source is CSV with Sorting and filtering - with Column View ends] -->
+    <!-- [When source is CSV with Sorting and filtering -with Grid View starts] -->
+    <sly data-sly-test="${properties.tableSource == 'csvgrid'}" data-sly-use.csvTemplate="csvgrid.html" data-sly-call="${csvTemplate.csvgrid @ tableModel=tableModel}"></sly>
+    <!-- [When source is CSV with Sorting and filtering - with Grid View ends] -->
    <sly data-sly-set.defaultLabel="${page.language == 'en' ? 'Page of' : 'صفحة من'}"/>
    <div data-pagination-label="${properties.paginationLabel ? properties.paginationLabel : defaultLabel}" class="data-table__info"></div>
    <div class="data-table__pagination"></div>
