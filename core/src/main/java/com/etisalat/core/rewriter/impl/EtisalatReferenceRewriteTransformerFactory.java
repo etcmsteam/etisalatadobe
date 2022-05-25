@@ -1,10 +1,13 @@
 package com.etisalat.core.rewriter.impl;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.rewriter.ProcessingComponentConfiguration;
 import org.apache.sling.rewriter.ProcessingContext;
@@ -71,7 +74,19 @@ public final class EtisalatReferenceRewriteTransformerFactory implements Transfo
   }
 
   private String prependHostName(String value, SlingHttpServletRequest slingRequest) {
-    return externalizer.absoluteLink(slingRequest, slingRequest.getScheme(), value);
+    try {
+      String url = slingRequest.getRequestURL().toString();
+      if (StringUtils.isNotBlank(url)) {
+        URL aURL = new URL(url);
+        String authority = aURL.getAuthority();
+
+        return String.format("%s://%s%s", slingRequest.getScheme(), authority, value);
+      }
+
+    } catch (MalformedURLException e) {
+      log.error("MalformedURLException in prependHostName method {}", e.getMessage());
+    }
+    return value;
   }
 
   private Attributes rebuildAttributes(final String elementName, final Attributes attrs,
