@@ -89,4 +89,11 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
   if ($FORM) {
     CONTACT_FORM();
   }
+
+  $(window).on("load", function () {
+    if ($('input[name="FIRST_NAME"]').val()) {
+      $FORM.valid();
+    }
+  });
+  
 })();
