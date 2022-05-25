@@ -574,21 +574,22 @@
     &.variation-price {
         @include respond-to-min($tablet) {
             min-height: 503px;
-            .content-wrapper {
-                margin-left: 0;
-            }
-        }
-        @include respond-to-min-max($desktop, $tablet) {
-            .container {
-                padding: 0 0 0 50px!important;
-            }
         }
         .content-wrapper {
             margin-right: 0 !important;
-            justify-content: flex-start;
             @include respond-to-min-max($desktop, $tablet) {
                 width: 100%;
                 max-width: 100%;
+            }
+        }
+        &.learnmore-content {
+            .content-wrapper {
+                @include respond-to-min($desktop) {
+                    margin-left: 490px;
+                }
+                .from, .aed, .vat {
+                    font-size: toRem(14) !important;
+                }
             }
         }
         .wst-secondary-headings {
@@ -632,10 +633,8 @@
                 flex: 1 0 100%;
                 list-style: none;
                 margin-bottom: toRem(8);
-                @include respond-to-max($tablet) {
-                    flex: 1 0 100%;
-                }
-                @include respond-to-min($desktop) {
+
+                @include respond-to-min($tablet) {
                     font-size: toRem(20) !important;
                     line-height: toRem(20) !important;
                     flex: 1 0 50%;
@@ -730,6 +729,8 @@
             }
         }
 
+
+
         .price-and-action {
             @include respond-to-min($tablet) {
                 flex-direction: row;
@@ -744,9 +745,6 @@
                 }
             }
             .third-action-wrapper {
-                @include respond-to-max($phone) {
-                    width: 100%;
-                }
                 .btn {
                     @include respond-to-min-max($desktop, $tablet) {
                         width: toRem(360);
@@ -768,19 +766,9 @@
             z-index: 2;
         }
 
-        &.feature-style, &.learnmore-content {
-            @include respond-to-min($tablet) {
-                min-height: 560px;
-                max-height: 560px;
-                padding: toRem(92) toRem(12);
-            }
+        &.feature-style {
             .content-wrapper {
                 justify-content: flex-start;
-            }
-            @include respond-to-min-max($desktop, $tablet) {
-                .container {
-                    padding: 0!important;
-                }
             }
             .wst-main-headings {
                 h1,h2,h3,h4,h5,h6,.h7,.h8 {
@@ -791,6 +779,12 @@
                     }
                 }
             }
+            @include respond-to-min($tablet) {
+                padding: toRem(92) toRem(12);
+                min-height: 560px;
+                max-height: 560px;
+            }
+
             .paragraph-styling {
                 @include respond-to-min($tablet) {
                     margin-bottom: 100px;
@@ -801,21 +795,8 @@
                     margin-top: 40px;
                 }
             }
-
-            ul li {
-                @include respond-to-min-max($desktop, $tablet) {
-                    flex: 1 0 50%;
-                }
-            }
             .from, .aed, .vat {
                 font-size: toRem(14) !important;
-            }
-        }
-        &.learnmore-content {
-            .content-wrapper {
-                @include respond-to-min($desktop) {
-                    margin-left: 510px;
-                }
             }
         }
     }
@@ -959,14 +940,9 @@
 
     // flipped module
     &.flipped {
-        .variation-price {
-            @include respond-to-min($tablet) {
+        .feature-wrapper {
+            @media (min-width: 768px) {
                 flex-direction: row-reverse;
-            }
-            .content-wrapper {
-                @include respond-to-min($tablet) {
-                    width: 50%;
-                }
             }
         }
         .content-wrapper {
