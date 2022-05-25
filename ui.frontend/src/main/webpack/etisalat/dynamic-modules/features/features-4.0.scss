@@ -574,6 +574,14 @@
     &.variation-price {
         @include respond-to-min($tablet) {
             min-height: 503px;
+            .content-wrapper {
+                margin-left: 0;
+            }
+        }
+        @include respond-to-min-max($desktop, $tablet) {
+            .container {
+                padding: 0 0 0 50px!important;
+            }
         }
         .content-wrapper {
             margin-right: 0 !important;
@@ -736,6 +744,9 @@
                 }
             }
             .third-action-wrapper {
+                @include respond-to-max($phone) {
+                    width: 100%;
+                }
                 .btn {
                     @include respond-to-min-max($desktop, $tablet) {
                         width: toRem(360);
@@ -766,6 +777,11 @@
             .content-wrapper {
                 justify-content: flex-start;
             }
+            @include respond-to-min-max($desktop, $tablet) {
+                .container {
+                    padding: 0!important;
+                }
+            }
             .wst-main-headings {
                 h1,h2,h3,h4,h5,h6,.h7,.h8 {
                     font-size: toRem(32);
@@ -795,14 +811,10 @@
                 font-size: toRem(14) !important;
             }
         }
-        &.feature-style {
-            border: 2px solid yellow;
-        }
         &.learnmore-content {
-            border: 2px solid red;
             .content-wrapper {
                 @include respond-to-min($desktop) {
-                    margin-left: 490px;
+                    margin-left: 510px;
                 }
             }
         }
