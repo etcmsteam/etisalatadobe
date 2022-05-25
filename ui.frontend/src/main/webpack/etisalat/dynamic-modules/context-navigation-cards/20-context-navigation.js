@@ -1,9 +1,7 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-import { IsMediaQuery } from "../../../global/js/helpers";
 
 /* eslint-disable */
 export const CONTEXT_NAVIGATION_CARDS = () => {
-  console.log(IsMediaQuery.md, IsMediaQuery.md.matches);
   function initSwiper() {
     $(document)
       .find(".context-navigation")
@@ -57,7 +55,7 @@ export const CONTEXT_NAVIGATION_CARDS = () => {
 
   initSwiper();
 
-  var elements = $(".context-navigation .swiper-wrapper .swiper-slide").size();
+  var elements = $(".context-navigation .swiper-wrapper .swiper-slide").length;
 
   $(".view-accessories a.btn").click(function (e) {
     e.preventDefault();

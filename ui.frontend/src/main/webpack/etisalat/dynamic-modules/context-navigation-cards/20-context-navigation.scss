@@ -51,20 +51,6 @@
   }
 
   .content-detail {
-    h3 {
-      font-size: 2rem;
-      color: $almost-black;
-      font-weight: 400;
-      margin: 0;
-      margin-bottom: 1.5rem;
-
-      @include respond-to-max($tablet) {
-        font-size: 26px;
-        line-height: 33px;
-        margin-bottom: 1rem;
-      }
-    }
-
     p {
       margin-bottom: 50px;
       color: $paracolor;
@@ -79,17 +65,36 @@
     }
 
     @include respond-to-min($tablet) {
-      > h3 {
+      > h1,
+      > h2,
+      > h3,
+      > h4,
+      > h5,
+      > h6 {
         margin-bottom: 125px;
+
+        @include rtlBlock {
+          text-align: center;
+        }
       }
-      > h3 + p {
+      > h1 + div,
+      > h1 + div,
+      > h2 + div,
+      > h3 + div,
+      > h4 + div,
+      > h5 + div,
+      > h6 + div {
         margin-top: -100px;
+
+        @include rtlBlock {
+          text-align: center;
+        }
       }
     }
   }
 
   .view-accessories {
-    padding: 0 1rem;
+    padding: 0;
     margin-top: 2.5rem;
     display: none;
 
@@ -129,6 +134,20 @@
     }
   }
 
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-position: 50%;
+    background-size: cover;
+  }
+
   .swiper-slide,
   .swiper-wrapper {
     transform-style: inherit;
@@ -137,6 +156,16 @@
 
 .bg-cards {
   position: relative;
+
+  .row-tiles-table {
+    div.swiper-container {
+      padding: 0;
+    }
+
+    .swiper-button-disabled {
+      display: none;
+    }
+  }
 
   .swiper-slide {
     background: transparent;
@@ -160,8 +189,8 @@
     .swiper-container {
       .swiper-slide {
         @include respond-to-min-max($desktop-min, $tablet) {
-          padding-left: 50px;
-          padding-right: 50px;
+          padding-left: 50px !important;
+          padding-right: 50px !important;
         }
       }
     }
@@ -217,7 +246,7 @@
       height: 1.3rem;
 
       svg {
-        stroke: $dark-gray;
+        stroke: $dark-gray-9;
       }
     }
   }
@@ -234,6 +263,12 @@
       &:before {
         padding: 3.5px;
         right: -20px;
+
+        @include rtlBlock {
+          left: 1px;
+          right: auto;
+          transform: translateY(-50%) rotate(135deg);
+        }
       }
     }
 
@@ -274,14 +309,20 @@
       }
     }
 
-    h4 {
-      font-size: 1.5rem;
-      margin-bottom: 0.65rem;
-      margin-top: 0px;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       color: $almost-black;
+
+      @include rtlBlock {
+        text-align: center;
+      }
     }
 
     p {
@@ -292,6 +333,10 @@
 
       @include respond-to-max($tablet) {
         margin-bottom: 1.5rem;
+      }
+
+      @include rtlBlock {
+        text-align: center;
       }
     }
 
