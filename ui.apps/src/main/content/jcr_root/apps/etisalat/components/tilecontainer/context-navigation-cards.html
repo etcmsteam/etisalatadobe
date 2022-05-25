@@ -24,21 +24,21 @@
                                      class="${!wcmmode.edit ? 'swiper-slide' : ''} col-xs-12 col-sm-6 col-md-4 col-lg-4 bring-value-card-wrapper swiper-slide-active">
                                 </div>
                             </div>
-                            <div class="${!wcmmode.edit ? 'table-swiper-scrollbar' : ''}"></div>
+                            <div data-sly-test="${!wcmmode.edit && container.items.size > 3}" class="table-swiper-scrollbar"></div>
                         </div>
-                        <div data-sly-test="${!wcmmode.edit}" class="table-swiper-button-prev">
+                        <div data-sly-test="${!wcmmode.edit && container.items.size > 3}" class="table-swiper-button-prev">
                             <svg>
                                 <use xlink:href="#hero-image-arrow-left"></use>
                             </svg>
                         </div>
-                        <div data-sly-test="${!wcmmode.edit}" class="table-swiper-button-next">
+                        <div data-sly-test="${!wcmmode.edit && container.items.size > 3}" class="table-swiper-button-next">
                             <svg>
                                 <use xlink:href="#hero-image-arrow"></use>
                             </svg>
                         </div>
                     </div>
                 </div>
-                <div class="view-accessories hidden-md hidden-lg">
+                <div data-sly-test="${properties.contextNavCardLoadMore && container.items.size > 3}" class="view-accessories hidden-md hidden-lg">
                     <a href="#" class="btn btn-default">${properties.contextNavCardLoadMore}</a>
                 </div>
             </div>
