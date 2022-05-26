@@ -699,9 +699,23 @@
       @include respond-to-min($desktop) {
         width: toRem(600);
       }
+      .nv-modal-title {
+        margin-right: 2rem;
+        margin-top: -1rem;
+        text-align: left;
+        @include respond-to-min($desktop) {
+          margin-top: -2rem;
+        }
+        @include rtlBlock(){
+          text-align: right;
+          margin-left: 2rem;
+          margin-right: 0;
+        }
+      }
       .nv-modal-content {
         height: 100%;
         padding: toRem(24) 1rem;
+        border-radius: 0;
         @include respond-to-min($desktop) {
           padding: toRem(48) toRem(40);
         }
@@ -732,9 +746,6 @@
       .nv-modal-close svg {
         right: 0;
         top: 0;
-        @include rtlBlock() {
-          right: -20px !important;
-        }
       }
     }
   }
@@ -993,12 +1004,6 @@
     border-bottom: 1px solid $light-sand-brown;
     margin-bottom: 8px;
     padding-bottom: 1rem !important;
-  }
-}
-
-@media (max-width: 1440px) {
-  .nv-modal.right-modal .nv-modal-title {
-    text-align: center;
   }
 }
 
