@@ -85,6 +85,9 @@ const DYNAMIC_MODULE = {
   "cmp-context-navigation-cards": async () => {
     await import(/* webpackChunkName: 'context-navigation-cards' */ "./dynamic-modules/context-navigation-cards").then((obj) => obj.CONTEXT_NAVIGATION_CARDS());
   },
+  "cmp-sas-elife-channel-list": async () => {
+    await import(/* webpackChunkName: 'sas-elife-channel-list' */ "./dynamic-modules/sas-elife-channel-list").then((obj) => obj.SAS_ELIFE_CHANNEL_LIST());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
