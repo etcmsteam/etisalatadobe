@@ -307,6 +307,11 @@
                   }
                 }
               }
+              &:last-child {
+                @include respond-to-min($desktop-min) {
+                  padding-left: 0;
+                }
+              }
             }
           }
         }
@@ -1949,6 +1954,10 @@ table {
         transition: box-shadow 0.3s, border 0.3s;
         width: 100%;
         z-index: 1;
+
+        @include respond-to-max($desktop-min) {
+          font-size: toRem(14);
+        }
       }
 
       &::after {
@@ -1971,6 +1980,11 @@ table {
 
       label {
         @include font-family-lato;
+
+
+        @include respond-to-max($desktop-min) {
+          font-size: toRem(14);
+        }
       }
     }
   }
