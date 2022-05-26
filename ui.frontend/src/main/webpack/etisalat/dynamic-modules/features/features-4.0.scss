@@ -812,9 +812,17 @@
             .from, .aed, .vat {
                 font-size: toRem(14) !important;
             }
-            .third-action-wrapper {
-                @include respond-to-max($phone) {
-                    width: 100%;
+            .price-and-action {
+                &.link-n-btn {
+                    @include respond-to-min-max($desktop, $tablet) {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                }
+                .third-action-wrapper {
+                    @include respond-to-max($phone) {
+                        width: 100%;
+                    }
                 }
             }
         }
