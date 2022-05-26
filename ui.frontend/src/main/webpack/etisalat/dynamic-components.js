@@ -70,6 +70,9 @@ const DYNAMIC_MODULE = {
   "cmp-table": async () => {
     await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
   },
+  "cmp-device-best-seller": async () => {
+    await import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
