@@ -25,3 +25,5 @@ export const isMobile = {
     return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
   },
 };
+
+export const API_HOST_URL = "https://qacms-uat.etisalat.ae";
