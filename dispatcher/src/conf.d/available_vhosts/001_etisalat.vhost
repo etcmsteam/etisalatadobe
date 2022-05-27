@@ -62,6 +62,10 @@ Include conf.d/variables/custom.vars
 		# Default setting to allow all errors to come from the aem instance
 		DispatcherPassError		0
 	</IfModule>
+	<LocationMatch "^/content/.*$">
+        Header always set Surrogate-Control "max-age=0"
+    </LocationMatch>
+
 	<IfModule mod_rewrite.c>
 		RewriteEngine	on
 		Include conf.d/rewrites/rewrite.rules
