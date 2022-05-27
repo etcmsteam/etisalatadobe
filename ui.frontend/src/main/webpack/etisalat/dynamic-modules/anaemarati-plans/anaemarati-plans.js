@@ -355,8 +355,8 @@ export const ANAEMARATI_CARDS = () => {
     // const goldPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=CONTRACT` : url;
     // const silverPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=NON_CONTRACT` : url;
 
-     const goldPlanUrl = `${API_HOST_URL}&planFilter=CONTRACT`;
-     const silverPlanUrl = `${API_HOST_URL}&planFilter=NON_CONTRACT`;
+     const goldPlanUrl = `${API_HOST_URL}/b2c/eshop/getProductsByCategory?locale=en&isApplyDefaultFilters=false&planFilter=CONTRACT`;
+     const silverPlanUrl = `${API_HOST_URL}/b2c/eshop/getProductsByCategory?locale=en&isApplyDefaultFilters=false&planFilter=NON_CONTRACT`;
 
     getCardsData(goldPlanUrl, payloadGold, "gold");
     getCardsData(silverPlanUrl, payloadSilver, "silver");
