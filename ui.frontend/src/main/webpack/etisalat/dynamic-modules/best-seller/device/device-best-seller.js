@@ -114,22 +114,31 @@ export const DEVICE_BEST_SELLER = () => {
 
   function initializeDynamicBestSeller(elem) {
     const DATA_ATTR = elem.data();
-    let url = `${DATA_ATTR.url}?locale=en`;
+
+    let url = "https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=en";
     if (window.location.href.indexOf(".ae/ar") > -1) {
-      url = `${DATA_ATTR.url}?locale=ar`;
+      url = `https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=ar`;
     }
-    const payload = {
-      categoryId: DATA_ATTR.categoryid,
-      navigationState: DATA_ATTR.navigationstate,
-      No: DATA_ATTR.no,
-      Nrpp: DATA_ATTR.nrpp,
-    };
+    let settings = {
+      url,
+      data: JSON.stringify({
+        categoryId: DATA_ATTR.categoryid,
+        navigationState: "",
+        No: '0',
+        Nrpp: '100'
+      }),
+      type: 'POST',
+    }
+    if(window.mockData) {
+      settings = {
+        url: "/content/dam/etisalat/prod-mock-assets/bestSeller.json",
+        type: "GET",
+      };
+    }
     $.ajax({
       dataType: "json",
-      type: DATA_ATTR.type,
-      url,
+      ...settings,
       contentType: "application/json; charset=utf-8",
-      data: JSON.stringify(payload),
       success(res) {
         const swiper = elem.find(".bestseller-swiper");
         const productRow = elem.find(".swiper-wrapper");
