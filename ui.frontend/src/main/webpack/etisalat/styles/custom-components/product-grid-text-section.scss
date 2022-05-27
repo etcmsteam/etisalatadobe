@@ -96,6 +96,11 @@
 
 .product-grid-text-section {
   padding: 1.5rem 0;
+
+  @include respond-to-max($custom-width-tab) {
+    padding: 0;
+  }
+
   .container {
     > div.row {
       margin-left: 0;
@@ -125,9 +130,6 @@
     width: 100%;
     h4 {
       margin-bottom: 1rem;
-    }
-    h3 {
-      margin-top: 1rem;
     }
   }
   .table-swiper-button-next,
@@ -3230,8 +3232,21 @@
         }
       }
     }
+
+    .col-xs-12 {
+      @include respond-to-max($custom-width-tab) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+
     .main-text-section {
       padding-top: 28px;
+
+      @include respond-to-max($custom-width-tab) {
+        padding-top: 12px;
+      }
+
       .paragraph-styling {
         ul {
           margin-left: 0 !important;
