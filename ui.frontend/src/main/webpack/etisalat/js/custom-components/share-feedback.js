@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { API_HOST_URL } from "../../../global/js/helpers";
 export const SHARE_FEEDBACK = () => { 
 (function(){
   $(".share-feedback-btn").each(function () {
@@ -133,7 +134,7 @@ export const SHARE_FEEDBACK = () => {
     
         $.ajax({
           type: "POST",
-          url: "/b2c/eshop/submitCFM",
+          url: `${API_HOST_URL}/b2c/eshop/submitCFM`,
           data: JSON.stringify(feedbackObject),
           dataType: "json",
           // encode: true,
