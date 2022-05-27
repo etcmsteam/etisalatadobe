@@ -72,42 +72,42 @@ export const DEVICE_BEST_SELLER = () => {
         product.productName +
         "</h1>" +
         '<div class="nv-mt-auto">' +
-        '<div class="nv-price-wrapper nv-p-0 nv-mt-2">' +
+        '<div class="nv-price-wrapper nv-p-0 nv-mt-2 sm-price-wrapper">' +
         '<div class="from"> ' +
         fromText +
         " </div>" +
         '<div class="price-text">' +
         '<div class="price">';
       if (product.discountPrice != "" && product.discountPrice > 0) {
-        html += '<span dir="ltr" class="price-value">' + parseFloat(product.discountPrice).toFixed(2) + " </span>";
+        html += '<span dir="ltr" class="price-value">' + parseFloat(product.discountPrice).toFixed(2) + ' </span>';
       } else {
-        html += '<span dir="ltr" class="price-value">' + parseFloat(product.price).toFixed(2) + " </span>";
+        html += '<span dir="ltr" class="price-value">' + parseFloat(product.price).toFixed(2) + ' </span>';
       }
       html +=
         '<span class="price-currency">' +
         aedText +
-        "</span>" +
-        "</div>" +
+        '</span>' +
+        '</div>' +
         '<div class="price-vat"> ' +
         vatText +
-        " </div>" +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        "</div>" +
+        ' </div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
         '<div class="nv-smile-points nv-sm orange nv-sm">' +
         or +
         numberWithCommas(parseInt(product.price, 10) * 100) +
         smilePoints +
-        "</div>" +
+        '</div>' +
+        '</div>' +
         '<button class="btn btn-green btn-buy-now nv-sm" role="button">' +
         buyNowText +
-        "</button>" +
-        "</a>" +
-        "</div>" +
-        "</div>" +
-        "</div>";
+        '</button>' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
     }
     return html;
   }
@@ -141,16 +141,20 @@ export const DEVICE_BEST_SELLER = () => {
           scrollbarHide: false,
           scrollbarDraggable: true,
           breakpoints: {
-            540: {
-              slidesPerView: 1.25,
+            320: {
+              slidesPerView: 1.75,
               spaceBetween: 12,
             },
-            768: {
+            540: {
               slidesPerView: 2.75,
               spaceBetween: 12,
             },
+            768: {
+              slidesPerView: 3.75,
+              spaceBetween: 12,
+            },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: 4.75,
               spaceBetween: 16,
             },
             1440: {

@@ -1,4 +1,38 @@
 .device-bestseller-dynamic {
+  position: relative;
+
+  &::after {
+    background: url("../../clientlib-etisalat/resources/images/bg-cards/combined-shape.svg") no-repeat;
+    background-size: contain;
+    bottom: 0;
+    content: "";
+    height: 282px;
+    left: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 260px;
+    z-index: 1;
+
+    @media (max-width: 991px) {
+      height: 144px;
+      width: 132px;
+    }
+  }
+
+  .nv-section-title {
+    color: $almost-black;
+    font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
+    font-size: toRem(24);
+    line-height: toRem(28);
+    margin-bottom: 1rem;
+
+    @include respond-to-min($desktop) {
+      font-size: toRem(28);
+      line-height: toRem(38);
+    }
+  }
+
   .nv-device-header {
     height: 15rem;
     padding: 1.5rem;
@@ -12,14 +46,14 @@
 
     &.nv-sm {
       height: 11.25rem;
-      padding: 12px;
+      padding: toRem(12);
     }
   }
 
   .nv-special-offer {
-    background-color: #ff8000;
+    background-color: $dark-orange;
     border-radius: 0.25rem;
-    color: #fff;
+    color: $white;
     font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
@@ -27,5 +61,83 @@
     line-height: 0.75rem;
     padding: 0.5rem 0.675rem;
     z-index: 1;
+  }
+
+  .nv-card-wrapper .nv-card.products.offer .nv-price-wrapper .price {
+    color: $dark-orange;
+  }
+
+  .nv-p-0 {
+    padding: 0 !important;
+  }
+
+  .nv-mb-0 {
+    margin-bottom: 0 !important;
+  }
+
+  .nv-smile-points {
+    background-color: #f7f8f4;
+    color: #719e19;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    line-height: 0.875rem;
+    overflow: hidden;
+    padding: 0.75rem 1.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.orange {
+      background-color: rgb(255 128 0 / 10%);
+      color: $dark-orange;
+    }
+
+    &.nv-sm {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
+  @include respond-to-max($desktop-min) {
+    .nv-smile-points {
+      padding: 0.75rem;
+    }
+  }
+
+  .swiper-scrollbar {
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  .swiper-scrollbar-drag {
+    background-color: $main-green !important;
+  }
+}
+
+// accessibility
+
+.acc-black {
+  .device-bestseller-dynamic {
+    .nv-smile-points.orange {
+      background-color: $white !important;
+      color: $black;
+    }
+  }
+}
+
+.acc-blue {
+  .device-bestseller-dynamic {
+    .nv-smile-points.orange {
+      background-color: $white !important;
+      color: $blue4;
+    }
+  }
+}
+
+.acc-yellow {
+  .device-bestseller-dynamic {
+    .nv-smile-points.orange {
+      background-color: $yellow-light !important;
+      color: $black;
+    }
   }
 }
