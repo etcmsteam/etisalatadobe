@@ -574,18 +574,20 @@
     &.variation-price {
         @include respond-to-min($tablet) {
             min-height: 503px;
+            max-height: 503px;
             .content-wrapper {
                 margin-left: 0;
             }
         }
         @include respond-to-min-max($desktop, $tablet) {
+            min-height: 700px;
             .container {
                 padding: 0 20px 0 30px!important;
             }
         }
         .content-wrapper {
             margin-right: 0 !important;
-            justify-content: flex-start;
+            justify-content: space-between;
             @include respond-to-min-max($desktop, $tablet) {
                 width: 100%;
                 max-width: 100%;
@@ -627,6 +629,7 @@
         ul {
             display: flex;
             flex-wrap: wrap;
+            margin-bottom: 20px;
 
             li {
                 flex: 1 0 100%;
@@ -637,7 +640,7 @@
                 }
                 @include respond-to-min($desktop) {
                     font-size: toRem(20) !important;
-                    line-height: toRem(20) !important;
+                    line-height: toRem(28) !important;
                     flex: 1 0 50%;
                     margin-bottom: toRem(10);
                 }
@@ -731,6 +734,11 @@
         }
 
         .price-and-action {
+            @include respond-to-min-max($desktop, $tablet) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
             .third-action-wrapper {
                 @include respond-to-max($phone) {
                     width: 288px;
@@ -746,6 +754,16 @@
 
                 @include respond-to-min($tablet) {
                     align-items: center;
+                }
+                .third-action-wrapper {
+                    @include respond-to-max($tablet) {
+                        width: 100%;
+                        text-align: center;
+                            .btn {
+                                width: 100%;
+                                max-width: initial;
+                            }
+                    }
                 }
             }
             .third-action-wrapper {
@@ -773,7 +791,7 @@
         &.feature-style, &.learnmore-content {
             @include respond-to-min($tablet) {
                 min-height: 560px;
-                max-height: 560px;
+                max-height: 560px !important;
                 padding: toRem(92) toRem(12);
             }
             .content-wrapper {
@@ -795,7 +813,7 @@
             }
             .paragraph-styling {
                 @include respond-to-min($tablet) {
-                    margin-bottom: 100px;
+                    margin-bottom: 20px;
                     margin-top: 40px;
                 }
                 @include respond-to-max($tablet) {
@@ -805,6 +823,7 @@
             }
 
             ul li {
+                line-height: toRem(24) !important;
                 @include respond-to-min-max($desktop, $tablet) {
                     flex: 1 0 50%;
                 }
@@ -813,10 +832,14 @@
                 font-size: toRem(14) !important;
             }
             .price-and-action {
+                @include respond-to-min-max($desktop, $tablet) {
+                    flex-direction: row;
+                    align-items: flex-end;
+                }
                 &.link-n-btn {
                     @include respond-to-min-max($desktop, $tablet) {
                         flex-direction: column;
-                        align-items: center;
+                        align-items: center !important;
                     }
                 }
                 .third-action-wrapper {
@@ -990,13 +1013,26 @@
             }
         }
 
+        &.variation-price {
+            .feature-wrapper {
+                @include respond-to-min($tablet) {
+                    flex-direction: row-reverse;
+                }
+                .content-wrapper {
+                    @include respond-to-min($tablet) {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+
         &.feature-style, &.learnmore-content {
             .feature-wrapper {
                 @include respond-to-min($desktop) {
                     flex-direction: row-reverse;
                 }
                 .content-wrapper {
-                    @include respond-to-min($desktop) {
+                    @include respond-to-min($tablet) {
                         width: 100%;
                     }
                 }
