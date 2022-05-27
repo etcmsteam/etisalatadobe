@@ -1,5 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-
+import { API_HOST_URL } from "../../../global/js/helpers";
 /* eslint-disable */
 const setSpacebetweenTableCarousel = (parent) => {
   $(parent)
@@ -352,8 +352,11 @@ export const ANAEMARATI_CARDS = () => {
       });
     }
 
-    const goldPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=CONTRACT` : url;
-    const silverPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=NON_CONTRACT` : url;
+    // const goldPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=CONTRACT` : url;
+    // const silverPlanUrl = ENABLE_REQ_PARAMS ? `${url}&planFilter=NON_CONTRACT` : url;
+
+     const goldPlanUrl = `${API_HOST_URL}&planFilter=CONTRACT`;
+     const silverPlanUrl = `${API_HOST_URL}&planFilter=NON_CONTRACT`;
 
     getCardsData(goldPlanUrl, payloadGold, "gold");
     getCardsData(silverPlanUrl, payloadSilver, "silver");
