@@ -1,6 +1,9 @@
 <template data-sly-template.dynamicproduct="${ @ properties}">
-      <div
-         class="${properties.dynamictileBoxLayout == 'dynamicelifeplan'? 'smart-home-elife-slider':'product-grid-text-section plans more-info-wrapper plansTable'}">
+   <sly data-sly-test.elifetileclass="${properties.dynamictileBoxLayout == 'dynamicelifeplan'? 'smart-home-elife-slider' : ''}"/>
+   <sly data-sly-test.producttileclass="${properties.dynamictileBoxLayout == 'dynamicproducttile'? ''product-grid-text-section plans more-info-wrapper plansTable'' : ''}"/>
+   <sly data-sly-test.bestsellerclass="${properties.dynamictileBoxLayout == 'bestsellercard'? 'nv-container' : ''}"/>
+   <sly data-sly-test="${properties.dynamictileBoxLayout != 'bestsellercard'}">
+   <div class="${elifetileclass}${producttileclass}">
          <div class="col-xs-12 col-md-3 nv-card-contentLeft">
             <div class="main-text-section">
                <sly data-sly-test="${properties.productCTALink && properties.productCTATitle}">
@@ -29,7 +32,7 @@
                </div>
             </sly>
 
-            <sly data-sly-test="${properties.dynamictileBoxLayout != 'dynamicelifeplan'}">
+            <sly data-sly-test="${properties.dynamictileBoxLayout == 'dynamicproducttile'}">
                <div class="table-swiper-button-prev swiper-button-prev swiper-button-black"></div>
                <div class="table-swiper-button-next swiper-button-next swiper-button-black"></div>
             </sly>
@@ -46,7 +49,7 @@
                </div>
             </div>
          </sly>
-         <sly data-sly-test="${properties.dynamictileBoxLayout != 'dynamicelifeplan'}">
+         <sly data-sly-test="${properties.dynamictileBoxLayout == 'dynamicproducttile'}">
             <div class="col-xs-12  col-md-9">
                <section class="cmp__bg-cards_product-grid ">
                   <div class="row">
@@ -69,5 +72,28 @@
             </div>
          </sly>
       </div>
+   </sly>
+   <sly data-sly-test="${properties.dynamictileBoxLayout == 'bestsellercard'}">
+      <div class="nv-container">
+         <div data-sly-test="${properties.mainProductTitle}" class="nv-row">
+            <div class="nv-col-12"><h1 class="nv-section-title nv-mb-lg-24 nv-mt-2">${properties.mainProductTitle}</h1>
+            </div>
+         </div>
+      </div>
+      <div class="nv-container">
+         <div class="nv-row">
+            <div class="nv-col-12">
+               <div class="swiper-default with-scrollbar swiper-full-height no-gap">
+                  <div class="swiper-container bestseller-swiper"><div class="swiper-wrapper"></div>
+                     <div class="swiper-button-next"></div>
+                     <div class="swiper-button-prev"></div>
+                     <div class="swiper-scrollbar"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </sly>
 
 </template>
