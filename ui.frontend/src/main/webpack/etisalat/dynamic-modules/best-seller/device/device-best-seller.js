@@ -1,5 +1,7 @@
 import "./index.scss";
 import { swiperInit } from "../../../../global/js/swiperInitialize";
+import { API_HOST_URL } from "../../../../global/js/helpers";
+
 
 /* eslint-disable */
 export const DEVICE_BEST_SELLER = () => {
@@ -114,11 +116,9 @@ export const DEVICE_BEST_SELLER = () => {
 
   function initializeDynamicBestSeller(elem) {
     const DATA_ATTR = elem.data();
+    const locale = (window.location.href.indexOf(".ae/ar") > -1)? 'ar': 'en';
+    const url = `${API_HOST_URL}/b2c/eshop/getProductsByCategory?locale=${locale}`;
 
-    let url = "https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=en";
-    if (window.location.href.indexOf(".ae/ar") > -1) {
-      url = `https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=ar`;
-    }
     let settings = {
       url,
       data: JSON.stringify({
@@ -127,12 +127,12 @@ export const DEVICE_BEST_SELLER = () => {
         No: '0',
         Nrpp: '100'
       }),
-      type: 'POST',
-    }
+      type: 'POST'
+    };
     if(window.mockData) {
       settings = {
         url: "/content/dam/etisalat/prod-mock-assets/bestSeller.json",
-        type: "GET",
+        type: "GET"
       };
     }
     $.ajax({
@@ -179,6 +179,7 @@ export const DEVICE_BEST_SELLER = () => {
       },
     });
   }
+
   $(".device-bestseller-dynamic").each(function () {
     initializeDynamicBestSeller($(this));
   });
