@@ -119,7 +119,7 @@ export const DEVICE_BEST_SELLER = () => {
     const locale = (window.location.href.indexOf(".ae/ar") > -1)? 'ar': 'en';
     const url = `${API_HOST_URL}/b2c/eshop/getProductsByCategory?locale=${locale}`;
 
-    let settings = {
+    const settings = {
       url,
       data: JSON.stringify({
         categoryId: DATA_ATTR.categoryid,
@@ -129,12 +129,6 @@ export const DEVICE_BEST_SELLER = () => {
       }),
       type: 'POST'
     };
-    if(window.mockData) {
-      settings = {
-        url: "/content/dam/etisalat/prod-mock-assets/bestSeller.json",
-        type: "GET"
-      };
-    }
     $.ajax({
       dataType: "json",
       ...settings,
