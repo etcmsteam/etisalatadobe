@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
-import { API_HOST_URL } from "../../../global/js/helpers";
+
 export const OMNI_LEAD_FORM = () => {
   const $FORM = $("#omniLead");
   const $SUBMIT_CTA = $("#omniLead .cmp-form-button");
@@ -9,6 +9,8 @@ export const OMNI_LEAD_FORM = () => {
   if (!$FORM.length) {
     return false;
   }
+
+  const { hostName } = $FORM?.data();
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
@@ -117,7 +119,7 @@ export const OMNI_LEAD_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: `${API_HOST_URL}/b2bportal/createOmniLead.service`,
+        url: `${hostName}/b2bportal/createOmniLead.service`,
         data: dataObj,
         dataType: "json",
 
