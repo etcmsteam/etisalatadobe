@@ -2,11 +2,18 @@ package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.when;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.etisalat.core.models.impl.EtisalatExternalizerImpl;
+import com.etisalat.core.services.EtisalatApiService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -15,6 +22,12 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 public class CommonLinkModelTest {
     private final AemContext context = new AemContext();
 
+    @Mock
+    private EtisalatApiService etisalatApiService;
+    
+    @InjectMocks
+    private CommonLinkModel commonLinkModel;
+    
     @BeforeEach
     public void setup() throws Exception {
         context.addModelsForClasses(CommonLinkModel.class);
@@ -61,5 +74,13 @@ public class CommonLinkModelTest {
         context.currentPage("/content/experience-fragments/etisalat");
         CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
         assertEquals(StringUtils.EMPTY, model.getXFLanguageCode());   
+    }
+    
+    @Test
+    void testHostName() {
+      MockitoAnnotations.initMocks(this);
+      String hostName = "https://qacms-uat.etisalat.ae";      
+      when(etisalatApiService.getApiHostname()).thenReturn(hostName);     
+      assertEquals(hostName, commonLinkModel.getApiHostname());
     }
 }

@@ -68,6 +68,7 @@
               pointer-events: all;
               cursor: auto;
               opacity: 1;
+              display: none;
               &:hover {
                 opacity: 0.5;
               }
@@ -95,6 +96,11 @@
 
 .product-grid-text-section {
   padding: 1.5rem 0;
+
+  @include respond-to-max($custom-width-tab) {
+    padding: 0;
+  }
+
   .container {
     > div.row {
       margin-left: 0;
@@ -124,9 +130,6 @@
     width: 100%;
     h4 {
       margin-bottom: 1rem;
-    }
-    h3 {
-      margin-top: 1rem;
     }
   }
   .table-swiper-button-next,
@@ -180,11 +183,6 @@
   @media (max-width: $screen-sm-max) {
     .row-tiles-table .col-xs-12 {
       width: 100% !important;
-    }
-  }
-  @media (min-width: 768px) and (max-width: $screen-lg-max) {
-    .row-tiles-table .col-xs-12 {
-      width: 377px !important;
     }
   }
   .ul-list-cms ul {
@@ -455,6 +453,11 @@
     justify-content: flex-end;
     padding: 1.5em;
   }
+
+  .bg-cards .plan-card.tile-table .tile-card .tiles-box-title {
+    padding: toRem(16) !important;
+  }
+
   .bg-cards .device-card.tile-table .tile-card .tiles-box-title .catagory,
   .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title .catagory,
   .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-title .catagory,
@@ -557,7 +560,6 @@
     left: 0.875rem;
     padding: 8px 10px;
     border-radius: 0 0 4px 4px;
-    min-width: 164px;
 
     @include rtlBlock {
       left: auto;
@@ -3230,8 +3232,21 @@
         }
       }
     }
+
+    .col-xs-12 {
+      @include respond-to-max($custom-width-tab) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+
     .main-text-section {
       padding-top: 28px;
+
+      @include respond-to-max($custom-width-tab) {
+        padding-top: 12px;
+      }
+
       .paragraph-styling {
         ul {
           margin-left: 0 !important;
@@ -3336,6 +3351,12 @@
           margin-left: toRem(24);
           margin-right: 0;
         }
+      }
+
+      .nv-feature-list.with-checkmark li {
+        margin-bottom: toRem(6);
+        font-size: toRem(14);
+        line-height: 1.43;
       }
     }
   }
@@ -3695,7 +3716,11 @@
 }
 
 .product-grid-text-section.plans.more-info-wrapper .tile-table.plan-card .tile-card > .tile .tile-card__front .tiles-box.content.body-standard {
-  height: 580px;
+  height: 100%;
+}
+
+.bg-cards.related-products .row-tiles-table div.swiper-container {
+  padding: 0;
 }
 
 .product-grid-text-section.plans.more-info-wrapper .product-tile-section.bg-cards .plan-card.tile-table .tile-card .tile-card__front {

@@ -47,6 +47,11 @@ Include conf.d/variables/custom.vars
 		# Header append Vary User-Agent env=!dont-vary
 		# Prevent clickjacking
 		Header always append X-Frame-Options SAMEORIGIN
+		Header always set Access-Control-Allow-Origin  *
+        Header always set Access-Control-Allow-Methods "GET, OPTIONS, PATCH"
+        Header always set Access-Control-Allow-Headers "X-Accept-Charset,X-Accept,Content-Type"
+        Header always set Access-Control-Allow-Credentials "true"
+        Header always set Surrogate-Control "max-age=0"
 	</Directory>
 	<Directory "${DOCROOT}">
 		AllowOverride None
@@ -58,6 +63,7 @@ Include conf.d/variables/custom.vars
 		# Default setting to allow all errors to come from the aem instance
 		DispatcherPassError		0
 	</IfModule>
+
 	<IfModule mod_rewrite.c>
 		RewriteEngine	on
 		Include conf.d/rewrites/rewrite.rules
@@ -130,20 +136,6 @@ Include conf.d/variables/custom.vars
 
         RewriteCond %{REQUEST_URI} .jsp$
         RewriteRule ^/(.*).jsp$ /$1.html [R=301,L]
-
-        RewriteCond %{REQUEST_URI} !^/apps
-        RewriteCond %{REQUEST_URI} !^/bin
-        RewriteCond %{REQUEST_URI} !^/content
-        RewriteCond %{REQUEST_URI} !^/etc
-        RewriteCond %{REQUEST_URI} !^/etc.clientlibs
-        RewriteCond %{REQUEST_URI} !^/home
-        RewriteCond %{REQUEST_URI} !^/libs
-        RewriteCond %{REQUEST_URI} !^/saml_login
-        RewriteCond %{REQUEST_URI} !^/system
-        RewriteCond %{REQUEST_URI} !^/tmp
-        RewriteCond %{REQUEST_URI} !^/var
-        RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg)$
-        RewriteRule ^/(.+)$ /content/etisalat/ae/$1 [PT,L]
 
 	</IfModule>
 </VirtualHost>

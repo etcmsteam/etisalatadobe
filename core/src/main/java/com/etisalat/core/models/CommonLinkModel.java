@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import com.day.cq.wcm.api.Page;
+import com.etisalat.core.services.EtisalatApiService;
 import com.etisalat.core.util.CommonUtility;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,6 +32,10 @@ public class CommonLinkModel {
     /** The resource resolver. */
     @SlingObject
     ResourceResolver resourceResolver;
+    
+    /** The etisalat api service. */
+    @OSGiService
+    private EtisalatApiService etisalatApiService;
 
     /**
      * Gets the link.
@@ -62,5 +67,15 @@ public class CommonLinkModel {
 			return pagePathArray[5];
 		}
 		return StringUtils.EMPTY;
+	}
+	
+	/**
+	 * Gets the api hostname.
+	 *
+	 * @return the api hostname
+	 */
+	public String getApiHostname() {
+	  
+	  return etisalatApiService.getApiHostname();
 	}
 }

@@ -1,23 +1,38 @@
 package com.etisalat.core.services;
 
 
+/**
+ * The Interface EtisalatApiService.
+ */
 public interface EtisalatApiService {
 
     /**
      * Returns a send notification service url.
      *
-     * @return
+     * @return the contact us api url
      */
     String getContactUsApiUrl();
     
     /**
      * Returns a Proxy Api url.
      *
-     * @return
+     * @return the proxy api url
      */
     String getProxyApiUrl();
 
+    /**
+     * Gets the time out.
+     *
+     * @return the time out
+     */
     int getTimeOut();
+    
+    /**
+     * Gets the api hostname.
+     *
+     * @return the api hostname
+     */
+    String getApiHostname();
 
 
 }

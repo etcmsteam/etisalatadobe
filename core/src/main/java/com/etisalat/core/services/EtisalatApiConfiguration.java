@@ -19,6 +19,9 @@ public @interface EtisalatApiConfiguration {
 
     @AttributeDefinition(name = "set time out", description = "Set Time out")
     int getSetTimeout() default TIMEOUT;
+    
+    @AttributeDefinition(name = "Api Hostname", description = "Api Hostname")
+    String getApiHostname() default "https://qacms-uat.etisalat.ae";
 
 }
 
