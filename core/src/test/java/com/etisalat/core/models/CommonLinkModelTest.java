@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.etisalat.core.models.impl.EtisalatExternalizerImpl;
 import com.etisalat.core.services.EtisalatApiService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
