@@ -15,10 +15,12 @@
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-test="${properties.ootbformType == 'true'}">
    <div data-component="cmp-forms-module">
-   <form data-sly-use.container="com.adobe.cq.wcm.core.components.models.form.Container"
+   <form data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel"  
+      data-sly-use.container="com.adobe.cq.wcm.core.components.models.form.Container"
       data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
       method="${container.method}" action="${container.action}" id="${container.id}" name="${container.name}"
       enctype="${container.enctype}"
+      data-host-name="${commonModel.apiHostname}"
       class="cmp-form ${grid.cssClass}">
       <div data-sly-test="${container.errorMessages}"
          data-sly-list.item="${container.errorMessages}"
@@ -37,9 +39,11 @@
 </sly>
 <sly data-sly-test="${!properties.ootbformType}">
    <div data-component="cmp-forms-module">
-   <form data-sly-use.customForm="com.etisalat.core.models.CustomForm"
+   <form data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel" 
+       data-sly-use.customForm="com.etisalat.core.models.CustomForm"
       data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
       method="POST" action="${customForm.formAction}" id="${customForm.formId}" name="${customForm.formId}"
+       data-host-name="${commonModel.apiHostname}"
       class="cmp-form ${grid.cssClass}">
       <sly data-sly-test="${customForm.successMessageOptions == 'samePage'}">
          <div data-sly-test="${customForm.customSuccessMessage}" class="successMsg alert alert-success hide" role="alert">

@@ -51,6 +51,7 @@ Include conf.d/variables/custom.vars
         Header always set Access-Control-Allow-Methods "GET, OPTIONS, PATCH"
         Header always set Access-Control-Allow-Headers "X-Accept-Charset,X-Accept,Content-Type"
         Header always set Access-Control-Allow-Credentials "true"
+        Header always set Surrogate-Control "max-age=0"
 	</Directory>
 	<Directory "${DOCROOT}">
 		AllowOverride None
@@ -62,6 +63,7 @@ Include conf.d/variables/custom.vars
 		# Default setting to allow all errors to come from the aem instance
 		DispatcherPassError		0
 	</IfModule>
+
 	<IfModule mod_rewrite.c>
 		RewriteEngine	on
 		Include conf.d/rewrites/rewrite.rules
