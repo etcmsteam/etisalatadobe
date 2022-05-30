@@ -30,20 +30,20 @@ $include "./default_filters.any"
 
 /0207 { /type "deny" /url "/apps/*"   }  # deny apps access
 /0208 { /type "deny" /url "/bin/*"    }  # deny bin path access
-/0208 { /type "deny" /url "/tmp/*"    }  # deny bin path access
-/0209 { /type "deny"  /url "/libs/shindig/proxy*" } # if you enable /libs close access to proxy
+/0209 { /type "deny" /url "/tmp/*"    }  # deny bin path access
+/0210 { /type "deny"  /url "/libs/shindig/proxy*" } # if you enable /libs close access to proxy
 
-/0210 { /type "deny" /url "*.1" /extension "json"}
+/0211 { /type "deny" /url "*.1" /extension "json"}
 
 # Deny content grabbing, on all accessible pages, using regular expressions
-/0211
+/0212
     {
         /type "deny"
         /selectors '((sys|doc)view|query|[0-9-]+)'
         /extension '(json|xml)'
     }
 # Deny content grabbing for /content and its subtree
-/0212
+/0213
     {
         /type "deny"
         /path "/content/*"
