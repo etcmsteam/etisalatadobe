@@ -1,6 +1,5 @@
 package com.etisalat.core.models;
 
-import com.day.cq.commons.Externalizer;
 import com.day.cq.wcm.api.Page;
 import com.etisalat.core.constants.PageConstants;
 import org.apache.commons.lang3.StringUtils;
@@ -8,16 +7,11 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.*;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.etisalat.core.util.CommonUtility;
-import org.osgi.service.component.annotations.Reference;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
 @Model(adaptables = {Resource.class,
     SlingHttpServletRequest.class})
@@ -71,10 +65,6 @@ public class TileModel {
    */
   @Self
   protected SlingHttpServletRequest request;
-
-  //@Reference
-  @OSGiService
-  EtisalatExternalizer etisalatExternalizer;
 
   public String getText() {
     return text;
@@ -139,7 +129,7 @@ public class TileModel {
    * @return the tileCTALinkSameWindow
    */
   public String getTileCTALinkSameWindow() {
-    return etisalatExternalizer.getLinkUrl(tileCTALinkSameWindow, resourceResolver, request);
+    return CommonUtility.appendHtmlExtensionToPage(resourceResolver, tileCTALinkSameWindow);
 
   }
 
