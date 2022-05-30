@@ -52,15 +52,6 @@ public class CommonLinkModelTest {
     }
 
     @Test
-    void testExternalizerLink() {
-        String externalLink = "/content/etisalat/ae/en/carrier-and-wholesale";
-        context.request().setAttribute("link", externalLink);
-        context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
-        CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
-        assertEquals(externalLink, model.getLink());
-    }
-    
-    @Test
     void testVideoLink() {
         String videoLink = "https://www.youtube.com/embed/Xwr22z1hysY";
         context.request().setAttribute("link", videoLink);
