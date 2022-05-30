@@ -833,18 +833,30 @@
             }
             .price-and-action {
                 @include respond-to-min-max($desktop, $tablet) {
-                    flex-direction: row;
-                    align-items: flex-end;
+                    flex-direction: row !important;
+                    align-items: flex-end !important;
                 }
                 &.link-n-btn {
                     @include respond-to-min-max($desktop, $tablet) {
-                        flex-direction: column;
+                        flex-direction: column !important;
                         align-items: center !important;
                     }
                 }
                 .third-action-wrapper {
                     @include respond-to-max($phone) {
                         width: 100%;
+                    }
+                }
+            }
+        }
+        &.feature-style {
+            .paragraph-styling {
+                p {
+                    @include respond-to-min($desktop) {
+                        padding-bottom: 80px;
+                    }
+                    @include respond-to-min-max($desktop, $tablet) {
+                        padding-bottom: 10px;
                     }
                 }
             }
