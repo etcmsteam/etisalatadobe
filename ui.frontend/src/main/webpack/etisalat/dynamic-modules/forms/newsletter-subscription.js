@@ -14,7 +14,7 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
     return false;
   }
 
-  const { hostName } = $FORM?.data();
+  const { hostName } = $FORM?.data() || {};
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() === false) {
