@@ -144,12 +144,13 @@ export const ANAEMARATI_CARDS = () => {
       jsonUrl: DATA_URL,
       jsonPath: DATA_PATH = defaultDataPath,
       categoryId: CATEGORY_ID = "cat1090015",
-      requestMethod: REQUEST_METHOD = "GET",
-      enableReqParams: ENABLE_REQ_PARAMS,
+      requestMethod: REQUEST_METHOD = "POST",
+      enableReqParams: ENABLE_REQ_PARAMS = 'yes',
       ctaUrl: CTA_URL = "/b2c/eshop/postpaidLine?",
+      hostName: HOST_NAME = ''
     } = DATA_PARAMS;
 
-    let url = DATA_URL || DATA_PATH;
+    let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
       url = `${DATA_PATH}?locale=${locale}&isApplyDefaultFilters=false`;
