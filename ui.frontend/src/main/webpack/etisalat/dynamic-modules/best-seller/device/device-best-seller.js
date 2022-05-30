@@ -1,7 +1,5 @@
 import "./index.scss";
 import { swiperInit } from "../../../../global/js/swiperInitialize";
-import { API_HOST_URL } from "../../../../global/js/helpers";
-
 
 /* eslint-disable */
 export const DEVICE_BEST_SELLER = () => {
@@ -115,14 +113,15 @@ export const DEVICE_BEST_SELLER = () => {
   }
 
   function initializeDynamicBestSeller(elem) {
-    const DATA_ATTR = elem.data();
+    const DATA_ATTR = elem.data() || {};
+    const {hostName, categoryId} = DATA_ATTR;
     const locale = (window.location.href.indexOf(".ae/ar") > -1)? 'ar': 'en';
-    const url = `${API_HOST_URL}/b2c/eshop/getProductsByCategory?locale=${locale}`;
+    const url = `${hostName || ''}/b2c/eshop/getProductsByCategory?locale=${locale}`;
 
     const settings = {
       url,
       data: JSON.stringify({
-        categoryId: DATA_ATTR.categoryid,
+        categoryId,
         navigationState: "",
         No: '0',
         Nrpp: '100'

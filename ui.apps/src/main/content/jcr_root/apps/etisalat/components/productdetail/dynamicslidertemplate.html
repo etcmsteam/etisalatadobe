@@ -75,9 +75,11 @@
    </sly>
    <sly data-sly-test="${properties.dynamictileBoxLayout == 'bestsellercard'}">
       <div class="nv-py-4 device-bestseller-dynamic"
-             id="bestseller-${properties.productCategoryId}"
-             data-component="cmp-device-best-seller"
-             data-categoryid="${properties.productCategoryId}">
+            data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel"
+            id="bestseller-${properties.productCategoryId}"
+            data-component="cmp-device-best-seller"
+            data-host-name="${commonModel.apiHostname}"
+            data-category-id="${properties.productCategoryId}">
          <div class="nv-container">
             <div data-sly-test="${properties.mainProductTitle}" class="nv-row">
                <div class="nv-col-12"><h1 class="nv-section-title nv-mb-lg-24 nv-mt-2">${properties.mainProductTitle}</h1>
