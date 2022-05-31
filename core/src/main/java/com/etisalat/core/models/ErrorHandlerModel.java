@@ -122,7 +122,7 @@ public class ErrorHandlerModel {
   private String getDefaultErrorPage(String path) {
     String siteName = "etisalat";
     String[] pathArry = StringUtils.split(path, "/");
-    if (pathArry.length > 0 && path.startsWith(AEConstants.CONTENT)) {
+    if (pathArry.length > 0) {
       siteName = pathArry[1];
     }
     return String.format(AEConstants.ETISALAT_DEFAULT_ERROR_PAGE, siteName);
