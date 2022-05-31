@@ -464,23 +464,21 @@
         @include respond-to-min-max($desktop, $tablet) {
             min-height: 700px;
             .container {
-                padding: 0!important;
+                padding: 0 20px 0 30px!important;
             }
         }
         .content-wrapper {
             margin-right: 0 !important;
             justify-content: space-between;
             @include respond-to-min-max($desktop, $tablet) {
-                width: 100%;
-                max-width: 100%;
-                margin-right: 36px !important;
+                width: 50%;
+                max-width: 50%;
             }
         }
 
         ul {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 20px;
 
             li {
                 flex: 1 0 100%;
@@ -650,6 +648,10 @@
             }
             .content-wrapper {
                 justify-content: flex-start;
+                @include respond-to-min-max($desktop, $tablet) {
+                    width: 100%;
+                    max-width: 100%;
+                }
             }
             @include respond-to-min-max($desktop, $tablet) {
                 .container {
@@ -667,15 +669,18 @@
                 }
             }
 
-            ul li {
-                font-size: toRem(16);
-                line-height: toRem(16) !important;
-                @include respond-to-min-max($desktop, $tablet) {
-                    flex: 1 0 50%;
-                }
-                @include respond-to-min($tablet) {
-                    font-size: toRem(20);
+            ul {
+                margin-bottom: 20px;
+                li {
+                    font-size: toRem(16);
                     line-height: toRem(20) !important;
+                    @include respond-to-min-max($desktop, $tablet) {
+                        flex: 1 0 50%;
+                    }
+                    @include respond-to-min($tablet) {
+                        font-size: toRem(20)!important;
+                        line-height: toRem(24) !important;
+                    }
                 }
             }
             .from, .aed, .vat {
@@ -712,12 +717,14 @@
             }
         }
         &.learnmore-content {
-            .container {
-
-            }
             .content-wrapper {
                 @include respond-to-min($desktop) {
                     margin-left: 510px;
+                    width: 70%;
+                    max-width: initial;
+                    .price-and-action .third-action-wrapper{
+                        text-align: right;
+                    }
                 }
             }
         }
@@ -879,6 +886,11 @@
         }
 
         &.variation-price {
+            @include respond-to-min($tablet) {
+                .container {
+                    padding: 0!important;
+                }
+            }
             .feature-wrapper {
                 @include respond-to-min($tablet) {
                     flex-direction: row-reverse;
@@ -897,8 +909,9 @@
                     flex-direction: row-reverse;
                 }
                 .content-wrapper {
-                    @include respond-to-min($tablet) {
+                    @include respond-to-min-max($desktop, $tablet) {
                         width: 100%;
+                        max-width: 100%;
                     }
                 }
             }
