@@ -319,22 +319,6 @@
       gap: 0;
     }
 
-    &.two-tiles {
-      .all-tiles {
-        .context-tile {
-          @include respond-to-min($tablet) {
-            width: 50% !important;
-          }
-        }
-
-        .context-tile + .context-tile {
-          @include respond-to-min($desktop) {
-            margin-right: 0 !important;
-          }
-        }
-      }
-    }
-
     &.single-tile,
     &.two-tiles,
     &.three-tiles {
@@ -346,6 +330,19 @@
       .all-tiles {
         &.align-middle {
           justify-content: center;
+        }
+        &.align-space-around {
+          justify-content: space-around;
+
+          .context-tile {
+            align-items: center;
+            text-align: center;
+            .wst-main-headings {
+              @include rtlBlock() {
+                text-align: right;
+              }
+            }
+          }
         }
       }
 
