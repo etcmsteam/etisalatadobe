@@ -47,6 +47,7 @@ class GenericListModelTest {
 	protected static final String GENERIC_LIST_2 = TEST_PAGE_CONTAINER_ROOT + "/multiplegenericlist";
 	protected static final String GENERIC_LIST_3 = TEST_PAGE_CONTAINER_ROOT + "/empty";
 	protected static final String GENERIC_LIST_4 = TEST_PAGE_CONTAINER_ROOT + "/invalidpage";
+	protected static final String GENERIC_LIST_5 = TEST_PAGE_CONTAINER_ROOT +"/fixedgenericlist";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -74,6 +75,16 @@ class GenericListModelTest {
 		int actual = genericListModel.getGenericListObj().size();
 		assertEquals(expectedSize, actual);
 	}
+	
+	 @Test
+	  void testFixedListPages() {
+	    final int expectedSize = 2;
+	    context.currentResource(GENERIC_LIST_5);
+
+	    GenericListModel genericListModel = context.request().adaptTo(GenericListModel.class);
+	    int actual = genericListModel.getGenericListObj().size();
+	    assertEquals(expectedSize, actual);
+	  }
 
 	@Test
 	void testEmptyGenericList() {
