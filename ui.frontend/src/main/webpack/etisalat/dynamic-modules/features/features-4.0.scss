@@ -648,6 +648,10 @@
             }
             .content-wrapper {
                 justify-content: flex-start;
+                @include respond-to-min-max($desktop, $tablet) {
+                    width: 100%;
+                    max-width: 100%;
+                }
             }
             @include respond-to-min-max($desktop, $tablet) {
                 .container {
@@ -882,8 +886,10 @@
         }
 
         &.variation-price {
-            .container {
-                padding: 0!important;
+            @include respond-to-min($tablet) {
+                .container {
+                    padding: 0!important;
+                }
             }
             .feature-wrapper {
                 @include respond-to-min($tablet) {
