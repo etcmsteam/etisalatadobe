@@ -319,22 +319,6 @@
       gap: 0;
     }
 
-    &.two-tiles {
-      .all-tiles {
-        .context-tile {
-          @include respond-to-min($tablet) {
-            width: 50% !important;
-          }
-        }
-
-        .context-tile + .context-tile {
-          @include respond-to-min($desktop) {
-            margin-right: 0 !important;
-          }
-        }
-      }
-    }
-
     &.single-tile,
     &.two-tiles,
     &.three-tiles {
@@ -347,12 +331,22 @@
         &.align-middle {
           justify-content: center;
         }
+        &.align-space-around {
+          justify-content: space-around;
+          border: 2px solid red;
+
+          .context-tile {
+            align-items: center;
+            text-align: center;
+          }
+        }
       }
 
       &.has-bg {
         @include respond-to-min($desktop) {
           padding-top: toRem(16);
           padding-bottom: toRem(16);
+          border: 2px solid red;
         }
       }
     }
