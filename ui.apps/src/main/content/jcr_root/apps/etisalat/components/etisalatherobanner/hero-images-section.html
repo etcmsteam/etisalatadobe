@@ -44,19 +44,20 @@
 								<a data-sly-test="${commonlinkmodel.link}" href="${commonlinkmodel.link}" class="link">${properties.backToLinkLbl}</a>
 							</div>
 						</div>
-                       <h5 data-sly-test="${properties.heroPreTitle}" class="hero-heading-small">${properties.heroPreTitle}</h5>
-                       <h3 data-sly-test="${properties.heroTitle}" class="hero-heading-big">${properties.heroTitle @ context = 'html'}</h3>
+                       <h5 data-sly-test="${properties.heroPreTitle}" class="hero-heading-small ${properties.preTitleColor}">${properties.heroPreTitle}</h5>
+                       <h3 data-sly-test="${properties.heroTitle}" 
+                           class="hero-heading-big ${properties.titleFontColor == 'light-color' ? 'text--white' :'text--black'}">${properties.heroTitle @ context = 'html'}</h3>
                        <div data-sly-test="${properties.jcr:description}" class="hero-description">${properties.jcr:description @ context = 'html'}</div>
                        
                        <div class="wst-price-tag">
-                           <div data-sly-test="${properties.fromText}" class="top-part">
+                           <div data-sly-test="${properties.fromText}" class="top-part ${properties.productFromTextColor}">
                                ${properties.fromText}
                            </div>
-                           <div data-sly-test="${properties.productPrice || properties.productCurrency}" class="main-part">
+                           <div data-sly-test="${properties.productPrice || properties.productCurrency}" class="main-part ${properties.productPriceColor}">
                                <div class="price">${properties.productPrice}</div>
                                <div class="tag">${properties.productCurrency}</div>
                            </div>
-                           <div data-sly-test="${properties.vatText}" class="bottom-part">
+                           <div data-sly-test="${properties.vatText}" class="bottom-part ${properties.productVATColor}">
                                ${properties.vatText}
                            </div>
                        </div>
