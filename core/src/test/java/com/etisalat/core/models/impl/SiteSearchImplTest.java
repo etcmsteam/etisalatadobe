@@ -44,6 +44,7 @@ class SiteSearchImplTest {
 		String expectedBrandLink = "#";
 		String expectedBrandLinkLabel = "Learn More";
 		String expectedBrandTitle = "eLife Starter Plan";
+		String expectedRedirectPage = "/content/searchpage.html";
 
 		assertEquals(4, siteSearch.getBrandItems().size());
 		assertEquals(5, siteSearch.getQuickLinksItems().size());
@@ -51,6 +52,8 @@ class SiteSearchImplTest {
 		assertEquals(expectedQuickLink, siteSearch.getQuickLinksItems().get(0).getLinkUrl());
 		assertEquals(expectedBrandLinkLabel, siteSearch.getBrandItems().get(0).getLinkText());
 		assertEquals(expectedBrandLink, siteSearch.getBrandItems().get(0).getLinkUrl());
-		assertEquals(expectedBrandTitle, siteSearch.getBrandItems().get(0).getTitle());		
+		assertEquals(expectedBrandTitle, siteSearch.getBrandItems().get(0).getTitle());
+		SiteSearchImpl siteSearchImpl = context.request().adaptTo(SiteSearchImpl.class);
+		assertEquals(expectedRedirectPage, siteSearchImpl.getRedirectPage());
 	}
 }
