@@ -480,7 +480,6 @@
         ul {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 20px;
 
             li {
                 flex: 1 0 100%;
@@ -667,15 +666,18 @@
                 }
             }
 
-            ul li {
-                font-size: toRem(16);
-                line-height: toRem(16) !important;
-                @include respond-to-min-max($desktop, $tablet) {
-                    flex: 1 0 50%;
-                }
-                @include respond-to-min($tablet) {
-                    font-size: toRem(20);
-                    line-height: toRem(20) !important;
+            ul {
+                margin-bottom: 20px;
+                li {
+                    font-size: toRem(16);
+                    line-height: toRem(16) !important;
+                    @include respond-to-min-max($desktop, $tablet) {
+                        flex: 1 0 50%;
+                    }
+                    @include respond-to-min($tablet) {
+                        font-size: toRem(20);
+                        line-height: toRem(20) !important;
+                    }
                 }
             }
             .from, .aed, .vat {
