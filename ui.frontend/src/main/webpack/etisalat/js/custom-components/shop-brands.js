@@ -16,14 +16,14 @@ export const SHOP_BRANDS = () => {
       enableReqParams: ENABLE_REQ_PARAMS = 'yes',
       hostName: HOST_NAME = ''
     } = BRAND_LOGO_DATA;
-
+   
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toUpperCase() : "EN";
     let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
-      url = `${DATA_PATH}?locale=en-${locale}`;
+      url = `${url}?locale=en-${locale}`;
     }
-
+    
     const swiper = swiperInit(`.${rootInstanceClass} .brands-swiper`, {
       slidesPerView: 2.2,
       scrollbar: `.${rootInstanceClass} .brand-scrollbar`,
@@ -53,7 +53,7 @@ export const SHOP_BRANDS = () => {
 
     function getBrandsCard(data) {
       var html = "";
-      var filters = data.filters;
+      var filters = data?.filters || [];
       for (var i = 0; i < filters.length; i++) {
         if (filters[i].dimensionName == "product.brand") {
           if (filters[i].dimensionValues.length <= 9) {
@@ -93,7 +93,7 @@ export const SHOP_BRANDS = () => {
       navigationState: "",
       categoryId: CATEGORY_ID,
     };
-
+    
     $.ajax({
       dataType: "json",
       type: REQUEST_METHOD,

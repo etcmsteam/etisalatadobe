@@ -162,8 +162,14 @@ function getProductCard(data) {
 }
 
 function initProductCards() {
+  const $productDetails = $(".productdetail > div")?.eq(0);
+
+  if($productDetails.length === 0){
+    return;
+  }
+
   $(".main-loader").show();
-  const { categoryid, hostName } = $(".productdetail > div")?.eq(0)?.data() || {};
+  const { categoryid, hostName = '' } = $(".productdetail > div")?.eq(0)?.data() || {};
   const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
   const url = `${hostName}/b2c/eshop/getProductsByCategory?locale=${locale}`;
   const payload = {
