@@ -1,30 +1,34 @@
 <template data-sly-template.dynamicproducts="${ @ properties}">
 
-
-<div data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel" 
-    id="related-products-${properties.productCategoryId}" data-host-name="${commonModel.apiHostname}" data-promoPreText="${properties.offerPreText}"  data-off="${properties.offerPostText}"
-    data-exclusive="${properties.exclusiveProductText}" data-tiletype="${properties.dynamictileBoxLayout}" data-categoryId="${properties.productCategoryId}"  data-vatText="${properties.vatInclude}"
-    data-apiUrlString="${properties.apiurllink}" data-buyNowText="${properties.buyNowButton}" data-buyNowUrl="${properties.buttonLink}"
-	data-preOrderText="${properties.preOrderText}" data-aedText="${properties.productCurrency}" data-fromText="${properties.fromText}"
-	data-wasText="${properties.wastext}" data-or="${properties.smilePointPreText}" data-smilePoints="${properties.smilePointPostText}">
-
-</div>
-<sly data-sly-test="${properties.listLayout && properties.listLayout == 'loadmore'}">
-<sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicloadmoretemplate.html"
-         data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">  
+    <sly data-sly-test="${properties.dynamictileBoxLayout != 'bestsellercard'}">
+        <div data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel"
+            id="related-products-${properties.productCategoryId}" data-host-name="${commonModel.apiHostname}"
+            data-promoPreText="${properties.offerPreText}" data-off="${properties.offerPostText}"
+            data-exclusive="${properties.exclusiveProductText}" data-tiletype="${properties.dynamictileBoxLayout}"
+            data-categoryId="${properties.productCategoryId}" data-vatText="${properties.vatInclude}"
+            data-apiUrlString="${properties.apiurllink}" data-buyNowText="${properties.buyNowButton}"
+            data-buyNowUrl="${properties.buttonLink}" data-preOrderText="${properties.preOrderText}"
+            data-aedText="${properties.productCurrency}" data-fromText="${properties.fromText}"
+            data-wasText="${properties.wastext}" data-or="${properties.smilePointPreText}"
+            data-smilePoints="${properties.smilePointPostText}">
+        </div>
     </sly>
-</sly>
-
-<sly data-sly-test="${properties.listLayout && properties.listLayout == 'slider'}">
-<sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicslidertemplate.html"
-         data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">  
+    <sly data-sly-test="${properties.listLayout && properties.listLayout == 'loadmore'}">
+        <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicloadmoretemplate.html"
+            data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
+        </sly>
     </sly>
-</sly>
 
-<sly data-sly-test="${properties.listLayout && properties.listLayout == 'noncontractbutton'}">
-    <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicnoncontracttemplate.html"
-         data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
+    <sly data-sly-test="${properties.listLayout && properties.listLayout == 'slider'}">
+        <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicslidertemplate.html"
+            data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
+        </sly>
     </sly>
-</sly>
+
+    <sly data-sly-test="${properties.listLayout && properties.listLayout == 'noncontractbutton'}">
+        <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicnoncontracttemplate.html"
+            data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
+        </sly>
+    </sly>
 
 </template>

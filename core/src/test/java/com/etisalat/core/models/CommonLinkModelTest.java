@@ -2,17 +2,20 @@ package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import org.apache.commons.lang3.StringUtils;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import com.day.cq.dam.api.DamConstants;
 
-import com.etisalat.core.models.impl.EtisalatExternalizerImpl;
 import com.etisalat.core.services.EtisalatApiService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
@@ -52,15 +55,6 @@ public class CommonLinkModelTest {
     }
 
     @Test
-    void testExternalizerLink() {
-        String externalLink = "/content/etisalat/ae/en/carrier-and-wholesale";
-        context.request().setAttribute("link", externalLink);
-        context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
-        CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
-        assertEquals(externalLink, model.getLink());
-    }
-    
-    @Test
     void testVideoLink() {
         String videoLink = "https://www.youtube.com/embed/Xwr22z1hysY";
         context.request().setAttribute("link", videoLink);
@@ -92,4 +86,32 @@ public class CommonLinkModelTest {
       when(etisalatApiService.getApiHostname()).thenReturn(hostName);     
       assertEquals(hostName, commonLinkModel.getApiHostname());
     }
+	
+	@Test
+	void testVideoLinkTrueCondition() {
+		Map<String, Object> assetMeta = new HashMap<>();
+		assetMeta.put(DamConstants.DC_TITLE, "Video");
+		context.create().asset("/content/dam/etisalat/offerbanner/bg-cards/video.mp4", 100, 100, "video/mp4",
+				assetMeta);
+		String videoLink = "/content/dam/etisalat/offerbanner/bg-cards/video.mp4";
+		context.request().setAttribute("link", videoLink);
+		CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+		assertTrue(model.isVideo());
+	}
+	
+	@Test
+	void testVideoLinkAssetPathEmpty() {
+		String videoLink = StringUtils.EMPTY;
+		context.request().setAttribute("link", videoLink);
+		CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+		assertFalse(model.isVideo());
+	}
+	
+	@Test
+	void testVideoLinkAssetResourceNull() {
+		String videoLink = "/content/dam/etisalat/offerbanner/bg-cards/video.mp4";
+		context.request().setAttribute("link", videoLink);
+		CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+		assertFalse(model.isVideo());
+	}
 }
