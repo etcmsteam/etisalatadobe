@@ -703,12 +703,6 @@
                         align-items: center !important;
                     }
                 }
-                .third-action-wrapper {
-                    @include respond-to-max($phone) {
-                        padding-bottom: 50px;
-                        width: 100%;
-                    }
-                }
             }
         }
         &.feature-style {
@@ -717,6 +711,19 @@
                     @include respond-to-min($tablet) {
                         padding-bottom: 70px;
                     }
+                }
+            }
+            .third-action-wrapper {
+                @include respond-to-max($phone) {
+                    padding-bottom: 50px;
+                    width: 100%;
+                }
+                @include respond-to-min-max($desktop, $tablet) {
+                    width: 50%;
+                }
+                .btn {
+                    width: 100%;
+                    max-width: 100%;
                 }
             }
         }
