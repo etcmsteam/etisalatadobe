@@ -640,11 +640,8 @@
         }
 
         &.feature-style, &.learnmore-content {
-            @include respond-to-max($phone) {
-                min-height: auto;
-            }
+            min-height: 560px;
             @include respond-to-min($tablet) {
-                min-height: 560px;
                 max-height: 560px !important;
                 padding: toRem(92) toRem(12);
             }
@@ -703,6 +700,11 @@
                         align-items: center !important;
                     }
                 }
+                .third-action-wrapper {
+                    @include respond-to-max($phone) {
+                        width: 100%;
+                    }
+                }
             }
         }
         &.feature-style {
@@ -714,16 +716,12 @@
                 }
             }
             .third-action-wrapper {
-                @include respond-to-max($phone) {
-                    padding-bottom: 50px;
-                    width: 100%;
-                }
                 @include respond-to-min-max($desktop, $tablet) {
                     width: 50%;
-                }
-                .btn {
-                    width: 100%;
-                    max-width: 100%;
+                    .btn {
+                        width: 100%;
+                        max-width: 100%;
+                    }
                 }
             }
         }
