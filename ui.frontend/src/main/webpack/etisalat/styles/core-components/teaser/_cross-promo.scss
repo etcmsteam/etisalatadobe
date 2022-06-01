@@ -133,6 +133,12 @@
         width: 100% !important;
       }
 
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          width: 50% !important;
+        }
+      }
+
       @media (min-width: 961px) and (max-width: 1247px) {
         width: 50% !important;
       }
@@ -342,12 +348,28 @@
         @include respond-to-min-max($desktop, $tablet) {
           position: absolute;
           right: 40px;
-          top: 40px;
+          top: 33%;
+          width: 280px;
+
+          @include rtlBlock() {
+            left: toRem(40);
+            right: auto;
+          }
         }
       }
 
       @include respond-to-max($tablet-min) {
         width: 100%;
+      }
+    }
+  }
+
+  &.cmp-teaser--aqua-bg {
+    .cmp-teaser {
+      &::before,
+      &::after {
+        background: url("../resources/images/bg-cards/plan-cards-illustration_flip.svg") left 0 no-repeat;
+        background-size: contain;
       }
     }
   }
@@ -714,12 +736,12 @@
 
   &.teaser--pattern__bg {
     .cmp-teaser {
-      align-items: flex-end;
+      align-items: center;
       display: flex;
       flex-direction: column-reverse;
 
       @include respond-to-min($tablet) {
-        align-items: flex-end;
+        align-items: center;
         flex-direction: row-reverse;
       }
 
@@ -731,6 +753,16 @@
       .img-static {
         display: flex;
         flex-direction: column-reverse;
+      }
+
+      .img-static {
+        div.cover {
+          picture {
+            img.cover {
+              min-width: auto;
+            }
+          }
+        }
       }
 
       p {
@@ -745,27 +777,18 @@
       }
 
       &__title {
-        margin-top: 50px;
-
         @include respond-to-max($tablet) {
           font-size: $font26;
         }
       }
 
       &__content {
-        padding-top: 0;
-
-        @include respond-to-min($tablet) {
-          padding-bottom: 9rem;
-          width: 70%;
-        }
+        padding-bottom: 2rem;
+        padding-top: 2rem;
 
         @include respond-to-min($desktop) {
-          padding-bottom: 7rem;
-        }
-
-        @include respond-to-min($desktop-wide) {
-          padding-bottom: 12rem;
+          padding-bottom: 4rem;
+          padding-top: 2rem;
         }
       }
 

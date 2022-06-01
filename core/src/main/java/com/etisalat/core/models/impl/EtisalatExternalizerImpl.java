@@ -70,9 +70,18 @@ public class EtisalatExternalizerImpl implements EtisalatExternalizer {
         externalizer = resourceResolver.adaptTo(Externalizer.class);
         if (null != externalizer && StringUtils.isNotBlank(request.getRequestPathInfo().getSelectorString())) {
             String serverName = request.getServerName();
-            return externalizer.externalLink(resourceResolver,serverName, urlWithExtension);
-        } else {
-            return urlWithExtension;
+            if (serverName.contains("localhost")){
+                urlWithExtension = externalizer.externalLink(resourceResolver,"localhost", urlWithExtension);
+            } else if (serverName.contains("hiuapp.ae")){
+                urlWithExtension = externalizer.externalLink(resourceResolver,"hiuapp", urlWithExtension);
+            } else if (serverName.contains("ewallet.ae")) {
+                urlWithExtension = externalizer.externalLink(resourceResolver,"ewallet", urlWithExtension);
+            } else if (serverName.contains("fivemobile.ae")) {
+                urlWithExtension = externalizer.externalLink(resourceResolver,"fivemobile", urlWithExtension);
+            } else {
+                urlWithExtension = externalizer.externalLink(resourceResolver,"etisalat", urlWithExtension);
+            }
         }
+        return urlWithExtension;
     }
 }

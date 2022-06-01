@@ -81,6 +81,11 @@
 </div>
 
 <sly data-sly-test="${properties.carouselLayout == 'etisalat-hero-banner' && (wcmmode.preview || wcmmode.disabled)}">        
-<sly data-sly-use.heroBannerTemplate="etisalat-herobanner.html"
-             data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/>          
+  <sly data-sly-test="${!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst'}" 
+       data-sly-use.heroBannerTemplate="etisalat-herobanner.html"
+       data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/> 
+             
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images'}" 
+        data-sly-use.heroBannerTemplate="etisalat-heroimages.html"
+       data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/> 
 </sly>

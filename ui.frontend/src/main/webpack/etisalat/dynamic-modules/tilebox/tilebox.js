@@ -48,8 +48,8 @@ export const TILE_BOX = () => {
     $(document)
       .find(".tilecontainer .tile-boxes-section.tile-boxes-section-swiper")
       .each(function (index) {
-        $(this).addClass("t-b-slider" + index);
-        var $tileBoxesSwiperCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
+        const container = $(this).find(".swiper-container");
+        var $tileBoxesSwiperCarousal = swiperInit(container, {
           scrollbar: $(this).find(".swiper-scrollbar"),
           scrollbarHide: false,
           scrollbarDraggable: true,
@@ -62,11 +62,11 @@ export const TILE_BOX = () => {
           breakpoints: {
             540: {
               spaceBetween: 0,
-              slidesPerView: 1.35,
+              slidesPerView: 1,
             },
             768: {
               spaceBetween: 0,
-              slidesPerView: 2.35,
+              slidesPerView: 1,
             },
             1024: {
               spaceBetween: 0,

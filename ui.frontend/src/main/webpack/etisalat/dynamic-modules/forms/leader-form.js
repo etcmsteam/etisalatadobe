@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
+import { API_HOST_URL } from "../../../global/js/helpers";
 
 export const LEADER_FORM = () => {
   const $FORM = $("#leadOrder");
@@ -127,7 +128,7 @@ export const LEADER_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: "https://www.etisalat.ae/b2bportal/Utility/checkCaptcha.service",
+        url: `${API_HOST_URL}/b2bportal/Utility/checkCaptcha.service`,
         data: dataObj,
         dataType: "json",
 

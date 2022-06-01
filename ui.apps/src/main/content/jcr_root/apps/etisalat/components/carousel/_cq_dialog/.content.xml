@@ -57,6 +57,92 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                   <herovariation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldDescription="Select Hero Banner Variation"
+                                                        fieldLabel="Hero Banner Variation"
+                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                        name="./heroBannerVariation">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <wst
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Herobanner 4.0"
+                                                                value="herobanner-wst"/>
+                                                            <heroimage
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Hero Images"
+                                                                value="hero-images"/>					                              
+                                                        </items>
+                                                        <granite:data
+							                                jcr:primaryType="nt:unstructured"
+							                                cq-dialog-dropdown-showhide-target=".herovariation-showhide-target"/>
+                                                    </herovariation>
+                                                    <heroimagelink
+							                            granite:class="herovariation-showhide-target"
+							                            jcr:primaryType="nt:unstructured"
+							                            sling:resourceType="granite/ui/components/coral/foundation/container">
+							                            <items jcr:primaryType="nt:unstructured">
+							                                <herolinkssection
+									                            jcr:primaryType="nt:unstructured"
+									                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+									                            composite="{Boolean}true"
+									                            fieldLabel="Add Hero Links Section"
+									                            validation="multifield-max-4"
+									                            required="{Boolean}false">
+									                            <field
+									                                granite:class="coral-Well"
+									                                jcr:primaryType="nt:unstructured"
+									                                sling:resourceType="granite/ui/components/coral/foundation/container"
+									                                name="./heroLinksSection">
+									                                <items jcr:primaryType="nt:unstructured">
+									                                    <sectionimage
+														                   jcr:primaryType="nt:unstructured"
+														                   sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+														                   allowUpload="{Boolean}false"
+														                   autoStart="{Boolean}false"
+														                   class="cq-droptarget"
+														                   fieldLabel="Hero Quick Link Icon Image"
+														                   fieldDescription="Hero Quick Link Icon Image"
+														                   fileNameParameter="./fileName"
+														                   fileReferenceParameter="./iconImage"
+														                   mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+														                   multiple="{Boolean}false"
+														                   name="./file"														                   
+														                   title="Upload Image Asset"
+														                   uploadUrl="${suffix.path}"
+														                   useHTML5="{Boolean}true"/>										                                   
+									                                    <text
+								                                            jcr:primaryType="nt:unstructured"
+								                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+								                                            fieldDescription="Please enter the icon text"
+								                                            fieldLabel="Text"
+								                                            name="./iconText"/>
+									                                    <link
+								                                            jcr:primaryType="nt:unstructured"
+								                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+								                                            fieldDescription="Please enter the link"
+								                                            fieldLabel="Link"
+								                                            name="./iconLink"/>
+									                                    <linkTarget
+								                                            jcr:primaryType="nt:unstructured"
+								                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+								                                            fieldDescription="Check to open link in new tab?"
+								                                            name="./linkTarget"
+								                                            text="Open link in new tab?"
+								                                            uncheckedValue="_self"
+								                                            value="_blank"/>
+									                                </items>
+									                            </field>
+									                            <granite:data
+		                                                            jcr:primaryType="nt:unstructured"
+		                                                            max-items="4"/>
+									                        </herolinkssection>
+							                            </items>
+							                            <granite:data
+							                                jcr:primaryType="nt:unstructured"
+							                                showhidetargetvalue="hero-images"/>
+							                        </heroimagelink>
                                                     <heroimageinnerpage
 		                                                jcr:primaryType="nt:unstructured"
 		                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
