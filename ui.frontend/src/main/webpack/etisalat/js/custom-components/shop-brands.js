@@ -18,7 +18,8 @@ export const SHOP_BRANDS = () => {
     } = BRAND_LOGO_DATA;
    
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toUpperCase() : "EN";
-    let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
+    // let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
+     let url = DATA_URL || `${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
       url = `${url}?locale=en-${locale}`;
