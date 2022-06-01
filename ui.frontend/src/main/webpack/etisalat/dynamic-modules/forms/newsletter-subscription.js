@@ -14,7 +14,7 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
     return false;
   }
 
-  const { hostName } = $FORM?.data() || {};
+  // const { hostName } = $FORM?.data() || {};
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() === false) {
@@ -99,7 +99,7 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
 
       $.ajax({
         type: "POST",
-        url: `${hostName}/b2bportal/subscribeNewsLetter.service`,
+        url: `/b2bportal/subscribeNewsLetter.service`,
         data: dataObj,
         dataType: "json",
 
