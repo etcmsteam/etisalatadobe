@@ -656,8 +656,8 @@
                     margin-right: 0 !important;
                 }
             }
-            @include respond-to-min-max($desktop, $tablet) {
-                .container {
+            .container {
+                @include respond-to-min-max($desktop, $tablet) {
                     padding: 0!important;
                 }
             }
@@ -673,7 +673,10 @@
             }
 
             ul {
-                margin-bottom: 20px;
+                margin-bottom: toRem(24);
+                @include respond-to-min($desktop) {
+                    margin-bottom: toRem(80);
+                }
                 li {
                     font-size: toRem(16);
                     line-height: toRem(20) !important;
@@ -711,11 +714,8 @@
         &.feature-style {
             .paragraph-styling {
                 p {
-                    @include respond-to-min($desktop) {
+                    @include respond-to-min($tablet) {
                         padding-bottom: 70px;
-                    }
-                    @include respond-to-min-max($desktop, $tablet) {
-                        padding-bottom: 10px;
                     }
                 }
             }
@@ -908,6 +908,11 @@
         }
 
         &.feature-style, &.learnmore-content {
+            @include respond-to-min($desktop) {
+                .container {
+                    padding: toRem(0) toRem(12) !important;
+                }
+            }
             .feature-wrapper {
                 @include respond-to-min($desktop) {
                     flex-direction: row-reverse;
