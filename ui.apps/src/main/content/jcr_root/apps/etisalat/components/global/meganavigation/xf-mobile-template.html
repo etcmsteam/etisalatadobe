@@ -1,7 +1,15 @@
 <template data-sly-template.xfMobileTemplate="${ @ properties,navItems}">
         <a class="nav-link ${navItems.containerSubMenuList.size > 0 ? 'nav-expand-link' :''}" href="${navItems.navigationLinkTo}">
 		<img alt="${navItems.navigationLabel}" class="nav-link-icon" src="${navItems.navImagePath}"/> ${navItems.navigationLabel}
-		 <img alt="${navItems.navigationLabel}" data-sly-test="${navItems.containerSubMenuList.size > 0}" class="nav-link-arrow" src="${properties.linkArrowImage}"/></a>
+		 <svg data-sly-test="${navItems.containerSubMenuList.size > 0}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+           class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+           enable-background="new 26 26 12 12" xml:space="preserve">
+           <g>
+               <path fill="#554D56"
+                   d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+               </path>
+           </g>
+          </svg></a>		 
          <ul data-sly-test="${!navItems.containerSubMenuList.isEmpty && navItems.containerSubMenuList.size > 0}" class="nav-items nav-expand-content">
 		  <li class="nav-item">
               <a class="nav-link nav-back-link" href="#">
@@ -17,14 +25,31 @@
                   </sly>
                     
                     <li data-sly-test="${subMenuItems.active}" class="nav-item-heading mega-dropdown-mob open">
-                        <a href="#">${subMenuItems.navTitle}</a>  <img alt="${subMenuItems.navTitle}" class="nav-link-arrow" src="${properties.linkArrowImage}"/>
+                        <a href="#">${subMenuItems.navTitle}</a>                          
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+		                    class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+		                    enable-background="new 26 26 12 12" xml:space="preserve">
+		                    <g>
+		                        <path fill="#554D56"
+		                            d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+		                        </path>
+		                    </g>
+		                </svg>                    
                      </li>
                     <li data-sly-test="${!subMenuItems.active && !subMenuItems.fixedItems.isEmpty}" 
 							data-sly-repeat.subFixedItems="${subMenuItems.fixedItems}" 
 							class="${subFixedItems.navigationDesc ? 'nav-item-heading' : 'nav-item'}">
                         <a class="${subFixedItems.navigationDesc ? 'nav-item-heading-link' : 'nav-link'}" href="${subFixedItems.navigationLink}">
                          ${subFixedItems.navigationTitle}
-                         <img data-sly-test="${subFixedItems.navigationDesc}" alt="${subFixedItems.navigationTitle}" class="nav-link-arrow" src="${properties.linkArrowImage}"/>
+                         <svg data-sly-test="${navItems.containerSubMenuList.size > 0}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+				           class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+				           enable-background="new 26 26 12 12" xml:space="preserve">
+				           <g>
+				               <path fill="#554D56"
+				                   d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+				               </path>
+				           </g>
+				          </svg> 				          
                         </a>
                     </li>
                     
@@ -79,7 +104,16 @@
 			   <li data-sly-test="${!footerMenuItems.fixedItems.isEmpty}"  
                    data-sly-repeat.items="${footerMenuItems.fixedItems}"   
                     class="nav-item"><a class="nav-link" href="${items.navigationLink}">${items.navigationTitle}
-                    <img alt="${items.navigationTitle}" class="nav-link-arrow" src="${properties.linkArrowImage}"/></a></li>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+			           class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+			           enable-background="new 26 26 12 12" xml:space="preserve">
+			           <g>
+			               <path fill="#554D56"
+			                   d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+			               </path>
+			           </g>
+			          </svg> 	
+                   </a></li>
 			 </ul>			  
 		 </ul>
 </template>
