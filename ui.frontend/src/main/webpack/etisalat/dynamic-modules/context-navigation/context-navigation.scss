@@ -312,27 +312,19 @@
     }
   }
 
+  &.static-tile {
+    .all-tiles {
+      &.align-middle {
+        justify-content: center;
+      }
+    }
+  }
+
   // with slider
   &.with-slider {
     @include respond-to-min($desktop) {
       display: flex;
       gap: 0;
-    }
-
-    &.two-tiles {
-      .all-tiles {
-        .context-tile {
-          @include respond-to-min($tablet) {
-            width: 50% !important;
-          }
-        }
-
-        .context-tile + .context-tile {
-          @include respond-to-min($desktop) {
-            margin-right: 0 !important;
-          }
-        }
-      }
     }
 
     &.single-tile,
@@ -346,6 +338,20 @@
       .all-tiles {
         &.align-middle {
           justify-content: center;
+        }
+        &.align-space-around {
+          justify-content: space-around;
+
+          .context-tile {
+            align-items: center;
+            text-align: center;
+
+            .wst-main-headings {
+              @include rtlBlock() {
+                text-align: right;
+              }
+            }
+          }
         }
       }
 

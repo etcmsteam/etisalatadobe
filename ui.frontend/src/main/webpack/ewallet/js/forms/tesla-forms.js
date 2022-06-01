@@ -74,6 +74,7 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
     },
     messages: messagelocal,
     submitHandler: function (form) {
+      $("#ewalletteslaform #submitBtn").addClass("is-disabled");
       form.submit();
     },
   });
@@ -95,5 +96,4 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
       $FORM.valid();
     }
   });
-  
 })();

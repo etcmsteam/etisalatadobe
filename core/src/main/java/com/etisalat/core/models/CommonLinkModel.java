@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import com.day.cq.wcm.api.Page;
+import com.etisalat.core.services.EtisalatApiService;
 import com.etisalat.core.util.CommonUtility;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,7 +12,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.inject.Inject;
@@ -33,12 +33,10 @@ public class CommonLinkModel {
     /** The resource resolver. */
     @SlingObject
     ResourceResolver resourceResolver;
-
-    @Self
-    protected SlingHttpServletRequest request;
-
+    
+    /** The etisalat api service. */
     @OSGiService
-    EtisalatExternalizer etisalatExternalizer;
+    private EtisalatApiService etisalatApiService;
 
     /**
      * Gets the link.
@@ -46,12 +44,7 @@ public class CommonLinkModel {
      * @return the link
      */
     public String getLink() {
-        String urlWithExtension = CommonUtility.appendHtmlExtensionToPage(resourceResolver, link);
-        if (null != etisalatExternalizer) {
-            return etisalatExternalizer.getLinkUrl(urlWithExtension, resourceResolver, request);
-        } else {
-            return urlWithExtension;
-        }
+        return CommonUtility.appendHtmlExtensionToPage(resourceResolver, link);
     }
     
     /**
@@ -75,5 +68,15 @@ public class CommonLinkModel {
 			return pagePathArray[5];
 		}
 		return StringUtils.EMPTY;
+	}
+	
+	/**
+	 * Gets the api hostname.
+	 *
+	 * @return the api hostname
+	 */
+	public String getApiHostname() {
+	  
+	  return etisalatApiService.getApiHostname();
 	}
 }

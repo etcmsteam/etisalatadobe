@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
-
 export const NEWS_LETTER_SUBSCRIPTION = () => {
   const NO_SCROLL_CLASS = "no-scroll";
   const $SUCCSS_POP_UP = $(".cmp-experiencefragment--Newsletter-subscription-pop-up");
@@ -14,6 +13,8 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
   if (!$FORM.length) {
     return false;
   }
+
+  const { hostName } = $FORM?.data() || {};
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() === false) {
@@ -98,13 +99,13 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
 
       $.ajax({
         type: "POST",
-        url: "https://www.etisalat.ae/b2bportal/subscribeNewsLetter.service",
+        url: `${hostName}/b2bportal/subscribeNewsLetter.service`,
         data: dataObj,
         dataType: "json",
 
         headers: {
           "content-type": "application/json",
-          "x-calling-application": "cms"
+          "x-calling-application": "cms",
         },
 
         encode: true,

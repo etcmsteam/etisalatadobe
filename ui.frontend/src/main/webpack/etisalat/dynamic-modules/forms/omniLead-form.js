@@ -10,6 +10,8 @@ export const OMNI_LEAD_FORM = () => {
     return false;
   }
 
+  const { hostName } = $FORM?.data() || {};
+
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
       return false;
@@ -117,7 +119,7 @@ export const OMNI_LEAD_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: "https://www.etisalat.ae/b2bportal/createOmniLead.service",
+        url: `${hostName}/b2bportal/createOmniLead.service`,
         data: dataObj,
         dataType: "json",
 

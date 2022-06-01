@@ -162,13 +162,36 @@ function getProductCard(data) {
 }
 
 function initProductCards() {
+  const $productDetails = $(".productdetail > div")?.eq(0);
+
+  if($productDetails.length === 0){
+    return;
+  }
+
   $(".main-loader").show();
+  const { categoryid, hostName = '' } = $(".productdetail > div")?.eq(0)?.data() || {};
+  const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
+  const url = `${hostName}/b2c/eshop/getProductsByCategory?locale=${locale}`;
+  const payload = {
+    No: "0",
+    Nrpp: "100",
+    categoryId: categoryid,
+    navigationState: "",
+  };
+
   $.ajax({
     // Our sample url to make request
-    url: window.location.origin + "/content/dam/etisalat/prod-mock-assets/product.json",
+    // url: window.location.origin + "/content/dam/etisalat/prod-mock-assets/product.json",
+    url,
 
     // Type of Request
-    type: "GET",
+    type: "POST",
+
+    data: JSON.stringify(payload),
+
+    dataType : 'json',
+
+    contentType: 'application/json; charset=utf-8',
 
     // Function to call when to
     // request is ok

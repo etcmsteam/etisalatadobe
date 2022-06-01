@@ -10,6 +10,8 @@ export const LEADER_FORM = () => {
     return false;
   }
 
+  const { hostName } = $FORM?.data() || {};
+
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
       return false;
@@ -127,7 +129,7 @@ export const LEADER_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: "https://www.etisalat.ae/b2bportal/Utility/checkCaptcha.service",
+        url: `${hostName}/b2bportal/Utility/checkCaptcha.service`,
         data: dataObj,
         dataType: "json",
 
