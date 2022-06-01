@@ -321,7 +321,39 @@
    <div class="not-found" >
       ${properties.errorText @ context = 'html'}
    </div>
-   <!-- [Error Message Starts] -->
+   <!-- [Error Message ends] -->
+
+   <!--my change starts here-->
+
+   <div class="tables-4-0 someClass">
+      <table aria-label="error-table">
+         <thead>
+            <tr data-sly-list="${tableModel.headerListForChannelsTable}">
+               <th id="${itemList.index}" data-sly-test="${item != 'data-filter'}">${item}</th>
+            </tr>
+         </thead>
+         <tbody data-sly-list.allrows="${tableModel.allRowsForChannelsTable}">
+            <tr>
+               <td data-sly-test.myMap="${allrows}" data-sly-repeat.mapItem="${myMap}" data-filter="${myMap[mapItem]}">
+                  ${mapItem}</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <!-- <div class="channel-wrapper" data-component="cmp-sas-elife-channel-list">
+      <div class="channels-list" data-sly-list.allrows="${tableModel.allRowsForChannelsTable}">
+         <div class="channel">
+            <div class="desc" data-sly-test.myMap="${allrows}">
+               <div class="channel-name">${myMap}</div>
+               <div class="channel-lang">Arabic</div>
+               <div class="channel-plan">Included in: <span>All Plans</span></div>
+            </div>
+            <div class="number">001</div>
+         </div>
+      </div>
+   </div> -->
+
+   <!--my change ends here-->
 
 
 </sly>

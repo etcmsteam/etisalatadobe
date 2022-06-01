@@ -1599,7 +1599,7 @@ table {
   .foot-notes-section.under-table {
     margin-bottom: 0;
     margin-top: toRem(24);
-  
+
     ol,
     ul {
       list-style: none;
@@ -1919,6 +1919,58 @@ table {
         @include rtlBlock() {
           padding-left: 0;
           padding-right: toRem(4);
+        }
+      }
+    }
+  }
+
+  &.someClass {
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0 toRem(15) toRem(10);
+    }
+    tr {
+      width: 47%;
+      display: grid;
+      padding: 0 0 20px;
+      margin: 0 0 30px;
+      border-top: none;
+      td {
+        grid-column: 1 / 5;
+        padding: 0;
+        width: auto;
+        font-size: toRem(13);
+        color: #848789;
+        text-transform: capitalize;
+        line-height: 1.6;
+        &:first-child {
+          line-height: 1.6;
+          position: static;
+          text-transform: capitalize;
+        }
+        &::nth-child(2){
+          margin: toRem(5) 0;
+        }
+        &::before{
+          display: none;
+        }
+        &:last-child {
+          text-align: right;
+          grid-column: 5;
+          grid-row: 1/4;
+        }
+        &:first-child, &:last-child{
+          color: $almost-black;
+          font-family: Lato,GE SS Two,Roboto,Arial,sans-serif;
+          font-size: 1rem;
+          font-weight: 400;
         }
       }
     }
