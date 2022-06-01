@@ -2,6 +2,7 @@
 import intlTelInput from "intl-tel-input";
 import { DIAL_CODE_DATA } from "../../../global/js/constant";
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
+import { API_HOST_URL } from "../../../global/js/helpers";
 
 export const NEED_HELP_FORM = () => {
   const $FORM = $("#cwsNeedHelp");
@@ -127,7 +128,7 @@ export const NEED_HELP_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: "https://www.etisalat.ae/b2c/sendNotification.service",
+        url: `${API_HOST_URL}/b2c/sendNotification.service`,
         data: dataObj,
         dataType: "json",
 

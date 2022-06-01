@@ -83,86 +83,7 @@
     h5,
     h6 {
         color: $almost-black;
-        margin: 0;
         @include font-family-Neotech;
-    }
-
-    h1,
-    h2,
-    h3 {
-        margin-bottom: toRem(24);
-        @media screen and (min-width: 992px) {
-            margin-bottom: toRem(56) !important;
-        }
-    }
-
-    h4,
-    h5,
-    h6 {
-        margin-bottom: .75rem;
-        @media screen and (min-width: 992px) {
-        margin-bottom: 1rem;
-        }
-    }
-
-    h1 {
-        font-size: 2rem;
-        line-height: 40px;
-
-        @media screen and (min-width: 992px) {
-        font-size: 3.375rem;
-        line-height: 68px;
-        }
-    }
-
-    h2 {
-        font-size: 30px;
-        line-height: 34px;
-
-        @media screen and (min-width: 992px) {
-        font-size: 40px;
-        line-height: 52px;
-        }
-    }
-
-    h3 {
-        font-size: 28px;
-        line-height: 34px;
-
-        @media screen and (min-width: 992px) {
-        font-size: 2rem;
-        line-height: 40px;
-        }
-    }
-
-    h4 {
-        font-size: 24px;
-        line-height: 32px;
-
-        @media screen and (min-width: 992px) {
-        font-size: 28px;
-        line-height: 34px;
-        }
-    }
-
-    h5 {
-        font-size: 20px;
-        line-height: 28px;
-
-        @media screen and (min-width: 992px) {
-        font-size: 24px;
-        line-height: 32px;
-        }
-    }
-
-    h6 {
-        font-size: 16px;
-        line-height: 24px;
-
-        @media screen and (min-width: 992px) {
-        font-size: 20px;
-        line-height: 28px;
-        }
     }
     }
     .wst-secondary-headings {
@@ -171,43 +92,6 @@
     h4,
     h5 {
         color: $gray-text-color;
-        margin: 0;
-        margin-bottom: 4px;
-        @include font-family-lato;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-    }
-
-    h2 {
-        font-size: 14px;
-        line-height: 1.25rem;
-
-        @media screen and (min-width: 992px) {
-        font-size: 1rem;
-        line-height: 1.5rem;
-        }
-    }
-
-    h3 {
-        font-size: 12px;
-        line-height: 1rem;
-
-        @media screen and (min-width: 992px) {
-        font-size: 14px;
-        line-height: 1.25rem;
-        }
-    }
-
-    h4 {
-        font-size: 12px;
-        line-height: 1rem;
-    }
-
-    h5 {
-        font-size: 10px;
-        line-height: 12px;
-        letter-spacing: 2px;
     }
     }
     .wst-main-headings {
@@ -215,7 +99,6 @@
     .h7,
     .h8 {
         color: $almost-black;
-        margin: 0;
         line-height: 1.25;
         @include font-family-lato;
         font-weight: 700;
@@ -579,48 +462,18 @@
             }
         }
         @include respond-to-min-max($desktop, $tablet) {
+            min-height: 700px;
             .container {
                 padding: 0 20px 0 30px!important;
             }
         }
         .content-wrapper {
             margin-right: 0 !important;
-            justify-content: flex-start;
+            justify-content: space-between;
             @include respond-to-min-max($desktop, $tablet) {
-                width: 100%;
-                max-width: 100%;
-            }
-        }
-        .wst-secondary-headings {
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                margin-bottom: toRem(8);
-            }
-        }
-
-        .wst-main-headings {
-            h1,
-            h2,
-            h3 {
-                margin-bottom: toRem(16) !important;
-
-                @include respond-to-min($desktop) {
-                    margin-bottom: toRem(10) !important;
-                }
-            }
-
-            h4,
-            h5,
-            h6 {
-                margin-bottom: toRem(12);
-
-                @include respond-to-min($desktop) {
-                    margin-bottom: toRem(16);
-                }
+                width: 50%;
+                max-width: 50%;
+                margin-right: 36px !important;
             }
         }
 
@@ -637,7 +490,7 @@
                 }
                 @include respond-to-min($desktop) {
                     font-size: toRem(20) !important;
-                    line-height: toRem(20) !important;
+                    line-height: toRem(28) !important;
                     flex: 1 0 50%;
                     margin-bottom: toRem(10);
                 }
@@ -656,6 +509,7 @@
                 &:before {
                     border: solid $white;
                     border-width: 0 1px 1px 0;
+                    padding: toRem(3.7);
                 }
             }
         }
@@ -731,6 +585,11 @@
         }
 
         .price-and-action {
+            @include respond-to-min-max($desktop, $tablet) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
             .third-action-wrapper {
                 @include respond-to-max($phone) {
                     width: 288px;
@@ -746,6 +605,16 @@
 
                 @include respond-to-min($tablet) {
                     align-items: center;
+                }
+                .third-action-wrapper {
+                    @include respond-to-max($tablet) {
+                        width: 100%;
+                        text-align: center;
+                            .btn {
+                                width: 100%;
+                                max-width: initial;
+                            }
+                    }
                 }
             }
             .third-action-wrapper {
@@ -771,31 +640,30 @@
         }
 
         &.feature-style, &.learnmore-content {
+            @include respond-to-max($phone) {
+                min-height: auto;
+            }
             @include respond-to-min($tablet) {
                 min-height: 560px;
-                max-height: 560px;
+                max-height: 560px !important;
                 padding: toRem(92) toRem(12);
             }
             .content-wrapper {
                 justify-content: flex-start;
-            }
-            @include respond-to-min-max($desktop, $tablet) {
-                .container {
-                    padding: 0!important;
+                @include respond-to-min-max($desktop, $tablet) {
+                    width: 100%;
+                    max-width: 100%;
+                    margin-right: 0 !important;
                 }
             }
-            .wst-main-headings {
-                h1,h2,h3,h4,h5,h6,.h7,.h8 {
-                    font-size: toRem(32);
-                    margin-bottom: toRem(18) !important;
-                    @include respond-to-min($tablet) {
-                        margin-bottom: toRem(32) !important;
-                    }
+            .container {
+                @include respond-to-min-max($desktop, $tablet) {
+                    padding: 0!important;
                 }
             }
             .paragraph-styling {
                 @include respond-to-min($tablet) {
-                    margin-bottom: 100px;
+                    margin-bottom: 20px;
                     margin-top: 40px;
                 }
                 @include respond-to-max($tablet) {
@@ -804,24 +672,63 @@
                 }
             }
 
-            ul li {
-                @include respond-to-min-max($desktop, $tablet) {
-                    flex: 1 0 50%;
+            ul {
+                margin-bottom: toRem(24);
+                @include respond-to-min($desktop) {
+                    margin-bottom: toRem(80);
+                }
+                li {
+                    font-size: toRem(16);
+                    line-height: toRem(20) !important;
+                    @include respond-to-min-max($desktop, $tablet) {
+                        flex: 1 0 50%;
+                    }
+                    @include respond-to-min($tablet) {
+                        font-size: toRem(20)!important;
+                        line-height: toRem(24) !important;
+                    }
                 }
             }
             .from, .aed, .vat {
                 font-size: toRem(14) !important;
             }
-            .third-action-wrapper {
-                @include respond-to-max($phone) {
-                    width: 100%;
+            .price-and-action {
+                @include respond-to-min-max($desktop, $tablet) {
+                    flex-direction: row !important;
+                    align-items: flex-end !important;
+                }
+                &.link-n-btn {
+                    @include respond-to-min-max($desktop, $tablet) {
+                        flex-direction: column !important;
+                        align-items: center !important;
+                    }
+                }
+                .third-action-wrapper {
+                    @include respond-to-max($phone) {
+                        padding-bottom: 50px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &.feature-style {
+            .paragraph-styling {
+                p {
+                    @include respond-to-min($tablet) {
+                        padding-bottom: 70px;
+                    }
                 }
             }
         }
         &.learnmore-content {
             .content-wrapper {
-                @include respond-to-min($tablet) {
+                @include respond-to-min($desktop) {
                     margin-left: 510px;
+                    width: 70%;
+                    max-width: initial;
+                    .price-and-action .third-action-wrapper{
+                        text-align: right;
+                    }
                 }
             }
         }
@@ -982,14 +889,38 @@
             }
         }
 
+        &.variation-price {
+            @include respond-to-min($tablet) {
+                .container {
+                    padding: 0!important;
+                }
+            }
+            .feature-wrapper {
+                @include respond-to-min($tablet) {
+                    flex-direction: row-reverse;
+                }
+                .content-wrapper {
+                    @include respond-to-min($tablet) {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+
         &.feature-style, &.learnmore-content {
+            @include respond-to-min($desktop) {
+                .container {
+                    padding: toRem(0) toRem(12) !important;
+                }
+            }
             .feature-wrapper {
                 @include respond-to-min($desktop) {
                     flex-direction: row-reverse;
                 }
                 .content-wrapper {
-                    @include respond-to-min($desktop) {
+                    @include respond-to-min-max($desktop, $tablet) {
                         width: 100%;
+                        max-width: 100%;
                     }
                 }
             }
@@ -1115,17 +1046,6 @@
                         margin-bottom: 32px;
                     }
                     
-                }
-            }
-            .wst-main-headings {
-                h1,h2,h3,h4,h5,h6,.h7,.h8 {
-                    margin-bottom: 24px;
-                    @media (min-width: 768px) {
-                        margin-bottom: 16px;
-                    }
-                    @media (min-width: 992px) {
-                        margin-bottom: 32px;
-                    }
                 }
             }
             .paragraph-styling {
@@ -1470,7 +1390,6 @@
             }
             .wst-main-headings {
                 h1,h2,h3,h4,h5,h6,.h7,.h8 {
-                    margin-bottom: 16px;
                     color: $white;
                 }
             }
