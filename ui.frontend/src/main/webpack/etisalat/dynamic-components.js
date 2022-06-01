@@ -78,7 +78,13 @@ const DYNAMIC_MODULE = {
   },
   "cmp-how-to-install": async () => {
     await import(/* webpackChunkName: 'how-to-install' */ "./dynamic-modules/how-to-install").then((obj) => obj.HOW_TO_INSTALL());
-  }
+  },
+  "cmp-hero-images": async () => {
+    await import(/* webpackChunkName: 'hero-images' */ "./dynamic-modules/hero-images").then((obj) => obj.HERO_IMAGES());
+  },
+  "cmp-context-navigation-cards": async () => {
+    await import(/* webpackChunkName: 'context-navigation-cards' */ "./dynamic-modules/context-navigation-cards").then((obj) => obj.CONTEXT_NAVIGATION_CARDS());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
-
+import { API_HOST_URL } from "../../../global/js/helpers";
 export const NEWS_LETTER_SUBSCRIPTION = () => {
   const NO_SCROLL_CLASS = "no-scroll";
   const $SUCCSS_POP_UP = $(".cmp-experiencefragment--Newsletter-subscription-pop-up");
@@ -98,7 +98,7 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
 
       $.ajax({
         type: "POST",
-        url: "https://www.etisalat.ae/b2bportal/subscribeNewsLetter.service",
+        url: `${API_HOST_URL}/b2bportal/subscribeNewsLetter.service`,
         data: dataObj,
         dataType: "json",
 

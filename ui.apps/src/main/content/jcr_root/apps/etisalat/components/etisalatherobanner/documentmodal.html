@@ -1,0 +1,35 @@
+<template data-sly-template.documentPopup="${ @ component,properties}">
+  <!-- Modal -->
+  <div id="" class="hero-image-section-iframe-modal wst-overlay-wrapper" id="upload-docs-${component.id}" role="dialog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <sly data-sly-test.uploadDocLink="${properties.uploadDocLinkURL}" data-sly-use.docLink="${'com.etisalat.core.models.CommonLinkModel' @link=uploadDocLink}" />
+        <!-- Modal-head -->
+        <div class="wst-overlay-head">         
+          <h3 data-sly-test="${properties.uploadModalLbl}">${properties.uploadModalLbl}</h3>
+          <a href="#" class="close">
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+            <svg width="16px" height="16px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs></defs>
+              <g id="Assets" stroke="none" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                <g id="icon-outline-close-white" stroke="#242424">
+                  <g id="Icon-/-Outline-/-Close-/-b.-White">
+                    <path d="M60,4 L4,60" id="Line"></path>
+                    <path d="M60,60 L4,4" id="Line"></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <!-- Modal-body -->
+        <div class="wst-overlay-body">
+          <iframe src="${docLink.link}" height="100%" width="100%"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Modal -->
+</template>
