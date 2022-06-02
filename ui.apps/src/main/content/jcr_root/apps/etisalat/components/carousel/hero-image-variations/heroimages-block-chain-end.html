@@ -1,6 +1,8 @@
 <template data-sly-template.blockChain="${ @ carousel,properties}">
 	<div data-component="cmp-hero-images" id="${carousel.id}" 
-	     class="${!wcmmode.edit ? 'hero-image-section hero-image medium swiper-container hero-images-variation' : ''} testimonials hero-video hr-landing-section destryeMe" data-autoplay="5000">
+	     class="${!wcmmode.edit ? 'hero-image-section hero-image medium swiper-container hero-images-variation' : ''} 
+	     testimonials hero-video hr-landing-section 
+	     ${carousel.items.size > 1 ? '' : 'destryeMe'}" data-autoplay="5000">
 	  <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">	   
 	      <div role="tabpanel" data-sly-repeat.item="${carousel.items}" 
 	           data-sly-resource="${item.name @ decorationTagName=''}" 
