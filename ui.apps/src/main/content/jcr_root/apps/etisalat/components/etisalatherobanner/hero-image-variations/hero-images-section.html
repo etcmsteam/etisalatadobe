@@ -1,0 +1,82 @@
+<template  data-sly-template.heroImageSection="${ @ properties}">
+ <sly data-sly-set.leftAlignment="${properties.heroAlignment == 'slide-left' ? 'c-left' : ''}" />
+ <sly data-sly-set.rightAlignment="${properties.heroAlignment == 'slide-right' ? 'c-right' : ''}" />
+ <sly data-sly-set.centerAlignment="${properties.heroAlignment == 'slide-center' ? 'c-center' : ''}" />
+ 
+ <sly data-sly-set.leftAlignBannerClass="${properties.heroAlignment == 'slide-left' ? 'col-xs-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-0' : ''}" />
+ <sly data-sly-set.rightAlignBannerClass="${properties.heroAlignment == 'slide-right' ? 'col-xs-12 col-md-6 col-md-offset-6' : ''}" />
+ <sly data-sly-set.centerAlignBannerClass="${properties.heroAlignment == 'slide-center' ? 'col-md-10 col-md-offset-1 col-xs-12' : ''}" />
+ 
+ <sly data-sly-set.alignBannerClass="${leftAlignBannerClass} ${rightAlignBannerClass} ${centerAlignBannerClass}" />
+ <sly data-sly-set.heroSectionAlignment="${leftAlignment} ${rightAlignment} ${centerAlignment} ${alignBannerClass}" />
+ <sly data-sly-set.iframeClass="${leftAlignment} ${rightAlignment} ${centerAlignment} col-xs-12 col-md-6" />
+        
+   <!-- Start - cover -->
+   <sly data-sly-use.heroImagesTemplate="heroimages.html"
+             data-sly-call="${heroImagesTemplate.heroImages @ properties=properties}"/>
+             
+    <!-- Start - container -->
+    <div class="container">
+        <div class="row ">
+            <div class="hero-details">                    
+                <div class="${properties.uploadDocLinkURL ? iframeClass : heroSectionAlignment}">
+                     <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}" 
+               data-sly-use.heroBannerLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerCTALink}"/>
+	      	<div class="hero-bg-cta" data-label="${heroBannerLink.link}"></div>
+     	
+                    <div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.youTubeUrl}" class="video-wrapper">
+				<sly data-sly-use.heroVideoModelTemplate="herovideo.html"
+			             data-sly-call="${heroVideoModelTemplate.heroVideoModel @ component=component,properties=properties}"/>
+			</div>
+			<div data-sly-test="${properties.backToLinkLbl}" class="go-back">
+			   <sly data-sly-test.customLink="${properties.backToLinkURL}" 
+                     data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+				<div class="third-action-wrapper action-link">
+					<a data-sly-test="${commonlinkmodel.link}" href="${commonlinkmodel.link}" class="link">${properties.backToLinkLbl}</a>
+				</div>
+			</div>
+                    <h5 data-sly-test="${properties.heroPreTitle}" class="hero-heading-small ${properties.preTitleColor}">${properties.heroPreTitle}</h5>
+                    <h3 data-sly-test="${properties.heroTitle}" 
+                        class="hero-heading-big ${properties.titleFontColor == 'light-color' ? 'text--white' :'text--black'}">${properties.heroTitle @ context = 'html'}</h3>
+                    <div data-sly-test="${properties.jcr:description}" class="hero-description">${properties.jcr:description @ context = 'html'}</div>
+                    
+                    <div class="wst-price-tag">
+                        <div data-sly-test="${properties.fromText}" class="top-part ${properties.productFromTextColor}">
+                            ${properties.fromText}
+                        </div>
+                        <div data-sly-test="${properties.productPrice || properties.productCurrency}" class="main-part ${properties.productPriceColor}">
+                            <div class="price">${properties.productPrice}</div>
+                            <div class="tag">${properties.productCurrency}</div>
+                        </div>
+                        <div data-sly-test="${properties.vatText}" class="bottom-part ${properties.productVATColor}">
+                            ${properties.vatText}
+                        </div>
+                    </div>
+                         
+                    <sly data-sly-test="${properties.bannerCTATitle && properties.linkBehavior != 'openmodalwindow'}">
+		        <sly data-sly-test.heroCTALink="${properties.ctaSameWindowLink}" 
+	               data-sly-use.heroModelLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}"/>
+		        <a href="${heroModelLink.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn ${properties.ctaColor} ripple-effect"> ${properties.bannerCTATitle} </a>
+	       </sly>	      
+		   <sly data-sly-use.heroCTAModelTemplate="modalpopup.html"
+			             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
+                </div>
+                
+                <div data-sly-test="${properties.uploadDocLinkURL}" class="col-xs-12 col-md-6">
+                    <div class="hr-upload-docs-box">
+                        <sly data-sly-test.uploadDocumentLink="${properties.uploadDocLinkURL}" 
+	               data-sly-use.documentLink="${'com.etisalat.core.models.CommonLinkModel' @link=uploadDocumentLink}"/>
+                        <iframe src="${documentLink.link}" style="width:100%;height:100%"></iframe>
+                        <a href="#" class="upload-docs-btn btn btn-green ripple-effect" data-label="upload-docs-${component.id}">${properties.uploadDocLinkLbl}</a>
+                    </div>
+                </div>
+                     
+            </div>
+        </div>
+    </div>
+    
+
+   <sly data-sly-test="${!wcmmode.edit}" data-sly-use.docsModalTemplate="documentmodal.html"
+         data-sly-call="${docsModalTemplate.documentPopup @ component=component,properties=properties}"/>
+
+</template>

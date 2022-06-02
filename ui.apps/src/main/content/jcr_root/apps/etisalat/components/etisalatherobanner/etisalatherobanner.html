@@ -1,13 +1,19 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
-     data-sly-use.tileModel="com.etisalat.core.models.TileModel">  
+     data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+     data-sly-test.hasContent="${properties.heroBannerVariation == 'herobanner-wst' || (properties.heroBannerVariation == 'hero-images' && tileModel.heroImageVariation) }">  
+ 
+ <!--/* variation for herobanner 4.0 */-->
+ 
   <sly data-sly-test="${!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst'}"
 	   data-sly-use.wstHeroBannerTemplate="herobanner-4-0.html"
 	   data-sly-call="${wstHeroBannerTemplate.wst @ properties=properties}">      
   </sly>
   
+ <!--/* variations for hero-images */-->
+ 
   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && 
        (tileModel.heroImageVariation == 'iframe-banner' || tileModel.heroImageVariation == 'links-banner' || tileModel.heroImageVariation == 'block-chain-ends')}"
-	   data-sly-use.heroImageSectionTemplate="hero-images-section.html"
+	   data-sly-use.heroImageSectionTemplate="hero-image-variations/hero-images-section.html"
 	   data-sly-call="${heroImageSectionTemplate.heroImageSection @ properties=properties}">      
   </sly>
   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && tileModel.heroImageVariation == 'call-to-action-banner'}"
@@ -21,4 +27,4 @@
 </sly>     
 
 
-<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.heroDisplayBehavior}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>
