@@ -1,9 +1,9 @@
 <template  data-sly-template.Button="${ @ properties,commonlinkmodel}">
-   <sly data-sly-set.link="${properties.ctaStyle == 'link btn-text btn-green learn-more' ? 'action-link' : ''}"/>
-   <sly data-sly-set.defaultButton="${properties.ctaStyle == 'btn btn-default' ? 'action-btn-default' : ''}"/>
-   <sly data-sly-set.transparentButton="${properties.ctaStyle == 'btn btn-default btn-transparent' ? 'action-btn-default transparent' : ''}"/>
-   <sly data-sly-set.greenButton="${properties.ctaStyle == 'btn btn-green' ? 'action-btn-green' : ''}"/>
-   <sly data-sly-set.orangeButton="${properties.ctaStyle == 'btn btn-orange' ? 'action-btn-orange' : ''}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'link btn-text btn-green learn-more' ? 'action-link' : ''}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-default' ? 'action-btn-default' : ''}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-default btn-transparent' ? 'action-btn-default transparent' : ''}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-green' ? 'action-btn-green' : ''}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-orange' ? 'action-btn-orange' : ''}"/>
 
    <sly data-sly-test.solidBgOrTwoCol="${properties.promoTilevariation == 'withsolidbg' || properties.promoTilevariation == 'twocol'}"/>
 
@@ -15,7 +15,7 @@
 
    <sly data-sly-set.rippleEffect="${!properties.ctaStyle || properties.ctaStyle == 'link btn-text btn-green learn-more'  ? '' : 'ripple-effect'}"/>
 
-   <div data-sly-test="${properties.cardLink}" class="third-action-wrapper ${ctaStyleNotAuthored} ${defaultButton} ${link} ${transparentButton} ${greenButton} ${orangeButton}">
+   <div data-sly-test="${properties.cardLink}" class="third-action-wrapper ${ctaStyleNotAuthored} ${btnWapperClass}">
       <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : ctaStyleNotAuthoredAnchorClass} ${rippleEffect}">${properties.promoCTATitle}</a>
    </div>
 </template>
