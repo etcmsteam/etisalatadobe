@@ -19,7 +19,16 @@
                </div>
             </div>
          </div>
-         <div data-sly-test="${properties.cardLink}" class="third-action-wrapper action-link">
+		 
+		 <sly data-sly-set.link="${properties.ctaStyle == 'btn-text learn-more' 
+                                  || properties.ctaStyle == 'link btn-text btn-green learn-more' ? 'link' : ''}"/>
+         <sly data-sly-set.defaultButton="${properties.ctaStyle == 'btn btn-default' ? 'action-btn-default' : ''}"/>
+         <sly data-sly-set.transparentButton="${properties.ctaStyle == 'btn btn-default btn-transparent' ? 'action-btn-default transparent' : ''}"/>
+         <sly data-sly-set.greenButton="${properties.ctaStyle == 'btn btn-green' ? 'action-btn-green' : ''}"/>
+         <sly data-sly-set.orangeButton="${properties.ctaStyle == 'btn btn-orange' ? 'action-btn-orange' : ''}"/>
+         <sly data-sly-set.ctaStyleNotAuthored="${!properties.ctaStyle ? 'action-link' : ''}"/>
+		 
+         <div data-sly-test="${properties.cardLink}" class="third-action-wrapper ${ctaStyleNotAuthored} ${defaultButton} ${link} ${transparentButton} ${greenButton} ${orangeButton}">
             <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : 'link'}">${properties.promoCTATitle}</a>
          </div>
       </div>
