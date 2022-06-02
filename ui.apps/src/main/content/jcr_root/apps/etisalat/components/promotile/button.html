@@ -11,8 +11,10 @@
    <sly data-sly-test="${!solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthored="${!properties.ctaStyle ? 'action-btn-default' : ''}"/>
    <sly data-sly-test="${solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthored="${!properties.ctaStyle ? 'action-link' : ''}"/>
 
+   <sly data-sly-test="${!solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthoredAnchorClass="${!properties.ctaStyle ? 'btn btn-default ripple-effect' : ''}"/>
+   <sly data-sly-test="${solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthoredAnchorClass="${!properties.ctaStyle ? 'link' : ''}"/>
+
    <div data-sly-test="${properties.cardLink}" class="third-action-wrapper ${ctaStyleNotAuthored} ${defaultButton} ${link} ${transparentButton} ${greenButton} ${orangeButton}">
-      <a data-sly-test="${!solidBgOrTwoCol}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : 'btn btn-default ripple-effect'}">${properties.promoCTATitle}</a>
-	  <a data-sly-test="${solidBgOrTwoCol}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : 'link'}">${properties.promoCTATitle}</a>
+      <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : ctaStyleNotAuthoredAnchorClass}">${properties.promoCTATitle}</a>
    </div>
 </template>
