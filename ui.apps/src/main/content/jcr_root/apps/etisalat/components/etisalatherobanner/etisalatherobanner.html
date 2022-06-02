@@ -5,13 +5,18 @@
 	   data-sly-call="${wstHeroBannerTemplate.wst @ properties=properties}">      
   </sly>
   
-  <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && tileModel.heroImageVariation == 'iframe-banner'}"
+  <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && 
+       (tileModel.heroImageVariation == 'iframe-banner' || tileModel.heroImageVariation == 'links-banner')}"
 	   data-sly-use.heroImageSectionTemplate="hero-images-section.html"
 	   data-sly-call="${heroImageSectionTemplate.heroImageSection @ properties=properties}">      
   </sly>
   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && tileModel.heroImageVariation == 'call-to-action-banner'}"
 	   data-sly-use.heroImageSectionTemplate="hero-image-variations/call-to-action-banner.html"
 	   data-sly-call="${heroImageSectionTemplate.heroImageCTA @ properties=properties}">      
+  </sly>
+  <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && tileModel.heroImageVariation == 'medium-banner'}"
+	   data-sly-use.heroImageSectionTemplate="hero-image-variations/medium-banner.html"
+	   data-sly-call="${heroImageSectionTemplate.heroMediumBanner @ properties=properties}">      
   </sly>
 </sly>     
 

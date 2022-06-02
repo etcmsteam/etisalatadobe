@@ -1,15 +1,15 @@
-<template data-sly-template.heroCTA="${ @ carousel,properties}">
+<template data-sly-template.mediumBanner="${ @ carousel,properties}">
 	<div data-component="cmp-hero-images" id="${carousel.id}" 
-	     class="${!wcmmode.edit ? 'hero-image-section' : ''} hero-image-add hero-image medium has-action dynamic-content" data-autoplay="">
-	  <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">	    
+	     class="${!wcmmode.edit ? 'hero-image-section' : ''} hero-image medium">
+	  <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">	   
 	      <div role="tabpanel" data-sly-repeat.item="${carousel.items}" 
 	           data-sly-resource="${item.name @ decorationTagName=''}" 
 	           id="${item.id}-tabpanel" 
-	           data-title="Reliable"
 	           aria-labelledby="${item.id}-tab" 
+	           data-title="Reliable"
 	           aria-roledescription="slide" 
 	           aria-label="${'Slide {0} of {1}' @ format=[itemList.count, carousel.items.size], i18n}" 
-	           class="${!wcmmode.edit ? 'swiper-slide' : ''} bg-dark"></div>	     	   
+	           class="${!wcmmode.edit ? 'swiper-slide' : ''} ${properties.heroBackgroundColor == 'bg-dark' ? properties.heroBackgroundColor : ''} medium"></div>	     	   
 	  </div>
 	</div>
 </template>

@@ -87,10 +87,15 @@
        data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/> 
              
   <!--/* variations for hero-images */-->
-   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && properties.heroImagesVariation == 'iframe-banner'}" 
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && 
+        (properties.heroImagesVariation == 'iframe-banner' || properties.heroImagesVariation == 'links-banner')}" 
         data-sly-use.heroBannerTemplate="etisalat-heroimages.html"
        data-sly-call="${heroBannerTemplate.heroIframe @ carousel=carousel,properties=properties}"/> 
    <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && properties.heroImagesVariation == 'call-to-action-banner'}" 
         data-sly-use.heroBannerTemplate="hero-image-variations/hero-images-cta.html"
        data-sly-call="${heroBannerTemplate.heroCTA @ carousel=carousel,properties=properties}"/> 
+       
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && properties.heroImagesVariation == 'medium-banner'}" 
+        data-sly-use.heroBannerTemplate="hero-image-variations/heroimages-medium-banner.html"
+       data-sly-call="${heroBannerTemplate.mediumBanner @ carousel=carousel,properties=properties}"/> 
 </sly>
