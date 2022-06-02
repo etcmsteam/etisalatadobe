@@ -1,6 +1,5 @@
 <template  data-sly-template.Button="${ @ properties,commonlinkmodel}">
-   <sly data-sly-set.link="${properties.ctaStyle == 'btn-text learn-more' 
-                                  || properties.ctaStyle == 'link btn-text btn-green learn-more' ? 'action-link' : ''}"/>
+   <sly data-sly-set.link="${properties.ctaStyle == 'link btn-text btn-green learn-more' ? 'action-link' : ''}"/>
    <sly data-sly-set.defaultButton="${properties.ctaStyle == 'btn btn-default' ? 'action-btn-default' : ''}"/>
    <sly data-sly-set.transparentButton="${properties.ctaStyle == 'btn btn-default btn-transparent' ? 'action-btn-default transparent' : ''}"/>
    <sly data-sly-set.greenButton="${properties.ctaStyle == 'btn btn-green' ? 'action-btn-green' : ''}"/>
@@ -14,7 +13,9 @@
    <sly data-sly-test="${!solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthoredAnchorClass="${!properties.ctaStyle ? 'btn btn-default ripple-effect' : ''}"/>
    <sly data-sly-test="${solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthoredAnchorClass="${!properties.ctaStyle ? 'link' : ''}"/>
 
+   <sly data-sly-set.rippleEffect="${!properties.ctaStyle || properties.ctaStyle == 'link btn-text btn-green learn-more'  ? '' : 'ripple-effect'}"/>
+
    <div data-sly-test="${properties.cardLink}" class="third-action-wrapper ${ctaStyleNotAuthored} ${defaultButton} ${link} ${transparentButton} ${greenButton} ${orangeButton}">
-      <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : ctaStyleNotAuthoredAnchorClass}">${properties.promoCTATitle}</a>
+      <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : ctaStyleNotAuthoredAnchorClass} ${rippleEffect}">${properties.promoCTATitle}</a>
    </div>
 </template>
