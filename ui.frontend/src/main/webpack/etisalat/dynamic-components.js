@@ -85,6 +85,9 @@ const DYNAMIC_MODULE = {
   "cmp-context-navigation-cards": async () => {
     await import(/* webpackChunkName: 'context-navigation-cards' */ "./dynamic-modules/context-navigation-cards").then((obj) => obj.CONTEXT_NAVIGATION_CARDS());
   },
+  "cmp-how-to-subscribe": async () => {
+    await import(/* webpackChunkName: 'how-to-subscribe' */ "./dynamic-modules/how-to-subscribe/how-to-subscribe").then((obj) => obj.HOW_TO_SUBSCRIBE());
+  }
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
