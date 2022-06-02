@@ -52,12 +52,12 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     cq-dialog-dropdown-showhide-target=".carousellayout-showhide-target"/>
                                             </carousellayout>
-                                            <heroimageinnerview
+                                            <herobannergroup
                                                 granite:class="carousellayout-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                   <herovariation
+                                                   <herobannervariation
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                         fieldDescription="Select Hero Banner Variation"
@@ -77,7 +77,28 @@
                                                         <granite:data
 							                                jcr:primaryType="nt:unstructured"
 							                                cq-dialog-dropdown-showhide-target=".herovariation-showhide-target"/>
-                                                    </herovariation>
+                                                    </herobannervariation>
+                                                    <heroimagevariation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldDescription="Select Hero Image Variations"
+                                                        fieldLabel="Hero Image Variations"
+                                                        granite:class="herovariation-showhide-target"
+                                                        name="./heroImagesVariation">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <iframe
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Iframe Banner"
+                                                                value="iframe-banner"/>
+                                                            <ctabanner
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Call to Action Banner"
+                                                                value="call-to-action-banner"/>					                              
+                                                        </items>
+                                                        <granite:data
+							                                jcr:primaryType="nt:unstructured"
+							                                showhidetargetvalue="hero-images"/>
+                                                    </heroimagevariation>
                                                     <heroimagelink
 							                            granite:class="herovariation-showhide-target"
 							                            jcr:primaryType="nt:unstructured"
@@ -157,7 +178,7 @@
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="etisalat-hero-banner"/>
-                                            </heroimageinnerview>  
+                                            </herobannergroup>  
                                             <swiperaction
                                                 granite:class="carousellayout-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
