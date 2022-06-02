@@ -59,7 +59,16 @@
          <sly data-sly-list.utilityItems="${meganavigation.utilityNavItems}">
             <li class="nav-item nav-quick-links ${utilityItems.subNavigationList.size > 0 ? 'nav-expand' :''}" data-sly-test="${utilityItems.utilityMenuLayout == 'fixedmenulist'}">
                <a class="nav-link ${utilityItems.subNavigationList.size > 0 ? 'nav-expand-link' :''}" href="${utilityItems.navigationLinkTo}">
-               <img alt="${utilityItems.navigationLabel}" class="nav-link-icon" src="${utilityItems.navImagePath}" /> ${utilityItems.navigationLabel} <img alt="link-arrow" data-sly-test="${utilityItems.subNavigationList.size > 0}" class="nav-link-arrow" src="${properties.linkArrowImage}" />
+               <img alt="${utilityItems.navigationLabel}" class="nav-link-icon" src="${utilityItems.navImagePath}" /> ${utilityItems.navigationLabel} 
+                 <svg data-sly-test="${utilityItems.subNavigationList.size > 0}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+                    enable-background="new 26 26 12 12" xml:space="preserve">
+                    <g>
+                        <path fill="#554D56"
+                            d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+                        </path>
+                    </g>
+                   </svg> 
                </a>
                <ul data-sly-test="${!utilityItems.subNavigationList.isEmpty && utilityItems.subNavigationList.size > 0}" class="nav-items nav-expand-content">
                   <li class="nav-item">
@@ -108,7 +117,15 @@
          <ul data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page" data-sly-test="${!meganavigation.languageItems.isEmpty && meganavigation.languageItems.size > 1}" class="nav-items nav-level-1 mega-lang-dropdown-mob">
             <li class="nav-item-heading white-bg mega-dropdown-mob open">
                <a class="${page.language == 'ar' ? 'arabic-lang-content' :''}" href="#"> ${properties.langMobileLabel}</a>
-               <img alt="${properties.langMobileLabel}" class="nav-link-arrow" src="${properties.linkArrowImage}" />
+               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+                    enable-background="new 26 26 12 12" xml:space="preserve">
+                    <g>
+                        <path fill="#554D56"
+                            d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+                        </path>
+                    </g>
+                </svg>                
             </li>
             <li class="mega-dropdown-mob-menu" style="display: list-item;">
                <ul data-sly-list.langItem="${meganavigation.languageItems}" role="menu">
