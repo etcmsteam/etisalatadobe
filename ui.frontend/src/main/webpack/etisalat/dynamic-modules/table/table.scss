@@ -1939,15 +1939,18 @@ table {
     tr {
       width: 47%;
       display: grid;
-      padding: 0 0 20px;
-      margin: 0 0 30px;
+      padding: 0 0 toRem(20);
+      margin: 0 0 toRem(30);
       border-top: none;
+      @include respond-to-max($phone) {
+        width: 100%
+      }
       td {
         grid-column: 1 / 5;
         padding: 0;
         width: auto;
         font-size: toRem(13);
-        color: #848789;
+        color: $steel-grey;
         text-transform: capitalize;
         line-height: 1.6;
         &:first-child {
@@ -1955,16 +1958,28 @@ table {
           position: static;
           text-transform: capitalize;
         }
-        &::nth-child(2){
+        &:nth-child(2) {
           margin: toRem(5) 0;
         }
         &::before{
           display: none;
         }
+        &:nth-child(3) {
+          color: $almost-black;
+          &::before {
+            display: inline;
+            content: attr(data-label) ":";
+            color: $steel-grey;
+          }
+        }
         &:last-child {
           text-align: right;
           grid-column: 5;
           grid-row: 1/4;
+
+          @include rtlBlock() {
+            text-align: left;
+          }
         }
         &:first-child, &:last-child{
           color: $almost-black;
