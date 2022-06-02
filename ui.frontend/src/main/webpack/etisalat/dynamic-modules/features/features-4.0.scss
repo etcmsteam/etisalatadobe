@@ -670,10 +670,6 @@
             }
 
             ul {
-                margin-bottom: toRem(24);
-                @include respond-to-min($desktop) {
-                    margin-bottom: toRem(80);
-                }
                 li {
                     font-size: toRem(16);
                     line-height: toRem(20) !important;
@@ -709,6 +705,12 @@
         }
         &.feature-style {
             .paragraph-styling {
+                ul {
+                    margin-bottom: toRem(24);
+                    @include respond-to-min($desktop) {
+                        margin-bottom: toRem(80);
+                    }
+                }
                 p {
                     @include respond-to-min($tablet) {
                         padding-bottom: 70px;
@@ -733,6 +735,23 @@
                     max-width: initial;
                     .price-and-action .third-action-wrapper{
                         text-align: right;
+                    }
+                }
+                .price-and-action {
+                    @include respond-to-max($phone) {
+                        margin-bottom: toRem(30);
+                        &.link-n-btn {
+                            margin-bottom: toRem(0);
+
+                            .media-cta-4-price {
+                                margin-bottom: toRem(10);
+                            }
+                        }
+                    }
+                    &.link-n-btn {
+                        @include respond-to-min($desktop) {
+                            margin-top: toRem(30);
+                        }
                     }
                 }
             }
