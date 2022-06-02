@@ -11,7 +11,7 @@ export const NEED_HELP_FORM = () => {
     return false;
   }
 
-  const { hostName } = $FORM?.data() || {};
+  // const { hostName } = $FORM?.data() || {};
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() === false) {
@@ -129,7 +129,7 @@ export const NEED_HELP_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: `${hostName}/b2c/sendNotification.service`,
+        url: `/b2c/sendNotification.service`,
         data: dataObj,
         dataType: "json",
 
