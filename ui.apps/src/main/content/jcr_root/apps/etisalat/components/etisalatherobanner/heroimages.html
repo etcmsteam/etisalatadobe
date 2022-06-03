@@ -2,7 +2,8 @@
  <div  data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
        data-sly-use.imageTemplate="image.html" class="${!wcmmode.edit ? 'cover' : ''}">
 	 <sly data-sly-test="${properties.heroDisplayBehavior == 'image'}">
-		<div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
+		<div class="${(!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst') ? 'bg-overlay' : 'bg-filter'}" 
+		     style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
 	         <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
 	 </sly>	     
 	 <sly data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.videoLink}" >
@@ -29,7 +30,7 @@
 	   </div>          
 	</sly>	  
 	<div data-sly-test="${properties.heroDisplayBehavior == 'image-viewports'}">	
-	  <div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>    
+	  <div class="${(!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst') ? 'bg-overlay' : 'bg-filter'}" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>    
 	  <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
 	</div>	         
  </div>	
