@@ -114,7 +114,7 @@ export const LEADER_FORM = () => {
         contactFirstName: formData.firstName,
         contactLastName: formData.lastName,
         email: formData.emailAddress,
-        mobileNo: formData.mobileNo,
+        mobileNo: formData.contactNumber,
         companyName: formData.companyName,
         description: formData.description,
       };

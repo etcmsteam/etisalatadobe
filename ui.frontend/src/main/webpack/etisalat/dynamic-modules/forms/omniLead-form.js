@@ -2,8 +2,8 @@
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
 
 export const OMNI_LEAD_FORM = () => {
-  const $FORM = $("#omniLead");
-  const $SUBMIT_CTA = $("#omniLead .cmp-form-button");
+  const $FORM = $("#OmniLead");
+  const $SUBMIT_CTA = $("#OmniLead .cmp-form-button");
   const currentURL = window.location.href;
 
   if (!$FORM.length) {
@@ -104,23 +104,23 @@ export const OMNI_LEAD_FORM = () => {
         contactFirstName: formData.firstName,
         contactLastName: formData.lastName,
         email: formData.emailAddress,
-        mobileNo: formData.mobileNo,
+        mobileNo: formData.contactNumber,
         companyName: formData.companyName,
         description: formData.description,
       };
 
-      let dataObj = {
-        ClientCaptchaValue: formData["g-recaptcha-response"],
-        TYPE: "CREATEOMNILEAD",
-        REQPAYLOAD: PAYLOAD,
-      };
+      // let dataObj = {
+      //   ClientCaptchaValue: formData["g-recaptcha-response"],
+      //   TYPE: "CREATEOMNILEAD",
+      //   REQPAYLOAD: PAYLOAD,
+      // };
 
       dataObj = JSON.stringify(dataObj, null, 2);
 
       $.ajax({
         type: "POST",
         url: `/b2bportal/createOmniLead.service`,
-        data: dataObj,
+        data: PAYLOAD,
         dataType: "json",
 
         headers: {
@@ -131,7 +131,7 @@ export const OMNI_LEAD_FORM = () => {
         encode: true,
       })
         .done(function () {
-          FORM_SUCCESS($FORM, PAYLOAD);
+         //FORM_SUCCESS($FORM, PAYLOAD);
           return true;
         })
         .fail(submitErrorResponse);
