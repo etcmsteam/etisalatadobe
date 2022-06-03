@@ -87,6 +87,9 @@ const DYNAMIC_MODULE = {
   },
   "cmp-how-to-subscribe": async () => {
     await import(/* webpackChunkName: 'how-to-subscribe' */ "./dynamic-modules/how-to-subscribe/how-to-subscribe").then((obj) => obj.HOW_TO_SUBSCRIBE());
+  },
+  "cmp-device-best-seller": async () => {
+    await import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER());
   }
 };
 

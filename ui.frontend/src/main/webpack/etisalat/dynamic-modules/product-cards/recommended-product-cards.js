@@ -50,8 +50,6 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
       if (hash) {
         var current = $('[href="' + hash + '"]').parent();
         var swiperIndex = $(current).index();
-        $(".tab-config-deeplink .swiper-slide").removeClass("active");
-        $(".deeplink-tabs .deeplink-tab").removeClass("active");
         $(current).addClass("active");
         mySwiper.slideTo(swiperIndex, 500);
         $(hash).addClass("active");

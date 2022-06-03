@@ -1,6 +1,5 @@
 /* eslint-disable */
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
-import { API_HOST_URL } from "../../../global/js/helpers";
 
 export const LEADER_FORM = () => {
   const $FORM = $("#leadOrder");
@@ -10,6 +9,8 @@ export const LEADER_FORM = () => {
   if (!$FORM.length) {
     return false;
   }
+
+  // const { hostName } = $FORM?.data() || {};
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
@@ -128,7 +129,7 @@ export const LEADER_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: `${API_HOST_URL}/b2bportal/Utility/checkCaptcha.service`,
+        url: `/b2bportal/Utility/checkCaptcha.service`,
         data: dataObj,
         dataType: "json",
 

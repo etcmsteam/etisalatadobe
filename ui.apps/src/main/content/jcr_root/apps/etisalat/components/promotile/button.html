@@ -1,5 +1,21 @@
 <template  data-sly-template.Button="${ @ properties,commonlinkmodel}">
-   <div data-sly-test="${properties.cardLink}" class="third-action-wrapper action-btn-default">
-      <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn btn-default ripple-effect">${properties.promoCTATitle}</a>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'link btn-text btn-green learn-more' ? 'action-link' : btnWapperClass}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-default' ? 'action-btn-default' : btnWapperClass}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-default btn-transparent' ? 'action-btn-default transparent' : btnWapperClass}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-green' ? 'action-btn-green' : btnWapperClass}"/>
+   <sly data-sly-set.btnWapperClass="${properties.ctaStyle == 'btn btn-orange' ? 'action-btn-orange' : btnWapperClass}"/>
+
+   <sly data-sly-test.solidBgOrTwoCol="${properties.promoTilevariation == 'withsolidbg' || properties.promoTilevariation == 'twocol'}"/>
+
+   <sly data-sly-test="${!solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthored="${!properties.ctaStyle ? 'action-btn-default' : ''}"/>
+   <sly data-sly-test="${solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthored="${!properties.ctaStyle ? 'action-link' : ''}"/>
+
+   <sly data-sly-test="${!solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthoredAnchorClass="${!properties.ctaStyle ? 'btn btn-default ripple-effect' : ''}"/>
+   <sly data-sly-test="${solidBgOrTwoCol}" data-sly-set.ctaStyleNotAuthoredAnchorClass="${!properties.ctaStyle ? 'link' : ''}"/>
+
+   <sly data-sly-set.rippleEffect="${!properties.ctaStyle || properties.ctaStyle == 'link btn-text btn-green learn-more'  ? '' : 'ripple-effect'}"/>
+
+   <div data-sly-test="${properties.cardLink}" class="third-action-wrapper ${ctaStyleNotAuthored} ${btnWapperClass}">
+      <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : ctaStyleNotAuthoredAnchorClass} ${rippleEffect}">${properties.promoCTATitle}</a>
    </div>
 </template>

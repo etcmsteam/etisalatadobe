@@ -2,7 +2,6 @@
 import intlTelInput from "intl-tel-input";
 import { DIAL_CODE_DATA } from "../../../global/js/constant";
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
-import { API_HOST_URL } from "../../../global/js/helpers";
 
 export const NEED_HELP_FORM = () => {
   const $FORM = $("#cwsNeedHelp");
@@ -11,6 +10,8 @@ export const NEED_HELP_FORM = () => {
   if (!$FORM.length) {
     return false;
   }
+
+  // const { hostName } = $FORM?.data() || {};
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() === false) {
@@ -128,7 +129,7 @@ export const NEED_HELP_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: `${API_HOST_URL}/b2c/sendNotification.service`,
+        url: `/b2c/sendNotification.service`,
         data: dataObj,
         dataType: "json",
 

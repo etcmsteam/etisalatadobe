@@ -1,13 +1,7 @@
 package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.etisalat.core.models.impl.EtisalatExternalizerImpl;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
-import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -53,7 +47,6 @@ class TilesModelTest {
 		String expectedFileReference = "/content/dam/etisalat/elife-tv-gaming-desktop_tcm313-225320.jpg";
 		String expectedTileDesc = "<p>Keep your workforce connected anytime, anywhere. Ensure constant business accessibility with our bespoke mobility solutions.</p>";
 		context.currentResource(TILE_DATA);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setTiletitle(expectedTileTitle);
 		assertEquals(expectedTileTitle, tileModel.getTiletitle());		
@@ -68,7 +61,6 @@ class TilesModelTest {
 	void testNumberofItems() {
 		Long expectedItems = Long.valueOf(4);
 		context.currentResource(BENEFITS_DATA);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setNumberOfItems(Long.valueOf(3));
 		assertEquals(expectedItems,
@@ -80,7 +72,6 @@ class TilesModelTest {
 	void testQrImage() {
 		String expectedFileReference = "/content/dam/etisalat/smart-living-desktop_tcm313-225319.jpg";
 		context.currentResource(FEATURE_DATA);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setQrImageResource(tileModel.getQrImageResource());
 		assertEquals(expectedFileReference,
@@ -94,7 +85,6 @@ class TilesModelTest {
 		String expectedTileCTALinkNewWindow = "/content/etisalat/ae/en/connectivity.html";
 		String expectedTileCTALinkSameWindow = "/content/etisalat/ae/en/connectivity.html";
 		context.currentResource(TILE_DATA1);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setTileCTALinkNewWindow(expectedTileCTALinkNewWindow);
 		tileModel.setTileCTALinkSameWindow(expectedTileCTALinkNewWindow);
@@ -108,7 +98,6 @@ class TilesModelTest {
 	void testTileContianerLayout() {
 		String expectedLayout = "tile-box";
 		context.currentResource(TILE_DATA2);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
@@ -117,7 +106,6 @@ class TilesModelTest {
 	void testTileContianerEmptyLayout() {
 		String expectedLayout = "";
 		context.currentResource(NABTILE_DATA2);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
@@ -126,7 +114,6 @@ class TilesModelTest {
 	void testAccessoriesContainerLayout() {
 		String expectedLayout = "recommCard";
 		context.currentResource(TILE_DATA4);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
@@ -134,7 +121,6 @@ class TilesModelTest {
 	void testAccessoriesEmptyLayout() {
 		String expectedLayout = "";
 		context.currentResource(TILE_DATA5);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
@@ -143,7 +129,6 @@ class TilesModelTest {
 	void testTileBoxVariation() {
 		String expectedLayout = "3-tile-boxes";
 		context.currentResource(TILE_DATA2);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getTileBoxVariation());
 	}
@@ -151,7 +136,6 @@ class TilesModelTest {
 	void testTileBoxEmptyVariation() {
 		String expectedLayout = "";
 		context.currentResource(NABTILE_DATA2);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getTileBoxVariation());
 	}
@@ -160,7 +144,6 @@ class TilesModelTest {
 	void testTileTagTitle() {
 		String expectedTitle = "Business Advice & Ideas";
 		context.currentResource(TAGS_DATA);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setCategoryTag("etisalat:business/smb/category/business-advice-ideas");
 	    assertEquals(expectedTitle,tileModel.getCategoryTagTitle());
@@ -170,7 +153,6 @@ class TilesModelTest {
 	void testEmptyTileTagTitle() {
 		String expectedTitle = "";
 		context.currentResource(TAGS_DATA);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setCategoryTag("");
 		assertEquals(expectedTitle,tileModel.getCategoryTagTitle());
@@ -180,7 +162,6 @@ class TilesModelTest {
 	void testTileTag() {
 		String expected = "etisalat:business/smb/category/business-advice-ideas";
 		context.currentResource(TILE_DATA1);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expected, tileModel.getCategoryTag());
 	}
@@ -189,7 +170,6 @@ class TilesModelTest {
 	void testTileTagCase2() {
 		String expected = "etisalat:business/smb/category/business-advice-ideas";
 		context.currentResource(TILE_DATA2);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setCategoryTag(expected);
 		assertEquals(expected, tileModel.getCategoryTag());
@@ -199,7 +179,6 @@ class TilesModelTest {
 	void testTileLinkUrl() {
 		String expected = "/content/etisalat/en/tile";
 		context.currentResource(TILE_DATA1);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expected, tileModel.getLinkURL());
 	}
@@ -208,7 +187,6 @@ class TilesModelTest {
 	void testTileLinkUrlCase2() {
 		String expected = "/content/etisalat/en/tile";
 		context.currentResource(TILE_DATA2);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setLinkURL(expected);
 		assertEquals(expected, tileModel.getLinkURL());
@@ -218,7 +196,6 @@ class TilesModelTest {
 	void testTileValidDate() {
 		String expected = "22 Dec 2021";
 		context.currentResource(TILE_DATA1);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setValidDateText(expected);
 		assertEquals(expected, tileModel.getValidDateText());
@@ -228,7 +205,6 @@ class TilesModelTest {
 	void testNabBoxVariation() {
 		String expectedLayout = "with-pretitle";
 		context.currentResource(NABTILE_DATA1);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getNabBoxVariation());
 	}
@@ -236,7 +212,6 @@ class TilesModelTest {
 	void testNabBoxEmptyVariation() {
 		String expectedLayout = "";
 		context.currentResource(NABTILE_DATA2);
-		context.registerService(EtisalatExternalizer.class , new EtisalatExternalizerImpl());
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getNabBoxVariation());
 	}
