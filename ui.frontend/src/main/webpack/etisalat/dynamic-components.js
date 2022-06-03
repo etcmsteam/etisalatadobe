@@ -83,25 +83,17 @@ const ALREADY_LOADED_SCRIPTS = {};
 const DYNAMIC_COMPONENTS = {
   init: () => {
     let callback = (entries, observer) => {
-      entries.forEach(async (entry) => {
+      entries.forEach((entry) => {
         // execute the dynamic import & init script registered
         if (entry.isIntersecting) {
-          const targetElement = entry.target;
-          const component = targetElement.attributes["data-component"].nodeValue;
+          const component = entry.target.attributes["data-component"].nodeValue;
           // check if script not already loaded
           if (!ALREADY_LOADED_SCRIPTS[component]) {
             // record script state
             ALREADY_LOADED_SCRIPTS[component] = true;
-            try {
-              await DYNAMIC_MODULE[component]();
-
-              document.querySelectorAll(`[data-component="${component}"]`).forEach((item) => {
-                const componentItem = item;
-                componentItem.style.visibility = "visible";
-              });
-            } catch (error) {
+            DYNAMIC_MODULE[component]().catch((error) => {
               console.error("Dynamic Module Script Error: ", error);
-            }
+            });
           }
           observer.unobserve(entry.target);
         }
