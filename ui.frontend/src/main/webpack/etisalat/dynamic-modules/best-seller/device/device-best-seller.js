@@ -114,9 +114,9 @@ export const DEVICE_BEST_SELLER = () => {
 
   function initializeDynamicBestSeller(elem) {
     const DATA_ATTR = elem.data() || {};
-    const {hostName, categoryId} = DATA_ATTR;
+    const { categoryId } = DATA_ATTR;
     const locale = (window.location.href.indexOf(".ae/ar") > -1)? 'ar': 'en';
-    const url = `${hostName || ''}/b2c/eshop/getProductsByCategory?locale=${locale}`;
+    const url = `/b2c/eshop/getProductsByCategory?locale=${locale}`;
 
     const settings = {
       url,
