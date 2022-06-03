@@ -99,7 +99,8 @@
         data-sly-use.heroBannerTemplate="hero-image-variations/heroimages-medium-banner.html"
        data-sly-call="${heroBannerTemplate.mediumBanner @ carousel=carousel,properties=properties}"/> 
        
-   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && properties.heroImagesVariation == 'block-chain-ends'}" 
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && (properties.heroImagesVariation == 'block-chain-ends' || 
+         properties.heroImagesVariation == 'banner-page-navigation')}" 
         data-sly-use.heroBannerTemplate="hero-image-variations/heroimages-block-chain-end.html"
        data-sly-call="${heroBannerTemplate.blockChain @ carousel=carousel,properties=properties}"/>
 </sly>
