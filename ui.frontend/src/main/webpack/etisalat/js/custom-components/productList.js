@@ -9,6 +9,10 @@ function numberWithCommas(x) {
 }
 
 function getProductCard(data) {
+  if(data?.products?.length) {
+    return '';
+  }
+ 
   var products = data.products;
   var html = "";
   var featuredTile = $(".product-grid-cms");
