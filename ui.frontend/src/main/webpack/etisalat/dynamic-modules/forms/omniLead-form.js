@@ -109,18 +109,18 @@ export const OMNI_LEAD_FORM = () => {
         description: formData.description,
       };
 
-      let dataObj = {
-        ClientCaptchaValue: formData["g-recaptcha-response"],
-        TYPE: "CREATEOMNILEAD",
-        REQPAYLOAD: PAYLOAD,
-      };
+      // let dataObj = {
+      //   ClientCaptchaValue: formData["g-recaptcha-response"],
+      //   TYPE: "CREATEOMNILEAD",
+      //   REQPAYLOAD: PAYLOAD,
+      // };
 
       dataObj = JSON.stringify(dataObj, null, 2);
 
       $.ajax({
         type: "POST",
         url: `/b2bportal/createOmniLead.service`,
-        data: dataObj,
+        data: PAYLOAD,
         dataType: "json",
 
         headers: {
@@ -131,7 +131,7 @@ export const OMNI_LEAD_FORM = () => {
         encode: true,
       })
         .done(function () {
-          FORM_SUCCESS($FORM, PAYLOAD);
+         //FORM_SUCCESS($FORM, PAYLOAD);
           return true;
         })
         .fail(submitErrorResponse);
