@@ -35,19 +35,29 @@
                                 jcr:primaryType="nt:unstructured"
                                 cq-dialog-dropdown-showhide-target=".herovariation-showhide-target"/>
                         </herovariation>
-                        <bannerImageCTA
+                        <bannerCTAGroup
+                            granite:class="herovariation-showhide-target"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                             <items jcr:primaryType="nt:unstructured">
-                                <heroimagectalink
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                    fieldDescription="HeroBanner Background CTA Link"
-                                    fieldLabel="HeroBanner Background CTA Link"
-                                    name="./heroBannerImageLinkURL"
-                                    rootPath="/content"/>
+                              <bannerImageCTA
+	                            jcr:primaryType="nt:unstructured"
+	                            sling:resourceType="granite/ui/components/coral/foundation/container">
+	                             <items jcr:primaryType="nt:unstructured">
+	                                <heroimagectalink
+	                                    jcr:primaryType="nt:unstructured"
+	                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+	                                    fieldDescription="HeroBanner Background CTA Link"
+	                                    fieldLabel="HeroBanner Background CTA Link"
+	                                    name="./heroBannerImageLinkURL"
+	                                    rootPath="/content"/>
+	                             </items>
+	                          </bannerImageCTA>
                             </items>
-                        </bannerImageCTA>
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                showhidetargetvalue="herobanner-wst"/>
+                        </bannerCTAGroup>                        
                         <imageDisplaybehavior
                             granite:class="cq-dialog-dropdown-showhide cq-dialog-editor-dropdown-tab-showhide"
                             jcr:primaryType="nt:unstructured"
