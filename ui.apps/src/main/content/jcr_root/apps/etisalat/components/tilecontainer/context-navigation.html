@@ -5,7 +5,7 @@
    <sly data-sly-test.threeTilePlus="${container.items.size > 3 ? 'three-plus-tiles' : ''}"></sly>
    <sly data-sly-test.typeOfSwiper="${properties.swiperbehaviour}"></sly>
    <sly data-sly-test.arrowAlign="${properties.arrowAlignBottom == 'true'? 'arrow-position-bottom' : ''}"></sly> 
-   <sly data-sly-set.withSlider="${typeOfSwiper} with-slider ${properties.contextNavLoadMore ? '' : 'view-all-tiles'} ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus} ${arrowAlign}"></sly>
+   <sly data-sly-set.withSlider="${typeOfSwiper} ${typeOfSwiper != 'static-tile' ? 'with-slider' : ''} ${properties.contextNavLoadMore ? '' : 'view-all-tiles'} ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus} ${arrowAlign}"></sly>
 
    <div data-component="cmp-context-navigation" class="context-navigation-4-0 general-guide ${properties.tileBoxLayout == 'main-text-4' ? 'main-text-slider-4-0-0' : ''} ${properties.tileBoxLayout == 'main-text' ? 'main-text-slider' : ''} ${properties.mainContextTitle ? 'with-main-text' : withSlider}">
 	  <div class="container">

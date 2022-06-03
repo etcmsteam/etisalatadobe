@@ -312,6 +312,14 @@
     }
   }
 
+  &.static-tile {
+    .all-tiles {
+      &.align-middle {
+        justify-content: center;
+      }
+    }
+  }
+
   // with slider
   &.with-slider {
     @include respond-to-min($desktop) {
@@ -337,12 +345,6 @@
           .context-tile {
             align-items: center;
             text-align: center;
-
-            .wst-main-headings {
-              @include rtlBlock() {
-                text-align: right;
-              }
-            }
           }
         }
       }
@@ -815,6 +817,10 @@
 
         div {
           width: 100%;
+
+          @include rtlBlock() {
+            direction: ltr;
+          }
         }
 
         img,
@@ -1705,6 +1711,21 @@
       fill: $black;
       stroke: $yellow-light;
       opacity: 1;
+    }
+  }
+}
+
+*[lang="ar"] {
+  *[dir="rtl"] {
+    .context-navigation-4-0.with-slider.two-tiles .all-tiles.align-space-around {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        text-align: center;
+      }
     }
   }
 }
