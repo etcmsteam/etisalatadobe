@@ -2,8 +2,8 @@
 import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
 
 export const OMNI_LEAD_FORM = () => {
-  const $FORM = $("#omniLead");
-  const $SUBMIT_CTA = $("#omniLead .cmp-form-button");
+  const $FORM = $("#OmniLead");
+  const $SUBMIT_CTA = $("#OmniLead .cmp-form-button");
   const currentURL = window.location.href;
 
   if (!$FORM.length) {
@@ -104,7 +104,7 @@ export const OMNI_LEAD_FORM = () => {
         contactFirstName: formData.firstName,
         contactLastName: formData.lastName,
         email: formData.emailAddress,
-        mobileNo: formData.mobileNo,
+        mobileNo: formData.contactNumber,
         companyName: formData.companyName,
         description: formData.description,
       };

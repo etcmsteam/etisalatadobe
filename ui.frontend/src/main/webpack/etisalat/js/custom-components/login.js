@@ -1,4 +1,4 @@
-import { API_HOST_URL } from "../../../global/js/helpers";
+
 export const LOGIN_INIT = () => {
   const $location = window.location.origin;
 
@@ -16,7 +16,7 @@ export const LOGIN_INIT = () => {
     var settingsUserLogOut = {
       async: true,
       crossDomain: true,
-      url: `${API_HOST_URL}/b2c/logoutUser.service`,
+      url: `/b2c/logoutUser.service`,
       method: "POST",
       headers: {
         "Content-Type": "application/json",
