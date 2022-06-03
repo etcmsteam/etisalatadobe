@@ -1,6 +1,7 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
      data-sly-use.tileModel="com.etisalat.core.models.TileModel"
-     data-sly-test.hasContent="${properties.heroBannerVariation == 'herobanner-wst' || (properties.heroBannerVariation == 'hero-images' && tileModel.heroImageVariation) }">  
+     data-sly-test.hasContent="${(!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst' 
+     || properties.heroBannerVariation == 'hero-images' && tileModel.heroImageVariation) }">  
  
  <!--/* variation for herobanner 4.0 */-->
  
@@ -28,4 +29,4 @@
 </sly>     
 
 
-<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hasContent || !properties.heroAlignment}"></sly>
