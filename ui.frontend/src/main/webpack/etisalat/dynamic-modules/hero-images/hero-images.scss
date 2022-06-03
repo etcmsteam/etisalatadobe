@@ -217,6 +217,11 @@
 
 .hero-image-section-iframe-modal.wst-overlay-wrapper,
 .hero-image-section.hero-images-variation {
+  
+  p {
+    margin: 0 0 12.5px;
+  }
+
   .container {
     margin-right: auto;
     margin-left: auto;
@@ -251,6 +256,72 @@
       width: 100%;
     }
   }
+
+  .text--white {
+    color: $white !important;
+  }
+
+  .text--orange {
+    color: $orange !important;
+  }
+  
+  .text--green {
+    color: $main-green !important;
+  }
+  
+  .text--gray {
+    color: $dark-gray !important;
+  }
+  
+  .text--black {
+    color: $darkest-night !important;
+  }
+  
+  .text--text_black {
+    color: $almost-black !important;
+  }
+  
+  .text--steel-grey {
+    color: $steel-grey !important;
+  }
+  
+  .text--medium_grey {
+    color: $cold-gray !important;
+  }
+  
+  .text--light_grey {
+    color: $light-grey !important;
+  }
+  
+  .text--light_sand {
+    color: $sand-white-50 !important;
+  }
+  
+  .text--orange_tag {
+    color: $dark-orange !important;
+  }
+  
+  .text--red_error {
+    color: $error-red !important;
+  }
+  
+  .text--yellow_warning {
+    color: $gold-top !important;
+  }
+  
+  // TODO: remove the .text--gray1 ... after the AEM changes
+  .text--gray1,
+  .text--grey1 {
+    color: $grey1 !important;
+  }
+  
+  // TODO: remove the .text--gray7 and text--gray8 ... after the AEM changes
+  .text--gray7,
+  .text--gray8,
+  .text--grey8 {
+    color: $grey8 !important;
+  }
+  
 }
 
 .wst-overlay-wrapper {
@@ -1842,7 +1913,12 @@
       color: $white;
       // font-size: 12px;
       position: absolute;
-      bottom: 1.1rem;
+
+      /* 
+        due to some calculation in Font Gylph, the arrow alignement is breaking on odd number;
+        For instance, 1.1 is not working 1.08 is working. Similarly, 1.2,1.4,1.6 is working but not 1.3,1.5,1.7
+      */
+      bottom: 1.08rem; 
 
       &:before {
         padding: 3px;
