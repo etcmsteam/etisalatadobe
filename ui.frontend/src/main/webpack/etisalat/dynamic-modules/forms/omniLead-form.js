@@ -89,7 +89,8 @@ export const OMNI_LEAD_FORM = () => {
         required: true,
       },
     },
-    submitHandler: function () {
+    submitHandler: function (form, event) {
+      event.preventDefault();
       const formData = getFormData($FORM);
       const product = queryParamValue("product") || formData.product;
       const subject = queryParamValue("subject") || formData.subject;
@@ -115,12 +116,12 @@ export const OMNI_LEAD_FORM = () => {
       //   REQPAYLOAD: PAYLOAD,
       // };
 
-      dataObj = JSON.stringify(dataObj, null, 2);
+      //dataObj = JSON.stringify(dataObj, null, 2);
 
       $.ajax({
         type: "POST",
         url: `/b2bportal/createOmniLead.service`,
-        data: PAYLOAD,
+        data: JSON.stringify(PAYLOAD, null, 2),
         dataType: "json",
 
         headers: {
@@ -131,7 +132,7 @@ export const OMNI_LEAD_FORM = () => {
         encode: true,
       })
         .done(function () {
-         //FORM_SUCCESS($FORM, PAYLOAD);
+          //FORM_SUCCESS($FORM, PAYLOAD);
           return true;
         })
         .fail(submitErrorResponse);
