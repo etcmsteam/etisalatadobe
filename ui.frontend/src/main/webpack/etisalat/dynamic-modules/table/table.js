@@ -60,6 +60,7 @@ export const TABLE = () => {
       const className = $(elem).attr("data-class");
       const sortableColumn = $(elem).attr("data-column-sort");
       const showMobileView = $(elem).attr("data-mobile-view");
+      const isGrid = $(elem).hasClass("table-grid");
       let pageLimit = $(elem).attr("data-page-limit");
       const noSearchResultsText = $(elem).attr("data-no-search-results-text");
       let showTablePageInfo = true;
@@ -99,7 +100,7 @@ export const TABLE = () => {
           },
         },
         createdRow: function (row, data, rowIndex) {
-          if (showMobileView && showMobileView == "true") {
+          if ((showMobileView && showMobileView == "true") || isGrid) {
             $.each($("td", row), function (colIndex) {
               const th = $("th", table)[colIndex];
               $(this).attr("data-label", $(th).text());
