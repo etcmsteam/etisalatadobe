@@ -9,6 +9,10 @@ function numberWithCommas(x) {
 }
 
 function getProductCard(data) {
+  if(data?.products?.length) {
+    return '';
+  }
+
   var products = data.products;
   var html = "";
   var featuredTile = $(".product-grid-cms");
@@ -171,7 +175,8 @@ function initProductCards() {
   $(".main-loader").show();
   const { categoryid, hostName = '' } = $(".productdetail > div")?.eq(0)?.data() || {};
   const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
-  const url = `${hostName}/b2c/eshop/getProductsByCategory?locale=${locale}`;
+  // const url = `${hostName}/b2c/eshop/getProductsByCategory?locale=${locale}`;
+  const url = `/b2c/eshop/getProductsByCategory?locale=${locale}`;
   const payload = {
     No: "0",
     Nrpp: "100",

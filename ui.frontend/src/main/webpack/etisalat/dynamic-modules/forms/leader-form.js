@@ -10,7 +10,7 @@ export const LEADER_FORM = () => {
     return false;
   }
 
-  const { hostName } = $FORM?.data() || {};
+  // const { hostName } = $FORM?.data() || {};
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
@@ -114,7 +114,7 @@ export const LEADER_FORM = () => {
         contactFirstName: formData.firstName,
         contactLastName: formData.lastName,
         email: formData.emailAddress,
-        mobileNo: formData.mobileNo,
+        mobileNo: formData.contactNumber,
         companyName: formData.companyName,
         description: formData.description,
       };
@@ -129,7 +129,7 @@ export const LEADER_FORM = () => {
 
       $.ajax({
         type: "POST",
-        url: `${hostName}/b2bportal/Utility/checkCaptcha.service`,
+        url: `/b2bportal/Utility/checkCaptcha.service`,
         data: dataObj,
         dataType: "json",
 

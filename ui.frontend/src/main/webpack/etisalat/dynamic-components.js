@@ -85,6 +85,12 @@ const DYNAMIC_MODULE = {
   "cmp-context-navigation-cards": async () => {
     await import(/* webpackChunkName: 'context-navigation-cards' */ "./dynamic-modules/context-navigation-cards").then((obj) => obj.CONTEXT_NAVIGATION_CARDS());
   },
+  "cmp-how-to-subscribe": async () => {
+    await import(/* webpackChunkName: 'how-to-subscribe' */ "./dynamic-modules/how-to-subscribe/how-to-subscribe").then((obj) => obj.HOW_TO_SUBSCRIBE());
+  },
+  "cmp-device-best-seller": async () => {
+    await import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER());
+  }
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
@@ -95,17 +101,25 @@ const ALREADY_LOADED_SCRIPTS = {};
 const DYNAMIC_COMPONENTS = {
   init: () => {
     let callback = (entries, observer) => {
-      entries.forEach((entry) => {
+      entries.forEach(async (entry) => {
         // execute the dynamic import & init script registered
         if (entry.isIntersecting) {
-          const component = entry.target.attributes["data-component"].nodeValue;
+          const targetElement = entry.target;
+          const component = targetElement.attributes["data-component"].nodeValue;
           // check if script not already loaded
           if (!ALREADY_LOADED_SCRIPTS[component]) {
             // record script state
             ALREADY_LOADED_SCRIPTS[component] = true;
-            DYNAMIC_MODULE[component]().catch((error) => {
+            try {
+              await DYNAMIC_MODULE[component]();
+
+              document.querySelectorAll(`[data-component="${component}"]`).forEach((item) => {
+                const componentItem = item;
+                componentItem.style.visibility = "visible";
+              });
+            } catch (error) {
               console.error("Dynamic Module Script Error: ", error);
-            });
+            }
           }
           observer.unobserve(entry.target);
         }

@@ -4,7 +4,7 @@
 	 data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page"
      id="${component.id}"
      data-component="cmp-table"
-     class="cmp-text custom-datatable ${properties.enablespecificationstable ? 'specification-with-striped': ' '} ${properties.enableSeeMore ? 'show-more-less': ' '} ${properties.pageLimit ? 'table-with-pagination' : ''} ${properties.tableSource == 'csv' ? 'tables-etisalat' : ''}" data-page-limit="${properties.pageLimit}" data-column-sort="${tableModel.sorting}"  data-class="${properties.cssClass}" data-column-filter="[]" data-mobile-view="${properties.mobileView}" data-see-more="${properties.enableSeeMore}" data-no-search-results-text="${properties.noSearchResultsText ? properties.noSearchResultsText : 'No matching records found'}">
+     class="cmp-text custom-datatable ${properties.enablespecificationstable ? 'specification-with-striped': ' '} ${properties.enableSeeMore ? 'show-more-less': ' '} ${properties.pageLimit ? 'table-with-pagination' : ''} ${properties.tableSource == 'csv' ? 'tables-etisalat' : ''} ${properties.tableSource == 'csvgrid'? 'table-grid': ''}" data-page-limit="${properties.pageLimit}" data-column-sort="${tableModel.sorting}"  data-class="${properties.cssClass}" data-column-filter="[]" data-mobile-view="${properties.mobileView}" data-see-more="${properties.enableSeeMore}" data-no-search-results-text="${properties.noSearchResultsText ? properties.noSearchResultsText : 'No matching records found'}">
    <!-- [When source is RTE or Simple CSV starts] -->
    <sly data-sly-test.isRte="${properties.tableSource == 'rte'}"></sly>
    <sly data-sly-test.isSimplecsv="${properties.tableSource == 'simplecsv'}"></sly>
@@ -12,9 +12,12 @@
       <sly data-sly-use.manualCsvSimpleTemplate="manual-simplecsv.html" data-sly-call="${manualCsvSimpleTemplate.manualSimplecsv @ tableModel=tableModel}"></sly>
    </sly>
    <!-- [When source is RTE or Simple CSV ends] -->
-   <!-- [When source is CSV with Sorting and filtering starts] -->
+   <!-- [When source is CSV with Sorting and filtering -with Column View starts] -->
    <sly data-sly-test="${properties.tableSource == 'csv'}" data-sly-use.csvTemplate="csv.html" data-sly-call="${csvTemplate.csv @ tableModel=tableModel}"></sly>
-   <!-- [When source is CSV with Sorting and filtering ends] -->
+   <!-- [When source is CSV with Sorting and filtering - with Column View ends] -->
+    <!-- [When source is CSV with Sorting and filtering -with Grid View starts] -->
+    <sly data-sly-test="${properties.tableSource == 'csvgrid'}" data-sly-use.csvTemplate="csvgrid.html" data-sly-call="${csvTemplate.csvgrid @ tableModel=tableModel}"></sly>
+    <!-- [When source is CSV with Sorting and filtering - with Grid View ends] -->
    <sly data-sly-set.defaultLabel="${page.language == 'en' ? 'Page of' : 'صفحة من'}"/>
    <div data-pagination-label="${properties.paginationLabel ? properties.paginationLabel : defaultLabel}" class="data-table__info"></div>
    <div class="data-table__pagination"></div>

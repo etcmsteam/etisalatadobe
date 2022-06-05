@@ -152,7 +152,8 @@ export const ANAEMARATI_CARDS = () => {
       hostName: HOST_NAME = ''
     } = DATA_PARAMS;
 
-    let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
+    // let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
+       let url = DATA_URL || `${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
       url = `${url}?locale=${locale}&isApplyDefaultFilters=false`;
