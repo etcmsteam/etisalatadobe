@@ -217,9 +217,22 @@
 
 .hero-image-section-iframe-modal.wst-overlay-wrapper,
 .hero-image-section.hero-images-variation {
+
+  .play-video {
+    color: $main-green;
+  }
   
   p {
     margin: 0 0 12.5px;
+  }
+
+  @include rtlBlock() {
+    @include respond-to-min($desktop-wide) {
+      .col-lg-offset-0 {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   }
 
   .container {
@@ -1111,6 +1124,10 @@
       @media (min-width: $desktop) {
         text-align: center;
 
+        .hero-heading-big {
+          text-align: center;
+        }
+
         .wst-price-tag {
           .top-part {
             text-indent: -80px;
@@ -1915,7 +1932,7 @@
       position: absolute;
 
       /* 
-        due to some calculation in Font Gylph, the arrow alignement is breaking on odd number;
+        due to some calculation in Font Glyph, the arrow alignment is breaking on odd number;
         For instance, 1.1 is not working 1.08 is working. Similarly, 1.2,1.4,1.6 is working but not 1.3,1.5,1.7
       */
       bottom: 1.08rem; 
@@ -1924,6 +1941,11 @@
         padding: 3px;
         border: solid $white;
         border-width: 0 1px 1px 0;
+
+        @include rtlBlock() {
+            left: 1px;
+        }
+
       }
     }
   }
