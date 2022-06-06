@@ -25,6 +25,7 @@ class IconCardListImplTest {
 	private static final String CURRENT_PAGE = "/content/iconcardlist";
 	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
 	private static final String CARD_DATA = TEST_PAGE_CONTAINER_ROOT + "/iconcardlist";
+	private static final String HOW_TO_DATA = TEST_PAGE_CONTAINER_ROOT + "/howiconcardlist";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -54,6 +55,27 @@ class IconCardListImplTest {
 		assertEquals(expectedCardSize, actualCardSize);
 		assertEquals(expectedLinkBehavior, actualLinkBehavior);
 
-	}		
+	}
+	@Test
+	void testGetHowToIConCardListItems() {
+		Resource navItemRes = context.currentResource(HOW_TO_DATA);
+		context.currentResource(HOW_TO_DATA);
+		final String expectedHowToTitle = "How to Card Title 1";
+		final String expectedHowToDesc = "Buy the passes online via our website";
+		final String expectedHowToIcon = "/content/dam/etisalat/internet.svg";
+		int expectedCardSize = 2;
+		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
+		IconCardVO iconCardListItem = iconCardList.getIconCardListItems().get(0);
+		String actualHowToTitle = iconCardListItem.getHowToTitle();
+		String actualHowToDesc = iconCardListItem.getHowToDesc();
+		String actualHowToIcon = iconCardListItem.getHowToIcon();
+		int actualCardSize = iconCardList.getIconCardSize();
+		assertEquals(expectedHowToTitle, actualHowToTitle);
+		assertEquals(expectedHowToDesc, actualHowToDesc);
+		assertEquals(expectedHowToIcon, actualHowToIcon);
+		assertEquals(expectedCardSize, actualCardSize);
+
+
+	}
 
 }
