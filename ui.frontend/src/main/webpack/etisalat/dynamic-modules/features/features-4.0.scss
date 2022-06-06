@@ -641,8 +641,8 @@
 
         &.feature-style, &.learnmore-content {
             min-height: 560px;
+            max-height: 560px !important;
             @include respond-to-min($tablet) {
-                max-height: 560px !important;
                 padding: toRem(92) toRem(12);
             }
             .content-wrapper {
@@ -737,6 +737,12 @@
                         text-align: right;
                     }
                 }
+                .paragraph-styling {
+                    @include respond-to-max($phone) {
+                        margin-bottom: toRem(30) !important;
+                        margin-top: toRem(35);
+                    }
+                }
                 .price-and-action {
                     @include respond-to-max($phone) {
                         margin-bottom: toRem(30);
@@ -751,6 +757,9 @@
                     &.link-n-btn {
                         @include respond-to-min($desktop) {
                             margin-top: toRem(30);
+                        }
+                        @include respond-to-max($phone) {
+                            margin-top: toRem(25);
                         }
                     }
                 }
