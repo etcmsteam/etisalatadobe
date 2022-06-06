@@ -14,6 +14,7 @@ export const OMNI_LEAD_FORM = () => {
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
+      FORM_ERROR($FORM, "validation error");
       return false;
     }
   });
@@ -132,7 +133,7 @@ export const OMNI_LEAD_FORM = () => {
         encode: true,
       })
         .done(function () {
-          //FORM_SUCCESS($FORM, PAYLOAD);
+          FORM_SUCCESS($FORM, PAYLOAD);
           return true;
         })
         .fail(submitErrorResponse);

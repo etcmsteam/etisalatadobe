@@ -1,5 +1,6 @@
 /* eslint-disable*/
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
+import { FORM_ERROR } from "../../js/analytics/analytics";
 
 export const PROXY_FORM = () => {
   const $FORM = $("#proxyform");
@@ -11,6 +12,7 @@ export const PROXY_FORM = () => {
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
+      FORM_ERROR($FORM, "validation error");
       return false;
     }
   });

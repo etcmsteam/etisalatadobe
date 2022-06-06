@@ -14,6 +14,7 @@ export const LEADER_FORM = () => {
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
+      FORM_ERROR($FORM, "validation error");
       return false;
     }
   });
@@ -63,7 +64,7 @@ export const LEADER_FORM = () => {
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
-    FORM_ERROR($FORM);
+    FORM_ERROR($FORM, "API error", jqXHR.responseJSON);
     console.log(errorText);
   }
 
@@ -140,8 +141,13 @@ export const LEADER_FORM = () => {
 
         encode: true,
       })
-        .done(function () {
-          FORM_SUCCESS($FORM, PAYLOAD);
+        .done(function (response) {
+          if (response["status.code"] === 200) {
+            FORM_SUCCESS($FORM, PAYLOAD);
+          } else {
+            FORM_ERROR($FORM, "API error", response);
+          }
+          
           return true;
         })
         .fail(submitErrorResponse);
