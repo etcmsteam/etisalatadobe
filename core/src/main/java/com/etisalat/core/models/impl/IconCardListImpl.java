@@ -50,6 +50,9 @@ public class IconCardListImpl implements IconCardList {
         cardList.setLinkBehavior(childResource.getValueMap().get(AEConstants.LINK_BEHAVIOR, StringUtils.EMPTY));
         cardList.setCardLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,
 						childResource.getValueMap().get(AEConstants.CARD_LINK, String.class)));
+        cardList.setHowToTitle(childResource.getValueMap().get(AEConstants.HOWTO_TITLE, StringUtils.EMPTY));
+        cardList.setHowToDesc(childResource.getValueMap().get(AEConstants.HOWTO_DESC, StringUtils.EMPTY));
+        cardList.setHowToIcon(childResource.getValueMap().get(AEConstants.HOWTO_ICON, StringUtils.EMPTY));
         iconCardListItem.add(cardList);
       }
 

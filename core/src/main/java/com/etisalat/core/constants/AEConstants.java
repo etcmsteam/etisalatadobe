@@ -48,6 +48,10 @@ public final class AEConstants {
  public static final String CARD_ICON = "cardIcon";
  public static final String CARD_LINK = "cardLink";
  public static final String LINK_BEHAVIOR = "linkBehavior";
+ public static final String HOWTO_TITLE = "howToTitle";
+ public static final String HOWTO_DESC = "howToDesc";
+ public static final String HOWTO_ICON = "howToIcon";
+
 
  public static final String FIXEDLIST_NODE = "fixedlist";
 
