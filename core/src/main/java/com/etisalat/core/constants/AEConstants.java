@@ -44,6 +44,7 @@ public final class AEConstants {
  public static final String FOOTER_LINKS = "footerLinks";
 
  public static final String NAV_ITEMS = "iconCardList";
+ public static final String HOW_TO_LIST = "howToCardList";
  public static final String CARD_TITLE = "cardTitle";
  public static final String CARD_ICON = "cardIcon";
  public static final String CARD_LINK = "cardLink";
