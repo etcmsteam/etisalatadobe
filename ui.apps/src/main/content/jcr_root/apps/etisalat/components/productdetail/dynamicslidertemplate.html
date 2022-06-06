@@ -1,9 +1,9 @@
 <template data-sly-template.dynamicproduct="${ @ properties}">
    <sly data-sly-test.elifetileclass="${properties.dynamictileBoxLayout == 'dynamicelifeplan'? 'smart-home-elife-slider' : ''}"/>
-   <sly data-sly-test.producttileclass="${properties.dynamictileBoxLayout == 'dynamicproducttile'? 'product-grid-text-section plans more-info-wrapper plansTable' : ''}"/>
+   <sly data-sly-test.producttileclass="${properties.dynamictileBoxLayout == 'dynamicproducttile'? 'dynamic-device-tile product-grid-text-section plans more-info-wrapper plansTable' : ''}"/>
    <sly data-sly-test.bestsellerclass="${properties.dynamictileBoxLayout == 'bestsellercard'? 'nv-container' : ''}"/>
    <sly data-sly-test="${properties.dynamictileBoxLayout != 'bestsellercard'}">
-   <div class="${elifetileclass}${producttileclass}">
+   <div class="${elifetileclass}${producttileclass}" data-categoryId="${properties.productCategoryId}">
          <div class="col-xs-12 col-md-3 nv-card-contentLeft">
             <div class="main-text-section">
                <sly data-sly-test="${properties.productCTALink && properties.productCTATitle}">
@@ -58,7 +58,7 @@
                            <div class="row row-tiles-table ">
                               <div class="swiper-container swiper-container-horizontal">
                                  <!--Product details JSON Part 2 variations with 2 different JSON DATA add either one -->
-                                 <div id="products_smartlife" class="swiper-wrapper"></div>
+                                 <div id="productRow-${properties.productCategoryId}" class="swiper-wrapper"></div>
 
                                  <div class="table-swiper-scrollbar swiper-scrollbar">
                                     <div class="swiper-scrollbar-drag" style="width: 449.5px;"></div>
