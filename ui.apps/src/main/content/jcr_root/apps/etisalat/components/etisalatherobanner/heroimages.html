@@ -1,9 +1,27 @@
 <template data-sly-template.heroImages="${ @ properties}">
- <div  data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
+ <div  data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser" 
+       data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+       data-sly-use.parentRes="${resource.parent.path}" 
+       data-sly-set.heroImageBG="${parentRes && parentRes.heroImageBGTheme == 'bg-dark' ? 'bg-dark' : ''}"
+       data-sly-set.linearBGColor = "${properties.heroBannerVariation == 'hero-images' && heroImageBG == 'bg-dark' &&  
+          (tileModel.heroImageVariation == 'iframe-banner' || tileModel.heroImageVariation == 'block-chain-ends')}"
+       data-sly-set.darkBGColor = "${properties.heroBannerVariation == 'hero-images' && heroImageBG == 'bg-dark' &&  
+          (tileModel.heroImageVariation == 'links-banner' || tileModel.heroImageVariation == 'banner-page-navigation' ||
+             tileModel.heroImageVariation == 'call-to-action-banner' || tileModel.heroImageVariation == 'medium-banner')}"
        data-sly-use.imageTemplate="image.html" class="${!wcmmode.edit ? 'cover' : ''}">
+        
 	 <sly data-sly-test="${properties.heroDisplayBehavior == 'image'}">
-		<div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
-	         <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
+		<div data-sly-test="${!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst'}" class="bg-overlay" 
+		     style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>	         
+	         
+	    <div data-sly-test="${properties.heroBannerVariation == 'hero-images' && linearBGColor}" class="bg-filter" 
+		     style="background:linear-gradient(270deg,rgba(0, 0, 0, 0) 0%,#000000 100%); opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0.2 @ context='styleToken'};"></div>	         
+	    <div data-sly-test="${properties.heroBannerVariation == 'hero-images' && darkBGColor}" class="bg-filter" 
+		     style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0.2 @ context='styleToken'};"></div>
+		<div data-sly-test="${properties.heroBannerVariation == 'hero-images' && !darkBGColor && !linearBGColor}" class="bg-filter" 
+		     style="opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0.2 @ context='styleToken'};"></div>
+		     
+	    <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
 	 </sly>	     
 	 <sly data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.videoLink}" >
 	   <sly data-sly-test.heroBannerVideoLink="${properties.videoLink}" 
@@ -29,7 +47,17 @@
 	   </div>          
 	</sly>	  
 	<div data-sly-test="${properties.heroDisplayBehavior == 'image-viewports'}">	
-	  <div class="bg-overlay" style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>    
+	   <div data-sly-test="${!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst'}" class="bg-overlay" 
+		     style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0 @ context='styleToken'};"></div>
+	   
+	   <div data-sly-test="${properties.heroBannerVariation == 'hero-images' && linearBGColor}" class="bg-filter" 
+		     style="background:linear-gradient(270deg,rgba(0, 0, 0, 0) 0%,#000000 100%); opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0.2 @ context='styleToken'};"></div>
+	         <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
+	   <div data-sly-test="${properties.heroBannerVariation == 'hero-images' && darkBGColor}" class="bg-filter" 
+		     style="background-color:#000; opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0.2 @ context='styleToken'};"></div>
+	   <div data-sly-test="${properties.heroBannerVariation == 'hero-images' && !darkBGColor && !linearBGColor}" class="bg-filter" 
+		     style="opacity:${properties.heroImageOpacity ? properties.heroImageOpacity : 0.2 @ context='styleToken'};"></div>
+	        	   
 	  <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
 	</div>	         
  </div>	

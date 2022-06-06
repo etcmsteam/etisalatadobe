@@ -214,6 +214,11 @@ public class TileModel {
     return StringUtils.EMPTY;
   }
 
+  /**
+   * Gets the tile box variation.
+   *
+   * @return the tile box variation
+   */
   public String getTileBoxVariation() {
     final Resource tileContainerResource = currentResource.getParent();
     if (null != tileContainerResource && tileContainerResource.getResourceType().equals(PageConstants.TILE_CONTAINER_RESOURCETYPE)){
@@ -221,6 +226,20 @@ public class TileModel {
     }
     return StringUtils.EMPTY;
   }
+  
+  /**
+   * Gets the hero image variation.
+   *
+   * @return the hero image variation
+   */
+  public String getHeroImageVariation() {
+    final Resource bannerResource = currentResource.getParent();
+    if (null != bannerResource && bannerResource.getResourceType().equals(PageConstants.CAROUSEL_RESOURCETYPE)){
+      return bannerResource.getValueMap().get("heroImagesVariation", StringUtils.EMPTY);
+    }
+    return StringUtils.EMPTY;
+  }
+  
   /**
    * Returns article category tag title.
    *

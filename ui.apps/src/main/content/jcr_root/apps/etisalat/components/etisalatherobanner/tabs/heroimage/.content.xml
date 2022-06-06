@@ -35,19 +35,29 @@
                                 jcr:primaryType="nt:unstructured"
                                 cq-dialog-dropdown-showhide-target=".herovariation-showhide-target"/>
                         </herovariation>
-                        <bannerImageCTA
+                        <bannerCTAGroup
+                            granite:class="herovariation-showhide-target"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                             <items jcr:primaryType="nt:unstructured">
-                                <heroimagectalink
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                    fieldDescription="HeroBanner Background CTA Link"
-                                    fieldLabel="HeroBanner Background CTA Link"
-                                    name="./heroBannerImageLinkURL"
-                                    rootPath="/content"/>
+                              <bannerImageCTA
+	                            jcr:primaryType="nt:unstructured"
+	                            sling:resourceType="granite/ui/components/coral/foundation/container">
+	                             <items jcr:primaryType="nt:unstructured">
+	                                <heroimagectalink
+	                                    jcr:primaryType="nt:unstructured"
+	                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+	                                    fieldDescription="HeroBanner Background CTA Link"
+	                                    fieldLabel="HeroBanner Background CTA Link"
+	                                    name="./heroBannerImageLinkURL"
+	                                    rootPath="/content"/>
+	                             </items>
+	                          </bannerImageCTA>
                             </items>
-                        </bannerImageCTA>
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                showhidetargetvalue="herobanner-wst"/>
+                        </bannerCTAGroup>                        
                         <imageDisplaybehavior
                             granite:class="cq-dialog-dropdown-showhide cq-dialog-editor-dropdown-tab-showhide"
                             jcr:primaryType="nt:unstructured"
@@ -116,64 +126,74 @@
                                 showhidetargetvalue="image"
                                 showhidetargetvalue1="image-viewports"/>
                         </imageOpactiySection>
-                        <imageThumbnailSection
-                            granite:class="heroimagebehavior-showhide-target"
+                        <thumbnailGroup
+                            granite:class="herovariation-showhide-target"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                             <items jcr:primaryType="nt:unstructured">
-                                <thumbnail
-                                    jcr:primaryType="nt:unstructured"
-                                    jcr:title="Thumbnail Image Details"
-                                    sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
-                                    <items jcr:primaryType="nt:unstructured">
-                                        <thumbnailtext
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldDescription="Enter Thumbnail Text"
-                                            fieldLabel="Thumbnail Text"
-                                            name="./thumbnailText"/>
-                                        <thumbnaildata
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                            composite="{Boolean}true"
-                                            fieldDescription="Click on 'Add' button to add thumbnail image"
-                                            fieldLabel="Thumbnail Image(s)"
-                                            validation="multifield-max-3">
-                                            <field
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/fieldset"
-                                                name="./thumbnailItems">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <file
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-                                                        allowUpload="{Boolean}false"
-                                                        autoStart="{Boolean}false"
-                                                        class="cq-droptarget"
-                                                        fieldLabel="Icon Image"
-                                                        fileNameParameter="./fileName"
-                                                        fileReferenceParameter="./fileReference"
-                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
-                                                        multiple="{Boolean}false"
-                                                        name="./file"
-                                                        required="{Boolean}true"
-                                                        title="Icon Image Asset"
-                                                        uploadUrl="${suffix.path}"
-                                                        useHTML5="{Boolean}true"/>
-                                                </items>
-                                            </field>
-                                            <granite:data
-                                                jcr:primaryType="nt:unstructured"
-                                                max-items="3"/>
-                                        </thumbnaildata>
-                                    </items>
-                                </thumbnail>
+                               <imageThumbnailSection
+		                            granite:class="heroimagebehavior-showhide-target"
+		                            jcr:primaryType="nt:unstructured"
+		                            sling:resourceType="granite/ui/components/coral/foundation/container">
+		                            <items jcr:primaryType="nt:unstructured">
+		                                <thumbnail
+		                                    jcr:primaryType="nt:unstructured"
+		                                    jcr:title="Thumbnail Image Details"
+		                                    sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+		                                    <items jcr:primaryType="nt:unstructured">
+		                                        <thumbnailtext
+		                                            jcr:primaryType="nt:unstructured"
+		                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                            fieldDescription="Enter Thumbnail Text"
+		                                            fieldLabel="Thumbnail Text"
+		                                            name="./thumbnailText"/>
+		                                        <thumbnaildata
+		                                            jcr:primaryType="nt:unstructured"
+		                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+		                                            composite="{Boolean}true"
+		                                            fieldDescription="Click on 'Add' button to add thumbnail image"
+		                                            fieldLabel="Thumbnail Image(s)"
+		                                            validation="multifield-max-3">
+		                                            <field
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/foundation/form/fieldset"
+		                                                name="./thumbnailItems">
+		                                                <items jcr:primaryType="nt:unstructured">
+		                                                    <file
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+		                                                        allowUpload="{Boolean}false"
+		                                                        autoStart="{Boolean}false"
+		                                                        class="cq-droptarget"
+		                                                        fieldLabel="Icon Image"
+		                                                        fileNameParameter="./fileName"
+		                                                        fileReferenceParameter="./fileReference"
+		                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+		                                                        multiple="{Boolean}false"
+		                                                        name="./file"
+		                                                        required="{Boolean}true"
+		                                                        title="Icon Image Asset"
+		                                                        uploadUrl="${suffix.path}"
+		                                                        useHTML5="{Boolean}true"/>
+		                                                </items>
+		                                            </field>
+		                                            <granite:data
+		                                                jcr:primaryType="nt:unstructured"
+		                                                max-items="3"/>
+		                                        </thumbnaildata>
+		                                    </items>
+		                                </thumbnail>
+		                            </items>
+		                            <granite:data
+		                                jcr:primaryType="nt:unstructured"
+		                                showhidetargetvalue="image"
+		                                showhidetargetvalue1="image-viewports"/>
+		                        </imageThumbnailSection>
                             </items>
-                            <granite:data
+                             <granite:data
                                 jcr:primaryType="nt:unstructured"
-                                showhidetargetvalue="image"
-                                showhidetargetvalue1="image-viewports"/>
-                        </imageThumbnailSection>
+                                showhidetargetvalue="herobanner-wst"/>
+                        </thumbnailGroup>                        
                         <videoSection
                             granite:class="heroimagebehavior-showhide-target"
                             jcr:primaryType="nt:unstructured"

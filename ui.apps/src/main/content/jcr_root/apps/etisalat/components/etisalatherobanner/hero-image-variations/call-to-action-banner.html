@@ -1,0 +1,43 @@
+<template  data-sly-template.heroImageCTA="${ @ properties}">
+ <sly data-sly-set.leftAlignment="${properties.heroAlignment == 'slide-left' ? 'c-left col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-0' : ''}" />
+ <sly data-sly-set.rightAlignment="${properties.heroAlignment == 'slide-right' ? 'c-right col-xs-12 col-md-6 col-md-offset-6' : ''}" />
+ <sly data-sly-set.centerAlignment="${properties.heroAlignment == 'slide-center' ? 'c-center col-md-10 col-md-offset-1 col-xs-12' : ''}" />
+ <sly data-sly-set.alignBannerClass="${leftAlignBannerClass} ${rightAlignBannerClass} ${centerAlignBannerClass}" />
+ 
+ <sly data-sly-test.backLink="${properties.backToLinkLbl && properties.backToLinkURL}" />
+
+<!-- Start - cover -->
+   <sly data-sly-use.heroImagesTemplate="heroimages.html"
+             data-sly-call="${heroImagesTemplate.heroImages @ properties=properties}"/>
+             
+   <div class="container">
+      <div class="row">
+        <div class="hero-details">   
+         <div class="${alignBannerClass}">   
+          <div data-sly-test="${properties.backToLinkLbl && properties.backToLinkURL}" class="go-back">
+		    <sly data-sly-test.customLink="${properties.backToLinkURL}" 
+                    data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+			<div class="third-action-wrapper action-link">
+				<a data-sly-test="${commonlinkmodel.link}" href="${commonlinkmodel.link}" class="link">${properties.backToLinkLbl}</a>
+			</div>
+		  </div>
+		   <h3 data-sly-test="${properties.heroTitle}" 
+                           class="hero-heading-big ${properties.titleFontColor == 'light-color' ? 'text--white' :'text--black'}">${properties.heroTitle @ context = 'html'}</h3>
+           <div data-sly-test="${properties.jcr:description}" class="hero-description">${properties.jcr:description @ context = 'html'}</div>
+		  </div>
+        </div>        
+        <div data-sly-test="${properties.heroImageTitle || properties.heroImageDesc}" class="hero-images-call-to-action-section">			
+			<div class="call-to-action-box">
+				<h3 data-sly-test="${properties.heroImageTitle}" class="heading">${properties.heroImageTitle} </h3>
+				<div data-sly-test="${properties.heroImageDesc}" class="description"> ${properties.heroImageDesc @ context = 'html'}</div>
+			    <sly data-sly-test.heroImageCTALink="${properties.heroImageLinkURL}" 
+                        data-sly-use.heroImageLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroImageCTALink}"/>
+			    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}"  
+			         target="${properties.heroImageLinktarget ? '_blank' : '_self'}" 
+			         class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
+			      ${properties.heroImageCTATitle}</a>                                                           
+			</div>			
+		</div>
+      </div>
+    </div>
+</template>

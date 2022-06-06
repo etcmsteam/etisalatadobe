@@ -1,8 +1,7 @@
-<template data-sly-template.hero="${ @ carousel,properties}">
+<template data-sly-template.heroIframe="${ @ carousel,properties}">
   <div data-component="cmp-hero-images" id="${carousel.id}" 
        data-sly-use.model="com.etisalat.core.models.HeroLinkSection"        
-       class="hero-links-add testimonials ${!wcmmode.edit ? 'swiper-container hero-image-section hero-images-variation hero-image' : ''} 
-       ${properties.heroImageInnerPageView ? '' : 'hr-landing-section'} 
+       class="hero-links-add testimonials hr-landing-section ${!wcmmode.edit ? 'swiper-container hero-image-section hero-images-variation hero-image' : ''}       
        ${model.heroLinkSectionList.size > 0 ? '' : 'medium'} 
        ${carousel.items.size > 1 ? '' : 'destryeMe'}
        ${!properties.heroImageInnerPageView && model.heroLinkSectionList.isEmpty  ? 'hero-video' : ''}">
@@ -13,7 +12,7 @@
            aria-labelledby="${item.id}-tab" 
            aria-roledescription="slide" 
            aria-label="${'Slide {0} of {1}' @ format=[itemList.count, carousel.items.size], i18n}" 
-           class="swiper-slide bg-dark"></div>
+           class="swiper-slide ${properties.heroImageBGTheme == 'bg-dark' ? 'bg-dark' : ''}"></div>
     </div>
     
     <div data-sly-test.mylist="${model.heroLinkSectionList}" class="container links-wrapper">
