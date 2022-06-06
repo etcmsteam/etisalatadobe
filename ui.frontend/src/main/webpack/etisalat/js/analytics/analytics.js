@@ -63,7 +63,7 @@ export const FORM_SUCCESS = (form, data) => {
       user: {
         accountNumber: data.accountNumber ? data.accountNumber : "",
         name: data.contactFirstName + data.contactLastName,
-        email: data.emailAddress ? data.emailAddress : "",
+        email: data.email ? data.email : "",
         contactNumber: data.mobileNo ? data.mobileNo : "",
         companyName: data.companyName ? data.companyName : "",
         requestRequirements: data.description ? data.description : "",
@@ -79,11 +79,11 @@ export const FORM_SUCCESS = (form, data) => {
   } else if (formId === "cwsNeedHelp") {
     if (data) {
       let accNumber = data.accountNumber;
-      let custName = data.params[0].CUSTOMER_NAME;
-      let emailId = data.params[0].EMAIL;
-      let contact = data.params[0].CONTACT;
-      let compName = data.params[0].COMPANY;
-      let detail = data.params[0].DETAIL;
+      let custName = data.params[0].value;
+      let emailId = data.params[1].value;
+      let contact = data.params[2].value;
+      let compName = data.params[4].value;
+      let detail = data.params[6].value;
 
       window.adobeDataLayer.push({
         event: "form success",
@@ -140,21 +140,62 @@ export const FORM_SUCCESS = (form, data) => {
   }
 };
 
-export const FORM_ERROR = (form) => {
+export const FORM_ERROR = (form, type, errResponse) => {
   let name = form.attr('name');
+  const currrentURL = window.location.href;
+  let errType = type;
+  let errMsg;
+  let errCode;
+  let errField;
+  let resArr = [];
+  if (type === "validation error") {
+    errMsg = "";
+    errCode = "";
+    errField = "";
+    let fld = form.find('.has-error-fields');
+    if (fld.length > 0) {
+      fld.each(function () {
+        resArr.push($(this).find("label").text());
+      });
+      errField = resArr.join(' | ');
+    }
+  } else {
+    errField = "";
+    errMsg = errResponse["status.message"] ? errResponse["status.message"] : "";
+    errCode = errResponse["status.code"] ? errResponse["status.code"] : "";
+  }
   if (window.adobeDataLayer) {
-  window.adobeDataLayer.push({
-    event: "form error",
-    formDetails: {
-      formName: name,
-      stepName: "",
-    },
-    errorInfo: {
-      formError: 1,
-      errorName: "Render Error 404",
-      rootCause: "formLoadError",
-    },
-  });
+    window.adobeDataLayer.push({
+        event: "form error",
+        xdmActionDetails: {
+            web: {
+                webInteraction: {
+                    name: name,
+                    URL: currrentURL,
+                    type: "other",
+                    region: "form",
+                    linkClicks: {
+                        value: 1
+                    }
+                }
+            },
+            linkInfo: {
+                sectionHeading: "",
+                action: "submit",
+                name: name
+            },
+
+            formDetails: {
+                formName: name
+            },
+            errorInfo: {
+                error: 1,
+                errorMessage: errMsg, 
+                errorCode: errCode,
+                errorField: errField,
+                errorType: errType
+            }
+        }
+    });
   }
 };
-  
