@@ -104,7 +104,7 @@
       color: $grey1;
       flex: 0 0 50%;
       font-size: $font14;
-      max-width: 50%;
+      max-width: 100%;
       text-align: center;
 
       img {
@@ -179,6 +179,7 @@
         font-size: $font20;
         line-height: toRem(24);
         margin-bottom: toRem(18);
+        overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
@@ -188,7 +189,7 @@
       ul {
         li {
           font-size: $font14;
-          @include respond-to-min($desktop){
+          @include respond-to-min($desktop) {
             font-size: $font16;
           }
           line-height: 1.43;
@@ -735,8 +736,7 @@
 }
 [lang="ar"] [dir="rtl"] {
   .product-card__feature-list,
-  .product-card--elife-plan .product-card__header__title
-  {
+  .product-card--elife-plan .product-card__header__title {
     text-align: right;
   }
   .product-grid-text-section {
@@ -949,7 +949,8 @@
               }
             }
           }
-          .checkboxes-wrap, .radio-wrap {
+          .checkboxes-wrap,
+          .radio-wrap {
             position: relative;
             display: flex;
 
@@ -1267,4 +1268,3 @@
     z-index: 2;
   }
 }
-

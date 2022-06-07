@@ -18,6 +18,7 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() === false) {
+      FORM_ERROR($FORM, "validation error");
       return false;
     }
   });
@@ -67,7 +68,7 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
-    FORM_ERROR($FORM);
+    FORM_ERROR($FORM, "API error", jqXHR.responseJSON);
     console.log(errorText);
   }
 

@@ -15,6 +15,7 @@ export const NEED_HELP_FORM = () => {
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() === false) {
+      FORM_ERROR($FORM, "validation error");
       return false;
     }
   });
@@ -37,14 +38,13 @@ export const NEED_HELP_FORM = () => {
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
-    FORM_ERROR($FORM);
+    FORM_ERROR($FORM, "API error", jqXHR.responseJSON);
   }
 
   var submitSuccessResponse = function (json, statusText, xhr) {
     let path = window.location.pathname;
     let page = path.split("/").pop();
     window.location.href = window.location.href.replace(page, "cws-need-help-success.html");
-    FORM_SUCCESS($FORM, dataWithPayload);
     return true;
   };
 
@@ -140,7 +140,15 @@ export const NEED_HELP_FORM = () => {
 
         encode: true,
       })
-        .done(submitSuccessResponse)
+        .done(function (response) {
+          if (response["status.code"] === 200) {
+            FORM_SUCCESS($FORM, dataWithPayload);
+          } else {
+            FORM_ERROR($FORM, "API error", response);
+          }
+          
+          submitSuccessResponse;
+        })
         .fail(submitErrorResponse);
       return false;
     },
