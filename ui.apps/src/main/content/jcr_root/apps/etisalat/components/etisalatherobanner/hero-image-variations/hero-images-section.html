@@ -1,4 +1,4 @@
-<template  data-sly-template.heroImageSection="${ @ properties}">
+<template  data-sly-template.heroImageSection="${ @ properties,tileModel}">
  <sly data-sly-set.leftAlignment="${properties.heroAlignment == 'slide-left' ? 'c-left' : ''}" />
  <sly data-sly-set.rightAlignment="${properties.heroAlignment == 'slide-right' ? 'c-right' : ''}" />
  <sly data-sly-set.centerAlignment="${properties.heroAlignment == 'slide-center' ? 'c-center' : ''}" />
@@ -59,7 +59,7 @@
 			             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
                 </div>
                 
-                <div data-sly-test="${properties.uploadDocLinkURL}" class="col-xs-12 col-md-6">
+                <div data-sly-test="${tileModel.heroImageVariation == 'iframe-banner' && properties.uploadDocLinkURL}" class="col-xs-12 col-md-6">
                     <div class="hr-upload-docs-box">
                         <sly data-sly-test.uploadDocumentLink="${properties.uploadDocLinkURL}" 
 	               data-sly-use.documentLink="${'com.etisalat.core.models.CommonLinkModel' @link=uploadDocumentLink}"/>
