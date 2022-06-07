@@ -148,6 +148,7 @@
                                         name="./productItems">
                                         <items jcr:primaryType="nt:unstructured">
                                           <gridlayout
+										        granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"                                                
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 defaultValue="producttile"
@@ -178,7 +179,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="ELife AddonsTile"
                                                         value="elifeaddonstile"/>                                                                                                
-                                                </items>                                                
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".gridlayout-showhide-target"/>                                                
                                             </gridlayout>
                                             <slidecheckbox
                                                 jcr:primaryType="nt:unstructured"
@@ -198,6 +202,25 @@
                                                 text="Checked for Enable the hide/show Button"
                                                 uncheckedValue="{Boolean}false"
                                                 value="{Boolean}true"/>
+											<producttilefields
+                                                granite:class="gridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <planviewcheckbox
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        checked="{Boolean}false"
+                                                        fieldDescription="When checked, populate the plans view"
+                                                        name="./planView"
+                                                        text="Checked for Enable the Plans View"
+                                                        uncheckedValue="{Boolean}false"
+                                                        value="{Boolean}true"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="producttile"/>
+                                            </producttilefields>
                                             <buttonshowhidelabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
