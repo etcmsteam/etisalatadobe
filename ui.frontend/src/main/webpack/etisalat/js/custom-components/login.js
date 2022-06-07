@@ -1,4 +1,3 @@
-
 export const LOGIN_INIT = () => {
   const $location = window.location.origin;
 
@@ -7,6 +6,7 @@ export const LOGIN_INIT = () => {
     $(".accountName").text(primaryNumber);
     $('a[href$="ecareLogin.html"]').parent("li").addClass("hidden");
     $(".loggedInActions").removeClass("hidden");
+    $(".navbar-nav.nav-right")?.addClass("show-signout");
   } else {
     $('a[href$="ecareLogin.html"]').parent("li").removeClass("hidden");
     $(".loggedInActions").addClass("hidden");
@@ -70,5 +70,13 @@ export const LOGIN_INIT = () => {
       if ($(this).hasClass("logoutAction")) {
         logOutclick();
       }
+    });
+
+  $(".nav-right .sub-account-menu-wrap ul li a[href='#signout']")
+    .off("click")
+    .on("click", function (e) {
+      e.preventDefault();
+      menuItemClicked($(this));
+      logOutclick();
     });
 };
