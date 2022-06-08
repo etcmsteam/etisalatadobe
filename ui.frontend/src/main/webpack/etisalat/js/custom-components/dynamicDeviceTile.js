@@ -246,7 +246,7 @@ export const DYNAMIC_DEVICE_TILE = () => {
 
     $.ajax({
       // Our sample url to make request
-      url: window.location.origin + "/content/dam/etisalat/prod-mock-assets/product.json",
+      url: window.location.origin + "/content/dam/etisalat/prod-mock-assets/productListTest.json",
       // url,
 
       // Type of Request
