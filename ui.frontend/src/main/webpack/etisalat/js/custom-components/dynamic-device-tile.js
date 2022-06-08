@@ -1,5 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
-import { numberWithCommas } from '../../../global/js/dynamic-component-helper';
+import { numberWithCommas } from '../../../global/js/utils';
 
 /* eslint-disable */
 export const DYNAMIC_DEVICE_TILE = () => {
