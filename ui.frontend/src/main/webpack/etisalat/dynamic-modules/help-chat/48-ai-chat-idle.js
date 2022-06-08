@@ -92,13 +92,11 @@ export const HELP_CHAT = () => {
             $("#insert-otp").show();
             $("#submitDetails").show();
             $("#showLoaderButtonGetContinue").hide();
-            console.log(data);
           },
           error: function (jqXHR, status, err) {
             // your code here
             $("#submitDetails").show();
             $("#showLoaderButtonGetContinue").hide();
-            console.log(err);
           },
         });
         // return false to prevent normal browser submit and page navigation
@@ -186,7 +184,6 @@ export const HELP_CHAT = () => {
             resetProcess();
             $("#verifyOTP").show();
             $("#showLoaderButtonVerify").hide();
-            console.log(data);
             googleTracking("success");
           },
           error: function (jqXHR, status, err) {
@@ -196,7 +193,6 @@ export const HELP_CHAT = () => {
             $("#resetOTPicon").show();
             $("#verifyOTP").show();
             $("#showLoaderButtonVerify").hide();
-            console.log(err);
           },
         });
         // return false to prevent normal browser submit and page navigation
@@ -222,8 +218,6 @@ export const HELP_CHAT = () => {
     }
 
     $("#submitDetails").on("click", function () {
-      // console.log($('#needsupportInfo').valid());
-
       if ($("#needsupportInfo").valid() !== false) {
         googleTracking("continue");
         $("#submitDetails").hide();
@@ -234,10 +228,7 @@ export const HELP_CHAT = () => {
     });
 
     $("#verifyOTP").on("click", function () {
-      // resetProcess();
-      console.log($("#otpVerificationForm").valid());
       if ($("#otpVerificationForm").valid() !== false) {
-        // resetProcess();
         $("#resetOTPicon").hide();
         $("#verifyOTP").hide();
         $("#showLoaderButtonVerify").show();
@@ -259,7 +250,7 @@ export const HELP_CHAT = () => {
       $(this).parent().next().find("input").focus();
     });
 
-    $("#needHelp").click(function () {
+    $("#needHelp").on("click", function () {
       $("#need-help-chat-id").show();
       $(this).hide();
       googleTracking("click");
@@ -277,23 +268,23 @@ export const HELP_CHAT = () => {
     // sessionStorage.getItem("triggeredFrom") === "configuration" ? 90000 : 90000;
     setIdleTime(chatTimeToOpen);
 
-    $("#haveIssue").click(function () {
+    $("#haveIssue").on("click", function () {
       $("#chat-hello-id").hide();
       $("#chat-details-id").show();
       googleTracking("confirmQuestions");
     });
 
-    $(".chat-collapse").click(function () {
+    $(".chat-collapse").on("click", function () {
       $("#needHelp").toggle();
       $("#need-help-chat-id").toggle();
     });
 
-    $("#chatClose").click(function (e) {
+    $("#chatClose").on("click", function (e) {
       e.preventDefault();
       $(".nv-chat-modal").toggle();
     });
 
-    $(".chatModelClose").click(function (e) {
+    $(".chatModelClose").on("click", function (e) {
       e.preventDefault();
       $("#need-help-chat-id").hide();
       $("#needHelp").show();
@@ -305,15 +296,16 @@ export const HELP_CHAT = () => {
       googleTracking("exitChat");
     });
 
-    $(".chatModelKeep , .nv-chat-modal-close").click(function (e) {
+    $(".chatModelKeep , .nv-chat-modal-close").on("click", function (e) {
       e.preventDefault();
       $(".nv-chat-modal").toggle();
     });
 
-    $("#resendOTP").click(function (e) {
+    $("#resendOTP").on("click", function (e) {
       resendOTP();
     });
-    $("#resetOTPicon").click(function (e) {
+
+    $("#resetOTPicon").on("click", function (e) {
       resetOTPForm();
     });
   });
@@ -388,11 +380,6 @@ export const HELP_CHAT = () => {
         // your code here
         $("#insert-details-id").hide();
         $("#insert-otp").show();
-        console.log(data);
-      },
-      error: function (jqXHR, status, err) {
-        // your code here
-        console.log(err);
       },
     });
     // return false to prevent normal browser submit and page navigation
