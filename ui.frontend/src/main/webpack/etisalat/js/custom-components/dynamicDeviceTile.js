@@ -1,3 +1,5 @@
+import { swiperInit } from "../../../global/js/swiperInitialize";
+
 /* eslint-disable */
 export const DYNAMIC_DEVICE_TILE = () => {
   //JSON added here as temporarily - creating separated json file causes access denied in AEM
@@ -9,18 +11,49 @@ export const DYNAMIC_DEVICE_TILE = () => {
   }
 
   function loadMoreBtn(elem, defaultDataCount) {
-    elem.find(".swiper-slide")
-      .each(function (i) {
-        if (i >= defaultDataCount) {
-          $(this).addClass("hide");
-          elem.find(".loadmore-btn").removeClass("hide");
-        }
-      });
+    elem.find(".swiper-slide").each(function (i) {
+      if (i >= defaultDataCount) {
+        $(this).addClass("hide");
+        elem.find(".loadmore-btn").removeClass("hide");
+      }
+    });
 
-    elem.find(".loadmore-btn .btn").unbind().on("click", function (e) {
-      e.preventDefault();
-      elem.find(".swiper-slide").removeClass("hide");
-      $(this).parent().addClass("hide");
+    elem
+      .find(".loadmore-btn .btn")
+      .unbind()
+      .on("click", function (e) {
+        e.preventDefault();
+        elem.find(".swiper-slide").removeClass("hide");
+        $(this).parent().addClass("hide");
+      });
+  }
+
+  function initiateSlider(elem) {
+    swiperInit(elem.find('.swiper-container'), {
+      scrollbar: elem.find(".table-swiper-scrollbar"),
+      nextButton: elem.find(".table-swiper-button-next"),
+      prevButton: elem.find(".table-swiper-button-prev"),
+      scrollbarHide: false,
+      scrollbarDraggable: true,
+      lazyLoading: true,
+      breakpoints: {
+        540: {
+          slidesPerView: 1.25,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1440: {
+          slidesPerView: 3,
+        },
+        9999: {
+          centeredSlides: false,
+          slidesPerView: 3,
+        },
+      },
     });
   }
 
@@ -203,7 +236,6 @@ export const DYNAMIC_DEVICE_TILE = () => {
   }
 
   function initProductCards(elem) {
-
     $(".main-loader").show();
     const { categoryid } = elem?.data() || {};
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
@@ -236,6 +268,8 @@ export const DYNAMIC_DEVICE_TILE = () => {
         const defaultDataCount = $(".loadmore-btn").attr("data-defaultcount") || 6;
         if (isLoadExist) {
           loadMoreBtn(elem, defaultDataCount);
+        } else {
+          initiateSlider(elem);
         }
       },
 
@@ -246,7 +280,7 @@ export const DYNAMIC_DEVICE_TILE = () => {
     });
   }
 
-  $(".dynamic-device-tile").each(function(){
+  $(".dynamic-device-tile").each(function () {
     initProductCards($(this));
-  })
+  });
 };
