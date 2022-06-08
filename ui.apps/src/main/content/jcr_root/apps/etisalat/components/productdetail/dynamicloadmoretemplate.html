@@ -1,6 +1,7 @@
 <template data-sly-template.dynamicproduct="${ @ properties}">
-<div class="container ">
-   <div class="product-grid-text-section plans more-info-wrapper plansTable">
+<div class="container">
+   <div class="dynamic-device-tile product-grid-text-section plans more-info-wrapper plansTable row"
+   data-categoryId="${properties.productCategoryId}">
       <!--Left Side Authoring Part -->
 	  <div class="col-xs-12 col-md-3 ">
          <div class="main-text-section">
@@ -23,7 +24,7 @@
 		  <!--Swiper arrow use class 'show' or 'hide' -->
          <div class="table-swiper-button-prev swiper-button-prev swiper-button-black hide"></div>
          <div class="table-swiper-button-next swiper-button-next swiper-button-black hide"></div>
-		 
+
       </div>
 	   <!--Right Side Product details Part -->
       <div class="col-xs-12 col-md-9">
@@ -32,15 +33,15 @@
                <div class="col-xs-12">
                   <div class="bg-cards related-products keepbtn">
                      <div class="row row-tiles-table ">
-					 <!--Product details JSON Part -->						 
-						  <div id="products_smarttv"></div>
-						
+					 <!--Product details JSON Part -->
+						  <div id="productRow-${properties.productCategoryId}"></div>
+
                      </div>
                   </div>
                </div>
 			   <!--Add or remove Load more div to get data -->
-               <div class="col-xs-12 col-sm-4 col-sm-offset-4 loadmore-btn" data-defaultcount='6'>                               
-                  <a href="#" class="btn btn-default ripple-effect">${properties.loadMoreCTAText || 'LOAD MORE'}</a>                                  
+               <div class="col-xs-12 col-sm-4 col-sm-offset-4 loadmore-btn hide" data-defaultcount='6'>
+                  <a href="#" class="btn btn-default ripple-effect">${properties.loadMoreCTAText || 'LOAD MORE'}</a>
                </div>
             </div>
          </section>

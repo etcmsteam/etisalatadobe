@@ -1,4 +1,3 @@
-
 export const LOGIN_INIT = () => {
   const $location = window.location.origin;
 
@@ -6,10 +5,17 @@ export const LOGIN_INIT = () => {
     let primaryNumber = localStorage.getItem("currentUserAccountNumber");
     $(".accountName").text(primaryNumber);
     $('a[href$="ecareLogin.html"]').parent("li").addClass("hidden");
+    if ($("html").attr("lang") === "ar") {
+      $('a[href$="ecareLogin.html?locale=ar"]').parent("li").addClass("hidden");
+    }
     $(".loggedInActions").removeClass("hidden");
+    $(".navbar-nav.nav-right")?.addClass("show-signout");
   } else {
     $('a[href$="ecareLogin.html"]').parent("li").removeClass("hidden");
     $(".loggedInActions").addClass("hidden");
+    if ($("html").attr("lang") === "ar") {
+      $('a[href$="ecareLogin.html?locale=ar"]').parent("li").removeClass("hidden");
+    }
   }
 
   function logOutclick() {
@@ -44,12 +50,12 @@ export const LOGIN_INIT = () => {
     var $self = target;
     var clickedItemURL = $self.attr("href");
     var linkText = $self.text().trim();
-    dataLayer.push({
-      event: "menuitems",
-      info1: "menuitems",
-      info2: "click",
-      info3: linkText,
-    });
+    // dataLayer.push({
+    //   event: "menuitems",
+    //   info1: "menuitems",
+    //   info2: "click",
+    //   info3: linkText,
+    // });
 
     window.location = clickedItemURL;
   }
@@ -70,5 +76,13 @@ export const LOGIN_INIT = () => {
       if ($(this).hasClass("logoutAction")) {
         logOutclick();
       }
+    });
+
+  $(".nav-right .sub-account-menu-wrap ul li a[href='#signout']")
+    .off("click")
+    .on("click", function (e) {
+      e.preventDefault();
+      menuItemClicked($(this));
+      logOutclick();
     });
 };

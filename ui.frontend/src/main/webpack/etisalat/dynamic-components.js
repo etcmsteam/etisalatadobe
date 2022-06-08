@@ -73,6 +73,12 @@ const DYNAMIC_MODULE = {
   "cmp-device-best-seller": async () => {
     await import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER());
   },
+  "cmp-support-chat": async () => {
+    await import(/* webpackChunkName: 'support-chat' */ "./dynamic-modules/support-chat").then((obj) => obj.SUPPORT_CHAT());
+  },
+  "cmp-help-chat": async () => {
+    await import(/* webpackChunkName: 'help-chat' */ "./dynamic-modules/help-chat").then((obj) => obj.HELP_CHAT());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
@@ -83,7 +89,7 @@ const ALREADY_LOADED_SCRIPTS = {};
 const DYNAMIC_COMPONENTS = {
   init: () => {
     let callback = (entries, observer) => {
-      entries.forEach((entry) => {
+      entries.forEach(async (entry) => {
         // execute the dynamic import & init script registered
         if (entry.isIntersecting) {
           const component = entry.target.attributes["data-component"].nodeValue;
@@ -91,15 +97,23 @@ const DYNAMIC_COMPONENTS = {
           if (!ALREADY_LOADED_SCRIPTS[component]) {
             // record script state
             ALREADY_LOADED_SCRIPTS[component] = true;
-            DYNAMIC_MODULE[component]().catch((error) => {
+
+            try {
+              await DYNAMIC_MODULE[component]();
+
+              document.querySelectorAll(`[data-component="${component}"]`).forEach((item) => {
+                const componentItem = item;
+                componentItem.style.visibility = "visible";
+              });
+            } catch (error) {
               console.error("Dynamic Module Script Error: ", error);
-            });
+            }
           }
           observer.unobserve(entry.target);
         }
       });
     };
-    const observer = new IntersectionObserver(callback);
+    const observer = new IntersectionObserver(callback, { rootMargin: "0px 0px 200px 0px" });
     // loop through each registered dynamic component
     Object.keys(DYNAMIC_MODULE).forEach((component) => {
       const componentContext = Array.from(document.querySelectorAll(`div[data-component=${component}]`));
