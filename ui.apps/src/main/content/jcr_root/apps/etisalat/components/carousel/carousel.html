@@ -54,9 +54,10 @@
 </div>
 
 <sly data-sly-set.bannerVariation="${properties.heroBannerVariation ? properties.heroBannerVariation : 'herobanner-wst'}" />
+<sly data-sly-set.bannerPlaceholderVariation="${bannerVariation == 'herobanner-wst' ? 'cmp-herobanner-placeholder' : 'cmp-hero-images-placeholder'}" />
 <div
     data-component="${bannerVariation == 'herobanner-wst' ? 'cmp-herobanner' : 'cmp-hero-images'}"
-    class="${!wcmmode.edit ? 'hero-banner-placeholder' : 'd-none'} ${bannerVariation} ${properties.heroImagesVariation} ${bannerVariation == 'herobanner-wst' ? '' : 'hero-images-variation'}"></div>
+    class="${!wcmmode.edit ? 'dynamic-module-placeholder' : 'd-none'} ${!wcmmode.edit ? bannerPlaceholderVariation : ''} ${bannerVariation} ${properties.heroImagesVariation} ${bannerVariation == 'herobanner-wst' ? '' : 'hero-images-variation'}"></div>
     
 <sly data-sly-test="${properties.carouselLayout == 'etisalat-hero-banner' && (wcmmode.preview || wcmmode.disabled)}">        
   <!--/* variation for herobanner 4.0 */-->
