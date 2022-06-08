@@ -44,12 +44,12 @@ export const LOGIN_INIT = () => {
     var $self = target;
     var clickedItemURL = $self.attr("href");
     var linkText = $self.text().trim();
-    dataLayer.push({
-      event: "menuitems",
-      info1: "menuitems",
-      info2: "click",
-      info3: linkText,
-    });
+    // dataLayer.push({
+    //   event: "menuitems",
+    //   info1: "menuitems",
+    //   info2: "click",
+    //   info3: linkText,
+    // });
 
     window.location = clickedItemURL;
   }
