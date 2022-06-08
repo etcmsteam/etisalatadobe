@@ -144,6 +144,8 @@ export const LEADER_FORM = () => {
         .done(function (response) {
           if (response["status.code"] === 200) {
             FORM_SUCCESS($FORM, PAYLOAD);
+            let RE_URL = `${window.location.origin}/en/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
+            window.location.href = RE_URL;
           } else {
             FORM_ERROR($FORM, "API error", response);
           }
