@@ -1,14 +1,10 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import { numberWithCommas } from '../../../global/js/dynamic-component-helper';
 
 /* eslint-disable */
 export const DYNAMIC_DEVICE_TILE = () => {
   //JSON added here as temporarily - creating separated json file causes access denied in AEM
-  function numberWithCommas(x) {
-    x = x.toString();
-    var pattern = /(-?\d+)(\d{3})/;
-    while (pattern.test(x)) x = x.replace(pattern, "$1,$2");
-    return x;
-  }
+
 
   function loadMoreBtn(elem, defaultDataCount) {
     elem.find(".swiper-slide").each(function (i) {
