@@ -903,11 +903,21 @@
     border-right: 1px solid $main-green;
     transition: all 0.5s ease-in-out;
   }
-  .bg-cards .device-card.tile-table .tile-card:hover .product,
-  .bg-cards .device-multi-card-selection.tile-table .tile-card:hover .product,
-  .bg-cards .device-single-card-selection.tile-table .tile-card:hover .product {
-    border-top: 1px solid $dark-orange;
+
+  .bg-cards {
+    .device-card, .device-multi-card-selection, .device-single-card-selection {
+      &.tile-table {
+        .tile-card {
+          &:hover {
+            .product {
+              border-top: 1px solid $main-green;
+            }
+          }
+        }
+      }
+    }
   }
+
   .bg-cards .device-card.offer .tile-card:hover .product,
   .bg-cards .device-card.offer .tile-card:hover .smile-points,
   .bg-cards .device-card.offer .tile-card:hover .tiles-box-list,
