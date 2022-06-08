@@ -1,5 +1,14 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
+
+var n = 0;
+var tag = document.createElement("script");
+var firstScriptTag = document.getElementsByTagName("script")[0];
+var player;
+var mileStones = [25, 50, 75];
+var videoTitle;
+var pauseFlag;
+
 export const ANALYTICS_FILTER = (category, type, value) => {
   const pagePathName = window.location.pathname;
   const dataLayerPathName = pagePathName.split('.html')[0];
@@ -198,4 +207,107 @@ export const FORM_ERROR = (form, type, errResponse) => {
         }
     });
   }
+};
+
+// Youtube video tracking
+$("iframe").each(function () {
+  var src = $(this).attr("src");
+
+  if (src) {
+    if (src.indexOf("youtube.com") > -1) {
+      if (src.indexOf("?") > -1) {
+        if (src.indexOf("enablejsapi") === -1) {
+          src += "&enablejsapi=1";
+        }
+      } else {
+        src += "?enablejsapi=1";
+      }
+
+      $(this).attr("src", src);
+      $(this).attr("id", "player" + n);
+      $(this).addClass("youtubeplayer");
+      n++;
+    }
+  }
+});
+
+tag.src = "https://www.youtube.com/iframe_api";
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+function mileStoneCheck() {
+  var nextMs;
+  var percComplete = (player.getCurrentTime() / player.getDuration()) * 100;
+  var msLen = mileStones.length;
+  
+  if (msLen > 0) {
+    nextMs = mileStones[0];
+    if (nextMs <= percComplete) { 
+      mileStones.shift(); 
+      window.adobeDataLayer.push({
+        event: "video milestone",
+        videoDetails: {
+          videoName: videoTitle,
+          videoMileStone: nextMs + "%",
+          videoTime: Math.floor(player.getCurrentTime()),
+        },
+        eventInfo: {
+          videoMilestone: 1,
+        },
+      });
+    }        
+  }
+}
+
+function onPlayerStateChange(e) {
+  videoTitle = e.target.playerInfo.videoData.title ? e.target.playerInfo.videoData.title : "";
+  if (e.data === YT.PlayerState.PLAYING) {
+    window.adobeDataLayer.push({
+      event: "video start",
+      videoDetails: {
+        videoName: videoTitle,
+      },
+      eventInfo: {
+        videoStart: 1,
+      },
+    });
+    setInterval(mileStoneCheck, 100);
+    pauseFlag = true;
+  }
+  if (e.data === YT.PlayerState.ENDED) {
+    window.adobeDataLayer.push({
+      event: "video complete",
+
+      videoDetails: {
+        videoName: videoTitle,
+      },
+
+      eventInfo: {
+        videoComplete: 1,
+      },
+    });
+  } else if (e.data === YT.PlayerState.PAUSED && pauseFlag) {
+    window.adobeDataLayer.push({
+      event: "video pause",
+
+      videoDetails: {
+        videoName: videoTitle,
+      },
+
+      eventInfo: {
+        videoPause: 1,
+      },
+    });
+    pauseFlag = false;
+  }
+}
+
+window.onYouTubeIframeAPIReady = function (){
+  $("iframe.youtubeplayer").each(function () {
+    var youtubeiframeClass = $(this).attr("id");
+    player = new YT.Player(youtubeiframeClass, {
+      events: {
+        onStateChange: onPlayerStateChange
+      },
+    });
+  });
 };

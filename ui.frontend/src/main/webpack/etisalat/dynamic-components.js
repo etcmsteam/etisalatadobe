@@ -101,7 +101,7 @@ const ALREADY_LOADED_SCRIPTS = {};
 const DYNAMIC_COMPONENTS = {
   init: () => {
     let callback = (entries, observer) => {
-      entries.forEach((entry) => {
+      entries.forEach(async (entry) => {
         // execute the dynamic import & init script registered
         if (entry.isIntersecting) {
           const component = entry.target.attributes["data-component"].nodeValue;
@@ -109,15 +109,23 @@ const DYNAMIC_COMPONENTS = {
           if (!ALREADY_LOADED_SCRIPTS[component]) {
             // record script state
             ALREADY_LOADED_SCRIPTS[component] = true;
-            DYNAMIC_MODULE[component]().catch((error) => {
+
+            try {
+              await DYNAMIC_MODULE[component]();
+
+              document.querySelectorAll(`[data-component="${component}"]`).forEach((item) => {
+                const componentItem = item;
+                componentItem.style.visibility = "visible";
+              });
+            } catch (error) {
               console.error("Dynamic Module Script Error: ", error);
-            });
+            }
           }
           observer.unobserve(entry.target);
         }
       });
     };
-    const observer = new IntersectionObserver(callback);
+    const observer = new IntersectionObserver(callback, { rootMargin: "0px 0px 200px 0px" });
     // loop through each registered dynamic component
     Object.keys(DYNAMIC_MODULE).forEach((component) => {
       const componentContext = Array.from(document.querySelectorAll(`div[data-component=${component}]`));
