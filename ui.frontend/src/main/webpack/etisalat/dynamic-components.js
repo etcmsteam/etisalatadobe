@@ -4,93 +4,93 @@ import "regenerator-runtime/runtime";
 // register the className of each dynamic component to it's own js chunk, and initialization call
 const DYNAMIC_MODULE = {
   "cmp-herobanner": async () => {
-    await import(/* webpackChunkName: 'hero-banner' */ "./dynamic-modules/hero-banner/hero-banner-4-0").then((obj) => obj.HERO_BANNER());
+    return import(/* webpackChunkName: 'hero-banner' */ "./dynamic-modules/hero-banner/hero-banner-4-0").then((obj) => obj.HERO_BANNER);
   },
   "cmp-accessoriescardcontainer": async () => {
-    await import(/* webpackChunkName: 'accessories-card' */ "./dynamic-modules/accessories-cards/accessories-cards").then((obj) => obj.ACCESSORIES_CARDS());
+    return import(/* webpackChunkName: 'accessories-card' */ "./dynamic-modules/accessories-cards/accessories-cards").then((obj) => obj.ACCESSORIES_CARDS);
   },
   "cmp-green-friday": async () => {
-    await import(/* webpackChunkName: 'green-friday' */ "./dynamic-modules/green-friday/green-friday").then((obj) => obj.GREEN_FRIDAY());
+    return import(/* webpackChunkName: 'green-friday' */ "./dynamic-modules/green-friday/green-friday").then((obj) => obj.GREEN_FRIDAY);
   },
   "cmp-need-help": async () => {
-    await import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE());
+    return import(/* webpackChunkName: 'need-help' */ "./dynamic-modules/need-help/need-help-module").then((obj) => obj.NEED_HELP_MODULE);
   },
   "cmp-tile-box": async () => {
-    await import(/* webpackChunkName: 'tilebox' */ "./dynamic-modules/tilebox/tilebox").then((obj) => obj.TILE_BOX());
+    return import(/* webpackChunkName: 'tilebox' */ "./dynamic-modules/tilebox/tilebox").then((obj) => obj.TILE_BOX);
   },
   "cmp-features": async () => {
-    await import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE());
+    return import(/* webpackChunkName: 'features' */ "./dynamic-modules/features/features").then((obj) => obj.FEATURE_MODULE);
   },
   "cmp-promogrid-4-0": async () => {
-    await import(/* webpackChunkName: 'promo-grid-4-0' */ "./dynamic-modules/promo-grid-4-0/promo-grid-4-0").then((obj) => obj.PROMO_GRID_4_0());
+    return import(/* webpackChunkName: 'promo-grid-4-0' */ "./dynamic-modules/promo-grid-4-0/promo-grid-4-0").then((obj) => obj.PROMO_GRID_4_0);
   },
   "media-cta": async () => {
-    await import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA());
+    return import(/* webpackChunkName: 'media-cta' */ "./dynamic-modules/media-cta/media-cta").then((obj) => obj.MEDIA_CTA);
   },
   "cmp-storelocator": async () => {
-    await import(/* webpackChunkName: 'storelocator' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR());
+    return import(/* webpackChunkName: 'storelocator' */ "./dynamic-modules/storelocator/store-locator").then((obj) => obj.STORE_LOCATOR);
   },
   "cmp-non-actionable-box": async () => {
-    await import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE());
+    return import(/* webpackChunkName: 'non-actionable' */ "./dynamic-modules/non-actionable-box").then((obj) => obj.NON_ACTIONABLE_MODULE);
   },
   "cmp-context-navigation": async () => {
-    await import(/* webpackChunkName: 'context-navigation' */ "./dynamic-modules/context-navigation/context-navigation").then((obj) =>
-      obj.CONTEXT_NAVIGATION(),
+    return import(/* webpackChunkName: 'context-navigation' */ "./dynamic-modules/context-navigation/context-navigation").then((obj) =>
+      obj.CONTEXT_NAVIGATION,
     );
   },
   "cmp-benefits": async () => {
-    await import(/* webpackChunkName: 'benefits-section' */ "./dynamic-modules/benefits/benefits").then((obj) => obj.BENIFITS());
+    return import(/* webpackChunkName: 'benefits-section' */ "./dynamic-modules/benefits/benefits").then((obj) => obj.BENIFITS);
   },
   "cmp-config-tabs": async () => {
-    await import(/* webpackChunkName: 'config-tabs' */ "./dynamic-modules/config-tabs/config-section").then((obj) => obj.CONFIG_SECTION_WRAP());
+    return import(/* webpackChunkName: 'config-tabs' */ "./dynamic-modules/config-tabs/config-section").then((obj) => obj.CONFIG_SECTION_WRAP);
   },
   "cmp-anaemarati-plans": async () => {
-    await import(/* webpackChunkName: 'anaemarati-plans' */ "./dynamic-modules/anaemarati-plans/anaemarati-plans").then((obj) => obj.ANAEMARATI_CARDS());
+    return import(/* webpackChunkName: 'anaemarati-plans' */ "./dynamic-modules/anaemarati-plans/anaemarati-plans").then((obj) => obj.ANAEMARATI_CARDS);
   },
   "cmp-product-cards": async () => {
-    await import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS());
+    return import(/* webpackChunkName: 'product-cards' */ "./dynamic-modules/product-cards/product-cards").then((obj) => obj.PRODUCT_CARDS);
   },
   "cmp-digital-notification": async () => {
-    await import(/* webpackChunkName: 'digital-notification' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) =>
-      obj.DIGITAL_NOTIFICATION(),
+    return import(/* webpackChunkName: 'digital-notification' */ "./dynamic-modules/digital-notifications/digital_notification").then((obj) =>
+      obj.DIGITAL_NOTIFICATION,
     );
   },
   "cmp-news-room": async () => {
-    await import(/* webpackChunkName: 'news-room' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM());
+    return import(/* webpackChunkName: 'news-room' */ "./dynamic-modules/news-room/news-room").then((obj) => obj.NEWS_ROOM);
   },
   "cmp-related-jobs": async () => {
-    await import(/* webpackChunkName: 'related-jobs' */ "./dynamic-modules/related-jobs/related-jobs").then((obj) => obj.RELATED_JOBS());
+    return import(/* webpackChunkName: 'related-jobs' */ "./dynamic-modules/related-jobs/related-jobs").then((obj) => obj.RELATED_JOBS);
   },
   "cmp-guide-tour": async () => {
-    await import(/* webpackChunkName: 'guide-tour' */ "./dynamic-modules/guide-tour/guide-tour").then((obj) => obj.GUIDE_TOUR_POPUP());
+    return import(/* webpackChunkName: 'guide-tour' */ "./dynamic-modules/guide-tour/guide-tour").then((obj) => obj.GUIDE_TOUR_POPUP);
   },
   "cmp-forms-module": async () => {
-    await import(/* webpackChunkName: 'forms' */ "./dynamic-modules/forms/forms").then((obj) => obj.FORMS_MODULE());
+    return import(/* webpackChunkName: 'forms' */ "./dynamic-modules/forms/forms").then((obj) => obj.FORMS_MODULE);
   },
   "cmp-bill-expaliner": async () => {
-    await import(/* webpackChunkName: 'forms' */ "./dynamic-modules/bill-explainer/bill-explainer").then((obj) => obj.BILL_EXPLAINER());
+    return import(/* webpackChunkName: 'forms' */ "./dynamic-modules/bill-explainer/bill-explainer").then((obj) => obj.BILL_EXPLAINER);
   },
   "cmp-table": async () => {
-    await import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE());
+    return import(/* webpackChunkName: 'tables' */ "./dynamic-modules/table/table").then((obj) => obj.TABLE);
   },
   "cmp-steps4-0": async () => {
-    await import(/* webpackChunkName: 'steps4-0' */ "./dynamic-modules/steps4-0");
+    return import(/* webpackChunkName: 'steps4-0' */ "./dynamic-modules/steps4-0");
   },
   "cmp-how-to-install": async () => {
-    await import(/* webpackChunkName: 'how-to-install' */ "./dynamic-modules/how-to-install").then((obj) => obj.HOW_TO_INSTALL());
+    return import(/* webpackChunkName: 'how-to-install' */ "./dynamic-modules/how-to-install").then((obj) => obj.HOW_TO_INSTALL);
   },
   "cmp-hero-images": async () => {
-    await import(/* webpackChunkName: 'hero-images' */ "./dynamic-modules/hero-images").then((obj) => obj.HERO_IMAGES());
+    return import(/* webpackChunkName: 'hero-images' */ "./dynamic-modules/hero-images").then((obj) => obj.HERO_IMAGES);
   },
   "cmp-context-navigation-cards": async () => {
-    await import(/* webpackChunkName: 'context-navigation-cards' */ "./dynamic-modules/context-navigation-cards").then((obj) => obj.CONTEXT_NAVIGATION_CARDS());
+    return import(/* webpackChunkName: 'context-navigation-cards' */ "./dynamic-modules/context-navigation-cards").then((obj) => obj.CONTEXT_NAVIGATION_CARDS);
   },
   "cmp-how-to-subscribe": async () => {
-    await import(/* webpackChunkName: 'how-to-subscribe' */ "./dynamic-modules/how-to-subscribe/how-to-subscribe").then((obj) => obj.HOW_TO_SUBSCRIBE());
+    return import(/* webpackChunkName: 'how-to-subscribe' */ "./dynamic-modules/how-to-subscribe/how-to-subscribe").then((obj) => obj.HOW_TO_SUBSCRIBE);
   },
   "cmp-device-best-seller": async () => {
-    await import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER());
-  }
+    return import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER);
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};
@@ -111,12 +111,23 @@ const DYNAMIC_COMPONENTS = {
             ALREADY_LOADED_SCRIPTS[component] = true;
 
             try {
-              await DYNAMIC_MODULE[component]();
-
-              document.querySelectorAll(`[data-component="${component}"]`).forEach((item) => {
+              const moduleFn = await DYNAMIC_MODULE[component]();
+              const placeholderClass = `${component}-placeholder`;
+              document.querySelectorAll(`[data-component="${component}"], .${placeholderClass}`).forEach((item) => {
                 const componentItem = item;
-                componentItem.style.visibility = "visible";
+                
+                if (componentItem.classList.contains(placeholderClass)) {
+                  componentItem.classList.add("hide");
+                } else {
+                  componentItem.classList.remove("hide");
+                  componentItem.classList.add("dynamic-module-visible");
+                }
+                
               });
+
+              if(typeof moduleFn === 'function') {
+                moduleFn();
+              }
             } catch (error) {
               console.error("Dynamic Module Script Error: ", error);
             }
