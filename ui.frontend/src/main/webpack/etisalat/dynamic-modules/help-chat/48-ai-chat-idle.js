@@ -2,6 +2,7 @@
  * v###version###
  */
 /* eslint-disable */
+import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
 export const HELP_CHAT = () => {
   // var theUrl = 'https://eshopuat.etisalat.ae/b2c/eshop/ecare/users/generateOtpByAccountNo';
   // var theUrl = 'https://eshopuat.etisalat.ae/ecare/users/generateOtpByAccountNo';
@@ -17,26 +18,14 @@ export const HELP_CHAT = () => {
     var messagelocal;
     var validateMessage = {
       en: {
-        firstName: {
-          required: "Name is required",
-        },
-        emailAddress: {
-          required: "Email address is required",
-        },
-        contactNumber: {
-          required: "Mobile number is required ",
-        },
+        firstName: FORM_VALIDATION_MESSAGES.EN.name,
+        emailAddress: FORM_VALIDATION_MESSAGES.EN.emailAddress,
+        contactNumber: FORM_VALIDATION_MESSAGES.EN.contactNumber,
       },
       ar: {
-        name: {
-          required: "يرجى كتابة الاسم",
-        },
-        email: {
-          required: "يرجى كتابة البريد الإلكتروني",
-        },
-        contactNumber: {
-          required: "يرجى كتابة رقم الهاتف",
-        },
+        firstName: FORM_VALIDATION_MESSAGES.AR.name,
+        emailAddress: FORM_VALIDATION_MESSAGES.AR.emailAddress,
+        contactNumber: FORM_VALIDATION_MESSAGES.AR.phone1,
       },
     };
 
@@ -380,6 +369,9 @@ export const HELP_CHAT = () => {
         // your code here
         $("#insert-details-id").hide();
         $("#insert-otp").show();
+      },
+      error: function (jqXHR, status, err) {
+        console.log(err);
       },
     });
     // return false to prevent normal browser submit and page navigation
