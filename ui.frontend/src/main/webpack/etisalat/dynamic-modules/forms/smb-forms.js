@@ -1,5 +1,6 @@
 /* eslint-disable*/
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
+import { FORM_ERROR } from "../../js/analytics/analytics";
 export const SMB_FORMS = () => {
   const $FORM = $("#eventRegistration");
   const $SUBMIT_CTA = $("#eventRegistration .cmp-form-button");
@@ -10,6 +11,7 @@ export const SMB_FORMS = () => {
 
   $SUBMIT_CTA.on("click", function () {
     if ($FORM.valid() == false) {
+      FORM_ERROR($FORM, "validation error");
       return false;
     }
   });
