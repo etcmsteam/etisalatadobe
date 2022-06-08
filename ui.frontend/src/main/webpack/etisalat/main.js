@@ -4,7 +4,7 @@ import { GLOBALFOOTPRINT } from "./js/custom-components/globalfootprintcontainer
 import { TAB_SWIPER } from "./js/custom-components/tab-swiper";
 import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
 import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
-import { DYNAMIC_DEVICE_TILE } from "./js/custom-components/dynamicDeviceTile";
+import { DYNAMIC_DEVICE_TILE } from "./js/custom-components/dynamic-device-tile";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
 import { SITE } from "./js/custom-components/site";
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";

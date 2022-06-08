@@ -235,7 +235,6 @@ export const DYNAMIC_DEVICE_TILE = () => {
     $(".main-loader").show();
     const { categoryid } = elem?.data() || {};
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
-    // const url = `${hostName}/b2c/eshop/getProductsByCategory?locale=${locale}`;
     const url = `/b2c/eshop/getProductsByCategory?locale=${locale}`;
     const payload = {
       No: "0",
@@ -245,17 +244,10 @@ export const DYNAMIC_DEVICE_TILE = () => {
     };
 
     $.ajax({
-      // Our sample url to make request
-      url: window.location.origin + "/content/dam/etisalat/prod-mock-assets/productListTest.json",
-      // url,
-
-      // Type of Request
-      type: "GET",
-
-      //data: JSON.stringify(payload),
-
+      url,
+      type: "POST",
+      data: JSON.stringify(payload),
       dataType: "json",
-
       contentType: "application/json; charset=utf-8",
       success: function (data) {
         const htmlCards = getProductCard(data);
