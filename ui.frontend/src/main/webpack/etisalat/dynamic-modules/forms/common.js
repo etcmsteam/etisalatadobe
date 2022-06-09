@@ -1,7 +1,6 @@
-/* eslint-disable no-undef */
+/* eslint-disable*/
 import "intl-tel-input/build/js/intlTelInput";
 export const COMMONS_JS = () => {  
-  (function ($) {
     // Class
     const FORM_OPTION_CLASS = ".cmp-form-options";
     const ERROR_FIELD_CLASS = "has-error-fields";
@@ -82,7 +81,7 @@ export const COMMONS_JS = () => {
         sorter: (data) => data.sort((a, b) => a.text.localeCompare(b.text)),
       });
     }
-  })(jQuery);
+  (jQuery);
 
 }
 
