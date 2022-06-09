@@ -76,8 +76,8 @@ const DYNAMIC_MODULE = {
   "cmp-support-chat": async () => {
     await import(/* webpackChunkName: 'support-chat' */ "./dynamic-modules/support-chat").then((obj) => obj.SUPPORT_CHAT());
   },
-  "cmp-help-chat": async () => {
-    await import(/* webpackChunkName: 'help-chat' */ "./dynamic-modules/help-chat").then((obj) => obj.HELP_CHAT());
+  "cmp-idle-chat": async () => {
+    await import(/* webpackChunkName: 'idle-chat' */ "./dynamic-modules/idle-chat").then((obj) => obj.IDLE_CHAT());
   },
 };
 
