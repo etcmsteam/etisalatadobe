@@ -4446,13 +4446,25 @@
 }
 
 .product-grid-text-section.plans.nv-container {
+  width: 100%;
   .cmp__bg-cards_product-grid .plan-card.offer {
     .tile-card .tiles-box-title {
       padding: toRem(24) !important;
 
+      @include respond-to-max($desktop-min) {
+        padding: toRem(12) !important;
+        height: toRem(122);
+      }
+
       .catagory {
         font-size: $font12;
         margin-bottom: toRem(8);
+
+        @include respond-to-max($desktop-min) {
+          font-size: toRem(8);
+          letter-spacing: toRem(2);
+          line-height: toRem(12);
+        }
       }
 
       h1,
@@ -4484,6 +4496,12 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+
+          @include respond-to-max($desktop-min) {
+            font-size: toRem(12);
+            line-height: 1.5;
+            margin-bottom: toRem(8);
+          }
 
           img {
             width: 20px;
@@ -4553,13 +4571,15 @@
   }
 
   .smile-points {
-    font-size: $font14;
-    letter-spacing: toRem(0.5);
-    line-height: toRem(14);
     padding: toRem(12) toRem(24);
-
+  
     @include respond-to-max($desktop-min) {
-      padding: toRem(12);
+      padding: toRem(12) !important;
+    }
+    span {
+      font-size: $font14;
+      letter-spacing: toRem(0.5);
+      line-height: toRem(14);
     }
   }
 
