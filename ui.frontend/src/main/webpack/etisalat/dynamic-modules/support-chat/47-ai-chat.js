@@ -1,10 +1,18 @@
 /* eslint-disable */
 export const SUPPORT_CHAT = () => {
   $(".show-ai-support").on("click", function () {
-    var iframeSrc = "https://www.etisalat.ae/etisalat-va/#/?channel=portalb2c&language=en";
+    var iframeSrc = "/etisalat-va/#/?channel=portalb2c&language";
 
     if ($(".ai-chat-wrapper").find("iframe").attr("src") == "") {
-      $(".ai-chat-wrapper").find("iframe").attr("src", iframeSrc);
+      if (document.documentElement.lang === "ar") {
+        $(".ai-chat-wrapper")
+          .find("iframe")
+          .attr("src", iframeSrc + "=ar");
+      } else {
+        $(".ai-chat-wrapper")
+          .find("iframe")
+          .attr("src", iframeSrc + "=en");
+      }
     }
 
     $(".ai-chat-wrapper").show(300);

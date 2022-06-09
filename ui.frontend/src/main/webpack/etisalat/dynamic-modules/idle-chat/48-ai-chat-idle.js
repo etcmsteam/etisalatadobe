@@ -1,13 +1,13 @@
-/**
- * v###version###
- */
 /* eslint-disable */
+import { APP_FORMS } from "../shared/js/app-forms";
 import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
-export const HELP_CHAT = () => {
+
+export const IDLE_CHAT = () => {
+  APP_FORMS();
   // var theUrl = 'https://eshopuat.etisalat.ae/b2c/eshop/ecare/users/generateOtpByAccountNo';
   // var theUrl = 'https://eshopuat.etisalat.ae/ecare/users/generateOtpByAccountNo';
-  // otpURL: "https://213.42.214.51:7041/b2c/eshop/generateOtpByAccountNo",
-  // leadUrl: "https://213.42.214.51:7041/b2c/eshop/saveLeadFormInfo"
+  // otpURL: "https://www.etisalat.ae/b2c/eshop/generateOtpByAccountNumber";
+  // leadUrl: "https://www.etisalat.ae/b2c/eshop/saveLeadFormInfo";
 
   const chatConstants = {
     otpURL: "/b2c/eshop/generateOtpByAccountNumber",
@@ -196,107 +196,106 @@ export const HELP_CHAT = () => {
   var $formDetails = $("#needsupportInfo");
   var $otpVerificationForm = $("#otpVerificationForm");
 
-  $(document).ready(function () {
-    var w = window.innerWidth,
-      h = window.innerHeight;
-    w > h ? $("#need-help-chat-id").addClass("zoom-out") : $("#need-help-chat-id").removeClass("zoom-out");
-    validateUserData();
-    validateOTP();
-    if (sessionStorage.getItem("chatOpened") === null) {
-      sessionStorage.setItem("chatOpened", "false");
+  var w = window.innerWidth,
+    h = window.innerHeight;
+  w > h ? $("#need-help-chat-id").addClass("zoom-out") : $("#need-help-chat-id").removeClass("zoom-out");
+  validateUserData();
+  validateOTP();
+
+  if (sessionStorage.getItem("chatOpened") === null) {
+    sessionStorage.setItem("chatOpened", "false");
+  }
+
+  $("#submitDetails").on("click", function () {
+    if ($("#needsupportInfo").valid() !== false) {
+      googleTracking("continue");
+      $("#submitDetails").hide();
+      $("#showLoaderButtonGetContinue").show();
+    } else {
+      return false;
     }
+  });
 
-    $("#submitDetails").on("click", function () {
-      if ($("#needsupportInfo").valid() !== false) {
-        googleTracking("continue");
-        $("#submitDetails").hide();
-        $("#showLoaderButtonGetContinue").show();
-      } else {
-        return false;
-      }
-    });
+  $("#verifyOTP").on("click", function () {
+    if ($("#otpVerificationForm").valid() !== false) {
+      $("#resetOTPicon").hide();
+      $("#verifyOTP").hide();
+      $("#showLoaderButtonVerify").show();
+      $("#optFailure").hide();
+      googleTracking("verify");
+    } else {
+      return false;
+    }
+  });
 
-    $("#verifyOTP").on("click", function () {
-      if ($("#otpVerificationForm").valid() !== false) {
-        $("#resetOTPicon").hide();
-        $("#verifyOTP").hide();
-        $("#showLoaderButtonVerify").show();
-        $("#optFailure").hide();
-        googleTracking("verify");
-      } else {
-        return false;
-      }
-    });
+  $("#addAnotherNumber").on("click", function () {
+    resetForms();
+    $("#insert-details-id").show();
+    $("#insert-otp").hide();
+  });
 
-    $("#addAnotherNumber").on("click", function () {
-      resetForms();
-      $("#insert-details-id").show();
-      $("#insert-otp").hide();
-    });
+  $(".currentPlanName").text(getPlanName());
+  $(".nv-chat-details .phone-input-group input").on("keyup", function () {
+    $(this).parent().next().find("input").focus();
+  });
 
-    $(".currentPlanName").text(getPlanName());
-    $(".nv-chat-details .phone-input-group input").on("keyup", function () {
-      $(this).parent().next().find("input").focus();
-    });
+  $("#needHelp").on("click", function () {
+    $("#need-help-chat-id").show();
+    $(this).hide();
+    googleTracking("click");
+  });
 
-    $("#needHelp").on("click", function () {
-      $("#need-help-chat-id").show();
-      $(this).hide();
-      googleTracking("click");
-    });
+  $("#otpVerificationForm input").bind("keyup blur", function () {
+    if ($("#otpVerificationForm").validate().checkForm()) {
+      $("#verifyOTP").prop("disabled", false);
+    } else {
+      $("#verifyOTP").prop("disabled", "disabled");
+    }
+  });
 
-    $("#otpVerificationForm input").bind("keyup blur", function () {
-      if ($("#otpVerificationForm").validate().checkForm()) {
-        $("#verifyOTP").prop("disabled", false);
-      } else {
-        $("#verifyOTP").prop("disabled", "disabled");
-      }
-    });
+  var chatTimeToOpen = 180000;
+  // sessionStorage.getItem("triggeredFrom") === "configuration" ? 90000 : 90000;
+  setIdleTime(chatTimeToOpen);
 
-    var chatTimeToOpen = 180000;
-    // sessionStorage.getItem("triggeredFrom") === "configuration" ? 90000 : 90000;
-    setIdleTime(chatTimeToOpen);
+  $("#haveIssue").on("click", function () {
+    $("#chat-hello-id").hide();
+    $("#chat-details-id").show();
+    googleTracking("confirmQuestions");
+  });
 
-    $("#haveIssue").on("click", function () {
-      $("#chat-hello-id").hide();
-      $("#chat-details-id").show();
-      googleTracking("confirmQuestions");
-    });
+  $(".chat-collapse").on("click", function () {
+    $("#needHelp").toggle();
+    $("#need-help-chat-id").toggle();
+  });
 
-    $(".chat-collapse").on("click", function () {
-      $("#needHelp").toggle();
-      $("#need-help-chat-id").toggle();
-    });
+  $("#chatClose").on("click", function (e) {
+    e.preventDefault();
+    $(".nv-chat-modal").toggle();
+  });
 
-    $("#chatClose").on("click", function (e) {
-      e.preventDefault();
-      $(".nv-chat-modal").toggle();
-    });
+  $(".chatModelClose").on("click", function (e) {
+    e.preventDefault();
+    $("#need-help-chat-id").hide();
+    $("#needHelp").show();
+    resetForms();
+    $(".successfully-verified").hide();
+    $(".nv-chat-modal").hide();
+    $("#haveIssue").show();
+    sessionStorage.setItem("chatOpened", "true");
+    googleTracking("exitChat");
+  });
 
-    $(".chatModelClose").on("click", function (e) {
-      e.preventDefault();
-      $("#need-help-chat-id").hide();
-      $("#needHelp").show();
-      resetForms();
-      $(".successfully-verified").hide();
-      $(".nv-chat-modal").hide();
-      $("#haveIssue").show();
-      sessionStorage.setItem("chatOpened", "true");
-      googleTracking("exitChat");
-    });
+  $(".chatModelKeep , .nv-chat-modal-close").on("click", function (e) {
+    e.preventDefault();
+    $(".nv-chat-modal").toggle();
+  });
 
-    $(".chatModelKeep , .nv-chat-modal-close").on("click", function (e) {
-      e.preventDefault();
-      $(".nv-chat-modal").toggle();
-    });
+  $("#resendOTP").on("click", function (e) {
+    resendOTP();
+  });
 
-    $("#resendOTP").on("click", function (e) {
-      resendOTP();
-    });
-
-    $("#resetOTPicon").on("click", function (e) {
-      resetOTPForm();
-    });
+  $("#resetOTPicon").on("click", function (e) {
+    resetOTPForm();
   });
 
   function resetForms() {
@@ -332,12 +331,12 @@ export const HELP_CHAT = () => {
   }
 
   function googleTracking(event) {
-    dataLayer.push({
+    /* dataLayer.push({
       event: "needHelp",
       info1: "needHelp",
       info2: event,
       info3: window.location.pathname,
-    });
+    }); */
   }
 
   function getPlanName() {
