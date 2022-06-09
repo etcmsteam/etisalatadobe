@@ -32,14 +32,17 @@
                     <sly data-sly-use.xfcontainertemplate="/apps/etisalat/components/global/meganavigation/xfdesktop-container-template.html" data-sly-call="${xfcontainertemplate.xfDesktopContainerTemplate @ properties=properties,navItems=utilityItems}"></sly>
                   </sly>
                 </sly>
-                <li data-sly-list.accountItems="${meganavigation.accountNavigationItems}" 
+                <li data-sly-list.accountItems="${meganavigation.accountNavigationItems}"
                     class="${accountItems.subNavigationList.isEmpty ? 'link-only' : ''}">
                   <a data-sly-test="${!accountItems.subNavigationList.isEmpty}" class="mega-menu-link accountName" data-sub-menu="sub-menu-help">${accountItems.navigationLabel}</a>
                   <a data-sly-test="${accountItems.subNavigationList.isEmpty}" href="${accountItems.navigationLinkTo}" class="mega-menu-link" data-sub-menu="sub-menu-mobile">${accountItems.navigationLabel}</a>
                   <div data-sly-test="${!accountItems.subNavigationList.isEmpty}" class="sub-account-menu-wrap">
-                    <ul data-sly-list.subItems="${accountItems.subNavigationList}" class="sub-account-menu">
-                      <li>
+                    <ul class="sub-account-menu">
+                      <li data-sly-repeat.subItems="${accountItems.subNavigationList}">
                         <a href="${subItems.subNavLinkTo}">${subItems.subNavLabel}</a>
+                      </li>
+                      <li class="loggedInActions hidden">
+                        <a class="logoutAction" href="#">Sign Out</a>
                       </li>
                     </ul>
                   </div>
