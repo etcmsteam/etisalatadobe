@@ -91,6 +91,12 @@ const DYNAMIC_MODULE = {
   "cmp-device-best-seller": async () => {
     return import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER);
   },
+  "cmp-support-chat": async () => {
+    await import(/* webpackChunkName: 'support-chat' */ "./dynamic-modules/support-chat").then((obj) => obj.SUPPORT_CHAT());
+  },
+  "cmp-help-chat": async () => {
+    await import(/* webpackChunkName: 'help-chat' */ "./dynamic-modules/help-chat").then((obj) => obj.HELP_CHAT());
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

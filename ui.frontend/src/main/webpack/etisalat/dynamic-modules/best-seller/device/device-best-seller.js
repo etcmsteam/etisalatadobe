@@ -1,14 +1,10 @@
 import "./index.scss";
 import { swiperInit } from "../../../../global/js/swiperInitialize";
+import { numberWithCommas } from "../../../../global/js/utils";
+
 
 /* eslint-disable */
 export const DEVICE_BEST_SELLER = () => {
-  function numberWithCommas(x) {
-    x = x.toString();
-    var pattern = /(-?\d+)(\d{3})/;
-    while (pattern.test(x)) x = x.replace(pattern, "$1,$2");
-    return x;
-  }
 
   function getProductCard(data) {
     var products = data.products;

@@ -5,7 +5,7 @@ import { GLOBALFOOTPRINT } from "./js/custom-components/globalfootprintcontainer
 import { TAB_SWIPER } from "./js/custom-components/tab-swiper";
 import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
 import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
-import { PRODUCT_LIST } from "./js/custom-components/productList";
+import { DYNAMIC_DEVICE_TILE } from "./js/custom-components/dynamic-device-tile";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
 import { SITE } from "./js/custom-components/site";
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     TAB_SWIPER,
     YOU_TUBE_VIDEO_PLAYER,
     SHOP_BRANDS,
-    PRODUCT_LIST,
+    DYNAMIC_DEVICE_TILE,
     BRAND_PORTFOLIO,
     CURRENT_PROMOTION,
     NV_CARD,
