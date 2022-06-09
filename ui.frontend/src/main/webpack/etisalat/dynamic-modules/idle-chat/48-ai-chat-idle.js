@@ -232,6 +232,7 @@ export const IDLE_CHAT = () => {
     resetForms();
     $("#insert-details-id").show();
     $("#insert-otp").hide();
+    $("#verifyOTP").prop("disabled", "disabled");
   });
 
   $(".currentPlanName").text(getPlanName());
@@ -331,12 +332,12 @@ export const IDLE_CHAT = () => {
   }
 
   function googleTracking(event) {
-    /* dataLayer.push({
+    dataLayer.push({
       event: "needHelp",
       info1: "needHelp",
       info2: event,
       info3: window.location.pathname,
-    }); */
+    });
   }
 
   function getPlanName() {
