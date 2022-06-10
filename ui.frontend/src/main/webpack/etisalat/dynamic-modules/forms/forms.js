@@ -1,4 +1,3 @@
-import "./index.scss";
 import 'select2';
 
 import "intl-tel-input/build/js/utils";
