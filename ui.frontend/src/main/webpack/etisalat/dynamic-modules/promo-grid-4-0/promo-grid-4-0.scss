@@ -1088,3 +1088,36 @@
     }
   }
 }
+
+.wst-grid {
+  .cmp-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    @include respond-to-min($desktop) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      column-gap: 24px;
+      row-gap: 25px;
+    }
+    .wstpromotile {
+      grid-row: span 1;
+      grid-column: span 1;
+      @include respond-to-min($desktop) {
+        &.large{
+          grid-column: span 2;
+          grid-row: span 2;
+        }
+        &.medium {
+          grid-column: span 2;
+          grid-row: span 1;
+        }
+        &.small {
+          grid-column: span 1;
+          grid-row: span 1;
+        }
+      }
+
+    }
+  }
+}
