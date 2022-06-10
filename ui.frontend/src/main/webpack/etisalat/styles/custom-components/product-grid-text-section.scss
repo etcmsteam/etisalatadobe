@@ -3143,7 +3143,7 @@
         @include ellipsis();
         .center {
           text-align: center;
-           @include ellipsis();
+          @include ellipsis();
         }
       }
     }
@@ -4441,6 +4441,164 @@
       height: 100% !important;
       width: 100%;
       background: transparent !important;
+    }
+  }
+}
+
+.product-grid-text-section.plans.nv-container {
+  width: 100%;
+  .cmp__bg-cards_product-grid .plan-card.offer {
+    .tile-card .tiles-box-title {
+      padding: toRem(24) !important;
+
+      @include respond-to-max($desktop-min) {
+        padding: toRem(12) !important;
+        height: toRem(122);
+      }
+
+      .catagory {
+        font-size: $font12;
+        margin-bottom: toRem(8);
+
+        @include respond-to-max($desktop-min) {
+          font-size: toRem(8);
+          letter-spacing: toRem(2);
+          line-height: toRem(12);
+        }
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $white;
+        margin: 0;
+      }
+    }
+
+    .tiles-box-list {
+      padding: toRem(24) toRem(16);
+
+      @include respond-to-max($desktop-min) {
+        padding: toRem(12);
+      }
+
+      ul {
+        margin-bottom: 1.45rem;
+
+        @include respond-to-max($desktop-min) {
+          margin-bottom: toRem(16);
+        }
+
+        li {
+          color: $steel-grey;
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+          margin-bottom: 1.125rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          @include respond-to-max($desktop-min) {
+            font-size: toRem(12);
+            line-height: 1.5;
+            margin-bottom: toRem(8);
+          }
+
+          img {
+            width: 20px;
+            height: 20px;
+            min-height: auto;
+            vertical-align: sub;
+            margin-right: 0.325rem;
+          }
+
+          &:last-child {
+            margin-bottom: 0 !important;
+          }
+
+          b,
+          strong {
+            color: $almost-black;
+
+            span {
+              font-size: 1.5rem;
+              line-height: 0;
+              vertical-align: middle;
+              display: inline-block;
+              height: 10px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      .detail-info-wrap-pricetag {
+        margin-top: 0;
+        padding-top: 0;
+
+        .price {
+          font-size: toRem(26);
+          line-height: normal;
+
+          @include respond-to-max($desktop-min) {
+            font-size: toRem(20);
+            line-height: toRem(25);
+          }
+        }
+
+        small {
+          font-size: $font14;
+          margin-left: toRem(4);
+          line-height: normal;
+
+          @include respond-to-max($desktop-min) {
+            font-size: toRem(10);
+            line-height: toRem(10);
+          }
+        }
+      }
+
+      .bottom-text {
+        font-size: toRem(14);
+        line-height: normal;
+        margin-top: toRem(4);
+
+        @include respond-to-max($desktop-min) {
+          font-size: toRem(10);
+          line-height: toRem(12);
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .smile-points {
+    padding: toRem(12) toRem(24);
+  
+    @include respond-to-max($desktop-min) {
+      padding: toRem(12) !important;
+    }
+    span {
+      font-size: $font14;
+      letter-spacing: toRem(0.5);
+      line-height: toRem(14);
+    }
+  }
+
+  .read-more {
+    display: block;
+
+    @include respond-to-max($desktop-min) {
+      display: none;
+    }
+  }
+
+  .bg-cards .plan-card.tile-table.plan-card .tile-card {
+    .tiles-box-list {
+      min-height: 207px;
     }
   }
 }

@@ -5,10 +5,16 @@ export const LOGIN_INIT = () => {
     let primaryNumber = localStorage.getItem("currentUserAccountNumber");
     $(".accountName").text(primaryNumber);
     $('a[href$="ecareLogin.html"]').parent("li").addClass("hidden");
+    if ($("html").attr("lang") === "ar") {
+      $('a[href$="ecareLogin.html?locale=ar"]').parent("li").addClass("hidden");
+    }
     $(".loggedInActions").removeClass("hidden");
   } else {
     $('a[href$="ecareLogin.html"]').parent("li").removeClass("hidden");
     $(".loggedInActions").addClass("hidden");
+    if ($("html").attr("lang") === "ar") {
+      $('a[href$="ecareLogin.html?locale=ar"]').parent("li").removeClass("hidden");
+    }
   }
 
   function logOutclick() {
