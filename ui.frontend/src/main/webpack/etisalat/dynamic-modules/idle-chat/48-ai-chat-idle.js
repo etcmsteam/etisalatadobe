@@ -332,12 +332,13 @@ export const IDLE_CHAT = () => {
   }
 
   function googleTracking(event) {
-    dataLayer.push({
+    // google tracking integrations is not completed once done will enable.
+    /* dataLayer.push({
       event: "needHelp",
       info1: "needHelp",
       info2: event,
       info3: window.location.pathname,
-    });
+    }); */
   }
 
   function getPlanName() {
