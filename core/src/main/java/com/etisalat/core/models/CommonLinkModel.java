@@ -79,4 +79,24 @@ public class CommonLinkModel {
 	  
 	  return etisalatApiService.getApiHostname();
 	}
+	
+  /**
+   * Gets the search endpoint url.
+   *
+   * @return the search endpoint url
+   */
+  public String getSearchEndpointUrl() {
+
+    return etisalatApiService.getSearchEndpointUrl();
+  }
+
+  /**
+   * Gets the auto suggest endpoint url.
+   *
+   * @return the auto suggest endpoint url
+   */
+  public String getAutoSuggestEndpointUrl() {
+
+    return etisalatApiService.getAutoSuggestEndpointUrl();
+  }
 }
