@@ -1,3 +1,6 @@
+import jQuery from 'jquery';
+import select2 from 'select2';
+
 /* eslint-disable no-undef */
 (function ($) {
   // Class
