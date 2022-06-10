@@ -1,30 +1,3 @@
-<style>
-     .hero-banner-placeholder__begin {
-          display: block;
-     }
-
-     .hero-banner-placeholder__done {
-          display: none;
-     }
-
-     .hero-banner-placeholder {
-          background: #e9e9e9;
-          height: 554px;
-     }
-     
-     @media (min-width: 768px) {
-          .hero-banner-placeholder {
-               height: 600px;
-          }
-     }
-     
-     @media (min-width: 992px) {
-          .hero-banner-placeholder {
-               height: 500px;
-          }
-     }
-
-</style>
 <div data-sly-use.carousel="com.adobe.cq.wcm.core.components.models.Carousel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-use.controlsTemplate="controls.html"
@@ -80,9 +53,15 @@
      </sly>
 </div>
 
+<sly data-sly-set.bannerVariation="${properties.heroBannerVariation ? properties.heroBannerVariation : 'herobanner-wst'}" />
+<sly data-sly-set.bannerPlaceholderVariation="${bannerVariation == 'herobanner-wst' ? 'cmp-herobanner-placeholder' : 'cmp-hero-images-placeholder'}" />
+<div
+    data-component="${bannerVariation == 'herobanner-wst' ? 'cmp-herobanner' : 'cmp-hero-images'}"
+    class="${!wcmmode.edit ? 'dynamic-module-placeholder' : 'd-none'} ${!wcmmode.edit ? bannerPlaceholderVariation : ''} ${bannerVariation} ${properties.heroImagesVariation} ${bannerVariation == 'herobanner-wst' ? '' : 'hero-images-variation'}"></div>
+    
 <sly data-sly-test="${properties.carouselLayout == 'etisalat-hero-banner' && (wcmmode.preview || wcmmode.disabled)}">        
   <!--/* variation for herobanner 4.0 */-->
-  <sly data-sly-test="${!properties.heroBannerVariation || properties.heroBannerVariation == 'herobanner-wst'}" 
+  <sly data-sly-test="${bannerVariation == 'herobanner-wst'}" 
        data-sly-use.heroBannerTemplate="etisalat-herobanner.html"
        data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/> 
              

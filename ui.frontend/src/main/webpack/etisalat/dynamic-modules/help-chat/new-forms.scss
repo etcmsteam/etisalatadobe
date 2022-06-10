@@ -1,0 +1,351 @@
+/* stylelint-disable*/
+.form input:not([type]),
+.form input[type="email"]:not(.browser-default),
+.form input[type="tel"]:not(.browser-default),
+.form input[type="text"]:not(.browser-default) {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #b2b2b2;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  color: $almost-black;
+  font-size: 1.25rem;
+  height: 2.5rem;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  position: relative;
+  transition: border 0.3s, -webkit-box-shadow 0.3s;
+  transition: box-shadow 0.3s, border 0.3s, -webkit-box-shadow 0.3s;
+  width: 100%;
+  z-index: 1;
+}
+
+.form input:not([type]):disabled,
+.form input:not([type])[readonly="readonly"],
+.form input[type="email"]:not(.browser-default):disabled,
+.form input[type="email"]:not(.browser-default)[readonly="readonly"],
+.form input[type="tel"]:not(.browser-default):disabled,
+.form input[type="tel"]:not(.browser-default)[readonly="readonly"],
+.form input[type="text"]:not(.browser-default):disabled,
+.form input[type="text"]:not(.browser-default)[readonly="readonly"],
+.form input[type="text"]:not(.browser-default)[readonly] {
+  border-bottom: 1px dashed #b2b2b2 !important;
+  box-shadow: none !important;
+  color: #848789;
+}
+
+.input-field {
+  input[type="number"]:not(.browser-default):disabled {
+    border-bottom: 0 !important;
+    display: inline-block;
+    font-weight: 600;
+    width: auto;
+  }
+}
+
+.form input:not([type]):disabled ~ label,
+.form input:not([type])[readonly="readonly"] ~ label,
+.form input[type="email"]:not(.browser-default):disabled ~ label,
+.form input[type="email"]:not(.browser-default)[readonly="readonly"] ~ label,
+.form input[type="tel"]:not(.browser-default):disabled ~ label,
+.form input[type="tel"]:not(.browser-default)[readonly="readonly"] ~ label,
+.form input[type="text"]:not(.browser-default):disabled ~ label,
+.form input[type="text"]:not(.browser-default)[readonly="readonly"] ~ label {
+  color: #848789;
+}
+
+.form input:not([type]):focus:not([readonly]),
+.form input[type="email"]:not(.browser-default):focus:not([readonly]),
+.form input[type="tel"]:not(.browser-default):focus:not([readonly]),
+.form input[type="text"]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid $main-green;
+  box-shadow: 0 1px 0 0 $main-green;
+  transform-origin: 0 0;
+  z-index: 0;
+}
+
+.form input:not([type]).ng-not-empty,
+.form input[type="email"]:not(.browser-default).ng-not-empty,
+.form input[type="tel"]:not(.browser-default).ng-not-empty,
+.form input[type="text"]:not(.browser-default).ng-not-empty {
+  z-index: 0;
+}
+
+*[lang="ar"] *[dir="rtl"] .form input:not([type]):focus:not([readonly]),
+*[lang="ar"] *[dir="rtl"] .form input[type="email"]:not(.browser-default):focus:not([readonly]),
+*[lang="ar"] *[dir="rtl"] .form input[type="tel"]:not(.browser-default):focus:not([readonly]),
+*[lang="ar"] *[dir="rtl"] .form input[type="text"]:not(.browser-default):focus:not([readonly]) {
+  transform-origin: 100% 50%;
+}
+
+.form input:not([type]):focus:not([readonly]) ~ label,
+.form input[type="email"]:not(.browser-default):focus:not([readonly]) ~ label,
+.form input[type="tel"]:not(.browser-default):focus:not([readonly]) ~ label,
+.form input[type="text"]:not(.browser-default):focus:not([readonly]) ~ label {
+  color: $main-green;
+  font-size: 1rem;
+  transform: translateY(-10px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+*[lang="ar"] *[dir="rtl"] .form input:not([type]):focus:not([readonly]) ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="email"]:not(.browser-default):focus:not([readonly]) ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="tel"]:not(.browser-default):focus:not([readonly]) ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="text"]:not(.browser-default):focus:not([readonly]) ~ label {
+  transform-origin: 100% 50%;
+}
+
+.form input:not([type]):focus.ng-untouched:not([readonly]) ~ label,
+.form input[type="email"]:not(.browser-default):focus.ng-untouched:not([readonly]) ~ label,
+.form input[type="tel"]:not(.browser-default):focus.ng-untouched:not([readonly]) ~ label,
+.form input[type="text"]:not(.browser-default):focus.ng-untouched:not([readonly]) ~ label {
+  color: $main-green;
+  transform: translateY(-10px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+textarea.materialize-textarea:focus.ng-untouched:not([readonly]) ~ label {
+  color: $main-green;
+  transform: translateY(10px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+*[lang="ar"] *[dir="rtl"] .form input:not([type]):focus.ng-untouched:not([readonly]) ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="email"]:not(.browser-default):focus.ng-untouched:not([readonly]) ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="tel"]:not(.browser-default):focus.ng-untouched:not([readonly]) ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="text"]:not(.browser-default):focus.ng-untouched:not([readonly]) ~ label {
+  transform-origin: 100% 50%;
+}
+
+input:not([type]).ng-valid.ng-not-empty ~ label,
+input[type="email"]:not(.browser-default).ng-valid.ng-not-empty ~ label,
+input[type="tel"]:not(.browser-default).ng-valid.ng-not-empty ~ label,
+input[type="text"]:not(.browser-default).ng-valid.ng-not-empty ~ label {
+  font-size: 1rem;
+  transform: translateY(-10px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+textarea.materialize-textarea.ng-valid.ng-not-empty ~ label {
+  font-size: 1rem;
+  transform: translateY(10px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+*[lang="ar"] *[dir="rtl"] .form input:not([type]).ng-valid.ng-not-empty ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="email"]:not(.browser-default).ng-valid.ng-not-empty ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="tel"]:not(.browser-default).ng-valid.ng-not-empty ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="text"]:not(.browser-default).ng-valid.ng-not-empty ~ label {
+  transform-origin: 100% 50%;
+}
+
+.form input:not([type]):focus.ng-invalid.ng-dirty:not([readonly]) ~ label,
+.form input[type="email"]:not(.browser-default):focus.ng-invalid.ng-dirty:not([readonly]) ~ label,
+.form input[type="tel"]:not(.browser-default):focus.ng-invalid.ng-dirty:not([readonly]) ~ label,
+.form input[type="text"]:not(.browser-default):focus.ng-invalid.ng-dirty:not([readonly]) ~ label {
+  color: $error-red;
+}
+
+.form input:not([type]).ng-invalid.ng-not-empty ~ label,
+.form input[type="email"]:not(.browser-default).ng-invalid.ng-not-empty ~ label,
+.form input[type="tel"]:not(.browser-default).ng-invalid.ng-not-empty ~ label,
+.form input[type="text"]:not(.browser-default).ng-invalid.ng-not-empty ~ label {
+  font-size: 1rem;
+  transform: translateY(-10px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+*[lang="ar"] *[dir="rtl"] .form input:not([type]).ng-invalid.ng-not-empty ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="email"]:not(.browser-default).ng-invalid.ng-not-empty ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="tel"]:not(.browser-default).ng-invalid.ng-not-empty ~ label,
+*[lang="ar"] *[dir="rtl"] .form input[type="text"]:not(.browser-default).ng-invalid.ng-not-empty ~ label {
+  transform-origin: 100% 50%;
+}
+
+.form input[type="email"].ng-valid.ng-not-empty:not(.browser-default),
+.form input[type="email"].ng-valid:not(.browser-default):focus,
+.form input[type="tel"].ng-valid.ng-not-empty:not(.browser-default),
+.form input[type="tel"].ng-valid:not(.browser-default):focus,
+.form input[type="text"].ng-valid.ng-not-empty:not(.browser-default),
+.form input[type="text"].ng-vali:not(.browser-default):focus,
+input.ng-valid:not([type]),
+input.ng-valid:not([type]):focus {
+  border-bottom: 1px solid $main-green;
+  box-shadow: 0 1px 0 0 $main-green;
+}
+
+.form input[type="email"].ng-invalid.ng-dirty:not(.browser-default),
+.form input[type="email"].ng-invalid.ng-dirty:not(.browser-default):focus,
+.form input[type="tel"].ng-invalid.ng-dirty:not(.browser-default),
+.form input[type="tel"].ng-invalid.ng-dirty:not(.browser-default):focus,
+.form input[type="text"].ng-invalid.ng-dirty:not(.browser-default),
+.form input[type="text"].ng-invalid.ng-dirty:not(.browser-default):focus,
+input.ng-invalid.ng-dirty:not([type]),
+input.ng-invalid.ng-dirty:not([type]):focus {
+  border-bottom: 1px solid $error-red;
+  box-shadow: 0 1px 0 0 $error-red;
+}
+
+.form input[type="text"].ng-invalid.ng-empty:not(.browser-default) {
+  border-bottom: 1px solid #b2b2b2;
+  box-shadow: none;
+}
+
+.form input:not([type]) ~ label::after,
+.form input[type="email"]:not(.browser-default) ~ label::after,
+.form input[type="tel"]:not(.browser-default) ~ label::after,
+.form input[type="text"]:not(.browser-default) ~ label::after {
+  content: "";
+  display: block;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  transition: 0.2s opacity ease-out, 0.2s color ease-out;
+  transition: 0.2s opacity ease-out, 0.2s color ease-out;
+}
+
+.input-field {
+  margin-bottom: 1.25rem;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.input-field.inline {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.input-field.col label {
+  left: 0.75rem;
+}
+
+.input-field.col .prefix ~ .validate ~ label,
+.input-field.col .prefix ~ label {
+  width: calc(100% - 3rem - 1.5rem);
+}
+
+.input-field > label,
+.input-field .intl-tel-input > label {
+  color: $almost-black;
+  cursor: text;
+  font-size: 1.25rem;
+  font-weight: normal;
+  left: 12px;
+  line-height: 24px;
+  overflow: hidden;
+  position: absolute;
+  text-align: initial;
+  text-overflow: ellipsis;
+  top: 0;
+  transform: translateY(10px);
+  transform: translateY(10px);
+  transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  transition: color 0.2s ease-out, -webkit-transform 0.2s ease-out;
+  transition: color 0.2s ease-out, -webkit-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
+  transition: transform 0.2s ease-out, color 0.2s ease-out, -webkit-transform 0.2s ease-out;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.input-field > label {
+  color: $steel-grey;
+}
+
+// intlTelInput starts //
+.input-field .intl-tel-input {
+  display: flex;
+}
+
+.input-field .intl-tel-input > label {
+  left: 4.6rem;
+}
+
+.input-field .intl-tel-input > label.floating-label {
+  color: #353738 !important;
+  font-size: 1rem !important;
+  top: 0 !important;
+}
+
+.input-field #valid-msg {
+  display: none;
+}
+
+// intlTelInput ends //
+.textarea.input-field > label {
+  left: 24px;
+}
+
+*[lang="ar"] *[dir="rtl"] .input-field > label {
+  left: auto;
+  right: 12px;
+  text-align: right;
+  transform-origin: 100% 0;
+  width: 94%;
+}
+
+*[lang="ar"] *[dir="rtl"] .input-field.textarea > label {
+  right: 24px;
+}
+
+.input-field > label:not(.label-icon).active {
+  transform: translateY(-10px) scale(0.8);
+  transform-origin: 0 0;
+}
+
+.input-field p {
+  text-align: left;
+}
+
+*[lang="ar"] *[dir="rtl"] .input-field p {
+  text-align: right;
+}
+
+/* date bicker */
+.input-field .inner-icon {
+  position: absolute;
+  right: 0;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+}
+
+*[lang="ar"] *[dir="rtl"] .input-field .inner-icon {
+  left: 1rem;
+  right: auto;
+}
+
+.input-field span svg {
+  fill: $main-green;
+  height: 16px;
+  width: 16px;
+}
+
+.input-field label.floating-label {
+  color: #848789 !important;
+  font-size: 0.75rem !important;
+  top: -1rem !important;
+}
+
+.input-field .inner-icon svg {
+  stroke: #353738;
+}
+
+.input-field .inner-icon svg * {
+  stroke: #353738;
+}
+
+.form.wst-form .form-group .valid ~ label,
+.form.wst-form .form-group input:valid ~ label {
+  color: #353738;
+  font-size: 1rem;
+  transform: translateY(-10px) scale(0.8);
+  transform-origin: 0 0;
+  z-index: 2;
+}

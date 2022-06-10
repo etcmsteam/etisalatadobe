@@ -52,6 +52,7 @@ export const OMNI_LEAD_FORM = () => {
       .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
   }
 
+
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
     FORM_ERROR($FORM);
@@ -132,8 +133,12 @@ export const OMNI_LEAD_FORM = () => {
 
         encode: true,
       })
-        .done(function () {
+        .done(function (response) {
           FORM_SUCCESS($FORM, PAYLOAD);
+          if (response["status.code"] === 200) {
+            let RE_URL = `${window.location.origin}/en/smb/offers/extra-allowance/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
+            window.location.href = RE_URL;
+          }
           return true;
         })
         .fail(submitErrorResponse);
