@@ -327,6 +327,10 @@ input.ng-invalid.ng-dirty:not([type]):focus {
   transform: translateY(-10px) scale(0.8);
   transform-origin: 0 0;
   z-index: 2;
+
+  @include rtlBlock {
+    transform-origin: 100% 50% !important;
+  }
 }
 
 .form.wst-form {
@@ -340,12 +344,16 @@ input.ng-invalid.ng-dirty:not([type]):focus {
         fill: #fb193f;
         width: 1.6rem;
         height: 1.6rem;
-        //top: 2.5rem;
         right: 0.5rem;
         position: absolute;
         top: 0.5rem;
         z-index: 2;
         background-color: white;
+
+        @include rtlBlock {
+          left: 0.5rem;
+          right: auto;
+        }
       }
     }
     .alert-label {
@@ -364,6 +372,11 @@ input.ng-invalid.ng-dirty:not([type]):focus {
       font-size: 14px;
       text-transform: capitalize;
       font-weight: 400;
+
+      @include rtlBlock {
+        text-align: right;
+      }
+
       svg {
         display: none;
       }
@@ -385,6 +398,9 @@ input.ng-invalid.ng-dirty:not([type]):focus {
         transform-origin: 0 0;
         font-size: 1rem;
         z-index: 2;
+        @include rtlBlock {
+          transform-origin: 100% 50% !important;
+        }
       }
     }
     &.textarea {
