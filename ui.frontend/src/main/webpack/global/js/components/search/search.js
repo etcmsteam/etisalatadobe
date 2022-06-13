@@ -1,3 +1,4 @@
+/* eslint-disable */
 
       function debounce(func, wait, immediate) {
         var timeout;
@@ -23,7 +24,7 @@
         var doc = document;
         var searchInput = doc.querySelectorAll(".search-input");
 
-        var searchCallUrl = doc.getElementById("searchForm") &&  doc.getElementById("searchForm").action;
+        var searchCallUrl = doc.getElementById("searchForm") &&  doc.getElementById("searchForm").action + "?locale=" + document.documentElement.lang + "-AE";;
         // https://www.etisalat.ae/b2c/autoSuggest.service?locale=en-AE
         var guidedSearchCall = doc.getElementById("searchForm") && doc.getElementById("searchForm").getAttribute("data-secondary-search");
         // https://qacms-uat.etisalat.ae/b2c/guidedSearchRequest.service?locale=en-AE
@@ -294,10 +295,10 @@
         //Check search list item and return redirect URL
         var getURL = function (item) {
           var deviceConfigUrl = {
-            postpaid: "https://www.etisalat.ae/b2c/eshop/postpaidLine?productId=",
-            prepaid: "https://www.etisalat.ae/b2c/eshop/prepaidLine?productId=",
-            elife: "https://www.etisalat.ae/b2c/eshop/elifePlanConfiguration?productId=",
-            device: "https://www.etisalat.ae/b2c/eshop/device-configuration?productId=",
+            postpaid: "/b2c/eshop/postpaidLine?productId=",
+            prepaid: "/b2c/eshop/prepaidLine?productId=",
+            elife: "/b2c/eshop/elifePlanConfiguration?productId=",
+            device: "/b2c/eshop/device-configuration?productId=",
           };
 
           if (item.attributes["record.source"][0] === "ProductCatalog") {

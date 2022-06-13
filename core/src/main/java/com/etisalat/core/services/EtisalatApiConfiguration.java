@@ -22,6 +22,12 @@ public @interface EtisalatApiConfiguration {
     
     @AttributeDefinition(name = "Api Hostname", description = "Api Hostname")
     String getApiHostname() default "https://qacms-uat.etisalat.ae";
+    
+    @AttributeDefinition(name = "Auto Suggest Endpoint Url", description = "Auto Suggest Endpoint Url")
+    String getAutoSuggestEndpointUrl() default "/b2c/autoSuggest.service";
+    
+    @AttributeDefinition(name = "Search Endpoint Url", description = "Search Endpoint Url")
+    String getSearchEndpointUrl() default "/b2c/guidedSearchRequest.service";
 
 }
 
