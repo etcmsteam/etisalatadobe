@@ -3,7 +3,7 @@
 (function ($) {
 
     // GA Main menu on menu item click
-    $("a").on("click", function (e) {
+    $("a").on("click", function () {
         var $self = $(this);
         var linkText;
         // e.preventDefault();
@@ -24,12 +24,12 @@
     $(".hero-banner-section")
       .off()
       .on("click", ".hero-details .btn", function () {
-        var ga_event = $(this).closest(".hero-image-section").find("input[name=event]");
-        var ga_ev_cat = $(this).closest(".hero-image-section").find("input[name=ev_cat]");
+       // var ga_event = $(this).closest(".hero-image-section").find("input[name=event]");
+       // var ga_ev_cat = $(this).closest(".hero-image-section").find("input[name=ev_cat]");
 
         // event dynamic values
-        var ga_event_value = $(ga_event).val();
-        var ga_ev_cat_value = $(ga_ev_cat).val();
+        var ga_event_value = "test";
+        var ga_ev_cat_value = "test";
 
         // title of the CTA
         var ctaTitle = $(this).closest(".hero-details").find(".hero-title").text().trim();
