@@ -1088,3 +1088,37 @@
     }
   }
 }
+
+.wst-grid {
+  .cmp-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    row-gap: 0.5rem;
+    @include respond-to-min($desktop) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      column-gap: toRem(24);
+      row-gap: 1.5625rem;
+    }
+    .wstpromotile {
+      grid-row: span 1;
+      grid-column: span 1;
+      @include respond-to-min($desktop) {
+        &.vertical-stretch {
+          grid-row: span 2;
+        }
+        &.horizontal-stretch {
+          grid-column: span 2;
+        }
+      }
+      .promo-grid {
+        &.large-tile,
+        &.small-tile,
+        &.medium-tile {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
