@@ -1,4 +1,5 @@
 import "./js/analytics/analytics-events.js";
+import "./js/analytics/googleAnalytics.js";
 import { VIEW_MORE_TOGGLE } from "./js/custom-components/overview-section";
 import { GLOBALFOOTPRINT } from "./js/custom-components/globalfootprintcontainer";
 import { TAB_SWIPER } from "./js/custom-components/tab-swiper";
