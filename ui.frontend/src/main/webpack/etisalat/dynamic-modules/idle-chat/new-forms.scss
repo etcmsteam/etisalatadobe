@@ -1,6 +1,7 @@
 /* stylelint-disable*/
 .form input:not([type]),
 .form input[type="email"]:not(.browser-default),
+.form input[type="password"]:not(.browser-default),
 .form input[type="tel"]:not(.browser-default),
 .form input[type="text"]:not(.browser-default) {
   background-color: transparent;
@@ -61,7 +62,7 @@
 .form input[type="tel"]:not(.browser-default):focus:not([readonly]),
 .form input[type="text"]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid $main-green;
-  box-shadow: 0 1px 0 0 $main-green;
+  box-shadow: 0 0 0 0 $main-green;
   transform-origin: 0 0;
   z-index: 0;
 }
@@ -204,7 +205,6 @@ input.ng-invalid.ng-dirty:not([type]):focus {
   position: absolute;
   top: 100%;
   transition: 0.2s opacity ease-out, 0.2s color ease-out;
-  transition: 0.2s opacity ease-out, 0.2s color ease-out;
 }
 
 .input-field {
@@ -242,12 +242,8 @@ input.ng-invalid.ng-dirty:not([type]):focus {
   text-overflow: ellipsis;
   top: 0;
   transform: translateY(10px);
-  transform: translateY(10px);
-  transform-origin: 0 100%;
   transform-origin: 0 100%;
   transition: color 0.2s ease-out, -webkit-transform 0.2s ease-out;
-  transition: color 0.2s ease-out, -webkit-transform 0.2s ease-out;
-  transition: transform 0.2s ease-out, color 0.2s ease-out;
   transition: transform 0.2s ease-out, color 0.2s ease-out, -webkit-transform 0.2s ease-out;
   white-space: nowrap;
   z-index: 0;
@@ -276,21 +272,12 @@ input.ng-invalid.ng-dirty:not([type]):focus {
   display: none;
 }
 
-// intlTelInput ends //
-.textarea.input-field > label {
-  left: 24px;
-}
-
 *[lang="ar"] *[dir="rtl"] .input-field > label {
   left: auto;
   right: 12px;
   text-align: right;
   transform-origin: 100% 0;
   width: 94%;
-}
-
-*[lang="ar"] *[dir="rtl"] .input-field.textarea > label {
-  right: 24px;
 }
 
 .input-field > label:not(.label-icon).active {
@@ -333,14 +320,6 @@ input.ng-invalid.ng-dirty:not([type]):focus {
   top: -1rem !important;
 }
 
-.input-field .inner-icon svg {
-  stroke: #353738;
-}
-
-.input-field .inner-icon svg * {
-  stroke: #353738;
-}
-
 .form.wst-form .form-group .valid ~ label,
 .form.wst-form .form-group input:valid ~ label {
   color: #353738;
@@ -348,4 +327,187 @@ input.ng-invalid.ng-dirty:not([type]):focus {
   transform: translateY(-10px) scale(0.8);
   transform-origin: 0 0;
   z-index: 2;
+
+  @include rtlBlock {
+    transform-origin: 100% 50% !important;
+  }
+}
+
+.form.wst-form {
+  .has-error-fields {
+    border-color: $error-red;
+
+    .icon-error,
+    .alert-icon {
+      display: block;
+      svg {
+        fill: #fb193f;
+        width: 1.6rem;
+        height: 1.6rem;
+        right: 0.5rem;
+        position: absolute;
+        top: 0.5rem;
+        z-index: 2;
+        background-color: white;
+
+        @include rtlBlock {
+          left: 0.5rem;
+          right: auto;
+        }
+      }
+    }
+    .alert-label {
+      color: $error-red;
+      line-height: 1rem;
+      height: 1rem;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      position: absolute;
+      top: 3rem;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      text-transform: capitalize;
+      font-weight: 400;
+
+      @include rtlBlock {
+        text-align: right;
+      }
+
+      svg {
+        display: none;
+      }
+    }
+    input,
+    textarea {
+      border-bottom: 1px solid $error-red;
+      color: $error-red !important;
+      -webkit-text-fill-color: $error-red !important;
+    }
+    label {
+      color: $error-red !important;
+    }
+    .has-error {
+      ~ label {
+        -webkit-transform: translateY(-10px) scale(0.8);
+        transform: translateY(-10px) scale(0.8);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        font-size: 1rem;
+        z-index: 2;
+        @include rtlBlock {
+          transform-origin: 100% 50% !important;
+        }
+      }
+    }
+    &.textarea {
+      .has-error {
+        ~ label {
+          -webkit-transform: translateY(10px) scale(0.8);
+          transform: translateY(10px) scale(0.8);
+        }
+      }
+      .alert-label {
+        bottom: -20px;
+        top: auto;
+      }
+      .alert-icon {
+        svg {
+          right: 1.25rem;
+        }
+      }
+    }
+    .intl-tel-input {
+      > label {
+        -webkit-transform: translateY(-10px) scale(0.8);
+        transform: translateY(-10px) scale(0.8);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        font-size: 1rem;
+        z-index: 2;
+      }
+    }
+    #error-msg {
+      color: $error-red;
+    }
+  }
+
+  *[lang="ar"] *[dir="rtl"] {
+    .has-error-fields {
+      .icon-error,
+      .alert-icon {
+        svg {
+          right: auto;
+          left: 0.5rem;
+        }
+      }
+      .alert-label {
+        text-align: right;
+      }
+      &.textarea {
+        .icon-error,
+        .alert-icon {
+          svg {
+            left: 1.25rem;
+          }
+        }
+        .has-error {
+          ~ label {
+            right: 1.25rem;
+          }
+        }
+        .valid {
+          ~ label {
+            right: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.phone-input-group {
+  display: flex;
+  justify-content: space-around;
+
+  &.nv-lg {
+    input[type="number"],
+    input[type="password"] {
+      border: 0;
+      border-bottom: 2px solid $sand-white;
+      width: 36px;
+      color: $sand-white;
+      height: 2rem;
+      line-height: 1;
+      text-align: center;
+    }
+  }
+}
+
+.nv-need-help-chat-wrapper {
+  .nv-chat-details {
+    .phone-input-group {
+      .has-error-fields {
+        input,
+        input:focus {
+          border-bottom: 2px solid $error-red;
+          color: $error-red;
+        }
+      }
+    }
+  }
+}
+
+.form.wst-form {
+  .has-error-fields {
+    input,
+    textarea {
+      border-bottom: 1px solid $error-red;
+      color: $error-red !important;
+      -webkit-text-fill-color: #be1218 !important;
+    }
+  }
 }

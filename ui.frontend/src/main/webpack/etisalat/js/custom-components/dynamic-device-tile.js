@@ -235,7 +235,7 @@ export const DYNAMIC_DEVICE_TILE = () => {
     $(".main-loader").show();
     const { categoryid } = elem?.data() || {};
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
-    const url = `/b2c/eshop/getProductsByCategory?locale=${locale}`;
+    const url = `https://www.etisalat.ae/b2c/eshop/getProductsByCategory?locale=${locale}`;
     const payload = {
       No: "0",
       Nrpp: "100",
