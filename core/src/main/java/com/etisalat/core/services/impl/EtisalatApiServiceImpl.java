@@ -34,6 +34,12 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 	
 	/** The api hostname. */
 	private String apiHostname;
+	
+	/** The auto search url. */
+	private String autoSearchUrl;
+	
+	/** The search endpoint url. */
+	private String searchEndpointUrl;
 
 	/**
 	 * Activate.
@@ -47,6 +53,8 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 		this.proxyApiUrl = PropertiesUtil.toString(config.getProxyApiUrl(), AEConstants.NO_CONFIG_FOUND);
 		this.timeOut = PropertiesUtil.toInteger(config.getSetTimeout(), 6000);
 		this.apiHostname = PropertiesUtil.toString(config.getApiHostname(), AEConstants.NO_CONFIG_FOUND);
+		this.autoSearchUrl = PropertiesUtil.toString(config.getAutoSuggestEndpointUrl(), AEConstants.NO_CONFIG_FOUND);
+    this.searchEndpointUrl = PropertiesUtil.toString(config.getSearchEndpointUrl(), AEConstants.NO_CONFIG_FOUND);
 	}
 	
 	/**
@@ -88,5 +96,25 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 	public String getApiHostname() {
 	  return this.apiHostname;
 	}
+
+  /**
+   * Gets the auto suggest endpoint url.
+   *
+   * @return the auto suggest endpoint url
+   */
+  @Override
+  public String getAutoSuggestEndpointUrl() {   
+    return this.autoSearchUrl;
+  }
+
+  /**
+   * Gets the search endpoint url.
+   *
+   * @return the search endpoint url
+   */
+  @Override
+  public String getSearchEndpointUrl() {    
+    return this.searchEndpointUrl;
+  }
 
 }

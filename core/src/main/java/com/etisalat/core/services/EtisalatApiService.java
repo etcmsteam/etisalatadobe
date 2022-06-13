@@ -33,6 +33,21 @@ public interface EtisalatApiService {
      * @return the api hostname
      */
     String getApiHostname();
+    
+    
+    /**
+     * Gets the auto suggest endpoint url.
+     *
+     * @return the auto suggest endpoint url
+     */
+    String getAutoSuggestEndpointUrl();
+    
+    /**
+     * Gets the search endpoint url.
+     *
+     * @return the search endpoint url
+     */
+    String getSearchEndpointUrl();
 
 
 }
