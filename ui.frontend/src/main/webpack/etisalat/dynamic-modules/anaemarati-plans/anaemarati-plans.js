@@ -38,9 +38,12 @@ const initActions = () => {
       $("body").addClass("freeze");
     }
   };
+
   var popUpEligibilityActive = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+    /* 
+      WARNING: DO NOT PREVENT THIS EVENT(preventDefault()) OR STOP THE EVENT PROPAGATION (stopPropagation()). 
+      It can break the GA implementation. Check googleAnalytics.js
+    */
 
     var btn = $(this);
     var popup = $("#eligibility-summary");
@@ -54,7 +57,6 @@ const initActions = () => {
     $(popup)
       .find(".leadUrl")
       .attr("href", $(popup).find(".leadUrl").attr("href") + btn.closest(".nv-plan-card").find(".nv-product-name").text());
-    return false;
   };
   // close popup
   var closePopUp = function (e) {
@@ -135,25 +137,25 @@ export const ANAEMARATI_CARDS = () => {
     // /content/dam/etisalat/prod-mock-assets/anaemarat-gold-plans-data-ar.json
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toLowerCase() : "en";
     const DATA_PARAMS = $rootThis.data();
-    /* const defaultDataPath =
+    const defaultDataPath =
       locale === "en"
         ? "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json"
-        : "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data-ar.json"; */
+        : "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data-ar.json";
 
-    const defaultDataPath = '/b2c/eshop/getProductsByCategory';
-        
+    // const defaultDataPath = '/b2c/eshop/getProductsByCategory';
+
     const {
       jsonUrl: DATA_URL,
       jsonPath: DATA_PATH = defaultDataPath,
       categoryId: CATEGORY_ID = "cat1090015",
-      requestMethod: REQUEST_METHOD = "POST",
-      enableReqParams: ENABLE_REQ_PARAMS = 'yes',
+      requestMethod: REQUEST_METHOD = "GET",
+      enableReqParams: ENABLE_REQ_PARAMS,
       ctaUrl: CTA_URL = "/b2c/eshop/postpaidLine?",
-      hostName: HOST_NAME = ''
+      hostName: HOST_NAME = "",
     } = DATA_PARAMS;
 
     // let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
-       let url = DATA_URL || `${DATA_PATH}`;
+    let url = DATA_URL || `${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
       url = `${url}?locale=${locale}&isApplyDefaultFilters=false`;
