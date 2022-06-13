@@ -64,4 +64,19 @@
           }
         });
 
+
+      // View all benifites click
+      $(".benefit-section")
+        .off()
+        .on("click", "a", function () {
+          var ctaTitle = $(this).parent().parent().find(".benefits-main-title")[0].innerText.trim();
+          if (typeof window.dataLayer !== "undefined") {
+            dataLayer.push({
+              event: "see_allbenefits_links_allpages",
+              eventCategory: "see_allbenefits_links_allpages",
+              eventAction: ctaTitle,
+            });
+          }
+        });
+
 })(jQuery);
