@@ -331,10 +331,10 @@ export const ANAEMARATI_CARDS = () => {
     function getCardsData(url, payload, cardType) {
       $.ajax({
         dataType: "json",
-        type: "GET",
-        url: "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json",
+        type: REQUEST_METHOD,
+        url,
         contentType: "application/json; charset=utf-8",
-        // data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
+        data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
           var htmlCards = getPlansCard(res, cardType);
           var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
@@ -368,7 +368,7 @@ export const ANAEMARATI_CARDS = () => {
             }
           }
 
-          $(document).trigger('ANA_EMARATI_PLANS_LOADED', { $productRow: productRow });
+          $(document).trigger("ANA_EMARATI_PLANS_LOADED", { $productRow: productRow });
         },
       });
     }
