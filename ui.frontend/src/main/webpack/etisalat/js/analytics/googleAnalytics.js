@@ -1,4 +1,4 @@
-/* eslint-disable no-undef,vars-on-top,func-names,no-param-reassign */
+/* eslint-disable no-undef,vars-on-top,func-names,no-param-reassign,max-len */
 (function ($) {
   var dataLayer = window.dataLayer || [];
   // GA Main menu on menu item click
@@ -74,11 +74,10 @@
         });
       }
     });
-  
+
   function getParameterByName(name, href) {
     name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
     var regexS = "[\\?&]" + name + "=([^&#]*)";
-    // eslint-disable
     var regex = new RegExp(regexS);
     var results = regex.exec(href);
 
@@ -87,91 +86,163 @@
   }
 
   // Emirati Plans Click Impression start -----
-  $(".productdetail").on(
-    "click",
-    ".gold-plans .swiper-wrapper .swiper-slide .btn-buy-now, .silver-plans .swiper-wrapper .swiper-slide .btn-buy-now",
-    function (e) {
-      var curnt = $(this).attr("data-target");
-      e.preventDefault();
-      
-      var productClicked = {};
-      var selectedProductMain = $(this).closest(".nv-card-wrapper");
+  $(".productdetail").on("click", ".gold-plans .swiper-wrapper .swiper-slide .btn-buy-now, .silver-plans .swiper-wrapper .swiper-slide .btn-buy-now", function (e) {
+    var curnt = $(this).attr("data-target");
+    e.preventDefault();
+
+    var productClicked = {};
+    var selectedProductMain = $(this).closest(".nv-card-wrapper");
+    var name = selectedProductMain.find(".nv-product-name").text();
+    var brand = selectedProductMain.find(".nv-brand").text();
+    var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
+
+    var position = selectedProductMain.parent().index() + 1;
+    var category = getParameterByName("catName", curnt);
+    var actionList = getParameterByName("listVal", curnt);
+    var id = getParameterByName("productId", curnt);
+
+    productClicked = {
+      event: "productClick",
+      ecommerce: {
+        click: {
+          actionField: {
+            list: actionList,
+          },
+          products: [
+            {
+              name: name,
+              /* String - Product Name */
+              id: id,
+              /* String - Product ID */
+              price: price,
+              /* String - Product Price */
+              brand: brand,
+              /* String - Product Brand */
+              category: category,
+              /* String - Product Category */
+              dimension1: "",
+              /* String - Capacity 1 (if available) */
+              dimension2: "",
+              /* String - Capacity 2 Bundle (if available) */
+              dimension3: "",
+              /* String - Size (if available) */
+              dimension4: "",
+              /* String - Color 1 (if available) */
+              dimension5: "",
+              /* String - Color 2 Bundle (if available) */
+              dimension6: "",
+              /* String - Strap Type (if available) */
+              dimension7: "",
+              /* String - Strap Color (if available) */
+              dimension8: "",
+              /* String - Connectivity (if available) */
+              dimension9: "",
+              /* String - Payment Method (if available) */
+              dimension10: "",
+              /* String - Number Selection Option (if available) */
+              dimension11: "",
+              /* String - Number Selected (if available) */
+              dimension12: "",
+              /* String - Plan Selected (if available)  */
+              dimension13: "",
+              /* String - Add-On Name 1 (if available) */
+              dimension14: "",
+              /* String - Add-On Name 2 (if available) */
+              dimension15: "",
+              /* String - Add-On Payment Option 1 (if available) */
+              dimension16: "",
+              /* String - Add-On Payment Option 2 (if available) */
+              dimension17: "",
+              /* String - Availability (if available)   */
+              position: position /* Number - Position in the list */,
+            },
+          ],
+        },
+      },
+    };
+
+    dataLayer.push(productClicked);
+    // window.location = curnt;
+  });
+  // Emirati Plans Click Impression end -----
+
+  // Emirati Plans load Impression start -----
+  $(document).on("ANA_EMARATI_PLANS_LOADED", (event, { $productRow }) => {    
+    var allProductImpressions = {
+      event: "productImpressions",
+      ecommerce: {
+        currencyCode: "AED",
+        impressions: [],
+      },
+    };
+
+    $productRow.children(".swiper-slide").each(function () {
+      var productImpression = {};
+
+      var selectedProductMain = $(this).find(".nv-card-wrapper");
       var name = selectedProductMain.find(".nv-product-name").text();
       var brand = selectedProductMain.find(".nv-brand").text();
       var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
-
-      var position = selectedProductMain.parent().index() + 1;
+      var position = $(this).index() + 1;
+      var curnt = selectedProductMain.find(".btn-buy-now").attr("data-target");
+      var list = getParameterByName("listVal", curnt);
       var category = getParameterByName("catName", curnt);
-      var actionList = getParameterByName("listVal", curnt);
       var id = getParameterByName("productId", curnt);
 
-      productClicked = {
-        event: "productClick",
-        ecommerce: {
-          click: {
-            actionField: {
-              list: actionList,
-            },
-            products: [
-              {
-                name: name,
-                /* String - Product Name */
-                id: id,
-                /* String - Product ID */
-                price: price,
-                /* String - Product Price */
-                brand: brand,
-                /* String - Product Brand */
-                category: category,
-                /* String - Product Category */
-                dimension1: "",
-                /* String - Capacity 1 (if available) */
-                dimension2: "",
-                /* String - Capacity 2 Bundle (if available) */
-                dimension3: "",
-                /* String - Size (if available) */
-                dimension4: "",
-                /* String - Color 1 (if available) */
-                dimension5: "",
-                /* String - Color 2 Bundle (if available) */
-                dimension6: "",
-                /* String - Strap Type (if available) */
-                dimension7: "",
-                /* String - Strap Color (if available) */
-                dimension8: "",
-                /* String - Connectivity (if available) */
-                dimension9: "",
-                /* String - Payment Method (if available) */
-                dimension10: "",
-                /* String - Number Selection Option (if available) */
-                dimension11: "",
-                /* String - Number Selected (if available) */
-                dimension12: "",
-                /* String - Plan Selected (if available)  */
-                dimension13: "",
-                /* String - Add-On Name 1 (if available) */
-                dimension14: "",
-                /* String - Add-On Name 2 (if available) */
-                dimension15: "",
-                /* String - Add-On Payment Option 1 (if available) */
-                dimension16: "",
-                /* String - Add-On Payment Option 2 (if available) */
-                dimension17: "",
-                /* String - Availability (if available)   */
-                position: position /* Number - Position in the list */,
-              },
-            ],
-          },
-        },
+      productImpression = {
+        name: name,
+        /* String - Product Name */
+        id: id,
+        /* String - Product ID */
+        price: price,
+        /* String - Product Price */
+        brand: brand,
+        /* String - Product Brand */
+        category: category,
+        /* String - Product Category */
+        list: list,
+        /* String - Product List Name */
+        dimension1: "",
+        /* String - Capacity 1 (if available) */
+        dimension2: "",
+        /* String - Capacity 2 Bundle (if available) */
+        dimension3: "",
+        /* String - Size (if available) */
+        dimension4: "",
+        /* String - Color 1 (if available) */
+        dimension5: "",
+        /* String - Color 2 Bundle (if available) */
+        dimension6: "",
+        /* String - Strap Type (if available) */
+        dimension7: "",
+        /* String - Strap Color (if available) */
+        dimension8: "",
+        /* String - Connectivity (if available) */
+        dimension9: "",
+        /* String - Payment Method (if available) */
+        dimension10: "",
+        /* String - Number Selection Option (if available) */
+        dimension11: "",
+        /* String - Number Selected (if available) */
+        dimension12: "",
+        /* String - Plan Selected (if available) */
+        dimension13: "",
+        /* String - Add-On Name 1 (if available) */
+        dimension14: "",
+        /* String - Add-On Name 2 (if available) */
+        dimension15: "",
+        /* String - Add-On Payment Option 1 (if available) */
+        dimension16: "",
+        /* String - Add-On Payment Option 2 (if available) */
+        dimension17: "",
+        /* String - Availability (if available)   */
+        position: position /* Number - Position in the list */,
       };
 
-      dataLayer.push(productClicked);
-      // window.location = curnt;
-    },
-  );
-  // Emirati Plans Click Impression end ----- 
+      allProductImpressions.ecommerce.impressions.push(productImpression);
+    });
 
-
-
-
+    dataLayer.push(allProductImpressions);
+  });
+  // Emirati Plans load Impression end -----
 })(jQuery);
