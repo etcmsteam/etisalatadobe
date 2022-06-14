@@ -146,8 +146,8 @@ export const NEED_HELP_FORM = () => {
           } else {
             FORM_ERROR($FORM, "API error", response);
           }
-          
-          submitSuccessResponse;
+
+          submitSuccessResponse();
         })
         .fail(submitErrorResponse);
       return false;

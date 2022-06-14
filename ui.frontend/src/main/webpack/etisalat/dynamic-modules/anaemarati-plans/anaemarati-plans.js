@@ -367,6 +367,8 @@ export const ANAEMARATI_CARDS = () => {
                 });
             }
           }
+
+          $(document).trigger('ANA_EMARATI_PLANS_LOADED', { $productRow: productRow });
         },
       });
     }
