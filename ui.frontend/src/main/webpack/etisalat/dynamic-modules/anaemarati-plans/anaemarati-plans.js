@@ -1,4 +1,5 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import './index.scss';
 
 /* eslint-disable */
 const setSpacebetweenTableCarousel = (parent) => {
