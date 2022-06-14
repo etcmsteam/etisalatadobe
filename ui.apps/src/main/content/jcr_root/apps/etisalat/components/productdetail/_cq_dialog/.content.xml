@@ -150,7 +150,7 @@
                                         <items jcr:primaryType="nt:unstructured">
                                           <gridlayout
 										        granite:class="cq-dialog-dropdown-showhide"
-                                                jcr:primaryType="nt:unstructured"                                                
+                                                jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 defaultValue="producttile"
                                                 fieldLabel="Display layout as a"
@@ -179,11 +179,11 @@
                                                     <elifeaddonstile
                                                         jcr:primaryType="nt:unstructured"
                                                         text="ELife AddonsTile"
-                                                        value="elifeaddonstile"/>                                                                                                
+                                                        value="elifeaddonstile"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
-                                                    cq-dialog-dropdown-showhide-target=".gridlayout-showhide-target"/>                                                
+                                                    cq-dialog-dropdown-showhide-target=".gridlayout-showhide-target"/>
                                             </gridlayout>
                                             <slidecheckbox
                                                 jcr:primaryType="nt:unstructured"
@@ -267,24 +267,6 @@
                                                 value="bestsellercard"/>
                                         </items>
                                     </dynamicgridlayout>
-                                    <flagText
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Text that will appear near Country Flag"
-                                        fieldLabel="Flag Text"
-                                        name="./flagText"/>
-                                    <contractText
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Text that will appear for Contract Plan Cards"
-                                        fieldLabel="Contract Plan Text "
-                                        name="./contractText"/>
-                                    <noncontractText
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Text that will appear for Non Contract Plan Cards"
-                                        fieldLabel="Non Contract Plan Text"
-                                        name="./noncontractText"/>
                                     <listlayout
                                         jcr:primaryType="nt:unstructured"
                                         granite:class="cq-dialog-dropdown-showhide"
@@ -327,6 +309,174 @@
                                             showhidetargetvalue="loadmore"
                                             showhidetargetvalue1="noncontractbutton"/>
                                     </buttonlistlayout>
+                                    <anaemaratidetails
+                                        granite:class="listlayout-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <flagText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text that will appear near Country Flag"
+                                                fieldLabel="Flag Text"
+                                                name="./flagText"/>
+                                            <contractText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text that will appear for Contract Plan Cards"
+                                                fieldLabel="Contract Plan Text "
+                                                name="./contractText"/>
+                                            <noncontractText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text that will appear for Non Contract Plan Cards"
+                                                fieldLabel="Non Contract Plan Text"
+                                                name="./noncontractText"/>
+                                            <modaldetails
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title=" Modal Popup Details - Buy Now Button"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <modalpretitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Text that will appear modal popup pretitle"
+                                                        fieldLabel="Pretitle-Buy Now Button Modal Popup "
+                                                        maxlength="{Long}40"
+                                                        name="./bnpretitle"/>
+                                                    <simdetails
+                                                        jcr:primaryType="nt:unstructured"
+                                                        jcr:title="SIM card section Text Details"
+                                                        sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <simtitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Text that will appear for SIM section title"
+                                                                fieldLabel="SIM section Title "
+                                                                maxlength="{Long}40"
+                                                                name="./simtitle"/>
+                                                            <simpretext
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Text that will appear before SIM plan offer"
+                                                                fieldLabel="SIM offer PreText "
+                                                                maxlength="{Long}50"
+                                                                name="./simpretext"/>
+                                                            <simposttext
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Text that will appear after SIM plan offer"
+                                                                fieldLabel="SIM offer PostText"
+                                                                maxlength="{Long}50"
+                                                                name="./simposttext"/>
+                                                            <simctatitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Enter SIM section CTA Title"
+                                                                fieldLabel="SIM section CTA Title"
+                                                                name="./simctatitle"/>
+                                                            <simctaStyle jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldDescription="Select SIM CTA Style"
+                                                            fieldLabel=" SIM CTA Style"
+                                                            name="./simctaStyle">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                <defaultButton
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Default Button"
+                                                                    value="btn btn-default"/>
+                                                                <transparentButton
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Transparent Button"
+                                                                    value="btn btn-default btn-transparent"/>
+                                                                <greenButton
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Green Button"
+                                                                    value="btn btn-green"/>
+                                                                <orangeButton
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Orange Button"
+                                                                    value="btn btn-orange"/>
+                                                                <linkArrow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Link Arrow"
+                                                                    value="link btn-text btn-green learn-more"/>
+                                                            </items>
+                                                            </simctaStyle>
+
+                                                        </items>
+                                                    </simdetails>
+                                                    <migrateplan
+                                                        jcr:primaryType="nt:unstructured"
+                                                        jcr:title="Migrate Plan section Text Details"
+                                                        sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <mptitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Text that will appear for SIM section title"
+                                                                fieldLabel="Migrate Plan section Title "
+                                                                maxlength="{Long}40"
+                                                                name="./mptitle"/>
+                                                            <mppretext
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Text that will appear before migrate plan offer"
+                                                                fieldLabel="Migrate plan section PreText "
+                                                                maxlength="{Long}50"
+                                                                name="./mppretext"/>
+                                                            <mpposttext
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Text that will appear after migrate plan offer"
+                                                                fieldLabel="Migrate plan section PostText"
+                                                                maxlength="{Long}50"
+                                                                name="./mpposttext"/>
+                                                            <mpctatitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Enter Migrate Plan Section CTA Title"
+                                                                fieldLabel="Migrate Plan Section CTA Title"
+                                                                name="./mpctatitle"/>
+                                                            <mpctaStyle jcr:primaryType="nt:unstructured"
+                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                         fieldDescription="Select SIM CTA Style"
+                                                                         fieldLabel=" Migrate Plan CTA Style"
+                                                                         name="./mpctaStyle">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <defaultButton
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Default Button"
+                                                                        value="btn btn-default"/>
+                                                                    <transparentButton
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Transparent Button"
+                                                                        value="btn btn-default btn-transparent"/>
+                                                                    <greenButton
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Green Button"
+                                                                        value="btn btn-green"/>
+                                                                    <orangeButton
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Orange Button"
+                                                                        value="btn btn-orange"/>
+                                                                    <linkArrow
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Link Arrow"
+                                                                        value="link btn-text btn-green learn-more"/>
+                                                                </items>
+                                                            </mpctaStyle>
+
+                                                        </items>
+                                                    </migrateplan>
+                                                </items>
+                                            </modaldetails>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue1="noncontractbutton"/>
+                                    </anaemaratidetails>
                                 </items>
                                 <granite:data
                                     jcr:primaryType="nt:unstructured"
