@@ -1,6 +1,8 @@
 <template data-sly-template.hero="${ @ carousel,properties}">
 
-<div data-component="cmp-herobanner" id="${carousel.id}" class="${!wcmmode.edit ? 'hero-banner-section' : ''} ${carousel.items.size > 1 ? 'multi-slides' : ''} ${properties.heroImageInnerPageView ? 'single-slide-only' : ''}">
+<div data-component="cmp-herobanner" data-ga-event="${properties.gaeventname}" data-ga-ev-cat="${properties.gaeventcategory}"
+     id="${carousel.id}"
+     class="${!wcmmode.edit ? 'hero-banner-section' : ''} ${carousel.items.size > 1 ? 'multi-slides' : ''} ${properties.heroImageInnerPageView ? 'single-slide-only' : ''}">
     <div class="${!wcmmode.edit ? 'swiper-hero-container hero-banner-placeholder__done' : ''}">
         <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">
             <div role="tabpanel"
