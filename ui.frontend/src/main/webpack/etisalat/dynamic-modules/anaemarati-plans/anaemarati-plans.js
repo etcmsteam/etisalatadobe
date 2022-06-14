@@ -40,23 +40,31 @@ const initActions = () => {
   };
 
   var popUpEligibilityActive = function (e) {
-    /* 
-      WARNING: DO NOT PREVENT THIS EVENT(preventDefault()) OR STOP THE EVENT PROPAGATION (stopPropagation()). 
+    /*
+      WARNING: DO NOT PREVENT THIS EVENT(preventDefault()) OR STOP THE EVENT PROPAGATION (stopPropagation()).
       It can break the GA implementation. Check googleAnalytics.js
     */
 
     var btn = $(this);
     var popup = $("#eligibility-summary");
     var dataTarget = btn.attr("data-target");
-    popup.addClass("show");
-    $("body").addClass("freeze");
     $(popup).find(".nv-brand").text(btn.closest(".nv-plan-card").find(".nv-brand").text());
     $(popup).find(".nv-modal-title").text(btn.closest(".nv-plan-card").find(".nv-product-name").text());
     $(popup).find(".planName").text(btn.closest(".nv-plan-card").find(".nv-product-name").text());
     $(popup).find(".redirectUrl").attr("href", dataTarget);
     $(popup)
       .find(".leadUrl")
-      .attr("href", $(popup).find(".leadUrl").attr("href") + btn.closest(".nv-plan-card").find(".nv-product-name").text());
+      .attr("href", $(popup).find(".leadUrl").attr("href") + btn.closest(".nv-plan-card").find(".nv-product-name").text()); // this is broken fix this
+
+    const $el = popup.clone();
+    $(".modal-popup-wrapper").append($el);
+    $(".modal-popup-wrapper #eligibility-summary").addClass("show");
+    $(".modal-popup-wrapper #eligibility-summary").removeClass("fade");
+    $(".modal-popup-wrapper .modal-popup").addClass("show");
+    $("body, html").addClass("freeze");
+    $(".modal-popup-wrapper").show;
+    $(".modal-popup-wrapper").css("display", "block");
+    return false;
   };
   // close popup
   var closePopUp = function (e) {
@@ -318,10 +326,10 @@ export const ANAEMARATI_CARDS = () => {
     function getCardsData(url, payload, cardType) {
       $.ajax({
         dataType: "json",
-        type: REQUEST_METHOD,
-        url: url,
+        type: 'GET',
+        url: '/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json',
         contentType: "application/json; charset=utf-8",
-        data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
+        // data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
           var htmlCards = getPlansCard(res, cardType);
           var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
