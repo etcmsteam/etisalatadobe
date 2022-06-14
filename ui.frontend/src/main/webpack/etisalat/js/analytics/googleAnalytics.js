@@ -3,10 +3,10 @@
   var dataLayer = window.dataLayer || [];
 
   // GA Main menu on menu item click Mobile
-  $(".nav-expand-content li .nav-item a").on("click", function (e) {
+  $(".nav-expand-content li .nav-item a").on("click", function () {
     var $self = $(this);
     var linkText;
-     e.preventDefault();
+    // e.preventDefault();
     if (typeof window.dataLayer !== "undefined") {
       linkText = $self.text().trim();
       dataLayer.push({
@@ -21,7 +21,7 @@
   // GA Main menu on menu item click Desktop
   $(".menu-items-wrapper .sub-menu a").on("click", function (e) {
     var n; var t;
-     e.preventDefault();
+    // e.preventDefault();
     if (typeof window.dataLayer !==  "undefined") {
       n = e.target.innerText.trim().replace(/ /g, "_");
       t = e.target.parentElement.parentElement.firstElementChild.innerText.trim().replace(/ /g, "_");
