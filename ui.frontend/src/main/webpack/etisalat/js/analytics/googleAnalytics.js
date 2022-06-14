@@ -1,13 +1,12 @@
 /* eslint-disable no-undef,vars-on-top,func-names,no-param-reassign,max-len */
 (function ($) {
-  var dataLayer = window.dataLayer || [];
 
   // GA Main menu on menu item click Mobile
   $(".nav-expand-content li .nav-item a").on("click", function () {
     var $self = $(this);
     var linkText;
     // e.preventDefault();
-    if (typeof window.dataLayer !== "undefined") {
+    if (typeof dataLayer !== "undefined") {
       linkText = $self.text().trim();
       dataLayer.push({
         event: "menuitems",
@@ -22,7 +21,7 @@
   $(".menu-items-wrapper .sub-menu a").on("click", function (e) {
     var n; var t;
     // e.preventDefault();
-    if (typeof window.dataLayer !==  "undefined") {
+    if (typeof dataLayer !==  "undefined") {
       n = e.target.innerText.trim().replace(/ /g, "_");
       t = e.target.parentElement.parentElement.firstElementChild.innerText.trim().replace(/ /g, "_");
       dataLayer.push({
