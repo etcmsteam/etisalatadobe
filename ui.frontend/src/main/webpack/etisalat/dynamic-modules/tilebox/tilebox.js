@@ -47,6 +47,7 @@ export const TILE_BOX = () => {
     // plans table slider 3 tiles starts
     $(document)
       .find(".tilecontainer .tile-boxes-section.tile-boxes-section-swiper")
+      .not('.single-tile')
       .each(function (index) {
         const container = $(this).find(".swiper-container");
         var $tileBoxesSwiperCarousal = swiperInit(container, {

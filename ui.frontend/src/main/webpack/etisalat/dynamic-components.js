@@ -92,10 +92,10 @@ const DYNAMIC_MODULE = {
     return import(/* webpackChunkName: 'best-seller' */ "./dynamic-modules/best-seller/device/device-best-seller").then((obj) => obj.DEVICE_BEST_SELLER);
   },
   "cmp-support-chat": async () => {
-    await import(/* webpackChunkName: 'support-chat' */ "./dynamic-modules/support-chat").then((obj) => obj.SUPPORT_CHAT());
+    return import(/* webpackChunkName: 'support-chat' */ "./dynamic-modules/support-chat").then((obj) => obj.SUPPORT_CHAT);
   },
-  "cmp-help-chat": async () => {
-    await import(/* webpackChunkName: 'help-chat' */ "./dynamic-modules/help-chat").then((obj) => obj.HELP_CHAT());
+  "cmp-idle-chat": async () => {
+    return import(/* webpackChunkName: 'idle-chat' */ "./dynamic-modules/idle-chat").then((obj) => obj.IDLE_CHAT);
   },
 };
 
@@ -121,16 +121,15 @@ const DYNAMIC_COMPONENTS = {
               const placeholderClass = `${component}-placeholder`;
               document.querySelectorAll(`[data-component="${component}"], .${placeholderClass}`).forEach((item) => {
                 const componentItem = item;
-                
+
                 if (componentItem.classList.contains(placeholderClass)) {
                   componentItem.classList.add("hide");
                 } else {
                   componentItem.classList.remove("hide");
                   componentItem.classList.add("dynamic-module-visible");
                 }
-                
-              });
 
+              });
               if(typeof moduleFn === 'function') {
                 moduleFn();
               }
