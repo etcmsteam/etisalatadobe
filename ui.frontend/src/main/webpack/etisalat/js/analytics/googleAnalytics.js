@@ -22,20 +22,21 @@
   $(".hero-banner-section")
     .off()
     .on("click", ".hero-details .btn", function () {
-      // var ga_event = $(this).closest(".hero-image-section").find("input[name=event]");
-      // var ga_ev_cat = $(this).closest(".hero-image-section").find("input[name=ev_cat]");
+      var ga_event = $(this).closest(".hero-banner-section").data("ga-event");
+      var ga_ev_cat = $(this).closest(".hero-banner-section").data("ga-ev-cat");
 
       // event dynamic values
-      var gaEventValue = "test";
-      var gaEvCatValue = "test";
+      var ga_event_value = ga_event ? ga_event : "";
+      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : "";
+
 
       // title of the CTA
       var ctaTitle = $(this).closest(".hero-details").find(".hero-title").text().trim();
-      if (gaEventValue.length !== 0 && gaEvCatValue.length !== 0) {
+      if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
         if (typeof window.dataLayer !== "undefined") {
           dataLayer.push({
-            event: gaEventValue,
-            ev_cat: gaEvCatValue,
+            event: ga_event_value,
+            ev_cat: ga_ev_cat_value,
             ev_act: "click",
             ev_label: ctaTitle,
           });
@@ -60,6 +61,30 @@
         }
       }
     });
+  
+  // Main text CTA click
+  $(".cmp-default-card")
+  .off()
+  .on("click", ".cmp-teaser__action-container a", function () {
+    var ga_event = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-event");
+    var ga_ev_cat = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-ev-cat");
+
+    // event dynamic values
+    var ga_event_value = ga_event ? ga_event : "";
+    var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : "";
+
+    var ctaTitle = $(this).text().trim();
+     if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
+      if (typeof window.dataLayer !== "undefined") {
+        dataLayer.push({
+          event: ga_event_value,
+          ev_cat: ga_ev_cat_value,
+          ev_act: "click",
+          ev_label: ctaTitle,
+        });
+      }
+     }
+  });
 
   // View all benifites click
   $(".benefit-section")
