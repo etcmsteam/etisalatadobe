@@ -322,4 +322,111 @@ import { getParameterByName } from "../../../global/js/utils";
     dataLayer.push(allProductImpressions);
   });
   // Emirati Plans load Impression end -----
+
+  // Device Cards load Impression start -----
+  $(document).on("DEVICE_CARDS_LOADED", (event, { $productRow }) => {    
+    var allProductImpressions = {
+      event: "productImpressions",
+      ecommerce: {
+        currencyCode: "AED",
+        impressions: [],
+      },
+    };
+
+    var productDetails = $('#'+$productRow).children('.swiper-slide');
+    $(productDetails).each(function() {
+      var productImpration = {};
+      var selectedProductMain = $(this).find('.tiles-box');
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
+      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
+      var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
+      var imgURL = selectedProductMain.find('.product').find('img').attr('src');
+      var position = $(this).index()+1;
+      var curnt =  selectedProductMain.find('a').attr('href');
+      var windowURL= window.location.href;
+      var list = getParameterByName('listVal',curnt );
+      var category = getParameterByName('catName',windowURL);
+      var id = getParameterByName('productId',curnt);
+      function categoryFromImage(imageURL){
+          var catImage = imageURL;
+          var catGroups = ["tablets", "accessories", "smartphones", "smart-monitors-tvs", "home-devices", "homedevices", "routers", "bundles"];
+          var tabletsList = ["ipad", "tablet", "tab"];
+          var homeList = ["tv", "4k", "led", "lcd", "ps5", "xbox", "playstation"];
+          var phoneList = ["iphone", "phone", "smart-phone", "lcd", "smart-phones"];
+          var routerList = ["hub", "router", "mobile-hub", "tp-link", "link"];
+          var laptopsList = ["laptops", "matebook", "laptop", "yoga", "idea", "notebook"];
+          var accessoriesList = ["combo", "watch", "pen", "case", "cover", "protective", "dualsense", "controller", "band", "charging", "charger", "headset", "fitbit", "adapter", "cable"];
+          var detectedCat = "devices";
+          catGroups.forEach(element => {
+              if (catImage.includes(element)) {
+                  detectedCat = element;
+              }
+          });
+          if (detectedCat === "devices") {
+              tabletsList.forEach(element => {
+                  if (catImage.includes(element)) {
+                      detectedCat = "tablets";
+                  }
+              });
+              homeList.forEach(element => {
+                  if (catImage.includes(element)) {
+                      detectedCat = "HOME DEVICES";
+                  }
+              });
+              phoneList.forEach(element => {
+                  if (catImage.includes(element)) {
+                      detectedCat = "SMARTPHONES";
+                  }
+              });
+              accessoriesList.forEach(element => {
+                  if (catImage.includes(element)) {
+                      detectedCat = "accessories";
+                  }
+              });
+              routerList.forEach(element => {
+                  if (catImage.includes(element)) {
+                      detectedCat = "ROUTERS";
+                  }
+              });
+              laptopsList.forEach(element => {
+                  if (catImage.includes(element)) {
+                      detectedCat = "LAPTOPS";
+                  }
+              });
+          }
+          return detectedCat.toUpperCase();
+      }
+      var newCatg = categoryFromImage(imgURL);
+      productImpration = {
+        'name':          name,            /*String - Product Name*/
+        'id':            id,              /*String - Product ID*/
+        'price':         price,           /*String - Product Price*/
+        'brand':         brand,           /*String - Product Brand*/
+        'category':      newCatg,         /*String - Product Category*/
+        'list':          list ,           /*String - Product List Name*/
+        'dimension1':    '',              /*String - Capacity 1 (if available)*/
+        'dimension2':    '',              /*String - Capacity 2 Bundle (if available)*/
+        'dimension3':    '',              /*String - Size (if available)*/
+        'dimension4':    '',              /*String - Color 1 (if available)*/
+        'dimension5':    '',              /*String - Color 2 Bundle (if available)*/
+        'dimension6':    '',              /*String - Strap Type (if available)*/
+        'dimension7':    '',              /*String - Strap Color (if available)*/
+        'dimension8':    '',              /*String - Connectivity (if available)*/
+        'dimension9':    '',              /*String - Payment Method (if available)*/
+        'dimension10':   '',              /*String - Number Selection Option (if available)*/
+        'dimension11':   '',              /*String - Number Selected (if available)*/
+        'dimension12':   '',              /*String - Plan Selected (if available)*/
+        'dimension13':   '',              /*String - Add-On Name 1 (if available)*/
+        'dimension14':   '',              /*String - Add-On Name 2 (if available)*/
+        'dimension15':   '',              /*String - Add-On Payment Option 1 (if available)*/
+        'dimension16':   '',              /*String - Add-On Payment Option 2 (if available)*/
+        'dimension17':   '',              /*String - Availability (if available) */ 
+        'position':      position         /*Number - Position in the list*/
+      };
+      allProductImpressions.ecommerce.impressions.push(productImpration);
+    });
+    dataLayer.push(allProductImpressions);
+  });
+  // Device Cards load Impression end -----
+
 })(jQuery);

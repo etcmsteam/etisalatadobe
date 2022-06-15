@@ -259,6 +259,9 @@ export const DYNAMIC_DEVICE_TILE = () => {
         } else {
           initiateSlider(elem);
         }
+
+        // GA implementation
+        $(document).trigger("DEVICE_CARDS_LOADED", { $productRow: `productRow-${categoryid}` });
       },
 
       // Error handling
