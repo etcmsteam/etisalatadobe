@@ -142,11 +142,9 @@ export const LEADER_FORM = () => {
         encode: true,
       })
         .done(function (response) {
-          FORM_SUCCESS($FORM, PAYLOAD);
           let RE_URL = `${window.location.origin}/en/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
           window.location.href = RE_URL;
-
-          FORM_ERROR($FORM, "API error", response);
+          FORM_SUCCESS($FORM, PAYLOAD);
 
           return true;
         })
