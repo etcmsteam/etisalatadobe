@@ -1,6 +1,64 @@
-/* eslint-disable no-undef,vars-on-top,func-names,no-param-reassign,max-len */
+/* eslint-disable no-undef,vars-on-top,func-names,no-param-reassign,max-len,default-case */
 (function ($) {
   var dataLayer = window.dataLayer || [];
+
+  function getParameterByName(name, url) {
+    var regex; var results;
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function pageInfo(url, type) {
+    var respose = "";
+    switch (type) {
+      case "page_type":
+        respose = "CMS";
+        if (url.indexOf("eshop") !== -1) {
+          respose = "eShop";
+        }
+        break;
+
+      case "category":
+        respose = "";
+        if (url.indexOf("category") !== -1) {
+          respose = getParameterByName("category", url);
+        }
+        break;
+
+      case "subcategory":
+        respose = "";
+        if (url.indexOf("subcategory") !== -1) {
+          respose = getParameterByName("subcategory", url);
+        }
+        break;
+    }
+
+    return respose;
+  }
+  
+  // Page view dataLayer
+  dataLayer.push({
+    event: "PageView",
+    page_details: {
+      page_type: pageInfo(document.URL, "page_type"),
+      category: pageInfo(document.URL, "category"),
+      subcategory: pageInfo(document.URL, "subcategory"),
+      url: document.URL,
+      title: document.title,
+      name: document.location.pathname,
+      language: document.documentElement.lang,
+    },
+
+    user_details: {
+      login_status: "",
+      user_id: "",
+    },
+  });
 
   // GA Main menu on menu item click Mobile
   $(".nav-expand-content li .nav-item a").on("click", function () {
