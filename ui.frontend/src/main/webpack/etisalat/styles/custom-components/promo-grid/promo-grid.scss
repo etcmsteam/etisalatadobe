@@ -69,16 +69,20 @@
     background-color: #199e94 !important;
   }
   .promo-grid {
-    div.cover {
-      .bg-filter {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        top: 0;
-        left: 0;
-        display: block !important;
-      }
+    .link-cover {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    .bg-filter {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      display: block !important;
     }
 
     &.large-tile {
@@ -90,8 +94,26 @@
       height: 150px;
 
       @include respond-to-min($desktop) {
-      height: 558px;
-      margin-bottom: 1.5625rem;
+        height: 558px;
+        margin-bottom: 1.5625rem;
+      }
+      .grid-content {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-size: 1.375rem;
+          line-height: 1.3;
+          padding-top: 0;
+          letter-spacing: 0;
+          @include respond-to-min($desktop) {
+            font-size: 2.25rem;
+            padding-top: 1.5rem;
+            letter-spacing: toRem(3);
+          }
+        }
       }
     }
     &.large-tile-no-image {
@@ -257,7 +279,7 @@
       border-radius: 4px;
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
       margin-bottom: 0.5rem;
-        height: 150px;
+      height: 150px;
       @include respond-to-min($desktop) {
         height: 267px;
         margin-bottom: 1.5625rem;
@@ -302,17 +324,16 @@
     }
     &.small-tile {
       position: relative;
-        height: 150px;
+      height: 150px;
 
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-        margin-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
 
       @include respond-to-min($desktop) {
-      margin-bottom: 1.5625rem;
-      height: 267px;
-
+        margin-bottom: 1.5625rem;
+        height: 267px;
       }
       .grid-content {
         padding: 1.5rem;
@@ -387,6 +408,7 @@
       }
     }
     .grid-content {
+      pointer-events: none;
       position: absolute;
       left: 0;
       bottom: 0;
@@ -402,6 +424,7 @@
         line-height: 1.25rem;
         letter-spacing: 2px;
         display: none;
+        pointer-events: all;
 
         @include respond-to-min($tablet) {
           display: inline-block;
@@ -574,6 +597,16 @@
         left: -20px;
         right: auto;
         transform: translateY(-50%) rotate(135deg);
+      }
+    }
+    .wstpromotile {
+      .promo-grid {
+        .grid-content .btn-text.learn-more {
+          padding: 0;
+          &:before {
+            left: -15px;
+          }
+        }
       }
     }
   }
