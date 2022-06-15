@@ -1,17 +1,8 @@
 /* eslint-disable no-undef,vars-on-top,func-names,no-param-reassign,max-len,default-case */
+import { getParameterByName } from "../../../global/js/utils";
+
 (function ($) {
   var dataLayer = window.dataLayer || [];
-
-  function getParameterByName(name, url) {
-    var regex; var results;
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
-    results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return "";
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
 
   function pageInfo(url, type) {
     var respose = "";
@@ -170,16 +161,6 @@
         });
       }
     });
-
-  function getParameterByName(name, href) {
-    name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
-    var regexS = "[\\?&]" + name + "=([^&#]*)";
-    var regex = new RegExp(regexS);
-    var results = regex.exec(href);
-
-    if (results == null) return "";
-    return decodeURIComponent(results[1].replace(/\+/g, " "));
-  }
 
   // Emirati Plans Click Impression start -----
   $(".productdetail").on("click", ".gold-plans .swiper-wrapper .swiper-slide .btn-buy-now, .silver-plans .swiper-wrapper .swiper-slide .btn-buy-now", function (e) {
