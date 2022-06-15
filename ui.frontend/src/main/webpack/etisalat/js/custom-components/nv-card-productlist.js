@@ -1,21 +1,19 @@
 import { swiperInit } from "../../../global/js/swiperInitialize";
 /* eslint-disable */
-export const NV_CARD = () => { 
+export const NV_CARD = () => {
   function initNvcardProductDetail() {
     $(document)
       .find(".smart-home-elife-slider")
-      .each(function (index) {
-        let responseData;
-  
-        // local dev settings
-        let prouctContainerID = $(this).find(".swiper-wrapper").attr("id");
-        let sliderContainer = $(this);
-        let categoryArray = prouctContainerID.split("productRow-");
-        const categoryID = categoryArray[1];
-  
-        // let payload = { categoryId: categoryID, navigationState: "", No: "0", Nrpp: "100" };
-  
-        const swiperOptions = (elem, next, prev, loopVal, dragVal, slideView1, slideView2, slideView3, slideView4, slideView5) => {
+      .each(function () {
+        const sliderContainer = $(this);
+        const swiperWrapper = sliderContainer.find(".swiper-wrapper");
+        const prouctContainerID = swiperWrapper.attr("id");
+        const categoryArray = prouctContainerID.split("productRow-");
+        const categoryId = categoryArray[1];
+        const locale = (window.location.href.indexOf("/ar/") > -1)? 'ar': 'en';
+        const url = `/b2c/eshop/getProductsByCategory?locale=${locale}&isApplyDefaultFilters=true`;
+
+        const swiperOptions = (elem, next, prev) => {
           return {
             scrollbar: elem.find(".swiper-scrollbar"),
             nextButton: next,
@@ -47,38 +45,43 @@ export const NV_CARD = () => {
             },
           };
         };
-  
+
         const settings = {
           async: true,
-          url: "/content/dam/etisalat/prod-mock-assets/smartHomeElifePlans.json",
-          method: "GET",
-          categoryId: categoryID,
-          navigationState: "",
-          No: "0",
-          Nrpp: "100",
+          url: url,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: JSON.stringify({
+            categoryId,
+            navigationState: "",
+            No: "0",
+            Nrpp: "100",
+          })
         };
-  
+
         $.ajax(settings).done(function (response) {
-          responseData = response;
+          let responseData = response;
           if (typeof responseData === "string") {
             responseData = JSON.parse(responseData);
           }
           // render the slides into page
           let htmlCards = renderSlides(responseData.products);
-          $("#" + prouctContainerID).html(htmlCards);
+          swiperWrapper.html(htmlCards);
           // make slides as slider
           enableSlider(sliderContainer);
         });
-  
+
         const enableSlider = function (sliderContainer) {
-          sliderContainer.find(".next").addClass("right" + index);
-          sliderContainer.find(".prev").addClass("left" + index);
-  
+          // sliderContainer.find(".next").addClass("right" + index);
+          // sliderContainer.find(".prev").addClass("left" + index);
+
           const sliderNavigation = swiperInit(
-            ".slider" + index + " .swiper-container-slider",
-            swiperOptions(sliderContainer, ".next.right" + index, ".prev.left" + index),
+            sliderContainer.find(".swiper-container-slider"),
+            swiperOptions(sliderContainer, sliderContainer.find(".next"), sliderContainer.find(".prev")),
           );
-  
+
           // hide the arrow if slides count is 2 or less
           const slidesCount = sliderContainer.find(".swiper-slide").length;
           if (slidesCount < 3) {
@@ -86,14 +89,14 @@ export const NV_CARD = () => {
             sliderContainer.find(".prev").addClass("hidden");
           }
         };
-  
+
         function getRedirectURL(data) {
           let url = "";
           const hostName = window.location.hostname;
-          url = hostName + "?productId=" + data.productId + "&skuId=" + data.itemId;
+          url = `${hostName}/b2c/eshop/smartHomeConfiguration?productId=${data.productId}&skuId=${data.itemId}`;
           return url;
         }
-  
+
         const renderSlides = function (data) {
           const products = data;
           let html = "";
@@ -117,7 +120,7 @@ export const NV_CARD = () => {
             or = " أو ";
             month = "شهر/ ";
           }
-  
+
           for (let i = 0; i < products.length; i++) {
             const product = products[i];
             const offer = product.oldRecurringPrice ? "offer" : "";
