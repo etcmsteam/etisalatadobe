@@ -41,6 +41,9 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 	/** The search endpoint url. */
 	private String searchEndpointUrl;
 
+	/** The search endpoint url. */
+	private String gaApiKey;
+
 	/**
 	 * Activate.
 	 *
@@ -54,7 +57,8 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 		this.timeOut = PropertiesUtil.toInteger(config.getSetTimeout(), 6000);
 		this.apiHostname = PropertiesUtil.toString(config.getApiHostname(), AEConstants.NO_CONFIG_FOUND);
 		this.autoSearchUrl = PropertiesUtil.toString(config.getAutoSuggestEndpointUrl(), AEConstants.NO_CONFIG_FOUND);
-    this.searchEndpointUrl = PropertiesUtil.toString(config.getSearchEndpointUrl(), AEConstants.NO_CONFIG_FOUND);
+    	this.searchEndpointUrl = PropertiesUtil.toString(config.getSearchEndpointUrl(), AEConstants.NO_CONFIG_FOUND);
+		this.gaApiKey = PropertiesUtil.toString(config.getGaApiKey(), AEConstants.NO_CONFIG_FOUND);
 	}
 	
 	/**
@@ -115,6 +119,16 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
   @Override
   public String getSearchEndpointUrl() {    
     return this.searchEndpointUrl;
+  }
+
+  /**
+   * Gets the Google Analytics API Key.
+   *
+   * @return the Google Analytics API Key
+   */
+  @Override
+  public String getGaApiKey() {
+	  return this.gaApiKey;
   }
 
 }

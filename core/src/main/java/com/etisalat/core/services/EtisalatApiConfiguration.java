@@ -4,7 +4,7 @@ package com.etisalat.core.services;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-@ObjectClassDefinition(name = "Etisalat API's Form Configuration", description = "Configurations details for Key and Url")
+@ObjectClassDefinition(name = "Etisalat API's Configuration", description = "Configurations details for Key and Url")
 public @interface EtisalatApiConfiguration {
 
     int TIMEOUT = 7000;
@@ -28,6 +28,9 @@ public @interface EtisalatApiConfiguration {
     
     @AttributeDefinition(name = "Search Endpoint Url", description = "Search Endpoint Url")
     String getSearchEndpointUrl() default "/b2c/guidedSearchRequest.service";
+
+    @AttributeDefinition(name = "Google Analytics API Key", description = "Google Analytics API Key")
+    String getGaApiKey() default "GTM-5M52SJB";
 
 }
 
