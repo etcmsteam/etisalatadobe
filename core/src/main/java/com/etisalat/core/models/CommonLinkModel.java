@@ -99,4 +99,14 @@ public class CommonLinkModel {
 
     return etisalatApiService.getAutoSuggestEndpointUrl();
   }
+
+    /**
+     * Gets the Google Analytics API Key.
+     *
+     * @return the the Google Analytics API Key
+     */
+    public String getGaApiKey() {
+
+        return etisalatApiService.getGaApiKey();
+    }
 }
