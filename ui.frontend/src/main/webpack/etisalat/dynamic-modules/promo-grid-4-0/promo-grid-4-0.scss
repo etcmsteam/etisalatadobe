@@ -1095,10 +1095,13 @@
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
     row-gap: 0.5rem;
+    @include respond-to-min($tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: toRem(24);
+    }
     @include respond-to-min($desktop) {
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      column-gap: toRem(24);
       row-gap: 1.5625rem;
     }
     .wstpromotile {

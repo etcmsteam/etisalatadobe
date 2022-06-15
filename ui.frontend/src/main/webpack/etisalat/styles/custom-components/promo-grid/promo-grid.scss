@@ -83,15 +83,15 @@
 
     &.large-tile {
       position: relative;
-      height: 558px;
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-      margin-bottom: 1.5625rem;
+      margin-bottom: 0.5rem;
+      height: 150px;
 
-      @include respond-to-max($desktop) {
-        margin-bottom: 0.5rem;
-        height: 150px;
+      @include respond-to-min($desktop) {
+      height: 558px;
+      margin-bottom: 1.5625rem;
       }
     }
     &.large-tile-no-image {
@@ -253,14 +253,14 @@
     }
     &.medium-tile {
       position: relative;
-      height: 267px;
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-      margin-bottom: 1.5625rem;
-      @include respond-to-max($desktop) {
-        margin-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
         height: 150px;
+      @include respond-to-min($desktop) {
+        height: 267px;
+        margin-bottom: 1.5625rem;
       }
       .grid-content {
         width: 48%;
@@ -302,14 +302,17 @@
     }
     &.small-tile {
       position: relative;
-      height: 267px;
+        height: 150px;
+
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-      margin-bottom: 1.5625rem;
-      @include respond-to-max($desktop) {
         margin-bottom: 0.5rem;
-        height: 150px;
+
+      @include respond-to-min($desktop) {
+      margin-bottom: 1.5625rem;
+      height: 267px;
+
       }
       .grid-content {
         padding: 1.5rem;
