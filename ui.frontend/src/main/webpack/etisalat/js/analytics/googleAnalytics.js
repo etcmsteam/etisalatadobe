@@ -447,23 +447,25 @@ import { getParameterByName } from "../../../global/js/utils";
     });
     dataLayer.push(allProductImpressions);
 
-    var productClickedDetails = $('#'+$productRow).children('.swiper-slide').find('a');
+    var productClickedDetails = $('#' + $productRow)
+      .children('.swiper-slide')
+      .find('a');
     $(productClickedDetails)
       .unbind()
-      .on("click", function (e) {
-        var curnt = $(this).attr("href");
+      .on('click', function (e) {
+        var curnt = $(this).attr('href');
         var productClicked = {};
-        var selectedProductMain = $(this).closest(".tiles-box");
-        var name = selectedProductMain.find(".tiles-box-title").find("h2").text();
-        var brand = selectedProductMain.find(".tiles-box-title").find(".catagory").text();
-        var price = selectedProductMain.find(".tiles-box-list").find(".price").text();
+        var selectedProductMain = $(this).closest('.tiles-box');
+        var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
+        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
+        var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
         var position = selectedProductMain.closest('.swiper-slide').index() + 1;
-        var category = getParameterByName("catName", curnt);
-        var id = getParameterByName("productId", curnt);
-        var actionList = getParameterByName("listVal", curnt);
+        var category = getParameterByName('catName', curnt);
+        var id = getParameterByName('productId', curnt);
+        var actionList = getParameterByName('listVal', curnt);
         e.preventDefault();
         productClicked = {
-          event: "productClick",
+          event: 'productClick',
           ecommerce: {
             click: {
               actionField: { list: actionList },
@@ -474,23 +476,23 @@ import { getParameterByName } from "../../../global/js/utils";
                   price: price /*String - Product Price*/,
                   brand: brand /*String - Product Brand*/,
                   category: category /*String - Product Category*/,
-                  dimension1: "" /*String - Capacity 1 (if available)*/,
-                  dimension2: "" /*String - Capacity 2 Bundle (if available)*/,
-                  dimension3: "" /*String - Size (if available)*/,
-                  dimension4: "" /*String - Color 1 (if available)*/,
-                  dimension5: "" /*String - Color 2 Bundle (if available)*/,
-                  dimension6: "" /*String - Strap Type (if available)*/,
-                  dimension7: "" /*String - Strap Color (if available)*/,
-                  dimension8: "" /*String - Connectivity (if available)*/,
-                  dimension9: "" /*String - Payment Method (if available)*/,
-                  dimension10: "" /*String - Number Selection Option (if available)*/,
-                  dimension11: "" /*String - Number Selected (if available)*/,
-                  dimension12: "" /*String - Plan Selected (if available)*/,
-                  dimension13: "" /*String - Add-On Name 1 (if available)*/,
-                  dimension14: "" /*String - Add-On Name 2 (if available)*/,
-                  dimension15: "" /*String - Add-On Payment Option 1 (if available)*/,
-                  dimension16: "" /*String - Add-On Payment Option 2 (if available)*/,
-                  dimension17: "" /*String - Availability (if available)  */,
+                  dimension1: '' /*String - Capacity 1 (if available)*/,
+                  dimension2: '' /*String - Capacity 2 Bundle (if available)*/,
+                  dimension3: '' /*String - Size (if available)*/,
+                  dimension4: '' /*String - Color 1 (if available)*/,
+                  dimension5: '' /*String - Color 2 Bundle (if available)*/,
+                  dimension6: '' /*String - Strap Type (if available)*/,
+                  dimension7: '' /*String - Strap Color (if available)*/,
+                  dimension8: '' /*String - Connectivity (if available)*/,
+                  dimension9: '' /*String - Payment Method (if available)*/,
+                  dimension10: '' /*String - Number Selection Option (if available)*/,
+                  dimension11: '' /*String - Number Selected (if available)*/,
+                  dimension12: '' /*String - Plan Selected (if available)*/,
+                  dimension13: '' /*String - Add-On Name 1 (if available)*/,
+                  dimension14: '' /*String - Add-On Name 2 (if available)*/,
+                  dimension15: '' /*String - Add-On Payment Option 1 (if available)*/,
+                  dimension16: '' /*String - Add-On Payment Option 2 (if available)*/,
+                  dimension17: '' /*String - Availability (if available)  */,
                   position: position /*Number - Position in the list*/,
                 },
               ],
