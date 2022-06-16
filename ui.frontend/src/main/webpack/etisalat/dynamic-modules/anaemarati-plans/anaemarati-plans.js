@@ -69,7 +69,6 @@ const initActions = () => {
     $("body, html").addClass("freeze");
     $(".modal-popup-wrapper").show;
     $(".modal-popup-wrapper").css("display", "block");
-    return false;
   };
   // close popup
   var closePopUp = function (e) {

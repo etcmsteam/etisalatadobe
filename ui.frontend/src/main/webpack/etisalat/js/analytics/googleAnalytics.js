@@ -1,4 +1,4 @@
-/* eslint-disable no-undef,vars-on-top,func-names,no-param-reassign,max-len,default-case */
+/* eslint-disable */
 import { getParameterByName } from "../../../global/js/utils";
 
 (function ($) {
@@ -31,7 +31,7 @@ import { getParameterByName } from "../../../global/js/utils";
 
     return respose;
   }
-  
+
   // Page view dataLayer
   dataLayer.push({
     event: "PageView",
@@ -67,7 +67,8 @@ import { getParameterByName } from "../../../global/js/utils";
 
   // GA Main menu on menu item click Desktop
   $(".menu-items-wrapper .sub-menu a").on("click", function (e) {
-    var n; var t;
+    var n;
+    var t;
     // e.preventDefault();
     n = e.target.innerText.trim().replace(/ /g, "_");
     t = e.target.parentElement.parentElement.firstElementChild.innerText.trim().replace(/ /g, "_");
@@ -90,7 +91,6 @@ import { getParameterByName } from "../../../global/js/utils";
       // event dynamic values
       var ga_event_value = ga_event ? ga_event : "";
       var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : "";
-
 
       // title of the CTA
       var ctaTitle = $(this).closest(".hero-details").find(".hero-title").text().trim();
@@ -123,30 +123,30 @@ import { getParameterByName } from "../../../global/js/utils";
         }
       }
     });
-  
+
   // Main text CTA click
   $(".cmp-default-card")
-  .off()
-  .on("click", ".cmp-teaser__action-container a", function () {
-    var ga_event = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-event");
-    var ga_ev_cat = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-ev-cat");
+    .off()
+    .on("click", ".cmp-teaser__action-container a", function () {
+      var ga_event = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-event");
+      var ga_ev_cat = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-ev-cat");
 
-    // event dynamic values
-    var ga_event_value = ga_event ? ga_event : "";
-    var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : "";
+      // event dynamic values
+      var ga_event_value = ga_event ? ga_event : "";
+      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : "";
 
-    var ctaTitle = $(this).text().trim();
-     if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
-      if (typeof window.dataLayer !== "undefined") {
-        dataLayer.push({
-          event: ga_event_value,
-          ev_cat: ga_ev_cat_value,
-          ev_act: "click",
-          ev_label: ctaTitle,
-        });
+      var ctaTitle = $(this).text().trim();
+      if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
+        if (typeof window.dataLayer !== "undefined") {
+          dataLayer.push({
+            event: ga_event_value,
+            ev_cat: ga_ev_cat_value,
+            ev_act: "click",
+            ev_label: ctaTitle,
+          });
+        }
       }
-     }
-  });
+    });
 
   // View all benifites click
   $(".benefit-section")
@@ -163,88 +163,92 @@ import { getParameterByName } from "../../../global/js/utils";
     });
 
   // Emirati Plans Click Impression start -----
-  $(".productdetail").on("click", ".gold-plans .swiper-wrapper .swiper-slide .btn-buy-now, .silver-plans .swiper-wrapper .swiper-slide .btn-buy-now", function (e) {
-    var curnt = $(this).attr("data-target");
-    e.preventDefault();
+  $(".productdetail").on(
+    "click",
+    ".gold-plans .swiper-wrapper .swiper-slide .btn-buy-now, .silver-plans .swiper-wrapper .swiper-slide .btn-buy-now",
+    function (e) {
+      var curnt = $(this).attr("data-target");
+      e.preventDefault();
 
-    var productClicked = {};
-    var selectedProductMain = $(this).closest(".nv-card-wrapper");
-    var name = selectedProductMain.find(".nv-product-name").text();
-    var brand = selectedProductMain.find(".nv-brand").text();
-    var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
+      var productClicked = {};
+      var selectedProductMain = $(this).closest(".nv-card-wrapper");
+      var name = selectedProductMain.find(".nv-product-name").text();
+      var brand = selectedProductMain.find(".nv-brand").text();
+      var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
 
-    var position = selectedProductMain.parent().index() + 1;
-    var category = getParameterByName("catName", curnt);
-    var actionList = getParameterByName("listVal", curnt);
-    var id = getParameterByName("productId", curnt);
+      var position = selectedProductMain.parent().index() + 1;
+      var category = getParameterByName("catName", curnt);
+      var actionList = getParameterByName("listVal", curnt);
+      var id = getParameterByName("productId", curnt);
 
-    productClicked = {
-      event: "productClick",
-      ecommerce: {
-        click: {
-          actionField: {
-            list: actionList,
-          },
-          products: [
-            {
-              name: name,
-              /* String - Product Name */
-              id: id,
-              /* String - Product ID */
-              price: price,
-              /* String - Product Price */
-              brand: brand,
-              /* String - Product Brand */
-              category: category,
-              /* String - Product Category */
-              dimension1: "",
-              /* String - Capacity 1 (if available) */
-              dimension2: "",
-              /* String - Capacity 2 Bundle (if available) */
-              dimension3: "",
-              /* String - Size (if available) */
-              dimension4: "",
-              /* String - Color 1 (if available) */
-              dimension5: "",
-              /* String - Color 2 Bundle (if available) */
-              dimension6: "",
-              /* String - Strap Type (if available) */
-              dimension7: "",
-              /* String - Strap Color (if available) */
-              dimension8: "",
-              /* String - Connectivity (if available) */
-              dimension9: "",
-              /* String - Payment Method (if available) */
-              dimension10: "",
-              /* String - Number Selection Option (if available) */
-              dimension11: "",
-              /* String - Number Selected (if available) */
-              dimension12: "",
-              /* String - Plan Selected (if available)  */
-              dimension13: "",
-              /* String - Add-On Name 1 (if available) */
-              dimension14: "",
-              /* String - Add-On Name 2 (if available) */
-              dimension15: "",
-              /* String - Add-On Payment Option 1 (if available) */
-              dimension16: "",
-              /* String - Add-On Payment Option 2 (if available) */
-              dimension17: "",
-              /* String - Availability (if available)   */
-              position: position /* Number - Position in the list */,
+      productClicked = {
+        event: "productClick",
+        ecommerce: {
+          click: {
+            actionField: {
+              list: actionList,
             },
-          ],
+            products: [
+              {
+                name: name,
+                /* String - Product Name */
+                id: id,
+                /* String - Product ID */
+                price: price,
+                /* String - Product Price */
+                brand: brand,
+                /* String - Product Brand */
+                category: category,
+                /* String - Product Category */
+                dimension1: "",
+                /* String - Capacity 1 (if available) */
+                dimension2: "",
+                /* String - Capacity 2 Bundle (if available) */
+                dimension3: "",
+                /* String - Size (if available) */
+                dimension4: "",
+                /* String - Color 1 (if available) */
+                dimension5: "",
+                /* String - Color 2 Bundle (if available) */
+                dimension6: "",
+                /* String - Strap Type (if available) */
+                dimension7: "",
+                /* String - Strap Color (if available) */
+                dimension8: "",
+                /* String - Connectivity (if available) */
+                dimension9: "",
+                /* String - Payment Method (if available) */
+                dimension10: "",
+                /* String - Number Selection Option (if available) */
+                dimension11: "",
+                /* String - Number Selected (if available) */
+                dimension12: "",
+                /* String - Plan Selected (if available)  */
+                dimension13: "",
+                /* String - Add-On Name 1 (if available) */
+                dimension14: "",
+                /* String - Add-On Name 2 (if available) */
+                dimension15: "",
+                /* String - Add-On Payment Option 1 (if available) */
+                dimension16: "",
+                /* String - Add-On Payment Option 2 (if available) */
+                dimension17: "",
+                /* String - Availability (if available)   */
+                position: position /* Number - Position in the list */,
+              },
+            ],
+          },
         },
-      },
-    };
+      };
 
-    dataLayer.push(productClicked);
-    // window.location = curnt;
-  });
+      dataLayer.push(productClicked);
+      // window.location = curnt;
+    },
+  );
   // Emirati Plans Click Impression end -----
 
   // Emirati Plans load Impression start -----
-  $(document).on("ANA_EMARATI_PLANS_LOADED", (event, { $productRow }) => {    
+  $(document).on("ANA_EMARATI_PLANS_LOADED", (event, { $productRow }) => {
     var allProductImpressions = {
       event: "productImpressions",
       ecommerce: {
@@ -324,7 +328,7 @@ import { getParameterByName } from "../../../global/js/utils";
   // Emirati Plans load Impression end -----
 
   // Device Cards load Impression start -----
-  $(document).on("DEVICE_CARDS_LOADED", (event, { $productRow }) => {    
+  $(document).on("DEVICE_CARDS_LOADED", (event, { $productRow }) => {
     var allProductImpressions = {
       event: "productImpressions",
       ecommerce: {
@@ -333,95 +337,111 @@ import { getParameterByName } from "../../../global/js/utils";
       },
     };
 
-    var productDetails = $('#'+$productRow).children('.swiper-slide');
-    $(productDetails).each(function() {
+    var productDetails = $("#" + $productRow).children(".swiper-slide");
+    $(productDetails).each(function () {
       var productImpration = {};
-      var selectedProductMain = $(this).find('.tiles-box');
-      var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
-      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
-      var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
-      var imgURL = selectedProductMain.find('.product').find('img').attr('src');
-      var position = $(this).index()+1;
-      var curnt =  selectedProductMain.find('a').attr('href');
-      var windowURL= window.location.href;
-      var list = getParameterByName('listVal',curnt );
-      var category = getParameterByName('catName',windowURL);
-      var id = getParameterByName('productId',curnt);
-      function categoryFromImage(imageURL){
-          var catImage = imageURL;
-          var catGroups = ["tablets", "accessories", "smartphones", "smart-monitors-tvs", "home-devices", "homedevices", "routers", "bundles"];
-          var tabletsList = ["ipad", "tablet", "tab"];
-          var homeList = ["tv", "4k", "led", "lcd", "ps5", "xbox", "playstation"];
-          var phoneList = ["iphone", "phone", "smart-phone", "lcd", "smart-phones"];
-          var routerList = ["hub", "router", "mobile-hub", "tp-link", "link"];
-          var laptopsList = ["laptops", "matebook", "laptop", "yoga", "idea", "notebook"];
-          var accessoriesList = ["combo", "watch", "pen", "case", "cover", "protective", "dualsense", "controller", "band", "charging", "charger", "headset", "fitbit", "adapter", "cable"];
-          var detectedCat = "devices";
-          catGroups.forEach(element => {
-              if (catImage.includes(element)) {
-                  detectedCat = element;
-              }
-          });
-          if (detectedCat === "devices") {
-              tabletsList.forEach(element => {
-                  if (catImage.includes(element)) {
-                      detectedCat = "tablets";
-                  }
-              });
-              homeList.forEach(element => {
-                  if (catImage.includes(element)) {
-                      detectedCat = "HOME DEVICES";
-                  }
-              });
-              phoneList.forEach(element => {
-                  if (catImage.includes(element)) {
-                      detectedCat = "SMARTPHONES";
-                  }
-              });
-              accessoriesList.forEach(element => {
-                  if (catImage.includes(element)) {
-                      detectedCat = "accessories";
-                  }
-              });
-              routerList.forEach(element => {
-                  if (catImage.includes(element)) {
-                      detectedCat = "ROUTERS";
-                  }
-              });
-              laptopsList.forEach(element => {
-                  if (catImage.includes(element)) {
-                      detectedCat = "LAPTOPS";
-                  }
-              });
+      var selectedProductMain = $(this).find(".tiles-box");
+      var name = selectedProductMain.find(".tiles-box-title").find("h2").text();
+      var brand = selectedProductMain.find(".tiles-box-title").find(".catagory").text();
+      var price = selectedProductMain.find(".tiles-box-list").find(".price").text();
+      var imgURL = selectedProductMain.find(".product").find("img").attr("src");
+      var position = $(this).index() + 1;
+      var curnt = selectedProductMain.find("a").attr("href");
+      var windowURL = window.location.href;
+      var list = getParameterByName("listVal", curnt);
+      var category = getParameterByName("catName", windowURL);
+      var id = getParameterByName("productId", curnt);
+      function categoryFromImage(imageURL) {
+        var catImage = imageURL;
+        var catGroups = ["tablets", "accessories", "smartphones", "smart-monitors-tvs", "home-devices", "homedevices", "routers", "bundles"];
+        var tabletsList = ["ipad", "tablet", "tab"];
+        var homeList = ["tv", "4k", "led", "lcd", "ps5", "xbox", "playstation"];
+        var phoneList = ["iphone", "phone", "smart-phone", "lcd", "smart-phones"];
+        var routerList = ["hub", "router", "mobile-hub", "tp-link", "link"];
+        var laptopsList = ["laptops", "matebook", "laptop", "yoga", "idea", "notebook"];
+        var accessoriesList = [
+          "combo",
+          "watch",
+          "pen",
+          "case",
+          "cover",
+          "protective",
+          "dualsense",
+          "controller",
+          "band",
+          "charging",
+          "charger",
+          "headset",
+          "fitbit",
+          "adapter",
+          "cable",
+        ];
+        var detectedCat = "devices";
+        catGroups.forEach((element) => {
+          if (catImage.includes(element)) {
+            detectedCat = element;
           }
-          return detectedCat.toUpperCase();
+        });
+        if (detectedCat === "devices") {
+          tabletsList.forEach((element) => {
+            if (catImage.includes(element)) {
+              detectedCat = "tablets";
+            }
+          });
+          homeList.forEach((element) => {
+            if (catImage.includes(element)) {
+              detectedCat = "HOME DEVICES";
+            }
+          });
+          phoneList.forEach((element) => {
+            if (catImage.includes(element)) {
+              detectedCat = "SMARTPHONES";
+            }
+          });
+          accessoriesList.forEach((element) => {
+            if (catImage.includes(element)) {
+              detectedCat = "accessories";
+            }
+          });
+          routerList.forEach((element) => {
+            if (catImage.includes(element)) {
+              detectedCat = "ROUTERS";
+            }
+          });
+          laptopsList.forEach((element) => {
+            if (catImage.includes(element)) {
+              detectedCat = "LAPTOPS";
+            }
+          });
+        }
+        return detectedCat.toUpperCase();
       }
       var newCatg = categoryFromImage(imgURL);
       productImpration = {
-        'name':          name,            /*String - Product Name*/
-        'id':            id,              /*String - Product ID*/
-        'price':         price,           /*String - Product Price*/
-        'brand':         brand,           /*String - Product Brand*/
-        'category':      newCatg,         /*String - Product Category*/
-        'list':          list ,           /*String - Product List Name*/
-        'dimension1':    '',              /*String - Capacity 1 (if available)*/
-        'dimension2':    '',              /*String - Capacity 2 Bundle (if available)*/
-        'dimension3':    '',              /*String - Size (if available)*/
-        'dimension4':    '',              /*String - Color 1 (if available)*/
-        'dimension5':    '',              /*String - Color 2 Bundle (if available)*/
-        'dimension6':    '',              /*String - Strap Type (if available)*/
-        'dimension7':    '',              /*String - Strap Color (if available)*/
-        'dimension8':    '',              /*String - Connectivity (if available)*/
-        'dimension9':    '',              /*String - Payment Method (if available)*/
-        'dimension10':   '',              /*String - Number Selection Option (if available)*/
-        'dimension11':   '',              /*String - Number Selected (if available)*/
-        'dimension12':   '',              /*String - Plan Selected (if available)*/
-        'dimension13':   '',              /*String - Add-On Name 1 (if available)*/
-        'dimension14':   '',              /*String - Add-On Name 2 (if available)*/
-        'dimension15':   '',              /*String - Add-On Payment Option 1 (if available)*/
-        'dimension16':   '',              /*String - Add-On Payment Option 2 (if available)*/
-        'dimension17':   '',              /*String - Availability (if available) */ 
-        'position':      position         /*Number - Position in the list*/
+        name: name /*String - Product Name*/,
+        id: id /*String - Product ID*/,
+        price: price /*String - Product Price*/,
+        brand: brand /*String - Product Brand*/,
+        category: newCatg /*String - Product Category*/,
+        list: list /*String - Product List Name*/,
+        dimension1: "" /*String - Capacity 1 (if available)*/,
+        dimension2: "" /*String - Capacity 2 Bundle (if available)*/,
+        dimension3: "" /*String - Size (if available)*/,
+        dimension4: "" /*String - Color 1 (if available)*/,
+        dimension5: "" /*String - Color 2 Bundle (if available)*/,
+        dimension6: "" /*String - Strap Type (if available)*/,
+        dimension7: "" /*String - Strap Color (if available)*/,
+        dimension8: "" /*String - Connectivity (if available)*/,
+        dimension9: "" /*String - Payment Method (if available)*/,
+        dimension10: "" /*String - Number Selection Option (if available)*/,
+        dimension11: "" /*String - Number Selected (if available)*/,
+        dimension12: "" /*String - Plan Selected (if available)*/,
+        dimension13: "" /*String - Add-On Name 1 (if available)*/,
+        dimension14: "" /*String - Add-On Name 2 (if available)*/,
+        dimension15: "" /*String - Add-On Payment Option 1 (if available)*/,
+        dimension16: "" /*String - Add-On Payment Option 2 (if available)*/,
+        dimension17: "" /*String - Availability (if available) */,
+        position: position /*Number - Position in the list*/,
       };
       allProductImpressions.ecommerce.impressions.push(productImpration);
     });
@@ -429,4 +449,69 @@ import { getParameterByName } from "../../../global/js/utils";
   });
   // Device Cards load Impression end -----
 
+  // product plan card click start --------------------------------------------
+  $(".productdetail .container-product-grid .bg-cards .tile-card a")
+    .off()
+    .on("click", function (e) {
+      var curnt = $(this).attr("href");
+      var target = $(this).attr("target");
+      e.preventDefault();
+
+      var productClicked = {};
+      var selectedProductMain = $(this).closest(".nv-card-wrapper");
+
+      var name = selectedProductMain.find(".nv-plan-header").find(".nv-product-name").text();
+      var brand = "Etisalat";
+      var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
+      var position = selectedProductMain.parent().index() + 1;
+      var category = getParameterByName("catName", curnt);
+      var actionList = getParameterByName("listVal", curnt);
+      var id = getParameterByName("productId", curnt);
+
+      productClicked = {
+        event: "productClick",
+
+        ecommerce: {
+          click: {
+            actionField: { list: actionList },
+
+            products: [
+              {
+                name: name /* String - Product Name */,
+                id: id /* String - Product ID */,
+                price: price /* String - Product Price */,
+                brand: brand /* String - Product Brand */,
+                category: category /* String - Product Category */,
+                dimension1: "" /* String - Capacity 1 (if available) */,
+                dimension2: "" /* String - Capacity 2 Bundle (if available) */,
+                dimension3: "" /* String - Size (if available) */,
+                dimension4: "" /* String - Color 1 (if available) */,
+                dimension5: "" /* String - Color 2 Bundle (if available) */,
+                dimension6: "" /* String - Strap Type (if available) */,
+                dimension7: "" /* String - Strap Color (if available) */,
+                dimension8: "" /* String - Connectivity (if available) */,
+                dimension9: "" /* String - Payment Method (if available) */,
+                dimension10: "" /* String - Number Selection Option (if available) */,
+                dimension11: "" /* String - Number Selected (if available) */,
+                dimension12: "" /* String - Plan Selected (if available) */,
+                dimension13: "" /* String - Add-On Name 1 (if available) */,
+                dimension14: "" /* String - Add-On Name 2 (if available) */,
+                dimension15: "" /* String - Add-On Payment Option 1 (if available) */,
+                dimension16: "" /* String - Add-On Payment Option 2 (if available) */,
+                dimension17: "" /* String - Availability (if available)   */,
+                position: position /*Number - Position in the list*/,
+              },
+            ],
+          },
+        },
+      };
+
+      dataLayer.push(productClicked);
+      if (target === "_blank") {
+        window.open(curnt, target);
+      } else {
+        window.location = curnt;
+      }
+    });
+  // product plan card click end --------------------------------------------
 })(jQuery);
