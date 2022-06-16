@@ -52,6 +52,9 @@
     &.nv-modal.right-modal {
       .nv-modal-dialog {
         .nv-modal-content {
+          height: 100%;
+          overflow-x: hidden;
+          overflow-y: auto;
           padding-left: 0;
           padding-right: 0;
 
@@ -72,7 +75,23 @@
         }
 
         .nv-modal-body {
+          overflow: visible;
           padding: 0;
+        }
+
+        .nv-bg-colors {
+          border-radius: 8px;
+          display: inline-block;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1.33;
+          padding: 1px 0.5rem;
+
+          @include respond-to-min($desktop) {
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.43;
+          }
         }
       }
     }
