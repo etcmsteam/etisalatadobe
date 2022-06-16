@@ -33,6 +33,28 @@ public interface EtisalatApiService {
      * @return the api hostname
      */
     String getApiHostname();
+    
+    
+    /**
+     * Gets the auto suggest endpoint url.
+     *
+     * @return the auto suggest endpoint url
+     */
+    String getAutoSuggestEndpointUrl();
+    
+    /**
+     * Gets the search endpoint url.
+     *
+     * @return the search endpoint url
+     */
+    String getSearchEndpointUrl();
+
+    /**
+     * Gets the Google Analytics API Key.
+     *
+     * @return the Google Analytics API Key
+     */
+    String getGaApiKey();
 
 
 }

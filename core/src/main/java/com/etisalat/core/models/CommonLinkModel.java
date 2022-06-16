@@ -79,4 +79,34 @@ public class CommonLinkModel {
 	  
 	  return etisalatApiService.getApiHostname();
 	}
+	
+  /**
+   * Gets the search endpoint url.
+   *
+   * @return the search endpoint url
+   */
+  public String getSearchEndpointUrl() {
+
+    return etisalatApiService.getSearchEndpointUrl();
+  }
+
+  /**
+   * Gets the auto suggest endpoint url.
+   *
+   * @return the auto suggest endpoint url
+   */
+  public String getAutoSuggestEndpointUrl() {
+
+    return etisalatApiService.getAutoSuggestEndpointUrl();
+  }
+
+    /**
+     * Gets the Google Analytics API Key.
+     *
+     * @return the the Google Analytics API Key
+     */
+    public String getGaApiKey() {
+
+        return etisalatApiService.getGaApiKey();
+    }
 }

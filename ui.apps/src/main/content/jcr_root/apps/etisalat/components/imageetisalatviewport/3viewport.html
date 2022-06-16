@@ -17,13 +17,15 @@
           srcset="${imageViewport.retinaImage992px2x}" media="(max-width: 992px)">
     <source data-sly-test="${imageViewport.retinaImage992px1x && imageViewport.retinaImage992px2x}" 
           srcset="${imageViewport.retinaImage992px1x} 1x, ${imageViewport.retinaImage992px2x} 2x" media="(max-width: 992px)"> 
-   <img data-sly-test="${imageViewport.retinaImage992px1x && !imageViewport.retinaImage992px2x}" 
+   
+   <sly data-sly-set.lazyLoading="${properties.disableLazyLoading ? ''  : 'lazy'}"/>
+   <img loading="${lazyLoading}" data-sly-test="${imageViewport.retinaImage992px1x && !imageViewport.retinaImage992px2x}" 
         src="${imageViewport.retinaImage992px1x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
         alt="${imageViewport.threeViewPortAltText || true}">
-   <img data-sly-test="${!imageViewport.retinaImage992px1x && imageViewport.retinaImage992px2x}" 
+   <img loading="${lazyLoading}" data-sly-test="${!imageViewport.retinaImage992px1x && imageViewport.retinaImage992px2x}" 
         src="${imageViewport.retinaImage992px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
         alt="${imageViewport.threeViewPortAltText || true}">
-   <img data-sly-test="${imageViewport.retinaImage992px1x && imageViewport.retinaImage992px2x}" 
+   <img loading="${lazyLoading}" data-sly-test="${imageViewport.retinaImage992px1x && imageViewport.retinaImage992px2x}" 
         src="${imageViewport.retinaImage992px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
         alt="${imageViewport.threeViewPortAltText || true}">
 </template>

@@ -1,4 +1,7 @@
+import "./index.scss";
+
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import { getParameterByName } from "../../../global/js/utils";
 
 /* eslint-disable */
 const setSpacebetweenTableCarousel = (parent) => {
@@ -38,23 +41,34 @@ const initActions = () => {
       $("body").addClass("freeze");
     }
   };
+
   var popUpEligibilityActive = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+    /*
+      WARNING: DO NOT PREVENT THIS EVENT(preventDefault()) OR STOP THE EVENT PROPAGATION (stopPropagation()).
+      It can break the GA implementation. Check googleAnalytics.js
+    */
 
     var btn = $(this);
     var popup = $("#eligibility-summary");
+    const productName = btn.closest(".nv-plan-card").find(".nv-product-name").text();
     var dataTarget = btn.attr("data-target");
-    popup.addClass("show");
-    $("body").addClass("freeze");
     $(popup).find(".nv-brand").text(btn.closest(".nv-plan-card").find(".nv-brand").text());
-    $(popup).find(".nv-modal-title").text(btn.closest(".nv-plan-card").find(".nv-product-name").text());
-    $(popup).find(".planName").text(btn.closest(".nv-plan-card").find(".nv-product-name").text());
+    $(popup).find(".nv-modal-title").text(productName);
+    $(popup).find(".planName").text(productName);
     $(popup).find(".redirectUrl").attr("href", dataTarget);
-    $(popup)
-      .find(".leadUrl")
-      .attr("href", $(popup).find(".leadUrl").attr("href") + btn.closest(".nv-plan-card").find(".nv-product-name").text());
-    return false;
+    const leadUrlTarget = $(popup).find(".leadUrl").attr("data-target");
+    const locale = getParameterByName("locale", dataTarget);
+    const sku = getParameterByName("skuId", dataTarget);
+    $(popup).find(".leadUrl").attr("href", `${leadUrlTarget}?skuId=${sku}&locale=${locale}&productName=${productName}`);
+
+    const $el = popup.clone();
+    $(".modal-popup-wrapper").append($el);
+    $(".modal-popup-wrapper #eligibility-summary").addClass("show");
+    $(".modal-popup-wrapper #eligibility-summary").removeClass("fade");
+    $(".modal-popup-wrapper .modal-popup").addClass("show");
+    $("body, html").addClass("freeze");
+    $(".modal-popup-wrapper").show;
+    $(".modal-popup-wrapper").css("display", "block");
   };
   // close popup
   var closePopUp = function (e) {
@@ -140,20 +154,20 @@ export const ANAEMARATI_CARDS = () => {
         ? "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json"
         : "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data-ar.json"; */
 
-    const defaultDataPath = '/b2c/eshop/getProductsByCategory';
-        
+    const defaultDataPath = "/b2c/eshop/getProductsByCategory";
+
     const {
       jsonUrl: DATA_URL,
       jsonPath: DATA_PATH = defaultDataPath,
       categoryId: CATEGORY_ID = "cat1090015",
       requestMethod: REQUEST_METHOD = "POST",
-      enableReqParams: ENABLE_REQ_PARAMS = 'yes',
+      enableReqParams: ENABLE_REQ_PARAMS = "yes",
       ctaUrl: CTA_URL = "/b2c/eshop/postpaidLine?",
-      hostName: HOST_NAME = ''
+      hostName: HOST_NAME = "",
     } = DATA_PARAMS;
 
     // let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
-       let url = DATA_URL || `${DATA_PATH}`;
+    let url = DATA_URL || `${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
       url = `${url}?locale=${locale}&isApplyDefaultFilters=false`;
@@ -317,7 +331,7 @@ export const ANAEMARATI_CARDS = () => {
       $.ajax({
         dataType: "json",
         type: REQUEST_METHOD,
-        url: url,
+        url,
         contentType: "application/json; charset=utf-8",
         data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
@@ -352,6 +366,8 @@ export const ANAEMARATI_CARDS = () => {
                 });
             }
           }
+
+          $(document).trigger("ANA_EMARATI_PLANS_LOADED", { $productRow: productRow });
         },
       });
     }
