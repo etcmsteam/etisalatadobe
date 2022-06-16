@@ -5,26 +5,26 @@ import { getParameterByName } from "../../../global/js/utils";
   var dataLayer = window.dataLayer || [];
 
   function pageInfo(url, type) {
-    var respose = "";
+    var respose = '';
     switch (type) {
-      case "page_type":
-        respose = "CMS";
-        if (url.indexOf("eshop") !== -1) {
-          respose = "eShop";
+      case 'page_type':
+        respose = 'CMS';
+        if (url.indexOf('eshop') !== -1) {
+          respose = 'eShop';
         }
         break;
 
-      case "category":
-        respose = "";
-        if (url.indexOf("category") !== -1) {
-          respose = getParameterByName("category", url);
+      case 'category':
+        respose = '';
+        if (url.indexOf('category') !== -1) {
+          respose = getParameterByName('category', url);
         }
         break;
 
-      case "subcategory":
-        respose = "";
-        if (url.indexOf("subcategory") !== -1) {
-          respose = getParameterByName("subcategory", url);
+      case 'subcategory':
+        respose = '';
+        if (url.indexOf('subcategory') !== -1) {
+          respose = getParameterByName('subcategory', url);
         }
         break;
     }
@@ -34,11 +34,11 @@ import { getParameterByName } from "../../../global/js/utils";
 
   // Page view dataLayer
   dataLayer.push({
-    event: "PageView",
+    event: 'PageView',
     page_details: {
-      page_type: pageInfo(document.URL, "page_type"),
-      category: pageInfo(document.URL, "category"),
-      subcategory: pageInfo(document.URL, "subcategory"),
+      page_type: pageInfo(document.URL, 'page_type'),
+      category: pageInfo(document.URL, 'category'),
+      subcategory: pageInfo(document.URL, 'subcategory'),
       url: document.URL,
       title: document.title,
       name: document.location.pathname,
@@ -46,60 +46,60 @@ import { getParameterByName } from "../../../global/js/utils";
     },
 
     user_details: {
-      login_status: "",
-      user_id: "",
+      login_status: '',
+      user_id: '',
     },
   });
 
   // GA Main menu on menu item click Mobile
-  $(".nav-expand-content li .nav-item a").on("click", function () {
+  $('.nav-expand-content li .nav-item a').on('click', function () {
     var $self = $(this);
     var linkText;
     // e.preventDefault();
     linkText = $self.text().trim();
     dataLayer.push({
-      event: "menuitems",
-      info1: "menuitems",
-      info2: "click",
+      event: 'menuitems',
+      info1: 'menuitems',
+      info2: 'click',
       info3: linkText,
     });
   });
 
   // GA Main menu on menu item click Desktop
-  $(".menu-items-wrapper .sub-menu a").on("click", function (e) {
+  $('.menu-items-wrapper .sub-menu a').on('click', function (e) {
     var n;
     var t;
     // e.preventDefault();
-    n = e.target.innerText.trim().replace(/ /g, "_");
-    t = e.target.parentElement.parentElement.firstElementChild.innerText.trim().replace(/ /g, "_");
+    n = e.target.innerText.trim().replace(/ /g, '_');
+    t = e.target.parentElement.parentElement.firstElementChild.innerText.trim().replace(/ /g, '_');
     dataLayer.push({
-      event: "navigation",
-      eventCategory: "navigation",
-      eventAction: "top",
+      event: 'navigation',
+      eventCategory: 'navigation',
+      eventAction: 'top',
       eventLabel: t,
       Link: n,
     });
   });
 
   // Hero Banner on click
-  $(".hero-banner-section")
+  $('.hero-banner-section')
     .off()
-    .on("click", ".hero-details .btn", function () {
-      var ga_event = $(this).closest(".hero-banner-section").data("ga-event");
-      var ga_ev_cat = $(this).closest(".hero-banner-section").data("ga-ev-cat");
+    .on('click', '.hero-details .btn', function () {
+      var ga_event = $(this).closest('.hero-banner-section').data('ga-event');
+      var ga_ev_cat = $(this).closest('.hero-banner-section').data('ga-ev-cat');
 
       // event dynamic values
-      var ga_event_value = ga_event ? ga_event : "";
-      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : "";
+      var ga_event_value = ga_event ? ga_event : '';
+      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : '';
 
       // title of the CTA
-      var ctaTitle = $(this).closest(".hero-details").find(".hero-title").text().trim();
+      var ctaTitle = $(this).closest('.hero-details').find('.hero-title').text().trim();
       if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
-        if (typeof window.dataLayer !== "undefined") {
+        if (typeof window.dataLayer !== 'undefined') {
           dataLayer.push({
             event: ga_event_value,
             ev_cat: ga_ev_cat_value,
-            ev_act: "click",
+            ev_act: 'click',
             ev_label: ctaTitle,
           });
         }
@@ -107,17 +107,17 @@ import { getParameterByName } from "../../../global/js/utils";
     });
 
   // Current Promotions item onclick
-  $(".current-promotions-wrraper")
+  $('.current-promotions-wrraper')
     .off()
-    .on("click", ".learn-more", function () {
-      var titleWrap = $(this).parent().parent().find("h3.title-wrap");
+    .on('click', '.learn-more', function () {
+      var titleWrap = $(this).parent().parent().find('h3.title-wrap');
       var ctaTitle;
       if (titleWrap.length) {
-        ctaTitle = $(this).parent().parent().find("h3.title-wrap")[0].innerText.trim();
-        if (typeof window.dataLayer !== "undefined") {
+        ctaTitle = $(this).parent().parent().find('h3.title-wrap')[0].innerText.trim();
+        if (typeof window.dataLayer !== 'undefined') {
           dataLayer.push({
-            event: "learnMore_links_allpages",
-            eventCategory: "learnmore_allpages",
+            event: 'learnMore_links_allpages',
+            eventCategory: 'learnmore_allpages',
             eventAction: ctaTitle,
           });
         }
@@ -125,23 +125,23 @@ import { getParameterByName } from "../../../global/js/utils";
     });
 
   // Main text CTA click
-  $(".cmp-default-card")
+  $('.cmp-default-card')
     .off()
-    .on("click", ".cmp-teaser__action-container a", function () {
-      var ga_event = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-event");
-      var ga_ev_cat = $(this).closest(".cmp-default-card").find(".cmp-teaser").data("ga-ev-cat");
+    .on('click', '.cmp-teaser__action-container a', function () {
+      var ga_event = $(this).closest('.cmp-default-card').find('.cmp-teaser').data('ga-event');
+      var ga_ev_cat = $(this).closest('.cmp-default-card').find('.cmp-teaser').data('ga-ev-cat');
 
       // event dynamic values
-      var ga_event_value = ga_event ? ga_event : "";
-      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : "";
+      var ga_event_value = ga_event ? ga_event : '';
+      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : '';
 
       var ctaTitle = $(this).text().trim();
       if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
-        if (typeof window.dataLayer !== "undefined") {
+        if (typeof window.dataLayer !== 'undefined') {
           dataLayer.push({
             event: ga_event_value,
             ev_cat: ga_ev_cat_value,
-            ev_act: "click",
+            ev_act: 'click',
             ev_label: ctaTitle,
           });
         }
@@ -149,40 +149,40 @@ import { getParameterByName } from "../../../global/js/utils";
     });
 
   // View all benifites click
-  $(".benefit-section")
+  $('.benefit-section')
     .off()
-    .on("click", "a", function () {
-      var ctaTitle = $(this).parent().parent().find(".benefits-main-title")[0].innerText.trim();
-      if (typeof window.dataLayer !== "undefined") {
+    .on('click', 'a', function () {
+      var ctaTitle = $(this).parent().parent().find('.benefits-main-title')[0].innerText.trim();
+      if (typeof window.dataLayer !== 'undefined') {
         dataLayer.push({
-          event: "see_allbenefits_links_allpages",
-          eventCategory: "see_allbenefits_links_allpages",
+          event: 'see_allbenefits_links_allpages',
+          eventCategory: 'see_allbenefits_links_allpages',
           eventAction: ctaTitle,
         });
       }
     });
 
   // Emirati Plans Click Impression start -----
-  $(".productdetail").on(
-    "click",
-    ".gold-plans .swiper-wrapper .swiper-slide .btn-buy-now, .silver-plans .swiper-wrapper .swiper-slide .btn-buy-now",
+  $('.productdetail').on(
+    'click',
+    '.gold-plans .swiper-wrapper .swiper-slide .btn-buy-now, .silver-plans .swiper-wrapper .swiper-slide .btn-buy-now',
     function (e) {
-      var curnt = $(this).attr("data-target");
+      var curnt = $(this).attr('data-target');
       e.preventDefault();
 
       var productClicked = {};
-      var selectedProductMain = $(this).closest(".nv-card-wrapper");
-      var name = selectedProductMain.find(".nv-product-name").text();
-      var brand = selectedProductMain.find(".nv-brand").text();
-      var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
+      var selectedProductMain = $(this).closest('.nv-card-wrapper');
+      var name = selectedProductMain.find('.nv-product-name').text();
+      var brand = selectedProductMain.find('.nv-brand').text();
+      var price = selectedProductMain.find('.nv-price-wrapper').find('.price-value').text();
 
       var position = selectedProductMain.parent().index() + 1;
-      var category = getParameterByName("catName", curnt);
-      var actionList = getParameterByName("listVal", curnt);
-      var id = getParameterByName("productId", curnt);
+      var category = getParameterByName('catName', curnt);
+      var actionList = getParameterByName('listVal', curnt);
+      var id = getParameterByName('productId', curnt);
 
       productClicked = {
-        event: "productClick",
+        event: 'productClick',
         ecommerce: {
           click: {
             actionField: {
@@ -200,39 +200,39 @@ import { getParameterByName } from "../../../global/js/utils";
                 /* String - Product Brand */
                 category: category,
                 /* String - Product Category */
-                dimension1: "",
+                dimension1: '',
                 /* String - Capacity 1 (if available) */
-                dimension2: "",
+                dimension2: '',
                 /* String - Capacity 2 Bundle (if available) */
-                dimension3: "",
+                dimension3: '',
                 /* String - Size (if available) */
-                dimension4: "",
+                dimension4: '',
                 /* String - Color 1 (if available) */
-                dimension5: "",
+                dimension5: '',
                 /* String - Color 2 Bundle (if available) */
-                dimension6: "",
+                dimension6: '',
                 /* String - Strap Type (if available) */
-                dimension7: "",
+                dimension7: '',
                 /* String - Strap Color (if available) */
-                dimension8: "",
+                dimension8: '',
                 /* String - Connectivity (if available) */
-                dimension9: "",
+                dimension9: '',
                 /* String - Payment Method (if available) */
-                dimension10: "",
+                dimension10: '',
                 /* String - Number Selection Option (if available) */
-                dimension11: "",
+                dimension11: '',
                 /* String - Number Selected (if available) */
-                dimension12: "",
+                dimension12: '',
                 /* String - Plan Selected (if available)  */
-                dimension13: "",
+                dimension13: '',
                 /* String - Add-On Name 1 (if available) */
-                dimension14: "",
+                dimension14: '',
                 /* String - Add-On Name 2 (if available) */
-                dimension15: "",
+                dimension15: '',
                 /* String - Add-On Payment Option 1 (if available) */
-                dimension16: "",
+                dimension16: '',
                 /* String - Add-On Payment Option 2 (if available) */
-                dimension17: "",
+                dimension17: '',
                 /* String - Availability (if available)   */
                 position: position /* Number - Position in the list */,
               },
@@ -248,27 +248,27 @@ import { getParameterByName } from "../../../global/js/utils";
   // Emirati Plans Click Impression end -----
 
   // Emirati Plans load Impression start -----
-  $(document).on("ANA_EMARATI_PLANS_LOADED", (event, { $productRow }) => {
+  $(document).on('ANA_EMARATI_PLANS_LOADED', (event, { $productRow }) => {
     var allProductImpressions = {
-      event: "productImpressions",
+      event: 'productImpressions',
       ecommerce: {
-        currencyCode: "AED",
+        currencyCode: 'AED',
         impressions: [],
       },
     };
 
-    $productRow.children(".swiper-slide").each(function () {
+    $productRow.children('.swiper-slide').each(function () {
       var productImpression = {};
 
-      var selectedProductMain = $(this).find(".nv-card-wrapper");
-      var name = selectedProductMain.find(".nv-product-name").text();
-      var brand = selectedProductMain.find(".nv-brand").text();
-      var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
+      var selectedProductMain = $(this).find('.nv-card-wrapper');
+      var name = selectedProductMain.find('.nv-product-name').text();
+      var brand = selectedProductMain.find('.nv-brand').text();
+      var price = selectedProductMain.find('.nv-price-wrapper').find('.price-value').text();
       var position = $(this).index() + 1;
-      var curnt = selectedProductMain.find(".btn-buy-now").attr("data-target");
-      var list = getParameterByName("listVal", curnt);
-      var category = getParameterByName("catName", curnt);
-      var id = getParameterByName("productId", curnt);
+      var curnt = selectedProductMain.find('.btn-buy-now').attr('data-target');
+      var list = getParameterByName('listVal', curnt);
+      var category = getParameterByName('catName', curnt);
+      var id = getParameterByName('productId', curnt);
 
       productImpression = {
         name: name,
@@ -283,39 +283,39 @@ import { getParameterByName } from "../../../global/js/utils";
         /* String - Product Category */
         list: list,
         /* String - Product List Name */
-        dimension1: "",
+        dimension1: '',
         /* String - Capacity 1 (if available) */
-        dimension2: "",
+        dimension2: '',
         /* String - Capacity 2 Bundle (if available) */
-        dimension3: "",
+        dimension3: '',
         /* String - Size (if available) */
-        dimension4: "",
+        dimension4: '',
         /* String - Color 1 (if available) */
-        dimension5: "",
+        dimension5: '',
         /* String - Color 2 Bundle (if available) */
-        dimension6: "",
+        dimension6: '',
         /* String - Strap Type (if available) */
-        dimension7: "",
+        dimension7: '',
         /* String - Strap Color (if available) */
-        dimension8: "",
+        dimension8: '',
         /* String - Connectivity (if available) */
-        dimension9: "",
+        dimension9: '',
         /* String - Payment Method (if available) */
-        dimension10: "",
+        dimension10: '',
         /* String - Number Selection Option (if available) */
-        dimension11: "",
+        dimension11: '',
         /* String - Number Selected (if available) */
-        dimension12: "",
+        dimension12: '',
         /* String - Plan Selected (if available) */
-        dimension13: "",
+        dimension13: '',
         /* String - Add-On Name 1 (if available) */
-        dimension14: "",
+        dimension14: '',
         /* String - Add-On Name 2 (if available) */
-        dimension15: "",
+        dimension15: '',
         /* String - Add-On Payment Option 1 (if available) */
-        dimension16: "",
+        dimension16: '',
         /* String - Add-On Payment Option 2 (if available) */
-        dimension17: "",
+        dimension17: '',
         /* String - Availability (if available)   */
         position: position /* Number - Position in the list */,
       };
@@ -328,89 +328,89 @@ import { getParameterByName } from "../../../global/js/utils";
   // Emirati Plans load Impression end -----
 
   // Device Cards load Impression start -----
-  $(document).on("DEVICE_CARDS_LOADED", (event, { $productRow }) => {
+  $(document).on('DEVICE_CARDS_LOADED', (event, { $productRow }) => {
     var allProductImpressions = {
-      event: "productImpressions",
+      event: 'productImpressions',
       ecommerce: {
-        currencyCode: "AED",
+        currencyCode: 'AED',
         impressions: [],
       },
     };
 
-    var productDetails = $("#" + $productRow).children(".swiper-slide");
+    var productDetails = $('#' + $productRow).children('.swiper-slide');
     $(productDetails).each(function () {
       var productImpration = {};
-      var selectedProductMain = $(this).find(".tiles-box");
-      var name = selectedProductMain.find(".tiles-box-title").find("h2").text();
-      var brand = selectedProductMain.find(".tiles-box-title").find(".catagory").text();
-      var price = selectedProductMain.find(".tiles-box-list").find(".price").text();
-      var imgURL = selectedProductMain.find(".product").find("img").attr("src");
+      var selectedProductMain = $(this).find('.tiles-box');
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
+      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
+      var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
+      var imgURL = selectedProductMain.find('.product').find('img').attr('src');
       var position = $(this).index() + 1;
-      var curnt = selectedProductMain.find("a").attr("href");
+      var curnt = selectedProductMain.find('a').attr('href');
       var windowURL = window.location.href;
-      var list = getParameterByName("listVal", curnt);
-      var category = getParameterByName("catName", windowURL);
-      var id = getParameterByName("productId", curnt);
+      var list = getParameterByName('listVal', curnt);
+      var category = getParameterByName('catName', windowURL);
+      var id = getParameterByName('productId', curnt);
       function categoryFromImage(imageURL) {
         var catImage = imageURL;
-        var catGroups = ["tablets", "accessories", "smartphones", "smart-monitors-tvs", "home-devices", "homedevices", "routers", "bundles"];
-        var tabletsList = ["ipad", "tablet", "tab"];
-        var homeList = ["tv", "4k", "led", "lcd", "ps5", "xbox", "playstation"];
-        var phoneList = ["iphone", "phone", "smart-phone", "lcd", "smart-phones"];
-        var routerList = ["hub", "router", "mobile-hub", "tp-link", "link"];
-        var laptopsList = ["laptops", "matebook", "laptop", "yoga", "idea", "notebook"];
+        var catGroups = ['tablets', 'accessories', 'smartphones', 'smart-monitors-tvs', 'home-devices', 'homedevices', 'routers', 'bundles'];
+        var tabletsList = ['ipad', 'tablet', 'tab'];
+        var homeList = ['tv', '4k', 'led', 'lcd', 'ps5', 'xbox', 'playstation'];
+        var phoneList = ['iphone', 'phone', 'smart-phone', 'lcd', 'smart-phones'];
+        var routerList = ['hub', 'router', 'mobile-hub', 'tp-link', 'link'];
+        var laptopsList = ['laptops', 'matebook', 'laptop', 'yoga', 'idea', 'notebook'];
         var accessoriesList = [
-          "combo",
-          "watch",
-          "pen",
-          "case",
-          "cover",
-          "protective",
-          "dualsense",
-          "controller",
-          "band",
-          "charging",
-          "charger",
-          "headset",
-          "fitbit",
-          "adapter",
-          "cable",
+          'combo',
+          'watch',
+          'pen',
+          'case',
+          'cover',
+          'protective',
+          'dualsense',
+          'controller',
+          'band',
+          'charging',
+          'charger',
+          'headset',
+          'fitbit',
+          'adapter',
+          'cable',
         ];
-        var detectedCat = "devices";
+        var detectedCat = 'devices';
         catGroups.forEach((element) => {
           if (catImage.includes(element)) {
             detectedCat = element;
           }
         });
-        if (detectedCat === "devices") {
+        if (detectedCat === 'devices') {
           tabletsList.forEach((element) => {
             if (catImage.includes(element)) {
-              detectedCat = "tablets";
+              detectedCat = 'tablets';
             }
           });
           homeList.forEach((element) => {
             if (catImage.includes(element)) {
-              detectedCat = "HOME DEVICES";
+              detectedCat = 'HOME DEVICES';
             }
           });
           phoneList.forEach((element) => {
             if (catImage.includes(element)) {
-              detectedCat = "SMARTPHONES";
+              detectedCat = 'SMARTPHONES';
             }
           });
           accessoriesList.forEach((element) => {
             if (catImage.includes(element)) {
-              detectedCat = "accessories";
+              detectedCat = 'accessories';
             }
           });
           routerList.forEach((element) => {
             if (catImage.includes(element)) {
-              detectedCat = "ROUTERS";
+              detectedCat = 'ROUTERS';
             }
           });
           laptopsList.forEach((element) => {
             if (catImage.includes(element)) {
-              detectedCat = "LAPTOPS";
+              detectedCat = 'LAPTOPS';
             }
           });
         }
@@ -424,23 +424,23 @@ import { getParameterByName } from "../../../global/js/utils";
         brand: brand /*String - Product Brand*/,
         category: newCatg /*String - Product Category*/,
         list: list /*String - Product List Name*/,
-        dimension1: "" /*String - Capacity 1 (if available)*/,
-        dimension2: "" /*String - Capacity 2 Bundle (if available)*/,
-        dimension3: "" /*String - Size (if available)*/,
-        dimension4: "" /*String - Color 1 (if available)*/,
-        dimension5: "" /*String - Color 2 Bundle (if available)*/,
-        dimension6: "" /*String - Strap Type (if available)*/,
-        dimension7: "" /*String - Strap Color (if available)*/,
-        dimension8: "" /*String - Connectivity (if available)*/,
-        dimension9: "" /*String - Payment Method (if available)*/,
-        dimension10: "" /*String - Number Selection Option (if available)*/,
-        dimension11: "" /*String - Number Selected (if available)*/,
-        dimension12: "" /*String - Plan Selected (if available)*/,
-        dimension13: "" /*String - Add-On Name 1 (if available)*/,
-        dimension14: "" /*String - Add-On Name 2 (if available)*/,
-        dimension15: "" /*String - Add-On Payment Option 1 (if available)*/,
-        dimension16: "" /*String - Add-On Payment Option 2 (if available)*/,
-        dimension17: "" /*String - Availability (if available) */,
+        dimension1: '' /*String - Capacity 1 (if available)*/,
+        dimension2: '' /*String - Capacity 2 Bundle (if available)*/,
+        dimension3: '' /*String - Size (if available)*/,
+        dimension4: '' /*String - Color 1 (if available)*/,
+        dimension5: '' /*String - Color 2 Bundle (if available)*/,
+        dimension6: '' /*String - Strap Type (if available)*/,
+        dimension7: '' /*String - Strap Color (if available)*/,
+        dimension8: '' /*String - Connectivity (if available)*/,
+        dimension9: '' /*String - Payment Method (if available)*/,
+        dimension10: '' /*String - Number Selection Option (if available)*/,
+        dimension11: '' /*String - Number Selected (if available)*/,
+        dimension12: '' /*String - Plan Selected (if available)*/,
+        dimension13: '' /*String - Add-On Name 1 (if available)*/,
+        dimension14: '' /*String - Add-On Name 2 (if available)*/,
+        dimension15: '' /*String - Add-On Payment Option 1 (if available)*/,
+        dimension16: '' /*String - Add-On Payment Option 2 (if available)*/,
+        dimension17: '' /*String - Availability (if available) */,
         position: position /*Number - Position in the list*/,
       };
       allProductImpressions.ecommerce.impressions.push(productImpration);
@@ -507,26 +507,26 @@ import { getParameterByName } from "../../../global/js/utils";
   // Device Cards load Impression end -----
 
   // product plan card click start --------------------------------------------
-  $(".productdetail .container-product-grid .bg-cards .tile-card a")
+  $('.productdetail .container-product-grid .bg-cards .tile-card a')
     .off()
-    .on("click", function (e) {
-      var curnt = $(this).attr("href");
-      var target = $(this).attr("target");
+    .on('click', function (e) {
+      var curnt = $(this).attr('href');
+      var target = $(this).attr('target');
       e.preventDefault();
 
       var productClicked = {};
-      var selectedProductMain = $(this).closest(".nv-card-wrapper");
+      var selectedProductMain = $(this).closest('.nv-card-wrapper');
 
-      var name = selectedProductMain.find(".nv-plan-header").find(".nv-product-name").text();
-      var brand = "Etisalat";
-      var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
+      var name = selectedProductMain.find('.nv-plan-header').find('.nv-product-name').text();
+      var brand = 'Etisalat';
+      var price = selectedProductMain.find('.nv-price-wrapper').find('.price-value').text();
       var position = selectedProductMain.parent().index() + 1;
-      var category = getParameterByName("catName", curnt);
-      var actionList = getParameterByName("listVal", curnt);
-      var id = getParameterByName("productId", curnt);
+      var category = getParameterByName('catName', curnt);
+      var actionList = getParameterByName('listVal', curnt);
+      var id = getParameterByName('productId', curnt);
 
       productClicked = {
-        event: "productClick",
+        event: 'productClick',
 
         ecommerce: {
           click: {
@@ -539,23 +539,23 @@ import { getParameterByName } from "../../../global/js/utils";
                 price: price /* String - Product Price */,
                 brand: brand /* String - Product Brand */,
                 category: category /* String - Product Category */,
-                dimension1: "" /* String - Capacity 1 (if available) */,
-                dimension2: "" /* String - Capacity 2 Bundle (if available) */,
-                dimension3: "" /* String - Size (if available) */,
-                dimension4: "" /* String - Color 1 (if available) */,
-                dimension5: "" /* String - Color 2 Bundle (if available) */,
-                dimension6: "" /* String - Strap Type (if available) */,
-                dimension7: "" /* String - Strap Color (if available) */,
-                dimension8: "" /* String - Connectivity (if available) */,
-                dimension9: "" /* String - Payment Method (if available) */,
-                dimension10: "" /* String - Number Selection Option (if available) */,
-                dimension11: "" /* String - Number Selected (if available) */,
-                dimension12: "" /* String - Plan Selected (if available) */,
-                dimension13: "" /* String - Add-On Name 1 (if available) */,
-                dimension14: "" /* String - Add-On Name 2 (if available) */,
-                dimension15: "" /* String - Add-On Payment Option 1 (if available) */,
-                dimension16: "" /* String - Add-On Payment Option 2 (if available) */,
-                dimension17: "" /* String - Availability (if available)   */,
+                dimension1: '' /* String - Capacity 1 (if available) */,
+                dimension2: '' /* String - Capacity 2 Bundle (if available) */,
+                dimension3: '' /* String - Size (if available) */,
+                dimension4: '' /* String - Color 1 (if available) */,
+                dimension5: '' /* String - Color 2 Bundle (if available) */,
+                dimension6: '' /* String - Strap Type (if available) */,
+                dimension7: '' /* String - Strap Color (if available) */,
+                dimension8: '' /* String - Connectivity (if available) */,
+                dimension9: '' /* String - Payment Method (if available) */,
+                dimension10: '' /* String - Number Selection Option (if available) */,
+                dimension11: '' /* String - Number Selected (if available) */,
+                dimension12: '' /* String - Plan Selected (if available) */,
+                dimension13: '' /* String - Add-On Name 1 (if available) */,
+                dimension14: '' /* String - Add-On Name 2 (if available) */,
+                dimension15: '' /* String - Add-On Payment Option 1 (if available) */,
+                dimension16: '' /* String - Add-On Payment Option 2 (if available) */,
+                dimension17: '' /* String - Availability (if available)   */,
                 position: position /*Number - Position in the list*/,
               },
             ],
@@ -564,11 +564,30 @@ import { getParameterByName } from "../../../global/js/utils";
       };
 
       dataLayer.push(productClicked);
-      if (target === "_blank") {
+      if (target === '_blank') {
         window.open(curnt, target);
       } else {
         window.location = curnt;
       }
     });
   // product plan card click end --------------------------------------------
+  // digital notification click start --------------------------------------------
+  $(document).on('DIGITAL_NOTIFICATION_LOADED', function () {
+    dataLayer.push({
+      event: 'notifyBanner',
+      ev_cat: 'notifyBanner', //Event Category
+      ev_act: 'load', //Event Action
+    });
+  });
+
+  $(document).on('DIGITAL_NOTIFICATION_CLICKED', function () {
+    const dataurl = window.location.href;
+    dataLayer.push({
+      event: 'notifyBanner',
+      ev_cat: 'notifyBanner', //Event Category
+      ev_act: 'click', //Event Action
+      ev_url: dataurl,
+    });
+  });
+  // digital notification click end --------------------------------------------
 })(jQuery);
