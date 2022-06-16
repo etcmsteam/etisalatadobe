@@ -53,26 +53,6 @@ $('.digital-notifications-wrapper .more-notifications').off().on('click', functi
             }
         }
     }
-    // GA datalayer starts
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-        'event': 'notifyBanner',
-        'ev_cat': 'notifyBanner', //Event Category
-        'ev_act': 'load' //Event Action
-    });
-
-    function gaLayer() {
-        var dataurl = window.location.href;
-        dataLayer.push({
-            'event': 'notifyBanner',
-            'ev_cat': 'notifyBanner', //Event Category
-            'ev_act': 'click', //Event Action
-            'ev_url': dataurl
-        });
-    }
-    $('.digital-notifications-wrapper').off('click').on('click', function (e) {
-        gaLayer();
-    });
     // GA datalayer ends
     // popup
     var dataLabel = $(this).find('a').attr("data-label");
@@ -81,7 +61,7 @@ $('.digital-notifications-wrapper .more-notifications').off().on('click', functi
         e.stopPropagation();
         $('#' + dataLabel).addClass('show');
         $('body').addClass('freeze');
-        gaLayer();
+        $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
     }
 });
 
@@ -98,7 +78,7 @@ var notificationsswiper = swiperInit('.digital-notification-swiper-container .sw
     slidesPerView: 1,
     autoplay: 5000
 });
- 
+
 // close popup
 $('.nv-noti-modal-close').on('click', function (e) {
     e.stopPropagation();
@@ -115,7 +95,7 @@ $('.digital-notifications-wrapper.bottom .noti-icon-dismis').on('click', functio
     e.preventDefault();
     $(this).closest('.digital-notifications-wrapper').css('display', 'none');
     $('body').css('padding-bottom', 0);
-    gaLayer();
+    $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
 });
 
 // close notifications - global ( top )
@@ -136,7 +116,7 @@ $('.digital-notifications-wrapper.top .noti-icon-dismis').off('click').on('click
     // reset menu bar
     reset();
     $('body').css('margin-top', 139);
-    gaLayer();
+    $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
 });
 if (sessionStorage.getItem("notifications")) {
     $('.digital-notifications-wrapper.top').css('display', 'none');
@@ -200,7 +180,13 @@ if ($('body').hasClass('show-digital-notification-top') && sessionStorage.getIte
     setNotificaiton(false);
 
 } else {
-
-    setNotificaiton(true);
+ setNotificaiton(true);
 }
+$(document).trigger('DIGITAL_NOTIFICATION_LOADED');
+$('.digital-notifications-wrapper')
+  .off('click')
+  .on('click', function (e) {
+    $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
+  });
+
 }
