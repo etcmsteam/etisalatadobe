@@ -31,14 +31,12 @@ const initActions = () => {
     var popup = $("#benafits_list");
     var dataTarget = btn.attr("data-target");
     if (dataTarget) {
-      popup.addClass("show");
       $(popup).find(".nv-brand").text(btn.closest(".nv-card-body").find(".nv-brand").text());
       $(popup).find(".nv-modal-title").text(btn.closest(".nv-card-body").find(".nv-product-name").text());
       $(popup).find(".modalContent").load(dataTarget);
       $(popup).find(".modalContent").removeClass("gold platinum silver");
       $(popup).find(".modalContent").addClass(goldOrSilver);
-
-      $("body").addClass("freeze");
+      openPopUp('#benafits_list');
     }
   };
 
@@ -61,14 +59,18 @@ const initActions = () => {
     const sku = getParameterByName("skuId", dataTarget);
     $(popup).find(".leadUrl").attr("href", `${leadUrlTarget}?skuId=${sku}&locale=${locale}&productName=${productName}`);
 
+    openPopUp('#eligibility-summary');
+  };
+  var openPopUp = function(selector){
+    const popup = $(selector)
     const $el = popup.clone();
-    $(".modal-popup-wrapper").append($el);
-    $(".modal-popup-wrapper #eligibility-summary").addClass("show");
-    $(".modal-popup-wrapper #eligibility-summary").removeClass("fade");
-    $(".modal-popup-wrapper .modal-popup").addClass("show");
-    $("body, html").addClass("freeze");
-    $(".modal-popup-wrapper").show;
-    $(".modal-popup-wrapper").css("display", "block");
+    $('.modal-popup-wrapper').append($el);
+    $(`.modal-popup-wrapper ${selector}`).addClass('show');
+    $(`.modal-popup-wrapper ${selector}`).removeClass('fade');
+    $('.modal-popup-wrapper .modal-popup').addClass('show');
+    $('body, html').addClass('freeze');
+    $('.modal-popup-wrapper').show;
+    $('.modal-popup-wrapper').css('display', 'block');
   };
   // close popup
   var closePopUp = function (e) {
@@ -330,10 +332,10 @@ export const ANAEMARATI_CARDS = () => {
     function getCardsData(url, payload, cardType) {
       $.ajax({
         dataType: "json",
-        type: REQUEST_METHOD,
-        url,
+        type: 'GET',
+        url: '/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json',
         contentType: "application/json; charset=utf-8",
-        data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
+        // data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
           var htmlCards = getPlansCard(res, cardType);
           var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
