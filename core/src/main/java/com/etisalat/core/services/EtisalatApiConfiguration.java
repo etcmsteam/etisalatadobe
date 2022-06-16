@@ -30,7 +30,7 @@ public @interface EtisalatApiConfiguration {
     String getSearchEndpointUrl() default "/b2c/guidedSearchRequest.service";
 
     @AttributeDefinition(name = "Google Analytics API Key", description = "Google Analytics API Key")
-    String getGaApiKey() default "GTM-5M52SJB";
+    String getGaApiKey() default "GTM-T57KNFL";
 
 }
 
