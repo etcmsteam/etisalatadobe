@@ -23,7 +23,8 @@
 <sly data-sly-test="${inheritedPageProperties.showgoogleanalytics}" data-sly-include="googleanalytics.html">
 </sly>
 <sly data-sly-set.consumerTemplate="${properties['cq:template'] && 
-         properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/etisalat-consumer-content-page'}" />
+          (properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/etisalat-consumer-content-page' || 
+          properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/code-block-template')}" />
 
 <body
   class="${page.cssClassNames} ${pageProperties.hideHeader ? '' : (pageProperties.hideMegaMenu ? 'topnav--margin' : 'meganavigation--margin')}  ${consumerTemplate ? 'consumer__page' : '' }"
