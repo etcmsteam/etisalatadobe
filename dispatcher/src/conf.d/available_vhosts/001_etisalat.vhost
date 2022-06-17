@@ -559,6 +559,10 @@ Include conf.d/variables/custom.vars
         RewriteCond %{REQUEST_URI} .jsp$
         RewriteRule ^/(.*).jsp$ /$1.html [R=301,L]
 
+        RewriteCond %{REQUEST_URI} .*\.(png|jpg|svg|pdf|gif|ico|jpeg)
+        RewriteCond %{REQUEST_URI} !^/content/dam/$
+        RewriteRule ^/(.*)$ /content/dam/dx_eitsalat_ae/$1  [PT,L]
+
         RewriteCond %{REQUEST_URI} ^/en/ [OR]
         RewriteCond %{REQUEST_URI} ^/ar/
         RewriteRule ^/(.+)$ /content/etisalat/ae/$1 [PT,L]
