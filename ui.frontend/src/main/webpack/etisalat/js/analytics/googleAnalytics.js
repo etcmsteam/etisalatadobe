@@ -604,7 +604,7 @@ import { getParameterByName } from '../../../global/js/utils';
     },
   };
 
-  productImpression('.bg-cards', '.plan-card');
+  productImpression('.bg-cards', '.tile-table');
   productImpression('.bg-cards', '.device-card');
 
   function productImpression(product, type) {
@@ -660,7 +660,7 @@ import { getParameterByName } from '../../../global/js/utils';
     dataLayer.push(allProductImpressions);
   }
 
-  productClick('.bg-cards', '.plan-card');
+  productClick('.bg-cards', '.tile-table');
   productClick('.bg-cards', '.device-card');
 
   function productClick(product, type) {
