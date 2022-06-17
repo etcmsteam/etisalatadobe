@@ -35,15 +35,15 @@
 <sly data-sly-test="${comparePageClientLibs}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
         <sly data-sly-call="${clientlib.css @ categories='etisalat-codeblock'}" />
  </sly>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
  
  <sly data-sly-test="${!comparePageClientLibs}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
   <sly data-sly-call="${clientlib.js @ categories='etisalat.base'}" />
 </sly>
 
 <sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}" />
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <!--/* Favicon */-->
 <sly data-sly-test="${inheritedPageProperties['cq:designPath']}"
