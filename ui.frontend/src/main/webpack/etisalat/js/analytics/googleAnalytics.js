@@ -658,7 +658,6 @@ import { getParameterByName } from '../../../global/js/utils';
       allProductImpressions.ecommerce.impressions.push(productImpration);
     });
 
-    console.log('allProductImpressionsallProductImpressions', allProductImpressions);
     dataLayer.push(allProductImpressions);
   }
 
