@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { getParameterByName } from "../../../global/js/utils";
+import { getParameterByName } from '../../../global/js/utils';
 
 (function ($) {
   var dataLayer = window.dataLayer || [];
@@ -341,9 +341,9 @@ import { getParameterByName } from "../../../global/js/utils";
     $(productDetails).each(function () {
       var productImpration = {};
       var selectedProductMain = $(this).find('.tiles-box');
-      var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
-      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
-      var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
+      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+      var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
       var imgURL = selectedProductMain.find('.product').find('img').attr('src');
       var position = $(this).index() + 1;
       var curnt = selectedProductMain.find('a').attr('href');
@@ -456,9 +456,9 @@ import { getParameterByName } from "../../../global/js/utils";
         var curnt = $(this).attr('href');
         var productClicked = {};
         var selectedProductMain = $(this).closest('.tiles-box');
-        var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
-        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
-        var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
+        var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
+        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+        var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
         var position = selectedProductMain.closest('.swiper-slide').index() + 1;
         var category = getParameterByName('catName', curnt);
         var id = getParameterByName('productId', curnt);
@@ -501,8 +501,7 @@ import { getParameterByName } from "../../../global/js/utils";
         };
         dataLayer.push(productClicked);
 
-        if(curnt)
-        window.location = curnt;
+        if (curnt) window.location = curnt;
         // Device card click end
       });
   });
@@ -517,7 +516,7 @@ import { getParameterByName } from "../../../global/js/utils";
       e.preventDefault();
 
       var productClicked = {};
-      var selectedProductMain = $(this).closest('.nv-card-wrapper');
+      var selectedProductMain = $(this).closest('.tile-card');
 
       var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
       var brand = 'Etisalat';
@@ -567,17 +566,15 @@ import { getParameterByName } from "../../../global/js/utils";
       };
 
       dataLayer.push(productClicked);
-      if(curnt) {
+      if (curnt) {
         if (target === '_blank') {
-        window.open(curnt, target);
-      } else {
-        window.location = curnt;
+          window.open(curnt, target);
+        } else {
+          window.location = curnt;
+        }
       }
-     }
-
     });
   // product plan card click end --------------------------------------------
-
 
   // digital notification click start --------------------------------------------
   $(document).on('DIGITAL_NOTIFICATION_LOADED', function () {
@@ -599,7 +596,6 @@ import { getParameterByName } from "../../../global/js/utils";
   });
   // digital notification click end --------------------------------------------
 
-
   // Product plan card impression start ------------------------------------
   var allProductImpressions = {
     event: 'productImpressions',
@@ -620,9 +616,9 @@ import { getParameterByName } from "../../../global/js/utils";
 
     $(productDetails).each(function (index) {
       var productImpration = {};
-      var selectedProductMain = $(this).find('.tiles-box');
+      var selectedProductMain = $(this).find('.tile-card');
       var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
-      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+      // var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
       var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
 
       var position = index + 1;
@@ -681,15 +677,16 @@ import { getParameterByName } from "../../../global/js/utils";
       .unbind()
       .on('click', function (e) {
         var curnt = $(this).attr('href');
+        var target = $(this).attr('target');
 
         e.preventDefault();
 
         var productClicked = {};
 
-        var selectedProductMain = $(this).closest('.tile-table');
+        var selectedProductMain = $(this).closest('.tile-card');
 
         var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
-        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+        // var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
         var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
 
         var position = selectedProductMain.parent().index() + 1;
@@ -741,22 +738,12 @@ import { getParameterByName } from "../../../global/js/utils";
         };
 
         dataLayer.push(productClicked);
-        //console.log(productClicked);
-        updateCardsAppice(this, curnt);
 
-        // for appice
-        /*
-
-        if(e.target.target === "_blank"){
-
-                    window.open(curnt);
-
-        }else{
-
-                    window.location = curnt;
-
+        if (target === '_blank') {
+          window.open(curnt, target);
+        } else {
+          window.location = curnt;
         }
-                                                                         */
       });
   }
   // Product plan card impression end ------------------------------------
