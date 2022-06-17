@@ -1,5 +1,7 @@
 /* eslint-disable */
-export const SITE = () => {
+/* eslint-disable func-names */
+/* eslint-disable no-undef */
+$(function () {
   $(".hamburger").on("click", function () {
     $(".hamburger").toggleClass("is-active");
     $(".main-menu-mobile").toggleClass("mob-visible");
@@ -67,4 +69,4 @@ export const SITE = () => {
       e.stopPropagation();
     }
   });
-};
+});

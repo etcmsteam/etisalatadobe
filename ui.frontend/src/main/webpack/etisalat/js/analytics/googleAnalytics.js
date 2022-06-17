@@ -575,7 +575,6 @@ import { getParameterByName } from '../../../global/js/utils';
       }
     });
   // product plan card click end --------------------------------------------
-
   // digital notification click start --------------------------------------------
   $(document).on('DIGITAL_NOTIFICATION_LOADED', function () {
     dataLayer.push({
