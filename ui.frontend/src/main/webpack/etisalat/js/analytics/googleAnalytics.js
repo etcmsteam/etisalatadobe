@@ -571,6 +571,7 @@ import { getParameterByName } from "../../../global/js/utils";
       }
     });
   // product plan card click end --------------------------------------------
+  
   // digital notification click start --------------------------------------------
   $(document).on('DIGITAL_NOTIFICATION_LOADED', function () {
     dataLayer.push({
@@ -589,5 +590,64 @@ import { getParameterByName } from "../../../global/js/utils";
       ev_url: dataurl,
     });
   });
-  // digital notification click end --------------------------------------------
+  // digital notification click end ------------------------------------------
+  
+  /********** Product Plan Cards Impression START **********/
+  function PRODUCT_PLAN_CARD_IMPRESSION() {
+    var allProductImpressions = {
+      event: 'productImpressions',
+      ecommerce: {
+        currencyCode: 'AED',
+        impressions: [],
+      },
+    };
+
+    var productDetails = $('.productdetail .container-product-grid .bg-cards .tile-card');
+
+    $(productDetails).each(function (index) {
+      var productImpration = {};
+      var selectedProductMain = $(this);
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
+      var brand = 'Etisalat';
+      var price = selectedProductMain.find('.price').text().replace(/\s/g, '');
+      var position = $(this).index() + 1;
+      var curnt = selectedProductMain.find('.read-more a').attr('href');
+      var list = getParameterByName('listVal', curnt);
+      var category = getParameterByName('catName', curnt);
+      var id = getParameterByName('productId', curnt);
+
+      productImpration = {
+        name: name /* String - Product Name */,
+        id: id /* String - Product ID  */,
+        price: price /* String - Product Price */,
+        brand: brand /* String - Product Brand */,
+        category: category /* String - Product Category */,
+        list: list /* String - Product List Name */,
+        dimension1: '' /* String - Capacity 1 (if available) */,
+        dimension2: '' /* String - Capacity 2 Bundle (if available) */,
+        dimension3: '' /* String - Size (if available) */,
+        dimension4: '' /* String - Color 1 (if available) */,
+        dimension5: '' /* String - Color 2 Bundle (if available) */,
+        dimension6: '' /* String - Strap Type (if available) */,
+        dimension7: '' /* String - Strap Color (if available) */,
+        dimension8: '' /* String - Connectivity (if available) */,
+        dimension9: '' /* String - Payment Method (if available) */,
+        dimension10: '' /* String - Number Selection Option (if available) */,
+        dimension11: '' /* String - Number Selected (if available) */,
+        dimension12: '' /* String - Plan Selected (if available) */,
+        dimension13: '' /* String - Add-On Name 1 (if available) */,
+        dimension14: '' /* String - Add-On Name 2 (if available) */,
+        dimension15: '' /* String - Add-On Payment Option 1 (if available) */,
+        dimension16: '' /* String - Add-On Payment Option 2 (if available) */,
+        dimension17: '' /* String - Availability (if available) */,
+        position: position /* Number - Position in the list */,
+      };
+
+      allProductImpressions.ecommerce.impressions.push(productImpration);
+    });
+    dataLayer.push(allProductImpressions);
+  }
+
+  PRODUCT_PLAN_CARD_IMPRESSION();
+  /********** Product Plan Cards Impression END **********/
 })(jQuery);
