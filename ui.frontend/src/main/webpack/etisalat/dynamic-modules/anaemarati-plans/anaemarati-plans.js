@@ -33,10 +33,13 @@ const initActions = () => {
     if (dataTarget) {
       $(popup).find(".nv-brand").text(btn.closest(".nv-card-body").find(".nv-brand").text());
       $(popup).find(".nv-modal-title").text(btn.closest(".nv-card-body").find(".nv-product-name").text());
-      $(popup).find(".modalContent").load(dataTarget);
+      $(popup)
+        .find('.modalContent')
+        .load(dataTarget, function () {
+          openPopUp('#benafits_list');
+        });
       $(popup).find(".modalContent").removeClass("gold platinum silver");
       $(popup).find(".modalContent").addClass(goldOrSilver);
-      openPopUp('#benafits_list');
     }
   };
 
@@ -64,6 +67,7 @@ const initActions = () => {
   var openPopUp = function(selector){
     const popup = $(selector)
     const $el = popup.clone();
+    $el.remove('.modal-popup-wrapper');
     $('.modal-popup-wrapper').append($el);
     $(`.modal-popup-wrapper ${selector}`).addClass('show');
     $(`.modal-popup-wrapper ${selector}`).removeClass('fade');
@@ -190,6 +194,15 @@ export const ANAEMARATI_CARDS = () => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    function modifyModalUrl(url) {
+      if(url) {
+        const expFragPath = '/content/experience-fragments/etisalat/ae';
+        const contentUrl = url.slice(-3) === 'jsp' ? url.replace(/\.(jsp)($|\?)/, '.body.html') : url;
+        return `${expFragPath}${contentUrl}`;
+      }
+      return '';
+    }
+
     function getPlansCard(data, planType) {
       var products = data.products;
       var cardType = planType;
@@ -281,7 +294,7 @@ export const ANAEMARATI_CARDS = () => {
         if (sku.freebie.cmsTemplateUrl !== "") {
           html +=
             '<a class="nv-btn-link green btn-link-md forward" data-target="' +
-            sku.freebie.cmsTemplateUrl +
+            modifyModalUrl(sku.freebie.cmsTemplateUrl) +
             '" data-style="' +
             cardType +
             '"> <span> ' +
