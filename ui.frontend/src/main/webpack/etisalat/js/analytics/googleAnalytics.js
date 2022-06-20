@@ -782,4 +782,23 @@ import { getParameterByName } from '../../../global/js/utils';
       //google analytics ends
     });
   }
+
+  //search result ga
+  var quickLinksList = document.querySelector('.result-default-view .list.quick-links ul');
+  if (quickLinksList !== null) {
+    var quickLinksResult = quickLinksList.children;
+    for (var i = 0; i < quickLinksResult.length; i++) {
+      quickLinksResult[i].addEventListener('click', function (e) {
+        //google analyticss starts
+        dataLayer.push({
+          event: 'navigation',
+          eventCategory: 'navigation',
+          eventAction: 'left',
+          eventLabel: 'need_assistance', // replace space with "_"
+          Link: this.innerText.trim().replace(/ /g, '_'), // replace space with "_"
+        });
+        //google analyticss ends
+      });
+    }
+  }
 })(jQuery);
