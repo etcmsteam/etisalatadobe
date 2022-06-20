@@ -31,14 +31,15 @@ const initActions = () => {
     var popup = $("#benafits_list");
     var dataTarget = btn.attr("data-target");
     if (dataTarget) {
-      popup.addClass("show");
       $(popup).find(".nv-brand").text(btn.closest(".nv-card-body").find(".nv-brand").text());
       $(popup).find(".nv-modal-title").text(btn.closest(".nv-card-body").find(".nv-product-name").text());
-      $(popup).find(".modalContent").load(dataTarget);
+      $(popup)
+        .find('.modalContent')
+        .load(dataTarget, function () {
+          openPopUp('#benafits_list');
+        });
       $(popup).find(".modalContent").removeClass("gold platinum silver");
       $(popup).find(".modalContent").addClass(goldOrSilver);
-
-      $("body").addClass("freeze");
     }
   };
 
@@ -61,14 +62,19 @@ const initActions = () => {
     const sku = getParameterByName("skuId", dataTarget);
     $(popup).find(".leadUrl").attr("href", `${leadUrlTarget}?skuId=${sku}&locale=${locale}&productName=${productName}`);
 
+    openPopUp('#eligibility-summary');
+  };
+  var openPopUp = function(selector){
+    const popup = $(selector)
     const $el = popup.clone();
-    $(".modal-popup-wrapper").append($el);
-    $(".modal-popup-wrapper #eligibility-summary").addClass("show");
-    $(".modal-popup-wrapper #eligibility-summary").removeClass("fade");
-    $(".modal-popup-wrapper .modal-popup").addClass("show");
-    $("body, html").addClass("freeze");
-    $(".modal-popup-wrapper").show;
-    $(".modal-popup-wrapper").css("display", "block");
+    $el.remove('.modal-popup-wrapper');
+    $('.modal-popup-wrapper').append($el);
+    $(`.modal-popup-wrapper ${selector}`).addClass('show');
+    $(`.modal-popup-wrapper ${selector}`).removeClass('fade');
+    $('.modal-popup-wrapper .modal-popup').addClass('show');
+    $('body, html').addClass('freeze');
+    $('.modal-popup-wrapper').show;
+    $('.modal-popup-wrapper').css('display', 'block');
   };
   // close popup
   var closePopUp = function (e) {
@@ -188,6 +194,15 @@ export const ANAEMARATI_CARDS = () => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    function modifyModalUrl(url) {
+      if(url) {
+        const expFragPath = '/content/experience-fragments/etisalat/ae';
+        const contentUrl = url.slice(-3) === 'jsp' ? url.replace(/\.(jsp)($|\?)/, '.body.html') : url;
+        return `${expFragPath}${contentUrl}`;
+      }
+      return '';
+    }
+
     function getPlansCard(data, planType) {
       var products = data.products;
       var cardType = planType;
@@ -279,7 +294,7 @@ export const ANAEMARATI_CARDS = () => {
         if (sku.freebie.cmsTemplateUrl !== "") {
           html +=
             '<a class="nv-btn-link green btn-link-md forward" data-target="' +
-            sku.freebie.cmsTemplateUrl +
+            modifyModalUrl(sku.freebie.cmsTemplateUrl) +
             '" data-style="' +
             cardType +
             '"> <span> ' +
@@ -329,45 +344,45 @@ export const ANAEMARATI_CARDS = () => {
 
     function getCardsData(url, payload, cardType) {
       $.ajax({
-        dataType: "json",
+        dataType: 'json',
         type: REQUEST_METHOD,
         url,
-        contentType: "application/json; charset=utf-8",
+        contentType: 'application/json; charset=utf-8',
         data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
           var htmlCards = getPlansCard(res, cardType);
           var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
 
           $(productRow).html(htmlCards);
-          if ("Carousal" == "Carousal") {
-            if ($(".swiper-slide").length > 3) {
-              $(".swiper-scrollbar").removeClass("hide");
-              $(".table-swiper-button-prev").removeClass("hide");
-              $(".table-swiper-button-next").removeClass("hide");
+          if ('Carousal' == 'Carousal') {
+            if ($('.swiper-slide').length > 3) {
+              $('.swiper-scrollbar').removeClass('hide');
+              $('.table-swiper-button-prev').removeClass('hide');
+              $('.table-swiper-button-next').removeClass('hide');
 
               initSwiperFull();
               initActions();
             }
           } else {
-            $(productRow).removeClass("swiper-wrapper");
-            if ($(productRow + " .swiper-slide").length > 6) {
-              $(".load-btn").removeClass("hide");
-              $(productRow + " .swiper-slide").each(function (i) {
+            $(productRow).removeClass('swiper-wrapper');
+            if ($(productRow + ' .swiper-slide').length > 6) {
+              $('.load-btn').removeClass('hide');
+              $(productRow + ' .swiper-slide').each(function (i) {
                 if (i >= 6) {
-                  $(this).addClass("hide");
+                  $(this).addClass('hide');
                 }
               });
-              $(".load-btn .btn")
+              $('.load-btn .btn')
                 .unbind()
-                .on("click", function (e) {
+                .on('click', function (e) {
                   e.preventDefault();
-                  $(this).closest(".content-section").find(".swiper-slide").removeClass("hide");
-                  $(".load-btn").addClass("hide");
+                  $(this).closest('.content-section').find('.swiper-slide').removeClass('hide');
+                  $('.load-btn').addClass('hide');
                 });
             }
           }
 
-          $(document).trigger("ANA_EMARATI_PLANS_LOADED", { $productRow: productRow });
+          $(document).trigger('ANA_EMARATI_PLANS_LOADED', { $productRow: productRow });
         },
       });
     }
