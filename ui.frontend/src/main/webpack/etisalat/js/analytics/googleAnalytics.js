@@ -1,8 +1,12 @@
 /* eslint-disable */
-import { getParameterByName } from "../../../global/js/utils";
+import { getParameterByName } from '../../../global/js/utils';
 
 (function ($) {
   var dataLayer = window.dataLayer || [];
+  var instannceNum = 0;
+  if (window.outerWidth <= 991) {
+    instannceNum = 1;
+  }
 
   function pageInfo(url, type) {
     var respose = '';
@@ -341,9 +345,9 @@ import { getParameterByName } from "../../../global/js/utils";
     $(productDetails).each(function () {
       var productImpration = {};
       var selectedProductMain = $(this).find('.tiles-box');
-      var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
-      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
-      var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
+      var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+      var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
       var imgURL = selectedProductMain.find('.product').find('img').attr('src');
       var position = $(this).index() + 1;
       var curnt = selectedProductMain.find('a').attr('href');
@@ -456,9 +460,9 @@ import { getParameterByName } from "../../../global/js/utils";
         var curnt = $(this).attr('href');
         var productClicked = {};
         var selectedProductMain = $(this).closest('.tiles-box');
-        var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
-        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
-        var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
+        var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
+        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+        var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
         var position = selectedProductMain.closest('.swiper-slide').index() + 1;
         var category = getParameterByName('catName', curnt);
         var id = getParameterByName('productId', curnt);
@@ -500,7 +504,8 @@ import { getParameterByName } from "../../../global/js/utils";
           },
         };
         dataLayer.push(productClicked);
-        window.location = curnt;
+
+        if (curnt) window.location = curnt;
         // Device card click end
       });
   });
@@ -515,11 +520,12 @@ import { getParameterByName } from "../../../global/js/utils";
       e.preventDefault();
 
       var productClicked = {};
-      var selectedProductMain = $(this).closest('.nv-card-wrapper');
+      var selectedProductMain = $(this).closest('.tile-card');
 
-      var name = selectedProductMain.find('.nv-plan-header').find('.nv-product-name').text();
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
       var brand = 'Etisalat';
-      var price = selectedProductMain.find('.nv-price-wrapper').find('.price-value').text();
+      var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+
       var position = selectedProductMain.parent().index() + 1;
       var category = getParameterByName('catName', curnt);
       var actionList = getParameterByName('listVal', curnt);
@@ -564,14 +570,15 @@ import { getParameterByName } from "../../../global/js/utils";
       };
 
       dataLayer.push(productClicked);
-      if (target === '_blank') {
-        window.open(curnt, target);
-      } else {
-        window.location = curnt;
+      if (curnt) {
+        if (target === '_blank') {
+          window.open(curnt, target);
+        } else {
+          window.location = curnt;
+        }
       }
     });
   // product plan card click end --------------------------------------------
-  
   // digital notification click start --------------------------------------------
   $(document).on('DIGITAL_NOTIFICATION_LOADED', function () {
     dataLayer.push({
@@ -590,64 +597,189 @@ import { getParameterByName } from "../../../global/js/utils";
       ev_url: dataurl,
     });
   });
-  // digital notification click end ------------------------------------------
-  
-  /********** Product Plan Cards Impression START **********/
-  function PRODUCT_PLAN_CARD_IMPRESSION() {
-    var allProductImpressions = {
-      event: 'productImpressions',
-      ecommerce: {
-        currencyCode: 'AED',
-        impressions: [],
-      },
-    };
+  // digital notification click end --------------------------------------------
 
-    var productDetails = $('.productdetail .container-product-grid .bg-cards .tile-card');
+  // Product plan card impression start ------------------------------------
+  var allProductImpressions = {
+    event: 'productImpressions',
+    ecommerce: {
+      currencyCode: 'AED',
+      impressions: [],
+    },
+  };
+
+  productImpression('.bg-cards', '.tile-table');
+  productImpression('.bg-cards', '.device-card');
+
+  function productImpression(product, type) {
+    var productDetails = $(product).find(type);
+    if (productDetails.length == 0) {
+      return false;
+    }
 
     $(productDetails).each(function (index) {
       var productImpration = {};
-      var selectedProductMain = $(this);
-      var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
-      var brand = 'Etisalat';
-      var price = selectedProductMain.find('.price').text().replace(/\s/g, '');
-      var position = $(this).index() + 1;
-      var curnt = selectedProductMain.find('.read-more a').attr('href');
+      var selectedProductMain = $(this).find('.tile-card');
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
+      // var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+      var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+
+      var position = index + 1;
+      var curnt = selectedProductMain.find('a.read-more-link').attr('href');
       var list = getParameterByName('listVal', curnt);
       var category = getParameterByName('catName', curnt);
       var id = getParameterByName('productId', curnt);
+      var sku = getParameterByName('skuId', curnt);
 
       productImpration = {
-        name: name /* String - Product Name */,
-        id: id /* String - Product ID  */,
-        price: price /* String - Product Price */,
-        brand: brand /* String - Product Brand */,
-        category: category /* String - Product Category */,
-        list: list /* String - Product List Name */,
-        dimension1: '' /* String - Capacity 1 (if available) */,
-        dimension2: '' /* String - Capacity 2 Bundle (if available) */,
-        dimension3: '' /* String - Size (if available) */,
-        dimension4: '' /* String - Color 1 (if available) */,
-        dimension5: '' /* String - Color 2 Bundle (if available) */,
-        dimension6: '' /* String - Strap Type (if available) */,
-        dimension7: '' /* String - Strap Color (if available) */,
-        dimension8: '' /* String - Connectivity (if available) */,
-        dimension9: '' /* String - Payment Method (if available) */,
-        dimension10: '' /* String - Number Selection Option (if available) */,
-        dimension11: '' /* String - Number Selected (if available) */,
-        dimension12: '' /* String - Plan Selected (if available) */,
-        dimension13: '' /* String - Add-On Name 1 (if available) */,
-        dimension14: '' /* String - Add-On Name 2 (if available) */,
-        dimension15: '' /* String - Add-On Payment Option 1 (if available) */,
-        dimension16: '' /* String - Add-On Payment Option 2 (if available) */,
-        dimension17: '' /* String - Availability (if available) */,
-        position: position /* Number - Position in the list */,
+        name: name /*String - Product Name*/,
+        id: type.indexOf('device') > 0 ? id : sku /*String - Product ID*/,
+        price: price /*String - Product Price*/,
+        brand: 'Etisalat' /*String - Product Brand*/,
+        category: category /*String - Product Category*/,
+        list: list /*String - Product List Name*/,
+        dimension1: '' /*String - Capacity 1 (if available)*/,
+        dimension2: '' /*String - Capacity 2 Bundle (if available)*/,
+        dimension3: '' /*String - Size (if available)*/,
+        dimension4: '' /*String - Color 1 (if available)*/,
+        dimension5: '' /*String - Color 2 Bundle (if available)*/,
+        dimension6: '' /*String - Strap Type (if available)*/,
+        dimension7: '' /*String - Strap Color (if available)*/,
+        dimension8: '' /*String - Connectivity (if available)*/,
+        dimension9: '' /*String - Payment Method (if available)*/,
+        dimension10: '' /*String - Number Selection Option (if available)*/,
+        dimension11: '' /*String - Number Selected (if available)*/,
+        dimension12: '' /*String - Plan Selected (if available)*/,
+        dimension13: '' /*String - Add-On Name 1 (if available)*/,
+        dimension14: '' /*String - Add-On Name 2 (if available)*/,
+        dimension15: '' /*String - Add-On Payment Option 1 (if available)*/,
+        dimension16: '' /*String - Add-On Payment Option 2 (if available)*/,
+        dimension17: '' /*String - Availability (if available)  */,
+        position: position /*Number - Position in the list*/,
       };
 
       allProductImpressions.ecommerce.impressions.push(productImpration);
     });
+
     dataLayer.push(allProductImpressions);
   }
 
-  PRODUCT_PLAN_CARD_IMPRESSION();
-  /********** Product Plan Cards Impression END **********/
+  productClick('.bg-cards', '.tile-table');
+  productClick('.bg-cards', '.device-card');
+
+  function productClick(product, type) {
+    //product click
+    var productClickedDetails = $(product).find(type).find('a.read-more-link');
+
+    if (productClickedDetails.length == 0) {
+      return false;
+    }
+
+    $(productClickedDetails)
+      .unbind()
+      .on('click', function (e) {
+        var curnt = $(this).attr('href');
+        var target = $(this).attr('target');
+
+        e.preventDefault();
+
+        var productClicked = {};
+
+        var selectedProductMain = $(this).closest('.tile-card');
+
+        var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
+        // var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
+        var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+
+        var position = selectedProductMain.parent().index() + 1;
+
+        var category = getParameterByName('catName', curnt);
+        var actionList = getParameterByName('listVal', curnt);
+        var id = getParameterByName('productId', curnt);
+        var sku = getParameterByName('skuId', curnt);
+
+        productClicked = {
+          event: 'productClick',
+          ecommerce: {
+            click: {
+              actionField: { list: actionList },
+
+              products: [
+                {
+                  name: name /*String - Product Name*/,
+                  id: type.indexOf('device') > 0 ? id : sku /*String - Product ID*/,
+
+                  price: price /*String - Product Price*/,
+                  brand: 'Etisalat' /*String - Product Brand*/,
+                  category: category /*String - Product Category*/,
+                  dimension1: '' /*String - Capacity 1 (if available)*/,
+                  dimension2: '' /*String - Capacity 2 Bundle (if available)*/,
+                  dimension3: '' /*String - Size (if available)*/,
+                  dimension4: '' /*String - Color 1 (if available)*/,
+                  dimension5: '' /*String - Color 2 Bundle (if available)*/,
+                  dimension6: '' /*String - Strap Type (if available)*/,
+                  dimension7: '' /*String - Strap Color (if available)*/,
+                  dimension8: '' /*String - Connectivity (if available)*/,
+                  dimension9: '' /*String - Payment Method (if available)*/,
+                  dimension10: '' /*String - Number Selection Option (if available)*/,
+
+                  dimension11: '' /*String - Number Selected (if available)*/,
+                  dimension12: '' /*String - Plan Selected (if available)*/,
+                  dimension13: '' /*String - Add-On Name 1 (if available)*/,
+                  dimension14: '' /*String - Add-On Name 2 (if available)*/,
+                  dimension15: '' /*String - Add-On Payment Option 1 (if available)*/,
+
+                  dimension16: '' /*String - Add-On Payment Option 2 (if available)*/,
+
+                  dimension17: '' /*String - Availability (if available)  */,
+                  position: position /*Number - Position in the list*/,
+                },
+              ],
+            },
+          },
+        };
+
+        dataLayer.push(productClicked);
+
+        if (target === '_blank') {
+          window.open(curnt, target);
+        } else {
+          window.location = curnt;
+        }
+      });
+  }
+  // Product plan card impression end ------------------------------------
+
+  //quick liks google analytics
+  var quickLinks = document.querySelectorAll('.search-items .list.quick-links ul')[instannceNum].children || '';
+  for (var i = 0; i < quickLinks.length; i++) {
+    quickLinks[i].addEventListener('click', function () {
+      //google analytics starts
+      window.dataLayer.push({
+        event: 'navigation',
+        eventCategory: 'navigation',
+        eventAction: 'top',
+        eventLabel: 'quick_links', // replace space with "_"
+        Link: this.innerText.trim().replace(/ /g, '_'), // replace space with "_"
+      });
+      //google analytics ends
+    });
+  }
+
+  //trending liks google analytics
+  var trendingLinksParent = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper')[instannceNum] || '';
+  var trendingLinks = trendingLinksParent.querySelectorAll('.content') || '';
+  for (var i = 0; i < trendingLinks.length; i++) {
+    trendingLinks[i].addEventListener('click', function () {
+      //google analytics starts
+      window.dataLayer.push({
+        event: 'navigation',
+        eventCategory: 'navigation',
+        eventAction: 'top',
+        eventLabel: 'trending_search',
+        Link: this.children[0].innerText.trim().replace(/ /g, '_'), // replace space with "_"
+      });
+      //google analytics ends
+    });
+  }
 })(jQuery);
