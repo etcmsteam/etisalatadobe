@@ -85,31 +85,6 @@ import { getParameterByName } from '../../../global/js/utils';
     });
   });
 
-  // Hero Banner on click
-  $('.hero-banner-section')
-    .off()
-    .on('click', '.hero-details .btn', function () {
-      var ga_event = $(this).closest('.hero-banner-section').data('ga-event');
-      var ga_ev_cat = $(this).closest('.hero-banner-section').data('ga-ev-cat');
-
-      // event dynamic values
-      var ga_event_value = ga_event ? ga_event : '';
-      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : '';
-
-      // title of the CTA
-      var ctaTitle = $(this).closest('.hero-details').find('.hero-title').text().trim();
-      if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
-        if (typeof window.dataLayer !== 'undefined') {
-          dataLayer.push({
-            event: ga_event_value,
-            ev_cat: ga_ev_cat_value,
-            ev_act: 'click',
-            ev_label: ctaTitle,
-          });
-        }
-      }
-    });
-
   // Current Promotions item onclick
   $('.current-promotions-wrraper')
     .off()
@@ -123,30 +98,6 @@ import { getParameterByName } from '../../../global/js/utils';
             event: 'learnMore_links_allpages',
             eventCategory: 'learnmore_allpages',
             eventAction: ctaTitle,
-          });
-        }
-      }
-    });
-
-  // Main text CTA click
-  $('.cmp-default-card')
-    .off()
-    .on('click', '.cmp-teaser__action-container a', function () {
-      var ga_event = $(this).closest('.cmp-default-card').find('.cmp-teaser').data('ga-event');
-      var ga_ev_cat = $(this).closest('.cmp-default-card').find('.cmp-teaser').data('ga-ev-cat');
-
-      // event dynamic values
-      var ga_event_value = ga_event ? ga_event : '';
-      var ga_ev_cat_value = ga_ev_cat ? ga_ev_cat : '';
-
-      var ctaTitle = $(this).text().trim();
-      if (ga_event_value.length !== 0 && ga_ev_cat_value.length !== 0) {
-        if (typeof window.dataLayer !== 'undefined') {
-          dataLayer.push({
-            event: ga_event_value,
-            ev_cat: ga_ev_cat_value,
-            ev_act: 'click',
-            ev_label: ctaTitle,
           });
         }
       }
@@ -750,7 +701,7 @@ import { getParameterByName } from '../../../global/js/utils';
   }
   // Product plan card impression end ------------------------------------
 
-  //quick liks google analytics
+  //quick links under search google analytics
   var quickLinks = document.querySelectorAll('.search-items .list.quick-links ul')[instannceNum].children || '';
   for (var i = 0; i < quickLinks.length; i++) {
     quickLinks[i].addEventListener('click', function () {
@@ -766,7 +717,7 @@ import { getParameterByName } from '../../../global/js/utils';
     });
   }
 
-  //trending liks google analytics
+  //trending links under search google analytics
   var trendingLinksParent = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper')[instannceNum] || '';
   var trendingLinks = trendingLinksParent.querySelectorAll('.content') || '';
   for (var i = 0; i < trendingLinks.length; i++) {
@@ -783,7 +734,7 @@ import { getParameterByName } from '../../../global/js/utils';
     });
   }
 
-  //search result ga
+  //quick links under search result page ga
   var quickLinksList = document.querySelector('.result-default-view .list.quick-links ul');
   if (quickLinksList !== null) {
     var quickLinksResult = quickLinksList.children;
