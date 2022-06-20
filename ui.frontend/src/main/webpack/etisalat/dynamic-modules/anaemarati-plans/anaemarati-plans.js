@@ -344,45 +344,45 @@ export const ANAEMARATI_CARDS = () => {
 
     function getCardsData(url, payload, cardType) {
       $.ajax({
-        dataType: "json",
-        type: 'GET',
-        url: '/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json',
-        contentType: "application/json; charset=utf-8",
-        // data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
+        dataType: 'json',
+        type: REQUEST_METHOD,
+        url,
+        contentType: 'application/json; charset=utf-8',
+        data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
           var htmlCards = getPlansCard(res, cardType);
           var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
 
           $(productRow).html(htmlCards);
-          if ("Carousal" == "Carousal") {
-            if ($(".swiper-slide").length > 3) {
-              $(".swiper-scrollbar").removeClass("hide");
-              $(".table-swiper-button-prev").removeClass("hide");
-              $(".table-swiper-button-next").removeClass("hide");
+          if ('Carousal' == 'Carousal') {
+            if ($('.swiper-slide').length > 3) {
+              $('.swiper-scrollbar').removeClass('hide');
+              $('.table-swiper-button-prev').removeClass('hide');
+              $('.table-swiper-button-next').removeClass('hide');
 
               initSwiperFull();
               initActions();
             }
           } else {
-            $(productRow).removeClass("swiper-wrapper");
-            if ($(productRow + " .swiper-slide").length > 6) {
-              $(".load-btn").removeClass("hide");
-              $(productRow + " .swiper-slide").each(function (i) {
+            $(productRow).removeClass('swiper-wrapper');
+            if ($(productRow + ' .swiper-slide').length > 6) {
+              $('.load-btn').removeClass('hide');
+              $(productRow + ' .swiper-slide').each(function (i) {
                 if (i >= 6) {
-                  $(this).addClass("hide");
+                  $(this).addClass('hide');
                 }
               });
-              $(".load-btn .btn")
+              $('.load-btn .btn')
                 .unbind()
-                .on("click", function (e) {
+                .on('click', function (e) {
                   e.preventDefault();
-                  $(this).closest(".content-section").find(".swiper-slide").removeClass("hide");
-                  $(".load-btn").addClass("hide");
+                  $(this).closest('.content-section').find('.swiper-slide').removeClass('hide');
+                  $('.load-btn').addClass('hide');
                 });
             }
           }
 
-          $(document).trigger("ANA_EMARATI_PLANS_LOADED", { $productRow: productRow });
+          $(document).trigger('ANA_EMARATI_PLANS_LOADED', { $productRow: productRow });
         },
       });
     }
