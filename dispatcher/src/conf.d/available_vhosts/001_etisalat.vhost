@@ -15,10 +15,30 @@ Include conf.d/variables/custom.vars
     Header set Content-Disposition inline
 </LocationMatch>
 
+## Cache images and assets for 24 hours - to unblock PT, to be changed based on client input.
+<LocationMatch "^/content/.*\.(?i:jpe?g|gif|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
+       Header unset Cache-Control
+       Header always set Cache-Control max-age=86400
+       Header set Age 0
+</LocationMatch>
+
+### to reviewed with client.
+###   <LocationMatch "^/etc\.clientlibs/.*\.(?i:json|png|gif|jpe?g|svg)$">
+###      Header set Cache-Control "max-age=7200,s-maxage=86400,stale-while-revalidate=43200,stale-if-error=43200,public”
+###   </LocationMatch>
+###   <LocationMatch "^/etc\.clientlibs/.*\.(?i:js|css|ttf|woff2)$">
+###      Header set Cache-Control "max-age=2592000,stale-while-revalidate=43200,stale-if-error=43200,public,immutable”
+###   </LocationMatch>
+###   # HTML pages: CDN cache for 2min with background refresh to avoid MISS, also incl. html requests with query parameter
+###   <LocationMatch "^/content/.*\.html$">
+###     Header unset Cache-Control
+###     Header always set Cache-Control "max-age=120”
+###   </LocationMatch>
+
 <VirtualHost *:80>
 	ServerName	"etisalat"
 	# Put names of which domains are used for your published site/content here
-	ServerAlias *-etisalat-cms.azureedge.net *.etisalat.ae www.etisalat.ae
+	ServerAlias *.etisalat.ae www.etisalat.ae
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
 	# Add header breadcrumbs for help in troubleshooting
