@@ -100,25 +100,25 @@ const DYNAMIC_COMPONENTS = {
 
             try {
               const moduleFn = await DYNAMIC_MODULE[component]();
-              const placeholderClass = `${component}-placeholder`;
-              document.querySelectorAll(`[data-component="${component}"], .${placeholderClass}`).forEach((item) => {
-                const componentItem = item;
-                
-                if (componentItem.classList.contains(placeholderClass)) {
-                  componentItem.classList.add("hide");
-                } else {
-                  componentItem.classList.remove("hide");
-                  componentItem.classList.add("dynamic-module-visible");
-                }
-                
-              });
-          
               if(typeof moduleFn === 'function') {
                 moduleFn();
               }
             } catch (error) {
               console.error("Dynamic Module Script Error: ", error);
             }
+
+            const placeholderClass = `${component}-placeholder`;
+            document.querySelectorAll(`[data-component="${component}"], .${placeholderClass}`).forEach((item) => {
+              const componentItem = item;
+
+              if (componentItem.classList.contains(placeholderClass)) {
+                componentItem.classList.add("hide");
+              } else {
+                componentItem.classList.remove("hide");
+                componentItem.classList.add("dynamic-module-visible");
+              }
+
+            });
           }
           observer.unobserve(entry.target);
         }
