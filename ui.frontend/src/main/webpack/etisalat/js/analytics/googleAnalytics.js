@@ -3,6 +3,10 @@ import { getParameterByName } from '../../../global/js/utils';
 
 (function ($) {
   var dataLayer = window.dataLayer || [];
+  var instannceNum = 0;
+  if (window.outerWidth <= 991) {
+    instannceNum = 1;
+  }
 
   function pageInfo(url, type) {
     var respose = '';
@@ -745,4 +749,37 @@ import { getParameterByName } from '../../../global/js/utils';
       });
   }
   // Product plan card impression end ------------------------------------
+
+  //quick liks google analytics
+  var quickLinks = document.querySelectorAll('.search-items .list.quick-links ul')[instannceNum].children || '';
+  for (var i = 0; i < quickLinks.length; i++) {
+    quickLinks[i].addEventListener('click', function () {
+      //google analytics starts
+      window.dataLayer.push({
+        event: 'navigation',
+        eventCategory: 'navigation',
+        eventAction: 'top',
+        eventLabel: 'quick_links', // replace space with "_"
+        Link: this.innerText.trim().replace(/ /g, '_'), // replace space with "_"
+      });
+      //google analytics ends
+    });
+  }
+
+  //trending liks google analytics
+  var trendingLinksParent = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper')[instannceNum] || '';
+  var trendingLinks = trendingLinksParent.querySelectorAll('.content') || '';
+  for (var i = 0; i < trendingLinks.length; i++) {
+    trendingLinks[i].addEventListener('click', function () {
+      //google analytics starts
+      window.dataLayer.push({
+        event: 'navigation',
+        eventCategory: 'navigation',
+        eventAction: 'top',
+        eventLabel: 'trending_search',
+        Link: this.children[0].innerText.trim().replace(/ /g, '_'), // replace space with "_"
+      });
+      //google analytics ends
+    });
+  }
 })(jQuery);
