@@ -16,15 +16,16 @@ export const SHOP_BRANDS = () => {
       enableReqParams: ENABLE_REQ_PARAMS = 'yes',
       hostName: HOST_NAME = ''
     } = BRAND_LOGO_DATA;
-   
+
     const locale = $("html")[0].lang != "" ? $("html")[0].lang.toUpperCase() : "EN";
     // let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
      let url = DATA_URL || `${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
-      url = `${url}?locale=en-${locale}`;
+      const localParam = (window.location.href.indexOf("/ar/")>-1)?'ar': 'en';
+      url = `${url}?locale=${localParam}`;
     }
-    
+
     const swiper = swiperInit(`.${rootInstanceClass} .brands-swiper`, {
       slidesPerView: 2.2,
       scrollbar: `.${rootInstanceClass} .brand-scrollbar`,
@@ -94,7 +95,7 @@ export const SHOP_BRANDS = () => {
       navigationState: "",
       categoryId: CATEGORY_ID,
     };
-    
+
     $.ajax({
       dataType: "json",
       type: REQUEST_METHOD,
