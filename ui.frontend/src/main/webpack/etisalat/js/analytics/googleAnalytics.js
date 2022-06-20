@@ -753,9 +753,8 @@ import { getParameterByName } from '../../../global/js/utils';
   //quick liks google analytics
   var quickLinks = document.querySelectorAll('.search-items .list.quick-links ul')[instannceNum].children || '';
   for (var i = 0; i < quickLinks.length; i++) {
-    quickLinks[i].addEventListener('click', function (e) {
-      e.preventDefault();
-      //google analyticss starts
+    quickLinks[i].addEventListener('click', function () {
+      //google analytics starts
       window.dataLayer.push({
         event: 'navigation',
         eventCategory: 'navigation',
@@ -763,7 +762,7 @@ import { getParameterByName } from '../../../global/js/utils';
         eventLabel: 'quick_links', // replace space with "_"
         Link: this.innerText.trim().replace(/ /g, '_'), // replace space with "_"
       });
-      //google analyticss ends
+      //google analytics ends
     });
   }
 
@@ -771,9 +770,8 @@ import { getParameterByName } from '../../../global/js/utils';
   var trendingLinksParent = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper')[instannceNum] || '';
   var trendingLinks = trendingLinksParent.querySelectorAll('.content') || '';
   for (var i = 0; i < trendingLinks.length; i++) {
-    trendingLinks[i].addEventListener('click', function (e) {
-      e.preventDefault();
-      //google analyticss starts
+    trendingLinks[i].addEventListener('click', function () {
+      //google analytics starts
       window.dataLayer.push({
         event: 'navigation',
         eventCategory: 'navigation',
@@ -781,7 +779,7 @@ import { getParameterByName } from '../../../global/js/utils';
         eventLabel: 'trending_search',
         Link: this.children[0].innerText.trim().replace(/ /g, '_'), // replace space with "_"
       });
-      //google analyticss ends
+      //google analytics ends
     });
   }
 })(jQuery);
