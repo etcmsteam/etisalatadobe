@@ -50,6 +50,14 @@
 
   &.benefits-modal {
     &.nv-modal.right-modal {
+      .nv-plan-details-modal {
+        width: 100%;
+
+        @include respond-to-min($desktop) {
+          width: toRem(402);
+        }
+      }
+
       li {
         margin-bottom: toRem(8);
 
@@ -165,13 +173,15 @@
         }
 
         .nv-modal-header {
+          align-items: flex-start;
           border-bottom: 1px solid $dark-overlay;
           margin: 0 0 1.5rem;
-          padding: 0 0 1rem;
+          padding: 0 0 1rem !important;
 
           @include respond-to-min($desktop) {
+            align-items: center;
             margin: 0 0 2rem;
-            padding: 0 0 1.5rem;
+            padding: 0 0 1.5rem !important;
           }
         }
 
