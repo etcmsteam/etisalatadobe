@@ -197,7 +197,7 @@ export const ANAEMARATI_CARDS = () => {
     function modifyModalUrl(url) {
       if(url) {
         const expFragPath = '/content/experience-fragments/etisalat/ae';
-        const contentUrl = url.slice(-3) === 'jsp' ? url.replace(/\.(jsp)($|\?)/, '.body.html') : url;
+        const contentUrl = url.slice(-3) === 'jsp' ? url.replace(/\.(jsp)($|\?)/, '/master.body.html') : url;
         return `${expFragPath}${contentUrl}`;
       }
       return '';
