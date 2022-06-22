@@ -410,15 +410,16 @@ import { getParameterByName } from '../../../global/js/utils';
       .on('click', function (e) {
         var curnt = $(this).attr('href');
         var productClicked = {};
-        var selectedProductMain = $(this).closest('.tiles-box');
-        var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
-        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
-        var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+        var selectedProductMain = $(this).closest('.producttile');
+        var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
+        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
+        var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
         var position = selectedProductMain.closest('.swiper-slide').index() + 1;
         var category = getParameterByName('catName', curnt);
         var id = getParameterByName('productId', curnt);
         var actionList = getParameterByName('listVal', curnt);
         e.preventDefault();
+
         productClicked = {
           event: 'productClick',
           ecommerce: {
@@ -471,16 +472,16 @@ import { getParameterByName } from '../../../global/js/utils';
       e.preventDefault();
 
       var productClicked = {};
-      var selectedProductMain = $(this).closest('.tile-card');
+      var selectedProductMain = $(this).closest('.producttile');
 
       var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
-      var brand = 'Etisalat';
+      var brand = "Etisalat";
       var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+      var position = selectedProductMain.closest('.swiper-slide').index() + 1;
 
-      var position = selectedProductMain.parent().index() + 1;
-      var category = getParameterByName('catName', curnt);
-      var actionList = getParameterByName('listVal', curnt);
-      var id = getParameterByName('productId', curnt);
+      var category = getParameterByName("catName", curnt);
+      var actionList = getParameterByName("listVal", curnt);
+      var id = getParameterByName("productId", curnt);
 
       productClicked = {
         event: 'productClick',
