@@ -36,14 +36,14 @@ export const LEADER_FORM = () => {
   }
 
   function bindingUIFromParams() {
-      const productName = getParameterByName("productName", currentURL);
-      if (productName) {
-        const targetElement = $(".teaser-form").find(".cmp-teaser__title");
-        const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim();
-        const valueWithProductName = targetElementValue + " " + productName + "?";
-        targetElement.html(valueWithProductName);
-      }
+    const productName = getParameterByName("productName", currentURL);
+    if (productName) {
+      const targetElement = $(".teaser-form").find(".cmp-teaser__title");
+      const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim();
+      const valueWithProductName = targetElementValue + " " + productName + "?";
+      targetElement.html(valueWithProductName);
     }
+  }
 
   function getParameterByName(name, href) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -142,14 +142,10 @@ export const LEADER_FORM = () => {
         encode: true,
       })
         .done(function (response) {
-          if (response["status.code"] === 200) {
-            FORM_SUCCESS($FORM, PAYLOAD);
-            let RE_URL = `${window.location.origin}/en/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
-            window.location.href = RE_URL;
-          } else {
-            FORM_ERROR($FORM, "API error", response);
-          }
-          
+          let RE_URL = `${window.location.origin}/en/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
+          window.location.href = RE_URL;
+          FORM_SUCCESS($FORM, PAYLOAD);
+
           return true;
         })
         .fail(submitErrorResponse);

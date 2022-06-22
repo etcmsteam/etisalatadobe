@@ -1,8 +1,9 @@
 <template  data-sly-template.wst="${ @ properties}">
- <sly data-sly-set.heroInnerPageView="${properties.heroImageInnerPageView ? 'hero-banner-section single-slide-only' : 'hero-banner-section'}" 
-       data-sly-use.parentRes="${resource.parent.path}" data-sly-set.heroBannerClass="${parentRes && 
+ <sly data-sly-set.heroInnerPageView="${properties.heroImageInnerPageView ? 'hero-banner-section single-slide-only' : 'hero-banner-section'}"
+       data-sly-use.parentRes="${resource.parent.path}" data-sly-set.heroBannerClass="${parentRes &&
    parentRes.sling:resourceType == 'etisalat/components/carousel' ? '' : heroInnerPageView}" />
-  <div data-component="cmp-herobanner" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
+  <div data-component="cmp-herobanner" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
+		data-ga-event="${properties.gaeventname}" data-ga-ev-cat="${properties.gaeventcategory}"
        data-sly-test="${properties.heroDisplayBehavior}" class="${!wcmmode.edit ? heroBannerClass : ''}"
        data-sly-unwrap="${heroBannerClass ? false : true}">
 	<div class="hero-bg-images">
@@ -11,8 +12,8 @@
 	</div>
 		<div class="hero-content-wrapper ${properties.heroAlignment} ${properties.titleFontColor == 'light-color' ? 'light-color' : ''}">
 		  <div class="container">
-		    <div class="hero-details">		     
-		       <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}" 
+		    <div class="hero-details">
+		       <sly data-sly-test.heroBannerCTALink="${properties.heroBannerImageLinkURL}"
 	               data-sly-use.heroBannerLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroBannerCTALink}"/>
 		      	<div class="hero-bg-cta" data-label="${heroBannerLink.link}"></div>
 				<div data-sly-test="${properties.heroDisplayBehavior == 'video' && properties.youTubeUrl}" class="ele-margin hero-play-video">
@@ -23,12 +24,12 @@
 			      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
 			         <sly data-sly-test="${tagItems.name == 'tagline'}">
 			               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
-			         </sly>	      
-			      </sly>	      	        
+			         </sly>
+			      </sly>
 		        <div class="text"> ${properties.pretitle}</div>
 		      </div>
 				<div data-sly-test="${properties.backToLinkLbl}" class="go-back">
-				<sly data-sly-test.customLink="${properties.backToLinkURL}" 
+				<sly data-sly-test.customLink="${properties.backToLinkURL}"
 	                data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
 					<div class="third-action-wrapper action-link">
 						<a data-sly-test="${commonlinkmodel.link}" href="${commonlinkmodel.link}" class="link">${properties.backToLinkLbl}</a>
@@ -41,41 +42,41 @@
 			      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
 			         <sly data-sly-test="${tagItems.name == 'tagline'}">
 			               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
-			         </sly>	      
-			      </sly>	      	        
+			         </sly>
+			      </sly>
 		        <div class="text"> ${properties.pretitle}</div>
 		      </div>
-		      
+
 			  <sly data-sly-use.thumbnailImagesTemplate="thumbnail-images.html"
 			             data-sly-call="${thumbnailImagesTemplate.thumbnailImage @ properties=properties}"/>
-			             
+
 		      <div data-sly-test="${properties.jcr:description}" class="ele-margin hero-description">
 	                ${properties.jcr:description @ context = 'html'}
-	          </div>          
+	          </div>
 		      <div data-sly-test="${properties.bannerCTATitle && properties.linkBehavior != 'openmodalwindow'}" class="ele-margin hero-cta">
-		        <sly data-sly-test.heroCTALink="${properties.ctaSameWindowLink}" 
+		        <sly data-sly-test.heroCTALink="${properties.ctaSameWindowLink}"
 	               data-sly-use.heroModelLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}"/>
 		        <a href="${heroModelLink.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="btn ${properties.ctaColor} ripple-effect"> ${properties.bannerCTATitle} </a>
-		      </div>	      
+		      </div>
 			   <sly data-sly-use.heroCTAModelTemplate="modalpopup.html"
-				             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>          		 
+				             data-sly-call="${heroCTAModelTemplate.ctaModelPopup @ component=component,properties=properties}"/>
 		    </div>
 			<div data-sly-test="${properties.heroImageTitle || properties.heroImageDesc}" class="${!wcmmode.edit ? 'hero-images-call-to-action-section' : ''}">
 				<div class="container">
 					<div class="call-to-action-box">
 						<h3 data-sly-test="${properties.heroImageTitle}" class="heading">${properties.heroImageTitle} </h3>
 						<div data-sly-test="${properties.heroImageDesc}" class="description"> ${properties.heroImageDesc @ context = 'html'}</div>
-					    <sly data-sly-test.heroImageCTALink="${properties.heroImageLinkURL}" 
+					    <sly data-sly-test.heroImageCTALink="${properties.heroImageLinkURL}"
 	                         data-sly-use.heroImageLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroImageCTALink}"/>
-					    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}"  
-					         target="${properties.heroImageLinktarget ? '_blank' : '_self'}" 
+					    <a href="${heroImageLink.link}" data-sly-test="${properties.heroImageCTATitle && heroImageLink.link}"
+					         target="${properties.heroImageLinktarget ? '_blank' : '_self'}"
 					         class="btn-text  learn-more" title="${properties.heroImageCTATitle}">
-					      ${properties.heroImageCTATitle}</a>                                                           
+					      ${properties.heroImageCTATitle}</a>
 					</div>
 				</div>
 			</div>
 		  </div>
-		</div>	
+		</div>
     </div>
-    
+
 </template>

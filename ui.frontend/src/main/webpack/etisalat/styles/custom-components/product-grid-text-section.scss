@@ -630,6 +630,9 @@
     height: 33px;
     line-height: 2;
   }
+  .bg-cards .product-home-card.tile-table .tile-card .tiles-box-list .bottom-text {
+    overflow: initial;
+  }
   .bg-cards .device-card.tile-table .tile-card .detail-info-wrap-pricetag,
   .bg-cards .device-card-selection.tile-table .tile-card .detail-info-wrap-pricetag,
   .bg-cards .device-multi-card-selection.tile-table .tile-card .detail-info-wrap-pricetag,
@@ -906,7 +909,9 @@
   }
 
   .bg-cards {
-    .device-card, .device-multi-card-selection, .device-single-card-selection {
+    .device-card,
+    .device-multi-card-selection,
+    .device-single-card-selection {
       &.tile-table {
         .tile-card {
           &:hover {
@@ -940,18 +945,18 @@
   .bg-cards .device-single-card-selection.offer .tile-card:hover .product {
     border-top: 1px solid $dark-orange;
   }
-  .bg-cards .device-multi-card-selection.tile-table input[type="checkbox"],
-  .bg-cards .device-multi-card-selection.tile-table input[type="radio"],
-  .bg-cards .device-single-card-selection.tile-table input[type="checkbox"],
-  .bg-cards .device-single-card-selection.tile-table input[type="radio"],
-  .bg-cards .plan-multi-card-selection.tile-table input[type="checkbox"],
-  .bg-cards .plan-multi-card-selection.tile-table input[type="radio"],
-  .bg-cards .plan-single-card-selection.tile-table input[type="checkbox"],
-  .bg-cards .plan-single-card-selection.tile-table input[type="radio"],
-  .bg-cards .product-home-multi-card-selection.tile-table input[type="checkbox"],
-  .bg-cards .product-home-multi-card-selection.tile-table input[type="radio"],
-  .bg-cards .product-home-single-card-selection.tile-table input[type="checkbox"],
-  .bg-cards .product-home-single-card-selection.tile-table input[type="radio"] {
+  .bg-cards .device-multi-card-selection.tile-table input[type='checkbox'],
+  .bg-cards .device-multi-card-selection.tile-table input[type='radio'],
+  .bg-cards .device-single-card-selection.tile-table input[type='checkbox'],
+  .bg-cards .device-single-card-selection.tile-table input[type='radio'],
+  .bg-cards .plan-multi-card-selection.tile-table input[type='checkbox'],
+  .bg-cards .plan-multi-card-selection.tile-table input[type='radio'],
+  .bg-cards .plan-single-card-selection.tile-table input[type='checkbox'],
+  .bg-cards .plan-single-card-selection.tile-table input[type='radio'],
+  .bg-cards .product-home-multi-card-selection.tile-table input[type='checkbox'],
+  .bg-cards .product-home-multi-card-selection.tile-table input[type='radio'],
+  .bg-cards .product-home-single-card-selection.tile-table input[type='checkbox'],
+  .bg-cards .product-home-single-card-selection.tile-table input[type='radio'] {
     visibility: hidden;
     position: absolute;
     left: 0;
@@ -1020,18 +1025,18 @@
   .bg-cards .product-home-single-card-selection.tile-table .tile label {
     bottom: 36px;
   }
-  .bg-cards .plan-multi-card-selection.tile-table input[type="checkbox"]:checked + .tile .tiles-box-title,
-  .bg-cards .plan-multi-card-selection.tile-table input[type="radio"]:checked + .tile .tiles-box-title,
-  .bg-cards .plan-single-card-selection.tile-table input[type="checkbox"]:checked + .tile .tiles-box-title,
-  .bg-cards .plan-single-card-selection.tile-table input[type="radio"]:checked + .tile .tiles-box-title {
+  .bg-cards .plan-multi-card-selection.tile-table input[type='checkbox']:checked + .tile .tiles-box-title,
+  .bg-cards .plan-multi-card-selection.tile-table input[type='radio']:checked + .tile .tiles-box-title,
+  .bg-cards .plan-single-card-selection.tile-table input[type='checkbox']:checked + .tile .tiles-box-title,
+  .bg-cards .plan-single-card-selection.tile-table input[type='radio']:checked + .tile .tiles-box-title {
     border-left: 0 !important;
     border-right: 0 !important;
     transition: all 0.5s ease-in-out;
   }
-  .bg-cards .device-multi-card-selection.tile-table input[type="checkbox"]:checked + .tile .tiles-box-title,
-  .bg-cards .device-multi-card-selection.tile-table input[type="radio"]:checked + .tile .tiles-box-title,
-  .bg-cards .device-single-card-selection.tile-table input[type="checkbox"]:checked + .tile .tiles-box-title,
-  .bg-cards .device-single-card-selection.tile-table input[type="radio"]:checked + .tile .tiles-box-title {
+  .bg-cards .device-multi-card-selection.tile-table input[type='checkbox']:checked + .tile .tiles-box-title,
+  .bg-cards .device-multi-card-selection.tile-table input[type='radio']:checked + .tile .tiles-box-title,
+  .bg-cards .device-single-card-selection.tile-table input[type='checkbox']:checked + .tile .tiles-box-title,
+  .bg-cards .device-single-card-selection.tile-table input[type='radio']:checked + .tile .tiles-box-title {
     border-left: 1px solid;
     border-right: 1px solid;
     transition: all 0.5s ease-in-out;
@@ -1057,10 +1062,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    content: "";
+    content: '';
     z-index: 1;
     height: 100%;
     width: 100%;
+  }
+  .bg-cards .product-home-card.tile-table .tile-card .product::before {
+    background: linear-gradient(135deg, hsla(0, 0%, 56%, 0.3), hsla(0, 0%, 56%, 0.3));
   }
   .bg-cards .product-home-card.tile-table .tile-card .product .product-img,
   .bg-cards .product-home-multi-card-selection.tile-table .tile-card .product .product-img,
@@ -1278,14 +1286,14 @@
       max-height: inherit;
       margin-bottom: 50px;
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 130px;
         height: 130px;
         right: -60px;
         bottom: 100px;
         background: url(/b2c/eshopApp/assets/img/bg-cards/icon-big-plus.svg);
-        content: "";
+        content: '';
         position: absolute;
         width: 60px;
         height: 60px;
@@ -1431,13 +1439,13 @@
       background-color: $yellow1;
     }
   }
-  .compareForm [type="radio"]:checked,
-  .compareForm [type="radio"]:not(:checked) {
+  .compareForm [type='radio']:checked,
+  .compareForm [type='radio']:not(:checked) {
     position: absolute;
     left: -9999px;
   }
-  .compareForm [type="radio"]:checked + label,
-  .compareForm [type="radio"]:not(:checked) + label {
+  .compareForm [type='radio']:checked + label,
+  .compareForm [type='radio']:not(:checked) + label {
     position: relative;
     padding-left: 48px;
     cursor: pointer;
@@ -1445,23 +1453,23 @@
     display: inline-block;
     color: $grey6;
   }
-  .compareForm [type="radio"]:checked + label .strong,
-  .compareForm [type="radio"]:not(:checked) + label .strong {
+  .compareForm [type='radio']:checked + label .strong,
+  .compareForm [type='radio']:not(:checked) + label .strong {
     font-weight: 900;
     font-size: 0.875rem;
     line-height: 0.875rem;
     //font-family: Neotech, Roboto, Arial, sans-serif;
     @include font-family-Neotech-roboto;
   }
-  .compareForm [type="radio"]:checked + label .subDetail,
-  .compareForm [type="radio"]:not(:checked) + label .subDetail {
+  .compareForm [type='radio']:checked + label .subDetail,
+  .compareForm [type='radio']:not(:checked) + label .subDetail {
     font-size: 12px;
     line-height: 12px;
     color: $grey1;
   }
-  .compareForm [type="radio"]:checked + label:before,
-  .compareForm [type="radio"]:not(:checked) + label:before {
-    content: "";
+  .compareForm [type='radio']:checked + label:before,
+  .compareForm [type='radio']:not(:checked) + label:before {
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
@@ -1471,9 +1479,9 @@
     border-radius: 100%;
     background: $white;
   }
-  .compareForm [type="radio"]:checked + label:after,
-  .compareForm [type="radio"]:not(:checked) + label:after {
-    content: "";
+  .compareForm [type='radio']:checked + label:after,
+  .compareForm [type='radio']:not(:checked) + label:after {
+    content: '';
     width: 12px;
     height: 12px;
     background: $main-green;
@@ -1485,7 +1493,7 @@
     transition: all 0.2s ease;
   }
   .compareForm {
-    [type="radio"]:checked {
+    [type='radio']:checked {
       & + label {
         &:before {
           border-color: $main-green;
@@ -1501,7 +1509,7 @@
         }
       }
     }
-    [type="radio"]:not(:checked) {
+    [type='radio']:not(:checked) {
       & + label {
         &:after {
           opacity: 0;
@@ -1511,93 +1519,93 @@
       }
     }
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card-selection.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-multi-card-selection.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-single-card-selection.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-grid.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-card.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card-selection.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-multi-card-selection.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-single-card-selection.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-grid.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-card.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card {
     margin-bottom: 22px;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-grid.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-card.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-grid.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-card.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title {
     text-align: right;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-grid.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-card.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title h2,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title h2 {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-grid.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-card.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title h2,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-title h2 {
     text-align: right;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-grid.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-card.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-list,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-list {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-grid.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-card.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-list,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .tiles-box-list {
     text-align: right;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card-selection.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-multi-card-selection.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-single-card-selection.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-grid.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-card.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .smile-points,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-single-home-card.tile-table .tile-card .smile-points {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card-selection.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-multi-card-selection.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-single-card-selection.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-grid.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-card.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .smile-points,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-single-home-card.tile-table .tile-card .smile-points {
     text-align: right;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card .tile-card .special-offer,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card .tile-card .special-offer {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card .tile-card .special-offer,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card .tile-card .special-offer {
     right: 0.875rem;
     left: auto;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card .tile-card .before-price-container,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card .tile-card .before-price-container {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card .tile-card .before-price-container,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card .tile-card .before-price-container {
     margin-left: 4px;
     margin-right: 0;
     float: right;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-multi-card-selection.tile-table .tile-card label,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-single-card-selection.tile-table .tile-card label,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.tile-table .tile-card label,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.tile-table .tile-card label,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-single-card-selection.tile-table .tile-card label,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-multi-card-selection.tile-table .tile-card label {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-multi-card-selection.tile-table .tile-card label,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-single-card-selection.tile-table .tile-card label,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.tile-table .tile-card label,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.tile-table .tile-card label,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-single-card-selection.tile-table .tile-card label,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-multi-card-selection.tile-table .tile-card label {
     left: 20px;
     right: auto;
   }
-  *[lang="ar"] {
-    *[dir="rtl"] {
+  *[lang='ar'] {
+    *[dir='rtl'] {
       .bg-cards {
         &.compareGrid {
           .product-grid {
@@ -1728,22 +1736,22 @@
       }
     }
   }
-  *[lang="ar"] *[dir="rtl"] .compareForm [type="radio"]:checked,
-  *[lang="ar"] *[dir="rtl"] .compareForm [type="radio"]:not(:checked) {
+  *[lang='ar'] *[dir='rtl'] .compareForm [type='radio']:checked,
+  *[lang='ar'] *[dir='rtl'] .compareForm [type='radio']:not(:checked) {
     left: auto;
     right: -9999px;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-card-selection.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-multi-card-selection.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .device-single-card-selection.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-grid.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-card.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-multi-card-selection.tile-table .tile-card small,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .product-home-single-card-selection.tile-table .tile-card small {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-card-selection.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-multi-card-selection.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .device-single-card-selection.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-grid.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-card.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-multi-card-selection.tile-table .tile-card small,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .product-home-single-card-selection.tile-table .tile-card small {
     font-size: 0.875rem;
     //font-family: "Neotech-medium", "GE SS Two", Arial, sans-serif;
     @include font-family-Neotech-ge;
@@ -1784,7 +1792,7 @@
       position: relative;
       overflow: hidden;
       &:after {
-        content: "";
+        content: '';
         clear: both;
         display: table;
       }
@@ -1806,7 +1814,7 @@
           font-size: inherit;
           color: $grey2;
           &::before {
-            content: "";
+            content: '';
             width: 12px;
             height: 12px;
             background-color: $bland;
@@ -1945,17 +1953,17 @@
     .plan-card.offer .tile-card .tiles-box-title,
     .plan-multi-card-selection.offer .tile-card .tiles-box-title,
     .plan-single-card-selection.offer .tile-card .tiles-box-title {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $main-green, $blue2);
+      background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $main-green, $blue2);
     }
     .plan-card.postpaid.tile-table .tile-card .tiles-box-title,
     .plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
     .plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $main-green, $blue2);
+      background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $main-green, $blue2);
     }
     .product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
     .product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
     .product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $main-green, $blue2);
+      background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $main-green, $blue2);
     }
     .device-card-selection.tile-table .tile-card .special-offer,
     .device-card.tile-table .tile-card .special-offer,
@@ -2044,7 +2052,7 @@
       transition: all 0.5s ease-in-out $dark-orange;
     }
     .product-tile-section.bg-cards .plan-card.tile-table .tile-card .tile-card__front .tiles-box-title {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, #3f6679;
+      background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, #3f6679;
       justify-content: flex-start;
       padding-top: toRem(48);
       height: toRem(268);
@@ -2073,18 +2081,18 @@
     .plan-card.offer .tile-card .tiles-box-title,
     .plan-multi-card-selection.offer .tile-card .tiles-box-title,
     .plan-single-card-selection.offer .tile-card .tiles-box-title {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $orange1, $green1);
+      background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $orange1, $green1);
     }
 
     .plan-card.postpaid.tile-table .tile-card .tiles-box-title,
     .plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
     .plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $orange1, $green1);
+      background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $orange1, $green1);
     }
     .product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
     .product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
     .product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
-      background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $orange1, $green1);
+      background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $orange1, $green1);
     }
 
     .tile-table.plan-card .tile-card .tiles-box-title h2 {
@@ -2199,6 +2207,7 @@
       .plan-card.offer .tile-card .tiles-box-title,
       .plan-multi-card-selection.offer .tile-card .tiles-box-title,
       .plan-single-card-selection.offer .tile-card .tiles-box-title {
+        background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $dark-orange, $blue2);
         background: linear-gradient(45deg, $dark-orange, $blue2) !important;
       }
 
@@ -2763,24 +2772,24 @@
     padding-right: 1.75em;
   }
 
-  .bg-cards .plan-multi-card-selection.tile-table input[type="checkbox"]:checked + .tile .tiles-box-list,
-  .bg-cards .plan-single-card-selection.tile-table input[type="checkbox"]:checked + .tile .tiles-box-list,
-  .bg-cards .product-home-multi-card-selection.tile-table input[type="radio"]:checked + .tile .tiles-box-list,
-  .bg-cards .product-home-single-card-selection.tile-table input[type="radio"]:checked + .tile .tiles-box-list {
+  .bg-cards .plan-multi-card-selection.tile-table input[type='checkbox']:checked + .tile .tiles-box-list,
+  .bg-cards .plan-single-card-selection.tile-table input[type='checkbox']:checked + .tile .tiles-box-list,
+  .bg-cards .product-home-multi-card-selection.tile-table input[type='radio']:checked + .tile .tiles-box-list,
+  .bg-cards .product-home-single-card-selection.tile-table input[type='radio']:checked + .tile .tiles-box-list {
     border-bottom: 1px solid $main-green;
   }
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-card.postpaid.tile-table .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-multi-card-selection.postpaid.tile-table .tiles-box-title,
-  *[lang="ar"] *[dir="rtl"] .bg-cards .plan-single-card-selection.postpaid.tile-table .tiles-box-title {
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-card.postpaid.tile-table .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-multi-card-selection.postpaid.tile-table .tiles-box-title,
+  *[lang='ar'] *[dir='rtl'] .bg-cards .plan-single-card-selection.postpaid.tile-table .tiles-box-title {
     background: $main-green;
-    background: url("../resources/images/bg-cards/plan-cards-illustration_flip.png") top left no-repeat;
-    background: url("../resources/images/bg-cards/plan-cards-illustration_flip.png") top left no-repeat,
+    background: url('../resources/images/bg-cards/plan-cards-illustration_flip.png') top left no-repeat;
+    background: url('../resources/images/bg-cards/plan-cards-illustration_flip.png') top left no-repeat,
       -webkit-gradient(linear, left top, left bottom, from($blue2 0%) top left no-repeat, to($blue3 100%));
-    background: url("../resources/images/bg-cards/plan-cards-illustration_flip.png") top left no-repeat, -webkit-linear-gradient(280deg, $blue2 0%, $blue3 100%);
-    background: url("../resources/images/bg-cards/plan-cards-illustration_flip.png") top left no-repeat, -o-linear-gradient(280deg, $blue2 0%, $blue3 100%);
-    background: url("../resources/images/bg-cards/plan-cards-illustration_flip.png") top left no-repeat, -webkit-linear-gradient(170deg, $blue2 0%, $blue3 100%);
-    background: url("../resources/images/bg-cards/plan-cards-illustration_flip.png") top left no-repeat, -o-linear-gradient(170deg, $blue2 0%, $blue3 100%);
-    background: url("../resources/images/bg-cards/plan-cards-illustration_flip.png") top left no-repeat, linear-gradient(280deg, $blue2 0%, $blue3 100%);
+    background: url('../resources/images/bg-cards/plan-cards-illustration_flip.png') top left no-repeat, -webkit-linear-gradient(280deg, $blue2 0%, $blue3 100%);
+    background: url('../resources/images/bg-cards/plan-cards-illustration_flip.png') top left no-repeat, -o-linear-gradient(280deg, $blue2 0%, $blue3 100%);
+    background: url('../resources/images/bg-cards/plan-cards-illustration_flip.png') top left no-repeat, -webkit-linear-gradient(170deg, $blue2 0%, $blue3 100%);
+    background: url('../resources/images/bg-cards/plan-cards-illustration_flip.png') top left no-repeat, -o-linear-gradient(170deg, $blue2 0%, $blue3 100%);
+    background: url('../resources/images/bg-cards/plan-cards-illustration_flip.png') top left no-repeat, linear-gradient(280deg, $blue2 0%, $blue3 100%);
   }
   // mobile version
   @media (max-width: 991px) {
@@ -2888,7 +2897,7 @@
         margin-bottom: 50px;
 
         &:after {
-          content: "";
+          content: '';
           position: absolute;
           background: url(/b2c/eshopApp/assets/img/bg-cards/icon-big-plus.svg);
           width: 60px;
@@ -2959,8 +2968,8 @@
   }
 }
 
-*[lang="ar"] {
-  *[dir="rtl"] {
+*[lang='ar'] {
+  *[dir='rtl'] {
     .green-online-exclusive {
       &.with-card {
         left: auto;
@@ -3017,7 +3026,7 @@
               }
               .internet-config-container {
                 .internet-text {
-                  font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif;
+                  font-family: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
                   font-size: toRem(12);
                   font-weight: 700;
                   letter-spacing: toRem(3);
@@ -3061,7 +3070,7 @@
                   }
                 }
                 .internet-config-divider-line {
-                  background-image: url("../resources/images/divider.png");
+                  background-image: url('../resources/images/divider.png');
                   background-repeat: repeat;
                   height: toRem(1);
                   margin-bottom: toRem(12);
@@ -3221,7 +3230,7 @@
           }
 
           &::before {
-            content: "";
+            content: '';
             line-height: 1;
             padding: toRem(3);
             top: 50%;
@@ -3769,6 +3778,13 @@
   height: 298px;
 }
 
+.product-grid-text-section.plans .bg-cards .product-home-card.tile-table .tile-card .tiles-box-list {
+  height: 414px !important;
+  .featureList {
+    height: 298px !important;
+  }
+}
+
 .product-grid-text-section.plans .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-title .catagory,
 .product-grid-text-section.plans .bg-cards .device-card.tile-table .tile-card .tiles-box-title .catagory,
 .product-grid-text-section.plans .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-title .catagory,
@@ -3851,15 +3867,15 @@
   min-height: 300px;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-next {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .table-swiper-button-next {
   text-align: right;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-prev {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .table-swiper-button-prev {
   text-align: left;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.devices .product-tile-section.bg-cards .plan-card.tile-table .tile-card .tile-card__front {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.devices .product-tile-section.bg-cards .plan-card.tile-table .tile-card .tile-card__front {
   height: 644px !important;
   max-height: 644px !important;
   min-height: 644px !important;
@@ -3871,8 +3887,8 @@
   min-height: 310px !important;
 }
 
-[lang="ar"]
-  [dir="rtl"]
+[lang='ar']
+  [dir='rtl']
   .product-grid-text-section.plans
   .product-tile-section.bg-cards.product-home-card
   .plan-card.tile-table
@@ -3883,55 +3899,55 @@
   min-height: 370px !important;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.devices .bg-cards .device-card.tile-table .tile-card .tiles-box-list.auto,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.devices .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-list.auto,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.devices .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-list.auto {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.devices .bg-cards .device-card.tile-table .tile-card .tiles-box-list.auto,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.devices .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-list.auto,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.devices .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-list.auto {
   height: 92px !important;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-card.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-card.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-multi-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-single-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .plan-card.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .plan-card.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .plan-multi-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .plan-single-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-grid.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-grid.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-home-card.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-home-card.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-home-multi-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-home-multi-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-home-single-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .bg-cards .product-home-single-card-selection.tile-table .tile-card .tiles-box-list .bottom-text {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-card.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-card.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-multi-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-multi-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-single-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .device-single-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .plan-card.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .plan-card.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .plan-multi-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .plan-multi-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .plan-single-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .plan-single-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-grid.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-grid.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-home-card.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-home-card.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-home-multi-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-home-multi-card-selection.tile-table .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-home-single-card-selection.tile-table.offer .tile-card .tiles-box-list .bottom-text,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .bg-cards .product-home-single-card-selection.tile-table .tile-card .tiles-box-list .bottom-text {
   height: 34px;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section ul.featureList li {
+[lang='ar'] [dir='rtl'] .product-grid-text-section ul.featureList li {
   text-align: right;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .product-tile-section .tile-card {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .product-tile-section .tile-card {
   margin-bottom: 0;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-next,
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-prev {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .table-swiper-button-next,
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .table-swiper-button-prev {
   left: auto;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .table-swiper-button-prev {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .table-swiper-button-prev {
   right: 2rem;
 }
 
-[lang="ar"] [dir="rtl"] .product-grid-text-section.plans .body-standard .detail-price-new .price {
+[lang='ar'] [dir='rtl'] .product-grid-text-section.plans .body-standard .detail-price-new .price {
   margin-left: 8px;
   margin-right: 0;
   padding-right: 0;
@@ -4022,7 +4038,7 @@
 
 .detail-info-wrap-pricetag .detail-price-old::after {
   background-color: #d8d8d8;
-  content: " ";
+  content: ' ';
   height: 1px;
   left: 0;
   position: absolute;
@@ -4052,7 +4068,7 @@
   }
   //need to replace with new image
   .product-grid-text-section.plans .bg-cards .plan-card.offer .tile-card .tile .tiles-box-title {
-    background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
+    background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
   }
   .product-grid-text-section .bg-cards .product-home-card.tile-table .tile-card .smile-points {
     border-top: toRem(1) solid;
@@ -4158,7 +4174,7 @@
 .acc-blue {
   //need to replace with new image
   .product-grid-text-section.plans .bg-cards .plan-card.offer .tile-card .tile .tiles-box-title {
-    background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
+    background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
   }
   .bg-cards {
     .tile-table .tile-card .tiles-box-list__contractDuration--orange,
@@ -4192,7 +4208,7 @@
   }
   //need to replace with new image
   .product-grid-text-section.plans .bg-cards .plan-card.offer .tile-card .tile .tiles-box-title {
-    background: url("../resources/images/bg-cards/plan-cards-illustration.png") 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
+    background: url('../resources/images/bg-cards/plan-cards-illustration.png') 100% 0 no-repeat, linear-gradient(45deg, $white, $black) !important;
   }
   .bg-cards {
     .tiles-box-title {

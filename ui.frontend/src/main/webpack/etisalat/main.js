@@ -1,5 +1,5 @@
 import "./js/analytics/analytics-events.js";
-
+import "./js/analytics/googleAnalytics.js";
 import { VIEW_MORE_TOGGLE } from "./js/custom-components/overview-section";
 import { GLOBALFOOTPRINT } from "./js/custom-components/globalfootprintcontainer";
 import { TAB_SWIPER } from "./js/custom-components/tab-swiper";
@@ -7,7 +7,6 @@ import { YOU_TUBE_VIDEO_PLAYER } from "./js/custom-components/youtube-video";
 import { SHOP_BRANDS } from "./js/custom-components/shop-brands";
 import { DYNAMIC_DEVICE_TILE } from "./js/custom-components/dynamic-device-tile";
 import DYNAMIC_COMPONENTS from "./dynamic-components.js";
-import { SITE } from "./js/custom-components/site";
 import { BRAND_PORTFOLIO } from "./js/custom-components/brand-portfolio";
 import { CURRENT_PROMOTION } from "./js/custom-components/current_promotion";
 import { POP_UP_ACCESSIBILITY } from "./js/custom-components/pop-up-accessibility";
@@ -38,7 +37,6 @@ const ERROR_BOUNDARY = (fun) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   [
-    SITE,
     POP_UP_ACCESSIBILITY,
     VIEW_MORE_TOGGLE,
     GLOBALFOOTPRINT,

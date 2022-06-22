@@ -59,51 +59,16 @@ export const DIGITAL_NOTIFICATION = () => {
             $(this).find("a").text("view less");
           }
         }
-      }
-
-      // GA datalayer starts
-      window.dataLayer = window.dataLayer || [];
-
-      dataLayer.push({
-        event: "notifyBanner",
-        ev_cat: "notifyBanner", //Event Category
-        ev_act: "load", //Event Action
-      });
-
-      function gaLayer() {
-        var dataurl = window.location.href;
-        dataLayer.push({
-          event: "notifyBanner",
-          ev_cat: "notifyBanner", //Event Category
-          ev_act: "click", //Event Action
-          ev_url: dataurl,
-        });
-      }
-
-      $(".digital-notifications-wrapper")
-        .off("click")
-        .on("click", function (e) {
-          gaLayer();
-        });
-      // GA datalayer ends
-
-      // popup
-      var dataLabel = $(this).find("a").attr("data-label");
-      if (typeof dataLabel !== "undefined" && dataLabel !== "") {
+    }
+    // GA datalayer ends
+    // popup
+    var dataLabel = $(this).find('a').attr("data-label");
+    if (typeof dataLabel !== 'undefined' && dataLabel !== '') {
         e.preventDefault();
         e.stopPropagation();
-        $("#" + dataLabel).addClass("show");
-        $("body").addClass("freeze");
-        gaLayer();
-      }
-    });
-
-  // expand bottom menu on bar click
-  Array.from($(".digital-notifications-wrapper")).forEach((item, index) => {
-    let expandItem = $(item).find(".expand-collapse").attr("data-id", index).data("id");
-
-    if (expandItem === index) {
-      $(item).find(".mob-tab-bar").addClass("show-tab");
+        $('#' + dataLabel).addClass('show');
+        $('body').addClass('freeze');
+        $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
     }
   });
 
@@ -119,18 +84,18 @@ export const DIGITAL_NOTIFICATION = () => {
     autoHeight: true,
     direction: "vertical",
     slidesPerView: 1,
-    autoplay: 5000,
+    autoplay: 5000
   });
 
-  // close popup
-  $(".nv-noti-modal-close").on("click", function (e) {
+// close popup
+$('.nv-noti-modal-close').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var currentOpendPopUp = $(this).closest(".nv-modal");
-    $(".nv-modal").removeClass("show");
-    $(currentOpendPopUp).css("display", "none");
-    $("body").removeClass("freeze");
-  });
+    var currentOpendPopUp = $(this).closest('.nv-modal');
+    $('.nv-modal').removeClass('show');
+    $(currentOpendPopUp).css('display', 'none');
+    $('body').removeClass('freeze');
+});
 
   // close notifications - contextual ( bottom )
   $(".digital-notifications-wrapper.bottom .noti-icon-dismis").on("click", function (e) {
@@ -138,7 +103,7 @@ export const DIGITAL_NOTIFICATION = () => {
     e.preventDefault();
     $(this).closest(".digital-notifications-wrapper").css("display", "none");
     $("body").css("padding-bottom", 0);
-    gaLayer();
+    $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
   });
 
   // close notifications - global ( top )
@@ -163,7 +128,7 @@ export const DIGITAL_NOTIFICATION = () => {
       // reset menu bar
       reset();
       $("body").css("margin-top", 139);
-      gaLayer();
+      $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
     });
 
   if (sessionStorage.getItem("notifications")) {
@@ -229,7 +194,15 @@ export const DIGITAL_NOTIFICATION = () => {
 
   if ($("body").hasClass("show-digital-notification-top") && sessionStorage.getItem("notifications") != "true") {
     setNotificaiton(false);
-  } else {
-    setNotificaiton(true);
-  }
-};
+
+} else {
+ setNotificaiton(true);
+}
+$(document).trigger('DIGITAL_NOTIFICATION_LOADED');
+$('.digital-notifications-wrapper')
+  .off('click')
+  .on('click', function (e) {
+    $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
+  });
+
+}

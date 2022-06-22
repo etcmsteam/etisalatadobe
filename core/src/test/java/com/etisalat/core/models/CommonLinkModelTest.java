@@ -114,4 +114,28 @@ public class CommonLinkModelTest {
 		CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
 		assertFalse(model.isVideo());
 	}
+
+    @Test
+    void testGaApiKey() {
+        MockitoAnnotations.initMocks(this);
+        String gaApiKey = "GTM-5M52SJ";
+        when(etisalatApiService.getGaApiKey()).thenReturn(gaApiKey);
+        assertEquals(gaApiKey, commonLinkModel.getGaApiKey());
+    }
+
+    @Test
+    void testAutoSuggestEndpointUrl() {
+        MockitoAnnotations.initMocks(this);
+        String asEndpointUrl = "/b2c/autoSuggest.service";
+        when(etisalatApiService.getAutoSuggestEndpointUrl()).thenReturn(asEndpointUrl);
+        assertEquals(asEndpointUrl, commonLinkModel.getAutoSuggestEndpointUrl());
+    }
+
+    @Test
+    void testSearchEndpointUrl() {
+        MockitoAnnotations.initMocks(this);
+        String gsearchEndpointUrl = "/b2c/guidedSearchRequest.service";
+        when(etisalatApiService.getSearchEndpointUrl()).thenReturn(gsearchEndpointUrl);
+        assertEquals(gsearchEndpointUrl, commonLinkModel.getSearchEndpointUrl());
+    }
 }

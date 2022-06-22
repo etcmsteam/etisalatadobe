@@ -118,24 +118,25 @@ const DYNAMIC_COMPONENTS = {
 
             try {
               const moduleFn = await DYNAMIC_MODULE[component]();
-              const placeholderClass = `${component}-placeholder`;
-              document.querySelectorAll(`[data-component="${component}"], .${placeholderClass}`).forEach((item) => {
-                const componentItem = item;
-
-                if (componentItem.classList.contains(placeholderClass)) {
-                  componentItem.classList.add("hide");
-                } else {
-                  componentItem.classList.remove("hide");
-                  componentItem.classList.add("dynamic-module-visible");
-                }
-
-              });
               if(typeof moduleFn === 'function') {
                 moduleFn();
               }
             } catch (error) {
               console.error("Dynamic Module Script Error: ", error);
             }
+
+            const placeholderClass = `${component}-placeholder`;
+            document.querySelectorAll(`[data-component="${component}"], .${placeholderClass}`).forEach((item) => {
+              const componentItem = item;
+
+              if (componentItem.classList.contains(placeholderClass)) {
+                componentItem.classList.add("hide");
+              } else {
+                componentItem.classList.remove("hide");
+                componentItem.classList.add("dynamic-module-visible");
+              }
+
+            });
           }
           observer.unobserve(entry.target);
         }
@@ -144,7 +145,7 @@ const DYNAMIC_COMPONENTS = {
     const observer = new IntersectionObserver(callback, { rootMargin: "0px 0px 200px 0px" });
     // loop through each registered dynamic component
     Object.keys(DYNAMIC_MODULE).forEach((component) => {
-      const componentContext = Array.from(document.querySelectorAll(`div[data-component=${component}]`));
+      const componentContext = Array.from(document.querySelectorAll(`[data-component=${component}]`));
       // if component found on page
       if (componentContext[0]) {
         componentContext.forEach((target) => observer.observe(target));

@@ -49,5 +49,12 @@ public interface EtisalatApiService {
      */
     String getSearchEndpointUrl();
 
+    /**
+     * Gets the Google Analytics API Key.
+     *
+     * @return the Google Analytics API Key
+     */
+    String getGaApiKey();
+
 
 }

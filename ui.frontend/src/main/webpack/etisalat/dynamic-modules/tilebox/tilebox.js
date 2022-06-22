@@ -1,7 +1,7 @@
 /* eslint-disable */
-import { swiperInit } from "../../../global/js/swiperInitialize";
+import { swiperInit } from '../../../global/js/swiperInitialize';
 
-import "./index.scss";
+import './index.scss';
 
 export const TILE_BOX = () => {
   //shop swiper st
@@ -12,9 +12,9 @@ export const TILE_BOX = () => {
       .not(".tile-boxes-section-swiper")
       .not(".tile-box-2-column")
       .each(function (index) {
-        $(this).addClass("t-b-slider" + index);
-        var $tileBoxesCarousal = swiperInit(".t-b-slider" + index + " .swiper-container", {
-          scrollbar: $(this).find(".scrollbar"),
+        $(this).addClass('t-b-slider' + index);
+        var $tileBoxesCarousal = swiperInit('.t-b-slider' + index + ' .swiper-container', {
+          scrollbar: $(this).find('.scrollbar'),
           scrollbarHide: false,
           scrollbarDraggable: true,
           breakpoints: {
@@ -46,26 +46,24 @@ export const TILE_BOX = () => {
 
     // plans table slider 3 tiles starts
     $(document)
-      .find(".tilecontainer .tile-boxes-section.tile-boxes-section-swiper")
+      .find('.tilecontainer .tile-boxes-section.tile-boxes-section-swiper')
       .not('.single-tile')
       .each(function (index) {
-        const container = $(this).find(".swiper-container");
+        const container = $(this).find('.swiper-container');
         var $tileBoxesSwiperCarousal = swiperInit(container, {
-          scrollbar: $(this).find(".swiper-scrollbar"),
+          scrollbar: $(this).find('.swiper-scrollbar'),
           scrollbarHide: false,
           scrollbarDraggable: true,
+          loop: false,
+          autoplay: false,
           slidesPerView: 1,
           spaceBetween: 20,
           simulateTouch: true,
-          pagination: ".swiper-pagination",
-          touchEventsTarget: "swiper-wrapper",
+          pagination: '.swiper-pagination',
+          touchEventsTarget: 'swiper-wrapper',
 
           breakpoints: {
-            540: {
-              spaceBetween: 0,
-              slidesPerView: 1,
-            },
-            768: {
+            991: {
               spaceBetween: 0,
               slidesPerView: 1,
             },
@@ -85,62 +83,11 @@ export const TILE_BOX = () => {
           },
         });
       });
-    // plans table slider 3 tiles ends
-
-    $(document)
-      .find(".tilecontainer .tileBoxMobCarWrap")
-      .each(function (itemindex) {
-        var swiperSlideLength = $(this).find(".swiper-slide").length;
-        $(this).addClass("swiper-with-" + swiperSlideLength + "-slides");
-        if ($(window).width() > 991) {
-          $(this).find(".tileboxCarousal").addClass("destroyed");
-        } else {
-          var $carouselSlider = swiperInit($(this).find(".tileboxCarousal"), {
-            loop: false,
-            autoplay: false,
-            slidesPerView: 1,
-            simulateTouch: true,
-            pagination: ".swiper-pagination",
-            touchEventsTarget: "swiper-wrapper",
-            scrollbarDraggable: true,
-            scrollbarHide: false,
-            scrollbar: $(this).find(".table-swiper-scrollbar"),
-            centeredSlides: true,
-            spaceBetween: 20,
-          });
-        }
-      });
-
-    // Tile Box 2 Column Variation start
-    $(document)
-      .find(".tileBoxModified")
-      .each(function (itemindex) {
-        var swiperSlideLength = $(this).find(".swiper-slide").length;
-        $(this).addClass("swiper-with-" + swiperSlideLength + "-slides");
-        if ($(window).width() > 991) {
-          $(this).find(".tileboxCarousal").addClass("destroyed");
-        } else {
-          var $carouselSlider = new Swiper($(this).find(".tileboxCarousal"), {
-            loop: false,
-            autoplay: false,
-            slidesPerView: 1.1,
-            simulateTouch: true,
-            pagination: ".swiper-pagination",
-            touchEventsTarget: "swiper-wrapper",
-            scrollbarDraggable: true,
-            scrollbarHide: false,
-            scrollbar: ".table-swiper-scrollbar",
-            centeredSlides: false,
-            spaceBetween: 20,
-          });
-        }
-      });
-    // Tile Box 2 Column Variation end
   }
 
   initTileBoxesSlider();
   // open youtube video and close by removing src and then add tile box Grid
-  $(".tileBoxVideoLink").on("click", function (e) {
+  $('.tileBoxVideoLink').on('click', function (e) {
     e.preventDefault();
     var modalCTA = $(this).next(".tileBoxVideoModal");
     $(this).closest(".swiper-container").addClass("remove-zIndex");
@@ -150,19 +97,19 @@ export const TILE_BOX = () => {
       $(this).closest(".tile-boxes-section").addClass("remove-sticky-pos");
     }
     modalCTA.modal().show();
-    if ($("body").hasClass("modal-open")) {
-      $("body").parent().css("overflow", "hidden");
+    if ($('body').hasClass('modal-open')) {
+      $('body').parent().css('overflow', 'hidden');
     }
-    $("body").addClass("modal-overlay");
+    $('body').addClass('modal-overlay');
   });
 
-  $(".tileBoxVideoModal").on("hidden.bs.modal", function () {
-    var src = $(this).find("iframe").attr("src");
-    $(this).find("iframe").attr("src", "");
-    $(this).find("iframe").attr("src", src.replace("autoplay=1", ""));
-    $("html").removeAttr("style");
-    if ($("body").hasClass("modal-overlay")) {
-      $("body").removeClass("modal-overlay");
+  $('.tileBoxVideoModal').on('hidden.bs.modal', function () {
+    var src = $(this).find('iframe').attr('src');
+    $(this).find('iframe').attr('src', '');
+    $(this).find('iframe').attr('src', src.replace('autoplay=1', ''));
+    $('html').removeAttr('style');
+    if ($('body').hasClass('modal-overlay')) {
+      $('body').removeClass('modal-overlay');
     }
     $(this).closest(".swiper-container").removeClass("remove-zIndex");
     $(this).closest(".swiper-wrapper").removeClass("remove-transform remove-zIndex");

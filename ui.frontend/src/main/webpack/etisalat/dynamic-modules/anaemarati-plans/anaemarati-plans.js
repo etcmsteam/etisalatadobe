@@ -1,4 +1,7 @@
+import "./index.scss";
+
 import { swiperInit } from "../../../global/js/swiperInitialize";
+import { getParameterByName } from "../../../global/js/utils";
 
 /* eslint-disable */
 const setSpacebetweenTableCarousel = (parent) => {
@@ -28,33 +31,50 @@ const initActions = () => {
     var popup = $("#benafits_list");
     var dataTarget = btn.attr("data-target");
     if (dataTarget) {
-      popup.addClass("show");
       $(popup).find(".nv-brand").text(btn.closest(".nv-card-body").find(".nv-brand").text());
       $(popup).find(".nv-modal-title").text(btn.closest(".nv-card-body").find(".nv-product-name").text());
-      $(popup).find(".modalContent").load(dataTarget);
+      $(popup)
+        .find('.modalContent')
+        .load(dataTarget, function () {
+          openPopUp('#benafits_list');
+        });
       $(popup).find(".modalContent").removeClass("gold platinum silver");
       $(popup).find(".modalContent").addClass(goldOrSilver);
-
-      $("body").addClass("freeze");
     }
   };
+
   var popUpEligibilityActive = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+    /*
+      WARNING: DO NOT PREVENT THIS EVENT(preventDefault()) OR STOP THE EVENT PROPAGATION (stopPropagation()).
+      It can break the GA implementation. Check googleAnalytics.js
+    */
 
     var btn = $(this);
     var popup = $("#eligibility-summary");
+    const productName = btn.closest(".nv-plan-card").find(".nv-product-name").text();
     var dataTarget = btn.attr("data-target");
-    popup.addClass("show");
-    $("body").addClass("freeze");
     $(popup).find(".nv-brand").text(btn.closest(".nv-plan-card").find(".nv-brand").text());
-    $(popup).find(".nv-modal-title").text(btn.closest(".nv-plan-card").find(".nv-product-name").text());
-    $(popup).find(".planName").text(btn.closest(".nv-plan-card").find(".nv-product-name").text());
+    $(popup).find(".nv-modal-title").text(productName);
+    $(popup).find(".planName").text(productName);
     $(popup).find(".redirectUrl").attr("href", dataTarget);
-    $(popup)
-      .find(".leadUrl")
-      .attr("href", $(popup).find(".leadUrl").attr("href") + btn.closest(".nv-plan-card").find(".nv-product-name").text());
-    return false;
+    const leadUrlTarget = $(popup).find(".leadUrl").attr("data-target");
+    const locale = getParameterByName("locale", dataTarget);
+    const sku = getParameterByName("skuId", dataTarget);
+    $(popup).find(".leadUrl").attr("href", `${leadUrlTarget}?skuId=${sku}&locale=${locale}&productName=${productName}`);
+
+    openPopUp('#eligibility-summary');
+  };
+  var openPopUp = function(selector){
+    const popup = $(selector)
+    const $el = popup.clone();
+    $el.remove('.modal-popup-wrapper');
+    $('.modal-popup-wrapper').append($el);
+    $(`.modal-popup-wrapper ${selector}`).addClass('show');
+    $(`.modal-popup-wrapper ${selector}`).removeClass('fade');
+    $('.modal-popup-wrapper .modal-popup').addClass('show');
+    $('body, html').addClass('freeze');
+    $('.modal-popup-wrapper').show;
+    $('.modal-popup-wrapper').css('display', 'block');
   };
   // close popup
   var closePopUp = function (e) {
@@ -140,20 +160,20 @@ export const ANAEMARATI_CARDS = () => {
         ? "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data.json"
         : "/content/dam/etisalat/prod-mock-assets/anaemarati-gold-plans-data-ar.json"; */
 
-    const defaultDataPath = '/b2c/eshop/getProductsByCategory';
-        
+    const defaultDataPath = "/b2c/eshop/getProductsByCategory";
+
     const {
       jsonUrl: DATA_URL,
       jsonPath: DATA_PATH = defaultDataPath,
       categoryId: CATEGORY_ID = "cat1090015",
       requestMethod: REQUEST_METHOD = "POST",
-      enableReqParams: ENABLE_REQ_PARAMS = 'yes',
+      enableReqParams: ENABLE_REQ_PARAMS = "yes",
       ctaUrl: CTA_URL = "/b2c/eshop/postpaidLine?",
-      hostName: HOST_NAME = ''
+      hostName: HOST_NAME = "",
     } = DATA_PARAMS;
 
     // let url = DATA_URL || `${HOST_NAME}${DATA_PATH}`;
-       let url = DATA_URL || `${DATA_PATH}`;
+    let url = DATA_URL || `${DATA_PATH}`;
 
     if (ENABLE_REQ_PARAMS) {
       url = `${url}?locale=${locale}&isApplyDefaultFilters=false`;
@@ -172,6 +192,15 @@ export const ANAEMARATI_CARDS = () => {
 
     function currencyFormatter(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function modifyModalUrl(url) {
+      if(url) {
+        const expFragPath = '/content/experience-fragments/etisalat/ae';
+        const contentUrl = url.slice(-3) === 'jsp' ? url.replace(/\.(jsp)($|\?)/, '/master.body.html') : url;
+        return `${expFragPath}${contentUrl}`;
+      }
+      return '';
     }
 
     function getPlansCard(data, planType) {
@@ -265,7 +294,7 @@ export const ANAEMARATI_CARDS = () => {
         if (sku.freebie.cmsTemplateUrl !== "") {
           html +=
             '<a class="nv-btn-link green btn-link-md forward" data-target="' +
-            sku.freebie.cmsTemplateUrl +
+            modifyModalUrl(sku.freebie.cmsTemplateUrl) +
             '" data-style="' +
             cardType +
             '"> <span> ' +
@@ -315,43 +344,45 @@ export const ANAEMARATI_CARDS = () => {
 
     function getCardsData(url, payload, cardType) {
       $.ajax({
-        dataType: "json",
+        dataType: 'json',
         type: REQUEST_METHOD,
-        url: url,
-        contentType: "application/json; charset=utf-8",
+        url,
+        contentType: 'application/json; charset=utf-8',
         data: ENABLE_REQ_PARAMS ? JSON.stringify(payload) : null,
         success: function (res) {
           var htmlCards = getPlansCard(res, cardType);
           var productRow = $rootThis.find(`.${cardType}-plans .swiper-wrapper`);
 
           $(productRow).html(htmlCards);
-          if ("Carousal" == "Carousal") {
-            if ($(".swiper-slide").length > 3) {
-              $(".swiper-scrollbar").removeClass("hide");
-              $(".table-swiper-button-prev").removeClass("hide");
-              $(".table-swiper-button-next").removeClass("hide");
+          if ('Carousal' == 'Carousal') {
+            if ($('.swiper-slide').length > 3) {
+              $('.swiper-scrollbar').removeClass('hide');
+              $('.table-swiper-button-prev').removeClass('hide');
+              $('.table-swiper-button-next').removeClass('hide');
 
               initSwiperFull();
               initActions();
             }
           } else {
-            $(productRow).removeClass("swiper-wrapper");
-            if ($(productRow + " .swiper-slide").length > 6) {
-              $(".load-btn").removeClass("hide");
-              $(productRow + " .swiper-slide").each(function (i) {
+            $(productRow).removeClass('swiper-wrapper');
+            if ($(productRow + ' .swiper-slide').length > 6) {
+              $('.load-btn').removeClass('hide');
+              $(productRow + ' .swiper-slide').each(function (i) {
                 if (i >= 6) {
-                  $(this).addClass("hide");
+                  $(this).addClass('hide');
                 }
               });
-              $(".load-btn .btn")
+              $('.load-btn .btn')
                 .unbind()
-                .on("click", function (e) {
+                .on('click', function (e) {
                   e.preventDefault();
-                  $(this).closest(".content-section").find(".swiper-slide").removeClass("hide");
-                  $(".load-btn").addClass("hide");
+                  $(this).closest('.content-section').find('.swiper-slide').removeClass('hide');
+                  $('.load-btn').addClass('hide');
                 });
             }
           }
+
+          $(document).trigger('ANA_EMARATI_PLANS_LOADED', { $productRow: productRow });
         },
       });
     }
