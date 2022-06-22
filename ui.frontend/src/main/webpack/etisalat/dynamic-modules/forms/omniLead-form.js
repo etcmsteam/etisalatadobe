@@ -5,6 +5,7 @@ export const OMNI_LEAD_FORM = () => {
   const $FORM = $("#OmniLead");
   const $SUBMIT_CTA = $("#OmniLead .cmp-form-button");
   const currentURL = window.location.href;
+  const lang = $('html').attr('lang');
 
   if (!$FORM.length) {
     return false;
@@ -133,7 +134,7 @@ export const OMNI_LEAD_FORM = () => {
         encode: true,
       })
         .done(function (response) {
-          let RE_URL = `${window.location.origin}/en/smb/offers/extra-allowance/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
+          let RE_URL = `${window.location.origin}/${lang}/smb/offers/extra-allowance/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
           window.location.href = RE_URL;
           FORM_SUCCESS($FORM, PAYLOAD);
 
