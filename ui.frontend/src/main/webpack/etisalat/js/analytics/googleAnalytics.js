@@ -424,7 +424,7 @@ import { getParameterByName } from '../../../global/js/utils';
           event: 'productClick',
           ecommerce: {
             click: {
-              actionField: { list: actionList },
+              actionField: { list: actionList, action: 'click' },
               products: [
                 {
                   name: name /*String - Product Name*/,
