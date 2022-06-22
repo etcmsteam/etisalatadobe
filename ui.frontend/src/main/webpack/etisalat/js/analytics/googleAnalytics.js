@@ -703,7 +703,9 @@ import { getParameterByName } from '../../../global/js/utils';
   // Product plan card impression end ------------------------------------
 
   //quick links under search google analytics
-  var quickLinks = document.querySelectorAll('.search-items .list.quick-links ul')[instannceNum].children || '';
+  var dataEle = document.querySelectorAll('.search-items .list.quick-links ul');
+  if (dataEle.length > 0) {
+  var quickLinks = dataEle[instannceNum].children ? dataEle[instannceNum].children : '';
   for (var i = 0; i < quickLinks.length; i++) {
     quickLinks[i].addEventListener('click', function () {
       //google analytics starts
@@ -716,6 +718,7 @@ import { getParameterByName } from '../../../global/js/utils';
       });
       //google analytics ends
     });
+  }
   }
 
   //trending links under search google analytics
