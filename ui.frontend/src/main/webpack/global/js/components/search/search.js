@@ -572,42 +572,6 @@
                 }
               });
           });
-
-        //quick liks google analytics
-        var quickLinks = doc.querySelectorAll(".search-items .list.quick-links ul")[instannceNum].children || "";
-        for (var i = 0; i < quickLinks.length; i++) {
-          quickLinks[i].addEventListener("click", function (e) {
-            //google analyticss starts
-            if (typeof window.dataLayer !== "undefined") {
-              window.dataLayer.push({
-                event: "navigation",
-                eventCategory: "navigation",
-                eventAction: "top",
-                eventLabel: "quick_links", // replace space with "_"
-                Link: this.innerText.trim().replace(/ /g, "_"), // replace space with "_"
-              });
-            }
-            //google analyticss ends
-          });
-        }
-        //trending liks google analytics
-        var trendingLinksParent = doc.querySelectorAll(".search-items .list.trends .menu-brand-wrapper")[instannceNum] || "";
-        var trendingLinks = trendingLinksParent.querySelectorAll(".content") || "";
-        for (var i = 0; i < trendingLinks.length; i++) {
-          trendingLinks[i].addEventListener("click", function (e) {
-            //google analyticss starts
-            if (typeof window.dataLayer !== "undefined") {
-              window.dataLayer.push({
-                event: "navigation",
-                eventCategory: "navigation",
-                eventAction: "top",
-                eventLabel: "trending_search",
-                Link: this.children[0].innerText.trim().replace(/ /g, "_"), // replace space with "_"
-              });
-            }
-            //google analyticss ends
-          });
-        }
       });
 
       // Paragraph Character Text Limit on Search Result

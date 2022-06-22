@@ -706,26 +706,5 @@ import { swiperInit } from "../../swiperInitialize";
             }
           });
         }
-
-        //quick liks google analytics
-          var quickLinks = $(".result-default-view .list.quick-links ul");
-          if (quickLinks.length > 0) {
-            quickLinks = quickLinks.children;
-            for (var i = 0; i < quickLinks.length; i++) {
-              quickLinks[i].addEventListener("click", function (e) {
-                //google analyticss starts
-                if (typeof window.dataLayer !== "undefined") {
-                  window.dataLayer.push({
-                    event: "navigation",
-                    eventCategory: "navigation",
-                    eventAction: "left",
-                    eventLabel: "need_assistance", // replace space with "_"
-                    Link: this.innerText.trim().replace(/ /g, "_"), // replace space with "_"
-                  });
-                }
-                //google analyticss ends
-              });
-            }
-          }
       });
    

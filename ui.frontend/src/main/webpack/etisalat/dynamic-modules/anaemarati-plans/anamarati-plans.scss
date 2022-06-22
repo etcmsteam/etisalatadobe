@@ -47,4 +47,190 @@
       @include container();
     }
   }
+
+  &.benefits-modal {
+    &.nv-modal.right-modal {
+      .nv-plan-details-modal {
+        width: 100%;
+
+        @include respond-to-min($desktop) {
+          width: toRem(402);
+        }
+      }
+
+      li {
+        margin-bottom: toRem(8);
+
+        @include ellipsis();
+
+        @include respond-to-min($desktop) {
+          margin-bottom: toRem(4);
+        }
+      }
+
+      .with-checkmark {
+        li {
+          margin-bottom: toRem(10);
+
+          @include respond-to-min($desktop) {
+            margin-bottom: toRem(6);
+          }
+
+          &::before {
+            height: toRem(20);
+            left: 0;
+            top: 0;
+            width: toRem(20);
+          }
+        }
+      }
+
+      .nv-modal-dialog {
+        width: 100%;
+
+        @include respond-to-min($desktop) {
+          width: toRem(606);
+        }
+
+        .nv-brand {
+          @include respond-to-max($desktop - 1) {
+            color: #6f7273;
+            font-size: 0.625rem;
+            letter-spacing: 2.5px;
+            line-height: 12px;
+          }
+        }
+
+        .nv-modal-content {
+          height: 100%;
+          overflow-x: hidden;
+          overflow-y: auto;
+          padding-left: 0;
+          padding-right: 0;
+
+          .nv-modal-title {
+            margin-top: 0;
+          }
+        }
+
+        .section-banner {
+          display: none;
+        }
+
+        .container-center {
+          padding: 0 !important;
+          width: 100% !important;
+        }
+
+        ul {
+          margin: 0;
+        }
+
+        li,
+        p {
+          color: $grey1;
+          font-size: 0.75rem !important;
+          line-height: 1.33 !important;
+
+          @include respond-to-min($desktop) {
+            font-size: 0.875rem !important;
+            line-height: 1.43 !important;
+          }
+        }
+
+        p {
+          margin: 0 0 toRem(12);
+        }
+
+        li img {
+          height: 1rem;
+          margin-right: 0.325rem;
+          min-height: auto;
+          vertical-align: sub;
+          width: 1rem;
+
+          @include respond-to-min($desktop) {
+            height: toRem(20);
+            width: toRem(20);
+          }
+        }
+
+        .ul-list-no-bullet {
+          li {
+            padding: 0;
+          }
+
+          li::before {
+            display: none;
+          }
+        }
+
+        .separator {
+          hr {
+            border: 1px dashed $light-sand-brown;
+            margin: toRem(12) 0;
+          }
+        }
+
+        .nv-modal-header {
+          align-items: flex-start;
+          border-bottom: 1px solid $dark-overlay;
+          margin: 0 0 1.5rem;
+          padding: 0 0 1rem !important;
+
+          @include respond-to-min($desktop) {
+            align-items: center;
+            margin: 0 0 2rem;
+            padding: 0 0 1.5rem !important;
+          }
+        }
+
+        .nv-modal-body {
+          overflow: visible;
+          padding: 0 !important;
+        }
+
+        .nv-bg-colors {
+          border-radius: toRem(8);
+          display: inline-block;
+          font-size: toRem(12);
+          font-weight: 700;
+          line-height: 1.33;
+          margin-top: 1rem;
+          padding: 1px 0.5rem;
+
+          @include respond-to-min($desktop) {
+            border-radius: 1rem;
+            font-size: toRem(14);
+            line-height: 1.43;
+          }
+        }
+
+        .gold {
+          .with-checkmark li::before {
+            background: url("../../clientlib-etisalat/resources/images/nv-etisalat/SVG/icon-checkbox-gold.svg");
+            background-repeat: no-repeat;
+          }
+        }
+
+        .silver {
+          .with-checkmark li::before {
+            background: url("../../clientlib-etisalat/resources/images/nv-etisalat/SVG/icon-checkbox-platinum.svg");
+            background-repeat: no-repeat;
+          }
+        }
+
+        @include rtlBlock() {
+          b span {
+            font-weight: 700;
+          }
+
+          li img {
+            margin-left: 0.325rem;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
 }

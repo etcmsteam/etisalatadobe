@@ -170,8 +170,8 @@ export const FORM_ERROR = (form, type, errResponse) => {
     }
   } else {
     errField = "";
-    errMsg = errResponse["status.message"] ? errResponse["status.message"] : "";
-    errCode = errResponse["status.code"] ? errResponse["status.code"] : "";
+    errMsg = "";
+    errCode = "";
   }
   if (window.adobeDataLayer) {
     window.adobeDataLayer.push({

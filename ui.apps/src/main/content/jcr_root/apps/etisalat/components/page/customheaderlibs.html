@@ -13,21 +13,26 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
-<sly data-sly-set.genericTemplate="${properties['cq:template']  == '/conf/etisalat/settings/wcm/templates/generic-template'}" />
+<sly data-sly-set.comparePageClientLibs="${pageProperties.customAllowedCss || pageProperties.customAllowedJs}" />
 
-<sly data-sly-test="${!genericTemplate}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+<!--/* code block page clientlibs */-->
+
+<sly data-sly-test="${!comparePageClientLibs}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
   <sly data-sly-call="${clientlib.css @ categories='etisalat.base'}" />
 </sly>
 
-<sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}" />
+<sly data-sly-test="${comparePageClientLibs}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+  <sly data-sly-call="${clientlib.css @ categories='etisalat.global'}" />
+</sly>
+
+<sly data-sly-test="${comparePageClientLibs}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.css @ categories='etisalat-codeblock'}" />
+ </sly>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-
-<sly data-sly-test="${!genericTemplate}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
-  <sly data-sly-call="${clientlib.js @ categories='etisalat.base'}" />
-</sly>
+<sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}" />
 
 <!--/* Favicon */-->
 <sly data-sly-test="${inheritedPageProperties['etisalatDesignPath']}"
