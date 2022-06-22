@@ -722,6 +722,8 @@ import { getParameterByName } from '../../../global/js/utils';
   }
 
   //trending links under search google analytics
+  var trendLink = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper');
+  if (trendLink.length > 0) {
   var trendingLinksParent = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper')[instannceNum] || '';
   var trendingLinks = trendingLinksParent.querySelectorAll('.content') || '';
   for (var i = 0; i < trendingLinks.length; i++) {
@@ -737,7 +739,7 @@ import { getParameterByName } from '../../../global/js/utils';
       //google analytics ends
     });
   }
-
+  }
   //quick links under search result page ga
   var quickLinksList = document.querySelector('.result-default-view .list.quick-links ul');
   if (quickLinksList !== null) {
