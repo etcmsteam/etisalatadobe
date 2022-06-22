@@ -455,7 +455,7 @@ import { getParameterByName } from "../../../global/js/utils";
       .on('click', function (e) {
         var curnt = $(this).attr('href');
         var productClicked = {};
-        var selectedProductMain = $(this).closest('.tiles-box');
+        var selectedProductMain = $(this).closest('.producttile');
         var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
         var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
         var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
@@ -464,6 +464,7 @@ import { getParameterByName } from "../../../global/js/utils";
         var id = getParameterByName('productId', curnt);
         var actionList = getParameterByName('listVal', curnt);
         e.preventDefault();
+
         productClicked = {
           event: 'productClick',
           ecommerce: {
@@ -515,12 +516,13 @@ import { getParameterByName } from "../../../global/js/utils";
       e.preventDefault();
 
       var productClicked = {};
-      var selectedProductMain = $(this).closest(".nv-card-wrapper");
+      var selectedProductMain = $(this).closest('.producttile');
 
-      var name = selectedProductMain.find(".nv-plan-header").find(".nv-product-name").text();
+      var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
       var brand = "Etisalat";
-      var price = selectedProductMain.find(".nv-price-wrapper").find(".price-value").text();
-      var position = selectedProductMain.parent().index() + 1;
+      var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+      var position = selectedProductMain.closest('.swiper-slide').index() + 1;
+
       var category = getParameterByName("catName", curnt);
       var actionList = getParameterByName("listVal", curnt);
       var id = getParameterByName("productId", curnt);
@@ -564,9 +566,9 @@ import { getParameterByName } from "../../../global/js/utils";
       };
 
       dataLayer.push(productClicked);
-      if (target === "_blank") {
+      if (curnt && target === '_blank') {
         window.open(curnt, target);
-      } else {
+      } else if (curnt) {
         window.location = curnt;
       }
     });
