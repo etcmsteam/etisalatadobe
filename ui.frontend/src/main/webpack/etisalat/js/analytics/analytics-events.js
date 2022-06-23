@@ -1,5 +1,5 @@
+/* eslint-disable */
 (function (window, document) {
-
   function isValidHttpUrl(string) {
     try {
       return new URL(string);
@@ -7,64 +7,64 @@
       return false;
     }
   }
-  
+
   // CTA and Hero Banner CTA Events
-  $("a").on("click", function (e) {
+  $('a').on('click', function (e) {
     if (window.adobeDataLayer) {
       let $this = $(this);
       let trgt = e.target;
-      let ctaName = "";
+      let ctaName = '';
       const currrentURL = window.location.href;
       const pagePathName = window.location.pathname;
-      const dataLayerPathName = pagePathName.split(".html")[0];
+      const dataLayerPathName = pagePathName.split('.html')[0];
       const currentOrigin = window.location.origin;
-      let sectionHeading = "";
-      let btnAction = "";
-      let totalVal = "";
-      let productCat = "";
-      let lnkRegion = "";
-      let chkLink = "";
+      let sectionHeading = '';
+      let btnAction = '';
+      let totalVal = '';
+      let productCat = '';
+      let lnkRegion = '';
+      let chkLink = '';
 
-      const pathArr = dataLayerPathName.split("/");
+      const pathArr = dataLayerPathName.split('/');
       sectionHeading = pathArr.pop();
 
-      if (trgt.tagName.toLowerCase() === "a") {
-        ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : "";
-      } else if (trgt.tagName.toLowerCase() === "img") {
-        ctaName = $(trgt).attr("alt") ? $(trgt).attr("alt").toLowerCase().trim() : "";
+      if (trgt.tagName.toLowerCase() === 'a') {
+        ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : '';
+      } else if (trgt.tagName.toLowerCase() === 'img') {
+        ctaName = $(trgt).attr('alt') ? $(trgt).attr('alt').toLowerCase().trim() : '';
       } else {
-        let title = $(trgt).closest("a").attr("title");
-        ctaName = title ? title.toLowerCase().trim() : "";
+        let title = $(trgt).closest('a').attr('title');
+        ctaName = title ? title.toLowerCase().trim() : '';
       }
-      const anchorOrigin = isValidHttpUrl($this.attr("href")).origin;
-      if ($this.attr("href") && $this.attr("href") !== "#") {
-        chkLink = $this.attr("href").split(".");
-        chkLink = chkLink[1] ? chkLink[1] : "";
+      const anchorOrigin = isValidHttpUrl($this.attr('href')).origin;
+      if ($this.attr('href') && $this.attr('href') !== '#') {
+        chkLink = $this.attr('href').split('.');
+        chkLink = chkLink[1] ? chkLink[1] : '';
       }
 
       if (anchorOrigin && currentOrigin !== anchorOrigin) {
-        if ($this.attr("href") && $this.attr("href") !== "#") {
-          if ($this.closest("header").length > 0) {
-            lnkRegion = "header";
-          } else if ($this.closest("footer").length > 0) {
-            let quickLinks = $this.closest(".links");
-            if (quickLinks.length > 0 && quickLinks.find(".links-title").length > 0) {
-              btnAction = quickLinks.find(".links-title").first().text();
-            } else if ($this.closest(".icons-wrap").length > 0) {
-              btnAction = $this.closest(".icons-wrap").parent().find('.footer-heading').first().text();
+        if ($this.attr('href') && $this.attr('href') !== '#') {
+          if ($this.closest('header').length > 0) {
+            lnkRegion = 'header';
+          } else if ($this.closest('footer').length > 0) {
+            let quickLinks = $this.closest('.links');
+            if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
+              btnAction = quickLinks.find('.links-title').first().text();
+            } else if ($this.closest('.icons-wrap').length > 0) {
+              btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text();
             }
-            lnkRegion = "footer";
+            lnkRegion = 'footer';
           } else {
-            lnkRegion = "main";
+            lnkRegion = 'main';
           }
           window.adobeDataLayer.push({
-            event: "linkClicked",
+            event: 'linkClicked',
             xdmActionDetails: {
               web: {
                 webInteraction: {
                   name: ctaName,
                   URL: currrentURL,
-                  type: "exit",
+                  type: 'exit',
                   region: lnkRegion,
                   linkClicks: {
                     value: 1,
@@ -82,22 +82,22 @@
             },
           });
         }
-      } else if (chkLink.toLowerCase() === "pdf") {
-        if ($this.closest(".tabs").length > 0) {
-          let tabMenu = $this.closest(".tabs").find(".cmp-tabs__tab--active");
+      } else if (chkLink.toLowerCase() === 'pdf') {
+        if ($this.closest('.tabs').length > 0) {
+          let tabMenu = $this.closest('.tabs').find('.cmp-tabs__tab--active');
           if (tabMenu.length > 0) {
-            btnAction = tabMenu.first().prop("innerText").trim().toLowerCase();
+            btnAction = tabMenu.first().prop('innerText').trim().toLowerCase();
           }
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "download",
-                region: "main",
+                type: 'download',
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -113,22 +113,22 @@
             },
           },
         });
-      } else if ($this.closest(".etisalatherobanner").length > 0) {
-        btnAction = $this.closest(".etisalatherobanner").find(".hero-title");
+      } else if ($this.closest('.etisalatherobanner').length > 0) {
+        btnAction = $this.closest('.etisalatherobanner').find('.hero-title');
         if (btnAction.length > 0) {
           btnAction = btnAction.text().toLowerCase().trim();
         } else {
-          btnAction = "";
+          btnAction = '';
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "other",
-                region: "main",
+                type: 'other',
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -144,20 +144,20 @@
             },
           },
         });
-      } else if ($this.closest(".teaser").length > 0) {
-        btnAction = $this.closest(".teaser").find(".cmp-teaser__title");
+      } else if ($this.closest('.teaser').length > 0) {
+        btnAction = $this.closest('.teaser').find('.cmp-teaser__title');
         if (btnAction.length > 0) {
           btnAction = btnAction.text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "other",
-                region: "main",
+                type: 'other',
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -173,52 +173,52 @@
             },
           },
         });
-      } else if ($this.closest(".producttile").length > 0 && $this.hasClass("cms-button")) {
+      } else if ($this.closest('.producttile').length > 0 && $this.hasClass('cms-button')) {
         productCat = pathArr.pop();
 
-        let btnAct = $this.closest(".tiles-box.content").find(".tiles-box-title h2");
+        let btnAct = $this.closest('.tiles-box.content').find('.tiles-box-title h2');
         if (btnAct.length > 0) {
           btnAct = btnAct.text().toLowerCase().trim();
         } else {
-          btnAct = "";
+          btnAct = '';
         }
 
-        let prodName = $this.closest(".tiles-box.content").find(".tiles-box-title .catagory");
+        let prodName = $this.closest('.tiles-box.content').find('.tiles-box-title .catagory');
         if (prodName.length > 0) {
           prodName = prodName.text().toLowerCase().trim();
           prodName += btnAct;
         } else {
-          prodName = "";
+          prodName = '';
         }
 
-        let productPriceVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new .price");
-        let currVal = $this.closest(".tiles-box.content").find(".tiles-box-list .detail-price-new small");
+        let productPriceVal = $this.closest('.tiles-box.content').find('.tiles-box-list .detail-price-new .price');
+        let currVal = $this.closest('.tiles-box.content').find('.tiles-box-list .detail-price-new small');
         if (productPriceVal.length > 0) {
           productPriceVal = productPriceVal.text().toLowerCase().trim();
           currVal = currVal.text().trim();
-          totalVal = productPriceVal + " " + currVal;
+          totalVal = productPriceVal + ' ' + currVal;
         } else {
-          productPriceVal = "";
-          currVal = "";
-          totalVal = "";
+          productPriceVal = '';
+          currVal = '';
+          totalVal = '';
         }
 
-        let descriptionVal = $this.closest(".tiles-box.content").find(".tiles-box-list .featureList");
+        let descriptionVal = $this.closest('.tiles-box.content').find('.tiles-box-list .featureList');
         if (descriptionVal.length > 0) {
-          descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, "");
+          descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, '');
         } else {
-          descriptionVal = "";
+          descriptionVal = '';
         }
 
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "other",
-                region: "main",
+                type: 'other',
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -240,20 +240,20 @@
             },
           },
         });
-      } else if ($this.closest("header").length > 0) {
-        if ($this.closest(".sub-menu").length > 0) {
-          let subMenu = $this.closest(".sub-menu").find(".sub-menu-heading");
-          btnAction = subMenu.first().text().toLowerCase() ? subMenu.first().text().toLowerCase() : "";
+      } else if ($this.closest('header').length > 0) {
+        if ($this.closest('.sub-menu').length > 0) {
+          let subMenu = $this.closest('.sub-menu').find('.sub-menu-heading');
+          btnAction = subMenu.first().text().toLowerCase() ? subMenu.first().text().toLowerCase() : '';
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "other",
-                region: "header",
+                type: 'other',
+                region: 'header',
                 linkClicks: {
                   value: 1,
                 },
@@ -269,22 +269,22 @@
             },
           },
         });
-      } else if ($this.closest("footer").length > 0) {
-        let quickLinks = $this.closest(".links");
-        if (quickLinks.length > 0 && quickLinks.find(".links-title").length > 0) {
-          btnAction = quickLinks.find(".links-title").first().text();
-        } else if ($this.closest(".icons-wrap").length > 0) {
-          btnAction = $this.closest(".icons-wrap").parent().find('.footer-heading').first().text();
+      } else if ($this.closest('footer').length > 0) {
+        let quickLinks = $this.closest('.links');
+        if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
+          btnAction = quickLinks.find('.links-title').first().text();
+        } else if ($this.closest('.icons-wrap').length > 0) {
+          btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text();
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "other",
-                region: "footer",
+                type: 'other',
+                region: 'footer',
                 linkClicks: {
                   value: 1,
                 },
@@ -303,14 +303,14 @@
       } else {
         btnAction = ctaName;
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "other",
-                region: "main",
+                type: 'other',
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -334,7 +334,7 @@
     }
 
     window.adobeDataLayer.push({
-      event: "form start",
+      event: 'form start',
       formDetails: {
         formName: name,
       },
@@ -353,7 +353,7 @@
     }
 
     window.adobeDataLayer.push({
-      event: "form submit",
+      event: 'form submit',
       formDetails: {
         formName: name,
       },
@@ -365,16 +365,16 @@
     return true;
   }
 
-  let formObj = $(document).find("form");
+  let formObj = $(document).find('form');
   if (formObj.length > 0) {
     formObj.each(function () {
       let dirty = false;
-      let inputEle = $(this).find("input");
-      let textArea = $(this).find("textarea");
-      let formName = $(this).attr("name");
+      let inputEle = $(this).find('input');
+      let textArea = $(this).find('textarea');
+      let formName = $(this).attr('name');
 
       inputEle.each(function () {
-        $(this).on("input", function () {
+        $(this).on('input', function () {
           if (!dirty) {
             dirty = true;
             formStart(formName);
@@ -382,7 +382,7 @@
         });
       });
       textArea.each(function () {
-        $(this).on("input", function () {
+        $(this).on('input', function () {
           if (!dirty) {
             dirty = true;
             formStart(formName);
@@ -390,39 +390,39 @@
         });
       });
 
-      $(this).on("submit", function () {
+      $(this).on('submit', function () {
         formComplete(formName);
       });
     });
   }
 
   // Support CTA B2C
-  $("#sp_Button").on("click", function (e) {
+  $('#sp_Button').on('click', function (e) {
     if (window.adobeDataLayer) {
       let trgt = e.target;
-      let ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : "";
+      let ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : '';
       const currrentURL = window.location.href;
       const pagePathName = window.location.pathname;
-      const dataLayerPathName = pagePathName.split(".html")[0];
-      let sectionHeading = "";
-      let actTxt = $("mainHeading").text() ? $("mainHeading").text() : "";
-      let deviceTxt = $("#select2-ddlConcern-container").text() ? $("#select2-ddlConcern-container").text() : "";
-      let brandTxt = $("#select2-ddlBrandName-container").text() ? $("#select2-ddlBrandName-container").text() : "";
-      let modelTxt = $("#select2-ddlModelName-container").text() ? $("#select2-ddlModelName-container").text() : "";
+      const dataLayerPathName = pagePathName.split('.html')[0];
+      let sectionHeading = '';
+      let actTxt = $('mainHeading').text() ? $('mainHeading').text() : '';
+      let deviceTxt = $('#select2-ddlConcern-container').text() ? $('#select2-ddlConcern-container').text() : '';
+      let brandTxt = $('#select2-ddlBrandName-container').text() ? $('#select2-ddlBrandName-container').text() : '';
+      let modelTxt = $('#select2-ddlModelName-container').text() ? $('#select2-ddlModelName-container').text() : '';
 
-      const pathArr = dataLayerPathName.split("/");
+      const pathArr = dataLayerPathName.split('/');
       sectionHeading = pathArr.pop();
 
       window.adobeDataLayer.push({
-        event: "linkClicked",
+        event: 'linkClicked',
 
         xdmActionDetails: {
           web: {
             webInteraction: {
               name: ctaName,
               URL: currrentURL,
-              type: "other",
-              region: "main",
+              type: 'other',
+              region: 'main',
 
               linkClicks: {
                 value: 1,
