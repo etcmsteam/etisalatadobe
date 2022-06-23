@@ -71,7 +71,7 @@
       margin-top: toRem(1);
 
       @include respond-to-min($desktop) {
-        height: toRem(50);
+        height: toRem(48);
         min-width: toRem(180) !important;
         top: 50%;
         width: auto !important;
@@ -138,8 +138,8 @@
       }
     }
   }
-  &.cmp-default-card__content-full{
-    .cmp-teaser{
+  &.cmp-default-card__content-full {
+    .cmp-teaser {
       &__content {
         width: 100%;
       }
@@ -148,7 +148,6 @@
 }
 
 .button--secondary.cmp-default-card,
-.button--primary.cmp-default-card,
 .button--transparent.cmp-default-card,
 .default--bg .button--transparent.cmp-default-card {
   .cmp-teaser {
@@ -189,6 +188,34 @@
 
         a {
           color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.button--primary.cmp-default-card {
+  .cmp-teaser {
+    &__action-container {
+      @include respond-to-min($desktop) {
+        min-width: toRem(180) !important;
+        width: auto !important;
+      }
+
+      @include respond-to-max($desktop) {
+        min-width: 100%;
+        width: 100%;
+      }
+
+      &:focus,
+      &:active {
+        background-color: $green-btn;
+        border-color: $green-btn;
+        color: $white;
+        outline: 0;
+
+        a {
+          color: $white;
         }
       }
     }
