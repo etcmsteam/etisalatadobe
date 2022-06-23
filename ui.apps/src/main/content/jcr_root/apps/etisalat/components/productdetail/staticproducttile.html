@@ -48,7 +48,8 @@
                              </sly>                                                         
                           </sly>
                           <sly data-sly-test="${!properties.mainProductTitle && !properties.productFilterEnabled}">
-                            <div data-sly-repeat.item="${carousel.items}" class="swiper-slide ${!wcmmode.edit && carousel.items.size > 3 ? 'col-xs-12 col-sm-6 col-md-3 swiper-slide-active' : 'swiper-slide-active col-xs-12 col-sm-6 col-md-4'}" data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
+						    <sly data-sly-set.gridView="${properties.gridView == '4-column'}"/>
+                            <div data-sly-repeat.item="${carousel.items}" class="swiper-slide ${!wcmmode.edit && gridView ? 'col-xs-12 col-sm-6 col-md-3 swiper-slide-active' : 'swiper-slide-active col-xs-12 col-sm-6 col-md-4'}" data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
                           </sly>
                         </div>
                         <div class="table-swiper-scrollbar swiper-scrollbar">
