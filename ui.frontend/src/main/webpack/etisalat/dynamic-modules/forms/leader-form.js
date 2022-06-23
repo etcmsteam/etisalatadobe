@@ -5,6 +5,7 @@ export const LEADER_FORM = () => {
   const $FORM = $("#leadOrder");
   const $SUBMIT_CTA = $("#leadOrder .cmp-form-button");
   const currentURL = window.location.href;
+  const lang = $('html').attr('lang');
 
   if (!$FORM.length) {
     return false;
@@ -36,7 +37,7 @@ export const LEADER_FORM = () => {
   }
 
   function bindingUIFromParams() {
-    const productName = getParameterByName("productName", currentURL);
+    const productName = queryParamValue('productName', currentURL);
     if (productName) {
       const targetElement = $(".teaser-form").find(".cmp-teaser__title");
       const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim();
@@ -142,7 +143,7 @@ export const LEADER_FORM = () => {
         encode: true,
       })
         .done(function (response) {
-          let RE_URL = `${window.location.origin}/en/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
+          let RE_URL = `${window.location.origin}/${lang}/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
           window.location.href = RE_URL;
           FORM_SUCCESS($FORM, PAYLOAD);
 

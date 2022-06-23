@@ -410,20 +410,21 @@ import { getParameterByName } from '../../../global/js/utils';
       .on('click', function (e) {
         var curnt = $(this).attr('href');
         var productClicked = {};
-        var selectedProductMain = $(this).closest('.tiles-box');
-        var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
-        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text().trim();
-        var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+        var selectedProductMain = $(this).closest('.producttile');
+        var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
+        var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
+        var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
         var position = selectedProductMain.closest('.swiper-slide').index() + 1;
         var category = getParameterByName('catName', curnt);
         var id = getParameterByName('productId', curnt);
         var actionList = getParameterByName('listVal', curnt);
         e.preventDefault();
+
         productClicked = {
           event: 'productClick',
           ecommerce: {
             click: {
-              actionField: { list: actionList },
+              actionField: { list: actionList, action: 'click' },
               products: [
                 {
                   name: name /*String - Product Name*/,
@@ -471,16 +472,16 @@ import { getParameterByName } from '../../../global/js/utils';
       e.preventDefault();
 
       var productClicked = {};
-      var selectedProductMain = $(this).closest('.tile-card');
+      var selectedProductMain = $(this).closest('.producttile');
 
       var name = selectedProductMain.find('.tiles-box-title').find('h2').text().trim();
-      var brand = 'Etisalat';
+      var brand = "Etisalat";
       var price = selectedProductMain.find('.tiles-box-list').find('.price').text().trim();
+      var position = selectedProductMain.closest('.swiper-slide').index() + 1;
 
-      var position = selectedProductMain.parent().index() + 1;
-      var category = getParameterByName('catName', curnt);
-      var actionList = getParameterByName('listVal', curnt);
-      var id = getParameterByName('productId', curnt);
+      var category = getParameterByName("catName", curnt);
+      var actionList = getParameterByName("listVal", curnt);
+      var id = getParameterByName("productId", curnt);
 
       productClicked = {
         event: 'productClick',
@@ -702,7 +703,9 @@ import { getParameterByName } from '../../../global/js/utils';
   // Product plan card impression end ------------------------------------
 
   //quick links under search google analytics
-  var quickLinks = document.querySelectorAll('.search-items .list.quick-links ul')[instannceNum].children || '';
+  var dataEle = document.querySelectorAll('.search-items .list.quick-links ul');
+  if (dataEle.length > 0) {
+  var quickLinks = dataEle[instannceNum].children ? dataEle[instannceNum].children : '';
   for (var i = 0; i < quickLinks.length; i++) {
     quickLinks[i].addEventListener('click', function () {
       //google analytics starts
@@ -716,8 +719,11 @@ import { getParameterByName } from '../../../global/js/utils';
       //google analytics ends
     });
   }
+  }
 
   //trending links under search google analytics
+  var trendLink = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper');
+  if (trendLink.length > 0) {
   var trendingLinksParent = document.querySelectorAll('.search-items .list.trends .menu-brand-wrapper')[instannceNum] || '';
   var trendingLinks = trendingLinksParent.querySelectorAll('.content') || '';
   for (var i = 0; i < trendingLinks.length; i++) {
@@ -733,7 +739,7 @@ import { getParameterByName } from '../../../global/js/utils';
       //google analytics ends
     });
   }
-
+  }
   //quick links under search result page ga
   var quickLinksList = document.querySelector('.result-default-view .list.quick-links ul');
   if (quickLinksList !== null) {
