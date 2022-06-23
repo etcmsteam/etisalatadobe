@@ -44,6 +44,7 @@ class PageNavigationImplTest {
 		final String expectedTitle = "Prepaid";
 		final String expectedPageLink = "/content/etisalat/ae/en/prepaid.html";
 		context.currentResource(PAGE_NAV_1);
+		context.requestPathInfo().setResourcePath("/content/etisalat/ae/en/prepaid.html");
 		PageNavigation pageNav = context.request().adaptTo(PageNavigation.class);
 
 		int actual = pageNav.getPageNavItems().size();

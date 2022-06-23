@@ -166,6 +166,38 @@ public final class CommonUtility {
     }
     return Collections.unmodifiableList(pageItemList);
   }
+
+	/**
+	 * Returns generic Fixed Navigation list for multifield for different purpose
+	 * @param childItem Child node name
+	 * @param res       Parent Resource
+	 * @param resourceResolver ResourceResolver
+	 * @param request SlingHttpServletRequest
+	 * @return List of NavigationModel
+	 */
+  public static List<FixedNavigtaionMultifieldModel> getFixedNavigationItems(String childItem, Resource res,ResourceResolver resourceResolver, SlingHttpServletRequest request) {
+	Resource pageItemRes = res.getChild(childItem);
+	final List<FixedNavigtaionMultifieldModel> pageItemList = new ArrayList<>();
+	if (null != pageItemRes) {
+		pageItemRes.listChildren().forEachRemaining(resource -> {
+			final FixedNavigtaionMultifieldModel pageModel = resource
+					.adaptTo(FixedNavigtaionMultifieldModel.class);
+			if (null!= pageModel && StringUtils.isNotEmpty(pageModel.getNavigationLink())) {
+				pageModel.setNavigationLink(CommonUtility
+						.appendHtmlExtensionToPage(resourceResolver, pageModel.getNavigationLink()));
+			}
+			if (null!= pageModel && StringUtils.isNotEmpty(pageModel.getNavigationTitle())) {
+				pageModel.setTopNavigationXFResource(resource);
+			}
+			if (pageModel.getNavigationLink().contains(request.getPathInfo())){
+				pageModel.setTabActive(true);
+			}
+
+			pageItemList.add(pageModel);
+		});
+	}
+	return Collections.unmodifiableList(pageItemList);
+	}
   
 	public static String getCaptchaResponse(String json) {
 		String captchaValue = AEConstants.CAPTCHA_NULL;
