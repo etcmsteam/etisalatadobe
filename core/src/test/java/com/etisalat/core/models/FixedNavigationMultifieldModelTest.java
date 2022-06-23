@@ -47,6 +47,8 @@ class FixedNavigationMultifieldModelTest {
 		assertEquals(expectedFixedNavImage, item.getNavigationImage());
 		item.setNavigationLinkTarget(expectedFixedLinkTarget);
 		assertTrue(item.isNavigationLinkTarget());
+		item.setTabActive(true);
+		assertTrue(item.isTabActive());
 	}
 
 	
