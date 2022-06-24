@@ -1,3 +1,27 @@
+@mixin product-grid-default-pattern($color1: $main-green, $color2: $blue2, $bgUrl: "../resources/images/bg-cards/plan-cards-illustration.png") {
+  .plan-card.offer .tile-card .tiles-box-title,
+  .plan-multi-card-selection.offer .tile-card .tiles-box-title,
+  .plan-single-card-selection.offer .tile-card .tiles-box-title,
+  .plan-card.postpaid.tile-table .tile-card .tiles-box-title,
+  .plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+  .plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
+  .product-grid-text-section.plans .plan-card.offer .tile-card .tile .tiles-box-title,
+  .product-grid-text-section.plans .plan-multi-card-selection.offer .tile-card .tile .tiles-box-title,
+  .product-grid-text-section.plans .plan-single-card-selection.offer .tile-card .tile .tiles-box-title {
+    background: url($bgUrl) 100% 0 no-repeat, linear-gradient(45deg, $color1, $color2) !important;
+    @content;
+  }
+}
+
+@mixin product-grid-pattern($color1: $main-green, $color2: $blue2, $bgUrl: "../resources/images/bg-cards/plan-cards-illustration.png") {
+
+  .read-more-red-btn_bg,
+  .read-more-green-btn_bg {
+    @include product-grid-default-pattern($color1, $color2, $bgUrl);
+    @content;
+  }
+}
+
 .product-grid-text-section.plans {
   .product-tile-section.bg-cards.product-plan-card {
     .plan-card.tile-table .tile-card .tile-card__front .body-standard > .cover {
@@ -2637,6 +2661,40 @@
     }
   }
 
+  .producttile:not(.no-pattern-bg-theme) {
+
+    .read-more-green-btn_bg {
+      @include product-grid-default-pattern();
+    }
+
+    .read-more-red-btn_bg {
+      @include product-grid-default-pattern($dark-orange);
+    }
+
+
+    &.orange-bg-theme {
+      @include product-grid-pattern($dark-orange) {
+        background-size: cover;
+      }
+    }
+
+    &.gold-bg-theme {
+      @include product-grid-pattern($pine, $portica, "../resources/images/bg-cards/card-header-gold.png") {
+        background-size: cover;
+      }
+    }
+
+    &.blue-bg-theme {
+      @include product-grid-pattern($platinum-blue, $platinum-white, "../resources/images/bg-cards/card-header-platinum.png") {
+        background-size: cover;
+      }
+    }
+
+    &.purple-bg-theme {
+      @include product-grid-pattern(#462f46, #630e92);
+    }
+  }
+
   .bg-cards .plan-card.postpaid.tile-table .tile-card .tiles-box-title,
   .bg-cards .plan-multi-card-selection.postpaid.tile-table .tile-card .tiles-box-title,
   .bg-cards .plan-single-card-selection.postpaid.tile-table .tile-card .tiles-box-title {
@@ -4577,7 +4635,7 @@
 
   .smile-points {
     padding: toRem(12) toRem(24);
-  
+
     @include respond-to-max($desktop-min) {
       padding: toRem(12) !important;
     }
