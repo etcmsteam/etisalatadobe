@@ -1,6 +1,7 @@
 <sly data-sly-use.tileModel="com.etisalat.core.models.TileModel" 
-     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
-   <div class="${!wcmmode.edit ? 'col-xs-12 col-md-3 item': ''}" style="display: block;">
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+
+   <div data-sly-set.blogtilesizeVal="${properties.blogtilesize ? properties.blogtilesize : '3'}" class="${!wcmmode.edit ? 'col-xs-12 col-md-${blogtilesizeVal} item': ''}" style="display: block;">
 	   <a href="${tileModel.linkURL}">
 		  <div class="blog-post-wrapper">
 			 <div class="tile-box-blogtile">
