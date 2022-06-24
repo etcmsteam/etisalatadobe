@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.util.CommonUtility;
 
+
 @Model(adaptables = {Resource.class,
     SlingHttpServletRequest.class})
 public class FixedNavigationModel {

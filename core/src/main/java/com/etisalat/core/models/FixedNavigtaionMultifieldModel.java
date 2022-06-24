@@ -47,6 +47,8 @@ public class FixedNavigtaionMultifieldModel {
 
   private Resource topNavigationXFResource;
 
+  private boolean tabActive;
+
   public void setNavigationTitle(String navigationTitle) {
     this.navigationTitle = navigationTitle;
   }
@@ -161,6 +163,11 @@ public class FixedNavigtaionMultifieldModel {
     this.navigationLinkTarget = navigationLinkTarget;
   }
 
+  public boolean isTabActive() {
+    return tabActive;
+  }
 
-
+  public void setTabActive(boolean tabActive) {
+    this.tabActive = tabActive;
+  }
 }

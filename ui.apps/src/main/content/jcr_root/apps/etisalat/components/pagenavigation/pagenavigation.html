@@ -20,9 +20,7 @@
                         <div class="simplebar-content">
                            <ul class="page-nav ${properties.stickyBehavior ? 'nav' : ''}" data-sly-list.navItems="${pageNav.pageNavItems}">
                               
-                              <li data-sly-set.paramPath = "${request.pathInfo}?${request.queryString}" 
-                                  data-sly-set.browserPath = "${request.queryString ? paramPath : request.pathInfo}"  
-                                   class="${browserPath == navItems.navigationLink ? 'active' : ''}">
+                              <li class="${navItems.tabActive ? 'active' : ''}">
                                  <a href="${navItems.navigationLink}">${navItems.navigationTitle}</a>
                               </li>
                            </ul>
