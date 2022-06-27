@@ -555,6 +555,8 @@ Include conf.d/variables/custom.vars
         RewriteRule ^/en/c/devices/national-day/smartphones\.(html|jsp) /en/index.html	 [R=302,L]
         RewriteRule ^/ar/consumer/support/mobile/prepaid/combo-packs-faqs-new\.(html|jsp) /en/index.html	 [R=302,L]
         RewriteRule ^/en/c/home/packages/al-shamil\.(html|jsp) /en/index.html	 [R=302,L]
+        RewriteRule ^/en/smb/offers/mobile/upgrade-plans\.(html|jsp) /en/smb/offers/mobile/business-xtreme.html	 [R=302,L]
+        RewriteRule ^/en/smb/offers/mobile/double-minutes\.(html|jsp) /en/smb/offers/mobile/business-first-plus.html	 [R=302,L]
         # End of redirect rule - By Content Migration team
 
         RewriteCond %{REQUEST_URI} .jsp$
@@ -562,6 +564,7 @@ Include conf.d/variables/custom.vars
 
         RewriteCond %{REQUEST_URI} .*\.(png|jpg|svg|pdf|gif|ico|jpeg)
         RewriteCond %{REQUEST_URI} !^/content/dam
+        RewriteCond %{REQUEST_URI} !^/etc.clientlibs
         RewriteCond %{REQUEST_URI} !_jcr_content
         RewriteRule ^/(.*)$ /content/dam/dx_eitsalat_ae/$1  [PT,L]
 
