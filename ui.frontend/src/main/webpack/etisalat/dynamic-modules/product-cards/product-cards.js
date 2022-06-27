@@ -23,10 +23,10 @@ export const PRODUCT_CARDS = () => {
         768: {
           slidesPerView: brPoint2,
         },
-        1200: {
+        1024: {
           slidesPerView: brPoint3,
         },
-        1439: {
+        1440: {
           slidesPerView: brPoint4,
         },
         9999: {
@@ -49,7 +49,7 @@ export const PRODUCT_CARDS = () => {
 
         $carouselSliderPlansGrid = swiperInit(
           ".plansTable" + index + " .swiper-container",
-          swiperOptions($planTableParent, ".table-swiper-button-next.plansRight" + index, ".table-swiper-button-prev.plansLeft" + index, 1.25, 2, 3, 3, 4),
+          swiperOptions($planTableParent, ".table-swiper-button-next.plansRight" + index, ".table-swiper-button-prev.plansLeft" + index, 1.25, 2, 3, 4, 4),
         );
       });
     }
