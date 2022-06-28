@@ -191,7 +191,7 @@
   &--background-pattern & {
     &::before,
     &::after {
-      background: url($resource-path + "promo_pattern_top.svg") left 0 no-repeat;
+      background: url($resource-path + 'promo_pattern_top.svg') left 0 no-repeat;
       background-size: contain;
       content: "";
       height: 100%;
@@ -331,9 +331,7 @@
         }
       }
 
-      @media screen and (min-width: 768px) and (max-width: 1024px) {
-        align-items: flex-end;
-
+      @include respond-to-min($tablet) {
         div.cover {
           position: relative;
 
@@ -346,6 +344,10 @@
             top: unset;
           }
         }
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 1024px) {
+        align-items: flex-end;
 
         .cmp-teaser__content {
           min-height: 438px;
