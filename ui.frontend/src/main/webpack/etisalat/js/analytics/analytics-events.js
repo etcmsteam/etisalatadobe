@@ -230,13 +230,6 @@
           },
         });
       } else if ($this.closest(".meganavigation").length > 0) {
-        if ($this.closest(".top-nav-section").length > 0) {
-          sectionHeading = "nav menu";
-          btnAction = "nav menu item clicked";
-          if ($(trgt).hasClass("language-switch-content")) {
-            ctaName = "change language";
-          }
-        }
         if ($this.closest(".main-mega-menu-desktop").length > 0) {
           sectionHeading = "main menu";
           btnAction = "main menu item clicked";
@@ -289,6 +282,33 @@
           ctaName = subMenuSecTxt + ctaName;
         }
 
+        window.adobeDataLayer.push({
+          event: "linkClicked",
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: "header",
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName,
+            },
+            eventInfo: {
+              headerClick: 1,
+            },
+          },
+        });
+      } else if ($this.closest(".top-nav-section").length > 0) {
+        sectionHeading = 'nav menu';
+        btnAction = 'nav menu item clicked';
         window.adobeDataLayer.push({
           event: "linkClicked",
           xdmActionDetails: {
