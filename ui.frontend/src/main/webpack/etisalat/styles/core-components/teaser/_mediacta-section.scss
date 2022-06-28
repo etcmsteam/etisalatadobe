@@ -789,11 +789,23 @@
   @include respond-to-min($desktop) {
     .aem-Grid .aem-GridColumn {
       &:first-child {
-        padding-left: 0 !important;
+        padding-left: 0;
       }
 
       &:last-child {
         padding-right: 0;
+      }
+
+      @include rtlBlock() {
+        &:first-child {
+          padding-left: toRem(12);
+          padding-right: 0;
+        }
+
+        &:last-child {
+          padding-left: 0;
+          padding-right: toRem(12);
+        }
       }
     }
   }
