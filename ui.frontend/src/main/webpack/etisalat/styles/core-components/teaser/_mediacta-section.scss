@@ -92,6 +92,10 @@
           position: relative;
 
           @include font-family-lato;
+
+          @include rtlBlock() {
+            padding-left: 0;
+          }
         }
       }
 
@@ -218,6 +222,12 @@
     .img-static {
       height: toRem(240);
       width: 100%;
+
+      div.cover {
+        @include respond-to-min($desktop) {
+          width: calc(100% - 12px);
+        }
+      }
     }
 
     &__image {
@@ -590,7 +600,7 @@
         height: toRem(132);
         max-height: toRem(132);
         min-height: toRem(132);
-        
+
         @include respond-to-min($tablet) {
           height: toRem(250);
           max-height: toRem(250);
@@ -676,7 +686,7 @@
         }
 
         @include rtlBlock {
-          padding-left: toRem(64);
+          padding-left: toRem(12);
           padding-right: 0;
 
           @include respond-to-max($desktop-min) {

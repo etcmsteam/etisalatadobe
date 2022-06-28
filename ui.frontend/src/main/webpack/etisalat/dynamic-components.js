@@ -97,6 +97,9 @@ const DYNAMIC_MODULE = {
   "cmp-idle-chat": async () => {
     return import(/* webpackChunkName: 'idle-chat' */ "./dynamic-modules/idle-chat").then((obj) => obj.IDLE_CHAT);
   },
+  'blogpost-search': async () => {
+    return import(/* webpackChunkName: 'blogpost-search' */ './dynamic-modules/blog-post/blog-post').then((obj) => obj.BLOG_POST_MODULE);
+  },
 };
 
 const ALREADY_LOADED_SCRIPTS = {};

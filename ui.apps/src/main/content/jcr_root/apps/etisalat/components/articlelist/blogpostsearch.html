@@ -1,6 +1,7 @@
 <template data-sly-template.blogPostObj="${ @ properties,blogpost}">
 	<div class="cmp-blogpost-search"
-	   data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
+	   data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+	   data-component="blogpost-search"
 	   data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
 	   data-noOf-items="${properties.numberOfItems}"
 	   data-sly-set.blogPostList="${blogpost.blogPageItems}"
@@ -27,7 +28,7 @@
 	                  <form action="javascript:void(0)" class="form cmp-form" id="search_${component.id}" method="POST" novalidate="" data-active="true">
 	                     <div class="form-group floating-label-input input-field ">
 	                        <input name="${properties.name}"
-	                           value="${properties.value}"                            
+	                           value="${properties.value}"
 	                           type="text" required>
 	                        <label> ${properties.inputLbl}</label>
 	                        <span class="search-icon">
@@ -50,7 +51,7 @@
 	         </div>
 	      </div>
 	   </div>
-	   
+
 	   <div class="search-results-wrapper" style="display: none">
 	      <div class="container">
 	         <div class="row">
@@ -65,7 +66,7 @@
 	         </div>
 	      </div>
 	   </div>
-	   <div class="blogpost-wrapper" 
+	   <div class="blogpost-wrapper"
 	      data-sly-test="${blogPostList.size >0}"
 	      data-sly-set.itemsDisplay="${(properties.numberOfItems && properties.numberOfItems > 0) ? properties.numberOfItems : blogPostList.size}">
 	      <div class="container">
@@ -97,7 +98,7 @@
 	            </div>
 	            <div data-sly-test="${pageItem.tileSize == 'video'}" class="col-xs-12 col-md-6 item" style="display: ${pageItemList.index < itemsDisplay ? 'block':'none' @ context='styleToken'};">
 	               <sly data-sly-use.videoTemplate="/apps/etisalat/components/articlelist/video.html"
-	                  data-sly-call="${videoTemplate.blogvideo @ pageItem=pageItem}">  
+	                  data-sly-call="${videoTemplate.blogvideo @ pageItem=pageItem}">
 	               </sly>
 	            </div>
 	         </div>
