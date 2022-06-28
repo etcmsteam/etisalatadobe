@@ -537,6 +537,7 @@
 
         div.cover {
           position: relative;
+          width: 100%;
         }
       }
     }
@@ -794,6 +795,18 @@
 
       &:last-child {
         padding-right: 0;
+      }
+
+      @include rtlBlock() {
+        &:first-child {
+          padding-left: toRem(12) !important;
+          padding-right: 0;
+        }
+
+        &:last-child {
+          padding-left: 0;
+          padding-right: toRem(12);
+        }
       }
     }
   }
