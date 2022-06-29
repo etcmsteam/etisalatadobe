@@ -6,10 +6,11 @@ export const THANK_YOU = () => {
   }
   const referenceNo = getURLParameter('referenceNo');
   const locale = $('html')[0].lang != '' ? $('html')[0].lang.toLowerCase() : 'en';
-  const indexPageUrl = `/${locale}/smb/index.html`;
+  const defaultIndex = `/${locale}/smb/index.html`;
+  const redirectUrl = $('.cmp-button--secondary a')?.attr('href') || defaultIndex;
   if (referenceNo) {
-    $('.referenceNoTxt').html(referenceNo);
+    $('.referenceNoTxt')?.html(referenceNo);
   } else {
-    window.location.replace(indexPageUrl);
+    window.location.replace(redirectUrl);
   }
 };

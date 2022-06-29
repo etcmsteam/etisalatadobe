@@ -15,13 +15,18 @@ export const getParameterByName = (name, href) => {
 };
 
 export const getURLParameter = (sParam) => {
-  const sPageURL = window.location.search.substring(1);
-  const sURLVariables = sPageURL.split('&');
   const paramMap = {};
+  try {
+    const sPageURL = window.location.search.substring(1);
+    const sURLVariables = sPageURL.split('&');
 
-  sURLVariables.forEach((urlVars) => {
-    const [key, value] = urlVars.split('=');
-    paramMap[key] = value;
-  });
+    sURLVariables.forEach((urlVars) => {
+      const [key, value] = urlVars.split('=') || [];
+      paramMap[key] = value;
+    });
+  } catch (e) {
+    console.error(e);
+  }
+
   return paramMap[sParam];
 };
