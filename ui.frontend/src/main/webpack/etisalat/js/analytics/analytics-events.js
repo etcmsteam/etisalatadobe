@@ -26,7 +26,7 @@
       let productCat = '';
       let linkType = 'other';
       let chkLink = '';
-      e.preventDefault();
+
       const pathArr = dataLayerPathName.split('/');
       sectionHeading = pathArr.pop();
 
