@@ -4,6 +4,7 @@ import com.day.cq.wcm.api.Page;
 import com.etisalat.core.services.EtisalatApiService;
 import com.etisalat.core.util.CommonUtility;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -108,5 +109,14 @@ public class CommonLinkModel {
     public String getGaApiKey() {
 
         return etisalatApiService.getGaApiKey();
+    }
+    
+    /**
+     * Checks if is asset SVG image.
+     *
+     * @return true, if is asset SVG image
+     */
+    public boolean isAssetSVGImage() {
+      return StringUtils.isNotBlank(link) && FilenameUtils.getExtension(link).equalsIgnoreCase("svg");
     }
 }

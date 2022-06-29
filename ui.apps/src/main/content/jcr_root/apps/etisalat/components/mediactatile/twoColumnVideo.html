@@ -20,7 +20,11 @@
 										<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>	        	              	        
 								</div>
 								<sly data-sly-test="${properties.youTubeUrlTwoColumnVideo}">
-								<div class="video-controls-media-cta youtube-video-link"><img src="${properties.playIconReferenceTwoColumnVideo}" /></div>
+								<div class="video-controls-media-cta youtube-video-link">
+								   <img src="${properties.playIconReferenceTwoColumnVideo}" alt="" loading="lazy" 
+								        data-sly-set.imageSrcPath="${properties.playIconReferenceTwoColumnVideo}" 
+								        data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+								        class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" /></div>
 								<div class="youtube-popup-container  modal fade mediaCtaVideo" id="mediaCtaVideo_1" role="dialog" style="display: none;">
 								  <div class="modal-dialog">
 									 <div class="modal-content">

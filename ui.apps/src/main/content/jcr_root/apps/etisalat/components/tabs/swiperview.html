@@ -26,7 +26,10 @@
                         <sly data-sly-use.tabimage="com.etisalat.core.models.TabImage"
                            data-sly-list.imageItem="${tabimage.tabImageItems}">
                            <span data-sly-test="${tabList.index == imageItemList.index}">
-                           <img alt="${imageItem.linkText}" src="${imageItem.linkUrl}"/>
+                           <img alt="${imageItem.linkText}" src="${imageItem.linkUrl}" loading="lazy" 
+                                data-sly-set.imageSrcPath="${imageItem.linkUrl}" 
+	                            data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                            class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
                            </span>
                         </sly>
                      </li>

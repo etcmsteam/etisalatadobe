@@ -17,7 +17,10 @@
                   <div class="logo-container">
                      <div class="navbar-header">
                         <a href="${meganavigation.logoMenuLink}" title="${properties.logoAltText}">  
-                        <img alt="${properties.logoAltText}" src="${meganavigation.imagePath}" class="etisalat-logo-en" width="150" />
+                        <img alt="${properties.logoAltText}" src="${meganavigation.imagePath}" loading="lazy" 
+                             data-sly-set.imageSrcPath="${meganavigation.imagePath}" 
+	                         data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+                             class="etisalat-logo-en ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" width="150" />
                         </a>
                      </div>
                   </div>

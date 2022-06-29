@@ -26,12 +26,18 @@
    
    <sly data-sly-set.lazyLoading="${properties.disableLazyLoading ? ''  : 'lazy'}"/>
    <img loading="${lazyLoading}" data-sly-test="${imageViewport.retinaImage1440px1x && !imageViewport.retinaImage1440px2x}" 
-        src="${imageViewport.retinaImage1440px1x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
+        data-sly-set.imageSrcPath="${imageViewport.retinaImage1440px1x}" 
+	    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+        src="${imageViewport.retinaImage1440px1x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
         alt="${imageViewport.fourViewPortAltText || true}">
    <img loading="${lazyLoading}" data-sly-test="${!imageViewport.retinaImage1440px1x && imageViewport.retinaImage1440px2x}" 
-        src="${imageViewport.retinaImage1440px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
+        data-sly-set.imageSrcPath="${imageViewport.retinaImage1440px2x}" 
+	    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+        src="${imageViewport.retinaImage1440px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
         alt="${imageViewport.fourViewPortAltText || true}">
    <img loading="${lazyLoading}" data-sly-test="${imageViewport.retinaImage1440px1x && imageViewport.retinaImage1440px2x}" 
-        src="${imageViewport.retinaImage1440px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
+        data-sly-set.imageSrcPath="${imageViewport.retinaImage1440px2x}" 
+	    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+        src="${imageViewport.retinaImage1440px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
         alt="${imageViewport.fourViewPortAltText || true}">
 </template>

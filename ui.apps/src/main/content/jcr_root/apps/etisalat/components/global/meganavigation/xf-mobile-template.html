@@ -1,6 +1,9 @@
 <template data-sly-template.xfMobileTemplate="${ @ properties,navItems}">
         <a class="nav-link ${navItems.containerSubMenuList.size > 0 ? 'nav-expand-link' :''}" href="${navItems.navigationLinkTo}">
-		<img alt="${navItems.navigationLabel}" class="nav-link-icon" src="${navItems.navImagePath}"/> ${navItems.navigationLabel}
+		<img alt="${navItems.navigationLabel}" loading="lazy" 
+		     data-sly-set.mobileNavSrcPath="${navItems.navImagePath}" 
+	         data-sly-use.mobileNavModal="${'com.etisalat.core.models.CommonLinkModel' @link=mobileNavSrcPath}" 
+		     class="nav-link-icon ${mobileNavModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${navItems.navImagePath}"/> ${navItems.navigationLabel}
 		 <svg data-sly-test="${navItems.containerSubMenuList.size > 0}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
            class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
            enable-background="new 26 26 12 12" xml:space="preserve">
@@ -66,7 +69,11 @@
 			   <ul data-sly-test="${subMenuItems.isFeatureItemExist && !subMenuItems.featureImageList.isEmpty}">
 				 <li data-sly-test="${subMenuItems.title}" class="nav-item-heading">${subMenuItems.title}</li>
 				 <li data-sly-list.brandItem="${subMenuItems.featureImageList}" class="nav-item menu-brand-wrapper">
-					  <a class="menu-brand-item" href="${brandItem.link}"><img alt="${brandItem.title}" src="${brandItem.fileReference}" loading="lazy"></a>
+					  <a class="menu-brand-item" href="${brandItem.link}">
+					     <img alt="${brandItem.title}" src="${brandItem.fileReference}" loading="lazy" 
+					          data-sly-set.mobileBrandSrcPath="${brandItem.fileReference}" 
+	                          data-sly-use.mobileBrandModal="${'com.etisalat.core.models.CommonLinkModel' @link=mobileBrandSrcPath}" 
+	                          class="${mobileBrandModal.assetSVGImage ? 'inline-svg__icon' : ''}" ></a>
 				 </li>
 			   </ul>		    
 		    </sly>
@@ -78,7 +85,10 @@
 					   <a data-sly-set.tileLinkURL="${promoObj.linkURL}" href="${promoObj.linkURL}" target="${promoObj.linkTarget}" data-sly-unwrap="${!tileLinkURL}">
 					      <div class="tile">
 							   <div class="cover">
-					               <img data-sly-test="${promoObj.resourceType == 'etisalat/components/teaser'}" src="${promoObj.fileReference}" loading="lazy" class="cover lazyloaded"
+					               <img data-sly-test="${promoObj.resourceType == 'etisalat/components/teaser'}" src="${promoObj.fileReference}" 
+					                    data-sly-set.promoSrcPath="${promoObj.fileReference}" 
+	                                    data-sly-use.promoImageModal="${'com.etisalat.core.models.CommonLinkModel' @link=promoSrcPath}" 
+					                    loading="lazy" class="cover lazyloaded ${promoImageModal.assetSVGImage ? 'inline-svg__icon' : ''}"
 					                   alt="m-menu-new-freedom-en-377x325">
 					                <sly data-sly-test="${promoObj.resourceType == 'etisalat/components/teaseretisalat'}" 
 					                     data-sly-resource="${promoObj.teaserResource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>            

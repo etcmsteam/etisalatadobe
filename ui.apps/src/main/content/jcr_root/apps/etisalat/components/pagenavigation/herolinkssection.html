@@ -9,7 +9,10 @@
                         <ul data-sly-list.child="${mylist}">
                            <li>
                               <a href="${child.iconLink}" target="${child.linkTarget}">
-                              <img alt="${child.iconText}" src="${child.iconImage}">
+                              <img alt="${child.iconText}" src="${child.iconImage}" loading="lazy" 
+                                   data-sly-set.imageSrcPath="${child.iconImage}" 
+	                               data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                               class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" >
                                   <p>${child.iconText}</p>
                               </a>
                            </li>
