@@ -45,7 +45,7 @@
                            <li data-sly-test="${properties.channelLabel}">
                               <div class="view-channel-list">
                                  <a data-sly-test="${properties.viewChannelLinkBehavior != 'openmodalwindow' && properties.channelLink}" href="${properties.channelLink @ extension = 'html'}" target="${properties.viewChannelLinkBehavior == 'opensamewindow' ? '_self' : '_blank'}"><em class="channel-list-icon"></em>${properties.channelLabel}</a>
-                                 <a data-sly-test="${properties.viewChannelLinkBehavior == 'openmodalwindow' && !properties.moreInfoLabel && !properties.seeAllLabel}" data-label="${component.id}" class="btn-modal" title="${properties.channelLabel}"><span class="channel-list-icon"></span>${properties.channelLabel}</a>
+                                 <a data-sly-test="${properties.viewChannelLinkBehavior == 'openmodalwindow' && !properties.moreInfoLabel && !properties.seeAllLabel}" data-label="${properties.fragmentVariationPath ? component.id : ''}" class="btn-modal" title="${properties.channelLabel}"><span class="channel-list-icon"></span>${properties.channelLabel}</a>
                               </div>
                            </li>
                         </ul>
@@ -77,7 +77,7 @@
                         <p class="bottom-text"><span class="${properties.offerText ? 'old-price--orange' : 'old-price'}" data-sly-test="${properties.productOldPrice}">was  <span class="strikethrough">${properties.productOldPrice} ${properties.productCurrency}</span></span>
                            ${properties.vatInclude}
                         </p>
-                        <a data-label="${component.id}" class="btn-text btn-green  learn-more btn-modal text-center"
+                        <a data-label="${properties.fragmentVariationPath ? component.id : ''}" class="btn-text btn-green  learn-more btn-modal text-center"
                            title="${properties.moreInfoLabel}" data-sly-test="${properties.moreInfoLabel && !properties.seeAllLabel}">
                         <span class="moreg">${properties.moreInfoLabel}</span>
                         </a>
