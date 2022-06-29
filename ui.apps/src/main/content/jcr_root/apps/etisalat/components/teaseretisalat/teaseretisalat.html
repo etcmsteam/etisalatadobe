@@ -19,7 +19,7 @@
   data-sly-use.descriptionTemplate="description.html" data-sly-use.actionsTemplate="actions.html"
   data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
   data-sly-test.hasContent="${teaser.imageResource || teaser.pretitle || teaser.title || teaser.description || teaser.actions.size > 0}"
-  id="${teaser.id}" class="cmp-teaser${!wcmmode.disabled && teaser.imageResource ? ' cq-dd-image' : ''}"
+  id="${wcmmode.disabled? teaser.id : ''}" class="cmp-teaser${!wcmmode.disabled && teaser.imageResource ? ' cq-dd-image' : ''}"
   data-cmp-data-layer="${teaser.data.json}" data-ga-event="${properties.gaeventname}" data-ga-ev-cat="${properties.gaeventcategory}">
   <a class="cmp-teaser__link-2" data-sly-attribute="${teaser.link.htmlAttributes}"
     data-sly-unwrap="${!teaser.link.valid || !teaser.actions.empty}"
