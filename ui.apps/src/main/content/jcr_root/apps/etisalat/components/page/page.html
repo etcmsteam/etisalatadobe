@@ -87,13 +87,37 @@
       }
     }
     
-    //sitesection 1 and 2 etisalat
-    const pathArr = dataLayerPathName.split('/');
-    if(pathArr.length >= 3) {
-      const newPathArr = pathArr.slice(-3);
-      siteSection = newPathArr[0];
-      siteSection1 = newPathArr[1];
-      siteSection2 = newPathArr[2];
+    const dataArr = dataLayerUrl.split('/en/');
+    if (dataArr.length > 1) {
+      if (dataArr[1].includes('/')) {
+        let pathArr = dataArr[1].split('/');
+        pathArr.shift();
+        if (pathArr.length >= 3) {
+          const newPathArr = pathArr.slice(-3);
+          siteSection = newPathArr[0];
+          siteSection1 = newPathArr[1];
+          if (newPathArr[2].includes('.html')) {
+            siteSection2 = newPathArr[2].split('.html')[0];
+          }
+        } else if (pathArr.length === 2) {
+          siteSection = pathArr[0];
+          if (pathArr[1].includes('.html')) {
+            siteSection1 = pathArr[1].split('.html')[0] === 'index' ? '' : pathArr[1].split('.html')[0];
+          }
+        } else {
+          if (pathArr[0].includes('.html')) {
+            siteSection = pathArr[0].split('.html')[0] === 'index' ? 'home' : pathArr[0].split('.html')[0];
+            siteSection1 = "";
+            siteSection2 = "";
+          }
+        }
+      } else {
+        if (dataArr[1].includes('.html')) {
+          siteSection = dataArr[1].split('.html')[0] === 'index' ? 'home' : dataArr[1].split('.html')[0];
+          siteSection1 = "";
+          siteSection2 = "";
+        }
+      }
     }
 
     function isValidHttpUrl(string) {
