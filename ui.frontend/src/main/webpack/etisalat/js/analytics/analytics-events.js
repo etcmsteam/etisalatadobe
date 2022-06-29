@@ -11,66 +11,61 @@
   }
 
   // CTA and Hero Banner CTA Events
-  $("a").on("click", function (e) {
+  $('a').on('click', function (e) {
     if (window.adobeDataLayer) {
       let $this = $(this);
       let trgt = e.target;
-      let ctaName = "";
-      const currrentURL = $this.attr("href") ? $this.attr("href") : "";
+      let ctaName = '';
+      const currrentURL = $this.attr('href') ? $this.attr('href') : '';
       const pagePathName = window.location.pathname;
-      const dataLayerPathName = pagePathName.split(".html")[0];
+      const dataLayerPathName = pagePathName.split('.html')[0];
       const currentOrigin = window.location.origin;
-      let sectionHeading = "";
-      let btnAction = "";
-      let totalVal = "";
-      let productCat = "";
-      let linkType = "other";
-      let chkLink = "";
-
-      const pathArr = dataLayerPathName.split("/");
+      let sectionHeading = '';
+      let btnAction = '';
+      let totalVal = '';
+      let productCat = '';
+      let linkType = 'other';
+      let chkLink = '';
+      e.preventDefault();
+      const pathArr = dataLayerPathName.split('/');
       sectionHeading = pathArr.pop();
 
-      if (
-        trgt.tagName.toLowerCase() === "a" ||
-        trgt.tagName.toLowerCase() === "span"
-      ) {
-        ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : "";
-      } else if (trgt.tagName.toLowerCase() === "img") {
-        ctaName = $(trgt).attr("alt")
-          ? $(trgt).attr("alt").toLowerCase().trim()
-          : "";
+      if (trgt.tagName.toLowerCase() === 'a' || trgt.tagName.toLowerCase() === 'span') {
+        ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : '';
+      } else if (trgt.tagName.toLowerCase() === 'img') {
+        ctaName = $(trgt).attr('alt') ? $(trgt).attr('alt').toLowerCase().trim() : '';
       } else {
-        let title = $(trgt).closest("a").attr("title");
-        ctaName = title ? title.toLowerCase().trim() : "";
+        let title = $(trgt).closest('a').attr('title');
+        ctaName = title ? title.toLowerCase().trim() : '';
       }
-      const anchorOrigin = isValidHttpUrl($this.attr("href")).origin;
-      if ($this.attr("href") && $this.attr("href") !== "#") {
-        chkLink = $this.attr("href").split(".");
-        chkLink = chkLink[1] ? chkLink[1] : "";
+      const anchorOrigin = isValidHttpUrl($this.attr('href')).origin;
+      if ($this.attr('href') && $this.attr('href') !== '#') {
+        chkLink = $this.attr('href').split('.');
+        chkLink = chkLink[1] ? chkLink[1] : '';
       }
 
       if (anchorOrigin && currentOrigin !== anchorOrigin) {
-        if ($this.attr("href") && $this.attr("href") !== "#") {
-          linkType = "exit";
+        if ($this.attr('href') && $this.attr('href') !== '#') {
+          linkType = 'exit';
         }
       }
 
-      if (chkLink.toLowerCase() === "pdf") {
-        if ($this.closest(".tabs").length > 0) {
-          let tabMenu = $this.closest(".tabs").find(".cmp-tabs__tab--active");
+      if (chkLink.toLowerCase() === 'pdf') {
+        if ($this.closest('.tabs').length > 0) {
+          let tabMenu = $this.closest('.tabs').find('.cmp-tabs__tab--active');
           if (tabMenu.length > 0) {
-            btnAction = tabMenu.first().prop("innerText").trim().toLowerCase();
+            btnAction = tabMenu.first().prop('innerText').trim().toLowerCase();
           }
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: "download",
-                region: "main",
+                type: 'download',
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -86,22 +81,22 @@
             },
           },
         });
-      } else if ($this.closest(".etisalatherobanner").length > 0) {
-        btnAction = $this.closest(".etisalatherobanner").find(".hero-title");
+      } else if ($this.closest('.etisalatherobanner').length > 0) {
+        btnAction = $this.closest('.etisalatherobanner').find('.hero-title');
         if (btnAction.length > 0) {
           btnAction = btnAction.text().toLowerCase().trim();
         } else {
-          btnAction = "";
+          btnAction = '';
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "main",
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -109,7 +104,7 @@
             },
             linkInfo: {
               sectionHeading: btnAction,
-              action: "hero banner click",
+              action: 'hero banner click',
               name: ctaName,
             },
             eventInfo: {
@@ -117,22 +112,22 @@
             },
           },
         });
-      } else if ($this.closest(".teaser").length > 0) {
-        let teaserTitle = $this.closest(".teaser").find(".cmp-teaser__title");
+      } else if ($this.closest('.teaser').length > 0) {
+        let teaserTitle = $this.closest('.teaser').find('.cmp-teaser__title');
         if (teaserTitle.length > 0) {
           btnAction = teaserTitle.text().toLowerCase().trim();
         } else {
-          btnAction = "";
+          btnAction = '';
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "main",
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -140,7 +135,7 @@
             },
             linkInfo: {
               sectionHeading: btnAction,
-              action: ctaName + " clicked",
+              action: ctaName + ' clicked',
               name: ctaName,
             },
             eventInfo: {
@@ -148,66 +143,52 @@
             },
           },
         });
-      } else if ($this.closest(".producttile").length > 0) {
+      } else if ($this.closest('.producttile').length > 0) {
         productCat = pathArr.pop();
 
-        let btnAct = $this
-          .closest(".tiles-box.content")
-          .find(".tiles-box-title h2");
+        let btnAct = $this.closest('.tiles-box.content').find('.tiles-box-title h2');
         if (btnAct.length > 0) {
           btnAct = btnAct.text().toLowerCase().trim();
         } else {
-          btnAct = "";
+          btnAct = '';
         }
 
-        let prodName = $this
-          .closest(".tiles-box.content")
-          .find(".tiles-box-title .catagory");
+        let prodName = $this.closest('.tiles-box.content').find('.tiles-box-title .catagory');
         if (prodName.length > 0) {
-          prodName = prodName.text().toLowerCase().trim() + ":";
+          prodName = prodName.text().toLowerCase().trim() + ':';
           prodName += btnAct;
         } else {
           prodName = btnAct;
         }
 
-        let productPriceVal = $this
-          .closest(".tiles-box.content")
-          .find(".tiles-box-list .detail-price-new .price");
-        let currVal = $this
-          .closest(".tiles-box.content")
-          .find(".tiles-box-list .detail-price-new small");
+        let productPriceVal = $this.closest('.tiles-box.content').find('.tiles-box-list .detail-price-new .price');
+        let currVal = $this.closest('.tiles-box.content').find('.tiles-box-list .detail-price-new small');
         if (productPriceVal.length > 0) {
           productPriceVal = productPriceVal.text().toLowerCase().trim();
           currVal = currVal.text().trim();
-          totalVal = productPriceVal + " " + currVal;
+          totalVal = productPriceVal + ' ' + currVal;
         } else {
-          productPriceVal = "";
-          currVal = "";
-          totalVal = "";
+          productPriceVal = '';
+          currVal = '';
+          totalVal = '';
         }
 
-        let descriptionVal = $this
-          .closest(".tiles-box.content")
-          .find(".tiles-box-list .featureList");
+        let descriptionVal = $this.closest('.tiles-box.content').find('.tiles-box-list .featureList');
         if (descriptionVal.length > 0) {
-          descriptionVal = descriptionVal
-            .text()
-            .toLowerCase()
-            .trim()
-            .replace(/\n|\r/g, "");
+          descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, '');
         } else {
-          descriptionVal = "";
+          descriptionVal = '';
         }
 
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "main",
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -229,68 +210,56 @@
             },
           },
         });
-      } else if ($this.closest(".meganavigation").length > 0) {
-        if ($this.closest(".main-mega-menu-desktop").length > 0) {
-          sectionHeading = "main menu";
-          btnAction = "main menu item clicked";
-          if (
-            $(trgt).hasClass("etisalat-logo-en") ||
-            $(trgt).closest("svg").hasClass("etisalat-logo-en")
-          ) {
-            ctaName = "goto home";
+      } else if ($this.closest('.meganavigation').length > 0) {
+        if ($this.closest('.main-mega-menu-desktop').length > 0) {
+          sectionHeading = 'main menu';
+          btnAction = 'main menu item clicked';
+          if ($(trgt).hasClass('etisalat-logo-en') || $(trgt).closest('svg').hasClass('etisalat-logo-en')) {
+            ctaName = 'goto home';
           }
-          if ($this.closest(".menu-promotion-wrapper").length > 0) {
-            let ctaHead = $this
-              .closest(".sub-menu-wrap")
-              .parent()
-              .find(".mega-menu-link");
-            let ctaContent = $this.closest(".content").find("h4");
+          if ($this.closest('.menu-promotion-wrapper').length > 0) {
+            let ctaHead = $this.closest('.sub-menu-wrap').parent().find('.mega-menu-link');
+            let ctaContent = $this.closest('.content').find('h4');
             if (ctaHead.length > 0 && ctaContent.length > 0) {
-              ctaHead = ctaHead.text().trim().toLowerCase() + ":";
-              ctaContent = ctaContent.text().trim().toLowerCase() + ":";
+              ctaHead = ctaHead.text().trim().toLowerCase() + ':';
+              ctaContent = ctaContent.text().trim().toLowerCase() + ':';
               ctaName = ctaHead + ctaContent + ctaName;
             }
           }
         }
-        if ($this.closest(".inc-push-meu-icon").length > 0) {
+        if ($this.closest('.inc-push-meu-icon').length > 0) {
           num++;
-          sectionHeading = "push menu";
-          btnAction = "push menu item clicked";
+          sectionHeading = 'push menu';
+          btnAction = 'push menu item clicked';
 
           if (num % 2 === 0) {
-            ctaName = "close push menu";
+            ctaName = 'close push menu';
           } else {
-            ctaName = "open push menu";
+            ctaName = 'open push menu';
           }
         }
-        if ($this.closest(".sub-menu").length > 0) {
-          let subMenu = $this.closest(".sub-menu").find(".sub-menu-heading");
-          let subMenuTxt = subMenu.first().text().trim().toLowerCase() + ":";
-          let subMenuSec = $this
-            .closest(".sub-menu-wrap")
-            .parent()
-            .find(".mega-menu-link");
-          let subMenuSecTxt = subMenuSec.text().trim().toLowerCase() + ":";
+        if ($this.closest('.sub-menu').length > 0) {
+          let subMenu = $this.closest('.sub-menu').find('.sub-menu-heading');
+          let subMenuTxt = subMenu.first().text().trim().toLowerCase() + ':';
+          let subMenuSec = $this.closest('.sub-menu-wrap').parent().find('.mega-menu-link');
+          let subMenuSecTxt = subMenuSec.text().trim().toLowerCase() + ':';
           ctaName = subMenuSecTxt + subMenuTxt + ctaName;
         }
-        if ($this.closest(".sub-account-menu").length > 0) {
-          let subAccMenu = $this
-            .closest(".sub-account-menu-wrap")
-            .parent()
-            .find(".mega-menu-link");
-          let subMenuSecTxt = subAccMenu.text().trim().toLowerCase() + ":";
+        if ($this.closest('.sub-account-menu').length > 0) {
+          let subAccMenu = $this.closest('.sub-account-menu-wrap').parent().find('.mega-menu-link');
+          let subMenuSecTxt = subAccMenu.text().trim().toLowerCase() + ':';
           ctaName = subMenuSecTxt + ctaName;
         }
 
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "header",
+                region: 'header',
                 linkClicks: {
                   value: 1,
                 },
@@ -306,18 +275,18 @@
             },
           },
         });
-      } else if ($this.closest(".top-nav-section").length > 0) {
+      } else if ($this.closest('.top-nav-section').length > 0) {
         sectionHeading = 'nav menu';
         btnAction = 'nav menu item clicked';
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "header",
+                region: 'header',
                 linkClicks: {
                   value: 1,
                 },
@@ -333,86 +302,74 @@
             },
           },
         });
-      } else if ($this.closest(".footer").length > 0) {
-        let quickLinks = $this.closest(".links");
-        if (
-          quickLinks.length > 0 &&
-          quickLinks.find(".links-title").length > 0
-        ) {
-          btnAction = quickLinks
-            .find(".links-title")
-            .first()
-            .text()
-            .toLowerCase();
-        } else if ($this.closest(".icons-wrap").length > 0) {
-          btnAction = $this
-            .closest(".icons-wrap")
-            .parent()
-            .find(".footer-heading")
-            .first()
-            .text();
+      } else if ($this.closest('.footer').length > 0) {
+        let quickLinks = $this.closest('.links');
+        if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
+          btnAction = quickLinks.find('.links-title').first().text().toLowerCase();
+        } else if ($this.closest('.icons-wrap').length > 0) {
+          btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase();
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
-                name: btnAction + ":" + ctaName,
+                name: btnAction + ':' + ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "footer",
+                region: 'footer',
                 linkClicks: {
                   value: 1,
                 },
               },
             },
             linkInfo: {
-              sectionHeading: "footer links",
-              action: "quick link clicked",
-              name: btnAction + ":" + ctaName,
+              sectionHeading: 'footer links',
+              action: 'quick link clicked',
+              name: btnAction + ':' + ctaName,
             },
             eventInfo: {
               footerClick: 1,
             },
           },
         });
-      } else if ($this.closest(".blogtile").length > 0) {
-        ctaName = $this.find(".box-title").text().trim().toLowerCase();
+      } else if ($this.closest('.blogtile').length > 0) {
+        ctaName = $this.find('.box-title').text().trim().toLowerCase();
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "main",
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
               },
             },
             linkInfo: {
-              sectionHeading: "featured offer",
-              action: "view offer",
+              sectionHeading: 'featured offer',
+              action: 'view offer',
               name: ctaName,
             },
           },
         });
-      } else if ($this.closest(".text").length > 0) {
-        sectionHeading = $this.closest(".text").find(".title");
+      } else if ($this.closest('.text').length > 0) {
+        sectionHeading = $this.closest('.text').find('.title');
         if (sectionHeading.length > 0) {
           sectionHeading = sectionHeading.text().trim().toLowerCase();
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "main",
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -425,22 +382,20 @@
             },
           },
         });
-      } else if ($this.closest(".iconcardlist").length > 0) {
-        sectionHeading = $this
-          .closest(".need-help-section")
-          .find(".need-help-content h2");
+      } else if ($this.closest('.iconcardlist').length > 0) {
+        sectionHeading = $this.closest('.need-help-section').find('.need-help-content h2');
         if (sectionHeading.length > 0) {
           sectionHeading = sectionHeading.text().trim().toLowerCase();
         }
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "main",
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -448,7 +403,7 @@
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: sectionHeading + " clicked",
+              action: sectionHeading + ' clicked',
               name: ctaName,
             },
           },
@@ -456,14 +411,14 @@
       } else {
         btnAction = ctaName;
         window.adobeDataLayer.push({
-          event: "linkClicked",
+          event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
                 type: linkType,
-                region: "main",
+                region: 'main',
                 linkClicks: {
                   value: 1,
                 },
@@ -487,7 +442,7 @@
     }
 
     window.adobeDataLayer.push({
-      event: "form start",
+      event: 'form start',
       formDetails: {
         formName: name,
       },
@@ -506,7 +461,7 @@
     }
 
     window.adobeDataLayer.push({
-      event: "form submit",
+      event: 'form submit',
       formDetails: {
         formName: name,
       },
@@ -518,16 +473,16 @@
     return true;
   }
 
-  let formObj = $(document).find("form");
+  let formObj = $(document).find('form');
   if (formObj.length > 0) {
     formObj.each(function () {
       let dirty = false;
-      let inputEle = $(this).find("input");
-      let textArea = $(this).find("textarea");
-      let formName = $(this).attr("name");
+      let inputEle = $(this).find('input');
+      let textArea = $(this).find('textarea');
+      let formName = $(this).attr('name');
 
       inputEle.each(function () {
-        $(this).on("input", function () {
+        $(this).on('input', function () {
           if (!dirty) {
             dirty = true;
             formStart(formName);
@@ -535,7 +490,7 @@
         });
       });
       textArea.each(function () {
-        $(this).on("input", function () {
+        $(this).on('input', function () {
           if (!dirty) {
             dirty = true;
             formStart(formName);
@@ -543,63 +498,63 @@
         });
       });
 
-      $(this).on("submit", function () {
+      $(this).on('submit', function () {
         formComplete(formName);
       });
     });
   }
 
   // Hero Banner next click
-  $(".hero-banner-section .hero-next").on("click", function (e) {
+  $('.hero-banner-section .hero-next').on('click', function (e) {
     if (window.adobeDataLayer) {
       window.adobeDataLayer.push({
-        event: "linkClicked",
+        event: 'linkClicked',
         xdmActionDetails: {
           web: {
             webInteraction: {
-              name: "next",
-              URL: "",
-              type: "other",
-              region: "main",
+              name: 'next',
+              URL: '',
+              type: 'other',
+              region: 'main',
               linkClicks: {
                 value: 1,
               },
             },
           },
           linkInfo: {
-            sectionHeading: "hero banner section",
-            action: "hero banner click",
-            name: "next",
+            sectionHeading: 'hero banner section',
+            action: 'hero banner click',
+            name: 'next',
           },
           eventInfo: {
             bannerClick: 1,
           },
         },
       });
-    }  
+    }
   });
 
   // Hero Banner prev click
-  $(".hero-banner-section .hero-prev").on("click", function (e) {
+  $('.hero-banner-section .hero-prev').on('click', function (e) {
     if (window.adobeDataLayer) {
       window.adobeDataLayer.push({
-        event: "linkClicked",
+        event: 'linkClicked',
         xdmActionDetails: {
           web: {
             webInteraction: {
-              name: "previous",
-              URL: "",
-              type: "other",
-              region: "main",
+              name: 'previous',
+              URL: '',
+              type: 'other',
+              region: 'main',
               linkClicks: {
                 value: 1,
               },
             },
           },
           linkInfo: {
-            sectionHeading: "hero banner section",
-            action: "hero banner click",
-            name: "previous",
+            sectionHeading: 'hero banner section',
+            action: 'hero banner click',
+            name: 'previous',
           },
           eventInfo: {
             bannerClick: 1,
