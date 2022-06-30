@@ -26,9 +26,15 @@
           <div class="col-xs-12 col-ms-5 col-sm-6 col-md-6 col-lg-6">
             <div data-sly-test = "${careerGreetings.cover && careerGreetings.cover.imgUrl}" class="career-greetings-cover">
               <div data-sly-test = "${careerGreetings.image && careerGreetings.image.imgUrl}" class="career-greetings-photo">
-                <img src=" ${careerGreetings.image.imgUrl}" alt="${careerGreetings.image.altText}">
+                <img src=" ${careerGreetings.image.imgUrl}" alt="${careerGreetings.image.altText}" loading="lazy" 
+                     data-sly-set.imageSrcPath="${careerGreetings.image.imgUrl}" 
+	                 data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                 class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" >
               </div>
-              <img src="${careerGreetings.cover.imgUrl}" alt="${careerGreetings.cover.altText}">
+              <img src="${careerGreetings.cover.imgUrl}" alt="${careerGreetings.cover.altText}" loading="lazy" 
+                   data-sly-set.coverSrcPath="${careerGreetings.cover.imgUrl}" 
+	               data-sly-use.commonCoverModal="${'com.etisalat.core.models.CommonLinkModel' @link=coverSrcPath}" 
+	               class="${commonCoverModal.assetSVGImage ? 'inline-svg__icon' : ''}">
             </div>
           </div>
 

@@ -11,7 +11,10 @@
 					<a href="${properties.youTubeUrlThreeColumnVideo @ context='uri'}" class="video-controls-media-cta youtube-video-link">
 						<sly data-sly-test="${properties.playIconReferenceThreeColumnVideo}">
 							<div class="icon">
-								<img src="${properties.playIconReferenceThreeColumnVideo}" />
+								<img src="${properties.playIconReferenceThreeColumnVideo}" loading="lazy" 
+								     data-sly-set.imageSrcPath="${properties.playIconReferenceThreeColumnVideo}" 
+							        data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+							        class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" alt="" />
 							</div>
 						</sly>
 					</a>

@@ -25,7 +25,10 @@
       <div class="promo-content">
          <div class="content-only">
             <div class="icon">
-               <img src="${properties.thumbnailIconReference}" alt="Play Video"/>
+               <img src="${properties.thumbnailIconReference}" alt="Play Video" loading="lazy" 
+                    data-sly-set.imageSrcPath="${properties.thumbnailIconReference}" 
+	                data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}"/>
             </div>
             <div data-sly-test="${properties.promopretitle}" class="wst-secondary-headings">
                <h4>${properties.promopretitle}</h4>

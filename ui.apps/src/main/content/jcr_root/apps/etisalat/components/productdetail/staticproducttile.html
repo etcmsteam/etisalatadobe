@@ -3,15 +3,15 @@
 	   <sly data-sly-set.plansView="${properties.tileBoxLayout == 'producttile' && properties.planView && carousel.items.size == 2}"/>
        <div class="product-grid-text-section plans more-info-wrapper ${plansView ? 'nv-container' : ''} ${properties.tileBoxLayout == 'devicetile' ? 'product-device-text' : ''} ${withoutTitleDescriptionCTA ? 'swipper-with-arrows' : ''}" data-component="cmp-product-cards">
           <div class="row">
-            <div data-sly-test="${properties.mainProductTitle && !properties.productFilterEnabled}" class="col-xs-12 col-md-${carousel.items.size > 2 ? '3' : '6'} ${plansView ? 'col-sm-6' : ''}">
-              <div class="main-text-section">
+            <div data-sly-test="${!properties.productFilterEnabled}" class="col-xs-12 col-md-${carousel.items.size > 2 ? '3' : '6'} ${plansView ? 'col-sm-6' : ''}">
+              <div data-sly-test="${properties.mainProductTitle || properties.productCTATitle || properties.mainProductDesc}" class="main-text-section">
                 <a data-sly-test="${properties.productCTALink && properties.productCTATitle}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.productCTALink}" href="${commonlinkmodel.link}" class="btn-text btn-green  learn-more">
                   <span> ${properties.productCTATitle} </span>
                 </a>
-                <div class="wst-main-headings">
+                <div data-sly-test="${properties.mainProductTitle}" class="wst-main-headings">
                   <h4 data-sly-element="${properties.mainTitleStyle}">${properties.mainProductTitle}</h4>
                 </div>
-                <div class="main-text-content-wrapper">
+                <div data-sly-test="${properties.mainProductDesc}" class="main-text-content-wrapper">
                   <div class="paragraph-styling ul-list-cms">
                     <div class="p2">
                       <p>${properties.mainProductDesc @ context="html"}</p>

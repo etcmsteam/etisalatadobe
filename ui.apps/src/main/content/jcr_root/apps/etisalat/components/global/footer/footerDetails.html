@@ -29,7 +29,10 @@
           <div class="icons-wrap" data-sly-list.items="${footer.download}">
             <div class="icon ${items.iconClassName}" style="display: block;">
               <a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}">
-                <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}">
+                <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}" loading="lazy" 
+                     data-sly-set.imageSrcPath="${items.imgUrl}" 
+	                 data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                 class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" >
 
               </a>
             </div>
@@ -49,7 +52,10 @@
           <div class="icons-wrap" data-sly-list.items="${footer.followUs}">
             <div class="icon">
               <a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}">
-                <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}"></a>
+                <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}" loading="lazy" 
+                    data-sly-set.followUsSrcPath="${items.imgUrl}" 
+	                data-sly-use.followModal="${'com.etisalat.core.models.CommonLinkModel' @link=followUsSrcPath}" 
+	                class="${followModal.assetSVGImage ? 'inline-svg__icon' : ''}" ></a>
             </div>
           </div>
         </div>
@@ -59,7 +65,10 @@
           <div class="footer-heading">${properties.paymentTitle}</div>
           <div class="icons-wrap" data-sly-list.items="${footer.payment}">
             <div class="icon">
-              <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}">
+              <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}" loading="lazy" 
+                   data-sly-set.paymentSrcPath="${items.imgUrl}" 
+	               data-sly-use.paymentModal="${'com.etisalat.core.models.CommonLinkModel' @link=paymentSrcPath}" 
+	               class="${paymentModal.assetSVGImage ? 'inline-svg__icon' : ''}" >
             </div>
           </div>
         </div>
@@ -80,7 +89,11 @@
 				<sly data-sly-list.qaItems="${footer.quickAccessLinks}">
 					<li class="links-item">
 						<a href="${qaItems.quickaccesslinkUrl}" title="${qaItems.qatitle}" target="${qaItems.linkTarget ? '_blank' : '_self'}">
-  							<img data-sly-test="${qaItems.qaFileReference}" alt="${qaItems.qatitle}" title="${qaItems.qatitle}" src="${qaItems.qaFileReference}"/>
+  							<img data-sly-test="${qaItems.qaFileReference}" alt="${qaItems.qatitle}" loading="lazy" 
+  							     title="${qaItems.qatitle}" src="${qaItems.qaFileReference}" 
+  							     data-sly-set.quicklinkSrcPath="${qaItems.qaFileReference}" 
+	                             data-sly-use.quickLinkModal="${'com.etisalat.core.models.CommonLinkModel' @link=quicklinkSrcPath}" 
+	                             class="${quickLinkModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
   						</a>
                 	</li>
 				</sly>
@@ -97,7 +110,10 @@
         <div data-sly-test="${footer.promo.imgUrl || footer.copyrightText}"class="col-xs-12 col-md-3">
 		   <div class="etisalat-logo">
 			  <a data-sly-test="${footer.promo.imgUrl}" href="${footer.promo.linkUrl}">
-				<img alt="footer-logo" src="${footer.promo.imgUrl}"/>
+				<img alt="footer-logo" src="${footer.promo.imgUrl}" loading="lazy" 
+				     data-sly-set.footerSrcPath="${footer.promo.imgUrl}" 
+	                 data-sly-use.footerLogoModal="${'com.etisalat.core.models.CommonLinkModel' @link=footerSrcPath}" 
+	                 class="${footerLogoModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
 			  </a>
 		   </div>
           <div class="copyright">&copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>

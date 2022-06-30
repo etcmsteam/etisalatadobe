@@ -31,7 +31,10 @@
                            <div class="internet-config">
                               <div data-sly-test="${properties.speedUnits}" class="internet-config-title">${properties.speedUnits}</div>
                               <div class="interner-config-progressbar">
-                                 <img src="${properties.progressBar}" alt="${properties.packageTitle}" class="interner-config-image">
+                                 <img src="${properties.progressBar}" alt="${properties.packageTitle}" loading="lazy" 
+                                      data-sly-set.progressBarSrcPath="${properties.progressBar}" 
+							          data-sly-use.progressBarModal="${'com.etisalat.core.models.CommonLinkModel' @link=progressBarSrcPath}" 							          
+                                      class="interner-config-image ${progressBarModal.assetSVGImage ? 'inline-svg__icon' : ''}">
                               </div>
                               <div data-sly-test="${properties.packageDesc}" class="interner-config-desc">${properties.packageDesc}</div>
                            </div>
@@ -58,7 +61,11 @@
                            <sly data-sly-use.productTileObj="${resource.path}" data-sly-list.tileIconItems="${productTileObj.listChildren}">
                               <div data-sly-test="${tileIconItems.name == 'iconItems'}" data-sly-list.iconItem="${tileIconItems.listChildren}" class="apolo-awards-icon-wrapper">
                                        <sly data-sly-list.imageRes="${iconItem.listChildren}">
-                                          <div data-sly-test="${imageRes.fileReference}" class="icon"><img src="${imageRes.fileReference}"></div>
+                                          <div data-sly-test="${imageRes.fileReference}" class="icon">
+                                            <img src="${imageRes.fileReference}" loading="lazy" 
+                                                 data-sly-set.imageSrcPath="${imageRes.fileReference}" 
+	                                             data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                                             class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}"></div>
                                  </sly>
                               </div>
                            </sly>

@@ -27,7 +27,13 @@
 										<div data-sly-list.gsItems="${multifieldObj.getChildren}" class="icons-wrap">
 											<div class="${gsItems.icon}">
 												<sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-												<a href="${commonlinkmodel.link}"><img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
+												<a href="${commonlinkmodel.link}">
+												   <img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" loading="lazy" 
+												        data-sly-set.imageSrcPath="${gsItems.fileReference}" 
+	                                                    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                                                    class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
+												        title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/>
+												</a>
 											</div>
 										</div>
 									</div>
@@ -41,12 +47,22 @@
 									<sly data-sly-test="${gsItems.icon}">
 										<div class="${gsItems.icon}">
 											<sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-											<a href="${commonlinkmodel.link}"><img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
+											<a href="${commonlinkmodel.link}">
+											  <img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" loading="lazy" 
+											       data-sly-set.imageSrcPath1="${gsItems.fileReference}" 
+	                                               data-sly-use.commonModal1="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath1}" 
+	                                               class="${commonModal1.assetSVGImage ? 'inline-svg__icon' : ''}" 
+											       title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
 										</div>
 									</sly>
 									<sly data-sly-test="${!gsItems.icon}">
 										<sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-										<a href="${commonlinkmodel.link}"><img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
+										<a href="${commonlinkmodel.link}">
+										  <img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" loading="lazy" 
+										       data-sly-set.imageSrcPath2="${gsItems.fileReference}" 
+	                                           data-sly-use.commonModal2="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath2}" 
+	                                           class="${commonModal2.assetSVGImage ? 'inline-svg__icon' : ''}" 
+										       title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
 									</sly>
 								</div>
 								</sly>
@@ -86,7 +102,12 @@
 							<sly data-sly-list.multifieldObj="${resource.getChildren}">
 								<div data-sly-test="${multifieldObj.name == 'storeitems'}" data-sly-list.gsItems="${multifieldObj.getChildren}" class="feature-logo">
 									<sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-									<a href="${commonlinkmodel.link}"><img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
+									<a href="${commonlinkmodel.link}">
+									  <img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" loading="lazy" 
+									       data-sly-set.imageSrcPath="${gsItems.fileReference}" 
+	                                       data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                                       class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
+									       title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/></a>
 								</div>
 							</sly>
 							<div data-sly-test="${properties.featureTitle}" class="wst-main-headings">

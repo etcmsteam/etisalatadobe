@@ -17,7 +17,10 @@
                                 <div class="context-nav-box content body-standard">
                                     <a href="${cardItems.cardLink}" target="${cardItems.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
                                         <div class="icon-area">
-                                         <img alt="${cardItems.cardTitle}" data-sly-test="${cardItems.cardIcon}" class="icon-img" src="${cardItems.cardIcon}">
+                                         <img alt="${cardItems.cardTitle}" data-sly-test="${cardItems.cardIcon}" loading="lazy" 
+                                              data-sly-set.imageSrcPath="${cardItems.cardIcon}" 
+	                                          data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+                                              class="icon-img ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${cardItems.cardIcon}">
                                         </div>
                                         <h5>${cardItems.cardTitle}</h5>
                                     </a>
