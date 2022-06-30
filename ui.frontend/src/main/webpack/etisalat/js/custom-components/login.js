@@ -69,7 +69,6 @@ export const LOGIN_INIT = () => {
     });
 
   $(".nav-right .sub-account-menu-wrap ul li a")
-    .off("click")
     .on("click", function (e) {
       menuItemClicked($(this));
       if ($(this).hasClass("logoutAction")) {

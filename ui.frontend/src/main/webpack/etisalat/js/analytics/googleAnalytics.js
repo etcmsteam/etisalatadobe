@@ -465,7 +465,6 @@ import { getParameterByName } from '../../../global/js/utils';
 
   // product plan card click start --------------------------------------------
   $('.productdetail .container-product-grid .bg-cards .tile-card a')
-    .off()
     .on('click', function (e) {
       var curnt = $(this).attr('href');
       var target = $(this).attr('target');
@@ -628,7 +627,6 @@ import { getParameterByName } from '../../../global/js/utils';
     }
 
     $(productClickedDetails)
-      .unbind()
       .on('click', function (e) {
         var curnt = $(this).attr('href');
         var target = $(this).attr('target');

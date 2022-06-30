@@ -24,6 +24,7 @@ import { TECH_SUPPORT_MODULE } from "./js/custom-components/tech-support.js";
 import { TILES_SWIPER_MODULE } from "./js/custom-components/tiles_swiper.js";
 import { TRUNCATE } from "./js/custom-components/truncate.js";
 import { LOGIN_INIT } from "./js/custom-components/login";
+import { THANK_YOU } from './js/custom-components/thankyou';
 
 const ERROR_BOUNDARY = (fun) => {
   try {
@@ -56,9 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
     SCROLLSPY_AFFIX_MODULE,
     SMS_BLOG_SHARE_LINK_MODULE,
     TECH_SUPPORT_MODULE,
-    TILES_SWIPER_MODULE,    
+    TILES_SWIPER_MODULE,
     TRUNCATE,
     LOGIN_INIT,
+    THANK_YOU,
   ].forEach(ERROR_BOUNDARY);
 
   DYNAMIC_COMPONENTS.init();

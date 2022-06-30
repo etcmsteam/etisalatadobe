@@ -11,7 +11,10 @@
          <!-- For MyAccount Menu: starts -->
          <li data-sly-test="${!meganavigation.accountNavigationItems.isEmpty}" class="nav-item highlighted ${accountItems.subNavigationList.size > 0 ? 'nav-expand' :''}">
             <a class="nav-link" href="${accountItems.navigationLinkTo}">
-            <img alt="${accountItems.navigationLabel}" class="nav-link-icon" src="${accountItems.navImagePath}" />
+            <img alt="${accountItems.navigationLabel}" loading="lazy" 
+                 data-sly-set.accountSrcPath="${accountItems.navImagePath}" 
+	             data-sly-use.accountItemModal="${'com.etisalat.core.models.CommonLinkModel' @link=accountSrcPath}" 
+                 class="nav-link-icon ${accountItemModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${accountItems.navImagePath}" />
             <span class="accountName">${accountItems.navigationLabel}</span>
             </a>
             <ul data-sly-test="${!accountItems.subNavigationList.isEmpty && accountItems.subNavigationList.size > 0}" class="nav-items nav-expand-content">
@@ -38,7 +41,10 @@
       <ul data-sly-test="${properties.search}" class="nav-items nav-level-1">
          <li class="nav-item nav-expand">
             <a class="nav-link search-link" href="#">
-            <img alt="${properties.searchLabel}" class="nav-link-icon" src="${properties.searchIconImage}" /> ${properties.searchLabel} </a>
+            <img alt="${properties.searchLabel}" loading="lazy" 
+                 data-sly-set.mobileSearchSrcPath="${properties.searchIconImage}" 
+	             data-sly-use.mobileSearchModal="${'com.etisalat.core.models.CommonLinkModel' @link=mobileSearchSrcPath}" 
+                 class="nav-link-icon ${mobileSearchModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${properties.searchIconImage}" /> ${properties.searchLabel} </a>
             <ul class="nav-items nav-expand-content">
                <li class="nav-item">
                   <a class="nav-link nav-back-link" href="#">${properties.menuBack}</a>
@@ -59,7 +65,10 @@
          <sly data-sly-list.utilityItems="${meganavigation.utilityNavItems}">
             <li class="nav-item nav-quick-links ${utilityItems.subNavigationList.size > 0 ? 'nav-expand' :''}" data-sly-test="${utilityItems.utilityMenuLayout == 'fixedmenulist'}">
                <a class="nav-link ${utilityItems.subNavigationList.size > 0 ? 'nav-expand-link' :''}" href="${utilityItems.navigationLinkTo}">
-               <img alt="${utilityItems.navigationLabel}" class="nav-link-icon" src="${utilityItems.navImagePath}" /> ${utilityItems.navigationLabel} 
+               <img alt="${utilityItems.navigationLabel}" loading="lazy" 
+                    data-sly-set.utilityNavSrcPath="${utilityItems.navImagePath}" 
+	                data-sly-use.utilityNavModal="${'com.etisalat.core.models.CommonLinkModel' @link=utilityNavSrcPath}" 
+                    class="nav-link-icon ${utilityNavModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${utilityItems.navImagePath}" /> ${utilityItems.navigationLabel} 
                  <svg data-sly-test="${utilityItems.subNavigationList.size > 0}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                     class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
                     enable-background="new 26 26 12 12" xml:space="preserve">
@@ -92,11 +101,17 @@
                && meganavigation.topNavIconMenuItems.size > 0}" data-sly-list.topRightItems="${meganavigation.topNavIconMenuItems}" class="nav-item nav-quick-links">
                <sly data-sly-test="${!(topRightItems.openmodalwindow == 'modalwindow') && !(topRightItems.openmodalwindow == 'accessibilityoverlay')}">
                   <a class="nav-link" href="${topRightItems.navigationLink} ">
-                  <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" class="nav-link-icon" src="${topRightItems.navigationImage}" /> ${topRightItems.navigationTitle} </a>
+                  <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" loading="lazy" 
+                       data-sly-set.topNavSrcPath="${topRightItems.navigationImage}" 
+	                   data-sly-use.topNavModal="${'com.etisalat.core.models.CommonLinkModel' @link=topNavSrcPath}" 
+                       class="nav-link-icon ${topNavModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${topRightItems.navigationImage}" /> ${topRightItems.navigationTitle} </a>
                </sly>
                <sly data-sly-test="${topRightItems.openmodalwindow == 'accessibilityoverlay'}">
                   <a class="nav-link open-accessibility-popup mobile-accessibility-popup" >
-                  <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" class="nav-link-icon" src="${topRightItems.navigationImage}" /> ${topRightItems.navigationTitle} </a>
+                  <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" loading="lazy" 
+                       data-sly-set.topNavSrcPath="${topRightItems.navigationImage}" 
+	                   data-sly-use.topNavModal="${'com.etisalat.core.models.CommonLinkModel' @link=topNavSrcPath}" 
+                       class="nav-link-icon ${topNavModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${topRightItems.navigationImage}" /> ${topRightItems.navigationTitle} </a>
                </sly>              
             </li>
          </sly>

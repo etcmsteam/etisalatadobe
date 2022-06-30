@@ -38,7 +38,10 @@
                         <ul class="flag-icon">
                             <li>
                                 <span data-sly-test="${properties['plan/fileReference']}">
-                                    <img src="${properties['plan/fileReference']}" alt="">  
+                                    <img src="${properties['plan/fileReference']}" alt="" loading="lazy" 
+                                         data-sly-set.planImageSrcPath="${properties['plan/fileReference']}" 
+	                                     data-sly-use.planImageModal="${'com.etisalat.core.models.CommonLinkModel' @link=planImageSrcPath}" 
+	                                     class="${planImageModal.assetSVGImage ? 'inline-svg__icon' : ''}">  
                                 </span>
                                 ${properties.excText}
                             </li>
@@ -55,7 +58,10 @@
                        <ul data-sly-test="${properties['smile/fileReference'] || properties.smileText}" class="smiles-icon">
                             <li>
                                 <span data-sly-test="${properties['smile/fileReference']}">
-                                    <img src="${properties['smile/fileReference']}" alt="">
+                                    <img src="${properties['smile/fileReference']}" alt="" loading="lazy" 
+                                         data-sly-set.smileImageSrcPath="${properties['smile/fileReference']}" 
+	                                     data-sly-use.smileImageModal="${'com.etisalat.core.models.CommonLinkModel' @link=smileImageSrcPath}" 
+	                                     class="${smileImageModal.assetSVGImage ? 'inline-svg__icon' : ''}">
                                 </span>
                                  ${properties.smileText}
                             </li>

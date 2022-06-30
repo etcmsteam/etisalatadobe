@@ -23,7 +23,9 @@
 		      <div data-sly-test="${properties.pretitle && properties.tagAlignment == 'beforetitle'}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
 			      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
 			         <sly data-sly-test="${tagItems.name == 'tagline'}">
-			               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
+						<img data-sly-test="${tagItems.fileReference}" data-sly-set.imageSrcPath="${tagItems.fileReference}"
+							data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" loading="lazy"
+							class="icon ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${tagItems.fileReference}" alt="" />
 			         </sly>
 			      </sly>
 		        <div class="text"> ${properties.pretitle}</div>
@@ -41,7 +43,9 @@
 		      <div data-sly-test="${properties.pretitle && properties.tagAlignment == 'aftertitle'}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
 			      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
 			         <sly data-sly-test="${tagItems.name == 'tagline'}">
-			               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
+						<img data-sly-test="${tagItems.fileReference}" data-sly-set.imageSrcPath="${tagItems.fileReference}"
+							data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" loading="lazy"
+							class="icon ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${tagItems.fileReference}" alt="" />
 			         </sly>
 			      </sly>
 		        <div class="text"> ${properties.pretitle}</div>

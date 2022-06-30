@@ -1,5 +1,7 @@
 /* eslint-disable */
-(function (window, document) {
+(function (window, document, $) {
+  let num = 0;
+
   function isValidHttpUrl(string) {
     try {
       return new URL(string);
@@ -14,7 +16,7 @@
       let $this = $(this);
       let trgt = e.target;
       let ctaName = '';
-      const currrentURL = window.location.href;
+      const currrentURL = $this.attr('href') ? $this.attr('href') : '';
       const pagePathName = window.location.pathname;
       const dataLayerPathName = pagePathName.split('.html')[0];
       const currentOrigin = window.location.origin;
@@ -22,13 +24,13 @@
       let btnAction = '';
       let totalVal = '';
       let productCat = '';
-      let lnkRegion = '';
+      let linkType = 'other';
       let chkLink = '';
 
       const pathArr = dataLayerPathName.split('/');
       sectionHeading = pathArr.pop();
 
-      if (trgt.tagName.toLowerCase() === 'a') {
+      if (trgt.tagName.toLowerCase() === 'a' || trgt.tagName.toLowerCase() === 'span') {
         ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : '';
       } else if (trgt.tagName.toLowerCase() === 'img') {
         ctaName = $(trgt).attr('alt') ? $(trgt).attr('alt').toLowerCase().trim() : '';
@@ -44,45 +46,11 @@
 
       if (anchorOrigin && currentOrigin !== anchorOrigin) {
         if ($this.attr('href') && $this.attr('href') !== '#') {
-          if ($this.closest('header').length > 0) {
-            lnkRegion = 'header';
-          } else if ($this.closest('footer').length > 0) {
-            let quickLinks = $this.closest('.links');
-            if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
-              btnAction = quickLinks.find('.links-title').first().text();
-            } else if ($this.closest('.icons-wrap').length > 0) {
-              btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text();
-            }
-            lnkRegion = 'footer';
-          } else {
-            lnkRegion = 'main';
-          }
-          window.adobeDataLayer.push({
-            event: 'linkClicked',
-            xdmActionDetails: {
-              web: {
-                webInteraction: {
-                  name: ctaName,
-                  URL: currrentURL,
-                  type: 'exit',
-                  region: lnkRegion,
-                  linkClicks: {
-                    value: 1,
-                  },
-                },
-              },
-              linkInfo: {
-                sectionHeading: sectionHeading,
-                action: btnAction,
-                name: ctaName,
-              },
-              eventInfo: {
-                exitClick: 1,
-              },
-            },
-          });
+          linkType = 'exit';
         }
-      } else if (chkLink.toLowerCase() === 'pdf') {
+      }
+
+      if (chkLink.toLowerCase() === 'pdf') {
         if ($this.closest('.tabs').length > 0) {
           let tabMenu = $this.closest('.tabs').find('.cmp-tabs__tab--active');
           if (tabMenu.length > 0) {
@@ -127,7 +95,7 @@
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: 'other',
+                type: linkType,
                 region: 'main',
                 linkClicks: {
                   value: 1,
@@ -135,8 +103,8 @@
               },
             },
             linkInfo: {
-              sectionHeading: sectionHeading,
-              action: btnAction,
+              sectionHeading: btnAction,
+              action: 'hero banner click',
               name: ctaName,
             },
             eventInfo: {
@@ -145,9 +113,11 @@
           },
         });
       } else if ($this.closest('.teaser').length > 0) {
-        btnAction = $this.closest('.teaser').find('.cmp-teaser__title');
-        if (btnAction.length > 0) {
-          btnAction = btnAction.text().toLowerCase().trim();
+        let teaserTitle = $this.closest('.teaser').find('.cmp-teaser__title');
+        if (teaserTitle.length > 0) {
+          btnAction = teaserTitle.text().toLowerCase().trim();
+        } else {
+          btnAction = '';
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -156,7 +126,7 @@
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: 'other',
+                type: linkType,
                 region: 'main',
                 linkClicks: {
                   value: 1,
@@ -164,8 +134,8 @@
               },
             },
             linkInfo: {
-              sectionHeading: sectionHeading,
-              action: btnAction,
+              sectionHeading: btnAction,
+              action: ctaName + ' clicked',
               name: ctaName,
             },
             eventInfo: {
@@ -173,7 +143,7 @@
             },
           },
         });
-      } else if ($this.closest('.producttile').length > 0 && $this.hasClass('cms-button')) {
+      } else if ($this.closest('.producttile').length > 0) {
         productCat = pathArr.pop();
 
         let btnAct = $this.closest('.tiles-box.content').find('.tiles-box-title h2');
@@ -185,10 +155,10 @@
 
         let prodName = $this.closest('.tiles-box.content').find('.tiles-box-title .catagory');
         if (prodName.length > 0) {
-          prodName = prodName.text().toLowerCase().trim();
+          prodName = prodName.text().toLowerCase().trim() + ':';
           prodName += btnAct;
         } else {
-          prodName = '';
+          prodName = btnAct;
         }
 
         let productPriceVal = $this.closest('.tiles-box.content').find('.tiles-box-list .detail-price-new .price');
@@ -217,7 +187,7 @@
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: 'other',
+                type: linkType,
                 region: 'main',
                 linkClicks: {
                   value: 1,
@@ -240,11 +210,47 @@
             },
           },
         });
-      } else if ($this.closest('header').length > 0) {
+      } else if ($this.closest('.meganavigation').length > 0) {
+        if ($this.closest('.main-mega-menu-desktop').length > 0) {
+          sectionHeading = 'main menu';
+          btnAction = 'main menu item clicked';
+          if ($(trgt).hasClass('etisalat-logo-en') || $(trgt).closest('svg').hasClass('etisalat-logo-en')) {
+            ctaName = 'goto home';
+          }
+          if ($this.closest('.menu-promotion-wrapper').length > 0) {
+            let ctaHead = $this.closest('.sub-menu-wrap').parent().find('.mega-menu-link');
+            let ctaContent = $this.closest('.content').find('h4');
+            if (ctaHead.length > 0 && ctaContent.length > 0) {
+              ctaHead = ctaHead.text().trim().toLowerCase() + ':';
+              ctaContent = ctaContent.text().trim().toLowerCase() + ':';
+              ctaName = ctaHead + ctaContent + ctaName;
+            }
+          }
+        }
+        if ($this.closest('.inc-push-meu-icon').length > 0) {
+          num++;
+          sectionHeading = 'push menu';
+          btnAction = 'push menu item clicked';
+
+          if (num % 2 === 0) {
+            ctaName = 'close push menu';
+          } else {
+            ctaName = 'open push menu';
+          }
+        }
         if ($this.closest('.sub-menu').length > 0) {
           let subMenu = $this.closest('.sub-menu').find('.sub-menu-heading');
-          btnAction = subMenu.first().text().toLowerCase() ? subMenu.first().text().toLowerCase() : '';
+          let subMenuTxt = subMenu.first().text().trim().toLowerCase() + ':';
+          let subMenuSec = $this.closest('.sub-menu-wrap').parent().find('.mega-menu-link');
+          let subMenuSecTxt = subMenuSec.text().trim().toLowerCase() + ':';
+          ctaName = subMenuSecTxt + subMenuTxt + ctaName;
         }
+        if ($this.closest('.sub-account-menu').length > 0) {
+          let subAccMenu = $this.closest('.sub-account-menu-wrap').parent().find('.mega-menu-link');
+          let subMenuSecTxt = subAccMenu.text().trim().toLowerCase() + ':';
+          ctaName = subMenuSecTxt + ctaName;
+        }
+
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
@@ -252,7 +258,7 @@
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: 'other',
+                type: linkType,
                 region: 'header',
                 linkClicks: {
                   value: 1,
@@ -269,13 +275,9 @@
             },
           },
         });
-      } else if ($this.closest('footer').length > 0) {
-        let quickLinks = $this.closest('.links');
-        if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
-          btnAction = quickLinks.find('.links-title').first().text();
-        } else if ($this.closest('.icons-wrap').length > 0) {
-          btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text();
-        }
+      } else if ($this.closest('.top-nav-section').length > 0) {
+        sectionHeading = 'nav menu';
+        btnAction = 'nav menu item clicked';
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
@@ -283,8 +285,8 @@
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: 'other',
-                region: 'footer',
+                type: linkType,
+                region: 'header',
                 linkClicks: {
                   value: 1,
                 },
@@ -296,7 +298,113 @@
               name: ctaName,
             },
             eventInfo: {
+              headerClick: 1,
+            },
+          },
+        });
+      } else if ($this.closest('.footer').length > 0) {
+        let quickLinks = $this.closest('.links');
+        if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
+          btnAction = quickLinks.find('.links-title').first().text().toLowerCase();
+        } else if ($this.closest('.icons-wrap').length > 0) {
+          btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase();
+        }
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: btnAction + ':' + ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'footer',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: 'footer links',
+              action: 'quick link clicked',
+              name: btnAction + ':' + ctaName,
+            },
+            eventInfo: {
               footerClick: 1,
+            },
+          },
+        });
+      } else if ($this.closest('.blogtile').length > 0) {
+        ctaName = $this.find('.box-title').text().trim().toLowerCase();
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: 'featured offer',
+              action: 'view offer',
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.text').length > 0) {
+        sectionHeading = $this.closest('.text').find('.title');
+        if (sectionHeading.length > 0) {
+          sectionHeading = sectionHeading.text().trim().toLowerCase();
+        }
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: ctaName,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.iconcardlist').length > 0) {
+        sectionHeading = $this.closest('.need-help-section').find('.need-help-content h2');
+        if (sectionHeading.length > 0) {
+          sectionHeading = sectionHeading.text().trim().toLowerCase();
+        }
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: sectionHeading + ' clicked',
+              name: ctaName,
             },
           },
         });
@@ -309,7 +417,7 @@
               webInteraction: {
                 name: ctaName,
                 URL: currrentURL,
-                type: 'other',
+                type: linkType,
                 region: 'main',
                 linkClicks: {
                   value: 1,
@@ -396,53 +504,63 @@
     });
   }
 
-  // Support CTA B2C
-  $('#sp_Button').on('click', function (e) {
+  // Hero Banner next click
+  $('.hero-banner-section .hero-next').on('click', function (e) {
     if (window.adobeDataLayer) {
-      let trgt = e.target;
-      let ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : '';
-      const currrentURL = window.location.href;
-      const pagePathName = window.location.pathname;
-      const dataLayerPathName = pagePathName.split('.html')[0];
-      let sectionHeading = '';
-      let actTxt = $('mainHeading').text() ? $('mainHeading').text() : '';
-      let deviceTxt = $('#select2-ddlConcern-container').text() ? $('#select2-ddlConcern-container').text() : '';
-      let brandTxt = $('#select2-ddlBrandName-container').text() ? $('#select2-ddlBrandName-container').text() : '';
-      let modelTxt = $('#select2-ddlModelName-container').text() ? $('#select2-ddlModelName-container').text() : '';
-
-      const pathArr = dataLayerPathName.split('/');
-      sectionHeading = pathArr.pop();
-
       window.adobeDataLayer.push({
         event: 'linkClicked',
-
         xdmActionDetails: {
           web: {
             webInteraction: {
-              name: ctaName,
-              URL: currrentURL,
+              name: 'next',
+              URL: '',
               type: 'other',
               region: 'main',
-
               linkClicks: {
                 value: 1,
               },
             },
           },
-
           linkInfo: {
-            sectionHeading: sectionHeading,
-            action: actTxt,
-            name: ctaName,
+            sectionHeading: 'hero banner section',
+            action: 'hero banner click',
+            name: 'next',
           },
-
-          supportInfo: {
-            device: deviceTxt,
-            brand: brandTxt,
-            model: modelTxt,
+          eventInfo: {
+            bannerClick: 1,
           },
         },
       });
     }
   });
-})(window, document);
+
+  // Hero Banner prev click
+  $('.hero-banner-section .hero-prev').on('click', function (e) {
+    if (window.adobeDataLayer) {
+      window.adobeDataLayer.push({
+        event: 'linkClicked',
+        xdmActionDetails: {
+          web: {
+            webInteraction: {
+              name: 'previous',
+              URL: '',
+              type: 'other',
+              region: 'main',
+              linkClicks: {
+                value: 1,
+              },
+            },
+          },
+          linkInfo: {
+            sectionHeading: 'hero banner section',
+            action: 'hero banner click',
+            name: 'previous',
+          },
+          eventInfo: {
+            bannerClick: 1,
+          },
+        },
+      });
+    }
+  });
+})(window, document, jQuery);

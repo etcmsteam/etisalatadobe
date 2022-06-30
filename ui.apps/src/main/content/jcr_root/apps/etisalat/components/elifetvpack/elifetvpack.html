@@ -7,7 +7,10 @@
         <div class="tv-pack-row" data-sly-use.packObj="${resource.path}" data-sly-list.packItems="${packObj.listChildren}">
             <div data-sly-test="${packItems.name == 'tvPackItems'}" data-sly-repeat.packItem="${packItems.listChildren}" class="tv-pack-tile">
                 <div data-sly-test="${packItem.fileReference}" class="icon">
-                    <img src="${packItem.fileReference}" alt="${packItem.packageTitle}"/>
+                    <img src="${packItem.fileReference}" alt="${packItem.packageTitle}" loading="lazy" 
+                         data-sly-set.imageSrcPath="${packItem.fileReference}" 
+	                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                     class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
                 </div>
                 <div class="content-wrap">
                     <div data-sly-test="${packItem.packageTitle}" class="wst-main-headings">
