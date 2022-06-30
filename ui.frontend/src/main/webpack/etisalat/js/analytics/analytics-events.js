@@ -227,17 +227,6 @@
             }
           }
         }
-        if ($this.closest('.inc-push-meu-icon').length > 0) {
-          num++;
-          sectionHeading = 'push menu';
-          btnAction = 'push menu item clicked';
-
-          if (num % 2 === 0) {
-            ctaName = 'close push menu';
-          } else {
-            ctaName = 'open push menu';
-          }
-        }
         if ($this.closest('.sub-menu').length > 0) {
           let subMenu = $this.closest('.sub-menu').find('.sub-menu-heading');
           let subMenuTxt = subMenu.first().text().trim().toLowerCase() + ':';
@@ -278,6 +267,17 @@
       } else if ($this.closest('.top-nav-section').length > 0) {
         sectionHeading = 'nav menu';
         btnAction = 'nav menu item clicked';
+        if ($this.closest('.inc-push-meu-icon').length > 0) {
+          num++;
+          sectionHeading = 'push menu';
+          btnAction = 'push menu item clicked';
+
+          if (num % 2 === 0) {
+            ctaName = 'close push menu';
+          } else {
+            ctaName = 'open push menu';
+          }
+        }
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {

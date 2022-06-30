@@ -1,7 +1,7 @@
 import { getURLParameter } from '../../../global/js/utils';
 
 export const THANK_YOU = () => {
-  if ($('#thankyoumessage').length === 0) {
+  if ($('.teaseretisalat #thankyoumessage.cmp-teaser').length === 0) {
     return;
   }
   const referenceNo = getURLParameter('referenceNo');
