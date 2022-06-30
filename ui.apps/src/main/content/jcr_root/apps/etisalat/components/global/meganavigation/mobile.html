@@ -38,11 +38,19 @@
              <div data-sly-test="${!meganavigation.topNavIconMenuItems.isEmpty 
                  && meganavigation.topNavIconMenuItems.size > 0}" data-sly-list.topRightItems="${meganavigation.topNavIconMenuItems}" class="col-xs-12">
                  <a data-sly-test="${!(topRightItems.openmodalwindow == 'modalwindow') && !(topRightItems.openmodalwindow == 'accessibilityoverlay')}" class="menu-account-link global-overlay" href="${topRightItems.navigationLink}">
-                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
+                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" loading="lazy" 
+                         data-sly-set.imageSrcPath="${topRightItems.navigationImage}" 
+	                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                     class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
+                         src="${topRightItems.navigationImage}"/>
                     <span> ${topRightItems.navigationTitle}</span>       
                  </a>   
                   <a data-sly-test="${topRightItems.openmodalwindow == 'modalwindow'}" data-label="${meganavigation.topNavResource.name}"  class="menu-account-link global-overlay btn-modal">
-                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
+                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" loading="lazy" 
+                         src="${topRightItems.navigationImage}" 
+                         data-sly-set.imageSrcPath="${topRightItems.navigationImage}" 
+	                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                     class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
                     <span> ${topRightItems.navigationTitle}</span>       
                  </a>
                  <!-- Modal content start-->   

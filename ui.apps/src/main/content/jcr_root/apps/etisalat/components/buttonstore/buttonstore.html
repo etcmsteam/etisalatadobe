@@ -11,7 +11,13 @@
                       <span>${gsItems.btnDesc}</span>${gsItems.btnTitle}
                    </p>
     
-                     <img data-sly-test="${gsItems.fileReference}" alt="${gsItems.btnTitle}" title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/>
+                     <img data-sly-test="${gsItems.fileReference}" 
+                          alt="${gsItems.btnTitle}" 
+                          loading="lazy" 
+                          data-sly-set.imageSrcPath="${gsItems.fileReference}" 
+	                      data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                      class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
+                          title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/>
                 </a>
              </div>
           </div>

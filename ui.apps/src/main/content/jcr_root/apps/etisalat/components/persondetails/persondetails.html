@@ -1,7 +1,10 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
  <div class="person-details">
       <div class="icon" data-sly-test="${properties['fileReference']}">
-         <img alt="person-icon" src="${properties['fileReference']}"/>
+         <img alt="person-icon" src="${properties['fileReference']}" loading="lazy" 
+              data-sly-set.imageSrcPath="${properties['fileReference']}" 
+	          data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	          class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
       </div>
       <div class="person">
          <h4 data-sly-test="${properties.name}" data-sly-element="${properties.nameStyle}" class="name">${properties.name}</h4>

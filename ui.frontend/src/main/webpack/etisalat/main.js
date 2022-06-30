@@ -20,7 +20,6 @@ import { CUSTOMER_TABLE } from "./js/custom-components/cust_table.js";
 import { MAIN_TEXT_ACITON } from "./js/custom-components/main-text.js";
 import { SCROLLSPY_AFFIX_MODULE } from "./js/custom-components/scrollspy-affix.js";
 import { SMS_BLOG_SHARE_LINK_MODULE } from "./js/custom-components/smb-blog-share-link.js";
-import { IMAGE_WITH_NEW_SVG_MODULE } from "./js/custom-components/svg.js";
 import { TECH_SUPPORT_MODULE } from "./js/custom-components/tech-support.js";
 import { TILES_SWIPER_MODULE } from "./js/custom-components/tiles_swiper.js";
 import { LOGIN_INIT } from "./js/custom-components/login";
@@ -58,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     SMS_BLOG_SHARE_LINK_MODULE,
     TECH_SUPPORT_MODULE,
     TILES_SWIPER_MODULE,
-    IMAGE_WITH_NEW_SVG_MODULE,
     LOGIN_INIT,
     THANK_YOU,
   ].forEach(ERROR_BOUNDARY);

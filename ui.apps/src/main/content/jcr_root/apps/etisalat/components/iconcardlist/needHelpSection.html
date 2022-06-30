@@ -18,7 +18,10 @@
 						<div class="col-xs-6 col-md-3">
             				<a href="${cardItems.cardLink}" target="${cardItems.linkBehavior == 'opennewwindow'?'_blank':'_self'}" data-sly-unwrap="${!cardItems.cardLink}">
                  				<div class="need-help-icons">
-                       				<img alt="${cardItems.cardTitle}" data-sly-test="${cardItems.cardIcon}" class="icon-img" src="${cardItems.cardIcon}">
+                       				<img alt="${cardItems.cardTitle}" data-sly-test="${cardItems.cardIcon}" loading="lazy" 
+                       				     data-sly-set.imageSrcPath="${cardItems.cardIcon}" 
+	                                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+                       				     class="icon-img ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${cardItems.cardIcon}">
                        				<span class="heading-sub">${cardItems.cardTitle}</span>
                   				</div>
             				</a>

@@ -138,4 +138,12 @@ public class CommonLinkModelTest {
         when(etisalatApiService.getSearchEndpointUrl()).thenReturn(gsearchEndpointUrl);
         assertEquals(gsearchEndpointUrl, commonLinkModel.getSearchEndpointUrl());
     }
+    
+    @Test
+    void testSVGImageExtension() {
+      String svgPath = "/content/dam/etisalat/offerbanner/bg-cards/sample.svg";
+      context.request().setAttribute("link", svgPath);
+      CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+      assertTrue(model.isAssetSVGImage());
+    }
 }
