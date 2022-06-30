@@ -1803,11 +1803,12 @@
     }
   }
   ul {
+
     &.featureList {
       padding: 0;
       height: 100%;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       &:after {
         content: '';
         clear: both;
@@ -1890,7 +1891,14 @@
     -webkit-flex: none;
     -ms-flex: none;
     height: 100%;
+    overflow: visible;
+    position: relative;
   }
+
+  .bg-cards .product-home-single-card-selection.tile-table .tile-card .tiles-box-list ul.featureList.ellipsisEnabled {
+    overflow: hidden;
+  }
+  
   .bg-cards .device-card.offer .tile-card.effect__click .read-more,
   .bg-cards .device-card.offer .tile-card .read-more,
   .bg-cards .device-multi-card-selection.offer .tile-card .read-more,
@@ -3383,9 +3391,15 @@
       }
     }
 
-    .tiles-box-list ul li {
+    .tiles-box-list .ellipsisEnabled li {
       font-size: 1.25rem;
       color: #6f7273;
+      overflow: hidden;
+    }
+
+    .tiles-box-list li {
+      overflow: visible;
+      list-style: none;
       a {
         letter-spacing: 2px;
         font-size: 14px;
