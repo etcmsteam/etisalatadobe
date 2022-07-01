@@ -67,24 +67,12 @@ public class GoogleMapsModel {
     return url;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
   public String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
-    this.key = key;
-  }
-
   public String getStoreLocatorUrl() {
     return storeLocatorUrl;
-  }
-
-  public void setStoreLocatorUrl(String storeLocatorUrl) {
-    this.storeLocatorUrl = storeLocatorUrl;
   }
 
   /**
@@ -92,13 +80,6 @@ public class GoogleMapsModel {
    */
   public String getGoogleContactUrl() {
     return googleContactUrl;
-  }
-
-  /**
-   * @param googleContactUrl the googleContactUrl to set
-   */
-  public void setGoogleContactUrl(String googleContactUrl) {
-    this.googleContactUrl = googleContactUrl;
   }
 
   /**
