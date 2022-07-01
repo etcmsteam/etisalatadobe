@@ -2,7 +2,6 @@ package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -12,10 +11,6 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 class CategoryTagVOTest {
 
 	CategoryTagVO categoryTagVO = new CategoryTagVO();
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
 
 	@Test
 	void testGetTagName() {
