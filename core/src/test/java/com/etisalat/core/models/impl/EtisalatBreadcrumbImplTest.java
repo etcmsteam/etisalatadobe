@@ -2,7 +2,6 @@ package com.etisalat.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,6 +24,7 @@ class EtisalatBreadcrumbImplTest {
 	private static final String CURRENT_PAGE = "/content/etisalatbreadcrumb";
 	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
 	private static final String CARD_DATA = TEST_PAGE_CONTAINER_ROOT + "/etisalatbreadcrumb";
+	private static final String CARD_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/etisalatbreadcrumb1";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -34,7 +34,6 @@ class EtisalatBreadcrumbImplTest {
 
 	@Test
 	void testGetEtisalatBreadcrumbItems() {
-		Resource navItemRes = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
 		final String expectedBreadcrumbTitle = "title1";
 		final String expectedBreadcrumbLink = "/content/etisalat/ae-qa/en/c";
@@ -48,6 +47,14 @@ class EtisalatBreadcrumbImplTest {
 		assertEquals(expectedBreadcrumbLink, actualBreadcrumbLink);
 		assertEquals(expectedLinkBehavior, actualLinkBehavior);
 
-	}		
-
+	}
+	
+	@Test
+	void testGetEtisalatBreadcrumbItemsEmpty() {
+		context.currentResource(CARD_DATA1);
+		EtisalatBreadcrumb breadcrumbList = context.request().adaptTo(EtisalatBreadcrumb.class);
+		int actualSize = breadcrumbList.getEtisalatBreadcrumbItems().size();
+		int expectedSize = 0;
+		assertEquals(expectedSize, actualSize);
+	}
 }

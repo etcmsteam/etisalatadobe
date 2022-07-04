@@ -2,13 +2,11 @@ package com.etisalat.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import com.etisalat.core.models.CustomForm;
-import com.etisalat.core.services.EtisalatApiService;
 import com.etisalat.core.services.impl.EtisalatApiServiceImpl;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
@@ -40,7 +38,6 @@ class CustomFormImplTest {
 
 	@Test
 	void customFormMethods() {
-		Resource navItemRes = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
 		final String expectedRedirectUrl = "/content/formcontainer";
 		final String expectedFormId = "formid";

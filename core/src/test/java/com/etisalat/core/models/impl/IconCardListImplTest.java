@@ -29,6 +29,7 @@ class IconCardListImplTest {
 	private static final String ICON_SIZE = TEST_PAGE_CONTAINER_ROOT + "/iconcardsize";
 	private static final String HOW_SIZE = TEST_PAGE_CONTAINER_ROOT + "/howiconsize";
 	private static final String NULL_RES = TEST_PAGE_CONTAINER_ROOT + "/nullcheck";
+	private static final String CARD_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/iconcardlist1";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -99,5 +100,13 @@ class IconCardListImplTest {
 		assertEquals(expectedCardSize, actualCardSize);
 	}
 
+	@Test
+	void testGetIConCardListItemsEmpty() {
+		context.currentResource(CARD_DATA1);
+		int expectedCardSize = 0;
+		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
+		int actualCardSize = iconCardList.getIconCardSize();
+		assertEquals(expectedCardSize, actualCardSize);
+	}
 
 }

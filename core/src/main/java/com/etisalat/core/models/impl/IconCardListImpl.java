@@ -8,6 +8,7 @@ import java.util.List;
 import com.etisalat.core.constants.AEConstants;
 import com.etisalat.core.util.CommonUtility;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -86,7 +87,7 @@ public class IconCardListImpl implements IconCardList {
   @Override
   public int getIconCardSize() {
     final int defaultSize = 0;
-    if (getIconCardListItems() != null) {
+    if (CollectionUtils.isNotEmpty(getIconCardListItems())) {
       return getIconCardListItems().size();
     }
     return defaultSize;

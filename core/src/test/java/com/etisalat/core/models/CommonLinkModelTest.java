@@ -146,4 +146,19 @@ public class CommonLinkModelTest {
       CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
       assertTrue(model.isAssetSVGImage());
     }
+    
+    @Test
+    void testSVGImageExtensionFalse() {
+      context.request().setAttribute("link", StringUtils.EMPTY);
+      CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+      assertFalse(model.isAssetSVGImage());
+    }
+    
+    @Test
+    void testSVGImageExtensionWithJPGImage() {
+      String jpgPath = "/content/dam/etisalat/offerbanner/bg-cards/sample.jpg";
+      context.request().setAttribute("link", jpgPath);
+      CommonLinkModel model = context.request().adaptTo(CommonLinkModel.class);
+      assertFalse(model.isAssetSVGImage());
+    }
 }
