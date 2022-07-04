@@ -2,7 +2,6 @@ package com.etisalat.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +27,6 @@ class IconCardListImplTest {
 	private static final String HOW_TO_DATA = TEST_PAGE_CONTAINER_ROOT + "/howiconcardlist";
 	private static final String ICON_SIZE = TEST_PAGE_CONTAINER_ROOT + "/iconcardsize";
 	private static final String HOW_SIZE = TEST_PAGE_CONTAINER_ROOT + "/howiconsize";
-	private static final String NULL_RES = TEST_PAGE_CONTAINER_ROOT + "/nullcheck";
 	private static final String CARD_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/iconcardlist1";
 
 	@BeforeEach
@@ -39,7 +37,6 @@ class IconCardListImplTest {
 
 	@Test
 	void testGetIConCardListItems() {
-		Resource navItemRes = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
 		final String expectedCardTitle = "Card Title 1";
 		final String expectedCardLink = "/content/etisalat/ae/en/carrier-and-wholesale/help";
@@ -62,7 +59,6 @@ class IconCardListImplTest {
 	}
 	@Test
 	void testGetHowToIConCardListItems() {
-		Resource navItemRes = context.currentResource(HOW_TO_DATA);
 		context.currentResource(HOW_TO_DATA);
 		final String expectedHowToTitle = "How to Card Title 1";
 		final String expectedHowToDesc = "Buy the passes online via our website";
@@ -78,12 +74,9 @@ class IconCardListImplTest {
 		assertEquals(expectedHowToDesc, actualHowToDesc);
 		assertEquals(expectedHowToIcon, actualHowToIcon);
 		assertEquals(expectedCardSize, actualCardSize);
-
-
 	}
 	@Test
 	void testDefaultIconItems() {
-		Resource navItemRes = context.currentResource(ICON_SIZE);
 		context.currentResource(ICON_SIZE);
 		int expectedCardSize = 0;
 		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
@@ -92,7 +85,6 @@ class IconCardListImplTest {
 	}
 	@Test
 	void testDefaultHOwToIconItems() {
-		Resource navItemRes = context.currentResource(HOW_SIZE);
 		context.currentResource(HOW_SIZE);
 		int expectedCardSize = 0;
 		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);

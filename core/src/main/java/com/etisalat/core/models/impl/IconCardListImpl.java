@@ -95,7 +95,7 @@ public class IconCardListImpl implements IconCardList {
   @Override
   public int getHowToCardSize() {
     final int defaultSize = 0;
-    if (getHowToCardListItems() != null) {
+    if (CollectionUtils.isNotEmpty(getHowToCardListItems())) {
       return getHowToCardListItems().size();
     }
     return defaultSize;
