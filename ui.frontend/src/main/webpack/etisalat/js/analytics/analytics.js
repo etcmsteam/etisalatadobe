@@ -310,3 +310,43 @@ window.onYouTubeIframeAPIReady = function () {
     });
   });
 };
+
+export const ACCESSIBILITY_TRACKING = ($this, val) => {
+  if (window.adobeDataLayer) {
+    let ctaName = '';
+    if (val !== 'colour') {
+      ctaName = $this.closest('.selector-toggle-container').find('.selector-toggle-title');
+    } else {
+      ctaName = $this.closest('.selector-toggle-container-colored').find('.selector-toggle-title');
+    }
+    if (ctaName.length > 0) {
+      ctaName = ctaName.text().toLowerCase().trim();
+    } else {
+      ctaName = '';
+    }
+    window.adobeDataLayer.push({
+      event: 'linkClicked',
+      xdmActionDetails: {
+        web: {
+          webInteraction: {
+            name: ctaName,
+            URL: '',
+            type: 'other',
+            region: 'header',
+            linkClicks: {
+              value: 1,
+            },
+          },
+        },
+        linkInfo: {
+          sectionHeading: 'accessibility',
+          action: 'accessibility item clicked',
+          name: ctaName,
+        },
+        eventInfo: {
+          headerClick: 1,
+        },
+      },
+    });
+  }
+};

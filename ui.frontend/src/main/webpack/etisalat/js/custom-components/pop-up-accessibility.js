@@ -1,4 +1,6 @@
 /* eslint-disable */
+import { ACCESSIBILITY_TRACKING } from "../../js/analytics/analytics";
+
 export const POP_UP_ACCESSIBILITY = () => {
   function zoomIn() {
     const $affectedElements = $("p,ul,li,span,b,a,button,h1,h2,h3,h4,h5,h6,strike,svg");
@@ -91,6 +93,7 @@ export const POP_UP_ACCESSIBILITY = () => {
     $("body").addClass(radio.prop("value"));
     radio.prop("checked", !radio.prop("radio"));
     localStorage.setItem("theme", radio.prop("value"));
+    ACCESSIBILITY_TRACKING($(this), 'colour');
   });
 
   $(".acc-font-controller .selector-toggle-item").on("click", function () {
@@ -116,5 +119,6 @@ export const POP_UP_ACCESSIBILITY = () => {
         $(".acc-font-controller .selector-toggle-title").html("<strong> Text size : </strong> Large");
       }
     }
+    ACCESSIBILITY_TRACKING($(this), 'text');
   });
 };

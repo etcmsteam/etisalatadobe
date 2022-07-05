@@ -93,11 +93,13 @@
         let pathArr = dataArr[1].split('/');
         pathArr.shift();
         if (pathArr.length >= 3) {
-          const newPathArr = pathArr.slice(-3);
+          const newPathArr = pathArr.slice(0, 3);
           siteSection = newPathArr[0];
           siteSection1 = newPathArr[1];
           if (newPathArr[2].includes('.html')) {
             siteSection2 = newPathArr[2].split('.html')[0];
+          } else {
+            siteSection2 = newPathArr[2];
           }
         } else if (pathArr.length === 2) {
           siteSection = pathArr[0];

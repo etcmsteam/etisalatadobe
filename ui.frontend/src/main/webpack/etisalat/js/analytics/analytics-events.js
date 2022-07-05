@@ -216,6 +216,13 @@
           btnAction = 'main menu item clicked';
           if ($(trgt).hasClass('etisalat-logo-en') || $(trgt).closest('svg').hasClass('etisalat-logo-en')) {
             ctaName = 'goto home';
+          } else if (trgt.tagName.toLowerCase() === 'img') {
+            if ($(trgt).attr('src')) {
+              let srcArr = $(trgt).attr('src').split('/');
+              if (srcArr.length > 0) {
+                ctaName = srcArr[srcArr.length - 1].split('.')[0] || '';
+              }
+            }
           }
           if ($this.closest('.menu-promotion-wrapper').length > 0) {
             let ctaHead = $this.closest('.sub-menu-wrap').parent().find('.mega-menu-link');
@@ -229,10 +236,16 @@
         }
         if ($this.closest('.sub-menu').length > 0) {
           let subMenu = $this.closest('.sub-menu').find('.sub-menu-heading');
+          if (subMenu.length === 1) {
           let subMenuTxt = subMenu.first().text().trim().toLowerCase() + ':';
           let subMenuSec = $this.closest('.sub-menu-wrap').parent().find('.mega-menu-link');
           let subMenuSecTxt = subMenuSec.text().trim().toLowerCase() + ':';
           ctaName = subMenuSecTxt + subMenuTxt + ctaName;
+          } else if (subMenu.length > 1) {
+            let subMenuSec = $this.closest('.sub-menu-wrap').parent().find('.mega-menu-link');
+            let subMenuSecTxt = subMenuSec.text().trim().toLowerCase() + ':';
+            ctaName = subMenuSecTxt + ctaName;
+          }
         }
         if ($this.closest('.sub-account-menu').length > 0) {
           let subAccMenu = $this.closest('.sub-account-menu-wrap').parent().find('.mega-menu-link');
@@ -277,6 +290,9 @@
           } else {
             ctaName = 'open push menu';
           }
+        } else if ($this.closest('.push-nav-container').length > 0) {
+          sectionHeading = 'push menu';
+          btnAction = 'push menu item clicked';
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
