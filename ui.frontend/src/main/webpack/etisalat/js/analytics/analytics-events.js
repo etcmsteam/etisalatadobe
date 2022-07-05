@@ -277,6 +277,9 @@
           } else {
             ctaName = 'open push menu';
           }
+        } else if ($this.closest('.push-nav-container').length > 0) {
+          sectionHeading = 'push menu';
+          btnAction = 'push menu item clicked';
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
