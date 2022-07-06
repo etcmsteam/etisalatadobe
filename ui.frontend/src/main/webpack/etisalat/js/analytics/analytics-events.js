@@ -233,6 +233,22 @@
               ctaName = ctaHead + ctaContent + ctaName;
             }
           }
+          if ($this.hasClass('clearSearch')) {
+            ctaName = 'search:clear';
+          }
+          if ($this.closest('.search-items-wrapper').length > 0) {
+            if ($this.closest('.list.quick-links').length > 0) {
+              let searchHeading = $this.closest('.list.quick-links').find('.list-item-heading');
+              searchHeading = searchHeading.text().trim().toLowerCase() + ':' || '';
+              ctaName = 'search:' + searchHeading + ctaName;
+            } else if ($this.closest('.list.trends').length > 0) {
+              let searchHeading = $this.closest('.list.trends').find('.list-item-heading');
+              searchHeading = searchHeading.text().trim().toLowerCase() + ':' || '';
+              let searchSubHead = $this.closest('.content').find('h4');
+              searchSubHead = searchSubHead.text().trim().toLowerCase() + ':' || '';
+              ctaName = 'search:' + searchHeading + searchSubHead + ctaName;
+            }
+          }
         }
         if ($this.closest('.sub-menu').length > 0) {
           let subMenu = $this.closest('.sub-menu').find('.sub-menu-heading');

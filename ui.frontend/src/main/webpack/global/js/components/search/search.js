@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { SEARCH_TRACKING } from "../../../../etisalat/js/analytics/analytics";
 
       function debounce(func, wait, immediate) {
         var timeout;
@@ -549,6 +550,7 @@
 
               $(target).removeClass("open");
               clearSearch();
+              SEARCH_TRACKING('close');
             } else {
               var $backdropHeight = $(".main-mega-menu-desktop");
               var body = document.body,
@@ -559,6 +561,7 @@
               $backdropHeight.css("height", height);
               $backdropHeight.css("z-index", 999);
               $(target).addClass("open");
+              SEARCH_TRACKING('open');
             }
 
             $(".backdrop-search-4-0")

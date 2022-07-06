@@ -339,8 +339,43 @@ export const ACCESSIBILITY_TRACKING = ($this, val) => {
           },
         },
         linkInfo: {
-          sectionHeading: 'accessibility',
-          action: 'accessibility item clicked',
+          sectionHeading: 'nav menu',
+          action: 'nav menu item clicked',
+          name: ctaName,
+        },
+        eventInfo: {
+          headerClick: 1,
+        },
+      },
+    });
+  }
+};
+
+export const SEARCH_TRACKING = (data) => {
+  if (window.adobeDataLayer) {
+    let ctaName = '';
+    if (data !== 'open') {
+      ctaName = 'search:close';
+    } else {
+      ctaName = 'search:open';
+    }
+    window.adobeDataLayer.push({
+      event: 'linkClicked',
+      xdmActionDetails: {
+        web: {
+          webInteraction: {
+            name: ctaName,
+            URL: '',
+            type: 'other',
+            region: 'header',
+            linkClicks: {
+              value: 1,
+            },
+          },
+        },
+        linkInfo: {
+          sectionHeading: 'main menu',
+          action: 'main menu item clicked',
           name: ctaName,
         },
         eventInfo: {
