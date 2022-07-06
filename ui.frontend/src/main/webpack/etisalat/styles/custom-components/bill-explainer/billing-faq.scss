@@ -1,0 +1,234 @@
+.billing-faq {
+  &.cmp_tabs--vertical-fullbdr {
+    .cmp-tabs__tablist {
+      width: 33.3333%;
+    }
+
+    .cmp-tabs__tabpanel--active {
+      width: 66.6667%;
+    }
+
+    .cmp-text {
+      h2,
+      h3 {
+        color: $almost-black;
+        margin-bottom: toRem(16);
+
+        @include respond-to-min($desktop) {
+          margin-bottom: toRem(24);
+        }
+      }
+
+      h2 {
+        font-size: toRem(30) !important;
+        line-height: oRem(34) !important;
+
+        @include respond-to-min($desktop) {
+          font-size: oRem(40) !important;
+          line-height: oRem(52) !important;
+        }
+      }
+
+      h3 {
+        font-size: toRem(28) !important;
+        line-height: toRem(34) !important;
+
+        @include respond-to-min($desktop) {
+          font-size: toRem(32) !important;
+          line-height: toRem(40) !important;
+        }
+      }
+    }
+  }
+
+  .text,
+  .cmp-rte-text {
+    margin-left: 0;
+    padding-left: 0;
+
+    @include rtlBlock {
+      margin-right: 0 !important;
+    }
+
+    @include respond-to-max($desktop) {
+      margin-left: 0 !important;
+      padding: toRem(24) toRem(16);
+      width: 100% !important;
+    }
+
+    .cmp-text {
+      padding-right: 0;
+
+      @include rtlBlock {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .cmp-tabs__tabpanel--active {
+    padding-left: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .cmp-accordion__header {
+    padding: 0;
+  }
+
+  .accordion.cmp-accordion--text,
+  .cmp-accordion--text {
+    width: 100% !important;
+
+    .cmp-accordion__panel--expanded {
+      background-color: $sand-white-50 !important;
+      border-bottom: toRem(1) solid $light-sand-brown;
+    }
+  }
+
+  .cmp-accordion {
+    &__button,
+    &__button--expanded {
+      padding: 0 !important;
+    }
+
+    .cmp-accordion {
+      &__title {
+        color: $text-color;
+        display: block;
+        font-size: $font16;
+        font-weight: 400;
+        padding: toRem(24) toRem(25);
+
+        @include font-family-lato-roboto;
+
+        @include respond-to-max($tablet) {
+          font-size: $font12;
+          padding: toRem(20) toRem(25);
+        }
+      }
+
+      &__icon {
+        margin-right: 0;
+
+        @include rtlBlock() {
+          margin-left: 0;
+        }
+
+        @include respond-to-max($tablet) {
+          border-width: 0 toRem(1) toRem(1) 0;
+        }
+      }
+    }
+  }
+
+  .accordion {
+    &.cmp-accordion--text {
+      .cmp-accordion__panel--expanded {
+        @include rtlBlock {
+          margin-right: 0;
+          right: 0;
+        }
+      }
+
+      .text,
+      .cmp-rte-text {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+
+        @include rtlBlock {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .cmp-text {
+          padding: toRem(20.8) toRem(24) !important;
+
+          @include respond-to-max($tablet) {
+            padding: toRem(16) !important;
+          }
+
+          p {
+            color: $steel-grey !important;
+            font-size: $font12 !important;
+            line-height: toRem(20);
+            margin: 0 0 toRem(12.5);
+            padding: 0 !important;
+
+            @include font-family-lato-roboto;
+          }
+        }
+      }
+    }
+  }
+
+  @include respond-to-max($desktop) {
+    &.cmp_tabs--mobile .nav-view-wrapp.panel > a {
+      border-bottom: toRem(1) solid $light-sand-brown;
+    }
+
+    &.cmp_tabs--vertical-nobg .collapse.in {
+      border-bottom: 0;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+  }
+
+  h3.cmp-title__text {
+    font-family: Neotech,Roboto,Arial,sans-serif;
+    padding-top: toRem(24);
+    font-size: 1.25rem;
+    line-height: 1.3;
+    color: $text-color;
+    margin-bottom: toRem(20);
+    @include respond-to-min($tablet + 1) {
+      font-size: 1.83rem;
+      padding-top: toRem(54);
+      margin-top: toRem(25);
+    }
+    @include respond-to-min($desktop) {
+      padding-top: toRem(30);
+      margin-bottom: 1rem;
+    }
+  }
+
+}
+
+.cmp-link__arrow_left {
+  &.left-arrow {
+    font-size: $font14;
+    padding-left: toRem(15);
+    padding-right: 0;
+
+    @include rtlBlock {
+      padding-left: 0;
+      padding-right: toRem(15);
+    }
+
+    &::after {
+      border-width: 0;
+
+      @include rtlBlock {
+        border-width: 0 toRem(1) toRem(1) 0;
+      }
+    }
+
+    &::before {
+      border: solid $arrow-border-green;
+      border-width: 0 toRem(1) toRem(1) 0;
+      color: $main-green;
+      content: " ";
+      left: 0;
+      line-height: 1;
+      padding: 0.203rem;
+      position: absolute;
+      right: auto;
+      top: 50%;
+      transform: translateY(-50%) rotate(135deg);
+      transition: all 0.3s ease-in-out;
+
+      @include rtlBlock {
+        border-width: 0;
+      }
+    }
+  }
+}

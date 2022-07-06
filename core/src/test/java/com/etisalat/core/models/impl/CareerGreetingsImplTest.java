@@ -3,7 +3,6 @@ package com.etisalat.core.models.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,7 +37,6 @@ class CareerGreetingsImplTest {
 		String expectedPretitle = "SMART HUB DATA CENTER";
 		String expectedTitle = "Connectivity Services";
 		String expectedDescription = "description";
-		Resource resource = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
 		CareerGreetings careerGreetings = context.request().adaptTo(CareerGreetings.class);
 		String actualPretitle = careerGreetings.getPreTitle();
@@ -51,7 +49,6 @@ class CareerGreetingsImplTest {
 
 	@Test
 	void testImages() {
-		Resource resource = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
 		CareerGreetings careerGreetings = context.request().adaptTo(CareerGreetings.class);
 		LinkModel image = careerGreetings.getImage();

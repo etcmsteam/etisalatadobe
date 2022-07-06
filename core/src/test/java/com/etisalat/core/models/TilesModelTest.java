@@ -1,12 +1,7 @@
 package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.impl.ResourceTypeBasedResourcePicker;
-import org.apache.sling.models.spi.ImplementationPicker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -89,7 +84,7 @@ class TilesModelTest {
 		String expectedCTAText = "Learn More";
 		String expectedTileCTALinkNewWindow = "/content/etisalat/ae/en/connectivity.html";
 		String expectedTileCTALinkSameWindow = "/content/etisalat/ae/en/connectivity.html";
-		context.currentResource(TILE_DATA1);		
+		context.currentResource(TILE_DATA1);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		tileModel.setTileCTALinkNewWindow(expectedTileCTALinkNewWindow);
 		tileModel.setTileCTALinkSameWindow(expectedTileCTALinkNewWindow);

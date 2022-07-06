@@ -1,7 +1,12 @@
 .cmp-accordion--nested {
   .cmp-accordion__item {
-    border-bottom: torem(1) solid;
-    border-color: $white;
+    border-bottom: toRem(1) solid $white;
+    border-top: toRem(1) solid $white;
+
+    &:first-child,
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 
   .cmp-viewall {
@@ -11,7 +16,6 @@
   .cmp-accordion__button {
     background-color: $sand-white;
     border-color: transparent;
-    box-shadow: 0 0 toRem(6) 0 rgb(0 0 0 / 25%);
     display: flex;
     font-size: $font18;
     justify-content: center;
@@ -32,7 +36,7 @@
     @include respond-to-min($desktop) {
       font-size: $font26;
       justify-content: space-between;
-      padding: 1.8125rem 7.2rem;
+      padding: 1.8125rem 4.8rem;
     }
   }
 
@@ -54,6 +58,7 @@
 
   .cmp-accordion__button--expanded {
     background-color: $white;
+    box-shadow: 0 0 toRem(6) 0 rgb(0 0 0 / 25%);
   }
 
   .cmp-accordion__button--expanded .cmp-accordion__icon {
@@ -123,7 +128,7 @@
       font-size: $font16;
       letter-spacing: 0.1rem;
 
-      @include font-family-lato;
+      @include font-family-Neotech-ge();
     }
 
     .cmp-accordion__button {
@@ -195,7 +200,17 @@
 
     .cmp-text {
       color: $steel-grey;
-      padding: toRem(25) toRem(5) toRem(15) toRem(43);
+      padding: toRem(10) toRem(30) toRem(25) toRem(35);
+
+      @include rtlBlock() {
+        padding-left: toRem(5);
+        padding-right: toRem(43);
+      }
+
+      @include respond-to-max($phone) {
+        padding-left: toRem(5);
+        padding-right: toRem(5);
+      }
 
       @include font-family-Neotech;
 
@@ -212,11 +227,10 @@
     table {
       border: toRem(2) solid $gray;
       height: toRem(112);
-      width: toRem(729);
     }
 
     th {
-      background-color: $main-green;
+      background-color: $light-green1;
       border-right: toRem(1) solid $steel-grey;
       color: $white;
       padding: toRem(12);
@@ -253,6 +267,16 @@
       @include rtlBlock() {
         float: left;
         text-align: left;
+      }
+    }
+  }
+
+  .cmp-accordion__panel.cmp-accordion__panel--expanded {
+    .container.responsivegrid {
+      padding-bottom: toRem(80);
+
+      @include respond-to-min($desktop) {
+        width: 66.66%;
       }
     }
   }

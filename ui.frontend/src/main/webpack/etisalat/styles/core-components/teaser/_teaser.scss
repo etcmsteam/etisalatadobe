@@ -19,7 +19,7 @@
   width: 100%;
 
   @include respond-to-min($desktop) {
-    max-width: 280px;
+    max-width: 420px;
     min-width: 280px;
     width: 280px;
   }
@@ -79,7 +79,6 @@
     padding: toRem(3.5);
     position: absolute;
     right: 0;
-    top: toRem(5);
     width: toRem(7);
 
     @include rtlBlock {
@@ -192,7 +191,7 @@
   &--background-pattern & {
     &::before,
     &::after {
-      background: url($resource-path + "promo_pattern_top.svg") left 0 no-repeat;
+      background: url($resource-path + 'promo_pattern_top.svg') left 0 no-repeat;
       background-size: contain;
       content: "";
       height: 100%;
@@ -299,6 +298,60 @@
 
       a {
         color: $dark-gray;
+      }
+    }
+  }
+}
+
+.teaseretisalat.tile-teaser {
+  &.image-right {
+    .cmp-teaser {
+      .img-static {
+        div.cover {
+          position: relative;
+
+          img.cover {
+            min-width: 0;
+          }
+        }
+
+        @include respond-to-max($custom-width-tab) {
+          div.cover {
+            position: relative;
+
+            img.cover {
+              bottom: unset;
+              left: unset;
+              max-width: 100%;
+              position: relative;
+              right: unset;
+              top: unset;
+            }
+          }
+        }
+      }
+
+      @include respond-to-min($tablet) {
+        div.cover {
+          position: relative;
+
+          img.cover {
+            bottom: unset;
+            left: unset;
+            max-width: 100%;
+            position: relative;
+            right: unset;
+            top: unset;
+          }
+        }
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 1024px) {
+        align-items: flex-end;
+
+        .cmp-teaser__content {
+          min-height: 438px;
+        }
       }
     }
   }

@@ -46,10 +46,9 @@
     </div>
 </sly>
     <sly data-sly-test.dynamicBrand="${properties.tileBoxLayout == 'brandLogoCard' && properties.dynamicbrandcheck ? 'brands-logo with-slider with-slider' : ''}">
-        <div class="${dynamicBrand}  container-fix__width"
-             data-request-method="GET"
-             data-data-url=""
-             data-data-path="/content/dam/etisalat/prod-mock-assets/shop-by-brands-data.json"
+        <div class="${dynamicBrand}  container-fix__width" 
+             data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel"              
+             data-host-name="${commonModel.apiHostname}"                      
              data-category-id="${properties.brandcategoryid}">
             <div class="container container-center">
                 <div class="wst-main-headings">

@@ -691,10 +691,62 @@
       position: fixed;
       right: 0;
       top: 0;
-    }
-
-    .nv-modal-content {
+      width: 100%;
       height: 100%;
+      @include respond-to-min($tablet) {
+        width: toRem(377);
+      }
+      @include respond-to-min($desktop) {
+        width: toRem(600);
+      }
+      .nv-modal-title {
+        margin-right: 2rem;
+        margin-top: -1rem;
+        text-align: left;
+        @include respond-to-min($desktop) {
+          margin-top: -2rem;
+        }
+        @include rtlBlock(){
+          text-align: right;
+          margin-left: 2rem;
+          margin-right: 0;
+        }
+      }
+      .nv-modal-content {
+        height: 100%;
+        padding: toRem(24) 1rem;
+        border-radius: 0;
+        @include respond-to-min($desktop) {
+          padding: toRem(48) toRem(40);
+        }
+        .container {
+          width: 100%;
+          padding: 0;
+        }
+        .nv-modal-body {
+          overflow: hidden;
+          overflow-y: auto;
+          max-height: 80vh;
+          &::-webkit-scrollbar {
+            width: toRem(6);
+          }
+          &::-webkit-scrollbar-thumb {
+            border-radius: toRem(6);
+            background-color: $grey7;
+          }
+          &::-webkit-scrollbar-track {
+            border-radius: toRem(10);
+            background-color: transparent;
+          }
+          .offer-details-wrapper {
+            margin: 0;
+          }
+        }
+      }
+      .nv-modal-close svg {
+        right: 0;
+        top: 0;
+      }
     }
   }
 
@@ -885,10 +937,6 @@
 
   .nv-modal {
     &.right-modal {
-      .nv-modal-dialog {
-        left: 0;
-      }
-
       &.full-height-mob {
         .nv-modal-content {
           border-radius: 0;
@@ -928,6 +976,13 @@
     margin-bottom: 16px;
     padding: 40px 0 24px;
   }
+
+  .nv-col-lg-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
 }
 
 *[lang="ar"] *[dir="rtl"] .nv-plan-details-modal .nv-modal-title {
@@ -952,20 +1007,10 @@
     padding-top: 0 !important;
   }
 
-  .nv-modal.right-modal .nv-modal-dialog {
-    left: 0;
-  }
-
   .nv-modal-header.with-border.small-screen {
     border-bottom: 1px solid $light-sand-brown;
     margin-bottom: 8px;
     padding-bottom: 1rem !important;
-  }
-}
-
-@media (max-width: 1440px) {
-  .nv-modal.right-modal .nv-modal-title {
-    text-align: center;
   }
 }
 

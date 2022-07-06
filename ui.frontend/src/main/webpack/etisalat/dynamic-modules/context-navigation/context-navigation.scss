@@ -312,6 +312,18 @@
     }
   }
 
+  &.static-tile {
+    .all-tiles {
+      &.align-middle {
+        justify-content: center;
+      }
+    }
+
+    .replaced-svg {
+      stroke: none;
+    }
+  }
+
   // with slider
   &.with-slider {
     @include respond-to-min($desktop) {
@@ -491,6 +503,10 @@
 
   // with main text
   &.with-main-text {
+    @include respond-to-max($desktop-min) {
+      padding: 0;
+    }
+
     &.has-bg {
       padding-top: toRem(16);
       padding-bottom: toRem(16);
@@ -515,10 +531,6 @@
         column-gap: toRem(24);
         row-gap: toRem(52);
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      }
-
-      @include respond-to-max($desktop-min) {
-        margin-top: toRem(20);
       }
 
       @include respond-to-min($desktop-wide) {
@@ -789,6 +801,12 @@
           margin-bottom: toRem(46);
         }
       }
+
+      @include respond-to-max($tablet) {
+        > h3 + p {
+          margin-bottom: -20px;
+        }
+      }
     }
 
     .context-tile {
@@ -801,6 +819,7 @@
       .icon {
         height: toRem(71);
         margin: auto;
+        margin-top: 0;
         margin-bottom: toRem(35);
         width: toRem(71);
 
@@ -810,6 +829,10 @@
 
         div {
           width: 100%;
+
+          @include rtlBlock() {
+            direction: ltr;
+          }
         }
 
         img,
@@ -829,7 +852,8 @@
       height: toRem(32);
       margin-bottom: toRem(16);
 
-      h4 {
+      h4,
+      h5 {
         font-size: $font24;
         line-height: 1.3;
         margin-bottom: 0;
@@ -841,13 +865,8 @@
 
     .context-tile {
       .paragraph-styling {
-        height: toRem(54);
-        margin-bottom: toRem(16);
-
-        @include respond-to-max($tablet) {
-          height: toRem(24);
-          margin-bottom: toRem(24);
-        }
+        height: auto;
+        margin-bottom: 0;
 
         p {
           color: $steel-grey;
@@ -1308,6 +1327,7 @@
       right: toRem(-8);
       @include rtlBlock() {
         left: toRem(-12);
+        right: auto;
       }
       @include respond-to-min($desktop) {
         padding: toRem(3.25);
@@ -1389,6 +1409,16 @@
       margin-bottom: toRem(16) !important;
       @include respond-to-max($desktop-min) {
         margin-bottom: toRem(12) !important;
+      }
+    }
+
+    .wst-main-headings {
+      &.no-truncate {
+        height: auto;
+        margin-bottom: 0;
+        h4, h5 {
+          white-space: normal !important;
+        }
       }
     }
   }
@@ -1532,8 +1562,8 @@
 }
 
 // arabic language
-*[lang="ar"] {
-  *[dir="rtl"] {
+*[lang='ar'] {
+  *[dir='rtl'] {
     .tv-pack-tile .icon {
       margin-right: 0;
       margin-left: toRem(16);

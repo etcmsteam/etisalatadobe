@@ -64,6 +64,21 @@
   }
 }
 
+.section-banner {
+  .etisalatbreadcrumb {
+    display: none;
+    padding-left: 8.33%;
+
+    @include rtlBlock() {
+      padding-right: 8.33%;
+    }
+
+    @include respond-to-min($desktop-wide) {
+      display: block;
+    }
+  }
+}
+
 // starter-header
 .starter-header {
   padding: toRem(24) toRem(20) !important;
@@ -145,18 +160,20 @@
   }
 
   .secondary-header1 {
-    margin-top: $margin-step-1;
+    display: block;
+    line-height: normal;
+    margin-top: 5px;
   }
 
   @include respond-to-min($desktop) {
     .cmp-text {
       h3 {
+        margin-top: -6px;
+
         .text--orange_tag,
         .text--green {
           font-size: $font32;
           line-height: toRem(40);
-          margin-left: toRem(22);
-          margin-top: toRem(8);
 
           .body-copy4 {
             margin-left: toRem(-15);
@@ -165,9 +182,12 @@
       }
 
       p {
+        line-height: normal;
+
         .font--small {
           font-size: $font14;
-          margin-top: toRem(2);
+          margin-left: toRem(3);
+          margin-top: toRem(5);
         }
       }
     }
@@ -185,6 +205,10 @@
     @include rtlBlock() {
       width: 100%;
     }
+  }
+
+  .etisalatbreadcrumb {
+    margin-bottom: toRem(16);
   }
 
   @include rtlBlock {

@@ -477,7 +477,11 @@
       left: auto;
       position: absolute;
       right: 0;
-      width: toRem(288);
+      width: 100%;
+
+      @include respond-to-min($tablet) {
+        width: toRem(288);
+      }
 
       @include rtlBlock {
         left: 0;
@@ -532,18 +536,6 @@
     background-position: top center;
     background-size: 100% auto;
     height: 100%;
-
-    @include respond-to-min($desktop) {
-      min-height: toRem(503);
-    }
-
-    @include respond-to-max($desktop-min) {
-      min-height: toRem(700);
-    }
-
-    @include respond-to-max($custom-width-tab) {
-      min-height: toRem(594);
-    }
   }
 
   @include rtlBlock {
@@ -595,6 +587,10 @@
         margin-right: 0;
       }
     }
+  }
+
+  .cmp-container {
+    overflow: hidden;
   }
 }
 

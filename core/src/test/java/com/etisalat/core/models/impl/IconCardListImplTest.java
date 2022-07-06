@@ -2,7 +2,6 @@ package com.etisalat.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,6 +24,7 @@ class IconCardListImplTest {
 	private static final String CURRENT_PAGE = "/content/iconcardlist";
 	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
 	private static final String CARD_DATA = TEST_PAGE_CONTAINER_ROOT + "/iconcardlist";
+	private static final String CARD_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/iconcardlist1";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -34,7 +34,6 @@ class IconCardListImplTest {
 
 	@Test
 	void testGetIConCardListItems() {
-		Resource navItemRes = context.currentResource(CARD_DATA);
 		context.currentResource(CARD_DATA);
 		final String expectedCardTitle = "Card Title 1";
 		final String expectedCardLink = "/content/etisalat/ae/en/carrier-and-wholesale/help";
@@ -54,6 +53,15 @@ class IconCardListImplTest {
 		assertEquals(expectedCardSize, actualCardSize);
 		assertEquals(expectedLinkBehavior, actualLinkBehavior);
 
-	}		
+	}
+	
+	@Test
+	void testGetIConCardListItemsEmpty() {
+		context.currentResource(CARD_DATA1);
+		int expectedCardSize = 0;
+		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
+		int actualCardSize = iconCardList.getIconCardSize();
+		assertEquals(expectedCardSize, actualCardSize);
+	}
 
 }

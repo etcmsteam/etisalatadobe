@@ -1,14 +1,14 @@
+/* eslint-disable */
 import { swiperInit } from "../../swiperInitialize";
+
       $(document).ready(function () {
           if ($(".search-input").length <= 0) {
             return false;
           }
         var doc = document;
-        if (window.location.hostname !== "www.etisalat.ae") {
           document.querySelectorAll("#searchForm").forEach(function (item, index) {
-            item.dataset.secondarySearch = "https://www.etisalat.ae/b2c/guidedSearchRequest.service?locale=" + document.documentElement.lang + "-AE";
+            item.dataset.secondarySearch = "/b2c/guidedSearchRequest.service?locale=" + document.documentElement.lang + "-AE";
           });
-        }
 
         var instannceNum = 0;
         var MaxTextLimit = 200;
@@ -331,10 +331,10 @@ import { swiperInit } from "../../swiperInitialize";
         //Check search list item and return redirect URL
         var getURL = function (item) {
           var deviceConfigUrl = {
-            postpaid: "https://www.etisalat.ae/b2c/eshop/postpaidLine?productId=",
-            prepaid: "https://www.etisalat.ae/b2c/eshop/prepaidLine?productId=",
-            elife: "https://www.etisalat.ae/b2c/eshop/elifePlanConfiguration?productId=",
-            device: "https://www.etisalat.ae/b2c/eshop/device-configuration?productId=",
+            postpaid: "/b2c/eshop/postpaidLine?productId=",
+            prepaid: "/b2c/eshop/prepaidLine?productId=",
+            elife: "/b2c/eshop/elifePlanConfiguration?productId=",
+            device: "/b2c/eshop/device-configuration?productId=",
           };
 
           if (item.attributes["record.source"][0] === "ProductCatalog") {
@@ -706,26 +706,5 @@ import { swiperInit } from "../../swiperInitialize";
             }
           });
         }
-
-        //quick liks google analytics
-          var quickLinks = $(".result-default-view .list.quick-links ul");
-          if (quickLinks.length > 0) {
-            quickLinks = quickLinks.children;
-            for (var i = 0; i < quickLinks.length; i++) {
-              quickLinks[i].addEventListener("click", function (e) {
-                //google analyticss starts
-                if (typeof window.dataLayer !== "undefined") {
-                  window.dataLayer.push({
-                    event: "navigation",
-                    eventCategory: "navigation",
-                    eventAction: "left",
-                    eventLabel: "need_assistance", // replace space with "_"
-                    Link: this.innerText.trim().replace(/ /g, "_"), // replace space with "_"
-                  });
-                }
-                //google analyticss ends
-              });
-            }
-          }
       });
    

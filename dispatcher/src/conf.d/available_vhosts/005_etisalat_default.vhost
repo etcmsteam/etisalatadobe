@@ -43,6 +43,7 @@ Include conf.d/variables/custom.vars
 		Header append Vary User-Agent env=!dont-vary
 		# Prevent clickjacking
 		Header always append X-Frame-Options SAMEORIGIN
+		Header always set Surrogate-Control "max-age=0"
 	</Directory>
 	<Directory "${DOCROOT}">
 		AllowOverride None
@@ -74,6 +75,5 @@ Include conf.d/variables/custom.vars
 		RewriteRule ^/fivemobile/?$ /content/fivemobile/ae/en/index.html [PT,L]
 		RewriteRule ^/hiuapp/?$ /content/hiuapp/ae/en/index.html [PT,L]
 		RewriteRule ^/ewallet/?$ /content/ewallet/ae/en/index.html [PT,L]
-
 	</IfModule>
 </VirtualHost>

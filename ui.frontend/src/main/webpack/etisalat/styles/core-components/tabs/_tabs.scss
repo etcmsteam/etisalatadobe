@@ -11,6 +11,16 @@
     .container {
       width: auto;
     }
+
+    .cmp-tabs__tabpanel {
+      .cmp-teaser {
+        .cmp-teaser__description {
+          .heading-medium {
+            @include font-family-lato();
+          }
+        }
+      }
+    }
   }
 
   &.cmp-tab-expansion {
@@ -160,6 +170,25 @@
       }
     }
   }
+
+  &.cmp-tabs-align-center {
+    @include respond-to-min(768px) {
+      .cmp_tabs-swipper .page-nav {
+        justify-content: center;
+      }
+    }
+
+    @include respond-to-max(992px) {
+      .cmp_tabs-swipper .page-nav .swiper-slide,
+      .cmp_tabs-swipper .page-nav li {
+        align-items: center;
+        margin-right: 0;
+        min-height: unset;
+        padding-bottom: 0 !important;
+        width: auto !important;
+      }
+    }
+  }
 }
 
 .container-fix__fluid {
@@ -222,6 +251,21 @@
 }
 
 .cmp-teaser__description {
+  .p1,
+  .p2,
+  .p3,
+  .p4 {
+    p {
+      line-height: toRem(24);
+      margin-bottom: toRem(12);
+
+      @include respond-to-min($desktop) {
+        line-height: toRem(20);
+        margin-bottom: toRem(16);
+      }
+    }
+  }
+
   ul li {
     color: $dark-gray;
     font-size: $font20;
@@ -455,7 +499,7 @@
           border-width: 0 toRem(1) toRem(1) 0;
           content: "";
           line-height: 1;
-          padding: 4px !important;
+          padding: 3.5px !important;
           position: absolute;
           right: toRem(20);
           top: 50%;
@@ -473,7 +517,7 @@
 
     a span {
       display: inline-block;
-      margin-right: toRem(15);
+      margin-right: toRem(6.4);
 
       @include rtlBlock() {
         margin-left: toRem(15);
@@ -512,6 +556,7 @@
     background-color: $sand-white-50;
     font-size: $font16;
     margin: 0 toRem(-17);
+    padding-top: toRem(16);
 
     @include font-family-lato;
   }
@@ -601,6 +646,10 @@
     &.cmp_tabs--mobile {
       @include respond-to-max($desktop-min) {
         margin-top: toRem(16);
+      }
+
+      @include respond-to-max($tablet) {
+        padding-bottom: 20px;
       }
 
       .teaser {
@@ -911,7 +960,6 @@
       flex-direction: row-reverse;
       justify-content: flex-end;
       padding: toRem(16);
-      padding-right: 0 !important;
       text-align: left;
 
       @include font-family-Neotech;
@@ -952,6 +1000,7 @@
       border-right: toRem(4) solid transparent;
       font-weight: get-font-weight("light");
       padding: 0 toRem(22) 0 0 !important;
+      text-align: right !important;
     }
 
     &--active {
@@ -968,7 +1017,7 @@
         border-left: toRem(4) solid transparent;
         border-right: toRem(4) solid $main-green;
         font-weight: get-font-weight("light");
-        padding: 0 toRem(22) 0 0 !important;
+        padding-right: toRem(22) !important;
       }
 
       span {
@@ -1220,9 +1269,11 @@
     @include rtlBlock() {
       border-left: 0;
       border-right: 4px solid #719e19;
+      left: 0;
       right: -16px;
 
       @include respond-to-max($tablet) {
+        left: 0;
         right: -10px;
       }
     }
@@ -1284,6 +1335,10 @@
         justify-content: flex-end;
         padding: toRem(24) toRem(30);
         text-align: left;
+
+        @include rtlBlock() {
+          text-align: right;
+        }
 
         @include font-family-lato;
       }
@@ -1395,6 +1450,11 @@
     &.cmp-tab--get-more {
       .cmp-teaser__content {
         margin-right: toRem(24);
+
+        @include rtlBlock() {
+          margin-right: 0;
+          padding-right: 0;
+        }
       }
 
       .img-static {
@@ -1530,9 +1590,9 @@
       margin-bottom: toRem(16);
     }
 
-    @include respond-to-min($desktop) {
-      height: toRem(430);
+    @include respond-to-min($tablet) {
       margin: toRem(64) 0;
+      min-height: toRem(480);
     }
 
     h3 {
@@ -1548,6 +1608,16 @@
 
       @include respond-to-max($desktop-min) {
         position: initial;
+      }
+    }
+
+    .tab-description {
+      margin-bottom: 40px;
+      width: 48%;
+
+      @include respond-to-max($phone) {
+        margin-bottom: 0;
+        width: 100%;
       }
     }
 
@@ -1580,10 +1650,6 @@
       line-height: toRem(19);
 
       @include font-family-lato;
-    }
-
-    .cmp-tabs__tab--active img.cmp-tabs__active-icon {
-      display: none;
     }
 
     .cmp-tabs__tab {
@@ -1679,6 +1745,10 @@
       text-transform: uppercase;
 
       @include font-family-lato;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     .cmp-tabs__tablist {
@@ -1892,6 +1962,10 @@
   position: relative;
 
   @include font-family-lato;
+
+  @include rtlBlock() {
+    font-weight: 300;
+  }
 }
 
 .teaser_list ol {
@@ -1907,6 +1981,14 @@
     position: relative;
 
     @include font-family-lato;
+
+    @include rtlBlock() {
+      font-weight: 300;
+    }
+  }
+
+  & + h4 {
+    margin-top: toRem(12);
   }
 }
 

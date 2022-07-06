@@ -88,10 +88,14 @@
           font-size: $font16;
           line-height: toRem(26);
           margin: 0 0 toRem(4) 0;
-          padding-left: toRem(16);
+          padding-left: toRem(14);
           position: relative;
 
           @include font-family-lato;
+
+          @include rtlBlock() {
+            padding-left: 0;
+          }
         }
       }
 
@@ -218,6 +222,12 @@
     .img-static {
       height: toRem(240);
       width: 100%;
+
+      div.cover {
+        @include respond-to-min($desktop) {
+          width: calc(100% - 12px);
+        }
+      }
     }
 
     &__image {
@@ -527,6 +537,7 @@
 
         div.cover {
           position: relative;
+          width: 100%;
         }
       }
     }
@@ -536,6 +547,183 @@
 .nab-media-cta .cmp-teaser--mediacta {
   .cmp-teaser__content {
     padding-bottom: toRem(24);
+  }
+}
+
+// media cta variation
+.nab-media-cta {
+  .cmp-teaser {
+    padding: 0 toRem(12);
+
+    h4 {
+      @include respond-to-max($desktop-min) {
+        margin-bottom: toRem(12) !important;
+      }
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      padding: 0 toRem(16);
+    }
+
+    &__content {
+      padding-bottom: 0;
+    }
+
+    &__title {
+      color: $almost-black;
+    }
+  }
+
+  .image-right,
+  .image-left {
+    .cmp-teaser {
+      &__image,
+      .img-static {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: toRem(12);
+
+        @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+
+        @include rtlBlock {
+          padding-left: 0;
+          padding-right: toRem(12);
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
+        }
+      }
+
+      .img-static {
+        height: toRem(132);
+        max-height: toRem(132);
+        min-height: toRem(132);
+
+        @include respond-to-min($tablet) {
+          height: toRem(250);
+          max-height: toRem(250);
+          min-height: toRem(250);
+        }
+
+        @include respond-to-min($desktop) {
+          height: toRem(270);
+          max-height: toRem(270);
+          min-height: toRem(270);
+        }
+      }
+
+      img {
+        padding-left: 0;
+
+        @include rtlBlock {
+          padding-right: 0;
+        }
+      }
+    }
+
+    .cmp-teaser__content {
+      padding-right: toRem(64);
+
+      @include respond-to-max($desktop-min) {
+        padding: 0;
+      }
+
+      @include rtlBlock {
+        padding-left: toRem(64);
+        padding-right: 0;
+
+        @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+      }
+
+      .cmp-teaser {
+        &__pretitle {
+          color: $gray-text-color;
+          font-size: $font12;
+          letter-spacing: toRem(4);
+          line-height: toRem(26);
+          margin: 0 !important;
+          margin-bottom: toRem(6) !important;
+          margin-top: toRem(12) !important;
+          padding: 0;
+
+          @include respond-to-max($phone) {
+            letter-spacing: toRem(3.9);
+          }
+        }
+
+        &__description {
+          p {
+            color: $gray-text-color;
+            font-size: $font16;
+            line-height: toRem(26);
+            margin-bottom: toRem(8);
+          }
+
+          @include respond-to-max($desktop) {
+            p {
+              font-size: $font14;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .image-left {
+    .cmp-teaser {
+      &__image,
+      .img-static {
+        margin: 0;
+        padding-left: 0;
+        padding-right: toRem(12);
+
+        @include respond-to-max($desktop-min) {
+          padding: 0;
+        }
+
+        @include rtlBlock {
+          padding-left: toRem(12);
+          padding-right: 0;
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
+        }
+      }
+
+      &__content {
+        padding-left: toRem(64);
+        padding-right: 0;
+
+        @include respond-to-max($desktop-min) {
+          padding-left: 0;
+        }
+
+        @include rtlBlock {
+          padding-left: 0;
+          padding-right: toRem(64);
+
+          @include respond-to-max($desktop-min) {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .image-right {
+    .cmp-teaser {
+      div.cover {
+        @include respond-to-min($desktop) {
+          width: 98%;
+        }
+      }
+    }
   }
 }
 
@@ -608,6 +796,18 @@
       &:last-child {
         padding-right: 0;
       }
+
+      @include rtlBlock() {
+        &:first-child {
+          padding-left: toRem(12) !important;
+          padding-right: 0;
+        }
+
+        &:last-child {
+          padding-left: 0;
+          padding-right: toRem(12);
+        }
+      }
     }
   }
 
@@ -668,3 +868,39 @@
 }
 
 // image and text vartions en
+.Teaser-full-width {
+  .cmp-container {
+    margin: 0 auto;
+
+    @include respond-to-max($tablet) {
+      padding: 0 16px;
+    }
+
+    @include respond-to-min($tablet) {
+      width: toRem(756);
+    }
+
+    @include respond-to-min($desktop) {
+      width: toRem(976);
+    }
+
+    @include respond-to-min($desktop-wide) {
+      width: toRem(1224);
+    }
+  }
+}
+
+.cmp-teaser--mediacta-section {
+  .cmp-teaser__content {
+    .cmp-teaser__description {
+      .paragraph-styling {
+        ul li {
+          &::marker {
+            color: $gray1;
+            font-size: toRem(12.8);
+          }
+        }
+      }
+    }
+  }
+}

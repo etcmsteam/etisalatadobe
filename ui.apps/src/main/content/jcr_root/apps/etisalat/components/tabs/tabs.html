@@ -15,6 +15,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 
  <h3 data-sly-test="${properties.headingTitle}">${properties.headingTitle}</h3>
+ <div  class="tab-description" data-sly-test="${properties.headingDescription}">${properties.headingDescription @ context='html'}</div>
 	<div data-sly-use.tabs="com.adobe.cq.wcm.core.components.models.Tabs"
 	     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
 	     data-panelcontainer="${wcmmode.edit && 'tabs'}"
@@ -48,9 +49,16 @@
                     data-cmp-hook-tabs="tab">${tab.title}
                    <sly data-sly-use.tabimage="com.etisalat.core.models.TabImage"
                      data-sly-list.imageItem="${tabimage.tabImageItems}">
-                      <span data-sly-test="${tab.title == imageItem.linkText}">
-                        <img data-sly-test="${imageItem.linkUrl}" alt="${imageItem.linkText}" class="${!wcmmode.edit ? 'cmp-tabs__default-icon' : ''}" src="${imageItem.linkUrl}"/>
-						<img data-sly-test="${imageItem.linkUrlActive}" alt="${imageItem.linkText}" class="cmp-tabs__active-icon" src="${imageItem.linkUrlActive}"/>
+                      <span data-sly-test="${tabList.index == imageItemList.index}">
+                        <img data-sly-test="${imageItem.linkUrl}" alt="${imageItem.linkText}" loading="lazy" 
+                             data-sly-set.imageSrcPath="${imageItem.linkUrl}" 
+	                         data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+                             class="${!wcmmode.edit ? 'cmp-tabs__default-icon' : ''} ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
+                             src="${imageItem.linkUrl}"/>
+						<img data-sly-test="${imageItem.linkUrlActive}" alt="${imageItem.linkText}" loading="lazy" 
+						     data-sly-set.imageActiveSrcPath="${imageItem.linkUrlActive}" 
+	                         data-sly-use.activeImageModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageActiveSrcPath}" 
+						     class="cmp-tabs__active-icon ${activeImageModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${imageItem.linkUrlActive}"/>
                       </span>
                    </sly>
                  </li>

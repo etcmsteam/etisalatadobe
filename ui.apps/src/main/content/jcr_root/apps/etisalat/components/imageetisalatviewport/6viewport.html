@@ -35,13 +35,21 @@
           srcset="${imageViewport.retinaImage1920px2x}" media="(max-width: 1920px)">
     <source data-sly-test="${imageViewport.retinaImage1920px1x && imageViewport.retinaImage1920px2x}" 
           srcset="${imageViewport.retinaImage1920px1x} 1x, ${imageViewport.retinaImage1920px2x} 2x" media="(max-width: 1920px)"> 
-   <img data-sly-test="${imageViewport.retinaImage1920px1x && !imageViewport.retinaImage1920px2x}" 
-        src="${imageViewport.retinaImage1920px1x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
+   
+   <sly data-sly-set.lazyLoading="${properties.disableLazyLoading || properties.sling:resourceType == 'etisalat/components/etisalatherobanner' ? '' : 'lazy'}"/>
+   <img loading="${lazyLoading}" data-sly-test="${imageViewport.retinaImage1920px1x && !imageViewport.retinaImage1920px2x}" 
+        data-sly-set.imageSrcPath="${imageViewport.retinaImage1920px1x}" 
+	    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+        src="${imageViewport.retinaImage1920px1x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
         alt="${imageViewport.sixViewPortAltText || true}">
-   <img data-sly-test="${!imageViewport.retinaImage1920px1x && imageViewport.retinaImage1920px2x}" 
-        src="${imageViewport.retinaImage1920px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
+   <img loading="${lazyLoading}" data-sly-test="${!imageViewport.retinaImage1920px1x && imageViewport.retinaImage1920px2x}" 
+        data-sly-set.imageSrcPath="${imageViewport.retinaImage1920px2x}" 
+	    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+        src="${imageViewport.retinaImage1920px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
         alt="${imageViewport.sixViewPortAltText || true}">
-   <img data-sly-test="${imageViewport.retinaImage1920px1x && imageViewport.retinaImage1920px2x}" 
-        src="${imageViewport.retinaImage1920px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded" 
+   <img loading="${lazyLoading}" data-sly-test="${imageViewport.retinaImage1920px1x && imageViewport.retinaImage1920px2x}" 
+        data-sly-set.imageSrcPath="${imageViewport.retinaImage1920px2x}" 
+	    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+        src="${imageViewport.retinaImage1920px2x}" class="${!wcmmode.edit ? 'cover' : ''} lazyloaded ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
         alt="${imageViewport.sixViewPortAltText || true}">
 </template>

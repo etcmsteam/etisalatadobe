@@ -1,5 +1,5 @@
 <template  data-sly-template.WithGradientPurpleBg="${ @ properties,commonlinkmodel}">
-   <div class="promo-grid-tile-4-0 with-bg gradient-color gr-purple">
+   <div class="promo-grid-tile-4-0 with-bg gradient-color ${properties.gradientBgColor ? properties.gradientBgColor : 'gr-purple'}">
       <a data-sly-test="${properties.cardLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}" class="link-cover"></a>
       <div class="wave-pattern">
          <svg xmlns="http://www.w3.org/2000/svg" width="282" height="265" viewBox="0 0 282 265">
@@ -25,7 +25,10 @@
       <div class="promo-content">
          <div class="content-only">
             <div class="icon">
-               <img src="${properties.thumbnailIconReference}" alt="Play Video"/>
+               <img src="${properties.thumbnailIconReference}" alt="Play Video" loading="lazy" 
+                    data-sly-set.imageSrcPath="${properties.thumbnailIconReference}" 
+	                data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}"/>
             </div>
             <div data-sly-test="${properties.promopretitle}" class="wst-secondary-headings">
                <h4>${properties.promopretitle}</h4>

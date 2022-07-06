@@ -36,8 +36,6 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
     var selected = [];
     var hash;
 
-    $(".deeplink-tabs").closest(".tabs").addClass("recommended-plan-tabs");
-
     if (window.location.href.indexOf("#") > 0) {
       hash = window.location.href.substring(window.location.href.indexOf("#"));
     }
@@ -52,8 +50,6 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
       if (hash) {
         var current = $('[href="' + hash + '"]').parent();
         var swiperIndex = $(current).index();
-        $(".tab-config-deeplink .swiper-slide").removeClass("active");
-        $(".deeplink-tabs .deeplink-tab").removeClass("active");
         $(current).addClass("active");
         mySwiper.slideTo(swiperIndex, 500);
         $(hash).addClass("active");
@@ -191,6 +187,7 @@ export const RECOMMENDED_PRODUCT_CARDS = () => {
       .off("click")
       .on("click", function () {
         filtersMobileView(this);
+        return false;
       });
 
     // to make filters popup in-active ( hide )in mobile view

@@ -18,7 +18,10 @@
 
 <!-- End - hero-main-contents wrapper -->
 <div class="media-cta-image" data-sly-test="${properties.fileReference}">
-   <img src="${properties.fileReference}" alt="eStore_video4_588x250px">
+   <img src="${properties.fileReference}" alt="eStore_video4_588x250px" loading="lazy" 
+        data-sly-set.imageSrcPath="${properties.fileReference}" 
+	    data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	    class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}">
 </div>
 <div data-sly-test="${properties.youTubeUrl}" id="heroVideo" class="modal fade" role="dialog">
    <div class="modal-dialog">

@@ -1,3 +1,4 @@
+/* eslint-disable */
 
       function debounce(func, wait, immediate) {
         var timeout;
@@ -23,7 +24,7 @@
         var doc = document;
         var searchInput = doc.querySelectorAll(".search-input");
 
-        var searchCallUrl = doc.getElementById("searchForm") &&  doc.getElementById("searchForm").action;
+        var searchCallUrl = doc.getElementById("searchForm") &&  doc.getElementById("searchForm").action + "?locale=" + document.documentElement.lang + "-AE";;
         // https://www.etisalat.ae/b2c/autoSuggest.service?locale=en-AE
         var guidedSearchCall = doc.getElementById("searchForm") && doc.getElementById("searchForm").getAttribute("data-secondary-search");
         // https://qacms-uat.etisalat.ae/b2c/guidedSearchRequest.service?locale=en-AE
@@ -294,10 +295,10 @@
         //Check search list item and return redirect URL
         var getURL = function (item) {
           var deviceConfigUrl = {
-            postpaid: "https://www.etisalat.ae/b2c/eshop/postpaidLine?productId=",
-            prepaid: "https://www.etisalat.ae/b2c/eshop/prepaidLine?productId=",
-            elife: "https://www.etisalat.ae/b2c/eshop/elifePlanConfiguration?productId=",
-            device: "https://www.etisalat.ae/b2c/eshop/device-configuration?productId=",
+            postpaid: "/b2c/eshop/postpaidLine?productId=",
+            prepaid: "/b2c/eshop/prepaidLine?productId=",
+            elife: "/b2c/eshop/elifePlanConfiguration?productId=",
+            device: "/b2c/eshop/device-configuration?productId=",
           };
 
           if (item.attributes["record.source"][0] === "ProductCatalog") {
@@ -571,42 +572,6 @@
                 }
               });
           });
-
-        //quick liks google analytics
-        var quickLinks = doc.querySelectorAll(".search-items .list.quick-links ul")[instannceNum].children || "";
-        for (var i = 0; i < quickLinks.length; i++) {
-          quickLinks[i].addEventListener("click", function (e) {
-            //google analyticss starts
-            if (typeof window.dataLayer !== "undefined") {
-              window.dataLayer.push({
-                event: "navigation",
-                eventCategory: "navigation",
-                eventAction: "top",
-                eventLabel: "quick_links", // replace space with "_"
-                Link: this.innerText.trim().replace(/ /g, "_"), // replace space with "_"
-              });
-            }
-            //google analyticss ends
-          });
-        }
-        //trending liks google analytics
-        var trendingLinksParent = doc.querySelectorAll(".search-items .list.trends .menu-brand-wrapper")[instannceNum] || "";
-        var trendingLinks = trendingLinksParent.querySelectorAll(".content") || "";
-        for (var i = 0; i < trendingLinks.length; i++) {
-          trendingLinks[i].addEventListener("click", function (e) {
-            //google analyticss starts
-            if (typeof window.dataLayer !== "undefined") {
-              window.dataLayer.push({
-                event: "navigation",
-                eventCategory: "navigation",
-                eventAction: "top",
-                eventLabel: "trending_search",
-                Link: this.children[0].innerText.trim().replace(/ /g, "_"), // replace space with "_"
-              });
-            }
-            //google analyticss ends
-          });
-        }
       });
 
       // Paragraph Character Text Limit on Search Result

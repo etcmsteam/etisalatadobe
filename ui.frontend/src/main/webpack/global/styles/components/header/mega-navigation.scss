@@ -1372,7 +1372,6 @@
   .nav-footer {
     align-items: center;
     border-bottom: none;
-    padding: 0.5rem 1rem;
 
     .link-icon {
       height: 14px;
@@ -1384,6 +1383,7 @@
 
     .nav-inline-link {
       color: #353738;
+      padding: toRem(20) toRem(16);
     }
   }
 }
@@ -1400,7 +1400,6 @@
 
     .nav-footer {
       align-items: center;
-      padding: 0.5rem 1rem 0.5rem 0;
     }
   }
 
@@ -1489,7 +1488,11 @@
 
   &.active {
     border-left: 4px solid #719e19;
-    color: #719e19;
+    color: #719e19 !important;
+    @include rtlBlock {
+      border-right: 4px solid #719e19;
+      border-left-width: 0;
+    }
   }
 }
 
@@ -2218,11 +2221,6 @@
   }
 }
 
-.main-menu-mobile .nav-footer-inline-wrapper {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
 .white-bg {
   background-color: $white;
 }
@@ -2356,6 +2354,12 @@ div.cover {
             padding-left: toRem(12);
             padding-right: toRem(12);
             width: toRem(756);
+          }
+
+          @media only screen and (orientation: landscape) {
+            @include respond-to-min-max($desktop, $tablet) {
+              width: 100%;
+            }
           }
 
           @media (min-width: 992px) {
@@ -2639,12 +2643,6 @@ div.cover {
       display: flexbox;
       display: flex;
       -ms-flex-align: center;
-
-      @include rtlBlock() {
-        @include respond-to-max($tablet) {
-          flex-direction: row-reverse;
-        }
-      }
     }
 
     .panel-group {
@@ -2655,7 +2653,9 @@ div.cover {
 
     .hamburger {
       float: left;
-      margin-left: toRem(16) !important;
+      @include rtlBlock {
+        float: right;
+      }
 
       @include respond-to-min($tablet) {
         margin-left: toRem(8) !important;
@@ -2697,4 +2697,8 @@ div.cover {
       }
     }
   }
+}
+
+.nav-drill.main-menu-slide .nav-item .nav-link {
+   border-bottom: 0.09375rem solid $grey5;
 }

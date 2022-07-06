@@ -85,6 +85,17 @@
                     background-size: 24px;
                 }
             }
+
+            .media-icon-check {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                @include rtlBlock() {
+                    right: 0;
+                    top: 3px;
+                }
+            }
         }
 
         
@@ -160,21 +171,6 @@
     &.with-bg {
         background-color: #f7f8f4;
     }
-    &:after {
-        content: "";
-        position: absolute;
-        width: 148px;
-        height: 160px;
-        z-index: 0;
-        right: -8px;
-        top: 0;
-        background-size: 148px;
-        @media (min-width: 992px) {
-            width: 212px;
-            height: 220px;
-            background-size: 212px;
-        }
-    }
     &.reverse {
         .mod-wrap {
             .mod-img {
@@ -238,7 +234,7 @@
                 height: 100%;
                 margin-right: 12px;
                 order: 1;
-                width: 50%;
+                width: 54.5%;
             }
         }
     
@@ -296,7 +292,7 @@
         margin-bottom: 1.5rem;
         margin-top:toRem(24);
         @media (min-width: 992px) {
-            margin-bottom: 3rem;
+            margin-bottom: toRem(46.4);
         }
     }
 
@@ -548,6 +544,29 @@
   }
 }
 
+.media-cta-plans-bg-pattern {
+    .mediactaplans {
+        .media-cta-module-section {
+            &:after {
+                content: "";
+                position: absolute;
+                width: 148px;
+                height: 160px;
+                z-index: 0;
+                right: -8px;
+                top: 0;
+                background: url("../../clientlib-etisalat/resources/images/background-pattern-en.png") no-repeat;
+                background-size: 148px;
+                @media (min-width: 992px) {
+                    width: 212px;
+                    height: 220px;
+                    background-size: 212px;
+                }
+            }
+        }
+    }
+}
+
 // *************************************
 // arabic overides
 // *************************************
@@ -632,21 +651,6 @@
         }
 
         .media-cta-module-section {
-            &:after {
-                left: -8px; 
-                right: auto;
-                z-index: 0;
-                content: "";
-                width: 148px;
-                height: 160px;
-                background-size: 148px;
-                @media (min-width: 992px) {
-                    width: 212px;
-                    height: 220px;
-                    background-size: 212px;
-                }
-
-            }
             &.reverse {
                 right: -8px;
                 left: auto;
@@ -678,6 +682,28 @@
                         width: 212px;
                         height: 220px;
                         background-size: 212px;
+                    }
+                }
+            }
+        }
+
+        .media-cta-plans-bg-pattern {
+            .mediactaplans {
+                .media-cta-module-section {
+                    &:after {
+                        left: -8px; 
+                        right: auto;
+                        z-index: 0;
+                        content: "";
+                        width: 148px;
+                        height: 160px;
+                        background: url("../../clientlib-etisalat/resources/images/background-pattern-ar.png") no-repeat;
+                        background-size: 148px;
+                        @media (min-width: 992px) {
+                            width: 212px;
+                            height: 220px;
+                            background-size: 212px;
+                        }
                     }
                 }
             }

@@ -39,7 +39,7 @@ Paragraph styling for p1 - p4
         color: $gray-text-color !important;
       }
 
-      a {
+      a:not(.cmp-teaser__action-link) {
         color: $main-green;
 
         &:hover {
@@ -49,7 +49,7 @@ Paragraph styling for p1 - p4
     }
 
     &.p1 p,
-    &.p1 a,
+    &.p1 a:not(.cmp-teaser__action-link),
     &.p1 ul li,
     &.p1 ol li {
       font-size: 1rem !important;
@@ -62,9 +62,7 @@ Paragraph styling for p1 - p4
     }
 
     &.p2 p,
-    &.p2 a,
-    &.p2 ul li,
-    &.p2 ol li {
+    &.p2 a:not(.cmp-teaser__action-link) {
       font-size: 14px !important;
       line-height: 20px !important;
 
@@ -74,8 +72,19 @@ Paragraph styling for p1 - p4
       }
     }
 
+    &.p2 ul li,
+    &.p2 ol li {
+      font-size: 14px !important;
+      line-height: 24px !important;
+
+      @include respond-to-min($desktop) {
+        font-size: 1rem !important;
+        line-height: 1.5rem !important;
+      }
+    }
+
     &.p3 p,
-    &.p3 a,
+    &.p3 a:not(.cmp-teaser__action-link),
     &.p3 ul li,
     &.p3 ol li {
       font-size: 12px !important;
@@ -83,12 +92,12 @@ Paragraph styling for p1 - p4
 
       @include respond-to-min($desktop) {
         font-size: 14px !important;
-        line-height: 20px !important;
+        line-height: 24px !important;
       }
     }
 
     &.p4 p,
-    &.p4 a,
+    &.p4 a:not(.cmp-teaser__action-link),
     &.p4 ul li,
     &.p4 ol li {
       font-size: 12px !important;
@@ -100,7 +109,7 @@ Paragraph styling for p1 - p4
 general Paragraph styling
 *************************************************/
   &.paragraph-styling {
-    a {
+    a:not(.cmp-teaser__action-link) {
       color: $main-green;
       font-size: 14px;
       line-height: 24px;

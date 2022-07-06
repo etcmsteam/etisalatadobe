@@ -54,4 +54,14 @@ public class BillExplainerModelTest {
     String actualBillHistoryJsonData = item.getStepsData();
     assertEquals(expectedJsonData, actualBillHistoryJsonData);
   }
+  
+  @Test
+  void testBillExplainerDamPath() {
+    final String expectedBillExpalinerDAMPath = "/content/dam/etisalat/cx-billing/assets/img/explainer";
+
+    Resource resource = context.resourceResolver().getResource(BILL_HISTORY_DATA);
+    BillExplainerModel item = resource.adaptTo(BillExplainerModel.class);
+    String actualBillExpalinerDAMPath = item.getBillExplainerDAMPath();
+    assertEquals(expectedBillExpalinerDAMPath, actualBillExpalinerDAMPath);
+  }
 }

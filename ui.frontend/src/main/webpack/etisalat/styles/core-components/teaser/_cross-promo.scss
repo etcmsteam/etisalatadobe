@@ -3,6 +3,7 @@
 /* stylelint-disable max-nesting-depth */
 /* stylelint-disable order/properties-alphabetical-order */
 /* stylelint-disable no-descending-specificity */
+/* stylelint-disable no-duplicate-selectors */
 .carrers-feature {
   .image-right .cmp-teaser__content {
     @include respond-to-min($desktop) {
@@ -57,28 +58,28 @@
   }
 }
 
-.teaseretisalat {
-  &.tile-teaser {
-    .cmp-teaser__content {
-      .cmp-teaser__pretitle {
+.tile-teaser {
+  .cmp-teaser__content {
+    .cmp-teaser__pretitle {
+      font-size: toRem(12);
+      font-weight: 700;
+      margin-bottom: toRem(4);
+      letter-spacing: toRem(4);
+      line-height: toRem(14);
+
+      @include respond-to-min($desktop) {
         font-size: toRem(12);
-        font-weight: 700;
-        margin-bottom: toRem(4);
-        letter-spacing: toRem(4);
-        line-height: toRem(14);
-
-        @include respond-to-min($desktop) {
-          font-size: toRem(14);
-          line-height: toRem(20);
-        }
-      }
-
-      .cmp-teaser__action-container {
-        margin-bottom: 0;
+        line-height: toRem(20);
       }
     }
-  }
 
+    .cmp-teaser__action-container {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.teaseretisalat {
   &.link__arrow {
     .cmp-teaser__action-container {
       .cmp-teaser__action-link {
@@ -103,7 +104,21 @@
 .text-width-100 {
   .cmp-teaser {
     &__content {
-      width: 70% !important;
+      width: 65% !important;
+
+      @media (max-width: 960px) {
+        width: 100% !important;
+      }
+
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          width: 50% !important;
+        }
+      }
+
+      @media (min-width: 961px) and (max-width: 1247px) {
+        width: 50% !important;
+      }
     }
   }
 }
@@ -177,6 +192,12 @@
         width: 50%;
       }
 
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          width: 50%;
+        }
+      }
+
       @include respond-to-min($desktop-wide) {
         width: 33%;
       }
@@ -216,7 +237,7 @@
       content: "";
       height: 100%;
       left: 0;
-      opacity: 0.4;
+      opacity: 0.7;
       position: absolute;
       top: 0;
       width: 100%;
@@ -295,6 +316,30 @@
         position: relative;
         right: 0;
         width: 100%;
+      }
+
+      @media only screen and (orientation: landscape) {
+        @include respond-to-min-max($desktop, $tablet) {
+          position: absolute;
+          right: 40px;
+          top: 33%;
+          width: 280px;
+
+          @include rtlBlock() {
+            left: toRem(40);
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+
+  &.cmp-teaser--aqua-bg {
+    .cmp-teaser {
+      &::before,
+      &::after {
+        background: url("../resources/images/bg-cards/plan-cards-illustration_flip.svg") left 0 no-repeat;
+        background-size: contain;
       }
     }
   }
@@ -660,12 +705,12 @@
 
   &.teaser--pattern__bg {
     .cmp-teaser {
-      align-items: flex-end;
+      align-items: center;
       display: flex;
       flex-direction: column-reverse;
 
       @include respond-to-min($tablet) {
-        align-items: flex-end;
+        align-items: center;
         flex-direction: row-reverse;
       }
 
@@ -677,6 +722,16 @@
       .img-static {
         display: flex;
         flex-direction: column-reverse;
+      }
+
+      .img-static {
+        div.cover {
+          picture {
+            img.cover {
+              min-width: auto;
+            }
+          }
+        }
       }
 
       p {
@@ -691,27 +746,18 @@
       }
 
       &__title {
-        margin-top: 50px;
-
         @include respond-to-max($tablet) {
           font-size: $font26;
         }
       }
 
       &__content {
-        padding-top: 0;
-
-        @include respond-to-min($tablet) {
-          padding-bottom: 9rem;
-          width: 70%;
-        }
+        padding-bottom: 2rem;
+        padding-top: 2rem;
 
         @include respond-to-min($desktop) {
-          padding-bottom: 7rem;
-        }
-
-        @include respond-to-min($desktop-wide) {
-          padding-bottom: 12rem;
+          padding-bottom: 4rem;
+          padding-top: 2rem;
         }
       }
 
@@ -751,10 +797,16 @@
     content: "";
     height: 100%;
     left: 0;
-    opacity: 0.4;
+    opacity: 0.7;
     position: absolute;
     top: 0;
     width: 100%;
+
+    @include rtlBlock {
+      background: url("../resources/images/bg-cards/plan-cards-illustration.svg") right 0 no-repeat;
+      background-size: contain;
+      opacity: 0.7;
+    }
   }
 
   &::after {
@@ -806,16 +858,31 @@
 }
 
 $prefix: "cmp-teaser";
+$grid-spacing: 12px;
 
 .cmp-teaser--multicol {
-  @include respond-to-min($desktop) {
-    .aem-Grid .aem-GridColumn {
+  .aem-Grid .aem-GridColumn {
+    padding-top: $grid-spacing;
+
+    @include respond-to-min($desktop) {
+      padding-top: 0;
+
       &:first-child {
-        padding-left: 0;
+        padding: 0 $grid-spacing 0 0;
       }
 
       &:last-child {
-        padding-right: 0;
+        padding: 0 0 0 $grid-spacing;
+      }
+
+      @include rtlBlock() {
+        &:last-child {
+          padding: 0 $grid-spacing 0 0;
+        }
+
+        &:first-child {
+          padding: 0 0 0 $grid-spacing;
+        }
       }
     }
   }
@@ -902,6 +969,16 @@ $prefix: "cmp-teaser";
 
     &::before {
       display: none;
+    }
+
+    @include rtlBlock() {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        display: block;
+      }
     }
   }
 

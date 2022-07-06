@@ -22,27 +22,15 @@
       <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
    </div>
    <div class="tile-box-body">
-      <h2 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h2>
+      <h2 data-sly-test="${tileModel.tiletitle}" data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h2>
       ${tileModel.text @ context='html'}                        
    </div>
    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
       <div data-sly-test="${tileModel.ctatext}" class="learn-more-wrap">
-          <sly data-sly-test="${properties.enableOnClick}">
-              <a href="#"
-                 class="btn-text btn-green learn-more"
-                 target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-                 onclick="${properties.onclickfunction @ context='attribute'}"
-                 data-insurance-type="${properties.insuranceType}"
-                 data-channel="${properties.channel}"
-                 title="${tileModel.ctatext}">${tileModel.ctatext}</a>
-          </sly>
-          <sly data-sly-test="${!properties.enableOnClick}">
-              <a href="${tileModel.tileCTALinkSameWindow}"
-                 class="btn-text btn-green learn-more"
-                 target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-                 title="${tileModel.ctatext}">${tileModel.ctatext}</a>
-          </sly>
-
+          <a href="${tileModel.tileCTALinkSameWindow}"
+             class="btn-text btn-green learn-more"
+             target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
+             title="${tileModel.ctatext}">${tileModel.ctatext}</a>
       </div>
    </sly>
   <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"

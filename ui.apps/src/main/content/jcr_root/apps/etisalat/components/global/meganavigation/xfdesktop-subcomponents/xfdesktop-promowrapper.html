@@ -5,7 +5,11 @@
             <a data-sly-set.tileLinkURL="${promoObj.linkURL}" href="${promoObj.linkURL}" target="${promoObj.linkTarget}" data-sly-unwrap="${!tileLinkURL}">
 	          <div class="tile">
 	            <div class="cover">
-	               <img data-sly-test="${promoObj.resourceType == 'etisalat/components/teaser'}" src="${promoObj.fileReference}" loading="lazy" class="cover lazyloaded"
+	               <img data-sly-test="${promoObj.resourceType == 'etisalat/components/teaser'}" 
+	                   data-sly-set.imageSrcPath="${promoObj.fileReference}" 
+	                   data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}"
+	                   src="${promoObj.fileReference}" loading="lazy" 
+	                   class="cover lazyloaded  ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
 	                   alt="m-menu-new-freedom-en-377x325">
 	                <sly data-sly-test="${promoObj.resourceType == 'etisalat/components/teaseretisalat'}" 
 	                     data-sly-resource="${promoObj.teaserResource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>            

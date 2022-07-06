@@ -130,6 +130,7 @@ public class TileModel {
    */
   public String getTileCTALinkSameWindow() {
     return CommonUtility.appendHtmlExtensionToPage(resourceResolver, tileCTALinkSameWindow);
+
   }
 
   /**
@@ -251,5 +252,7 @@ public class TileModel {
     }
     return StringUtils.EMPTY;
   }
+
+
 
 }

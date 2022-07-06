@@ -5,7 +5,7 @@
    <sly data-sly-test.threeTilePlus="${container.items.size > 3 ? 'three-plus-tiles' : ''}"></sly>
    <sly data-sly-test.typeOfSwiper="${properties.swiperbehaviour}"></sly>
    <sly data-sly-test.arrowAlign="${properties.arrowAlignBottom == 'true'? 'arrow-position-bottom' : ''}"></sly> 
-   <sly data-sly-set.withSlider="${typeOfSwiper} with-slider ${properties.contextNavLoadMore ? '' : 'view-all-tiles'} ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus} ${arrowAlign}"></sly>
+   <sly data-sly-set.withSlider="${typeOfSwiper} ${typeOfSwiper != 'static-tile' ? 'with-slider' : ''} ${properties.contextNavLoadMore ? '' : 'view-all-tiles'} ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus} ${arrowAlign}"></sly>
 
    <div data-component="cmp-context-navigation" class="context-navigation-4-0 ${properties.tileBoxLayout == 'main-text-4' ? 'main-text-slider-4-0-0' : ''} ${properties.tileBoxLayout == 'main-text' ? 'main-text-slider' : ''} ${properties.mainContextTitle ? 'with-main-text' : withSlider}">
 	  <div class="container">
@@ -29,20 +29,20 @@
 	      </div>
 	    </div>
 	    <div data-sly-test="${properties.mainContextTitle}" class="row">
-	      <div class="content col-xs-12 col-md-3">
+	      <div class="content col-xs-12 col-sm-3 col-md-3">
 	        <div class="wst-main-headings">
-	          <h3>${properties.mainContextTitle}</h3>
+	          <h4>${properties.mainContextTitle}</h4>
 	        </div>
 	        <div data-sly-test="${properties.mainContextDesc}" class="paragraph-styling ul-list-cms">
-	          <div class=""> ${properties.mainContextDesc @ context="html"} </div>
+	          <div class="p2"> ${properties.mainContextDesc @ context="html"} </div>
 	        </div>
 	      </div>
-	      <div class="all-tiles col-xs-12 col-md-9">
+	      <div class="all-tiles col-xs-12 col-sm-9 col-md-9">
 	        <div class="context-tile" data-sly-repeat="${container.items}" 
 	             data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
 	      </div>
 	    </div>
-	    <sly data-sly-test="${!properties.mainContextTitle}">
+	    <sly data-sly-test="${!wcmmode.edit && !properties.mainContextTitle}">
 	       <!-- Control Arrows for context nav-->
                   <sly data-sly-test="${properties.controlDisplayBehavior=='arrow'}">
                      <sly data-sly-use.controlTemplate="/apps/etisalat/components/tilecontainer/controls.html"

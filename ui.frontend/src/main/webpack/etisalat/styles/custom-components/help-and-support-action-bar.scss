@@ -1,7 +1,7 @@
 .row-context-nav {
   background-color: $sand-white;
   position: relative;
-
+  
   .col-lg-1,
   .col-lg-2,
   .col-lg-3,
@@ -50,8 +50,8 @@
   .col-xs-10,
   .col-xs-11,
   .col-xs-12 {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .spacer {
@@ -64,6 +64,8 @@
 
   > .container-fluid {
     background-color: $sand-white;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .cmp-icon-card-four-item {
@@ -83,6 +85,9 @@
 
         .rect-responsive {
           padding-bottom: 65%;
+          @media(max-width: $screen-lg-max) and (min-width: $screen-md-max) {
+            padding-bottom: 100%;
+          }
           @media (min-width: $screen-lg-max) {
             min-height: 145px !important;
           }
@@ -469,9 +474,21 @@
     background-color: $white;
     position: relative;
 
-    @include respond-to-max($phone) {
+    @include respond-to-max($custom-width-tab) {
       background-color: $main-green;
       border-top: $border-step-1 solid $white;
+    }
+
+    @include respond-to-max($tablet) {
+      margin-left: 8.33% !important;
+      margin-right: 8.33% !important;
+      width: 83.33% !important;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      margin-left: 8.33% !important;
+      margin-right: 8.33% !important;
+      width: 83.33% !important;
     }
 
     .cmp-text {
@@ -487,11 +504,11 @@
         pointer-events: none;
       }
 
-      @include respond-to-max($phone) {
+      @include respond-to-max($custom-width-tab) {
         line-height: toRem(59);
 
         .cmp-link__text {
-          color: $white;
+          color: $white !important;
           font-size: $font12;
         }
 
@@ -505,6 +522,11 @@
           right: toRem(30);
           top: toRem(26);
           transform: rotate(-135deg);
+
+          @include rtlBlock () {
+            right: auto;
+            left: toRem(28);
+          }
         }
       }
 
@@ -512,10 +534,13 @@
         color: $main-green;
         font-size: $font18;
 
-        @include font-family-Neotech-roboto();
+        @include font-family-Neotech-ge();
 
         @include respond-to-max($desktop-wide) {
-          font-size: $font16;
+          font-size: $font18;
+        }
+        @include respond-to-max($tablet) {
+          font-size: $font12;
         }
       }
     }

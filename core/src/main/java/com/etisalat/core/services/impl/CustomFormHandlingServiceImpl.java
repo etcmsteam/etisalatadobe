@@ -4,17 +4,15 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-
-import com.etisalat.core.constants.AEConstants;
-import com.etisalat.core.constants.PageConstants;
 
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.etisalat.core.constants.AEConstants;
+import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.services.CustomFormHandlingService;
 import com.etisalat.core.util.CommonUtility;
 
@@ -45,12 +43,7 @@ public class CustomFormHandlingServiceImpl implements CustomFormHandlingService 
             LOG.debug("Custom Form Handling API Request for form {} response code is  {}", formName, responseCode);
             connection.disconnect();
             return responseCode;
-        }
-        catch(SocketTimeoutException e) {
-            LOG.error("Custom Form Handling API Request for form {} Time Out {} ", formName, e.getMessage());
-            return HttpURLConnection.HTTP_CLIENT_TIMEOUT ;
-        }
-        catch(IOException e) {
+        } catch(IOException e) {
             LOG.error("Custom Form Handling API Request for form {}  Service Connection Failed {}",formName, e.getMessage());
             return HttpURLConnection.HTTP_NOT_FOUND;
         }

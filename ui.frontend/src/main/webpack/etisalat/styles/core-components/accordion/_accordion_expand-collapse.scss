@@ -21,19 +21,8 @@
     margin-right: 0;
   }
 
-
-
-  // padding-left: 2rem!important;
-  // padding-right: 2rem !important;
-  padding: 2rem 0 !important;
-
-  @include respond-to-max($tablet) {
-    padding: toRem(16) 0 !important;
-  }
-
-  @include respond-to-max($phone) {
-    padding: toRem(9.6) 0 !important;
-  }
+  margin-bottom: toRem(24);
+  padding: 0 !important;
 
   @include respond-to-max($tablet) {
     h3 {
@@ -72,13 +61,12 @@
   .cmp-text {
     h3 {
       font-size: $font20;
-
-      @include respond-to-max($phone) {
-        line-height: toRem(27);
-      }
+      line-height: toRem(28);
+      margin-bottom: 1rem;
 
       @include respond-to-max($tablet) {
         font-size: $font16;
+        margin-top: 0;
       }
     }
 
@@ -311,7 +299,6 @@
           color: $almost-black;
           font-size: $font14;
           line-height: toRem(28);
-          width: toRem(208);
         }
       }
     }
@@ -341,8 +328,7 @@
           color: $steel-grey;
           font-size: $font14 !important;
           line-height: toRem(32);
-          padding: 0 !important;
-          padding: toRem(12) toRem(32) toRem(10.4) 0 !important;
+          padding: toRem(12) toRem(4) toRem(12) 0 !important;
         }
       }
     }
@@ -407,18 +393,9 @@
   > .cmp-container {
     background: $sand-white-50;
     border-radius: $border-radius-step-1;
-    margin-bottom: toRem(24);
     min-height: toRem(140);
     overflow: hidden;
     position: relative;
-
-    @include respond-to-max($phone) {
-      margin-bottom: 0;
-    }
-
-    @include respond-to-max($tablet) {
-      margin-bottom: 0;
-    }
   }
 
   > .cmp-container::before {
@@ -560,15 +537,25 @@
 
     &__item {
       border-bottom: none;
+      z-index: 1;
 
       &__header {
         padding-top: toRem(6);
       }
     }
 
-    // .cmp-accordion__button {
-    //     width: auto;
-    // }
+    .cmp-accordion__button {
+      @media (max-width: 1200px) {
+        & .accordion-top-view .less,
+        & .accordion-top-view .more {
+          display: none;
+        }
+      }
+
+      & .cmp-accordion__icon {
+        transition: all 0.3s ease-in-out;
+      }
+    }
 
     &__title {
       color: $almost-black;
@@ -601,7 +588,8 @@
       position: relative;
       right: toRem(5);
       top: toRem(3);
-      transform: rotate(225deg);
+      transform: translateY(-20%) rotate(225deg);
+      transition: all 0.3s ease-in-out;
       z-index: 10;
 
       // margin-top: 1rem;
@@ -642,11 +630,11 @@
       // width: 10px;
       // height: 10px;
       top: toRem(5);
-      transform: rotate(45deg);
+      transform: rotate(45deg) translateY(50%);
 
       @include rtlBlock() {
         float: left;
-        transform: rotate(225deg);
+        transform: rotate(225deg) translateY(50%);
       }
     }
 
@@ -657,18 +645,12 @@
 
     &__itemdesc {
       font-size: $font18;
+      line-height: toRem(24);
       margin-bottom: toRem(24);
       margin-top: toRem(24);
 
-      @include respond-to-max($phone) {
-        font-size: $font16;
-        margin-bottom: toRem(32);
-        margin-top: toRem(32);
-      }
-
       @include respond-to-max($tablet) {
         font-size: $font16;
-        margin-bottom: toRem(32);
         margin-top: toRem(16);
       }
 
@@ -677,23 +659,6 @@
         margin-top: toRem(88);
         position: absolute;
         right: 0;
-      }
-    }
-
-    &__panel--expanded {
-      margin-left: toRem(10);
-      margin-top: toRem(20);
-
-      @include rtlBlock() {
-        margin-top: toRem(54);
-      }
-
-      @include respond-to-max($phone) {
-        margin-top: toRem(0);
-      }
-
-      @include respond-to-max($tablet) {
-        margin-top: toRem(-16);
       }
     }
   }
@@ -717,11 +682,15 @@
         font-weight: get-font-weight("medium");
         letter-spacing: toRem(2);
         line-height: toRem(20);
-        margin-bottom: toRem(60);
+        margin-bottom: toRem(36);
         padding: toRem(20) 0 0 toRem(15);
         position: relative;
         text-transform: uppercase;
         transition: all 0.3s ease-in-out;
+
+        @include respond-to-max($tablet) {
+          margin-bottom: 0;
+        }
 
         @include font-family-lato();
 
@@ -729,6 +698,54 @@
           text-decoration: underline;
         }
       }
+    }
+  }
+
+  @include rtlBlock() {
+    .accordion {
+      padding: 0 toRem(36);
+
+      @media (max-width: $desktop) {
+        padding-left: toRem(16);
+        padding-right: toRem(16);
+      }
+
+      & .cmp-accordion__title {
+        margin: 1rem 0;
+      }
+
+      & .cmp-accordion__icon {
+        margin-top: toRem(25.2);
+      }
+
+      & .cmp-accordion__itemdesc {
+        margin-bottom: 1.5rem;
+        position: relative;
+        text-align: right;
+      }
+
+      & .cmp-accordion__panel {
+        ul,
+        ol {
+          margin-right: 1rem;
+
+          & li {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cmp-accordion__header {
+  padding-top: 0;
+}
+
+.container-fix__width {
+  .cmp-accordion--tile-expansion {
+    .cmp-container .container {
+      max-width: 100%;
     }
   }
 }

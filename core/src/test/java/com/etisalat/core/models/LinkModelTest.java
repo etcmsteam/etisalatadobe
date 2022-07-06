@@ -11,7 +11,7 @@ import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 @ExtendWith(AemContextExtension.class)
-public class LinkModelTest {
+class LinkModelTest {
 	
  private final AemContext context = new AemContext();
 	
@@ -29,7 +29,7 @@ public class LinkModelTest {
 	}
 	
 	@Test
-	public void testLinkItems() {
+	void testLinkItems() {
 	 final String expectedLinkText = "Learn More";
 	 final String expectedLinkUrl = "https://www.etisalat.ae/b2c/quick-pay.html";
 	 final String expectedAltText = "ContactAltText";
@@ -39,6 +39,7 @@ public class LinkModelTest {
 	 final String imgUrl = "/content/dam/etisalat/ae/en/sample.jpg";
 	 final String expectedFileReference = "/content/dam/etisalat/ae/en/gaming-desktop_tcm313-225320.jpg";
 	 final String expectedEnableIcon = "true";
+	 final String expectedIconClassName = "andriod";
 	 Resource resource = context.resourceResolver().getResource(CONTENT_LINK);
 		
 	 LinkModel item = resource.adaptTo(LinkModel.class);
@@ -58,10 +59,11 @@ public class LinkModelTest {
 	 assertEquals(expectedLinkUrlActive, item.getLinkUrlActive());
 	 item.setImageResource(item.getImageResource());
 	 assertEquals(expectedFileReference,
-				item.getImageResource().getValueMap().get("fileReference", String.class));
-
-		item.setEnableIcon(expectedEnableIcon);
-		assertEquals(expectedEnableIcon, item.getEnableIcon());
+     item.getImageResource().getValueMap().get("fileReference", String.class));
+	 item.setEnableIcon(expectedEnableIcon);
+	 assertEquals(expectedEnableIcon, item.getEnableIcon());
+	 item.setIconClassName(expectedIconClassName);
+	 assertEquals(expectedIconClassName, item.getIconClassName());
 	}
 
 }

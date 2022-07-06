@@ -177,7 +177,7 @@ $screen-xxl-max: 1201px;
   font-size: $font14;
   font-weight: 700;
   letter-spacing: toRem(2);
-  line-height: 3rem;
+  line-height: toRem(46);
   outline: 0;
   padding: 0 0.5rem;
   text-align: center;
@@ -340,4 +340,28 @@ $screen-xxl-max: 1201px;
 
 @mixin transition($duration:0.3s, $ease:ease-in-out) {
   transition: all $duration $ease;
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin container {
+  margin: 0 auto;
+  padding: 0 toRem(12);
+  width: 100%;
+
+  @include respond-to-min($tablet) {
+    width: toRem(756);
+  }
+
+  @include respond-to-min($desktop) {
+    width: toRem(976);
+  }
+
+  @include respond-to-min($desktop-wide) {
+    width: toRem(1224);
+  }
 }

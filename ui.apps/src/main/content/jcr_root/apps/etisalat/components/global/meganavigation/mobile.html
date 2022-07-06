@@ -3,41 +3,54 @@
  <div class="main-menu-mobile etisalat-carrier hidden-lg hidden-md sticky">
   <div id="store_locator_mobile_link" class="sub_menu_mobile visible_menu">
     <div class="panel-group container" 
-         data-sly-test="${!meganavigation.megaNavigationItems.isEmpty}" 
-       data-sly-list.navItems="${meganavigation.megaNavigationItems}" 
+         data-sly-test="${!meganavigation.megaNavigationItems.isEmpty || meganavigation.pushMenuEnabled}"        
        id="accordion_menu" role="tablist" aria-multiselectable="true">
-     <div class="panel panel-default row">
-        <div class="panel-heading" role="tab" id="heading-4">
-             <h5 class="active panel-title collapsed">
-               <a id="dtsecondlevelmenumob-${navItemsList.count}" class="${navItems.active}" href="${navItems.navigationLinkTo}"
-                 title="${navItems.navigationAltText}">${navItems.navigationLabel}</a>
-               <div data-sly-test="${!navItems.subNavigationList.isEmpty && navItems.subNavigationList.size > 0}" 
-                    class="arrow_accordion collapsed" role="button" data-toggle="collapse" data-parent="#accordion_menu"
-                 href="#collapse-${navItemsList.count}" aria-expanded="false" aria-controls="collapse-${navItemsList.count}">
-               </div>
-             </h5>
-           </div>
-           <div data-sly-test="${!navItems.subNavigationList.isEmpty && navItems.subNavigationList.size > 0}" 
-                 data-sly-list.subItems="${navItems.subNavigationList}"
-                 id="collapse-${navItemsList.count}" 
-                 class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-4"
-                 aria-expanded="false" style="height: 0px;">
-             <div class="panel-body col-xs-12">
-               <a class="item_sub-menu" href="${subItems.subNavLinkTo}" title="${subItems.subNavTitle}">${subItems.subNavLabel}</a>              
-             </div>
-           </div>	     	     
-     </div>
+         <div data-sly-test="${meganavigation.pushMenuEnabled}" class="panel panel-default push-menu-inception row">
+		    <sly data-sly-use.fixedListPushMenuTemplate="fixedlist-pushmenu.html"
+              data-sly-call="${fixedListPushMenuTemplate.fixedListpushMenu @ properties=properties,meganavigation=meganavigation}">  
+           </sly>
+		 </div>
+	     <div data-sly-test="${!meganavigation.megaNavigationItems.isEmpty}"  
+	          data-sly-repeat.navItems="${meganavigation.megaNavigationItems}"  class="panel panel-default row">
+	        <div class="panel-heading" role="tab" id="heading-4">
+	             <h5 class="active panel-title collapsed">
+	               <a id="dtsecondlevelmenumob-${navItemsList.count}" class="${navItems.active}" href="${navItems.navigationLinkTo}"
+	                 title="${navItems.navigationAltText}">${navItems.navigationLabel}</a>
+	               <div data-sly-test="${!navItems.subNavigationList.isEmpty && navItems.subNavigationList.size > 0}" 
+	                    class="arrow_accordion collapsed" role="button" data-toggle="collapse" data-parent="#accordion_menu"
+	                 href="#collapse-${navItemsList.count}" aria-expanded="false" aria-controls="collapse-${navItemsList.count}">
+	               </div>
+	             </h5>
+	           </div>
+	           <div data-sly-test="${!navItems.subNavigationList.isEmpty && navItems.subNavigationList.size > 0}" 
+	                 data-sly-list.subItems="${navItems.subNavigationList}"
+	                 id="collapse-${navItemsList.count}" 
+	                 class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-4"
+	                 aria-expanded="false" style="height: 0px;">
+	             <div class="panel-body col-xs-12">
+	               <a class="item_sub-menu" href="${subItems.subNavLinkTo}" title="${subItems.subNavTitle}">${subItems.subNavLabel}</a>              
+	             </div>
+	           </div>	     	     
+	     </div>	     
      </div>
      <div class="container menu-account" data-sly-test="${meganavigation.topNavIconMenuItems.size > 0}">
          <div class="row">              
              <div data-sly-test="${!meganavigation.topNavIconMenuItems.isEmpty 
                  && meganavigation.topNavIconMenuItems.size > 0}" data-sly-list.topRightItems="${meganavigation.topNavIconMenuItems}" class="col-xs-12">
                  <a data-sly-test="${!(topRightItems.openmodalwindow == 'modalwindow') && !(topRightItems.openmodalwindow == 'accessibilityoverlay')}" class="menu-account-link global-overlay" href="${topRightItems.navigationLink}">
-                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
+                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" loading="lazy" 
+                         data-sly-set.imageSrcPath="${topRightItems.navigationImage}" 
+	                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                     class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
+                         src="${topRightItems.navigationImage}"/>
                     <span> ${topRightItems.navigationTitle}</span>       
                  </a>   
                   <a data-sly-test="${topRightItems.openmodalwindow == 'modalwindow'}" data-label="${meganavigation.topNavResource.name}"  class="menu-account-link global-overlay btn-modal">
-                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" src="${topRightItems.navigationImage}"/>
+                    <img alt="${topRightItems.navigationTitle}" data-sly-test="${topRightItems.navigationImage}" loading="lazy" 
+                         src="${topRightItems.navigationImage}" 
+                         data-sly-set.imageSrcPath="${topRightItems.navigationImage}" 
+	                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                     class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
                     <span> ${topRightItems.navigationTitle}</span>       
                  </a>
                  <!-- Modal content start-->   
@@ -91,7 +104,15 @@
                  <li class="nav-item-heading white-bg mega-dropdown-mob open">
                    <a class="${page.language == 'ar' ? 'arabic-lang-content' :''}"
                       href="#"> ${properties.langMobileLabel}</a>
-                   <img alt="${properties.langMobileLabel}" class="nav-link-arrow" src="${properties.linkArrowImage}"/>
+                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+                    enable-background="new 26 26 12 12" xml:space="preserve">
+                    <g>
+                        <path fill="#554D56"
+                            d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+                        </path>
+                    </g>
+                   </svg>
                  </li>
                  <li class="mega-dropdown-mob-menu" style="display: list-item;">
                    <ul data-sly-list.langItem="${meganavigation.languageItems}" role="menu">

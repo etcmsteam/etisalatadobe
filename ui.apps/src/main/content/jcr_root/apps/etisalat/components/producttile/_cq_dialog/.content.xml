@@ -74,7 +74,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Text that will appear for the offer Text."
                                                 fieldLabel="Offer Text"
-                                                maxlength="{Long}40"
+                                                maxlength="{Long}80"
                                                 name="./offerText"/>
                                             <producttitle
                                                 jcr:primaryType="nt:unstructured"
@@ -140,6 +140,15 @@
                                                         value="{Boolean}true"/>
                                                 </items>
                                             </internetpackage>
+											<enableEllipsis
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="If checked, Ellipsis comes for the description and this will not effect for Blue BG Image theme variations"
+                                                name="./enableEllipsis"
+                                                text="Enable Ellipsis For Description"
+                                                uncheckedValue="false"
+                                                value="true"/>
                                             <productdescription
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
@@ -571,6 +580,20 @@
                                                         fieldLabel="VAT Include Text"
                                                         maxlength="{Long}40"
                                                         name="./vatInclude"/>
+                                                    <frequency
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Text that will appear for product price frequency."
+                                                        fieldLabel="Frequency"
+                                                        maxlength="{Long}40"
+                                                        name="./frequency"/>
+                                                    <plan
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Text that will appear for product plan."
+                                                        fieldLabel="Plan"
+                                                        maxlength="{Long}40"
+                                                        name="./plan"/>
                                                 </items>
                                             </pricetag>
                                             <moreinfolabel
@@ -603,36 +626,64 @@
                                                         name="./modalBehavior"/>
                                                 </items>
                                             </fragmentlink>
-                                            <contract
+                                            <contractDetails
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Text that will appear for the Contract."
-                                                fieldLabel="Contract Period"
-                                                maxlength="{Long}40"
-                                                name="./contract"/>
-                                            <contractperiodalignment
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                jcr:title="Contract Period Details"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <alignment
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Contract Period Alignment"
-                                                        name="./contractAlignment">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <left
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Left"
-                                                                value="left"/>
-                                                            <center
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Center"
-                                                                value="center"/>
-                                                        </items>
-                                                    </alignment>
+                                                   <contract
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                fieldDescription="Text that will appear for the Contract."
+		                                                fieldLabel="Contract Period"
+		                                                maxlength="{Long}40"
+		                                                name="./contract"/>
+		                                            <contractperiodalignment
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+		                                                <items jcr:primaryType="nt:unstructured">
+		                                                    <alignment
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+		                                                        fieldLabel="Contract Period Alignment"
+		                                                        name="./contractAlignment">
+		                                                        <items jcr:primaryType="nt:unstructured">
+		                                                            <left
+		                                                                jcr:primaryType="nt:unstructured"
+		                                                                text="Left"
+		                                                                value="left"/>
+		                                                            <center
+		                                                                jcr:primaryType="nt:unstructured"
+		                                                                text="Center"
+		                                                                value="center"/>
+		                                                        </items>
+		                                                    </alignment>
+		                                                </items>
+		                                            </contractperiodalignment>
+		                                            <contractperiodcolor
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+		                                                <items jcr:primaryType="nt:unstructured">
+		                                                    <color
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+		                                                        fieldLabel="Contract Period Color"
+		                                                        name="./contractColor">
+		                                                        <items jcr:primaryType="nt:unstructured">
+		                                                            <left
+		                                                                jcr:primaryType="nt:unstructured"
+		                                                                text="Green"
+		                                                                value="green"/>
+		                                                            <center
+		                                                                jcr:primaryType="nt:unstructured"
+		                                                                text="Orange"
+		                                                                value="orange"/>
+		                                                        </items>
+		                                                    </color>
+		                                                </items>
+		                                            </contractperiodcolor>
                                                 </items>
-                                            </contractperiodalignment>
-
+                                            </contractDetails>                                            
                                             <cardlink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"

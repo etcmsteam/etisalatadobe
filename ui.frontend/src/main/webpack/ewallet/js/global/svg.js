@@ -2,7 +2,6 @@
 /**
  * Replace all SVG images with inline SVG
  */
-
 $(document).ready(function() {
   jQuery("img").each(function () {
     var $img = jQuery(this);

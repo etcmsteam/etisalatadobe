@@ -21,7 +21,7 @@
          <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
       </div>
       <div class="tile-box-body">
-         <div class="tile-boxes-title-small">
+         <div data-sly-test="${tileModel.tiletitle}" class="tile-boxes-title-small">
             <h3 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h3>
          </div>
          <div class="tile-box-description">
@@ -29,21 +29,10 @@
          </div>         
           <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
 	         <div data-sly-test="${tileModel.ctatext}" class="learn-more-wrap">
-                <sly data-sly-test="${properties.enableOnClick}">
-                    <a href="#"
-                       class="btn-text btn-green learn-more"
-                       target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-                       onclick="${properties.onclickfunction @ context='attribute'}"
-                       data-insurance-type="${properties.insuranceType}"
-                       data-channel="${properties.channel}"
-                       title="${tileModel.ctatext}">${tileModel.ctatext}</a>
-                </sly>
-                <sly data-sly-test="${!properties.enableOnClick}">
-                    <a href="${tileModel.tileCTALinkSameWindow}"
-                       class="btn-text btn-green learn-more"
-                       target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
-                       title="${tileModel.ctatext}">${tileModel.ctatext}</a>
-                </sly>
+                 <a href="${tileModel.tileCTALinkSameWindow}"
+                    class="btn-text btn-green learn-more"
+                    target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
+                    title="${tileModel.ctatext}">${tileModel.ctatext}</a>
 	         </div>
          </sly>
           <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"

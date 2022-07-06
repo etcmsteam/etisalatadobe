@@ -74,7 +74,7 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
     },
     messages: messagelocal,
     submitHandler: function (form) {
-	  $("#ewalletteslaform #submitBtn").addClass("is-disabled");
+      $("#ewalletteslaform #submitBtn").addClass("is-disabled");
       form.submit();
     },
   });
@@ -90,7 +90,7 @@ import { FORM_VALIDATION_MESSAGES } from "./constant";
   if ($FORM) {
     CONTACT_FORM();
   }
-  
+
   $(window).on("load", function () {
     if ($('input[name="FIRST_NAME"]').val()) {
       $FORM.valid();

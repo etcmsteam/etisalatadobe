@@ -34,6 +34,9 @@ class FixedNavigationMultifieldModelTest {
 		final String expectedFixedNavDesc = "sampledesc";
 		final String expectedFixedNavImage = "/content/dam/sample.png";
 		final boolean expectedFixedLinkTarget = true;
+		final String expectedActive = "true";
+		final String expectedHideDesktopLink = "true";
+		final String expectedOpenmodalwindow = "openmodalwindow";
 		Resource resource = context.resourceResolver().getResource(CONTENT_FIXED_NAV);
 		
 		FixedNavigtaionMultifieldModel item = resource.adaptTo(FixedNavigtaionMultifieldModel.class);
@@ -47,6 +50,16 @@ class FixedNavigationMultifieldModelTest {
 		assertEquals(expectedFixedNavImage, item.getNavigationImage());
 		item.setNavigationLinkTarget(expectedFixedLinkTarget);
 		assertTrue(item.isNavigationLinkTarget());
+		item.setTabActive(true);
+		assertTrue(item.isTabActive());
+		item.setActive(expectedActive);
+		assertEquals(expectedActive,item.getActive());
+		item.setHideDesktopLink(expectedHideDesktopLink);
+		assertEquals(expectedHideDesktopLink,item.getHideDesktopLink());
+		item.setOpenmodalwindow(expectedOpenmodalwindow);
+		assertEquals(expectedOpenmodalwindow,item.getOpenmodalwindow());
+		item.setTopNavigationXFResource(resource);
+		assertEquals(resource,item.getTopNavigationXFResource());
 	}
 
 	

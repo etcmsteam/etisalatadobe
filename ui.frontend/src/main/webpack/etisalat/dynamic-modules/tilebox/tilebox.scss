@@ -56,10 +56,9 @@
     }
   }
 
-  @include respond-to-max($custom-width-tab) {
+  @include respond-to-max($phone) {
     .container {
-      padding-left: 16px;
-      padding-right: 16px;
+      padding: 0;
     }
   }
 
@@ -167,6 +166,12 @@
     }
   }
 
+  &.with-single-tile:not(.with-main-text) {
+    .tiles-wrapper {
+      display: block;
+    }
+  }
+
   .tile-action-link {
     margin-top: toRem(24);
     @media (min-width: 992px) {
@@ -199,7 +204,12 @@
   }
 
   .tilebox-view-all-cta {
-    padding-bottom: toRem(16);
+    margin-top: toRem(8);
+    text-align: center;
+
+    @media (min-width: 992px) {
+      margin-top: toRem(20);
+    }
 
     .cmp-button {
       width: 100%;
@@ -349,6 +359,17 @@
     }
   }
 
+  .tile-box-tile {
+    .learn-more-wrap {
+      .btn-text {
+        @include rtlBlock {
+          right: toRem(24);
+          left: auto;
+        }
+      }
+    }
+  }
+
   .swiper-wrapper {
     .swiper-slide {
       flex-direction: column;
@@ -408,6 +429,7 @@
   &.one-slides,
   &.two-slides,
   &.three-slides,
+  &.tile-boxes-section-swiper,
   &.four-slides,
   &.four-plus-slides {
     .swiper-slide {
@@ -417,11 +439,12 @@
     }
   }
 
+  &.tile-boxes-section-swiper,
   &.four-plus-slides {
     padding-bottom: 39px;
 
     .scrollbar {
-      display: block !important;
+      display: block;
 
       @include respond-to-min($desktop) {
         margin-top: 2rem;
@@ -429,7 +452,17 @@
       }
     }
   }
-
+  &.tile-boxes-section-swiper {
+    .tileBoxMobCarWrap {
+      .swiper-container-horizontal > .swiper-scrollbar {
+        width: 98% !important;
+        @include rtlBlock() {
+          right: 1% !important;
+          left: 0 !important;
+        }
+      }
+    }
+  }
   .swiper-container-horizontal .swiper-scrollbar {
     @include respond-to-max($desktop-min) {
       left: 0;
@@ -458,8 +491,8 @@
 // arabic overides
 // *************************************
 
-*[lang="ar"] {
-  *[dir="rtl"] {
+*[lang='ar'] {
+  *[dir='rtl'] {
     .tile-boxes-section {
       @include respond-to-max($desktop-min) {
         padding-left: 0 !important;

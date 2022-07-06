@@ -2,7 +2,8 @@
   <sly data-sly-set.heroInnerPageView="${properties.heroImageInnerPageView ? 'hero-banner-section single-slide-only' : 'hero-banner-section'}" 
        data-sly-use.parentRes="${resource.parent.path}" data-sly-set.heroBannerClass="${parentRes && 
    parentRes.sling:resourceType == 'etisalat/components/carousel' ? '' : heroInnerPageView}" />
-  <div data-component="cmp-herobanner" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component" 
+  <div data-component="cmp-herobanner" data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
+	   data-ga-event="${properties.gaeventname}" data-ga-ev-cat="${properties.gaeventcategory}"
        data-sly-test="${properties.heroDisplayBehavior}" class="${!wcmmode.edit ? heroBannerClass : ''}"
        data-sly-unwrap="${heroBannerClass ? false : true}">
 	<div class="hero-bg-images">
@@ -22,7 +23,10 @@
 		      <div data-sly-test="${properties.pretitle && properties.tagAlignment == 'beforetitle'}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
 			      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
 			         <sly data-sly-test="${tagItems.name == 'tagline'}">
-			               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
+			               <img data-sly-test="${tagItems.fileReference}" 
+			                    data-sly-set.imageSrcPath="${tagItems.fileReference}" 
+	                            data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" loading="lazy" 
+			                    class="icon ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${tagItems.fileReference}" alt=""/>
 			         </sly>	      
 			      </sly>	      	        
 		        <div class="text"> ${properties.pretitle}</div>
@@ -40,7 +44,10 @@
 		      <div data-sly-test="${properties.pretitle && properties.tagAlignment == 'aftertitle'}" class="ele-margin hero-offer-tags-wrapper ${properties.tagColor}">
 			      <sly data-sly-use.tagObj="${resource.path}" data-sly-list.tagItems="${tagObj.listChildren}">
 			         <sly data-sly-test="${tagItems.name == 'tagline'}">
-			               <img data-sly-test="${tagItems.fileReference}" class="icon" src="${tagItems.fileReference}" alt=""/>
+			               <img data-sly-test="${tagItems.fileReference}" 
+			                    data-sly-set.imageSrcPath="${tagItems.fileReference}" 
+	                            data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" loading="lazy" 
+			                    class="icon ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${tagItems.fileReference}" alt=""/>
 			         </sly>	      
 			      </sly>	      	        
 		        <div class="text"> ${properties.pretitle}</div>

@@ -1,10 +1,11 @@
+/* eslint-disable */
 import { swiperInit } from "../../../global/js/swiperInitialize";
 
 function initContextNavCarousel() {
   $(document)
     .find(".row-context-nav")
     .each(function () {
-      var swiperSlideLength = $(this).find(".swiper-slide").length;
+      let swiperSlideLength = $(this).find(".swiper-slide").length;
       $(this).addClass("swiper-with-" + swiperSlideLength + "-slides");
 
       swiperInit($(this).find(".context-nav-box-wrap"), {
@@ -30,12 +31,12 @@ function initContextNavCarousel() {
 }
 
 function setSpacebetweenContextNavCarousel() {
-  var spaceBetween = 0;
+  let spaceBetween = 0;
 
   $(document)
     .find(".context-nav-box-wrap")
     .each(function () {
-      var slideTemp = $(this)[0].swiper;
+      let slideTemp = $(this)[0].swiper;
       if (slideTemp) {
         spaceBetween = ($(this).width() - ($(this).width() / 10) * 3 * 3) / 2;
         slideTemp.params.spaceBetween = spaceBetween;
@@ -46,7 +47,7 @@ function setSpacebetweenContextNavCarousel() {
     });
 }
 
-$(document).ready(function () {
+export const CONTEXT_NAV = () => {
   initContextNavCarousel();
   if ($(".context-nav-box-wrap").length) {
     $(window).on("resize", function () {
@@ -55,4 +56,4 @@ $(document).ready(function () {
       }, 500);
     });
   }
-});
+};
