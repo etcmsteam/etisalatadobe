@@ -13,8 +13,10 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
-<sly data-sly-set.comparePageClientLibs="${pageProperties.customAllowedCss || pageProperties.customAllowedJs}" />
+<sly data-sly-set.goChatTemplate="${properties['cq:template'] &&
+         properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/gochat-content-template' ||  properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/gochat-generic-template'}" />
 
+<sly data-sly-set.comparePageClientLibs="${!goChatTemplate && (pageProperties.customAllowedCss || pageProperties.customAllowedJs)}" />
 <!--/* code block page clientlibs */-->
 
 <sly data-sly-test="${!comparePageClientLibs}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
