@@ -15,8 +15,10 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <template data-sly-template.footer="${ @ page, pwa }">
     <sly data-sly-include="customfooterlibs.html"></sly>
-    <sly data-sly-test.comparePageClientLibs="${pageProperties.customAllowedCss || pageProperties.customAllowedJs}" />
-	<sly data-sly-test="${!comparePageClientLibs}" >
+   <sly data-sly-set.goChatTemplate="${properties['cq:template'] &&
+         properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/gochat-content-template' ||  properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/gochat-generic-template'}" />
+
+   <sly data-sly-set.comparePageClientLibs="${!goChatTemplate && (pageProperties.customAllowedCss || pageProperties.customAllowedJs)}" />	<sly data-sly-test="${!comparePageClientLibs}" >
 	    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"       
 	         data-sly-test.clientlibCategoriesJsBody="${page.clientLibCategoriesJsBody}"
 	         data-sly-call="${clientlib.js @ categories=clientlibCategoriesJsBody}"></sly>
