@@ -406,11 +406,10 @@ import { getParameterByName } from '../../../global/js/utils';
       .children('.swiper-slide')
       .find('a');
     $(productClickedDetails)
-      .unbind()
       .on('click', function (e) {
         var curnt = $(this).attr('href');
         var productClicked = {};
-        var selectedProductMain = $(this).closest('.producttile');
+        var selectedProductMain = $(this).closest('.tiles-box');
         var name = selectedProductMain.find('.tiles-box-title').find('h2').text();
         var brand = selectedProductMain.find('.tiles-box-title').find('.catagory').text();
         var price = selectedProductMain.find('.tiles-box-list').find('.price').text();
@@ -756,4 +755,184 @@ import { getParameterByName } from '../../../global/js/utils';
       });
     }
   }
+
+  // Hero Banner on click
+  $('.hero-banner-section')
+    .on('click', '.hero-details .btn', function () {
+      var ga_event = $(this).closest('.hero-banner-section').data('ga-event');
+      var ga_ev_cat = $(this).closest('.hero-banner-section').data('ga-ev-cat');
+
+      // event dynamic values
+      var ga_event_value = ga_event || '';
+      var ga_ev_cat_value = ga_ev_cat || '';
+
+      // title of the CTA
+      var ctaTitle = $(this).closest('.hero-details').find('.hero-title').text().trim();
+      dataLayer.push({
+        event: ga_event_value,
+        ev_cat: ga_ev_cat_value,
+        ev_act: 'click',
+        ev_label: ctaTitle,
+      });
+    });
+
+  // Main text CTA click
+  $('.cmp-default-card')
+    .on('click', '.cmp-teaser__action-container a', function () {
+      var ga_event = $(this).closest('.cmp-default-card').find('.cmp-teaser').data('ga-event');
+      var ga_ev_cat = $(this).closest('.cmp-default-card').find('.cmp-teaser').data('ga-ev-cat');
+
+      // event dynamic values
+      var ga_event_value = ga_event || '';
+      var ga_ev_cat_value = ga_ev_cat || '';
+
+      var ctaTitle = $(this).text().trim();
+      dataLayer.push({
+        event: ga_event_value,
+        ev_cat: ga_ev_cat_value,
+        ev_act: 'click',
+        ev_label: ctaTitle,
+      });
+    });
+
+  // cross promo click
+  $('.cross-promotion-plain')
+    .on('click', 'a', function () {
+      var ga_event = $(this).closest('.cross-promotion-plain').find('.cmp-teaser').data('ga-event');
+      var ga_ev_cat = $(this).closest('.cross-promotion-plain').find('.cmp-teaser').data('ga-ev-cat');
+      var ga_event_value = ga_event || '';
+      var ga_ev_cat_value = ga_ev_cat || '';
+      var ctaTitle = $(this).text().trim();
+
+      dataLayer.push({
+        event: ga_event_value,
+        ev_cat: ga_ev_cat_value,
+        ev_act: 'click',
+        ev_label: ctaTitle,
+      });
+    });
+  
+  //Get more
+  $('.cmp-tab--get-more .cmp-tabs__tablist > li').on('click', function (e) {
+    var ga_event = $(this).closest('.cmp-tab--get-more').find('.cmp-teaser').data('ga-event');
+    var ga_ev_cat = $(this).closest('.cmp-tab--get-more').find('.cmp-teaser').data('ga-ev-cat');
+
+    var ga_event_value = ga_event || '';
+    var ga_ev_cat_value = ga_ev_cat || '';
+
+    var ctaTitle = $(this).text().trim();
+
+    dataLayer.push({
+      event: ga_event_value,
+      eventCategory: ga_ev_cat_value,
+      eventAction: ctaTitle,
+    });
+  });
+
+  // shop by brands
+  $('.brands-logo').on('click', '.brand-container', function () {
+    var event = $(this).closest('.brands-logo').data('ga-event') || '';
+    var eventCat = $(this).closest('.brands-logo').data('ga-ev-cat') || '';
+    var brandName = $(this).data('name').trim();
+
+    dataLayer.push({
+      event: event,
+      ev_cat: eventCat,
+      ev_act: 'click',
+      ev_label: brandName,
+    });
+  });
+
+  //Media CTA bleed
+  var subscribeNowInfo = $('input[name="GFOsn"]');
+  if (subscribeNowInfo.length > 0) {
+    var subscribeNowClickDetails = $('.cmp_banner--full-bleed.cmp_banner--full-bleed-right .action-items a');
+    $(subscribeNowClickDetails)
+      .on('click', function () {
+        var curnt = $(this).attr('href');
+        var subscribeNow = {};
+        subscribeNow = {
+          event: 'subscribeNow',
+          info1: 'subscribeNow',
+          info2: 'click',
+          info3: subscribeNowInfo.val(),
+        };
+        dataLayer.push(subscribeNow);
+        window.location = curnt;
+      });
+  }
+
+  // Google analytics
+  $('.eti-recommendation-big-card .eti-big-card-list').on('click', '.eti-big-card-li', function () {
+    var event = $(this).closest('.eti-recommendation-big-card').data('ga-event') || '';
+    var eventCat = $(this).closest('.eti-recommendation-big-card').data('ga-ev-cat') || '';
+    var title = $(this).find('.title p').text().trim();
+
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: event,
+        ev_cat: eventCat,
+        ev_act: 'click',
+        ev_label: title,
+      });
+    }
+  });
+
+  $('.accessories-wrapper .card-list-wrapper').on('click', '.card-li', function () {
+    var event = $(this).closest('.accessories-wrapper').data('ga-event') || '';
+    var eventCat = $(this).closest('.accessories-wrapper').data('ga-ev-cat') || '';
+    var title = $(this).find('.title p').text().trim();
+
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: event,
+        ev_cat: eventCat,
+        ev_act: 'click',
+        ev_label: title,
+      });
+    }
+  });
+
+  // Etisalat Recommenditions
+  $('.eti-recommendation-wrapper').on('click', '.eti-card-li', function () {
+    var event = $(this).closest('.eti-recommendation-wrapper').data('ga-event') || '';
+    var eventCat = $(this).closest('.eti-recommendation-wrapper').data('ga-ev-cat') || '';
+    var devicesName = $(this).find('.title p').text().trim();
+
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: event,
+        ev_cat: eventCat,
+        ev_act: 'click',
+        ev_label: devicesName,
+      });
+    }
+  });
+
+  $(document).on('GA_FROM_TRACKING', (event, { $type }) => {
+    const currentURL = window.location.href;
+    let eventData = '';
+  
+    if ($type !== 'submit') {
+      eventData = 'SaaS Lead Form';
+      if (getParameterByName('subject', currentURL)) {
+        $('input[name="subject"]').val(getParameterByName('subject', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '));
+        $('input[name="product"]').val(getParameterByName('product', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '));
+      }
+    } else {
+      eventData = 'SaaS Lead Form Submission';
+    }
+    
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: eventData,
+        MainCategory: 'Sales',
+        Category: getParameterByName('product', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+        ProductName: getParameterByName('productName', currentURL)
+          .replace(/_/g, ' ')
+          .replace(/[\_\"\'\>\<\?\=\/\/]/g, ' '),
+        SKUName: getParameterByName('subject', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+      });
+    }
+  });
 })(jQuery);

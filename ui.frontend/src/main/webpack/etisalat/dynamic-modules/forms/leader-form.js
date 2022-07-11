@@ -144,6 +144,7 @@ export const LEADER_FORM = () => {
       })
         .done(function (response) {
           let RE_URL = `${window.location.origin}/${lang}/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
+          $(document).trigger('GA_FROM_TRACKING', { $type: 'submit' });
           window.location.href = RE_URL;
           FORM_SUCCESS($FORM, PAYLOAD);
 
@@ -162,4 +163,5 @@ export const LEADER_FORM = () => {
   });
 
   bindingUIFromParams();
+  $(document).trigger('GA_FROM_TRACKING', { $type: 'load' });
 };
