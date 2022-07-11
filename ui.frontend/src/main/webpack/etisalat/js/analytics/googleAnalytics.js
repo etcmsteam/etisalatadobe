@@ -908,4 +908,31 @@ import { getParameterByName } from '../../../global/js/utils';
       });
     }
   });
+
+  $(document).on('GA_FROM_TRACKING', (event, { $type }) => {
+    const currentURL = window.location.href;
+    let eventData = '';
+  
+    if ($type !== 'submit') {
+      eventData = 'SaaS Lead Form';
+      if (getParameterByName('subject', currentURL)) {
+        $('input[name="subject"]').val(getParameterByName('subject', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '));
+        $('input[name="product"]').val(getParameterByName('product', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '));
+      }
+    } else {
+      eventData = 'SaaS Lead Form Submission';
+    }
+    
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: eventData,
+        MainCategory: 'Sales',
+        Category: getParameterByName('product', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+        ProductName: getParameterByName('productName', currentURL)
+          .replace(/_/g, ' ')
+          .replace(/[\_\"\'\>\<\?\=\/\/]/g, ' '),
+        SKUName: getParameterByName('subject', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+      });
+    }
+  });
 })(jQuery);
