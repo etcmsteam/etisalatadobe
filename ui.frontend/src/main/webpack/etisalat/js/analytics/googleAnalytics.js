@@ -861,4 +861,51 @@ import { getParameterByName } from '../../../global/js/utils';
         window.location = curnt;
       });
   }
+
+  // Google analytics
+  $('.eti-recommendation-big-card .eti-big-card-list').on('click', '.eti-big-card-li', function () {
+    var event = $(this).closest('.eti-recommendation-big-card').data('ga-event') || '';
+    var eventCat = $(this).closest('.eti-recommendation-big-card').data('ga-ev-cat') || '';
+    var title = $(this).find('.title p').text().trim();
+
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: event,
+        ev_cat: eventCat,
+        ev_act: 'click',
+        ev_label: title,
+      });
+    }
+  });
+
+  $('.accessories-wrapper .card-list-wrapper').on('click', '.card-li', function () {
+    var event = $(this).closest('.accessories-wrapper').data('ga-event') || '';
+    var eventCat = $(this).closest('.accessories-wrapper').data('ga-ev-cat') || '';
+    var title = $(this).find('.title p').text().trim();
+
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: event,
+        ev_cat: eventCat,
+        ev_act: 'click',
+        ev_label: title,
+      });
+    }
+  });
+
+  // Etisalat Recommenditions
+  $('.eti-recommendation-wrapper').on('click', '.eti-card-li', function () {
+    var event = $(this).closest('.eti-recommendation-wrapper').data('ga-event') || '';
+    var eventCat = $(this).closest('.eti-recommendation-wrapper').data('ga-ev-cat') || '';
+    var devicesName = $(this).find('.title p').text().trim();
+
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: event,
+        ev_cat: eventCat,
+        ev_act: 'click',
+        ev_label: devicesName,
+      });
+    }
+  });
 })(jQuery);
