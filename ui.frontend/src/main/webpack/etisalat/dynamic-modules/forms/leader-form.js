@@ -144,6 +144,17 @@ export const LEADER_FORM = () => {
       })
         .done(function (response) {
           let RE_URL = `${window.location.origin}/${lang}/smb/b2bforms-thankyou.html?referenceNo=${response?.bcrmTransactionId}`;
+          if (typeof dataLayer !== 'undefined') {
+            dataLayer.push({
+              event: 'SaaS Lead Form Submission',
+              MainCategory: 'Sales',
+              Category: getParameterByName('product', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+              ProductName: getParameterByName('productName', currentURL)
+                .replace(/_/g, ' ')
+                .replace(/[\_\"\'\>\<\?\=\/\/]/g, ' '),
+              SKUName: getParameterByName('subject', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+            });
+          }
           window.location.href = RE_URL;
           FORM_SUCCESS($FORM, PAYLOAD);
 
@@ -162,4 +173,20 @@ export const LEADER_FORM = () => {
   });
 
   bindingUIFromParams();
+
+  if (getParameterByName('subject', currentURL)) {
+    $('input[name="subject"]').val(getParameterByName('subject', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '));
+    $('input[name="product"]').val(getParameterByName('product', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '));
+  }
+  if (typeof dataLayer !== 'undefined') {
+    dataLayer.push({
+      event: 'SaaS Lead Form',
+      MainCategory: 'Sales',
+      Category: getParameterByName('product', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+      ProductName: getParameterByName('productName', currentURL)
+        .replace(/_/g, ' ')
+        .replace(/[\_\"\'\>\<\?\=\/\/]/g, ' '),
+      SKUName: getParameterByName('subject', currentURL).replace(/[\_\"\'\>\<\=\/\/]/g, ' '),
+    });
+  }
 };
