@@ -7,6 +7,7 @@ var player;
 var mileStones = [25, 50, 75];
 var videoTitle;
 var pauseFlag;
+var formTitle = $(".teaser-form").find(".cmp-teaser__title").text().trim() || '';
 
 export const ANALYTICS_FILTER = (category, type, value) => {
   const pagePathName = window.location.pathname;
@@ -149,7 +150,7 @@ export const FORM_SUCCESS = (form, data) => {
 };
 
 export const FORM_ERROR = (form, type, errResponse) => {
-  let name = form.attr('name');
+  let name = formTitle;
   const currrentURL = window.location.href;
   let errType = type;
   let errMsg;

@@ -1,4 +1,6 @@
 /* eslint-disable */
+import { getParameterByName } from '../../../global/js/utils';
+
 (function (window, document, $) {
   let num = 0;
 
@@ -335,18 +337,24 @@
           },
         });
       } else if ($this.closest('.footer').length > 0) {
+        sectionHeading = 'footer links';
+        btnAction = 'quick link clicked';
+        if ($this.closest('.footer-social-dwonload').length > 0) {
+          btnAction = 'social network interaction';
+        }
         let quickLinks = $this.closest('.links');
+        let ctaName1 = '';
         if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
-          btnAction = quickLinks.find('.links-title').first().text().toLowerCase();
+          ctaName1 = quickLinks.find('.links-title').first().text().toLowerCase();
         } else if ($this.closest('.icons-wrap').length > 0) {
-          btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase();
+          ctaName1 = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
-                name: btnAction + ':' + ctaName,
+                name: ctaName1 + ':' + ctaName,
                 URL: currrentURL,
                 type: linkType,
                 region: 'footer',
@@ -356,9 +364,9 @@
               },
             },
             linkInfo: {
-              sectionHeading: 'footer links',
-              action: 'quick link clicked',
-              name: btnAction + ':' + ctaName,
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName1 + ':' + ctaName,
             },
             eventInfo: {
               footerClick: 1,
@@ -505,13 +513,33 @@
     return true;
   }
 
+  function getFormName() {
+    let currentURL = window.location.href;
+    const productName = queryParamValue('productName', currentURL);
+    const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim() || '';
+    if (productName) {
+      const valueWithProductName = targetElementValue + " " + productName + "?";
+      return valueWithProductName;
+    } else {
+      return targetElementValue;
+    }
+  }
+
+  function queryParamValue(name, url) {
+    if (!name || !url) return undefined;
+
+    return getParameterByName(name, url)
+      .replace(/_/g, " ")
+      .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
+  }
+
   let formObj = $(document).find('form');
   if (formObj.length > 0) {
     formObj.each(function () {
       let dirty = false;
       let inputEle = $(this).find('input');
       let textArea = $(this).find('textarea');
-      let formName = $(this).attr('name');
+      let formName = getFormName();
 
       inputEle.each(function () {
         $(this).on('input', function () {
