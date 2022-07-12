@@ -15,6 +15,13 @@ Include conf.d/variables/custom.vars
     Header set Content-Disposition inline
 </LocationMatch>
 
+## Cache images and assets as per live site
+<LocationMatch "\.(?i:jpe?g|gif|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
+       Header unset Cache-Control
+       Header always set Cache-Control max-age=31536000
+       Header set Age 0
+</LocationMatch>
+
 <VirtualHost *:80>
 	ServerName	"etisalat"
 	# Put names of which domains are used for your published site/content here
