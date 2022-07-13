@@ -9,7 +9,7 @@ export const THANK_YOU = () => {
   const defaultIndex = `/${locale}/smb/index.html`;
   const redirectUrl = $('.cmp-button--secondary a')?.attr('href') || defaultIndex;
   if (referenceNo) {
-    $('.referenceNoTxt')?.html(referenceNo);
+    $('.referenceNo')?.html(referenceNo);
   } else {
     window.location.replace(redirectUrl);
   }
