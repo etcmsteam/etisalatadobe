@@ -212,6 +212,51 @@ import { getParameterByName } from '../../../global/js/utils';
             },
           },
         });
+      } else if ($this.closest('.media-cta-module-section').length > 0) {
+        productCat = pathArr.pop();
+
+        let prodName = $this.closest('.mod-content').find('.media-cta-4-title');
+        prodName = prodName.text().toLowerCase().trim();
+
+        let productPriceVal = $this.closest('.content-bottom').find('.media-cta-4-price .price .value');
+        productPriceVal = productPriceVal.text().toLowerCase().trim();
+
+        let currVal = $this.closest('.content-bottom').find('.media-cta-4-price .price .aed');
+        currVal = currVal = currVal.text().trim();
+
+        let descriptionVal = $this.closest('.mod-content').find('.media-cta-4-desc p');
+        descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, '');
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: ctaName + ' click',
+              name: ctaName,
+            },
+            product: {
+              productDetails: {
+                productName: prodName,
+                productPrice: productPriceVal + currVal,
+                productType: sectionHeading,
+                productCategory: productCat,
+                productDescription: descriptionVal,
+              },
+            },
+          },
+        });
       } else if ($this.closest('.meganavigation').length > 0) {
         if ($this.closest('.main-mega-menu-desktop').length > 0) {
           sectionHeading = 'main menu';
@@ -341,20 +386,22 @@ import { getParameterByName } from '../../../global/js/utils';
         btnAction = 'quick link clicked';
         if ($this.closest('.footer-social-dwonload').length > 0) {
           btnAction = 'social network interaction';
+        } else if ($this.closest('.footer-links-logo-section').length > 0) {
+          btnAction = 'footer item clicked';
         }
         let quickLinks = $this.closest('.links');
         let ctaName1 = '';
         if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
-          ctaName1 = quickLinks.find('.links-title').first().text().toLowerCase();
+          ctaName1 = quickLinks.find('.links-title').first().text().toLowerCase() + ':';
         } else if ($this.closest('.icons-wrap').length > 0) {
-          ctaName1 = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase();
+          ctaName1 = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase() + ':';
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
-                name: ctaName1 + ':' + ctaName,
+                name: ctaName1 + ctaName,
                 URL: currrentURL,
                 type: linkType,
                 region: 'footer',
@@ -366,7 +413,7 @@ import { getParameterByName } from '../../../global/js/utils';
             linkInfo: {
               sectionHeading: sectionHeading,
               action: btnAction,
-              name: ctaName1 + ':' + ctaName,
+              name: ctaName1 + ctaName,
             },
             eventInfo: {
               footerClick: 1,
@@ -465,7 +512,7 @@ import { getParameterByName } from '../../../global/js/utils';
               },
             },
             linkInfo: {
-              sectionHeading: sectionHeading,
+              sectionHeading: 'main',
               action: btnAction,
               name: ctaName,
             },
@@ -516,9 +563,9 @@ import { getParameterByName } from '../../../global/js/utils';
   function getFormName() {
     let currentURL = window.location.href;
     const productName = queryParamValue('productName', currentURL);
-    const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim() || '';
+    const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().toLowerCase().trim() || '';
     if (productName) {
-      const valueWithProductName = targetElementValue + " " + productName + "?";
+      const valueWithProductName = targetElementValue + " " + productName.toLowerCase() + "?";
       return valueWithProductName;
     } else {
       return targetElementValue;
