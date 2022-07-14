@@ -79,6 +79,7 @@ module.exports = {
       name: "clientlib-etisalat",
       categories: ["etisalat.etisalat"],
       dependencies: ["etisalat.dependencies", "etisalat.global", "etisalat.corecomponent"],
+      embed: ["etisalat.cmp.video","etisalat.cmp.productdetails","etisalat.cmp.producttile"],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
