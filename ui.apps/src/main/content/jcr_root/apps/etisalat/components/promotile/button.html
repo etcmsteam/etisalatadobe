@@ -15,7 +15,10 @@
 
    <sly data-sly-set.rippleEffect="${!properties.ctaStyle || properties.ctaStyle == 'link btn-text btn-green learn-more'  ? '' : 'ripple-effect'}"/>
 
-   <div data-sly-test="${properties.cardLink}" class="third-action-wrapper ${ctaStyleNotAuthored} ${btnWapperClass}">
+   <div data-sly-test="${properties.cardLink && properties.linkBehavior != 'openmodalwindow'}" class="third-action-wrapper ${ctaStyleNotAuthored} ${btnWapperClass}">
       <a href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle ?  properties.ctaStyle : ctaStyleNotAuthoredAnchorClass} ${rippleEffect}">${properties.promoCTATitle}</a>
+   </div>
+   <div data-sly-test="${properties.linkBehavior == 'openmodalwindow' && properties.fragmentVariationPath}" class="third-action-wrapper ${ctaStyleNotAuthored} ${btnWapperClass}">
+      <a data-label="${component.id}" class="${properties.ctaStyle ?  properties.ctaStyle : ctaStyleNotAuthoredAnchorClass} ${rippleEffect} btn-modal">${properties.promoCTATitle}</a>
    </div>
 </template>
