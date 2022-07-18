@@ -55,8 +55,11 @@ import { getParameterByName } from '../../../global/js/utils';
 
       if (chkLink.toLowerCase() === 'pdf') {
         let tabElement = $this.closest('.tabs');
+        let teaserElement = $this.closest('.teaser.cross-promotion-plain');
         if (tabElement.length > 0) {
           sectionHeading = $this.closest('.tabs').find('> h3').text().toLowerCase().trim();
+        } else if (teaserElement.length > 0) {
+          sectionHeading = $this.closest('.teaser').find('.cmp-teaser__title').text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -113,7 +116,7 @@ import { getParameterByName } from '../../../global/js/utils';
             },
           },
         });
-      } else if ($this.closest('.teaser').length > 0) {
+      } else if ($this.closest('.teaser.teaseretisalat').length > 0 && $this.closest('.cross-promotion-plain').length === 0) {
         let teaserTitle = $this.closest('.teaser').find('.cmp-teaser__title');
         let teaserDescTitle1 = $this.closest('.teaser').find('.cmp-teaser__description > h4');
         let teaserDescTitle2 = $this.closest('.teaser').find('.cmp-teaser__description > h3');
@@ -132,7 +135,7 @@ import { getParameterByName } from '../../../global/js/utils';
         let tabElement = $this.closest('.tabs');
         if (tabElement.length > 0) {
           sectionHeading = $this.closest('.tabs').find('> h3').text().toLowerCase().trim();
-        } 
+        }
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
@@ -239,8 +242,12 @@ import { getParameterByName } from '../../../global/js/utils';
         let descriptionVal = $this.closest('.mod-content').find('.media-cta-4-desc p');
         descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, '');
 
-        let eventInfo = {
-          exit: 1
+        if(ctaName === 'buy now') {
+          btnAction = 'buy ' + prodName;
+        } else if (ctaName === 'view plans') {
+          btnAction = 'view more plans';
+        } else {
+          btnAction = ctaName + 'clicked';
         }
 
         window.adobeDataLayer.push({
@@ -258,8 +265,8 @@ import { getParameterByName } from '../../../global/js/utils';
               },
             },
             linkInfo: {
-              sectionHeading: sectionHeading,
-              action: 'buy ' + prodName,
+              sectionHeading: prodName,
+              action: btnAction,
               name: ctaName,
             },
             product: {
@@ -586,8 +593,11 @@ import { getParameterByName } from '../../../global/js/utils';
       } else if ($this.closest('.context-navigation-4-0').length > 0) {
         btnAction = $this.closest('.context-tile').find('.wst-main-headings').text().toLowerCase().trim();
         let heading = $this.closest('.context-navigation-4-0').find('.content .wst-main-headings');
+        let heading1 = $this.closest('.context-navigation-4-0').find('.content-detail h3');
         if (heading.length > 0) {
           sectionHeading = heading.text().toLowerCase().trim();
+        } else if (heading1.length > 0) {
+          sectionHeading = heading1.text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -612,7 +622,7 @@ import { getParameterByName } from '../../../global/js/utils';
         });
       } else if ($this.closest('.features-4-0').length > 0) {
         sectionHeading = $this.closest('.features-4-0').find('.content .wst-secondary-headings').text().toLowerCase().trim();
-        btnAction = $this.find('img').attr('title').toLowerCase().trim();
+        ctaName = $this.find('img').attr('title').toLowerCase().trim();
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
@@ -629,8 +639,105 @@ import { getParameterByName } from '../../../global/js/utils';
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: 'view in ' + btnAction,
-              name: btnAction,
+              action: 'view in ' + ctaName,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.benefit-section').length > 0) {
+        sectionHeading = $this.closest('.benefit-section').find('.benefits-main-title').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'benefits',
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.current-promotions-wrraper').length > 0) {
+        sectionHeading = $this.closest('.current-promotions-wrraper').find('.promotions-title-wrap').text().toLowerCase().trim();
+        btnAction = $this.closest('.current-promotions-box').find('.title-wrap').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.cross-promotion-plain').length > 0) {
+        sectionHeading = sectionHeading = $this.closest('.cross-promotion-plain').find('.cmp-teaser__title').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: ctaName,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.media-cta-section').length > 0) {
+        sectionHeading = sectionHeading = $this.closest('.media-cta-section').find('.body-standard.text-left .col-xs-12 > h4').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: ctaName,
+              name: ctaName,
             },
           },
         });
