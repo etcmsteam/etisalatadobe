@@ -306,16 +306,11 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                                         <items jcr:primaryType="nt:unstructured">
-                                                            <cardlink
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                fieldDescription="Promo card cta link"
-                                                                fieldLabel="Promo Tile CTA Link"
-                                                                name="./cardLink"
-                                                                rootPath="/content"/>
                                                             <linkbehavior
+                                                                granite:class="cq-dialog-dropdown-showhide"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Tile Link Behavior"
                                                                 fieldLabel="Link Behavior"
                                                                 name="./linkBehavior">
                                                                 <items jcr:primaryType="nt:unstructured">
@@ -327,10 +322,62 @@
                                                                         jcr:primaryType="nt:unstructured"
                                                                         text="Open in Same Window"
                                                                         value="opensamewindow"/>
+                                                                    <linkmodalpopup
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Open CTA Link in Modal window"
+                                                                        value="openmodalwindow"/>
                                                                 </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    cq-dialog-dropdown-showhide-target=".promotilelinkbehavior-showhide-target"/>
                                                             </linkbehavior>
+                                                            <promotilelinkwindow
+                                                                granite:class="promotilelinkbehavior-showhide-target"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <cardlink
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldDescription="Promo card cta link"
+                                                                        fieldLabel="Promo Tile CTA Link"
+                                                                        name="./cardLink"
+                                                                        rootPath="/content"/>
+                                                                </items>
+                                                                <granite:data
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    showhidetargetvalue="opensamewindow"
+                                                                    showhidetargetvalue1="opennewwindow"/>
+                                                            </promotilelinkwindow>
                                                         </items>
                                                     </actionbehaviour>
+													<fragmentlink
+                                                        granite:class="promotilelinkbehavior-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <fragmentVariationPath
+                                                                granite:id="xfPicker"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="cq/experience-fragments/editor/components/xffield"
+                                                                fieldDescription="Choose the experience fragment variation to display."
+                                                                fieldLabel="Experience Fragment Variation Path"
+                                                                filter="folderOrVariant"
+                                                                name="./fragmentVariationPath"
+                                                                propertyFilter="cq:xfShowInEditor"
+                                                                variant="web"/>
+                                                            <modalBehavior
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="etisalat/components/commons/modal-popup-variations/modalBehavior"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Popup Behavior"
+                                                                fieldLabel="Popup Behavior"
+                                                                name="./modalBehavior"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="openmodalwindow"/>
+                                                    </fragmentlink>
                                                 </items>
                                             </promoCTAGroup>
                                         </items>
