@@ -3,6 +3,7 @@ import { getParameterByName } from '../../../global/js/utils';
 
 (function (window, document, $) {
   let num = 0;
+  let count = 0;
 
   function isValidHttpUrl(string) {
     try {
@@ -53,11 +54,9 @@ import { getParameterByName } from '../../../global/js/utils';
       }
 
       if (chkLink.toLowerCase() === 'pdf') {
-        if ($this.closest('.tabs').length > 0) {
-          let tabMenu = $this.closest('.tabs').find('.cmp-tabs__tab--active');
-          if (tabMenu.length > 0) {
-            btnAction = tabMenu.first().prop('innerText').trim().toLowerCase();
-          }
+        let tabElement = $this.closest('.tabs');
+        if (tabElement.length > 0) {
+          sectionHeading = $this.closest('.tabs').find('> h3').text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -75,7 +74,7 @@ import { getParameterByName } from '../../../global/js/utils';
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: btnAction,
+              action: "download pdf",
               name: ctaName,
             },
             eventInfo: {
@@ -116,11 +115,24 @@ import { getParameterByName } from '../../../global/js/utils';
         });
       } else if ($this.closest('.teaser').length > 0) {
         let teaserTitle = $this.closest('.teaser').find('.cmp-teaser__title');
+        let teaserDescTitle1 = $this.closest('.teaser').find('.cmp-teaser__description > h4');
+        let teaserDescTitle2 = $this.closest('.teaser').find('.cmp-teaser__description > h3');
+        let teaserDescTitle3 = $this.closest('.tabs').find('.cmp-tabs__tablist .cmp-tabs__tab--active');
+        let teaserDescTitle =  teaserDescTitle1.length > 0 ? teaserDescTitle1 : teaserDescTitle2;
         if (teaserTitle.length > 0) {
           btnAction = teaserTitle.text().toLowerCase().trim();
+        } else if (teaserDescTitle.length > 0) {
+          btnAction = teaserDescTitle.text().toLowerCase().trim();
+        } else if (teaserDescTitle3.length > 0) {
+          btnAction = teaserDescTitle3.text().toLowerCase().trim();
         } else {
-          btnAction = '';
+          btnAction = ctaName + ' clicked';
         }
+
+        let tabElement = $this.closest('.tabs');
+        if (tabElement.length > 0) {
+          sectionHeading = $this.closest('.tabs').find('> h3').text().toLowerCase().trim();
+        } 
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
@@ -136,8 +148,8 @@ import { getParameterByName } from '../../../global/js/utils';
               },
             },
             linkInfo: {
-              sectionHeading: btnAction,
-              action: ctaName + ' clicked',
+              sectionHeading: sectionHeading,
+              action: btnAction,
               name: ctaName,
             },
             eventInfo: {
@@ -227,6 +239,10 @@ import { getParameterByName } from '../../../global/js/utils';
         let descriptionVal = $this.closest('.mod-content').find('.media-cta-4-desc p');
         descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, '');
 
+        let eventInfo = {
+          exit: 1
+        }
+
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
@@ -243,7 +259,7 @@ import { getParameterByName } from '../../../global/js/utils';
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: ctaName + ' click',
+              action: 'buy ' + prodName,
               name: ctaName,
             },
             product: {
@@ -443,10 +459,13 @@ import { getParameterByName } from '../../../global/js/utils';
             },
           },
         });
-      } else if ($this.closest('.text').length > 0) {
-        sectionHeading = $this.closest('.text').find('.title');
-        if (sectionHeading.length > 0) {
-          sectionHeading = sectionHeading.text().trim().toLowerCase();
+      } else if ($this.closest('.text').length > 0 && $this.closest('.accordion').length === 0) {
+        let sectionHeadingTitle = $this.closest('.text').find('.title');
+        let secHead = $this.closest('.text').find('.cmp-text > h3');
+        if (sectionHeadingTitle.length > 0) {
+          sectionHeading = sectionHeadingTitle.text().trim().toLowerCase();
+        } else if (secHead.length > 0) {
+          sectionHeading = secHead.first().text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -464,7 +483,7 @@ import { getParameterByName } from '../../../global/js/utils';
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: ctaName,
+              action: ctaName + ' ' + sectionHeading,
               name: ctaName,
             },
           },
@@ -492,6 +511,126 @@ import { getParameterByName } from '../../../global/js/utils';
               sectionHeading: sectionHeading,
               action: sectionHeading + ' clicked',
               name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.config-section-wrap').length > 0) {
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'tab change',
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.cross-promo-background').length > 0) {
+        btnAction = $this.closest('.cta-content-wrap').find('.cont h4');
+        btnAction = btnAction.text().toLowerCase().trim();
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.accordion').length > 0) {
+        sectionHeading = $this.closest('.accordion').find('.cmp-accordion__title').text().toLowerCase().trim();
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'accordion link click',
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.context-navigation-4-0').length > 0) {
+        btnAction = $this.closest('.context-tile').find('.wst-main-headings').text().toLowerCase().trim();
+        let heading = $this.closest('.context-navigation-4-0').find('.content .wst-main-headings');
+        if (heading.length > 0) {
+          sectionHeading = heading.text().toLowerCase().trim();
+        }
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.features-4-0').length > 0) {
+        sectionHeading = $this.closest('.features-4-0').find('.content .wst-secondary-headings').text().toLowerCase().trim();
+        btnAction = $this.find('img').attr('title').toLowerCase().trim();
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'view in ' + btnAction,
+              name: btnAction,
             },
           },
         });
@@ -669,5 +808,43 @@ import { getParameterByName } from '../../../global/js/utils';
         },
       });
     }
+  });
+
+  //Accordion
+  let accordionBtn = $(".accordion .cmp-accordion__button");
+  if (accordionBtn.hasClass('cmp-accordion__button--expanded')) {
+    count++;
+  }
+  accordionBtn.on("click", function (e) {
+    let $this = $(this);
+    let ctaName = '';
+    let sectionHeading = $this.find('.cmp-accordion__title').text().toLowerCase().trim();
+    count++;
+    if (count % 2 === 0) {
+      ctaName = 'collapse';
+    } else {
+      ctaName = 'expand';
+    }
+    window.adobeDataLayer.push({
+      event: 'linkClicked',
+      xdmActionDetails: {
+        web: {
+          webInteraction: {
+            name: ctaName,
+            URL: '',
+            type: "other",
+            region: 'main',
+            linkClicks: {
+              value: 1,
+            },
+          },
+        },
+        linkInfo: {
+          sectionHeading: sectionHeading,
+          action: 'accordion click',
+          name: ctaName,
+        },
+      },
+    });
   });
 })(window, document, jQuery);
