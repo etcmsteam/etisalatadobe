@@ -90,4 +90,9 @@ export const SMB_FORMS = () => {
       return false;
     },
   });
+  $(window).on('load', function () {
+    if ($('input[name="firstName"]').val()) {
+      $FORM.valid();
+    }
+  });
 };
