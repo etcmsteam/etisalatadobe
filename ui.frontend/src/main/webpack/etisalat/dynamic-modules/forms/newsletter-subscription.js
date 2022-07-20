@@ -1,14 +1,15 @@
 /* eslint-disable */
-import { FORM_VALIDATION_MESSAGES } from "../../../global/js/constant";
-import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
+import { FORM_VALIDATION_MESSAGES } from '../../../global/js/constant';
+import { FORM_SUCCESS, FORM_ERROR } from '../../js/analytics/analytics';
+import { sanitizeHTML } from '../../../global/js/helpers';
 export const NEWS_LETTER_SUBSCRIPTION = () => {
-  const NO_SCROLL_CLASS = "no-scroll";
-  const $SUCCSS_POP_UP = $(".cmp-experiencefragment--Newsletter-subscription-pop-up");
-  const $BODY = $("body");
-  const $OVERLAY_CLOSE_CTA = $(".form-close");
-  const $FORM = $("#newsletterSubscription");
-  const $SUBMIT_CTA = $("#newsletterSubscription .cmp-form-button");
-  const $DYNAMIC_EMAIL = $("#form-popup-box .dynamicEmail");
+  const NO_SCROLL_CLASS = 'no-scroll';
+  const $SUCCSS_POP_UP = $('.cmp-experiencefragment--Newsletter-subscription-pop-up');
+  const $BODY = $('body');
+  const $OVERLAY_CLOSE_CTA = $('.form-close');
+  const $FORM = $('#newsletterSubscription');
+  const $SUBMIT_CTA = $('#newsletterSubscription .cmp-form-button');
+  const $DYNAMIC_EMAIL = $('#form-popup-box .dynamicEmail');
 
   if (!$FORM.length) {
     return false;
@@ -16,9 +17,9 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
 
   // const { hostName } = $FORM?.data() || {};
 
-  $SUBMIT_CTA.on("click", function () {
+  $SUBMIT_CTA.on('click', function () {
     if ($FORM.valid() === false) {
-      FORM_ERROR($FORM, "validation error");
+      FORM_ERROR($FORM, 'validation error');
       return false;
     }
   });
@@ -33,12 +34,11 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
     },
   };
 
-  if (document.documentElement.lang === "ar") {
+  if (document.documentElement.lang === 'ar') {
     messagelocal = validateMessage.ar;
   } else {
     messagelocal = validateMessage.en;
   }
-
 
   function getFormData($form) {
     var o = {};
@@ -48,27 +48,27 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
         if (!o[this.name].push) {
           o[this.name] = [o[this.name]];
         }
-        o[this.name].push(this.value || "");
+        o[this.name].push(this.value || '');
       } else {
-        o[this.name] = this.value || "";
+        o[this.name] = this.value || '';
       }
     });
     return o;
   }
 
   function submitSuccessResponse() {
-    const GET_EMAIL = $("input[name='EmailAddress']").val();
+    const GET_EMAIL = sanitizeHTML($("input[name='EmailAddress']").val());
     $DYNAMIC_EMAIL.text(GET_EMAIL);
     $SUCCSS_POP_UP.show();
     $BODY.addClass(NO_SCROLL_CLASS);
-    $("input[name='EmailAddress']").val("").removeClass("valid");
-    $("input[name='CustomerName']").val("").removeClass("valid");
+    $("input[name='EmailAddress']").val('').removeClass('valid');
+    $("input[name='CustomerName']").val('').removeClass('valid');
     FORM_SUCCESS($FORM, dataObj);
   }
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
-    FORM_ERROR($FORM, "API error", jqXHR.responseJSON);
+    FORM_ERROR($FORM, 'API error', jqXHR.responseJSON);
     console.log(errorText);
   }
 
@@ -80,13 +80,13 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
         maxlength: 25,
       },
       EmailAddress: {
-        required: true, 
+        required: true,
         email: true,
       },
     },
     messages: messagelocal,
     submitHandler: function () {
-      const ARTI_NAME = $("input[name=ArticleName]").val();
+      const ARTI_NAME = sanitizeHTML($('input[name=ArticleName]').val());
       const formData = getFormData($FORM);
       formData.ArticleName = ARTI_NAME;
 
@@ -99,14 +99,14 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
       dataObj = JSON.stringify(dataObj, null, 2);
 
       $.ajax({
-        type: "POST",
+        type: 'POST',
         url: `/b2bportal/subscribeNewsLetter.service`,
         data: dataObj,
-        dataType: "json",
+        dataType: 'json',
 
         headers: {
-          "content-type": "application/json",
-          "x-calling-application": "cms",
+          'content-type': 'application/json',
+          'x-calling-application': 'cms',
         },
 
         encode: true,
@@ -116,8 +116,14 @@ export const NEWS_LETTER_SUBSCRIPTION = () => {
     },
   });
 
-  $OVERLAY_CLOSE_CTA.on("click", (event) => {
+  $OVERLAY_CLOSE_CTA.on('click', (event) => {
     $SUCCSS_POP_UP.hide();
     $BODY.removeClass(NO_SCROLL_CLASS);
+  });
+
+  $(window).on('load', function () {
+    if ($('input[name="EmailAddress"]').val()) {
+      $FORM.valid();
+    }
   });
 };

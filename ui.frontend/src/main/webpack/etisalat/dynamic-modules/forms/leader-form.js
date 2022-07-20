@@ -1,9 +1,10 @@
 /* eslint-disable */
-import { FORM_SUCCESS, FORM_ERROR } from "../../js/analytics/analytics";
+import { FORM_SUCCESS, FORM_ERROR } from '../../js/analytics/analytics';
+import { sanitizeHTML } from '../../../global/js/helpers';
 
 export const LEADER_FORM = () => {
-  const $FORM = $("#leadOrder");
-  const $SUBMIT_CTA = $("#leadOrder .cmp-form-button");
+  const $FORM = $('#leadOrder');
+  const $SUBMIT_CTA = $('#leadOrder .cmp-form-button');
   const currentURL = window.location.href;
   const lang = $('html').attr('lang');
 
@@ -13,9 +14,9 @@ export const LEADER_FORM = () => {
 
   // const { hostName } = $FORM?.data() || {};
 
-  $SUBMIT_CTA.on("click", function () {
+  $SUBMIT_CTA.on('click', function () {
     if ($FORM.valid() == false) {
-      FORM_ERROR($FORM, "validation error");
+      FORM_ERROR($FORM, 'validation error');
       return false;
     }
   });
@@ -28,9 +29,9 @@ export const LEADER_FORM = () => {
         if (!o[this.name].push) {
           o[this.name] = [o[this.name]];
         }
-        o[this.name].push(this.value || "");
+        o[this.name].push(this.value || '');
       } else {
-        o[this.name] = this.value || "";
+        o[this.name] = this.value || '';
       }
     });
     return o;
@@ -39,33 +40,33 @@ export const LEADER_FORM = () => {
   function bindingUIFromParams() {
     const productName = queryParamValue('productName', currentURL);
     if (productName) {
-      const targetElement = $(".teaser-form").find(".cmp-teaser__title");
-      const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().trim();
-      const valueWithProductName = targetElementValue + " " + productName + "?";
+      const targetElement = $('.teaser-form').find('.cmp-teaser__title');
+      const targetElementValue = sanitizeHTML($('.teaser-form').find('.cmp-teaser__title').text().trim());
+      const valueWithProductName = targetElementValue + ' ' + productName + '?';
       targetElement.html(valueWithProductName);
     }
   }
 
   function getParameterByName(name, href) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    const regexS = "[\\?&]" + name + "=([^&#]*)";
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regexS = '[\\?&]' + name + '=([^&#]*)';
     const regex = new RegExp(regexS);
     const results = regex.exec(href);
-    if (results == null) return "";
-    else return decodeURIComponent(results[1].replace(/\-/g, " "));
+    if (results == null) return '';
+    else return decodeURIComponent(results[1].replace(/\-/g, ' '));
   }
 
   function queryParamValue(name, url = currentURL) {
     if (!name || !currentURL) return undefined;
 
     return getParameterByName(name, url)
-      .replace(/_/g, " ")
-      .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
+      .replace(/_/g, ' ')
+      .replace(/[\_\"\'\>\<\?\=\/\/]/g, ' ');
   }
 
   function submitErrorResponse(jqXHR, textStatus, error) {
     let errorText = (jqXHR.responseJSON && jqXHR.responseJSON.message) || error;
-    FORM_ERROR($FORM, "API error", jqXHR.responseJSON);
+    FORM_ERROR($FORM, 'API error', jqXHR.responseJSON);
     console.log(errorText);
   }
 
@@ -103,9 +104,9 @@ export const LEADER_FORM = () => {
     },
     submitHandler: function () {
       const formData = getFormData($FORM);
-      const product = queryParamValue("product") || formData.product;
-      const subject = queryParamValue("subject") || formData.subject;
-      const channel = queryParamValue("channel") || formData.channel;
+      const product = queryParamValue('product') || formData.product;
+      const subject = queryParamValue('subject') || formData.subject;
+      const channel = queryParamValue('channel') || formData.channel;
 
       const PAYLOAD = {
         accountNumber: formData.accountNumber,
@@ -122,22 +123,22 @@ export const LEADER_FORM = () => {
       };
 
       let dataObj = {
-        ClientCaptchaValue: formData["g-recaptcha-response"],
-        TYPE: "CREATEOMNILEAD",
+        ClientCaptchaValue: formData['g-recaptcha-response'],
+        TYPE: 'CREATEOMNILEAD',
         REQPAYLOAD: PAYLOAD,
       };
 
       dataObj = JSON.stringify(dataObj, null, 2);
 
       $.ajax({
-        type: "POST",
+        type: 'POST',
         url: `/b2bportal/Utility/checkCaptcha.service`,
         data: dataObj,
-        dataType: "json",
+        dataType: 'json',
 
         headers: {
-          "content-type": "application/json",
-          "x-calling-application": "cms",
+          'content-type': 'application/json',
+          'x-calling-application': 'cms',
         },
 
         encode: true,
@@ -154,14 +155,20 @@ export const LEADER_FORM = () => {
     },
   });
 
-  $(".cmp-form").on("change", "input[name=existingAccount]", function () {
-    if (this.value == "yes") {
-      $(".account-number").removeClass("hide");
+  $('.cmp-form').on('change', 'input[name=existingAccount]', function () {
+    if (this.value == 'yes') {
+      $('.account-number').removeClass('hide');
     } else {
-      $(".account-number").addClass("hide");
+      $('.account-number').addClass('hide');
     }
   });
 
   bindingUIFromParams();
   $(document).trigger('GA_FROM_TRACKING', { $type: 'load' });
+
+  $(window).on('load', function () {
+    if ($('input[name="firstName"]').val()) {
+      $FORM.valid();
+    }
+  });
 };
