@@ -12,6 +12,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
+import org.apache.sling.xss.XSSAPI;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
@@ -41,6 +42,9 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 	
 	@Reference
 	private transient CustomFormHandlingService customFormhandlingService;
+	
+	@Reference
+  private transient XSSAPI xssapi;
 
 	@Override
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) {
@@ -50,7 +54,7 @@ public class SendNotificationServlet extends SlingAllMethodsServlet {
 			final int timeOutvalue = etisalatApiService.getTimeOut();
 			final Map<String, String> params = new HashMap<>();
 			final Map<String, String[]> parameterMap = request.getParameterMap();
-			parameterMap.forEach((key,value) -> params.put(key, value[0]));
+			parameterMap.forEach((key,value) -> params.put(key,xssapi.filterHTML(value[0])));
 			final Gson gson = new Gson(); 
 			final String json = gson.toJson(params); 
 			final PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
