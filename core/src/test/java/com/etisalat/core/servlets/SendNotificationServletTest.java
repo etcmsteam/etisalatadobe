@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.sling.servlethelpers.MockSlingHttpServletRequest;
 import org.apache.sling.servlethelpers.MockSlingHttpServletResponse;
+import org.apache.sling.xss.XSSAPI;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,6 +32,10 @@ class SendNotificationServletTest {
 
 	@Mock
 	private MockSlingHttpServletResponse response;
+	
+	@Mock
+  private XSSAPI xssAPIservice;
+
 
 	private SendNotificationServlet sendNotificationServlet;
 
@@ -40,8 +45,9 @@ class SendNotificationServletTest {
 		Map<String, Object> apiServiceMap = new HashMap<>();
 		apiServiceMap.put("contactUsApiUrl", "test/api");
 		context.registerInjectActivateService(new EtisalatApiServiceImpl(), apiServiceMap);
-		context.registerService(new CustomFormHandlingServiceImpl());
-		sendNotificationServlet = context.registerInjectActivateService(new SendNotificationServlet());
+		context.registerService(new CustomFormHandlingServiceImpl());		
+		context.registerService(XSSAPI.class, xssAPIservice);
+		sendNotificationServlet = context.registerInjectActivateService(new SendNotificationServlet());		
 		request = context.request();
 		response = context.response();
 	}
