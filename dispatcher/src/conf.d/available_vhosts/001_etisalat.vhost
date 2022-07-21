@@ -15,8 +15,8 @@ Include conf.d/variables/custom.vars
     Header set Content-Disposition inline
 </LocationMatch>
 
-## Cache images and assets as per live site
-<LocationMatch "\.(?i:jpe?g|gif|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
+## Cache images and assets as per live site, And Font file to improve performance
+<LocationMatch "\.(?i:jpe?g|gif|mov|mp4|png|svg|txt|zip|ico|webp|pdf|ttf|woff|woff2|eot)$">
        Header unset Cache-Control
        Header always set Cache-Control max-age=31536000
        Header set Age 0
