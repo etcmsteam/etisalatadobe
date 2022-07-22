@@ -14,7 +14,7 @@
     <sly data-sly-test.recommbigConCard="${properties.tileBoxLayout == 'recommBigCard' ? 'eti-big-card-list' : ''}"></sly>
     <sly data-sly-test.recommConCard="${properties.tileBoxLayout == 'recommCard' ? 'eti-card-list-wrapper' : ''}"></sly>
     <sly data-sly-test="${properties.tileBoxLayout == 'accessoriesCard' || staticBrandLogo || properties.tileBoxLayout == 'recommBigCard' || properties.tileBoxLayout == 'recommCard'}">
-    <div data-component="" class="${accessoryCard}${brandlogoCard}${recommbigCard}${recommCard} container-fix__width">
+    <div data-component="" data-ga-event="${properties.gaeventname}" data-ga-ev-cat="${properties.gaeventcategory}" class="${accessoryCard}${brandlogoCard}${recommbigCard}${recommCard} container-fix__width">
         <div data-component="cmp-accessoriescardcontainer" class="container container-center">
             <div class="wst-main-headings">
                 <h4 data-sly-element="${properties.titleType}">${properties.accessoriescardPreTitle}</h4>
@@ -49,7 +49,9 @@
         <div class="${dynamicBrand}  container-fix__width" 
              data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel"              
              data-host-name="${commonModel.apiHostname}"                      
-             data-category-id="${properties.brandcategoryid}">
+             data-category-id="${properties.brandcategoryid}"
+			 data-ga-event="${properties.gaeventname}"
+			 data-ga-ev-cat="${properties.gaeventcategory}">
             <div class="container container-center">
                 <div class="wst-main-headings">
                     <h4 data-sly-element="${properties.titleType}">${properties.accessoriescardPreTitle}</h4>
