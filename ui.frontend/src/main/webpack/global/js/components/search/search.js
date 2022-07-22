@@ -434,10 +434,10 @@ $(document).ready(function () {
     var tabHeadData = '';
     var doc = document;
     console.log('successResponseHandler init');
-    console.log('successResponseHandler init', json.success, statusText, json.response.contents[0].autoSuggest[0].dimensionSearchGroups.length);
-    if (json.success === true && statusText === 'success' && json.response.contents[0].autoSuggest[0].dimensionSearchGroups.length > 0) {
+    console.log('successResponseHandler init', json.success, statusText, json.response?.contents[0].autoSuggest[0].dimensionSearchGroups.length);
+    if (json.success === true && statusText === 'success' && json.response?.contents[0].autoSuggest[0].dimensionSearchGroups.length > 0) {
       doc.querySelectorAll('.search-not-found-4-0')[instannceNum].classList.add('d-none'); // refactor
-      tabHeadData = json.response.contents[0].autoSuggest[0].dimensionSearchGroups[0].dimensionSearchValues;
+      tabHeadData = json.response?.contents[0].autoSuggest[0].dimensionSearchGroups[0].dimensionSearchValues;
       //for(var i=0; i<tabHeadData.length; i++){
       for (var i = 0; i < tabHeadData.length && i < 5; i++) {
         tabsHeadHTML +=

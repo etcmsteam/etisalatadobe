@@ -25,3 +25,20 @@ export const isMobile = {
     return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
   },
 };
+
+export const sanitizeHTML = (string) => {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '/': '&#x2F;',
+    '(': '&#40;',
+    ')': '&#41;',
+    '.': '&#46;',
+    '=': '&#61;',
+  };
+  const reg = /[&<>"'/]/gi;
+  return string.replace(reg, (match) => map[match]);
+};
