@@ -104,6 +104,8 @@ export const CURRENT_PROMOTION = () => {
       $("body, html").addClass("freeze");
       $(".modal-popup-wrapper").show;
       $(".modal-popup-wrapper").css("display", "block");
+
+      $(document).trigger('AA_MODAL_LOADED');
     }
   });
 

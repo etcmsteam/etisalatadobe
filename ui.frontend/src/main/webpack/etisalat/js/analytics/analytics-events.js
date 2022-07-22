@@ -954,4 +954,44 @@ import { getParameterByName } from '../../../global/js/utils';
       },
     });
   });
+
+  // modal popup
+  $(document).on('AA_MODAL_LOADED', (event) => {
+    $('.modal-popup-wrapper .nv-modal-dialog .offer-details-wrapper a').on("click", function (e) {
+      let $this = $(this);
+      let trgt = e.target;
+      let ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : '';
+      const currrentURL = $this.attr('href') ? $this.attr('href') : '';
+      let sectionHeading = $this.closest('.modal-popup-wrapper').find('.nv-modal-header .nv-modal-title');
+      sectionHeading = sectionHeading.text().trim().toLowerCase();
+
+      if (window.adobeDataLayer) {
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: 'download',
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: "more info clicked",
+              name: ctaName,
+            },
+            eventInfo: {
+              downloadClick: 1,
+            },
+          },
+        });
+      }
+    });
+  });
+
 })(window, document, jQuery);
