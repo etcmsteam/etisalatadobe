@@ -46,10 +46,10 @@ export const PRODUCT_CARDS = () => {
         var $planTableParent = $(this);
         $planTableParent.find(".table-swiper-button-next").addClass("plansRight" + index);
         $planTableParent.find(".table-swiper-button-prev").addClass("plansLeft" + index);
-
+        const nuberOfTiles = $planTableParent.find('.has-no-main-text').length > 0 ? [1.25, 2, 3, 4, 4] : [1.25, 2, 3, 3, 3];
         $carouselSliderPlansGrid = swiperInit(
-          ".plansTable" + index + " .swiper-container",
-          swiperOptions($planTableParent, ".table-swiper-button-next.plansRight" + index, ".table-swiper-button-prev.plansLeft" + index, 1.25, 2, 3, 4, 4),
+          '.plansTable' + index + ' .swiper-container',
+          swiperOptions($planTableParent, '.table-swiper-button-next.plansRight' + index, '.table-swiper-button-prev.plansLeft' + index, ...nuberOfTiles),
         );
       });
     }
