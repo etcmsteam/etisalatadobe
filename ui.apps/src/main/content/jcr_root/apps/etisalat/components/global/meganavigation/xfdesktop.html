@@ -1,6 +1,6 @@
 <template data-sly-template.xfdesktop="${ @ properties,meganavigation}">
   <!--main menu desktop version: starts -->
-  <div class="main-mega-menu-desktop" style="height: 100%; z-index: 999;">
+  <div class="main-mega-menu-desktop" style="z-index: 999;">
     <nav class="mega-menu-navbar-default">
       <div class="mega-menu-navbar">
         <div class="container">
@@ -51,7 +51,7 @@
                   </div>
                 </li>
                 <li data-sly-test="${properties.cart}" class="icon-link">
-                  <a href="${properties.cartLink}" class="mega-menu-link">
+                  <a data-sly-test="${properties.cartImage}" href="${properties.cartLink}" class="mega-menu-link">
                     <span class="cart-count hide"></span>
                     <img alt="cart" src="${properties.cartImage}" loading="lazy" 
                          data-sly-set.cartSrcPath="${properties.cartImage}" 
@@ -60,7 +60,7 @@
                   </a>
                 </li>
                 <li data-sly-test="${properties.search}" class="icon-link search-link-cms">
-                  <a class="mega-menu-link">
+                  <a data-sly-test="${properties.searchIconImage}" class="mega-menu-link">
                     <img alt="search" src="${properties.searchIconImage}" loading="lazy" 
                          data-sly-set.searchSrcPath="${properties.searchIconImage}" 
 	                     data-sly-use.searchImageModal="${'com.etisalat.core.models.CommonLinkModel' @link=searchSrcPath}" 

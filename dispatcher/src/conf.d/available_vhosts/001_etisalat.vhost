@@ -15,6 +15,13 @@ Include conf.d/variables/custom.vars
     Header set Content-Disposition inline
 </LocationMatch>
 
+## Cache images and assets as per live site, And Font file to improve performance
+<LocationMatch "\.(?i:jpe?g|gif|mov|mp4|png|svg|txt|zip|ico|webp|pdf|ttf|woff|woff2|eot)$">
+       Header unset Cache-Control
+       Header always set Cache-Control max-age=31536000
+       Header set Age 0
+</LocationMatch>
+
 <VirtualHost *:80>
 	ServerName	"etisalat"
 	# Put names of which domains are used for your published site/content here
@@ -82,6 +89,10 @@ Include conf.d/variables/custom.vars
 
         #Shorten the URL from web request
         RewriteRule ^/content/etisalat/ae/(.*).html$ $1.html [R,L]
+
+        # Etisalat Sitemap xml
+        RewriteRule ^/robots.txt$ /content/dam/etisalat/robots.txt [NC,PT]
+        RewriteRule ^/sitemap.xml$ /content/etisalat/ae.sitemap-index.xml [NC,PT]
 
         # Start of Legacy redirect rule
         # RewriteRule ^/business-apps/ /en/smb/index.jsp	 [R=301,L]

@@ -1,8 +1,8 @@
-import "../shared/js/flipclock.min";
-import "./green-friday.scss";
+import '../shared/js/flipclock.min';
+import './green-friday.scss';
 /* eslint-disable */
 export const GREEN_FRIDAY = () => {
-  const arabicPage = window.location.href.indexOf("/ar/") != -1;
+  const arabicPage = window.location.href.indexOf('/ar/') != -1;
   const currentDate = new Date();
 
   // function to return hours
@@ -17,22 +17,23 @@ export const GREEN_FRIDAY = () => {
     var hoursCount = secondsToPass + hoursToPass + daystoPass;
     return hoursCount;
   }
+
   $(document)
-    .find(".greenfriday input.green-friday-hidden")
+    .find('.greenfriday input.green-friday-hidden')
     .each(function (index) {
-      let id = $(this).attr("id");
+      let id = $(this).attr('id');
       let customInputDate = new Date($(this).val());
       let hoursToPass = currentDate > customInputDate ? 0 : returnSeconds(customInputDate, currentDate);
 
       if (arabicPage) {
-        let clock = $("." + id).FlipClock(hoursToPass, {
-          clockFace: "DailyCounter",
+        let clock = $('.' + id).FlipClock(hoursToPass, {
+          clockFace: 'DailyCounter',
           countdown: true,
-          language: "ar-ar",
+          language: 'ar-ar',
         });
       } else {
-        let clock = $("." + id).FlipClock(hoursToPass, {
-          clockFace: "DailyCounter",
+        let clock = $('.' + id).FlipClock(hoursToPass, {
+          clockFace: 'DailyCounter',
           countdown: true,
         });
       }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:isCheckedOut="{Boolean}false"
+    jcr:primaryType="cq:WorkflowModel"
+    jcr:uuid="38ee2d75-20bf-4922-95c5-c56a800040a8"
+    sling:resourceType="cq/workflow/components/model"
+    description="No Description"
+    title="Etisalat Publish Workflow">
+    <metaData
+        cq:generatingPage="/conf/global/settings/workflow/models/etisalat-publish-workflow/jcr:content"        
+        jcr:primaryType="nt:unstructured"
+        lastSynced="{Date}2022-07-12T16:52:31.448Z"/>
+    <nodes jcr:primaryType="nt:unstructured">
+        <node0
+            jcr:primaryType="cq:WorkflowNode"
+            title="Start"
+            type="START">
+            <metaData jcr:primaryType="nt:unstructured"/>
+        </node0>
+        <node1
+            jcr:primaryType="cq:WorkflowNode"
+            description="Get approval from reviewer's group."
+            title="Reviewer's Group Approval"
+            type="DYNAMIC_PARTICIPANT">
+            <metaData
+                jcr:primaryType="nt:unstructured"
+                DO_NOTIFY="true"
+                DYNAMIC_PARTICIPANT="/apps/workflow/scripts/etisalat/etisalat-dynamic-participant.ecma"
+                timeoutHandler="com.adobe.granite.workflow.console.timeout.autoadvance.AutoAdvancer"
+                timeoutMillis="1"/>
+        </node1>
+        <node2
+            jcr:primaryType="cq:WorkflowNode"
+            title="Ops Group Approval"
+            type="PARTICIPANT">
+            <metaData
+                jcr:primaryType="nt:unstructured"
+                DO_NOTIFY="true"
+                PARTICIPANT="Etisalat CMS IT team"
+                timeoutHandler="com.adobe.granite.workflow.console.timeout.autoadvance.AutoAdvancer"
+                timeoutMillis="1"/>
+        </node2>
+        <node3
+            jcr:primaryType="cq:WorkflowNode"
+            title="End"
+            type="END">
+            <metaData jcr:primaryType="nt:unstructured"/>
+        </node3>
+    </nodes>
+    <transitions jcr:primaryType="nt:unstructured">
+        <node0_x0023_node1
+            jcr:primaryType="cq:WorkflowTransition"
+            from="node0"
+            rule=""
+            to="node1">
+            <metaData jcr:primaryType="nt:unstructured"/>
+        </node0_x0023_node1>
+        <node1_x0023_node2
+            jcr:primaryType="cq:WorkflowTransition"
+            from="node1"
+            rule=""
+            to="node2">
+            <metaData jcr:primaryType="nt:unstructured"/>
+        </node1_x0023_node2>
+        <node2_x0023_node3
+            jcr:primaryType="cq:WorkflowTransition"
+            from="node2"
+            to="node3">
+            <metaData jcr:primaryType="nt:unstructured"/>
+        </node2_x0023_node3>
+    </transitions>
+</jcr:root>

@@ -1,6 +1,9 @@
 /* eslint-disable */
+import { getParameterByName } from '../../../global/js/utils';
+
 (function (window, document, $) {
   let num = 0;
+  let count = 0;
 
   function isValidHttpUrl(string) {
     try {
@@ -51,11 +54,12 @@
       }
 
       if (chkLink.toLowerCase() === 'pdf') {
-        if ($this.closest('.tabs').length > 0) {
-          let tabMenu = $this.closest('.tabs').find('.cmp-tabs__tab--active');
-          if (tabMenu.length > 0) {
-            btnAction = tabMenu.first().prop('innerText').trim().toLowerCase();
-          }
+        let tabElement = $this.closest('.tabs');
+        let teaserElement = $this.closest('.teaser.cross-promotion-plain');
+        if (tabElement.length > 0) {
+          sectionHeading = $this.closest('.tabs').find('> h3').text().toLowerCase().trim();
+        } else if (teaserElement.length > 0) {
+          sectionHeading = $this.closest('.teaser').find('.cmp-teaser__title').text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -73,7 +77,7 @@
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: btnAction,
+              action: "download pdf",
               name: ctaName,
             },
             eventInfo: {
@@ -112,12 +116,25 @@
             },
           },
         });
-      } else if ($this.closest('.teaser').length > 0) {
+      } else if ($this.closest('.teaser.teaseretisalat').length > 0 && $this.closest('.cross-promotion-plain').length === 0) {
         let teaserTitle = $this.closest('.teaser').find('.cmp-teaser__title');
+        let teaserDescTitle1 = $this.closest('.teaser').find('.cmp-teaser__description > h4');
+        let teaserDescTitle2 = $this.closest('.teaser').find('.cmp-teaser__description > h3');
+        let teaserDescTitle3 = $this.closest('.tabs').find('.cmp-tabs__tablist .cmp-tabs__tab--active');
+        let teaserDescTitle =  teaserDescTitle1.length > 0 ? teaserDescTitle1 : teaserDescTitle2;
         if (teaserTitle.length > 0) {
           btnAction = teaserTitle.text().toLowerCase().trim();
+        } else if (teaserDescTitle.length > 0) {
+          btnAction = teaserDescTitle.text().toLowerCase().trim();
+        } else if (teaserDescTitle3.length > 0) {
+          btnAction = teaserDescTitle3.text().toLowerCase().trim();
         } else {
-          btnAction = '';
+          btnAction = ctaName + ' clicked';
+        }
+
+        let tabElement = $this.closest('.tabs');
+        if (tabElement.length > 0) {
+          sectionHeading = $this.closest('.tabs').find('> h3').text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -134,8 +151,8 @@
               },
             },
             linkInfo: {
-              sectionHeading: btnAction,
-              action: ctaName + ' clicked',
+              sectionHeading: sectionHeading,
+              action: btnAction,
               name: ctaName,
             },
             eventInfo: {
@@ -210,6 +227,59 @@
             },
           },
         });
+      } else if ($this.closest('.media-cta-module-section').length > 0) {
+        productCat = pathArr.pop();
+
+        let prodName = $this.closest('.mod-content').find('.media-cta-4-title');
+        prodName = prodName.text().toLowerCase().trim();
+
+        let productPriceVal = $this.closest('.content-bottom').find('.media-cta-4-price .price .value');
+        productPriceVal = productPriceVal.text().toLowerCase().trim();
+
+        let currVal = $this.closest('.content-bottom').find('.media-cta-4-price .price .aed');
+        currVal = currVal = currVal.text().trim();
+
+        let descriptionVal = $this.closest('.mod-content').find('.media-cta-4-desc p');
+        descriptionVal = descriptionVal.text().toLowerCase().trim().replace(/\n|\r/g, '');
+
+        if(ctaName === 'buy now') {
+          btnAction = 'buy ' + prodName;
+        } else if (ctaName === 'view plans') {
+          btnAction = 'view more plans';
+        } else {
+          btnAction = ctaName + 'clicked';
+        }
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: prodName,
+              action: btnAction,
+              name: ctaName,
+            },
+            product: {
+              productDetails: {
+                productName: prodName,
+                productPrice: productPriceVal + currVal,
+                productType: sectionHeading,
+                productCategory: productCat,
+                productDescription: descriptionVal,
+              },
+            },
+          },
+        });
       } else if ($this.closest('.meganavigation').length > 0) {
         if ($this.closest('.main-mega-menu-desktop').length > 0) {
           sectionHeading = 'main menu';
@@ -231,6 +301,22 @@
               ctaHead = ctaHead.text().trim().toLowerCase() + ':';
               ctaContent = ctaContent.text().trim().toLowerCase() + ':';
               ctaName = ctaHead + ctaContent + ctaName;
+            }
+          }
+          if ($this.hasClass('clearSearch')) {
+            ctaName = 'search:clear';
+          }
+          if ($this.closest('.search-items-wrapper').length > 0) {
+            if ($this.closest('.list.quick-links').length > 0) {
+              let searchHeading = $this.closest('.list.quick-links').find('.list-item-heading');
+              searchHeading = searchHeading.text().trim().toLowerCase() + ':' || '';
+              ctaName = 'search:' + searchHeading + ctaName;
+            } else if ($this.closest('.list.trends').length > 0) {
+              let searchHeading = $this.closest('.list.trends').find('.list-item-heading');
+              searchHeading = searchHeading.text().trim().toLowerCase() + ':' || '';
+              let searchSubHead = $this.closest('.content').find('h4');
+              searchSubHead = searchSubHead.text().trim().toLowerCase() + ':' || '';
+              ctaName = 'search:' + searchHeading + searchSubHead + ctaName;
             }
           }
         }
@@ -319,18 +405,26 @@
           },
         });
       } else if ($this.closest('.footer').length > 0) {
+        sectionHeading = 'footer links';
+        btnAction = 'quick link clicked';
+        if ($this.closest('.footer-social-dwonload').length > 0) {
+          btnAction = 'social network interaction';
+        } else if ($this.closest('.footer-links-logo-section').length > 0) {
+          btnAction = 'footer item clicked';
+        }
         let quickLinks = $this.closest('.links');
+        let ctaName1 = '';
         if (quickLinks.length > 0 && quickLinks.find('.links-title').length > 0) {
-          btnAction = quickLinks.find('.links-title').first().text().toLowerCase();
+          ctaName1 = quickLinks.find('.links-title').first().text().toLowerCase() + ':';
         } else if ($this.closest('.icons-wrap').length > 0) {
-          btnAction = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase();
+          ctaName1 = $this.closest('.icons-wrap').parent().find('.footer-heading').first().text().toLowerCase() + ':';
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
           xdmActionDetails: {
             web: {
               webInteraction: {
-                name: btnAction + ':' + ctaName,
+                name: ctaName1 + ctaName,
                 URL: currrentURL,
                 type: linkType,
                 region: 'footer',
@@ -340,9 +434,9 @@
               },
             },
             linkInfo: {
-              sectionHeading: 'footer links',
-              action: 'quick link clicked',
-              name: btnAction + ':' + ctaName,
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName1 + ctaName,
             },
             eventInfo: {
               footerClick: 1,
@@ -372,10 +466,13 @@
             },
           },
         });
-      } else if ($this.closest('.text').length > 0) {
-        sectionHeading = $this.closest('.text').find('.title');
-        if (sectionHeading.length > 0) {
-          sectionHeading = sectionHeading.text().trim().toLowerCase();
+      } else if ($this.closest('.text').length > 0 && $this.closest('.accordion').length === 0) {
+        let sectionHeadingTitle = $this.closest('.text').find('.title');
+        let secHead = $this.closest('.text').find('.cmp-text > h3');
+        if (sectionHeadingTitle.length > 0) {
+          sectionHeading = sectionHeadingTitle.text().trim().toLowerCase();
+        } else if (secHead.length > 0) {
+          sectionHeading = secHead.first().text().toLowerCase().trim();
         }
         window.adobeDataLayer.push({
           event: 'linkClicked',
@@ -393,7 +490,7 @@
             },
             linkInfo: {
               sectionHeading: sectionHeading,
-              action: ctaName,
+              action: ctaName + ' ' + sectionHeading,
               name: ctaName,
             },
           },
@@ -424,6 +521,226 @@
             },
           },
         });
+      } else if ($this.closest('.config-section-wrap').length > 0) {
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'tab change',
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.cross-promo-background').length > 0) {
+        btnAction = $this.closest('.cta-content-wrap').find('.cont h4');
+        btnAction = btnAction.text().toLowerCase().trim();
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.accordion').length > 0) {
+        sectionHeading = $this.closest('.accordion').find('.cmp-accordion__title').text().toLowerCase().trim();
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'accordion link click',
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.context-navigation-4-0').length > 0) {
+        btnAction = $this.closest('.context-tile').find('.wst-main-headings').text().toLowerCase().trim();
+        let heading = $this.closest('.context-navigation-4-0').find('.content .wst-main-headings');
+        let heading1 = $this.closest('.context-navigation-4-0').find('.content-detail h3');
+        if (heading.length > 0) {
+          sectionHeading = heading.text().toLowerCase().trim();
+        } else if (heading1.length > 0) {
+          sectionHeading = heading1.text().toLowerCase().trim();
+        }
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.features-4-0').length > 0) {
+        sectionHeading = $this.closest('.features-4-0').find('.content .wst-secondary-headings').text().toLowerCase().trim();
+        ctaName = $this.find('img').attr('title').toLowerCase().trim();
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'view in ' + ctaName,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.benefit-section').length > 0) {
+        sectionHeading = $this.closest('.benefit-section').find('.benefits-main-title').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: 'benefits',
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.current-promotions-wrraper').length > 0) {
+        sectionHeading = $this.closest('.current-promotions-wrraper').find('.promotions-title-wrap').text().toLowerCase().trim();
+        btnAction = $this.closest('.current-promotions-box').find('.title-wrap').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: btnAction,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.cross-promotion-plain').length > 0) {
+        sectionHeading = sectionHeading = $this.closest('.cross-promotion-plain').find('.cmp-teaser__title').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: ctaName,
+              name: ctaName,
+            },
+          },
+        });
+      } else if ($this.closest('.media-cta-section').length > 0) {
+        sectionHeading = sectionHeading = $this.closest('.media-cta-section').find('.body-standard.text-left .col-xs-12 > h4').text().toLowerCase().trim();
+
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: linkType,
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: ctaName,
+              name: ctaName,
+            },
+          },
+        });
       } else {
         btnAction = ctaName;
         window.adobeDataLayer.push({
@@ -441,7 +758,7 @@
               },
             },
             linkInfo: {
-              sectionHeading: sectionHeading,
+              sectionHeading: 'main',
               action: btnAction,
               name: ctaName,
             },
@@ -489,13 +806,33 @@
     return true;
   }
 
+  function getFormName() {
+    let currentURL = window.location.href;
+    const productName = queryParamValue('productName', currentURL);
+    const targetElementValue = $(".teaser-form").find(".cmp-teaser__title").text().toLowerCase().trim() || '';
+    if (productName) {
+      const valueWithProductName = targetElementValue + " " + productName.toLowerCase() + "?";
+      return valueWithProductName;
+    } else {
+      return targetElementValue;
+    }
+  }
+
+  function queryParamValue(name, url) {
+    if (!name || !url) return undefined;
+
+    return getParameterByName(name, url)
+      .replace(/_/g, " ")
+      .replace(/[\_\"\'\>\<\?\=\/\/]/g, " ");
+  }
+
   let formObj = $(document).find('form');
   if (formObj.length > 0) {
     formObj.each(function () {
       let dirty = false;
       let inputEle = $(this).find('input');
       let textArea = $(this).find('textarea');
-      let formName = $(this).attr('name');
+      let formName = getFormName();
 
       inputEle.each(function () {
         $(this).on('input', function () {
@@ -579,4 +916,82 @@
       });
     }
   });
+
+  //Accordion
+  let accordionBtn = $(".accordion .cmp-accordion__button");
+  if (accordionBtn.hasClass('cmp-accordion__button--expanded')) {
+    count++;
+  }
+  accordionBtn.on("click", function (e) {
+    let $this = $(this);
+    let ctaName = '';
+    let sectionHeading = $this.find('.cmp-accordion__title').text().toLowerCase().trim();
+    count++;
+    if (count % 2 === 0) {
+      ctaName = 'collapse';
+    } else {
+      ctaName = 'expand';
+    }
+    window.adobeDataLayer.push({
+      event: 'linkClicked',
+      xdmActionDetails: {
+        web: {
+          webInteraction: {
+            name: ctaName,
+            URL: '',
+            type: "other",
+            region: 'main',
+            linkClicks: {
+              value: 1,
+            },
+          },
+        },
+        linkInfo: {
+          sectionHeading: sectionHeading,
+          action: 'accordion click',
+          name: ctaName,
+        },
+      },
+    });
+  });
+
+  // modal popup
+  $(document).on('AA_MODAL_LOADED', (event) => {
+    $('.modal-popup-wrapper .nv-modal-dialog .offer-details-wrapper a').on("click", function (e) {
+      let $this = $(this);
+      let trgt = e.target;
+      let ctaName = trgt.innerText ? trgt.innerText.toLowerCase().trim() : '';
+      const currrentURL = $this.attr('href') ? $this.attr('href') : '';
+      let sectionHeading = $this.closest('.modal-popup-wrapper').find('.nv-modal-header .nv-modal-title');
+      sectionHeading = sectionHeading.text().trim().toLowerCase();
+
+      if (window.adobeDataLayer) {
+        window.adobeDataLayer.push({
+          event: 'linkClicked',
+          xdmActionDetails: {
+            web: {
+              webInteraction: {
+                name: ctaName,
+                URL: currrentURL,
+                type: 'download',
+                region: 'main',
+                linkClicks: {
+                  value: 1,
+                },
+              },
+            },
+            linkInfo: {
+              sectionHeading: sectionHeading,
+              action: "more info clicked",
+              name: ctaName,
+            },
+            eventInfo: {
+              downloadClick: 1,
+            },
+          },
+        });
+      }
+    });
+  });
+
 })(window, document, jQuery);

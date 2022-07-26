@@ -15,7 +15,9 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <template data-sly-template.headlibs="${@ designPath, staticDesignPath, clientLibCategories, clientLibCategoriesJsHead, hasCloudconfigSupport}"
           data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" 
-          data-sly-set.comparePageClientLibs="${pageProperties.customAllowedCss || pageProperties.customAllowedJs}">
+          data-sly-set.goChatTemplate="${properties['cq:template'] &&
+          properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/gochat-content-template' ||  properties['cq:template'] == '/conf/etisalat/settings/wcm/templates/gochat-generic-template'}"        
+          data-sly-set.comparePageClientLibs="${!goChatTemplate && (pageProperties.customAllowedCss || pageProperties.customAllowedJs)}" >
     <sly data-sly-test="${!wcmmode.disabled}" data-sly-call="${clientlib.all @ categories = [
         'cq.pagetypes.html5page',
         'cq.authoring.page',

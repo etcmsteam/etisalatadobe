@@ -7,6 +7,7 @@ var player;
 var mileStones = [25, 50, 75];
 var videoTitle;
 var pauseFlag;
+var formTitle = $(".teaser-form").find(".cmp-teaser__title").text().trim() || '';
 
 export const ANALYTICS_FILTER = (category, type, value) => {
   const pagePathName = window.location.pathname;
@@ -149,7 +150,7 @@ export const FORM_SUCCESS = (form, data) => {
 };
 
 export const FORM_ERROR = (form, type, errResponse) => {
-  let name = form.attr('name');
+  let name = formTitle;
   const currrentURL = window.location.href;
   let errType = type;
   let errMsg;
@@ -339,8 +340,43 @@ export const ACCESSIBILITY_TRACKING = ($this, val) => {
           },
         },
         linkInfo: {
-          sectionHeading: 'accessibility',
-          action: 'accessibility item clicked',
+          sectionHeading: 'nav menu',
+          action: 'nav menu item clicked',
+          name: ctaName,
+        },
+        eventInfo: {
+          headerClick: 1,
+        },
+      },
+    });
+  }
+};
+
+export const SEARCH_TRACKING = (data) => {
+  if (window.adobeDataLayer) {
+    let ctaName = '';
+    if (data !== 'open') {
+      ctaName = 'search:close';
+    } else {
+      ctaName = 'search:open';
+    }
+    window.adobeDataLayer.push({
+      event: 'linkClicked',
+      xdmActionDetails: {
+        web: {
+          webInteraction: {
+            name: ctaName,
+            URL: '',
+            type: 'other',
+            region: 'header',
+            linkClicks: {
+              value: 1,
+            },
+          },
+        },
+        linkInfo: {
+          sectionHeading: 'main menu',
+          action: 'main menu item clicked',
           name: ctaName,
         },
         eventInfo: {

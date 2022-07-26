@@ -73,4 +73,10 @@ export const PROXY_FORM = () => {
       return true;
     },
   });
+
+  $(window).on('load', function () {
+    if ($('input[name="name"]').val()) {
+      $FORM.valid();
+    }
+  });
 };

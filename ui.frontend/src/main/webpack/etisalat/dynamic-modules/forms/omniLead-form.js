@@ -151,4 +151,10 @@ export const OMNI_LEAD_FORM = () => {
       $(".account-number").addClass("hide");
     }
   });
+
+  $(window).on('load', function () {
+    if ($('input[name="firstName"]').val()) {
+      $FORM.valid();
+    }
+  });
 };
