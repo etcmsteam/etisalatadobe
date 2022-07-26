@@ -80,14 +80,37 @@
 }
 
 .teaseretisalat {
-  &.link__arrow {
+  &.link__arrow,
+  &.link__arrow_green {
     .cmp-teaser__action-container {
       .cmp-teaser__action-link {
-        line-height: toRem(16);
+        line-height: toRem(24);
+      }
+    }
+  }
 
-        @include respond-to-min($desktop) {
-          line-height: toRem(20);
+  &.media-cta-4-0-top {
+    .cmp-teaser {
+      &__content {
+        padding: toRem(24) toRem(16);
+
+        @include rtlBlock() {
+          padding: toRem(24) toRem(16);
         }
+      }
+
+      &__description {
+        p {
+          margin-bottom: toRem(12);
+
+          @include respond-to-min($desktop) {
+            margin-bottom: toRem(16);
+          }
+        }
+      }
+
+      &__action-link:hover {
+        text-decoration: none;
       }
     }
   }
@@ -269,7 +292,8 @@
     }
   }
 
-  &.link__arrow {
+  &.link__arrow,
+  &.link__arrow_green {
     .cmp-teaser__action-container {
       line-height: 1.5rem;
 
@@ -303,19 +327,21 @@
 
   &.button--transparent,
   &.button--secondary,
-  &.button--primary {
+  &.button--primary,
+  &.button--orange {
     .cmp-teaser__action-container {
+      width: 280px;
+      min-width: 280px;
+
       @include respond-to-min($desktop) {
         height: toRem(50);
         margin-top: toRem(-25);
         top: 50%;
-        width: 280px;
       }
 
       @include respond-to-max($desktop) {
         position: relative;
         right: 0;
-        width: 100%;
       }
 
       @media only screen and (orientation: landscape) {
@@ -330,6 +356,10 @@
             right: auto;
           }
         }
+      }
+
+      @include respond-to-max($tablet-min) {
+        width: 100%;
       }
     }
   }
@@ -689,7 +719,8 @@
 
   &.button--primary,
   &.button--transparent,
-  &.button--secondary {
+  &.button--secondary,
+  &.button--orange {
     .cmp-teaser__action-container {
       @include respond-to-min($tablet) {
         max-width: toRem(180);
@@ -861,35 +892,52 @@ $prefix: "cmp-teaser";
 $grid-spacing: 12px;
 
 .cmp-teaser--multicol {
-  .aem-Grid .aem-GridColumn {
-    padding-top: $grid-spacing;
+  .aem-Grid {
+    display: flex;
+    flex-wrap: wrap;
 
-    @include respond-to-min($desktop) {
-      padding-top: 0;
+    .aem-GridColumn {
+      padding-top: $grid-spacing;
 
-      &:first-child {
-        padding: 0 $grid-spacing 0 0;
-      }
+      @include respond-to-min($desktop) {
+        padding-top: 0;
 
-      &:last-child {
-        padding: 0 0 0 $grid-spacing;
-      }
-
-      @include rtlBlock() {
-        &:last-child {
+        &:first-child {
           padding: 0 $grid-spacing 0 0;
         }
 
-        &:first-child {
+        &:last-child {
           padding: 0 0 0 $grid-spacing;
+        }
+
+        @include rtlBlock() {
+          &:last-child {
+            padding: 0 $grid-spacing 0 0;
+          }
+
+          &:first-child {
+            padding: 0 0 0 $grid-spacing;
+          }
+        }
+      }
+
+      &.teaseretisalat {
+        .cmp-teaser {
+          height: 100%;
         }
       }
     }
   }
 
-  @include respond-to-max($tablet) {
-    .cross-promotion-plain {
+  .cross-promotion-plain {
+    @include respond-to-max($tablet) {
       padding: 0;
+    }
+
+    @include respond-to-max($desktop-min) {
+      &.aem-GridColumn {
+        padding: $grid-spacing 0 0;
+      }
     }
   }
   .#{$prefix}--purpal-bg {
@@ -982,7 +1030,12 @@ $grid-spacing: 12px;
     }
   }
 
-  .link__arrow {
+  .link__arrow,
+  .link__arrow_green,
+  .button--primary,
+  .button--transparent,
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       position: relative;
     }
@@ -990,7 +1043,8 @@ $grid-spacing: 12px;
 
   .button--primary,
   .button--transparent,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       @include respond-to-min($desktop) {
         max-width: toRem(240);
@@ -1064,7 +1118,8 @@ $grid-spacing: 12px;
 
   .button--transparent,
   .button--primary,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       background: transparent;
       border: toRem(1) solid $white;
@@ -1153,7 +1208,8 @@ $grid-spacing: 12px;
 
   .button--transparent,
   .button--primary,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       background: transparent;
       border: toRem(1) solid $white;
@@ -1243,7 +1299,8 @@ $grid-spacing: 12px;
 
   .button--transparent,
   .button--primary,
-  .button--secondary {
+  .button--secondary,
+  .button--orange {
     .cmp-teaser__action-container {
       background: transparent;
       border: toRem(1) solid $yellow-light !important;

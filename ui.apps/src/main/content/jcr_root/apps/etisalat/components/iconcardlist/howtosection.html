@@ -1,0 +1,21 @@
+<template data-sly-template.howtosection="${ @ container,properties}"
+          data-sly-use.iconCardListData="com.etisalat.core.models.IconCardList">
+    <div data-component="cmp-how-to-subscribe" class="how-to-subscibe">
+        <div data-sly-test="${properties.mainTitle}"class="how-to-subscribe__title">
+            ${properties.mainTitle}
+        </div>
+        <div class="row" data-sly-list.cardItems="${iconCardListData.howToCardListItems}">
+            <div class="col-xs-12 col-md-6">
+                <div class="how-to-subscribe__container">
+                    <div class="how-to-subscribe__icon">
+                        <img alt="${cardItems.howToTitle}" data-sly-test="${cardItems.howToIcon}" src="${cardItems.howToIcon}"/>
+                    </div>
+                    <div class="how-to-subscribe__content">
+                        <h3>${cardItems.howToTitle}</h3>
+                        <p>${cardItems.howToDesc}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

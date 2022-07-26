@@ -51,6 +51,9 @@ public class IconCardListImpl implements IconCardList {
         cardList.setLinkBehavior(childResource.getValueMap().get(AEConstants.LINK_BEHAVIOR, StringUtils.EMPTY));
         cardList.setCardLink(CommonUtility.appendHtmlExtensionToPage(resourceResolver,
 						childResource.getValueMap().get(AEConstants.CARD_LINK, String.class)));
+        cardList.setHowToTitle(childResource.getValueMap().get(AEConstants.HOWTO_TITLE, StringUtils.EMPTY));
+        cardList.setHowToDesc(childResource.getValueMap().get(AEConstants.HOWTO_DESC, StringUtils.EMPTY));
+        cardList.setHowToIcon(childResource.getValueMap().get(AEConstants.HOWTO_ICON, StringUtils.EMPTY));
         iconCardListItem.add(cardList);
       }
 
@@ -61,10 +64,39 @@ public class IconCardListImpl implements IconCardList {
   }
 
   @Override
+  public List<IconCardVO> getHowToCardListItems() {
+    final Resource iconCardList = res.getChild(AEConstants.HOW_TO_LIST);
+    final List<IconCardVO> iconCardListItem = new ArrayList<>();
+    if (iconCardList != null && iconCardList.hasChildren()) {
+      final Iterator<Resource> list = iconCardList.listChildren();
+      while (list.hasNext()) {
+        final Resource childResource = list.next();
+        final IconCardVO cardList = new IconCardVO();
+        cardList.setHowToTitle(childResource.getValueMap().get(AEConstants.HOWTO_TITLE, StringUtils.EMPTY));
+        cardList.setHowToDesc(childResource.getValueMap().get(AEConstants.HOWTO_DESC, StringUtils.EMPTY));
+        cardList.setHowToIcon(childResource.getValueMap().get(AEConstants.HOWTO_ICON, StringUtils.EMPTY));
+        iconCardListItem.add(cardList);
+      }
+
+    } else {
+      LOG.error("Icon Card list is empty {}",res.getPath());
+    }
+    return Collections.unmodifiableList(iconCardListItem);
+  }
+
+  @Override
   public int getIconCardSize() {
     final int defaultSize = 0;
     if (CollectionUtils.isNotEmpty(getIconCardListItems())) {
       return getIconCardListItems().size();
+    }
+    return defaultSize;
+  }
+  @Override
+  public int getHowToCardSize() {
+    final int defaultSize = 0;
+    if (CollectionUtils.isNotEmpty(getHowToCardListItems())) {
+      return getHowToCardListItems().size();
     }
     return defaultSize;
   }
