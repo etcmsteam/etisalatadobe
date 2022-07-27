@@ -1,5 +1,8 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+
 <sly data-sly-test.customLink="${properties.link}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
-<div class="related-jobs" data-component="cmp-related-jobs">
+<div class="related-jobs" data-component="cmp-related-jobs" data-job-detail-end-point="${properties.jobDetailEndPoint}"
+	 data-end-point="${properties.endPointUrl}">
    <div class="">
       <div class="wst-main-headings">
          <h4>${properties.title}</h4>
@@ -13,3 +16,5 @@
       </div>
    </div>
 </div>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.title}"></sly>
