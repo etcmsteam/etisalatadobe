@@ -20,7 +20,7 @@
 <template data-sly-template.css="${@ categories='Client Library categories'}">
     <section data-sly-test="${request.getResourceResolver}"
              data-sly-use.clientlib="${'/apps/granite/sightly/templates/graniteClientLib.html'}"
-             data-sly-call="${clientlib.include @ categories=categories, mode='css'}"
+             data-sly-call="${clientlib.include @ categories=categories, mode='css', loading=loading, rel=rel}"
              data-sly-unwrap>
     </section>
 </template>
@@ -31,7 +31,7 @@
 <template data-sly-template.js="${@ categories='Client Library categories'}">
     <section data-sly-test="${request.getResourceResolver}"
              data-sly-use.clientlib="${'/apps/granite/sightly/templates/graniteClientLib.html'}"
-             data-sly-call="${clientlib.include @ categories=categories, mode='js'}"
+             data-sly-call="${clientlib.include @ categories=categories, mode='js', loading=loading, rel=rel}"
              data-sly-unwrap>
     </section>
 </template>

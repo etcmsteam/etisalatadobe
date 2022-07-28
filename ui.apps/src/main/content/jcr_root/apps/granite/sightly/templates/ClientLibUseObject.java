@@ -2,10 +2,13 @@ package apps.granite.sightly.templates;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.script.Bindings;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScriptHelper;
@@ -18,6 +21,10 @@ import com.adobe.granite.ui.clientlibs.HtmlLibraryManager;
 import com.adobe.granite.ui.clientlibs.LibraryType;
 
 /*******************************************************************************
+ * Sightly Clientlibs that can accept expression options for 'defer', 'async'
+ *
+ * See: https://github.com/nateyolles/aem-clientlib-async
+ * 
  * ADOBE CONFIDENTIAL
  * __________________
  *
@@ -37,22 +44,43 @@ public class ClientLibUseObject implements Use {
 
     private static final String BINDINGS_CATEGORIES = "categories";
     private static final String BINDINGS_MODE = "mode";
+    private static final String BINDINGS_REL = "rel";
 
     /**
      * HTML markup for javascript. Add 'type="text/javascript"' if you are not
      * using HTML 5.
      */
-    private static final String TAG_JAVASCRIPT = "<link rel=\"preload\" href=\"%s\" as=\"script\">\n";
-
+    private static final String TAG_JAVASCRIPT = "<script type=\"text/javascript\" src=\"%s\" %s></script>\n";
+    
     /**
      * HTML markup for stylesheets.
      */
-    private static final String TAG_STYLESHEET = "<link rel=\"preload\" href=\"%s\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">\n";
+    private static final String TAG_STYLESHEET = "<link rel=\"stylesheet\" href=\"%s\" %s type=\"text/css\">\n";
 
+    /**
+     * HTML markup for preload stylesheets.
+     */
+    private static final String TAG_PRELOAD_STYLESHEET = "<link rel=\"preload\" href=\"%s\" %s as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">\n";
+
+    /**
+     * Valid void attributes for HTML markup of script element.
+     */
+    private static final List<String> VALID_JS_ATTRIBUTES = new ArrayList<String>(){{
+        add("async");
+        add("defer");
+    }};
+    
+    /**
+     * Sightly parameter that becomes the script element void attribute such as
+     * 'defer' and 'async'. Valid values are listed in {@link #VALID_JS_ATTRIBUTES}.
+     */
+    private static final String BINDINGS_LOADING = "loading";
    
 
     private HtmlLibraryManager htmlLibraryManager = null;
     private String[] categories;
+    private String loadingAttribute;
+    private String loadingRel;
     private String mode;  
     private SlingHttpServletRequest request;
     private PrintWriter out;
@@ -66,7 +94,9 @@ public class ClientLibUseObject implements Use {
      * 
      * @see libs.granite.sightly.templates.ClientLibUseObject#init(Bindings)
      */
-    public void init(Bindings bindings) {                
+    public void init(Bindings bindings) {               
+        loadingAttribute = (String) bindings.get(BINDINGS_LOADING);
+        loadingRel = (String) bindings.get(BINDINGS_REL);
         Object categoriesObject = bindings.get(BINDINGS_CATEGORIES);
         log = (Logger) bindings.get(SlingBindings.LOG);
         if (categoriesObject != null) {
@@ -133,12 +163,24 @@ public class ClientLibUseObject implements Use {
     private void includeLibraries(PrintWriter out, LibraryType libraryType) {
         if (htmlLibraryManager != null && libraryType != null && xssAPI != null) { 
             Collection<ClientLibrary> libs = htmlLibraryManager.getLibraries(categories, libraryType, false, true);
-
+            
+            String attribute = StringUtils.EMPTY;
+            String relAttribute = StringUtils.EMPTY;
+            
+            if (libraryType.equals(LibraryType.JS)) {
+              if (StringUtils.isNotBlank(loadingAttribute) && VALID_JS_ATTRIBUTES.contains(loadingAttribute.toLowerCase())) {
+                  attribute = " ".concat(loadingAttribute.toLowerCase());
+              }
+            } else {
+              relAttribute = loadingAttribute.toLowerCase();
+            }
+                                   
+            String styleTag = StringUtils.isNotBlank(relAttribute) ? TAG_PRELOAD_STYLESHEET : TAG_STYLESHEET;
+                
             for (ClientLibrary lib : libs) {
                 String path = getIncludePath(request, lib, libraryType, htmlLibraryManager.isMinifyEnabled());
-
                 if (path != null) {
-                    out.format(libraryType.equals(LibraryType.JS) ? TAG_JAVASCRIPT : TAG_STYLESHEET, path);
+                    out.format(libraryType.equals(LibraryType.JS) ? TAG_JAVASCRIPT : styleTag, path, attribute);
                 }
             }
         }
