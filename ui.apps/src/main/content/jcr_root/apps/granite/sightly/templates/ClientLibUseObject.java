@@ -83,7 +83,6 @@ public class ClientLibUseObject implements Use {
     private String loadingRel;
     private String mode;  
     private SlingHttpServletRequest request;
-    private PrintWriter out;
     private Logger log;
 
     private XSSAPI xssAPI;
@@ -94,9 +93,7 @@ public class ClientLibUseObject implements Use {
      * 
      * @see libs.granite.sightly.templates.ClientLibUseObject#init(Bindings)
      */
-    public void init(Bindings bindings) {               
-        loadingAttribute = (String) bindings.get(BINDINGS_LOADING);
-        loadingRel = (String) bindings.get(BINDINGS_REL);
+    public void init(Bindings bindings) {                           
         Object categoriesObject = bindings.get(BINDINGS_CATEGORIES);
         log = (Logger) bindings.get(SlingBindings.LOG);
         if (categoriesObject != null) {
@@ -117,7 +114,9 @@ public class ClientLibUseObject implements Use {
                 }
             }
             if (categories != null && categories.length > 0) {
-                mode = (String) bindings.get(BINDINGS_MODE);
+                mode = (String) bindings.get(BINDINGS_MODE);   
+                loadingRel = (String) bindings.get(BINDINGS_REL);
+                loadingAttribute = (String) bindings.get(BINDINGS_LOADING);    
                 request = (SlingHttpServletRequest) bindings.get(SlingBindings.REQUEST);
                 SlingScriptHelper sling = (SlingScriptHelper) bindings.get(SlingBindings.SLING);
                 htmlLibraryManager = sling.getService(HtmlLibraryManager.class);
@@ -165,16 +164,14 @@ public class ClientLibUseObject implements Use {
             Collection<ClientLibrary> libs = htmlLibraryManager.getLibraries(categories, libraryType, false, true);
             
             String attribute = StringUtils.EMPTY;
-            String relAttribute = StringUtils.EMPTY;
+            String relAttribute = StringUtils.isNotBlank(loadingRel) ? loadingRel.toLowerCase() : StringUtils.EMPTY;
             
             if (libraryType.equals(LibraryType.JS)) {
               if (StringUtils.isNotBlank(loadingAttribute) && VALID_JS_ATTRIBUTES.contains(loadingAttribute.toLowerCase())) {
                   attribute = " ".concat(loadingAttribute.toLowerCase());
               }
-            } else {
-              relAttribute = loadingAttribute.toLowerCase();
-            }
-                                   
+            }   
+            
             String styleTag = StringUtils.isNotBlank(relAttribute) ? TAG_PRELOAD_STYLESHEET : TAG_STYLESHEET;
                 
             for (ClientLibrary lib : libs) {
