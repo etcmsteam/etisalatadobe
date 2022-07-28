@@ -1,0 +1,91 @@
+<template data-sly-template.imageWithIcons="${ @ tabs,imageViewport}">
+    <div data-sly-test="${properties.headingTitle}" class="container">
+  		<div class="ed-headings-2-0 mb-24">
+    		<h2 data-sly-element="${properties.titleType}">${properties.headingTitle}</h2>
+  		</div>
+	</div>
+    <div class="image-with-icons-2-0 ${properties.backgroundColor}" data-sly-test="${tabs.items && tabs.items.size > 0}" data-digital-component="IMAGE_WITH_ICONS_DIGITAL">
+        <div class="bg"></div>
+        <div class="container">
+            <div class="row image-with-icons-wrap">
+                <div class="col-sm-6 hidden-xs hidden-sm">
+                    <sly data-sly-list.tab="${tabs.items}">
+                        <sly data-sly-use.tabItems="com.etisalat.core.models.ImageWithIconTabModel" data-sly-list.imageViewPortItem="${tabItems.tabImageViewPortItems}">
+                            <div data-sly-test="${tabList.index == imageViewPortItemList.index}" class="left-img-blk ${tabList.first ? 'img-active animate' :''}" data-img-tab="imagewithicons-${tab.id}">
+                            	<div data-sly-use.itemResource="${imageViewPortItem.resource.path}" class="img-cover">
+                                    <div class="cover" data-sly-test="${imageViewPortItem.viewPortLayout != '1-viewport'}">
+    							    	<sly data-sly-resource="${itemResource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                                    </div>
+                                    <sly data-sly-test="${imageViewPortItem.viewPortLayout == '1-viewport'}" data-sly-resource="${itemResource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                            	</div>
+                            </div>
+                        </sly>
+                    </sly>
+                </div>
+				<div class="col-sm-12 col-md-6">
+					<div class="tab-wrapper">
+						<div class="tab-content">
+							<!-- Start - Tab panel -->
+							<sly data-sly-list.tab="${tabs.items}">
+								<sly data-sly-use.tabItems="com.etisalat.core.models.ImageWithIconTabModel" data-sly-list.teaserItems="${tabItems.teaserEnterpriseItems}">
+									<div role="tabpanel" class="tab-pane ${tabList.first ? 'active animate-content' : ''}" id="imagewithicons-${tab.id}"
+										 data-sly-test="${tabList.index == teaserItemsList.index}">
+										<!-- Start - Content-Wrapper -->
+										<sly data-sly-use.tabimage="com.etisalat.core.models.TabImage"
+                                                 data-sly-list.imageItem="${tabimage.tabImageItems}">
+                                            <div data-sly-test="${tabList.index == imageItemList.index}" class="tab-mobile-head active hidden-md hidden-lg">
+                                                <div class="icon-wrap">
+                                                    <img src="${imageItem.linkUrlActive ? imageItem.linkUrlActive : imageItem.linkUrl}"/>
+                                                </div>
+                                                <span>${imageItem.title ? imageItem.title : tab.title}</span>
+                                            </div>
+										</sly>
+										<div class="content-wrapper">
+											<div data-sly-test="${teaserItems.teaserTitle}" class="ed-headings-2-0">
+												<h3 data-sly-element="${teaserItems.teaserTitleType}">${teaserItems.teaserTitle}</h3>
+											</div>
+											<div data-sly-use.itemResource="${teaserItems.resource.path}" class="img-cover hidden-md hidden-lg">
+												<div class="cover" data-sly-test="${teaserItems.viewPortLayout != '1-viewport'}">
+													<sly data-sly-resource="${itemResource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+												</div>
+												<sly data-sly-test="${teaserItems.viewPortLayout == '1-viewport'}" data-sly-resource="${itemResource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+											</div>
+											<div data-sly-test="${teaserItems.teaserDescription}" class="ed-paragraph-2-0 dark">
+												<div data-sly-set.descriptionStyle="${!teaserItems.descParagraphStyle || teaserItems.descParagraphStyle == '' ? 'p3' : teaserItems.descParagraphStyle}" class="${descriptionStyle}">
+													${teaserItems.teaserDescription @ context='html'}
+												</div>
+											</div>
+										</div>
+										<!-- End - Content-Wrapper -->
+										<div class="clearfix"></div>
+									</div>
+								</sly>
+							</sly>
+							<!-- End - Tab panel -->
+						</div>
+						<div class="tab-head-wrapper hidden-xs hidden-sm">
+							<div class="tabs">
+							  <!-- Start - Nav tabs -->
+							  <ul data-sly-list.tab="${tabs.items}" class="page-nav nav nav-tabs" role="tablist">
+								<sly data-sly-use.tabimage="com.etisalat.core.models.TabImage"
+									 data-sly-list.imageItem="${tabimage.tabImageItems}">
+									<li data-sly-test="${tabList.index == imageItemList.index}" role="presentation" class="${tabList.first ? 'active' : ''}">
+									  <a href="#imagewithicons-${tab.id}" aria-controls="imagewithicons-${tab.id}" role="tab" data-toggle="tab">
+										<div data-sly-test="${imageItem.linkUrl}" class="icon-wrap">
+											<img src="${imageItem.linkUrl}"/>
+										</div>
+										<span>${tab.title}</span>
+									  </a>
+									</li>
+								</sly>
+							  </ul>
+							  <!-- End - Nav tabs -->
+							  <div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,50 @@
+@use "sass:math";
+@use "sass:map";
+@use "sass:string";
+
+$base-font-size: 16px;
+
+@function px-to-rem($px) {
+  @return calc($px / $base-font-size) * 1rem;
+}
+
+@function get-font-weight($key: "regular") {
+  @return map-get($font-weight, $key);
+}
+
+@function get-background-gredient($key) {
+  @return map-get($background-gredient, $key);
+}
+
+@function svg-encode($svg) {
+  // Add missing namespace
+  @if not str-index($svg, ' xmlns="http://www.w3.org/2000/svg"') {
+    $svg: string.insert($svg, ' xmlns="http://www.w3.org/2000/svg"', 5);
+  }
+
+  // Encode characters
+  $encode: (
+    '"': "%22",
+    "#": "%23",
+    "%": "%25",
+    "<": "%3C",
+    ">": "%3E",
+    "{": "%7B",
+    "}": "%7D",
+  );
+  $string: "";
+  $character: "";
+
+  @for $i from 1 through str-length($svg) {
+    $character: string.slice($svg, $i, $i);
+
+    @if index(map-keys($encode), $character) {
+      $character: map.get($encode, $character);
+    }
+
+    $string: $string + $character;
+  }
+
+  // Return data URI
+  @return url("data:image/svg+xml,#{$string}");
+}

@@ -1,0 +1,38 @@
+<template data-sly-template.iconsOnTopImage="${ @ tabs,properties}">
+<div class="icons-on-top-image-2-0 ${properties.backgroundColor}" data-digital-component="ICONS_ON_TOP_IMAGE_DIGITAL">
+  <div class="container">
+    <div data-sly-test="${properties.headingTitle}" class="ed-headings-2-0">
+      <h2 data-sly-element="${properties.titleType}">${properties.headingTitle}</h2>
+    </div>
+    <div class="tab-head-wrapper" data-sly-test="${tabs.items && tabs.items.size > 0}">
+      <div class="swiper-container tabs">
+        <!-- Start - Nav tabs -->
+        <ul data-sly-list.tab="${tabs.items}" class="page-nav nav nav-tabs swiper-wrapper" role="tablist">
+          <sly data-sly-use.tabimage="com.etisalat.core.models.TabImage" data-sly-list.imageItem="${tabimage.tabImageItems}">
+              <li data-sly-test="${tabList.index == imageItemList.index}" role="presentation" class="${tabList.first ? 'active' : ''} swiper-slide">
+                <a href="#iconsontopimage-${tab.id}" aria-controls="iconsontopimage-${tab.id}" role="tab" data-toggle="tab">
+                  <div class="collapse-icon">
+                    <img data-sly-test="${imageItem.linkUrl}" src="${imageItem.linkUrl}"/>
+                  </div>
+                  <div class="ed-subheadings-2-0">
+                    <h6>${tab.title}</h6>
+                  </div>
+                </a>
+              </li>
+          </sly>
+        </ul>
+        <!-- End - Nav tabs -->
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    
+	<!-- Start - Tab panes -->
+    <div data-sly-list.item="${tabs.items}" data-sly-test="${tabs.items && tabs.items.size > 0}" class="tab-content">
+      <div role="tabpanel" class="tab-pane ${itemList.first ? 'active animate-content' : ''}" id="iconsontopimage-${item.id}">
+        <sly data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+      </div>
+    </div>
+	<!-- End - Tabpane -->
+  </div>
+</div>
+</template>

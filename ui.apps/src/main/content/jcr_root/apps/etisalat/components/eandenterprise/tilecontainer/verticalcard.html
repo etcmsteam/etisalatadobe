@@ -1,0 +1,33 @@
+<template data-sly-template.vcard="${ @ container,properties}">
+
+	<div class="vertical-cards-wrap ">
+		<div data-component="cmp-verticalcard" class="container">
+			<div class="row">
+				<div class="col-sm-12 head-block">
+					<div class="ed-headings-2-0">
+						<h4 data-sly-test="${properties.tileTitle}" data-sly-element="${properties.titleType}">${properties.tileTitle}</h4>
+					</div>
+					<div class="ed-paragraph-2-0"  data-sly-test="${properties.tiledescription}">
+						<div data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}" class="${textStyle}">
+							${properties.tiledescription @ context='html'}
+						</div>
+					</div>
+					<div data-sly-test="${properties.linkBehavior != 'openmodalwindow' && properties.ctalabel}" class="ed-learnmore-wrapper">
+						<sly data-sly-test.customLink="${properties.ctalink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+						<a class="btn-more learn-more-btn"
+						   href="${commonlinkmodel.link}"
+						   target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
+							${properties.ctalabel}
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!--Card Start-->
+				<div class= "col-sm-4" data-sly-repeat="${container.items}" data-sly-resource="${item.name}"></div>
+				<!-- Card End-->
+			</div>
+		</div>
+	</div>
+
+</template>

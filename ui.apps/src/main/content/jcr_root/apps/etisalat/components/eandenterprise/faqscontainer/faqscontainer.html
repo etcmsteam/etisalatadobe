@@ -1,0 +1,53 @@
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
+   <div class="cmp-gridcontainer"
+        data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+        data-placeholder-text="${wcmmode.edit && 'Drag components here' @ i18n}"
+        data-component="cmp-faqs"
+        id="grid${container.id}">
+       <sly data-sly-test="${properties.faqvariations=='onecol'}" >
+       	<div class="faq-accordion">
+         <div class="container">
+		 	<div class="content">
+				<div class="wst-main-headings">
+					<h4 data-sly-test="${properties.title}" data-sly-element="${properties.titleType}">${properties.title}</h4>
+				</div>
+				<div class="paragraph-styling ul-list-cms">
+					<div data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p2' : properties.textStyle}" class="${textStyle}">
+						${properties.description @ context='html'}
+					</div>
+				</div>
+			</div>
+         </div>
+		 <div class="container">
+			<div class="panel-group">
+            	<sly data-sly-resource="${'par0' @ resourceType='etisalat/components/container'}"> </sly>
+            </div>
+		 </div>
+       	</div>
+   </sly>
+   <sly data-sly-test="${properties.faqvariations=='twocol'}">
+      <div class="faq-two-cols-2-0 ${properties.backgroundvariation}" data-digital-component="FAQ_TWO_COLS_ACCORDION">
+         <div class="container">
+
+			<div class="row">
+      			<div class="col-sm-12">
+        			<h4 class="heading-main" data-sly-test="${properties.title}" data-sly-element="${properties.titleType}">${properties.title}</h4>
+        			<div class="para">
+                        ${properties.description @ context='html'}
+        			</div>
+      			</div>
+    		</div>
+             <div class="row">
+                 <div class="col-xs-12">
+                     <div class="faq-wrapper" data-left-col="3">
+                         <sly data-sly-resource="${'par1' @ resourceType='etisalat/components/container'}"> </sly>
+                     </div>
+                 </div>
+             </div>
+         </div>
+      </div>
+   </sly>
+   </div>
+ </sly>
+
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.faqvariations}"></sly>

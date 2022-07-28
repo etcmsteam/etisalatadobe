@@ -1,0 +1,288 @@
+body {
+  font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif !important;
+}
+
+.topnav--margin {
+  @include respond-to-min($desktop) {
+    margin-top: 48px;
+  }
+}
+
+.meganavigation--margin {
+  margin-top: 56px;
+
+  @include respond-to-min($desktop) {
+    margin-top: 139px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable {
+  &:focus,
+  :active {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+.no-scroll {
+  min-height: 100% !important;
+  position: fixed !important;
+  width: 100% !important;
+}
+
+.freeze {
+  overflow: hidden;
+}
+
+.freeze.no-scroll {
+  &::after {
+    background-color: $dark-overlay;
+    bottom: 0;
+    content: "";
+    height: 100vh;
+    opacity: 0.2;
+    position: fixed;
+    top: 0;
+    transition: 0.4s;
+    visibility: visible;
+    width: 100vw;
+    z-index: 10;
+  }
+}
+
+.d-none {
+  display: none !important;
+}
+
+// spacing
+$spacing: 0, 4, 8, 12, 16, 20, 24; // Modify this to generate your spacing classes
+$unit: px; // Modify this to specify your unit eg: em, pt, %.
+
+$directions: (
+  l: left,
+  t: top,
+  r: right,
+  b: bottom,
+  v: top,
+  h: left,
+);
+$breakpoint: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1248px,
+);
+
+@mixin generateSpacing($prop, $short) {
+  @each $space in $spacing {
+    .#{$short}a-#{$space} {
+      #{$prop}: $space + $unit;
+    }
+
+    @each $key, $val in $directions {
+      .#{$short}#{$key}-#{$space} {
+        #{$prop}-#{$val}: $space + $unit;
+
+        @if $key == v {
+          #{$prop}-bottom: $space + $unit;
+        }
+
+        @if $key == h {
+          #{$prop}-right: $space + $unit;
+        }
+      }
+    }
+  }
+}
+
+/* CSS for all  viewports */
+
+@include generateSpacing(padding, p);
+
+@each $key, $val in $breakpoint {
+  /* CSS for devices above 576px  viewports */
+  @if $key == sm {
+    @media (min-width: 576px) {
+      @include generateSpacing(padding, sm-p);
+    }
+  }
+
+  /* CSS for devices above 768px  viewports */
+
+  @if $key == md {
+    @media (min-width: 768px) {
+      @include generateSpacing(padding, md-p);
+    }
+  }
+
+  /* CSS for devices above 992px  viewports */
+
+  @if $key == lg {
+    @media (min-width: 992px) {
+      @include generateSpacing(padding, lg-p);
+    }
+  }
+
+  /* CSS for devices above 1248px  viewports */
+
+  @if $key == xl {
+    @media (min-width: 1248px) {
+      @include generateSpacing(padding, xl-p);
+    }
+  }
+}
+
+.text-rtl-to-ltr {
+  @include rtlBlock {
+    direction: ltr;
+    text-align: right;
+  }
+}
+
+[dir="rtl"] b,
+[dir="rtl"] strong {
+  font-weight: 700;
+}
+
+@media (min-width: 992px) {
+  h2 {
+    @include rtlBlock {
+      font-size: toRem(40);
+    }
+  }
+}
+
+// table styling
+
+.charges-custom-table {
+  margin-bottom: 2rem;
+
+  tr.footer {
+    background: transparent;
+  }
+
+  table {
+    @include respond-to-min($tablet) {
+      border-collapse: separate;
+      border-spacing: 2rem 0;
+      margin: 0 -2rem;
+    }
+
+    tbody,
+    thead {
+      td,
+      th {
+        border: none;
+        color: $almost-black;
+        font-size: $font20;
+        line-height: 56px;
+        padding: 0;
+        vertical-align: bottom;
+
+        @include respond-to-min($tablet) {
+          border-bottom: 2px solid $white-2;
+        }
+
+        @include respond-to-max($tablet - 1) {
+          font-size: $font14;
+          height: 48px;
+          line-height: 28px;
+          padding: 0.75rem 0;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    thead {
+      th {
+        @include font-family-lato;
+
+        font-weight: normal;
+
+        &:first-child {
+          @include respond-to-min($tablet) {
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    tbody {
+      td {
+        color: $steel-grey;
+
+        @include respond-to-min($tablet) {
+          padding: 0 1rem !important;
+        }
+
+        @include respond-to-max($tablet - 1) {
+          &:first-child {
+            min-width: 100px;
+          }
+
+          &:last-child {
+            color: $almost-black;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    &.equal-column {
+      border-spacing: 0;
+      margin: 0;
+
+      tbody {
+        td {
+          border-bottom: 1px solid $white-2;
+          padding-left: 0;
+          width: 50%;
+
+          @include respond-to-min($desktop) {
+            padding-left: 3rem;
+          }
+
+          &:first-child {
+            min-width: 20px;
+            width: 50%;
+
+            /* stylelint-disable-next-line max-nesting-depth */
+            @include respond-to-min($desktop) {
+              padding-left: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

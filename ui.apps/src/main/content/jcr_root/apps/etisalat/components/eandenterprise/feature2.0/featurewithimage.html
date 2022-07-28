@@ -1,0 +1,27 @@
+<template data-sly-template.featureWithImage="${ @ properties}">
+	<div class="col-md-7">
+		<!-- Start - img-Wrapper -->
+		<div class="img-wrapper" data-sly-test="${properties.fileReference}">
+			<div data-sly-resource="${resource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+		</div>
+		<!-- End - img-Wrapper -->
+	</div>
+	<div data-sly-use.featureObj="${resource.path}" data-sly-list.featureItems="${featureObj.listChildren}" class="col-md-5">
+		<!-- Start - Content-Wrapper -->
+		<div class="content-wrapper">
+			<sly data-sly-test="${featureItems.name == 'featureItems'}" data-sly-repeat.featureItem="${featureItems.listChildren}">
+				<div data-sly-test="${featureItem.featureTitle}" class="ed-subheadings-2-0">
+					<h6 data-sly-element="${featureItem.titleType}">${featureItem.featureTitle}</h6>
+				</div>
+				<div data-sly-test="${featureItem.featureDescription}" class="ed-paragraph-2-0">
+					<div class="${featureItem.textStyle ? featureItem.textStyle : 'p3'}">
+						<p>
+							${featureItem.featureDescription @ context = 'html'}
+						</p>
+					</div>
+				</div>
+			</sly>
+		</div>
+		<!-- End - Content-Wrapper -->
+	</div>
+</template>

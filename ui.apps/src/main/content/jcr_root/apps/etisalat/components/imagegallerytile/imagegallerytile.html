@@ -1,0 +1,20 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+	<div data-sly-test="${properties.tileLayout == 'tile'}" class="promo-grid ${properties.imageGalleryTilevariation} ${properties.backgroundColor}">
+        <div class="cover">
+            <a class="${properties.disablePopup ? 'elem-no-popup' : 'elem'}"
+               href="${properties.disablePopup ? '' : properties.popupImageFileReference}"
+               title="${properties.backgroundImageTitle}"
+               data-lcl-thumb="${properties.disablePopup ? '' : properties.thumbNailImageFileReference}">
+               <span style="background-image: url('${properties.backGroundImageFileReference @ context='uri'}');"></span>
+            </a>
+        </div>
+    </div>
+    <div data-component="cmp-photo-gallery" class="img-galley-lightbox img-fragment" data-sly-test="${properties.tileLayout == 'slider'}">
+        <a class="elem"
+           href="${properties.popupImageFileReference}"
+           title="${properties.backgroundImageTitle}"
+           data-lcl-thumb="${properties.thumbNailImageFileReference}">
+           <span style="background-image: url('${properties.backGroundImageFileReference @ context='uri'}');"></span>
+        </a>
+    </div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.tileLayout}"></sly>

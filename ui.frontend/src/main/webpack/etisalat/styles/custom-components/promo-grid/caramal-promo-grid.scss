@@ -1,0 +1,368 @@
+.promo-grid-details {
+  padding: 0 15px;
+  .title {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: toRem(26);
+      letter-spacing: normal;
+      text-align: center;
+      color: $almost-black;
+      margin: 0;
+      @include respond-to-min($desktop) {
+        font-size: toRem(32);
+        line-height: 1.25;
+      }
+    }
+  }
+  .description p {
+    font-size: toRem(14);
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: center;
+    color: $steel-grey;
+    margin: 0;
+    @include respond-to-min($desktop) {
+      font-size: toRem(20);
+      line-height: 1.6;
+      color: $gray1;
+    }
+  }
+}
+
+.caremal-card-details {
+  padding: 24px 16px 64px 16px;
+  position: relative;
+  @include respond-to-min($desktop) {
+    padding: 36px 16px 56px 16px;
+  }
+  .sub-title p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 4px;
+    color: $steel-grey;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    @include respond-to-min($desktop) {
+      display: none;
+    }
+  }
+  .title h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-size: toRem(24);
+    line-height: normal;
+    letter-spacing: normal;
+    color: $black;
+    margin-bottom: 16px;
+  }
+  .description p {
+    margin: 0;
+    font-size: toRem(14);
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: $gray-fill;
+    display: box;
+    line-clamp: 4;
+    box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: toRem(80);
+  }
+
+  .learn-more-wrap {
+    font-size: toRem(14);
+    line-height: 1.43;
+    .btn-text.learn-more {
+      font-size: toRem(14);
+      line-height: 1.43;
+      letter-spacing: 2px;
+      &:before {
+        right: -20px;
+      }
+    }
+  }
+}
+
+.caremal-promo-grid {
+  .caremalpromotile {
+    & + .caremalpromotile {
+      @include respond-to-min($desktop) {
+        margin-top: toRem(24);
+      }
+    }
+  }
+}
+
+.caremal-card-wrapper {
+  border-radius: 4px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: $white;
+  position: relative;
+  @include respond-to-min($desktop) {
+    height: toRem(252);
+    display: flex;
+    flex-direction: row;
+  }
+  @include respond-to-max($desktop) {
+    margin-bottom: toRem(16);
+  }
+
+  .learn-more-wrap {
+    position: absolute;
+    bottom: 22px;
+  }
+  .caremal-card-image {
+    position: relative;
+    height: toRem(252);
+    border-radius: 4px 4px 0 0;
+    overflow: hidden;
+    @include respond-to-min($desktop) {
+      width: toRem(243);
+      min-width: toRem(243);
+      border-radius: 4px 0 0 4px;
+    }
+  }
+  &.big-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include respond-to-min($desktop) {
+      height: toRem(528);
+    }
+    .caremal-card-image {
+      order: 2;
+      border-radius: 0 0 4px 4px;
+      min-height: toRem(252);
+      width: 100%;
+    }
+    .caremal-card-details {
+      order: 1;
+      height: 100%;
+      .title {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          @include respond-to-min($desktop) {
+            font-size: toRem(32);
+          }
+        }
+      }
+    }
+    &.bg-top {
+      .caremal-card-details {
+        order: 2;
+      }
+      .caremal-card-image {
+        order: 1;
+        border-radius: 4px 4px 0 0;
+      }
+    }
+  }
+}
+
+// caremal promo grid as a module
+.caremal-promo-grid {
+  padding: 40px 0;
+  @include respond-to-min($desktop) {
+    padding: 80px 0;
+  }
+  &.with-bg {
+    background-color: #f7f8f4;
+  }
+
+  .promo-grid-details {
+    .title {
+      margin-bottom: toRem(16);
+      @include respond-to-min($desktop) {
+        margin-bottom: toRem(24);
+      }
+    }
+    .description {
+      margin-bottom: 24px;
+      @include respond-to-min($desktop) {
+        margin-bottom: toRem(48);
+      }
+    }
+  }
+
+  .imageetisalatviewport {
+    img {
+      width: auto;
+    }
+  }
+}
+
+// *************************************
+// arabic overides
+// *************************************
+*[lang="ar"] {
+  *[dir="rtl"] {
+    .caremal-card-details .learn-more-wrap .btn-text.learn-more:before {
+      left: -20px;
+      right: auto;
+    }
+  }
+}
+
+// caremal full bleed tile with text
+.full-bleed-with-text {
+  position: relative;
+  .caremal-card-image {
+    width: 100%;
+  }
+  .caremal-card-details {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    .learn-more-wrap {
+      bottom: auto;
+    }
+    .sub-title p {
+      display: block !important;
+    }
+    .learn-more-wrap {
+      position: relative;
+      a {
+        &:before {
+          border-color: $white;
+        }
+      }
+    }
+    .description p {
+      height: auto;
+      margin-bottom: toRem(24);
+    }
+    .title h3 {
+      margin-bottom: 24px;
+    }
+    .sub-title p,
+    .title h3,
+    .description p,
+    .learn-more-wrap a {
+      color: $white;
+    }
+  }
+  .caremal-card-image {
+    border-radius: 4px !important;
+  }
+}
+
+// *************************************
+// Accessibility
+// *************************************
+.acc-black,
+.acc-blue {
+  .caremal-card-details .title {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $white;
+    }
+  }
+}
+
+.acc-black {
+  .caremal-promo-grid.with-bg {
+    background-color: $black;
+  }
+
+  .caremal-card-wrapper {
+    background-color: $black;
+    border: 1px solid $white;
+    .description p {
+      color: $white;
+    }
+  }
+
+  .promo-grid-details {
+    .title h2 {
+      color: $white;
+    }
+    .description p {
+      color: $white;
+    }
+  }
+}
+
+.acc-blue {
+  .caremal-promo-grid.with-bg {
+    background-color: $blue4;
+  }
+
+  .caremal-card-wrapper {
+    background-color: $blue4;
+    box-shadow: none;
+    border: 1px solid $white;
+    .description p {
+      color: $white;
+    }
+  }
+
+  .promo-grid-details {
+    .title h2 {
+      color: $white;
+    }
+    .description p {
+      color: $white;
+    }
+  }
+}
+
+.acc-yellow {
+  .caremal-promo-grid.with-bg {
+    background-color: $yellow-light;
+  }
+  .full-bleed-with-text .caremal-card-details .description p {
+    color: $yellow-light;
+  }
+
+  .caremal-card-wrapper {
+    background-color: $black;
+    box-shadow: none;
+    border: 1px solid $white;
+    .caremal-card-details .title {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $yellow-light;
+      }
+    }
+    .sub-title p, .description p {
+      color: $yellow-light;
+    }
+  }
+
+  .promo-grid-details {
+    .title h2 {
+      color: $black;
+    }
+    .description p {
+      color: $black;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+
+<sly data-sly-test="${properties.factsLayout == 'factsandfigures' || !properties.factsLayout}"
+     data-sly-use.factscontentTemplate="factscontent.html"
+     data-sly-call="${factscontentTemplate.factsContent @ properties=properties}">
+</sly>
+
+<sly data-sly-test="${properties.factsLayout == 'keyfactsandfigures'}"
+     data-sly-use.keyfactscontentTemplate="keyfactscontent.html"
+     data-sly-call="${keyfactscontentTemplate.keyfactsContent @ properties=properties}">
+</sly>
+
+<sly data-sly-test="${properties.factsLayout == 'keyfactsiconcard'}"
+     data-sly-use.keyfactsiconcardTemplate="keyfactsiconcard.html"
+     data-sly-call="${keyfactsiconcardTemplate.keyfactsiconCard @ properties=properties}">
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.title}"></sly>

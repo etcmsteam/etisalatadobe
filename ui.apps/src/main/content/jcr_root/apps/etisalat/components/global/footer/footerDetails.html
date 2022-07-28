@@ -1,0 +1,126 @@
+<template data-sly-template.footerDetails="${ @ properties,footer}">
+  <!-- Desktop Menu Start -->
+
+
+  <div data-sly-test="${footer.quickLinks || footer.download || footer.followUs || footer.payment}" class="quick-links-section flexible-col">
+    <div class="container">
+      <div class="links-wrap" data-sly-list.items="${footer.quickLinks}">
+        <div class="links">
+          <div class="quick-links-head">
+            <span class="links-title hidden-xs hidden-sm">${items.quickLinkTitle}</span>
+
+            <a href="#collape-${itemsList.count}" data-toggle="collapse" class="arrow_accordion link-title-mob hidden-md hidden-lg collapsed" title="${items.quickLinkTitle}"
+               aria-expanded="true">${items.quickLinkTitle}</a>
+            <svg class="hidden-md hidden-lg">
+              <use xlink:href="#arrow_accordion"></use>
+            </svg>
+          </div>
+          <ul class="quick-links-body collapse" id="collape-${itemsList.count}" aria-expanded="true" data-sly-list.linkItems="${items.links}">
+            <li class="links-item"><a href="${linkItems.linkUrl}" target="${linkItems.linkTarget ? '_blank' : '_self'}"  class="${linkItems.enableIcon ? 'icon-new-window' : ''}" title="${linkItems.linkText}">
+              ${linkItems.linkText}
+            </a></li>
+          </ul>
+        </div>
+      </div>
+      <div data-sly-test="${properties.downloadTitle || properties.needHelpTitle || properties.followUsTitle || properties.paymentTitle}" class="footer-social-dwonload">
+        <!-- download etisalat icons -->
+        <div data-sly-test="${properties.downloadTitle}" class="download-etisalat" >
+          <div class="footer-heading">${properties.downloadTitle}</div>
+          <div class="icons-wrap" data-sly-list.items="${footer.download}">
+            <div class="icon ${items.iconClassName}" style="display: block;">
+              <a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}">
+                <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}" loading="lazy" 
+                     data-sly-set.imageSrcPath="${items.imgUrl}" 
+	                 data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                 class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" >
+
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- download etisalat icons -->
+		<!--Need help section-->
+		<div data-sly-test="${properties.needHelpTitle}" class="needhelp-etisalat">
+            <div class="footer-heading">${properties.needHelpTitle}</div>
+                <div class="help-content">
+                   ${properties.needHelpDescription @ context = "html"}
+            </div>
+        </div>
+        <!-- follow-us etisalat icons -->
+        <div data-sly-test="${properties.followUsTitle}" class="follow-etisalat">
+          <div class="footer-heading">${properties.followUsTitle}</div>
+          <div class="icons-wrap" data-sly-list.items="${footer.followUs}">
+            <div class="icon">
+              <a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}">
+                <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}" loading="lazy" 
+                    data-sly-set.followUsSrcPath="${items.imgUrl}" 
+	                data-sly-use.followModal="${'com.etisalat.core.models.CommonLinkModel' @link=followUsSrcPath}" 
+	                class="${followModal.assetSVGImage ? 'inline-svg__icon' : ''}" ></a>
+            </div>
+          </div>
+        </div>
+        <!-- follow-us etisalat icons -->
+        <!-- payment etisalat icons -->
+        <div data-sly-test="${properties.paymentTitle}" class="payment-etisalat">
+          <div class="footer-heading">${properties.paymentTitle}</div>
+          <div class="icons-wrap" data-sly-list.items="${footer.payment}">
+            <div class="icon">
+              <img alt="${items.title}" src="${items.imgUrl}" title="${items.title}" loading="lazy" 
+                   data-sly-set.paymentSrcPath="${items.imgUrl}" 
+	               data-sly-use.paymentModal="${'com.etisalat.core.models.CommonLinkModel' @link=paymentSrcPath}" 
+	               class="${paymentModal.assetSVGImage ? 'inline-svg__icon' : ''}" >
+            </div>
+          </div>
+        </div>
+        <!-- payment etisalat icons -->
+      </div>
+    </div>
+  </div>
+
+  <div data-sly-test="${properties.quickAccessTitle || footer.footerLinks || footer.promo.imgUrl}" class="container footer-links-logo-section">
+    <div class="row">
+      <div class="flex-container">
+        <div class="col-xs-12 col-md-9">
+
+          <!-- end: footer - quick links -->
+
+		  <ul data-sly-test="${properties.quickAccessTitle}" class="footer-social-nav">
+			<li>${properties.quickAccessTitle}</li>
+				<sly data-sly-list.qaItems="${footer.quickAccessLinks}">
+					<li class="links-item">
+						<a href="${qaItems.quickaccesslinkUrl}" title="${qaItems.qatitle}" target="${qaItems.linkTarget ? '_blank' : '_self'}">
+  							<img data-sly-test="${qaItems.qaFileReference}" alt="${qaItems.qatitle}" loading="lazy" 
+  							     title="${qaItems.qatitle}" src="${qaItems.qaFileReference}" 
+  							     data-sly-set.quicklinkSrcPath="${qaItems.qaFileReference}" 
+	                             data-sly-use.quickLinkModal="${'com.etisalat.core.models.CommonLinkModel' @link=quicklinkSrcPath}" 
+	                             class="${quickLinkModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
+  						</a>
+                	</li>
+				</sly>
+			</ul>
+
+          <ul class="footer-links-nav" data-sly-list.items="${footer.footerLinks}">
+            <li><a href="${items.linkUrl}" target="${items.linkTarget ? '_blank' : '_self'}" title="${items.linkText}">${items.linkText}</a>
+            </li>
+          </ul>
+          <div data-sly-test="${footer.copyrightText}" class="copyright desktop year"> &copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
+
+          <!-- <div class="copyright desktop ">&copy; 2021 Etisalat. All Rights Reserved.</div> -->
+        </div>
+        <div data-sly-test="${footer.promo.imgUrl || footer.copyrightText}"class="col-xs-12 col-md-3">
+		   <div class="etisalat-logo">
+			  <a data-sly-test="${footer.promo.imgUrl}" href="${footer.promo.linkUrl}">
+				<img alt="footer-logo" src="${footer.promo.imgUrl}" loading="lazy" 
+				     data-sly-set.footerSrcPath="${footer.promo.imgUrl}" 
+	                 data-sly-use.footerLogoModal="${'com.etisalat.core.models.CommonLinkModel' @link=footerSrcPath}" 
+	                 class="${footerLogoModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
+			  </a>
+		   </div>
+          <div class="copyright">&copy; <span class="copyright-year" dir="ltr"></span> ${footer.copyrightText}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Menu End -->
+</template>

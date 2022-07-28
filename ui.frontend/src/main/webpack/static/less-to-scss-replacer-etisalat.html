@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etisalat LESS to SCSS Replacer</title>
+    <script>
+      const _variablesLess = `//
+// Variables
+// --------------------------------------------------
+
+//== Colors
+
+
+// Etisalat Primary Colors
+// --------------------------------
+@pink-dark:			   #BE1218; //New Form
+// -- Consumer palette
+@dark-green: #616b1e;
+@main-green: #719e19;
+@light-green: #bee70d;
+@main-green-hover: #5F8515;
+// -- Business palette
+@dark-gray: #242424;
+@dark-sand-brown: #393c3a;
+@moonlight-sand: #2b2e2c;
+@darkest-night: #151515;
+@premium-gray: #454844;
+@dark-green: #616b1e;
+@dark-green-hover: #4A5217;
+@dark-sage: #505B4D;
+
+// -- Sand
+@sand-white: #f1f1eb;
+@white: #ffffff;
+@sand-white-50: #f7f8f4;
+@light-sand-brown: #e2e1da;
+
+// -- Text Colors
+@gray: #919192;
+@almost-black: #353738;
+@almost-black-opacity: rgba(53, 55, 56, 0.1);
+@cold-gray: #D8D8D8;
+@cold-gray-2: #d1d1d1;
+@dark-purple: #630e92;
+
+// -- new varation added for texts
+@gray-text-color:#6f6c70;
+@module-bg-color: #FAFAF7;
+
+// Etisalat Extended Colors
+// --------------------------------
+// TODO: define or replace "used but not declared" variables
+@sand-brown: #c1b792;
+@sandy-green: #567a6a; 
+@yellow: #ffce00;
+@orange: #ff8100;
+
+@grey-dark-grass: #2a332f;
+@black: #000000;
+
+@red: #b3170c;
+@gray: #919192;
+@error-red: #BE1218;
+// sand brown
+@sandy-brown: #8c7767;
+@sandy-green2: #9fa171;
+@sandy-purple: #9986a1;
+@sandy-white: #dbdad0;
+@sand-grey: #8d8e80;
+// grey dark grass
+@premium: #353738;
+
+// End official Etisalt color palette
+// --------------------------------
+
+
+// Used but not declared
+// --------------------------------
+@texts-gray: #575757;
+@custom-gray: #333333;
+@steel-grey: #848789;
+@light-sand-brown: #e2e1da;
+@white-2: #e5e5e5;
+@warm-gray: #7a7a7a; //footer nav & less button
+@warm-background: #e4e4df; //breadcrumb
+@pink: #fb193f; //store-locator
+@dark-orange: #ff8000; //store-locator
+@dark-orange-hover: #EF7800; //store-locator
+@gold: #f8d279; //ana emirati
+@gold-dark: #93703d; //ana emirati
+@silver: #cddefb; //ana emirati
+@silver-dark: #606a85; //ana emirati
+
+@sandy-blue: #2e3936; //used for brand-info bootstrap's var
+@cement: #9e9f94; // used for buttons
+@bland: #aeaf89; // used for buttons
+@light-gray: @sand-white; //used in page navi dropdown
+@gray-close-dropdown: #9e9d9d; //used in page navi dropdown
+@lighty-gray: #bcbcbc;
+@gray-fill: #6b6b6b;
+@silver-top: #c0c0c0;
+@gold-top: #ffcc00;
+@valid-green: #E3ECD1;
+@ligther-gray: #B2B2B1;
+@dark-accordion-gray: #575956;
+@disabled-gray: #474948;
+@business-table-head: #3a3c3b;
+@business-table-ticked: #2c2e2d;
+
+// Used but not declared
+// --------------------------------
+
+//## Gray and brand colors for use across Bootstrap.
+@gray-base: @gray;
+@gray-darker: lighten(@gray-base, 13.5%);
+@gray-dark: @dark-gray; //bootstrap's var
+@gray-light: lighten(@gray-base, 46.7%); // bootstrap's var
+@gray-lighter: lighten(@gray-base, 93.5%); // bootstrap's var
+
+// TODO: this should be refer to the consumer-colors.less or business-colors.less
+//== Bootstrap defaults
+@brand-primary: @main-green;
+@brand-success: @sandy-green;
+@brand-info: @sandy-blue;
+@brand-warning: @orange;
+@brand-danger: @red;
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for \`<body>\`.
+@body-bg: #fff;
+//** Global text color on \`<body>\`.
+@text-color: @black; //@gray-base; // #000
+
+//** Global textual link color.
+@link-color: @main-green; //@brand-primary;
+//** Link hover color set via \`darken()\` function.
+@link-hover-color: darken(@link-color, 5%); // #618816;
+//** Link hover decoration.
+@link-hover-decoration: none;
+
+//== Typography
+//
+//## Check typo.less
+
+
+
+
+//== Iconography
+//
+//## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
+
+//** Load fonts from this directory.
+@icon-font-path: "../fonts/";
+//** File name for all font files.
+@icon-font-name: "glyphicons-halflings-regular";
+//** Element ID within SVG icon file.
+@icon-font-svg-id: "glyphicons_halflingsregular";
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+
+@padding-base-vertical: 6px;
+@padding-base-horizontal: 32px; // 12px
+
+@padding-large-vertical: 12px;
+@padding-large-horizontal: 32px;
+
+@padding-small-vertical: 6px;
+@padding-small-horizontal: 16px;
+
+@padding-xs-vertical: 1px;
+@padding-xs-horizontal: 5px;
+
+@line-height-large: 1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small: 1.5;
+
+@border-radius-base: 0px;
+@border-radius-large: 0px;
+@border-radius-small: 0px;
+
+//** Global color for active items (e.g., navs or dropdowns).
+@component-active-color: #fff;
+//** Global background color for active items (e.g., navs or dropdowns).
+@component-active-bg: @brand-primary;
+
+//** Width of the \`border\` for generating carets that indicator dropdowns.
+@caret-width-base: 4px;
+//** Carets increase slightly in size for larger components.
+@caret-width-large: 5px;
+
+//== Tables
+//
+//## Customizes the \`.table\` component with basic values, each used across all table variations.
+
+//** Padding for \`<th>\`s and \`<td>\`s.
+@table-cell-padding: 8px;
+//** Padding for cells in \`.table-condensed\`.
+@table-condensed-cell-padding: 5px;
+
+//** Default background color used for all tables.
+@table-bg: transparent;
+//** Background color used for \`.table-striped\`.
+@table-bg-accent: #f9f9f9;
+//** Background color used for \`.table-hover\`.
+@table-bg-hover: #f5f5f5;
+@table-bg-active: @table-bg-hover;
+
+//** Border color for table and cell borders.
+@table-border-color: #ddd;
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+@btn-font-weight: normal;
+
+@btn-default-color: @black;
+@btn-default-bg: transparent;
+@btn-default-border: @black;
+
+@btn-primary-color: #fff;
+@btn-primary-bg: @brand-primary;
+@btn-primary-border: darken(@btn-primary-bg, 5%);
+
+@btn-success-color: #fff;
+@btn-success-bg: @brand-success;
+@btn-success-border: darken(@btn-success-bg, 5%);
+
+@btn-info-color: #fff;
+@btn-info-bg: @brand-info;
+@btn-info-border: darken(@btn-info-bg, 5%);
+
+@btn-warning-color: #fff;
+@btn-warning-bg: @brand-warning;
+@btn-warning-border: darken(@btn-warning-bg, 5%);
+
+@btn-danger-color: #fff;
+@btn-danger-bg: @brand-danger;
+@btn-danger-border: darken(@btn-danger-bg, 5%);
+
+@btn-link-disabled-color: @gray-light;
+
+// Allows for customizing button radius independently from global border radius
+@btn-border-radius-base: @border-radius-base;
+@btn-border-radius-large: @border-radius-large;
+@btn-border-radius-small: @border-radius-small;
+
+//== Forms
+//
+//##
+
+//** \`<input>\` background color
+@input-bg: #fff;
+//** \`<input disabled>\` background color
+@input-bg-disabled: @gray-lighter;
+
+//** Text color for \`<input>\`s
+@input-color: @gray;
+//** \`<input>\` border color
+@input-border: #ccc;
+
+// TODO: Rename \`@input-border-radius\` to \`@input-border-radius-base\` in v4
+//** Default \`.form-control\` border radius
+// This has no effect on \`<select>\`s in some browsers, due to the limited stylability of \`<select>\`s in CSS.
+@input-border-radius: @border-radius-base;
+//** Large \`.form-control\` border radius
+@input-border-radius-large: @border-radius-large;
+//** Small \`.form-control\` border radius
+@input-border-radius-small: @border-radius-small;
+
+//** Border color for inputs on focus
+@input-border-focus: #66afe9;
+
+//** Placeholder text color
+@input-color-placeholder: #999;
+
+//** Default \`.form-control\` height
+@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
+//** Large \`.form-control\` height
+@input-height-large: (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+//** Small \`.form-control\` height
+@input-height-small: (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+//** \`.form-group\` margin
+@form-group-margin-bottom: 15px;
+
+@legend-color: @gray-dark;
+@legend-border-color: #e5e5e5;
+
+//** Background color for textual input addons
+@input-group-addon-bg: @gray-lighter;
+//** Border color for textual input addons
+@input-group-addon-border-color: @input-border;
+
+//** Disabled cursor for form controls and buttons.
+@cursor-disabled: not-allowed;
+
+//== Dropdowns
+//
+//## Dropdown menu container and contents.
+
+//** Background for the dropdown menu.
+@dropdown-bg: #fff;
+//** Dropdown menu \`border-color\`.
+@dropdown-border: rgba(0, 0, 0, .15);
+//** Dropdown menu \`border-color\` **for IE8**.
+@dropdown-fallback-border: #ccc;
+//** Divider color for between dropdown items.
+@dropdown-divider-bg: #e5e5e5;
+
+//** Dropdown link text color.
+@dropdown-link-color: @gray-dark;
+//** Hover color for dropdown links.
+@dropdown-link-hover-color: darken(@gray-dark, 5%);
+//** Hover background for dropdown links.
+@dropdown-link-hover-bg: #f5f5f5;
+
+//** Active dropdown menu item text color.
+@dropdown-link-active-color: @component-active-color;
+//** Active dropdown menu item background color.
+@dropdown-link-active-bg: @component-active-bg;
+
+//** Disabled dropdown menu item background color.
+@dropdown-link-disabled-color: @gray-light;
+
+//** Text color for headers within dropdown menus.
+@dropdown-header-color: @gray-light;
+
+//** Deprecated \`@dropdown-caret-color\` as of v3.1.0
+@dropdown-caret-color: #000;
+
+//-- Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+//
+// Note: These variables are not generated into the Customizer.
+
+@zindex-navbar: 1000;
+@zindex-dropdown: 1000;
+@zindex-popover: 1060;
+@zindex-tooltip: 1070;
+@zindex-navbar-fixed: 1030;
+@zindex-modal-background: 1040;
+@zindex-modal: 1050;
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+//** Deprecated \`@screen-xs\` as of v3.0.1
+@screen-xs: 480px;
+//** Deprecated \`@screen-xs-min\` as of v3.2.0
+@screen-xs-min: @screen-xs;
+//** Deprecated \`@screen-phone\` as of v3.0.1
+@screen-phone: @screen-xs-min;
+
+
+@screen-ms: 768px;
+@screen-ms-min: @screen-ms;
+
+
+// Small screen / tablet
+//** Deprecated \`@screen-sm\` as of v3.0.1
+@screen-sm: 768px;
+@screen-sm-min: @screen-sm;
+//** Deprecated \`@screen-tablet\` as of v3.0.1
+@screen-tablet: @screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated \`@screen-md\` as of v3.0.1
+@screen-md: 992px;
+@screen-md-min: @screen-md;
+//** Deprecated \`@screen-desktop\` as of v3.0.1
+@screen-desktop: @screen-md-min;
+
+// midium Large screen / wide desktop
+//** Deprecated \`@screen-lg\` as of v3.0.1
+@screen-ml: 1280px;
+@screen-ml-min: @screen-ml;
+//** Deprecated \`@screen-ml-desktop\` as of v3.0.1
+@screen-ml-desktop: @screen-ml-min;
+
+// Large screen / wide desktop
+//** Deprecated \`@screen-lg\` as of v3.0.1
+@screen-lg: 1248px;
+@screen-lg-min: @screen-lg;
+//** Deprecated \`@screen-lg-desktop\` as of v3.0.1
+@screen-lg-desktop: @screen-lg-min;
+
+// Extra Large Screen / ultra wide desktop
+@screen-xl-min: 1600px;
+@screen-xl-desktop: @screen-xl-min;
+
+// So media queries don't overlap when required, provide a maximum
+//@screen-xs-max: (@screen-sm-min - 1);
+@screen-xs-max: (@screen-ms-min - 1);
+@screen-xs-max-new: (@screen-ms-min - 1);
+@screen-ms-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+@screen-lg-max: (@screen-xl-min - 1);
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+@grid-columns: 12;
+//** Padding between columns. Gets divided in half for the left and right.
+// @grid-gutter-width:         30px;
+@grid-gutter-width: 24px;
+
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+@grid-float-breakpoint: @screen-sm-min;
+//** Point at which the navbar begins collapsing.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+//== Container sizes
+//
+//## Define the maximum width of \`.container\` for different screen sizes.
+
+// Small screen / tablet
+@container-tablet: (732px + @grid-gutter-width);
+//** For \`@screen-sm-min\` and up.
+@container-sm: @container-tablet;
+
+// Medium screen / desktop
+@container-desktop: (952px + @grid-gutter-width);
+//** For \`@screen-md-min\` and up.
+@container-md: @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop: (1200 + @grid-gutter-width);
+//** For \`@screen-lg-min\` and up.
+@container-lg: @container-large-desktop;
+
+// Large screen / wide desktop
+@container-xl-desktop: (1680px + @grid-gutter-width);
+//** For \`@screen-lg-min\` and up.
+@container-xl: @container-xl-desktop;
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-height: 50px;
+@navbar-margin-bottom: @line-height-computed;
+@navbar-border-radius: @border-radius-base;
+@navbar-padding-horizontal: floor((@grid-gutter-width / 2));
+@navbar-padding-vertical: ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height: 340px;
+
+@navbar-default-color: #777;
+@navbar-default-bg: #f8f8f8;
+@navbar-default-border: darken(@navbar-default-bg, 6.5%);
+
+// Navbar links
+@navbar-default-link-color: #777;
+@navbar-default-link-hover-color: #333;
+@navbar-default-link-hover-bg: transparent;
+@navbar-default-link-active-color: #555;
+@navbar-default-link-active-bg: darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color: #ccc;
+@navbar-default-link-disabled-bg: transparent;
+
+// Navbar brand label
+@navbar-default-brand-color: @navbar-default-link-color;
+@navbar-default-brand-hover-color: darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg: transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg: #ddd;
+@navbar-default-toggle-icon-bar-bg: #888;
+@navbar-default-toggle-border-color: #ddd;
+
+//=== Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color: lighten(@gray-light, 15%);
+@navbar-inverse-bg: #222;
+@navbar-inverse-border: darken(@navbar-inverse-bg, 10%);
+
+// Inverted navbar links
+@navbar-inverse-link-color: lighten(@gray-light, 15%);
+@navbar-inverse-link-hover-color: #fff;
+@navbar-inverse-link-hover-bg: transparent;
+@navbar-inverse-link-active-color: @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg: darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color: #444;
+@navbar-inverse-link-disabled-bg: transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color: @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color: #fff;
+@navbar-inverse-brand-hover-bg: transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg: #333;
+@navbar-inverse-toggle-icon-bar-bg: #fff;
+@navbar-inverse-toggle-border-color: #333;
+
+//== Navs
+//
+//##
+
+//=== Shared nav styles
+@nav-link-padding: 10px 15px;
+@nav-link-hover-bg: @gray-lighter;
+
+@nav-disabled-link-color: @gray-light;
+@nav-disabled-link-hover-color: @gray-light;
+
+//== Tabs
+@nav-tabs-border-color: #ddd;
+
+@nav-tabs-link-hover-border-color: @gray-lighter;
+
+@nav-tabs-active-link-hover-bg: @body-bg;
+@nav-tabs-active-link-hover-color: @gray;
+@nav-tabs-active-link-hover-border-color: #ddd;
+
+@nav-tabs-justified-link-border-color: #ddd;
+@nav-tabs-justified-active-link-border-color: @body-bg;
+
+//== Pills
+@nav-pills-border-radius: @border-radius-base;
+@nav-pills-active-link-hover-bg: @component-active-bg;
+@nav-pills-active-link-hover-color: @component-active-color;
+
+//== Pagination
+//
+//##
+
+@pagination-color: @link-color;
+@pagination-bg: #fff;
+@pagination-border: #ddd;
+
+@pagination-hover-color: @link-hover-color;
+@pagination-hover-bg: @gray-lighter;
+@pagination-hover-border: #ddd;
+
+@pagination-active-color: #fff;
+@pagination-active-bg: @brand-primary;
+@pagination-active-border: @brand-primary;
+
+@pagination-disabled-color: @gray-light;
+@pagination-disabled-bg: #fff;
+@pagination-disabled-border: #ddd;
+
+//== Pager
+//
+//##
+
+@pager-bg: @pagination-bg;
+@pager-border: @pagination-border;
+@pager-border-radius: 15px;
+
+@pager-hover-bg: @pagination-hover-bg;
+
+@pager-active-bg: @pagination-active-bg;
+@pager-active-color: @pagination-active-color;
+
+@pager-disabled-color: @pagination-disabled-color;
+
+//== Jumbotron
+//
+//##
+
+@jumbotron-padding: 30px;
+@jumbotron-color: inherit;
+@jumbotron-bg: @gray-lighter;
+@jumbotron-heading-color: inherit;
+@jumbotron-font-size: ceil((@font-size-base * 1.5));
+@jumbotron-heading-font-size: ceil((@font-size-base * 4.5));
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+@state-success-text: #3c763d;
+@state-success-bg: #dff0d8;
+@state-success-border: darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text: #31708f;
+@state-info-bg: #d9edf7;
+@state-info-border: darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text: #8a6d3b;
+@state-warning-bg: #fcf8e3;
+@state-warning-border: darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text: #a94442;
+@state-danger-bg: #f2dede;
+@state-danger-border: darken(spin(@state-danger-bg, -10), 5%);
+
+//== Tooltips
+//
+//##
+
+//** Tooltip max width
+@tooltip-max-width: 200px;
+//** Tooltip text color
+@tooltip-color: #fff;
+//** Tooltip background color
+@tooltip-bg: #000;
+@tooltip-opacity: .9;
+
+//** Tooltip arrow width
+@tooltip-arrow-width: 5px;
+//** Tooltip arrow color
+@tooltip-arrow-color: @tooltip-bg;
+
+//== Popovers
+//
+//##
+
+//** Popover body background color
+@popover-bg: #fff;
+//** Popover maximum width
+@popover-max-width: 276px;
+//** Popover border color
+@popover-border-color: rgba(0, 0, 0, .2);
+//** Popover fallback border color
+@popover-fallback-border-color: #ccc;
+
+//** Popover title background color
+@popover-title-bg: darken(@popover-bg, 3%);
+
+//** Popover arrow width
+@popover-arrow-width: 10px;
+//** Popover arrow color
+@popover-arrow-color: @popover-bg;
+
+//** Popover outer arrow width
+@popover-arrow-outer-width: (@popover-arrow-width + 1);
+//** Popover outer arrow color
+@popover-arrow-outer-color: fadein(@popover-border-color, 5%);
+//** Popover outer arrow fallback color
+@popover-arrow-outer-fallback-color: darken(@popover-fallback-border-color, 20%);
+
+//== Labels
+//
+//##
+
+//** Default label background color
+@label-default-bg: @gray-light;
+//** Primary label background color
+@label-primary-bg: @brand-primary;
+//** Success label background color
+@label-success-bg: @brand-success;
+//** Info label background color
+@label-info-bg: @brand-info;
+//** Warning label background color
+@label-warning-bg: @brand-warning;
+//** Danger label background color
+@label-danger-bg: @brand-danger;
+
+//** Default label text color
+@label-color: #fff;
+//** Default text color of a linked label
+@label-link-hover-color: #fff;
+
+//== Modals
+//
+//##
+
+//** Padding applied to the modal body
+@modal-inner-padding: 15px;
+
+//** Padding applied to the modal title
+@modal-title-padding: 15px;
+//** Modal title line-height
+@modal-title-line-height: @line-height-base;
+
+//** Background color of modal content area
+@modal-content-bg: #fff;
+//** Modal content border color
+@modal-content-border-color: rgba(0, 0, 0, .2);
+//** Modal content border color **for IE8**
+@modal-content-fallback-border-color: #999;
+
+//** Modal backdrop background color
+@modal-backdrop-bg: @sand-white;
+//** Modal backdrop opacity
+@modal-backdrop-opacity: .7;
+//** Modal header border color
+@modal-header-border-color: #e5e5e5;
+//** Modal footer border color
+@modal-footer-border-color: @modal-header-border-color;
+
+@modal-lg: 900px;
+@modal-md: 600px;
+@modal-sm: 300px;
+
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+
+@alert-padding: 15px;
+@alert-border-radius: @border-radius-base;
+@alert-link-font-weight: bold;
+
+@alert-success-bg: @state-success-bg;
+@alert-success-text: @state-success-text;
+@alert-success-border: @state-success-border;
+
+@alert-info-bg: @state-info-bg;
+@alert-info-text: @state-info-text;
+@alert-info-border: @state-info-border;
+
+@alert-warning-bg: @state-warning-bg;
+@alert-warning-text: @state-warning-text;
+@alert-warning-border: @state-warning-border;
+
+@alert-danger-bg: @state-danger-bg;
+@alert-danger-text: @state-danger-text;
+@alert-danger-border: @state-danger-border;
+
+//== Progress bars
+//
+//##
+
+//** Background color of the whole progress component
+@progress-bg: #f5f5f5;
+//** Progress bar text color
+@progress-bar-color: #fff;
+//** Variable for setting rounded corners on progress bar.
+@progress-border-radius: @border-radius-base;
+
+//** Default progress bar color
+@progress-bar-bg: @brand-primary;
+//** Success progress bar color
+@progress-bar-success-bg: @brand-success;
+//** Warning progress bar color
+@progress-bar-warning-bg: @brand-warning;
+//** Danger progress bar color
+@progress-bar-danger-bg: @brand-danger;
+//** Info progress bar color
+@progress-bar-info-bg: @brand-info;
+
+//== List group
+//
+//##
+
+//** Background color on \`.list-group-item\`
+@list-group-bg: #fff;
+//** \`.list-group-item\` border color
+@list-group-border: #ddd;
+//** List group border radius
+@list-group-border-radius: @border-radius-base;
+
+//** Background color of single list items on hover
+@list-group-hover-bg: #f5f5f5;
+//** Text color of active list items
+@list-group-active-color: @component-active-color;
+//** Background color of active list items
+@list-group-active-bg: @component-active-bg;
+//** Border color of active list elements
+@list-group-active-border: @list-group-active-bg;
+//** Text color for content within active list items
+@list-group-active-text-color: lighten(@list-group-active-bg, 40%);
+
+//** Text color of disabled list items
+@list-group-disabled-color: @gray-light;
+//** Background color of disabled list items
+@list-group-disabled-bg: @gray-lighter;
+//** Text color for content within disabled list items
+@list-group-disabled-text-color: @list-group-disabled-color;
+
+@list-group-link-color: #555;
+@list-group-link-hover-color: @list-group-link-color;
+@list-group-link-heading-color: #333;
+
+//== Panels
+//
+//##
+
+@panel-bg: @sand-white;
+@panel-body-padding: 16px;
+@panel-heading-padding: 10px 16px;
+@panel-footer-padding: @panel-heading-padding;
+@panel-border-radius: @border-radius-base;
+
+//** Border color for elements within panels
+@panel-inner-border: #ddd;
+@panel-footer-bg: #f5f5f5;
+
+@panel-default-text: @gray-dark;
+@panel-default-border: @light-sand-brown;
+@panel-default-heading-bg: @light-sand-brown;
+
+@panel-primary-text: #fff;
+@panel-primary-border: @brand-primary;
+@panel-primary-heading-bg: @brand-primary;
+
+@panel-success-text: @state-success-text;
+@panel-success-border: @state-success-border;
+@panel-success-heading-bg: @state-success-bg;
+
+@panel-info-text: @state-info-text;
+@panel-info-border: @state-info-border;
+@panel-info-heading-bg: @state-info-bg;
+
+@panel-warning-text: @state-warning-text;
+@panel-warning-border: @state-warning-border;
+@panel-warning-heading-bg: @state-warning-bg;
+
+@panel-danger-text: @state-danger-text;
+@panel-danger-border: @state-danger-border;
+@panel-danger-heading-bg: @state-danger-bg;
+
+//== Thumbnails
+//
+//##
+
+//** Padding around the thumbnail image
+@thumbnail-padding: 4px;
+//** Thumbnail background color
+@thumbnail-bg: @body-bg;
+//** Thumbnail border color
+@thumbnail-border: #ddd;
+//** Thumbnail border radius
+@thumbnail-border-radius: @border-radius-base;
+
+//** Custom text color for thumbnail captions
+@thumbnail-caption-color: @text-color;
+//** Padding around the thumbnail caption
+@thumbnail-caption-padding: 9px;
+
+//== Wells
+//
+//##
+
+@well-bg: #f5f5f5;
+@well-border: darken(@well-bg, 7%);
+
+//== Badges
+//
+//##
+
+@badge-color: #fff;
+//** Linked badge text color on hover
+@badge-link-hover-color: #fff;
+@badge-bg: @gray-light;
+
+//** Badge text color in active nav link
+@badge-active-color: @link-color;
+//** Badge background color in active nav link
+@badge-active-bg: #fff;
+
+@badge-font-weight: bold;
+@badge-line-height: 1;
+@badge-border-radius: 10px;
+
+//== Breadcrumbs
+//
+//##
+
+@breadcrumb-padding-vertical: 8px;
+@breadcrumb-padding-horizontal: 15px;
+//** Breadcrumb background color
+@breadcrumb-bg: #f5f5f5;
+//** Breadcrumb text color
+@breadcrumb-color: #919192;
+//** Text color of current page in the breadcrumb
+@breadcrumb-active-color: @breadcrumb-color;
+//** Textual separator for between breadcrumb elements
+@breadcrumb-separator: ">";
+
+//== Carousel
+//
+//##
+
+@carousel-text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+
+@carousel-control-color: #fff;
+@carousel-control-width: 15%;
+@carousel-control-opacity: .5;
+@carousel-control-font-size: 20px;
+
+@carousel-indicator-active-bg: #fff;
+@carousel-indicator-border-color: #fff;
+
+@carousel-caption-color: #fff;
+
+//== Close
+//
+//##
+
+@close-font-weight: bold;
+@close-color: #000;
+@close-text-shadow: 0 1px 0 #fff;
+
+//== Code
+//
+//##
+
+@code-color: #c7254e;
+@code-bg: #f9f2f4;
+
+@kbd-color: #fff;
+@kbd-bg: #333;
+
+@pre-bg: #f5f5f5;
+@pre-color: @gray-dark;
+@pre-border-color: #ccc;
+@pre-scrollable-max-height: 340px;
+
+//== Type
+//
+//##
+
+//** Horizontal offset for forms and lists.
+@component-offset-horizontal: 180px;
+//** Text muted color
+@text-muted: @gray-light;
+//** Abbreviations and acronyms border color
+@abbr-border-color: @gray-light;
+//** Headings small color
+@headings-small-color: @gray-light;
+//** Blockquote small color
+@blockquote-small-color: @main-green;
+//** Blockquote font size
+@blockquote-font-size: (@font-size-base * 1.25);
+//** Blockquote border color
+@blockquote-border-color: @dark-green;
+//** Page header border color
+@page-header-border-color: @dark-green;
+//** Width of horizontal description list titles
+@dl-horizontal-offset: @component-offset-horizontal;
+//** Point at which .dl-horizontal becomes horizontal
+@dl-horizontal-breakpoint: @grid-float-breakpoint;
+//** Horizontal line color.
+@hr-border: @gray-lighter;
+//** disabled input color
+@disabled-input-color: #F5F5F1;
+
+
+
+@lato: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
+@neotech : Neotech-medium,
+"GE SS Two",
+Arial,
+sans-serif;
+@ge_ss_two : "GE SS Two",
+Arial,
+sans-serif;
+
+
+// typo.less
+
+@font-fallback-headings: Roboto, Arial, sans-serif;
+@font-fallback-body: Roboto, Arial, sans-serif;
+@font-arabic:  'Neotech-medium', 'GE SS Two', Arial,sans-serif;
+@font-input: Lato, Roboto, 'GE SS Two', Arial,sans-serif;
+
+@font-family-sans-serif: Lato, 'GE SS Two', Roboto, Arial, sans-serif;
+@font-family-serif: Georgia, "Times New Roman", Times, serif;
+@font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base: @font-family-sans-serif;
+@font-family-menu-sans-serif: Neotech, Roboto, Arial, sans-serif;
+
+@font-size-base: 16px; // custom Etisalat
+@font-size-arabic-base: 1.5rem; // custom Etisalat Arabic
+@font-size-large: ceil((@font-size-base * 1.00)); // ~16px    // custom Etisalat
+@font-size-small: ceil((16 * 0.875)); // ~14px   // custom Etisalat
+
+@line-height-base: 1.6;
+@line-height-computed: floor((@font-size-base * @line-height-base));
+
+@headings-font-family: Neotech-medium, 'GE SS Two', Roboto, Arial, sans-serif;
+@headings-font-weight: normal;
+@headings-line-height: 1.3;
+@headings-color: inherit;
+
+*{
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//
+// menu
+// --------------------------------------------------
+
+@font-size-top-nav: 0.6875rem; //~11px
+@kerning-top-nav: 0.1818181818em; //~2
+@font-size-main-menu: 1rem; //~14px
+@kerning-main-menu: 0.2142857143em; //~3
+
+//
+// body
+// --------------------------------------------------
+
+@body-big-xs: 1rem; //16px
+@body-standard-xs: 0.875rem; //14px
+@body-small-xs: 0.75rem; //12px
+@body-smallest-xs: 0.75rem; //12px
+
+@body-big-ms: 1rem; //16px
+@body-standard-ms: 0.875rem; //14px
+@body-small-ms: 0.75rem; //12px
+@body-smallest-ms: 0.75rem; //12px
+
+@body-big-sm: 1rem; //20px
+@body-standard-sm: 1rem; //16px
+@body-small-sm: 0.875rem; //14px
+@body-smallest-sm: 0.75rem; //12px
+
+@body-big-md: 1rem; //16px
+@body-standard-md: 0.875rem; //14px
+@body-small-md: 0.75rem; //12px
+@body-smallest-md: 0.75rem; //12px
+
+@body-big-lg: 1.25rem; //20px
+@body-standard-lg: 1rem; //16px
+@body-small-lg: 0.875rem; //14px
+@body-smallest-lg: 0.75rem; //12px
+
+@body-big-xl: 1.25rem; //20px
+@body-standard-xl: 1rem; //16px
+@body-small-xl: 0.875rem; //14px
+@body-smallest-xl: 0.75rem; //12px
+
+//
+// headings
+// --------------------------------------------------
+
+@font-size-h1-xs: 2.1875rem; // ~35px
+@kerning-h1-xs: 0; // 3 //0.0857em;
+@font-size-h2-xs: 1.625rem; // ~26px
+@kerning-h2-xs: 0; // 4 //0.1538em;
+@font-size-h3-xs: 1.5rem; // ~24px
+@kerning-h3-xs: 0; // 2 //0.08333em;
+@font-size-h4-xs: 1.25rem; // ~20px
+@kerning-h4-xs: 0; // 2 //0.1em;
+@font-size-h5-xs: 1rem; // ~16px
+@kerning-h5-xs: 0; // 1 //0.0625em;
+
+@font-size-h1-ms: 2.1875rem; // ~35px
+@kerning-h1-ms: 0; // 3 //0.0857em;
+@font-size-h2-ms: 1.625rem; // ~26px
+@kerning-h2-ms: 0; // 4 //0.1538em;
+@font-size-h3-ms: 1.5rem; // ~24px
+@kerning-h3-ms: 0; // 2 //0.08333em;
+@font-size-h4-ms: 1.25rem; // ~20px
+@kerning-h4-ms: 0; // 2 //0.1em;
+@font-size-h5-ms: 1rem; // ~16px
+@kerning-h5-ms: 0; // 1 //0.0625em;
+
+@font-size-h1-sm: 3.4375rem; // ~55px
+@kerning-h1-sm: 0; // 5 //0.0909em;
+@font-size-h2-sm: 2.5rem; // ~40px
+@kerning-h2-sm: 0; // 7 //0.175em;
+@font-size-h3-sm: 1.625rem; // ~26px
+@kerning-h3-sm: 0; // 4 //0.1538em;
+@font-size-h4-sm: 1.25rem; // ~20px
+@kerning-h4-sm: 0; // 2 //0.1em;
+@font-size-h5-sm: 1rem; // ~16px
+@kerning-h5-sm: 0; // 1 //0.0625em;
+
+@font-size-h1-md: 3.4375rem; // ~55px
+@kerning-h1-md: 0; // 5 //0.0909em;
+@font-size-h2-md: 2.5rem; // ~40px
+@kerning-h2-md: 0; // 7 //0.175em;
+@font-size-h3-md: 1.625rem; // ~26px
+@kerning-h3-md: 0; // 4 //0.1538em;
+@font-size-h4-md: 1.25rem; // ~20px
+@kerning-h4-md: 0; // 2 //0.1em;
+@font-size-h5-md: 1rem; // ~16px
+@kerning-h5-md: 0; // 1 //0.0625em;
+
+@font-size-h1-lg: 5rem; // ~80px
+@kerning-h1-lg: 0; // 5 //0.0625em;
+@font-size-h2-lg: 3.375rem; // ~54px
+@kerning-h2-lg: 0; // 8 //0.1481em;
+@font-size-h3-lg: 1.875rem; // ~30px
+@kerning-h3-lg: 0; // 5 //0.1666em;
+@font-size-h4-lg: 1.5rem; // ~24px
+@kerning-h4-lg: 0; // 2 //0.0833em;
+@font-size-h5-lg: 1.25rem; // ~20px
+@kerning-h5-lg: 0; // 2 //0.1em;
+
+@font-size-h1-xl: 5rem; // ~80px
+@kerning-h1-xl: 0.0625em; // 5 //0.0625em;
+@font-size-h2-xl: 3.375rem; // ~54px
+@kerning-h2-xl: 0; // 8 //0.1481em;
+@font-size-h3-xl: 1.875rem; // ~30px
+@kerning-h3-xl: 0; // 5 //0.1666em;
+@font-size-h4-xl: 1.5rem; // ~24px
+@kerning-h4-xl: 0; // 2 //0.0833em;
+@font-size-h5-xl: 1.25rem; // ~20px
+@kerning-h5-xl: 0; // 2 //0.1em;
+
+@font-size-h1: @font-size-h1-xs;
+@font-size-h2: @font-size-h2-xs;
+@font-size-h3: @font-size-h3-xs;
+@font-size-h4: @font-size-h4-xs;
+@font-size-h5: @font-size-h5-xs;
+@font-size-h6: @font-size-h5-xs;
+
+//
+// buttons
+// --------------------------------------------------
+
+@buttons-typo-desktop: 0.875rem; // ~14px
+@buttons-height-desktop: 4.25rem; // ~68px (64px + 4 border)
+@buttons-line-height-desktop: 4rem; // ~64px
+@buttons-kerning-desktop: 0.1428571429em; // 2
+
+@buttons-typo-tablet-and-below: 0.75rem; // ~12px
+@buttons-height-tablet-and-below: 3rem; // ~48px (44px + 4 border)
+@buttons-line-height-tablet-and-below: 2.75rem; // ~44px
+@buttons-kerning-tablet-and-below: 0.1428571429em; // 2
+
+
+
+`;
+    </script>
+
+    <script>
+      const _variablesScss = `// Etisalat Primary Colors
+// --------------------------------
+
+// -- Consumer palette
+
+$dark-green: #616b1e;
+$main-green: #719e19;
+$light-green: #bee70d;
+$thick-green: #618816;
+$celadon-green: #eaf1dd;
+
+// -- Business palette
+$dark-gray: #242424;
+$dark-sand-brown: #393c3a;
+$moonlight-sand: #2b2e2c;
+$darkest-night: #151515;
+$premium-gray: #454844;
+$dark-green: #616b1e;
+$dark-sage: #505b4d;
+
+// -- Sand
+$sand-white: #f1f1eb;
+$white: #fff;
+$sand-white-50: #f7f8f4;
+$sand-white-60: #f9f9f7;
+$sand-white-70: #fcfcfa;
+$silver-white: #e4e4e4;
+$light-sand-brown: #e2e1da;
+$yellow1: #d4af37;
+$light-yellow: #fafaf5;
+
+// -- Text Colors
+$gray1: #919192;
+$almost-black: #353738;
+$cold-gray: #d1d2d1;
+$cold-gray-2: #d1d1d1;
+$grey1: #6f7273;
+$grey2: #7e7f7f;
+$grey3: #b5b5b5;
+$grey4: #b2b2b2;
+$grey5: #d8d8d8;
+$grey6: #666;
+$grey-radio: #5a5a5a;
+$grey-checked: #949494;
+$switch-green: #84c7c1;
+$switch-grey: #f1f1f1;
+$dropdown-grey: #9e9e9e;
+$search-grey: #606263;
+$light-grey: #e9e9e9;
+$dark-purple: #61199e;
+
+// Etisalat Extended Colors
+// --------------------------------
+// TODO: define or replace "used but not declared" variables
+$sand-brown: #c1b792;
+$sandy-green: #567a6a;
+$yellow: #ffce00;
+$yellow-light: #ff0;
+$orange: #ff8100;
+$grey-dark-grass: #2a332f;
+$black: #000;
+$red: #b3170c;
+$error-red: #be1218;
+$alert-red: #fdeeef;
+$gray: #909192;
+
+// sand brown
+$sandy-brown: #8c7767;
+$sandy-green2: #9fa171;
+$sandy-purple: #9986a1;
+$sandy-white: #dbdad0;
+$sand-grey: #8d8e80;
+
+// grey dark grass
+$premium: #353733;
+
+// -- new varation added for texts
+$gray-text-color: #6f6c70;
+$module-bg-color: #fafaf7;
+
+// End official Etisalt color palette
+// --------------------------------
+
+// Used but not declared
+// --------------------------------
+$texts-gray: #575757;
+$custom-gray: #333;
+$steel-grey: #848789;
+$light-sand-brown: #e2e1da;
+$white-2: #e5e5e5;
+$warm-gray: #7a7a7a; // footer nav & less button
+$warm-background: #e4e4df; // breadcrumb
+$warm-white: #f6f6f6;
+$pink: #fb193f; // store-locator
+$dark-orange: #ff8000; // store-locator
+$light-orange: #ff800026;
+$pine: #93703d;
+$portica: #f8d279;
+$dark-gray-10: #3d3434;
+$sandy-blue: #2e3936; // used for brand-info bootstrap's var
+$cement: #9e9f94; // used for buttons
+$bland: #aeaf89; // used for buttons
+$gray-close-dropdown: #9e9d9d; // used in page navi dropdown
+$lighty-gray: #bcbcbc;
+$gray-fill: #6b6b6b;
+$silver-top: #c0c0c0;
+$gold-top: #fc0;
+$valid-green: #e3ecd1;
+$ligther-gray: #b2b2b1;
+$dark-accordion-gray: #575956;
+$disabled-gray: #474948;
+$business-table-head: #3a3c3b;
+$business-table-ticked: #2c2e2d;
+$blue1: #595783;
+$blue2: #353738;
+$blue3: #630e92;
+$blue4: #3a5796;
+$blue5: #619cba;
+$blue6: #3e6376;
+$blue7: #5a037b;
+$blue8: #bd5ee1;
+$orange1: #9e5419;
+$green1: #3a4035;
+$platinum-blue: #606a85;
+$platinum-white: #cddefb;
+$lemon-green: #9c0;
+$lemon-green-light: #96d12e;
+$lemon-green-dark: #429321;
+$green-dark-10: #157d75;
+$grey-10: #555656;
+$grey-20: #2d2f2f;
+$grey-30: #c8c8c8;
+$grey-40: #5f5f5f;
+$blue-10: #5eb4d4;
+$blue-20: #103f56;
+$bright-sun: #e6c035;
+$pumpkin: #f76b1c;
+$light-sun: #bea026;
+$light-pumpkin: #e8c84a;
+$light-white-grey: #eaeaea;
+$white-grey: #e7e4e4;
+$gold-dark: #93703d; // ana emirati
+$gold-1: #f8d279; // ana emirati
+$silver-dark: #606a85; // ana emirati
+$silver: #cddefb; // ana emirati
+
+// main-menu and top-nav
+$light-gray: #f2f2f2;
+$light-gray1: #929292;
+$light-gray2: #e0dfd2;
+$sub-menu-gray: #ebebeb;
+$cart-count-black: #353738;
+$slight-gray: #edeee6;
+$white-gray: #fbfbfb;
+$list-gray: #9fa0a1;
+$light-water-gray: #e3e5f1;
+$nav-black: #1c1d1e;
+$nav-item-black: #979797;
+$dark-gray2: #606060;
+$dark-gray3: #eee;
+$white-gray1: #fafaf4;
+$dark-gray10: #0e0e0c;
+$dark-gray: #6f6c70;
+// because above $dark-gray is overriding the last #242424 color
+$dark-gray-9: #242424;
+$cust-select: #ccc;
+$select-focus: #c9f3ef;
+$btn-focus: #2ab7a9;
+$gray-primary: #5a637c;
+$green-primary: #7da830;
+$grey-secondary: #ccd3e6;
+$black-secondary: #2d2f31;
+$blue-secondary: #007aff;
+$grey-brass: #9ca1b0;
+$grey-warning: #ffebd9;
+$grey-select: #aaa;
+$green-btn: #5f8515;
+$brown-stroke: #787878;
+$cream-brown: #e2e2e2;
+$yellow-bg: #f8dc51;
+$yellow-bg1: #b4ec51;
+$grey-bg: #909090;
+$gold: #fdeed7;
+$graphite: #4e4d49;
+$blue-dark: #154a6e;
+$blue-sierra: #acc6db;
+$blue-pacific: #27424d;
+$grey-midnight: #41454b;
+$grey-starlight: #e5dfd5;
+$grey-dark: #3c343f;
+$red-light: #c72132;
+$silver-light: #f2f3ed;
+$pink-light: #e8d1cf;
+$aqua-grey: #3d3d3d;
+$aqua-green: #199e94;
+$gold-top-1: #ffcc00;
+$disabled-input-color: #F5F5F1;
+$overlay-background: #00000091;
+$padding-base-vertical: 6px;
+$padding-base-horizontal: 32px; // 12px
+$padding-large-vertical: 12px;
+$padding-large-horizontal: 32px;
+$padding-small-vertical: 6px;
+$padding-small-horizontal: 16px;
+$padding-xs-vertical: 1px;
+$padding-xs-horizontal: 5px;
+$line-height-large: 1.3333; // extra decimals for Win 8.1 Chrome
+$line-height-small: 1.5;
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
+
+// == Tables
+
+// ## Customizes the \`.table\` component with basic values, each used across all table variations.
+
+// ** Padding for \`<th>\`s and \`<td>\`s.
+$table-cell-padding: 8px;
+
+// ** Padding for cells in \`.table-condensed\`.
+$table-condensed-cell-padding: 5px;
+
+// ** Default background color used for all tables.
+$table-bg: transparent;
+
+// ** Background color used for \`.table-striped\`.
+$table-bg-accent: #f9f9f9;
+
+// ** Background color used for \`.table-hover\`.
+$table-bg-hover: #f5f5f5;
+$table-bg-active: $table-bg-hover;
+
+// ** Background color used for \`Non Action Box componet container\`.
+/* stylelint-disable-next-line hue-degree-notation */
+$default-bg-hsl-a33: hsl(0 0% 95% / 33%);
+
+// ** Border color for table and cell borders.
+$table-border-color: #ddd;
+$table-border-color-l: #d5d5d5;
+$btn-font-weight: normal;
+$btn-default-color: $black;
+$btn-default-bg: transparent;
+$btn-default-border: $black;
+
+// **Font size
+$font11: 0.6875rem;
+$font12: 0.75rem;
+$font12pt8: 0.8rem;
+$font14: 0.875rem;
+$font15: 0.938rem;
+$font16: 1rem;
+$font18: 1.125rem;
+$font26: 1.625rem;
+$font32: 2rem;
+$font36: 2.25rem;
+$font40: 2.5rem;
+$font24: 1.5rem;
+$font21: 1.3125rem;
+$font20: 1.25rem;
+$font28: 1.75rem;
+$font10: 0.625rem;
+$font30: 1.875rem;
+$font64: 4rem;
+$font34: 2.125rem;
+$font22: 1.375rem;
+$font12pt: 0.755rem;
+$font54: 3.375rem;
+
+$font-size-base: 16px; // custom Etisalat
+$font-size-arabic-base: 1.5rem; // custom Etisalat Arabic
+$font-size-large: ceil(($font-size-base * 1.00)); // ~16px    // custom Etisalat
+$font-size-small: ceil((16 * 0.875)); // ~14px   // custom Etisalat
+
+$line-height-base: 1.6;
+$line-height-computed: floor(($font-size-base * $line-height-base));
+
+// *Flots
+$floatL: left;
+$floatR: right;
+
+// *Link Arrow border
+$arrow-border: #b2b2b2;
+$arrow-border-green: #719e19;
+$hero-light-green: #afcd74;
+
+// font color
+$paracolor: #767676;
+
+// path for resources
+$resource-path: "./resources/images/";
+
+// == Font weight
+$font-weight: (
+  "normal": 200,
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "heavy": 900,
+);
+
+// == Font weight
+$background-gredient: (
+  "purpal-bg": linear-gradient(-92.14deg, #222 41%, #491873 110%),
+  "green-bg": linear-gradient(225deg, #353738, #719e19),
+  "orange-bg": linear-gradient(225deg, #353738, #9e5419),
+  "aqua-green-bg": linear-gradient(180deg, #679116 -46%, #199e94),
+  "aqua-bg": linear-gradient(225deg, #3d3d3d, #199e94),
+  "default-bg": #f7f8f4,
+  "light-gray-bg": #f8f8f8,
+);
+`;
+    </script>
+
+    <!-- Create color map object for less _variables and scss _variables file -->
+    <script>
+      (() => {
+        const valueToKey = (obj) => {
+          return Object.keys(obj).reduce((result, keyItem) => {
+            // console.log('obj[keyItem]', obj[keyItem], keyItem);
+            result[obj[keyItem].toLowerCase().replace(";", "")] = keyItem;
+
+            return result;
+          }, {});
+        };
+
+        const _variablesLessMap = _variablesLess
+          .match(/([@\w-]+):\s+.+;/g)
+          .reduce((result, item) => {
+            const [key, value] = item.split(":");
+            result[key.trim().replace("@", "")] = value.trim();
+
+            return result;
+          }, {});
+
+        const _variablesScssMap = _variablesScss
+          .match(/([$\w-]+):\s+.+;/g)
+          .reduce((result, item) => {
+            const [key, value] = item.split(":");
+            result[key.trim().replace("$", "")] = value.trim();
+
+            return result;
+          }, {});
+
+        console.log("common vars less", _variablesLessMap);
+        console.log("common vars scss", _variablesScssMap);
+        /* see if common name exist in variables like colors and their values 
+           matches then simply update @ with $ . For instance, @main-green to $main-green 
+        */
+        function replaceCommonNameAndValuesVars(inputValue) {
+          return inputValue.replace(/(@[\w-]+)(;|,|\s)/gi, ($1, $2) => {
+            const commonVarName = $2.replace("@", "");
+
+            if (_variablesLessMap[commonVarName]) {
+              if (
+                _variablesLessMap[commonVarName]?.toLowerCase() ===
+                  _variablesScssMap[commonVarName]
+                    ?.toLowerCase()
+                    .replaceAll("$", "@") ||
+                _variablesLessMap[commonVarName]
+                  ?.toLowerCase()
+                  .replace("fff", "") ===
+                  _variablesScssMap[commonVarName]?.toLowerCase() ||
+                _variablesLessMap[commonVarName]
+                  ?.toLowerCase()
+                  .replace("000", "") ===
+                  _variablesScssMap[commonVarName]?.toLowerCase()
+              ) {
+                return $1.replace("@", "$");
+              }
+            }
+            return $1;
+          });
+        }
+
+        // replace remaining variable which has common name but have different value
+        // between less and sass. for instance, @dark-gray could have different color
+        // in $dark-gray. fixing that here
+        function replaceRemainingVarsByMatchingValue(inputValue) {
+          const _variablesValuesLessMap = valueToKey(_variablesLessMap);
+          const _variablesValuesScssMap = valueToKey(_variablesScssMap);
+
+          // replace all var to var map
+          /*
+          @brand-primary: @main-green;
+          @brand-success: @sandy-green;
+          @brand-info: @sandy-blue;
+          @brand-warning: @orange;
+          @brand-danger: @red; 
+          */
+
+          inputValue = inputValue.replaceAll('@brand-primary', '$main-green');
+          inputValue = inputValue.replaceAll('@brand-success', ' $sandy-green');
+          inputValue = inputValue.replaceAll('@brand-info', '$sandy-blue');
+          inputValue = inputValue.replaceAll('@brand-warning', '$orange');
+          inputValue = inputValue.replaceAll('@brand-danger', '$red');
+
+          return inputValue.replace(/(@[\w-]+)(;|,|\s)/gi, ($1, $2, $3) => {
+            const commonVarName = $2.replace("@", "");
+            const lessVarValue =
+              _variablesLessMap[commonVarName]?.toLowerCase();
+
+            const mappedScssValueVar = _variablesValuesScssMap[lessVarValue];
+
+            if (mappedScssValueVar) {
+              return `$${mappedScssValueVar}${$3}`;
+            }
+
+            const differentScssColorVar =
+              _variablesValuesScssMap[lessVarValue?.replace(/;|\,|\s/g, "")];
+            if (
+              !_variablesValuesScssMap[lessVarValue] &&
+              differentScssColorVar
+            ) {
+              return `$${differentScssColorVar}${$3}`;
+            } else {
+              console.info(
+                "!!! Missing variable value mapping: ",
+                $1,
+                commonVarName,
+                _variablesValuesScssMap[lessVarValue],
+                lessVarValue
+              );
+            }
+
+            return $1;
+          });
+        }
+
+        function replaceAllColorValuesWithVars(inputValue) {
+          const _variablesValuesScssMap = valueToKey(_variablesScssMap);
+
+          return inputValue.replace(/(#[\w]{3,})(\s|;)/g, ($1, $2, $3) => {
+            
+            let colorVal = $2;
+            if (colorVal.toLowerCase() === "#ffffff") {
+              colorVal = "#fff";
+            }
+
+            if (colorVal.toLowerCase() === "#000000") {
+              colorVal = "#000";
+            }
+
+            const colorVar = _variablesValuesScssMap[colorVal];
+            if (colorVar) {
+              return `$${colorVar}${$3}`;
+            } else {
+              return $1;
+            }
+          });
+        }
+
+        // Replace variable @some-var to $some-var which are define in converting file
+        function replaceInFileVariables(inputValue) {
+          const inFileVars = inputValue.match(/(@[\w-]+):(.+)(;)/gi);
+          if (inFileVars) {
+            new Set(
+              inFileVars.map((item) => item.split(":")[0].trim())
+            ).forEach((item) => {
+              inputValue = inputValue.replaceAll(item, item.replace("@", "$"));
+            });
+          }
+          return inputValue;
+        }
+
+        function replaceThisToThat(inputValue) {
+
+          // 992px
+          inputValue = inputValue.replaceAll("@screen-md-min)", "$desktop)");
+          inputValue = inputValue.replaceAll("@screen-sm-max)", "$desktop-min)");
+          inputValue = inputValue.replaceAll("@screen-desktop)", "$desktop)");
+          inputValue = inputValue.replaceAll("@screen-md)", "$desktop)");
+
+          // 1248px less --> 1248px scss
+          inputValue = inputValue.replaceAll(
+            "@screen-lg-min)",
+            "$desktop-wide)"
+          );
+          inputValue = inputValue.replaceAll("@screen-lg)", "$desktop-wide)");
+          inputValue = inputValue.replaceAll(
+            "@screen-lg-desktop",
+            "$desktop-wide"
+          );
+
+          // 480px less --> 576px scss
+          inputValue = inputValue.replaceAll("@screen-xs-min)", "$phone)");
+          inputValue = inputValue.replaceAll("@screen-phone)", "$phone)");
+          inputValue = inputValue.replaceAll("@screen-xs)", "$phone)");
+
+          // 768px less --> 768px scss
+          inputValue = inputValue.replaceAll("@screen-sm-min)", "$tablet)");
+          inputValue = inputValue.replaceAll("@screen-sm)", "$tablet)");
+          inputValue = inputValue.replaceAll("@screen-tablet)", "$tablet)");
+          inputValue = inputValue.replaceAll("@screen-ms)", "$tablet)");
+          inputValue = inputValue.replaceAll(
+            "@screen-ms-min)",
+            "$custom-width-tab)"
+          );
+
+          // 767px less --> 767px scss
+          inputValue = inputValue.replaceAll(
+            "@screen-ms-max)",
+            "$custom-width-tab"
+          );
+
+          inputValue = inputValue.replaceAll(
+            "@media (min-width: 992px)",
+            "@include respond-to-min($desktop)"
+          );
+
+          inputValue = inputValue.replaceAll(
+            "@media (max-width: 767px)",
+            "@include respond-to-max($tablet-min)"
+          );
+
+          inputValue = inputValue.replaceAll(
+            "@media (max-width: 991px)",
+            "@include respond-to-max($desktop-min)"
+          );
+
+          // .transition(); to transition: all 0.3s ease-in-out;
+          // inputValue = inputValue.replaceAll(
+          //   ".transition();",
+          //   "transition: all 0.3s ease-in-out;"
+          // );
+          // inputValue = inputValue.replaceAll(
+          //   ".transition(0.3s);",
+          //   "transition: all 0.3s ease-in-out;"
+          // );
+          inputValue = inputValue.replaceAll(
+            ".transition(",
+            "@include transition("
+          );
+
+          // .encoded-svg-background(); to encoded-svg-background;
+          inputValue = inputValue.replaceAll(
+            ".encoded-svg-background(",
+            "@include encoded-svg-background("
+          );
+
+          // Neotech-medium, "GE SS Two", Roboto, Arial, sans-serif;
+          inputValue = inputValue.replaceAll(
+            "font-family: @headings-font-family;",
+            "@include font-family-Neotech();"
+          );
+
+          // font-family: Neotech, Roboto, Arial, sans-serif;
+          inputValue = inputValue.replaceAll(
+            "font-family: @font-family-menu-sans-serif;",
+            "@include font-family-Neotech-roboto();"
+          );
+
+          //  font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
+          inputValue = inputValue.replaceAll(
+            "font-family: @font-arabic;",
+            "@include font-family-Neotech-ge();"
+          );
+
+          //  font-family: Neotech-medium, "GE SS Two", Arial, sans-serif;
+          inputValue = inputValue.replaceAll(
+            "@menu-transition-duration,",
+            ".2s,"
+          );
+
+          /*           .body-small{
+          font-size: @body-small-xs;
+          line-height: (@line-height-base)em;
+        } */
+          inputValue = inputValue.replaceAll(
+            ".body-small;",
+            `font-size: 0.75rem;
+            line-height: 1.6 em;`
+          );
+
+          inputValue = inputValue.replaceAll(
+            ".body-small;",
+            `font-size: 0.75rem;
+            line-height: 1.6 em;`
+          );
+
+          /* less fade() to equivalent rgba()
+          } */
+          inputValue = inputValue.replace(
+            /(fade)\((.+),\s+(\d+)\);/gi,
+            ($1, $2, $3, $4) => `rgba(${$3}, ${$4 / 100});`
+          );
+
+          // replace lato font value font-family: Lato, "GE SS Two", Roboto, Arial, sans-serif
+          inputValue = inputValue.replaceAll(
+            /font-family:\s?Lato\,\s?\"GE SS Two"\,\s?Roboto\,\s?Arial\,\s?sans-serif/g,
+            "@include font-family-lato()"
+          );
+
+          // replace lato font value font-family: Neotech-medium, "GE SS Two", Arial, sans-serif
+          inputValue = inputValue.replaceAll(
+            /font-family:\s?Neotech-medium\,\s?\"GE SS Two"\,\s?Arial\,\s?sans-serif/g,
+            "@include font-family-Neotech-ge()"
+          );
+
+          // replace "font-family: @font-family-base" rule to @include font-family-lato()
+          inputValue = inputValue.replaceAll(
+            "font-family: @font-family-base",
+            "@include font-family-lato()"
+          );
+
+          // replace "font-family: @font-family-sans-serif" rule to @include font-family-lato()
+          inputValue = inputValue.replaceAll(
+            "font-family: @font-family-sans-serif",
+            "@include font-family-lato()"
+          );
+
+          // replace less ~"calc() " to calc()
+          inputValue = inputValue.replace(/~"(calc\([\w\s-]+\))"/g, '$1');
+          
+          // replace less .heading-bigger mixin with value
+          inputValue = inputValue.replaceAll(".heading-bigger;", 'letter-spacing: 0;');
+
+          // @container-sm to 756px;
+          inputValue = inputValue.replaceAll("@container-sm", '756px');
+          
+          // @container-md to 976px;
+          inputValue = inputValue.replaceAll("@container-md", '976px');
+
+          // @container-lg to 1224px;
+          inputValue = inputValue.replaceAll("@container-lg", '1224px');
+
+          
+          // .container-fixed() mixin to style;
+          inputValue = inputValue.replaceAll(".container-fixed();", `
+             margin-right: auto;
+             margin-left: auto;
+             padding-left: 12px;
+             padding-right: 12px;
+          `);
+
+          return inputValue;
+        }
+
+        function calculateScssOutput(event) {
+          event.preventDefault();
+
+          const {
+            lessInput: { value: lessInputValue },
+            scssOutput,
+          } = event.target;
+
+          let scssResultValue = replaceCommonNameAndValuesVars(lessInputValue);
+          scssResultValue =
+            replaceRemainingVarsByMatchingValue(scssResultValue);
+          scssResultValue = replaceThisToThat(scssResultValue);
+          scssResultValue = replaceInFileVariables(scssResultValue);
+          scssResultValue = replaceAllColorValuesWithVars(scssResultValue);
+
+          scssOutput.value = scssResultValue;
+        }
+
+        window.calculateScssOutput = calculateScssOutput;
+      })();
+    </script>
+
+    <style>
+      .form-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-control {
+        display: flex;
+        flex-direction: column;
+        margin: 40px 0;
+      }
+      .form-control button {
+        padding: 8px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <form action="#" onsubmit="calculateScssOutput(event)">
+        <div class="form-container">
+          <div class="form-control">
+            <label for="lessInput">Less Input</label>
+            <textarea rows="10" id="lessInput" name="lessInput"></textarea>
+          </div>
+
+          <div class="form-control">
+            <label for="scssOutput">SCSS Output</label>
+            <textarea rows="10" id="scssOutput" name="scssOutput"></textarea>
+          </div>
+
+          <div class="form-control">
+            <button type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.captchaObj="com.etisalat.core.models.GoogleMapsModel">
+<sly data-sly-test="${properties.captchaVersion && properties.captchaVersion == 'captchav2'}">
+    <sly data-sly-use.captchav2template="/apps/etisalat/components/form/googlecaptcha/googlecaptchaV2.html"
+         data-sly-call="${captchav2template.captchav2prop @ properties=properties,captchaObj=captchaObj}">  
+    </sly>
+</sly>
+
+<sly data-sly-test="${properties.captchaVersion && properties.captchaVersion == 'captchaInvisible'}">
+    <sly data-sly-use.captchaInvisiblev3template="/apps/etisalat/components/form/googlecaptcha/googlecaptchaInvisibleV3.html"
+         data-sly-call="${captchaInvisiblev3template.captchaInvisiblev3prop @ properties=properties,captchaObj=captchaObj}">  
+    </sly>
+</sly>
+</sly>
+<sly data-sly-include="/apps/etisalat/components/commons/googlemap/googlemap.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.captchaVersion}"></sly>

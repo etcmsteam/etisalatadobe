@@ -1,0 +1,60 @@
+<template data-sly-template.faq="${ @ accordion,properties}">
+    <sly data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component">
+        <div  data-sly-test="${accordion.items.size > 0}" data-sly-list.item="${accordion.items}" class="panel-group" id="${component.id}" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="${component.id}-${itemList.count}">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#${component.id}" 
+                        class="collapsed"
+                        href="#collapse-${component.id}-${itemList.count}" aria-expanded="true" aria-controls="collapse-${component.id}-${itemList.count}">
+                            ${item.title}
+                            <span class="icon-plus">
+                                <?xml version="1.0" encoding="UTF-8"?>
+                                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>2C3382F2-0597-45D2-8F47-9384C2098B4F</title>
+                                    <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="Accordion-Module-(Desktop)" transform="translate(-1264.000000, -2318.000000)" fill="#353738" fill-rule="nonzero">
+                                            <g id="Group-33-Copy" transform="translate(0.000000, 1912.000000)">
+                                                <g id="Group-32" transform="translate(120.000000, 166.000000)">
+                                                    <g id="Group-31-Copy-2" transform="translate(0.000000, 208.000000)">
+                                                        <path d="M1156,32 C1156.27614,32 1156.5,32.2238576 1156.5,32.5 L1156.5,43.5 L1167.5,43.5 C1167.77614,43.5 1168,43.7238576 1168,44 C1168,44.2761424 1167.77614,44.5 1167.5,44.5 L1156.5,44.5 L1156.5,55.5 C1156.5,55.7761424 1156.27614,56 1156,56 C1155.72386,56 1155.5,55.7761424 1155.5,55.5 L1155.5,44.5 L1144.5,44.5 C1144.22386,44.5 1144,44.2761424 1144,44 C1144,43.7238576 1144.22386,43.5 1144.5,43.5 L1155.5,43.5 L1155.5,32.5 C1155.5,32.2238576 1155.72386,32 1156,32 Z" id="Combined-Shape"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span class="icon-minus">
+                                <?xml version="1.0" encoding="UTF-8"?>
+                                <svg width="24px" height="2px" viewBox="0 0 24 2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>BF50014D-3417-48CE-8622-05617A206B5B</title>
+                                    <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="Accordion-Module-(Desktop)" transform="translate(-1264.000000, -2850.000000)" fill="#353738" fill-rule="nonzero">
+                                            <g id="Group-33-Copy" transform="translate(0.000000, 2641.000000)">
+                                                <g id="Group-31" transform="translate(120.000000, 166.000000)">
+                                                    <rect id="Combined-Shape" x="1144" y="43.5" width="24" height="1" rx="0.5"></rect>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-${component.id}-${itemList.count}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="${component.id}-${itemList.count}">
+                    <div class="panel-body">
+                        <div class="paragraph-styling ul-list-cms">
+                            <div class="p2">
+                                <div data-sly-resource="${item.name @ decorationTagName=''}"  id="${item.id}-panel"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </sly>
+
+</template>

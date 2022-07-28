@@ -1,0 +1,28 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div class="cmp_btn" data-sly-list.multifieldObj="${resource.getChildren}">
+       <div data-sly-test="${multifieldObj.name == 'storeitems'}">
+          <div class="cmp_btn" data-sly-list.gsItems="${multifieldObj.getChildren}">
+             <div class="cmp_store_btn wow fadeInUp" data-wow-delay="0.2s" >
+                <!-- Store Btn -->
+              <sly data-sly-test.customLink="${gsItems.btnLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+                <a href="${commonlinkmodel.link}">
+                   <i data-sly-test="${gsItems.icon}" class="${gsItems.icon}"></i>
+                   <p data-sly-test="${gsItems.icon}" class="mb-0">
+                      <span>${gsItems.btnDesc}</span>${gsItems.btnTitle}
+                   </p>
+    
+                     <img data-sly-test="${gsItems.fileReference}" 
+                          alt="${gsItems.btnTitle}" 
+                          loading="lazy" 
+                          data-sly-set.imageSrcPath="${gsItems.fileReference}" 
+	                      data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                      class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" 
+                          title="${gsItems.btnTitle}" src="${gsItems.fileReference}"/>
+                </a>
+             </div>
+          </div>
+       </div>
+    </div>
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !resource.hasChildren}"></sly>

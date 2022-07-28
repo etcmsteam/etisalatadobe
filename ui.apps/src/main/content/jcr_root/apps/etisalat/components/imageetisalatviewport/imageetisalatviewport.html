@@ -1,0 +1,26 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.imageViewport="com.etisalat.core.models.ImageViewportModel">
+     
+ <picture data-sly-test="${properties.viewPortLayout == '6-viewport'}">
+    <sly data-sly-use.sixViewportTemplate="6viewport.html"
+      data-sly-call="${sixViewportTemplate.sixViewport @ imageViewport=imageViewport,properties=properties}">
+    </sly>
+ </picture>
+ 
+  <picture data-sly-test="${properties.viewPortLayout == '4-viewport'}">
+    <sly data-sly-use.fourViewportTemplate="4viewport.html"
+		   data-sly-call="${fourViewportTemplate.fourViewport @ imageViewport=imageViewport,properties=properties}">
+	</sly>
+ </picture>
+ 
+  <picture data-sly-test="${properties.viewPortLayout == '3-viewport'}">
+    <sly data-sly-use.threeViewportTemplate="3viewport.html"
+		   data-sly-call="${threeViewportTemplate.threeViewport @ imageViewport=imageViewport,properties=properties}">
+	</sly>
+  </picture>
+
+  <div data-sly-test="${properties.viewPortLayout == '1-viewport' && properties['fileReference']}" class="${!wcmmode.edit ? 'cover' : ''}">
+     <div class="lazyloaded" data-sly-resource="${resource @ resourceType='core/wcm/components/image/v3/image', wcmmode='disabled'}"></div>         
+  </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !resource.hasChildren}"></sly>

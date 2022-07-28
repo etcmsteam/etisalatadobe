@@ -1,0 +1,27 @@
+<template data-sly-template.dynamicproducts="${ @ properties}">
+
+    <sly data-sly-test="${properties.dynamictileBoxLayout != 'bestsellercard'}">
+        <div data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel"
+            id="related-products-${properties.productCategoryId}" data-host-name="${commonModel.apiHostname}"
+            data-tiletype="${properties.dynamictileBoxLayout}" data-categoryId="${properties.productCategoryId}">
+        </div>
+    </sly>
+    <sly data-sly-test="${properties.listLayout && properties.listLayout == 'loadmore'}">
+        <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicloadmoretemplate.html"
+            data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
+        </sly>
+    </sly>
+
+    <sly data-sly-test="${properties.listLayout && properties.listLayout == 'slider'}">
+        <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicslidertemplate.html"
+            data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
+        </sly>
+    </sly>
+
+    <sly data-sly-test="${properties.listLayout && properties.listLayout == 'noncontractbutton'}">
+        <sly data-sly-use.dynamicproductsloadmoretemplate="/apps/etisalat/components/productdetail/dynamicnoncontracttemplate.html"
+            data-sly-call="${dynamicproductsloadmoretemplate.dynamicproduct @ properties=properties}">
+        </sly>
+    </sly>
+
+</template>

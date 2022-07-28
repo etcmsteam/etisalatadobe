@@ -1,0 +1,8 @@
+<template data-sly-template.captchav2prop="${ @ properties,captchaObj}">
+<input type="hidden" id="gcaptchaKeyV2" name="gcaptchaKeyV2" value="${captchaObj.captchaV2}">
+ <div id="response-div" style="color:red; font-weight: bold;"></div>
+ <script data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page" 
+         src="https://www.google.com/recaptcha/api.js?onload=reCaptchaCallback&render=explicit${page.language == 'ar' ? '&hl=ar' :''}" async defer></script>
+ <div id="rcaptcha" class="g-recaptcha" data-sitekey="${captchaObj.captchaV2}"></div>
+ <input type="hidden" value="true" id="recaptchaRequired" name="recaptchaRequired" />          
+</template>

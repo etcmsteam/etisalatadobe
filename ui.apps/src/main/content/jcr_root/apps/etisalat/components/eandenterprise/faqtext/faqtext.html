@@ -1,0 +1,10 @@
+<sly data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p2' : properties.textStyle}" class="${textStyle}">
+    ${properties.text @ context='html'}
+</sly>
+
+<sly data-sly-test.customLink="${properties.ctalink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+<a data-sly-test= "${properties.ctalabel}" class="${properties.ctaStyle == 'default' ?  '' : properties.ctaStyle}"
+   href="${commonlinkmodel.link}"
+   target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}">
+    ${properties.ctalabel}
+</a>

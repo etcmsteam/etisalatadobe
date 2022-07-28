@@ -1,0 +1,36 @@
+<sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div class="promo-sub-product ${properties.enableFlip ? 'flip' : ''}">
+        <div class="row">
+            <div class="col-lg-1 hidden-sm hidden-md"></div>
+            <div data-sly-test="${properties.tiletitle || properties.text}" class="col-md-6 col-lg-5">
+                <div  class="content-box">
+                    <div class="ed-headings-2-0" data-sly-test="${properties.tiletitle}">
+                        <h3 data-sly-element="${properties.titleType}">${properties.tiletitle}</h3>
+                    </div>
+                    <div class="ed-paragraph-2-0" data-sly-test="${properties.text}">
+                        <div data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}" class="${textStyle}">
+                            ${properties.text @ context='html'}
+                        </div>
+                    </div>
+                    <div data-sly-test="${properties.ctalabel}" class="${properties.ctaStyle == 'learn-more-btn' ? 'ed-learnmore-wrapper' : 'ed-buttons-wrapper'}">
+                        <sly data-sly-test.customLink="${properties.ctalink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+                        <a data-sly-test="${properties.ctalink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle}">${properties.ctalabel}</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="img-cover" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+                    <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+                        <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                    </div>
+                    <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                </div>
+            </div>
+            <div class="col-lg-1 hidden-md hidden-sm"></div>
+        </div>
+    </div>
+
+</sly>
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.tiletitle}"></sly>

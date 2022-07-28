@@ -1,0 +1,98 @@
+<template data-sly-template.xfmobile="${ @ properties,meganavigation}">
+<!-- etisalat digital mega menu Mobile -->
+<div class="mega-menu-mobile-digital">
+    <nav class="nav-drill">
+        <!-- incpection push menu starts -->
+        <sly data-sly-test="${meganavigation.pushMenuEnabled}" data-sly-use.pushMenuIconTemplate="pushmenuicon.html"
+            data-sly-call="${pushMenuIconTemplate.pushMenuIcon @ properties=properties,meganavigation=meganavigation}">  
+        </sly>
+        <!-- incpection push menu ends --> 	                
+	     <sly data-sly-use.navObj="${resource.path}" data-sly-list.navItems="${navObj.listChildren}">    
+		  <ul data-sly-test="${navItems.name == 'containerItems'}" data-sly-repeat.navItem="${navItems.listChildren}">
+	        <li class="waqas nav-item-heading mega-dropdown-mob" data-sly-set.hasFixedItems="false">
+			    <sly data-sly-test.navCTALink="${navItem.navigationLinkTo}" 
+					 data-sly-use.megaMainLink="${'com.etisalat.core.models.CommonLinkModel' @link=navCTALink}" />					 
+                <a href="${megaMainLink.link}" title="${navItem.navigationAltText}">${navItem.navigationLabel}</a>
+                
+                <sly data-sly-test="${navItem.xfVariationPath}" data-sly-set.xfPath="${navItem.xfVariationPath}/jcr:content/root" 
+                     data-sly-use.linkModel="${'com.etisalat.core.models.CommonLinkModel' @link=xfPath}" 
+                     data-sly-list.mobileMenuList="${linkModel.resourceFromPath.listChildren}">
+                  <sly data-sly-set.hasFixedItems="true" 
+                       data-sly-test="${mobileMenuItems && mobileMenuItems.resourceType == 'etisalat/components/eandenterprise/global/megasubnavigation'}" />
+                </sly>
+                <div data-sly-test="${hasFixedItems}" class="clickable-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12" enable-background="new 26 26 12 12" xml:space="preserve">
+                        <g>
+                            <path fill="#554D56" d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z"></path>
+                        </g>
+                    </svg>
+                </div>
+              </li>
+			  <li data-sly-test="${navItem.xfVariationPath}" data-sly-set.xfPath="${navItem.xfVariationPath}/jcr:content/root" 
+                  data-sly-use.linkModel="${'com.etisalat.core.models.CommonLinkModel' @link=xfPath}" class="mega-dropdown-mob-menu">			  
+			   <sly data-sly-list.mobileMenuItems="${linkModel.resourceFromPath.listChildren}">
+				  <!-- title -->
+				  <ul data-sly-test="${mobileMenuItems && mobileMenuItems.resourceType == 'etisalat/components/eandenterprise/global/megasubnavigation'}" class="menu-title">
+					  <li class="nav-item-heading">
+						 ${mobileMenuItems.navTitle}
+					   </li>
+				  </ul>
+				  <!-- links -->
+				  <ul data-sly-test="${mobileMenuItems && mobileMenuItems.resourceType == 'etisalat/components/eandenterprise/global/megasubnavigation'}" 
+					  data-sly-list.fixedChildItem="${mobileMenuItems.listChildren}" class="menu-links" role="menu">
+					  <sly data-sly-test="${fixedChildItem.name == 'fixedItems'}" data-sly-list.childMenuItem="${fixedChildItem.listChildren}">
+					     <li class="nav-item">
+						   <a data-sly-test="${childMenuItem.navigationTitle && childMenuItem.navigationLink}" 
+							   class="nav-link" href="${childMenuItem.navigationLink}">
+								${childMenuItem.navigationTitle}
+						    </a>
+						    <span data-sly-test="${childMenuItem.navigationDesc}" class="tagline">${childMenuItem.navigationDesc}</span>
+					     </li>  
+					   </sly>					
+					</ul>	
+				</sly>
+                 
+                <!-- image part  -->
+                <ul data-sly-list.mobilePromoItems="${linkModel.resourceFromPath.listChildren}">
+                    <li data-sly-test="${mobilePromoItems && mobilePromoItems.resourceType == 'etisalat/components/eandenterprise/global/megapromotiontile'}" 
+					    class="mega-dropdown-mob-promotion">
+                      <div class="menu-promotion-wrapper">
+                           <sly data-sly-resource="${@path=mobilePromoItems.path, wcmmode='disabled'}"></sly>	 
+                      </div>
+                    </li>
+                </ul>				 
+			  </li>			  
+			</ul>
+		  </sly>	
+		  
+		<!-- footer links -->
+		<div class="nav-footer-inline-wrapper">
+		   <ul class="nav-items nav-level-1 nav-footer-wrapper nav-footer-wrapper-inline">
+		       <li class="nav-item nav-footer">
+		         <a data-sly-test="${!meganavigation.topNavMenuItems.isEmpty && meganavigation.topNavMenuItems.size > 0}" 
+		            data-sly-repeat.topLeftItems="${meganavigation.topNavMenuItems}" 
+					class="nav-inline-link nav-site-switch" href="${topLeftItems.navigationLink}">
+				    ${topLeftItems.navigationTitle}
+				    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12" enable-background="new 26 26 12 12" xml:space="preserve">
+					  <g>
+						  <path fill="#554D56" d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z"></path>
+					  </g>
+					</svg>
+			     </a>
+			     <a data-sly-test="${!meganavigation.topNavIconMenuItems.isEmpty 
+		               && meganavigation.topNavIconMenuItems.size > 0}" data-sly-repeat.topRightItems="${meganavigation.topNavIconMenuItems}" 
+					   class="nav-inline-link nav-site-switch" href="${topRightItems.navigationLink}">
+					   ${topRightItems.navigationTitle}
+					   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12" enable-background="new 26 26 12 12" xml:space="preserve">
+						  <g>
+							  <path fill="#554D56" d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z"></path>
+						  </g>
+						</svg>
+			     </a>
+			   
+			   </li>
+		    </ul>
+		</div>		  	   
+	</nav>
+</div>
+</template>

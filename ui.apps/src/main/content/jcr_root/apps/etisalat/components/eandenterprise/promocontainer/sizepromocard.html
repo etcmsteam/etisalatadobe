@@ -1,0 +1,25 @@
+<template  data-sly-template.sizepromocard="${ @ container,properties}">
+    <div class="promo-grid-2-0 cta-cards-wrap ${properties.backgroundColor}">
+        <div class="container">
+            <div class="ed-headings-2-0 text-left" data-sly-test="${properties.mixedpromoHeadingTitle}">
+                <h2 data-sly-element="${properties.titleType}">${properties.mixedpromoHeadingTitle}</h2>
+            </div>
+            <div class="ed-paragraph-2-0"  data-sly-test="${properties.tiledescription}">
+                <div class="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}">
+                    ${properties.tiledescription @ context='html'}
+                </div>
+            </div>
+            <div class="products-grid cta-cards">
+                <div class="row">
+                    <div class="col-md-6">
+                        <sly data-sly-resource="${'samepar0' @ resourceType='etisalat/components/container'}"> </sly>
+                    </div>
+                    <div class="col-md-6">
+                        <sly data-sly-resource="${'samepar1' @ resourceType='etisalat/components/container'}"> </sly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

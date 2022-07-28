@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Tile Container"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.dropdown.dialog.multi.values]">
+    <content
+        granite:class="cmp-container__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideChildren="[layout]">
+                                            <tiletitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="A title to display as the headline for the tile."
+                                                fieldLabel="Title"
+                                                name="./tileTitle"
+                                                value=""/>
+                                            <titleType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                path="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"/>
+                                            <tiledescription
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="etisalat/components/eandenterprise/commons/editor/dialog/rteconfig/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Add Description"
+                                                fieldLabel="Description"
+                                                name="./tiledescription"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                            <descriptionParagraphStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/paragraphstyle"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Choose Paragraph style, By default &quot;Paragraph 2&quot; style will apply to description text"
+                                                fieldLabel="Description Paragraph Style"
+                                                name="./textStyle"/>
+                                            <tilegridlayout
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                defaultValue="Default"
+                                                fieldDescription="Select Tile Layout."
+                                                fieldLabel="Display tile container as a"
+                                                name="./tileBoxLayout">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <icontile
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Icon Tile With Description"
+                                                        value="icontile"/>
+                                                    <verticalcard
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Vertical Card"
+                                                        value="verticalcard"/>
+                                                    <verticalcardicon
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Vertical Card with Icons"
+                                                        value="verticalcardicon"/>
+													                          <testimonialquote
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Testimonial Quote"
+                                                        value="testimonialquote"/>
+                                                    <quotationmodule
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Quotation Module"
+                                                        value="quotationmodule"/>
+													<introtextsixbysixcolumns
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Intro Text 6 x 6 Columns"
+                                                        value="introtextsixbysixcolumns"/>
+                                                    <iconcardcarousel
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Icon Card carousel"
+                                                        value="iconcardcarousel"/>
+													<partnerslogo
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Partners Logo"
+                                                        value="partnerslogo"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".tilegridlayout-showhide-target"/>
+                                            </tilegridlayout>
+                                            <icontile
+                                                granite:class="tilegridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <tileBoxVariation
+                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Select Tile Variation"
+                                                        name="./tileBoxVariation">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <threetilebox
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="3 Tile Box"
+                                                                value="3-tile-boxes"/>
+                                                            <fourtilebox
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="4 Tile Box"
+                                                                value="4-tile-boxes"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".tileboxvariation-showhide-target"/>
+                                                    </tileBoxVariation>
+                                                    <titleAlignment
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Select Title Alignment Style"
+                                                        name="./titleAlignment">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <def
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="(default)"
+                                                                value=""/>
+                                                            <center
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Centre"
+                                                                value="centre"/>
+                                                        </items>
+                                                    </titleAlignment>
+                                                    <contentAlignment
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Select Content Alignment Style"
+                                                        name="./contentAlignment">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <def
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="(default)"
+                                                                value=""/>
+                                                            <center
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Centre"
+                                                                value="centre"/>
+                                                        </items>
+                                                    </contentAlignment>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="icontile"/>
+                                            </icontile>
+										    <backgroundcoloroptions
+                                                granite:class="tilegridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <backgroundcolor
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                        path="/apps/etisalat/components/eandenterprise/commons/editor/dialog/backgroundcolor/backgroundcolor"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="testimonialquote"
+                                                    showhidetargetvalue1="verticalcardicon"
+                                                    showhidetargetvalue2="iconcardcarousel"
+													showhidetargetvalue3="partnerslogo"/>
+                                            </backgroundcoloroptions>
+											<partnerlogoItems
+                                                granite:class="tilegridlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <textAlignment
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldDescription="Select Text Alignment Style"
+                                                        fieldLabel="Select Text Alignment Style"
+                                                        name="./textAlignment">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <def
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="(default)"
+                                                                value=""/>
+                                                            <center
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Centre"
+                                                                value="text-center"/>
+                                                        </items>
+                                                    </textAlignment>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="partnerslogo"/>
+                                            </partnerlogoItems>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

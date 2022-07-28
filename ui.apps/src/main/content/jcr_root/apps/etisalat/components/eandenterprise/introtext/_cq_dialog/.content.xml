@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Intro Text"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_teaser_v2">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <variation
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Intro Variations"
+                                                fieldLabel="Select Intro Variations"
+                                                name="./introVariation">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <twocolumn
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="2 Column"
+                                                        value="2-column"/>
+                                                    <threecolumn
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="3 Column"
+                                                        value="3-column"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".introvariation-showhide-target"/>
+                                            </variation>
+                                            <backgroundcolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                path="/apps/etisalat/components/eandenterprise/commons/editor/dialog/backgroundcolor/backgroundcolor"/>
+                                            <twocolumn
+                                                granite:class="introvariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <titlegroup
+                                                        jcr:primaryType="nt:unstructured"
+                                                        jcr:title="Two Column Title and Description"
+                                                        sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <pretitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="A title to display on the pretitle"
+                                                                fieldLabel="Pretitle"
+                                                                name="./pretitle"/>
+                                                            <pretitletype
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldLabel="Pretitle Type"
+                                                                name="./pretitletype"/>
+                                                            <title
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                                fieldDescription="Configure Title"
+                                                                fieldLabel="Title"
+                                                                name="./twoColumnTitle"/>
+                                                            <titleType
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Title Type"
+                                                                fieldLabel="Title Type"
+                                                                name="./twoColumnTitleType"/>
+                                                            <descriptiongroup
+                                                                jcr:primaryType="nt:unstructured"
+                                                                jcr:title="Description"
+                                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <description
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                        composite="{Boolean}true"
+                                                                        fieldLabel="Desciption Items">
+                                                                        <field
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                            name="./descriptionItems">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <descriptionstyle
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/paragraphstyle"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                    fieldDescription="Choose Paragraph style, By default &quot;Paragraph 3&quot; style will apply to description text"
+                                                                                    fieldLabel="Description Paragraph Style"
+                                                                                    name="./descParagraphStyle"/>
+                                                                                <description
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                                                    fieldDescription="Text that will appear for the description."
+                                                                                    fieldLabel="Description"
+                                                                                    name="./description"
+                                                                                    rows="{Long}10"/>
+                                                                            </items>
+                                                                        </field>
+                                                                    </description>
+                                                                </items>
+                                                            </descriptiongroup>
+                                                        </items>
+                                                    </titlegroup>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="2-column"/>
+                                            </twocolumn>
+                                            <threecolumn
+                                                granite:class="introvariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <titlegroup
+                                                        jcr:primaryType="nt:unstructured"
+                                                        jcr:title="Three Column Title and Description"
+                                                        sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <title
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Configure Title"
+                                                                fieldLabel="Title"
+                                                                name="./threeColumnTitle"/>
+                                                            <titleType
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldLabel="Select Title Type"
+                                                                name="./threeColumnTitleType"/>
+                                                            <descriptionstyle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/paragraphstyle"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Choose Paragraph style, By default &quot;Paragraph 3&quot; style will apply to description text"
+                                                                fieldLabel="Description Paragraph Style"
+                                                                name="./threeColumnDescParagraphStyle"/>
+                                                            <description
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceSuperType="etisalat/components/eandenterprise/commons/editor/dialog/rteconfig/text"
+                                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                                fieldDescription="Configure description"
+                                                                fieldLabel="Description"
+                                                                name="./threeColumnDescription"
+                                                                useFixedInlineToolbar="{Boolean}true"/>
+                                                        </items>
+                                                    </titlegroup>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="3-column"/>
+                                            </threecolumn>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

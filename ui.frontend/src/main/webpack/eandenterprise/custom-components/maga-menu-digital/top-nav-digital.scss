@@ -1,0 +1,351 @@
+/* stylelint-disable*/
+/*--- top nav push menu inception starts ---*/
+.top-nav-section {
+  &.push-nav {
+    .top-nav-left {
+      .links {
+        display: flex;
+
+        .inc-push-meu-icon {
+          a {
+            padding: 0;
+
+            &:hover {
+              border-bottom: 0;
+            }
+          }
+
+          svg {
+            margin-left: 0;
+            stroke: none;
+            width: 32px;
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+.push-close {
+  position: absolute;
+}
+
+.push-enLogo {
+  @include transition(0.3s);
+  transform: translate(0px, 0px);
+}
+
+body {
+  transition: all .3s ease-in-out;
+
+  &.push-menu-open {
+    margin-top: 56px;
+
+    @media (min-width: $screen-md-min) {
+      margin-top: 220px;
+    }
+
+    .top-nav-section {
+      height: 128px;
+    }
+
+    .main-mega-menu-desktop {
+      .mega-menu-navbar-default {
+        @media (min-width: $screen-md-min) {
+          top: 128px;
+        }
+      }
+    }
+
+    .push-enLogo {
+      transform: translate(0px, -62px);
+    }
+  }
+}
+
+.push-nav-container {
+  background-color: $incRed;
+  height: 0;
+  overflow: hidden;
+  @include transition(0.3s);
+
+  &.open {
+    height: 80px;
+  }
+}
+
+.inc-push-meu-icon {
+  background-color: $incRed;
+  width: 55px;
+
+  svg {}
+}
+
+.en-logo-text {}
+
+.en-logo-text-wrapper {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  margin-left: 44px;
+  overflow: hidden;
+
+  .en-logo-text {
+    min-height: 21px;
+    width: 146px;
+    max-height: 20px;
+  }
+}
+
+.push-nav-menu {
+  display: flex;
+  margin-bottom: 0;
+  padding: 0;
+  height: 80px;
+  align-items: center;
+
+  .push-menu-item {
+    padding-right: 1.4rem;
+
+    a {
+      color: #fff;
+      font-family: $font-family-sans-serif;
+      text-transform: initial;
+      font-size: 1rem;
+      letter-spacing: normal;
+    }
+  }
+}
+
+/** fadeInLeft **/
+
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(-10px);
+    -moz-transform: translatex(-10px);
+    -o-transform: translatex(-10px);
+    transform: translatex(-10px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translatex(0);
+    -moz-transform: translatex(0);
+    -o-transform: translatex(0);
+    transform: translatex(0);
+  }
+}
+
+@-moz-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(-10px);
+    -moz-transform: translatex(-10px);
+    -o-transform: translatex(-10px);
+    transform: translatex(-10px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translatex(0);
+    -moz-transform: translatex(0);
+    -o-transform: translatex(0);
+    transform: translatex(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(-100px);
+    -moz-transform: translatex(-100px);
+    -o-transform: translatex(-100px);
+    transform: translatex(-100px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translatex(0);
+    -moz-transform: translatex(0);
+    -o-transform: translatex(0);
+    transform: translatex(0);
+  }
+}
+
+/** fadeInRight **/
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(10px);
+    -moz-transform: translatex(10px);
+    -o-transform: translatex(10px);
+    transform: translatex(10px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translatex(0);
+    -moz-transform: translatex(0);
+    -o-transform: translatex(0);
+    transform: translatex(0);
+  }
+}
+
+@-moz-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(10px);
+    -moz-transform: translatex(10px);
+    -o-transform: translatex(10px);
+    transform: translatex(10px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translatex(0);
+    -moz-transform: translatex(0);
+    -o-transform: translatex(0);
+    transform: translatex(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(100px);
+    -moz-transform: translatex(100px);
+    -o-transform: translatex(100px);
+    transform: translatex(100px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translatex(0);
+    -moz-transform: translatex(0);
+    -o-transform: translatex(0);
+    transform: translatex(0);
+  }
+}
+
+.in-left {
+  -webkit-animation-name: fadeInLeft;
+  -moz-animation-name: fadeInLeft;
+  -o-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: .5s;
+  -moz-animation-duration: .5s;
+  -o-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-delay: .25s;
+  -moz-animation-delay: .25s;
+  -o-animation-duration: .5s;
+  animation-delay: .25s;
+}
+
+
+
+html[lang="ar"] {
+  *[dir="rtl"] {
+    .top-nav-section {
+      &.push-nav {
+        .top-nav-left {
+          .links {
+            .inc-push-meu-icon {
+              svg {
+                margin-left: 0;
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .en-logo-text-wrapper {
+      margin-left: 0;
+      margin-right: 54px;
+    }
+
+    .in-left {
+      -webkit-animation-name: fadeInRight;
+      -moz-animation-name: fadeInRight;
+      -o-animation-name: fadeInRight;
+      animation-name: fadeInRight;
+    }
+
+    .push-nav-menu {
+      .push-menu-item {
+        padding-right: 0;
+        padding-left: 1.4rem;
+
+        a {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/*--- top nav push menu inception ends ---*/
+
+
+/*--- mobile push menu inception starts ---*/
+.nav-drill {
+  .nav-item {
+    &.inc-push-meu {
+      .nav-link {
+        background-color: $incRed  !important;
+        padding: 1rem;
+
+        .en-logo-text {
+          height: 1rem;
+          min-height: 1rem;
+        }
+      }
+
+      .nav-expand-content {
+        background-color: $incRed;
+        z-index: 4;
+
+        .nav-item-heading {
+          background-color: $incRed;
+        }
+
+        .nav-item {
+          &:before {
+            background-color: transparent;
+            border-bottom: 0;
+          }
+
+          .nav-link {
+            background-color: $incRed  !important;
+            color: #fff !important;
+
+            &.nav-back-link {
+              border-bottom: solid 1px #fff;
+
+              .nav-link-icon {
+                width: 1rem;
+
+                path {
+                  fill: #FFFFFF;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+/*--- mobile push menu inception ends ---*/

@@ -1,0 +1,7 @@
+<template data-sly-template.heroImages="${ @ properties}">
+ <sly  data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
+       data-sly-use.imageTemplate="image.html" class="${!wcmmode.edit ? 'cover' : ''}">
+     <sly data-sly-test="${properties.heroDisplayBehavior == 'image'}" data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>	   
+	  <sly data-sly-test="${properties.heroDisplayBehavior == 'image-viewports'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>	         
+ </sly>	
+</template>

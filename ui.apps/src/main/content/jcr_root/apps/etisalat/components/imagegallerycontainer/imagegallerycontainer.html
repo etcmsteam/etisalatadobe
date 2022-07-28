@@ -1,0 +1,11 @@
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">   
+   <div class="cmp-imagegallerycontainer"
+       data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+       data-placeholder-text="${wcmmode.edit && 'Drag image gallery components here' @ i18n}"       
+       id="${container.id}">     
+      <sly data-sly-use.imageGalleryTemplate="image-gallery.html"
+           data-sly-call="${imageGalleryTemplate.imageGallery @ container=container,properties=properties}">
+      </sly>
+      <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+   </div>
+</sly>

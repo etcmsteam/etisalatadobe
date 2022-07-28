@@ -1,0 +1,24 @@
+<template data-sly-template.contactmap="${ @ properties}">
+<div class="container contact-us-wrap">
+		<div class="col-xs-12 col-sm-5 col-md-4 contactus-text">
+		  <ul>
+		  	<li>
+		  	      <strong>${properties.custCareLbl}</strong>
+		  	      <span>${properties.custCareTxt}</span>
+		        </li>
+		  	<li>
+		  	      <strong>${properties.emailLbl}</strong>
+		  	      <span>${properties.contactEmail}</span>
+		        </li>
+		  	<li>
+		  	      <strong>${properties.addressLbl}</strong>
+		  	      <span>${properties.contactAddress @context = 'html'}</span>
+		        </li>
+		  </ul>
+		</div>
+		<div data-sly-use.mapObj="com.etisalat.core.models.GoogleMapsModel" class="col-xs-12 col-sm-7 col-md-8 contactus-map">
+			<iframe title="Google map" data-sly-test="${mapObj.googleContactUrl}" src="${mapObj.googleContactUrl}" width="816" height="312" style="border:0;max-width:100%;" allowfullscreen=""></iframe>
+		</div>
+</div>
+
+</template>

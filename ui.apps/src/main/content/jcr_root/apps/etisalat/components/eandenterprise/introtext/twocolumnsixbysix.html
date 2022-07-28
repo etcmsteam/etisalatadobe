@@ -1,0 +1,17 @@
+<template data-sly-template.sixBySixColumn="${ @ properties}">
+    <div data-sly-test="${properties.pretitle}" class="ed-headings-2-0">
+        <h2 data-sly-element="${properties.pretitletype}">${properties.pretitle}</h2>
+    </div>
+    <div data-sly-test="${properties.twoColumnTitle}" class="ed-subheadings-2-0">
+        <h5 data-sly-element="${properties.twoColumnTitleType}">${properties.twoColumnTitle}</h5>
+    </div>
+    <sly data-sly-use.introObj="${resource.path}" data-sly-list.introItems="${introObj.listChildren}">
+        <sly data-sly-test="${introItems.name == 'descriptionItems'}" data-sly-list.descriptionItem="${introItems.listChildren}">
+            <div data-sly-test="${descriptionItem.description}" class="ed-paragraph-2-0">
+                <div data-sly-set.descriptionStyle="${!descriptionItem.descParagraphStyle || descriptionItem.descParagraphStyle == '' ? 'p3' : descriptionItem.descParagraphStyle}" class="${descriptionStyle}">
+                    <p>${descriptionItem.description}</p>
+                </div>
+            </div>
+        </sly>
+    </sly>
+</template>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Icon Card List"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_title_v2">
+    <content
+        granite:class="cmp-tab-dialog-content__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <iconcardlayout
+                                                granite:class="cq-dialog-dropdown-showhide cq-dialog-editor-dropdown-tab-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Layout of the icon cards"
+                                                fieldLabel="Icon cards layout"
+                                                name="./iconCardLayout">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <contextNavBox
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Context Nav Box"
+                                                        value="contextNavBox"/>
+                                                    <needHelpSection
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Need Help Section"
+                                                        value="needHelpSection"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".iconcardlayout-showhide-target"/>
+                                            </iconcardlayout>
+                                            <needhelpdescriptionNode
+                                                granite:class="iconcardlayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <needhelpdescription
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="Need Help Description Field"
+                                                        fieldLabel="Need Help Description"
+                                                        name="./needHelpDescription"
+                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                </items>
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="needHelpSection"/>
+                                            </needhelpdescriptionNode>
+                                            <iconcardlistdata
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Icon Card List"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                margin="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <iconcardslist
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldLabel="Icon Card List">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./iconCardList">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <cardtitle
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Icon card title appear on respective card"
+                                                                    fieldLabel="Card Title"
+                                                                    maxlength="{Long}40"
+                                                                    name="./cardTitle"/>
+                                                                <cardlink
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                    fieldDescription="Icon card link for respective card"
+                                                                    fieldLabel="Card Link"
+                                                                    name="./cardLink"
+                                                                    rootPath="/content"/>
+                                                                <cardicon
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                    allowUpload="{Boolean}false"
+                                                                    autoStart="{Boolean}false"
+                                                                    class="cq-droptarget"
+                                                                    fieldLabel="Card Icon Image"
+                                                                    fileNameParameter="./fileName"
+                                                                    fileReferenceParameter="./cardIcon"
+                                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                                    multiple="{Boolean}false"
+                                                                    name="./file"
+                                                                    title="Icon Card Image Asset"
+                                                                    uploadUrl="${suffix.path}"
+                                                                    useHTML5="{Boolean}true"/>
+                                                                <linkbehavior
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                    fieldLabel="Link Behavior"
+                                                                    name="./linkBehavior">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <opennewwindow
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="Open In New Window"
+                                                                            value="opennewwindow"/>
+                                                                        <opensamewindow
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="Open in Same Window"
+                                                                            value="opensamewindow"/>
+                                                                    </items>
+                                                                </linkbehavior>
+                                                            </items>
+                                                        </field>
+                                                    </iconcardslist>
+                                                    <titleNode
+                                                        granite:class="iconcardlayout-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <title
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Heading Title"
+                                                                name="./title"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="contextNavBox"/>
+                                                    </titleNode>
+                                                </items>
+                                            </iconcardlistdata>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                    <ctaLinkTab
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="CTA Link"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <linklabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add CTA link Label"
+                                                fieldLabel="CTA Link Label"
+                                                name="./ctaLabel"
+                                                required="{Boolean}false"/>
+                                            <linkURL
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Add a link or path for the CTA Link"
+                                                fieldLabel="CTA Link Path"
+                                                name="./CTALink"
+                                                rootPath="/content"/>
+                                            <linkDisplay
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select CTA link Display"
+                                                fieldLabel="Link Display as"
+                                                name="./CTAlinkDisplay">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <linkarrow
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Link Arrow"
+                                                        value="linkArrow"/>
+                                                    <button
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Button"
+                                                        value="button"/>
+                                                </items>
+                                            </linkDisplay>
+                                            <CTAlinkBehavior
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select link to open in same window or new window."
+                                                fieldLabel="CTA Link Behavior"
+                                                name="./CTAlinkBehavior">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <opennewwindow
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Open In New Window"
+                                                        value="opennewwindow"/>
+                                                    <opensamewindow
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Open in Same Window"
+                                                        value="opensamewindow"/>
+                                                </items>
+                                            </CTAlinkBehavior>
+                                            <linkPosition
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select the CTA link position in Mobile View"
+                                                fieldLabel="Link Position in Mobile"
+                                                name="./CTALinkPosition">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <beforeCards
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Before Cards"
+                                                        value="beforeCards"/>
+                                                    <afterCards
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="After Cards"
+                                                        value="afterCards"/>
+                                                </items>
+                                            </linkPosition>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </ctaLinkTab>
+                </items>
+            </tabs>
+        </items>
+        <granite:data
+            jcr:primaryType="nt:unstructured"
+            tab-dropdown-selector-name="iconCardLayout"
+            tab-target-dropdown-value="needHelpSection"/>
+    </content>
+</jcr:root>

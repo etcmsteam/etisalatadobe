@@ -1,0 +1,98 @@
+ <template data-sly-template.xfDesktopContainerTemplate="${ @ properties,navItems}">
+	<sly data-sly-set.zeroPromoTile="${navItems.containerPromotionList.size == 0 ? 'zero-teasers' : ''}"></sly>
+	<sly data-sly-set.onePromoTile="${navItems.containerPromotionList.size == 1 ? 'with-single' : ''}"></sly>
+	<sly data-sly-set.twoPromoTile="${navItems.containerPromotionList.size == 2 ? 'with-two' : ''}"></sly>
+	<sly data-sly-set.threePromoTile="${navItems.containerPromotionList.size == 3 ? 'with-three' : ''}"></sly>
+	<sly data-sly-set.sixPromoTile="${navItems.containerPromotionList.size == 6 ? 'with-six' : ''}"></sly>
+  <li class="${navItems.containerSubMenuList.isEmpty ? 'link-only' : ''}">
+    <a data-sly-test="${!navItems.containerSubMenuList.isEmpty}" class="mega-menu-link" data-sub-menu="sub-menu-mobile">${navItems.navigationLabel}</a>
+    <a data-sly-test="${navItems.containerSubMenuList.isEmpty}" href="${navItems.navigationLinkTo}" class="mega-menu-link" data-sub-menu="sub-menu-mobile">${navItems.navigationLabel}</a>
+    <div data-sly-test="${!navItems.containerSubMenuList.isEmpty}" class="sub-menu-wrap mega-dropdown ${onePromoTile} ${twoPromoTile} ${threePromoTile} ${sixPromoTile}">
+      <div data-sly-test="${threePromoTile || sixPromoTile}" class="menu-top">
+        <div class="menu-items-wrapper">
+          <div class="menu-items">
+            <sly data-sly-test="${!navItems.containerSubMenuList.isEmpty}" data-sly-list.subMenuItems="${navItems.containerSubMenuList}">
+              <ul data-sly-test="${!subMenuItems.isFeatureItemExist}" class="sub-menu">
+                <li data-sly-test="${subMenuItems.navTitle}" class="sub-menu-heading">${subMenuItems.navTitle}</li>
+                <li data-sly-test="${!subMenuItems.fixedItems.isEmpty}" data-sly-repeat.subFixedItems="${subMenuItems.fixedItems}" class="${subFixedItems.navigationDesc ? 'sub-menu-heading' : ''}">
+                  <a href="${subFixedItems.navigationLink}"> ${subFixedItems.navigationTitle} 
+                  <svg data-sly-test="${subFixedItems.navigationDesc}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+                    enable-background="new 26 26 12 12" xml:space="preserve">
+                    <g>
+                        <path fill="#554D56"
+                            d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+                        </path>
+                    </g>
+                   </svg>
+                  </a>
+                  <p data-sly-test="${subFixedItems.navigationDesc}">${subFixedItems.navigationDesc}</p>
+                </li>
+              </ul>
+              <ul data-sly-test="${subMenuItems.isFeatureItemExist && !subMenuItems.featureImageList.isEmpty}" class="sub-menu brands">
+                <li class="sub-menu-heading">${subMenuItems.title}</li>
+                <li data-sly-list.brandItem="${subMenuItems.featureImageList}" class="menu-brand-wrapper">
+                  <a class="menu-brand-item" href="${brandItem.link}">
+                    <img alt="${brandItem.title}" src="${brandItem.fileReference}" width="80px" height="74px" loading="lazy" 
+                         data-sly-set.imageSrcPath="${brandItem.fileReference}" 
+	                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}"  
+	                     class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}">
+                  </a>
+                </li>
+              </ul>
+            </sly>
+          </div>
+        </div>
+        <sly data-sly-use.promowrapperTemplate="xfdesktop-subcomponents/xfdesktop-promowrapper.html" data-sly-call="${promowrapperTemplate.xfPromoWrapper @ properties=properties, navItems=navItems}"></sly>
+      </div>
+      
+      <sly data-sly-test="${(threePromoTile || sixPromoTile)}">
+        <sly data-sly-use.footerTemplate="xfdesktop-subcomponents/xfdesktop-footer.html" data-sly-call="${footerTemplate.xfFooter @ properties=properties, navItems=navItems}"></sly>
+      </sly>
+      
+      <div data-sly-test="${zeroPromoTile || onePromoTile || twoPromoTile}" class="menu-items-wrapper">
+        <div class="menu-items">
+          <sly data-sly-test="${!navItems.containerSubMenuList.isEmpty}" data-sly-list.subMenuItems="${navItems.containerSubMenuList}">
+            <ul data-sly-test="${!subMenuItems.isFeatureItemExist}" class="sub-menu">
+              <li data-sly-test="${subMenuItems.navTitle}" class="sub-menu-heading">${subMenuItems.navTitle}</li>
+              <li data-sly-test="${!subMenuItems.fixedItems.isEmpty}" data-sly-repeat.subFixedItems="${subMenuItems.fixedItems}" class="${subFixedItems.navigationDesc ? 'sub-menu-heading' : ''}">
+                <a href="${subFixedItems.navigationLink}"> ${subFixedItems.navigationTitle} 
+                  <svg data-sly-test="${subFixedItems.navigationDesc}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+                    enable-background="new 26 26 12 12" xml:space="preserve">
+                    <g>
+                        <path fill="#554D56"
+                            d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+                        </path>
+                    </g>
+                   </svg> 
+                </a>
+                <p data-sly-test="${subFixedItems.navigationDesc}">${subFixedItems.navigationDesc}</p>
+              </li>
+            </ul>
+            <ul data-sly-test="${subMenuItems.isFeatureItemExist && !subMenuItems.featureImageList.isEmpty}" class="sub-menu brands">
+              <li class="sub-menu-heading">${subMenuItems.title}</li>
+              <li data-sly-list.brandItem="${subMenuItems.featureImageList}" class="menu-brand-wrapper">
+                <sly data-sly-test.brandItemLink="${brandItem.linkURL}" data-sly-use.brandItemModel="${'com.etisalat.core.models.CommonLinkModel' @link=brandItemLink}" />
+                <a class="menu-brand-item" href="${brandItemModel.link}">
+                  <img alt="${brandItem.title}" src="${brandItem.fileReference}" width="80px" height="74px" loading="lazy" 
+                       data-sly-set.imageSrcPath="${brandItem.fileReference}" 
+	                   data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                   class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}">
+                </a>
+              </li>
+            </ul>
+          </sly>
+        </div>
+        <sly data-sly-test="${zeroPromoTile || onePromoTile || twoPromoTile}">
+          <sly data-sly-use.footerTemplate="xfdesktop-subcomponents/xfdesktop-footer.html" data-sly-call="${footerTemplate.xfFooter @ properties=properties, navItems=navItems}"></sly>
+        </sly>
+      </div>
+      
+      <sly data-sly-test="${zeroPromoTile || onePromoTile || twoPromoTile}">
+        <sly data-sly-use.promowrapperTemplate="xfdesktop-subcomponents/xfdesktop-promowrapper.html" data-sly-call="${promowrapperTemplate.xfPromoWrapper @ properties=properties, navItems=navItems}"></sly>
+      </sly>
+    </div>
+		
+  </li>
+</template>

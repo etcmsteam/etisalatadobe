@@ -1,0 +1,72 @@
+<template data-sly-template.swiper="${ @ tabs,properties}">
+   <div class="cmp_tabs-swipper ">
+      <div class="container container-center">
+         <div class="row">
+            <div data-sly-test="${properties.tabTitle}" class="col-xs-12 col-md-3 tabs-title">
+               <div class="config-section-main-label-top">
+                  ${properties.tabTitle}
+               </div>
+            </div>
+            <div class="col-xs-12 ${properties.enablearrow ? 'tabs-swiper-navigation': ''}">
+               <div class="swiper-container edc-swiper-tabs">
+                  <ul data-sly-test="${tabs.items && tabs.items.size > 0}"
+                     data-sly-list.tab="${tabs.items}"
+                     role="tablist"
+                     class="swiper-wrapper page-nav nav nab-tabs"
+                     aria-label="${tabs.accessibilityLabel}"
+                     aria-multiselectable="false">
+                     <sly data-sly-test.isActive="${tab.name == tabs.activeItem}"/>
+                     <li role="tab"
+                        id="${tab.id}-tab"
+                        class="swiper-slide ${isActive ? ' active' : ''}"
+                        aria-controls="${tab.id}-tabpanel"
+                        tabindex="${isActive ? '0' : '-1'}"
+                        data-cmp-hook-tabs="tab">
+                        ${tab.title}
+                        <sly data-sly-use.tabimage="com.etisalat.core.models.TabImage"
+                           data-sly-list.imageItem="${tabimage.tabImageItems}">
+                           <span data-sly-test="${tabList.index == imageItemList.index}">
+                           <img alt="${imageItem.linkText}" src="${imageItem.linkUrl}" loading="lazy" 
+                                data-sly-set.imageSrcPath="${imageItem.linkUrl}" 
+	                            data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+	                            class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" />
+                           </span>
+                        </sly>
+                     </li>
+                  </ul>
+               </div>
+               <sly data-sly-test="${properties.enablearrow}" >
+                  <div class="swiper-button-next">
+                     <?xml version="1.0" encoding="UTF-8"?>
+                     <svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+                        <title>icon-arrow-black-1px</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g id="icon-arrow-black-1px" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                           <g id="Arrow/1pt/Chevron/Down/chevron_down_black" stroke="#242424">
+                              <polyline id="Line" points="60 18 32 46 4 18"></polyline>
+                           </g>
+                        </g>
+                     </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                     <?xml version="1.0" encoding="UTF-8"?>
+                     <svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+                        <title>icon-arrow-black-1px</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g id="icon-arrow-black-1px" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                           <g id="Arrow/1pt/Chevron/Down/chevron_down_black" stroke="#242424">
+                              <polyline id="Line" points="60 18 32 46 4 18"></polyline>
+                           </g>
+                        </g>
+                     </svg>
+                  </div>
+               </sly>
+            </div>
+         </div>
+      </div>
+   </div>
+</template>

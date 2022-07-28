@@ -1,0 +1,35 @@
+<template data-sly-template.heroCarousel="${ @ properties}">
+<div data-digital-component="HERO_INNER_BANNER_DIGITAL" class="${!wcmmode.edit ? 'hero-inner-banner-2-0' : ''}">   
+    <div class="hero-wrapper ${properties.themeColor == 'light-color' ? 'bg-light' : 'bg-dark'}">
+        <!-- Start - cover -->
+        <div class="${!wcmmode.edit ? 'cover' : ''}">
+	      <div class="${properties.heroBGColor}"></div>
+		  <sly data-sly-use.heroImagesTemplate="heroimages.html" data-sly-call="${heroImagesTemplate.heroImages @ properties=properties}" />
+		</div>
+        <!-- End - cover -->
+        <div class="content-cover ${properties.heroContentBGColor}">
+            <!-- Start - container -->
+            <div class="container">
+                <div class="row ">
+                    <div class="hero-details">
+                        <!-- Start - hero-main-contents wrapper -->                       
+                        <div class="${properties.heroAlignment}">
+                            <h1 data-sly-test="${properties.heroTitle}" class="hero-heading-big">
+                            ${properties.heroTitle @ context = 'html'} <span data-sly-test="${properties.heroSubTitle}">${properties.heroSubTitle}</span></h1>
+                            <div data-sly-test="${properties.jcr:description}" class="hero-description">${properties.jcr:description @ context = 'html'}</div>
+
+                            <a data-sly-set.heroCTALink="${properties.ctaHeroLink}" 
+                               data-sly-test="${properties.bannerCTATitle && heroCTALink}" 
+                               target="${properties.heroLinkTarget ? '_blank' : '_self'}"
+                               data-sly-use.heroLink="${'com.etisalat.core.models.CommonLinkModel' @link=heroCTALink}" 
+                               href="${heroLink.link}" class="btn btn-green ripple-effect">${properties.bannerCTATitle}</a>
+                        </div>
+                        <!-- End - hero-main-contents wrapper -->
+                    </div>
+                </div>
+            </div>
+            <!-- End - container -->
+        </div>
+    </div>
+</div>
+</template>

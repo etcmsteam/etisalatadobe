@@ -1,0 +1,17 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel">
+   <div class="main-container">
+      <div class="responsive-img-wraper">
+         <sly data-sly-test.customLink="${properties.imageLink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+         <a data-sly-unwrap="${!properties.imageLink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow'?'_blank':'_self'}">
+            <sly data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+				<sly data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+					<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+				</sly>
+				<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+			</sly>
+         </a>
+      </div>
+   </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !resource.hasChildren}"></sly>

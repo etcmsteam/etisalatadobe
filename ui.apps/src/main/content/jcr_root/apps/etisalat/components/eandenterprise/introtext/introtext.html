@@ -1,0 +1,18 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+	 data-sly-use.tileModel="com.etisalat.core.models.TileModel"/>
+
+     <sly data-sly-test="${properties.introVariation == '2-column' && tileModel.tileBoxContainerLayout != 'introtextsixbysixcolumns'}"
+	 	  data-sly-use.twoColumnTemplate="twocolumn.html"
+	      data-sly-call="${twoColumnTemplate.twoColumn @ properties=properties,imageViewportModel=imageViewportModel}">
+	 </sly>    
+	 <sly data-sly-test="${properties.introVariation == '3-column'}"
+	      data-sly-use.threeColumnTemplate="threecolumn.html"
+	      data-sly-call="${threeColumnTemplate.threeColumn @ properties=properties,imageViewportModel=imageViewportModel}">
+	 </sly>
+	 <sly data-sly-test="${tileModel.tileBoxContainerLayout == 'introtextsixbysixcolumns'}"
+	      data-sly-use.twoColumnSixBySixTemplate="twocolumnsixbysix.html"
+	      data-sly-call="${twoColumnSixBySixTemplate.sixBySixColumn @ properties=properties}">
+	 </sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.introVariation}"></sly>

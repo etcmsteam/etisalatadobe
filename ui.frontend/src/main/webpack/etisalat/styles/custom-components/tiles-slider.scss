@@ -1,0 +1,111 @@
+/*
+  Some of the styles tiles-slider.scss has been moved to dynamic folder. Keeping below as they 
+  were used in the multiple other components. For instance, "News Room Search"
+*/
+
+
+// required in news room search component
+*[lang="ar"] *[dir="rtl"] .tile-boxes-section .swiper-wrapper .swiper-slide p {
+  text-align: right;
+}
+
+// required in news room search component
+//Insurance cards
+.tileBoxMobCarWrap {
+  .tile-box-tile {
+    background: $white;
+    border-radius: toRem(8);
+    box-shadow: 0 toRem(5) toRem(10) 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: toRem(32);
+    min-height: toRem(280);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    @include font-family-lato;
+
+    @include respond-to-min($tablet) {
+      max-height: toRem(440);
+      min-height: toRem(440);
+      padding-left: 0 !important;
+    }
+
+    .img-cover {
+      border-radius: toRem(4) toRem(4) 0 0;
+      height: toRem(130);
+      overflow: hidden;
+      position: relative;
+
+      @include respond-to-min($tablet) {
+        height: toRem(225);
+      }
+    }
+
+    .tile-box-body {
+      padding: toRem(24);
+      padding-bottom: toRem(48);
+      text-align: left;
+
+       h2 {
+          font-size: toRem(28);
+          line-height: toRem(35);
+          margin-bottom: 1rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+
+      @include respond-to-min($tablet) {
+        padding-bottom: toRem(24);
+      }
+
+      p {
+        color: $steel-grey;
+        font-size: $font14;
+        line-height: toRem(20);
+
+        @include respond-to-min($tablet) {
+          line-height: toRem(22);
+        }
+      }
+
+      .btn-text {
+        bottom: toRem(24);
+        font-size: $font12;
+        left: toRem(24);
+        letter-spacing: toRem(2);
+        position: absolute;
+
+        @include respond-to-min($tablet) {
+          font-size: $font14;
+
+          &:before {
+            padding: toRem(3.5);
+            right: toRem(-20);
+          }
+        }
+      }
+    }
+  }
+
+  .swiper-scrollbar {
+    bottom: 0 !important;
+  }
+
+  .swiper-container-horizontal > .swiper-scrollbar {
+    bottom: 0;
+    height: toRem(5);
+    left: 1% !important;
+    position: relative !important;
+    width: 93% !important;
+    z-index: 50;
+  }
+
+  .swiper-scrollbar-drag {
+    background: $main-green !important;
+    border-radius: toRem(10);
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}

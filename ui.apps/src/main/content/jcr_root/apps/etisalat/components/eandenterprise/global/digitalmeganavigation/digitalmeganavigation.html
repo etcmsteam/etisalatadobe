@@ -1,0 +1,10 @@
+<sly  data-sly-use.template="core/wcm/components/commons/v1/templates.html" 
+      data-sly-use.meganavigation="com.etisalat.core.models.MegaNavigation"></sly>
+    <sly data-sly-use.xfdesktoptemplate="xfdesktop.html"
+         data-sly-call="${xfdesktoptemplate.xfdesktop @ properties=properties,meganavigation=meganavigation}">  
+    </sly>
+
+    <sly data-sly-use.xfmobiletemplate="xfmobile.html"
+         data-sly-call="${xfmobiletemplate.xfmobile @ properties=properties,meganavigation=meganavigation}">  
+    </sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=meganavigation.megaNavigationItems.size == 0, classAppend='cmp-languagenavigation'}"></sly>

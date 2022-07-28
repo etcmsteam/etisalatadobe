@@ -1,0 +1,32 @@
+<sly data-sly-use.tileModel="com.etisalat.core.models.TileModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+
+   <div data-sly-test.blogtilesizeVal="${properties.blogtilesize ? properties.blogtilesize : '3'}"
+   		data-sly-set.blogClass="col-xs-12 col-md-${blogtilesizeVal} item" class="${!wcmmode.edit ? blogClass : ''}" style="display: block;">
+	   <a href="${tileModel.linkURL}">
+		  <div class="blog-post-wrapper ${blogtilesizeVal == '6' ? 'video' : ''}">
+			 <div class="tile-box-blogtile">
+				<div class="img-cover" data-sly-test="${properties['image/fileReference']}">
+				   <div  class="cover lazyloaded" data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+				   <div data-sly-test="${tileModel.categoryTagTitle}" class="category">
+					  <p>${tileModel.categoryTagTitle}</p>
+				   </div>
+				</div>
+				<div class="tile-box-blogbody">
+				   <div class="box-title">
+					  <h2 data-sly-test="${tileModel.tiletitle}">${tileModel.tiletitle}</h2>
+				   </div>
+					<div class="box-details" data-sly-test="${tileModel.text}">
+						${tileModel.text @ context = 'html'}
+					</div>
+				   <div class="date" data-sly-test="${properties.articleDate}">
+					  <p>${'dd MMM yyyy' @ format=properties.articleDate}</p>
+				   </div>
+				</div>
+			 </div>
+		  </div>
+	   </a>
+    </div>
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !tileModel.tiletitle}"></sly>

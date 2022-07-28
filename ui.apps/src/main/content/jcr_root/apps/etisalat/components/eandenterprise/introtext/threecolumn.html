@@ -1,0 +1,28 @@
+<template data-sly-template.threeColumn="${ @ properties,imageViewportModel}">
+
+<section class="intro-text-with-logo-2-0 ${properties.backgroundColor}">    
+    <div class="container">
+        <div class="intro-text-with-logo-wrapper">            
+            <div data-sly-test="${properties.threeColumnTitle}" class="intro-head-wrapper">
+                <div class="ed-headings-2-0">
+                    <h3 data-sly-element="${properties.threeColumnTitleType}">${properties.threeColumnTitle}</h3>
+                </div>
+            </div>
+            <div class="intro-content-wrapper" data-sly-test="${properties.threeColumnDescription}">
+                <div class="ed-paragraph-2-0">
+                    <div data-sly-set.descriptionStyle="${!properties.threeColumnDescParagraphStyle || properties.threeColumnDescParagraphStyle == '' ? 'p3' : properties.threeColumnDescParagraphStyle}" class="${descriptionStyle}">
+                  		${properties.threeColumnDescription @ context='html'}
+					</div>
+                </div>
+            </div>
+            <div class="img-wrapper" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+            	<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+                	<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+            	</div>
+                <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>                      
+            </div>
+        </div>  
+    </div>   
+</section>
+
+</template>

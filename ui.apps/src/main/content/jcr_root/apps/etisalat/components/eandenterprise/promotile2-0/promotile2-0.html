@@ -1,0 +1,23 @@
+<sly data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div class="promo-sub-product">
+        <div class="img-cover" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+            <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+                <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+            </div>
+            <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+        </div>
+        <div class="content-box" data-sly-test="${properties.wstpromotitle || properties.tiledescription}">
+            <div class="ed-headings-2-0"  data-sly-test="${properties.wstpromotitle}">
+                <h3 data-sly-element="${properties.titleType}">${properties.wstpromotitle}</h3>
+            </div>
+            <div class="ed-paragraph-2-0"  data-sly-test="${properties.tiledescription}">
+                <div data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}" class="${textStyle}">
+                    ${properties.tiledescription @ context='html'}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</sly>
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.wstpromotitle}"></sly>

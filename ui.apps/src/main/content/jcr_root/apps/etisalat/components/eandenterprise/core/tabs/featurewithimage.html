@@ -1,0 +1,34 @@
+<template data-sly-template.featureImage="${ @ tabs,properties}">
+
+  <div class="feature-in-tab2-2-0 ${properties.backgroundColor}" data-digital-component="FEATURE_IN_TAB2_2_0">
+    <div class="container">
+      <div class="row">
+        <div class="tab-head-wrapper" data-sly-test="${tabs.items && tabs.items.size > 0}">
+          <div data-sly-test="${properties.headingTitle}" class="ed-headings-2-0">
+            <h2 data-sly-element="${properties.titleType}">${properties.headingTitle}</h2>
+          </div>
+          <div class="tabs">
+            <!-- Start - Nav tabs -->
+            <ul data-sly-list.tab="${tabs.items}" class="page-nav nav nav-tabs" role="tablist">
+              <li role="presentation" class="${tabList.first ? 'active' : ''}">
+                <a href="#featurewithimage-${tab.id}" aria-controls="featurewithimage-${tab.id}" role="tab" data-toggle="tab">${tab.title}</a>
+              </li>
+            </ul>
+            <!-- End - Nav tabs -->
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+        <!-- Start - Tab panes -->
+        <div data-sly-list.item="${tabs.items}" data-sly-test="${tabs.items && tabs.items.size > 0}" class="tab-content">
+          <!-- Start - Tab panel -->
+          <div role="tabpanel" class="tab-pane ${itemList.first ? 'active animate-content' : ''}" id="featurewithimage-${item.id}">
+            <sly data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+            <div class="clearfix"></div>
+          </div>
+          <!-- End - Tab panel -->
+          <!-- End - Tabpane -->
+        </div>
+      </div>
+    </div>
+</template>

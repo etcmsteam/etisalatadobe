@@ -1,0 +1,106 @@
+<template data-sly-template.dynamicproduct="${ @ properties}">
+   <sly data-sly-test.elifetileclass="${properties.dynamictileBoxLayout == 'dynamicelifeplan'? 'smart-home-elife-slider' : ''}"/>
+   <sly data-sly-test.producttileclass="${properties.dynamictileBoxLayout == 'dynamicproducttile'? 'dynamic-device-tile product-grid-text-section plans more-info-wrapper plansTable row' : ''}"/>
+   <sly data-sly-test.bestsellerclass="${properties.dynamictileBoxLayout == 'bestsellercard'? 'nv-container' : ''}"/>
+   <sly data-sly-test="${properties.dynamictileBoxLayout != 'bestsellercard'}">
+   <div class="${elifetileclass}${producttileclass}" data-categoryId="${properties.productCategoryId}">
+         <div class="col-xs-12 col-md-3 nv-card-contentLeft">
+            <div class="main-text-section">
+               <sly data-sly-test="${properties.productCTALink && properties.productCTATitle}">
+                  <div class="main-text-action-wrapper">
+                     <div class="action">
+                        <a href="${properties.productCTALink}" class="btn-text btn-green  learn-more">${properties.productCTATitle}</a>
+                     </div>
+                  </div>
+               </sly>
+               <div class="wst-main-headings">
+                  <h3 data-sly-element="${properties.mainTitleStyle}">${properties.mainProductTitle}</h3>
+               </div>
+               <div class="main-text-content-wrapper">
+                  <div class="paragraph-styling ul-list-cms">
+                     <div class="p1">
+                        ${properties.mainProductDesc @ context="html"}
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!--If total count is lesser than 3 please hide using class 'hide' -->
+            <sly data-sly-test="${properties.dynamictileBoxLayout == 'dynamicelifeplan'}">
+               <div class="home-slider-controls">
+                  <div class="prev"></div>
+                  <div class="next"></div>
+               </div>
+            </sly>
+
+            <sly data-sly-test="${properties.dynamictileBoxLayout == 'dynamicproducttile'}">
+               <div class="table-swiper-button-prev swiper-button-prev swiper-button-black"></div>
+               <div class="table-swiper-button-next swiper-button-next swiper-button-black"></div>
+            </sly>
+
+         </div>
+         <sly data-sly-test="${properties.dynamictileBoxLayout == 'dynamicelifeplan'}">
+            <div class="col-xs-12 col-md-8 col-md-offset-1 nv-card-contentRight">
+               <!-- Swiper -->
+               <div class="swiper-container-slider">
+                  <div class="swiper-wrapper" id="productRow-${properties.productCategoryId}">
+                  </div>
+                  <!-- Add Scrollbar -->
+                  <div class="swiper-scrollbar"></div>
+               </div>
+            </div>
+         </sly>
+         <sly data-sly-test="${properties.dynamictileBoxLayout == 'dynamicproducttile'}">
+            <div class="col-xs-12  col-md-9">
+               <section class="cmp__bg-cards_product-grid ">
+                  <div class="row">
+                     <div class="col-xs-12">
+                        <div class="bg-cards related-products keepbtn">
+                           <div class="row row-tiles-table ">
+                              <div class="swiper-container swiper-container-horizontal">
+                                 <!--Product details JSON Part 2 variations with 2 different JSON DATA add either one -->
+                                 <div id="productRow-${properties.productCategoryId}" class="swiper-wrapper"></div>
+
+                                 <div class="table-swiper-scrollbar swiper-scrollbar">
+                                    <div class="swiper-scrollbar-drag" style="width: 449.5px;"></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+            </div>
+         </sly>
+      </div>
+   </sly>
+   <sly data-sly-test="${properties.dynamictileBoxLayout == 'bestsellercard'}">
+      <div class="nv-py-4 device-bestseller-dynamic"
+            data-sly-use.commonModel="com.etisalat.core.models.CommonLinkModel"
+            id="bestseller-${properties.productCategoryId}"
+            data-component="cmp-device-best-seller"
+            data-host-name="${commonModel.apiHostname}"
+            data-category-id="${properties.productCategoryId}">
+         <div class="nv-container">
+            <div data-sly-test="${properties.mainProductTitle}" class="nv-row">
+               <div class="nv-col-12"><h1 class="nv-section-title nv-mb-lg-24 nv-mt-2" data-sly-element="${properties.mainTitleStyle}">${properties.mainProductTitle}</h1>
+               </div>
+            </div>
+         </div>
+         <div class="nv-container">
+            <div class="nv-row">
+               <div class="nv-col-12">
+                  <div class="swiper-default with-scrollbar swiper-full-height no-gap normal-arrows">
+                     <div class="swiper-container bestseller-swiper"><div class="swiper-wrapper"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-scrollbar"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </sly>
+
+</template>

@@ -1,0 +1,45 @@
+<template data-sly-template.vcardicon="${ @ container,properties}">
+	<div class="cards-carousel-cta-wrap ${properties.backgroundColor}"
+			data-digital-component="CARDS_CAROUSEL_DIGITAL">
+	<div data-component="cmp-verticalcardicon" class="container-fluid cards-carousel-cta-slider-wrap">
+
+		<div class="row mob-flex">
+			<div class="col-sm-6 col-sm-push-6 custom-col">
+				<div class="slider-col">
+					<div class="${!wcmmode.edit ? 'swiper-container cards-carousel-cta-slider' : '' }">
+						<div class="${!wcmmode.edit ? 'swiper-wrapper' : '' }">
+							<div data-sly-repeat.item="${container.items}" class="${!wcmmode.edit ? 'swiper-slide':''}"
+								 data-sly-resource="${item.name @ decorationTagName='div'}" id="${item.id}"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div data-sly-test="${properties.tileTitle || properties.tiledescription }"  class="${!wcmmode.edit ? 'col-sm-5 col-sm-pull-6' : 'col-xs-12 col-md-9'}">
+						<div class="ed-headings-2-0">
+							<h2 data-sly-test="${properties.tileTitle}" data-sly-element="${properties.titleType}">${properties.tileTitle}</h2>
+						</div>
+						<div class="ed-paragraph-2-0"  data-sly-test="${properties.tiledescription}">
+							<div class="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}">
+								${properties.tiledescription @ context='html'}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div  data-sly-test="${!wcmmode.edit}" class="col-sm-5 col-md-4 col-lg-5 col-xs-12 first-col">
+					<div class="swiper-btn-wrapper relative">
+						<div class="swiper-button-next"></div>
+						<div class="swiper-pagination swiper-pagination-bullets"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</template>

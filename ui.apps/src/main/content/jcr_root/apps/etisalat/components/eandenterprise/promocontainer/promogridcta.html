@@ -1,0 +1,21 @@
+<template data-sly-template.promogridcta="${ @ container,properties}">
+    <div class="promo-grid-2-0 ${properties.backgroundColor}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-1">
+                <div class="ed-headings-2-0 text-left" data-sly-test="${properties.mixedpromoHeadingTitle}">
+                    <h2 data-sly-element="${properties.titleType}">${properties.mixedpromoHeadingTitle}</h2>
+                </div>
+                <div class="ed-paragraph-2-0 text-left" data-sly-test="${properties.ctatiledescription}">
+                    <div data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}" class="${textStyle}">
+                        ${properties.ctatiledescription @ context='html'}
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="products-grid with-cta">
+                <sly data-sly-resource="${'ctapar0' @ resourceType='etisalat/components/container'}"> </sly>
+            </div>
+        </div>
+    </div>
+</template>

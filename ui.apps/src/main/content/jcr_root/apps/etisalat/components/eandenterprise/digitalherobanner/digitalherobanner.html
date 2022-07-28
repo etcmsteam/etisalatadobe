@@ -1,0 +1,24 @@
+<sly data-sly-use.parentRes="${resource.parent.path}"
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel" 
+     data-sly-set.viewports="${imageViewportModel.sixViewportContent || properties.fileReference}"
+     data-sly-set.isCarouselVariation="${parentRes && 
+         parentRes.sling:resourceType == 'etisalat/components/eandenterprise/core/carousel' && 
+         properties.heroBannerVariation == 'herobanner-carousel'}" 
+     data-sly-set.isInnerViewVariation="${parentRes && 
+         parentRes.sling:resourceType != 'etisalat/components/eandenterprise/core/carousel' && 
+         properties.heroBannerVariation == 'hero-inner-banner'}"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">  
+   
+    <!--/* variation for herobanner carousel */-->
+    <sly data-sly-test="${isCarouselVariation}"
+	     data-sly-use.heroCarouselTemplate="herobannercarousel.html"
+	     data-sly-call="${heroCarouselTemplate.heroCarousel @ properties=properties}"/>
+
+     <!--/* variation for hero-inner-banner */-->
+    <sly data-sly-test="${isInnerViewVariation}"
+	     data-sly-use.heroInnerBannerTemplate="heroinnerbanner.html"
+	     data-sly-call="${heroInnerBannerTemplate.heroCarousel @ properties=properties}"/>
+</sly>     
+
+<sly data-sly-set.hasContent="${(isCarouselVariation && viewports) || (isInnerViewVariation && viewports)}" 
+     data-sly-call="${templates.placeholder @ isEmpty = !hasContent}"></sly>

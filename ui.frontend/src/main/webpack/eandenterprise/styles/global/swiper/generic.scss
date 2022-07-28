@@ -1,0 +1,99 @@
+/* stylelint-disable*/
+/* commonly used swiper css */
+.swiper-btn-wrapper {
+  .swiper-pagination {
+    font-family: $font-SuisseIntl-Bold;
+    color: $incMaroon;
+    position: relative;
+    left: 56px;
+    text-align: left;
+    bottom: -7px;
+    z-index: 0;
+    display: flex;
+    align-items: baseline;
+    font-size: 22px;
+    line-height: 29px;
+
+    @media (max-width: 767px) {
+      left: auto;
+      border: 0;
+      right: 0;
+      justify-content: center;
+    }
+
+    .swiper-pagination-current {
+      font-family: $font-SuisseIntl-Bold;
+      color: $incMaroon;
+      font-size: 60px;
+      line-height: 55px;
+      margin-right: 4px;
+      width: 40px;
+      text-align: center;
+    }
+
+    .swiper-pagination-total {
+      margin-right: 8px;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    height: 48px;
+    width: 48px;
+    background-color: $incRed;
+    color: $white;
+    border-radius: 50%;
+    background-size: 8px;
+    opacity: 1;
+
+    &::before {
+      content: '';
+      background: transparent;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid $incRed;
+      transition: all 0.3s;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 0;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+  }
+
+  .swiper-button-next {
+    left: 132px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-next:focus,
+  .swiper-button-next:active,
+  .swiper-button-prev:hover,
+  .swiper-button-prev:focus,
+  .swiper-button-prev:active {
+    &::before {
+      border-color: $white;
+    }
+  }
+}
+
+*[lang='ar'] *[dir='rtl'] {
+  .swiper-pagination {
+    .swiper-pagination-total {
+      margin-left: 8px;
+      margin-right: 0;
+    }
+  }
+
+  .swiper-button-prev {
+    left: auto;
+    right: 0px;
+    transform: rotate(180deg);
+  }
+}

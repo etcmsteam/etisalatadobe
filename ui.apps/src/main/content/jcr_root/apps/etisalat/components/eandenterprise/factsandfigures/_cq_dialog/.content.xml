@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Facts And Figures"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <backgroundcolor
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                    path="/apps/etisalat/components/eandenterprise/commons/editor/dialog/backgroundcolor/backgroundcolor"/>
+                                            <factslayout
+                                                    granite:class="cq-dialog-dropdown-showhide"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Display Variation as a"
+                                                    name="./factsLayout">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <factsandfigures
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Facts and Figures"
+                                                            value="factsandfigures"/>
+                                                    <keyfactsandfigures
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Key Facts and Figures"
+                                                            value="keyfactsandfigures"/>
+                                                    <keyfactsiconcard
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Key Facts and Figure Icon Card"
+                                                            value="keyfactsiconcard"/>
+                                                </items>
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        cq-dialog-dropdown-showhide-target=".factslayout-showhide-target"/>
+                                            </factslayout>
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text that will appear for the title."
+                                                fieldLabel="Title"
+                                                name="./title"/>
+                                            <titleType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                path="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"/>
+                                        <factsfiguresGroup
+                                                granite:class="factslayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                path="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"/>
+                                            <descriptionParagraphStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/paragraphstyle"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Choose Paragraph style, By default &quot;Paragraph 3&quot; style will apply to description text"
+                                                fieldLabel="Description Paragraph Style"
+                                                name="./descParagraphStyle"/>
+                                            <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="etisalat/components/eandenterprise/commons/editor/dialog/rteconfig/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Text that will appear for the Description."
+                                                fieldLabel="Description"
+                                                name="./description"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                            <factscontent
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Facts Content"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <factitem
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldLabel="Fact Item(s)">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./factItems">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <facticon
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                    allowUpload="{Boolean}false"
+                                                                    autoStart="{Boolean}false"
+                                                                    class="cq-droptarget"
+                                                                    fieldLabel="Fact Icon"
+                                                                    fileNameParameter="./fileName"
+                                                                    fileReferenceParameter="./fileReference"
+                                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                                    multiple="{Boolean}false"
+                                                                    name="./file"
+                                                                    title="Upload Speed Image Asset"
+                                                                    uploadUrl="${suffix.path}"
+                                                                    useHTML5="{Boolean}true"/>
+                                                                <facticonalt
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Enter alt text for the icon"
+                                                                    fieldLabel="Fact Icon Alt Text"
+                                                                    name="./factIconAltText"/>
+                                                                <factnumber
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Text that will appear for the fact number"
+                                                                    fieldLabel="Fact Number"
+                                                                    name="./factNumber"/>
+                                                                <factdescriptionstyle
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/paragraphstyle"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                    fieldDescription="Choose Paragraph style, By default &quot;Paragraph 2&quot; style will apply to description text"
+                                                                    fieldLabel="Fact Description Paragraph Style"
+                                                                    name="./factDescParagraphStyle"/>
+                                                                <factdescription
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Text that will appear for the fact description."
+                                                                    fieldLabel="Fact Description"
+                                                                    name="./factDescription"/>
+                                                            </items>
+                                                        </field>
+                                                    </factitem>
+                                                </items>
+                                            </factscontent>
+                                        </items>
+                                            <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="factsandfigures"/>
+                                        </factsfiguresGroup>
+                                            <keyfactsfiguresGroup
+                                                    granite:class="factslayout-showhide-target"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <factscontent
+                                                    jcr:primaryType="nt:unstructured"
+                                                    jcr:title="Facts Content"
+                                                    sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <factitem
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                            composite="{Boolean}true"
+                                                            fieldLabel="Fact Item(s)">
+                                                        <field
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                name="./factItems">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <facticon
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                        allowUpload="{Boolean}false"
+                                                                        autoStart="{Boolean}false"
+                                                                        class="cq-droptarget"
+                                                                        fieldLabel="Fact Icon"
+                                                                        fileNameParameter="./fileIconName"
+                                                                        fileReferenceParameter="./fileIconReference"
+                                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                                        multiple="{Boolean}false"
+                                                                        name="./facticonfile"
+                                                                        title="Upload Speed Image Asset"
+                                                                        uploadUrl="${suffix.path}"
+                                                                        useHTML5="{Boolean}true"/>
+                                                                <facticonalt
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Enter alt text for the icon"
+                                                                        fieldLabel="Fact Icon Alt Text"
+                                                                        name="./keyfactIconAltText"/>
+                                                                <title
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Text that will appear for the title."
+                                                                        fieldLabel="Title"
+                                                                        name="./factsTitle"/>
+                                                                <titleType
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceSuperType="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                        fieldDescription="Select title style"
+                                                                        fieldLabel="Title Style"
+                                                                        name="./factstitleType"/>
+                                                            </items>
+                                                        </field>
+                                                    </factitem>
+                                                </items>
+                                            </factscontent>
+                                        </items>
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        showhidetargetvalue="keyfactsandfigures"/>
+                                            </keyfactsfiguresGroup>
+                                            <keyfactsiconcardGroup
+                                                    granite:class="factslayout-showhide-target"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <factscontent
+                                                            jcr:primaryType="nt:unstructured"
+                                                            jcr:title="Facts Content"
+                                                            sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <factitem
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Fact Item(s)">
+                                                                <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./factItems">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <facticon
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                                allowUpload="{Boolean}false"
+                                                                                autoStart="{Boolean}false"
+                                                                                class="cq-droptarget"
+                                                                                fieldLabel="Fact Icon"
+                                                                                fileNameParameter="./fileCardName"
+                                                                                fileReferenceParameter="./fileCardReference"
+                                                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                                                multiple="{Boolean}false"
+                                                                                name="./cardiconfile"
+                                                                                title="Upload Speed Image Asset"
+                                                                                uploadUrl="${suffix.path}"
+                                                                                useHTML5="{Boolean}true"/>
+                                                                        <facticonalt
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldDescription="Enter alt text for the icon"
+                                                                                fieldLabel="Fact Icon Alt Text"
+                                                                                name="./keyfactCardAltText"/>
+                                                                        <title
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldDescription="Text that will appear for the title."
+                                                                                fieldLabel="Title"
+                                                                                name="./iconcardTitle"/>
+                                                                        <titleType
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceSuperType="/apps/etisalat/components/eandenterprise/commons/editor/dialog/titetype/titleType"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                fieldDescription="Select title style"
+                                                                                fieldLabel="Title Style"
+                                                                                name="./cardtitleType"/>
+                                                                    </items>
+                                                                </field>
+                                                            </factitem>
+                                                        </items>
+                                                    </factscontent>
+                                                </items>
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        showhidetargetvalue="keyfactsiconcard"/>
+                                            </keyfactsiconcardGroup>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

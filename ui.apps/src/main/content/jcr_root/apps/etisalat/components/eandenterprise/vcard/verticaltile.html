@@ -1,0 +1,28 @@
+<template data-sly-template.verticalcard="${ @ properties,imageViewportModel}">
+
+<div class="v-card-box">
+        <div class="img-cover">
+        	<div class="cover" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></div>
+        </div>
+
+		<div class="v-card-box-body">
+			<div class="ed-subheadings-2-0">
+              <h4 data-sly-test="${properties.tiletitle}" data-sly-element="${properties.titleType}">${properties.tiletitle}</h4>
+            </div>
+            <div class="ed-paragraph-2-0">
+              <div data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}" class="${textStyle}">
+              	${properties.text @ context='html'}
+              </div>
+			</div>
+            <div data-sly-test="${properties.linkBehavior != 'openmodalwindow' && properties.ctalabel}" class="${properties.ctaStyle == 'learn-more-btn' ? 'ed-learnmore-wrapper' : 'ed-buttons-wrapper'}">
+                <sly data-sly-test.customLink="${properties.ctalink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+                <a class="${properties.ctaStyle}"
+                   href="${commonlinkmodel.link}"
+                   target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}">
+                    ${properties.ctalabel}
+                </a>
+
+            </div>
+		</div>
+    </div>
+</template>

@@ -1,0 +1,281 @@
+/* menu */
+.FullWidth {
+  width: 100% !important;
+}
+
+@include respond-to-min($tablet) {
+  .fixednavigation {
+      margin: 0 auto;
+      width: 690px;
+  }
+}
+
+
+@include respond-to-max($desktop + 1) {
+  .fixednavigation {
+    position: absolute;
+    top: 0 !important;
+    width: 100% !important;
+  }
+
+  nav {
+
+    .menu__icon,
+    .menu__checkbox,
+    .hamburger {
+      display: none;
+    }
+
+    .menu__icon {
+      cursor: pointer;
+      display: block;
+      outline: none;
+      position: absolute;
+      right: 10px;
+      top: 60px;
+      z-index: 99;
+
+      ::selection {
+        background: none;
+      }
+
+      &.CloseBtn {
+        .hamburger {
+          background: transparent;
+
+          &::before {
+            background: $blue-secondary;
+            top: 0;
+            transform: rotate(45deg);
+          }
+
+          &::after {
+            background: $blue-secondary;
+            top: 0;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+
+      .hamburger {
+        background: $white;
+        display: block;
+        height: 1px;
+        margin-right: 17px;
+        margin-top: -13px;
+        position: relative;
+        width: 30px;
+
+        &::before,
+        &::after {
+          background: $white;
+          content: "";
+          display: block;
+          height: 100%;
+          position: absolute;
+          transition: all 0.6s ease-in-out;
+          width: 100%;
+        }
+
+        &::before {
+          top: 9px;
+        }
+
+        &::after {
+          top: -9px;
+        }
+      }
+    }
+
+    .MenuWrapper {
+      visibility: hidden;
+      background-color: $white;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0 15px;
+      max-height: 0;
+      transition: all 0.3s ease-in;
+      ul {
+        visibility: hidden;
+      }
+
+      &.ShowMenu {
+        overflow-y: auto;
+        visibility:visible;
+        max-height: 580px;
+        transition: all 0.32s ease-out;
+        ul {
+          transition: all 0.1s ease-out;
+          visibility: visible;
+        }
+      }
+    }
+
+    ul {
+      background-color: $white;
+      max-width: 650px;
+      margin: 0 auto;
+      display: block;
+
+      &.main-nav__list {
+        padding-top: 60px;
+
+        li {
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+
+      &.secondary-nav__list {
+        padding-top: 40px;
+
+        @include respond-to-max($desktop) {
+          padding-bottom: 10px;
+        }
+
+        @include respond-to-max($phone) {
+          padding-right: 20px;
+        }
+
+        li {
+          border-bottom: 0;
+          display: none;
+
+          &.active {
+            display: block;
+          }
+
+          a {
+            border: 1px solid $gray-primary;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 8px 15px;
+          }
+        }
+      }
+
+      li {
+        border-bottom: 1px solid $grey-secondary;
+        padding: 30px 0;
+
+        &.active a {
+          font-weight: bold;
+        }
+
+        a {
+          color: #4b0f1e;
+          font-size: 24px;
+          letter-spacing: 0.02px;
+          line-height: 24px;
+          margin: 0;
+          padding: 10px 0;
+          text-decoration: none !important;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-max($phone) {
+  .menu__icon {
+    right: 0 !important;
+    top: 48px !important;
+  }
+}
+
+@include respond-to-min($desktop) {
+  nav {
+    background: none;
+    margin-top: 10px;
+
+    .menu__checkbox,
+    .menu__icon {
+      display: none;
+      opacity: 0;
+    }
+
+    ul {
+      &.main-nav__list {
+        float: right;
+        margin-left: 0;
+
+        a,
+        a:focus {
+          font-size: toRem(20);
+          padding: 8px 0;
+        }
+
+        li.active-nav {
+          a {
+            font-weight: bold;
+            border-bottom: 2px solid $white;
+            font-weight: bold;
+            line-height: 20px;
+            padding: 8px 0;
+            border-radius: 0;
+            border-width: 0;
+            border-bottom: 2px solid $white;
+
+            &:hover {
+              border-width: 0;
+              border-bottom: 2px solid $white;
+            }
+          }
+        }
+      }
+    }
+
+    ul {
+      float: left;
+      margin-left: -50px;
+
+      li {
+        float: left;
+        margin: 0 15px;
+
+        a,
+        a:focus {
+          border-width: 0;
+          color: $white;
+          display: block;
+          font-size: toRem(24);
+          font-weight: 500;
+          line-height: 20px;
+          outline: 0;
+          padding: 8px 0;
+          text-decoration: none;
+
+          &:hover {
+            border-bottom: 2px solid $white;
+            color: $white;
+            text-decoration: none;
+          }
+        }
+
+        &.active {
+          a {
+            border: 1px solid $white;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 8px 15px;
+
+            &:hover {
+              border: 1px solid $white;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-min($desktop-wide) {
+  nav ul {
+    margin-left: -120px;
+  }
+}

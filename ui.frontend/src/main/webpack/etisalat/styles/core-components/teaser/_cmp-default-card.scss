@@ -1,0 +1,273 @@
+/* stylelint-disable */
+
+.cmp-default-card {
+  padding: toRem(24) 0;
+  position: relative;
+
+  @include respond-to-min($desktop) {
+    padding: toRem(48) 0;
+  }
+
+  .cmp-teaser {
+    &__description {
+      a {
+        &:hover {
+          color: $main-green;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &__content {
+      display: block;
+      width: 100%;
+
+      @include respond-to-max($tablet) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @include respond-to-min($desktop) {
+        width: 50%;
+      }
+
+      @include respond-to-min($desktop-wide) {
+        width: 75%;
+      }
+    }
+
+    &__action-container {
+      position: absolute;
+      right: 0;
+      z-index: 2;
+
+      @include respond-to-max($tablet) {
+        min-width: 100%;
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+
+      @include rtlBlock {
+        left: 0;
+        margin-right: 0;
+        right: auto;
+
+        @include respond-to-max($tablet) {
+          left: 0;
+        }
+      }
+
+      &::after {
+        clear: both;
+      }
+    }
+  }
+
+  &.button--transparent,
+  &.button--secondary,
+  &.button--primary {
+    .cmp-teaser__action-container {
+      margin-top: toRem(1);
+
+      @include respond-to-min($desktop) {
+        height: toRem(48);
+        min-width: toRem(180) !important;
+        top: 50%;
+        width: auto !important;
+      }
+
+      @include respond-to-max($desktop) {
+        min-width: 100%;
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &.button--align-top {
+    .cmp-teaser__action-container {
+      top: 0;
+    }
+  }
+
+  &.cmp-default-card__default {
+    .cmp-teaser {
+      &__content {
+        width: 100%;
+
+        @include respond-to-min($desktop) {
+          width: 72%;
+        }
+
+        @include respond-to-min($desktop-wide) {
+          width: 72%;
+        }
+      }
+    }
+  }
+
+  &.cmp-default-card__center {
+    .cmp-teaser {
+      &__content,
+      &__title {
+        text-align: center;
+        width: 100%;
+      }
+
+      &__action-container {
+        position: relative;
+      }
+    }
+    &.button--transparent,
+    &.button--secondary,
+    &.button--primary {
+      .cmp-teaser__action-container {
+        display: inline-block !important;
+        overflow: hidden;
+      }
+    }
+  }
+  &.cmp-default-card__full-width {
+    .cmp-teaser {
+      &__content {
+        width: 100%;
+      }
+
+      &__description {
+        width: 100%;
+
+        @include respond-to-min($tablet) {
+          width: 75%;
+        }
+      }
+    }
+  }
+  &.cmp-default-card__content-full {
+    .cmp-teaser {
+      &__content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.button--secondary.cmp-default-card,
+.button--transparent.cmp-default-card,
+.default--bg .button--transparent.cmp-default-card {
+  .cmp-teaser {
+    &__action-container {
+      border-color: $darkest-night;
+
+      @include respond-to-min($desktop) {
+        min-width: toRem(180) !important;
+        width: auto !important;
+      }
+
+      @include respond-to-max($desktop) {
+        min-width: 100%;
+        width: 100%;
+      }
+
+      a {
+        color: $almost-black;
+      }
+
+      &:hover {
+        background-color: $white;
+        border-color: $main-green;
+        box-shadow: none !important;
+        color: $main-green !important;
+
+        a {
+          color: $main-green !important;
+        }
+      }
+
+      &:focus,
+      &:active {
+        background-color: $green-btn;
+        border-color: $green-btn;
+        color: $white !important;
+        outline: 0;
+
+        a {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.button--primary.cmp-default-card {
+  .cmp-teaser {
+    &__action-container {
+      @include respond-to-min($desktop) {
+        min-width: toRem(180) !important;
+        width: auto !important;
+      }
+
+      @include respond-to-max($desktop) {
+        min-width: 100%;
+        width: 100%;
+      }
+
+      &:focus,
+      &:active {
+        background-color: $green-btn;
+        border-color: $green-btn;
+        color: $white;
+        outline: 0;
+
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.acc-blue,
+.acc-black {
+  .button--secondary.cmp-default-card,
+  .button--primary.cmp-default-card,
+  .button--transparent.cmp-default-card,
+  .default--bg .button--transparent.cmp-default-card {
+    .cmp-teaser__action-container {
+      background-color: transparent;
+      border-color: $white;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: transparent;
+        border-color: $white;
+
+        a {
+          color: $white !important;
+        }
+      }
+    }
+  }
+}
+
+.acc-yellow {
+  .button--secondary.cmp-default-card,
+  .button--primary.cmp-default-card,
+  .button--transparent.cmp-default-card,
+  .default--bg .button--transparent.cmp-default-card {
+    .cmp-teaser__action-container {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        border-color: $yellow-light;
+
+        a {
+          color: $yellow-light !important;
+        }
+      }
+    }
+  }
+}

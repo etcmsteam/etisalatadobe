@@ -1,0 +1,337 @@
+/* stylelint-disable*/
+.nv-card-wrapper {
+    @include box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.1));
+    height: 100%;
+    position: relative;
+    border-radius: .5rem;
+
+    .nv-card-input {
+        display: none;
+    }
+
+    .nv-checkboxes-wrap {
+        display: none;
+    }
+
+    .nv-brand {
+        margin-bottom: .5rem;
+    }
+
+    .special-offer {
+        position: absolute;
+        top: 0;
+        font-size: .75rem;
+        font-family: $neotech;
+        background-color: #dddddd;
+        letter-spacing: .25px;
+        color: $white;
+        line-height: .75rem;
+        font-weight: 500;
+        left: 1.5rem;
+        padding: .5rem .675rem;
+        border-radius: 0 0 .25rem .25rem;
+    }
+
+    .nv-card {
+        border: 0;
+        border-radius: .5rem;
+
+        &.products {
+            height: 100%;
+            cursor: pointer;
+
+            .nv-card-body {
+                transition: all .5s;
+                display: flex;
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+                border-width: 1px;
+                border-radius: .5rem;
+                border-style: solid;
+                border-color: transparent;
+
+                .nv-price-wrapper {
+                    padding-top: 4rem;
+                    margin-top: auto;
+                }
+
+                .smile-points {
+                    padding: .75rem 1.5rem;
+                    background: $white;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: .875rem;
+                    letter-spacing: .5px;
+                    line-height: .875rem;
+                    color: $main-green;
+                    margin-top: 1rem;
+                }
+            }
+
+            &:hover {
+                .nv-card-body {
+                    border-color: $main-green;
+                }
+
+            }
+
+            &.nv-device-card {
+                .nv-card-body {
+                    padding: 0;
+                    border-width: 1px 1px 0 1px;
+                    border-radius: .5rem .5rem 0 0;
+
+                    .nv-brand,
+                    .nv-color-list,
+                    .nv-price-wrapper,
+                    .nv-product-name {
+                        padding: 0 1.5rem;
+                    }
+
+                    .nv-brand {
+                        color: $steel-grey;
+                    }
+
+                    .nv-product-name {
+                        margin-bottom: 1rem;
+                        color: $almost-black;
+                    }
+                }
+            }
+
+            &.nv-plan-card {
+                .nv-card-body {
+                    border-width: 1px 0px;
+                }
+
+
+                &.elife-plan {
+                    .nv-card-body {
+                        border-radius: .5rem .5rem 0 0;
+                        border-width: 1px 1px 0px 1px;
+                    }
+                }
+            }
+
+            &.offer {
+                .nv-price-wrapper {
+                    .price {
+                        color: $dark-orange;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn-buy-now {
+        border-radius: 0 0 .5rem .5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: .25rem;
+        line-height: 18px;
+        height: 54px;
+
+        // @include media-breakpoint-down(md) {
+        //     display: none;
+        // }
+    }
+
+    &.selectable {
+        .nv-checkboxes-wrap {
+            display: block;
+        }
+
+        .nv-card-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+
+            &:checked {
+                +.products {
+
+                    &.nv-device-card,
+                    &.nv-plan-card {
+                        .nv-card-body {
+                            border-color: $main-green;
+                        }
+                    }
+                }
+            }
+
+            &[type="radio"]:checked {
+                +.products {
+                    .nv-checkboxes-wrap label {
+                        border: 1px solid $main-green;
+                        box-shadow: inset 0 2px 5px 0 rgba(143, 163, 105, 0.5);
+
+                        &:after {
+                            box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+                            border-radius: 50%;
+                            opacity: 1;
+                            border: 6px solid $main-green;
+                        }
+                    }
+                }
+            }
+
+            &[type="checkbox"]:checked {
+                +.products {
+                    .nv-checkboxes-wrap label {
+                        background-color: $main-green;
+                        border-color: $main-green;
+                        box-shadow: 0 2px 5px 0 rgba(143, 163, 105, 0.5);
+
+                        &:after {
+                            border: 2px solid $white;
+                            border-top: none;
+                            border-right: none;
+                            height: 6px;
+                            -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+                            transform: translate(-50%, -50%) rotate(-45deg);
+                            width: 12px;
+                            top: 45%;
+                            left: 51%;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .nv-card {
+            &.products {
+                border-width: 1px 1px 1px 1px;
+                border-radius: .5rem;
+
+
+                .nv-price-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                &.nv-device-card {
+                    .nv-card-body {
+                        border-width: 1px;
+                        border-radius: .5rem;
+
+                        .smile-points {
+                            border-radius: 0 0 .5rem .5rem;
+                        }
+                    }
+                }
+
+                &.nv-plan-card {
+                    .nv-card-body {
+                        border-width: 0 1px 1px 1px;
+                        border-radius: 0 0 .5rem .5rem;
+                    }
+
+                    &.elife-plan {
+                        .nv-card-body {
+                            border-radius: .5rem;
+                            border-width: 1px;
+                        }
+                    }
+                }
+
+
+                &:hover {
+                    &.nv-plan-card {
+                        .nv-card-body {
+                            border-width: 0 1px 1px 1px;
+                            border-radius: 0 0 .5rem .5rem;
+                        }
+
+                        &.elife-plan {
+                            .nv-card-body {
+                                border-radius: .5rem;
+                                border-width: 1px;
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        .btn-buy-now {
+            display: none;
+        }
+    }
+
+    .cart-specification {
+        margin-bottom: .75rem;
+
+        li {
+            margin-bottom: .25rem;
+            color: $steel-grey;
+            font-size: 1rem;
+            line-height: 26px;
+        }
+    }
+
+    .cart-selected-addons {
+        .cart-selected-addon {
+            &:not(:last-child) {
+                border-bottom: 1px solid $steel-grey;
+                margin-bottom: 14px;
+                padding-bottom: 14px;
+            }
+        }
+    }
+
+    .important-card {
+        flex-direction: row;
+        padding: 2rem;
+        border-radius: .5rem;
+        box-shadow: none;
+        align-items: center;
+        overflow: hidden;
+        border: 0;
+
+        .card-title {
+            font-size: 1.75rem;
+            line-height: 2rem;
+            margin-bottom: .25rem;
+        }
+
+        .card-text {
+            line-height: 21px;
+        }
+    }
+}
+
+*[lang=ar] {
+    *[dir=rtl] {
+        .nv-card-wrapper {
+            .special-offer {
+                right: 1.5rem;
+                left: auto;
+                letter-spacing: 0;
+            }
+
+            .nv-card {
+                &.products {
+                    .nv-card-body {
+                        .smile-points {
+                            letter-spacing: 0;
+                        }
+                    }
+
+                    &.nv-plan-card {
+                        .nv-card-body {
+                            .channel-list {
+                                letter-spacing: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

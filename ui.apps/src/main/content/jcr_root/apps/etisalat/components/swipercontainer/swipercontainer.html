@@ -1,0 +1,25 @@
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">   
+   <div class="cmp-swipercontainer"
+       data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+       data-placeholder-text="${wcmmode.edit && 'Drag swiper components here' @ i18n}"       
+       id="${container.id}">     
+      <h2 data-sly-test="${properties.layoutTitle && properties.tileBoxLayout == 'default'}">${properties.layoutTitle}</h2>
+	  <sly data-sly-test="${!properties.tileBoxLayout || properties.tileBoxLayout == 'default' || properties.tileBoxLayout == 'bill-explainer'}"
+         data-sly-use.defaultTemplate="default.html"
+         data-sly-call="${defaultTemplate.defaultSwiper @ container=container,properties=properties}">      
+      </sly>
+      <sly data-sly-test="${properties.tileBoxLayout == 'ewallet-offer' || properties.tileBoxLayout == 'ewallet-all-offer'}"
+         data-sly-use.offersTemplate="ewallet-offers.html"
+         data-sly-call="${offersTemplate.offers @ container=container,properties=properties}">      
+      </sly>
+      <sly data-sly-test="${properties.tileBoxLayout == 'ewallet-feature'}"
+         data-sly-use.featureTemplate="ewallet-featurecontent.html"
+         data-sly-call="${featureTemplate.featureContent @ container=container,properties=properties}">      
+      </sly>
+      <sly data-sly-test="${properties.tileBoxLayout == 'guide-tour'}"
+           data-sly-use.guideTourTemplate="guide-tour.html"
+           data-sly-call="${guideTourTemplate.guideTour @ container=container,properties=properties}">
+      </sly>
+      <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+   </div>
+</sly>

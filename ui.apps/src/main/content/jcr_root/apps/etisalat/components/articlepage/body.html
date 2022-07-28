@@ -1,0 +1,16 @@
+<sly data-sly-use.articleObj="com.etisalat.core.models.ArticleSearch">	
+    <sly data-sly-test="${pageProperties.articleType && pageProperties.articleType == 'blogpost'}" 
+	       data-sly-use.blogSearchTemplate="blogpost.html"
+	       data-sly-call="${blogSearchTemplate.blogpost @ pageProperties=pageProperties,articleObj=articleObj}">
+    </sly>
+    <sly data-sly-test="${pageProperties.articleType && pageProperties.articleType == 'newsroom'}" 
+	       data-sly-use.newsRoomTemplate="newsroom.html"
+	       data-sly-call="${newsRoomTemplate.newsroom @ pageProperties=pageProperties,articleObj=articleObj}">
+    </sly>
+</sly>
+
+<sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer"
+   data-sly-repeat.child="${templatedContainer.structureResources}"
+   data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
+   
+   

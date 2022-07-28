@@ -1,0 +1,20 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"
+     data-sly-use.tileModel="com.etisalat.core.models.TileModel"/>
+
+<sly data-sly-test="${tileModel.tileBoxContainerLayout == 'icontile' && (properties.displayicontileas == 'icontile' || !properties.displayicontileas)}"
+     data-sly-use.icontileTemplate="icontilewithdescription.html"
+     data-sly-call="${icontileTemplate.icontilewithdescription @ properties=properties,imageViewportModel=imageViewportModel}">
+</sly>
+
+<sly data-sly-test="${tileModel.tileBoxContainerLayout == 'iconcardcarousel' && properties.displayicontileas == 'iconcardcarousel'}"
+     data-sly-use.iconcardcarouselTemplate="iconcard.html"
+     data-sly-call="${iconcardcarouselTemplate.iconcardcarousel @ properties=properties,imageViewportModel=imageViewportModel}">
+</sly>
+
+<sly data-sly-test="${tileModel.tileBoxContainerLayout == 'partnerslogo' && properties.displayicontileas == 'iconpartnerlogo'}"
+	 data-sly-use.iconpartnerlogoTemplate="iconpartnerlogo.html"
+	 data-sly-call="${iconpartnerlogoTemplate.iconpartnerlogo @ properties=properties,imageViewportModel=imageViewportModel}">
+</sly>
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.viewPortLayout}"></sly>

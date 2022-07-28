@@ -1,0 +1,31 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div class="container">
+        <section class="contact-us-2-0  ${properties.backgroundColor}">
+            <div class="contact-us-wrapper" data-digital-component="CONTACT_US_DIGITAL">
+                <div class="content-wrapper" data-sly-test="${properties.tiletitle || properties.description}">
+                    <div class="ed-headings-2-0" data-sly-test="${properties.tiletitle}">
+                        <h3 data-sly-element="${properties.titleType}">${properties.tiletitle}</h3>
+                    </div>
+                    <div class="ed-paragraph-2-0" data-sly-test="${properties.description}">
+                        <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p3' : properties.descParagraphStyle}" class="${descriptionStyle}">
+                            ${properties.description @ context='html'}
+                        </div>
+                    </div>
+                </div>
+                <div data-sly-test="${properties.ctalabel}"  class="contact-btn-wrapper">
+                    <div data-sly-set.ctaLearnMoreClass="${!wcmmode.edit ? 'ed-learnmore-wrapper' : ''}"
+                         data-sly-set.ctaButtonClass="${!wcmmode.edit ? 'ed-buttons-wrapper' : ''}"
+                         class="${properties.ctaStyle == 'learn-more-btn' ?  ctaLearnMoreClass : ctaButtonClass}">
+                        <sly data-sly-test.customLink="${properties.ctalink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+                        <a data-sly-test="${commonlinkmodel.link}" class="${properties.ctaStyle}"
+                           href="${commonlinkmodel.link}"
+                           target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}">
+                            ${properties.ctalabel}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.tiletitle}"></sly>

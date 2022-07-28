@@ -1,0 +1,71 @@
+$fontPath: "../resources/fonts/";
+
+@mixin fontFace($name, $weight, $fileName, $format: "woff", $style:normal) {
+  @font-face {
+    font-display: swap;
+    font-family: $name;
+    font-style: $style;
+    font-weight: $weight;
+    src: url($fontPath + $fileName) format($format);
+  }
+}
+
+// ----------------------- NeoTech Font Starts ------------------------------
+@include fontFace(NeoTech, 300, "neotech-light.woff", "woff");
+@include fontFace(NeoTech, 400, "neotech-regular.woff", "woff");
+@include fontFace(Neotech-medium, 400, "neotech-regular.woff", "woff");
+
+// This one is new in HTML ref; Need to check whether to include or not
+@include fontFace(Neotech, 700, "neotech-medium.woff", "woff");
+
+// -------
+
+@include fontFace(Neotech, 900, "neotech-medium.woff", "woff");
+
+// ----------------------- NeoTech Font Ends ------------------------------------
+
+// ----------------------- "GE SS Two" Font Starts ------------------------------
+@include fontFace("GE SS Two", 300, "ge_ss_two_light.ttf", "truetype");
+@include fontFace("GE SS Two", 400, "ge_ss_two_medium.ttf", "truetype");
+@include fontFace("GE SS Two", 700, "ge_ss_two_bold.ttf", "truetype");
+
+// ----------------------- "GE SS Two" Font ends -------------------------------
+
+// ----------------------- Lato Latin Font Starts ------------------------------
+@font-face {
+  font-family: lato-latin-regular;
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url($fontPath + "lato-v19-latin-regular.woff2") format("woff2"),
+    url($fontPath + "lato-v19-latin-regular.woff") format("woff"),
+    url($fontPath + "lato-v19-latin-regular.ttf") format("truetype"),
+    url($fontPath + "lato-v19-latin-regular.eot") format("eot");
+}
+
+// ----------------------- Lato Latin Font Ends ---------------------------
+
+// ----------------------- Lato Fonts Starts ------------------------------
+@include fontFace(Lato, 100, "Lato-lato-Hairline.ttf", "truetype", normal); // replaced with lighter
+@include fontFace(Lato, 100, "Lato-HairlineItalic.ttf", "truetype", italic); // commented in html ref
+@include fontFace(Lato, 200, "Lato-lato-Thin.ttf", "truetype", normal); // replaced with lighter
+@include fontFace(Lato, 200, "Lato-lato-ThinItalic.ttf", "truetype", italic); // replaced with lighter
+@include fontFace(Lato, 300, "Lato-lato-Light.ttf", "truetype", normal); // replaced with lighter
+@include fontFace(Lato, 300, "Lato-lato-LightItalic.ttf", "truetype", italic); // replaced with lighter
+@include fontFace(Lato, 500, "Lato-lato-Regular.ttf", "truetype", normal); // replaced with lighter
+
+// replaced with lighter | same regular is being used in html ref. Couldn't find italic for this
+@include fontFace(Lato, 500, "Lato-lato-Regular.ttf", "truetype", italic);
+
+@include fontFace(Lato, 600, "Lato-Semibold.ttf", "truetype", normal); // name was same // heavy font
+@include fontFace(Lato, 600, "Lato-SemiboldItalic.ttf", "truetype", italic); // name was same // heavy font
+@include fontFace(Lato, 700, "Lato-lato-Bold.ttf", "truetype", normal); // replaced with lighter
+@include fontFace(Lato, 700, "Lato-lato-BoldItalic.ttf", "truetype", italic); // replaced with lighter
+@include fontFace(Lato, 800, "Lato-lato-Black.ttf", "truetype", normal); // replaced with lighter
+@include fontFace(Lato, 800, "Lato-lato-BlackItalic.ttf", "truetype", italic); // replaced with lighter
+@include fontFace(Lato, 900, "Lato-lato-Black.ttf", "truetype", normal); // replaced with lighter
+
+// replaced with lighter | in html ref they are using normal style for italic font style
+@include fontFace(Lato, 900, "Lato-lato-BlackItalic.ttf", "truetype", italic);
+
+// ----------------------- Lato Fonts Ends ------------------------------

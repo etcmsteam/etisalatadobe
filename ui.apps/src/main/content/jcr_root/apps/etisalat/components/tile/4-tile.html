@@ -1,0 +1,46 @@
+<template data-sly-template.fourTile="${ @ tileModel,properties,imageViewportModel}">
+    <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
+        <!-- Modal start -->
+        <a href="#" class="youtube-video-link tileBoxVideoLink"></a>
+        <div class="youtube-popup-container modal fade tileBoxVideoModal" id="mediaCtaVideo_1" role="dialog"
+            style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <iframe width="560" height="315" src="${properties.tileyoutubelink}" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Modal end -->
+    </sly>
+     <div class="tile-boxes-image-wrapper" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+         <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">            
+            <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+         </div>
+         <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+      </div>
+      <div class="tile-box-body">
+         <div data-sly-test="${tileModel.tiletitle}" class="tile-boxes-title-small">
+            <h3 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h3>
+         </div>
+         <div class="tile-box-description">
+            <p>${tileModel.text @ context='html'}</p>
+         </div>         
+          <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow' && properties.tileLinkBehavior != 'youtubemodalwindow'}">
+	         <div data-sly-test="${tileModel.ctatext}" class="learn-more-wrap">
+                 <a href="${tileModel.tileCTALinkSameWindow}"
+                    class="btn-text btn-green learn-more"
+                    target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"
+                    title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+	         </div>
+         </sly>
+          <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}"
+               data-sly-use.tileModalTemplate="tilemodal.html"
+               data-sly-call="${tileModalTemplate.modal @ tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}">
+          </sly>
+          <sly data-sly-test="${properties.tileLinkBehavior == 'youtubemodalwindow'}">
+              <a href="#" class="btn-text btn-green learn-more" title="${tileModel.ctatext}">${tileModel.ctatext}</a>
+          </sly>
+      </div>
+</template>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Faqs Container"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <gridcontainerdata
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="FAQ Container Details"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <backgroundvariation
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                    fieldLabel="Background Variation"
+                                    name="./backgroundvariation">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <none
+                                        jcr:primaryType="nt:unstructured"
+                                        text="No Background"
+                                        value=""/>
+                                    <beigelight
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Beige Light"
+                                        value="bg-beige-light"/>
+                                    <maroon
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Maroon"
+                                        value="bg-maroon"/>
+                                </items>
+                            </backgroundvariation>
+                            <faqitem
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <faqvariations
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        defaultValue="onecol"
+                                        fieldDescription="Select Faq Variations"
+                                        fieldLabel="Select Faq Variations"
+                                        name="./faqvariations">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <onecol
+                                                jcr:primaryType="nt:unstructured"
+                                                text="One Column"
+                                                value="onecol"/>
+                                            <twocol
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Two Column"
+                                                value="twocol"/>
+                                        </items>
+                                    </faqvariations>
+                                </items>
+                            </faqitem>
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="A title to display as the headline for the tile."
+                                fieldLabel="Title"
+                                name="./title"
+                                value=""/>
+                            <titleType
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Select Title Style"
+                                fieldLabel="Title Style"
+                                name="./titleType">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <def
+                                        jcr:primaryType="nt:unstructured"
+                                        text="(default)"
+                                        value=""/>
+                                    <h1
+                                        jcr:primaryType="nt:unstructured"
+                                        text="H1"
+                                        value="h1"/>
+                                    <h2
+                                        jcr:primaryType="nt:unstructured"
+                                        text="H2"
+                                        value="h2"/>
+                                    <h3
+                                        jcr:primaryType="nt:unstructured"
+                                        text="H3"
+                                        value="h3"/>
+                                    <h4
+                                        jcr:primaryType="nt:unstructured"
+                                        text="H4"
+                                        value="h4"/>
+                                    <h5
+                                        jcr:primaryType="nt:unstructured"
+                                        text="H5"
+                                        value="h5"/>
+                                    <h6
+                                        jcr:primaryType="nt:unstructured"
+                                        text="H6"
+                                        value="h6"/>
+                                </items>
+                            </titleType>
+                            <description
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceSuperType="etisalat/components/eandenterprise/commons/editor/dialog/rteconfig/text"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Add Description"
+                                fieldLabel="Description"
+                                name="./description"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <descriptionParagraphStyle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/paragraphstyle"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Choose Paragraph style, By default &quot;Paragraph 2&quot; style will apply to description text"
+                                fieldLabel="Description Paragraph Style"
+                                name="./textStyle"/>
+                        </items>
+                    </gridcontainerdata>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

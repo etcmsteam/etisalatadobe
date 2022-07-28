@@ -1,0 +1,38 @@
+<template data-sly-template.techSupport="${ @ container,properties}">
+ <div class="tech-support-wrapper has-bg tech0">
+    <div class="container"></div>
+    <div class="wrapper">
+        <div class="content">
+            <div class="techsupport-box">
+                <div class="techsupport-inner-box">
+                    <h2 data-sly-test="${properties.tileTitle}" data-sly-element="${properties.titleType}">${properties.tileTitle}</h2>
+                    <div data-sly-test="${properties.techSupportDescription}">${properties.techSupportDescription  @ context='html'}</div>
+                    <div data-sly-test="${!wcmmode.edit}" class="techSupportSlider">
+                        <div class="swiper-button-prev left0 swiper-button-disabled">
+                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.263 22.5 6.755 12 17.263 1.5" stroke="#B2B2B2" stroke-width="2" fill="none"
+                                    fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="swiper-button-next right0">
+                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.737 1.5 18.245 12 7.737 22.5" stroke="#B2B2B2" stroke-width="2" fill="none"
+                                    fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider">
+            <div class="swiper-container techSupportSlider swiper-container-horizontal">
+                <div class="${!wcmmode.edit ? 'swiper-wrapper' : ''}">
+                    <div data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}" class="swiper-slide" style="width: 359px; margin-right: 24px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>

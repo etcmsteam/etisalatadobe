@@ -1,0 +1,36 @@
+<template data-sly-template.partnerslogoTile="${ @ container,properties}">
+    <div class="partners-logos ${properties.backgroundColor}" data-digital-component="PARTNERS_LOGO_DIGITAL">
+        <div class="container cards-carousel-no-image-slider">
+            <div class="row">
+                <div class="col-sm-12 ${properties.textAlignment}">
+                    <div class="ed-headings-2-0" data-sly-test="${properties.tileTitle}">
+                        <h2 data-sly-element="${properties.titleType}">${properties.tileTitle}</h2>
+                    </div>
+                    <div class="ed-paragraph-2-0" data-sly-test="${properties.tiledescription}">
+                        <div data-sly-set.textStyle="${!properties.textStyle || properties.textStyle == '' ? 'p3' : properties.textStyle}" class="${textStyle}">
+                            ${properties.tiledescription @ context='html'}
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="row">
+                <div class="col-sm-12">
+                    <div class="slider-box">
+                        <div class="${!wcmmode.edit ? 'swiper-container':'' }">
+                            <div class="${!wcmmode.edit ? 'swiper-wrapper' : '' }">
+                                <div class="box-slide swiper-slide" data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName=wcmmode.edit ? 'div' : ''}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-sly-test="${!wcmmode.edit}" class="swiper-btn-wrapper">
+                <div class="relative">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination swiper-pagination-bullets"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

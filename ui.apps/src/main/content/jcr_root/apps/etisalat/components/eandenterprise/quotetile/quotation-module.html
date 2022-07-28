@@ -1,0 +1,38 @@
+<template data-sly-template.quotationModule="${ @ properties,imageViewportModel}">
+<div class="quotation-2-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="image-wrapper" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+                    <div class="bg-cover"></div>
+                    <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="quotation-content" data-sly-test="${properties.title || properties.description || properties.businessverticaltitle || properties.designation}">
+                    <div class="main-content-wrapper">
+                        <div class="ed-headings-2-0" data-sly-test="${properties.tileTitle}">  
+                            <h2 data-sly-element="${properties.titleType}">${properties.title}</h2> 
+                        </div>
+                        <div class="ed-paragraph-2-0" data-sly-test="${properties.description}">
+                            <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p3' : properties.descParagraphStyle}" class="${descriptionStyle}">
+                              ${properties.description @ context='html'}
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="inner-content" data-sly-test="${properties.businessverticaltitle || properties.designation}">
+                        <div class="ed-subheadings-2-0" data-sly-test="${properties.businessverticaltitle}">
+                            <h6 data-sly-element="${properties.businessverticalTitleType}">${properties.businessverticaltitle}</h6>
+                        </div>
+                        <div class="ed-paragraph-2-0" data-sly-test="${properties.designation}">
+                            <div data-sly-set.designationStyle="${!properties.designationParagraphStyle || properties.designationParagraphStyle == '' ? 'p3' : properties.designationParagraphStyle}" class="${designationStyle}">
+                              <p>${properties.designation}</p>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>

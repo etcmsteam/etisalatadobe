@@ -1,0 +1,40 @@
+<template data-sly-template.heroCarousel="${ @ properties}">
+<div class="swiper-slide ${properties.themeColor}">
+	<div class="${!wcmmode.edit ? 'cover' : ''}">
+      <div class="${properties.heroBGColor}"></div>
+	  <sly data-sly-use.heroImagesTemplate="heroimages.html" data-sly-call="${heroImagesTemplate.heroImages @ properties=properties}" />
+	</div>
+	<div class="content-cover ${properties.heroContentBGColor}">
+	  <!-- Start - container -->
+	  <div class="container">
+		<div class="row">
+		  <div class="hero-details">
+			<!-- Start - full image with text wrapper -->
+			<div class="c-left col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-0">
+			  <div class="animation-sl">
+				<div class="ed-headings-2-0">
+				  <h1 data-sly-test="${properties.heroTitle}">${properties.heroTitle @ context = 'html'} 
+				  <span data-sly-test="${properties.heroSubTitle}">${properties.heroSubTitle}</span>
+				  </h1>
+				</div>
+				<div data-sly-test="${properties.jcr:description}" class="ed-paragraph-2-0">
+				  <div class="${properties.descriptionStyle ? properties.descriptionStyle : 'p2'}"> ${properties.jcr:description @ context = 'html'} </div>
+				</div>
+			  </div>
+			  <!-- Slider bullet code  -->
+			  <div class="${!wcmmode.edit ? 'swiper-btn-wrapper' : ''}">
+				<div class="${!wcmmode.edit ? 'relative' : ''}">
+				  <div class="${!wcmmode.edit ? 'swiper-button-next' : ''}"></div>
+				  <div class="${!wcmmode.edit ? 'swiper-pagination swiper-pagination-bullets' : ''}"></div>
+				  <div class="${!wcmmode.edit ? 'swiper-button-prev' : ''}"></div>
+				</div>
+			  </div>
+			</div>
+			<!-- End - full image with text wrapper -->
+			<div class="clearfix"></div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+   </div>
+</template>

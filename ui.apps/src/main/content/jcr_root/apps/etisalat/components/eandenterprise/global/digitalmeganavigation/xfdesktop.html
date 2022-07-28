@@ -1,0 +1,62 @@
+<template data-sly-template.xfdesktop="${ @ properties,meganavigation}">
+<!-- etisalat digital mega menu desktop -->
+<div data-digital-component="MEGA_MENU_DIGITAL" class="mega-menu-desktop-digital">
+    <div class="main-mega-menu-desktop" style="height: 100%; z-index: 999;">
+        <nav class="mega-menu-navbar-default">
+		  <div class="mega-menu-navbar">
+              <div class="container">
+			    <div class="nav-wrap">
+		            <div class="logo-container">
+						<div class="navbar-header">
+							 <a href="${meganavigation.logoMenuLink}" title="${properties.logoAltText}">
+								<img alt="${properties.logoAltText}" src="${meganavigation.imagePath}" loading="lazy" 
+								     data-sly-set.logoSrcPath="${properties.fileReference}" 
+								     data-sly-use.logoModal="${'com.etisalat.core.models.CommonLinkModel' @link=logoSrcPath}" 
+								     class="etisalat-logo-en ${logoModal.assetSVGImage ? 'inline-svg__icon' : ''}"  />
+							 </a>
+					    </div>
+					</div>
+					<div class="navbar-items">
+		              <ul class="nav navbar-nav nav-left">
+					    <sly data-sly-use.navObj="${resource.path}" data-sly-list.navItems="${navObj.listChildren}">
+					     <li data-sly-test="${navItems.name == 'containerItems'}" data-sly-repeat.navItem="${navItems.listChildren}">
+						   <sly data-sly-set.navCTALink="${navItem.navigationLinkTo}" 
+	                            data-sly-use.megaMainLink="${'com.etisalat.core.models.CommonLinkModel' @link=navCTALink}"/>
+                            <a href="${megaMainLink.link}" class="mega-menu-link" data-sub-menu="sub-menu-mobile"
+							   title="${navItem.navigationAltText}">${navItem.navigationLabel}</a>
+                            <sly data-sly-test="${navItem.xfVariationPath}" 
+                                 data-sly-set.xfPath="${navItem.xfVariationPath}/jcr:content/root"  
+                                 data-sly-use.linkModel="${'com.etisalat.core.models.CommonLinkModel' @link=xfPath}">
+							  <div data-sly-test="${linkModel.resourceFromPath}" class="sub-menu-wrap mega-dropdown with-single">
+							     <div class="menu-items-wrapper">  
+                                    <div class="menu-items" data-sly-list.menuItems="${linkModel.resourceFromPath.listChildren}">
+								      <sly data-sly-test="${menuItems && menuItems.resourceType == 'etisalat/components/eandenterprise/global/megasubnavigation'}" 
+                                           data-sly-resource="${@path=menuItems.path, wcmmode='disabled'}"></sly>	                  								   
+							        </div>
+							     </div>
+
+                                 <div class="menu-promotion-wrapper" data-sly-list.promoItems="${linkModel.resourceFromPath.listChildren}">
+							       <sly data-sly-test="${promoItems && promoItems.resourceType == 'etisalat/components/eandenterprise/global/megapromotiontile'}" 
+                                           data-sly-resource="${@path=promoItems.path, wcmmode='disabled'}"></sly>	 
+
+                                  </div> 
+							  </div>
+						   </sly>
+					     </li>
+						</sly>
+					  </ul>
+		            </div>
+					<!--hamburger for mobile view -->
+				   <div class="hamburger mobile-view" id="m-hamburger">
+					   <span class="line"></span>
+					   <span class="line"></span>
+					   <span class="line"></span> 
+				   </div>
+		         </div>
+		      </div>
+	      </div>
+	    </nav>
+   </div>
+</div>
+<!-- etisalat digital mega menu End -->
+</template>

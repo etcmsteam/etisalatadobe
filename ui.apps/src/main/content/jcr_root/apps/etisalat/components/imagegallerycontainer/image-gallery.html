@@ -1,0 +1,16 @@
+<template data-sly-template.imageGallery="${ @ container,properties}">
+    <div data-component="cmp-photo-gallery" class="image-galley-section img-galley-lightbox">
+		<!-- This Section for 4 featured images -->
+        <div class="cmp-container">
+            <sly data-sly-repeat="${container.items}" data-sly-resource="${item.name  @ decorationTagName='div'}"></sly>
+        </div>
+        <!-- This container should be display images present in the fragment path authored in the image gallery component -->
+        <div data-sly-test="${properties.fragmentVariationPath}" class="container" style="display: none;">
+            <div class="content">
+				<sly 
+                   data-sly-resource="${resource @ resourceType='core/wcm/components/experiencefragment/v1/experiencefragment', wcmmode='disabled'}">
+	            </sly>
+            </div>
+        </div>
+    </div>
+</template>

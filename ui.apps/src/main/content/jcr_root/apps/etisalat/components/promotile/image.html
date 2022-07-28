@@ -1,0 +1,9 @@
+<template  data-sly-template.Image="${ @ properties,commonlinkmodel,imageViewportModel}">
+<sly data-sly-set.viewports = "${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent}" />
+   <div class="promo-img">
+      <div class="cover">
+          <sly data-sly-test="${viewports}"
+            data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+      </div>
+   </div>
+</template>

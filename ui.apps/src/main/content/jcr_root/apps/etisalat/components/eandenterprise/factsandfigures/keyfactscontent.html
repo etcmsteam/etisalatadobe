@@ -1,0 +1,31 @@
+<template data-sly-template.keyfactsContent="${ @ properties}">
+
+<div class="key-four-facts-module-2-0 ${properties.backgroundColor}">
+  <div class="container">
+    <div data-sly-test="${properties.title}" class="col-md-12">
+      <div class="ed-headings-2-0">
+        <h2 data-sly-element="${properties.titleType}">${properties.title}</h2>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="key-facts-figure-wrapper" data-sly-use.factsObj="${resource.path}" data-sly-list.factIconItems="${factsObj.listChildren}">
+      <div class="key-wrapper" data-sly-test="${factIconItems.name == 'factItems'}" data-sly-list.factItem="${factIconItems.listChildren}">
+        <div class="col-md-3">
+          <div class="key-facts-content">
+            <div data-sly-test="${factItem.fileIconReference}" class="icons">
+              <img src="${factItem.fileIconReference}" alt="${factItem.keyfactIconAltText}"/>
+            </div>
+            <div data-sly-test="${factItem.factsTitle}" class="key-facts-content-text">
+              <div data-sly-test="${factItem.factsTitle}" class="ed-subheadings-2-0">
+                <h5 data-sly-element="${factItem.factstitleType}">${factItem.factsTitle}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+</template>

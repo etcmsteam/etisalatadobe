@@ -1,0 +1,39 @@
+<template data-sly-template.staticproducts="${ @ properties}">
+  <div data-sly-use.carousel="com.adobe.cq.wcm.core.components.models.Carousel" 
+  data-sly-use.templates="core/wcm/components/commons/v1/templates.html" 
+  data-panelcontainer="${wcmmode.edit && 'Product Grid Component'}" 
+  id="${carousel.id}" class="cmp-carousel" role="group" 
+  aria-label="${carousel.accessibilityLabel}" 
+  aria-live="polite" aria-roledescription="carousel" 
+  data-cmp-is="carousel" 
+  data-cmp-autoplay="${(wcmmode.edit || wcmmode.preview) ? '' : carousel.autoplay}"
+  data-cmp-delay="${carousel.delay}" 
+  data-cmp-autopause-disabled="${carousel.autopauseDisabled}" 
+  data-cmp-data-layer="${carousel.data.json}" 
+  data-placeholder-text="${wcmmode.edit && 'Please add Product Tile items here' @ i18n}">
+    <div class="container-product-grid">       
+       <sly data-sly-test="${!properties.tileBoxLayout || properties.tileBoxLayout == 'producttile' ||
+        properties.tileBoxLayout == 'devicetile'}"
+	        data-sly-use.productTileTemplate="staticproducttile.html"
+	        data-sly-call="${productTileTemplate.productTile @ carousel=carousel,properties=properties}">      
+	   </sly> 
+	   <sly data-sly-test="${properties.tileBoxLayout == 'elifeplan'}"
+	        data-sly-use.elifePlanTemplate="staticelifeplan.html"
+	        data-sly-call="${elifePlanTemplate.elifePlan @ carousel=carousel,properties=properties}">      
+	   </sly>
+	   <sly data-sly-test="${properties.tileBoxLayout == 'recommendproductplan'}"
+	        data-sly-use.recommendPlanTemplate="staticproductcards/static-recommend-productplan.html"
+	        data-sly-call="${recommendPlanTemplate.recommendProductTile @ carousel=carousel,properties=properties}">      
+	   </sly>
+	   <sly data-sly-test="${properties.tileBoxLayout == 'products-with-logo-cards'}"
+	        data-sly-use.productLogoTemplate="staticproductcards/static-productwith-logocards.html"
+	        data-sly-call="${productLogoTemplate.productWithLogo @ carousel=carousel,properties=properties}">      
+	   </sly>
+	   <sly data-sly-test="${properties.tileBoxLayout == 'elifeaddonstile'}"
+	        data-sly-use.elifeAddonsTileTemplate="staticelifeaddonstile.html"
+	        data-sly-call="${elifeAddonsTileTemplate.elifeAddons @ carousel=carousel,properties=properties}">      
+	   </sly>
+    </div>
+  </div>
+  <div class="promo-offers-popup-wrapper"></div>
+</template>

@@ -1,0 +1,47 @@
+<template data-sly-template.needHelpSection40="${ @ container,properties}">
+<sly data-sly-use.iconCardListData="com.etisalat.core.models.IconCardList"></sly>
+
+
+<div class="need-help-4-0">
+    <div class="container">
+        <div class="row">
+			<div data-sly-test="${properties.needHelpDescription}" class="col-xs-12 col-sm-6 col-md-4">
+                <div class="paragraph-styling ul-list-cms">
+                    ${properties.needHelpDescription @ context="html"}
+                </div>
+
+                <div class="hidden-xs hidden-ms">
+                    <div data-sly-test="${properties.ctaLabel}" class="third-action-wrapper ${properties.CTAlinkDisplay == 'button' ? 'action-btn-default' : 'action-link'}">
+                        <a href="${properties.CTALink}" class="${properties.CTAlinkDisplay == 'button' ? 'btn btn-default ripple-effect' : 'link' }" target="${properties.CTAlinkBehavior == 'opennewwindow'?'_blank':'_self'}">${properties.ctaLabel}</a>
+                    </div>
+                </div>
+            </div>
+			<div class="${properties.needHelpDescription ? 'col-xs-12 col-sm-6 col-md-8' : 'col-xs-12 col-sm-6 col-md-12'}">
+				<div class="help-otions">
+					<sly data-sly-list.cardItems="${iconCardListData.iconCardListItems}">
+						<div class="opton">
+            				<a href="${cardItems.cardLink}" target="${cardItems.linkBehavior == 'opennewwindow'?'_blank':'_self'}" data-sly-unwrap="${!cardItems.cardLink}">
+                 				<div class="icon">
+                       				<img alt="${cardItems.cardTitle}" data-sly-test="${cardItems.cardIcon}" loading="lazy" 
+                       				     data-sly-set.imageSrcPath="${cardItems.cardIcon}" 
+	                                     data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+                       				     class="icon-img ${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${cardItems.cardIcon}">
+								</div>
+								<div class="wst-main-headings">
+                       				<div class="h7">${cardItems.cardTitle}</div>
+                  				</div>
+            				</a>
+    					</div>
+					</sly>
+				</div>
+
+                <div class="hidden-md hidden-lg hidden-sm">
+                    <div data-sly-test="${properties.ctaLabel}" class="third-action-wrapper ${properties.CTAlinkDisplay == 'button' ? 'action-btn-default' : 'action-link'} mt-64">
+                        <a href="${properties.CTALink}" class="${properties.CTAlinkDisplay == 'button' ? 'btn btn-default ripple-effect' : 'link' }" target="${properties.CTAlinkBehavior == 'opennewwindow'?'_blank':'_self'}">${properties.ctaLabel}</a>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+</template>

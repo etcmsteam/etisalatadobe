@@ -1,0 +1,129 @@
+<template data-sly-template.xfMobileTemplate="${ @ properties,navItems}">
+        <a class="nav-link ${navItems.containerSubMenuList.size > 0 ? 'nav-expand-link' :''}" href="${navItems.navigationLinkTo}">
+		<img alt="${navItems.navigationLabel}" loading="lazy" 
+		     data-sly-set.mobileNavSrcPath="${navItems.navImagePath}" 
+	         data-sly-use.mobileNavModal="${'com.etisalat.core.models.CommonLinkModel' @link=mobileNavSrcPath}" 
+		     class="nav-link-icon ${mobileNavModal.assetSVGImage ? 'inline-svg__icon' : ''}" src="${navItems.navImagePath}"/> ${navItems.navigationLabel}
+		 <svg data-sly-test="${navItems.containerSubMenuList.size > 0}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+           class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+           enable-background="new 26 26 12 12" xml:space="preserve">
+           <g>
+               <path fill="#554D56"
+                   d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+               </path>
+           </g>
+          </svg></a>		 
+         <ul data-sly-test="${!navItems.containerSubMenuList.isEmpty && navItems.containerSubMenuList.size > 0}" class="nav-items nav-expand-content">
+		  <li class="nav-item">
+              <a class="nav-link nav-back-link" href="#">
+              ${properties.menuBack}</a>
+          </li>
+		  <li>
+		    <sly data-sly-list.subMenuItems="${navItems.containerSubMenuList}">
+		      <ul data-sly-test="${!subMenuItems.isFeatureItemExist}">
+		          <sly data-sly-test="${!subMenuItems.active}">
+                    <li  data-sly-test="${subMenuItems.navTitle}" class="nav-item-heading">
+                        ${subMenuItems.navTitle}
+                    </li>
+                  </sly>
+                    
+                    <li data-sly-test="${subMenuItems.active}" class="nav-item-heading mega-dropdown-mob open">
+                        <a href="#">${subMenuItems.navTitle}</a>                          
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+		                    class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+		                    enable-background="new 26 26 12 12" xml:space="preserve">
+		                    <g>
+		                        <path fill="#554D56"
+		                            d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+		                        </path>
+		                    </g>
+		                </svg>                    
+                     </li>
+                    <li data-sly-test="${!subMenuItems.active && !subMenuItems.fixedItems.isEmpty}" 
+							data-sly-repeat.subFixedItems="${subMenuItems.fixedItems}" 
+							class="${subFixedItems.navigationDesc ? 'nav-item-heading' : 'nav-item'}">
+                        <a class="${subFixedItems.navigationDesc ? 'nav-item-heading-link' : 'nav-link'}" href="${subFixedItems.navigationLink}">
+                         ${subFixedItems.navigationTitle}
+                         <svg data-sly-test="${navItems.containerSubMenuList.size > 0}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+				           class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+				           enable-background="new 26 26 12 12" xml:space="preserve">
+				           <g>
+				               <path fill="#554D56"
+				                   d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+				               </path>
+				           </g>
+				          </svg> 				          
+                        </a>
+                    </li>
+                    
+                    <li data-sly-test="${subMenuItems.active && !subMenuItems.fixedItems.isEmpty}" class="mega-dropdown-mob-menu" style="display: list-item;">
+                      <ul data-sly-list.subFixedItems="${subMenuItems.fixedItems}" role="menu">
+                            <li class="nav-item">
+                            <a class="nav-link" href="${subFixedItems.navigationLink}">
+                               ${subFixedItems.navigationTitle}
+                            </a>
+                            </li>
+                       </ul>
+                    </li>
+			   </ul>
+			   <ul data-sly-test="${subMenuItems.isFeatureItemExist && !subMenuItems.featureImageList.isEmpty}">
+				 <li data-sly-test="${subMenuItems.title}" class="nav-item-heading">${subMenuItems.title}</li>
+				 <li data-sly-list.brandItem="${subMenuItems.featureImageList}" class="nav-item menu-brand-wrapper">
+					  <a class="menu-brand-item" href="${brandItem.link}">
+					     <img alt="${brandItem.title}" src="${brandItem.fileReference}" loading="lazy" 
+					          data-sly-set.mobileBrandSrcPath="${brandItem.fileReference}" 
+	                          data-sly-use.mobileBrandModal="${'com.etisalat.core.models.CommonLinkModel' @link=mobileBrandSrcPath}" 
+	                          class="${mobileBrandModal.assetSVGImage ? 'inline-svg__icon' : ''}" ></a>
+				 </li>
+			   </ul>		    
+		    </sly>
+		   </li>
+           <ul>
+               <li class="mega-dropdown-mob-promotion">
+                  <div class="menu-promotion-wrapper">
+					 <div data-sly-list.promoObj="${navItems.containerPromotionList}" class="tiles-wrapper">
+					   <a data-sly-set.tileLinkURL="${promoObj.linkURL}" href="${promoObj.linkURL}" target="${promoObj.linkTarget}" data-sly-unwrap="${!tileLinkURL}">
+					      <div class="tile">
+							   <div class="cover">
+					               <img data-sly-test="${promoObj.resourceType == 'etisalat/components/teaser'}" src="${promoObj.fileReference}" 
+					                    data-sly-set.promoSrcPath="${promoObj.fileReference}" 
+	                                    data-sly-use.promoImageModal="${'com.etisalat.core.models.CommonLinkModel' @link=promoSrcPath}" 
+					                    loading="lazy" class="cover lazyloaded ${promoImageModal.assetSVGImage ? 'inline-svg__icon' : ''}"
+					                   alt="m-menu-new-freedom-en-377x325">
+					                <sly data-sly-test="${promoObj.resourceType == 'etisalat/components/teaseretisalat'}" 
+					                     data-sly-resource="${promoObj.teaserResource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>            
+					            </div>
+							   <div class="tile-content-wrapp">
+					              <div class="content">
+					                <h4 data-sly-test="${promoObj.title}" data-sly-element="${promoObj.titleType}">${promoObj.title}</h4>
+					                <a data-sly-test="${promoObj.link}" href="${promoObj.link}"
+					                   target="${promoObj.actionLinkTarget}" 
+					                   class="btn-text learn-more">
+					                  <span class="">${promoObj.text}</span>
+					                </a>
+					              </div>
+					            </div>
+					       </div>
+						</a>
+					 </div>
+				  </div>
+                </li>
+              </ul>		
+              <ul  data-sly-test="${!navItems.containerFooterMenuList.isEmpty && navItems.containerFooterMenuList.size > 0}" 
+				  data-sly-list.footerMenuItems="${navItems.containerFooterMenuList}" class="nav-expand-footer">
+			   <li data-sly-test="${!footerMenuItems.fixedItems.isEmpty}"  
+                   data-sly-repeat.items="${footerMenuItems.fixedItems}"   
+                    class="nav-item"><a class="nav-link" href="${items.navigationLink}">${items.navigationTitle}
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+			           class="nav-link-arrow" x="0px" y="0px" width="12px" height="12px" viewBox="26 26 12 12"
+			           enable-background="new 26 26 12 12" xml:space="preserve">
+			           <g>
+			               <path fill="#554D56"
+			                   d="M28.85,36.725c-0.3,0.301-0.3,0.766,0,1.051c0.286,0.3,0.75,0.3,1.05,0l5.25-5.25   c0.3-0.301,0.3-0.765,0-1.051l-5.25-5.25c-0.3-0.3-0.765-0.3-1.05,0c-0.3,0.286-0.3,0.75,0,1.05L33.575,32L28.85,36.725z">
+			               </path>
+			           </g>
+			          </svg> 	
+                   </a></li>
+			 </ul>			  
+		 </ul>
+</template>

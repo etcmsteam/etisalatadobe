@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Digital Hero Banner"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.dropdown.dialog.multi.values]">
+    <content
+        granite:class="cmp-tab-dialog-content__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[image,text,actions]">
+                    <heroimage
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/mnt/overlay/etisalat/components/eandenterprise/digitalherobanner/tabs/heroimage"/>
+                    <herotext
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">                                            
+					                        <heroAlignmentGroup
+                                                granite:class="herovariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                  <heroalignment
+							                          jcr:primaryType="nt:unstructured"
+							                          sling:resourceType="granite/ui/components/coral/foundation/form/select"
+							                          fieldDescription="Select Hero Banner Text Alignment"
+							                          fieldLabel="Hero Banner Text Alignment"
+							                          name="./heroAlignment">
+							                          <items jcr:primaryType="nt:unstructured">
+							                              <left
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="Left"
+							                                  value="c-left col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-0"/>
+							                              <right
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="Right"
+							                                  value="c-right col-xs-12 col-md-7 col-md-offset-5"/>
+							                              <center
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="Center"
+							                                  value="col-center col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-0"/>
+							                          </items>
+							                        </heroalignment>
+                                                  </items>
+                                                   <granite:data
+	                                                    jcr:primaryType="nt:unstructured"
+	                                                    showhidetargetvalue="hero-inner-banner"/>
+		                                      </heroAlignmentGroup>					                        
+                                            <herothemecolor
+                                                granite:class="carousellayout-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <bgcolors
+                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        defaultValue="light-color"
+                                                        fieldLabel="Herobanner Font Theme Color"
+                                                        name="./themeColor">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <lightcolor
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Light Color"
+                                                                value="light-color"/>
+                                                            <darkcolor
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Dark Color"
+                                                                value="dark-color"/>
+                                                        </items>
+                                                    </bgcolors>
+                                                </items>
+                                            </herothemecolor>
+                                            <herocontentcover                                                
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                  <contentbg
+							                          jcr:primaryType="nt:unstructured"
+							                          sling:resourceType="granite/ui/components/coral/foundation/form/select"
+							                          fieldDescription="Select Hero Banner Content Cover Background Color"
+							                          fieldLabel="Content Background Color"
+							                          name="./heroContentBGColor">
+							                          <items jcr:primaryType="nt:unstructured">
+							                              <nocolor
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="No Color"
+							                                  value=""/>
+							                              <maroon
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="Maroon"
+							                                  value="bg-maroon"/>
+							                              <maroonlight
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="Maroon Light"
+							                                  value="bg-maroon-light"/>
+							                              <beige
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="Beige"
+							                                  value="bg-beige"/>
+							                              <beigelight
+							                                  jcr:primaryType="nt:unstructured"
+							                                  text="Beige Light"
+							                                  value="bg-beige-light"/>
+							                          </items>
+							                        </contentbg>
+                                                  </items>                                                  
+		                                      </herocontentcover>	                                         
+                                            <titleGroup
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Title and Description"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <title
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="A title to display as the headline for the herobanner."
+                                                        fieldLabel="Title"
+                                                        name="./heroTitle"/>
+                                                    <subtitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="A subtitle to display as the headline for the herobanner."
+                                                        fieldLabel="Sub Title"
+                                                        name="./heroSubTitle"/>
+                                                    <paragraphStyleGroup
+		                                                granite:class="herovariation-showhide-target"
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+		                                                <items jcr:primaryType="nt:unstructured">
+		                                                  <descriptionParagraphStyle
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/paragraphstyle"
+	                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+	                                                        fieldDescription="Choose Paragraph style, By default &quot;Paragraph 2&quot; style will apply to description text"
+	                                                        fieldLabel="Description Paragraph Style"
+	                                                        name="./descriptionStyle"/>
+		                                                </items>
+		                                                <granite:data
+		                                                    jcr:primaryType="nt:unstructured"
+		                                                    showhidetargetvalue="herobanner-carousel"/>
+		                                            </paragraphStyleGroup>                                                    
+                                                    <description
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="etisalat/components/commons/editor/dialog/rteconfig/text"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="A description to display as the subheadline for the herobanner."
+                                                        fieldLabel="Description"
+                                                        name="./jcr:description"
+                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                </items>
+                                            </titleGroup>
+                                           
+                                            <heroLinks
+                                                granite:class="herovariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                  <heroCTAGroup
+							                         jcr:primaryType="nt:unstructured"						                         
+							                         jcr:title="Call-To-Action"
+							                         sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+							                         <items jcr:primaryType="nt:unstructured">
+							                             <herobannerctatitle
+							                                 jcr:primaryType="nt:unstructured"
+							                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+							                                 fieldDescription="Enter Herobanner CTA Title"
+							                                 fieldLabel="Herobanner CTA Title"
+							                                 name="./bannerCTATitle"/>
+							                              <buttonlink
+			                                                 jcr:primaryType="nt:unstructured"
+			                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+			                                                 fieldDescription="Herobanner CTA Link"
+			                                                 fieldLabel="Herobanner CTA Link"
+			                                                 name="./ctaHeroLink"
+			                                                 rootPath="/content"/>	
+			                                              <linktarget
+		                                                     jcr:primaryType="nt:unstructured"
+		                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                                     checked="{Boolean}false"
+		                                                     fieldDescription="If checked, the  View All URL will open in new tab."
+		                                                     fieldLabel="Open in new tab"
+		                                                     name="./heroLinkTarget"
+		                                                     text="Click to open CTA Link in new tab"
+		                                                     uncheckedValue="false"
+		                                                     value="true"/>				                             			                             
+							                         </items>							                         
+							                     </heroCTAGroup>		
+                                                </items>
+                                                  <granite:data
+                                                      jcr:primaryType="nt:unstructured"
+                                                      showhidetargetvalue="hero-inner-banner"/>
+		                                    </heroLinks>                                            
+                                            <viewportlayouthidden
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./viewPortLayout"
+                                                value="6-viewport"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </herotext>                   
+                    <image414px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="414px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/tabs/retinaimage414px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                    <image768px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="768px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/tabs/retinaimage768px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                    <image1024px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="1024px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/tabs/retinaimage1024px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                    <image1366px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="1366px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/tabs/retinaimage1336px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                    <image1440px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="1440px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/tabs/retinaimage1440px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                    <image1920px
+                        granite:class="cq-dialog-editor-showhide-target-tab"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="1920px Image"
+                        sling:resourceSuperType="etisalat/components/imageetisalatviewport/tabs/retinaimage1920px"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true"/>
+                </items>
+            </tabs>
+        </items>
+        <granite:data
+            jcr:primaryType="nt:unstructured"
+            tab-dropdown-selector-name="heroDisplayBehavior"
+            tab-target-dropdown-value="image-viewports"/>
+    </content>
+</jcr:root>

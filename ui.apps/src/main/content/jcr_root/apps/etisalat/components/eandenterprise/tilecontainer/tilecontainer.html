@@ -1,0 +1,35 @@
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
+    <div class="cmp-tilecontainer"
+         data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+         data-placeholder-text="${wcmmode.edit && 'Drag Tile components here' @ i18n}"
+         id="${container.id}">
+
+        <sly data-sly-test.tileLayout="${properties.tileBoxLayout}"  data-sly-use.tileContainerTemplate="${tileLayout}.html">
+            <sly data-sly-test="${tileLayout == 'icontile'}"
+                 data-sly-call="${tileContainerTemplate.iconTile @ container=container,properties=properties}" />
+
+            <sly data-sly-test="${tileLayout == 'verticalcard'}"
+                 data-sly-call="${tileContainerTemplate.vcard @ container=container,properties=properties}" />
+
+            <sly data-sly-test="${tileLayout == 'testimonialquote'}"
+                 data-sly-call="${tileContainerTemplate.testimonialTile @ container=container,properties=properties}" />
+
+            <sly data-sly-test="${tileLayout == 'quotationmodule'}"
+                 data-sly-call="${tileContainerTemplate.quotationTile @ container=container,properties=properties}" />
+
+            <sly data-sly-test="${tileLayout == 'verticalcardicon'}"
+                 data-sly-call="${tileContainerTemplate.vcardicon @ container=container,properties=properties}" />
+
+            <sly data-sly-test="${tileLayout == 'introtextsixbysixcolumns'}"
+                 data-sly-call="${tileContainerTemplate.introTile @ container=container,properties=properties}" />
+
+            <sly data-sly-test="${tileLayout == 'iconcardcarousel'}"
+                 data-sly-call="${tileContainerTemplate.iconcardcarousel @ container=container,properties=properties}" />
+				 
+		    <sly data-sly-test="${tileLayout == 'partnerslogo'}" 
+                 data-sly-call="${tileContainerTemplate.partnerslogoTile @ container=container,properties=properties}" />
+        </sly>
+
+        <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
+    </div>
+</sly>

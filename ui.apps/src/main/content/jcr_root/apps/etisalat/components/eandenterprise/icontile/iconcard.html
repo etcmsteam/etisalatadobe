@@ -1,0 +1,21 @@
+<template data-sly-template.iconcardcarousel="${ @ properties,imageViewportModel}">
+   <div class="box-card">
+      <div class="box-body">
+         <div class="box-icon" data-sly-test="${properties.viewPortLayout == '1-viewport'}" >
+            <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+         </div>
+         <div class="ed-subheadings-2-0" data-sly-test="${properties.tiletitle}">
+            <h6 data-sly-element="${properties.titleType}">${properties.tiletitle}</h6>
+         </div>
+         <div class="ed-paragraph-2-0" data-sly-test="${properties.text}">
+            <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p3' : properties.descParagraphStyle}" class="${descriptionStyle}">
+               ${properties.text @ context='html'}
+            </div>
+         </div>
+         <div data-sly-test="${properties.ctalabel}" class="${properties.ctaStyle == 'learn-more-btn' ? 'ed-learnmore-wrapper' : 'ed-buttons-wrapper'}">
+		   <sly data-sly-test.customLink="${properties.ctalink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=customLink}"/>
+		   <a data-sly-test="${properties.ctalink}" href="${commonlinkmodel.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyle == 'default' ? 'learn-more-btn more-btn' : properties.ctaStyle}">${properties.ctalabel}</a>
+         </div>
+      </div>
+   </div>
+</template>

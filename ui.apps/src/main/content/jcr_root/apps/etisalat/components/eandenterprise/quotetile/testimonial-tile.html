@@ -1,0 +1,25 @@
+<template data-sly-template.testimonialTile="${ @ properties,imageViewportModel}">
+    <div class="tquote-box">
+        <div class="tquote-img" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+            <div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+				<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+            </div>
+            <sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+        </div>
+        <div class="tquote-content" data-sly-test="${properties.description || properties.businessverticaltitle || properties.designation}">
+            <div class="ed-paragraph-2-0" data-sly-test="${properties.description}">
+                <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p3' : properties.descParagraphStyle}" class="${descriptionStyle}">
+					 ${properties.description @ context='html'}
+                </div>
+            </div>
+            <div class="ed-subheadings-2-0" data-sly-test="${properties.businessverticaltitle}">
+                <h6 data-sly-element="${properties.businessverticalTitleType}">${properties.businessverticaltitle}</h6>
+            </div>
+            <div class="ed-paragraph-2-0" data-sly-test="${properties.designation}">
+                <div data-sly-set.designationStyle="${!properties.designationParagraphStyle || properties.designationParagraphStyle == '' ? 'p3' : properties.designationParagraphStyle}" class="${designationStyle}">
+                    <p>${properties.designation}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

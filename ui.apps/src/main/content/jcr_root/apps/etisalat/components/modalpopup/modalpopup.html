@@ -1,0 +1,13 @@
+<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-panelcontainer="${wcmmode.edit && 'Modal popup'}"
+     data-placeholder-text="${wcmmode.edit && 'Please update Modal popup' @ i18n}">
+  <sly
+      data-sly-call="${templates.placeholder @ isEmpty = !properties.fileReference && !properties.title && !properties.preTitle}"></sly>
+
+  <sly data-sly-test="${!properties.modalPopupLayout || properties.modalPopupLayout == 'default'}" data-sly-use.defaultPopupTemplate="default.html"
+			             data-sly-call="${defaultPopupTemplate.defaultPopup @ properties=properties}"/>
+	
+  <sly data-sly-test="${properties.modalPopupLayout == 'elifeContext'}" data-sly-use.caremalPopupTemplate="caremal.html"
+			             data-sly-call="${caremalPopupTemplate.elifePopup @ properties=properties}"/>		             
+
+</div>

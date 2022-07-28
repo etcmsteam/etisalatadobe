@@ -1,0 +1,279 @@
+/* stylelint-disable*/
+/*Custom class for img gallery */
+.img-galley-lightbox {
+  .elem,
+  .elem *,
+  .elem-no-popup,
+  .elem-no-popup * {
+    box-sizing: border-box;
+    margin: 0 !important;
+  }
+
+  .elem,
+  .elem-no-popup {
+    display: inline-block;
+    font-size: 0;
+    width: 101%;
+    border: 0 solid transparent;
+    border-bottom: none;
+    background: $white;
+    padding: 0;
+    height: 100%;
+    background-clip: padding-box;
+  }
+
+  .elem > span,
+  .elem-no-popup > span {
+    display: block;
+    cursor: pointer;
+    height: 100%;
+    padding-bottom: 0;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .elem-no-popup > span {
+    cursor: default;
+  }
+
+  .lcl_fade_oc.lcl_is_closing #lcl_overlay,
+  .lcl_fade_oc.lcl_is_closing #lcl_window,
+  .lcl_fade_oc.lcl_pre_show #lcl_overlay,
+  .lcl_fade_oc.lcl_pre_show #lcl_window {
+    opacity: 0 !important;
+  }
+
+  .lcl_fade_oc.lcl_is_closing #lcl_overlay {
+    -webkit-transition-delay: 0.15s !important;
+    transition-delay: 0.15s !important;
+  }
+
+  &.img-fragment .elem > span {
+    min-width: 300px;
+    min-height: 200px;
+  }
+}
+
+/*Custom styling for img gallery popup */
+.img-gallery-lightbox-popup {
+  #lcl_nav_cmd {
+    position: relative;
+    height: 100%;
+
+    .lcl_icon {
+      background: none;
+      box-shadow: 0 0 2px #141414;
+    }
+
+    .lcl_thumbs_toggle {
+      display: none;
+    }
+
+    .lcl_close {
+      background: url('../../clientlib-etisalat/resources/images/fr-icons/close_white.svg') left top no-repeat;
+      width: 24px;
+      height: 24px;
+      display: block;
+      content: '';
+      opacity: 1 !important;
+      border: none;
+      position: absolute;
+      right: 1%;
+      top: 15px;
+
+      @media (max-width: 767px) {
+        right: 3%;
+      }
+
+      &::before {
+        display: none;
+      }
+
+      &:after {
+        display: none;
+      }
+    }
+
+    .lcl_icon {
+      transform: scale(1);
+
+      &.lcl_play {
+        display: none;
+      }
+
+      &.lcl_prev {
+        width: 48px;
+        height: 48px;
+        opacity: 1 !important;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 2%;
+        top: 46%;
+        background-color: $white;
+        border-radius: 50%;
+        @media (max-width: 767px) {
+          display: none;
+        }
+
+        &::before {
+          background-image: url('../../clientlib-etisalat/resources/images/fr-icons/icon-arrow-green.svg');
+          background-position: left top;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          display: block;
+          content: '';
+          background-size: cover;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          transform: translateY(0) rotate(-180deg);
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+
+      &.lcl_next {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1 !important;
+        border: none;
+        position: absolute;
+        right: 2%;
+        top: 46%;
+        background-color: $white;
+        border-radius: 50%;
+        @media (max-width: 767px) {
+          display: none;
+        }
+
+        &::before {
+          background-image: url('../../clientlib-etisalat/resources/images/fr-icons/icon-arrow-green.svg');
+          background-position: left top;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          display: block;
+          content: '';
+          background-size: cover;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  #lcl_overlay {
+    opacity: 0.3;
+  }
+
+  #lcl_window {
+    box-shadow: none;
+  }
+
+  #lcl_thumbs_nav {
+    .lcl_tn_next {
+      display: none !important;
+    }
+
+    .lcl_tn_prev {
+      display: none !important;
+    }
+  }
+}
+
+#lcl_wrap:not(.lcl_on_mobile) .lcl_icon:not(.lcl_counter):not(.lcl_zoom_disabled):not(a):hover {
+  border-radius: 50% !important;
+}
+
+.image-galley-section {
+  .cmp-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    row-gap: 0.5rem;
+
+    @include respond-to-min($tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: toRem(24);
+    }
+
+    @include respond-to-min($desktop) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      row-gap: 1.5625rem;
+    }
+
+    .imagegallerytile {
+      .bg-lighter-filler {
+        background-color: $sand-white;
+      }
+
+      .bg-white-filler {
+        background-color: $white;
+      }
+
+      grid-row: span 1;
+      grid-column: span 1;
+
+      @include respond-to-min($desktop) {
+        &.vertical-stretch {
+          grid-row: span 2;
+        }
+
+        &.horizontal-stretch {
+          grid-column: span 2;
+        }
+      }
+
+      .promo-grid {
+        &.large-tile,
+        &.small-tile {
+          margin-bottom: 0;
+        }
+
+        &.medium-tile {
+          margin-bottom: 0;
+
+          .cover {
+            left: 0;
+            width: 100%;
+
+            @include rtlBlock {
+              right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+*[lang='ar'] {
+  *[dir='rtl'] {
+    .img-gallery-lightbox-popup {
+      #lcl_nav_cmd {
+        .lcl_close {
+          left: 2%;
+          right: auto;
+          margin-left: 0 !important;
+          @media (max-width: 767px) {
+            left: 3%;
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+}

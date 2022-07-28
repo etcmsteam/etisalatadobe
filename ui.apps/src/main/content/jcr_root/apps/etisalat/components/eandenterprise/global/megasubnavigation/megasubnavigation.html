@@ -1,0 +1,15 @@
+<sly data-sly-use.subMenuModel="com.etisalat.core.models.MegaFixedNavigationItem"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+	<ul data-sly-test="${!subMenuModel.fixedItems.isEmpty}" class="sub-menu">                                                        
+		<li data-sly-test="${subMenuModel.navTitle}" class="sub-menu-heading">${subMenuModel.navTitle}</li>
+		<li data-sly-repeat.itemList="${subMenuModel.fixedItems}">
+				<a data-sly-test="${itemList.navigationTitle && itemList.navigationLink}" href="${itemList.navigationLink}">${itemList.navigationTitle}</a>
+				<span data-sly-test="${itemList.navigationDesc}" class="tagline">${itemList.navigationDesc}</span>				
+		</li>		                                       
+	</ul>			
+</sly>
+
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !subMenuModel.fixedItems.isEmpty || !subMenuModel.navTitle}"></sly>
+
+

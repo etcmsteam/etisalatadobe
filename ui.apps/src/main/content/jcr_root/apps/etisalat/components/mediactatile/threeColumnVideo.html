@@ -1,0 +1,75 @@
+<template data-sly-template.threeColumnVideo="${ @ tileModel,properties,imageViewportModel}">
+<div data-component="media-cta" class="${properties.mediaAlignmentThreeColumnVideo}" data-sly-test="${properties.mediaAlignmentThreeColumnVideo}">
+    <a data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" 
+			  href=" ${tileModel.tileCTALinkSameWindow}"
+			  class="link-cover"
+			  target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}"></a>
+    <div class="container">
+        <div class="media-content">
+            <div class="video-container">
+				<sly data-sly-test="${properties.youTubeUrlThreeColumnVideo}">
+					<a href="${properties.youTubeUrlThreeColumnVideo @ context='uri'}" class="video-controls-media-cta youtube-video-link">
+						<sly data-sly-test="${properties.playIconReferenceThreeColumnVideo}">
+							<div class="icon">
+								<img src="${properties.playIconReferenceThreeColumnVideo}" loading="lazy" 
+								     data-sly-set.imageSrcPath="${properties.playIconReferenceThreeColumnVideo}" 
+							        data-sly-use.commonModal="${'com.etisalat.core.models.CommonLinkModel' @link=imageSrcPath}" 
+							        class="${commonModal.assetSVGImage ? 'inline-svg__icon' : ''}" alt="" />
+							</div>
+						</sly>
+					</a>
+					<div class="youtube-popup-container  modal fade mediaCtaVideo" id="mediaCtaVideo_1" role="dialog" style="display: none;">
+					  <div class="modal-dialog">
+						 <div class="modal-content">
+							<iframe width="560" height="315" src="${properties.youTubeUrlThreeColumnVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+						 </div>
+					  </div>
+					</div>
+				</sly>
+                <sly data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">	
+					<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+						<sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+					</div>
+						<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>	        	              	        
+				</sly>
+            </div>
+            <div class="body-wrapper">
+                <div class="head">
+                    <div class="wst-main-headings">
+                         <h4 data-sly-test="${properties.tiletitle}">${properties.tiletitle}</h4>
+                    </div>
+                </div>
+                <div class="body">
+					<sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+						<a href="${tileModel.tileCTALinkSameWindow}" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}" class="clickable-area" >
+							<div class="paragraph-styling">
+								<div class="p2">
+									${properties.text  @ context='html'}
+								</div>
+							</div>
+			
+							<div class="third-action-wrapper action-link" data-sly-test="${properties.ctatext}">
+								<span class="link">${properties.ctatext}</span>
+							</div>
+						</a>
+					</sly>
+					<sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}">
+						<a href="javascript:void(0)" class="clickable-area" >
+								<div class="paragraph-styling">
+									<div class="p2">
+										${properties.text  @ context='html'}
+									</div>
+								</div>
+								<div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
+									<div data-sly-use.tileModalTemplate="/apps/etisalat/components/mediactatile/tileModelThreeColVideo.html" data-sly-call="${tileModalTemplate.modal @
+											tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}"></div>
+								</div>
+						</a>
+                    </sly>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</template>

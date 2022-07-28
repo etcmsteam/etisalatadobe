@@ -1,0 +1,16 @@
+<template data-sly-template.iconTile="${ @ container,properties}">
+   <sly data-sly-test.threeTile="${properties.tileBoxVariation == '3-tile-boxes' ? 'three-tile' : ''}"></sly>
+   <section class="icon-with-description-2-0  ${properties.contentAlignment == 'centre' ? 'c-center' : ''} ${properties.titleAlignment == 'centre' ? 'h-center' : ''}">
+      <div class="container">
+         <div class="ed-headings-2-0">
+            <h2 data-sly-test="${properties.tileBoxLayout == 'icontile' && properties.tileTitle}" data-sly-element="${properties.titleType}">
+               ${properties.tileTitle}</h2>
+         </div>
+         <div class="icons-wrapper ${threeTile == 'three-tile' ? 'icons-3columns' : 'icons-4columns'}">
+            <div class="content-wrapper"
+                 data-sly-repeat="${container.items}"
+                 data-sly-resource="${item.name}"></div>
+         </div>
+      </div>
+   </section>
+</template>

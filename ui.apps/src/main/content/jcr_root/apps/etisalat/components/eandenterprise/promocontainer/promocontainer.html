@@ -1,0 +1,19 @@
+<sly data-sly-use.container="com.adobe.cq.wcm.core.components.models.LayoutContainer">
+   <div class="cmp-gridpromocontainer"
+        data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+        data-placeholder-text="${wcmmode.edit && 'Drag Promo Grid components here' @ i18n}"
+        data-component="cmp-promogrid-4-0"
+        id="grid${container.id}">
+       <sly data-sly-test.gridTemplates="${properties.gridTemplates}" data-sly-use.gridContainerTemplate="${gridTemplates}.html">
+           <sly data-sly-test="${gridTemplates == 'mixedpromocard'}"
+            data-sly-call="${gridContainerTemplate.mixedpromocard @ container=container,properties=properties}" />
+            <sly data-sly-test="${gridTemplates == 'sizepromocard'}"
+            data-sly-call="${gridContainerTemplate.sizepromocard @ container=container,properties=properties}" />
+           <sly data-sly-test="${gridTemplates == 'promogridcta'}"
+                data-sly-call="${gridContainerTemplate.promogridcta @ container=container,properties=properties}">
+          </sly>
+       </sly>
+   </div>
+ </sly>
+
+<sly data-sly-test=${wcmmode.edit} data-sly-call="${templates.placeholder @ isEmpty = !properties.gridTemplates}"></sly>
