@@ -111,7 +111,7 @@ export const CONTEXT_NAVIGATION = () => {
     initContextSwiper();
   }
 
-  var $input = $('.context-tile .icon-and-heading');
+  var $input = $('.context-tile [data-progress-speed]');
   $input.each(function () {
     var maxTime = 1000;
     maxTime = maxTime * parseInt($(this).data()?.progressSpeed, 10);
