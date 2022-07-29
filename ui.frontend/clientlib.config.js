@@ -44,12 +44,12 @@ module.exports = {
         // directories
         js: {
           cwd: "clientlib-base",
-          files: ["**/*.js"],
+          files: ['clientlib-base/jquery-3.6.0.min.js', 'clientlib-base/jquery-load-event.js', '**/base.*.js', 'clientlib-base/bootstrap-tour.js', 'clientlib-base/bootstrap.min.js', 'clientlib-base/jquery-ui.min.js', 'clientlib-base/jquery.validate.js', 'clientlib-base/select2.min.js', 'clientlib-base/swiper.min.js'],
           flatten: false,
         },
         css: {
           cwd: "clientlib-base",
-          files: ["**/*.css"],
+          files: ['**/base.*.css', 'clientlib-base/jquery-ui.css', 'clientlib-base/select2.min.css'],
           flatten: false,
         },
       },
