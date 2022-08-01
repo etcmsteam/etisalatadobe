@@ -75,4 +75,10 @@ class TopnavModelTest {
     assertEquals("Business", topNavModel.getTopLeftNavList().get(1).getNavigationTitle());
   }
 
+	@Test
+	void testLanguageTitle() {
+	  context.currentResource(TOP_NAV);
+    TopnavModel topNavModel = context.request().adaptTo(TopnavModel.class);    
+    assertEquals("English", topNavModel.getCurrentPageLanguageTitle());
+	}
 }
