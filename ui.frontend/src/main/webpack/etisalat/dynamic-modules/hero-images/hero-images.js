@@ -39,13 +39,12 @@ export const HERO_IMAGES = () => {
         this.heroSlides = this.heroItem.find(".swiper-slide");
         this.autoplay = this.heroItem.data("autoplay") || 5500;
 
-        var that = this;
+        $(() => this.init());
 
-        $(document).ready(that.init());
-
-        $(window).on("resize", function () {
-          setTimeout(function () {
-            that.fullscreen();
+        $(window).on("resize", () => {
+          clearTimeout(this.fullscreenCallScheduleId);
+          this.fullscreenCallScheduleId = setTimeout(() => {
+            this.fullscreen();
           }, 500);
         });
       },
@@ -163,7 +162,7 @@ export const HERO_IMAGES = () => {
                   });
                 }
               }
-  
+
             });*/
         } else {
           that.heroSwiperInstance = new Swiper(this.heroItem, {
@@ -320,6 +319,7 @@ export const HERO_IMAGES = () => {
         });
       },
     };
+
     o.config($heroItem);
     return o;
   };
