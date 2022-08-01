@@ -24,6 +24,7 @@ class TopnavModelTest {
 
 	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
 	protected static final String TOP_NAV = TEST_PAGE_CONTAINER_ROOT + "/topnav";
+	protected static final String TOP_NAV1 = TEST_PAGE_CONTAINER_ROOT + "/topnav1";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -47,5 +48,31 @@ class TopnavModelTest {
 		assertEquals(expectedLangTitle, linkModel.getTitle());
 		assertEquals(expetedLangURL, linkModel.getLinkUrl());
 	}
+	
+	@Test
+  void testTopNavIconLinks() {
+    final int expectedSize = 4;
+    context.currentResource(TOP_NAV1);
+
+    TopnavModel topNavModel = context.request().adaptTo(TopnavModel.class);
+
+    int actual = topNavModel.getTopNavIconsList().size();
+    assertEquals(expectedSize, actual);
+    assertEquals("#", topNavModel.getTopNavIconsList().get(1).getNavigationLink());
+    assertEquals("Accessibility", topNavModel.getTopNavIconsList().get(1).getNavigationTitle());
+  }
+	
+	@Test
+  void testTopNavLeftLinks() {
+    final int expectedSize = 3;
+    context.currentResource(TOP_NAV1);
+
+    TopnavModel topNavModel = context.request().adaptTo(TopnavModel.class);
+
+    int actual = topNavModel.getTopLeftNavList().size();
+    assertEquals(expectedSize, actual);
+    assertEquals("/content/etisalat/ae/en/smb/index", topNavModel.getTopLeftNavList().get(1).getNavigationLink());
+    assertEquals("Business", topNavModel.getTopLeftNavList().get(1).getNavigationTitle());
+  }
 
 }
