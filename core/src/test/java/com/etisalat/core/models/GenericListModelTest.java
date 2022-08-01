@@ -48,6 +48,7 @@ class GenericListModelTest {
 	protected static final String GENERIC_LIST_3 = TEST_PAGE_CONTAINER_ROOT + "/empty";
 	protected static final String GENERIC_LIST_4 = TEST_PAGE_CONTAINER_ROOT + "/invalidpage";
 	protected static final String GENERIC_LIST_5 = TEST_PAGE_CONTAINER_ROOT +"/fixedgenericlist";
+	protected static final String GENERIC_LIST_6 = TEST_PAGE_CONTAINER_ROOT +"/fixedwithoutimage";
 
 	@BeforeEach
 	public void setup() throws Exception {
@@ -85,6 +86,21 @@ class GenericListModelTest {
 	    int actual = genericListModel.getGenericListObj().size();
 	    assertEquals(expectedSize, actual);
 	  }
+	 
+	 @Test
+	 void testFixedListWithOutImagePages() {
+	   final String expectedImage = "/content/dam/etisalat/sample.png";
+     context.currentResource(GENERIC_LIST_6);
+
+     GenericListModel genericListModel = context.request().adaptTo(GenericListModel.class);
+     GenericListPageDetails genericListPageDetails = genericListModel.getGenericListObj().get(1);
+     String actualImage = genericListPageDetails.getThumbnail();
+     String actualPageTitle = genericListPageDetails.getTitle();
+     String actualTitle = genericListModel.getGenericListObj().get(2).getTitle();
+     assertEquals(expectedImage, actualImage);
+     assertEquals("Page 1_1", actualPageTitle);
+     assertEquals("Page 2_1", actualTitle);
+	 }
 
 	@Test
 	void testEmptyGenericList() {
