@@ -215,15 +215,15 @@ export const CUSTOMER_TABLE = () => {
       if ($(this).attr("data-filter") != "all") {
         itemHTML +=
           '<li class="list-item" data-label="' +
-          $(this).attr("data-filter") +
+          $(this).attr('data-filter') +
           '">' +
-          "<span>" +
-          $(this).closest(".d-flex").find(".nv-checkboxes-text").text().trim() +
-          "</span>" +
+          '<span>' +
+          $(this).closest('.d-flex').find('.nv-checkboxes-text').text().trim() +
+          '</span>' +
           '<a href="#">' +
-          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><g fill="none" fill-rule="evenodd"><path d="M0 0H16V16H0z" transform="translate(-282 -6552) translate(0 2930) translate(0 3412) translate(0 44) translate(120 154) translate(20 8) translate(142 4)"/><g stroke="#719E19" stroke-linecap="round" stroke-linejoin="round"><path d="M.333 11L11 .333M11 11L.333.333" transform="translate(-282 -6552) translate(0 2930) translate(0 3412) translate(0 44) translate(120 154) translate(20 8) translate(142 4) translate(2.667 2.667)"/></g></g></svg>' +
-          "</a>" +
-          "</li>";
+          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><g fill="none" fill-rule="evenodd"><path d="M0 0H16V16H0z" transform="translate(-282 -6552) translate(0 2930) translate(0 3412) translate(0 44) translate(120 154) translate(20 8) translate(142 4)"/><g stroke="#e00800" stroke-linecap="round" stroke-linejoin="round"><path d="M.333 11L11 .333M11 11L.333.333" transform="translate(-282 -6552) translate(0 2930) translate(0 3412) translate(0 44) translate(120 154) translate(20 8) translate(142 4) translate(2.667 2.667)"/></g></g></svg>' +
+          '</a>' +
+          '</li>';
       }
     });
 
