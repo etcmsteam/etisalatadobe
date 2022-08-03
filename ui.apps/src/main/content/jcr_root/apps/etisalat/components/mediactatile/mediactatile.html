@@ -1,7 +1,9 @@
 <sly data-sly-use.tileModel="com.etisalat.core.models.TileModel"
      data-sly-use.imageViewportModel="com.etisalat.core.models.ImageViewportModel"          
-     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"> 
-	   <sly data-sly-test="${tileModel.tiletitle && (!properties.mediaCtaType || properties.mediaCtaType == 'default')}">
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+	   <sly data-sly-set.mediaCtaTwoColumnFourDotZero="${properties.mediaCtaType == 'two-column-4'}"/>
+       <sly data-sly-set.imageAligment="${properties.mediaAlignmentTwoColumnFourDotZero}"/>
+	   <div class="${mediaCtaTwoColumnFourDotZero ? 'media-cta-text-4-0 two-column' : ''} ${mediaCtaTwoColumnFourDotZero ? imageAligment : ''}" data-sly-test="${tileModel.tiletitle && (!properties.mediaCtaType || properties.mediaCtaType == 'default' || mediaCtaTwoColumnFourDotZero)}">
 		   <a data-component="media-cta" data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}" 
 			  href=" ${tileModel.tileCTALinkSameWindow}"
 			  class="link-cover"
@@ -67,7 +69,7 @@
 			</sly>
 			</div>
 			</div>
-		</sly>
+		</div>
 		<sly data-sly-test="${tileModel.tiletitle && properties.mediaCtaType == 'twoColumnVideo'}"
 			data-sly-use.twoColumnVideoTemplate="twoColumnVideo.html"
 			data-sly-call="${twoColumnVideoTemplate.twoColumnVideo @ tileModel=tileModel,properties=properties,imageViewportModel=imageViewportModel}">      

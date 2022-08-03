@@ -1,7 +1,9 @@
 package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +22,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 
 @ExtendWith(AemContextExtension.class)
-public class ImageViewportModelTest {
+class ImageViewportModelTest {
 
   private final AemContext context = new AemContext();
   
@@ -42,6 +44,12 @@ public class ImageViewportModelTest {
   protected static final String THREE_IMAGE_VIEWPORT_HAS_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/threeviewport-hasimage";
   protected static final String SIX_IMAGE_VIEWPORT_HAS_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/sixviewport-hasimage";
   
+  protected static final String IMAGE_VIEWPORT_WITHOUT_CONTENT = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithoutimages";
+  protected static final String IMAGE_VIEWPORT_WITHOUT_768_1X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithout768px1x";
+  protected static final String IMAGE_VIEWPORT_WITHOUT_768_2X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithout768px2x";
+  protected static final String IMAGE_VIEWPORT_WITHOUT_414_1X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithout414px1x";
+  protected static final String IMAGE_VIEWPORT_WITHOUT_414_2X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithout414px2x";
+  protected static final String IMAGE_VIEWPORT_WITHOUT_992_2X_IMAGE = TEST_PAGE_CONTAINER_ROOT + "/imageetisalatviewportwithout992px2x";
   
   @BeforeEach
   public void setup() throws Exception {
@@ -263,6 +271,182 @@ public class ImageViewportModelTest {
 	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
 	  String actualThreeViewPortAltText = item.getThreeViewPortAltText();
 	  assertEquals("", actualThreeViewPortAltText);
+  }
+  
+  @Test
+  void testThreeViewportContentWithout992px1xImage() {
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGEWITHOUT_992_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testGetThreeViewPortWitAllImages() {
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGE_VIEWPORT_DATA);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testThreeViewportContentWithoutImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_CONTENT);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertFalse(threeViewPortContent);
+  }
+  
+  @Test
+  void testThreeViewportContentWithout768Px1xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_768_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testThreeViewportContentWithout768Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_768_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testThreeViewportContentWithout414Px1xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_414_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testThreeViewportContentWithout414Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_414_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testThreeViewportContentWithout992Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_992_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getThreeViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testFourViewportContentWithout992px1xImage() {
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGEWITHOUT_992_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getFourViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testFourViewportContentWithoutImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_CONTENT);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getFourViewportContent();
+	  assertFalse(threeViewPortContent);
+  }
+  
+  @Test
+  void testFourViewportContentWithout768Px1xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_768_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getFourViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testFourViewportContentWithout768Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_768_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getFourViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testFourViewportContentWithout414Px1xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_414_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getFourViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testFourViewportContentWithout414Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_414_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getFourViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testFourViewportContentWithout992Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_992_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getFourViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testSixViewportContentWithout992px1xImage() {
+	  Resource resource = context.resourceResolver().getResource(THREE_IMAGEWITHOUT_992_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getSixViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testSixViewportContentWithoutImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_CONTENT);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getSixViewportContent();
+	  assertFalse(threeViewPortContent);
+  }
+  
+  @Test
+  void testSixViewportContentWithout768Px1xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_768_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getSixViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testSixViewportContentWithout768Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_768_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getSixViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testSixViewportContentWithout414Px1xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_414_1X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getSixViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testSixViewportContentWithout414Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_414_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getSixViewportContent();
+	  assertTrue(threeViewPortContent);
+  }
+  
+  @Test
+  void testSixViewportContentWithout992Px2xImages() {
+	  Resource resource = context.resourceResolver().getResource(IMAGE_VIEWPORT_WITHOUT_992_2X_IMAGE);
+	  ImageViewportModel item = resource.adaptTo(ImageViewportModel.class);
+	  boolean threeViewPortContent = item.getSixViewportContent();
+	  assertTrue(threeViewPortContent);
   }
   
 }

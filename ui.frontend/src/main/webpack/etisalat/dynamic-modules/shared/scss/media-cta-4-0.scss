@@ -96,6 +96,29 @@
       }
     }
   }
+
+  &.flipped {
+    .media-content {
+      .img-container {
+        @include respond-to-min($tablet) {
+          order: 2;
+          margin-right: 0;
+          margin-left: toRem(16);
+        }
+        @include respond-to-min($desktop) {
+          order: 2;
+          margin-left: toRem(24);
+        }
+      }
+      .body-wrapper {
+        @include respond-to-min($tablet) {
+          order: 1;
+          padding-left: toRem(16);
+          padding-right: 0;
+        }
+      }
+    }
+  }
 }
 
 // with main text combination
@@ -334,6 +357,25 @@
           @include respond-to-min($tablet) {
             padding-left: toRem(16);
             padding-right: 0;
+          }
+        }
+      }
+      &.flipped {
+        .media-content {
+          .img-container {
+            @include respond-to-min($tablet) {
+              margin-left: 0;
+              margin-right: toRem(16);
+            }
+            @include respond-to-min($desktop) {
+              margin: 0 toRem(24) 0 0;
+            }
+          }
+          .body-wrapper {
+            @include respond-to-min($tablet) {
+              padding-right: toRem(16);
+              padding-left: 0;
+            }
           }
         }
       }

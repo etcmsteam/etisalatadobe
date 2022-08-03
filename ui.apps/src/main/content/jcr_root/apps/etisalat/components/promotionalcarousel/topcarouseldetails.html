@@ -25,11 +25,17 @@
                         <h2>${properties.promotionTitle} </h2>
                      </div>
                      <div data-sly-test="${properties.promotionalDesc}" class="paragraph-styling ul-list-cms">${properties.promotionalDesc @ context='html'}</div>
-                     <a data-sly-test="${properties.promotionCTALink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.promotionCTALink}" class="btn-text learn-more learn--more__white" title="${properties.promotionCTATitle}" href="${commonlinkmodel.link}"
-                        target="${properties.promotionLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}">
-                        <span>${properties.promotionCTATitle}</span>
-                     </a>
-                  </div>
+                     <sly data-sly-test="${properties.promotionLinkBehavior != 'openmodalwindow'}">
+                        <a data-sly-test="${properties.promotionCTALink}" data-sly-use.commonlinkmodel="${'com.etisalat.core.models.CommonLinkModel' @link=properties.promotionCTALink}" class="btn-text learn-more learn--more__white" title="${properties.promotionCTATitle}" href="${commonlinkmodel.link}"
+                           target="${properties.promotionLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}">
+                           <span>${properties.promotionCTATitle}</span>
+                        </a>
+                     </sly>
+                      <sly data-sly-test="${properties.promotionLinkBehavior == 'openmodalwindow'}"
+                           data-sly-use.carouselModalTemplate="carouselmodal.html"
+                           data-sly-call="${carouselModalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode}">
+                      </sly>
+                      </div>
                </div>
             </div>
          </div>

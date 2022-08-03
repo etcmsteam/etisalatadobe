@@ -1,56 +1,63 @@
-import { swiperInit } from "../../../global/js/swiperInitialize";
 import "./index.scss";
+import { swiperInit } from "../../../global/js/swiperInitialize";
+
 /* eslint-disable*/
 export const DIGITAL_NOTIFICATION = () => {
-// get height of slide and assign it to container
-var getSwiperSlideHeight = function () {
-    var height = $('.digital-notifications-wrapper.multi-notifications').find('.swiper-slide');
+  // get height of slide and assign it to container
+  Array.from($(".digital-notifications-wrapper.multi-notifications")).forEach((item, index) => {
+    let $slider = $(item).find(".swiper-slide").attr("data-id", index);
+    let sliderIndex = $slider.data("id");
     var max = -1;
-    $(height).each(function () {
-        var h = $(this).height();
-        max = h > max ? h : max;
+
+    $slider.each(function () {
+      var h = $(this).height();
+      max = h > max ? h : max;
+      return max;
     });
-    return max;
-}
-$('.digital-notifications-wrapper.multi-notifications').find('.swiper-container').css('height', getSwiperSlideHeight() + 'px');
 
+    if (sliderIndex === index) {
+      $slider
+        .parent()
+        .parent()
+        .css("height", max + "px");
+    }
+  });
 
-// get height of bottom notification and add padding to body bottom
-var getBottomNotificationHeight = function () {
-    return $('.digital-notifications-wrapper.bottom').height();
-};
-if ($('.digital-notifications-wrapper').hasClass('bottom') && getBottomNotificationHeight() > 0) {
-    $('body').css('padding-bottom', (getBottomNotificationHeight() + 66) + 'px');
-}
+  // get height of bottom notification and add padding to body bottom
+  var getBottomNotificationHeight = function () {
+    return $(".digital-notifications-wrapper.bottom").height();
+  };
 
-// expand collapse and open popup
-$('.digital-notifications-wrapper .more-notifications').off().on('click', function (e) {
+  if ($(".digital-notifications-wrapper").hasClass("bottom") && getBottomNotificationHeight() > 0) {
+    $("body").css("padding-bottom", getBottomNotificationHeight() + 66 + "px");
+  }
 
-    if ($(this).closest('.digital-notifications-wrapper').hasClass('expand-collapse')) {
+  // expand collapse and open popup
+  $(".digital-notifications-wrapper .more-notifications")
+    .off()
+    .on("click", function (e) {
+      if ($(this).closest(".digital-notifications-wrapper .more-info").hasClass("expand-collapse")) {
         e.preventDefault();
         e.stopPropagation();
 
-        $(this).toggleClass('active');
-        $(this).closest('.digital-notifications-wrapper.expand-collapse').find('.notifications-body').slideToggle();
+        $(this).toggleClass("active");
+        $(this).closest(".digital-notifications-wrapper .more-info.expand-collapse").find(".notifications-body").slideToggle();
         if (getBottomNotificationHeight() > 0) {
-            $('body').css('padding-bottom', (getBottomNotificationHeight() + 66) + 'px');
+          $("body").css("padding-bottom", getBottomNotificationHeight() + 66 + "px");
         }
 
-        // $('.digital-notifications-wrapper.multi-notifications').find('.swiper-container').css('height', getSwiperSlideHeight()+'px');
-
-        if (document.documentElement.lang == 'ar') {
-            if ($(this).find('a').text().toLowerCase() == ' عرض المزيد ') {
-                $(this).find('a').text(" عرض أقل ");
-            } else {
-                $(this).find('a').text(" عرض المزيد ");
-            }
-
+        if (document.documentElement.lang == "ar") {
+          if ($(this).find("a").text().toLowerCase() == " عرض أقل ") {
+            $(this).find("a").text(" عرض المزيد ");
+          } else {
+            $(this).find("a").text(" عرض أقل ");
+          }
         } else {
-            if ($(this).find('a').text().toLowerCase() == 'view more') {
-                $(this).find('a').text("view less");
-            } else {
-                $(this).find('a').text("view more");
-            }
+          if ($(this).find("a").text().toLowerCase() == "view less") {
+            $(this).find("a").text("view more");
+          } else {
+            $(this).find("a").text("view less");
+          }
         }
     }
     // GA datalayer ends
@@ -63,21 +70,22 @@ $('.digital-notifications-wrapper .more-notifications').off().on('click', functi
         $('body').addClass('freeze');
         $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
     }
-});
+  });
 
-// expand bottom menu on bar click
-$('.mob-tab-bar').off().on('click', '.tab-line', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).closest('.digital-notifications-wrapper.expand-collapse').find('.notifications-body').toggleClass('expanded');
-});
+  $(".mob-tab-bar")
+    .off()
+    .on("click", ".tab-line", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(".digital-notifications-wrapper .more-info.expand-collapse").find(".notifications-body").toggleClass("expanded");
+    });
 
-var notificationsswiper = swiperInit('.digital-notification-swiper-container .swiper-container', {
+  var notificationsswiper = swiperInit(".digital-notifications-wrapper.multi-notifications .swiper-container", {
     autoHeight: true,
-    direction: 'vertical',
+    direction: "vertical",
     slidesPerView: 1,
     autoplay: 5000
-});
+  });
 
 // close popup
 $('.nv-noti-modal-close').on('click', function (e) {
@@ -89,94 +97,102 @@ $('.nv-noti-modal-close').on('click', function (e) {
     $('body').removeClass('freeze');
 });
 
-// close notifications - contextual ( bottom )
-$('.digital-notifications-wrapper.bottom .noti-icon-dismis').on('click', function (e) {
+  // close notifications - contextual ( bottom )
+  $(".digital-notifications-wrapper.bottom .noti-icon-dismis").on("click", function (e) {
     e.stopPropagation();
     e.preventDefault();
-    $(this).closest('.digital-notifications-wrapper').css('display', 'none');
-    $('body').css('padding-bottom', 0);
+    $(this).closest(".digital-notifications-wrapper").css("display", "none");
+    $("body").css("padding-bottom", 0);
     $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
-});
+  });
 
-// close notifications - global ( top )
-function reset() {
-    $('.nav-drill').css('margin-top', 56);
-    $('body').removeClass('show-digital-notification-top');
-    $('.top-nav-section').css("top", '');
-    $('.mega-menu-navbar-default').css("top", '');
-    $('.show-digital-notification-top').css("margin-top", '');
-};
-$('.digital-notifications-wrapper.top .noti-icon-dismis').off('click').on('click', 'a', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    $(this).closest('.digital-notifications-wrapper').css('display', 'none');
-    if (typeof (Storage) !== "undefined") {
+  // close notifications - global ( top )
+  function reset() {
+    $(".nav-drill").css("margin-top", 56);
+    $("body").removeClass("show-digital-notification-top");
+    $(".top-nav-section").css("top", "");
+    $(".mega-menu-navbar-default").css("top", "");
+    $(".show-digital-notification-top").css("margin-top", "");
+  }
+
+  $(".digital-notifications-wrapper.top .noti-icon-dismis")
+    .off("click")
+    .on("click", "a", function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $(this).closest(".digital-notifications-wrapper").css("display", "none");
+      if (typeof Storage !== "undefined") {
         sessionStorage.setItem("notifications", true);
-    };
-    // reset menu bar
-    reset();
-    $('body').css('margin-top', 139);
-    $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
-});
-if (sessionStorage.getItem("notifications")) {
-    $('.digital-notifications-wrapper.top').css('display', 'none');
-    reset();
-}
+      }
 
-function posNotifications(scrollPos, targetDiv, bodyMargin) {
+      // reset menu bar
+      reset();
+      $("body").css("margin-top", 139);
+      $(document).trigger('DIGITAL_NOTIFICATION_CLICKED');
+    });
+
+  if (sessionStorage.getItem("notifications")) {
+    $(".digital-notifications-wrapper.top").css("display", "none");
+    reset();
+  }
+
+  function posNotifications(scrollPos, targetDiv, bodyMargin) {
     if (targetDiv.outerHeight() > scrollPos) {
-        $('body').addClass('show-digital-notification-top');
-        $('.top-nav-section').css("top", targetDiv.outerHeight())
+      $("body").addClass("show-digital-notification-top");
+      $(".top-nav-section").css("top", targetDiv.outerHeight());
 
-        if (window.outerWidth < 991) {
-            $('.mega-menu-navbar-default').css("top", targetDiv.outerHeight());
-            $('.nav-drill').css('margin-top', bodyMargin - scrollPos);
-        } else {
-            $('.mega-menu-navbar-default').css("top", targetDiv.outerHeight() + 48);
-        }
+      if (window.outerWidth < 991) {
+        $(".mega-menu-navbar-default").css("top", targetDiv.outerHeight());
+        $(".nav-drill").css("margin-top", bodyMargin - scrollPos);
+      } else {
+        $(".mega-menu-navbar-default").css("top", targetDiv.outerHeight() + 48);
+      }
 
-        $('.show-digital-notification-top').css("margin-top", bodyMargin);
-        $(targetDiv).css({
-            "top": "",
-            "position": ""
-        });
+      $(".show-digital-notification-top").css("margin-top", bodyMargin);
+
+      $(targetDiv).css({
+        top: "",
+        position: "",
+      });
     } else {
-        $('.nav-drill').css('margin-top', 56);
-        $('body').removeClass('show-digital-notification-top');
-        $('.top-nav-section').css("top", '');
-        $('.mega-menu-navbar-default').css("top", '');
-        $('.show-digital-notification-top').css("margin-top", '');
-        $(targetDiv).css({
-            "top": 0 - bodyMargin,
-            "position": "absolute"
-        })
+      $(".nav-drill").css("margin-top", 56);
+      $("body").removeClass("show-digital-notification-top");
+      $(".top-nav-section").css("top", "");
+      $(".mega-menu-navbar-default").css("top", "");
+      $(".show-digital-notification-top").css("margin-top", "");
+      $(targetDiv).css({
+        top: 0 - bodyMargin,
+        position: "absolute",
+      });
     }
-}
+  }
 
-function setNotificaiton(condtion) {
+  function setNotificaiton(condtion) {
     var top = $(window).scrollTop(),
-        divNotification = $('.digital-notifications-wrapper.top');
+      divNotification = $(".digital-notifications-wrapper.top");
 
-    var bodyMargintop = parseInt($('.show-digital-notification-top').css("margin-top")) + divNotification.outerHeight();
+    var bodyMargintop = parseInt($(".show-digital-notification-top").css("margin-top")) + divNotification.outerHeight();
 
     if (condtion === true) {
-        $('body').removeClass('show-digital-notification-top');
-        $('body').css('margin-top', parseInt($('.show-digital-notification-top').css("margin-top")) - divNotification.outerHeight());
-        return false;
+      $("body").removeClass("show-digital-notification-top");
+      $("body").css("margin-top", parseInt($(".show-digital-notification-top").css("margin-top")) - divNotification.outerHeight());
+      return false;
     }
+
     posNotifications(0, divNotification, bodyMargintop);
 
-    $(window).on('scroll', function () {
-        if (sessionStorage.getItem('notifications') == "true") {
-            return false
-        }
-        top = $(window).scrollTop();
-        posNotifications(top, divNotification, bodyMargintop);
+    $(window).on("scroll", function () {
+      if (sessionStorage.getItem("notifications") == "true") {
+        return false;
+      }
+      top = $(window).scrollTop();
+      posNotifications(top, divNotification, bodyMargintop);
     });
-}
-$('body').addClass('digital-notification');
-$('body').addClass('show-digital-notification-top');
-if ($('body').hasClass('show-digital-notification-top') && sessionStorage.getItem('notifications') != "true") {
+  }
+
+  $("body").addClass("digital-notification show-digital-notification-top");
+
+  if ($("body").hasClass("show-digital-notification-top") && sessionStorage.getItem("notifications") != "true") {
     setNotificaiton(false);
 
 } else {

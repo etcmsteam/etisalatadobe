@@ -56,134 +56,205 @@
 					                                  value="slide-center"/>
 					                          </items>
 					                      </heroalignment>
-					                      <heroimageinnerpage
+					                      <heroImageInnerPageGroup
+                                                granite:class="herovariation-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                checked="{Boolean}false"
-                                                fieldDescription="If checked, this option to show herobanner image as an inner page view."
-                                                fieldLabel="Enable Heroimage inner page view"
-                                                name="./heroImageInnerPageView"
-                                                text="Enable Heroimage inner page view"
-                                                uncheckedValue="false"
-                                                value="true"/>
-					                      <taglinegroup
-					                          jcr:primaryType="nt:unstructured"
-					                          jcr:title="Tagline Details"
-					                          sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
-					                          <items jcr:primaryType="nt:unstructured">
-					                              <tagtitle
-					                                  jcr:primaryType="nt:unstructured"
-					                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-					                                  fieldDescription="Enter Tagline Text."
-					                                  fieldLabel="Tagline Text"
-					                                  name="./pretitle"/>
-					                              <tagcolor
-					                                  jcr:primaryType="nt:unstructured"
-					                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
-					                                  fieldDescription="Select Tagline Background color"
-					                                  fieldLabel="Tagline background color"
-					                                  name="./tagColor">
-					                                  <items jcr:primaryType="nt:unstructured">
-														  <selectvalue
-																  jcr:primaryType="nt:unstructured"
-																  text="Select tagcolor"
-																  value=""/>
-					                                      <orange
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Orange"
-					                                          value="bg-orange"/>
-					                                      <teal
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Teal"
-					                                          value="bg-teal"/>
-					                                      <green
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Green"
-					                                          value="bg-green"/>
-					                                      <violet
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Violet"
-					                                          value="bg-violet"/>
-					                                      <golden
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Golden"
-					                                          value="bg-golden"/>
-					                                      <silver
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Silver"
-					                                          value="bg-silver"/>
-					                                  </items>
-					                              </tagcolor>
-					                              <tagalignment
-					                                  jcr:primaryType="nt:unstructured"
-					                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
-					                                  fieldDescription="Select Tagline alignment"
-					                                  fieldLabel="Tagline alignment"
-					                                  name="./tagAlignment">
-					                                  <items jcr:primaryType="nt:unstructured">
-					                                      <beforetitle
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Before Title"
-					                                          value="beforetitle"/>
-					                                      <aftertitle
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="After Title"
-					                                          value="aftertitle"/>
-					                                  </items>
-					                              </tagalignment>
-					                              <file
-					                                  jcr:primaryType="nt:unstructured"
-					                                  sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-					                                  allowUpload="{Boolean}false"
-					                                  autoStart="{Boolean}false"
-					                                  class="cq-droptarget"
-					                                  fieldLabel="Tagline Image Asset"
-					                                  fileNameParameter="./tagline/fileName"
-					                                  fileReferenceParameter="./tagline/fileReference"
-					                                  mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
-					                                  multiple="{Boolean}false"
-					                                  name="./tagline/file"
-					                                  title="Upload Speed Image Asset"
-					                                  uploadUrl="${suffix.path}"
-					                                  useHTML5="{Boolean}true"/>
-					                          </items>
-					                      </taglinegroup>
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                  <heroimageinnerpage
+	                                                jcr:primaryType="nt:unstructured"
+	                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+	                                                checked="{Boolean}false"
+	                                                fieldDescription="If checked, this option to show herobanner image as an inner page view."
+	                                                fieldLabel="Enable Heroimage inner page view"
+	                                                name="./heroImageInnerPageView"
+	                                                text="Enable Heroimage inner page view"
+	                                                uncheckedValue="false"
+	                                                value="true"/>
+                                                </items>
+                                                  <granite:data
+						                             jcr:primaryType="nt:unstructured"
+						                             showhidetargetvalue="herobanner-wst"/>
+		                                  </heroImageInnerPageGroup>
+                                          <taglinegroup
+                                                granite:class="herovariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                   <tagline
+							                          jcr:primaryType="nt:unstructured"
+							                          jcr:title="Tagline Details"
+							                          sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+							                          <items jcr:primaryType="nt:unstructured">
+							                              <tagtitle
+							                                  jcr:primaryType="nt:unstructured"
+							                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+							                                  fieldDescription="Enter Tagline Text."
+							                                  fieldLabel="Tagline Text"
+							                                  name="./pretitle"/>
+							                              <tagcolor
+							                                  jcr:primaryType="nt:unstructured"
+							                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
+							                                  fieldDescription="Select Tagline Background color"
+							                                  fieldLabel="Tagline background color"
+							                                  name="./tagColor">
+							                                  <items jcr:primaryType="nt:unstructured">
+																  <selectvalue
+																		  jcr:primaryType="nt:unstructured"
+																		  text="Select tagcolor"
+																		  value=""/>
+							                                      <orange
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Orange"
+							                                          value="bg-orange"/>
+							                                      <teal
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Teal"
+							                                          value="bg-teal"/>
+							                                      <green
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Green"
+							                                          value="bg-green"/>
+							                                      <violet
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Violet"
+							                                          value="bg-violet"/>
+							                                      <golden
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Golden"
+							                                          value="bg-golden"/>
+							                                      <silver
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Silver"
+							                                          value="bg-silver"/>
+							                                  </items>
+							                              </tagcolor>
+							                              <tagalignment
+							                                  jcr:primaryType="nt:unstructured"
+							                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
+							                                  fieldDescription="Select Tagline alignment"
+							                                  fieldLabel="Tagline alignment"
+							                                  name="./tagAlignment">
+							                                  <items jcr:primaryType="nt:unstructured">
+							                                      <beforetitle
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Before Title"
+							                                          value="beforetitle"/>
+							                                      <aftertitle
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="After Title"
+							                                          value="aftertitle"/>
+							                                  </items>
+							                              </tagalignment>
+							                              <file
+							                                  jcr:primaryType="nt:unstructured"
+							                                  sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+							                                  allowUpload="{Boolean}false"
+							                                  autoStart="{Boolean}false"
+							                                  class="cq-droptarget"
+							                                  fieldLabel="Tagline Image Asset"
+							                                  fileNameParameter="./tagline/fileName"
+							                                  fileReferenceParameter="./tagline/fileReference"
+							                                  mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+							                                  multiple="{Boolean}false"
+							                                  name="./tagline/file"
+							                                  title="Upload Speed Image Asset"
+							                                  uploadUrl="${suffix.path}"
+							                                  useHTML5="{Boolean}true"/>
+							                          </items>
+							                      </tagline>
+                                                </items>
+                                                <granite:data
+						                             jcr:primaryType="nt:unstructured"
+						                             showhidetargetvalue="herobanner-wst"/>
+	                                       </taglinegroup>
 					                      <titleGroup
 					                          jcr:primaryType="nt:unstructured"
 					                          jcr:title="Title and Description"
 					                          sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
 					                          <items jcr:primaryType="nt:unstructured">
+					                              <heropretitle
+	                                                 granite:class="herovariation-showhide-target"
+	                                                 jcr:primaryType="nt:unstructured"
+	                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
+	                                                 <items jcr:primaryType="nt:unstructured">
+	                                                   <bannerPreTitle
+						                                  jcr:primaryType="nt:unstructured"
+						                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+						                                  fieldDescription="A pre title to display as the headline for the herobanner."
+						                                  fieldLabel="Pre Title"
+						                                  name="./heroPreTitle"/>
+						                               <pretitleColor
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldDescription="Select Pre Title Color"
+                                                            fieldLabel="Pre Title Color"
+                                                            name="./preTitleColor">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <white
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="White"
+                                                                    value="text--white"/>
+													            <black
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Black"
+                                                                    value="text--text_black"/>
+                                                                <gray
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Gray 1"
+                                                                    value="text--grey1"/>
+                                                                <gray7
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Gray 8"
+                                                                    value="text--grey8"/>
+                                                            </items>
+                                                        </pretitleColor>
+	                                                </items>
+	                                                <granite:data
+							                             jcr:primaryType="nt:unstructured"
+							                             showhidetargetvalue="hero-images"/>
+                                                  </heropretitle>
 					                              <title
 					                                  jcr:primaryType="nt:unstructured"
 					                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
 					                                  fieldDescription="A title to display as the headline for the herobanner."
 					                                  fieldLabel="Title"
 					                                  name="./heroTitle"/>
-					                              <titlefonttype
-					                                  jcr:primaryType="nt:unstructured"
-					                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
-													  fieldDescription="Select Title Font Style"
-					                                  fieldLabel="Title Font Style"
-					                                  name="./titleFontStyle">
-					                                  <items jcr:primaryType="nt:unstructured">
-														  <regular
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Regular"
-					                                          value="regular"/>
-					                                      <long
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Long"
-					                                          value="long"/>
-					                                      <short
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Short"
-					                                          value="short"/>
-					                                      <shortTruncate
-					                                          jcr:primaryType="nt:unstructured"
-					                                          text="Short without truncate"
-					                                          value="short-without-trunc"/>                                                           
-					                                  </items>
-					                              </titlefonttype>
+				                                 <heroTitleFontGroup
+	                                                 granite:class="herovariation-showhide-target"
+	                                                 jcr:primaryType="nt:unstructured"
+	                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
+	                                                 <items jcr:primaryType="nt:unstructured">
+	                                                    <titlefonttype
+							                                  jcr:primaryType="nt:unstructured"
+							                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
+															  fieldDescription="Select Title Font Style"
+							                                  fieldLabel="Title Font Style"
+							                                  name="./titleFontStyle">
+							                                  <items jcr:primaryType="nt:unstructured">
+																  <regular
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Regular"
+							                                          value="regular"/>
+							                                      <long
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Long"
+							                                          value="long"/>
+							                                      <short
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Short"
+							                                          value="short"/>
+							                                      <shortTruncate
+							                                          jcr:primaryType="nt:unstructured"
+							                                          text="Short without truncate"
+							                                          value="short-without-trunc"/>
+							                                  </items>
+							                              </titlefonttype>
+	                                                 </items>
+	                                                 <granite:data
+							                             jcr:primaryType="nt:unstructured"
+							                             showhidetargetvalue="herobanner-wst"/>
+                                                  </heroTitleFontGroup>
 					                              <titlefontcolor
 					                                  jcr:primaryType="nt:unstructured"
 					                                  sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -198,7 +269,7 @@
 					                                      <short
 					                                          jcr:primaryType="nt:unstructured"
 					                                          text="Black"
-					                                          value="bg-dark"/>                                                            
+					                                          value="bg-dark"/>
 					                                  </items>
 					                              </titlefontcolor>
 					                              <description
@@ -211,21 +282,127 @@
 					                                  useFixedInlineToolbar="{Boolean}true"/>
 					                          </items>
 					                      </titleGroup>
-																<gadetails
-																	jcr:primaryType="nt:unstructured"
-																	sling:resourceType="granite/ui/components/coral/foundation/include"
-																	path="etisalat/components/commons/googleanalyticsdetails/gadata"/>
-					                      <id
-					                          jcr:primaryType="nt:unstructured"
-					                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-					                          fieldDescription="HTML ID attribute to apply to the component."
-					                          fieldLabel="ID"
-					                          name="./id"/>  
+										  <gadetails
+											jcr:primaryType="nt:unstructured"
+											sling:resourceType="granite/ui/components/coral/foundation/include"
+											path="etisalat/components/commons/googleanalyticsdetails/gadata"/>
+					                      <priceTagGroup
+                                                granite:class="herovariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                   <pricetag
+		                                                jcr:primaryType="nt:unstructured"
+		                                                jcr:title="Price Tag"
+		                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+		                                                <items jcr:primaryType="nt:unstructured">
+		                                                    <fromtext
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                        fieldDescription="Text that will appear for product price."
+		                                                        fieldLabel="From Text"
+		                                                        maxlength="{Long}40"
+		                                                        name="./fromText"/>
+		                                                    <fromtextcolor
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Product From Text Color"
+                                                                fieldLabel="From Text Color"
+                                                                name="./productFromTextColor">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <white
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="White"
+                                                                        value="text--white"/>
+																	<black
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Black"
+                                                                        value="text--black"/>
+                                                                    <gray
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Gray"
+                                                                        value="text--gray1"/>
+                                                                </items>
+                                                            </fromtextcolor>
+		                                                    <productprice
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                        fieldDescription="Text that will appear for product price."
+		                                                        fieldLabel="Product Price"
+		                                                        maxlength="{Long}40"
+		                                                        name="./productPrice"/>
+		                                                     <productpricecolor
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select Price Color"
+                                                                fieldLabel="Price Color"
+                                                                name="./productPriceColor">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <white
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="White"
+                                                                        value="text--white"/>
+																	<black
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Black"
+                                                                        value="text--black"/>
+                                                                    <green
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Green"
+                                                                        value="text--green"/>
+                                                                    <gray
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Gray"
+                                                                        value="text--gray1"/>
+                                                                </items>
+                                                            </productpricecolor>
+		                                                    <productcurrency
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                        fieldDescription="Text that will appear for product currency."
+		                                                        fieldLabel="Product Currency"
+		                                                        maxlength="{Long}40"
+		                                                        name="./productCurrency"/>
+		                                                    <vatText
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                        fieldDescription="Text that will appear for VAT info."
+		                                                        fieldLabel="VAT Information"
+		                                                        maxlength="{Long}40"
+		                                                        name="./vatText"/>
+		                                                     <vattextcolor
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select VAT Text Color"
+                                                                fieldLabel="VAT Text Color"
+                                                                name="./productVATColor">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <white
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="White"
+                                                                        value="text--white"/>
+																	<black
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Black"
+                                                                        value="text--black"/>
+                                                                    <gray
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Gray"
+                                                                        value="text--gray1"/>
+                                                                </items>
+                                                            </vattextcolor>
+		                                                  </items>
+                                                  </pricetag>
+                                                </items>
+	                                            <granite:data
+						                           jcr:primaryType="nt:unstructured"
+						                            showhidetargetvalue="hero-images"/>
+	                                      </priceTagGroup>
                                           <viewportlayouthidden
                                               jcr:primaryType="nt:unstructured"
                                               sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                               name="./viewPortLayout"
-                                              value="6-viewport"/>                   											  
+                                              value="6-viewport"/>
                                         </items>
                                     </column>
                                 </items>
@@ -403,9 +580,9 @@
                                                      name="./heroImageLinktarget"
                                                      text="Open in new tab"
                                                      uncheckedValue="false"
-                                                     value="true"/>                                                                      
+                                                     value="true"/>
 					                         </items>
-					                     </heroImageCTA>    
+					                     </heroImageCTA>
 					                     <backToLink
 					                         jcr:primaryType="nt:unstructured"
 					                         jcr:title="Back-To-Link"
@@ -425,7 +602,43 @@
 					                                 name="./backToLinkURL"
 					                                 rootPath="/content"/>
 					                         </items>
-					                     </backToLink>        					                                                              
+					                     </backToLink>
+					                     <uploadDocGroup
+                                                granite:class="herovariation-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                  <document
+		                                                jcr:primaryType="nt:unstructured"
+		                                                jcr:title="Upload-Document-Link"
+		                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+		                                                <items jcr:primaryType="nt:unstructured">
+		                                                  <docModallabel
+							                                  jcr:primaryType="nt:unstructured"
+							                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+							                                  fieldDescription="Document Modal Title for mobile view"
+							                                  fieldLabel="Upload Document Modal Title"
+							                                  name="./uploadModalLbl"/>
+		                                                  <doclabel
+							                                 jcr:primaryType="nt:unstructured"
+							                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+							                                 fieldDescription="Enter Upload Document Label"
+							                                 fieldLabel="Upload Document Label"
+							                                 name="./uploadDocLinkLbl"/>
+							                               <doclink
+							                                 jcr:primaryType="nt:unstructured"
+							                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+							                                 fieldDescription="Enter Upload Document Link."
+							                                 fieldLabel="Upload Document Link"
+							                                 name="./uploadDocLinkURL"
+							                                 rootPath="/content"/>
+                                                        </items>
+                                                   </document>
+                                                </items>
+                                                 <granite:data
+						                            jcr:primaryType="nt:unstructured"
+						                            showhidetargetvalue="hero-images"/>
+                                         </uploadDocGroup>
                                         </items>
                                     </column>
                                 </items>

@@ -2,7 +2,8 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Table"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.dropdown.dialog.multi.values]">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -37,8 +38,12 @@
                                         value="simplecsv"/>
                                     <csv
                                         jcr:primaryType="nt:unstructured"
-                                        text="Using CSV [Channel Tables With Sorting/Filtering]"
+                                        text="Using CSV [Channel Tables With Sorting/Filtering] - With Column View"
                                         value="csv"/>
+                                    <csvgrid
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Using CSV [Channel Tables With Sorting/Filtering] - With Grid View"
+                                        value="csvgrid"/>
                                 </items>
                                 <granite:data
                                     jcr:primaryType="nt:unstructured"
@@ -174,7 +179,8 @@
                                 </items>
                                 <granite:data
                                     jcr:primaryType="nt:unstructured"
-                                    showhidetargetvalue="csv"/>
+                                    showhidetargetvalue="csv"
+                                    showhidetargetvalue1="csvgrid"/>
                             </csv>
                             <simplecsv
                                 granite:class="linkbehavior-showhide-target"

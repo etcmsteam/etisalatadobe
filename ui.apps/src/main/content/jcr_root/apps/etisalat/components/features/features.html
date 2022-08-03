@@ -6,7 +6,7 @@
 
 	<sly data-sly-test.watch="${properties.featuresBehavior == 'featureswatch' ?'watch-': ''}"></sly>
 
-	<div data-component="cmp-features" class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''}">
+	<div data-sly-test="${properties.featuresBehavior == 'featuresmobile' || properties.featuresBehavior == 'featureswatch'}" data-component="cmp-features" class="features-${watch}outer-wrapper ${properties.flipimage ? 'flipped' : ''}">
 		<div class="features-${watch}4-0">
 			<div class="container">
 				<div class="content-wrapper">
@@ -143,5 +143,7 @@
 			</div>
 		</div>
 	</div>
+	<sly data-sly-test="${properties.featuresBehavior == 'featuresfullbleed'}" data-sly-use.featuresFullBleedTemplate="featuresfullbleed.html"
+		 data-sly-call="${featuresFullBleedTemplate.featuresFullBleed @ properties=properties,imageViewportModel=imageViewportModel}"/>
 </sly>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !properties.featureTitle && !properties.featurePretitle}"></sly>

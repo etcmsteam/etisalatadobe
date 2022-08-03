@@ -7,7 +7,7 @@
    <sly data-sly-test.arrowAlign="${properties.arrowAlignBottom == 'true'? 'arrow-position-bottom' : ''}"></sly> 
    <sly data-sly-set.withSlider="${typeOfSwiper} ${typeOfSwiper != 'static-tile' ? 'with-slider' : ''} ${properties.contextNavLoadMore ? '' : 'view-all-tiles'} ${oneTile} ${twoTile} ${threeTile} ${threeTilePlus} ${arrowAlign}"></sly>
 
-   <div data-component="cmp-context-navigation" class="context-navigation-4-0 ${properties.tileBoxLayout == 'main-text-4' ? 'main-text-slider-4-0-0' : ''} ${properties.tileBoxLayout == 'main-text' ? 'main-text-slider' : ''} ${properties.mainContextTitle ? 'with-main-text' : withSlider}">
+   <div data-component="cmp-context-navigation" class="context-navigation-4-0 general-guide ${properties.tileBoxLayout == 'main-text-4' ? 'main-text-slider-4-0-0' : ''} ${properties.tileBoxLayout == 'main-text' ? 'main-text-slider' : ''} ${properties.mainContextTitle ? 'with-main-text' : withSlider}">
 	  <div class="container">
 		
 		<div data-sly-test="${(typeOfSwiper == 'with-hide-arrows' || typeOfSwiper == 'static-tile') && properties.textAboveSlider}" class="context-nav-content">
@@ -34,7 +34,7 @@
 	          <h4>${properties.mainContextTitle}</h4>
 	        </div>
 	        <div data-sly-test="${properties.mainContextDesc}" class="paragraph-styling ul-list-cms">
-	          <div class="p2"> ${properties.mainContextDesc @ context="html"} </div>
+	          <div data-sly-set.descriptionStyle="${!properties.mainContextDescParagraphStyle || properties.mainContextDescParagraphStyle == '' ? 'p2' : properties.mainContextDescParagraphStyle}" class="${descriptionStyle}">${properties.mainContextDesc @ context="html"}</div>
 	        </div>
 	      </div>
 	      <div class="all-tiles col-xs-12 col-sm-9 col-md-9">

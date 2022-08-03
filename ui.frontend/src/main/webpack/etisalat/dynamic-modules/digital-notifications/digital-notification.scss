@@ -33,6 +33,14 @@
       transform: translateY(-50%) rotate(-45deg);
       transition: all 0.3s ease-in-out;
     }
+
+    &.btn-modal {
+      cursor: pointer;
+    }
+  }
+
+  .notifications-popup-wrapper {
+    display: none;
   }
 }
 
@@ -46,18 +54,15 @@
   justify-content: center;
   width: toRem(18);
 
-  @include respond-to-min($desktop) {
-    svg,
-    img {
-      height: toRem(18);
-      width: toRem(18);
-    }
-  }
-
   svg,
   img {
     height: 15px;
     width: 15px;
+
+    @include respond-to-min($desktop) {
+      height: toRem(18);
+      width: toRem(18);
+    }
   }
 }
 
@@ -129,6 +134,10 @@
       }
     }
 
+    li a {
+      font-size: $font12;
+    }
+
     p + p {
       margin-top: 8px;
     }
@@ -186,6 +195,11 @@
       width: 100%;
     }
   }
+
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 // notifications as a module
@@ -197,13 +211,26 @@
   }
 
   .container {
-    width: 100%;
+    padding-left: toRem(12);
+    padding-right: toRem(12);
+    max-width: toRem(1224);
+
+    @include respond-to-max($desktop-wide) {
+      max-width: toRem(976);
+    }
+
+    @include respond-to-max($desktop-min) {
+      max-width: toRem(756);
+    }
+
+    @include respond-to-max($custom-width-tab) {
+      padding: 0;
+      max-width: 100%;
+    }
   }
 
   &.bg-black {
     background-color: $black;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   &.bg-yellow {
@@ -267,6 +294,18 @@
     @include respond-to-min($tablet) {
       right: 12px;
     }
+
+    @include respond-to-min($desktop) {
+      right: -16px;
+    }
+
+    @media (min-width: 1248px) {
+      right: -12px;
+    }
+
+    @media (min-width: 1348px) {
+      right: -40px;
+    }
   }
 
   .notifications-head {
@@ -288,25 +327,6 @@
   }
 
   .notifications-body {
-    @include respond-to-min($desktop) {
-      margin-top: -1px;
-    }
-
-    .description {
-      margin-top: 8px;
-    }
-
-    ul {
-      margin-top: 8px;
-    }
-
-    a.btn {
-      margin-bottom: 0;
-      margin-top: 16px;
-      min-width: 180px;
-      width: auto;
-    }
-
     .more-notifications {
       display: block;
       margin-top: 16px;
@@ -325,22 +345,17 @@
   }
 
   .swiper-slide {
-    display: block;
-    width: 100%;
-  }
-
-  .swiper-slide {
     background-color: transparent;
+    display: block;
     text-align: left;
+    width: 100%;
   }
 }
 
 // mid page banner
 .digital-notifications-wrapper {
   &.mid-page {
-    margin-top: 1rem;
-
-    // border-radius: 4px;
+    border-radius: 4px;
     padding-left: 16px;
     padding-right: 16px;
 
@@ -352,15 +367,16 @@
     .noti-icon-dismis {
       display: none;
     }
+
+    .container {
+      padding: 0;
+      max-width: 100%;
+    }
   }
 }
 
 // notifications with bottom position ( contextual notifications )
 .digital-notifications-wrapper {
-  .mob-tab-bar {
-    display: none;
-  }
-
   &.bottom {
     bottom: 0;
     left: 0;
@@ -369,70 +385,77 @@
     z-index: 9;
   }
 
-  &.expand-collapse {
-    .mob-tab-bar {
-      @media (max-width: 991px) {
-        align-items: center;
+  .mob-tab-bar {
+    display: none;
+
+    @media (max-width: 991px) {
+      align-items: center;
+      justify-content: center;
+
+      &.show-tab {
         display: flex;
-        justify-content: center;
+      }
 
-        .tab-line {
-          background-color: $grey1;
-          border-radius: 2px;
-          display: block;
-          height: 4px;
-          margin-bottom: 16px;
-          margin-top: -12px;
-          width: 24px;
+      .tab-line {
+        background-color: $grey1;
+        border-radius: 2px;
+        display: block;
+        height: 4px;
+        margin-bottom: 16px;
+        margin-top: -12px;
+        width: 24px;
 
-          &:hover {
-            cursor: pointer;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .more-info {
+    &.expand-collapse {
+      .notifications-body {
+        @media (max-width: 991px) {
+          display: block !important;
+          height: 30px;
+          opacity: 0.5;
+          overflow: hidden;
+
+          &.expanded {
+            height: auto;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+
+        @include respond-to-min($desktop) {
+          display: none;
+          &.active {
+            display: block;
           }
         }
       }
-    }
 
-    .notifications-body {
-      @media (max-width: 991px) {
-        display: block !important;
-        height: auto;
-        opacity: 0.5;
-        overflow: hidden;
-
-        &.expanded {
-          height: auto;
-          opacity: 1;
-          transition: all 0.3s ease-in-out;
+      .more-notifications {
+        @media (max-width: 991px) {
+          display: none;
         }
-      }
 
-      @include respond-to-min($desktop) {
-        //display: none;
-        &.active {
-          display: block;
-        }
-      }
-    }
-
-    .more-notifications {
-      @media (max-width: 991px) {
-        display: none;
-      }
-
-      a {
-        padding-right: toRem(18);
-
-        &::after {
-          top: 45%;
-          transform: translateY(-50%) rotate(45deg);
-        }
-      }
-
-      &.active {
         a {
+          padding-right: toRem(18);
+
           &::after {
-            top: 54%;
-            transform: translateY(-50%) rotate(-135deg);
+            top: 35%;
+            transform: translateY(-50%) rotate(45deg);
+          }
+        }
+
+        &.active {
+          a {
+            &::after {
+              top: 50%;
+              transform: translateY(-50%) rotate(-135deg);
+            }
           }
         }
       }
@@ -597,6 +620,44 @@
   }
 }
 
+.digital-notification {
+  .nv-modal-dialog {
+    .nv-modal-content {
+      @include respond-to-max($desktop-min) {
+        padding-top: toRem(24) !important;
+      }
+
+      .container {
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        width: 100%;
+
+        @include respond-to-min($desktop-wide) {
+          max-width: toRem(1200);
+        }
+
+        @include respond-to-max($desktop-wide) {
+          max-width: toRem(952);
+        }
+
+        @include respond-to-max($desktop-min) {
+          max-width: toRem(732);
+        }
+
+        .nv-modal-close {
+          position: absolute;
+          right: 0;
+
+          svg {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
 // *************************************
 // arabic overides
 // *************************************
@@ -617,6 +678,20 @@
           right: auto;
         }
 
+        @include respond-to-min($desktop) {
+          left: -16px;
+          right: auto;
+        }
+
+        @media (min-width: 1248px) {
+          left: -12px;
+          right: auto;
+        }
+
+        @media (min-width: 1348px) {
+          left: -40px;
+          right: auto;
+        }
       }
     }
 
@@ -668,11 +743,6 @@
         transform: translateY(-50%) rotate(136deg);
       }
     }
-    .bg-black {
-      .more-notifications {
-        margin-left: 3rem;
-      }
-    }
 
     .notifications-body ol li,
     .notifications-body ul li {
@@ -710,12 +780,11 @@
 
 // configure notifications with menu
 .digital-notifications-wrapper.top {
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   z-index: 99;
-  left: 0;
 }
 
 .show-digital-notification-top {
@@ -727,12 +796,6 @@
 
 .bg-black {
   .more-notifications {
-    margin-right: 3rem;
-    @include rtlBlock() {
-      margin-left: 3rem;
-      margin-right: 0;
-    }
-
     a {
       color: $white;
     }
@@ -805,11 +868,26 @@
 .acc-black,
 .acc-blue {
   .digital-notifications-wrapper {
+    border: toRem(1) solid $white;
+
     &.bg-yellow {
       background-color: $black;
+
       .title {
         h3 {
           color: $white;
+        }
+      }
+
+      .notifications-head {
+        .more-notifications {
+          a {
+            color: $white;
+
+            &::after {
+              border-color: $white;
+            }
+          }
         }
       }
 
@@ -823,7 +901,7 @@
             color: $white;
           }
           li {
-            color: $yellow-light;
+            color: $white;
           }
         }
       }
@@ -866,10 +944,7 @@
 
 .acc-blue {
   .digital-notifications-wrapper {
-    &.bg-yellow {
-      background-color: $blue4;
-    }
-
+    &.bg-yellow,
     &.bg-black {
       background-color: $blue4;
     }
@@ -878,11 +953,26 @@
 
 .acc-yellow {
   .digital-notifications-wrapper {
+    border: toRem(1) solid $yellow-light;
+
     &.bg-yellow {
       background-color: $black;
+
       .title {
         h3 {
           color: $yellow-light;
+        }
+      }
+
+      .notifications-head {
+        .more-notifications {
+          a {
+            color: $yellow-light;
+
+            &::after {
+              border-color: $yellow-light;
+            }
+          }
         }
       }
 
@@ -905,6 +995,8 @@
 
   .more-notifications {
     a {
+      color: $yellow-light;
+
       &::after {
         border-color: $yellow-light;
       }

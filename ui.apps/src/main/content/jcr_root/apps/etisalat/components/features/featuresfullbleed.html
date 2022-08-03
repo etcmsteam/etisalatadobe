@@ -1,0 +1,92 @@
+<template data-sly-template.featuresFullBleed="${ @ properties,imageViewportModel}">
+    <sly data-sly-test="${properties.fullBleedBehavior != 'learnmoreview'}" data-sly-set.textAlignment="${properties.featuresFullBleedAlignment}"/>
+    <sly data-sly-set.textColor="${properties.featuresFullBleedTextColor}"/>
+    <sly data-sly-set.featuresView="${properties.fullBleedBehavior == 'featuresview' ? 'feature-style' : ''}"/>
+    <sly data-sly-set.learnMoreView="${properties.fullBleedBehavior == 'learnmoreview' ? 'learnmore-content' : ''}"/>
+    <div data-component="cmp-features" class="features-full-bleed-4-0 variation-price ${textAlignment} ${textColor} ${featuresView} ${learnMoreView}">
+        <div class="container">
+            <div class="feature-wrapper">
+			    <div class="bg-filter" style="background-color:#000; opacity:${properties.featuresImageOpacity ? properties.featuresImageOpacity : 0 @ context='styleToken'};"></div>
+                <div class="img-wrap" data-sly-test="${imageViewportModel.sixViewportContent || imageViewportModel.fourViewportContent || imageViewportModel.threeViewportContent || properties.fileReference}">
+					<div class="cover" data-sly-test="${properties.viewPortLayout != '1-viewport'}">
+                        <sly data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                    </div>
+					<sly data-sly-test="${properties.viewPortLayout == '1-viewport'}" data-sly-resource="${resource @ resourceType='etisalat/components/imageetisalatviewport'}"></sly>
+                </div>
+                <div class="content-wrapper">
+                    <div class="content">
+                        <div data-sly-test="${properties.featureFullBleedPretitle}" class="wst-secondary-headings">
+                            <h4>${properties.featureFullBleedPretitle}</h4>
+                        </div>
+                        <div data-sly-test="${properties.featureTitle}" class="wst-main-headings">
+                            <h3 data-sly-element="${properties.titleType}">${properties.featureTitle}</h3>
+                        </div>
+                        <div class="paragraph-styling">
+                            <div data-sly-set.descriptionStyle="${!properties.descParagraphStyle || properties.descParagraphStyle == '' ? 'p2' : properties.descParagraphStyle}" class="${descriptionStyle}">
+                                ${properties.featureFullBleedDescription @ context='html'}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-and-action">
+                        <div class="media-cta-4-price">
+                            <div data-sly-test="${properties.productPriceLabel}" class="from">${properties.productPriceLabel}</div>
+                            <div data-sly-test="${properties.productPrice}" class="price ${properties.priceColor}">
+                                <div class="value ${properties.productPriceFontStyle}">${properties.productPrice}</div>
+                                <div class="aed ${properties.priceColor}">${properties.productCurrency}</div>
+                            </div>
+                            <div data-sly-test="${properties.productOldPrice || properties.vatInclude}" class="vat-wrap">
+                                <div data-sly-test="${properties.productOldPrice}" class="old-price ${properties.oldPriceColor}">${properties.productOldPriceText} <span class="old-price-value">${properties.productOldPrice}</span></div>
+                                <div class="vat">${properties.vatInclude}</div>
+                            </div>
+                        </div>
+
+                        <div data-sly-test="${!properties.ctatextLearnMore && properties.fullBleedBehavior != 'learnmoreview'}" class="third-action-wrapper">
+							<sly data-sly-test="${properties.featuresLinkBehavior != 'openmodalwindow'}">
+                                <sly data-sly-test.ctaLink="${properties.ctaLink}" 
+                                   data-sly-use.ctaCallToActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=ctaLink}"/>
+                                <a href="${ctaCallToActionLink.link}" target="${properties.featuresLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.ctaText}" class="${properties.ctaStyle}">
+                                    ${properties.ctaText}
+                                </a>
+							</sly>
+							<sly data-sly-test="${properties.featuresLinkBehavior == 'openmodalwindow'}" 
+                                 data-sly-set.ctaTitle="${properties.ctaText}"
+								 data-sly-set.modalBehavior="${properties.modalBehavior}" 
+								 data-sly-set.ctaStyle="${properties.ctaStyle}"
+                                 data-sly-use.modalTemplate="modalpopup.html"
+                                 data-sly-call="${modalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode,ctaTitle=ctaTitle,modalBehavior=modalBehavior,ctaStyle=ctaStyle}">
+                            </sly>
+                        </div>
+                    </div>
+
+                    <div data-sly-test="${properties.ctatextLearnMore && properties.fullBleedBehavior == 'learnmoreview'}" class="price-and-action link-n-btn">
+                        <div class="media-cta-4-price">
+							<sly data-sly-test.learMoreLink="${properties.learnMoreCtaLink}" 
+                                   data-sly-use.learnMoreActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=learMoreLink}"/>
+                            <a href="${learnMoreActionLink.link}" target="${properties.featuresLearnMoreLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" class="${properties.ctaStyleLearnMore}">
+                                 ${properties.ctatextLearnMore}
+                             </a>
+                        </div>
+
+                        <div class="third-action-wrapper">
+							<sly data-sly-test="${properties.featuresLinkBehavior != 'openmodalwindow'}">
+                                <sly data-sly-test.ctaLink="${properties.ctaLink}" 
+                                   data-sly-use.ctaCallToActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=ctaLink}"/>
+                                <a href="${ctaCallToActionLink.link}" target="${properties.featuresLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.ctaText}" class="${properties.ctaStyle}">
+                                    ${properties.ctaText}
+                                </a>
+							</sly>
+							<sly data-sly-test="${properties.featuresLinkBehavior == 'openmodalwindow'}" 
+                                 data-sly-set.ctaTitle="${properties.ctaText}"
+								 data-sly-set.modalBehavior="${properties.modalBehavior}" 
+								 data-sly-set.ctaStyle="${properties.ctaStyle}"
+                                 data-sly-use.modalTemplate="modalpopup.html"
+                                 data-sly-call="${modalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode,ctaTitle=ctaTitle,modalBehavior=modalBehavior,ctaStyle=ctaStyle}">
+                            </sly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

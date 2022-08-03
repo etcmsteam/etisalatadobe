@@ -34,7 +34,7 @@
    <sly data-sly-test="${tileModel.nabBoxVariation == 'with-pretitle' || tileModel.nabBoxVariation == 'leftRightVariation'}">
 
       <div data-component="cmp-non-actionable-box" class="nab-wrapper">
-         <div class="nab-content ${resource.parent.promoLeftRight ? 'promo-content' : ''}">
+         <div class="${properties.displayNonActionBehavior == 'viewmore' || !properties.displayNonActionBehavior ? 'nab-content' : ''} ${resource.parent.promoLeftRight ? 'promo-content' : ''}">
 			<div data-sly-test="${properties.newFeatures}" class="wst-main-headings">
                <h5 data-sly-element="${properties.newFeatureType}" >${properties.newFeatures}</h5>
             </div>
@@ -50,9 +50,21 @@
                      ${properties.description @ context='html'}
                   </div>
                </div>
-			   <div data-sly-test="${tileModel.nabBoxVariation == 'with-pretitle' || tileModel.nabBoxVariation == 'leftRightVariation'}" class="action">
-                    <a href="#" class="link read-more">Read More</a>
-                    <a href="#" class="link read-less">Read Less</a>
+			   <div data-sly-test="${properties.displayNonActionBehavior == 'viewmore' || !properties.displayNonActionBehavior}" class="action">
+                    <a href="#" class="link read-more">${properties.viewMoreItems ? properties.viewMoreItems : 'Read More'}</a>
+                    <a href="#" class="link read-less">${properties.viewLesstems ? properties.viewLesstems : 'Read Less'}</a>
+               </div>
+			   <div class="third-action-wrapper action-link" data-sly-test="${properties.displayNonActionBehavior == 'cta'}">
+				  <sly data-sly-test="${properties.linkBehavior != 'openmodalwindow'}">
+				    <sly data-sly-test.nonActionCTALink="${properties.ctaLink}" data-sly-use.nonActionLink="${'com.etisalat.core.models.CommonLinkModel' @link=nonActionCTALink}"/>
+                    <a href="${nonActionLink.link}" target="${properties.linkBehavior == 'opennewwindow' ? '_blank' : '_self'}" data-sly-test="${properties.ctaText}" class="${properties.ctaStyle}">
+                        ${properties.ctaText}
+                    </a>
+                  </sly>
+                  <sly data-sly-test="${properties.linkBehavior == 'openmodalwindow'}"
+                       data-sly-use.modalTemplate="modalpopup.html"
+                       data-sly-call="${modalTemplate.modal @ properties=properties,resource=resource,wcmmode=wcmmode}">
+                  </sly>
                </div>
             </div>
          </div>

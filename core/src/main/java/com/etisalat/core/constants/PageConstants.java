@@ -69,6 +69,11 @@ public final class PageConstants {
   * Constant for SWIPER_CONTAINER Resource Type
   */
  public static final String ARTICLE_RESOURCETYPE = "etisalat/components/articlepage";
+ 
+ /**
+  * Constant for SWIPER_CONTAINER Resource Type
+  */
+ public static final String CAROUSEL_RESOURCETYPE = "etisalat/components/carousel";
 
   /**
    * Constant for DEFAULT status code

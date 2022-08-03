@@ -3,9 +3,9 @@
      data-sly-use.controlsTemplate="controls.html"
      data-panelcontainer="${wcmmode.edit && 'carousel'}"
      id="${carousel.id}"
-     class="cmp-carousel ${properties.carouselswiper && properties.carouselswiper == 'true' ? 'swiper-enabled' : '' }"     
-     data-sly-set.defaultLayout="${!properties.carouselLayout || properties.carouselLayout == 'default'}"     
-     data-sly-test="${defaultLayout || (properties.carouselLayout == 'etisalat-hero-banner' &&  wcmmode.edit)}"     
+     class="cmp-carousel ${properties.carouselswiper && properties.carouselswiper == 'true' ? 'swiper-enabled' : '' }"
+     data-sly-set.defaultLayout="${!properties.carouselLayout || properties.carouselLayout == 'default'}"
+     data-sly-test="${defaultLayout || (properties.carouselLayout == 'etisalat-hero-banner' &&  wcmmode.edit)}"
      role="group"
      aria-label="${carousel.accessibilityLabel}"
      aria-live="polite"
@@ -60,7 +60,27 @@
     class="${!wcmmode.edit ? 'dynamic-module-placeholder' : 'd-none'} ${!wcmmode.edit ? bannerPlaceholderVariation : ''} ${bannerVariation} ${properties.heroImagesVariation} ${bannerVariation == 'herobanner-wst' ? '' : 'hero-images-variation'}"></div>
 
 
-<sly data-sly-test="${properties.carouselLayout == 'etisalat-hero-banner' && (wcmmode.preview || wcmmode.disabled)}">        
-<sly data-sly-use.heroBannerTemplate="etisalat-herobanner.html"
-             data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/>          
+<sly data-sly-test="${properties.carouselLayout == 'etisalat-hero-banner' && (wcmmode.preview || wcmmode.disabled)}">
+  <!--/* variation for herobanner 4.0 */-->
+  <sly data-sly-test="${bannerVariation == 'herobanner-wst'}"
+       data-sly-use.heroBannerTemplate="etisalat-herobanner.html"
+       data-sly-call="${heroBannerTemplate.hero @ carousel=carousel,properties=properties}"/>
+
+  <!--/* variations for hero-images */-->
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' &&
+        (properties.heroImagesVariation == 'iframe-banner' || properties.heroImagesVariation == 'links-banner')}"
+        data-sly-use.heroBannerTemplate="etisalat-heroimages.html"
+       data-sly-call="${heroBannerTemplate.heroIframe @ carousel=carousel,properties=properties}"/>
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && properties.heroImagesVariation == 'call-to-action-banner'}"
+        data-sly-use.heroBannerTemplate="hero-image-variations/hero-images-cta.html"
+       data-sly-call="${heroBannerTemplate.heroCTA @ carousel=carousel,properties=properties}"/>
+
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && properties.heroImagesVariation == 'medium-banner'}"
+        data-sly-use.heroBannerTemplate="hero-image-variations/heroimages-medium-banner.html"
+       data-sly-call="${heroBannerTemplate.mediumBanner @ carousel=carousel,properties=properties}"/>
+
+   <sly data-sly-test="${properties.heroBannerVariation == 'hero-images' && (properties.heroImagesVariation == 'block-chain-ends' ||
+         properties.heroImagesVariation == 'banner-page-navigation')}"
+        data-sly-use.heroBannerTemplate="hero-image-variations/heroimages-block-chain-end.html"
+       data-sly-call="${heroBannerTemplate.blockChain @ carousel=carousel,properties=properties}"/>
 </sly>

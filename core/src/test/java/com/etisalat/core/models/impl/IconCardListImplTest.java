@@ -24,6 +24,9 @@ class IconCardListImplTest {
 	private static final String CURRENT_PAGE = "/content/iconcardlist";
 	private static final String TEST_PAGE_CONTAINER_ROOT = CURRENT_PAGE + "/jcr:content/root/container";
 	private static final String CARD_DATA = TEST_PAGE_CONTAINER_ROOT + "/iconcardlist";
+	private static final String HOW_TO_DATA = TEST_PAGE_CONTAINER_ROOT + "/howiconcardlist";
+	private static final String ICON_SIZE = TEST_PAGE_CONTAINER_ROOT + "/iconcardsize";
+	private static final String HOW_SIZE = TEST_PAGE_CONTAINER_ROOT + "/howiconsize";
 	private static final String CARD_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/iconcardlist1";
 
 	@BeforeEach
@@ -54,7 +57,41 @@ class IconCardListImplTest {
 		assertEquals(expectedLinkBehavior, actualLinkBehavior);
 
 	}
-	
+	@Test
+	void testGetHowToIConCardListItems() {
+		context.currentResource(HOW_TO_DATA);
+		final String expectedHowToTitle = "How to Card Title 1";
+		final String expectedHowToDesc = "Buy the passes online via our website";
+		final String expectedHowToIcon = "/content/dam/etisalat/internet.svg";
+		int expectedCardSize = 2;
+		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
+		IconCardVO iconCardListItem = iconCardList.getHowToCardListItems().get(0);
+		String actualHowToTitle = iconCardListItem.getHowToTitle();
+		String actualHowToDesc = iconCardListItem.getHowToDesc();
+		String actualHowToIcon = iconCardListItem.getHowToIcon();
+		int actualCardSize = iconCardList.getHowToCardSize();
+		assertEquals(expectedHowToTitle, actualHowToTitle);
+		assertEquals(expectedHowToDesc, actualHowToDesc);
+		assertEquals(expectedHowToIcon, actualHowToIcon);
+		assertEquals(expectedCardSize, actualCardSize);
+	}
+	@Test
+	void testDefaultIconItems() {
+		context.currentResource(ICON_SIZE);
+		int expectedCardSize = 0;
+		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
+		int actualCardSize = iconCardList.getIconCardSize();
+		assertEquals(expectedCardSize, actualCardSize);
+	}
+	@Test
+	void testDefaultHOwToIconItems() {
+		context.currentResource(HOW_SIZE);
+		int expectedCardSize = 0;
+		IconCardList iconCardList = context.request().adaptTo(IconCardList.class);
+		int actualCardSize = iconCardList.getHowToCardSize();
+		assertEquals(expectedCardSize, actualCardSize);
+	}
+
 	@Test
 	void testGetIConCardListItemsEmpty() {
 		context.currentResource(CARD_DATA1);

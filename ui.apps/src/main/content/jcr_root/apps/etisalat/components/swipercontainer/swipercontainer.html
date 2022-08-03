@@ -20,6 +20,10 @@
            data-sly-use.guideTourTemplate="guide-tour.html"
            data-sly-call="${guideTourTemplate.guideTour @ container=container,properties=properties}">
       </sly>
+      <sly data-sly-test="${properties.tileBoxLayout == 'digital-notification'}"
+           data-sly-use.notificationTemplate="etisalat-digital-notification.html"
+           data-sly-call="${notificationTemplate.digitalNotification @ container=container,properties=properties}">
+      </sly>
       <sly data-sly-test="${wcmmode.edit}" data-sly-resource="${resource.path @ resourceType='core/wcm/components/container/v1/container/new', appendPath='/*', decorationTagName='div', cssClassName='new section'}" />
    </div>
 </sly>

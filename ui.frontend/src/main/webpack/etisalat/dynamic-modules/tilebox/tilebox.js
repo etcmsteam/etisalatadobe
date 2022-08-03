@@ -8,8 +8,9 @@ export const TILE_BOX = () => {
   function initTileBoxesSlider() {
     // plans table slider for CMS modules start
     $(document)
-      .find('.tilecontainer .tile-boxes-section')
-      .not('.tile-boxes-section-swiper')
+      .find(".tilecontainer .tile-boxes-section")
+      .not(".tile-boxes-section-swiper")
+      .not(".tile-box-2-column")
       .each(function (index) {
         $(this).addClass('t-b-slider' + index);
         var $tileBoxesCarousal = swiperInit('.t-b-slider' + index + ' .swiper-container', {
@@ -88,11 +89,12 @@ export const TILE_BOX = () => {
   // open youtube video and close by removing src and then add tile box Grid
   $('.tileBoxVideoLink').on('click', function (e) {
     e.preventDefault();
-    var modalCTA = $(this).next('.tileBoxVideoModal');
-    $(this).closest('.swiper-wrapper').addClass('remove-transform remove-zIndex');
-    $(this).closest('.swiper-container').addClass('remove-zIndex');
-    if ($(this).closest('.tile-boxes-section').hasClass('four-plus-slides')) {
-      $(this).closest('.tile-boxes-section').addClass('remove-sticky-pos');
+    var modalCTA = $(this).next(".tileBoxVideoModal");
+    $(this).closest(".swiper-container").addClass("remove-zIndex");
+    $(this).closest(".swiper-wrapper").addClass("remove-transform remove-zIndex");
+    $(this).closest(".swiper-wrapper .swiper-slide").addClass("remove-transform");
+    if ($(this).closest(".tile-boxes-section").hasClass("four-plus-slides")) {
+      $(this).closest(".tile-boxes-section").addClass("remove-sticky-pos");
     }
     modalCTA.modal().show();
     if ($('body').hasClass('modal-open')) {
@@ -109,10 +111,11 @@ export const TILE_BOX = () => {
     if ($('body').hasClass('modal-overlay')) {
       $('body').removeClass('modal-overlay');
     }
-    $(this).closest('.swiper-wrapper').removeClass('remove-transform remove-zIndex');
-    $(this).closest('.swiper-container').removeClass('remove-zIndex');
-    if ($(this).closest('.tile-boxes-section').hasClass('remove-sticky-pos')) {
-      $(this).closest('.tile-boxes-section').removeClass('remove-sticky-pos');
+    $(this).closest(".swiper-container").removeClass("remove-zIndex");
+    $(this).closest(".swiper-wrapper").removeClass("remove-transform remove-zIndex");
+    $(this).closest(".swiper-wrapper .swiper-slide").removeClass("remove-transform");
+    if ($(this).closest(".tile-boxes-section").hasClass("remove-sticky-pos")) {
+      $(this).closest(".tile-boxes-section").removeClass("remove-sticky-pos");
     }
   });
 

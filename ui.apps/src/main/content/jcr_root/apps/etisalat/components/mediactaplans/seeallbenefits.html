@@ -1,0 +1,9 @@
+<template data-sly-template.seeAllBenefits="${ @ component,properties,tileModel}">
+    <sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+        <div data-sly-test="${tileModel.ctatext}" class="third-action-wrapper action-link">
+            <a href="${tileModel.tileCTALinkSameWindow}" class="link" target="${properties.tileLinkBehavior == 'opennewwindow'?'_blank':'_self'}">${tileModel.ctatext}</a>
+        </div>
+    </sly>
+    <sly data-sly-use.mediaCTATemplate="modalpopup.html" 
+         data-sly-call="${mediaCTATemplate.ctaModelPopup @ component=component,properties=properties}" />
+</template>

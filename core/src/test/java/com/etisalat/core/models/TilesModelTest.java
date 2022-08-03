@@ -2,6 +2,7 @@ package com.etisalat.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,6 +33,9 @@ class TilesModelTest {
 	protected static final String BENEFITS_DATA = TEST_PAGE_CONTAINER_ROOT + "/gridcontainer/benefitstile";
 	protected static final String NABTILE_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer2/tile1";
 	protected static final String NABTILE_DATA2 = TEST_PAGE_CONTAINER_ROOT + "/tilecontainer3/tile1";
+	protected static final String CAROUSEL_DATA1 = TEST_PAGE_CONTAINER_ROOT + "/carousel1/item_1653029124290";
+	protected static final String CAROUSEL_DATA2 = TEST_PAGE_CONTAINER_ROOT + "/carousel2/item_1653029124291";
+	protected static final String SWIPER_CONTAINER = TEST_PAGE_CONTAINER_ROOT + "/swipercontainer/billexplianer1";
 
 
 	protected static final String TAGS_DATA = CONTENT_ROOT + "/cq:tags";
@@ -214,5 +218,70 @@ class TilesModelTest {
 		context.currentResource(NABTILE_DATA2);
 		TileModel tileModel = context.request().adaptTo(TileModel.class);
 		assertEquals(expectedLayout, tileModel.getNabBoxVariation());
+	}
+	
+	@Test
+	void testTileContianerLayoutParentResourceNull() {
+		String expectedLayout = StringUtils.EMPTY;
+		context.currentResource("/");
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+
+		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
+	}
+	
+	@Test
+	void testAccessoriesLayoutParentResourceNull() {
+		String expectedLayout = StringUtils.EMPTY;
+		context.currentResource("/");
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
+	}
+	
+	@Test
+	void testTileBoxVariationParentResourceNull() {
+		String expectedLayout = StringUtils.EMPTY;
+		context.currentResource("/");
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getTileBoxVariation());
+	}
+	
+	@Test
+	void testNabBoxVariationParentResourceNull() {
+		String expectedLayout = StringUtils.EMPTY;
+		context.currentResource("/");
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getNabBoxVariation());
+	}
+	
+	@Test
+	void testHeroImageVariation() {
+		String expectedVariation = "block-chain-ends";
+		context.currentResource(CAROUSEL_DATA1);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedVariation, tileModel.getHeroImageVariation());
+	}
+	
+	@Test
+	void testHeroImageVariationEmpty() {
+		String expectedVariation = StringUtils.EMPTY;
+		context.currentResource(CAROUSEL_DATA2);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedVariation, tileModel.getHeroImageVariation());
+	}
+	
+	@Test
+	void testHeroImageVariationParentResourceNull() {
+		String expectedVariation = StringUtils.EMPTY;
+		context.currentResource("/");
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedVariation, tileModel.getHeroImageVariation());
+	}
+	
+	@Test
+	void testTileContianerLayoutSwiperContainer() {
+		String expectedLayout = "bill-explainer";
+		context.currentResource(SWIPER_CONTAINER);
+		TileModel tileModel = context.request().adaptTo(TileModel.class);
+		assertEquals(expectedLayout, tileModel.getTileBoxContainerLayout());
 	}
 }

@@ -1,0 +1,21 @@
+<template data-sly-template.contextCard="${ @ tileModel,properties}">
+    <div class="bring-value-card">
+        <div data-sly-test="${properties['image/fileReference']}" class="bring-value-card-icon">
+           <div data-sly-resource="${tileModel.tileImageResource @ resourceType='core/wcm/components/image/v2/image', wcmmode='disabled'}"></div>
+        </div>
+        <div data-sly-test="${tileModel.tiletitle}" class="heading"><h4 data-sly-element="${properties.titleType}">${tileModel.tiletitle}</h4></div>
+        <div data-sly-test="${tileModel.text}" class="description">${tileModel.text @ context='html'}</div>
+		<sly data-sly-test="${properties.tileLinkBehavior != 'openmodalwindow'}">
+            <a class="btn-text btn-green learn-more" 
+               data-sly-test="${tileModel.tileCTALinkSameWindow && tileModel.ctatext}" 
+               href="${tileModel.tileCTALinkSameWindow}" 
+               target="${properties.tileLinkBehavior == 'opennewwindow' ? '_blank' : '_self'}">
+                <span class="moreg">${tileModel.ctatext}</span>
+            </a>
+        </sly>
+        <sly data-sly-test="${properties.tileLinkBehavior == 'openmodalwindow'}" 
+             data-sly-use.tileModalTemplate="/apps/etisalat/components/tile/tilemodal.html" 
+             data-sly-call="${tileModalTemplate.modal @ tileModel=tileModel,properties=properties,resource=resource,wcmmode=wcmmode}">
+        </sly> 
+    </div>
+</template>

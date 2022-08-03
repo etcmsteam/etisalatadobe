@@ -195,6 +195,12 @@ $screen-xxl-max: 1201px;
   white-space: nowrap;
 }
 
+@mixin single-line-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // media query
 @mixin respond-to-max($width) {
   @media screen and (max-width: $width) {
@@ -340,6 +346,24 @@ $screen-xxl-max: 1201px;
 
 @mixin transition($duration:0.3s, $ease:ease-in-out) {
   transition: all $duration $ease;
+}
+
+@mixin expo-container {
+  margin: 0 auto;
+  padding: 0 toRem(12);
+  width: 100%;
+
+  @include respond-to-min($tablet) {
+    width: toRem(756);
+  }
+
+  @include respond-to-min($desktop) {
+    width: toRem(976);
+  }
+
+  @include respond-to-min($desktop-wide) {
+    width: toRem(1224);
+  }
 }
 
 @mixin ellipsis {
