@@ -387,29 +387,30 @@
 
   .mob-tab-bar {
     display: none;
+  }
 
-    @media (max-width: 991px) {
-      align-items: center;
-      justify-content: center;
-
-      &.show-tab {
+  &.expand-collapse {
+    .mob-tab-bar {
+      @media (max-width: 991px) {
+        align-items: center;
         display: flex;
-      }
+        justify-content: center;
+        .tab-line {
+          background-color: $grey1;
+          border-radius: 2px;
+          display: block;
+          height: 4px;
+          margin-bottom: 16px;
+          margin-top: -12px;
+          width: 24px;
 
-      .tab-line {
-        background-color: $grey1;
-        border-radius: 2px;
-        display: block;
-        height: 4px;
-        margin-bottom: 16px;
-        margin-top: -12px;
-        width: 24px;
-
-        &:hover {
-          cursor: pointer;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
+
   }
 
   .more-info {

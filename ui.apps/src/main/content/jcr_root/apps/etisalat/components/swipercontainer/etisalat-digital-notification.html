@@ -1,7 +1,11 @@
-<template data-sly-template.digitalNotification="${ @ container,properties}">   
+<template data-sly-template.digitalNotification="${ @ container,properties}">
+<sly data-sly-list="${container.items}">
+ <sly data-sly-use.notificationRes="${item.path}"
+      data-sly-set.linkExpandExist="${notificationRes['displayDigitalBehavior'] == 'viewmore' ? 'expand-collapse' : ''}"/>
+</sly>   
  <div data-component="cmp-digital-notification" 
       data-sly-set.notificationAlignment="${properties.alignment == 'top' || properties.alignment == 'bottom'}" 
-      class="digital-notifications-wrapper ${wcmmode.edit && notificationAlignment ? '': properties.alignment} ${container.items.size > 1 ? 'multi-notifications' : ''} ${properties.themeColor}">
+      class="digital-notifications-wrapper ${linkExpandExist} ${wcmmode.edit && notificationAlignment ? '': properties.alignment} ${container.items.size > 1 ? 'multi-notifications' : ''} ${properties.themeColor}">
    <div class="container">
      <div class="noti-icon-dismis">
        <a href="#">
