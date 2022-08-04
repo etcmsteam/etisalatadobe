@@ -5,17 +5,21 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
-import org.apache.commons.lang3.StringUtils;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import com.day.cq.dam.api.DamConstants;
 
+import com.day.cq.dam.api.DamConstants;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.Template;
+import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.services.EtisalatApiService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
@@ -30,6 +34,12 @@ public class CommonLinkModelTest {
     
     @InjectMocks
     private CommonLinkModel commonLinkModel;
+    
+    @Mock
+    private Page currentPage;
+    
+    @Mock
+    private Template template;
     
     @BeforeEach
     public void setup() throws Exception {
@@ -117,10 +127,21 @@ public class CommonLinkModelTest {
 
     @Test
     void testGaApiKey() {
-        MockitoAnnotations.initMocks(this);
-        String gaApiKey = "GTM-5M52SJ";
-        when(etisalatApiService.getGaApiKey()).thenReturn(gaApiKey);
-        assertEquals(gaApiKey, commonLinkModel.getGaApiKey());
+      MockitoAnnotations.initMocks(this);
+      String gaApiKey = "GTM-TSZ46Z";
+      String gaBusinessApiKey = "GTM-5M52SJB";
+      when(currentPage.getTemplate()).thenReturn(template);
+      when(template.getPath()).thenReturn(PageConstants.CONSUMER_PAGE_TEMPLATE);
+      when(etisalatApiService.getGaApiKey()).thenReturn(gaApiKey);
+      assertEquals(gaApiKey, commonLinkModel.getGaApiKey());
+
+      when(template.getPath()).thenReturn(PageConstants.BUSINESS_PAGE_TEMPLATE);
+      when(etisalatApiService.getGaBusinessApiKey()).thenReturn(gaBusinessApiKey);
+      assertEquals(gaBusinessApiKey, commonLinkModel.getGaApiKey());
+
+      when(template.getPath()).thenReturn(PageConstants.SMB_PAGE_TEMPLATE);
+      when(etisalatApiService.getGaBusinessApiKey()).thenReturn(gaBusinessApiKey);
+      assertEquals(gaBusinessApiKey, commonLinkModel.getGaApiKey());
     }
 
     @Test

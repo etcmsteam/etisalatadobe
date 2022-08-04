@@ -55,6 +55,13 @@ public interface EtisalatApiService {
      * @return the Google Analytics API Key
      */
     String getGaApiKey();
+    
+   /**
+    * Gets the ga business api key.
+    *
+    * @return the ga business api key
+    */
+   String getGaBusinessApiKey();
 
 
 }
