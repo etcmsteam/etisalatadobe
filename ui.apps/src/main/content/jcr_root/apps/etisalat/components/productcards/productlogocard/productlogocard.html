@@ -29,7 +29,11 @@
             </div>
             <div data-sly-test="${properties.vatInclude}" class="price-vat">${properties.vatInclude}</div>
         </div>        
-        <button data-sly-test="${properties.ctatext}" role="button" class="btn btn-green ripple-effect btn-buy-now ">${properties.ctatext}</button>
+        <sly data-sly-test.productLink="${properties.productCTALink}" 
+	         data-sly-use.productCTALink="${'com.etisalat.core.models.CommonLinkModel' @link=productLink}"/>        
+        <a data-sly-test="${properties.ctatext}" href="${productCTALink.link}"
+           target="${properties.productLinktarget ? '_blank' : '_self'}" 
+           class="btn btn-green ripple-effect btn-buy-now ">${properties.ctatext}</a>
     </div>
 </div>
 
