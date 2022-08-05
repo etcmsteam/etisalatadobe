@@ -9,7 +9,7 @@ export const FORM_DEFAULTS = () => {
           <symbol id="error-icon-red" viewBox="0 0 64 64">
             <defs></defs>
             <g id="icon_error" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"  stroke-linejoin="round">
-                <g id="icon_error_red_64" stroke="#BE1218"> 
+                <g id="icon_error_red_64" stroke="#e77400">
                 <g id="@-Self-Care-/-Icon-/-Outline-/-Error-/-red">
                 <path d="M59.9958503,31.5126196 C60.2643926,46.9726045 47.4634532,59.7271876 31.9999998,59.9956917 C16.5390919,60.2641958 4.27269159,47.9486362 4.00414931,32.4873787 C3.73560704,17.0273937 16.5378192,4.27281071 31.9999998,4.00430657 C47.4634532,3.73580243 59.727308,16.0564522 59.9958503,31.5126196 L59.9958503,31.5126196 Z" id="Line"></path>
                 <g id="Group-2" fill-rule="evenodd" transform="translate(20.000000, 20.000000)">
