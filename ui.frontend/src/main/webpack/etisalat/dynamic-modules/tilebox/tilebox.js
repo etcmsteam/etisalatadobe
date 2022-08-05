@@ -4,6 +4,32 @@ import { swiperInit } from '../../../global/js/swiperInitialize';
 import './index.scss';
 
 export const TILE_BOX = () => {
+
+  $('.tileBoxModified').each(function () {
+
+    var swiperSlideLength = $(this).find('.swiper-slide').length;
+    $(this).addClass('swiper-with-' + swiperSlideLength + '-slides');
+    var $tileboxCarousal = $(this).find('.tileboxCarousal');
+
+    if ($(window).width() > 991) {
+      $tileboxCarousal.addClass('destroyed');
+    } else {
+      new Swiper($tileboxCarousal, {
+        loop: false,
+        autoplay: false,
+        slidesPerView: 1.1,
+        simulateTouch: true,
+        pagination: '.swiper-pagination',
+        touchEventsTarget: "swiper-wrapper",
+        scrollbarDraggable: true,
+        scrollbarHide: false,
+        scrollbar: ".table-swiper-scrollbar",
+        centeredSlides: false,
+        spaceBetween: 20
+      });
+    }
+  });
+
   //shop swiper st
   function initTileBoxesSlider() {
     // plans table slider for CMS modules start

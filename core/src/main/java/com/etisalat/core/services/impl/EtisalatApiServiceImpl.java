@@ -43,6 +43,9 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 
 	/** The search endpoint url. */
 	private String gaApiKey;
+	
+	/** The GA business api key. */
+  private String gaBusinessApiKey;
 
 	/**
 	 * Activate.
@@ -59,6 +62,7 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
 		this.autoSearchUrl = PropertiesUtil.toString(config.getAutoSuggestEndpointUrl(), AEConstants.NO_CONFIG_FOUND);
     	this.searchEndpointUrl = PropertiesUtil.toString(config.getSearchEndpointUrl(), AEConstants.NO_CONFIG_FOUND);
 		this.gaApiKey = PropertiesUtil.toString(config.getGaApiKey(), AEConstants.NO_CONFIG_FOUND);
+		this.gaBusinessApiKey = PropertiesUtil.toString(config.getGaBusinessApiKey(), AEConstants.NO_CONFIG_FOUND);
 	}
 	
 	/**
@@ -129,6 +133,16 @@ public class EtisalatApiServiceImpl implements EtisalatApiService {
   @Override
   public String getGaApiKey() {
 	  return this.gaApiKey;
+  }
+  
+  /**
+   * Gets the Google Analytics Business API Key.
+   *
+   * @return the Google Analytics Business API Key
+   */
+  @Override
+  public String getGaBusinessApiKey() {
+    return gaBusinessApiKey;
   }
 
 }

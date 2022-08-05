@@ -1,6 +1,7 @@
 package com.etisalat.core.models;
 
 import com.day.cq.wcm.api.Page;
+import com.etisalat.core.constants.PageConstants;
 import com.etisalat.core.services.EtisalatApiService;
 import com.etisalat.core.util.CommonUtility;
 
@@ -107,8 +108,11 @@ public class CommonLinkModel {
      * @return the the Google Analytics API Key
      */
     public String getGaApiKey() {
-
-        return etisalatApiService.getGaApiKey();
+      if (PageConstants.BUSINESS_PAGE_TEMPLATE.equals(currentPage.getTemplate().getPath())
+          || PageConstants.SMB_PAGE_TEMPLATE.equals(currentPage.getTemplate().getPath())) {
+        return etisalatApiService.getGaBusinessApiKey();
+      }
+      return etisalatApiService.getGaApiKey();
     }
     
     /**

@@ -74,6 +74,21 @@ public final class PageConstants {
   * Constant for SWIPER_CONTAINER Resource Type
   */
  public static final String CAROUSEL_RESOURCETYPE = "etisalat/components/carousel";
+ 
+ /**
+  * Constant for CONSUMER_PAGE_TEMPLATE Page Template
+  */
+ public static final String CONSUMER_PAGE_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-consumer-content-page";
+
+ /**
+  * Constant for BUSINESS_PAGE_TEMPLATE Page Template
+  */
+ public static final String BUSINESS_PAGE_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-business-content-page";
+
+ /**
+  * Constant for SMB_PAGE_TEMPLATE Page Template
+  */
+ public static final String SMB_PAGE_TEMPLATE = "/conf/etisalat/settings/wcm/templates/etisalat-small-and-medium-business-template";
 
   /**
    * Constant for DEFAULT status code

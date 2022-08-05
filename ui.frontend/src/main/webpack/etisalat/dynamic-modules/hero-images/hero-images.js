@@ -24,7 +24,7 @@ export const HERO_IMAGES = () => {
   var heroItems = [];
 
   /* 03 - Hero - private main function */
-  var Hero = function ($heroItem) {
+  var Hero = function ($heroItem, initCallback) {
     var o = {
       /* 03.1 - Hero variables */
       heroSwiperInstance: 0,
@@ -39,7 +39,12 @@ export const HERO_IMAGES = () => {
         this.heroSlides = this.heroItem.find(".swiper-slide");
         this.autoplay = this.heroItem.data("autoplay") || 5500;
 
-        $(() => this.init());
+        $(() => {
+          this.init();
+          if(typeof initCallback === 'function') {
+            initCallback(this);
+          }
+        });
 
         $(window).on("resize", () => {
           clearTimeout(this.fullscreenCallScheduleId);
@@ -372,11 +377,13 @@ export const HERO_IMAGES = () => {
       .each(function () {
         var $heroImage = $(this);
         $heroImage.addClass("hero-image-inizialized");
-        var hero = new Hero($(this));
-        if ($heroImage.hasClass("destryeMe")) {
-          // $(".destryeMe.swiper-container")[0].swiper.destroy(false, true);
-          hero.heroSwiperInstance.destroy(false, true);
-        }
+        new Hero($(this), (heroInstance) => {
+          if ($heroImage.hasClass("destryeMe")) {
+            // $(".destryeMe.swiper-container")[0].swiper.destroy(false, true);
+            heroInstance.heroSwiperInstance.destroy(false, true);
+          }
+        });
+
       });
     var t1 = performance.now();
     console.log("Took", (t1 - t0).toFixed(4), "milliseconds");

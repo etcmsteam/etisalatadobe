@@ -31,6 +31,9 @@ public @interface EtisalatApiConfiguration {
 
     @AttributeDefinition(name = "Google Analytics API Key", description = "Google Analytics API Key")
     String getGaApiKey() default "GTM-T57KNFL";
+    
+    @AttributeDefinition(name = "Google Analytics Business API Key", description = "Google Analytics Business API Key")
+    String getGaBusinessApiKey() default "GTM-5M52SJB";
 
 }
 
